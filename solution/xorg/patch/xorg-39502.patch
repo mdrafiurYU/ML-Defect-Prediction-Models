@@ -1,0 +1,33 @@
+diff --git a/dix/events.c b/dix/events.c
+index c5578b0..d6b3ecb 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4441,14 +4441,16 @@ EnterLeaveEvent(
+ 
+     /* Clear bit for device, but don't worry about SDs. */
+     if (mouse->isMaster && type == LeaveNotify &&
+-            (mode != NotifyVirtual && mode != NotifyNonlinearVirtual))
++            (detail != NotifyVirtual && detail != NotifyNonlinearVirtual))
++        if (mode != NotifyUngrab)
+         ENTER_LEAVE_SEMAPHORE_UNSET(pWin, mouse);
+ 
+     inWindow = EnterLeaveSemaphoresIsset(pWin);
+ 
+-    if (!inWindow)
++    if(!inWindow || mode == NotifyGrab || mode == NotifyUngrab)
+         sendevent = TRUE;
+ 
++
+     if ((mask & filters[mouse->id][type]) && sendevent)
+     {
+         if (grab)
+@@ -4460,7 +4462,8 @@ EnterLeaveEvent(
+     }
+ 
+     if (mouse->isMaster && type == EnterNotify &&
+-            (mode != NotifyVirtual && mode != NotifyNonlinearVirtual))
++            (detail != NotifyVirtual && detail != NotifyNonlinearVirtual))
++        if (mode != NotifyGrab)
+         ENTER_LEAVE_SEMAPHORE_SET(pWin, mouse);
+ 
+     /* we don't have enough bytes, so we squash flags and mode into

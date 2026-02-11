@@ -1,0 +1,28 @@
+diff --git a/GL/glx/glxserver.h b/GL/glx/glxserver.h
+index 45de8e7..5188689 100644
+--- a/GL/glx/glxserver.h
++++ b/GL/glx/glxserver.h
+@@ -95,6 +95,8 @@ extern __GLXclientState *glxGetClient(ClientPtr pClient);
+ 
+ /************************************************************************/
+ 
++void GlxExtensionInit(void);
++
+ void GlxSetVisualConfigs(int nconfigs, 
+                          __GLXvisualConfig *configs, void **privates);
+ 
+@@ -132,6 +134,14 @@ struct __GLXprovider {
+ 
+ void GlxPushProvider(__GLXprovider *provider);
+ 
++enum {
++    GLX_MINIMAL_VISUALS,
++    GLX_TYPICAL_VISUALS,
++    GLX_ALL_VISUALS
++};
++
++void GlxSetVisualConfig(int config);
++
+ void __glXsetEnterLeaveServerFuncs(void (*enter)(GLboolean),
+ 				   void (*leave)(GLboolean));
+ void __glXenterServer(GLboolean rendering);

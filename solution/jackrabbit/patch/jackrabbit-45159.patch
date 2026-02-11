@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationNullAtomicTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationNullAtomicTest.java
+index 50a9517..6a4aeb7 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationNullAtomicTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationNullAtomicTest.java
+@@ -111,7 +111,7 @@ public class AnnotationNullAtomicTest extends AnnotationTestBase
+         }
+         catch (Exception e)
+         {
+-            e.printStackTrace();
++            log.error("testNullValueAtomicFields failed", e);
+             fail("Exception occurs during the unit test : " + e);
+         }

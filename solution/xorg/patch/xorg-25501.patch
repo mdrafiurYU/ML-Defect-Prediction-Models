@@ -1,0 +1,22 @@
+diff --git a/dix/extension.c b/dix/extension.c
+index f58c731..fe779b2 100644
+--- a/dix/extension.c
++++ b/dix/extension.c
+@@ -482,3 +482,17 @@ RegisterScreenProc(char *name, ScreenPtr pScreen, ExtensionLookupProc proc)
+     }
+     return TRUE;
+ }
++
++#ifdef XSERVER_DTRACE
++void LoadExtensionNames(char **RequestNames) {
++    int i;
++
++    for (i=0; i<NumExtensions; i++) {
++	int r = extensions[i]->base;
++
++	if (RequestNames[r] == NULL) {
++	    RequestNames[r] = strdup(extensions[i]->name);
++	}
++    }
++}
++#endif

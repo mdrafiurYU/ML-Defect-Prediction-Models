@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexWriter.java b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+index 75a997c..909318e 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+@@ -3549,7 +3549,7 @@ public class IndexWriter implements Closeable {
+ 
+     assert mergeReader.numDeletedDocs() == delCount;
+ 
+-    mergeReader.hasChanges = delCount >= 0;
++    mergeReader.hasChanges = delCount > 0;
+   }
+ 
+   /* FIXME if we want to support non-contiguous segment merges */

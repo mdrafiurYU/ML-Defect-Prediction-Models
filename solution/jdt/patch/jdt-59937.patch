@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+index 4764947..6925702 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+@@ -309,6 +309,14 @@ public class CompilerOptions {
+ 		if (settings == null) return;
+ 		set(settings);		
+ 	}
++	
++	/**
++	 * @deprecated used to preserve 3.1 and 3.2M4 compatibility of some Compiler constructors
++	 */
++	public CompilerOptions(Map settings, boolean parseLiteralExpressionsAsConstants){
++		this(settings);
++		this.parseLiteralExpressionsAsConstants = parseLiteralExpressionsAsConstants;
++	}
+ 
+ 	public Map getMap() {
+ 		Map optionsMap = new HashMap(30);

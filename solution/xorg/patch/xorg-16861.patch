@@ -1,0 +1,15 @@
+diff --git a/fb/fbbits.h b/fb/fbbits.h
+index 69b2544..6997822 100644
+--- a/fb/fbbits.h
++++ b/fb/fbbits.h
+@@ -29,6 +29,10 @@
+ 
+ #define isClipped(c,ul,lr)  ((((c) - (ul)) | ((lr) - (c))) & 0x80008000)
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef BITSMUL
+ #define MUL BITSMUL
+ #else

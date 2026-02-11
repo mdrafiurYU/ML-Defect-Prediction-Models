@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+index 3d97341..fb22cfd 100755
+--- a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+@@ -41,6 +41,10 @@ public abstract class StringIndexDocValues extends DocValues {
+       }
+       this.vs = vs;
+     }
++
++    public FieldCache.DocTermsIndex getDocTermsIndex() {
++      return termsIndex;
++    }
+   
+     protected abstract String toTerm(String readableValue);

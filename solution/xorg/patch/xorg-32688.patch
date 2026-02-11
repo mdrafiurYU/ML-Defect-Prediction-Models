@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index c313796..eae0fa0 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -1554,7 +1554,7 @@ ProcCreatePixmap(ClientPtr client)
+ CreatePmap:
+     pMap = (PixmapPtr)(*pDraw->pScreen->CreatePixmap)
+ 		(pDraw->pScreen, stuff->width,
+-		 stuff->height, stuff->depth);
++		 stuff->height, stuff->depth, 0);
+     if (pMap)
+     {
+ 	pMap->drawable.serialNumber = NEXT_SERIAL_NUMBER;

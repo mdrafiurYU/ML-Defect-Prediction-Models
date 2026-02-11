@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/SourceParameterDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/SourceParameterDeclarationImpl.java
+index e1d278d..2c77297 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/SourceParameterDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/SourceParameterDeclarationImpl.java
+@@ -56,7 +56,7 @@ public class SourceParameterDeclarationImpl extends ParameterDeclarationImpl imp
+ 	
+ 	public Collection<Modifier> getModifiers()
+ 	{
+-		final SingleVariableDeclaration paramDecl = (SingleVariableDeclaration)getAstNode();
++		final SingleVariableDeclaration paramDecl = getAstNode();
+ 		if( paramDecl == null ) return Collections.emptyList();
+ 		final List<IExtendedModifier> extMods = paramDecl.modifiers();
+         if( extMods == null || extMods.isEmpty() ) return Collections.emptyList();

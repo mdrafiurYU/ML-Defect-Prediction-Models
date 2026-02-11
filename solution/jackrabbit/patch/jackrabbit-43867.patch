@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
+index 29f1eed..5364259 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
+@@ -98,7 +98,7 @@ class IndexNodeResolver extends NodeResolver {
+         StringBuffer stmt = new StringBuffer("/jcr:root");
+         stmt.append(getSearchRoot(ntName));
+         stmt.append("//element(");
+-        stmt.append(getNamePathResolver().getJCRName(nodeName));
++        stmt.append(ISO9075.encode(getNamePathResolver().getJCRName(nodeName)));
+         stmt.append(",");
+         stmt.append(getNamePathResolver().getJCRName(ntName));
+         stmt.append(")");

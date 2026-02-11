@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xgloffscreen.c b/hw/xgl/xgloffscreen.c
+index b19c3ce..c6f8a91 100644
+--- a/hw/xgl/xgloffscreen.c
++++ b/hw/xgl/xgloffscreen.c
+@@ -91,6 +91,9 @@ xglOffscreenCompareScore (xglAreaPtr pArea,
+     if (s1 > s2)
+ 	XGL_DECREMENT_PIXMAP_SCORE (pPixmapPriv, 10);
+     
++    if (pPixmapPriv->lock)
++	return 1;
++    
+     return s1 - s2;
+ }
+ 

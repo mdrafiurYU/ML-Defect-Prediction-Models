@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/vgahw/vgaHWmodule.c b/hw/xfree86/vgahw/vgaHWmodule.c
+index d6044bb..9f5a5a9 100644
+--- a/hw/xfree86/vgahw/vgaHWmodule.c
++++ b/hw/xfree86/vgahw/vgaHWmodule.c
+@@ -4,6 +4,10 @@
+  * Copyright 1998 by The XFree86 Project, Inc
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef XFree86LOADER
+ 
+ #include "xf86Module.h"

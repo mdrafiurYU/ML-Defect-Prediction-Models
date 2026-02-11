@@ -1,0 +1,17 @@
+diff --git a/dix/resource.c b/dix/resource.c
+index 4468f45..584ac94 100644
+--- a/dix/resource.c
++++ b/dix/resource.c
+@@ -169,12 +169,6 @@ static void RebuildTable(
+ #define INITHASHSIZE 6
+ #define MAXHASHSIZE 11
+ 
+-typedef struct _Resource {
+-    struct _Resource	*next;
+-    XID			id;
+-    RESTYPE		type;
+-    pointer		value;
+-} ResourceRec, *ResourcePtr;
+ #define NullResource ((ResourcePtr)NULL)
+ 
+ typedef struct _ClientResource {

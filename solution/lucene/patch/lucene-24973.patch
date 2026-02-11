@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestOpenBitSet.java b/lucene/src/test/org/apache/lucene/util/TestOpenBitSet.java
+index 34f6ba9..61322fe 100644
+--- a/lucene/src/test/org/apache/lucene/util/TestOpenBitSet.java
++++ b/lucene/src/test/org/apache/lucene/util/TestOpenBitSet.java
+@@ -42,8 +42,8 @@ public class TestOpenBitSet extends LuceneTestCase {
+   }
+ 
+   void doPrevSetBit(BitSet a, OpenBitSet b) {
+-    int aa=a.length();
+-    int bb=aa;
++    int aa = a.size() + random.nextInt(100);
++    int bb = aa;
+     do {
+       // aa = a.prevSetBit(aa-1);
+       aa--;

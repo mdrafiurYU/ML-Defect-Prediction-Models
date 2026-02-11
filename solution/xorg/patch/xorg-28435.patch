@@ -1,0 +1,93 @@
+diff --git a/randr/rrproperty.c b/randr/rrproperty.c
+index 148e4a2..5ac073f 100644
+--- a/randr/rrproperty.c
++++ b/randr/rrproperty.c
+@@ -167,7 +167,7 @@ RRChangeOutputProperty (RROutputPtr output, Atom property, Atom type,
+ 
+     if (mode == PropModeReplace || len > 0)
+     {
+-	pointer	    new_data, old_data;
++	pointer	    new_data = NULL, old_data = NULL;
+ 	
+ 	total_size = total_len * size_in_bytes;
+ 	new_value.data = (pointer)xalloc (total_size);
+@@ -197,6 +197,7 @@ RRChangeOutputProperty (RROutputPtr output, Atom property, Atom type,
+ 				  (prop_value->size * size_in_bytes));
+ 	    break;
+ 	}
++	if (new_data)
+ 	memcpy ((char *) new_data, (char *) value, len * size_in_bytes);
+ 	if (old_data)
+ 	    memcpy ((char *) old_data, (char *) prop_value->data, 
+@@ -226,6 +227,9 @@ RRChangeOutputProperty (RROutputPtr output, Atom property, Atom type,
+ 	output->properties = prop;
+     }
+ 
++    if (pending && prop->is_pending)
++	output->pendingProperties = TRUE;
++
+     if (sendevent)
+     {
+ 	event.type = RREventBase + RRNotify;
+@@ -240,30 +244,45 @@ RRChangeOutputProperty (RROutputPtr output, Atom property, Atom type,
+ }
+ 
+ Bool
+-RRPostPendingProperty (RROutputPtr output, Atom property)
++RRPostPendingProperties (RROutputPtr output)
+ {
+-    RRPropertyPtr		    prop = RRQueryOutputProperty (output, property);
+     RRPropertyValuePtr		    pending_value;
+     RRPropertyValuePtr		    current_value;
++    RRPropertyPtr	property;
++    Bool		ret = TRUE;
+     
+-    if (!prop)
+-	return FALSE;
+-    if (!prop->is_pending)
+-	return FALSE;
+-    pending_value = &prop->pending;
+-    current_value = &prop->current;
++    if (!output->pendingProperties)
++	return TRUE;
++    
++    output->pendingProperties = FALSE;
++    for (property = output->properties; property; property = property->next)
++    {
++	/* Skip non-pending properties */
++	if (!property->is_pending)
++	    continue;
+ 
++	pending_value = &property->pending;
++	current_value = &property->current;
++
++	/*
++	 * If the pending and current values are equal, don't mark it
++	 * as changed (which would deliver an event)
++	 */
+     if (pending_value->type == current_value->type &&
+ 	pending_value->format == current_value->format &&
+ 	pending_value->size == current_value->size &&
+-	!memcmp (pending_value->data, current_value->data, pending_value->size))
+-	return TRUE;
+-    
+-    if (RRChangeOutputProperty (output, property, 
+-				pending_value->type, pending_value->format, PropModeReplace,
+-				pending_value->size, pending_value->data, TRUE, FALSE) != Success)
+-	return FALSE;
+-    return TRUE;
++	    !memcmp (pending_value->data, current_value->data,
++		     pending_value->size))
++	    continue;
++
++	if (RRChangeOutputProperty (output, property->propertyName,
++				    pending_value->type, pending_value->format,
++				    PropModeReplace, pending_value->size,
++				    pending_value->data, TRUE,
++				    FALSE) != Success)
++	    ret = FALSE;
++    }
++    return ret;
+ }
+ 
+ RRPropertyPtr

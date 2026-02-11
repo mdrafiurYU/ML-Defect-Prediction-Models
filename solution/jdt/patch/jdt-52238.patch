@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestAll.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestAll.java
+index 742c198..bd9d0a5 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestAll.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestAll.java
+@@ -33,7 +33,8 @@ public class TestAll extends TestCase {
+ 	{
+ 		TestSuite suite = new TestSuite();
+ 		
+-		suite.addTest(AptReconcileTests.suite());
++		// Comment out reconcile tests. No reconcile time codegen.
++		//suite.addTest(AptReconcileTests.suite());
+ 		suite.addTest(AptBuilderTests.suite() );
+ 		suite.addTest(APITests.suite());
+ 		suite.addTest(MirrorTests.suite());

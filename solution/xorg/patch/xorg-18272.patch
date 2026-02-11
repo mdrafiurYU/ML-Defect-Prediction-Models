@@ -1,0 +1,20 @@
+diff --git a/render/mipict.h b/render/mipict.h
+index e6e8b70..0c2ed04 100644
+--- a/render/mipict.h
++++ b/render/mipict.h
+@@ -71,6 +71,15 @@ void
+ miValidatePicture (PicturePtr pPicture,
+ 		   Mask       mask);
+ 
++int
++miChangePictureTransform (PicturePtr	pPicture,
++			  PictTransform *transform);
++
++int
++miChangePictureFilter (PicturePtr pPicture,
++		       int	  filter,
++		       xFixed     *params,
++		       int	  nparams);
+ 
+ Bool
+ miClipPicture (RegionPtr    pRegion,

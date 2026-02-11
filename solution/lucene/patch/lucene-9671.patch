@@ -1,0 +1,21 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ShortField.java b/solr/src/java/org/apache/solr/schema/ShortField.java
+index 8cfecb5..5088680 100644
+--- a/solr/src/java/org/apache/solr/schema/ShortField.java
++++ b/solr/src/java/org/apache/solr/schema/ShortField.java
+@@ -18,6 +18,9 @@ package org.apache.solr.schema;
+ 
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.search.SortField;
++import org.apache.lucene.search.cache.CachedArray;
++import org.apache.lucene.search.cache.CachedArrayCreator;
++import org.apache.lucene.search.cache.ShortValuesCreator;
+ 
+ import org.apache.solr.response.TextResponseWriter;
+ import org.apache.solr.response.XMLWriter;
+@@ -46,7 +49,7 @@ public class ShortField extends FieldType {
+ 
+   public ValueSource getValueSource(SchemaField field) {
+ 
+-    return new ShortFieldSource(field.name);
++    return new ShortFieldSource(new ShortValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }

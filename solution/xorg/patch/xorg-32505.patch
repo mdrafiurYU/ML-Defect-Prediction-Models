@@ -1,0 +1,51 @@
+diff --git a/render/glyph.c b/render/glyph.c
+index 78b49b9..f3e3917 100644
+--- a/render/glyph.c
++++ b/render/glyph.c
+@@ -902,20 +902,22 @@ GlyphExtents (int		nlist,
+ 
+ #define NeedsComponent(f) (PICT_FORMAT_A(f) != 0 && PICT_FORMAT_RGB(f) != 0)
+ 
+-/* Stub ABI compatibility for mi*Glyph, should go away */
+ _X_EXPORT void
+-miGlyphs (CARD8		op,
++CompositeGlyphs (CARD8		op,
+ 	  PicturePtr	pSrc,
+ 	  PicturePtr	pDst,
+ 	  PictFormatPtr	maskFormat,
+ 	  INT16		xSrc,
+ 	  INT16		ySrc,
+ 	  int		nlist,
+-	  GlyphListPtr	list,
++		 GlyphListPtr	lists,
+ 	  GlyphPtr	*glyphs)
+ {
+-    CompositeGlyphs(op, pSrc, pDst, maskFormat, xSrc, ySrc, nlist, list,
+-		    glyphs);
++    PictureScreenPtr	ps = GetPictureScreen(pDst->pDrawable->pScreen);
++
++    ValidatePicture (pSrc);
++    ValidatePicture (pDst);
++    (*ps->Glyphs) (op, pSrc, pDst, maskFormat, xSrc, ySrc, nlist, lists, glyphs);
+ }
+ 
+ Bool
+@@ -932,7 +934,7 @@ miUnrealizeGlyph (ScreenPtr pScreen,
+ }
+ 
+ _X_EXPORT void
+-CompositeGlyphs (CARD8		op,
++miGlyphs (CARD8		op,
+ 		 PicturePtr	pSrc,
+ 		 PicturePtr	pDst,
+ 		 PictFormatPtr	maskFormat,
+@@ -955,9 +957,6 @@ CompositeGlyphs (CARD8		op,
+     BoxRec	extents = {0, 0, 0, 0};
+     CARD32	component_alpha;
+ 
+-    ValidatePicture (pSrc);
+-    ValidatePicture (pDst);
+-
+     if (maskFormat)
+     {
+ 	GCPtr	    pGC;

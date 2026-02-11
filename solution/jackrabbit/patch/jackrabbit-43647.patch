@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/client/methods/XmlRequestEntity.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/client/methods/XmlRequestEntity.java
+index 2464de5..2066533 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/client/methods/XmlRequestEntity.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/client/methods/XmlRequestEntity.java
+@@ -65,7 +65,8 @@ public class XmlRequestEntity implements RequestEntity {
+     }
+ 
+     public String getContentType() {
+-        return "text/xml"; // TODO: Shouldn't this be application/xml?
++        // TODO: Shouldn't this be application/xml? See JCR-1621
++        return "text/xml; charset=" + SerializingContentHandler.ENCODING;
+     }
+ 
+     public void writeRequest(OutputStream out) throws IOException {

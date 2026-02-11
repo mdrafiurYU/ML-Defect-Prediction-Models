@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 97b703d..2c4be84 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -483,7 +483,7 @@ probe_devices_from_device_sections(DriverPtr drvp)
+ 
+ 		    for ( k = 0; k < xf86NumEntities; k++ ) {
+ 			EntityPtr pEnt = xf86Entities[k];
+-			if (pEnt->busType != BUS_PCI)
++			if (pEnt->bus.type != BUS_PCI)
+ 			  continue;
+ 
+ 			if (pEnt->bus.id.pci == pPci) {

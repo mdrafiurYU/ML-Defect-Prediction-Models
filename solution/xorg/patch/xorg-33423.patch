@@ -1,0 +1,29 @@
+diff --git a/dix/colormap.c b/dix/colormap.c
+index 5155570..7d6e7da 100644
+--- a/dix/colormap.c
++++ b/dix/colormap.c
+@@ -64,6 +64,7 @@ SOFTWARE.
+ #include "resource.h"
+ #include "windowstr.h"
+ #include "privates.h"
++#include "xace.h"
+ 
+ extern XID clientErrorValue;
+ extern int colormapPrivateCount;
+@@ -412,6 +413,16 @@ CreateColormap (Colormap mid, ScreenPtr pScreen, VisualPtr pVisual,
+ 	}
+     }
+ 
++    /*  
++     * Security creation/labeling check
++     */
++    i = XaceHook(XACE_RESOURCE_ACCESS, clients[client], mid, RT_COLORMAP,
++		 DixCreateAccess, pmap);
++    if (i != Success) {
++	FreeResource(mid, RT_NONE);
++	return i;
++    }
++
+     if (!(*pScreen->CreateColormap)(pmap))
+     {
+ 	FreeResource (mid, RT_NONE);

@@ -1,0 +1,15 @@
+diff --git a/Xprint/ps/PsPixel.c b/Xprint/ps/PsPixel.c
+index c2c360d..2197f0a 100644
+--- a/Xprint/ps/PsPixel.c
++++ b/Xprint/ps/PsPixel.c
+@@ -74,6 +74,10 @@ in this Software without prior written authorization from The Open Group.
+ ** 
+ ********************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ 
+ #include "windowstr.h"

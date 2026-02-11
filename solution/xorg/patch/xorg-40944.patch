@@ -1,0 +1,13 @@
+diff --git a/glx/glxdri.c b/glx/glxdri.c
+index c43e7c3..50a5179 100644
+--- a/glx/glxdri.c
++++ b/glx/glxdri.c
+@@ -103,7 +103,7 @@ struct __GLXDRIdrawable {
+ #ifdef __DRI_TEX_OFFSET
+     GLint texname;
+     __GLXDRIcontext *ctx;
+-    unsigned long offset;
++    unsigned long long offset;
+     DamagePtr pDamage;
+ #endif
+ };

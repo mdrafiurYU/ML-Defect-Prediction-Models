@@ -1,0 +1,40 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LocalVariableBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LocalVariableBinding.java
+index 3e3246c..356d2a4 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LocalVariableBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LocalVariableBinding.java
+@@ -140,18 +140,25 @@ public class LocalVariableBinding extends VariableBinding {
+ 	public void recordInitializationStartPC(int pc) {
+ 
+ 		if (initializationPCs == null) 	return;
+-		// optimize cases where reopening a contiguous interval
+-		if ((initializationCount > 0) && (initializationPCs[ ((initializationCount - 1) << 1) + 1] == pc)) {
+-			initializationPCs[ ((initializationCount - 1) << 1) + 1] = -1; // reuse previous interval (its range will be augmented)
+-		} else {
+-			int index = initializationCount << 1;
+-			if (index == initializationPCs.length) {
+-				System.arraycopy(initializationPCs, 0, (initializationPCs = new int[initializationCount << 2]), 0, index);
++		if (initializationCount > 0) {
++			int previousEndPC = initializationPCs[ ((initializationCount - 1) << 1) + 1];
++			 // interval still open, keep using it (108180)
++			if (previousEndPC == -1) {
++				return;
++			}
++			// optimize cases where reopening a contiguous interval
++			if (previousEndPC == pc) {
++				initializationPCs[ ((initializationCount - 1) << 1) + 1] = -1; // reuse previous interval (its range will be augmented)
++				return;
+ 			}
+-			initializationPCs[index] = pc;
+-			initializationPCs[index + 1] = -1;
+-			initializationCount++;
+ 		}
++		int index = initializationCount << 1;
++		if (index == initializationPCs.length) {
++			System.arraycopy(initializationPCs, 0, (initializationPCs = new int[initializationCount << 2]), 0, index);
++		}
++		initializationPCs[index] = pc;
++		initializationPCs[index + 1] = -1;
++		initializationCount++;
+ 	}
+ 
+ 	public void setAnnotations(AnnotationBinding[] annotations) {

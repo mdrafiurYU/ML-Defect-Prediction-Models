@@ -1,0 +1,14 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index f5e119e..7d6d110 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -296,6 +296,9 @@ mieqProcessInputEvents(void)
+             }
+ 
+             e->pDev->public.processInputProc(event, e->pDev, e->nevents);
++            if (!e->pDev->isMaster && e->pDev->u.master)
++                e->pDev->u.master->public.processInputProc(event, 
++                        e->pDev->u.master, e->nevents);
+ 
+             if (e->nevents > 1)
+                 xfree(event);

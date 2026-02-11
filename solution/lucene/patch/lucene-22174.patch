@@ -1,0 +1,24 @@
+diff --git a/lucene/src/java/org/apache/lucene/document/Fieldable.java b/lucene/src/java/org/apache/lucene/document/Fieldable.java
+index 8d168c4..8b9c325 100755
+--- a/lucene/src/java/org/apache/lucene/document/Fieldable.java
++++ b/lucene/src/java/org/apache/lucene/document/Fieldable.java
+@@ -20,7 +20,7 @@ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.index.FieldInvertState; // for javadocs
+ import org.apache.lucene.index.values.DocValues;
+ import org.apache.lucene.index.values.PerDocFieldValues;
+-import org.apache.lucene.index.values.Type;
++import org.apache.lucene.index.values.ValueType;
+ import org.apache.lucene.search.PhraseQuery; // for javadocs
+ import org.apache.lucene.search.spans.SpanQuery; // for javadocs
+ 
+@@ -230,8 +230,8 @@ public interface Fieldable {
+   public boolean hasDocValues();
+ 
+   /**
+-   * Returns the {@link Type} of the set {@link PerDocFieldValues} or
++   * Returns the {@link ValueType} of the set {@link PerDocFieldValues} or
+    * <code>null</code> if not set.
+    */
+-  public Type docValuesType();
++  public ValueType docValuesType();
+ }

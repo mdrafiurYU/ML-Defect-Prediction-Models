@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index 5f51c45..f10125b 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -290,7 +290,7 @@ XkbSetRulesDflts(char *rulesFile,char *model,char *layout,
+ }
+ 
+ void
+-XkbDeleteRulesDflts()
++XkbDeleteRulesDflts(void)
+ {
+     _XkbFree(XkbRulesFile);
+     XkbRulesFile = NULL;

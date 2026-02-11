@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/dmxdpms.c b/hw/dmx/dmxdpms.c
+index 8c745a6..2af1605 100644
+--- a/hw/dmx/dmxdpms.c
++++ b/hw/dmx/dmxdpms.c
+@@ -175,7 +175,7 @@ void dmxDPMSTerm(DMXScreenInfo *dmxScreen)
+ void dmxDPMSWakeup(void)
+ {
+     if (screenIsSaved == SCREEN_SAVER_ON)
+-        SaveScreens(serverClient, SCREEN_SAVER_OFF, ScreenSaverReset);
++        dixSaveScreens(serverClient, SCREEN_SAVER_OFF, ScreenSaverReset);
+ #ifdef DPMSExtension
+     if (DPMSPowerLevel) DPMSSet(serverClient, 0);
+ #endif

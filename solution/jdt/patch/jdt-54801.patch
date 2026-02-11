@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/BatchASTCreationTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/BatchASTCreationTests.java
+index 3f1b8bc..635dcad 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/BatchASTCreationTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/BatchASTCreationTests.java
+@@ -1593,6 +1593,6 @@ public class BatchASTCreationTests extends AbstractASTTests {
+ 		ITypeBinding yBinding = y.resolveBinding();
+ 		
+ 		// ensure that the fields for Y are not resolved
+-		assertEquals("Field's constant should not be resolved", null, yBinding.getDeclaredFields()[0].getConstantValue());
++		assertBindingsEqual("", yBinding.getDeclaredFields());
+ 	}
+ }

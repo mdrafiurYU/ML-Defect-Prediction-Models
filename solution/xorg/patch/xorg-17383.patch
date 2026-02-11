@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/loader/loadmod.c b/hw/xfree86/loader/loadmod.c
+index be94694..63b9b3d 100644
+--- a/hw/xfree86/loader/loadmod.c
++++ b/hw/xfree86/loader/loadmod.c
+@@ -963,6 +963,11 @@ LoadModule(const char *module, const char *path, const char **subdirlist,
+ 
+     ret->filename = xstrdup(found);
+ 
++    /* drop any explicit suffix from the module name */
++    p = strchr(name, '.');
++    if (p)
++        *p = '\0';
++
+     /*
+      * now check if the special data object <modulename>ModuleData is
+      * present.

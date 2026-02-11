@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodPattern.java
+index 46e56b4..a3451e5 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodPattern.java
+@@ -301,8 +301,10 @@ EntryResult[] queryIn(Index index) throws IOException {
+ 			if (this.isCamelCase) break;
+ 			if (shouldCountParameter() && this.selector != null && this.parameterCount >= 0)
+ 				key = createIndexKey(this.selector, this.parameterCount);
+-			else // do a prefix query with the selector
+-				matchRule = matchRule - R_EXACT_MATCH + R_PREFIX_MATCH;
++			else { // do a prefix query with the selector
++				matchRule &= ~R_EXACT_MATCH;
++				matchRule |= R_PREFIX_MATCH;
++			}
+ 			break;
+ 		case R_PREFIX_MATCH :
+ 			// do a prefix query with the selector

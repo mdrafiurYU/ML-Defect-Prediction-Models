@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+index dbce4c0..62c5199 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+@@ -232,9 +232,7 @@ public class FST<T> {
+ 
+   void setEmptyOutput(T v) throws IOException {
+     if (emptyOutput != null) {
+-      if (!emptyOutput.equals(v)) {
+-        emptyOutput = outputs.merge(emptyOutput, v);
+-      }
++      emptyOutput = outputs.merge(emptyOutput, v);
+     } else {
+       emptyOutput = v;
+     }

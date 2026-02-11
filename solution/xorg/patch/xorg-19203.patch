@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/sco/sco_mouse.c b/hw/xfree86/os-support/sco/sco_mouse.c
+index 0df225b..9e16785 100644
+--- a/hw/xfree86/os-support/sco/sco_mouse.c
++++ b/hw/xfree86/os-support/sco/sco_mouse.c
+@@ -23,6 +23,10 @@
+ 
+ /* $XConsortium$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "compiler.h"
+ 

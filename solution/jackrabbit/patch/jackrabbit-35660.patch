@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+index d27289f..6e1204a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+@@ -78,7 +78,8 @@ public class GarbageCollector {
+     }
+     
+     /**
+-     * When testing the garbage collection, a delay class is tested, 
++     * When testing the garbage collection, a delay is used instead of simulating concurrent access.
++     *  
+      * @param testDelay the delay in milliseconds
+      */
+     public void setTestDelay(int testDelay) {

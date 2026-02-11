@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 89da5f8..af3bf93 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -236,6 +236,8 @@ LOOKUP dixLookupTab[] = {
+     SYMVAR(XvGetScreenIndexProc)
+     SYMVAR(XvGetRTPortProc)
+     SYMVAR(XvMCScreenInitProc)
++    /* But this just comes from Xext. */
++    SYMFUNC(XvGetScreenIndex)
+ #endif
+     SYMVAR(ScreenSaverBlanking)
+     SYMVAR(WindowTable)

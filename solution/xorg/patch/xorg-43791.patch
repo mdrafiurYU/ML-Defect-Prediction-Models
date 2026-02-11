@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbAccessX.c b/xkb/xkbAccessX.c
+index 524bb53..9bf8714 100644
+--- a/xkb/xkbAccessX.c
++++ b/xkb/xkbAccessX.c
+@@ -133,7 +133,7 @@ AccessXKeyboardEvent(DeviceIntPtr	keybd,
+ 
+     if (xkbDebugFlags&0x8) {
+ 	DebugF("[xkb] AXKE: Key %d %s\n", keyCode,
+-               (event->type == ET_KeyPress ? "down" : "up"));
++               (event.type == ET_KeyPress ? "down" : "up"));
+     }
+ 
+     if (!_XkbIsPressEvent(type) && isRepeat)

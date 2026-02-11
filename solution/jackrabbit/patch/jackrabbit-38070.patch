@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyNodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyNodeTest.java
+index bfeff0c..f83f179 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyNodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyNodeTest.java
+@@ -64,6 +64,13 @@ public class SetPropertyNodeTest extends AbstractJCRTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        testNode = null;
++        n1 = null;
++        n2 = null;
++        super.tearDown();
++    }
++
+     /**
+      * Tests if adding a property with <code>Node.setProperty(String,
+      * Node)</code> works with <code>Session.save()</code>

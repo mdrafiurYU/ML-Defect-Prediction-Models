@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/PathFactoryLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/PathFactoryLogger.java
+index 0567390..719eaa2 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/PathFactoryLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/PathFactoryLogger.java
+@@ -117,6 +117,13 @@ public class PathFactoryLogger extends AbstractLogger implements PathFactory {
+             }}, "createElement(Name)", new Object[]{name, new Integer(index)});
+     }
+ 
++    public Element createElement(final String identifier) throws IllegalArgumentException {
++        return (Element) execute(new SafeCallable() {
++            public Object call() {
++                return pathFactory.createElement(identifier);
++            }}, "createElement(String)", new Object[]{identifier});
++    }
++
+     public Element getCurrentElement() {
+         return (Element) execute(new SafeCallable() {
+             public Object call() {

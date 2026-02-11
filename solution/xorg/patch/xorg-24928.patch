@@ -1,0 +1,13 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 63b900c..856aa25 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -104,7 +104,7 @@ mieqEnqueue (xEvent *e)
+                                       &laste->event[0];
+ 
+     if (e->u.u.type == MotionNotify) {
+-        miPointerAbsoluteCursor(e->u.keyButtonPointer.rootX,
++        miPointerSetPosition(pDev, e->u.keyButtonPointer.rootX,
+                                 e->u.keyButtonPointer.rootY,
+                                 e->u.keyButtonPointer.time);
+         pDev = inputInfo.pointer;

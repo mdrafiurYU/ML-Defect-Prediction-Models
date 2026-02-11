@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 190626e..19b93c5 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -193,10 +193,6 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMFUNC(CheckExtension)
+     SYMFUNC(MinorOpcodeOfRequest)
+     SYMFUNC(StandardMinorOpcode)
+-#ifdef XEVIE
+-    SYMVAR(xeviehot)
+-    SYMVAR(xeviewin)
+-#endif
+     /* gc.c */
+     SYMFUNC(CopyGC)
+     SYMFUNC(CreateGC)
+@@ -358,9 +354,6 @@ _X_HIDDEN void *dixLookupTab[] = {
+ #ifdef RES
+     SYMVAR(noResExtension)
+ #endif
+-#ifdef XEVIE
+-    SYMVAR(noXevieExtension)
+-#endif
+ #ifdef XF86BIGFONT
+     SYMVAR(noXFree86BigfontExtension)
+ #endif

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveToNewTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveToNewTest.java
+index cfd17af..650c28c 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveToNewTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveToNewTest.java
+@@ -183,7 +183,7 @@ public class MoveToNewTest extends AbstractJCRTest {
+ 
+         testRootNode.save();
+ 
+-        Session readOnly = helper.getReadOnlySession();
++        Session readOnly = getHelper().getReadOnlySession();
+         try {
+             Node trn = (Node) readOnly.getItem(testRootNode.getPath());
+             NodeIterator it = trn.getNodes(nodeName1);

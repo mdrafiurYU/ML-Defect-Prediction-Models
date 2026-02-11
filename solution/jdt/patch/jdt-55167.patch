@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
+index 6631878..7ea1a60 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
+@@ -138,7 +138,7 @@ public abstract class Statement extends ASTNode {
+ 		// statement within a switch that are not case are treated as normal statement.... 
+ 
+ 		resolve(scope);
+-		return NotAConstant;
++		return Constant.NotAConstant;
+ 	}
+ 
+ }

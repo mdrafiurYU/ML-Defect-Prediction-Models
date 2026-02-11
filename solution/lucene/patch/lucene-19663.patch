@@ -1,0 +1,19 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestArbitraryIndexDir.java b/solr/src/test/org/apache/solr/core/TestArbitraryIndexDir.java
+index d19895c..59d1afb 100644
+--- a/solr/src/test/org/apache/solr/core/TestArbitraryIndexDir.java
++++ b/solr/src/test/org/apache/solr/core/TestArbitraryIndexDir.java
+@@ -42,6 +42,7 @@ import org.xml.sax.SAXException;
+  */
+ public class TestArbitraryIndexDir extends AbstractSolrTestCase{
+ 
++  @Override
+   public void setUp() throws Exception {
+     super.setUp();
+ 
+@@ -58,6 +59,7 @@ public class TestArbitraryIndexDir extends AbstractSolrTestCase{
+     ("standard",0,20,"version","2.2");
+   }
+   
++  @Override
+   public void tearDown() throws Exception {
+     super.tearDown();

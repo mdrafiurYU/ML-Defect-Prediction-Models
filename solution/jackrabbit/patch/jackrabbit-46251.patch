@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DavResourceFactoryImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DavResourceFactoryImpl.java
+index 76e36f1..a83c159 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DavResourceFactoryImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DavResourceFactoryImpl.java
+@@ -201,7 +201,7 @@ public class DavResourceFactoryImpl implements DavResourceFactory {
+         return resource;
+     }
+ 
+-    private Item getItem(JcrDavSession sessionImpl, DavResourceLocator locator)
++    protected Item getItem(JcrDavSession sessionImpl, DavResourceLocator locator)
+         throws PathNotFoundException, RepositoryException {
+         return sessionImpl.getRepositorySession().getItem(locator.getRepositoryPath());
+     }

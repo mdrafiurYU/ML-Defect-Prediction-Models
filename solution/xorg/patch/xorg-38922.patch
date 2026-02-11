@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/ddc/interpret_edid.c b/hw/xfree86/ddc/interpret_edid.c
+index b319699..941fec2 100644
+--- a/hw/xfree86/ddc/interpret_edid.c
++++ b/hw/xfree86/ddc/interpret_edid.c
+@@ -118,6 +118,20 @@ xf86InterpretEDID(int scrnIndex, Uchar *block)
+     return NULL;
+ }
+ 
++xf86MonPtr
++xf86InterpretEEDID(int scrnIndex, Uchar *block)
++{
++    xf86MonPtr m;
++
++    m = xf86InterpretEDID(scrnIndex, block);
++    if (!m)
++	return NULL;
++
++    /* extension parse */
++
++    return m;
++}
++
+ static void
+ get_vendor_section(Uchar *c, struct vendor *r)
+ {

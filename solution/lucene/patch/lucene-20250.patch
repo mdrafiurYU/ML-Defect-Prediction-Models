@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java b/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
+index 95da21d..a2ed193 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
+@@ -129,7 +129,7 @@ public class TestAtomicUpdate extends LuceneTestCase {
+     IndexWriterConfig conf = new IndexWriterConfig(
+         TEST_VERSION_CURRENT, new MockAnalyzer())
+         .setMaxBufferedDocs(7);
+-    ((LogMergePolicy) conf.getMergePolicy()).setMergeFactor(3);
++    ((TieredMergePolicy) conf.getMergePolicy()).setMaxMergeAtOnce(3);
+     IndexWriter writer = new MockIndexWriter(directory, conf);
+     writer.setInfoStream(VERBOSE ? System.out : null);

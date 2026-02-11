@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index 7c77777..a020e97 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -23,6 +23,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/os.h>
+ #include "mibank.h"

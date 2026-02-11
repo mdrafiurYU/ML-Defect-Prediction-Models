@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataRecord.java
+index e59ee22..a2ed6de 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataRecord.java
+@@ -27,9 +27,9 @@ import java.io.InputStream;
+  */
+ public class DbDataRecord extends AbstractDataRecord {
+     
+-    private final DbDataStore store;
+-    private final long length;
+-    private long lastModified;
++    protected final DbDataStore store;
++    protected final long length;
++    protected long lastModified;
+ 
+     /**
+      * Creates a data record based on the given identifier and length.

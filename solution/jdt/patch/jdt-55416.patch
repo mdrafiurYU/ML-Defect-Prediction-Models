@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java
+index 75a84a9..3912cfc 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java
+@@ -94,7 +94,12 @@ public class InternalCompletionProposal {
+ 			}
+ 		} else { 
+ 			// TODO (david) shouldn't it be NameLookup.ACCEPT_ALL ?
+-			type = this.nameLookup.findType(new String(tName), false, NameLookup.ACCEPT_CLASSES & NameLookup.ACCEPT_INTERFACES);
++			type = this.nameLookup.findType(new String(tName),
++				false,
++				NameLookup.ACCEPT_CLASSES & NameLookup.ACCEPT_INTERFACES,
++				true/* consider secondary types */,
++				false/* do NOT wait for indexes */,
++				null);
+ 			if(type instanceof BinaryType){
+ 				this.completionEngine.typeCache.put(tName, type);
+ 			} else {

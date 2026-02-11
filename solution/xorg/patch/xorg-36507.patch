@@ -1,0 +1,14 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index a15b24f..2759d16 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -239,7 +239,8 @@ ChangeDeviceID(DeviceIntPtr dev, xEvent* event)
+ 
+     if (type == DeviceKeyPress || type == DeviceKeyRelease ||
+             type == DeviceButtonPress || type == DeviceButtonRelease ||
+-            type == DeviceMotionNotify)
++            type == DeviceMotionNotify || type == ProximityIn ||
++            type == ProximityOut)
+         ((deviceKeyButtonPointer*)event)->deviceid = dev->id;
+     else if (type == DeviceValuator)
+         ((deviceValuator*)event)->deviceid = dev->id;

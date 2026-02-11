@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/parser/Device.c b/hw/xfree86/parser/Device.c
+index 8f5370b..216789f 100644
+--- a/hw/xfree86/parser/Device.c
++++ b/hw/xfree86/parser/Device.c
+@@ -357,7 +357,7 @@ xf86freeDeviceList (XF86ConfDevicePtr ptr)
+ 	}
+ }
+ 
+-_X_EXPORT XF86ConfDevicePtr
++XF86ConfDevicePtr
+ xf86findDevice (const char *ident, XF86ConfDevicePtr p)
+ {
+ 	while (p)
+@@ -370,7 +370,7 @@ xf86findDevice (const char *ident, XF86ConfDevicePtr p)
+ 	return (NULL);
+ }
+ 
+-_X_EXPORT char *
++char *
+ xf86configStrdup (const char *s)
+ {
+ 	char *tmp;

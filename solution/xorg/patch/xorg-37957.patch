@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index c6724e4..005465f 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -438,7 +438,6 @@ KdPointerProc(DeviceIntPtr pDevice, int onoff)
+         }
+ 
+ 	InitPointerDeviceStruct(pDev, pi->map, pi->nButtons,
+-	    GetMotionHistory,
+ 	    (PtrCtrlProcPtr)NoopDDA,
+ 	    GetMotionHistorySize(), pi->nAxes);
+ 

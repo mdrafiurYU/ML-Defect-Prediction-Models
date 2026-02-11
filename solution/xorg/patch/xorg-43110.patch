@@ -1,0 +1,13 @@
+diff --git a/Xext/xace.c b/Xext/xace.c
+index 86d70fe..6eaba6d 100644
+--- a/Xext/xace.c
++++ b/Xext/xace.c
+@@ -284,7 +284,7 @@ XaceCensorImage(
+ 
+ 	/* convert region to list-of-rectangles for PolyFillRect */
+ 
+-	pRects = (xRectangle *)xalloc(nRects * sizeof(xRectangle));
++	pRects = xalloc(nRects * sizeof(xRectangle));
+ 	if (!pRects)
+ 	{
+ 	    failed = TRUE;

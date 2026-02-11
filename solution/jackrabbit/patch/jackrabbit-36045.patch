@@ -1,0 +1,13 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/AbstractMapperImpl.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/AbstractMapperImpl.java
+index 0275168..bcffd06 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/AbstractMapperImpl.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/AbstractMapperImpl.java
+@@ -63,7 +63,7 @@ public abstract class AbstractMapperImpl implements Mapper {
+ 
+             if (!errors.isEmpty()) 
+             {
+-                throw new InitMapperException("Mapping files contain errors."
++                throw new InitMapperException("Mapping descriptors contain errors."
+                         + getErrorMessage(errors));
+             }
+         }

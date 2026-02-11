@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestUtil.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestUtil.java
+index 5f202ff..0ecfb64 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestUtil.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/TestUtil.java
+@@ -83,8 +83,7 @@ public class TestUtil
+ 			IJavaProject project  )
+ 		throws IOException, JavaModelException
+ 	{
+-		IPath projectPath = getProjectPath( project );
+-		File jarFile = new File( projectPath.toFile(), "ClassesExt.jar" );
++		File jarFile = File.createTempFile("org.eclipse.jdt.apt.tests.TestUtil", ".jar");
+ 		String classesJarPath = jarFile.getAbsolutePath();
+ 		FileFilter classFilter = new PackageFileFilter(
+ 				EXTANNOTATIONS_PKG, getPluginExtClassesDir());

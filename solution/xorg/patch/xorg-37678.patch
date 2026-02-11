@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86RandR12.c b/hw/xfree86/modes/xf86RandR12.c
+index 4767f26..6c4ab43 100644
+--- a/hw/xfree86/modes/xf86RandR12.c
++++ b/hw/xfree86/modes/xf86RandR12.c
+@@ -129,9 +129,7 @@ xf86RandR12GetInfo (ScreenPtr pScreen, Rotation *rotations)
+ 	    return FALSE;
+ 	RRRegisterRate (pScreen, pSize, refresh);
+ 
+-	if (xf86ModesEqual(mode, scrp->currentMode) &&
+-	    mode->HDisplay == scrp->virtualX &&
+-	    mode->VDisplay == scrp->virtualY)
++	if (xf86ModesEqual(mode, scrp->currentMode))
+ 	{
+ 	    RRSetCurrentConfig (pScreen, randrp->rotation, refresh, pSize);
+ 	}

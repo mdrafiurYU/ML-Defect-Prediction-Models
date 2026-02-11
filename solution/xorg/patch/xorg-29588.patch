@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 207e792..5430020 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -101,7 +101,7 @@ xf86SendDragEvents(DeviceIntPtr	device)
+ {
+     LocalDevicePtr local = (LocalDevicePtr) device->public.devicePrivate;
+     
+-    if (device->button->buttonsDown > 0)
++    if (device->button && device->button->buttonsDown > 0)
+         return (local->flags & XI86_SEND_DRAG_EVENTS);
+     else
+         return (TRUE);

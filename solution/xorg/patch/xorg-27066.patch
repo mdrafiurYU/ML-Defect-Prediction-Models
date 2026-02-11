@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86Cursor.c b/hw/xfree86/common/xf86Cursor.c
+index 27264a2..bbd6124 100644
+--- a/hw/xfree86/common/xf86Cursor.c
++++ b/hw/xfree86/common/xf86Cursor.c
+@@ -434,9 +434,9 @@ xf86WarpCursor (DeviceIntPtr pDev, ScreenPtr pScreen, int x, int y)
+ {
+     int    sigstate;
+     sigstate = xf86BlockSIGIO ();
+-  miPointerWarpCursor(pDev, pScreen,x,y);
++    miPointerWarpCursor(pDev, pScreen, x, y);
+ 
+-  xf86Info.currentScreen = pScreen;
++    xf86Info.currentScreen = pScreen;
+     xf86UnblockSIGIO (sigstate);
+ }
+ 

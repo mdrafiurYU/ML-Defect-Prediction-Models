@@ -1,0 +1,15 @@
+diff --git a/GL/glx/glxcontext.h b/GL/glx/glxcontext.h
+index d57745a..68e2660 100644
+--- a/GL/glx/glxcontext.h
++++ b/GL/glx/glxcontext.h
+@@ -66,10 +66,6 @@ struct __GLXcontext {
+ 				     unsigned long mask);
+     int            (*forceCurrent)  (__GLXcontext *context);
+ 
+-    __GLXdrawable *(*createDrawable)(__GLXcontext *context,
+-				     DrawablePtr pDraw,
+-				     XID drawId);
+-
+     __GLXtextureFromPixmap *textureFromPixmap;
+ 
+     /*

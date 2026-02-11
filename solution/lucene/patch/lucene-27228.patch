@@ -1,0 +1,22 @@
+diff --git a/solr/src/test/org/apache/solr/spelling/suggest/PersistenceTest.java b/solr/src/test/org/apache/solr/spelling/suggest/PersistenceTest.java
+index 4e4c899..58997c5 100644
+--- a/solr/src/test/org/apache/solr/spelling/suggest/PersistenceTest.java
++++ b/solr/src/test/org/apache/solr/spelling/suggest/PersistenceTest.java
+@@ -49,7 +49,7 @@ public class PersistenceTest extends SolrTestCaseJ4 {
+     for (String k : keys) {
+       lookup.add(k, new Float(k.length()));
+     }
+-    File storeDir = new File(TEST_HOME);
++    File storeDir = new File(TEST_HOME());
+     lookup.store(storeDir);
+     lookup = new TSTLookup();
+     lookup.load(storeDir);
+@@ -66,7 +66,7 @@ public class PersistenceTest extends SolrTestCaseJ4 {
+     for (String k : keys) {
+       lookup.add(k, new Float(k.length()));
+     }
+-    File storeDir = new File(TEST_HOME);
++    File storeDir = new File(TEST_HOME());
+     lookup.store(storeDir);
+     lookup = new JaspellLookup();
+     lookup.load(storeDir);

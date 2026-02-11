@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java
+index 0e232fc..d08ae51 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java
+@@ -4,7 +4,6 @@ import java.lang.annotation.Annotation;
+ import java.util.Collection;
+ import java.util.Collections;
+ 
+-import org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv;
+ import org.eclipse.jdt.core.IPackageFragment;
+ 
+ import com.sun.mirror.declaration.AnnotationMirror;
+@@ -24,11 +23,9 @@ import com.sun.mirror.util.SourcePosition;
+ public class PackageDeclarationImplNoBinding implements PackageDeclaration {
+ 	
+ 	private final IPackageFragment[] fragments;
+-	private final BaseProcessorEnv env;
+ 	
+-	public PackageDeclarationImplNoBinding(final IPackageFragment[] fragments, BaseProcessorEnv env) {
++	public PackageDeclarationImplNoBinding(final IPackageFragment[] fragments) {
+ 		this.fragments = fragments;
+-		this.env = env;
+ 	}
+ 
+ 	public String getQualifiedName() {

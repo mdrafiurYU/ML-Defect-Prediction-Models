@@ -1,0 +1,31 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
+index d37a803..3a574db 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
+@@ -82,6 +82,11 @@ public class PrefixCodedTermsReader extends FieldsProducer {
+     public FieldAndTerm() {
+     }
+ 
++    public FieldAndTerm(String field, BytesRef term) {
++      this.field = field;
++      this.term = new BytesRef(term);
++    }
++
+     public FieldAndTerm(FieldAndTerm other) {
+       field = other.field;
+       term = new BytesRef(other.term);
+@@ -297,6 +302,14 @@ public class PrefixCodedTermsReader extends FieldsProducer {
+         return termComp;
+       }
+ 
++      @Override
++      public void cacheCurrentTerm() {
++        TermState stateCopy = (TermState) state.clone();
++        stateCopy.filePointer = in.getFilePointer();
++        termsCache.put(new FieldAndTerm(fieldInfo.name, bytesReader.term),
++                       stateCopy);
++      }
++
+       /** Seeks until the first term that's >= the provided
+        *  text; returns SeekStatus.FOUND if the exact term
+        *  is found, SeekStatus.NOT_FOUND if a different term

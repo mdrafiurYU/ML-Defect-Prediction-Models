@@ -1,0 +1,22 @@
+diff --git a/os/access.c b/os/access.c
+index db5ca31..221b8cb 100644
+--- a/os/access.c
++++ b/os/access.c
+@@ -234,7 +234,7 @@ static Bool NewHost(int /*family*/,
+ 		    int /*len*/,
+ 		    int /* addingLocalHosts */);
+ 
+-int LocalClientCredAndGroups(ClientPtr client, int *pUid, int *pGid, 
++static int LocalClientCredAndGroups(ClientPtr client, int *pUid, int *pGid, 
+                              int **pSuppGids, int *nSuppGids);
+ 
+ 
+@@ -1431,7 +1431,7 @@ LocalClientCred(ClientPtr client, int *pUid, int *pGid)
+  *
+  * Used by localuser & localgroup ServerInterpreted access control forms below
+  */
+-int
++static int
+ LocalClientCredAndGroups(ClientPtr client, int *pUid, int *pGid, 
+ 			 int **pSuppGids, int *nSuppGids)
+ {

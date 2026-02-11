@@ -1,0 +1,22 @@
+diff --git a/solr/src/test/org/apache/solr/analysis/TestStandardFactories.java b/solr/src/test/org/apache/solr/analysis/TestStandardFactories.java
+index 4d4563a..ef2bd99 100644
+--- a/solr/src/test/org/apache/solr/analysis/TestStandardFactories.java
++++ b/solr/src/test/org/apache/solr/analysis/TestStandardFactories.java
+@@ -126,17 +126,4 @@ public class TestStandardFactories extends BaseTokenTestCase {
+     TokenStream stream = factory.create(tokenizer);
+     assertTokenStreamContents(stream, new String[] { "Ceska" });
+   }
+-  
+-  /**
+-   * Ensure the ISOLatin1AccentFilterFactory works 
+-   * (sometimes, at least not uppercase hacek)
+-   */
+-  public void testISOLatin1Folding() throws Exception {
+-    Reader reader = new StringReader("Česká");
+-    Tokenizer tokenizer = new WhitespaceTokenizer(DEFAULT_VERSION, reader);
+-    ISOLatin1AccentFilterFactory factory = new ISOLatin1AccentFilterFactory();
+-    factory.init(DEFAULT_VERSION_PARAM);
+-    TokenStream stream = factory.create(tokenizer);
+-    assertTokenStreamContents(stream, new String[] { "Česka" });
+-  }
+ }

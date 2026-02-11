@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
+index 1eb03fd..f513a0b 100644
+--- a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
++++ b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
+@@ -37,7 +37,7 @@ public class TestEmptyIndex extends LuceneTestCase {
+     InstantiatedIndex ii = new InstantiatedIndex();
+ 
+     IndexReader r = new InstantiatedIndexReader(ii);
+-    IndexSearcher s = new IndexSearcher(r);
++    IndexSearcher s = newSearcher(r);
+ 
+     TopDocs td = s.search(new TermQuery(new Term("foo", "bar")), 1);

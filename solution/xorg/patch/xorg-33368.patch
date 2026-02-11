@@ -1,0 +1,20 @@
+diff --git a/dix/gc.c b/dix/gc.c
+index 7a76dd9..e7c4849 100644
+--- a/dix/gc.c
++++ b/dix/gc.c
+@@ -61,6 +61,7 @@ SOFTWARE.
+ #include "scrnintstr.h"
+ #include "region.h"
+ 
++#include "privates.h"
+ #include "dix.h"
+ #include <assert.h>
+ 
+@@ -903,6 +904,7 @@ FreeGC(pointer value, XID gid)
+     (*pGC->funcs->DestroyGC) (pGC);
+     if (pGC->dash != DefaultDash)
+ 	xfree(pGC->dash);
++    dixFreePrivates(*DEVPRIV_PTR(pGC));
+     xfree(pGC);
+     return(Success);
+ }

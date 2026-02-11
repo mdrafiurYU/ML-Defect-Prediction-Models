@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/OcmProxy.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/OcmProxy.java
+new file mode 100644
+index 0000000..0631275
+--- /dev/null
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/OcmProxy.java
+@@ -0,0 +1,23 @@
++package org.apache.jackrabbit.ocm.manager.objectconverter.impl;
++
++import java.io.Serializable;
++
++/**
++ * Interface implemented by lazy loading proxies
++ * 
++ * @author <a href="mailto:slandelle@excilys.com">Stephane LANDELLE</a>
++ */
++public interface OcmProxy extends Serializable {
++
++	/**
++	 * Check is the proxy has been loaded
++	 *
++	 * @return true is the proxy has been loaded
++	 */
++	boolean isInitialized();
++
++	/**
++	 * Force proxy fetching
++	 */
++	void fetch();
++}

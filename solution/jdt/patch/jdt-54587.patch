@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+index 14bf87b..724132b 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+@@ -411,6 +411,9 @@ public class AptConfig {
+ 	 * @return
+ 	 */
+ 	public static boolean isEnabled(IJavaProject jproject) {
++		// TODO: Walter have a fix for this problem.
++		if( jproject == null )
++			return true;
+ 		return getBoolean(jproject, AptPreferenceConstants.APT_ENABLED);
+ 	}

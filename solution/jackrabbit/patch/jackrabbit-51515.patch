@@ -1,0 +1,52 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/AbstractQValue.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/AbstractQValue.java
+index fd46172..637f4f5 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/AbstractQValue.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/AbstractQValue.java
+@@ -25,6 +25,8 @@ import org.apache.commons.io.IOUtils;
+ import javax.jcr.PropertyType;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.ValueFormatException;
++import javax.jcr.Binary;
++
+ import java.util.Calendar;
+ import java.util.TimeZone;
+ import java.math.BigDecimal;
+@@ -351,6 +353,38 @@ public abstract class AbstractQValue implements QValue, Serializable {
+     }
+ 
+     /**
++     * This implementation creates a binary instance that uses
++     * {@link #getStream()} and skipping on the given stream as its underlying
++     * mechanism to provide random access defined on {@link Binary}.
++     *
++     * @see QValue#getBinary()
++     */
++    public Binary getBinary() throws RepositoryException {
++        return new Binary() {
++            public InputStream getStream() throws RepositoryException {
++                return AbstractQValue.this.getStream();
++            }
++
++            public int read(byte[] b, long position) throws IOException, RepositoryException {
++                InputStream in = getStream();
++                try {
++                    in.skip(position);
++                    return in.read(b);
++                } finally {
++                    in.close();
++                }
++            }
++
++            public long getSize() throws RepositoryException {
++                return getLength();
++            }
++
++            public void dispose() {
++            }
++        };
++    }
++
++    /**
+      * @see QValue#discard()
+      */
+     public void discard() {

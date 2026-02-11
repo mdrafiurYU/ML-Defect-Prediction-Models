@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
+index 1a0ab6b..8949e9d 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
+@@ -4647,12 +4647,8 @@ public class CodeFormatterVisitor extends ASTVisitor {
+ 		this.scribe.printNextToken(TerminalTokens.TokenNamereturn);
+ 		final Expression expression = returnStatement.expression;
+ 		if (expression != null) {
+-			if (expression instanceof CastExpression
+-					|| expression instanceof PrefixExpression
+-					|| expression instanceof StringLiteral
+-					|| expression instanceof StringLiteralConcatenation
+-					|| (((expression.bits & ASTNode.ParenthesizedMASK) >> ASTNode.ParenthesizedSHIFT) != 0)) {
+-				if (this.preferences.insert_space_before_expression_in_return) {
++			if (((expression.bits & ASTNode.ParenthesizedMASK) >> ASTNode.ParenthesizedSHIFT) != 0) {
++				if (this.preferences.insert_space_before_parenthesized_expression_in_return) {
+ 					this.scribe.space();
+ 				}
+ 			} else {

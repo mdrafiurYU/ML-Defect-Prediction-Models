@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/fbdevhw/fbdevhw.c b/hw/xfree86/fbdevhw/fbdevhw.c
+index 25779ed..7d98d8b 100644
+--- a/hw/xfree86/fbdevhw/fbdevhw.c
++++ b/hw/xfree86/fbdevhw/fbdevhw.c
+@@ -78,14 +78,16 @@ fbdevhwSetup(pointer module, pointer opts, int *errmaj, int *errmin)
+ 		return (pointer)1;
+ 	}
+ }
+-	
+-#else /* XFree86LOADER */
++#endif /* XFree86LOADER */
+ 
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <sys/mman.h>
+-
+-#endif /* XFree86LOADER */
++#include <sys/ioctl.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <string.h>
+ 
+ /* -------------------------------------------------------------------- */
+ /* our private data, and two functions to allocate/free this            */

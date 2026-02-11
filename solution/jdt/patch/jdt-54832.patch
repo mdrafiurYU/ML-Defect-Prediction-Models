@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java
+index 6360ee5..55ffb71 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java
+@@ -1052,7 +1052,7 @@ public class Disassembler extends ClassFileBytesDisassembler {
+ 						writeNewLine(buffer, lineSeparator, tabNumber + 3);
+ 						final IStackMapFrame[] stackMapFrames = stackMapTableAttribute.getStackMapFrame();
+ 						for (int j = 0; j < numberOfEntries; j++) {
+-							disassemble(stackMapFrames[j], buffer, lineSeparator, tabNumber + 2, mode);
++							disassemble(stackMapFrames[j], buffer, lineSeparator, tabNumber + 3, mode);
+ 						}
+ 					}
+ 				} else if (attribute != lineNumberAttribute

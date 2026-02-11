@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java
+index 42d00b4..581cd6d 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java
+@@ -1574,6 +1574,21 @@ public abstract class AbstractJavaModelTests extends SuiteOfTestCases {
+     			("\"+ getExternalJCLSourcePathString(\"1.5\") + \"").toCharArray());
+     	return new String(toDisplay);
+     }
++	
++	protected ICompilationUnit newExternalWorkingCopy(String name, final String contents) throws JavaModelException {
++		return newExternalWorkingCopy(name, null/*no classpath*/, null/*no problem requestor*/, contents);
++	}
++	protected ICompilationUnit newExternalWorkingCopy(String name, IClasspathEntry[] classpath, IProblemRequestor problemRequestor, final String contents) throws JavaModelException {
++		WorkingCopyOwner owner = new WorkingCopyOwner() {
++			public IBuffer createBuffer(ICompilationUnit wc) {
++				IBuffer buffer = super.createBuffer(wc);
++				buffer.setContents(contents);
++				return buffer;
++			}
++		};
++		return owner.newWorkingCopy(name, classpath, problemRequestor, null/*no progress monitor*/);
++	}
++
+ 	public byte[] read(java.io.File file) throws java.io.IOException {
+ 		int fileLength;
+ 		byte[] fileBytes = new byte[fileLength = (int) file.length()];

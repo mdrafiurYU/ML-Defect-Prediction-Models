@@ -1,0 +1,13 @@
+diff --git a/fb/fbcmap.c b/fb/fbcmap.c
+index c29a513..0ec0e85 100644
+--- a/fb/fbcmap.c
++++ b/fb/fbcmap.c
+@@ -278,7 +278,7 @@ fbExpandDirectColors (ColormapPtr   pmap,
+     return nresult;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ fbCreateDefColormap(ScreenPtr pScreen)
+ {
+     unsigned short	zero = 0, ones = 0xFFFF;

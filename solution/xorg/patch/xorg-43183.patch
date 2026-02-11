@@ -1,0 +1,13 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 2ee4f9b..2b6de02 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -57,6 +57,8 @@ SOFTWARE.
+ #include "privates.h"
+ 
+ #define BitIsOn(ptr, bit) (((BYTE *) (ptr))[(bit)>>3] & (1 << ((bit) & 7)))
++#define SetBit(ptr, bit)  (((BYTE *) (ptr))[(bit)>>3] |= (1 << ((bit) & 7)))
++#define ClearBit(ptr, bit) (((BYTE *)(ptr))[(bit)>>3] &= ~(1 << ((bit) & 7)))
+ 
+ #define SameClient(obj,client) \
+ 	(CLIENT_BITS((obj)->resource) == (client)->clientAsMask)

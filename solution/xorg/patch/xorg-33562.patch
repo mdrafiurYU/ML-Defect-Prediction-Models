@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index bf7dac6..27bc9ad 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1086,7 +1086,7 @@ AbortDDX()
+ #endif
+ #ifdef DPMSExtension /* Turn screens back on */
+   if (DPMSPowerLevel != DPMSModeOn)
+-      DPMSSet(DPMSModeOn);
++      DPMSSet(serverClient, DPMSModeOn);
+ #endif
+   if (xf86Screens) {
+       if (xf86Screens[0]->vtSema)

@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/BinaryField.java b/solr/src/java/org/apache/solr/schema/BinaryField.java
+index c9c2246..9756766 100644
+--- a/solr/src/java/org/apache/solr/schema/BinaryField.java
++++ b/solr/src/java/org/apache/solr/schema/BinaryField.java
+@@ -54,6 +54,7 @@ public class BinaryField extends FieldType  {
+     return  ByteBuffer.wrap(f.getBinaryValue(), f.getBinaryOffset(), f.getBinaryLength() ) ;
+   }
+ 
++  @Override
+   public Fieldable createField(SchemaField field, Object val, float boost) {
+     if (val == null) return null;
+     if (!field.stored()) {

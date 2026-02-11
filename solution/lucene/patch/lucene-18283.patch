@@ -1,0 +1,18 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/LowerCaseTokenizerFactory.java b/solr/src/java/org/apache/solr/analysis/LowerCaseTokenizerFactory.java
+index 7f4c255..5bd59db 100644
+--- a/solr/src/java/org/apache/solr/analysis/LowerCaseTokenizerFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/LowerCaseTokenizerFactory.java
+@@ -23,6 +23,13 @@ import java.io.Reader;
+ import java.util.Map;
+ 
+ /**
++ * Factory for {@link LowerCaseTokenizer}. 
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_lwrcase" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.LowerCaseTokenizerFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
+  * @version $Id$
+  */
+ public class LowerCaseTokenizerFactory extends BaseTokenizerFactory {

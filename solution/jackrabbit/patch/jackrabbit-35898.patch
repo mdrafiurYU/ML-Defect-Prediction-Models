@@ -1,0 +1,16 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntry.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntry.java
+index c9edbb6..3c57d6a 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntry.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntry.java
+@@ -95,9 +95,9 @@ public interface HierarchyEntry {
+      * or if the corresponding state has been removed in the mean time.
+      *
+      * @return the referenced <code>ItemState</code>.
+-     * @throws NoSuchItemStateException if the <code>ItemState</code> does not
++     * @throws ItemNotFoundException if the <code>ItemState</code> does not
+      * exist anymore.
+-     * @throws ItemStateException If an error occurs while retrieving the
++     * @throws RepositoryException If an error occurs while retrieving the
+      * <code>ItemState</code>.
+      */
+     public ItemState getItemState() throws ItemNotFoundException, RepositoryException;

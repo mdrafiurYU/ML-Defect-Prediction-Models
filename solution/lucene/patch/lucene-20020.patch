@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/Codec.java b/lucene/src/java/org/apache/lucene/index/codecs/Codec.java
+index cb4a9f3..720ec73 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/Codec.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/Codec.java
+@@ -59,7 +59,7 @@ public abstract class Codec {
+    * @param id the codec id within this segment
+    * @param files the of files to add the codec files to.
+    */
+-  public abstract void files(Directory dir, SegmentInfo segmentInfo, String id, Set<String> files) throws IOException;
++  public abstract void files(Directory dir, SegmentInfo segmentInfo, int id, Set<String> files) throws IOException;
+ 
+   /** Records all file extensions this codec uses */
+   public abstract void getExtensions(Set<String> extensions);

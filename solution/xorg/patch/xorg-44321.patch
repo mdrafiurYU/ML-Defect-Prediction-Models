@@ -1,0 +1,13 @@
+diff --git a/glx/glxdri.c b/glx/glxdri.c
+index cc6d939..eeac7fc 100644
+--- a/glx/glxdri.c
++++ b/glx/glxdri.c
+@@ -238,6 +238,8 @@ __glXDRIdrawableDestroy(__GLXdrawable *drawable)
+ 	__glXleaveServer(GL_FALSE);
+     }
+ 
++    __glXDrawableRelease(drawable);
++
+     xfree(private);
+ }
+ 

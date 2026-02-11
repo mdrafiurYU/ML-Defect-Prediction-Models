@@ -1,0 +1,13 @@
+diff --git a/fb/fbscreen.c b/fb/fbscreen.c
+index 661268c..41bef47 100644
+--- a/fb/fbscreen.c
++++ b/fb/fbscreen.c
+@@ -122,8 +122,6 @@ fbSetupScreen(ScreenPtr	pScreen,
+     pScreen->ChangeWindowAttributes = fbChangeWindowAttributes;
+     pScreen->RealizeWindow = fbMapWindow;
+     pScreen->UnrealizeWindow = fbUnmapWindow;
+-    pScreen->PaintWindowBackground = fbPaintWindow;
+-    pScreen->PaintWindowBorder = fbPaintWindow;
+     pScreen->CopyWindow = fbCopyWindow;
+     pScreen->CreatePixmap = fbCreatePixmap;
+     pScreen->DestroyPixmap = fbDestroyPixmap;

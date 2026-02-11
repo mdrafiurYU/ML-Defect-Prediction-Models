@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java
+index 8f29dca..f049119 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java
+@@ -227,7 +227,8 @@ class VarDerefBytesImpl {
+       @Override
+       public BytesRef getBytes(int docID, BytesRef bytesRef) {
+         long address = index.get(docID);
+-        return address == 0 ? null : data.fillSliceWithPrefix(bytesRef,
++        bytesRef.length = 0;
++        return address == 0 ? bytesRef : data.fillSliceWithPrefix(bytesRef,
+             --address);
+       }

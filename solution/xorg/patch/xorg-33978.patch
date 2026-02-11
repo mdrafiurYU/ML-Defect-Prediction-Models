@@ -1,0 +1,13 @@
+diff --git a/config/dbus.c b/config/dbus.c
+index c867512..e564c90 100644
+--- a/config/dbus.c
++++ b/config/dbus.c
+@@ -213,7 +213,7 @@ remove_device(DBusMessage *message, DBusMessage *reply, DBusError *error)
+         MALFORMED_MESSAGE_ERROR();
+     }
+ 
+-    dev = LookupDeviceIntRec(deviceid);
++    dixLookupDevice(&dev, deviceid, serverClient, DixUnknownAccess);
+     if (!dev) {
+         DebugF("[config/dbus] bogus device id %d given\n", deviceid);
+         ret = BadMatch;

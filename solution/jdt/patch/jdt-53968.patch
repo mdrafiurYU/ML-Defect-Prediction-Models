@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+index a0253f2..bcd6a8f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+@@ -472,7 +472,7 @@ public class AptConfig {
+ 		FactoryPathUtil.setFactoryPath(jproj, fp);
+ 		// The factory path isn't saved to the Eclipse preference store,
+ 		// so we can't rely on the ChangeListener mechanism.
+-		AnnotationProcessorFactoryLoader.getLoader().reset();
++		AnnotationProcessorFactoryLoader.getLoader().resetAll();
+ 	}
+ 
+ 	/**

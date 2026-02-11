@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/vidmem.c b/hw/xfree86/os-support/shared/vidmem.c
+index f8a488a..803ce09 100644
+--- a/hw/xfree86/os-support/shared/vidmem.c
++++ b/hw/xfree86/os-support/shared/vidmem.c
+@@ -275,7 +275,7 @@ xf86CheckMTRR(int ScreenNum)
+ }
+ 
+ Bool
+-xf86LinearVidMem()
++xf86LinearVidMem(void)
+ {
+ 	xf86InitVidMem();
+ 	return vidMemInfo.linearSupported;

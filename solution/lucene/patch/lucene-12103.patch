@@ -1,0 +1,25 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/Ints.java b/lucene/src/java/org/apache/lucene/index/values/Ints.java
+index d3f0e69..7955d7c 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/Ints.java
++++ b/lucene/src/java/org/apache/lucene/index/values/Ints.java
+@@ -17,6 +17,7 @@ package org.apache.lucene.index.values;
+  */
+ 
+ import java.io.IOException;
++import java.util.concurrent.atomic.AtomicLong;
+ 
+ import org.apache.lucene.index.values.PackedIntsImpl.IntsReader;
+ import org.apache.lucene.index.values.PackedIntsImpl.IntsWriter;
+@@ -28,10 +29,10 @@ public class Ints {
+   private Ints() {
+   }
+ 
+-  public static Writer getWriter(Directory dir, String id, boolean useFixedArray)
++  public static Writer getWriter(Directory dir, String id, boolean useFixedArray, AtomicLong bytesUsed)
+       throws IOException {
+     // TODO - implement fixed?!
+-    return new IntsWriter(dir, id);
++    return new IntsWriter(dir, id, bytesUsed);
+   }
+ 
+   public static DocValues getValues(Directory dir, String id,

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/CheckPermissionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/CheckPermissionTest.java
+index 2718b5d..3778b77 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/CheckPermissionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/CheckPermissionTest.java
+@@ -43,7 +43,7 @@ public class CheckPermissionTest extends AbstractJCRTest {
+         testRootNode.addNode(nodeName2, testNodeType);
+         superuser.save();
+ 
+-        Session readOnly = helper.getReadOnlySession();
++        Session readOnly = getHelper().getReadOnlySession();
+         try {
+             permissionCheckReadOnly(readOnly);
+             permissionCheckReadWrite(superuser);

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index d64e0ab..bcab5c1 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -1798,7 +1798,7 @@ public void generateSyntheticEnclosingInstanceValues(
+ 		ASTNode invocationSite) {
+ 
+ 	// supplying enclosing instance for the anonymous type's superclass
+-	ReferenceBinding checkedTargetType = targetType.isAnonymousType() ? targetType.superclass() : targetType;
++	ReferenceBinding checkedTargetType = targetType.isAnonymousType() ? (ReferenceBinding)targetType.superclass().erasure() : targetType;
+ 	boolean hasExtraEnclosingInstance = enclosingInstance != null;
+ 	if (hasExtraEnclosingInstance 
+ 			&& (!checkedTargetType.isNestedType() || checkedTargetType.isStatic())) {

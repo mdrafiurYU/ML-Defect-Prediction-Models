@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java
+index e7800cb..25a69e4 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java
+@@ -38,8 +38,11 @@ public class AbstractIndexingTest extends AbstractQueryTest {
+     }
+ 
+     protected void tearDown() throws Exception {
+-        cleanUpTestRoot(session);
+-        session = null;
++        if (session != null) {
++            cleanUpTestRoot(session);
++            session.logout();
++            session = null;
++        }
+         testRootNode = null;
+         super.tearDown();
+     }

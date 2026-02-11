@@ -1,0 +1,20 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/TestBase.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/TestBase.java
+index 8973098..5321cda 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/TestBase.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/TestBase.java
+@@ -98,6 +98,7 @@ public abstract class TestBase extends TestCase
+ 	        
+ 	        if (!isInit) {
+ 	            initObjectContentManager();
++	            RepositoryUtil.setupSession(getSession());
+ 	            registerNodeTypes(getSession());
+ 	            isInit = true;
+ 	        }
+@@ -129,6 +130,7 @@ public abstract class TestBase extends TestCase
+ 			if (ocm == null)
+ 			{
+ 				initObjectContentManager();
++				RepositoryUtil.setupSession(getSession());
+                 registerNodeTypes(getSession());
+ 			}
+ 			return ocm;

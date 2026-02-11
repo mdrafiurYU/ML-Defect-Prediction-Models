@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+index 03b7267..4cb2d5f 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+@@ -456,7 +456,7 @@ public class TestIndexWriterDelete extends LuceneTestCase {
+       if (VERBOSE) {
+         System.out.println("TEST: cycle");
+       }
+-      MockDirectoryWrapper dir = new MockDirectoryWrapper(random, new RAMDirectory(startDir));
++      MockDirectoryWrapper dir = new MockDirectoryWrapper(random, new RAMDirectory(startDir, IOContext.DEFAULT));
+       dir.setPreventDoubleWrite(false);
+       IndexWriter modifier = new IndexWriter(dir,
+                                              newIndexWriterConfig(

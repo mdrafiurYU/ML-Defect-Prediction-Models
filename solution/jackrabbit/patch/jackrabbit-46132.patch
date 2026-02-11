@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java
+index 63ad6f2..6a92be2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java
+@@ -17,6 +17,7 @@
+ package org.apache.jackrabbit.core.version;
+ 
+ import org.apache.jackrabbit.core.state.ChildNodeEntry;
++import org.apache.jackrabbit.core.state.ISMLocking.ReadLock;
+ import org.apache.jackrabbit.core.value.InternalValue;
+ import org.apache.jackrabbit.core.NodeId;
+ import org.apache.jackrabbit.spi.Name;
+@@ -136,7 +137,7 @@ class InternalVersionImpl extends InternalVersionItemImpl
+      * {@inheritDoc}
+      */
+     public InternalVersion[] getSuccessors() {
+-        vMgr.acquireReadLock();
++        ReadLock lock = vMgr.acquireReadLock();
+         try {
+             InternalValue[] values = node.getPropertyValues(NameConstants.JCR_SUCCESSORS);
+             if (values != null) {
+@@ -150,7 +151,7 @@ class InternalVersionImpl extends InternalVersionItemImpl
+                 return new InternalVersion[0];
+             }
+         } finally {
+-            vMgr.releaseReadLock();
++            lock.release();
+         }
+     }

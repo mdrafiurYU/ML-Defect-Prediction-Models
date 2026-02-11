@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java
+index 27fa007..2d57d85 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java
+@@ -91,7 +91,10 @@ public class ValueFactoryTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        valueFactory = null;
++        referenceNode = null;
+         super.tearDown();
+     }

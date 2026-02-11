@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+index f533a73..55891ca 100755
+--- a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+@@ -89,6 +89,7 @@ public abstract class StringIndexDocValues extends DocValues {
+       };
+     }
+ 
++  @Override
+   public String toString(int doc) {
+     return vs.description() + '=' + strVal(doc);
+   }

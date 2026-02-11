@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86cmap.c b/hw/xfree86/common/xf86cmap.c
+index 764647e..8ae193a 100644
+--- a/hw/xfree86/common/xf86cmap.c
++++ b/hw/xfree86/common/xf86cmap.c
+@@ -29,8 +29,7 @@
+ #include <xorg-config.h>
+ #endif
+ 
+-#if defined(_XOPEN_SOURCE) || defined(__QNXNTO__) \
+-	|| (defined(sun) && defined(__SVR4))
++#if defined(_XOPEN_SOURCE) || defined(sun) && defined(__SVR4)
+ #include <math.h>
+ #else
+ #define _XOPEN_SOURCE   /* to get prototype for pow on some systems */

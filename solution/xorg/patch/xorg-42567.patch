@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/quartzKeyboard.c b/hw/xquartz/quartzKeyboard.c
+index f78facb..72f94b4 100644
+--- a/hw/xquartz/quartzKeyboard.c
++++ b/hw/xquartz/quartzKeyboard.c
+@@ -362,8 +362,6 @@ void DarwinKeyboardInit(DeviceIntPtr pDev) {
+ 
+         XkbSetRepeatKeys(pDev, -1, AutoRepeatModeOn);
+     }
+-	// TODO: What do we do now in 1.6?
+-    //SwitchCoreKeyboard(pDev);   
+ 
+     DarwinKeyboardSetDeviceKeyMap(&keySyms);
+ }

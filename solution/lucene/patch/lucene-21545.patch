@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java b/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
+index 4a4c278..2bb66ba 100755
+--- a/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
++++ b/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
+@@ -245,7 +245,7 @@ public class TestBufferedIndexInput extends LuceneTestCase {
+       try {
+         IndexWriter writer = new IndexWriter(
+             dir,
+-            new IndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++            new IndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).
+                 setOpenMode(OpenMode.CREATE).
+                 setMergePolicy(newLogMergePolicy(false))
+         );

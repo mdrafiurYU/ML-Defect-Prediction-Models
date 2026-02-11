@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/OverflowingCacheTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/OverflowingCacheTests.java
+index 4486b89..4f68698 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/OverflowingCacheTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/OverflowingCacheTests.java
+@@ -268,7 +268,7 @@ public class OverflowingCacheTests extends ModifyingResourceTests {
+ 	}
+ 
+ 	public static Test suite() {
+-		return new Suite(OverflowingCacheTests.class);
++		return buildModelTestSuite(OverflowingCacheTests.class);
+ 	}
+ 
+ 	public OverflowingCacheTests(String name) {

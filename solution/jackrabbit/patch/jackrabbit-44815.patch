@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/AbstractItemResource.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/AbstractItemResource.java
+index c396841..5e96474 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/AbstractItemResource.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/AbstractItemResource.java
+@@ -87,8 +87,12 @@ abstract class AbstractItemResource extends AbstractResource implements
+      * @see org.apache.jackrabbit.webdav.DavResource#getComplianceClass()
+      */
+     public String getComplianceClass() {
+-        String cc = super.getComplianceClass() + "," + DavCompliance.OBSERVATION;
+-        return cc;
++        return DavCompliance.concatComplianceClasses(
++            new String[] {
++                super.getComplianceClass(),
++                DavCompliance.OBSERVATION,
++            }
++        );
+     }
+ 
+     /**

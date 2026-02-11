@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestDateSort.java b/lucene/src/test/org/apache/lucene/search/TestDateSort.java
+index 5a4c1b3..45e0d8a 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestDateSort.java
++++ b/lucene/src/test/org/apache/lucene/search/TestDateSort.java
+@@ -81,7 +81,7 @@ public class TestDateSort extends LuceneTestCase {
+ 
+     Sort sort = new Sort(new SortField(DATE_TIME_FIELD, SortField.STRING, true));
+ 
+-    QueryParser queryParser = new QueryParser(TEST_VERSION_CURRENT, TEXT_FIELD, new MockAnalyzer());
++    QueryParser queryParser = new QueryParser(TEST_VERSION_CURRENT, TEXT_FIELD, new MockAnalyzer(random));
+     Query query = queryParser.parse("Document");
+ 
+     // Execute the search and process the search results.

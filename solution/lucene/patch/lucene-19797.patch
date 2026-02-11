@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java b/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java
+index 2ae7efd..1e1d2ca 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java
+@@ -37,7 +37,7 @@ import org.apache.lucene.index.RandomIndexWriter;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.Payload;
+ import org.apache.lucene.index.Term;
+-import org.apache.lucene.search.DefaultSimilarity;
++import org.apache.lucene.search.DefaultSimilarityProvider;
+ import org.apache.lucene.search.IndexSearcher;
+ import org.apache.lucene.search.SimilarityProvider;
+ import org.apache.lucene.search.TermQuery;
+@@ -50,7 +50,7 @@ import org.apache.lucene.util.LuceneTestCase;
+ 
+ public class TestPayloadSpans extends LuceneTestCase {
+   private IndexSearcher searcher;
+-  private SimilarityProvider similarity = new DefaultSimilarity();
++  private SimilarityProvider similarity = new DefaultSimilarityProvider();
+   protected IndexReader indexReader;
+   private IndexReader closeIndexReader;
+   private Directory directory;

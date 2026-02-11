@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Kbd.c b/hw/xfree86/common/xf86Kbd.c
+index e1bbe83..85f9e34 100644
+--- a/hw/xfree86/common/xf86Kbd.c
++++ b/hw/xfree86/common/xf86Kbd.c
+@@ -50,6 +50,10 @@
+ 
+ /* $XConsortium: xf86Kbd.c /main/10 1996/02/21 17:38:32 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ #define I_NEED_OS2_H
+ #endif

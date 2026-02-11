@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java
+index dbf725e..b87ffbe 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java
+@@ -538,7 +538,7 @@ public class DomUtil {
+      * @return 'timeout' Xml element
+      */
+     public static Element timeoutToXml(long timeout, Document factory) {
+-        String expString = "Second-"+ timeout/1000;;
++        String expString = "Second-"+ timeout/1000;
+         Element exp = createElement(factory, DavConstants.XML_TIMEOUT, DavConstants.NAMESPACE, expString);
+         return exp;
+     }

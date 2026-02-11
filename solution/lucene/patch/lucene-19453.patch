@@ -1,0 +1,28 @@
+diff --git a/solr/src/solrj/org/apache/solr/client/solrj/impl/LBHttpSolrServer.java b/solr/src/solrj/org/apache/solr/client/solrj/impl/LBHttpSolrServer.java
+index b13b708..a12a939 100644
+--- a/solr/src/solrj/org/apache/solr/client/solrj/impl/LBHttpSolrServer.java
++++ b/solr/src/solrj/org/apache/solr/client/solrj/impl/LBHttpSolrServer.java
+@@ -105,6 +105,7 @@ public class LBHttpSolrServer extends SolrServer {
+       this.solrServer = solrServer;
+     }
+ 
++    @Override
+     public String toString() {
+       return solrServer.getBaseURL();
+     }
+@@ -376,6 +377,7 @@ public class LBHttpSolrServer extends SolrServer {
+    * @throws SolrServerException
+    * @throws IOException
+    */
++  @Override
+   public NamedList<Object> request(final SolrRequest request)
+           throws SolrServerException, IOException {
+     Exception ex = null;
+@@ -535,6 +537,7 @@ public class LBHttpSolrServer extends SolrServer {
+     return httpClient;
+   }
+ 
++  @Override
+   protected void finalize() throws Throwable {
+     try {
+       if(this.aliveCheckExecutor!=null)

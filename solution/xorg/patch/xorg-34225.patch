@@ -1,0 +1,13 @@
+diff --git a/fb/fb24_32.c b/fb/fb24_32.c
+index 00b739b..a03726b 100644
+--- a/fb/fb24_32.c
++++ b/fb/fb24_32.c
+@@ -548,7 +548,7 @@ fb24_32ReformatTile(PixmapPtr pOldTile, int bitsPerPixel)
+ 				  pOldTile->drawable.width,
+ 				  pOldTile->drawable.height,
+ 				  pOldTile->drawable.depth,
+-				  bitsPerPixel);
++				  bitsPerPixel, 0);
+     if (!pNewTile)
+ 	return 0;
+     fbGetDrawable (&pOldTile->drawable, 

@@ -1,0 +1,12 @@
+diff --git a/dix/colormap.c b/dix/colormap.c
+index c4c8c8b..8b1bad8 100644
+--- a/dix/colormap.c
++++ b/dix/colormap.c
+@@ -1006,6 +1006,7 @@ FakeAllocColor (ColormapPtr pmap, xColorItem *item)
+     switch (class) {
+     case GrayScale:
+     case PseudoColor:
++	temp = 0;
+ 	item->pixel = 0;
+ 	if (FindColor(pmap, pmap->red, entries, &rgb, &temp, PSEUDOMAP,
+ 		      -1, AllComp) == Success) {

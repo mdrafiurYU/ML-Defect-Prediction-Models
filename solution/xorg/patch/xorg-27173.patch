@@ -1,0 +1,14 @@
+diff --git a/miext/damage/damagestr.h b/miext/damage/damagestr.h
+index 0fe9e0a..93e213f 100755
+--- a/miext/damage/damagestr.h
++++ b/miext/damage/damagestr.h
+@@ -48,6 +48,9 @@ typedef struct _damage {
+     
+     DamageReportFunc	damageReport;
+     DamageDestroyFunc	damageDestroy;
++
++    Bool		reportAfter;
++    RegionRec		pendingDamage;
+ } DamageRec;
+ 
+ typedef struct _damageScrPriv {

@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/FieldAccessCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/FieldAccessCompletionTest.java
+index c6436f7..c4c0028 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/FieldAccessCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/FieldAccessCompletionTest.java
+@@ -10,6 +10,8 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ /**
+  * Completion is expected to be a FieldAccess.
+  */
+@@ -17,6 +19,9 @@ public class FieldAccessCompletionTest extends AbstractCompletionTest {
+ public FieldAccessCompletionTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(FieldAccessCompletionTest.class);
++}
+ /*
+  * AdditiveExpression ::= AdditiveExpression '-' <MultiplicativeExpression>  
+  */

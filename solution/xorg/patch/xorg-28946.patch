@@ -1,0 +1,19 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 9631c86..004cb13 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -431,8 +431,13 @@ CloseDevice(DeviceIntPtr dev)
+ 	xfree(dev->key);
+     }
+ 
+-    if (dev->valuator)
++    if (dev->valuator) {
++        /* Counterpart to 'biggest hack ever' in init. */
++        if (dev->valuator->motion &&
++            dev->valuator->GetMotionProc == GetMotionHistory)
++            xfree(dev->valuator->motion);
+         xfree(dev->valuator);
++    }
+ 
+     if (dev->button) {
+ #ifdef XKB

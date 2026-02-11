@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Globals.c b/hw/xfree86/common/xf86Globals.c
+index 653b443..c6488d6 100644
+--- a/hw/xfree86/common/xf86Globals.c
++++ b/hw/xfree86/common/xf86Globals.c
+@@ -31,6 +31,10 @@
+  * This file contains all the XFree86 global variables.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/os.h>
+ #include "windowstr.h"

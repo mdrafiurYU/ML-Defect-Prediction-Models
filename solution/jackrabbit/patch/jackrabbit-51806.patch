@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/AccessControlImporter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/AccessControlImporter.java
+index 34dc6a1..77490a0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/AccessControlImporter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/AccessControlImporter.java
+@@ -88,7 +88,11 @@ public class AccessControlImporter extends DefaultProtectedNodeImporter {
+ 
+     public boolean start(NodeImpl protectedParent) throws RepositoryException {
+         if (isStarted()) {
+-            throw new IllegalStateException();
++            // only ok if same parent
++            if (!protectedParent.isSame(parent)) {
++                throw new IllegalStateException();
++            }
++            return true;
+         }
+         if (isWorkspaceImport) {
+             log.debug("AccessControlImporter may not be used with the WorkspaceImporter");

@@ -1,0 +1,46 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index e91b332..babe45b 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -743,6 +743,20 @@ xf86DisableInputHandler(pointer handler)
+ }
+ 
+ _X_EXPORT void
++xf86DisableGeneralHandler(pointer handler)
++{
++    IHPtr ih;
++
++    if (!handler)
++	return;
++
++    ih = handler;
++    ih->enabled = FALSE;
++    if (ih->fd >= 0)
++	RemoveGeneralSocket(ih->fd);
++}
++
++_X_EXPORT void
+ xf86EnableInputHandler(pointer handler)
+ {
+     IHPtr ih;
+@@ -756,6 +770,20 @@ xf86EnableInputHandler(pointer handler)
+ 	AddEnabledDevice(ih->fd);
+ }
+ 
++_X_EXPORT void
++xf86EnableGeneralHandler(pointer handler)
++{
++    IHPtr ih;
++
++    if (!handler)
++	return;
++
++    ih = handler;
++    ih->enabled = TRUE;
++    if (ih->fd >= 0)
++	AddGeneralSocket(ih->fd);
++}
++
+ /*
+  * As used currently by the DRI, the return value is ignored.
+  */

@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java b/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
+index ae980e2..253e3f6 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
+@@ -79,8 +79,8 @@ public class TestBasics extends LuceneTestCase {
+       doc.add(newField("field", English.intToEnglish(i), Field.Store.YES, Field.Index.ANALYZED));
+       writer.addDocument(doc);
+     }
+-    reader = writer.getReader();
+-    searcher = new IndexSearcher(SlowMultiReaderWrapper.wrap(reader));
++    reader = new SlowMultiReaderWrapper(writer.getReader());
++    searcher = new IndexSearcher(reader);
+     writer.close();
+   }

@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java
+index 5df3b6a..747e312 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java
+@@ -111,7 +111,7 @@ public class SwitchStatement extends Statement {
+ 	public void generateCode(BlockScope currentScope, CodeStream codeStream) {
+ 
+ 	    try {
+-			if ((bits & IsReachableMASK) == 0) {
++			if ((bits & IsReachable) == 0) {
+ 				return;
+ 			}
+ 			int pc = codeStream.position;
+@@ -310,7 +310,7 @@ public class SwitchStatement extends Statement {
+ 					System.arraycopy(this.constants, 0, this.constants = new int[counter], 0, counter);
+ 				}
+ 			} else {
+-				if ((this.bits & UndocumentedEmptyBlockMASK) != 0) {
++				if ((this.bits & UndocumentedEmptyBlock) != 0) {
+ 					upperScope.problemReporter().undocumentedEmptyBlock(this.blockStart, this.sourceEnd);
+ 				}
+ 			}

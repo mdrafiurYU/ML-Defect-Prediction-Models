@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java
+index 3abc6f1..ebda636 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java
+@@ -123,7 +123,7 @@ public class EnclosingMethodAttributeTest extends AbstractComparableTest {
+ 		ClassFileBytesDisassembler disassembler = ToolFactory.createDefaultClassFileBytesDisassembler();
+ 		String actualOutput = null;
+ 		try {
+-			byte[] classFileBytes = org.eclipse.jdt.internal.compiler.util.Util.getFileByteContent(new File(OUTPUT_DIR + File.separator  +"X$1.class"));
++			byte[] classFileBytes = org.eclipse.jdt.internal.compiler.util.Util.getFileByteContent(new File(OUTPUT_DIR + File.separator  + "X$1MyLocal$A$Member$1.class"));
+ 			actualOutput =
+ 				disassembler.disassemble(
+ 					classFileBytes,

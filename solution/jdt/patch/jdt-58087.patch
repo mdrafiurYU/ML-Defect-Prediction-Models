@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+index d3d9ffd..e1bb123 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+@@ -25,13 +25,13 @@ import org.eclipse.jdt.apt.core.util.AptConfig;
+ import org.eclipse.jdt.apt.tests.annotations.ProcessorTestStatus;
+ import org.eclipse.jdt.core.IJavaProject;
+ import org.eclipse.jdt.core.tests.builder.Problem;
+-import org.eclipse.jdt.core.tests.builder.Tests;
++import org.eclipse.jdt.core.tests.builder.BuilderTests;
+ import org.eclipse.jdt.core.tests.util.Util;
+ 
+ /** 
+  * Setup a project for common APT testing.
+  */
+-public abstract class APTTestBase extends Tests{
++public abstract class APTTestBase extends BuilderTests{
+ 	
+ 	public APTTestBase(final String name)
+ 	{

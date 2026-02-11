@@ -1,0 +1,23 @@
+diff --git a/dix/swaprep.c b/dix/swaprep.c
+index 9eb6765..8624216 100644
+--- a/dix/swaprep.c
++++ b/dix/swaprep.c
+@@ -1291,3 +1291,18 @@ WriteSConnSetupPrefix(ClientPtr pClient, xConnSetupPrefix *pcsp)
+     SwapConnSetupPrefix(pcsp, &cspT);
+     (void)WriteToClient(pClient, sizeof(cspT), (char *) &cspT);
+ }
++
++/*
++ * Dummy entry for ReplySwapVector[]
++ */
++
++void
++ReplyNotSwappd(
++	ClientPtr pClient ,
++	int size ,
++	void * pbuf
++	)
++{
++    FatalError("Not implemented");
++}
++

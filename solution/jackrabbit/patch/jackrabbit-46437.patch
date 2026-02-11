@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplateTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplateTest.java
+index db956ea..76c1477 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplateTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplateTest.java
+@@ -39,7 +39,7 @@ public class ACLTemplateTest extends AbstractACLTemplateTest {
+ 
+     protected JackrabbitAccessControlList createEmptyTemplate(String testPath)
+             throws RepositoryException {
+-        return new ACLTemplate(testPrincipal, testPath, (SessionImpl) superuser);
++        return new ACLTemplate(testPrincipal, testPath, (SessionImpl) superuser, superuser.getValueFactory());
+     }
+ 
+     public void testGetRestrictionNames() throws RepositoryException {

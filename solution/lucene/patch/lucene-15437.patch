@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+index 56a18c7..af0cde3 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+@@ -65,7 +65,7 @@ public class TestNRTThreads extends LuceneTestCase {
+       CodecProvider.getDefault().setDefaultFieldCodec("Standard");
+     }
+ 
+-    final LineFileDocs docs = new LineFileDocs(true);
++    final LineFileDocs docs = new LineFileDocs(random);
+     final File tempDir = _TestUtil.getTempDir("nrtopenfiles");
+     final MockDirectoryWrapper dir = new MockDirectoryWrapper(random, FSDirectory.open(tempDir));
+     final IndexWriterConfig conf = newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer());

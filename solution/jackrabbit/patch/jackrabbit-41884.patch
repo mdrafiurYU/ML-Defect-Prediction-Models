@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/client/ClientObservationManager.java b/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/client/ClientObservationManager.java
+index b2923c5..7222c43 100644
+--- a/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/client/ClientObservationManager.java
++++ b/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/client/ClientObservationManager.java
+@@ -100,7 +100,10 @@ public class ClientObservationManager extends ClientObject implements
+ 
+     /** {@inheritDoc} */
+     public EventListenerIterator getRegisteredEventListeners() {
+-        return new ArrayEventListenerIterator(poller.getListeners());
++        EventListener[] listeners = (poller != null)
++                ? poller.getListeners()
++                : new EventListener[0];
++        return new ArrayEventListenerIterator(listeners);
+     }
+ 
+     //---------- internal ------------------------------------------------------

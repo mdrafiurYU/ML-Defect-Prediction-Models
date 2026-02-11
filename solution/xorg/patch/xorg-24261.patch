@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index cc2ce9b..21389f2 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -166,6 +166,12 @@ typedef struct x_IHRec {
+ static IHPtr InputHandlers = NULL;
+ 
+ 
++Bool
++LegalModifier(unsigned int key, DevicePtr pDev)
++{
++    return TRUE;
++}
++
+ /*
+  * TimeSinceLastInputEvent --
+  *      Function used for screensaver purposes by the os module. Returns the

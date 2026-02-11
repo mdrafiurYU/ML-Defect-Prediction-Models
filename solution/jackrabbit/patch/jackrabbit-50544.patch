@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeId.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeId.java
+index 9b11b21..8324a26 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeId.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeId.java
+@@ -30,18 +30,16 @@ public class NodeId extends UUID implements ItemId {
+     private static final long serialVersionUID = 7348217305215708805L;
+ 
+     /**
+-     * Creates a node identifier instance for the identified node.
+-     *
+-     * @param uuid node UUID
++     * Creates a new randomly generated node identifier.
+      */
+-    public NodeId(UUID uuid) {
+-        super(uuid.getMostSignificantBits(), uuid.getLeastSignificantBits());
+-    }
+-
+     public NodeId() {
+         this(UUID.randomUUID());
+     }
+ 
++    private NodeId(UUID uuid) {
++        super(uuid.getMostSignificantBits(), uuid.getLeastSignificantBits());
++    }
++
+     /**
+      * Creates a node identifier from the given UUID string.
+      *

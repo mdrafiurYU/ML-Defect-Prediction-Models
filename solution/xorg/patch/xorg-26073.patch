@@ -1,0 +1,20 @@
+diff --git a/mi/mipointer.h b/mi/mipointer.h
+index 1b01ba1..85c5c8b 100644
+--- a/mi/mipointer.h
++++ b/mi/mipointer.h
+@@ -72,6 +72,7 @@ typedef struct _miPointerScreenFuncRec {
+                     int  /* entering */
+                     );
+     void	(*WarpCursor)(
++                    DeviceIntPtr /*pDev*/, 
+                     ScreenPtr /* pScr */,
+                     int  /* x */,
+                     int  /* y */
+@@ -99,6 +100,7 @@ extern Bool miPointerInitialize(
+ );
+ 
+ extern void miPointerWarpCursor(
++    DeviceIntPtr /*pDev*/,
+     ScreenPtr /*pScreen*/,
+     int /*x*/,
+     int /*y*/

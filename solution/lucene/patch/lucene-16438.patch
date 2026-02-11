@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java b/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java
+index a775d04..7bd1b71 100755
+--- a/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java
+@@ -189,7 +189,7 @@ public class CustomScoreQuery extends Query {
+     boolean qStrict;
+ 
+     public CustomWeight(IndexSearcher searcher) throws IOException {
+-      this.similarity = getSimilarity(searcher);
++      this.similarity = searcher.getSimilarity();
+       this.subQueryWeight = subQuery.weight(searcher);
+       this.valSrcWeights = new Weight[valSrcQueries.length];
+       for(int i = 0; i < valSrcQueries.length; i++) {

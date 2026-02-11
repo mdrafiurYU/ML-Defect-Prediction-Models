@@ -1,0 +1,13 @@
+diff --git a/os/xdmcp.c b/os/xdmcp.c
+index 310f33b..40c5054 100644
+--- a/os/xdmcp.c
++++ b/os/xdmcp.c
+@@ -68,7 +68,7 @@
+ #define X_INCLUDE_NETDB_H
+ #include <X11/Xos_r.h>
+ 
+-extern char *defaultDisplayClass;
++static char *defaultDisplayClass = COMPILEDDISPLAYCLASS;
+ 
+ static int		    xdmcpSocket, sessionSocket;
+ static xdmcp_states	    state;

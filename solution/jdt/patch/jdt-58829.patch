@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
+index ed06c9f..3e31a79 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
+@@ -453,7 +453,8 @@ public static void flushDirectoryContent(File dir) {
+ 			if (current.isDirectory()) {
+ 				flushDirectoryContent(current);
+ 			}
+-			current.delete();
++			if (!current.delete()) 
++				System.err.println("Could not delete " + current.getName());
+ 		}
+ 	}
+ }

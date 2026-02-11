@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractVariableDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractVariableDeclaration.java
+index 22e0fba..130c351 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractVariableDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractVariableDeclaration.java
+@@ -93,6 +93,7 @@ public abstract class AbstractVariableDeclaration extends Statement implements I
+ 				if (initialization != null) {
+ 					initialization.printExpression(indent, output);
+ 				}
++				break;
+ 			default:
+ 				if (initialization != null) {
+ 					output.append(" = "); //$NON-NLS-1$

@@ -1,0 +1,20 @@
+diff --git a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsQueryBuilder.java b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsQueryBuilder.java
+index c62d9b4..41d2565 100644
+--- a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsQueryBuilder.java
++++ b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsQueryBuilder.java
+@@ -64,14 +64,7 @@ public class TermsQueryBuilder implements QueryBuilder {
+       ts.reset();
+ 			while (ts.incrementToken()) {
+         termAtt.fillBytesRef();
+-				if (term == null)
+-				{
+-					term = new Term(fieldName, new BytesRef(bytes));
+-				} else
+-				{
+-//					 create from previous to save fieldName.intern overhead
+-					term = term.createTerm(new BytesRef(bytes)); 
+-				}
++        term = new Term(fieldName, new BytesRef(bytes));
+ 				bq.add(new BooleanClause(new TermQuery(term),BooleanClause.Occur.SHOULD));
+ 			}
+ 			ts.end();

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
+index 8f05373..01ac74d 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
+@@ -60,6 +60,16 @@ public abstract class AbstractSession implements Session {
+      */
+     private final Map namespaces = new HashMap();
+ 
++    /**
++     * Clears the local namespace mappings. Subclasses that for example
++     * want to participate in a session pools should remember to call
++     * <code>super.logout()</code> when overriding this method to avoid
++     * namespace mappings to be carried over to a new session.
++     */
++    public void logout() {
++        namespaces.clear();
++    }
++
+     //------------------------------------------------< Namespace handling >--
+ 
+     /**

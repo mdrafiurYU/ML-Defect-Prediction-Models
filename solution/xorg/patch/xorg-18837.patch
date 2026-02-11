@@ -1,0 +1,138 @@
+diff --git a/hw/xgl/xglwindow.c b/hw/xgl/xglwindow.c
+index 9e4245c..967d10f 100644
+--- a/hw/xgl/xglwindow.c
++++ b/hw/xgl/xglwindow.c
+@@ -54,6 +54,21 @@ xglCreateWindow (WindowPtr pWin)
+ }
+ 
+ Bool
++xglDestroyWindow (WindowPtr pWin)
++{
++    ScreenPtr pScreen = pWin->drawable.pScreen;
++    Bool      ret;
++
++    XGL_SCREEN_PRIV (pScreen);
++
++    XGL_SCREEN_UNWRAP (DestroyWindow);
++    ret = (*pScreen->DestroyWindow) (pWin);
++    XGL_SCREEN_WRAP (DestroyWindow, xglDestroyWindow);
++
++    return ret;
++}
++
++Bool
+ xglChangeWindowAttributes (WindowPtr	 pWin,
+ 			   unsigned long mask)
+ {
+@@ -116,7 +131,7 @@ xglCopyWindow (WindowPtr   pWin,
+     dy = ptOldOrg.y - pWin->drawable.y;
+     
+     REGION_TRANSLATE (pWin->drawable.pScreen, prgnSrc, -dx, -dy);
+-    REGION_NULL (pWin->drawable.pScreen, &rgnDst);
++    REGION_INIT (pWin->drawable.pScreen, &rgnDst, NullBox, 0);
+     REGION_INTERSECT (pWin->drawable.pScreen,
+ 		      &rgnDst, &pWin->borderClip, prgnSrc);
+ 
+@@ -131,29 +146,53 @@ xglFillRegionSolid (DrawablePtr	pDrawable,
+ 		    RegionPtr	pRegion,
+ 		    Pixel	pixel)
+ {
+-    glitz_color_t color;
++    glitz_pixel_format_t format;
++    glitz_surface_t      *solid;
++    glitz_buffer_t	 *buffer;
+     BoxPtr	  pExtent;
++    Bool		 ret;
+ 
+     XGL_DRAWABLE_PIXMAP_PRIV (pDrawable);
++    XGL_SCREEN_PRIV (pDrawable->pScreen);
+ 
+-    if (!pPixmapPriv->target)
++    if (!xglPrepareTarget (pDrawable))
+ 	return FALSE;
+ 
+-    pExtent = REGION_EXTENTS (pDrawable->pScreen, pRegion);
++    solid = glitz_surface_create (pScreenPriv->drawable,
++				  pPixmapPriv->pVisual->format.surface,
++				  1, 1, 0, NULL);
++    if (!solid)
++	return FALSE;
++
++    glitz_surface_set_fill (solid, GLITZ_FILL_REPEAT);
++
++    format.fourcc	  = GLITZ_FOURCC_RGB;
++    format.masks	  = pPixmapPriv->pVisual->pPixel->masks;
++    format.xoffset	  = 0;
++    format.skip_lines     = 0;
++    format.bytes_per_line = sizeof (CARD32);
++    format.scanline_order = GLITZ_PIXEL_SCANLINE_ORDER_BOTTOM_UP;
+ 
+-    xglPixelToColor (pPixmapPriv->pPixel, pixel, &color);
++    buffer = glitz_buffer_create_for_data (&pixel);
+     
+-    if (xglSolid (pDrawable,
++    glitz_set_pixels (solid, 0, 0, 1, 1, &format, buffer);
++
++    glitz_buffer_destroy (buffer);
++
++    pExtent = REGION_EXTENTS (pDrawable->pScreen, pRegion);
++
++    ret = xglSolid (pDrawable,
+ 		  GLITZ_OPERATOR_SRC,
+-		  &color,
++		    solid,
+ 		  NULL,
+ 		  pExtent->x1, pExtent->y1,
+ 		  pExtent->x2 - pExtent->x1, pExtent->y2 - pExtent->y1,
+ 		  REGION_RECTS (pRegion),
+-		  REGION_NUM_RECTS (pRegion)))
+-	return TRUE;
++		    REGION_NUM_RECTS (pRegion));
+     
+-    return FALSE;
++    glitz_surface_destroy (solid);
++
++    return ret;
+ }
+ 
+ static Bool
+@@ -165,11 +204,6 @@ xglFillRegionTiled (DrawablePtr	pDrawable,
+ {
+     BoxPtr pExtent;
+ 	
+-    XGL_DRAWABLE_PIXMAP_PRIV (pDrawable);
+-
+-    if (!pPixmapPriv->target)
+-	return FALSE;
+-
+     pExtent = REGION_EXTENTS (pDrawable->pScreen, pRegion);
+ 
+     if (xglTile (pDrawable,
+@@ -281,3 +315,27 @@ xglPaintWindowBorder (WindowPtr pWin,
+     XGL_WINDOW_FALLBACK_EPILOGUE (pWin, pRegion, PaintWindowBorder,
+ 				  xglPaintWindowBorder);
+ }
++
++PixmapPtr
++xglGetWindowPixmap (WindowPtr pWin)
++{
++    return XGL_GET_WINDOW_PIXMAP (pWin);
++}
++
++void
++xglSetWindowPixmap (WindowPtr pWin,
++		    PixmapPtr pPixmap)
++{
++    ScreenPtr pScreen = pWin->drawable.pScreen;
++
++    XGL_SCREEN_PRIV (pScreen);
++
++    XGL_SCREEN_UNWRAP (SetWindowPixmap);
++    (*pScreen->SetWindowPixmap) (pWin, pPixmap);
++    XGL_SCREEN_WRAP (SetWindowPixmap, xglSetWindowPixmap);
++
++    XGL_GET_WINDOW_PRIV (pWin)->pPixmap = pPixmap;
++
++    if (pPixmap != pScreenPriv->pScreenPixmap)
++	xglEnablePixmapAccel (pPixmap, &pScreenPriv->accel.window);
++}

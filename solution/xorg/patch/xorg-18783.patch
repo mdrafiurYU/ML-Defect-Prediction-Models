@@ -1,0 +1,313 @@
+diff --git a/hw/xgl/xglscreen.c b/hw/xgl/xglscreen.c
+index 26f2848..5ad9091 100644
+--- a/hw/xgl/xglscreen.c
++++ b/hw/xgl/xglscreen.c
+@@ -60,27 +60,6 @@ int xglGlyphPrivateIndex;
+ #define xglRecolorCursor	  (void *) NoopDDA
+ #define xglSetCursorPosition	  (void *) NoopDDA
+ 
+-static PixmapPtr
+-xglGetWindowPixmap (WindowPtr pWin)
+-{
+-    return XGL_GET_WINDOW_PIXMAP (pWin);
+-}
+-
+-static void
+-xglSetWindowPixmap (WindowPtr pWin,
+-		    PixmapPtr pPixmap)
+-{
+-    ScreenPtr pScreen = pWin->drawable.pScreen;
+-
+-    XGL_SCREEN_PRIV (pScreen);
+-    
+-    XGL_SCREEN_UNWRAP (SetWindowPixmap);
+-    (*pScreen->SetWindowPixmap) (pWin, pPixmap);
+-    XGL_SCREEN_WRAP (SetWindowPixmap, xglSetWindowPixmap);
+-    
+-    XGL_GET_WINDOW_PRIV(pWin)->pPixmap = pPixmap;
+-}
+-
+ static Bool
+ xglAllocatePrivates (ScreenPtr pScreen)
+ {
+@@ -137,12 +116,27 @@ Bool
+ xglScreenInit (ScreenPtr        pScreen)
+ {
+     xglScreenPtr pScreenPriv;
+-    int		 depth, bpp;
++    xglVisualPtr v;
++    int		 i, depth, bpp = 0;
+     
+ #ifdef RENDER
+     PictureScreenPtr pPictureScreen;
+ #endif
+     
++    depth = xglScreenInfo.depth;
++
++    for (v = xglVisuals; v; v = v->next)
++    {
++	if (v->pPixel->depth == depth)
++	{
++	    bpp = v->pPixel->masks.bpp;
++	    break;
++	}
++    }
++
++    if (!bpp)
++	return FALSE;
++
+     if (!xglAllocatePrivates (pScreen))
+ 	return FALSE;
+ 
+@@ -150,42 +144,35 @@ xglScreenInit (ScreenPtr        pScreen)
+ 
+     pScreenPriv->pScreenPixmap = NULL;
+     
+-    pScreenPriv->pVisual  = &xglVisuals[0];
++    /* Add any unlisted depths from the pixmap formats */
++    for (i = 0; i < screenInfo.numPixmapFormats; i++)
++    {
++	if (!xglHasVisualTypes (xglVisuals, screenInfo.formats[i].depth))
++	    xglSetVisualTypes (screenInfo.formats[i].depth, 0, 0, 0, 0);
++    }
++
++    pScreenPriv->pVisual = 0;
++
++#ifdef GLXEXT
++    pScreenPriv->pGlxVisual = 0;
++#endif
++
++    pScreenPriv->rootVisual = 0;
++
+     pScreenPriv->drawable = xglScreenInfo.drawable;
+     pScreenPriv->features =
+       glitz_drawable_get_features (xglScreenInfo.drawable);
+ 
+-    depth = pScreenPriv->pVisual->pPixel->depth;
+-    bpp   = pScreenPriv->pVisual->pPixel->masks.bpp;
+-
+-    xglInitPixmapFormats (pScreen);
+-    if (!pScreenPriv->pixmapFormats[depth].format)
+-	return FALSE;
++    GEOMETRY_INIT (pScreen, &pScreenPriv->scratchGeometry,
++		   GLITZ_GEOMETRY_TYPE_VERTEX,
++		   pScreenPriv->geometryUsage, 0);
+     
+     pScreenPriv->geometryDataType = xglScreenInfo.geometryDataType;
+     pScreenPriv->geometryUsage    = xglScreenInfo.geometryUsage;
+     pScreenPriv->yInverted	  = xglScreenInfo.yInverted;
+     pScreenPriv->pboMask	  = xglScreenInfo.pboMask;
+     pScreenPriv->lines		  = xglScreenInfo.lines;
+-    pScreenPriv->fbo              = xglScreenInfo.fbo;
+-
+-    GEOMETRY_INIT (pScreen, &pScreenPriv->scratchGeometry,
+-		   GLITZ_GEOMETRY_TYPE_VERTEX,
+-		   pScreenPriv->geometryUsage, 0);
+-    
+-    pScreenPriv->surface =
+-	glitz_surface_create (pScreenPriv->drawable,
+-			      pScreenPriv->pixmapFormats[depth].format,
+-			      xglScreenInfo.width, xglScreenInfo.height,
+-			      0, NULL);
+-    if (!pScreenPriv->surface)
+-	return FALSE;
+-
+-    glitz_surface_attach (pScreenPriv->surface,
+-			  pScreenPriv->drawable,
+-			  GLITZ_DRAWABLE_BUFFER_FRONT_COLOR);
+-
+-    pScreenPriv->backSurface = NULL;
++    pScreenPriv->accel		  = xglScreenInfo.accel;
+     
+     if (monitorResolution == 0)
+ 	monitorResolution = XGL_DEFAULT_DPI;
+@@ -221,6 +208,7 @@ xglScreenInit (ScreenPtr        pScreen)
+     
+     XGL_SCREEN_WRAP (CopyWindow, xglCopyWindow);
+     XGL_SCREEN_WRAP (CreateWindow, xglCreateWindow);
++    XGL_SCREEN_WRAP (DestroyWindow, xglDestroyWindow);
+     XGL_SCREEN_WRAP (ChangeWindowAttributes, xglChangeWindowAttributes);
+     XGL_SCREEN_WRAP (PaintWindowBackground, xglPaintWindowBackground);
+     XGL_SCREEN_WRAP (PaintWindowBorder, xglPaintWindowBorder);
+@@ -272,6 +260,7 @@ xglScreenInit (ScreenPtr        pScreen)
+ 	return FALSE;
+ 
+ #ifdef COMPOSITE
++#warning "composite building"
+     if (!compScreenInit (pScreen))
+ 	return FALSE;
+ #endif
+@@ -287,6 +276,7 @@ xglScreenInit (ScreenPtr        pScreen)
+ Bool
+ xglFinishScreenInit (ScreenPtr pScreen)
+ {
++    xglVisualPtr v;
+ 	
+ #ifdef RENDER
+     glitz_vertex_format_t *format;
+@@ -297,35 +287,64 @@ xglFinishScreenInit (ScreenPtr pScreen)
+ 
+     XGL_SCREEN_PRIV (pScreen);
+ 	
+-    pScreenPriv->solid =
++    xglInitVisuals (pScreen);
++
++    for (v = pScreenPriv->pVisual; v; v = v->next)
++    {
++	if (v->vid == pScreen->rootVisual)
++	    pScreenPriv->rootVisual = v;
++    }
++
++    if (!pScreenPriv->rootVisual || !pScreenPriv->rootVisual->format.surface)
++	return FALSE;
++
++    pScreenPriv->surface =
+ 	glitz_surface_create (pScreenPriv->drawable,
+-			      pScreenPriv->pixmapFormats[32].format,
+-			      1, 1, 0, NULL);
+-    if (!pScreenPriv->solid)
++			      pScreenPriv->rootVisual->format.surface,
++			      xglScreenInfo.width, xglScreenInfo.height,
++			      0, NULL);
++    if (!pScreenPriv->surface)
+ 	return FALSE;
+     
+-    glitz_surface_set_fill (pScreenPriv->solid, GLITZ_FILL_REPEAT);
++    glitz_surface_attach (pScreenPriv->surface,
++			  pScreenPriv->drawable,
++			  GLITZ_DRAWABLE_BUFFER_FRONT_COLOR);
+ 
+ #ifdef RENDER
+     for (i = 0; i < 33; i++)
+ 	pScreenPriv->glyphCache[i].pScreen = NULL;
+ 
+-    pScreenPriv->pSolidAlpha = NULL;
++    for (v = pScreenPriv->pVisual; v; v = v->next)
++    {
++	if (v->pPixel->depth == 8)
++	    break;
++    }
+ 
+-    pScreenPriv->trapInfo.mask =
+-	glitz_surface_create (pScreenPriv->drawable,
+-			      pScreenPriv->pixmapFormats[8].format,
++    pScreenPriv->pSolidAlpha    = 0;
++    pScreenPriv->trapInfo.pMask = 0;
++
++    /* An accelerated alpha only Xgl visual is required for trapezoid
++       acceleration */
++    if (v && v->format.surface)
++    {
++	glitz_surface_t *mask;
++
++	mask = glitz_surface_create (pScreenPriv->drawable,
++				     v->format.surface,
+ 			      2, 1, 0, NULL);
+-    if (!pScreenPriv->trapInfo.mask)
+-	return FALSE;
++	if (mask)
++	{
++	    glitz_set_rectangle (mask, &clearBlack, 0, 0, 1, 1);
++	    glitz_set_rectangle (mask, &solidWhite, 1, 0, 1, 1);
+ 
+-    glitz_set_rectangle (pScreenPriv->trapInfo.mask, &clearBlack, 0, 0, 1, 1);
+-    glitz_set_rectangle (pScreenPriv->trapInfo.mask, &solidWhite, 1, 0, 1, 1);
++	    glitz_surface_set_fill (mask, GLITZ_FILL_NEAREST);
++	    glitz_surface_set_filter (mask, GLITZ_FILTER_BILINEAR, NULL, 0);
+ 	
+-    glitz_surface_set_fill (pScreenPriv->trapInfo.mask, GLITZ_FILL_NEAREST);
+-    glitz_surface_set_filter (pScreenPriv->trapInfo.mask,
+-			      GLITZ_FILTER_BILINEAR,
+-			      NULL, 0);
++	    pScreenPriv->trapInfo.pMask = xglCreateDevicePicture (mask);
++	    if (!pScreenPriv->trapInfo.pMask)
++		return FALSE;
++	}
++    }
+ 
+     format = &pScreenPriv->trapInfo.format.vertex; 
+     format->primitive  = GLITZ_PRIMITIVE_QUADS;
+@@ -349,6 +368,11 @@ xglFinishScreenInit (ScreenPtr pScreen)
+     }
+ #endif
+     
++#ifdef XV
++    if (!xglXvScreenInit (pScreen))
++       return FALSE;
++#endif
++
+     return TRUE;
+ }
+ 
+@@ -356,6 +380,8 @@ Bool
+ xglCloseScreen (int	  index,
+ 		ScreenPtr pScreen)
+ {
++    xglVisualPtr v;
++
+     XGL_SCREEN_PRIV (pScreen);
+     XGL_PIXMAP_PRIV (pScreenPriv->pScreenPixmap);
+ 
+@@ -368,25 +394,35 @@ xglCloseScreen (int	  index,
+     if (pScreenPriv->pSolidAlpha)
+ 	FreePicture ((pointer) pScreenPriv->pSolidAlpha, 0);
+ 
+-    if (pScreenPriv->trapInfo.mask)
+-	glitz_surface_destroy (pScreenPriv->trapInfo.mask);
++    if (pScreenPriv->trapInfo.pMask)
++	FreePicture ((pointer) pScreenPriv->trapInfo.pMask, 0);
+ #endif
+ 
+     xglFiniPixmap (pScreenPriv->pScreenPixmap);
+     if (pPixmapPriv->pDamage)
+ 	DamageDestroy (pPixmapPriv->pDamage);
+ 
+-    if (pScreenPriv->solid)
+-	glitz_surface_destroy (pScreenPriv->solid);
+-
+-    if (pScreenPriv->backSurface)
+-	glitz_surface_destroy (pScreenPriv->backSurface);
+-
+     if (pScreenPriv->surface)
+ 	glitz_surface_destroy (pScreenPriv->surface);
+ 
+     GEOMETRY_UNINIT (&pScreenPriv->scratchGeometry);
+ 
++    while (pScreenPriv->pVisual)
++    {
++	v = pScreenPriv->pVisual;
++	pScreenPriv->pVisual = v->next;
++	xfree (v);
++    }
++
++#ifdef GLXEXT
++    while (pScreenPriv->pGlxVisual)
++    {
++	v = pScreenPriv->pGlxVisual;
++	pScreenPriv->pGlxVisual = v->next;
++	xfree (v);
++    }
++#endif
++
+     XGL_SCREEN_UNWRAP (CloseScreen);
+     xfree (pScreenPriv);
+ 
+@@ -404,7 +440,7 @@ xglCreateSolidAlphaPicture (ScreenPtr pScreen)
+     int			error;
+     Pixel		pixel;
+     GCPtr		pGC;
+-    CARD32		tmpval[2];
++    XID			tmpval[2];
+ 
+     XGL_SCREEN_PRIV (pScreen);
+ 
+@@ -431,8 +467,7 @@ xglCreateSolidAlphaPicture (ScreenPtr pScreen)
+     FreeScratchGC (pGC);
+     
+     tmpval[0] = xTrue;
+-    pScreenPriv->pSolidAlpha =
+-	CreatePicture (0, &pPixmap->drawable, pFormat,
++    pScreenPriv->pSolidAlpha = CreatePicture (0, &pPixmap->drawable, pFormat,
+ 		       CPRepeat, tmpval, 0, &error);
+     (*pScreen->DestroyPixmap) (pPixmap);
+ 

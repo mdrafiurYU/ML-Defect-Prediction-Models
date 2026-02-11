@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+index 1912045..f5573bc 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+@@ -168,8 +168,12 @@ public abstract class BLOBFileValue implements Binary {
+      */
+     public int read(byte[] b, long position) throws IOException, RepositoryException {
+         InputStream in = getStream();
+-        in.skip(position);
+-        return in.read(b);
++        try {
++            in.skip(position);
++            return in.read(b);
++        } finally {
++            in.close();
++        }
+     }
+ 
+     /**

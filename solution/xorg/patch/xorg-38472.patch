@@ -1,0 +1,14 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 60d48b2..08520eb 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -376,7 +376,8 @@ ActivateDevice(DeviceIntPtr dev)
+     ev.time = currentTime.milliseconds;
+     ev.devchange = DeviceAdded;
+     ev.deviceid = dev->id;
+-    dummyDev.id = 0;
++
++    memset(&dummyDev, 0, sizeof(DeviceIntRec));
+     SendEventToAllWindows(&dummyDev, DevicePresenceNotifyMask,
+                           (xEvent *) &ev, 1);
+ 

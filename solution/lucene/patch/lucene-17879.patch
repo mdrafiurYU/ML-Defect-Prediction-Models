@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/BoolField.java b/solr/src/java/org/apache/solr/schema/BoolField.java
+index 19fb362..ae5a069 100644
+--- a/solr/src/java/org/apache/solr/schema/BoolField.java
++++ b/solr/src/java/org/apache/solr/schema/BoolField.java
+@@ -49,6 +49,7 @@ public class BoolField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser qparser) {
++    field.checkFieldCacheSource(qparser);
+     return new OrdFieldSource(field.name);
+   }

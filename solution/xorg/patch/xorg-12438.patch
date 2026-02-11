@@ -1,0 +1,149 @@
+diff --git a/hw/xgl/xglsync.c b/hw/xgl/xglsync.c
+index 2837a86..15d328a 100644
+--- a/hw/xgl/xglsync.c
++++ b/hw/xgl/xglsync.c
+@@ -5,7 +5,7 @@
+  * and its documentation for any purpose is hereby granted without
+  * fee, provided that the above copyright notice appear in all copies
+  * and that both that copyright notice and this permission notice
+- * appear in supporting documentation, and that the names of
++ * appear in supporting documentation, and that the name of
+  * David Reveman not be used in advertising or publicity pertaining to
+  * distribution of the software without specific, written prior permission.
+  * David Reveman makes no representations about the suitability of this
+@@ -20,7 +20,7 @@
+  * NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION
+  * WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  *
+- * Author: David Reveman <davidr@freedesktop.org>
++ * Author: David Reveman <davidr@novell.com>
+  */
+ 
+ #include "xgl.h"
+@@ -153,22 +153,40 @@ xglSyncBits (DrawablePtr pDrawable,
+ 	if (!xglAllocatePixmapBits (pPixmap))
+ 	    return FALSE;
+     
+-    if (REGION_NOTEMPTY (pDrawable->pScreen, &region))
++    if (pPixmapPriv->pDamage)
+     {
+-	if (pPixmapPriv->surface)
++	RegionPtr pRegion;
++
++	pRegion = DamageRegion (pPixmapPriv->pDamage);
++	REGION_SUBTRACT (pDrawable->pScreen, &region, &region, pRegion);
++    }
++    
++    if (REGION_NOTEMPTY (pDrawable->pScreen, &region) && pPixmapPriv->surface)
+ 	{
+ 	    glitz_pixel_format_t format;
+ 	    BoxPtr		 pBox;
+ 	    int			 nBox;
+ 
++	if (!xglSyncSurface (pDrawable))
++	    FatalError (XGL_SW_FAILURE_STRING);
++
+ 	    xglUnmapPixmapBits (pPixmap);
+ 	    
+ 	    pBox = REGION_RECTS (&region);
+ 	    nBox = REGION_NUM_RECTS (&region);
+ 
+ 	    format.masks	  = pPixmapPriv->pPixel->masks;
++
++	if (pPixmapPriv->stride < 0)
++	{
++	    format.bytes_per_line = -pPixmapPriv->stride;
++	    format.scanline_order = GLITZ_PIXEL_SCANLINE_ORDER_BOTTOM_UP;
++	}
++	else
++	{
+ 	    format.bytes_per_line = pPixmapPriv->stride;
+-	    format.scanline_order = XGL_INTERNAL_SCANLINE_ORDER;
++	    format.scanline_order = GLITZ_PIXEL_SCANLINE_ORDER_TOP_DOWN;
++	}
+ 
+ 	    while (nBox--)
+ 	    {
+@@ -186,7 +204,6 @@ xglSyncBits (DrawablePtr pDrawable,
+ 		pBox++;
+ 	    }
+ 	}
+-    }
+ 
+     REGION_UNINIT (pDrawable->pScreen, &region);
+ 
+@@ -236,8 +253,17 @@ xglSyncSurface (DrawablePtr pDrawable)
+ 	pBox = REGION_RECTS (pRegion);
+ 	
+ 	format.masks	      = pPixmapPriv->pPixel->masks;
++	
++	if (pPixmapPriv->stride < 0)
++	{
++	    format.bytes_per_line = -pPixmapPriv->stride;
++	    format.scanline_order = GLITZ_PIXEL_SCANLINE_ORDER_BOTTOM_UP;
++	}
++	else
++	{
+ 	format.bytes_per_line = pPixmapPriv->stride;
+-	format.scanline_order = XGL_INTERNAL_SCANLINE_ORDER;
++	    format.scanline_order = GLITZ_PIXEL_SCANLINE_ORDER_TOP_DOWN;
++	}
+ 
+ 	while (nBox--)
+ 	{
+@@ -288,7 +314,34 @@ xglPrepareTarget (DrawablePtr pDrawable)
+ }
+ 
+ void
+-xglAddSurfaceDamage (DrawablePtr pDrawable)
++xglAddSurfaceDamage (DrawablePtr pDrawable,
++		     RegionPtr   pRegion)
++{
++    RegionPtr	    pDamageRegion;
++    glitz_surface_t *surface;
++    int		    xOff, yOff;
++    
++    XGL_DRAWABLE_PIXMAP_PRIV (pDrawable);
++
++    pPixmapPriv->damageBox = miEmptyBox;
++    if (!pPixmapPriv->format)
++	return;
++
++    XGL_GET_DRAWABLE (pDrawable, surface, xOff, yOff);
++
++    if (xOff || yOff)
++	REGION_TRANSLATE (pDrawable->pScreen, pRegion, xOff, yOff);
++
++    pDamageRegion = DamageRegion (pPixmapPriv->pDamage);
++
++    REGION_UNION (pDrawable->pScreen, pDamageRegion, pDamageRegion, pRegion);
++    
++    if (xOff || yOff)
++	REGION_TRANSLATE (pDrawable->pScreen, pRegion, -xOff, -yOff);
++}
++
++void
++xglAddCurrentSurfaceDamage (DrawablePtr pDrawable)
+ {   
+     XGL_DRAWABLE_PIXMAP_PRIV (pDrawable);
+ 
+@@ -310,18 +363,12 @@ xglAddSurfaceDamage (DrawablePtr pDrawable)
+ 		      pDamageRegion, pDamageRegion, &region);
+ 	REGION_UNINIT (pDrawable->pScreen, &region);
+ 	
+-	if (pPixmapPriv->target == xglPixmapTargetIn)
+-	{
+-	    if (!xglSyncSurface (pDrawable))
+-		FatalError (XGL_SW_FAILURE_STRING);
+-	}
+-
+ 	pPixmapPriv->damageBox = miEmptyBox;
+     }
+ }
+ 
+ void
+-xglAddBitDamage (DrawablePtr pDrawable)
++xglAddCurrentBitDamage (DrawablePtr pDrawable)
+ {
+     XGL_DRAWABLE_PIXMAP_PRIV (pDrawable);
+ 

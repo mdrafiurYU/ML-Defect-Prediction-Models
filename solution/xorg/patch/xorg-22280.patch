@@ -1,0 +1,11 @@
+diff --git a/fb/fbsetsp.c b/fb/fbsetsp.c
+index c59c13c..0633256 100644
+--- a/fb/fbsetsp.c
++++ b/fb/fbsetsp.c
+@@ -99,5 +99,6 @@ fbSetSpans (DrawablePtr	    pDrawable,
+ 	pwidth++;
+     }
+     fbValidateDrawable (pDrawable);
++    fbFinishAccess (pDrawable);
+ }
+ 	    

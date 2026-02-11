@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JoinQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JoinQuery.java
+index 7809138..5337ce8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JoinQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JoinQuery.java
+@@ -43,7 +43,7 @@ public class JoinQuery implements MultiColumnQuery {
+     /**
+      * The join type.
+      */
+-    private final int joinType;
++    private final String joinType;
+ 
+     /**
+      * The QOM join condition.
+@@ -72,7 +72,7 @@ public class JoinQuery implements MultiColumnQuery {
+      */
+     public JoinQuery(MultiColumnQuery left,
+                      MultiColumnQuery right,
+-                     int joinType,
++                     String joinType,
+                      JoinConditionImpl joinCondition,
+                      SortComparatorSource scs,
+                      HierarchyManager hmgr) {

@@ -1,0 +1,32 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java
+index ffd32c2..dced920 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java
+@@ -20,7 +20,9 @@ import java.io.IOException;
+ import java.io.InputStream;
+ import java.io.OutputStream;
+ 
++import org.eclipse.core.resources.IContainer;
+ import org.eclipse.core.resources.IFile;
++import org.eclipse.core.resources.IFolder;
+ import org.eclipse.core.resources.IResource;
+ import org.eclipse.core.runtime.CoreException;
+ 
+@@ -49,6 +51,17 @@ public final class FileSystemUtil
+     }
+     
+     /**
++     * Eclipse doesn't seem 
++     * @param target
++     */
++    public static void mkdirs (IContainer folder) throws CoreException {
++		if (!folder.exists()) {
++			mkdirs(folder.getParent());
++			((IFolder) folder).create(true, true, null);
++		}
++    }
++    
++    /**
+      * Returns the contents of a file as a string in UTF8 format
+      */
+     public static String getContentsOfIFile(IFile file) throws IOException, CoreException {

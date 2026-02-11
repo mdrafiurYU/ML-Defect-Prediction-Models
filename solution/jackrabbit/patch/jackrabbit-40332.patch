@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
+index 38500e0..42cd662 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
+@@ -325,7 +325,7 @@ public class LockManagerImpl implements LockManager, SynchronousEventListener,
+         if (eventChannel != null) {
+             operation = eventChannel.create(node.getNodeId());
+         }
+-        
++
+         acquire();
+ 
+         try {
+@@ -509,7 +509,7 @@ public class LockManagerImpl implements LockManager, SynchronousEventListener,
+     /**
+      * {@inheritDoc}
+      */
+-    public boolean isLockHolder(Session session, NodeImpl node) 
++    public boolean isLockHolder(Session session, NodeImpl node)
+             throws RepositoryException {
+         acquire();

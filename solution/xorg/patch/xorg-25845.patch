@@ -1,0 +1,30 @@
+diff --git a/mi/mispritest.h b/mi/mispritest.h
+index 4608c4e..e423534 100644
+--- a/mi/mispritest.h
++++ b/mi/mispritest.h
+@@ -95,14 +95,21 @@ typedef struct {
+ #define SOURCE_COLOR	0
+ #define MASK_COLOR	1
+ 
+-#define miSpriteIsUpTRUE(pScreen, pScreenPriv) if (!pScreenPriv->cp->isUp) { \
+-    pScreenPriv->cp->isUp = TRUE; \
++static int damageRegister = 0;
++#define miSpriteIsUpTRUE(pDevCursor, pScreen, pScreenPriv) if (!pDevCursor->isUp) { \
++    pDevCursor->isUp = TRUE; \
++    if (!damageRegister ) { \
++        damageRegister++; \
+     DamageRegister (&(*pScreen->GetScreenPixmap) (pScreen)->drawable, pScreenPriv->pDamage); \
++    } \
+ }
+ 
+-#define miSpriteIsUpFALSE(pScreen, pScreenPriv) if (pScreenPriv->cp->isUp) { \
++#define miSpriteIsUpFALSE(pDevCursor, pScreen, pScreenPriv) if (pDevCursor->isUp) { \
++    if (damageRegister) { \
++        damageRegister--; \
+     DamageUnregister (&(*pScreen->GetScreenPixmap) (pScreen)->drawable, pScreenPriv->pDamage); \
+-    pScreenPriv->cp->isUp = FALSE; \
++    } \
++    pDevCursor->isUp = FALSE; \
+ }
+ 
+ /*

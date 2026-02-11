@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/nvidia/nvidiastub.c b/hw/kdrive/nvidia/nvidiastub.c
+index ea2dd0f..2309419 100644
+--- a/hw/kdrive/nvidia/nvidiastub.c
++++ b/hw/kdrive/nvidia/nvidiastub.c
+@@ -45,7 +45,8 @@ InitOutput (ScreenInfo *pScreenInfo, int argc, char **argv)
+ void
+ InitInput (int argc, char **argv)
+ {
+-    KdInitInput (&LinuxMouseFuncs, &LinuxKeyboardFuncs);
++    KdOsAddInputDrivers ();
++    KdInitInput ();
+ }
+ 
+ void

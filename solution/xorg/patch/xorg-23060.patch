@@ -1,0 +1,15 @@
+diff --git a/record/record.c b/record/record.c
+index 55ae693..5809e00 100644
+--- a/record/record.c
++++ b/record/record.c
+@@ -36,6 +36,10 @@ and Jim Haggerty of Metheus.
+ /* $XFree86: xc/programs/Xserver/record/record.c,v 1.11 2003/11/03 05:12:01 tsi Exp $ */
+ 
+ #define NEED_EVENTS
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "dixstruct.h"
+ #include "extnsionst.h"
+ #define _XRECORD_SERVER_

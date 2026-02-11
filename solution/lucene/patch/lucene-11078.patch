@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+index d4cc1e7..9987343 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+@@ -109,7 +109,7 @@ class VarSortedBytesImpl {
+         offsets[i] = offset;
+         index[e] = 1 + i;
+ 
+-        final BytesRef bytes = hash.get(e);
++        final BytesRef bytes = hash.get(e, new BytesRef());
+         // TODO: we could prefix code...
+         datOut.writeBytes(bytes.bytes, bytes.offset, bytes.length);
+         lastOffset = offset;

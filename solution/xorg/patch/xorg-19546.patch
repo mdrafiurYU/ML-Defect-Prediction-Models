@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/os-support/drm/xf86drmRandom.c b/hw/xfree86/os-support/drm/xf86drmRandom.c
+index 301aaf4..cc40dcc 100644
+--- a/hw/xfree86/os-support/drm/xf86drmRandom.c
++++ b/hw/xfree86/os-support/drm/xf86drmRandom.c
+@@ -79,18 +79,13 @@
+ 
+ #define RANDOM_MAIN 0
+ 
+-#if RANDOM_MAIN
+ # include <stdio.h>
+ # include <stdlib.h>
+-#else
++#if !RANDOM_MAIN
+ # include "drm.h"
+ # include "xf86drm.h"
+ # ifdef XFree86LOADER
+ #  include "xf86.h"
+-#  include "xf86_ansic.h"
+-# else
+-#  include <stdio.h>
+-#  include <stdlib.h>
+ # endif
+ #endif
+ 

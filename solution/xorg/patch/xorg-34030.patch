@@ -1,0 +1,34 @@
+diff --git a/dix/events.c b/dix/events.c
+index 24de947..e13e290 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -3330,6 +3330,8 @@ ProcessPointerEvent (xEvent *xE, DeviceIntPtr mouse, int count)
+ 
+ #define AtMostOneClient \
+ 	(SubstructureRedirectMask | ResizeRedirectMask | ButtonPressMask)
++#define ManagerMask \
++	(SubstructureRedirectMask | ResizeRedirectMask)
+ 
+ /**
+  * Recalculate which events may be deliverable for the given window.
+@@ -3418,12 +3420,20 @@ EventSelectForWindow(WindowPtr pWin, ClientPtr client, Mask mask)
+ {
+     Mask check;
+     OtherClients * others;
++    int rc;
+ 
+     if (mask & ~AllEventMasks)
+     {
+ 	client->errorValue = mask;
+ 	return BadValue;
+     }
++    check = (mask & ManagerMask);
++    if (check) {
++	rc = XaceHook(XACE_RESOURCE_ACCESS, client, pWin->drawable.id,
++		      RT_WINDOW, pWin, RT_NONE, NULL, DixManageAccess);
++	if (rc != Success)
++	    return rc;
++    }
+     check = (mask & AtMostOneClient);
+     if (check & (pWin->eventMask|wOtherEventMasks(pWin)))
+     {				       /* It is illegal for two different

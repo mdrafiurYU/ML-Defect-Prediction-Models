@@ -1,0 +1,36 @@
+diff --git a/hw/xwin/winwindow.c b/hw/xwin/winwindow.c
+index 285a344..0e75a2c 100644
+--- a/hw/xwin/winwindow.c
++++ b/hw/xwin/winwindow.c
+@@ -350,7 +350,6 @@ winPositionWindowRootless (WindowPtr pWin, int x, int y)
+ {
+   Bool			fResult = FALSE;
+   ScreenPtr		pScreen = pWin->drawable.pScreen;
+-  winWindowPriv(pWin);
+   winScreenPriv(pScreen);
+ 
+ 
+@@ -376,7 +375,6 @@ winChangeWindowAttributesRootless (WindowPtr pWin, unsigned long mask)
+ {
+   Bool			fResult = FALSE;
+   ScreenPtr		pScreen = pWin->drawable.pScreen;
+-  winWindowPriv(pWin);
+   winScreenPriv(pScreen);
+ 
+ #if CYGDEBUG
+@@ -434,7 +432,6 @@ winMapWindowRootless (WindowPtr pWin)
+ {
+   Bool			fResult = FALSE;
+   ScreenPtr		pScreen = pWin->drawable.pScreen;
+-  winWindowPriv(pWin);
+   winScreenPriv(pScreen);
+ 
+ #if CYGDEBUG
+@@ -457,7 +454,6 @@ void
+ winSetShapeRootless (WindowPtr pWin)
+ {
+   ScreenPtr		pScreen = pWin->drawable.pScreen;
+-  winWindowPriv(pWin);
+   winScreenPriv(pScreen);
+ 
+ #if CYGDEBUG

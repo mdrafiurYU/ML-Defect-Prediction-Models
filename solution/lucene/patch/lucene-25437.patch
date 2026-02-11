@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+index a94631d..1c43399 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+@@ -189,7 +189,7 @@ public class TestFieldCache extends LuceneTestCase {
+     for (int i = 0; i < num; i++) {
+       int k = _TestUtil.nextInt(random, 1, nTerms-1);
+       BytesRef val1 = termsIndex.lookup(k, val);
+-      assertEquals(TermsEnum.SeekStatus.FOUND, tenum.seek(val1));
++      assertEquals(TermsEnum.SeekStatus.FOUND, tenum.seekCeil(val1));
+       assertEquals(val1, tenum.term());
+     }

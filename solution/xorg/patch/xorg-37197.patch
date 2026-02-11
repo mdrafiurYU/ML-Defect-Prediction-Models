@@ -1,0 +1,22 @@
+diff --git a/hw/xprint/ddxInit.c b/hw/xprint/ddxInit.c
+index d744121..5cb2472 100644
+--- a/hw/xprint/ddxInit.c
++++ b/hw/xprint/ddxInit.c
+@@ -284,8 +284,6 @@ ddxProcessArgument (
+     return(0);
+ }
+ 
+-#ifdef XINPUT
+-
+ #include <X11/extensions/XI.h>
+ #include <X11/extensions/XIproto.h>
+ #include "XIstubs.h"
+@@ -373,8 +371,6 @@ SetDeviceValuators (
+ }
+ 
+ 
+-#endif /* XINPUT */
+-
+ #ifdef AIXV3
+ /*
+  * This is just to get the server to link on AIX, where some bits

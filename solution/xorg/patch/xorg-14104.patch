@@ -1,0 +1,15 @@
+diff --git a/GL/glx/glxcmds.c b/GL/glx/glxcmds.c
+index f756d18..f88ec2c 100644
+--- a/GL/glx/glxcmds.c
++++ b/GL/glx/glxcmds.c
+@@ -36,6 +36,10 @@
+ 
+ #define NEED_REPLIES
+ #define FONT_PCF
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "glxserver.h"
+ #include <GL/glxtokens.h>
+ #include <unpack.h>

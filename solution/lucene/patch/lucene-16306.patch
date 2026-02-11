@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java b/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java
+index 6f39453..55d682d 100644
+--- a/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java
++++ b/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java
+@@ -274,7 +274,9 @@ public class ConcurrentMergeScheduler extends MergeScheduler {
+   protected synchronized int mergeThreadCount() {
+     int count = 0;
+     for (MergeThread mt : mergeThreads) {
+-      if (mt.isAlive()) count++;
++      if (mt.isAlive() && mt.getCurrentMerge() != null) {
++        count++;
++      }
+     }
+     return count;
+   }

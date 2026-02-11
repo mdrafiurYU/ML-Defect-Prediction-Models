@@ -1,0 +1,30 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java
+index 12e7a8c..3fb9adc 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java
+@@ -168,6 +168,25 @@ public abstract class FixedIntBlockIndexInput extends IntIndexInput {
+     }
+ 
+     @Override
++    public void read(final IntIndexInput.Reader indexIn, final boolean absolute) throws IOException {
++      if (absolute) {
++        fp = indexIn.readVLong();
++        upto = indexIn.next();
++      } else {
++        final long delta = indexIn.readVLong();
++        if (delta == 0) {
++          // same block
++          upto += indexIn.next();
++        } else {
++          // new block
++          fp += delta;
++          upto = indexIn.next();
++        }
++      }
++      assert upto < blockSize;
++    }
++
++    @Override
+     public void seek(final IntIndexInput.Reader other) throws IOException {
+       ((Reader) other).seek(fp, upto);
+     }

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+index d3949b4..1b75322 100644
+--- a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
++++ b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+@@ -765,7 +765,7 @@ class DirectoryReader extends IndexReader implements Cloneable {
+       // KeepOnlyLastCommitDeleter:
+       IndexFileDeleter deleter = new IndexFileDeleter(directory,
+                                                       deletionPolicy == null ? new KeepOnlyLastCommitDeletionPolicy() : deletionPolicy,
+-                                                      segmentInfos, null, null, codecs);
++                                                      segmentInfos, null, codecs);
+       segmentInfos.updateGeneration(deleter.getLastSegmentInfos());
+       segmentInfos.changed();

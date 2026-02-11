@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.h b/hw/xfree86/dixmods/extmod/modinit.h
+index 463a400..fe95c49 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.h
++++ b/hw/xfree86/dixmods/extmod/modinit.h
+@@ -69,13 +69,6 @@ extern void DPMSExtensionInit(INITARGS);
+ #include <X11/extensions/dpmsstr.h>
+ #endif
+ 
+-#ifdef FONTCACHE
+-extern void FontCacheExtensionInit(INITARGS);
+-#define _FONTCACHE_SERVER_
+-#include "fontcacheP.h"
+-#include "fontcachstr.h"
+-#endif
+-
+ #ifdef XV
+ extern void XvExtensionInit(INITARGS);
+ extern void XvMCExtensionInit(INITARGS);

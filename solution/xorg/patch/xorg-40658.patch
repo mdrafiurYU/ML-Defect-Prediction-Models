@@ -1,0 +1,31 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index d728e98..184fb96 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -75,6 +75,9 @@
+ #include "quartz.h"
+ //#include "darwinClut8.h"
+ 
++#include "GL/visualConfigs.h"
++
++
+ #ifdef ENABLE_DEBUG_LOG
+ FILE *debug_log_fp = NULL;
+ #endif
+@@ -179,7 +182,6 @@ static Bool DarwinSaveScreen(ScreenPtr pScreen, int on)
+     return TRUE;
+ }
+ 
+-
+ /*
+  * DarwinAddScreen
+  *  This is a callback from dix during AddScreen() from InitOutput().
+@@ -226,6 +228,8 @@ static Bool DarwinAddScreen(int index, ScreenPtr pScreen, int argc, char **argv)
+ 
+     miSetPixmapDepths();
+ 
++    setVisualConfigs();
++
+     // machine independent screen init
+     // setup _Screen structure in pScreen
+     if (monitorResolution)

@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/parser/Monitor.c b/hw/xfree86/parser/Monitor.c
+index 52ff5a7..f8e42d0 100644
+--- a/hw/xfree86/parser/Monitor.c
++++ b/hw/xfree86/parser/Monitor.c
+@@ -460,6 +460,8 @@ xf86parseMonitorSection (void)
+ 			if (xf86getSubToken (&(ptr->mon_comment)) != NUMBER)
+ 				Error (HORIZSYNC_MSG, NULL);
+ 			do {
++				if (ptr->mon_n_hsync >= CONF_MAX_HSYNC)
++					Error ("Sorry. Too many horizontal sync intervals.", NULL);
+ 				ptr->mon_hsync[ptr->mon_n_hsync].lo = val.realnum;
+ 				switch (token = xf86getSubToken (&(ptr->mon_comment)))
+ 				{
+@@ -485,8 +487,6 @@ xf86parseMonitorSection (void)
+ 						ptr->mon_n_hsync++;
+ 						goto HorizDone;
+ 				}
+-				if (ptr->mon_n_hsync >= CONF_MAX_HSYNC)
+-					Error ("Sorry. Too many horizontal sync intervals.", NULL);
+ 				ptr->mon_n_hsync++;
+ 			} while ((token = xf86getSubToken (&(ptr->mon_comment))) == NUMBER);
+ HorizDone:

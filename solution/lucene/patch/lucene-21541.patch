@@ -1,0 +1,25 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+index f4ebdc6..7dbeb09 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
++++ b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+@@ -50,12 +50,10 @@ final class DocFieldProcessor extends DocConsumer {
+   int hashMask = 1;
+   int totalFieldCount;
+ 
+-
+   float docBoost;
+   int fieldGen;
+   final DocumentsWriterPerThread.DocState docState;
+ 
+-
+   public DocFieldProcessor(DocumentsWriterPerThread docWriter, DocFieldConsumer consumer) {
+     this.docState = docWriter.docState;
+     this.consumer = consumer;
+@@ -254,7 +252,6 @@ final class DocFieldProcessor extends DocConsumer {
+     }
+   }
+ 
+-
+   void quickSort(DocFieldProcessorPerField[] array, int lo, int hi) {
+     if (lo >= hi)
+       return;

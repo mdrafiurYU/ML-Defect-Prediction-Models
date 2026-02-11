@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Configure.c b/hw/xfree86/common/xf86Configure.c
+index 85cd5b6..6680a61 100644
+--- a/hw/xfree86/common/xf86Configure.c
++++ b/hw/xfree86/common/xf86Configure.c
+@@ -780,6 +780,7 @@ DoConfigure()
+     	if (!(filename =
+ 	     (char *)xalloc(strlen(home) + 
+ 	  			 strlen(configfile) + 3)))
++		goto bail;
+ 
+       	if (home[0] == '/' && home[1] == '\0')
+             home[0] = '\0';

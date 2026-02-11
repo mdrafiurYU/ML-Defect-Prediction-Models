@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
+index ecc4725..f727743 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
+@@ -1275,7 +1275,7 @@ public void notifySourceElementRequestor(
+ 		requestor.acceptImport(
+ 			importReference.declarationSourceStart, 
+ 			importReference.declarationSourceEnd, 
+-			CharOperation.concatWith(importReference.getImportName(), '.'), 
++			importReference.tokens, 
+ 			importReference.onDemand,
+ 			importReference.modifiers); 
+ 	}

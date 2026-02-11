@@ -1,0 +1,129 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index 8d27e16..0c96b3c 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -45,17 +45,13 @@ from The Open Group.
+ #define _XTEST_SERVER_
+ #include <X11/extensions/XTest.h>
+ #include <X11/extensions/xteststr.h>
+-#ifdef XINPUT
+ #include <X11/extensions/XI.h>
+ #include <X11/extensions/XIproto.h>
+ #define EXTENSION_EVENT_BASE	64
+-#endif /* XINPUT */
+ 
+ #include "modinit.h"
+ 
+-#ifdef XINPUT
+ extern int DeviceValuator;
+-#endif /* XINPUT */
+ 
+ #ifdef PANORAMIX
+ #include "panoramiX.h"
+@@ -165,12 +161,10 @@ ProcXTestFakeInput(client)
+     xEvent *ev;
+     DeviceIntPtr dev = NULL;
+     WindowPtr root;
+-#ifdef XINPUT
+     Bool extension = FALSE;
+     deviceValuator *dv = NULL;
+     int base;
+     int *values;
+-#endif /* XINPUT */
+ 
+     nev = (stuff->length << 2) - sizeof(xReq);
+     if ((nev % sizeof(xEvent)) || !nev)
+@@ -179,7 +173,7 @@ ProcXTestFakeInput(client)
+     UpdateCurrentTime();
+     ev = (xEvent *)&((xReq *)stuff)[1];
+     type = ev->u.u.type & 0177;
+-#ifdef XINPUT
++
+     if (type >= EXTENSION_EVENT_BASE)
+     {
+ 	type -= DeviceValuator;
+@@ -197,7 +191,7 @@ ProcXTestFakeInput(client)
+ 	    return BadValue;
+ 	}
+ 	if (nev == 1 && type == XI_DeviceMotionNotify)
+-	    return BadLength;
++            return BadLength; /* DevMotion must be followed by DevValuator */
+ 	if (type == XI_DeviceMotionNotify)
+ 	    base = ((deviceValuator *)(ev+1))->first_valuator;
+ 	else
+@@ -226,7 +220,6 @@ ProcXTestFakeInput(client)
+ 	extension = TRUE;
+     }
+     else
+-#endif /* XINPUT */
+     {
+ 	if (nev != 1)
+ 	    return BadLength;
+@@ -243,6 +236,8 @@ ProcXTestFakeInput(client)
+ 	    return BadValue;
+ 	}
+     }
++
++    /* If the event has a time set, wait for it to pass */
+     if (ev->u.keyButtonPointer.time)
+     {
+ 	TimeStamp activateTime;
+@@ -271,7 +266,7 @@ ProcXTestFakeInput(client)
+ 	client->sequence--;
+ 	return Success;
+     }
+-#ifdef XINPUT
++
+     if (extension)
+     {
+ 	rc = dixLookupDevice(&dev, stuff->deviceid & 0177, client,
+@@ -297,14 +292,11 @@ ProcXTestFakeInput(client)
+ 	    }
+ 	}
+     }
+-#endif /* XINPUT */
+     switch (type)
+     {
+     case KeyPress:
+     case KeyRelease:
+-#ifdef XINPUT
+ 	if (!extension)
+-#endif /* XINPUT */
+ 	    dev = PickKeyboard(client);
+ 	if (ev->u.u.detail < dev->key->curKeySyms.minKeyCode ||
+ 	    ev->u.u.detail > dev->key->curKeySyms.maxKeyCode)
+@@ -314,7 +306,6 @@ ProcXTestFakeInput(client)
+ 	}
+ 	break;
+     case MotionNotify:
+-#ifdef XINPUT
+ 	if (extension)
+ 	{
+ 	    if (ev->u.u.detail != xFalse && ev->u.u.detail != xTrue)
+@@ -322,6 +313,7 @@ ProcXTestFakeInput(client)
+ 		client->errorValue = ev->u.u.detail;
+ 		return BadValue;
+ 	    }
++                /* detail is True for relative coordinates */
+ 	    if (ev->u.u.detail == xTrue && dev->valuator->mode == Absolute)
+ 	    {
+ 		values = dev->valuator->axisVal + dv->first_valuator;
+@@ -348,7 +340,7 @@ ProcXTestFakeInput(client)
+ 	    }
+ 	    break;
+ 	}
+-#endif /* XINPUT */
++
+         if (!dev)
+             dev = PickPointer(client);
+ 	if (ev->u.keyButtonPointer.root == None)
+@@ -437,9 +429,7 @@ ProcXTestFakeInput(client)
+ 	break;
+     case ButtonPress:
+     case ButtonRelease:
+-#ifdef XINPUT
+ 	if (!extension)
+-#endif /* XINPUT */
+             dev = PickPointer(client);
+ 	if (!ev->u.u.detail || ev->u.u.detail > dev->button->numButtons)
+ 	{

@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/core/SolrCore.java b/solr/src/java/org/apache/solr/core/SolrCore.java
+index 1d61661..b177433 100644
+--- a/solr/src/java/org/apache/solr/core/SolrCore.java
++++ b/solr/src/java/org/apache/solr/core/SolrCore.java
+@@ -1005,7 +1005,7 @@ public final class SolrCore implements SolrInfoMBean {
+       
+       if (newestSearcher != null && solrConfig.reopenReaders
+           && indexDirFile.equals(newIndexDirFile)) {
+-        IndexReader currentReader = newestSearcher.get().getReader();
++        IndexReader currentReader = newestSearcher.get().getIndexReader();
+         IndexReader newReader = currentReader.reopen();
+ 
+         if (newReader == currentReader) {

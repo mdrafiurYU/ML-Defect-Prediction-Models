@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+index 5bf45b9..8fb973a 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+@@ -2012,6 +2012,7 @@ class ASTConverter {
+ 		markerAnnotation.setSourceRange(start, end - start + 1);
+ 		if (this.resolveBindings) {
+ 			recordNodes(markerAnnotation, annotation);
++			markerAnnotation.resolveAnnotation();
+ 		}
+ 		return markerAnnotation;
+ 	}
+@@ -2074,6 +2075,7 @@ class ASTConverter {
+ 		normalAnnotation.setSourceRange(start, end - start + 1);
+ 		if (this.resolveBindings) {
+ 			recordNodes(normalAnnotation, annotation);
++			normalAnnotation.resolveAnnotation();
+ 		}
+ 		return normalAnnotation;
+ 	}
+@@ -2313,6 +2315,7 @@ class ASTConverter {
+ 		singleMemberAnnotation.setSourceRange(start, end - start + 1);
+ 		if (this.resolveBindings) {
+ 			recordNodes(singleMemberAnnotation, annotation);
++			singleMemberAnnotation.resolveAnnotation();
+ 		}
+ 		return singleMemberAnnotation;
+ 	}

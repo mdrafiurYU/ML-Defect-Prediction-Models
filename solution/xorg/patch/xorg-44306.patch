@@ -1,0 +1,26 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index 5ce26bd..7bd7f18 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -48,8 +48,6 @@ extern int darwinMainScreenX, darwinMainScreenY;
+ #endif
+ #include "fb.h"
+ 
+-#define AppleWMNumWindowLevels 5
+-
+ #include "rootlessCommon.h"
+ #include "rootlessWindow.h"
+ 
+@@ -105,12 +103,6 @@ current_time_in_seconds (void)
+   return t;
+   } */
+ 
+-static inline Bool
+-rootlessHasRoot (ScreenPtr pScreen)
+-{
+-  return WINREC (WindowTable[pScreen->myNum]) != NULL;
+-}
+-
+ void
+ RootlessNativeWindowStateChanged (WindowPtr pWin, unsigned int state)
+ {

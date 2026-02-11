@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AnnotationScanner.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AnnotationScanner.java
+index 03a8cb8..5a49176 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AnnotationScanner.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AnnotationScanner.java
+@@ -114,7 +114,7 @@ public abstract class AnnotationScanner {
+ 					break;
+ 					
+ 				default :
+-					throw new IllegalStateException("Unhandled state: " + state);
++					throw new IllegalStateException("Unhandled state: " + state);  //$NON-NLS-1$
+ 				}
+ 			}
+ 			c = getNext();

@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 711bf94..fc846ba 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -172,6 +172,7 @@ xf86ActivateDevice(LocalDevicePtr local)
+         local->dev = dev;      
+         
+         dev->coreEvents = local->flags & XI86_ALWAYS_CORE; 
++        dev->isMaster = FALSE;
+         dev->spriteInfo->spriteOwner = FALSE;
+ 
+         if (DeviceIsPointerType(dev))
+@@ -447,9 +448,6 @@ NewInputDeviceRequest (InputOption *options, DeviceIntPtr *pdev)
+         (!is_auto || xf86Info.autoEnableDevices))
+         EnableDevice(dev);
+ 
+-    if (!IsPointerDevice(dev))
+-        PairDevices(NULL, GuessFreePointerDevice(), dev);
+-
+     /* send enter/leave event, update sprite window */
+     CheckMotion(NULL, dev);
+ 

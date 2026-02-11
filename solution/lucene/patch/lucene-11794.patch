@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/FSDirectory.java b/lucene/src/java/org/apache/lucene/store/FSDirectory.java
+index cedf513..0a84803 100644
+--- a/lucene/src/java/org/apache/lucene/store/FSDirectory.java
++++ b/lucene/src/java/org/apache/lucene/store/FSDirectory.java
+@@ -398,7 +398,7 @@ public abstract class FSDirectory extends Directory {
+   /** For debug output. */
+   @Override
+   public String toString() {
+-    return this.getClass().getName() + "@" + directory;
++    return this.getClass().getName() + "@" + directory + " lockFactory=" + getLockFactory();
+   }
+ 
+   /**

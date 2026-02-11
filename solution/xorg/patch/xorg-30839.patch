@@ -1,0 +1,13 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 7a9932a..b47ae59 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -624,7 +624,7 @@ CloseDevice(DeviceIntPtr dev)
+ 	(void)(*dev->deviceProc)(dev, DEVICE_CLOSE);
+ 
+     /* free sprite memory */
+-    if (IsPointerDevice(dev))
++    if (dev->isMaster && dev->spriteInfo->sprite)
+         screen->DeviceCursorCleanup(dev, screen);
+ 
+     xfree(dev->name);

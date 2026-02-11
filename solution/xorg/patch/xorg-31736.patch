@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 2fd56a2..d375da8 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -2250,9 +2250,7 @@ xf86_crtc_clip_video_helper(ScrnInfoPtr pScrn,
+ 	    REGION_INIT (pScreen, &crtc_region_local, &crtc_box, 1);
+ 	    crtc_region = &crtc_region_local;
+ 	    REGION_INTERSECT (pScreen, crtc_region, crtc_region, reg);
+-	} else
+-	    return FALSE;
+-
++	}
+ 	*crtc_ret = crtc;
+     }
+ 

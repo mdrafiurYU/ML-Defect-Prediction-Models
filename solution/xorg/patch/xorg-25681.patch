@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index 4587500..5112530 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -222,6 +222,10 @@ pointer xf86AddInputHandler(int fd, InputHandlerProc proc, pointer data);
+ int xf86RemoveInputHandler(pointer handler);
+ void xf86DisableInputHandler(pointer handler);
+ void xf86EnableInputHandler(pointer handler);
++pointer xf86AddGeneralHandler(int fd, InputHandlerProc proc, pointer data);
++int xf86RemoveGeneralHandler(pointer handler);
++void xf86DisableGeneralHandler(pointer handler);
++void xf86EnableGeneralHandler(pointer handler);
+ void xf86InterceptSignals(int *signo);
+ void xf86InterceptSigIll(void (*sigillhandler)(void));
+ Bool xf86EnableVTSwitch(Bool new);

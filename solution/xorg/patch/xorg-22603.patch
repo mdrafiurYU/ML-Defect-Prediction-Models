@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/accel/rlBlt.c b/miext/rootless/accel/rlBlt.c
+index ad4ebf1..e5fa5f7 100644
+--- a/miext/rootless/accel/rlBlt.c
++++ b/miext/rootless/accel/rlBlt.c
+@@ -28,6 +28,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/fb/fbblt.c,v 1.8 2000/09/28 00:47:22 keithp Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ #include "rootlessCommon.h"
+ #include "rlAccel.h"

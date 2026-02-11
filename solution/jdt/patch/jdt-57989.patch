@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java
+index 0892d05..5bef88f 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java
+@@ -177,6 +177,11 @@ public class ReconcileWorkingCopyOperation extends JavaModelOperation {
+ 						}
+ 						if (this.progressMonitor != null) this.progressMonitor.worked(1);
+ 					}
++			    } catch (JavaModelException e) {
++			    	if (JavaProject.hasJavaNature(workingCopy.getJavaProject().getProject()))
++			    		throw e;
++			    	// else JavaProject has lost its nature (or most likely was closed/deleted) while reconciling -> ignore
++			    	// (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=100919)
+ 			    } finally {
+ 			        if (unit != null) {
+ 			            unit.cleanUp();

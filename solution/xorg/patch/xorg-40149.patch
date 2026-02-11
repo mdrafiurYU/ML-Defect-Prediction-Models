@@ -1,0 +1,14 @@
+diff --git a/fb/fboverlay.c b/fb/fboverlay.c
+index f9f7c52..1432cb6 100644
+--- a/fb/fboverlay.c
++++ b/fb/fboverlay.c
+@@ -33,7 +33,8 @@
+ #include "fboverlay.h"
+ #include "shmint.h"
+ 
+-static DevPrivateKey fbOverlayScreenPrivateKey = &fbOverlayScreenPrivateKey;
++static int fbOverlayScreenPrivateKeyIndex;
++static DevPrivateKey fbOverlayScreenPrivateKey = &fbOverlayScreenPrivateKeyIndex;
+ 
+ DevPrivateKey fbOverlayGetScreenPrivateKey(void)
+ {

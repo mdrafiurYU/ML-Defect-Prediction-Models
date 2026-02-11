@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Length.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Length.java
+index 74b0c77..f56ddd3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Length.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Length.java
+@@ -28,12 +28,13 @@ package org.apache.jackrabbit.core.query.jsr283.qom;
+  *
+  * @since JCR 2.0
+  */
+-public interface Length
+-        extends DynamicOperand {
++public interface Length extends DynamicOperand {
++
+     /**
+      * Gets the property value for which to compute the length.
+      *
+      * @return the property value; non-null
+      */
+-    public PropertyValue getPropertyValue();
++    PropertyValue getPropertyValue();
++
+ }

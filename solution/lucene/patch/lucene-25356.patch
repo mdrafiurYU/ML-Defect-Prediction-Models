@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java b/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java
+index 7d01ae0..4196041 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java
+@@ -155,7 +155,7 @@ public class TestFilterIndexReader extends LuceneTestCase {
+       assertTrue(terms.term().utf8ToString().indexOf('e') != -1);
+     }
+     
+-    assertEquals(TermsEnum.SeekStatus.FOUND, terms.seek(new BytesRef("one")));
++    assertEquals(TermsEnum.SeekStatus.FOUND, terms.seekCeil(new BytesRef("one")));
+     
+     DocsAndPositionsEnum positions = terms.docsAndPositions(MultiFields.getDeletedDocs(reader),
+                                                             null);

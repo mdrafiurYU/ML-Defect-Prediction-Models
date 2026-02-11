@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86AutoConfig.c b/hw/xfree86/common/xf86AutoConfig.c
+index 89e2afa..d2d1c6f 100644
+--- a/hw/xfree86/common/xf86AutoConfig.c
++++ b/hw/xfree86/common/xf86AutoConfig.c
+@@ -217,7 +217,7 @@ xf86AutoConfig(void)
+     char buf[1024];
+     struct pci_device_iterator *iter;
+     struct pci_device * info = NULL;
+-    char *driver = NULL;
++    const char *driver = NULL;
+     ConfigStatus ret;
+ 
+     /* Find the primary device, and get some information about it. */

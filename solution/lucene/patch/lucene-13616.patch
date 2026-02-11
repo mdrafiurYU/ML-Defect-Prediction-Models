@@ -1,0 +1,26 @@
+diff --git a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java
+index f97918b..87cc337 100644
+--- a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java
++++ b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java
+@@ -90,19 +90,8 @@ public class ExtractingDocumentLoader extends ContentStreamLoader {
+     this.processor = processor;
+ 
+     templateAdd = new AddUpdateCommand();
+-    templateAdd.allowDups = false;
+-    templateAdd.overwriteCommitted = true;
+-    templateAdd.overwritePending = true;
+-
+-    if (params.getBool(UpdateParams.OVERWRITE, true)) {
+-      templateAdd.allowDups = false;
+-      templateAdd.overwriteCommitted = true;
+-      templateAdd.overwritePending = true;
+-    } else {
+-      templateAdd.allowDups = true;
+-      templateAdd.overwriteCommitted = false;
+-      templateAdd.overwritePending = false;
+-    }
++    templateAdd.overwrite = params.getBool(UpdateParams.OVERWRITE, true);
++
+     //this is lightweight
+     autoDetectParser = new AutoDetectParser(config);
+     this.factory = factory;

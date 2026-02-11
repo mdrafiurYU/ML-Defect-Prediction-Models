@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
+index 6696c76..dae3596 100644
+--- a/xkb/xkbActions.c
++++ b/xkb/xkbActions.c
+@@ -1074,7 +1074,7 @@ int		button;
+ 	switch (filter->upAction.type) {
+ 	    case XkbSA_LockDeviceBtn:
+ 		if ((filter->upAction.devbtn.flags&XkbSA_LockNoUnlock)||
+-		    BitIsOn(dev->button->down, button))
++		    !BitIsOn(dev->button->down, button))
+ 		    return 0;
+ 		XkbDDXFakeDeviceButton(dev,False,button);
+ 		break;

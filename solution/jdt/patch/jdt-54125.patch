@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
+index 364ad50..a3ceeff 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
+@@ -432,7 +432,7 @@ public class ConstructorDeclaration extends AbstractMethodDeclaration {
+ 				this.constructorCall.resolve(this.scope);
+ 			}
+ 		}
+-		if ((modifiers & AccSemicolonBody) != 0) {
++		if ((this.modifiers & ExtraCompilerModifiers.AccSemicolonBody) != 0) {
+ 			this.scope.problemReporter().methodNeedBody(this);		
+ 		}
+ 		super.resolveStatements();

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/PathFactory.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/PathFactory.java
+index fa6fd88..5dbcca1 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/PathFactory.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/PathFactory.java
+@@ -119,7 +119,7 @@ public interface PathFactory {
+     public Path create(String pathString) throws IllegalArgumentException;
+ 
+     /**
+-     * Creates a path element with the given qualified name.
++     * Creates a path element from the given <code>name</code>.
+      * The created path element does not contain an explicit index.
+      * <p/>
+      * If the specified name denotes a <i>special</i> path element (either

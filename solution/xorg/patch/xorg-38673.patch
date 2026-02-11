@@ -1,0 +1,13 @@
+diff --git a/render/render.c b/render/render.c
+index 16b8eb3..7787e18 100644
+--- a/render/render.c
++++ b/render/render.c
+@@ -1569,6 +1569,8 @@ ProcRenderCreateCursor (ClientPtr client)
+     pScreen = pSrc->pDrawable->pScreen;
+     width = pSrc->pDrawable->width;
+     height = pSrc->pDrawable->height;
++    if (height && width > UINT32_MAX/(height*sizeof(CARD32)))
++	return BadAlloc;
+     if ( stuff->x > width 
+       || stuff->y > height )
+ 	return (BadMatch);

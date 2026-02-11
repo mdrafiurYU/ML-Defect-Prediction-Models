@@ -1,0 +1,29 @@
+diff --git a/hw/xfree86/xf8_32bpp/cfb8_32.h b/hw/xfree86/xf8_32bpp/cfb8_32.h
+index 969fa29..31028a3 100644
+--- a/hw/xfree86/xf8_32bpp/cfb8_32.h
++++ b/hw/xfree86/xf8_32bpp/cfb8_32.h
+@@ -27,24 +27,6 @@ extern int cfb8_32GetGCPrivateIndex(void);
+ extern int cfb8_32ScreenPrivateIndex;	/* XXX */
+ extern int cfb8_32GetScreenPrivateIndex(void);
+ 
+-void
+-cfb8_32SaveAreas(
+-    PixmapPtr	  	pPixmap,
+-    RegionPtr	  	prgnSave, 
+-    int	    	  	xorg,
+-    int	    	  	yorg,
+-    WindowPtr		pWin
+-);
+-
+-void
+-cfb8_32RestoreAreas(
+-    PixmapPtr	  	pPixmap, 
+-    RegionPtr	  	prgnRestore,
+-    int	    	  	xorg,
+-    int	    	  	yorg,
+-    WindowPtr		pWin
+-);
+-
+ RegionPtr
+ cfb8_32CopyArea(
+     DrawablePtr pSrcDraw,

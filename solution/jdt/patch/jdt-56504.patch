@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java
+index 760ab2e..1caf556 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java
+@@ -250,7 +250,7 @@ public class BlockScope extends Scope {
+ 					// assign variable position
+ 					local.resolvedPosition = this.offset;
+ 
+-					if ((local.type == LongBinding) || (local.type == DoubleBinding)) {
++					if ((local.type == TypeBinding.LONG) || (local.type == TypeBinding.DOUBLE)) {
+ 						this.offset += 2;
+ 					} else {
+ 						this.offset++;

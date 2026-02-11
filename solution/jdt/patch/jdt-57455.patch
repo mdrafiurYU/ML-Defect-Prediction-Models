@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java
+index 1cb662f..6790fea 100644
+--- a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java
++++ b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java
+@@ -25,7 +25,7 @@ public void cleanStarting(IJavaProject project) {
+ 	PARTICIPANT.cleanStarting(project);
+ }
+ 
+-public void buildStarting(ICompilationParticipantResult[] files, boolean isBatchBuild) {
++public void buildStarting(BuildContext[] files, boolean isBatchBuild) {
+ 	PARTICIPANT.buildStarting(files, isBatchBuild);
+ }
+ 
+@@ -37,7 +37,7 @@ public boolean isAnnotationProcessor() {
+ 	return PARTICIPANT != null && PARTICIPANT.isAnnotationProcessor();
+ }
+ 
+-public void processAnnotations(ICompilationParticipantResult[] files) {
++public void processAnnotations(BuildContext[] files) {
+ 	PARTICIPANT.processAnnotations(files);
+ }
+ }

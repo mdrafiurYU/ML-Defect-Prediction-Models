@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/CommentFormatterUtil.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/CommentFormatterUtil.java
+index 77c9d8f..3fdfb88 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/CommentFormatterUtil.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/CommentFormatterUtil.java
+@@ -16,6 +16,7 @@ import java.util.Map;
+ import org.eclipse.text.edits.MalformedTreeException;
+ import org.eclipse.text.edits.TextEdit;
+ 
++import org.eclipse.core.runtime.Assert;
+ import org.eclipse.jface.text.BadLocationException;
+ import org.eclipse.jface.text.Document;
+ import org.eclipse.jface.text.IDocument;
+@@ -26,8 +27,6 @@ import org.eclipse.jdt.core.ToolFactory;
+ import org.eclipse.jdt.core.formatter.CodeFormatter;
+ import org.eclipse.jdt.core.formatter.DefaultCodeFormatterConstants;
+ 
+-import org.eclipse.jdt.internal.core.Assert;
+-
+ /**
+  * Utilities for the comment formatter.
+  *

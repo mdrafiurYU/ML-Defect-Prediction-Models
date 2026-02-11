@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+index 7e45e80..42bbedc 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+@@ -2893,7 +2893,7 @@ public abstract class Scope
+ 			nextTypeCheck:	for (int j = 0; j < typeLength; j++) {
+ 				TypeBinding type = types[j];
+ 				for (int k = 0; k < lubTypeLength; k++) {
+-					if (lubTypes[k] == type) continue nextTypeCheck; // type found, jump to next one
++					if (lubTypes[k] == type || lubTypes[k].isEquivalentTo(type)) continue nextTypeCheck; // type found, jump to next one 
+ 				}
+ 				continue nextLubCheck; // type not found in current lubTypes
+ 			}

@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/ramdac/xf86Cursor.c b/hw/xfree86/ramdac/xf86Cursor.c
+index a930cdd..17a4966 100644
+--- a/hw/xfree86/ramdac/xf86Cursor.c
++++ b/hw/xfree86/ramdac/xf86Cursor.c
+@@ -198,7 +198,6 @@ xf86CursorEnableDisableFBAccess(
+     ScreenPtr pScreen = screenInfo.screens[index];
+     xf86CursorScreenPtr ScreenPriv =
+ 	pScreen->devPrivates[xf86CursorScreenIndex].ptr;
+-    xf86CursorInfoPtr infoPtr = ScreenPriv->CursorInfoPtr;
+ 
+     if (!enable && ScreenPriv->CurrentCursor != NullCursor) {
+ 	ScreenPriv->SavedCursor = ScreenPriv->CurrentCursor;
+@@ -291,6 +290,9 @@ xf86CursorSetCursor(ScreenPtr pScreen, CursorPtr pCurs, int x, int y)
+     ScreenPriv->y = y;
+     ScreenPriv->CursorToRestore = NULL;
+ 
++    if (!infoPtr->pScrn->vtSema)
++	 ScreenPriv->SavedCursor = pCurs;
++
+     if (pCurs == NullCursor) {	/* means we're supposed to remove the cursor */
+ 	if (ScreenPriv->SWCursor)
+ 	    (*ScreenPriv->spriteFuncs->SetCursor)(pScreen, NullCursor, x, y);

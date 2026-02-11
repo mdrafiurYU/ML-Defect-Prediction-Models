@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferenceLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferenceLocator.java
+index 3a5cffc..bc2e2c7 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferenceLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferenceLocator.java
+@@ -117,7 +117,6 @@ protected int matchLevel(ImportReference importRef) {
+ 		}
+ 		switch (this.matchMode) {
+ 			case SearchPattern.R_EXACT_MATCH:
+-				if (this.isCamelCase) break;
+ 			case SearchPattern.R_PREFIX_MATCH:
+ 				if (CharOperation.prefixEquals(qualifiedPattern, qualifiedTypeName, this.isCaseSensitive)) {
+ 					return POSSIBLE_PREFIX_MATCH;

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Scope.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Scope.java
+index 0fbe0a2..977ae0f 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Scope.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Scope.java
+@@ -106,7 +106,7 @@ public class Scope implements XmlSerializable {
+      * @return Scope object.
+      */
+     public static Scope create(String localName, Namespace namespace) {
+-        String key = DomUtil.getQualifiedName(localName, namespace);
++        String key = DomUtil.getExpandedName(localName, namespace);
+         if (scopes.containsKey(key)) {
+             return (Scope) scopes.get(key);
+         } else {

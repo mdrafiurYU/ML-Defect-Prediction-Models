@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+index 3768bd4..b14680d 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+@@ -26343,4 +26343,15 @@ public void test851() {
+ 		"Zork cannot be resolved to a type\n" + 
+ 		"----------\n");	
+ }
++//https://bugs.eclipse.org/bugs/show_bug.cgi?id=106466
++public void test852() {
++	this.runConformTest(
++		new String[] {
++			"X.java", // =================
++			"public class X {\n" + 
++			"	<T extends Runnable, U extends T & Runnable>  T foo() { return null; }\n" + 
++			"}\n", // =================
++		},
++		"");	
++}
+ }

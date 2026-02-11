@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
+index a2aa656..65b9c55 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
+@@ -50,12 +50,14 @@ public class JavaSourceFilePrintWriter extends PrintWriter {
+         else if ( phase == Phase.BUILD)	
+         {
+         	try {
+-				FileGenerationResult result = gfm.generateFileDuringBuild( _env.getFile(),  _typeName, contents, null /* progress monitor */ );
+-				_env.addGeneratedFile( result.getFile(), result.isModified());
+-				
+-				// don't set to false, we don't want to overwrite a previous iteration setting it to true
+-				if ( result.getSourcePathChanged() )
+-					_env.setSourcePathChanged( true );
++				FileGenerationResult result = gfm.generateFileDuringBuild( 
++						_env.getFile(),  _typeName, contents, _env, null /* progress monitor */ );
++				if( result != null ){		
++					_env.addGeneratedFile( result.getFile(), result.isModified());
++					// don't set to false, we don't want to overwrite a previous iteration setting it to true
++					if ( result.getSourcePathChanged() )
++						_env.setSourcePathChanged( true );
++				}
+         	}
+         	catch (CoreException ce) {
+         		AptPlugin.log(ce, "Failure generating file"); //$NON-NLS-1$

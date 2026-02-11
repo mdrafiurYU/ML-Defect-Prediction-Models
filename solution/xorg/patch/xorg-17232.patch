@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Config.h b/hw/xfree86/common/xf86Config.h
+index e54da3d..77b25ed 100644
+--- a/hw/xfree86/common/xf86Config.h
++++ b/hw/xfree86/common/xf86Config.h
+@@ -27,6 +27,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _xf86_config_h
+ #define _xf86_config_h
+ 

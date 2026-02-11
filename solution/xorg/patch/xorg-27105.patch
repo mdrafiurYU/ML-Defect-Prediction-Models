@@ -1,0 +1,19 @@
+diff --git a/randr/rrdispatch.c b/randr/rrdispatch.c
+index 6b61b9c..b1ec68b 100644
+--- a/randr/rrdispatch.c
++++ b/randr/rrdispatch.c
+@@ -72,12 +72,12 @@ ProcRRSelectInput (ClientPtr client)
+     XID		clientResource;
+ 
+     REQUEST_SIZE_MATCH(xRRSelectInputReq);
+-    pWin = SecurityLookupWindow (stuff->window, client, SecurityWriteAccess);
++    pWin = SecurityLookupWindow (stuff->window, client, DixWriteAccess);
+     if (!pWin)
+ 	return BadWindow;
+     pHead = (RREventPtr *)SecurityLookupIDByType(client,
+ 						 pWin->drawable.id, RREventType,
+-						 SecurityWriteAccess);
++						 DixWriteAccess);
+ 
+     if (stuff->enable & (RRScreenChangeNotifyMask|
+ 			 RRCrtcChangeNotifyMask|

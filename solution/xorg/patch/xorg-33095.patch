@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbAccessX.c b/xkb/xkbAccessX.c
+index 063c844..b26c918 100644
+--- a/xkb/xkbAccessX.c
++++ b/xkb/xkbAccessX.c
+@@ -691,7 +691,7 @@ ProcessPointerEvent(	register xEvent  *	xE,
+ 			register DeviceIntPtr	mouse, 
+ 			int		        count)
+ {
+-DeviceIntPtr	dev = (DeviceIntPtr)LookupKeyboardDevice();
++DeviceIntPtr	dev = GetPairedDevice(mouse);
+ XkbSrvInfoPtr	xkbi = dev->key->xkbInfo;
+ unsigned 	changed = 0;
+ ProcessInputProc backupproc;

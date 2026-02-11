@@ -1,0 +1,15 @@
+diff --git a/randr/mirandr.c b/randr/mirandr.c
+index ac29485..b1e19a7 100644
+--- a/randr/mirandr.c
++++ b/randr/mirandr.c
+@@ -25,6 +25,10 @@
+  */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "scrnintstr.h"
+ #include "mi.h"
+ #include <X11/extensions/randr.h>

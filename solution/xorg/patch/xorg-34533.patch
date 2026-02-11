@@ -1,0 +1,27 @@
+diff --git a/xkb/xkbAccessX.c b/xkb/xkbAccessX.c
+index 4c6e3d4..43b82e1 100644
+--- a/xkb/xkbAccessX.c
++++ b/xkb/xkbAccessX.c
+@@ -308,14 +308,19 @@ xkbControlsNotify	cn;
+ static CARD32
+ AccessXRepeatKeyExpire(OsTimerPtr timer,CARD32 now,pointer arg)
+ {
+-XkbSrvInfoPtr	xkbi= ((DeviceIntPtr)arg)->key->xkbInfo;
++DeviceIntPtr    dev = (DeviceIntPtr) arg;
++XkbSrvInfoPtr	xkbi = dev->key->xkbInfo;
+ KeyCode		key;
++BOOL            is_core;
+ 
+     if (xkbi->repeatKey==0)
+ 	return 0;
++
++    is_core = (dev == inputInfo.keyboard);
+     key= xkbi->repeatKey;
+-    AccessXKeyboardEvent((DeviceIntPtr)arg,KeyRelease,key,True);
+-    AccessXKeyboardEvent((DeviceIntPtr)arg,KeyPress,key,True);
++    AccessXKeyboardEvent(dev, is_core ? KeyRelease : DeviceKeyRelease, key,
++                         True);
++    AccessXKeyboardEvent(dev, is_core ? KeyPress : DeviceKeyPress, key, True);
+     return xkbi->desc->ctrls->repeat_interval;
+ }
+ 

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/NormsWriter.java b/lucene/src/java/org/apache/lucene/index/NormsWriter.java
+index c145227..0368322 100644
+--- a/lucene/src/java/org/apache/lucene/index/NormsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/NormsWriter.java
+@@ -37,7 +37,7 @@ import org.apache.lucene.search.Similarity;
+ 
+ final class NormsWriter extends InvertedDocEndConsumer {
+ 
+-  private static final byte defaultNorm = Similarity.getDefault().encodeNormValue(1.0f);
++  private final byte defaultNorm = Similarity.getDefault().encodeNormValue(1.0f);
+   private FieldInfos fieldInfos;
+   @Override
+   public InvertedDocEndConsumerPerThread addThread(DocInverterPerThread docInverterPerThread) {

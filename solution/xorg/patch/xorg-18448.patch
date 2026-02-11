@@ -1,0 +1,60 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index bdb51f2..55eff43 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -1,4 +1,4 @@
+-/* $XdotOrg: xserver/xorg/mi/miinitext.c,v 1.28 2005/12/29 00:19:33 anholt Exp $ */
++/* $XdotOrg: xserver/xorg/mi/miinitext.c,v 1.29 2006/01/06 23:06:15 ajax Exp $ */
+ /* $XFree86: xc/programs/Xserver/mi/miinitext.c,v 3.67 2003/01/12 02:44:27 dawes Exp $ */
+ /***********************************************************
+ 
+@@ -106,7 +106,6 @@ SOFTWARE.
+ #undef XFreeXDGA
+ #undef XF86DRI
+ #undef DPMSExtension
+-#undef DPSEXT
+ #undef FONTCACHE
+ #undef DAMAGE
+ #undef XFIXES
+@@ -132,9 +131,6 @@ extern Bool noDamageExtension;
+ #ifdef DBE
+ extern Bool noDbeExtension;
+ #endif
+-#ifdef DPSEXT
+-extern Bool noDPSExtension;
+-#endif
+ #ifdef DPMSExtension
+ extern Bool noDPMSExtension;
+ #endif
+@@ -371,9 +367,6 @@ extern void XcupExtensionInit(INITARGS);
+ #ifdef DPMSExtension
+ extern void DPMSExtensionInit(INITARGS);
+ #endif
+-#ifdef DPSEXT
+-extern void DPSExtensionInit(INITARGS);
+-#endif
+ #ifdef FONTCACHE
+ extern void FontCacheExtensionInit(INITARGS);
+ #endif
+@@ -425,9 +418,6 @@ static ExtensionToggle ExtensionToggleList[] =
+ #ifdef DBE
+     { "DOUBLE-BUFFER", &noDbeExtension },
+ #endif
+-#ifdef DPSEXT
+-    { "DPSExtension", &noDPSExtension },
+-#endif
+ #ifdef DPMSExtension
+     { "DPMS", &noDPMSExtension },
+ #endif
+@@ -659,11 +649,6 @@ InitExtensions(argc, argv)
+     if (!noGlxExtension) DarwinGlxExtensionInit();
+ #endif
+ #endif
+-#ifdef DPSEXT
+-#ifndef XPRINT
+-    if (!noDPSExtension) DPSExtensionInit();
+-#endif
+-#endif
+ #ifdef XFIXES
+     /* must be before Render to layer DisplayCursor correctly */
+     if (!noXFixesExtension) XFixesExtensionInit();

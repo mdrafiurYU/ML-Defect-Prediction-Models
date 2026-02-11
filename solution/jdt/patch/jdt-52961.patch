@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index bcab5c1..5ba7ab3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -77,7 +77,7 @@ public CodeStream(ClassFile classFile, long targetLevel) {
+ 	this.generateLineNumberAttributes = (classFile.produceDebugAttributes & CompilerOptions.Lines) != 0;
+ 	this.generateLocalVariableTableAttributes = (classFile.produceDebugAttributes & CompilerOptions.Vars) != 0;
+ 	if (this.generateLineNumberAttributes) {
+-		this.lineSeparatorPositions = classFile.referenceBinding.scope.referenceCompilationUnit().compilationResult.lineSeparatorPositions;
++		this.lineSeparatorPositions = classFile.referenceBinding.scope.referenceCompilationUnit().compilationResult.getLineSeparatorPositions();
+ 	}
+ }
+ final public void aaload() {

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+index 7010162..3f11281 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+@@ -2794,7 +2794,9 @@ public class JavaModelManager implements ISaveParticipant {
+ 
+ 			// update cache - do not only rely on listener refresh		
+ 			if (variablePath == null) {
+-				this.variables.remove(variableName);
++				// if path is null, record that the variable was removed to avoid asking the initializer to initialize it again
++				// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=112609
++				this.variables.put(variableName, new Path(CP_ENTRY_IGNORE));
+ 			} else {
+ 				this.variables.put(variableName, variablePath);
+ 			}

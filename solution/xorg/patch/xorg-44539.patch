@@ -1,0 +1,12 @@
+diff --git a/dix/events.c b/dix/events.c
+index e1410ed..10814fa 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -3420,6 +3420,7 @@ CheckPassiveGrabsOnWindow(
+                            "(%d, %d).\n", device->name, event->type, rc);
+                     continue;
+                 }
++                count = 1;
+             } else
+             {
+                 rc = EventToXI((InternalEvent*)event, &xE, &count);

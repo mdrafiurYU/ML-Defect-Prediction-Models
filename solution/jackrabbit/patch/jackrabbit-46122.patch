@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NameQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NameQuery.java
+index 6617dc7..9e729a7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NameQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NameQuery.java
+@@ -87,7 +87,7 @@ public class NameQuery extends Query {
+             // use LABEL field
+             try {
+                 return new TermQuery(new Term(FieldNames.LABEL,
+-                        nsMappings.translatePropertyName(nodeName)));
++                        nsMappings.translateName(nodeName)));
+             } catch (IllegalNameException e) {
+                 throw Util.createIOException(e);
+             }

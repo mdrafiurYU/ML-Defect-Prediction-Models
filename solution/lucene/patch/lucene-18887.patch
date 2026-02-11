@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/queries/src/java/org/apache/lucene/search/SlowCollatedTermRangeQuery.java b/lucene/contrib/queries/src/java/org/apache/lucene/search/SlowCollatedTermRangeQuery.java
+index 8bda65a..59db72b 100644
+--- a/lucene/contrib/queries/src/java/org/apache/lucene/search/SlowCollatedTermRangeQuery.java
++++ b/lucene/contrib/queries/src/java/org/apache/lucene/search/SlowCollatedTermRangeQuery.java
+@@ -22,6 +22,8 @@ import java.text.Collator;
+ 
+ import org.apache.lucene.index.Terms;
+ import org.apache.lucene.index.TermsEnum;
++import org.apache.lucene.search.MultiTermQuery; // javadoc
++import org.apache.lucene.search.NumericRangeQuery; // javadoc
+ import org.apache.lucene.util.AttributeSource;
+ import org.apache.lucene.util.ToStringUtils;

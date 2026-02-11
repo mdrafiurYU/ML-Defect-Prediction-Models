@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 5430020..c08b15f 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -408,7 +408,7 @@ NewInputDeviceRequest (InputOption *options, DeviceIntPtr *pdev)
+ 
+     dev = pInfo->dev;
+     ActivateDevice(dev);
+-    if (dev->inited && dev->startup)
++    if (dev->inited && dev->startup && xf86Screens[0]->vtSema)
+         EnableDevice(dev);
+ 
+     *pdev = dev;

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/linux/int10/linux.c b/hw/xfree86/os-support/linux/int10/linux.c
+index b15f7fd..06f42f8 100644
+--- a/hw/xfree86/os-support/linux/int10/linux.c
++++ b/hw/xfree86/os-support/linux/int10/linux.c
+@@ -292,10 +292,6 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
+ 	    pInt->BIOSseg = V_BIOS >> 4;
+ 	    break;
+ 	}
+-	case BUS_ISA:
+-	    if (!xf86int10GetBiosSegment(pInt, NULL))
+-		goto error3;
+-	    break;
+ 	default:
+ 	    goto error3;
+ 	}

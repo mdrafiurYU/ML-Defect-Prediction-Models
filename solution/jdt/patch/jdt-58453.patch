@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java
+index febcb5a..f1a9e8e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java
+@@ -28,7 +28,7 @@ public class JavaCorePreferenceInitializer extends AbstractPreferenceInitializer
+ 	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
+ 	 */
+ 	public void initializeDefaultPreferences() {
+-
++		// If modified, also modify the method JavaModelManager#getDefaultOptionsNoInitialization()
+ 		// Get options names set
+ 		HashSet optionNames = JavaModelManager.getJavaModelManager().optionNames;

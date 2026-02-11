@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+index 70e7d25..673782b 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+@@ -658,7 +658,7 @@ public class TestIndexWriterReader extends LuceneTestCase {
+     
+     ((LogMergePolicy) writer.getConfig().getMergePolicy()).setMergeFactor(2);
+ 
+-    int num = 100 * RANDOM_MULTIPLIER;
++    int num = atLeast(100);
+     for (int i = 0; i < num; i++) {
+       writer.addDocument(createDocument(i, "test", 4));
+     }

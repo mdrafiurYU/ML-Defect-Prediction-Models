@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTestsRequestor2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTestsRequestor2.java
+index 47e8f4b..3135388 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTestsRequestor2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTestsRequestor2.java
+@@ -139,9 +139,15 @@ public class CompletionTestsRequestor2 extends CompletionRequestor {
+ 				break;
+ 			case CompletionProposal.METHOD_DECLARATION :
+ 				buffer.append("METHOD_DECLARATION"); //$NON-NLS-1$
++				if(proposal.isConstructor()) {
++					buffer.append("<CONSTRUCTOR>"); //$NON-NLS-1$
++				}
+ 				break;
+ 			case CompletionProposal.METHOD_REF :
+ 				buffer.append("METHOD_REF"); //$NON-NLS-1$
++				if(proposal.isConstructor()) {
++					buffer.append("<CONSTRUCTOR>"); //$NON-NLS-1$
++				}
+ 				break;
+ 			case CompletionProposal.PACKAGE_REF :
+ 				buffer.append("PACKAGE_REF"); //$NON-NLS-1$

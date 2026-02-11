@@ -1,0 +1,17 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 449be9e..a2e2c0f 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -2316,10 +2316,8 @@ ChangeDeviceControl(register ClientPtr client, DeviceIntPtr pDev,
+         /* FIXME do something more intelligent here */
+         return BadMatch;
+ 
+-    case DEVICE_TOUCHSCREEN:
+-        if (!pDev->touchscreen)
+-            return BadDevice;
+-        else
++    case DEVICE_ABS_CALIB:
++    case DEVICE_ABS_AREA:
+             return Success;
+ 
+     case DEVICE_CORE:

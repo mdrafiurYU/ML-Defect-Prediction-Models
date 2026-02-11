@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java
+index daca88d..73230b5 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java
+@@ -109,7 +109,7 @@ public class WorkspaceCopyBetweenWorkspacesTest extends AbstractWorkspaceCopyBet
+      * sufficient access permissions to complete the operation.
+      */
+     public void testCopyNodesAccessDenied() throws RepositoryException {
+-        Session readOnlySuperuser = helper.getReadOnlySession();
++        Session readOnlySuperuser = getHelper().getReadOnlySession();
+         try {
+             String dstAbsPath = node2.getPath() + "/" + node1.getName();
+             try {

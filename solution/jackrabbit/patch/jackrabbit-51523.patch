@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java
+index 2e3ee5c..e85ad34 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java
+@@ -845,11 +845,12 @@ public interface RepositoryService {
+      *
+      * @param sessionInfo
+      * @param nodeId
+-     * @param baselineId   @return  @throws UnsupportedRepositoryOperationException
++     * @return
++     * @throws UnsupportedRepositoryOperationException
+      * @throws RepositoryException
+-     * @see javax.jcr.version.VersionManager#createConfiguration(String, Version)
++     * @see javax.jcr.version.VersionManager#createConfiguration(String)
+      */
+-    public NodeId createConfiguration(SessionInfo sessionInfo, NodeId nodeId, NodeId baselineId) throws UnsupportedRepositoryOperationException, RepositoryException;
++    public NodeId createConfiguration(SessionInfo sessionInfo, NodeId nodeId) throws UnsupportedRepositoryOperationException, RepositoryException;
+ 
+     //----------------------------------------------------------< Searching >---
+     /**

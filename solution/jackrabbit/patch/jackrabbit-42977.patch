@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PropertiesSynonymProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PropertiesSynonymProvider.java
+index 665377b..521a98e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PropertiesSynonymProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PropertiesSynonymProvider.java
+@@ -89,9 +89,7 @@ public class PropertiesSynonymProvider implements SynonymProvider {
+             configLastModified = config.lastModified();
+             lastCheck = System.currentTimeMillis();
+         } catch (FileSystemException e) {
+-            IOException ex = new IOException();
+-            ex.initCause(e);
+-            throw ex;
++            throw Util.createIOException(e);
+         }
+     }
+ 
+@@ -161,9 +159,7 @@ public class PropertiesSynonymProvider implements SynonymProvider {
+             }
+             return synonyms;
+         } catch (FileSystemException e) {
+-            IOException ex = new IOException();
+-            ex.initCause(e);
+-            throw ex;
++            throw Util.createIOException(e);
+         }
+     }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeManagerTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeManagerTest.java
+index 19aa771..c28f978 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeManagerTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeManagerTest.java
+@@ -63,7 +63,9 @@ public class NodeTypeManagerTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        manager = null;
+         super.tearDown();
+     }

@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SignatureTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SignatureTests.java
+index 08a78ea..7a8b975 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SignatureTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SignatureTests.java
+@@ -453,7 +453,15 @@ public void testGetReturnType() {
+ 	assertEquals("Signature#getReturnType is not correct3", "Qlist<Qxxx;>;",
+ 			Signature.getReturnType(methodSig));
+ }
+-
++/**
++ * https://bugs.eclipse.org/bugs/show_bug.cgi?id=112030
++ * @see Signature
++ */
++public void testGetReturnType2() {
++	String methodSig = "(LObject;)+[I";
++	assertEquals("Signature#getReturnType is not correct", "+[I",
++			Signature.getReturnType(methodSig));
++}
+ /**
+  * @see Signature
+  */

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/FieldDoc.java b/lucene/src/java/org/apache/lucene/search/FieldDoc.java
+index faf54a0..e6a5b1a 100644
+--- a/lucene/src/java/org/apache/lucene/search/FieldDoc.java
++++ b/lucene/src/java/org/apache/lucene/search/FieldDoc.java
+@@ -43,7 +43,7 @@ public class FieldDoc extends ScoreDoc {
+    * Sort object.  Each Object will be either an Integer, Float or String,
+    * depending on the type of values in the terms of the original field.
+    * @see Sort
+-   * @see Searcher#search(Query,Filter,int,Sort)
++   * @see IndexSearcher#search(Query,Filter,int,Sort)
+    */
+   public Comparable[] fields;

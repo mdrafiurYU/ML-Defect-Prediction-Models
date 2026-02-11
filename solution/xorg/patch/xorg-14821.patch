@@ -1,0 +1,15 @@
+diff --git a/Xi/chgdctl.h b/Xi/chgdctl.h
+index a7e1c3b..a6a530f 100644
+--- a/Xi/chgdctl.h
++++ b/Xi/chgdctl.h
+@@ -24,6 +24,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ ********************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef CHGDCTL_H
+ #define CHGDCTL_H 1
+ 

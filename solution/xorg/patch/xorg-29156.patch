@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/common/xf86Xinput.h b/hw/xfree86/common/xf86Xinput.h
+index b2bc8de..f5beb6c 100644
+--- a/hw/xfree86/common/xf86Xinput.h
++++ b/hw/xfree86/common/xf86Xinput.h
+@@ -187,6 +187,8 @@ void xf86InitValuatorAxisStruct(DeviceIntPtr dev, int axnum, int minval,
+ void xf86InitValuatorDefaults(DeviceIntPtr dev, int axnum);
+ void xf86AddEnabledDevice(InputInfoPtr pInfo);
+ void xf86RemoveEnabledDevice(InputInfoPtr pInfo);
++void xf86DisableDevice(DeviceIntPtr dev);
++void xf86EnableDevice(DeviceIntPtr dev);
+ 
+ /* xf86Helper.c */
+ void xf86AddInputDriver(InputDriverPtr driver, pointer module, int flags);
+@@ -204,6 +206,7 @@ int xf86GetMotionEvents(DeviceIntPtr dev, xTimecoord *buff,
+ void xf86CollectInputOptions(InputInfoPtr pInfo, const char **defaultOpts,
+ 			     pointer extraOpts);
+ 
++
+ /* Legacy hatred */
+ #define SendCoreEvents 59
+ #define DontSendCoreEvents 60

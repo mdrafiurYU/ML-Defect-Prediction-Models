@@ -1,0 +1,293 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 65d1980..bf1126f 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -85,22 +85,6 @@ SOFTWARE.
+  * This file handles input device-related stuff.
+  */
+ 
+-typedef struct {
+-    KeyClassPtr		key;
+-    ValuatorClassPtr	valuator;
+-    ButtonClassPtr	button;
+-    FocusClassPtr	focus;
+-    ProximityClassPtr	proximity;
+-    AbsoluteClassPtr    absolute;
+-    KbdFeedbackPtr	kbdfeed;
+-    PtrFeedbackPtr	ptrfeed;
+-    IntegerFeedbackPtr	intfeed;
+-    StringFeedbackPtr	stringfeed;
+-    BellFeedbackPtr	bell;
+-    LedFeedbackPtr	leds;
+-} ClassesRec, *ClassesPtr;
+-
+-
+ int CoreDevicePrivatesIndex = 0;
+ static int CoreDevicePrivatesGeneration = -1;
+ int MasterDevClassesPrivIdx = -1;
+@@ -638,78 +622,101 @@ InitAndStartDevices(WindowPtr root)
+     return Success;
+ }
+ 
+-/**
+- * Close down a device and free all resources.
+- * Once closed down, the driver will probably not expect you that you'll ever
+- * enable it again and free associated structs. If you want the device to just
+- * be disabled, DisableDevice().
+- * Don't call this function directly, use RemoveDevice() instead.
+- */
+-static void
+-CloseDevice(DeviceIntPtr dev)
++_X_EXPORT void
++FreeAllDeviceClasses(ClassesPtr classes)
+ {
+-    KbdFeedbackPtr k, knext;
+-    PtrFeedbackPtr p, pnext;
+-    IntegerFeedbackPtr i, inext;
+-    StringFeedbackPtr s, snext;
+-    BellFeedbackPtr b, bnext;
+-    LedFeedbackPtr l, lnext;
+-    ScreenPtr screen = screenInfo.screens[0];
+-    ClassesPtr classes;
+-    int j;
+-
+-    if (!dev)
++    if (!classes)
+         return;
+ 
+-    if (dev->inited)
+-	(void)(*dev->deviceProc)(dev, DEVICE_CLOSE);
++    FreeDeviceClass(KeyClass, (pointer)&classes->key);
++    FreeDeviceClass(ValuatorClass, (pointer)&classes->valuator);
++    FreeDeviceClass(ButtonClass, (pointer)&classes->button);
++    FreeDeviceClass(FocusClass, (pointer)&classes->focus);
++    FreeDeviceClass(ProximityClass, (pointer)&classes->proximity);
+ 
+-    /* free sprite memory */
+-    if (dev->isMaster && dev->spriteInfo->sprite)
+-        screen->DeviceCursorCleanup(dev, screen);
++    FreeFeedbackClass(KbdFeedbackClass, (pointer)&classes->kbdfeed);
++    FreeFeedbackClass(PtrFeedbackClass, (pointer)&classes->ptrfeed);
++    FreeFeedbackClass(IntegerFeedbackClass, (pointer)&classes->intfeed);
++    FreeFeedbackClass(StringFeedbackClass, (pointer)&classes->stringfeed);
++    FreeFeedbackClass(BellFeedbackClass, (pointer)&classes->bell);
++    FreeFeedbackClass(LedFeedbackClass, (pointer)&classes->leds);
+ 
+-    xfree(dev->name);
++}
+ 
+-    if (dev->isMaster)
+-        classes = (ClassesPtr)dev->devPrivates[MasterDevClassesPrivIdx].ptr;
+-    else
+-        classes = (ClassesPtr)&dev->key;
++/**
++ * Free the given device class and reset the pointer to NULL.
++ */
++_X_EXPORT void
++FreeDeviceClass(int type, pointer *class)
++{
++    if (!(*class))
++        return;
+ 
+-    if (classes->key) {
++    switch(type)
++    {
++        case KeyClass:
++            {
++                KeyClassPtr* k = (KeyClassPtr*)class;
+ #ifdef XKB
+-	if (classes->key->xkbInfo)
+-	    XkbFreeInfo(classes->key->xkbInfo);
++                if ((*k)->xkbInfo)
++                    XkbFreeInfo((*k)->xkbInfo);
+ #endif
+-	xfree(classes->key->curKeySyms.map);
+-	xfree(classes->key->modifierKeyMap);
+-	xfree(classes->key);
+-    }
+ 
+-    if (classes->valuator) {
+-        /* Counterpart to 'biggest hack ever' in init. */
+-        if (classes->valuator->motion &&
+-            classes->valuator->GetMotionProc == GetMotionHistory)
+-            xfree(classes->valuator->motion);
+-        xfree(classes->valuator);
++                xfree((*k)->curKeySyms.map);
++                xfree((*k)->modifierKeyMap);
++                xfree((*k));
++                break;
+     }
+-
+-    if (classes->button) {
++        case ButtonClass:
++            {
++                ButtonClassPtr *b = (ButtonClassPtr*)class;
+ #ifdef XKB
+-        if (classes->button->xkb_acts)
+-            xfree(classes->button->xkb_acts);
++                if ((*b)->xkb_acts)
++                    xfree((*b)->xkb_acts);
+ #endif
+-        xfree(classes->button);
++                xfree((*b));
++                break;
+     }
++        case ValuatorClass:
++            {
++                ValuatorClassPtr *v = (ValuatorClassPtr*)class;
+ 
+-    if (classes->focus) {
+-	xfree(classes->focus->trace);
+-	xfree(classes->focus);
++                /* Counterpart to 'biggest hack ever' in init. */
++                if ((*v)->motion && (*v)->GetMotionProc == GetMotionHistory)
++                    xfree((*v)->motion);
++                xfree((*v));
++                break;
++            }
++        case FocusClass:
++            {
++                FocusClassPtr *f = (FocusClassPtr*)class;
++                xfree((*f)->trace);
++                xfree((*f));
++                break;
++            }
++        case ProximityClass:
++            {
++                ProximityClassPtr *p = (ProximityClassPtr*)class;
++                xfree((*p));
++                break;
+     }
+ 
+-    if (classes->proximity)
+-        xfree(classes->proximity);
++    }
++    *class = NULL;
++}
++_X_EXPORT void
++FreeFeedbackClass(int type, pointer *class)
++{
++    if (!(*class))
++        return;
+ 
+-    for (k = classes->kbdfeed; k; k = knext) {
++    switch(type)
++    {
++        case KbdFeedbackClass:
++            {
++                KbdFeedbackPtr *kbdfeed = (KbdFeedbackPtr*)class;
++                KbdFeedbackPtr k, knext;
++                for (k = (*kbdfeed); k; k = knext) {
+ 	knext = k->next;
+ #ifdef XKB
+ 	if (k->xkb_sli)
+@@ -717,30 +724,60 @@ CloseDevice(DeviceIntPtr dev)
+ #endif
+ 	xfree(k);
+     }
++                break;
++            }
++        case PtrFeedbackClass:
++            {
++                PtrFeedbackPtr *ptrfeed = (PtrFeedbackPtr*)class;
++                PtrFeedbackPtr p, pnext;
+ 
+-    for (p = classes->ptrfeed; p; p = pnext) {
++                for (p = (*ptrfeed); p; p = pnext) {
+ 	pnext = p->next;
+ 	xfree(p);
+     }
++                break;
++            }
++        case IntegerFeedbackClass:
++            {
++                IntegerFeedbackPtr *intfeed = (IntegerFeedbackPtr*)class;
++                IntegerFeedbackPtr i, inext;
+ 
+-    for (i = classes->intfeed; i; i = inext) {
++                for (i = (*intfeed); i; i = inext) {
+ 	inext = i->next;
+ 	xfree(i);
+     }
++                break;
++            }
++        case StringFeedbackClass:
++            {
++                StringFeedbackPtr *stringfeed = (StringFeedbackPtr*)class;
++                StringFeedbackPtr s, snext;
+ 
+-    for (s = classes->stringfeed; s; s = snext) {
++                for (s = (*stringfeed); s; s = snext) {
+ 	snext = s->next;
+ 	xfree(s->ctrl.symbols_supported);
+ 	xfree(s->ctrl.symbols_displayed);
+ 	xfree(s);
+     }
++                break;
++            }
++        case BellFeedbackClass:
++            {
++                BellFeedbackPtr *bell = (BellFeedbackPtr*)class;
++                BellFeedbackPtr b, bnext;
+ 
+-    for (b = classes->bell; b; b = bnext) {
++                for (b = (*bell); b; b = bnext) {
+ 	bnext = b->next;
+ 	xfree(b);
+     }
++                break;
++            }
++        case LedFeedbackClass:
++            {
++                LedFeedbackPtr *leds = (LedFeedbackPtr*)class;
++                LedFeedbackPtr l, lnext;
+ 
+-    for (l = classes->leds; l; l = lnext) {
++                for (l = (*leds); l; l = lnext) {
+ 	lnext = l->next;
+ #ifdef XKB
+ 	if (l->xkb_sli)
+@@ -748,6 +785,43 @@ CloseDevice(DeviceIntPtr dev)
+ #endif
+ 	xfree(l);
+     }
++                break;
++            }
++    }
++    *class = NULL;
++}
++/**
++ * Close down a device and free all resources.
++ * Once closed down, the driver will probably not expect you that you'll ever
++ * enable it again and free associated structs. If you want the device to just
++ * be disabled, DisableDevice().
++ * Don't call this function directly, use RemoveDevice() instead.
++ */
++static void
++CloseDevice(DeviceIntPtr dev)
++{
++    ScreenPtr screen = screenInfo.screens[0];
++    ClassesPtr classes;
++    int j;
++
++    if (!dev)
++        return;
++
++    if (dev->inited)
++	(void)(*dev->deviceProc)(dev, DEVICE_CLOSE);
++
++    /* free sprite memory */
++    if (dev->isMaster && dev->spriteInfo->sprite)
++        screen->DeviceCursorCleanup(dev, screen);
++
++    xfree(dev->name);
++
++    if (dev->isMaster)
++        classes = (ClassesPtr)dev->devPrivates[MasterDevClassesPrivIdx].ptr;
++    else
++        classes = (ClassesPtr)&dev->key;
++
++    FreeAllDeviceClasses(classes);
+ 
+ #ifdef XKB
+     while (dev->xkb_interest)

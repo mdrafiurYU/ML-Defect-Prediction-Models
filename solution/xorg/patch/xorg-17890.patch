@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_apm.c b/hw/xfree86/os-support/linux/lnx_apm.c
+index 1c2dc0c..bd78d87 100644
+--- a/hw/xfree86/os-support/linux/lnx_apm.c
++++ b/hw/xfree86/os-support/linux/lnx_apm.c
+@@ -131,8 +131,9 @@ xf86OSPMOpen(void)
+ {
+ 	PMClose ret = NULL;
+ 
+-	/* Favour ACPI over APM */
++	/* Favour ACPI over APM, but only when enabled */
+ 
++	if (!xf86acpiDisableFlag)
+ 	ret = lnxACPIOpen();
+ 
+ 	if (!ret)

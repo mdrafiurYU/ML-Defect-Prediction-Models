@@ -1,0 +1,80 @@
+diff --git a/hw/xgl/xglcopy.c b/hw/xgl/xglcopy.c
+index c11bb25..d612b33 100644
+--- a/hw/xgl/xglcopy.c
++++ b/hw/xgl/xglcopy.c
+@@ -38,6 +38,8 @@ xglCopy (DrawablePtr pSrc,
+     int		    srcXoff, srcYoff;
+     int		    dstXoff, dstYoff;
+ 
++    XGL_DRAWABLE_PIXMAP (pDst);
++
+     if (!nBox)
+ 	return TRUE;
+ 
+@@ -64,12 +66,12 @@ xglCopy (DrawablePtr pSrc,
+ 
+     glitz_copy_area (src,
+ 		     dst,
+-		     pDst->x + srcXoff + dx,
+-		     pDst->y + srcYoff + dy,
+-		     pDst->width,
+-		     pDst->height,
+-		     pDst->x + dstXoff,
+-		     pDst->y + dstYoff);
++		     srcXoff + dx,
++		     srcYoff + dy,
++		     pPixmap->drawable.width - dstXoff,
++		     pPixmap->drawable.height - dstYoff,
++		     dstXoff,
++		     dstYoff);
+ 
+     glitz_surface_set_clip_region (dst, 0, 0, NULL, 0);
+     
+@@ -96,23 +98,15 @@ xglCopyProc (DrawablePtr pSrc,
+ 
+     if (!xglCopy (pSrc, pDst, dx, dy, pBox, nBox))
+     {
+-	RegionPtr	pDamageRegion;
+-	glitz_surface_t *dst;
+-	int		dstXoff, dstYoff;
+ 	RegionRec	region;
+-	BoxRec		box;
+ 	
+ 	XGL_DRAWABLE_PIXMAP (pDst);
+ 	XGL_PIXMAP_PRIV (pPixmap);
+ 
+-	XGL_GET_DRAWABLE (pDst, dst, dstXoff, dstYoff);
+-	
+-	pDamageRegion = DamageRegion (pPixmapPriv->pDamage);
+-
+-	if (!xglMapPixmapBits (pPixmap))
++	if (!xglSyncBits (pSrc, pSrcBox))
+ 	    FatalError (XGL_SW_FAILURE_STRING);
+ 	
+-	if (!xglSyncBits (pSrc, pSrcBox))
++	if (!xglMapPixmapBits (pPixmap))
+ 	    FatalError (XGL_SW_FAILURE_STRING);
+ 
+ 	fbCopyNtoN (pSrc, pDst, pGC,
+@@ -122,19 +116,11 @@ xglCopyProc (DrawablePtr pSrc,
+ 		    (void *) 0);
+ 
+ 	pPixmapPriv->damageBox = miEmptyBox;
+-	if (!pPixmapPriv->format)
+-	    return;
+ 
+ 	while (nBox--)
+ 	{
+-	    box.x1 = pBox->x1 + dstXoff;
+-	    box.y1 = pBox->y1 + dstYoff;
+-	    box.x2 = pBox->x2 + dstXoff;
+-	    box.y2 = pBox->y2 + dstYoff;
+-
+-	    REGION_INIT (pDst->pScreen, &region, &box, 1);
+-	    REGION_UNION (pDst->pScreen,
+-			  pDamageRegion, pDamageRegion, &region);
++	    REGION_INIT (pDst->pScreen, &region, pBox, 1);
++	    xglAddSurfaceDamage (pDst, &region);
+ 	    REGION_UNINIT (pDst->pScreen, &region);
+ 
+ 	    pBox++;

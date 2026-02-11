@@ -1,0 +1,13 @@
+diff --git a/Xext/xf86bigfont.c b/Xext/xf86bigfont.c
+index f50481f..c2f891a 100644
+--- a/Xext/xf86bigfont.c
++++ b/Xext/xf86bigfont.c
+@@ -104,7 +104,7 @@ static unsigned int pagesize;
+ 
+ static Bool badSysCall = FALSE;
+ 
+-#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__CYGWIN__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__CYGWIN__) || defined(__DragonFly__)
+ 
+ #include <sys/signal.h>
+ 

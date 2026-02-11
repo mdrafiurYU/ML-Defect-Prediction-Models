@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winshadddnl.c b/hw/xwin/winshadddnl.c
+index 9c26e05..17b78fe 100644
+--- a/hw/xwin/winshadddnl.c
++++ b/hw/xwin/winshadddnl.c
+@@ -1308,7 +1308,7 @@ winStoreColorsShadowDDNL (ColormapPtr pColormap,
+ 					  + pdefs[0].pixel);
+   if (FAILED (ddrval))
+     {
+-      ErrorF ("winStoreColorsShadowDDNL - SetEntries () failed\n");
++      ErrorF ("winStoreColorsShadowDDNL - SetEntries () failed: %08x\n", ddrval);
+       return FALSE;
+     }
+ 

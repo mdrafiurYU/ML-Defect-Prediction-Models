@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/sysv/sysv_io.c b/hw/xfree86/os-support/sysv/sysv_io.c
+index 3c9e8e3..6fb642b 100644
+--- a/hw/xfree86/os-support/sysv/sysv_io.c
++++ b/hw/xfree86/os-support/sysv/sysv_io.c
+@@ -25,6 +25,10 @@
+  */
+ /* $XConsortium: sysv_io.c /main/8 1996/10/19 18:08:06 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "compiler.h"

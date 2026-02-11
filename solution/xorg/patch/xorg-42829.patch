@@ -1,0 +1,13 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index f6dfb08..ad3529d 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -6611,8 +6611,6 @@ int rc;
+     xkbDebugFlags = newFlags;
+     xkbDebugCtrls = newCtrls;
+ 
+-    XkbDisableLockActions= (xkbDebugCtrls&XkbDF_DisableLocks);
+-
+     rep.type= X_Reply;
+     rep.length = 0;
+     rep.sequenceNumber = client->sequence;

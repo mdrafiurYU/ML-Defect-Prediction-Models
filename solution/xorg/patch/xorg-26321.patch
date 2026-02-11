@@ -1,0 +1,12 @@
+diff --git a/randr/rrinfo.c b/randr/rrinfo.c
+index 491ac21..6fd4ee5 100644
+--- a/randr/rrinfo.c
++++ b/randr/rrinfo.c
+@@ -208,6 +208,7 @@ RRGetInfo (ScreenPtr pScreen)
+     if (pScrPriv->nSizes)
+ 	RRScanOldConfig (pScreen, rotations);
+ #endif
++    RRModePruneUnused (pScreen);
+     RRTellChanged (pScreen);
+     return TRUE;
+ }

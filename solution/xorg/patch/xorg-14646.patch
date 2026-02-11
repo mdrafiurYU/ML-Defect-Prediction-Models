@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winmultiwindowshape.c b/hw/xwin/winmultiwindowshape.c
+index e2996a8..7cb6a2c 100755
+--- a/hw/xwin/winmultiwindowshape.c
++++ b/hw/xwin/winmultiwindowshape.c
+@@ -30,6 +30,9 @@
+  */
+ /* $XFree86: xc/programs/Xserver/hw/xwin/winmultiwindowshape.c,v 1.2 2003/11/10 18:22:44 tsi Exp $ */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #ifdef SHAPE
+ 
+ #include "win.h"

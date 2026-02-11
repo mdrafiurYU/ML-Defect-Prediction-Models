@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/egl/xegl.c b/hw/xgl/egl/xegl.c
+index dd0fe9a..aa2252a 100644
+--- a/hw/xgl/egl/xegl.c
++++ b/hw/xgl/egl/xegl.c
+@@ -552,7 +552,7 @@ InitOutput (ScreenInfo *pScreenInfo,
+ 
+     if (!xdisplay)
+     {
+-        xdisplay = eglGetDisplay("!fb_dri");
++        xdisplay = eglGetDisplay(":0");
+         assert(xdisplay);
+ 
+         if (!eglInitialize(xdisplay, &maj, &min))

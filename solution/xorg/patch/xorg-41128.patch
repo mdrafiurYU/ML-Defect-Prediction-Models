@@ -1,0 +1,25 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index bd7c7c5..4692ddf 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -587,6 +587,20 @@ void
+ RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
+ 
+ /*
++ * Return crtc transform
++ */
++Bool
++RRCrtcGetTransform (RRCrtcPtr crtc,
++		    PictTransformPtr crtc_to_fb,
++		    PictTransformPtr fb_to_crtc);
++
++/*
++ * Mark the pending transform as current
++ */
++void
++RRCrtcPostPendingTransform (RRCrtcPtr crtc);
++
++/*
+  * Destroy a Crtc at shutdown
+  */
+ void

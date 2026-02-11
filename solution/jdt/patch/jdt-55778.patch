@@ -1,0 +1,30 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 4620edc..01d1f12 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1505,6 +1505,9 @@ public static long getIrritant(int problemID) {
+ 
+ 		case IProblem.JavadocMissing:
+ 			return CompilerOptions.MissingJavadocComments;
++
++		case IProblem.ParameterAssignment:
++			return CompilerOptions.ParameterAssignment;
+ 	}
+ 	return 0;
+ }
+@@ -4520,6 +4523,15 @@ public void packageIsNotExpectedPackage(CompilationUnitDeclaration compUnitDecl)
+ 		compUnitDecl.currentPackage == null ? 0 : compUnitDecl.currentPackage.sourceStart,
+ 		compUnitDecl.currentPackage == null ? 0 : compUnitDecl.currentPackage.sourceEnd);
+ }
++public void parameterAssignment(LocalVariableBinding local, ASTNode location) {
++	String[] arguments = new String[] { new String(local.readableName())};
++	this.handle(
++		IProblem.ParameterAssignment,
++		arguments,
++		arguments,
++		location.sourceStart,
++		location.sourceEnd);
++}
+ private String parameterBoundAsString(TypeVariableBinding typeVariable, boolean makeShort) {
+     StringBuffer nameBuffer = new StringBuffer(10);
+     if (typeVariable.firstBound == typeVariable.superclass) {

@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeReferencesId.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeReferencesId.java
+index f1b58c8..76beb82 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeReferencesId.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/NodeReferencesId.java
+@@ -16,8 +16,6 @@
+  */
+ package org.apache.jackrabbit.core.id;
+ 
+-import org.apache.jackrabbit.uuid.UUID;
+-
+ import java.io.Serializable;
+ 
+ /**
+@@ -34,17 +32,6 @@ public class NodeReferencesId implements Serializable {
+     private final NodeId targetId;
+ 
+     /**
+-     * Creates a new instance of this class. Takes the uuid of the target node
+-     * as parameter.
+-     *
+-     * @param uuid uuid of target node
+-     * @throws IllegalArgumentException if <code>uuid</code> is <code>null</code>.
+-     */
+-    public NodeReferencesId(UUID uuid) {
+-        targetId = new NodeId(uuid);
+-    }
+-
+-    /**
+      * Creates a new instance of this class. Takes the id of the target node
+      * as parameter.
+      *

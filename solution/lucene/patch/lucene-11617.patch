@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
+index 83b9747..436a979 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
+@@ -228,5 +228,10 @@ class VarStraightBytesImpl {
+         return advance(pos+1);
+       }
+     }
++    
++    @Override
++    public Values type() {
++      return Values.BYTES_VAR_STRAIGHT;
++    }
+   }
+ }

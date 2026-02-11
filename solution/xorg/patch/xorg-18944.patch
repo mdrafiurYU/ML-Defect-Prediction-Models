@@ -1,0 +1,28 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index 0e0df83..c43c4af 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -58,6 +58,8 @@ PERFORMANCE OF THIS SOFTWARE.
+ #include <dix-config.h>
+ #endif
+ 
++#include <string.h>
++
+ #include <X11/X.h>
+ #include <X11/Xproto.h>
+ #include <X11/Xmd.h>
+@@ -71,14 +73,10 @@ PERFORMANCE OF THIS SOFTWARE.
+ #include <X11/extensions/sync.h>
+ #include <X11/extensions/syncstr.h>
+ 
+-#ifdef EXTMODULE
+-#include "xf86_ansic.h"
+-#else
+ #include <stdio.h>
+ #if !defined(WIN32) && !defined(Lynx)
+ #include <sys/time.h>
+ #endif
+-#endif
+ 
+ #include "modinit.h"
+ 

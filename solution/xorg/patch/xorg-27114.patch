@@ -1,0 +1,13 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 430f8bd..33c4ba5 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -378,7 +378,7 @@ ProcRRGetOutputInfo (ClientPtr client)
+     int				i, n;
+     
+     REQUEST_SIZE_MATCH(xRRGetOutputInfoReq);
+-    output = LookupOutput(client, stuff->output, SecurityReadAccess);
++    output = LookupOutput(client, stuff->output, DixReadAccess);
+ 
+     if (!output)
+ 	return RRErrorBase + BadRROutput;

@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
+index 6cebaa5..f96b4c1 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
+@@ -75,6 +75,14 @@ public abstract class BasePreferencePage extends PropertyAndPreferencePage {
+ 		return getConfigurationBlock().hasProjectSpecificOptionsNoCache(project);
+ 	}
+ 	
++	/* 
++	 * See bug 136498: don't show workspace preferences.
++	 */
++	@Override
++	protected boolean offerLink() {
++		return false;
++	}
++
+ 	/*
+ 	 * @see org.eclipse.jface.preference.IPreferencePage#performApply()
+ 	 */

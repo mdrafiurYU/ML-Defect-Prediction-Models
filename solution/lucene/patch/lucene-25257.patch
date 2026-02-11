@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java b/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java
+index 0d20617..cf97a74 100644
+--- a/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java
+@@ -17,13 +17,13 @@
+ 
+ package org.apache.solr.search.function;
+ 
++import org.apache.lucene.common.mutable.MutableValue;
++import org.apache.lucene.common.mutable.MutableValueDouble;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.util.Bits;
+ import org.apache.lucene.search.cache.DoubleValuesCreator;
+ import org.apache.lucene.search.cache.CachedArray.DoubleValues;
+-import org.apache.solr.search.MutableValue;
+-import org.apache.solr.search.MutableValueDouble;
+ 
+ import java.io.IOException;
+ import java.util.Map;

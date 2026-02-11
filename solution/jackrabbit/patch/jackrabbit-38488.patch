@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/PredicatesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/PredicatesTest.java
+index 9e9da52..606e62a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/PredicatesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/PredicatesTest.java
+@@ -68,7 +68,9 @@ public class PredicatesTest extends AbstractQueryTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        qm = null;
+         super.tearDown();
+     }

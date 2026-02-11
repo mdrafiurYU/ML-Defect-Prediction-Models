@@ -1,0 +1,15 @@
+diff --git a/afb/afbpixmap.c b/afb/afbpixmap.c
+index 3d12451..a155c10 100644
+--- a/afb/afbpixmap.c
++++ b/afb/afbpixmap.c
+@@ -54,6 +54,10 @@ SOFTWARE.
+    on a monchrome device, a pixmap is a bitmap.
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/Xmd.h>
+ #include "scrnintstr.h"
+ #include "pixmapstr.h"

@@ -1,0 +1,14 @@
+diff --git a/damageext/damageext.c b/damageext/damageext.c
+index 517c72d..7dd328a 100755
+--- a/damageext/damageext.c
++++ b/damageext/damageext.c
+@@ -90,9 +90,7 @@ DamageExtNotify (DamageExtPtr pDamageExt, BoxPtr pBoxes, int nBoxes)
+     if (pDamageClient->critical > 0)
+     {
+ 	SetCriticalOutputPending ();
+-#ifdef SMART_SCHEDULE
+ 	pClient->smart_priority = SMART_MAX_PRIORITY;
+-#endif
+     }
+ }
+ 

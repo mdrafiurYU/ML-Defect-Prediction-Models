@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/search/ReturnFields.java b/solr/src/java/org/apache/solr/search/ReturnFields.java
+index dffcccd..d9e90ec 100644
+--- a/solr/src/java/org/apache/solr/search/ReturnFields.java
++++ b/solr/src/java/org/apache/solr/search/ReturnFields.java
+@@ -162,7 +162,7 @@ public class ReturnFields
+         char ch = sp.ch();
+ 
+         if (field != null) {
+-          if (sp.opt('=')) {
++          if (sp.opt(':')) {
+             // this was a key, not a field name
+             key = field;
+             field = null;
+@@ -180,7 +180,7 @@ public class ReturnFields
+         }
+ 
+         if (key != null) {
+-          // we read "key = "
++          // we read "key : "
+           field = sp.getId(null);
+           ch = sp.ch();
+           if (field != null && (ch==' ' || ch == ',' || ch==0)) {

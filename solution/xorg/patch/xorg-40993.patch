@@ -1,0 +1,83 @@
+diff --git a/hw/xquartz/GL/visualConfigs.c b/hw/xquartz/GL/visualConfigs.c
+index f7f253f..2f5c508 100644
+--- a/hw/xquartz/GL/visualConfigs.c
++++ b/hw/xquartz/GL/visualConfigs.c
+@@ -63,7 +63,7 @@ void setVisualConfigs(void) {
+     void **visualPrivates = NULL;
+     struct glCapabilities caps;
+     struct glCapabilitiesConfig *conf = NULL;
+-    int stereo, depth, aux, buffers, stencil, accum, color;
++    int stereo, depth, aux, buffers, stencil, accum, color, msample;
+     int i = 0; 
+    
+     if(getGlCapabilities(&caps)) {
+@@ -87,6 +87,11 @@ void setVisualConfigs(void) {
+       
+       conf->total_accum_buffers iterations for accum (with at least 1 if equal to 0) 
+ 	 
++      conf->total_depth_buffer_depths 
++
++      conf->multisample_buffers iterations (with at least 1 if equal to 0).  We add 1
++      for the 0 multisampling config.
++      
+      */
+ 
+     assert(NULL != caps.configurations);
+@@ -103,7 +108,9 @@ void setVisualConfigs(void) {
+ 	    * conf->buffers
+ 	    * ((conf->total_stencil_bit_depths > 0) ? conf->total_stencil_bit_depths : 1)
+ 	    * conf->total_color_buffers
+-	    * ((conf->total_accum_buffers > 0) ? conf->total_accum_buffers : 1);
++	    * ((conf->total_accum_buffers > 0) ? conf->total_accum_buffers : 1)
++	    * conf->total_depth_buffer_depths
++	    * (conf->multisample_buffers + 1);
+     }
+ 
+     visualConfigs = xcalloc(sizeof(*visualConfigs), numConfigs);
+@@ -133,6 +140,8 @@ void setVisualConfigs(void) {
+ 			for(color = 0; color < conf->total_color_buffers; ++color) {
+ 			    for(accum = 0; accum < ((conf->total_accum_buffers > 0) ?
+ 						    conf->total_accum_buffers : 1); ++accum) {
++				for(depth = 0; depth < conf->total_depth_buffer_depths; ++depth) {
++				    for(msample = 0; msample < (conf->multisample_buffers + 1); ++msample) {
+ 				visualConfigs[i].vid = (VisualID)(-1);
+ 				visualConfigs[i].class = TrueColor;
+ 				
+@@ -175,7 +184,7 @@ void setVisualConfigs(void) {
+ 				visualConfigs[i].doubleBuffer = buffers ? TRUE : FALSE;
+ 				visualConfigs[i].stereo = stereo ? TRUE : FALSE;
+ 				
+-				visualConfigs[i].depthSize = 24;
++  					visualConfigs[i].depthSize = conf->depth_buffers[depth];
+ 				
+ 				if(conf->total_stencil_bit_depths > 0) {
+ 				    visualConfigs[i].stencilSize = conf->stencil_bit_depths[stencil];
+@@ -198,12 +207,13 @@ void setVisualConfigs(void) {
+ 				visualConfigs[i].transparentAlpha = GLX_NONE;
+ 				visualConfigs[i].transparentIndex = GLX_NONE;
+ 				
+-				/*
+-				  TODO possibly handle:
+-				  multiSampleSize;
+-				  nMultiSampleBuffers;
+-				  visualSelectGroup;
+-				*/
++					if(msample > 0) {
++					    visualConfigs[i].multiSampleSize = conf->multisample_samples;
++					    visualConfigs[i].nMultiSampleBuffers = conf->multisample_buffers;
++					} else {
++					    visualConfigs[i].multiSampleSize = 0;
++					    visualConfigs[i].nMultiSampleBuffers = 0;
++					}
+ 				
+ 				++i;
+ 			    }
+@@ -213,6 +223,8 @@ void setVisualConfigs(void) {
+ 	    }
+ 	}
+     }
++	}
++    }
+ 
+     if (i != numConfigs) {
+ 	ErrorF("numConfigs calculation error in setVisualConfigs!  numConfigs is %d  i is %d\n", numConfigs, i);

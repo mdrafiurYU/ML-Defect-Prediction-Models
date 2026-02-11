@@ -1,0 +1,12 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index 98e1ec5..3aa62e2 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -497,6 +497,7 @@ SELinuxLog(int type, const char *fmt, ...)
+     vsnprintf(buf, MAX_AUDIT_MESSAGE_LENGTH, fmt, ap);
+     rc = audit_log_user_avc_message(audit_fd, aut, buf, NULL, NULL, NULL, 0);
+     va_end(ap);
++    LogMessageVerb(X_WARNING, 0, "%s", buf);
+     return 0;
+ }
+ 

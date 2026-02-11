@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+index 0c7b4b6d..7b4021d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+@@ -193,7 +193,11 @@ public class BLOBInTempFile extends BLOBFileValue {
+      */
+     public int read(byte[] b, long position) throws IOException, RepositoryException {
+         RandomAccessFile raf = new RandomAccessFile(file, "r");
+-        raf.seek(position);
+-        return raf.read(b);
++        try {
++            raf.seek(position);
++            return raf.read(b);
++        } finally {
++            raf.close();
++        }
+     }
+ }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemResource.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemResource.java
+index 485fc4a..4919156 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemResource.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemResource.java
+@@ -335,7 +335,7 @@ public class DefaultItemResource extends AbstractItemResource {
+      */
+     private boolean isMultiple() {
+         try {
+-            if (exists() && ((Property)item).getDefinition().isMultiple()) {
++            if (exists() && ((Property)item).isMultiple()) {
+                 return true;
+             }
+         } catch (RepositoryException e) {

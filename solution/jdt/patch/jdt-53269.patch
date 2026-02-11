@@ -1,0 +1,31 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnLocalName.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnLocalName.java
+index 7bbb53a..8536ff6 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnLocalName.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnLocalName.java
+@@ -25,10 +25,9 @@ public class SelectionOnLocalName extends LocalDeclaration{
+ 		super.resolve(scope);
+ 		throw new SelectionNodeFound(binding);
+ 	}
+-	
+-	public StringBuffer printStatement(int tab, StringBuffer output) {
+-		
+-		printIndent(tab, output);
++
++	public StringBuffer printAsExpression(int indent, StringBuffer output) {
++		printIndent(indent, output);
+ 		output.append("<SelectionOnLocalName:"); //$NON-NLS-1$
+ 		printModifiers(this.modifiers, output);
+ 		 type.print(0, output).append(' ').append(this.name);
+@@ -36,6 +35,11 @@ public class SelectionOnLocalName extends LocalDeclaration{
+ 			output.append(" = "); //$NON-NLS-1$
+ 			initialization.printExpression(0, output);
+ 		}
+-		return output.append(">;"); //$NON-NLS-1$
++		return output.append('>');
++	}
++	
++	public StringBuffer printStatement(int indent, StringBuffer output) {
++		this.printAsExpression(indent, output);
++		return output.append(';');
+ 	}
+ }

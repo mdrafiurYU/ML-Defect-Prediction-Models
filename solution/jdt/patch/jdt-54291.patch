@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+index e127cee..e732c20 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+@@ -54,7 +54,7 @@ public class CompletionJavadocParser extends JavadocParser {
+ 	public CompletionJavadocParser(CompletionParser sourceParser) {
+ 		super(sourceParser);
+ 		this.scanner = new CompletionScanner(ClassFileConstants.JDK1_3);
+-		this.kind = COMPLETION_PARSER;
++		this.kind = COMPLETION_PARSER | TEXT_PARSE;
+ 		this.reportProblems = false;
+ 		initLevelTags();
+ 	}

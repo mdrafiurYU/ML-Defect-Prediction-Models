@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java
+index efe537c..a258876 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java
+@@ -161,7 +161,7 @@ public class AddEventListenerTest extends AbstractObservationTest {
+         Session s = getHelper().getSuperuserSession();
+         try {
+             Node n = (Node) s.getItem(n1.getPath());
+-            n.addNode(nodeName3, ntBase);
++            n.addNode(nodeName3, testNodeType);
+             n = (Node) s.getItem(n2.getPath());
+             n.addNode(nodeName3, nodetype2);
+             n = (Node) s.getItem(testRoot);

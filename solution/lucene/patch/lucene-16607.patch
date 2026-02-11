@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+index efdd346..259b425 100644
+--- a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
++++ b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+@@ -210,8 +210,8 @@ final class JustCompileSearch {
+   
+   static final class JustCompileScorer extends Scorer {
+ 
+-    protected JustCompileScorer(Similarity similarity) {
+-      super(similarity);
++    protected JustCompileScorer(Weight weight) {
++      super(weight);
+     }
+ 
+     @Override

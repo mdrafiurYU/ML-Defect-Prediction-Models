@@ -1,0 +1,18 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index e200c54..b44218d 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -1127,12 +1127,10 @@ KdGetOptions (InputOption **options, char *string)
+     InputOption     *newopt = NULL, **tmpo = NULL;
+     int             tam_key = 0;
+ 
+-    newopt = (InputOption *) xalloc(sizeof (InputOption));
++    newopt = xcalloc(1, sizeof (InputOption));
+     if (!newopt)
+         return FALSE;
+ 
+-    bzero(newopt, sizeof (InputOption));
+-
+     for (tmpo = options; *tmpo; tmpo = &(*tmpo)->next)
+         ; /* Hello, I'm here */ 
+     *tmpo = newopt;

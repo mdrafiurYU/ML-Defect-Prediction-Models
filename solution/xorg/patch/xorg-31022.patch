@@ -1,0 +1,14 @@
+diff --git a/Xext/shmint.h b/Xext/shmint.h
+index fc056bc..33ab6a4 100644
+--- a/Xext/shmint.h
++++ b/Xext/shmint.h
+@@ -37,6 +37,9 @@ void
+ ShmSetPixmapFormat(ScreenPtr pScreen, int format);
+ 
+ void
++fbShmPutImage(XSHM_PUT_IMAGE_ARGS);
++
++void
+ ShmRegisterFbFuncs(ScreenPtr pScreen);
+ 
+ #endif /* _SHMINT_H_ */

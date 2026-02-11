@@ -1,0 +1,15 @@
+diff --git a/GL/windows/indirect.c b/GL/windows/indirect.c
+index 4c46ec9..0c7457a 100755
+--- a/GL/windows/indirect.c
++++ b/GL/windows/indirect.c
+@@ -42,6 +42,10 @@
+ 
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "glwindows.h"
+ #include <glcontextmodes.h>
+ #include <stdint.h>

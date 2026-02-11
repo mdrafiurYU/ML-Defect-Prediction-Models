@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index be01992..50ed158 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -427,7 +427,7 @@ xf86CrtcSetMode (xf86CrtcPtr crtc, DisplayModePtr mode, Rotation rotation,
+ /**
+  * Pans the screen, does not change the mode
+  */
+-_X_EXPORT void
++void
+ xf86CrtcSetOrigin (xf86CrtcPtr crtc, int x, int y)
+ {
+     crtc->x = x;

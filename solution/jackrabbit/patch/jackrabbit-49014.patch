@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/RestoreTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/RestoreTest.java
+index 9ec4ba3..985f6d7 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/RestoreTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/RestoreTest.java
+@@ -23,7 +23,11 @@ import javax.jcr.NodeIterator;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.UnsupportedRepositoryOperationException;
+ import javax.jcr.nodetype.NodeDefinition;
+-import javax.jcr.version.*;
++import javax.jcr.version.OnParentVersionAction;
++import javax.jcr.version.Version;
++import javax.jcr.version.VersionException;
++import javax.jcr.version.VersionIterator;
++import javax.jcr.version.VersionManager;
+ 
+ import org.apache.jackrabbit.test.NotExecutableException;

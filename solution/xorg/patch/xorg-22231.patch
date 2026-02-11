@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/utils/xorgconfig/xorgconfig.c b/hw/xfree86/utils/xorgconfig/xorgconfig.c
+index f00eea0..091b2db 100644
+--- a/hw/xfree86/utils/xorgconfig/xorgconfig.c
++++ b/hw/xfree86/utils/xorgconfig/xorgconfig.c
+@@ -490,7 +490,7 @@ struct {
+ 
+ #ifdef WSCONS_SUPPORT
+ # define DEF_MOUSEDEV "/dev/wsmouse";
+-#elif defined(__FreeBSD__)
++#elif defined(__FreeBSD__) || defined(__DragonFly__)
+ # define DEF_MOUSEDEV "/dev/sysmouse";
+ #elif defined(__linux__)
+ # define DEF_MOUSEDEV "/dev/input/mice";

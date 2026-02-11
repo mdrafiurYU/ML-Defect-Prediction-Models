@@ -1,0 +1,150 @@
+diff --git a/fb/fbcompose.c b/fb/fbcompose.c
+index 9085c6a..9c25a0f 100644
+--- a/fb/fbcompose.c
++++ b/fb/fbcompose.c
+@@ -2644,20 +2644,14 @@ static void fbFetchTransformed(PicturePtr pict, int x, int y, int width, CARD32
+     PictVector	v;
+     PictVector  unit;
+     int         i;
+-    int         trans_x, trans_y;
+     BoxRec	box;
+     miIndexedPtr indexed = (miIndexedPtr) pict->pFormat->index.devPrivate;
+-    if (!pict->transform) {
+-        fbFetch(pict, x, y, width, buffer);
+-        return;
+-    }
++
+     fetch = fetchPixelProcForPicture(pict);
+ 
+     fbGetDrawable(pict->pDrawable, bits, stride, bpp, xoff, yoff);
+     x += xoff;
+     y += yoff;
+-    trans_x = x - pict->pDrawable->x;
+-    trans_y = y - pict->pDrawable->y;
+ 
+     v.vector[0] = IntToxFixed(x - pict->pDrawable->x);
+     v.vector[1] = IntToxFixed(y - pict->pDrawable->y);
+@@ -2667,15 +2661,15 @@ static void fbFetchTransformed(PicturePtr pict, int x, int y, int width, CARD32
+     unit.vector[1] = 0;
+     unit.vector[2] = xFixed1;
+ 	
+-    if (!PictureTransformPoint (pict->transform, &v)) {
++    if (pict->transform) {
++        /* when using convolution filters one might get here without a transform */
++        if (!PictureTransformPoint (pict->transform, &v))
+         return;
+-    }
+-    if (!PictureTransformPoint (pict->transform, &unit)) {
++        if (!PictureTransformPoint (pict->transform, &unit))
+         return;
+     }
+ 	    
+-    if (pict->filter == PictFilterNearest)
+-	    {
++    if (pict->filter == PictFilterNearest) {
+         if (REGION_NUM_RECTS(pict->pCompositeClip) == 1) {
+             box = pict->pCompositeClip->extents;
+             for (i = 0; i < width; ++i) {
+@@ -2708,8 +2702,7 @@ static void fbFetchTransformed(PicturePtr pict, int x, int y, int width, CARD32
+                     buffer[i] = 0;
+ 	}
+     }
+-    } else if (pict->filter == PictFilterBilinear)
+-    {
++    } else if (pict->filter == PictFilterBilinear) {
+         if (REGION_NUM_RECTS(pict->pCompositeClip) == 1) {
+             box = pict->pCompositeClip->extents;
+             for (i = 0; i < width; ++i) {
+@@ -2725,8 +2718,7 @@ static void fbFetchTransformed(PicturePtr pict, int x, int y, int width, CARD32
+                 x2 = x1 + 1;
+                 y1 = xFixedToInt(v.vector[1]);
+                 y2 = y1 + 1;
+-                if (pict->repeat)
+-	{
++                if (pict->repeat) {
+                     x1 = mod (x1, pict->pDrawable->width);
+                     y1 = mod (y1, pict->pDrawable->height);
+                     x2 = mod (x2, pict->pDrawable->width);
+@@ -2802,6 +2794,64 @@ static void fbFetchTransformed(PicturePtr pict, int x, int y, int width, CARD32
+                 buffer[i] = tl;
+             }
+         }
++    } else if (pict->filter == PictFilterConvolution) {
++        xFixed *params = pict->filter_params;
++        INT32 cwidth = xFixedToInt(params[0]);
++        INT32 cheight = xFixedToInt(params[1]);
++        v.vector[0] -= params[0] >> 2;
++        v.vector[1] -= params[1] >> 2;
++        params += 2;
++        for (i = 0; i < width; ++i) {
++            int x1, x2, y1, y2, x, y;
++            INT32 srtot, sgtot, sbtot, satot, sum;
++            xFixed *p = params;
++
++            v.vector[0] += unit.vector[0];
++            v.vector[1] += unit.vector[1];
++
++            x1 = xFixedToInt(v.vector[0]);
++            x2 = x1 + cwidth;
++            y1 = xFixedToInt(v.vector[1]);
++            y2 = y1 + cheight;
++
++            srtot = sgtot = sbtot = satot = sum = 0;
++
++            for (y = y1; y < y2; y++) {
++                int ty = (pict->repeat) ? mod (y, pict->pDrawable->height) : y;
++                for (x = x1; x < x2; x++) {
++                    if (*params) {
++                        int tx = (pict->repeat) ? mod (x, pict->pDrawable->width) : x;
++                        if (POINT_IN_REGION (0, pict->pCompositeClip, tx, ty, &box)) {
++                            FbBits *b = bits + (ty - pict->pDrawable->y)*stride;
++                            CARD32 c = fetch(b, tx - pict->pDrawable->x, indexed);
++
++                            srtot += Red(c) * *p;
++                            sgtot += Green(c) * *p;
++                            sbtot += Blue(c) * *p;
++                            satot += Alpha(c) * *p;
++                        }
++                        sum += *p;
++                    }
++                    p++;
++                }
++            }
++
++            if (sum) {
++                satot /= sum;
++                srtot /= sum;
++                sgtot /= sum;
++                sbtot /= sum;
++            }
++            if (satot < 0) satot = 0; else if (satot > 0xff) satot = 0xff;
++            if (srtot < 0) srtot = 0; else if (srtot > 0xff) srtot = 0xff;
++            if (sgtot < 0) sgtot = 0; else if (sgtot > 0xff) sgtot = 0xff;
++            if (sbtot < 0) sbtot = 0; else if (sbtot > 0xff) sbtot = 0xff;
++
++            buffer[i] = ((satot << 24) |
++                         (srtot << 16) |
++                         (sgtot <<  8) |
++                         (sbtot       ));
++        }
+     }
+ }
+ 
+@@ -2904,6 +2954,8 @@ fbCompositeRect (const FbComposeData *data, CARD32 *scanline_buffer)
+         fetchSrc = fbFetchExternalAlpha;
+     else if (data->src->repeat && data->src->pDrawable->width == 1 && data->src->pDrawable->height == 1)
+         fetchSrc = fbFetchSolid;
++    else if (!data->src->transform && data->src->filter != PictFilterConvolution)
++        fetchSrc = fbFetch;
+     else
+         fetchSrc = fbFetchTransformed;
+ 	
+@@ -2912,6 +2964,8 @@ fbCompositeRect (const FbComposeData *data, CARD32 *scanline_buffer)
+             fetchMask = fbFetchExternalAlpha;
+         else if (data->mask->repeat && data->mask->pDrawable->width == 1 && data->mask->pDrawable->height == 1)
+             fetchMask = fbFetchSolid;
++        else if (!data->mask->transform && data->src->filter != PictFilterConvolution)
++            fetchMask = fbFetch;
+     else
+             fetchMask = fbFetchTransformed;
+     } else {

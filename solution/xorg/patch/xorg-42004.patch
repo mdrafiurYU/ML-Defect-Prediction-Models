@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 7c9bb5a..c710b06 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -2273,8 +2273,7 @@ xf86CrtcSetInitialGamma(xf86CrtcPtr crtc, float gamma_red, float gamma_green,
+     memcpy (crtc->gamma_green, green, crtc->gamma_size * sizeof (CARD16));
+     memcpy (crtc->gamma_blue, blue, crtc->gamma_size * sizeof (CARD16));
+ 
+-    /* Use copied values, the perfect way to test if all went well. */
+-    
++    /* Do not set gamma now, delay until the crtc is activated. */
+ 
+     free(red);
+ 

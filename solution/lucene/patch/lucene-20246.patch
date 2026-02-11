@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java b/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java
+index 162f2ee..897eb87 100644
+--- a/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java
+@@ -162,7 +162,7 @@ public class SpellCheckComponent extends SearchComponent implements SolrCoreAwar
+ 
+       } else {
+         throw new SolrException(SolrException.ErrorCode.NOT_FOUND,
+-            "Specified dictionary does not exist.");
++            "Specified dictionary does not exist: " + getDictionaryName(params));
+       }
+     }
+   }

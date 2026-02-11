@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+index 55895b3..bb5c629 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+@@ -125,7 +125,7 @@ public class FilerImpl implements Filer {
+     	
+     	IPath path = getOutputFileForLocation( loc, pkg, relPath );
+     	IFile file = _env.getProject().getFile(path);
+-    	OutputStream binaryOut = new BinaryFileOutputStream(file, _env);
++    	OutputStream binaryOut = new EncodedFileOutputStream(file, _env, charsetName);
+  
+     	if (charsetName == null) {
+     		return new PrintWriter(binaryOut);

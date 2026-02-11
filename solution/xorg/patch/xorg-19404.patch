@@ -1,0 +1,24 @@
+diff --git a/Xi/selectev.c b/Xi/selectev.c
+index c8a55f5..057050c 100644
+--- a/Xi/selectev.c
++++ b/Xi/selectev.c
+@@ -84,8 +84,7 @@ extern	Mask		ExtValidMasks[];
+  */
+ 
+ int
+-SProcXSelectExtensionEvent (client)
+-register ClientPtr client;
++SProcXSelectExtensionEvent (register ClientPtr client)
+     {
+     register char n;
+     register long *p;
+@@ -112,8 +111,7 @@ register ClientPtr client;
+  */
+ 
+ int
+-ProcXSelectExtensionEvent (client)
+-    register ClientPtr client;
++ProcXSelectExtensionEvent (register ClientPtr client)
+     {
+     int			ret;
+     int			i;

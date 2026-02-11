@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shpacked.c b/miext/shadow/shpacked.c
+index 3fdee14..8989760 100644
+--- a/miext/shadow/shpacked.c
++++ b/miext/shadow/shpacked.c
+@@ -43,7 +43,7 @@ void
+ shadowUpdatePacked (ScreenPtr	    pScreen,
+ 		    shadowBufPtr    pBuf)
+ {
+-    RegionPtr	damage = &pBuf->damage;
++    RegionPtr	damage = shadowDamage (pBuf);
+     PixmapPtr	pShadow = pBuf->pPixmap;
+     int		nbox = REGION_NUM_RECTS (damage);
+     BoxPtr	pbox = REGION_RECTS (damage);

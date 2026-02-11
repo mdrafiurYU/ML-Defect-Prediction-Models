@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedMethodDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedMethodDeclarationImpl.java
+index 0e7d4a6..b77713f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedMethodDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedMethodDeclarationImpl.java
+@@ -106,7 +106,7 @@ public class ASTBasedMethodDeclarationImpl
+     {
+         final StringBuilder buffer = new StringBuilder();
+         final org.eclipse.jdt.core.dom.MethodDeclaration methodAstNode = getMethodAstNode();
+-        @SuppressWarnings("unchecked") //$NON-NLS-1$
++        @SuppressWarnings("unchecked")
+     	final List<TypeParameter> typeParams = methodAstNode.typeParameters();
+         if( typeParams != null && typeParams.size() > 0 ){
+         	 buffer.append('<');
+@@ -124,7 +124,7 @@ public class ASTBasedMethodDeclarationImpl
+         buffer.append(methodAstNode.getName());
+         buffer.append('(');
+         int i=0;
+-        @SuppressWarnings("unchecked") //$NON-NLS-1$
++        @SuppressWarnings("unchecked")
+     	final List<SingleVariableDeclaration> params = methodAstNode.parameters();
+         for( SingleVariableDeclaration param : params ){
+             if( i++ != 0 )

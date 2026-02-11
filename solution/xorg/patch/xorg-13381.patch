@@ -1,0 +1,16 @@
+diff --git a/cfb/cfbimage.c b/cfb/cfbimage.c
+index 17166a3..44c2715 100644
+--- a/cfb/cfbimage.c
++++ b/cfb/cfbimage.c
+@@ -143,11 +143,7 @@ cfbGetImage(pDrawable, sx, sy, w, h, format, planeMask, pdstLine)
+ 	return;
+     if (pDrawable->bitsPerPixel == 1)
+     {
+-#ifndef LOWMEMFTPT
+ 	mfbGetImage(pDrawable, sx, sy, w, h, format, planeMask, pdstLine);
+-#else
+-	miGetImage(pDrawable, sx, sy, w, h, format, planeMask, pdstLine);
+-#endif /* ifndef LOWMEMFTPT */
+ 	return;
+     }
+     pScreen = pDrawable->pScreen;

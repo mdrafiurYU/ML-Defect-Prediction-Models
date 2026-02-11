@@ -1,0 +1,24 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 2c226dc..484947d 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -374,18 +374,12 @@ miPointerWarpCursor (pDev, pScreen, x, y)
+  */
+ 
+ /*
+- * miPointerUpdate
++ * miPointerUpdateSprite
+  *
+  * Syncronize the sprite with the cursor - called from ProcessInputEvents
+  */
+ 
+ void
+-miPointerUpdate ()
+-{
+-    miPointerUpdateSprite(inputInfo.pointer);
+-}
+-
+-void
+ miPointerUpdateSprite (DeviceIntPtr pDev)
+ {
+     ScreenPtr		pScreen;

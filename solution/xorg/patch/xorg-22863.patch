@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shrot8pack_90.c b/miext/shadow/shrot8pack_90.c
+index 108552f..2fed812 100644
+--- a/miext/shadow/shrot8pack_90.c
++++ b/miext/shadow/shrot8pack_90.c
+@@ -26,4 +26,8 @@
+ #define Data	CARD8
+ #define ROTATE	90
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "shrotpack.h"

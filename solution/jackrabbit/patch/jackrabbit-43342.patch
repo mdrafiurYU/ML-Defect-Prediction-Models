@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+index 8ebce78..315e5e2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+@@ -136,4 +136,8 @@ public class BLOBInDataStore extends BLOBFileValue {
+         return store.getRecord(identifier);
+     }
+ 
++    public boolean isSmall() {
++        return false;
++    }
++
+ }

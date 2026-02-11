@@ -1,0 +1,13 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index 2f960d1..8d710f6 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -1090,7 +1090,7 @@ CALLBACK(XSELinuxProperty)
+ 	{
+ 	    if (errno != EACCES)
+ 		ErrorF("Property: unexpected error %d\n", errno);
+-	    rec->rval = SecurityIgnoreOperation;
++	    rec->rval = XaceIgnoreOperation;
+ 	}
+     } else
+ 	ErrorF("No client state in property callback!\n");

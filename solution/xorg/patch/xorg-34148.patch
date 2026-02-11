@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootless.h b/miext/rootless/rootless.h
+index d9fdb6a..b4a5b2a 100644
+--- a/miext/rootless/rootless.h
++++ b/miext/rootless/rootless.h
+@@ -74,6 +74,8 @@ typedef struct _RootlessWindowRec {
+ 
+     unsigned int is_drawing :1;	// Currently drawing?
+     unsigned int is_reorder_pending :1;
++    unsigned int is_offscreen :1;
++    unsigned int is_obscured :1;
+ } RootlessWindowRec, *RootlessWindowPtr;
+ 
+ 

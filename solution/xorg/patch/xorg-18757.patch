@@ -1,0 +1,145 @@
+diff --git a/hw/xgl/xglparse.c b/hw/xgl/xglparse.c
+index c1f7e65..5292692 100644
+--- a/hw/xgl/xglparse.c
++++ b/hw/xgl/xglparse.c
+@@ -63,7 +63,7 @@ xglParseScreen (char *arg)
+     
+     for (i = 0; i < 2; i++)
+     {
+-	arg = xglParseFindNext (arg, "x/@XY", save, &delim);
++	arg = xglParseFindNext (arg, "x/", save, &delim);
+ 	if (!save[0])
+ 	    return;
+ 	
+@@ -72,7 +72,7 @@ xglParseScreen (char *arg)
+ 	
+ 	if (delim == '/')
+ 	{
+-	    arg = xglParseFindNext (arg, "x@XY", save, &delim);
++	    arg = xglParseFindNext (arg, "x", save, &delim);
+ 	    if (!save[0])
+ 		return;
+ 	    
+@@ -95,6 +95,92 @@ xglParseScreen (char *arg)
+     }
+ }
+ 
++static void
++xglParseAccel (char *arg)
++{
++    xglAccelInfoPtr pAccel;
++    char	    delim;
++    char	    save[1024];
++
++    if (!arg)
++	return;
++
++    if (strlen (arg) >= sizeof (save))
++	return;
++
++    arg = xglParseFindNext (arg, "@:", save, &delim);
++    if (!save[0])
++	return;
++
++    if (strcasecmp (save, "pixmap") == 0)
++	pAccel = &xglScreenInfo.accel.pixmap;
++    else if (strcasecmp (save, "window") == 0)
++	pAccel = &xglScreenInfo.accel.window;
++    else if (strcasecmp (save, "glx") == 0)
++	pAccel = &xglScreenInfo.accel.glx;
++    else if (strcasecmp (save, "xv") == 0)
++	pAccel = &xglScreenInfo.accel.xv;
++    else
++	return;
++
++    if (delim == '@')
++    {
++	arg = xglParseFindNext (arg, "/x:", save, &delim);
++	if (!save[0])
++	    return;
++
++	pAccel->size.aboveWidth = pAccel->size.minWidth = atoi (save);
++
++	if (delim == '/')
++	{
++	    arg = xglParseFindNext (arg, "x:", save, &delim);
++	    if (!save[0])
++		return;
++
++	    pAccel->size.aboveWidth = atoi (save);
++	}
++
++	if (delim == 'x')
++	{
++	    arg = xglParseFindNext (arg, "/:", save, &delim);
++	    if (!save[0])
++		return;
++
++	    pAccel->size.aboveHeight = pAccel->size.minHeight = atoi (save);
++
++	    if (delim == '/')
++	    {
++		arg = xglParseFindNext (arg, ":", save, &delim);
++		if (!save[0])
++		    return;
++
++		pAccel->size.aboveHeight = atoi (save);
++	    }
++	}
++    }
++
++    pAccel->enabled = TRUE;
++    pAccel->pbuffer = FALSE;
++
++    if (delim == ':')
++    {
++	if (strcasecmp (arg, "fbo") == 0)
++	    ;
++	else if (strcasecmp  (arg, "off")  == 0 ||
++		 strncasecmp (arg, "0", 1) == 0 ||
++		 strncasecmp (arg, "f", 1) == 0 ||
++		 strncasecmp (arg, "n", 1) == 0)
++	{
++	    pAccel->enabled = FALSE;
++	    pAccel->pbuffer = FALSE;
++	}
++	else if (strcasecmp (arg, "pbuffer") == 0)
++	{
++	    pAccel->pbuffer = TRUE;
++	}
++    }
++}
++
+ void
+ xglUseMsg (void)
+ {
+@@ -106,8 +192,8 @@ xglUseMsg (void)
+ 	    "use vertex buffer objects for streaming of vertex data\n");
+     ErrorF ("-pbomask [1|4|8|16|32] "
+ 	    "set bpp's to use with pixel buffer objects\n");
+-    ErrorF ("-fbo                   "
+-	    "use frame buffer objects for accelerate offscreen drawing\n");
++    ErrorF ("-accel TYPE[@WIDTH[/MIN]xHEIGHT[/MIN]][:METHOD] "
++	    "offscreen acceleration\n");
+ }
+ 
+ int
+@@ -155,10 +241,16 @@ xglProcessArgument (int	 argc,
+ 	
+ 	return 2;
+     }
+-    else if (!strcmp (argv[i], "-fbo"))
++    else if (!strcmp (argv[i], "-accel"))
++    {
++	if ((i + 1) < argc)
+     {
+-	xglScreenInfo.fbo = TRUE;
++	    xglParseAccel (argv[i + 1]);
++	}
++	else
+ 	return 1;
++
++	return 2;
+     }
+     
+     return 0;

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/VarJarFactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/VarJarFactoryContainer.java
+index e3f5a2f..9ccb08b 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/VarJarFactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/VarJarFactoryContainer.java
+@@ -22,8 +22,8 @@ import org.eclipse.jdt.core.JavaCore;
+  */
+ public class VarJarFactoryContainer extends JarFactoryContainer {
+ 	
+-	private String _id;
+-	private File _jarFile;
++	private final String _id;
++	private final File _jarFile;
+ 
+ 	/**
+ 	 * @param jarPath

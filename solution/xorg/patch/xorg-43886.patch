@@ -1,0 +1,40 @@
+diff --git a/dix/events.c b/dix/events.c
+index 8c9623b..fa6c469 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4307,7 +4307,7 @@ ProcGrabPointer(ClientPtr client)
+ 	cursor = NullCursor;
+     else
+     {
+-	rc = dixLookupResource((pointer *)&cursor, stuff->cursor, RT_CURSOR,
++	rc = dixLookupResourceByType((pointer *)&cursor, stuff->cursor, RT_CURSOR,
+ 			       client, DixUseAccess);
+ 	if (rc != Success)
+ 	{
+@@ -4408,7 +4408,7 @@ ProcChangeActivePointerGrab(ClientPtr client)
+ 	newCursor = NullCursor;
+     else
+     {
+-	int rc = dixLookupResource((pointer *)&newCursor, stuff->cursor,
++	int rc = dixLookupResourceByType((pointer *)&newCursor, stuff->cursor,
+ 				   RT_CURSOR, client, DixUseAccess);
+ 	if (rc != Success)
+ 	{
+@@ -5013,7 +5013,7 @@ ProcGrabButton(ClientPtr client)
+ 	cursor = NullCursor;
+     else
+     {
+-	rc = dixLookupResource((pointer *)&cursor, stuff->cursor, RT_CURSOR,
++	rc = dixLookupResourceByType((pointer *)&cursor, stuff->cursor, RT_CURSOR,
+ 			       client, DixUseAccess);
+ 	if (rc != Success)
+ 	if (!cursor)
+@@ -5263,7 +5263,7 @@ ProcRecolorCursor(ClientPtr client)
+     REQUEST(xRecolorCursorReq);
+ 
+     REQUEST_SIZE_MATCH(xRecolorCursorReq);
+-    rc = dixLookupResource((pointer *)&pCursor, stuff->cursor, RT_CURSOR,
++    rc = dixLookupResourceByType((pointer *)&pCursor, stuff->cursor, RT_CURSOR,
+ 			   client, DixWriteAccess);
+     if (rc != Success)
+     {

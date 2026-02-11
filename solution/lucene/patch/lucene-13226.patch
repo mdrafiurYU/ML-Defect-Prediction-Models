@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+index 5f2d288..d749d24 100644
+--- a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+@@ -20,7 +20,6 @@ package org.apache.lucene.index;
+ import java.io.IOException;
+ import java.util.ArrayList;
+ import java.util.Collection;
+-import java.util.Iterator;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.Comparator;
+@@ -39,9 +38,6 @@ final class FreqProxTermsWriter extends TermsHashConsumer {
+   }
+ 
+   @Override
+-  void closeDocStore(SegmentWriteState state) {}
+-
+-  @Override
+   void abort() {}
+ 
+   private int flushedDocCount;

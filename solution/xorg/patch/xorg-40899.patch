@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.h b/hw/xfree86/ddc/xf86DDC.h
+index 42d9ce6..3172b55 100644
+--- a/hw/xfree86/ddc/xf86DDC.h
++++ b/hw/xfree86/ddc/xf86DDC.h
+@@ -59,6 +59,7 @@ extern Bool xf86SetDDCproperties(
+ 
+ DisplayModePtr xf86DDCGetModes(int scrnIndex, xf86MonPtr DDC);
+ 
+-#endif
+-
++extern Bool
++xf86MonitorIsHDMI(xf86MonPtr mon);
+ 
++#endif

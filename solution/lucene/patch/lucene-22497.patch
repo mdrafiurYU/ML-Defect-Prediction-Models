@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java b/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java
+index e69f612..8d97d1d 100644
+--- a/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java
+@@ -251,9 +251,7 @@ public class TieredMergePolicy extends MergePolicy {
+     final Collection<SegmentInfo> merging = writer.get().getMergingSegments();
+     final Collection<SegmentInfo> toBeMerged = new HashSet<SegmentInfo>();
+ 
+-    final List<SegmentInfo> infosSorted = new ArrayList<SegmentInfo>();
+-    infosSorted.addAll(infos);
+-
++    final List<SegmentInfo> infosSorted = new ArrayList<SegmentInfo>(infos.asList());
+     Collections.sort(infosSorted, segmentByteSizeDescending);
+ 
+     // Compute total index bytes & print details about the index

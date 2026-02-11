@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/RepositoryAccessServlet.java b/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/RepositoryAccessServlet.java
+index 409091f..de0681a 100644
+--- a/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/RepositoryAccessServlet.java
++++ b/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/RepositoryAccessServlet.java
+@@ -103,7 +103,7 @@ public class RepositoryAccessServlet extends HttpServlet {
+      * @param ctx the servlet context
+      * @return this servlet
+      */
+-    private static RepositoryAccessServlet getInstance(ServletContext ctx) {
++    public static RepositoryAccessServlet getInstance(ServletContext ctx) {
+         final RepositoryAccessServlet instance = (RepositoryAccessServlet) ctx.getAttribute(CTX_PARAM_THIS);
+         if(instance==null) {
+             throw new IllegalStateException(
+@@ -322,6 +322,14 @@ public class RepositoryAccessServlet extends HttpServlet {
+     }
+ 
+     /**
++     * Returns the config that was used to bootstrap this servlet.
++     * @return the bootstrap config or <code>null</code>.
++     */
++    public BootstrapConfig getBootstrapConfig() {
++        return config;
++    }
++
++    /**
+      * optional class for RMI, will only be used, if RMI client is present
+      */
+     protected static abstract class ClientFactoryDelegater {

@@ -1,0 +1,36 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+index e8b65f9..383cb95 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+@@ -1982,16 +1982,31 @@ protected void consumeMethodInvocationName() {
+ 	popElement(K_SELECTOR_INVOCATION_TYPE);
+ 	super.consumeMethodInvocationName();
+ }
++protected void consumeMethodInvocationNameWithTypeArguments() {
++	popElement(K_SELECTOR_QUALIFIER);
++	popElement(K_SELECTOR_INVOCATION_TYPE);
++	super.consumeMethodInvocationNameWithTypeArguments();
++}
+ protected void consumeMethodInvocationPrimary() {
+ 	popElement(K_SELECTOR_QUALIFIER);
+ 	popElement(K_SELECTOR_INVOCATION_TYPE);
+ 	super.consumeMethodInvocationPrimary();
+ }
++protected void consumeMethodInvocationPrimaryWithTypeArguments() {
++	popElement(K_SELECTOR_QUALIFIER);
++	popElement(K_SELECTOR_INVOCATION_TYPE);
++	super.consumeMethodInvocationPrimaryWithTypeArguments();
++}
+ protected void consumeMethodInvocationSuper() {
+ 	popElement(K_SELECTOR_QUALIFIER);
+ 	popElement(K_SELECTOR_INVOCATION_TYPE);
+ 	super.consumeMethodInvocationSuper();
+ }
++protected void consumeMethodInvocationSuperWithTypeArguments() {
++	popElement(K_SELECTOR_QUALIFIER);
++	popElement(K_SELECTOR_INVOCATION_TYPE);
++	super.consumeMethodInvocationSuperWithTypeArguments();
++}
+ protected void consumeMethodHeaderName(boolean isAnnotationMethod) {
+ 	if(this.indexOfAssistIdentifier() < 0) {
+ 		identifierPtr--;

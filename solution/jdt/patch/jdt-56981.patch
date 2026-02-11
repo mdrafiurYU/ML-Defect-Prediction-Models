@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
+index 9f38a86..e7aa693 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
+@@ -902,7 +902,6 @@ public class NameLookup implements SuffixConstants {
+ 			String topLevelTypeName = null;
+ 			int packageFlavor= root.getKind();
+ 			if (this.typesInWorkingCopies != null || packageFlavor == IPackageFragmentRoot.K_SOURCE) {
+-				matchName= matchName.replace('$', '.');
+ 				firstDot = matchName.indexOf('.');
+ 				if (!partialMatch)
+ 					topLevelTypeName = firstDot == -1 ? matchName : matchName.substring(0, firstDot);

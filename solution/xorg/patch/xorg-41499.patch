@@ -1,0 +1,67 @@
+diff --git a/include/xkbsrv.h b/include/xkbsrv.h
+index d43755e..32661a9 100644
+--- a/include/xkbsrv.h
++++ b/include/xkbsrv.h
+@@ -295,8 +295,6 @@ extern int	XkbDisableLockActions;
+ extern int	XkbKeyboardErrorCode;
+ extern char *	XkbBaseDirectory;
+ extern char *	XkbBinDirectory;
+-extern char *	XkbInitialMap;
+-extern unsigned	int XkbXIUnsupported;
+ 
+ extern Bool	noXkbExtension;
+ 
+@@ -484,12 +482,6 @@ extern  void XkbSetActionKeyMods(
+ 	unsigned int 		/* mods */
+ );
+ 
+-extern Bool XkbCheckActionVMods(
+-	XkbDescPtr		/* xkb */,
+-	XkbAction *		/* act */,
+-	unsigned int 		/* changed */
+-);
+-
+ extern	unsigned int XkbMaskForVMask(
+     XkbDescPtr		/* xkb */,
+     unsigned int	/* vmask */
+@@ -705,11 +697,6 @@ extern	void XkbSendNamesNotify(
+        xkbNamesNotify *	/* ev */
+ );
+ 
+-extern	void XkbSendCompatNotify(
+-       DeviceIntPtr		/* kbd */,
+-       xkbCompatMapNotify *	/* ev */
+-);
+-
+ extern	void XkbSendActionMessage(
+        DeviceIntPtr		/* kbd */,
+        xkbActionMessage *	/* ev */
+@@ -827,11 +814,6 @@ extern void XkbDDXUpdateDeviceIndicators(
+ 	CARD32			/* newState */
+ );
+ 
+-extern void XkbDDXFakePointerButton(
+-	int 		/* event */,
+-	int		/* button */
+-);
+-
+ extern void XkbDDXFakePointerMotion(
+  	unsigned int	/* flags */,
+ 	int		/* x */,
+@@ -1037,16 +1019,6 @@ extern	Bool XkbDDXNamesFromRules(
+ 	XkbComponentNamesPtr	/* names */
+ );
+ 
+-extern	Bool XkbDDXApplyConfig(
+-	void *	/* cfg_in */,
+-	XkbSrvInfoPtr	/* xkbi */
+-);
+-
+-extern	int _XkbStrCaseCmp(
+-	char *			/* str1 */,
+-	char *			/* str2 */
+-);
+-
+ _XFUNCPROTOEND
+ 
+ #define	XkbAtomGetString(s)	NameForAtom(s)

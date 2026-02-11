@@ -1,0 +1,49 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java
+index 2a91ae7..642a0bd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java
+@@ -29,6 +29,7 @@ import org.apache.jackrabbit.core.state.NoSuchItemStateException;
+ import org.apache.jackrabbit.core.state.NodeReferences;
+ import org.apache.jackrabbit.core.state.NodeReferencesId;
+ import org.apache.jackrabbit.spi.Path;
++import org.apache.jackrabbit.spi.Name;
+ 
+ import javax.jcr.ItemNotFoundException;
+ import javax.jcr.RepositoryException;
+@@ -68,10 +69,10 @@ class ChangeLogBasedHierarchyMgr extends CachingHierarchyManager {
+      * Same as {@link #getPath(ItemId)}} except that the <i>old</i> path is
+      * returned in case of a moved/removed item.
+      *
+-     * @param id
+-     * @return
+-     * @throws ItemNotFoundException
+-     * @throws RepositoryException
++     * @param id the id of the node for which to retrieve the path.
++     * @return the path of the item.
++     * @throws ItemNotFoundException if an item state cannot be found.
++     * @throws RepositoryException if another error occurs.
+      */
+     public Path getZombiePath(ItemId id)
+             throws ItemNotFoundException, RepositoryException {
+@@ -79,6 +80,21 @@ class ChangeLogBasedHierarchyMgr extends CachingHierarchyManager {
+     }
+ 
+     /**
++     * Same as {@link #getName(NodeId, NodeId)} except that the <i>old</i> path
++     * is returned in case of moved/removed item.
++     *
++     * @param id the id of the node for which to retrieve the name.
++     * @param parentId the id of the parent node.
++     * @return the name of the node.
++     * @throws ItemNotFoundException if an item state cannot be found.
++     * @throws RepositoryException if another error occurs.
++     */
++    public Name getZombieName(NodeId id, NodeId parentId)
++            throws ItemNotFoundException, RepositoryException {
++        return zombieHierMgr.getName(id, parentId);
++    }
++
++    /**
+      * Implements an ItemStateManager that is overlayed by a ChangeLog.
+      */
+     private static class ChangeLogItemStateManager implements ItemStateManager {

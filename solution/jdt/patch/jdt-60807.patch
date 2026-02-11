@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingTest.java
+index aded812..7fc288b 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingTest.java
+@@ -61,6 +61,7 @@ public class ASTRewritingTest extends AbstractJavaModelTests {
+ 		suite.addTest(ASTRewritingGroupNodeTest.allTests());
+ 		suite.addTest(SourceModifierTest.allTests());
+ 		suite.addTest(ImportRewriteTest.allTests());
++		suite.addTest(LineCommentOffsetsTest.allTests());
+ 		return suite;
+ 	}

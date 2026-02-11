@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EclipseDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EclipseDeclarationImpl.java
+index d17bc89..39f8cbd 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EclipseDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EclipseDeclarationImpl.java
+@@ -113,9 +113,9 @@ public abstract class EclipseDeclarationImpl implements Declaration, EclipseMirr
+ 	}  
+ 	
+ 	/**
+-     * @return the ast node that corresponding to this declaration.
+-     *         Return null if this declaration came from binary.
+-     * @see #isFromSource();
++     * @return the ast node that corresponding to this declaration,
++     * or null if this declaration came from binary.
++     * @see #isFromSource()
+      */
+     abstract ASTNode getAstNode();

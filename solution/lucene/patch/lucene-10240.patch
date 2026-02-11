@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+index 49eaf7f..77f9dc4 100644
+--- a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
++++ b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+@@ -23,6 +23,9 @@ import java.util.ArrayList;
+ import org.apache.lucene.util.Bits;
+ import org.apache.lucene.util.ReaderUtil;
+ 
++import org.apache.lucene.index.DirectoryReader; // javadoc
++import org.apache.lucene.index.MultiReader; // javadoc
++
+ /**
+  * This class forces a composite reader (eg a {@link
+  * MultiReader} or {@link DirectoryReader} or any other

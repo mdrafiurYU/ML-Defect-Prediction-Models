@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/GeoHashField.java b/solr/src/java/org/apache/solr/schema/GeoHashField.java
+index 4051cab..bff8944 100644
+--- a/solr/src/java/org/apache/solr/schema/GeoHashField.java
++++ b/solr/src/java/org/apache/solr/schema/GeoHashField.java
+@@ -97,6 +97,7 @@ public class GeoHashField extends FieldType implements SpatialQueryable {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser parser) {
++    field.checkFieldCacheSource(parser);
+     return new StrFieldSource(field.name);
+   }

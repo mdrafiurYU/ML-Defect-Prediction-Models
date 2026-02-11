@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+index 3ec923a..19d3316 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+@@ -246,6 +246,16 @@ public class MemoryFileSystem implements FileSystem {
+             throw new FileSystemException("Destination exists: " + destPath);
+         }
+ 
++        // Create destination folder if it does not yet exist
++        String[] path = destPath.split(SEPARATOR);
++        String folder = "";
++        for (int i = 1; i < path.length; i++) {
++            folder += SEPARATOR + path[i];
++            if (!exists(folder)) {
++                createFolder(folder);
++            }
++        }
++        
+         Map moves = new HashMap();
+         moves.put(srcPath, destPath);
+         if (getEntry(srcPath).isFolder()) {

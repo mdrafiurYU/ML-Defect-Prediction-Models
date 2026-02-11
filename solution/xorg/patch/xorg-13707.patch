@@ -1,0 +1,31 @@
+diff --git a/include/regionstr.h b/include/regionstr.h
+index c851168..14995e5 100644
+--- a/include/regionstr.h
++++ b/include/regionstr.h
+@@ -250,10 +250,26 @@ extern RegDataRec miBrokenData;
+ #define REGION_INIT(_pScreen, _pReg, _rect, _size) \
+ { \
+     REGION_SCREEN(_pScreen); \
++    if (_rect) \
++    { \
+     (_pReg)->extents = *(_rect); \
+     (_pReg)->data = (RegDataPtr)NULL; \
++    } \
++    else \
++    { \
++        (_pReg)->extents = miEmptyBox; \
++        if (((_size) > 1) && ((_pReg)->data = \
++                             (RegDataPtr)xalloc(REGION_SZOF(_size)))) \
++        { \
++            (_pReg)->data->size = (_size); \
++            (_pReg)->data->numRects = 0; \
++        } \
++        else \
++            (_pReg)->data = &miEmptyData; \
++    } \
+ }
+ 
++
+ #define REGION_UNINIT(_pScreen, _pReg) \
+ { \
+     REGION_SCREEN(_pScreen); \

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/WebdavResponseImpl.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/WebdavResponseImpl.java
+index b73d3ad..3f754f6 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/WebdavResponseImpl.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/WebdavResponseImpl.java
+@@ -165,8 +165,9 @@ public class WebdavResponseImpl implements WebdavResponse {
+                 transformer.transform(
+                         new DOMSource(doc), new SAXResult(handler));
+ 
+-                // TODO: application/xml?
+-                httpResponse.setContentType("text/xml");
++                // TODO: Should this be application/xml? See JCR-1621
++                httpResponse.setContentType(
++                        "text/xml; charset=" + SerializingContentHandler.ENCODING);
+                 httpResponse.setContentLength(out.size());
+                 out.writeTo(httpResponse.getOutputStream());
+             } catch (ParserConfigurationException e) {

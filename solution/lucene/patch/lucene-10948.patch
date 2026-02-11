@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java
+index 30229f2..1cadb1b 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java
+@@ -413,7 +413,7 @@ public class StandardQueryParser extends QueryParserHelper {
+     attr.setFuzzyMinSimilarity(fuzzyMinSim);
+   }
+   
+-  public void setFieldsBoost(Map<CharSequence, Float> boosts) {
++  public void setFieldsBoost(Map<String, Float> boosts) {
+     FieldBoostMapAttribute attr = getQueryConfigHandler().addAttribute(FieldBoostMapAttribute.class);
+     attr.setFieldBoostMap(boosts);
+   }

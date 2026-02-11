@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FieldsReader.java b/lucene/src/java/org/apache/lucene/index/FieldsReader.java
+index e135d6d..f085d33 100644
+--- a/lucene/src/java/org/apache/lucene/index/FieldsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/FieldsReader.java
+@@ -364,7 +364,6 @@ public final class FieldsReader implements Cloneable {
+       Field.Index index = Field.Index.toIndex(fi.isIndexed, tokenize);
+       Field.TermVector termVector = Field.TermVector.toTermVector(fi.storeTermVector, fi.storeOffsetWithTermVector, fi.storePositionWithTermVector);
+       f = new Field(fi.name,     // name
+-        false,
+         fieldsStream.readString(), // read value
+         Field.Store.YES,
+         index,

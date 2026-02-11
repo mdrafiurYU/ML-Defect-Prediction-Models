@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+index ff2d062..d1b9001 100644
+--- a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
++++ b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+@@ -143,7 +143,7 @@ public abstract class LuceneTestCase extends Assert {
+   public static final boolean TEST_NIGHTLY = Boolean.parseBoolean(System.getProperty("tests.nightly", "false"));
+   /** the line file used by LineFileDocs */
+   public static final String TEST_LINE_DOCS_FILE = System.getProperty("tests.linedocsfile", "europarl.lines.txt.gz");
+-  
++
+   private static final Pattern codecWithParam = Pattern.compile("(.*)\\(\\s*(\\d+)\\s*\\)");
+ 
+   /**

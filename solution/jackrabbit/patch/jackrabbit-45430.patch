@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java b/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java
+index 5a64660..01e99f5 100644
+--- a/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java
++++ b/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java
+@@ -39,7 +39,7 @@ public class Main {
+ 
+         WebAppContext webapp = new WebAppContext();
+         webapp.setContextPath("/");
+-        webapp.setWar(location.toURI().toString());
++        webapp.setWar(location.toString());
+         webapp.setExtractWAR(false);
+         webapp.setTempDirectory(new File(jackrabbit, "jetty"));

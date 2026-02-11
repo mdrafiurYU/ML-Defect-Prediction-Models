@@ -1,0 +1,13 @@
+diff --git a/exa/exa_accel.c b/exa/exa_accel.c
+index d586fd8..c3cf365 100644
+--- a/exa/exa_accel.c
++++ b/exa/exa_accel.c
+@@ -307,7 +307,7 @@ exaShmPutImage(DrawablePtr pDrawable, GCPtr pGC, int depth, unsigned int format,
+ 
+     if (pending_damage) {
+ 	REGION_INIT(pScreen, &region, &box, 1);
+-	exaDamageDestForMigration(pPixmap, &region);
++	exaDamageDestForMigration(pDrawable, pPixmap, &region);
+     }
+ 
+     if (!exaDoShmPutImage(pDrawable, pGC, depth, format, w, h, sx, sy, sw, sh,

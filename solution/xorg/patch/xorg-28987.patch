@@ -1,0 +1,14 @@
+diff --git a/include/input.h b/include/input.h
+index 1e65709..b399d3a 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -445,7 +445,8 @@ extern DeviceIntPtr LookupDeviceIntRec(
+ 
+ /* Implemented by the DDX. */
+ extern int NewInputDeviceRequest(
+-    InputOption *options);
++    InputOption *options,
++    DeviceIntPtr *dev);
+ extern void DeleteInputDeviceRequest(
+     DeviceIntPtr dev);
+ 

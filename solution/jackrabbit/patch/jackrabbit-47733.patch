@@ -1,0 +1,42 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/JoinImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/JoinImpl.java
+index dca6cc5..d3af2d9 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/JoinImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/JoinImpl.java
+@@ -40,7 +40,7 @@ public class JoinImpl extends SourceImpl implements Join {
+     /**
+      * The join type.
+      */
+-    private final String joinType;
++    private final JoinType joinType;
+ 
+     /**
+      * The join condition.
+@@ -50,7 +50,7 @@ public class JoinImpl extends SourceImpl implements Join {
+     JoinImpl(NamePathResolver resolver,
+              SourceImpl left,
+              SourceImpl right,
+-             String joinType,
++             JoinType joinType,
+              JoinConditionImpl joinCondition) {
+         super(resolver);
+         this.left = left;
+@@ -59,6 +59,10 @@ public class JoinImpl extends SourceImpl implements Join {
+         this.joinCondition = joinCondition;
+     }
+ 
++    public JoinType getJoinTypeInstance() {
++        return joinType;
++    }
++
+     /**
+      * Gets the left node-tuple source.
+      *
+@@ -86,7 +90,7 @@ public class JoinImpl extends SourceImpl implements Join {
+      *         </ul>
+      */
+     public String getJoinType() {
+-        return joinType;
++        return joinType.toString();
+     }
+ 
+     /**

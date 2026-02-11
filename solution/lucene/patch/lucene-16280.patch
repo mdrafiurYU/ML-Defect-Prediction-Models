@@ -1,0 +1,49 @@
+diff --git a/solr/src/test/org/apache/solr/analysis/SnowballPorterFilterFactoryTest.java b/solr/src/test/org/apache/solr/analysis/SnowballPorterFilterFactoryTest.java
+index 5475d3e..3d364f7 100644
+--- a/solr/src/test/org/apache/solr/analysis/SnowballPorterFilterFactoryTest.java
++++ b/solr/src/test/org/apache/solr/analysis/SnowballPorterFilterFactoryTest.java
+@@ -33,7 +33,6 @@ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.ArrayList;
+-import java.util.Collections;
+ 
+ public class SnowballPorterFilterFactoryTest extends BaseTokenTestCase {
+ 
+@@ -59,37 +58,6 @@ public class SnowballPorterFilterFactoryTest extends BaseTokenTestCase {
+     assertTokenStreamContents(stream, gold);
+   }
+ 
+-  /**
+-   * Tests the protected words mechanism of EnglishPorterFilterFactory
+-   */
+-  @Deprecated
+-  public void testProtectedOld() throws Exception {
+-    EnglishStemmer stemmer = new EnglishStemmer();
+-    String[] test = {"The", "fledgling", "banks", "were", "counting", "on", "a", "big", "boom", "in", "banking"};
+-    String[] gold = new String[test.length];
+-    for (int i = 0; i < test.length; i++) {
+-      if (test[i].equals("fledgling") == false && test[i].equals("banks") == false) {
+-        stemmer.setCurrent(test[i]);
+-        stemmer.stem();
+-        gold[i] = stemmer.getCurrent();
+-      } else {
+-        gold[i] = test[i];
+-      }
+-    }
+-
+-    EnglishPorterFilterFactory factory = new EnglishPorterFilterFactory();
+-    Map<String, String> args = new HashMap<String, String>(DEFAULT_VERSION_PARAM);
+-    args.put(SnowballPorterFilterFactory.PROTECTED_TOKENS, "who-cares.txt");
+-    factory.init(args);
+-    List<String> lines = new ArrayList<String>();
+-    Collections.addAll(lines, "banks", "fledgling");
+-    factory.inform(new LinesMockSolrResourceLoader(lines));
+-    Tokenizer tokenizer = new WhitespaceTokenizer(DEFAULT_VERSION,
+-        new StringReader(StrUtils.join(Arrays.asList(test), ' ')));
+-    TokenStream stream = factory.create(tokenizer);
+-    assertTokenStreamContents(stream, gold);
+-  }
+-
+   class LinesMockSolrResourceLoader implements ResourceLoader {
+     List<String> lines;

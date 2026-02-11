@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
+index 1a692d6..5deafd6 100644
+--- a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
++++ b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
+@@ -524,7 +524,7 @@ class FragmentQueue extends PriorityQueue<TextFragment>
+ {
+ 	public FragmentQueue(int size)
+ 	{
+-		initialize(size);
++		super(size);
+ 	}
+ 
+ 	@Override

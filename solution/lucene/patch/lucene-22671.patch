@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java
+index fa956dd..dcc7c8d 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java
+@@ -139,7 +139,7 @@ final class TermVectorsTermsWriter extends TermsHashConsumer {
+       }
+     }
+ 
+-    assert lastDocID == docState.docID;
++    assert lastDocID == docState.docID: "lastDocID=" + lastDocID + " docState.docID=" + docState.docID;
+ 
+     lastDocID++;

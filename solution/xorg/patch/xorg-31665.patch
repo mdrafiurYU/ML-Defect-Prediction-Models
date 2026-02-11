@@ -1,0 +1,34 @@
+diff --git a/hw/xprint/pcl/PclWindow.c b/hw/xprint/pcl/PclWindow.c
+index adf03da..80f4e91 100644
+--- a/hw/xprint/pcl/PclWindow.c
++++ b/hw/xprint/pcl/PclWindow.c
+@@ -333,14 +333,6 @@ PclPaintWindow(
+ 	  newValues[ABSY] = (pointer)0;
+       }
+ 
+-/*
+- * XXX Backing store is turned off for the PCL driver    
+-
+-    if (pWin->backStorage)
+-	(*pWin->drawable.pScreen->DrawGuarantee) (pWin, pGC,
+-	GuaranteeVisBack);
+- */
+-
+     mask = gcmask;
+     gcmask = 0;
+     i = 0;
+@@ -420,14 +412,6 @@ PclPaintWindow(
+     (*pGC->ops->PolyFillRect)((DrawablePtr)pWin, pGC, numRects, prect);
+     DEALLOCATE_LOCAL(prect);
+ 
+-/*
+- * XXX Backing store is turned off for the PCL driver
+-
+-    if (pWin->backStorage)
+-	(*pWin->drawable.pScreen->DrawGuarantee) (pWin, pGC,
+-	GuaranteeNothing);
+- */
+-
+     if (what == PW_BORDER)
+       {
+ 	  REGION_UNINIT(pScreen, &pWin->clipList);

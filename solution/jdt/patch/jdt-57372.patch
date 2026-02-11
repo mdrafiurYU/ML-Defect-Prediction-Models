@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index becc367..397dbcf 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1628,7 +1628,7 @@ public static int getProblemCategory(int problemID) {
+ 
+ 				case (int)(CompilerOptions.ForbiddenReference >>> 32):
+ 				case (int)(CompilerOptions.DiscouragedReference >>> 32):
+-					return CategorizedProblem.CAT_BUILDPATH;
++					return CategorizedProblem.CAT_RESTRICTION;
+ 	
+ 				case (int)(CompilerOptions.RawTypeReference >>> 32):
+ 					return CategorizedProblem.CAT_UNCHECKED_RAW;

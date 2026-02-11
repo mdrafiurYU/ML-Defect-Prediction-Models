@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
+index b4a4fbf..7b4a8f1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
+@@ -318,11 +318,6 @@ abstract class AbstractIndex {
+      * @throws IOException if an error occurs while commiting changes.
+      */
+     protected synchronized void commit(boolean optimize) throws IOException {
+-        // if index is not locked there are no pending changes
+-        if (!IndexReader.isLocked(getDirectory())) {
+-            return;
+-        }
+-
+         if (indexReader != null) {
+             indexReader.commitDeleted();
+         }

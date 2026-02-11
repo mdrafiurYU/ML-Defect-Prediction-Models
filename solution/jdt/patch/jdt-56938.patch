@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetCompiler.java b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetCompiler.java
+index 2896218..1ae5214 100644
+--- a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetCompiler.java
++++ b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetCompiler.java
+@@ -39,7 +39,7 @@ public class CodeSnippetCompiler extends Compiler {
+ 		EvaluationContext evaluationContext,
+ 		int codeSnippetStart,
+ 		int codeSnippetEnd) {
+-		super(environment, policy, settings, requestor, problemFactory);
++		super(environment, policy, settings, requestor, problemFactory, true);
+ 		this.parser =
+ 			new CodeSnippetParser(
+ 				this.problemReporter,

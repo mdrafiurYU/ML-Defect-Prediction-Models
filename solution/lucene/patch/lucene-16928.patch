@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java b/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
+index c6bdd8c..e7d87a6 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
+@@ -1211,7 +1211,6 @@ public class TestIndexReaderReopen extends LuceneTestCase {
+ 
+     IndexReader r = IndexReader.open(dir, false);
+     assertEquals(0, r.numDocs());
+-    assertEquals(4, r.maxDoc());
+ 
+     Collection<IndexCommit> commits = IndexReader.listCommits(dir);
+     for (final IndexCommit commit : commits) {

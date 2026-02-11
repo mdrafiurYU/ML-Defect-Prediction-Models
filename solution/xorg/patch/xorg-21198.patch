@@ -1,0 +1,12 @@
+diff --git a/GL/glx/glxcmds.c b/GL/glx/glxcmds.c
+index 3202f75..79fee20 100644
+--- a/GL/glx/glxcmds.c
++++ b/GL/glx/glxcmds.c
+@@ -1263,6 +1263,7 @@ int DoCreateGLXPixmap(__GLXclientState *cl, VisualID visual,
+     pGlxPixmap->pGlxScreen = pGlxScreen;
+     pGlxPixmap->pScreen = pScreen;
+     pGlxPixmap->idExists = True;
++    pGlxPixmap->pDamage = NULL;
+     pGlxPixmap->refcnt = 0;
+ 
+     pGlxPixmap->modes = modes;

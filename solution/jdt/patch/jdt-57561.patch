@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+index 84cab22..e6c5272 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+@@ -1781,9 +1781,11 @@ class ASTConverter {
+ 		}
+ 		Expression leftExpression = convert(expression.expression);
+ 		instanceOfExpression.setLeftOperand(leftExpression);
+-		instanceOfExpression.setRightOperand(convertType(expression.type));
++		final Type convertType = convertType(expression.type);
++		instanceOfExpression.setRightOperand(convertType);
+ 		int startPosition = leftExpression.getStartPosition();
+-		instanceOfExpression.setSourceRange(startPosition, expression.sourceEnd - startPosition + 1);
++		int sourceEnd = convertType.getStartPosition() + convertType.getLength() - 1;
++		instanceOfExpression.setSourceRange(startPosition, sourceEnd - startPosition + 1);
+ 		return instanceOfExpression;
+ 	}

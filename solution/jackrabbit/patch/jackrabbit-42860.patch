@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeDataRef.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeDataRef.java
+index 1927d69..72b1f45 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeDataRef.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeDataRef.java
+@@ -35,6 +35,8 @@ class NodeDataRef extends AbstractNodeData {
+      * @param primaryParentId primary parent id
+      */
+     protected NodeDataRef(AbstractNodeData data, NodeId primaryParentId) {
++        super(data.getId());
++
+         this.data = data;
+ 
+         setPrimaryParentId(primaryParentId);

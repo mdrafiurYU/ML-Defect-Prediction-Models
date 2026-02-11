@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dri2/dri2.h b/hw/xfree86/dri2/dri2.h
+index a319085..126087a 100644
+--- a/hw/xfree86/dri2/dri2.h
++++ b/hw/xfree86/dri2/dri2.h
+@@ -58,6 +58,8 @@ Bool DRI2Connect(ScreenPtr pScreen,
+ 		 const char **driverName,
+ 		 unsigned int *sareaHandle);
+ 
++Bool DRI2AuthConnection(ScreenPtr pScreen, drm_magic_t magic);
++
+ unsigned int DRI2GetPixmapHandle(PixmapPtr pPixmap,
+ 				 unsigned int *flags);
+ 

@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.java
+index 4ab01ab..8759199 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.java
+@@ -101,6 +101,7 @@ public class HTMLStripCharFilter extends BaseCharFilter {
+     if (len>0) {
+       return pushed.charAt(len-1);
+     }
++    numRead++;
+     int ch = input.read();
+     push(ch);
+     return ch;

@@ -1,0 +1,16 @@
+diff --git a/include/extinit.h b/include/extinit.h
+index ead59be..7a12b1b 100644
+--- a/include/extinit.h
++++ b/include/extinit.h
+@@ -142,6 +142,11 @@ IResetProc(
+ 	ExtensionEntry *       /* unused */
+ 	);
+ 
++Bool
++DeviceIsPointerType(
++        DeviceIntPtr dev
++        );
++
+ void
+ AssignTypeAndName (
+ 	DeviceIntPtr           /* dev */,

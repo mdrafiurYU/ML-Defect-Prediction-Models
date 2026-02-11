@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/xf4bpp/ppcSpMcro.h b/hw/xfree86/xf4bpp/ppcSpMcro.h
+index 2b7f951..655a883 100644
+--- a/hw/xfree86/xf4bpp/ppcSpMcro.h
++++ b/hw/xfree86/xf4bpp/ppcSpMcro.h
+@@ -28,11 +28,11 @@
+ #define SETSPANPTRS(IN,N,IPW,PW,IPPT,PPT,FPW,FPPT,FSORT)		\
+ 	{								\
+ 	N = IN * miFindMaxBand(pGC->pCompositeClip);			\
+-	if(!(PW = (int *)ALLOCATE_LOCAL(N * sizeof(int))))		\
++	if(!(PW = (int *)xalloc(N * sizeof(int))))		\
+ 		return;							\
+-	if(!(PPT = (DDXPointRec *)ALLOCATE_LOCAL(N * sizeof(DDXPointRec)))) \
++	if(!(PPT = (DDXPointRec *)xalloc(N * sizeof(DDXPointRec)))) \
+ 		{							\
+-		DEALLOCATE_LOCAL(PW);					\
++		free(PW);					\
+ 		return;							\
+     		}							\
+ 	FPW = PW;							\

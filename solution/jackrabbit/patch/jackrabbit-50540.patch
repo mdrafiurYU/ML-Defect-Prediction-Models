@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java
+index 0cfee30..9d35759 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java
+@@ -170,7 +170,7 @@ public abstract class RepositoryStub {
+      * @return a <code>RepositoryStub</code> implementation.
+      * @throws RepositoryStubException
+      */
+-    static synchronized RepositoryStub getInstance(Map configuration)
++    public static synchronized RepositoryStub getInstance(Map configuration)
+         throws RepositoryStubException {
+         Properties props = null;
+         RepositoryStub stub = null;

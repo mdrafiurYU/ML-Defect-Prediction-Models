@@ -1,0 +1,30 @@
+diff --git a/Xprint/ps/PsPixmap.c b/Xprint/ps/PsPixmap.c
+index a698b37..f2d05d0 100644
+--- a/Xprint/ps/PsPixmap.c
++++ b/Xprint/ps/PsPixmap.c
+@@ -191,7 +191,6 @@ Bool
+ PsDestroyPixmap(PixmapPtr pPixmap)
+ {
+   PsPixmapPrivPtr priv = (PsPixmapPrivPtr)pPixmap->devPrivate.ptr;
+-  DisplayListPtr  disp = priv->dispList;
+ 
+   if( --pPixmap->refcnt ) return TRUE;
+ 
+@@ -512,6 +511,8 @@ PsCreateFillElementList(PixmapPtr pix, int *nElms)
+         case PolyFillArcCmd:
+           *nElms += elm->c.arcs.nArcs;
+           break;
++        default: /* keep the compiler happy with unhandled enums */
++          break;
+       }
+     }
+   }
+@@ -574,6 +575,8 @@ PsCreateFillElementList(PixmapPtr pix, int *nElms)
+                 *nElms += 1;
+               }
+               break;
++            default:  /* keep the compiler happy with unhandled enums */
++              break;
+           }
+         }
+       }

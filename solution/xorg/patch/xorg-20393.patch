@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_kbd.c b/hw/xfree86/os-support/linux/lnx_kbd.c
+index b1fc95b..504c527 100644
+--- a/hw/xfree86/os-support/linux/lnx_kbd.c
++++ b/hw/xfree86/os-support/linux/lnx_kbd.c
+@@ -517,7 +517,7 @@ OpenKeyboard(InputInfoPtr pInfo)
+     return TRUE;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86OSKbdPreInit(InputInfoPtr pInfo)
+ {
+     KbdDevPtr pKbd = pInfo->private;

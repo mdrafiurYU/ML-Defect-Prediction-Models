@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordLog.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordLog.java
+index 2e8ecb5..a14adb0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordLog.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordLog.java
+@@ -294,6 +294,25 @@ public class FileRecordLog {
+     }
+ 
+     /**
++     * Return the previous revision. This is the last revision preceding the
++     * first revision in this log.
++     *
++     * @return previous revision
++     */
++    public long getPreviousRevision() {
++        return previousRevision;
++    }
++
++    /**
++     * Return the last revision. This is the last revision in this log.
++     *
++     * @return last revision
++     */
++    public long getLastRevision() {
++        return lastRevision;
++    }
++
++    /**
+      * Close this log.
+      */
+     public void close() {
+@@ -407,5 +426,4 @@ public class FileRecordLog {
+         }
+         return utflen;
+     }
+-
+ }

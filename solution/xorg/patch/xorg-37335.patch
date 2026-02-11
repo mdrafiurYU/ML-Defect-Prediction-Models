@@ -1,0 +1,33 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index d34238e..710e787 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -448,6 +448,8 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+     LocalDevicePtr pInfo = (LocalDevicePtr) pDev->public.devicePrivate;
+     InputDriverPtr drv;
+     IDevRec *idev;
++    BOOL found;
++    IDevPtr *it;
+ 
+     if (pInfo) /* need to get these before RemoveDevice */
+     {
+@@ -464,11 +466,19 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+     else
+         xf86DeleteInput(pInfo, 0);
+ 
++    /* devices added through HAL aren't in the config layout */
++    it = xf86ConfigLayout.inputs;
++    while(*it && *it != idev)
++        it++;
++
++    if (!(*it)) /* end of list, not in the layout */
++    {
+     xfree(idev->driver);
+     xfree(idev->identifier);
+     xf86optionListFree(idev->commonOptions);
+     xfree(idev);
+ }
++}
+ 
+ /* 
+  * convenient functions to post events

@@ -1,0 +1,15 @@
+diff --git a/dix/events.c b/dix/events.c
+index f04433b..7a79d29 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2014,10 +2014,8 @@ TryClientEvents (ClientPtr client, DeviceIntPtr dev, xEvent *pEvents,
+ 
+ 	if (BitIsOn(criticalEvents, type))
+ 	{
+-#ifdef SMART_SCHEDULE
+ 	    if (client->smart_priority < SMART_MAX_PRIORITY)
+ 		client->smart_priority++;
+-#endif
+ 	    SetCriticalOutputPending();
+ 	}
+ 

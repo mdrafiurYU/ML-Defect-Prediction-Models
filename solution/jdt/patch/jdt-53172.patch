@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
+index f6b46be..800c748 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
+@@ -146,7 +146,9 @@ protected boolean buildStructure(OpenableElementInfo info, final IProgressMonito
+ 	if (underlyingResource == null) {
+ 		underlyingResource = getResource();
+ 	}
+-	unitInfo.timestamp = ((IFile)underlyingResource).getModificationStamp();
++	// underlying resource is null in the case of a working copy on a class file in a jar
++	if (underlyingResource != null)
++		unitInfo.timestamp = ((IFile)underlyingResource).getModificationStamp();
+ 	
+ 	// compute other problems if needed
+ 	CompilationUnitDeclaration compilationUnitDeclaration = null;

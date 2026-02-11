@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/fbdevhw/fbdevhw.h b/hw/xfree86/fbdevhw/fbdevhw.h
+index 41c3e33..bc46b9c 100644
+--- a/hw/xfree86/fbdevhw/fbdevhw.h
++++ b/hw/xfree86/fbdevhw/fbdevhw.h
+@@ -16,6 +16,8 @@
+ extern _X_EXPORT Bool  fbdevHWGetRec(ScrnInfoPtr pScrn);
+ extern _X_EXPORT void  fbdevHWFreeRec(ScrnInfoPtr pScrn);
+ 
++extern _X_EXPORT int   fbdevHWGetFD(ScrnInfoPtr pScrn);
++
+ extern _X_EXPORT Bool  fbdevHWProbe(struct pci_device * pPci, char *device, char **namep);
+ extern _X_EXPORT Bool  fbdevHWInit(ScrnInfoPtr pScrn, struct pci_device * pPci, char *device);
+ 

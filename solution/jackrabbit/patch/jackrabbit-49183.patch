@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+index 11f02ee..61e83ca 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+@@ -512,10 +512,10 @@ public class NodeImpl extends ItemImpl implements Node {
+     }
+ 
+     /**
+-     * TODO: method name is wrong! should be getProperties (Issue 736 of the pfd)
+-     * @see javax.jcr.Node#getProperty(String)
++     * @see javax.jcr.Node#getProperties(String)
+      */
+-    public PropertyIterator getProperty(String[] nameGlobs) throws RepositoryException {
++    public PropertyIterator getProperties(String[] nameGlobs)
++            throws RepositoryException {
+         checkStatus();
+         List properties = new ArrayList();
+         // traverse child properties using a filtering item visitor

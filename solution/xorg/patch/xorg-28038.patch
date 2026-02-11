@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/common/xf86DGA.c b/hw/xfree86/common/xf86DGA.c
+index 204457f..9a24040 100644
+--- a/hw/xfree86/common/xf86DGA.c
++++ b/hw/xfree86/common/xf86DGA.c
+@@ -1030,8 +1030,10 @@ DGAProcessKeyboardEvent (ScreenPtr pScreen, dgaEvent *de, DeviceIntPtr keybd)
+     else
+     {
+ 	/* If the keyboard is actively grabbed, deliver a grabbed core event */
+-	if (keybd->grab && !keybd->fromPassiveGrab)
++	if (keybd->coreGrab.grab && !keybd->coreGrab.fromPassiveGrab)
+ 	{
++            /* I've got no clue if that is correct but only working on core
++             * grabs seems the right thing here. (whot) */
+ 	    core.u.u.type		    = coreEquiv;
+ 	    core.u.u.detail		    = de->u.u.detail;
+ 	    core.u.keyButtonPointer.time    = de->u.event.time;
+@@ -1109,8 +1111,10 @@ DGAProcessPointerEvent (ScreenPtr pScreen, dgaEvent *de, DeviceIntPtr mouse)
+     else
+     {
+ 	/* If the pointer is actively grabbed, deliver a grabbed core event */
+-	if (mouse->grab && !mouse->fromPassiveGrab)
++	if (mouse->coreGrab.grab && !mouse->coreGrab.fromPassiveGrab)
+ 	{
++            /* I've got no clue if that is correct but only working on core
++             * grabs seems the right thing here. (whot) */
+ 	    core.u.u.type		    = coreEquiv;
+ 	    core.u.u.detail		    = de->u.u.detail;
+ 	    core.u.keyButtonPointer.time    = de->u.event.time;

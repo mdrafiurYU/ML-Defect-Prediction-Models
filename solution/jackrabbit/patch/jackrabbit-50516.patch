@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RemoveOrphanVersionHistoryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RemoveOrphanVersionHistoryTest.java
+index 9bb700b..6b94b09 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RemoveOrphanVersionHistoryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RemoveOrphanVersionHistoryTest.java
+@@ -164,7 +164,7 @@ public class RemoveOrphanVersionHistoryTest extends AbstractJCRTest {
+         node.remove();
+         session.save();
+ 
+-        Session otherSession = helper.getReadWriteSession(workspaceName);
++        Session otherSession = getHelper().getReadWriteSession(workspaceName);
+         try {
+             // create a reference to the version history in another workspace
+             Node otherRoot = otherSession.getRootNode();

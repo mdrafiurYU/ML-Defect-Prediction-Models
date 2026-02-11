@@ -1,0 +1,13 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 12c53eb..7772029 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -685,7 +685,7 @@ XISendDeviceChangedEvent(DeviceIntPtr device, DeviceIntPtr master, DeviceChanged
+     dcce->time         = GetTimeInMillis();
+     dcce->deviceid     = master->id;
+     dcce->sourceid     = device->id;
+-    dcce->reason       = SlaveSwitch;
++    dcce->reason       = XISlaveSwitch;
+     dcce->num_classes  = 0;
+     dcce->length = (len - sizeof(xEvent))/4;
+ 

@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index 4756e3c..ce85fbf 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -463,7 +463,12 @@ public class SessionImpl extends AbstractSession
+      * @see javax.jcr.Session#getLockTokens()
+      */
+     public String[] getLockTokens() {
+-        return getLockStateManager().getLockTokens();
++        try {
++            return getLockStateManager().getLockTokens();
++        } catch (RepositoryException e) {
++            log.warn("Unable to retrieve lock tokens for this session. (" + e.getMessage() + ")");            
++            return new String[0];
++        }
+     }
+ 
+     /**

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java
+index ff8eb76..9ed88db 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java
+@@ -49,6 +49,7 @@ public class GetLanguageTest extends AbstractQueryTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

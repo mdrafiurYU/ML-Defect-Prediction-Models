@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 675ec9f..b98e903 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -131,7 +131,7 @@ xf86ProcessCommonOptions(LocalDevicePtr local,
+     local->history_size = GetMotionHistorySize();
+     /* Preallocate xEvent store */
+     if (!xf86Events)
+-        xf86Events = (xEvent *)xcalloc(sizeof(xEvent), GetMaximumEventsNum());
++        GetEventList(&xf86Events);
+     if (!xf86Events)
+         FatalError("Couldn't allocate event store\n");
+ }

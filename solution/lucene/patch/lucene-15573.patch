@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/ScoreCachingWrappingScorer.java b/lucene/src/java/org/apache/lucene/search/ScoreCachingWrappingScorer.java
+index 09a0bcd..b35e452 100644
+--- a/lucene/src/java/org/apache/lucene/search/ScoreCachingWrappingScorer.java
++++ b/lucene/src/java/org/apache/lucene/search/ScoreCachingWrappingScorer.java
+@@ -43,7 +43,7 @@ public class ScoreCachingWrappingScorer extends Scorer {
+   }
+ 
+   @Override
+-  protected boolean score(Collector collector, int max, int firstDocID) throws IOException {
++  public boolean score(Collector collector, int max, int firstDocID) throws IOException {
+     return scorer.score(collector, max, firstDocID);
+   }

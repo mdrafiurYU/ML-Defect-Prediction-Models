@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/src/kdrive.c b/hw/kdrive/src/kdrive.c
+index 97d167e..162a3db 100644
+--- a/hw/kdrive/src/kdrive.c
++++ b/hw/kdrive/src/kdrive.c
+@@ -521,17 +521,6 @@ KdParseScreen (KdScreenInfo *screen,
+  *	{NMO}	    Reorder buttons
+  */
+ 
+-char *
+-KdSaveString (char *str)
+-{
+-    char    *n = (char *) xalloc (strlen (str) + 1);
+-
+-    if (!n)
+-	return 0;
+-    strcpy (n, str);
+-    return n;
+-}
+-
+ void
+ KdParseRgba (char *rgba)
+ {

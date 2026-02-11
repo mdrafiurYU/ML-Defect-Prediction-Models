@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java b/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
+index ca6d0d2..a0a0f2d 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
+@@ -61,6 +61,7 @@ public class TestFieldsReader extends LuceneTestCase {
+     IndexWriter writer = new IndexWriter(dir, conf);
+     writer.addDocument(testDoc);
+     writer.close();
++    FaultyIndexInput.doFail = false;
+   }
+ 
+   @Override

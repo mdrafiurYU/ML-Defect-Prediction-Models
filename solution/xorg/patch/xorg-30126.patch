@@ -1,0 +1,28 @@
+diff --git a/fb/fbcopy.c b/fb/fbcopy.c
+index 74ff358..a430203 100644
+--- a/fb/fbcopy.c
++++ b/fb/fbcopy.c
+@@ -60,11 +60,11 @@ fbCopyNtoN (DrawablePtr	pSrcDrawable,
+ 
+     while (nbox--)
+     {
+-#ifdef USE_MMX
++#ifndef FB_ACCESS_WRAPPER /* pixman_blt() doesn't support accessors yet */
+ 	if (pm == FB_ALLONES && alu == GXcopy && !reverse &&
+-	    !upsidedown && fbHaveMMX())
++	    !upsidedown)
+ 	{
+-	    if (!fbBltmmx (src, dst, srcStride, dstStride, srcBpp, dstBpp,
++	    if (!pixman_blt ((uint32_t *)src, (uint32_t *)dst, srcStride, dstStride, srcBpp, dstBpp,
+ 			   (pbox->x1 + dx + srcXoff),
+ 			   (pbox->y1 + dy + srcYoff),
+ 			   (pbox->x1 + srcXoff),
+@@ -94,7 +94,7 @@ fbCopyNtoN (DrawablePtr	pSrcDrawable,
+ 	       
+ 	       reverse,
+ 	       upsidedown);
+-#ifdef USE_MMX
++#ifndef FB_ACCESS_WRAPPER
+     next:
+ #endif
+ 	pbox++;

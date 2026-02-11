@@ -1,0 +1,13 @@
+diff --git a/Xi/opendev.c b/Xi/opendev.c
+index 4ad5af2..46d55a8 100644
+--- a/Xi/opendev.c
++++ b/Xi/opendev.c
+@@ -112,7 +112,7 @@ ProcXOpenDevice(ClientPtr client)
+     } else if (status != Success)
+ 	return status;
+ 
+-    if (dev->isMaster)
++    if (IsMaster(dev))
+             return BadDevice;
+ 
+     OpenInputDevice(dev, client, &status);

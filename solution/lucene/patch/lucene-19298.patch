@@ -1,0 +1,19 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java b/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
+index 5400046..2a53e0f 100644
+--- a/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
++++ b/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
+@@ -91,6 +91,7 @@ public abstract class AbstractLuceneSpellChecker extends SolrSpellChecker {
+ 
+   protected StringDistance sd;
+ 
++  @Override
+   public String init(NamedList config, SolrCore core) {
+     super.init(config, core);
+     indexDir = (String) config.get(INDEX_DIR);
+@@ -213,6 +214,7 @@ public abstract class AbstractLuceneSpellChecker extends SolrSpellChecker {
+     return reader;
+   }
+ 
++  @Override
+   public void reload(SolrCore core, SolrIndexSearcher searcher) throws IOException {
+     spellChecker.setSpellIndex(index);

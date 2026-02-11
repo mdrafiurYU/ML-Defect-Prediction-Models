@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleSecurityManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleSecurityManager.java
+index 5df6332..896bcb4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleSecurityManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleSecurityManager.java
+@@ -170,13 +170,6 @@ public class SimpleSecurityManager implements JackrabbitSecurityManager {
+     }
+ 
+     /**
+-     * @see JackrabbitSecurityManager#getSecurityConfig()
+-     */
+-    public SecurityConfig getSecurityConfig() throws RepositoryException {
+-        return config;
+-    }
+-
+-    /**
+      * @see JackrabbitSecurityManager#getAccessManager(Session,AMContext)
+      */
+     public AccessManager getAccessManager(Session session, AMContext amContext) throws RepositoryException {

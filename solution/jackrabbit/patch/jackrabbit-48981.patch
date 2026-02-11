@@ -1,0 +1,72 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
+index 1ce3cdd..76911d1 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
+@@ -40,6 +40,7 @@ import javax.jcr.PropertyType;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+ import javax.jcr.ValueFormatException;
++import javax.jcr.Binary;
+ import javax.xml.parsers.DocumentBuilder;
+ import javax.xml.parsers.ParserConfigurationException;
+ import java.io.ByteArrayInputStream;
+@@ -399,6 +400,29 @@ class QValueFactoryImpl extends AbstractQValueFactory {
+                 }
+             }
+         }
++
++        /**
++         * @see QValue#getBinary()
++         */
++        public Binary getBinary() throws RepositoryException {
++            // TODO FIXME consolidate Binary implementations
++            return new Binary() {
++                public InputStream getStream() throws RepositoryException {
++                    return QValueImpl.this.getStream();
++                }
++
++                public int read(byte[] b, long position) throws IOException, RepositoryException {
++                    InputStream in = getStream();
++                    in.skip(position);
++                    return in.read(b);
++                }
++
++                public long getSize() throws RepositoryException {
++                    return getLength();
++                }
++            };
++        }
++
+     }
+ 
+     //--------------------------------------------------------< Inner Class >---
+@@ -791,6 +815,29 @@ class QValueFactoryImpl extends AbstractQValueFactory {
+         }
+ 
+         /**
++         * @see QValue#getBinary()
++         */
++        public Binary getBinary() throws RepositoryException {
++            // TODO FIXME consolidate Binary implementations
++            // TODO optimize
++            return new Binary() {
++                public InputStream getStream() throws RepositoryException {
++                    return BinaryQValue.this.getStream();
++                }
++
++                public int read(byte[] b, long position) throws IOException, RepositoryException {
++                    InputStream in = getStream();
++                    in.skip(position);
++                    return in.read(b);
++                }
++
++                public long getSize() throws RepositoryException {
++                    return getLength();
++                }
++            };
++        }
++
++        /**
+          * Frees temporarily allocated resources such as temporary file, buffer, etc.
+          * If this <code>BinaryQValue</code> is backed by a persistent resource
+          * calling this method will have no effect.

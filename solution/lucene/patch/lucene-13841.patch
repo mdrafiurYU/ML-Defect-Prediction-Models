@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java b/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java
+index 0ccd0ae..76c28f8 100644
+--- a/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java
+@@ -450,7 +450,7 @@ public class LukeRequestHandler extends RequestHandlerBase
+       if (ft.getAnalyzer().getPositionIncrementGap(f.getName()) != 0) {
+     	  field.add("positionIncrementGap", ft.getAnalyzer().getPositionIncrementGap(f.getName()));
+       }
+-      field.add("copyDests", schema.getCopyFields(f.getName()));
++      field.add("copyDests", schema.getCopyFieldsList(f.getName()));
+       field.add("copySources", schema.getCopySources(f.getName()));

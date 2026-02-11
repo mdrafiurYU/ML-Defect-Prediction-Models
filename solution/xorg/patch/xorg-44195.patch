@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/scan.c b/hw/xfree86/parser/scan.c
+index 7a9bb93..ecca9e6 100644
+--- a/hw/xfree86/parser/scan.c
++++ b/hw/xfree86/parser/scan.c
+@@ -877,7 +877,7 @@ void
+ xf86setBuiltinConfig(const char *config[])
+ {
+ 	builtinConfig = config;
+-	configPath = xf86configStrdup("<builtin configuration>");
++	configPath = strdup("<builtin configuration>");
+ 	configBuf = xf86confmalloc (CONFIG_BUF_LEN);
+ 	configRBuf = xf86confmalloc (CONFIG_BUF_LEN);
+ 	configBuf[0] = '\0';		/* sanity ... */

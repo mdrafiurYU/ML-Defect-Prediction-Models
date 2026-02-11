@@ -1,0 +1,49 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java
+index 66fb8c3..31f846e 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java
+@@ -21,6 +21,7 @@ import javax.jcr.Property;
+ import javax.jcr.PropertyType;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
++import javax.jcr.version.Version;
+ 
+ import org.apache.jackrabbit.test.AbstractJCRTest;
+ 
+@@ -56,4 +57,36 @@ public class NodeImplTest extends AbstractJCRTest {
+                 PropertyType.LONG, property.getType());
+     }
+ 
++    /**
++     * Test case for JCR-1227.
++     * 
++     * @see https://issues.apache.org/jira/browse/JCR-1227
++     */
++    public void testRestoreEmptyMultiValueProperty() throws Exception {
++        node.addMixin("mix:versionable");
++        node.setProperty("test", new Value[0], PropertyType.LONG);
++        node.save();
++        assertEquals(PropertyType.LONG, node.getProperty("test").getType());
++
++        Version version = node.checkin();
++        assertEquals(PropertyType.LONG, node.getProperty("test").getType());
++
++        node.restore(version, false);
++        assertEquals(
++                "JCR-1227: Restore of empty multivalue property always"
++                + " changes property type to String",
++                PropertyType.LONG, node.getProperty("test").getType());
++
++        node.checkout();
++        node.setProperty("test", new Value[0], PropertyType.BOOLEAN);
++        node.save();
++        assertEquals(PropertyType.BOOLEAN, node.getProperty("test").getType());
++
++        node.restore(version, false);
++        assertEquals(
++                "JCR-1227: Restore of empty multivalue property always"
++                + " changes property type to String",
++                PropertyType.LONG, node.getProperty("test").getType());
++    }
++
+ }

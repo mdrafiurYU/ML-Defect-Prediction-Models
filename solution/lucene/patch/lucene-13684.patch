@@ -1,0 +1,30 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TrieDateField.java b/solr/src/java/org/apache/solr/schema/TrieDateField.java
+index 4f48c98..f62b810 100755
+--- a/solr/src/java/org/apache/solr/schema/TrieDateField.java
++++ b/solr/src/java/org/apache/solr/schema/TrieDateField.java
+@@ -26,7 +26,6 @@ import org.apache.solr.analysis.TrieTokenizerFactory;
+ import org.apache.solr.search.function.*;
+ import org.apache.solr.search.QParser;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.document.Field;
+ import org.apache.lucene.search.SortField;
+@@ -93,17 +92,6 @@ public class TrieDateField extends DateField {
+   }
+ 
+   @Override
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    byte[] arr = f.getBinaryValue();
+-    if (arr==null) {
+-      xmlWriter.writeStr(name, TrieField.badFieldString(f));
+-      return;
+-    }
+-
+-    xmlWriter.writeDate(name,new Date(TrieField.toLong(arr)));
+-  }
+-
+-  @Override
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     byte[] arr = f.getBinaryValue();
+     if (arr==null) {

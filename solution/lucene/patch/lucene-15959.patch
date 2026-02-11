@@ -1,0 +1,23 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java b/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java
+index 517c37a..30e339d 100644
+--- a/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java
++++ b/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java
+@@ -17,7 +17,7 @@
+ 
+ package org.apache.lucene.search.function;
+ 
+-import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.search.FieldCache;
+ 
+ import java.io.IOException;
+@@ -69,8 +69,8 @@ public class ReverseOrdFieldSource extends ValueSource {
+ 
+   /*(non-Javadoc) @see org.apache.lucene.search.function.ValueSource#getValues(org.apache.lucene.index.IndexReader) */
+   @Override
+-  public DocValues getValues(IndexReader reader) throws IOException {
+-    final FieldCache.DocTermsIndex termsIndex = FieldCache.DEFAULT.getTermsIndex(reader, field);
++  public DocValues getValues(AtomicReaderContext context) throws IOException {
++    final FieldCache.DocTermsIndex termsIndex = FieldCache.DEFAULT.getTermsIndex(context.reader, field);
+ 
+     final int end = termsIndex.numOrd();

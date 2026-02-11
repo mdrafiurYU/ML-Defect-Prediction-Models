@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winpushpxl.c b/hw/xwin/winpushpxl.c
+index e73cecb..5949339 100644
+--- a/hw/xwin/winpushpxl.c
++++ b/hw/xwin/winpushpxl.c
+@@ -45,6 +45,9 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ******************************************************************/
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include <X11/X.h>
+ #include "gcstruct.h"
+ #include "scrnintstr.h"

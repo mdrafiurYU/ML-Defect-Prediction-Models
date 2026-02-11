@@ -1,0 +1,27 @@
+diff --git a/include/xkbsrv.h b/include/xkbsrv.h
+index 7684675..8f6a767 100644
+--- a/include/xkbsrv.h
++++ b/include/xkbsrv.h
+@@ -771,22 +771,12 @@ extern _X_EXPORT int XkbRemoveResourceClient(
+        XID		/* id */
+ );
+ 
+-extern _X_EXPORT int XkbDDXInitDevice(
+-    DeviceIntPtr        /* dev */
+-);
+-
+ extern _X_EXPORT int XkbDDXAccessXBeep(
+     DeviceIntPtr        /* dev */,
+     unsigned int	/* what */,
+     unsigned int	/* which */
+ );
+ 
+-extern _X_EXPORT void XkbDDXKeyClick(
+-    DeviceIntPtr	/* dev */,
+-    int			/* keycode */,
+-    int			/* synthetic */
+-);
+-
+ extern _X_EXPORT int XkbDDXUsesSoftRepeat(
+     DeviceIntPtr	/* dev */
+ );

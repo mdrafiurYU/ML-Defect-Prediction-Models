@@ -1,0 +1,13 @@
+diff --git a/randr/randr.c b/randr/randr.c
+index b7c44f7..07dd9e9 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -436,7 +436,7 @@ RRFirstOutput (ScreenPtr pScreen)
+     RROutputPtr		    output;
+     int	i, j;
+     
+-    if (pScrPriv->primaryOutput)
++    if (pScrPriv->primaryOutput && pScrPriv->primaryOutput->crtc)
+ 	return pScrPriv->primaryOutput;
+ 
+     for (i = 0; i < pScrPriv->numCrtcs; i++)

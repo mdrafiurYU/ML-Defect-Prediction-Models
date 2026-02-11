@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java
+index 7192e98..8f58e52 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java
+@@ -16,11 +16,11 @@
+  */
+ package org.apache.jackrabbit.jcr2spi;
+ 
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+ import junit.framework.Test;
+-import junit.framework.TestSuite;
+ import junit.framework.TestCase;
++import junit.framework.TestSuite;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * <code>TestAll</code>...
+@@ -49,7 +49,7 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(MoveTreeTest.class);
+         suite.addTestSuite(MoveNewTreeTest.class);
+         suite.addTestSuite(MoveMultipleTest.class);
+-        suite.addTestSuite(WorkspaceMoveTest.class);
++        //suite.addTestSuite(WorkspaceMoveTest.class);  // see JCR-1276
+         suite.addTestSuite(RevertMoveTest.class);
+ 
+         // refresh

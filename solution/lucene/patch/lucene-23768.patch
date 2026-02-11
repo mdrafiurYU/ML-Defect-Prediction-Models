@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/analysis/MockAnalyzer.java b/lucene/src/test-framework/org/apache/lucene/analysis/MockAnalyzer.java
+index 9dc1cea..dbd28fe 100644
+--- a/lucene/src/test-framework/org/apache/lucene/analysis/MockAnalyzer.java
++++ b/lucene/src/test-framework/org/apache/lucene/analysis/MockAnalyzer.java
+@@ -129,7 +129,7 @@ public final class MockAnalyzer extends Analyzer {
+     Integer val = previousMappings.get(fieldName);
+     if (val == null) {
+       val = -1; // no payloads
+-      if (LuceneTestCase.TEST_NIGHTLY || random.nextInt(20) == 0) {
++      if (LuceneTestCase.rarely(random)) {
+         switch(random.nextInt(3)) {
+           case 0: val = -1; // no payloads
+                   break;

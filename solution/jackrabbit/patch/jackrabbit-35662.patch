@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+index 1076b21..9b6d2f9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+@@ -402,6 +402,10 @@ public class SearchManager implements SynchronousEventListener {
+                 long type = e.getType();
+                 if (type == Event.NODE_ADDED) {
+                     addedNodes.put(e.getChildId(), e);
++                    // quick'n dirty fix for JCR-905
++                    if (e.isExternal()) {
++                        removedNodes.add(e.getChildId());
++                    }
+                 } else if (type == Event.NODE_REMOVED) {
+                     removedNodes.add(e.getChildId());
+                 } else {

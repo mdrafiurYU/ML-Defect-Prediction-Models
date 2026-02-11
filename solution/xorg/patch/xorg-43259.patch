@@ -1,0 +1,13 @@
+diff --git a/mi/mipolyrect.c b/mi/mipolyrect.c
+index f1ec485..033c7a7 100644
+--- a/mi/mipolyrect.c
++++ b/mi/mipolyrect.c
+@@ -90,7 +90,7 @@ miPolyRectangle(DrawablePtr pDraw, GCPtr pGC, int nrects, xRectangle *pRects)
+ 	offset2 = pGC->lineWidth;
+ 	offset1 = offset2 >> 1;
+ 	offset3 = offset2 - offset1;
+-	tmp = (xRectangle *) xalloc(ntmp * sizeof (xRectangle));
++	tmp = xalloc(ntmp * sizeof (xRectangle));
+ 	if (!tmp)
+ 	    return;
+ 	t = tmp;

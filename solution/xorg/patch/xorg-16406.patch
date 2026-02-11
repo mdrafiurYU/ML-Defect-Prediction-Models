@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/exa/exaPriv.h b/hw/xfree86/exa/exaPriv.h
+index 3d09043..a53f370 100644
+--- a/hw/xfree86/exa/exaPriv.h
++++ b/hw/xfree86/exa/exaPriv.h
+@@ -103,6 +103,7 @@ typedef struct {
+     int		    devKind;
+     DevUnion	    devPrivate;
+     Bool	    dirty;
++    unsigned int    size;
+ } ExaPixmapPrivRec, *ExaPixmapPrivPtr;
+ 
+ 
+@@ -247,6 +248,12 @@ void
+ exaPixmapUseMemory (PixmapPtr pPixmap);
+ 
+ void
++exaPrepareAccess(DrawablePtr pDrawable, int index);
++
++void
++exaFinishAccess(DrawablePtr pDrawable, int index);
++
++void
+ exaDrawableDirty(DrawablePtr pDrawable);
+ 
+ Bool

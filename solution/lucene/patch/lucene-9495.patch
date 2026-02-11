@@ -1,0 +1,28 @@
+diff --git a/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/AbstractTestCase.java b/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/AbstractTestCase.java
+index 0e66e23..85f9509 100644
+--- a/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/AbstractTestCase.java
++++ b/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/AbstractTestCase.java
+@@ -355,16 +355,20 @@ public abstract class AbstractTestCase extends LuceneTestCase {
+   
+   protected void makeIndexShortMV() throws Exception {
+     
++    //  0
+     // ""
++    //  1
+     // ""
+ 
+-    //  012345
++    //  234567
+     // "a b c"
+     //  0 1 2
+-    
++
++    //  8
+     // ""
+ 
+-    //  6789
++    //   111
++    //  9012
+     // "d e"
+     //  3 4
+     make1dmfIndex( shortMVValues );

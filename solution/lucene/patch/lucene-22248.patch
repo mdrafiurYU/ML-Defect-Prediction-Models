@@ -1,0 +1,26 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java
+index 161b278..beedfe2 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java
+@@ -218,8 +218,8 @@ class FixedSortedBytesImpl {
+       }
+ 
+       @Override
+-      public Type type() {
+-        return Type.BYTES_FIXED_SORTED;
++      public ValueType type() {
++        return ValueType.BYTES_FIXED_SORTED;
+       }
+ 
+       @Override
+@@ -235,8 +235,8 @@ class FixedSortedBytesImpl {
+     }
+ 
+     @Override
+-    public Type type() {
+-      return Type.BYTES_FIXED_SORTED;
++    public ValueType type() {
++      return ValueType.BYTES_FIXED_SORTED;
+     }
+   }
+ }

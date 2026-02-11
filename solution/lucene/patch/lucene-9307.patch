@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java b/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java
+index 683334c..4be1ae3 100755
+--- a/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/function/CustomScoreQuery.java
+@@ -145,6 +145,10 @@ public class CustomScoreQuery extends Query {
+   /** Returns true if <code>o</code> is equal to this. */
+   @Override
+   public boolean equals(Object o) {
++    if (this == o)
++      return true;
++    if (!super.equals(o))
++      return false;
+     if (getClass() != o.getClass()) {
+       return false;
+     }

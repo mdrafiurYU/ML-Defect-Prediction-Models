@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+index ed4c31c..6237402 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+@@ -83,7 +83,7 @@ public abstract class AbstractExcerpt implements HighlightingExcerptProvider {
+         IndexReader reader = index.getIndexReader();
+         try {
+             checkRewritten(reader);
+-            Term idTerm = new Term(FieldNames.UUID, id.getUUID().toString());
++            Term idTerm = new Term(FieldNames.UUID, id.toString());
+             TermDocs tDocs = reader.termDocs(idTerm);
+             int docNumber;
+             Document doc;

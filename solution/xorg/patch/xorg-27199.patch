@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/fbdevhw/fbdevhw.c b/hw/xfree86/fbdevhw/fbdevhw.c
+index 303ad14..83b0dc1 100644
+--- a/hw/xfree86/fbdevhw/fbdevhw.c
++++ b/hw/xfree86/fbdevhw/fbdevhw.c
+@@ -496,7 +496,7 @@ fbdevHWSetMode(ScrnInfoPtr pScrn, DisplayModePtr mode, Bool check)
+ 	fbdevHWPtr fPtr = FBDEVHWPTR(pScrn);
+ 	struct fb_var_screeninfo req_var = fPtr->var, set_var;
+ 	
+-	TRACE_ENTER("ModeInit");
++	TRACE_ENTER("SetMode");
+ 
+ 	xfree2fbdev_fblayout(pScrn, &req_var);
+ 	xfree2fbdev_timing(mode, &req_var);
+@@ -528,6 +528,7 @@ fbdevHWSetMode(ScrnInfoPtr pScrn, DisplayModePtr mode, Bool check)
+ 		return FALSE;
+ 	}
+ 
++	if (!check)
+ 	fPtr->var = set_var;
+ 
+ 	return TRUE;

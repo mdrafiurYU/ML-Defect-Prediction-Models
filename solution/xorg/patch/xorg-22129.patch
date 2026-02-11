@@ -1,0 +1,13 @@
+diff --git a/fb/fballpriv.c b/fb/fballpriv.c
+index 3c05ff3..4f807ed 100644
+--- a/fb/fballpriv.c
++++ b/fb/fballpriv.c
+@@ -90,3 +90,8 @@ fbAllocatePrivates(ScreenPtr pScreen, int *pGCIndex)
+ #endif
+     return TRUE;
+ }
++
++#ifdef FB_ACCESS_WRAPPER
++ReadMemoryProcPtr wfbReadMemory;
++WriteMemoryProcPtr wfbWriteMemory;
++#endif

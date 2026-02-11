@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index 49d26df..c47b92d 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -63,7 +63,7 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 
+ 	public CompilationParticipantResult notify( CompilationParticipantEvent cpe )
+ 	{	
+-		if (!AptConfig.isEnabled())
++		if (!AptConfig.isEnabled(cpe.getJavaProject()))
+ 			return GENERIC_COMPILATION_RESULT;
+ 		
+ 		if ( cpe == null )

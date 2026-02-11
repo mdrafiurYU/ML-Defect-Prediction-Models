@@ -1,0 +1,12 @@
+diff --git a/dix/cursor.c b/dix/cursor.c
+index b58a7bf..cf515c1 100644
+--- a/dix/cursor.c
++++ b/dix/cursor.c
+@@ -117,7 +117,6 @@ FreeCursor(pointer value, XID cid)
+     ScreenPtr	pscr;
+     DeviceIntPtr pDev; 
+ 
+-    MPXDBG("freecursor refcount %d\n", pCurs->refcnt);
+     if ( --pCurs->refcnt != 0)
+ 	return(Success);
+ 

@@ -1,0 +1,21 @@
+diff --git a/solr/src/java/org/apache/solr/search/MutableValueDate.java b/solr/src/java/org/apache/solr/search/MutableValueDate.java
+index 20a3d63..953fcdb 100755
+--- a/solr/src/java/org/apache/solr/search/MutableValueDate.java
++++ b/solr/src/java/org/apache/solr/search/MutableValueDate.java
+@@ -21,13 +21,14 @@ import java.util.Date;
+ public class MutableValueDate extends MutableValueLong {
+   @Override
+   public Object toObject() {
+-    return new Date(value);
++    return exists ? new Date(value) : null;
+   }
+ 
+   @Override
+   public MutableValue duplicate() {
+     MutableValueDate v = new MutableValueDate();
+     v.value = this.value;
++    v.exists = this.exists;
+     return v;
+   }  
+ }
+\ No newline at end of file

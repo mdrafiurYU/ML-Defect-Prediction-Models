@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java b/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java
+index b9a8dfa..6fb01df 100644
+--- a/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java
++++ b/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java
+@@ -70,7 +70,7 @@ public class BooleanFilterTest extends LuceneTestCase {
+ 	
+   private Filter getRangeFilter(String field,String lowerPrice, String upperPrice)
+ 	{
+-    Filter f = new TermRangeFilter(field,lowerPrice,upperPrice,true,true);
++    Filter f = TermRangeFilter.newStringRange(field,lowerPrice,upperPrice,true,true);
+     return f;
+ 	}
+   private Filter getTermsFilter(String field,String text)

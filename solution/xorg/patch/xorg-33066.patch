@@ -1,0 +1,21 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index 711b57c..bd203b1 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -140,6 +140,7 @@ ProcXTestCompareCursor(client)
+     WindowPtr pWin;
+     CursorPtr pCursor;
+      int n, rc;
++    DeviceIntPtr pointer = PickPointer(client);
+ 
+     REQUEST_SIZE_MATCH(xXTestCompareCursorReq);
+     rc = dixLookupWindow(&pWin, stuff->window, client, DixUnknownAccess);
+@@ -148,7 +149,7 @@ ProcXTestCompareCursor(client)
+     if (stuff->cursor == None)
+ 	pCursor = NullCursor;
+     else if (stuff->cursor == XTestCurrentCursor)
+-	pCursor = GetSpriteCursor(inputInfo.pointer);
++	pCursor = GetSpriteCursor(pointer);
+     else {
+ 	pCursor = (CursorPtr)LookupIDByType(stuff->cursor, RT_CURSOR);
+ 	if (!pCursor) 

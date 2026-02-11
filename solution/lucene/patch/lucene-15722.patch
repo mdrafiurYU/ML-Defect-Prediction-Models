@@ -1,0 +1,22 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+index 7646bd1..06fb554 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+@@ -141,7 +141,7 @@ public class TestLengthNormModifier extends LuceneTestCase {
+     }
+     @Override
+     public void setNextReader(AtomicReaderContext context) {
+-      this.docBase = docBase;
++      docBase = context.docBase;
+     }
+     @Override
+     public void setScorer(Scorer scorer) throws IOException {
+@@ -183,7 +183,7 @@ public class TestLengthNormModifier extends LuceneTestCase {
+       }
+       @Override
+       public void setNextReader(AtomicReaderContext context) {
+-        this.docBase = docBase;
++        docBase = context.docBase;
+       }
+       @Override
+       public void setScorer(Scorer scorer) throws IOException {

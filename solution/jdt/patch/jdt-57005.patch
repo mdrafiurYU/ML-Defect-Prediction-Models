@@ -1,0 +1,51 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachSourceTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachSourceTests.java
+index 3336213..82aee63 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachSourceTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachSourceTests.java
+@@ -107,6 +107,12 @@ private void setUpInnerClassesJar() throws IOException, CoreException {
+ 		"        new W() {};\n" +
+ 		"      }\n" +
+ 		"    }\n" +
++		"    new Object() {\n" +
++		"      class U {\n" +
++		"        U(String s) {\n" +
++		"        }\n" +
++		"      }\n" +
++		"    };\n" +
+ 		"  }\n" +
+ 		"  class V {\n" +
+ 		"    V(String s) {\n" +
+@@ -396,6 +402,12 @@ public void testInnerClass1() throws JavaModelException {
+ 		"        new W() {};\n" + 
+ 		"      }\n" + 
+ 		"    }\n" + 
++		"    new Object() {\n" + 
++		"      class U {\n" + 
++		"        U(String s) {\n" + 
++		"        }\n" + 
++		"      }\n" + 
++		"    };\n" + 
+ 		"  }\n" + 
+ 		"  class V {\n" + 
+ 		"    V(String s) {\n" + 
+@@ -483,6 +495,20 @@ public void testInnerClass8() throws JavaModelException {
+ 		"  }",
+ 		type.getSource());
+ }
++/*
++ * Ensures that the source of an inner class can be retrieved.
++ * (regression test for bug 124611 IAE in Signature.createCharArrayTypeSignature)
++ */
++public void testInnerClass9() throws JavaModelException {
++	IType type = this.innerClasses.getClassFile("X$4$U.class").getType();
++	assertSourceEquals(
++		"Unexpected source",
++		"class U {\n" + 
++		"        U(String s) {\n" + 
++		"        }\n" + 
++		"      }",
++		type.getSource());
++}
+ 
+ /**
+  * Ensures that a source folder can be attached to a lib folder.

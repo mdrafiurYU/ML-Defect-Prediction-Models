@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/os-support/drm/xf86drmSL.c b/hw/xfree86/os-support/drm/xf86drmSL.c
+index 23283a9..e948250 100644
+--- a/hw/xfree86/os-support/drm/xf86drmSL.c
++++ b/hw/xfree86/os-support/drm/xf86drmSL.c
+@@ -53,12 +53,7 @@
+ #else
+ # include "drm.h"
+ # include "xf86drm.h"
+-# ifdef XFree86LOADER
+ #  include "xf86.h"
+-# else
+-#  include <stdio.h>
+-#  include <stdlib.h>
+-# endif
+ #endif
+ 
+ #define N(x)  drm##x

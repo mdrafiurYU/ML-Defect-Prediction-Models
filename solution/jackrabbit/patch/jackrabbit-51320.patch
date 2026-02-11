@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
+index b08311e..1343b42 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
+@@ -257,8 +257,11 @@ public class WorkspaceImpl extends AbstractWorkspace
+     /**
+      * @see javax.jcr.Workspace#getVersionManager()
+      */
+-    public VersionManager getVersionManager()
+-            throws UnsupportedRepositoryOperationException, RepositoryException {
++    public VersionManager getVersionManager() {
++        return getVersionManagerImpl();
++    }
++
++    VersionManagerImpl getVersionManagerImpl() {
+         if (versionMgr == null) {
+             versionMgr = new VersionManagerImpl(session, stateMgr, hierMgr);
+         }

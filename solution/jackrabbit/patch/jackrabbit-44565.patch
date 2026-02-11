@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java
+index 91ced5b..2195e8a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java
+@@ -156,6 +156,9 @@ class VolatileIndex extends AbstractIndex {
+      * Commits pending documents to the index.
+      */
+     private void commitPending() throws IOException {
++        if (pending.isEmpty()) {
++            return;
++        }
+         super.addDocuments((Document[]) pending.values().toArray(
+                 new Document[pending.size()]));
+         pending.clear();

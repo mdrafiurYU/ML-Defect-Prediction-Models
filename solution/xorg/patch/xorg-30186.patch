@@ -1,0 +1,36 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 4b29950..c3f63fb 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -184,6 +184,11 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+     {
+         evt->evlen = evlen;
+         evt->event = xrealloc(evt->event, evt->evlen);
++        if (!evt->event)
++        {
++            ErrorF("Running out of memory. Tossing event.\n");
++            return;
++        }
+     }
+ 
+     memcpy(evt->event, e, evlen);
+@@ -191,7 +196,8 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+ 
+     /* Make sure that event times don't go backwards - this
+      * is "unnecessary", but very useful. */
+-    if (e->u.keyButtonPointer.time < miEventQueue.lastEventTime &&
++    if (e->u.u.type != GenericEvent &&
++        e->u.keyButtonPointer.time < miEventQueue.lastEventTime &&
+ 	miEventQueue.lastEventTime - e->u.keyButtonPointer.time < 10000)
+         evt->event->u.keyButtonPointer.time = miEventQueue.lastEventTime;
+ 
+@@ -293,7 +299,9 @@ mieqProcessInputEvents(void)
+                     memcpy(&event[i], e->events[i].event, sizeof(xEvent));
+             }
+             else 
++            {
+                 event = e->events->event;
++            }
+ 
+             /* MPX devices send both core and Xi events. 
+              * Use dev to get the correct processing function but supply

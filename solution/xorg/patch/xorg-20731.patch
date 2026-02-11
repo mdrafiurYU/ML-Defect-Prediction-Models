@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/xf8_32bpp/xf86overlay.c b/hw/xfree86/xf8_32bpp/xf86overlay.c
+index c02e9b5..2316db0 100644
+--- a/hw/xfree86/xf8_32bpp/xf86overlay.c
++++ b/hw/xfree86/xf8_32bpp/xf86overlay.c
+@@ -101,9 +101,6 @@ static GCOps PixmapGCOps = {
+     PixmapPolyText16, PixmapImageText8, 
+     PixmapImageText16, PixmapImageGlyphBlt, 
+     PixmapPolyGlyphBlt, PixmapPushPixels,
+-#ifdef NEED_LINEHELPER
+-    NULL,
+-#endif
+     {NULL}		/* devPrivate */
+ };
+ 
+@@ -152,9 +149,6 @@ static GCOps WindowGCOps = {
+     WindowPolyText16, WindowImageText8, 
+     WindowImageText16, WindowImageGlyphBlt, 
+     WindowPolyGlyphBlt, WindowPushPixels,
+-#ifdef NEED_LINEHELPER
+-    NULL,
+-#endif
+     {NULL}		/* devPrivate */
+ };
+ 

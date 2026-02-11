@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
+index 8b3a741..a1b169a 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
+@@ -195,6 +195,7 @@ public static void createJar(String[] pathsAndContents, String jarPath, String c
+ 	options.put(CompilerOptions.OPTION_ReportFieldHiding, CompilerOptions.IGNORE);
+ 	options.put(CompilerOptions.OPTION_ReportLocalVariableHiding, CompilerOptions.IGNORE);
+ 	options.put(CompilerOptions.OPTION_ReportTypeParameterHiding, CompilerOptions.IGNORE);
++	options.put(CompilerOptions.OPTION_LocalVariableAttribute, CompilerOptions.GENERATE);
+ 	createJar(pathsAndContents, options, jarPath);
+ }
+ public static void createFile(String path, String contents) throws IOException {

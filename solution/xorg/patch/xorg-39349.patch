@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 832de10..6bc6bbd 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -277,7 +277,7 @@ xf86ProcessActionEvent(ActionEvent action, void *arg)
+ 	    CloseDownClient(server);
+ 	}
+ 	break;
+-#if !defined(__SOL8__) && !defined(sgi) && \
++#if !defined(__SOL8__) && \
+     (!defined(sun) || defined(__i386__)) && defined(VT_ACTIVATE)
+     case ACTION_SWITCHSCREEN:
+ 	if (VTSwitchEnabled && !xf86Info.dontVTSwitch && arg) {

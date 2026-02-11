@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeState.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeState.java
+index b370d59..4473c9a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeState.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeState.java
+@@ -466,6 +466,7 @@ public class NodeState extends ItemState {
+             sharedChildNodeEntries = false;
+         }
+         childNodeEntries.removeAll();
++        notifyNodesReplaced();
+     }
+ 
+     /**

@@ -1,0 +1,57 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNodeIterator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNodeIterator.java
+index 363d67d..63bbc50 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNodeIterator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNodeIterator.java
+@@ -16,45 +16,19 @@
+  */
+ package org.apache.jackrabbit.core.query.lucene;
+ 
+-import org.apache.jackrabbit.core.NodeImpl;
+-
+-import javax.jcr.NodeIterator;
++import javax.jcr.RangeIterator;
+ 
+ /**
+- * Extends the {@link javax.jcr.NodeIterator} interface by adding a {@link
+- * #getScore()} method that returns the score for the node that is returned by
+- * {@link javax.jcr.NodeIterator#nextNode()}.
++ * A range iterator over {@link ScoreNode}[].
+  */
+-public interface ScoreNodeIterator extends NodeIterator {
+-
+-    /**
+-     * Returns the score of the node returned by {@link #nextNode()}. In other
+-     * words, this method returns the score value of the next
+-     * <code>Node</code>.
+-     *
+-     * @return the score of the node returned by {@link #nextNode()}.
+-     * @throws java.util.NoSuchElementException
+-     *          if there is no next node.
+-     */
+-    float getScore();
++public interface ScoreNodeIterator extends RangeIterator {
+ 
+     /**
+-     * Returns the score nodes related to the node returned by
+-     * {@link #nextNodeImpl()} but does not move the iterator forward.
++     * Returns the next score nodes.
+      *
+-     * @return the score nodes related to the {@link #nextNodeImpl()}.
++     * @return the next score nodes.
+      * @throws java.util.NoSuchElementException
+-     *          if there is no next node.
++     *          if there are no next score nodes.
+      */
+-    ScoreNode[] getScoreNodes();
+-
+-    /**
+-     * Returns the next <code>Node</code> in the result set.
+-     *
+-     * @return the next <code>Node</code> in the result set.
+-     * @throws java.util.NoSuchElementException
+-     *          if iteration has no more <code>Node</code>s.
+-     */
+-    NodeImpl nextNodeImpl();
+-
++    ScoreNode[] nextScoreNodes();
+ }

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivityImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivityImpl.java
+index 1993384..ba3cbb1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivityImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivityImpl.java
+@@ -156,7 +156,7 @@ class InternalActivityImpl extends InternalVersionItemImpl implements InternalAc
+     /**
+      * {@inheritDoc}
+      */
+-    public Map<NodeId, InternalVersion> getChangeSet() throws RepositoryException {
++    public VersionSet getChangeSet() throws RepositoryException {
+         Map<NodeId, InternalVersion> changeset = new HashMap<NodeId, InternalVersion>();
+         if (node.hasProperty(NameConstants.REP_VERSIONS)) {
+             for (InternalValue ref: node.getPropertyValues(NameConstants.REP_VERSIONS)) {
+@@ -164,6 +164,6 @@ class InternalActivityImpl extends InternalVersionItemImpl implements InternalAc
+                 changeset.put(v.getVersionHistory().getId(), v);
+             }
+         }
+-        return changeset;
++        return new VersionSet(changeset);
+     }
+ }
+\ No newline at end of file

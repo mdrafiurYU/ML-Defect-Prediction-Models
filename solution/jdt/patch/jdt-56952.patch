@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/Evaluator.java b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/Evaluator.java
+index fa71047..6a6a7b8 100644
+--- a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/Evaluator.java
++++ b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/Evaluator.java
+@@ -164,7 +164,8 @@ Compiler getCompiler(ICompilerRequestor compilerRequestor) {
+ 		DefaultErrorHandlingPolicies.exitAfterAllProblems(), 
+ 		this.options, 
+ 		compilerRequestor, 
+-		this.problemFactory);
++		this.problemFactory,
++		true);
+ }
+ /**
+  * Builds and returns the source for the current compilation unit.

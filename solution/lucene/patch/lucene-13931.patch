@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/update/UpdateCommand.java b/solr/src/java/org/apache/solr/update/UpdateCommand.java
+index 2e60a17..83e7ca9 100644
+--- a/solr/src/java/org/apache/solr/update/UpdateCommand.java
++++ b/solr/src/java/org/apache/solr/update/UpdateCommand.java
+@@ -17,15 +17,19 @@
+ 
+ package org.apache.solr.update;
+ 
++import org.apache.solr.request.SolrQueryRequest;
++
+ 
+ /** An index update command encapsulated in an object (Command pattern)
+  *
+  * @version $Id$
+  */
+   public class UpdateCommand {
+-    protected String commandName;
++    protected final SolrQueryRequest req;
++    protected final String commandName;
+ 
+-    public UpdateCommand(String commandName) {
++    public UpdateCommand(String commandName, SolrQueryRequest req) {
++      this.req = req;
+       this.commandName = commandName;
+     }

@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 37a3025..29042a0 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -313,6 +313,7 @@ xf86CrtcSetMode (xf86CrtcPtr crtc, DisplayModePtr mode, Rotation rotation,
+ 
+     /* XXX free adjustedmode */
+     ret = TRUE;
++    if (scrn->pScreen)
+     xf86CrtcSetScreenSubpixelOrder (scrn->pScreen);
+ 
+ done:

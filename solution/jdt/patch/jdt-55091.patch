@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+index 29d5f79..5e48561 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+@@ -628,8 +628,8 @@ public class CompletionJavadocParser extends JavadocParser {
+ 							consumeToken();
+ 							break;
+ 						case TerminalTokens.TokenNameERROR :
++							consumeToken();
+ 							if (this.scanner.currentCharacter == '#') { // @see ...#member
+-								consumeToken();
+ 								Object member = null;
+ 								try {
+ 									this.scanner.tokenizeWhiteSpace = false;

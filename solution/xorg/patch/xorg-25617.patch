@@ -1,0 +1,12 @@
+diff --git a/os/connection.c b/os/connection.c
+index cdd1d18..95c5500 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1091,7 +1091,6 @@ AddEnabledDevice(int fd)
+ _X_EXPORT void
+ RemoveGeneralSocket(int fd)
+ {
+-    FD_CLR(fd, &EnabledDevices);
+     FD_CLR(fd, &AllSockets);
+     if (GrabInProgress)
+ 	FD_CLR(fd, &SavedAllSockets);

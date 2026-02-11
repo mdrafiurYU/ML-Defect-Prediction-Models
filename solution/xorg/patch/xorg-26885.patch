@@ -1,0 +1,20 @@
+diff --git a/randr/rrinfo.c b/randr/rrinfo.c
+index 244b089..85426f6 100644
+--- a/randr/rrinfo.c
++++ b/randr/rrinfo.c
+@@ -69,6 +69,7 @@ RROldModeAdd (RROutputPtr output, RRScreenSizePtr size, int refresh)
+     output->modes = modes;
+     output->changed = TRUE;
+     pScrPriv->changed = TRUE;
++    pScrPriv->configChanged = TRUE;
+     return mode;
+ }
+ 
+@@ -205,6 +206,7 @@ RRGetInfo (ScreenPtr pScreen)
+     
+     rotations = 0;
+     pScrPriv->changed = FALSE;
++    pScrPriv->configChanged = FALSE;
+     
+     if (!(*pScrPriv->rrGetInfo) (pScreen, &rotations))
+ 	return FALSE;

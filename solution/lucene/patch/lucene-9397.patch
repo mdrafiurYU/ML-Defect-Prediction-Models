@@ -1,0 +1,29 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/DoubleValuesCreator.java b/lucene/src/java/org/apache/lucene/search/cache/DoubleValuesCreator.java
+index 00c0e4e..de5171a 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/DoubleValuesCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/DoubleValuesCreator.java
+@@ -76,11 +76,15 @@ public class DoubleValuesCreator extends CachedArrayCreator<DoubleValues>
+   @Override
+   public DoubleValues validate(DoubleValues entry, IndexReader reader) throws IOException {
+     boolean ok = false;
++    
+     if( hasOption(OPTION_CACHE_VALUES) ) {
+       ok = true;
+       if( entry.values == null ) {
+         fillDoubleValues(entry, reader, field);
+       }
++      else {
++        assertSameParser( entry, parser );
++      }
+     }
+     if( hasOption(OPTION_CACHE_BITS) ) {
+       ok = true;
+@@ -109,7 +113,7 @@ public class DoubleValuesCreator extends CachedArrayCreator<DoubleValues>
+         return;
+       }
+     }
+-    assertSameParserAndResetCounts(vals, parser);
++    setParserAndResetCounts(vals, parser);
+ 
+     Terms terms = MultiFields.getTerms(reader, field);
+     int maxDoc = reader.maxDoc();

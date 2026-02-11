@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+index 44c0222..3de1f4e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+@@ -337,7 +337,7 @@ public class CastExpression extends Expression {
+ 			codeStream,
+ 			valueRequired || needRuntimeCheckcast);
+ 		if (needRuntimeCheckcast 
+-				&& this.expression.generatedType(currentScope) != this.resolvedType) { // no need to issue a checkcast if already done as genericCast
++				&& this.expression.postConversionType(currentScope) != this.resolvedType) { // no need to issue a checkcast if already done as genericCast
+ 			codeStream.checkcast(this.resolvedType);
+ 			if (valueRequired) {
+ 				codeStream.generateImplicitConversion(implicitConversion);

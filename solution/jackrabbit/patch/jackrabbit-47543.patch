@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeDefinitionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeDefinitionImpl.java
+index 50133e5..e38bb24 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeDefinitionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeDefinitionImpl.java
+@@ -99,5 +99,13 @@ public class NodeDefinitionImpl extends ItemDefinitionImpl implements NodeDefini
+     public boolean allowsSameNameSiblings() {
+         return ((QNodeDefinition) itemDef).allowsSameNameSiblings();
+     }
++
++    public String getDefaultPrimaryTypeName() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public String[] getRequiredPrimaryTypeNames() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
+ }

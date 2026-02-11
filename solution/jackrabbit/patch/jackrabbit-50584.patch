@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
+index 80ad267..5417478 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
+@@ -151,7 +151,7 @@ public class QueryManagerImpl implements QueryManager {
+         sanityCheck();
+         List<Node> nodes = new ArrayList<Node>();
+         try {
+-            NodeId nodeId = new NodeId(UUID.fromString(node.getIdentifier()));
++            NodeId nodeId = new NodeId(node.getIdentifier());
+             for (NodeId id : searchMgr.getWeaklyReferringNodes(nodeId)) {
+                 nodes.add(session.getNodeById(id));
+             }

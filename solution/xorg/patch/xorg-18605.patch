@@ -1,0 +1,459 @@
+diff --git a/hw/xgl/xgl.h b/hw/xgl/xgl.h
+index 0ccf936..cd4cec1 100644
+--- a/hw/xgl/xgl.h
++++ b/hw/xgl/xgl.h
+@@ -28,8 +28,6 @@
+ 
+ #include <xgl-config.h>
+ 
+-#include <stdint.h>
+-#include <stdio.h>
+ #include <X11/X.h>
+ #define NEED_EVENTS
+ #include <X11/Xproto.h>
+@@ -44,11 +42,23 @@
+ #include "dix.h"
+ #include "damage.h"
+ #include "gc.h"
++#include "micmap.h"
+ /* I'd like gc.h to provide this */
+ typedef struct _GCFuncs *GCFuncsPtr;
+ 
+ #ifdef RENDER
+ #include "mipict.h"
++#else
++#ifdef XV
++#undef XV /* Xv implementation require RENDER */
++#endif
++#endif
++
++#ifdef XV
++#define XGL_XV_FORMAT_YUY2 0
++#define XGL_XV_FORMAT_YV12 1
++#define XGL_XV_FORMAT_RGB  2
++#define XGL_XV_FORMAT_NUM  3
+ #endif
+ 
+ /* For the modules.  We should decide what the actual version numbering should
+@@ -60,8 +70,29 @@ extern WindowPtr *WindowTable;
+ 
+ #define XGL_DEFAULT_PBO_MASK 0
+ 
++typedef struct _xglSizeConstraint {
++    int minWidth;
++    int minHeight;
++    int aboveWidth;
++    int aboveHeight;
++} xglSizeConstraintRec, *xglSizeConstraintPtr;
++
++typedef struct _xglAccelInfo {
++    Bool		 enabled;
++    Bool		 pbuffer;
++    xglSizeConstraintRec size;
++} xglAccelInfoRec, *xglAccelInfoPtr;
++
++typedef struct _xglScreenAccelInfo {
++    xglAccelInfoRec pixmap;
++    xglAccelInfoRec window;
++    xglAccelInfoRec glx;
++    xglAccelInfoRec xv;
++} xglScreenAccelInfoRec, *xglScreenAccelInfoPtr;
++
+ typedef struct _xglScreenInfo {
+     glitz_drawable_t *drawable;
++    unsigned int	  depth;
+     unsigned int     width;
+     unsigned int     height;
+     unsigned int     widthMm;
+@@ -71,7 +102,7 @@ typedef struct _xglScreenInfo {
+     Bool	     yInverted;
+     int		     pboMask;
+     Bool	     lines;
+-    Bool	     fbo;
++    xglScreenAccelInfoRec accel;
+ } xglScreenInfoRec, *xglScreenInfoPtr;
+ 
+ extern xglScreenInfoRec xglScreenInfo;
+@@ -82,18 +113,17 @@ typedef struct _xglPixelFormat {
+ } xglPixelFormatRec, *xglPixelFormatPtr;
+ 
+ typedef struct _xglVisual {
+-    glitz_drawable_format_t *format;
++    struct _xglVisual *next;
++    VisualID	      vid;
+     xglPixelFormatPtr       pPixel;
+-    unsigned long           visuals;
++    Bool	      pbuffer;
++    struct {
++	glitz_drawable_format_t *drawable;
++	glitz_format_t	        *surface;
++    } format;
+ } xglVisualRec, *xglVisualPtr;
+ 
+-typedef struct _xglPixmapFormat {
+-    glitz_format_t    *format;
+-    xglPixelFormatPtr pPixel;
+-} xglPixmapFormatRec, *xglPixmapFormatPtr;
+-
+ extern xglVisualPtr xglVisuals;
+-extern int	    nxglVisuals;
+ 
+ #define xglAreaAvailable 0
+ #define xglAreaDivided   1
+@@ -166,7 +196,7 @@ typedef struct _xglRange {
+ } xglRangeRec, *xglRangePtr;
+ 
+ typedef struct _xglGlyphTexture {
+-    glitz_surface_t	    *mask;
++    PicturePtr		    pMask;
+     glitz_pixel_format_t    pixel;
+     glitz_geometry_format_t format;
+     int			    geometryDataType;
+@@ -206,11 +236,18 @@ extern int xglGlyphPrivateIndex;
+ 
+ typedef struct _xglScreen {
+     xglVisualPtr		  pVisual;
+-    xglPixmapFormatRec		  pixmapFormats[33];
++
++#ifdef GLXEXT
++    xglVisualPtr		  pGlxVisual;
++#endif
++
++#ifdef XV
++    xglVisualRec		  pXvVisual[XGL_XV_FORMAT_NUM];
++#endif
++
++    xglVisualPtr		  rootVisual;
+     glitz_drawable_t		  *drawable;
+     glitz_surface_t		  *surface;
+-    glitz_surface_t		  *backSurface;
+-    glitz_surface_t		  *solid;
+     PixmapPtr			  pScreenPixmap;
+     unsigned long		  features;
+     int				  geometryUsage;
+@@ -218,15 +255,14 @@ typedef struct _xglScreen {
+     Bool			  yInverted;
+     int				  pboMask;
+     Bool			  lines;
+-    Bool			  fbo;
+     xglGeometryRec		  scratchGeometry;
++    xglScreenAccelInfoRec	  accel;
+     
+ #ifdef RENDER
+     xglGlyphCacheRec		  glyphCache[33];
+     PicturePtr			  pSolidAlpha;
+     struct _trapInfo {
+ 	PicturePtr		  pMask;
+-	glitz_surface_t		  *mask;
+ 	glitz_geometry_format_t	  format;
+     } trapInfo;
+ #endif
+@@ -234,6 +270,7 @@ typedef struct _xglScreen {
+     GetImageProcPtr		  GetImage;
+     GetSpansProcPtr		  GetSpans;
+     CreateWindowProcPtr		  CreateWindow;
++    DestroyWindowProcPtr	  DestroyWindow;
+     ChangeWindowAttributesProcPtr ChangeWindowAttributes;
+     PaintWindowBackgroundProcPtr  PaintWindowBackground;
+     PaintWindowBorderProcPtr	  PaintWindowBorder;
+@@ -258,11 +295,6 @@ typedef struct _xglScreen {
+ #endif
+ 
+     BSFuncRec			  BackingStoreFuncs;
+-
+-#ifdef GLXEXT
+-    DestroyWindowProcPtr	  DestroyWindow;
+-#endif
+-
+ } xglScreenRec, *xglScreenPtr;
+ 
+ extern int xglScreenPrivateIndex;
+@@ -293,13 +325,13 @@ extern int xglScreenPrivateIndex;
+ #endif
+ 
+ #define xglGCSoftwareDrawableFlag (1L << 0)
+-#define xglGCReadOnlyDrawableFlag (1L << 1)
+-#define xglGCBadFunctionFlag	  (1L << 2)
+-#define xglGCPlaneMaskFlag	  (1L << 3)
++#define xglGCBadFunctionFlag	  (1L << 1)
++#define xglGCPlaneMaskFlag	  (1L << 2)
+     
+ typedef struct _xglGC {
+-    glitz_color_t    fg;
+-    glitz_color_t    bg;
++    glitz_surface_t   *fg;
++    glitz_surface_t   *bg;
++    glitz_format_id_t id;
+     glitz_operator_t op;
+     unsigned long    flags;
+     GCFuncsPtr	     funcs;
+@@ -334,10 +366,20 @@ extern int xglGCPrivateIndex;
+ #define xglPixmapTargetOut 1
+ #define xglPixmapTargetIn  2
+ 
++#ifdef XV
++
++typedef struct _xglXvPort {
++    PixmapPtr  pPixmap;
++    PicturePtr pSrc;
++    PicturePtr pDst;
++} xglXvPortRec, *xglXvPortPtr;
++
++#endif
++
+ typedef struct _xglPixmap {
+-    xglPixelFormatPtr pPixel;
+-    glitz_format_t    *format;
++    xglVisualPtr     pVisual;
+     glitz_surface_t   *surface;
++    glitz_drawable_t *drawable;
+     glitz_buffer_t    *buffer;
+     int		      target;
+     Bool	      acceleratedTile;
+@@ -345,11 +387,15 @@ typedef struct _xglPixmap {
+     int		      stride;
+     DamagePtr	      pDamage;
+     BoxRec	      damageBox;
+-    BoxRec	      bitBox;
++    RegionRec	     bitRegion;
+     Bool	      allBits;
+     unsigned long     pictureMask;
+     xglGeometryPtr    pGeometry;
+-    int		      lock;
++
++#ifdef XV
++    xglXvPortPtr     pPortPriv;
++#endif
++
+ } xglPixmapRec, *xglPixmapPtr;
+ 
+ extern int xglPixmapPrivateIndex;
+@@ -463,27 +509,41 @@ xglInitInput (int argc, char **argv);
+ void
+ xglSetPixmapFormats (ScreenInfo *pScreenInfo);
+ 
++void
++xglSetRootClip (ScreenPtr pScreen,
++		Bool	  enable);
++
+ 
+ /* xglcmap.c */
+ 
+ void
+-xglSetVisualTypesAndMasks (ScreenInfo	           *pScreenInfo,
+-			   glitz_drawable_format_t *format,
+-			   unsigned long           visuals);
++xglSetVisualTypes (int depth,
++		   int visuals,
++		   int redSize,
++		   int greenSize,
++		   int blueSize);
+ 
+-void
+-xglInitVisuals (ScreenInfo *pScreenInfo);
++Bool
++xglHasVisualTypes (xglVisualPtr pVisual,
++		   int		depth);
+ 
+-void
+-xglClearVisualTypes (void);
++glitz_format_t *
++xglFindBestSurfaceFormat (ScreenPtr         pScreen,
++			  xglPixelFormatPtr pPixel);
+ 
+ void
+-xglInitPixmapFormats (ScreenPtr pScreen);
++xglInitVisuals (ScreenPtr pScreen);
++
++xglVisualPtr
++xglFindVisualWithDepth (ScreenPtr pScreen,
++			int       depth);
++
++xglVisualPtr
++xglFindVisualWithId (ScreenPtr pScreen,
++		     int       vid);
+ 
+ void
+-xglPixelToColor (xglPixelFormatPtr pFormat,
+-		 CARD32		   pixel,
+-		 glitz_color_t	   *color);
++xglClearVisualTypes (void);
+ 
+ 
+ /* xglparse.c */
+@@ -831,6 +891,10 @@ xglModifyPixmapHeader (PixmapPtr pPixmap,
+ 		       int	 devKind,
+ 		       pointer	 pPixData);
+ 
++void
++xglSetPixmapVisual (PixmapPtr    pPixmap,
++		    xglVisualPtr pVisual);
++
+ RegionPtr
+ xglPixmapToRegion (PixmapPtr pPixmap);
+ 
+@@ -851,6 +915,14 @@ xglMapPixmapBits (PixmapPtr pPixmap);
+ Bool
+ xglUnmapPixmapBits (PixmapPtr pPixmap);
+ 
++Bool
++xglCheckPixmapSize (PixmapPtr		 pPixmap,
++		    xglSizeConstraintPtr pSize);
++
++void
++xglEnablePixmapAccel (PixmapPtr	      pPixmap,
++		      xglAccelInfoPtr pAccel);
++
+ 
+ /* xglsync.c */
+ 
+@@ -887,7 +959,7 @@ xglAddCurrentBitDamage (DrawablePtr pDrawable);
+ Bool
+ xglSolid (DrawablePtr	   pDrawable,
+ 	  glitz_operator_t op,
+-	  glitz_color_t	   *color,
++	  glitz_surface_t  *solid,
+ 	  xglGeometryPtr   pGeometry,
+ 	  int		   x,
+ 	  int		   y,
+@@ -1009,6 +1081,9 @@ Bool
+ xglCreateWindow (WindowPtr pWin);
+ 
+ Bool
++xglDestroyWindow (WindowPtr pWin);
++
++Bool
+ xglChangeWindowAttributes (WindowPtr	 pWin,
+ 			   unsigned long mask);
+ 
+@@ -1027,6 +1102,13 @@ xglPaintWindowBorder (WindowPtr pWin,
+ 		      RegionPtr pRegion,
+ 		      int	what);
+ 
++PixmapPtr
++xglGetWindowPixmap (WindowPtr pWin);
++
++void
++xglSetWindowPixmap (WindowPtr pWin,
++		    PixmapPtr pPixmap);
++
+ 
+ /* xglbstore.c */
+ 
+@@ -1072,6 +1154,9 @@ Bool
+ xglCreateGC (GCPtr pGC);
+ 
+ void
++xglDestroyGC (GCPtr pGC);
++
++void
+ xglValidateGC (GCPtr	     pGC,
+ 	       unsigned long changes,
+ 	       DrawablePtr   pDrawable);
+@@ -1217,25 +1302,6 @@ xglShmPutImage (DrawablePtr  pDrawable,
+ 
+ #ifdef RENDER
+ 
+-/* xglcomp.c */
+-
+-Bool
+-xglComp (CARD8		 op,
+-	 PicturePtr	 pSrc,
+-	 PicturePtr	 pMask,
+-	 PicturePtr	 pDst,
+-	 INT16		 xSrc,
+-	 INT16		 ySrc,
+-	 INT16		 xMask,
+-	 INT16		 yMask,
+-	 INT16		 xDst,
+-	 INT16		 yDst,
+-	 CARD16		 width,
+-	 CARD16		 height,
+-	 xglGeometryPtr  pGeometry,
+-	 glitz_surface_t *mask);
+-
+-
+ /* xglpict.c */
+ 
+ void
+@@ -1273,8 +1339,18 @@ xglChangePictureFilter (PicturePtr pPicture,
+ 			xFixed	   *params,
+ 			int	   nparams);
+ 
+-void
+-xglUpdatePicture (PicturePtr pPicture);
++PicturePtr
++xglCreateDevicePicture (pointer data);
++
++Bool
++xglSyncPicture (ScreenPtr  pScreen,
++		PicturePtr pPicture,
++		INT16	   x,
++		INT16	   y,
++		CARD16	   width,
++		CARD16	   height,
++		INT16	   *xOff,
++		INT16	   *yOff);
+ 
+ Bool
+ xglPictureInit (ScreenPtr pScreen);
+@@ -1283,6 +1359,25 @@ void
+ xglPictureClipExtents (PicturePtr pPicture,
+ 		       BoxPtr     extents);
+ 
++
++/* xglcompose.c */
++
++Bool
++xglCompositeGeneral (CARD8	     op,
++		     PicturePtr	     pSrc,
++		     PicturePtr	     pMask,
++		     PicturePtr	     pDst,
++		     xglGeometryPtr  pGeometry,
++		     INT16	     xSrc,
++		     INT16	     ySrc,
++		     INT16	     xMask,
++		     INT16	     yMask,
++		     INT16	     xDst,
++		     INT16	     yDst,
++		     CARD16	     width,
++		     CARD16	     height);
++
++
+ /* xglglyph.c */
+ 
+ Bool
+@@ -1344,7 +1439,8 @@ typedef struct _xglSymbol {
+ } xglSymbolRec, *xglSymbolPtr;
+ 
+ void *
+-xglLoadModule (const char *name);
++xglLoadModule (const char *name,
++	       int	  flag);
+ 
+ void
+ xglUnloadModule (void *handle);
+@@ -1356,18 +1452,17 @@ xglLookupSymbols (void         *handle,
+ 
+ #endif
+ 
+-#ifdef GLXEXT
+ 
+-/* xglglx.c */
++/* xglxv.c */
+ 
+-Bool
+-xglLoadGLXModules (void);
++#ifdef XV
+ 
+-void
+-xglUnloadGLXModules (void);
++Bool
++xglXvScreenInit (ScreenPtr pScreen);
+ 
+ #endif
+ 
++
+ /* xglhash.c */
+ 
+ typedef struct _xglHashTable *xglHashTablePtr;

@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxCtrls.c b/xkb/ddxCtrls.c
+index 0f7f918..73a5e03 100644
+--- a/xkb/ddxCtrls.c
++++ b/xkb/ddxCtrls.c
+@@ -49,7 +49,7 @@ int realRepeat;
+ 	ctrl->autoRepeat= 0;
+ #ifdef DEBUG
+ if (xkbDebugFlags&0x4) {
+-    ErrorF("XkbDDXKeybdCtrlProc: setting repeat to %d (real repeat is %d)\n",
++    ErrorF("[xkb] XkbDDXKeybdCtrlProc: setting repeat to %d (real repeat is %d)\n",
+ 					ctrl->autoRepeat,realRepeat);
+ }
+ #endif

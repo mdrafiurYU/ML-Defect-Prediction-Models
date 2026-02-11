@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/e8870PCI.c b/hw/xfree86/os-support/bus/e8870PCI.c
+index 9eb34a6..65b0c04 100644
+--- a/hw/xfree86/os-support/bus/e8870PCI.c
++++ b/hw/xfree86/os-support/bus/e8870PCI.c
+@@ -29,6 +29,10 @@
+  * This file contains the glue necessary for support of Intel's E8870 chipset.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "e8870PCI.h"
+ #include "xf86.h"
+ #include "Pci.h"

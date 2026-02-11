@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+index 444b6e0..873e518 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+@@ -373,6 +373,7 @@ public class MultiIndex {
+                 count = createIndex(rootState, rootPath, stateMgr, count);
+                 executeAndLog(new Commit(getTransactionId()));
+                 log.info("Created initial index for {} nodes", new Long(count));
++                releaseMultiReader();
+                 scheduleFlushTask();
+             } catch (Exception e) {
+                 String msg = "Error indexing workspace";

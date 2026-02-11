@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+index 37e9500..11dd692 100644
+--- a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
++++ b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+@@ -886,7 +886,7 @@ public class MemoryIndex implements Serializable {
+ 
+       @Override
+       public int docFreq() {
+-        return info.sortedTerms[termUpto].getValue().size();
++        return 1;
+       }
+ 
+       @Override

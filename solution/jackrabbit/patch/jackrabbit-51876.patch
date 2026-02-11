@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/EveryonePrincipal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/EveryonePrincipal.java
+index fae96af..880b65a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/EveryonePrincipal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/EveryonePrincipal.java
+@@ -51,7 +51,7 @@ public final class EveryonePrincipal implements java.security.acl.Group {
+         return !member.equals(this);
+     }
+ 
+-    public Enumeration members() {
++    public Enumeration<? extends Principal> members() {
+         throw new UnsupportedOperationException("Not implemented.");
+     }

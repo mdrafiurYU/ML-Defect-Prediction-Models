@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index d5f8450..099ff34 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -3030,7 +3030,7 @@ void
+ xf86FindPrimaryDevice()
+ {
+     /* if no VGA device is found check for primary PCI device */
+-    if (primaryBus.type == BUS_NONE)
++    if (primaryBus.type == BUS_NONE && xorgHWAccess)
+         CheckGenericGA();
+     if (primaryBus.type != BUS_NONE) {
+ 	char *bus;

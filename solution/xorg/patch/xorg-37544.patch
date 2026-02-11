@@ -1,0 +1,39 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index df1d3a8..0edafe7 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -1339,6 +1339,7 @@ RootlessResizeWindow(WindowPtr pWin, int x, int y,
+ 
+     RL_DEBUG_MSG("resizewindow start (win 0x%x) ", pWin);
+ 
++    if(pWin->parent) {
+     if (winRec) {
+         oldBW = winRec->borderWidth;
+         oldX = winRec->x;
+@@ -1367,6 +1368,26 @@ RootlessResizeWindow(WindowPtr pWin, int x, int y,
+         FinishFrameResize(pWin, TRUE, oldX, oldY, oldW, oldH, oldBW,
+                           newX, newY, newW, newH, newBW, resize_after);
+     }
++    } else {
++        /* Special case for resizing the root window */
++        BoxRec box;
++
++        pWin->drawable.x = x;
++        pWin->drawable.y = y;
++        pWin->drawable.width = w;
++        pWin->drawable.height = h;
++
++        box.x1 = x; box.y1 = y;
++        box.x2 = x + w; box.y2 = y + h;
++        REGION_UNINIT(pScreen, &pWin->winSize);
++        REGION_INIT(pScreen, &pWin->winSize, &box, 1);
++        REGION_COPY(pScreen, &pWin->borderSize, &pWin->winSize);
++        REGION_COPY(pScreen, &pWin->clipList, &pWin->winSize);
++        REGION_COPY(pScreen, &pWin->borderClip, &pWin->winSize);
++
++        miSendExposures(pWin, &pWin->borderClip,
++                        pWin->drawable.x, pWin->drawable.y);        
++    }
+ 
+     RL_DEBUG_MSG("resizewindow end\n");
+ }

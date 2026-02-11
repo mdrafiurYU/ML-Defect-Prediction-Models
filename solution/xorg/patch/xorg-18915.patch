@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/zx1PCI.h b/hw/xfree86/os-support/bus/zx1PCI.h
+index f46a68a..2795b44 100644
+--- a/hw/xfree86/os-support/bus/zx1PCI.h
++++ b/hw/xfree86/os-support/bus/zx1PCI.h
+@@ -25,6 +25,10 @@
+  * XFree86 Project.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef PCI_ZX1_H
+ #define PCI_ZX1_H 1
+ 

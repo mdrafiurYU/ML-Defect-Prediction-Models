@@ -1,0 +1,19 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ShortField.java b/solr/src/java/org/apache/solr/schema/ShortField.java
+index 5e6ae6e..c7edada 100644
+--- a/solr/src/java/org/apache/solr/schema/ShortField.java
++++ b/solr/src/java/org/apache/solr/schema/ShortField.java
+@@ -17,13 +17,13 @@ package org.apache.solr.schema;
+  */
+ 
+ import org.apache.lucene.document.Fieldable;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.search.SortField;
+ import org.apache.lucene.search.cache.CachedArrayCreator;
+ import org.apache.lucene.search.cache.ShortValuesCreator;
+ 
+ import org.apache.solr.response.TextResponseWriter;
+ import org.apache.solr.search.QParser;
+-import org.apache.solr.search.function.ValueSource;
+ import org.apache.solr.search.function.ShortFieldSource;
+ 
+ import java.io.IOException;

@@ -1,0 +1,18 @@
+diff --git a/GL/glx/glxglcore.c b/GL/glx/glxglcore.c
+index b50740c..df9be07 100644
+--- a/GL/glx/glxglcore.c
++++ b/GL/glx/glxglcore.c
+@@ -106,11 +106,11 @@ __glXMesaDrawableSwapBuffers(__GLXdrawable *base)
+      * why we need to re-take the lock and swap in the server context
+      * before calling XMesaSwapBuffers() here.  /me shakes head. */
+ 
+-    __glXenterServer();
++    __glXenterServer(GL_FALSE);
+ 
+     XMesaSwapBuffers(glxPriv->xm_buf);
+ 
+-    __glXleaveServer();
++    __glXleaveServer(GL_FALSE);
+ 
+     return GL_TRUE;
+ }

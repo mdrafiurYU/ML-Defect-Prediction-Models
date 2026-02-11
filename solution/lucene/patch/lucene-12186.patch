@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java b/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java
+index a00088c..0c3c444 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestPayloadSpans.java
+@@ -60,7 +60,7 @@ public class TestPayloadSpans extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     PayloadHelper helper = new PayloadHelper();
+-    searcher = helper.setUp(similarity, 1000);
++    searcher = helper.setUp(random, similarity, 1000);
+     indexReader = searcher.getIndexReader();
+   }

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcIO.c b/hw/xfree86/xf4bpp/ppcIO.c
+index 6b6fb1c..67eadfb 100644
+--- a/hw/xfree86/xf4bpp/ppcIO.c
++++ b/hw/xfree86/xf4bpp/ppcIO.c
+@@ -50,6 +50,10 @@ SOFTWARE.
+ */
+ /* $XConsortium: ppcIO.c /main/8 1996/02/21 17:57:49 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "mfbmap.h"
+ #include "mfb.h"

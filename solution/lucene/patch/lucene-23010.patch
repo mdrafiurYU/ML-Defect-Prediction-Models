@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java b/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
+index 29fe6f9..557d6f6 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
+@@ -1137,7 +1137,7 @@ public abstract class LuceneTestCase extends Assert {
+       final Class<? extends Directory> clazz = Class.forName(clazzName).asSubclass(Directory.class);
+       // If it is a FSDirectory type, try its ctor(File)
+       if (FSDirectory.class.isAssignableFrom(clazz)) {
+-        final File tmpFile = File.createTempFile("test", "tmp", TEMP_DIR);
++        final File tmpFile = _TestUtil.createTempFile("test", "tmp", TEMP_DIR);
+         tmpFile.delete();
+         tmpFile.mkdir();
+         registerTempFile(tmpFile);

@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/os-support/bus/xf86Pci.h b/hw/xfree86/os-support/bus/xf86Pci.h
+index 1ab0749..2ecd8d7 100644
+--- a/hw/xfree86/os-support/bus/xf86Pci.h
++++ b/hw/xfree86/os-support/bus/xf86Pci.h
+@@ -260,9 +260,9 @@ extern int pciNumBuses;
+ 
+ /* Domain access functions.  Some of these probably shouldn't be public */
+ int	      xf86GetPciDomain(PCITAG tag);
+-pointer	      xf86MapDomainMemory(int ScreenNum, int Flags, PCITAG Tag,
++pointer xf86MapDomainMemory(int ScreenNum, int Flags, struct pci_device *dev,
+ 				  ADDRESS Base, unsigned long Size);
+ IOADDRESS xf86MapLegacyIO(struct pci_device *dev);
+-int xf86ReadLegacyVideoBIOS(PCITAG Tag, unsigned char *Buf);
++int xf86ReadLegacyVideoBIOS(struct pci_device *dev, unsigned char *Buf);
+ 
+ #endif /* _XF86PCI_H */

@@ -1,0 +1,129 @@
+diff --git a/Xi/closedev.c b/Xi/closedev.c
+index cc83e6a..3d47b5f 100644
+--- a/Xi/closedev.c
++++ b/Xi/closedev.c
+@@ -89,42 +89,29 @@ SProcXCloseDevice(register ClientPtr client)
+ 
+ /***********************************************************************
+  *
+- * This procedure closes an input device.
++ * Clear out event selections and passive grabs from a window for the
++ * specified device.
+  *
+  */
+ 
+-int
+-ProcXCloseDevice(register ClientPtr client)
++static void
++DeleteDeviceEvents(DeviceIntPtr dev, WindowPtr pWin, ClientPtr client)
+ {
+-    int i;
+-    WindowPtr pWin, p1;
+-    DeviceIntPtr d;
+-
+-    REQUEST(xCloseDeviceReq);
+-    REQUEST_SIZE_MATCH(xCloseDeviceReq);
+-
+-    d = LookupDeviceIntRec(stuff->deviceid);
+-    if (d == NULL) {
+-	SendErrorToClient(client, IReqCode, X_CloseDevice, 0, BadDevice);
+-	return Success;
+-    }
+-
+-    if (d->grab && SameClient(d->grab, client))
+-	(*d->DeactivateGrab) (d);	/* release active grab */
++    InputClientsPtr others;
++    OtherInputMasks *pOthers;
++    GrabPtr grab, next;
+ 
+-    /* Remove event selections from all windows for events from this device 
+-     * and selected by this client.
+-     * Delete passive grabs from all windows for this device.      */
++    if ((pOthers = wOtherInputMasks(pWin)) != 0)
++	for (others = pOthers->inputClients; others; others = others->next)
++	    if (SameClient(others, client))
++		others->mask[dev->id] = NoEventMask;
+ 
+-    for (i = 0; i < screenInfo.numScreens; i++) {
+-	pWin = WindowTable[i];
+-	DeleteDeviceEvents(d, pWin, client);
+-	p1 = pWin->firstChild;
+-	DeleteEventsFromChildren(d, p1, client);
++    for (grab = wPassiveGrabs(pWin); grab; grab = next) {
++	next = grab->next;
++	if ((grab->device == dev) &&
++	    (client->clientAsMask == CLIENT_BITS(grab->resource)))
++	    FreeResource(grab->resource, RT_NONE);
+     }
+-
+-    CloseInputDevice(d, client);
+-    return Success;
+ }
+ 
+ /***********************************************************************
+@@ -134,7 +121,7 @@ ProcXCloseDevice(register ClientPtr client)
+  *
+  */
+ 
+-void
++static void
+ DeleteEventsFromChildren(DeviceIntPtr dev, WindowPtr p1, ClientPtr client)
+ {
+     WindowPtr p2;
+@@ -149,27 +136,40 @@ DeleteEventsFromChildren(DeviceIntPtr dev, WindowPtr p1, ClientPtr client)
+ 
+ /***********************************************************************
+  *
+- * Clear out event selections and passive grabs from a window for the
+- * specified device.
++ * This procedure closes an input device.
+  *
+  */
+ 
+-void
+-DeleteDeviceEvents(DeviceIntPtr dev, WindowPtr pWin, ClientPtr client)
++int
++ProcXCloseDevice(register ClientPtr client)
+ {
+-    InputClientsPtr others;
+-    OtherInputMasks *pOthers;
+-    GrabPtr grab, next;
++    int i;
++    WindowPtr pWin, p1;
++    DeviceIntPtr d;
+ 
+-    if ((pOthers = wOtherInputMasks(pWin)) != 0)
+-	for (others = pOthers->inputClients; others; others = others->next)
+-	    if (SameClient(others, client))
+-		others->mask[dev->id] = NoEventMask;
++    REQUEST(xCloseDeviceReq);
++    REQUEST_SIZE_MATCH(xCloseDeviceReq);
+ 
+-    for (grab = wPassiveGrabs(pWin); grab; grab = next) {
+-	next = grab->next;
+-	if ((grab->device == dev) &&
+-	    (client->clientAsMask == CLIENT_BITS(grab->resource)))
+-	    FreeResource(grab->resource, RT_NONE);
++    d = LookupDeviceIntRec(stuff->deviceid);
++    if (d == NULL) {
++	SendErrorToClient(client, IReqCode, X_CloseDevice, 0, BadDevice);
++	return Success;
++    }
++
++    if (d->grab && SameClient(d->grab, client))
++	(*d->DeactivateGrab) (d);	/* release active grab */
++
++    /* Remove event selections from all windows for events from this device 
++     * and selected by this client.
++     * Delete passive grabs from all windows for this device.      */
++
++    for (i = 0; i < screenInfo.numScreens; i++) {
++	pWin = WindowTable[i];
++	DeleteDeviceEvents(d, pWin, client);
++	p1 = pWin->firstChild;
++	DeleteEventsFromChildren(d, p1, client);
+     }
++
++    CloseInputDevice(d, client);
++    return Success;
+ }

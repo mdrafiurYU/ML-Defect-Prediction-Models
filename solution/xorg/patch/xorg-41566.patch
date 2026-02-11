@@ -1,0 +1,17 @@
+diff --git a/Xi/chdevhier.c b/Xi/chdevhier.c
+index db16349..631857d 100644
+--- a/Xi/chdevhier.c
++++ b/Xi/chdevhier.c
+@@ -117,7 +117,11 @@ ProcXChangeDeviceHierarchy(ClientPtr client)
+ 
+                     if (!c->sendCore)
+                         ptr->coreEvents = keybd->coreEvents =  FALSE;
+-
++#ifdef XKB
++                    /* supplying NULL for rules simply means we re-use
++                       whatever ruleset we used for the previous devices. */
++                    XkbSetRulesDflts(NULL, "pc105", "us", NULL, NULL);
++#endif
+                     ActivateDevice(ptr);
+                     ActivateDevice(keybd);
+ 

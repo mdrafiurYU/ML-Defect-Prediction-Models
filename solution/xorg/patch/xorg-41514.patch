@@ -1,0 +1,37 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 64206e8..82c7b61 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -410,9 +410,6 @@ Bool
+ miRRGetInfo (ScreenPtr pScreen, Rotation *rotations);
+ 
+ Bool
+-miRRGetScreenInfo (ScreenPtr pScreen);
+-
+-Bool
+ miRRCrtcSet (ScreenPtr	pScreen,
+ 	     RRCrtcPtr	crtc,
+ 	     RRModePtr	mode,
+@@ -504,12 +501,6 @@ Bool RRScreenInit (ScreenPtr pScreen);
+ Rotation
+ RRGetRotation (ScreenPtr pScreen);
+ 
+-int
+-RRSetScreenConfig (ScreenPtr		pScreen,
+-		   Rotation		rotation,
+-		   int			rate,
+-		   RRScreenSizePtr	pSize);
+-
+ #endif					
+ 
+ /* rrcrtc.c */
+@@ -699,9 +690,6 @@ RRModePtr
+ RRModeGet (xRRModeInfo	*modeInfo,
+ 	   const char	*name);
+ 
+-void
+-RRModePruneUnused (ScreenPtr pScreen);
+-
+ /*
+  * Destroy a mode.
+  */

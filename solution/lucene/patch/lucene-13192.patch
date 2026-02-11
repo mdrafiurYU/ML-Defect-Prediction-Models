@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+index 6e4d71a..65a2d4d 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
++++ b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+@@ -47,12 +47,6 @@ final class DocFieldProcessor extends DocConsumer {
+   }
+ 
+   @Override
+-  public void closeDocStore(SegmentWriteState state) throws IOException {
+-    consumer.closeDocStore(state);
+-    fieldsWriter.closeDocStore(state);
+-  }
+-
+-  @Override
+   public void flush(Collection<DocConsumerPerThread> threads, SegmentWriteState state) throws IOException {
+ 
+     Map<DocFieldConsumerPerThread, Collection<DocFieldConsumerPerField>> childThreadsAndFields = new HashMap<DocFieldConsumerPerThread, Collection<DocFieldConsumerPerField>>();

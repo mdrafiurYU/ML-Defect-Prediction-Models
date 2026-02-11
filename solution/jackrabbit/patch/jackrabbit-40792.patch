@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+index a8b566a..bca94f8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+@@ -133,6 +133,14 @@ public class BLOBInTempFile extends BLOBFileValue {
+     /**
+      * {@inheritDoc}
+      */
++    public boolean isImmutable() {
++        // discard and delete can modify the state.
++        return false;
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public long getLength() {
+         return length;
+     }

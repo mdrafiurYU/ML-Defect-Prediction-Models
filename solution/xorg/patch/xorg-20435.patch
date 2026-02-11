@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/lynxos/lynx_mouse.c b/hw/xfree86/os-support/lynxos/lynx_mouse.c
+index 68aca5d..c04d0f7 100644
+--- a/hw/xfree86/os-support/lynxos/lynx_mouse.c
++++ b/hw/xfree86/os-support/lynxos/lynx_mouse.c
+@@ -20,7 +20,7 @@ SupportedInterfaces(void)
+     return MSE_SERIAL | MSE_BUS | MSE_PS2 | MSE_AUTO;
+ }
+ 
+-OSMouseInfoPtr
++_X_EXPORT OSMouseInfoPtr
+ xf86OSMouseInit(int flags)
+ {
+     OSMouseInfoPtr p;

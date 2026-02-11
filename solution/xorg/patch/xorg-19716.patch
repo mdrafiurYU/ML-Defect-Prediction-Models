@@ -1,0 +1,28 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 0364332..f199cab 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -77,6 +77,15 @@ do {								\
+ #define EXA_MAX_FB   FB_OVERLAY_MAX
+ #endif
+ 
++/**
++ * This is the list of migration heuristics supported by EXA.  See
++ * exaDoMigration() for what their implementations do.
++ */
++enum ExaMigrationHeuristic {
++    ExaMigrationGreedy,
++    ExaMigrationAlways
++};
++
+ typedef void (*EnableDisableFBAccessProcPtr)(int, Bool);
+ typedef struct {
+     ExaDriverPtr info;
+@@ -94,6 +103,7 @@ typedef struct {
+     GlyphsProcPtr                SavedGlyphs;
+ #endif
+     Bool			 swappedOut;
++    enum ExaMigrationHeuristic	 migration;
+ } ExaScreenPrivRec, *ExaScreenPrivPtr;
+ 
+ /*

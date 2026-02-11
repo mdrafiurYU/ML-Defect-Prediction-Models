@@ -1,0 +1,32 @@
+diff --git a/hw/kdrive/chips/chipsdraw.c b/hw/kdrive/chips/chipsdraw.c
+index ceb38d7..536453d 100644
+--- a/hw/kdrive/chips/chipsdraw.c
++++ b/hw/kdrive/chips/chipsdraw.c
+@@ -160,13 +160,6 @@ chipsSet (ScreenPtr pScreen)
+     pixelStride = pScreenPriv->screen->fb[0].pixelStride;
+ }
+ 
+-static void
+-chipsWaitMarker (ScreenPtr pScreen, int marker)
+-{
+-    chipsSet (pScreen);
+-    chipsWaitIdle ();
+-}
+-
+ #ifdef HIQV
+ #define CHIPS_BR0	0x00	/* offset */
+ #define CHIPS_BR1    	0x04	/* bg */
+@@ -312,6 +305,13 @@ chipsWaitIdle (void)
+ #endif
+ }
+ 
++static void
++chipsWaitMarker (ScreenPtr pScreen, int marker)
++{
++    chipsSet (pScreen);
++    chipsWaitIdle ();
++}
++
+ static Bool
+ chipsPrepareSolid (PixmapPtr	pPixmap,
+ 		   int		alu,

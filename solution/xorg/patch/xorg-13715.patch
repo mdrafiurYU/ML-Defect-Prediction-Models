@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/i2c/fi1236_module.c b/hw/xfree86/i2c/fi1236_module.c
+index f6bbc7b..828f2b2 100644
+--- a/hw/xfree86/i2c/fi1236_module.c
++++ b/hw/xfree86/i2c/fi1236_module.c
+@@ -18,7 +18,11 @@ static XF86ModuleVersionInfo fi1236VersRec =
+         {0,0,0,0}
+ };
+  
+-XF86ModuleData fi1236ModuleData = { &fi1236VersRec, fi1236Setup, NULL }; 
++_X_EXPORT XF86ModuleData fi1236ModuleData = {
++        &fi1236VersRec,
++        fi1236Setup,
++        NULL
++}; 
+ 
+ static pointer
+ fi1236Setup(pointer module, pointer opts, int *errmaj, int *errmin) {

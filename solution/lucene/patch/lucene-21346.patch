@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java b/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java
+index 38fbbc6..3ec6ec2 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java
+@@ -26,10 +26,4 @@ abstract class TermsHashConsumer {
+   abstract void startDocument() throws IOException;
+   abstract void finishDocument(TermsHash termsHash) throws IOException;
+   abstract public TermsHashConsumerPerField addField(TermsHashPerField termsHashPerField, FieldInfo fieldInfo);
+-
+-  FieldInfos fieldInfos;
+-
+-  void setFieldInfos(FieldInfos fieldInfos) {
+-    this.fieldInfos = fieldInfos;
+-  }
+ }

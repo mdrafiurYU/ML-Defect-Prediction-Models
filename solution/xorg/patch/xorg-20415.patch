@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/utils/xorgcfg/keyboard-cfg.c b/hw/xfree86/utils/xorgcfg/keyboard-cfg.c
+index 334070d..05b1aeb 100644
+--- a/hw/xfree86/utils/xorgcfg/keyboard-cfg.c
++++ b/hw/xfree86/utils/xorgcfg/keyboard-cfg.c
+@@ -1013,7 +1013,6 @@ KeyboardRulesCallback(Widget w, XtPointer user_data, XtPointer call_data)
+ 	}
+ 
+ 	if (!XkbRF_LoadRules(fp, xkb_rules->list)) {
+-	    fclose(fp);
+ 	    fprintf(stderr, "Can't load rules\n");
+ 	}
+ 	fclose(fp);

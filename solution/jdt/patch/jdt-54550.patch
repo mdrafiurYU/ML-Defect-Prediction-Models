@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/FileGenerationResult.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/FileGenerationResult.java
+index e8eadd2..a865a8d 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/FileGenerationResult.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/FileGenerationResult.java
+@@ -13,12 +13,10 @@ public class FileGenerationResult {
+ 
+ 	private final IFile file;
+ 	private final boolean modified;
+-	private final boolean sourcePathChanged;
+ 	
+-	public FileGenerationResult(final IFile file, final boolean modified, boolean sourcePathChanged) {
++	public FileGenerationResult(final IFile file, final boolean modified) {
+ 		this.file = file;
+ 		this.modified = modified;
+-		this.sourcePathChanged = sourcePathChanged;
+ 	}
+ 	
+ 	public IFile getFile() {
+@@ -27,8 +25,5 @@ public class FileGenerationResult {
+ 	
+ 	public boolean isModified() {
+ 		return modified;
+-	}
+-	
+-	public boolean getSourcePathChanged() { return sourcePathChanged; }
+-	
++	}	
+ }

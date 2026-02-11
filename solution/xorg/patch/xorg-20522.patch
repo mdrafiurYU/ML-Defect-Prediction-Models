@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/bios_devmem.c b/hw/xfree86/os-support/shared/bios_devmem.c
+index 8bd6d3f..b63704c 100644
+--- a/hw/xfree86/os-support/shared/bios_devmem.c
++++ b/hw/xfree86/os-support/shared/bios_devmem.c
+@@ -41,7 +41,7 @@
+ # define DEV_MEM "/dev/mem"
+ #endif
+ 
+-int
++_X_EXPORT int
+ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 		int Len)
+ {

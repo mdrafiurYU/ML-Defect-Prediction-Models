@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+index 1d2f8a6..012e95e 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+@@ -149,7 +149,7 @@ public class TestDisjunctionMaxQuery extends LuceneTestCase {
+     
+     r = new SlowMultiReaderWrapper(writer.getReader());
+     writer.close();
+-    s = new IndexSearcher(r);
++    s = newSearcher(r);
+     s.setSimilarityProvider(sim);
+   }

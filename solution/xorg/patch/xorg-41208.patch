@@ -1,0 +1,68 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index d4cfa67..822e377 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -43,6 +43,7 @@
+ #include "pixmapstr.h"
+ #include "extnsionst.h"
+ #include "servermd.h"
++#include "rrtransform.h"
+ #include <X11/extensions/randr.h>
+ #include <X11/extensions/randrproto.h>
+ #ifdef RENDER
+@@ -78,7 +79,6 @@ typedef struct _rrPropertyValue	RRPropertyValueRec, *RRPropertyValuePtr;
+ typedef struct _rrProperty	RRPropertyRec, *RRPropertyPtr;
+ typedef struct _rrCrtc		RRCrtcRec, *RRCrtcPtr;
+ typedef struct _rrOutput	RROutputRec, *RROutputPtr;
+-typedef struct _rrTransform	RRTransformRec, *RRTransformPtr;
+ 
+ struct _rrMode {
+     int		    refcnt;
+@@ -105,17 +105,6 @@ struct _rrProperty {
+     RRPropertyValueRec	current, pending;
+ };
+ 
+-struct _rrTransform {
+-    PictTransform   transform;
+-    struct pict_f_transform f_transform;
+-    struct pict_f_transform f_inverse;
+-    PictFilterPtr   filter;
+-    xFixed	    *params;
+-    int		    nparams;
+-    int		    width;
+-    int		    height;
+-};
+-
+ struct _rrCrtc {
+     RRCrtc	    id;
+     ScreenPtr	    pScreen;
+@@ -557,6 +546,7 @@ RRCrtcNotify (RRCrtcPtr	    crtc,
+ 	      int	    x,
+ 	      int	    y,
+ 	      Rotation	    rotation,
++	      RRTransformPtr transform,
+ 	      int	    numOutputs,
+ 	      RROutputPtr   *outputs);
+ 
+@@ -618,7 +608,7 @@ RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
+  * Return TRUE if the resulting transform is not a simple translation.
+  */
+ Bool
+-RRComputeTransform (int			    x,
++RRTransformCompute (int			    x,
+ 		    int			    y,
+ 		    int			    width,
+ 		    int			    height,
+@@ -636,12 +626,6 @@ RRTransformPtr
+ RRCrtcGetTransform (RRCrtcPtr crtc);
+ 
+ /*
+- * Mark the pending transform as current
+- */
+-void
+-RRCrtcSetTransform (RRCrtcPtr crtc, RRTransformPtr transform);
+-
+-/*
+  * Check whether the pending and current transforms are the same
+  */
+ Bool

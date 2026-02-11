@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index 6547dde..eab1a5a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -5808,7 +5808,7 @@ public void recordPositionsFrom(int startPC, int sourcePos) {
+ 				if (insertionIndex != -1) {
+ 					// there is no existing entry starting with startPC.
+ 					int existingEntryIndex = indexOfSameLineEntrySincePC(startPC, lineNumber); // index for PC
+-					/* the existingEntryIndex corresponds to en entry with the same line and a PC >= startPC.
++					/* the existingEntryIndex corresponds to an entry with the same line and a PC >= startPC.
+ 						in this case it is relevant to widen this entry instead of creating a new one.
+ 						line1: this(a,
+ 						  b,

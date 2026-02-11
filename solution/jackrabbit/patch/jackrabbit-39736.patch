@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultXMLExcerpt.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultXMLExcerpt.java
+index d2f0525..2081d12 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultXMLExcerpt.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultXMLExcerpt.java
+@@ -43,6 +43,6 @@ public class DefaultXMLExcerpt extends AbstractExcerpt {
+                                    int maxFragmentSize)
+             throws IOException {
+         return DefaultHighlighter.highlight(tpv, getQueryTerms(), text,
+-                "<highlight>", "</highlight>", maxFragments, maxFragmentSize / 2);
++                maxFragments, maxFragmentSize / 2);
+     }
+ }

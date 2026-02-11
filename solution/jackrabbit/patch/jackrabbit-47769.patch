@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ChildNodeImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ChildNodeImpl.java
+index d1c5116..bd2bf85 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ChildNodeImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ChildNodeImpl.java
+@@ -64,7 +64,7 @@ public class ChildNodeImpl extends ConstraintImpl implements ChildNode {
+      *
+      * @return the path; non-null
+      */
+-    public String getPath() {
++    public String getParentPath() {
+         return getJCRPath(path);
+     }
+ 
+@@ -86,11 +86,6 @@ public class ChildNodeImpl extends ConstraintImpl implements ChildNode {
+         return path;
+     }
+ 
+-    public String getParentPath() {
+-        // TODO
+-        throw new RuntimeException("Not implemented yet - see JCR-2092");
+-    }
+-
+     //------------------------< AbstractQOMNode >-------------------------------
+ 
+     /**

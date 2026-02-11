@@ -1,0 +1,16 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index bb6d8a0..c7f9a26 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -1003,9 +1003,8 @@ XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies)
+                     if (!tmp)
+                         return FALSE;
+                     dst->map->types = tmp;
+-                    bzero(dst->map->types +
+-                            (dst->map->num_types * sizeof(XkbKeyTypeRec)),
+-                          (src->map->num_types - dst->map->size_types) *
++                    bzero(dst->map->types + dst->map->num_types,
++                          (src->map->num_types - dst->map->num_types) *
+                             sizeof(XkbKeyTypeRec));
+                 }
+                 else {

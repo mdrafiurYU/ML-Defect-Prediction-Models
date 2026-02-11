@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index d404048..f99bfb7 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -62,6 +62,7 @@
+ #include "mipointer.h"
+ #include "xf86InPriv.h"
+ #include "compiler.h"
++#include "extinit.h"
+ 
+ #ifdef DPMSExtension
+ #define DPMS_SERVER
+@@ -89,6 +90,10 @@
+ #include "dgaproc.h"
+ #endif
+ 
++#ifdef XKB
++#include "xkbsrv.h"
++#endif
++
+ #include "os.h"
+ 
+ EventListPtr xf86Events = NULL;

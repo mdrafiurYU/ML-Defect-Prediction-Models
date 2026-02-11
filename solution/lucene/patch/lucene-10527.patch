@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/LongFieldSource.java b/solr/src/java/org/apache/solr/search/function/LongFieldSource.java
+index e96cad9..ab1509e 100644
+--- a/solr/src/java/org/apache/solr/search/function/LongFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/LongFieldSource.java
+@@ -63,7 +63,7 @@ public class LongFieldSource extends NumericFieldCacheSource<LongValues> {
+       }
+ 
+       public long longVal(int doc) {
+-        return (long) arr[doc];
++        return arr[doc];
+       }
+ 
+       public double doubleVal(int doc) {

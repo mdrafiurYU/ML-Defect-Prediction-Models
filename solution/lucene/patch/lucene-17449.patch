@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java b/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
+index 4485adb..fad6f63 100644
+--- a/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
++++ b/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
+@@ -54,6 +54,7 @@ public class TestEntryCreators extends LuceneTestCase {
+       this.parser = parser;
+       values = new Number[NUM_DOCS];
+     }
++    @Override
+     public String toString()
+     {
+       return field;

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/loader.c b/hw/xfree86/loader/loader.c
+index 315926b..aed5a54 100644
+--- a/hw/xfree86/loader/loader.c
++++ b/hw/xfree86/loader/loader.c
+@@ -1446,7 +1446,7 @@ LoaderUnload(int handle)
+     loaderRec fakeHead;
+     loaderPtr tmp = &fakeHead;
+ 
+-    if (handle < 0 || handle > MAX_HANDLE)
++    if (handle < 0 || handle >= MAX_HANDLE)
+ 	return -1;
+ 
+     /*

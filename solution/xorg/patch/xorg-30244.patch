@@ -1,0 +1,30 @@
+diff --git a/dix/grabs.c b/dix/grabs.c
+index cecd7ec..2210cd0 100644
+--- a/dix/grabs.c
++++ b/dix/grabs.c
+@@ -322,12 +322,6 @@ AddPassiveGrabToList(GrabPtr pGrab)
+ 	}
+     }
+ 
+-    if (!pGrab->window->optional && !MakeWindowOptional (pGrab->window))
+-    {
+-	FreeGrab(pGrab);
+-	return BadAlloc;
+-    }
+-
+     /* Remove all grabs that match the new one exactly */
+     for (grab = wPassiveGrabs(pGrab->window); grab; grab = grab->next)
+     {
+@@ -338,6 +332,12 @@ AddPassiveGrabToList(GrabPtr pGrab)
+ 	} 
+     }
+ 
++    if (!pGrab->window->optional && !MakeWindowOptional (pGrab->window))
++    {
++	FreeGrab(pGrab);
++	return BadAlloc;
++    }
++
+     pGrab->next = pGrab->window->optional->passiveGrabs;
+     pGrab->window->optional->passiveGrabs = pGrab;
+     if (AddResource(pGrab->resource, RT_PASSIVEGRAB, (pointer)pGrab))

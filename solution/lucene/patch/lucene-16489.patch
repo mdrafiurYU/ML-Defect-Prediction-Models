@@ -1,0 +1,24 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java b/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java
+index 314a3a2..61e8099 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java
+@@ -28,7 +28,6 @@ import org.apache.lucene.index.OrdTermState;
+ import org.apache.lucene.index.TermState;
+ import org.apache.lucene.index.Terms;
+ import org.apache.lucene.index.TermsEnum;
+-import org.apache.lucene.index.codecs.PrefixCodedTermState;
+ import org.apache.lucene.search.DocIdSetIterator;
+ import org.apache.lucene.search.FieldCache.DocTermsIndex;
+ import org.apache.lucene.util.ArrayUtil;
+@@ -322,6 +321,11 @@ public class DocTermsIndexCreator extends EntryCreatorWithOptions<DocTermsIndex>
+       }
+ 
+       @Override
++      public long totalTermFreq() {
++        return -1;
++      }
++
++      @Override
+       public DocsEnum docs(Bits skipDocs, DocsEnum reuse) throws IOException {
+         throw new UnsupportedOperationException();
+       }

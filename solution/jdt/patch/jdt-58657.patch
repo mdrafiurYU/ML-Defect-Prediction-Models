@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTest_1_5.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTest_1_5.java
+index 9a7a8d3..961f1b9 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTest_1_5.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTest_1_5.java
+@@ -41,7 +41,7 @@ public class JavadocTest_1_5 extends JavadocTest {
+ //		TESTS_RANGE = new int[] { 23, -1 };
+ 	}
+ 	public static Test suite() {
+-		return buildTestSuiteWithMinimalCompliance(testClass(), F_1_5);
++		return buildComplianceRegressionTestSetupSuite(testClass(), F_1_5);
+ 	}
+ 
+ 	protected Map getCompilerOptions() {

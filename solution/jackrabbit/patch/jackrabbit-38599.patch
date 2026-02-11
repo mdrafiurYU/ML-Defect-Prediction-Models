@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+index 4c99233..1ed20ef 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+@@ -391,6 +391,10 @@ public class LocalItemStateManager
+         } else {
+             // local state was created
+             local = created;
++            // just ensure that the newly created state is still cached. it can
++            // happen during a restore operation that a state with the same id
++            // is deleted and created (JCR-1197)
++            cache.cache(local);
+         }
+         if (local != null) {
+             dispatcher.notifyStateCreated(created);

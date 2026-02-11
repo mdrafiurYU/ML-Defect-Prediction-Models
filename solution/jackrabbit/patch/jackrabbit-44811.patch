@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
+index bd93541..861ad69 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
+@@ -234,7 +234,6 @@ public class PrincipalManagerImpl implements PrincipalManager {
+         }
+ 
+         public boolean isMember(Principal member) {
+-            // TODO: check if access-restrictions should be checked
+             return delegatee.isMember(member);
+         }

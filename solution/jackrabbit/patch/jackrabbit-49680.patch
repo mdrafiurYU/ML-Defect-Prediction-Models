@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Type.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Type.java
+index b05b8ce..1df2b4f 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Type.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/Type.java
+@@ -104,7 +104,7 @@ public class Type implements XmlSerializable {
+      * @return <code>Type</code> object.
+      */
+     public static Type create(String localName, Namespace namespace) {
+-        String key = DomUtil.getQualifiedName(localName, namespace);
++        String key = DomUtil.getExpandedName(localName, namespace);
+         if (types.containsKey(key)) {
+             return (Type) types.get(key);
+         } else {

@@ -1,0 +1,88 @@
+diff --git a/hw/kdrive/r128/r128draw.c b/hw/kdrive/r128/r128draw.c
+index be4dc79..208d7ef 100644
+--- a/hw/kdrive/r128/r128draw.c
++++ b/hw/kdrive/r128/r128draw.c
+@@ -26,6 +26,7 @@
+ #include <config.h>
+ #endif
+ #include "r128.h"
++#include "kaa.h"
+ 
+ CARD8 r128SolidRop[16] = {
+     /* GXclear      */      0x00,         /* 0 */
+@@ -107,6 +108,17 @@ r128WaitIdle (void)
+     
+ }
+ 
++static void
++r128WaitMarker (ScreenPtr pScreen, int marker)
++{
++    KdScreenPriv (pScreen);
++    r128CardInfo (pScreenPriv);
++
++    mmio = r128c->reg_base;
++
++    r128WaitIdle ();
++}
++
+ static Bool
+ r128Setup (ScreenPtr pScreen, int wait)
+ {
+@@ -219,20 +231,23 @@ r128DoneCopy (void)
+ {
+ }
+ 
+-KaaScreenInfoRec r128Kaa = {
+-    r128PrepareSolid,
+-    r128Solid,
+-    r128DoneSolid,
+-
+-    r128PrepareCopy,
+-    r128Copy,
+-    r128DoneCopy,
+-};
+ 
+ Bool
+ r128DrawInit (ScreenPtr pScreen)
+ {
+-    if (!kaaDrawInit (pScreen, &r128Kaa))
++    KdScreenPriv (pScreen);
++    r128ScreenInfo (pScreenPriv);
++
++    memset(&r128s->kaa, 0, sizeof(KaaScreenInfoRec));
++    r128s->kaa.waitMarker	= r128WaitMarker;
++    r128s->kaa.PrepareSolid	= r128PrepareSolid;
++    r128s->kaa.Solid		= r128Solid;
++    r128s->kaa.DoneSolid	= r128DoneSolid;
++    r128s->kaa.PrepareCopy	= r128PrepareCopy;
++    r128s->kaa.Copy		= r128Copy;
++    r128s->kaa.DoneCopy		= r128DoneCopy;
++
++    if (!kaaDrawInit (pScreen, &r128s->kaa))
+ 	return FALSE;
+ 
+     return TRUE;
+@@ -270,7 +285,7 @@ r128DrawEnable (ScreenPtr pScreen)
+ 				 | R128_GMC_CLR_CMP_CNTL_DIS
+ 				 | R128_GMC_AUX_CLIP_DIS);
+     
+-    KdMarkSync (pScreen);
++    kaaMarkSync (pScreen);
+ }
+ 
+ void
+@@ -282,14 +297,3 @@ void
+ r128DrawFini (ScreenPtr pScreen)
+ {
+ }
+-
+-void
+-r128DrawSync (ScreenPtr pScreen)
+-{
+-    KdScreenPriv (pScreen);
+-    r128CardInfo (pScreenPriv);
+-
+-    mmio = r128c->reg_base;
+-
+-    r128WaitIdle ();
+-}

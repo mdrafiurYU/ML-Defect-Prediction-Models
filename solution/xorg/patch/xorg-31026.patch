@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/modes/xf86Rotate.c b/hw/xfree86/modes/xf86Rotate.c
+index 4016b97..380478f 100644
+--- a/hw/xfree86/modes/xf86Rotate.c
++++ b/hw/xfree86/modes/xf86Rotate.c
+@@ -478,7 +478,7 @@ xf86RotateDestroy (xf86CrtcPtr crtc)
+     }
+ }
+ 
+-void
++_X_EXPORT void
+ xf86RotateCloseScreen (ScreenPtr screen)
+ {
+     ScrnInfoPtr		scrn = xf86Screens[screen->myNum];
+@@ -489,7 +489,7 @@ xf86RotateCloseScreen (ScreenPtr screen)
+ 	xf86RotateDestroy (xf86_config->crtc[c]);
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86CrtcRotate (xf86CrtcPtr crtc, DisplayModePtr mode, Rotation rotation)
+ {
+     ScrnInfoPtr		pScrn = crtc->scrn;

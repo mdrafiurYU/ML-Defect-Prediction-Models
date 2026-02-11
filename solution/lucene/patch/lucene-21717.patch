@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java b/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java
+index 9df6b5a..e5442e9 100644
+--- a/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java
++++ b/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java
+@@ -19,6 +19,7 @@ import java.util.Map;
+ import java.util.concurrent.ConcurrentHashMap;
+ 
+ import org.apache.lucene.document.Document;
++import org.apache.lucene.index.DocumentsWriterPerThreadPool.ThreadState; //javadoc
+ 
+ /**
+  * A {@link DocumentsWriterPerThreadPool} implementation that tries to assign an

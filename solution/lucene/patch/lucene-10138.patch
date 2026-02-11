@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java
+index e50ff74..b893e04 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java
+@@ -37,7 +37,7 @@ public class InstantiatedTerm
+     }
+   };
+ 
+-  public static final Comparator termComparator = new Comparator() {
++  public static final Comparator<Object> termComparator = new Comparator<Object>() {
+     public int compare(Object o, Object o1) {
+       return ((InstantiatedTerm)o).getTerm().compareTo((Term)o1);
+     }

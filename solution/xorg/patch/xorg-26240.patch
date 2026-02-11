@@ -1,0 +1,20 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index ba5bcb4..4780023 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -154,6 +154,15 @@ RROutputSetConnection (RROutputPtr  output,
+     return TRUE;
+ }
+ 
++Bool
++RROutputSetSubpixelOrder (RROutputPtr output,
++			  int	      subpixelOrder)
++{
++    output->subpixelOrder = subpixelOrder;
++    output->changed = TRUE;
++    return TRUE;
++}
++
+ void
+ RRDeliverOutputEvent(ClientPtr client, WindowPtr pWin, RROutputPtr output)
+ {

@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 0b704ca..43af7c7 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2160,7 +2160,7 @@ static Window FindChildForEvent(DeviceIntPtr dev, WindowPtr event)
+  * @param child Child window setting for event (if applicable)
+  * @param calcChild If True, calculate the child window.
+  */
+-static void
++void
+ FixUpEventFromWindow(
+     DeviceIntPtr pDev,
+     xEvent *xE,

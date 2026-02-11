@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/BuildContext.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/BuildContext.java
+index df473de..24fa223 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/BuildContext.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/BuildContext.java
+@@ -131,7 +131,7 @@ public void recordNewProblems(CategorizedProblem[] newProblems) {
+ 	if (length2 == 0) return;
+ 
+ 	int length1 = this.problems == null ? 0 : this.problems.length;
+-	IProblem[] merged = new IProblem[length1 + length2];
++	CategorizedProblem[] merged = new CategorizedProblem[length1 + length2];
+ 	if (length1 > 0) // always make a copy even if currently empty
+ 		System.arraycopy(this.problems, 0, merged, 0, length1);	
+ 	System.arraycopy(newProblems, 0, merged, length1, length2);

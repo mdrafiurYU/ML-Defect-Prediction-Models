@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxdetach.c b/hw/dmx/input/dmxdetach.c
+index a7a2ed0..d2e6b65 100644
+--- a/hw/dmx/input/dmxdetach.c
++++ b/hw/dmx/input/dmxdetach.c
+@@ -35,6 +35,10 @@
+ /** \file
+  * Provide support and helper functions for input detach and attach. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmxinputinit.h"
+ #include "dmxextension.h"       /* For dmxInputCount */
+ 

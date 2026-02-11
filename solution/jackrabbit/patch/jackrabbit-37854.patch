@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRemappingTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRemappingTest.java
+index ed0ffe3..aacf1bd 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRemappingTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRemappingTest.java
+@@ -62,8 +62,10 @@ public class NamespaceRemappingTest extends AbstractJCRTest {
+         try {
+             if (session != null) {
+                 session.logout();
++                session = null;
+             }
+         } finally {
++            nsr = null;
+             super.tearDown();
+         }
+     }

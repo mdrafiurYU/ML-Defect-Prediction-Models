@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+index 030979c..d1b46e1 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
++++ b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+@@ -49,7 +49,7 @@ final class DocFieldProcessor extends DocConsumer {
+       throws IOException {
+     DocValuesConsumer valuesConsumer;
+     if ((valuesConsumer = docValues.get(name)) == null) {
+-      fieldInfo.setIndexValues(attr.type());
++      fieldInfo.setDocValues(attr.type());
+ 
+       if(fieldsConsumer == null) {
+         /* nocommit -- this is a hack and only works since DocValuesCodec supports initializing the FieldsConsumer twice.

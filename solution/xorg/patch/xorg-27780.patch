@@ -1,0 +1,12 @@
+diff --git a/hw/darwin/quartz/quartzCursor.h b/hw/darwin/quartz/quartzCursor.h
+index 56cc94d..57fac68 100644
+--- a/hw/darwin/quartz/quartzCursor.h
++++ b/hw/darwin/quartz/quartzCursor.h
+@@ -36,6 +36,7 @@
+ #include "screenint.h"
+ 
+ Bool QuartzInitCursor(ScreenPtr pScreen);
++void QuartzReallySetCursor(void);
+ void QuartzSuspendXCursor(ScreenPtr pScreen);
+ void QuartzResumeXCursor(ScreenPtr pScreen, int x, int y);
+ 

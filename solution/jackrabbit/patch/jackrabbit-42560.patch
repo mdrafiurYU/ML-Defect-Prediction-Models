@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyEntry.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyEntry.java
+index 2aa61ad..7af10db 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyEntry.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyEntry.java
+@@ -31,6 +31,12 @@ public interface PolicyEntry extends AccessControlEntry {
+      */
+     boolean isAllow();
+ 
++    /**
++     * @return the int representation of the privileges defined for this entry.
++     * @see #getPrivileges()
++     */
++    int getPrivilegeBits();
++
+     // TODO: eventually add
+     // String getNodePath();
+     // String getGlob();

@@ -1,0 +1,23 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+index e7e34e5..8b9d33e 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+@@ -546,6 +546,8 @@ final class DocumentsWriter {
+   // Lock order: IW -> DW
+   synchronized SegmentInfo flush(IndexWriter writer, IndexFileDeleter deleter, MergePolicy mergePolicy, SegmentInfos segmentInfos) throws IOException {
+ 
++    final long startTime = System.currentTimeMillis();
++
+     // We change writer's segmentInfos:
+     assert Thread.holdsLock(writer);
+ 
+@@ -646,6 +648,10 @@ final class DocumentsWriter {
+     // Lock order: IW -> DW -> BD
+     pushDeletes(newSegment, segmentInfos);
+ 
++    if (infoStream != null) {
++      message("flush time " + (System.currentTimeMillis()-startTime) + " msec");
++    }
++
+     return newSegment;
+   }

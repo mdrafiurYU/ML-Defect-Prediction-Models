@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+index b69efe6..93a440b 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+@@ -41,7 +41,7 @@ public class TestFieldCache extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     directory = newDirectory();
+-    RandomIndexWriter writer= new RandomIndexWriter(random, directory);
++    RandomIndexWriter writer= new RandomIndexWriter(random, directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newInOrderLogMergePolicy()));
+     long theLong = Long.MAX_VALUE;
+     double theDouble = Double.MAX_VALUE;
+     byte theByte = Byte.MAX_VALUE;

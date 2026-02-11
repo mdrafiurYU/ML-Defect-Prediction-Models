@@ -1,0 +1,15 @@
+diff --git a/Xext/shm.c b/Xext/shm.c
+index 4e73319..7cfaa68 100644
+--- a/Xext/shm.c
++++ b/Xext/shm.c
+@@ -816,8 +816,8 @@ static int
+ ProcShmPutImage(client)
+     register ClientPtr client;
+ {
+-    register GCPtr pGC;
+-    register DrawablePtr pDraw;
++    GCPtr pGC;
++    DrawablePtr pDraw;
+     long length;
+     ShmDescPtr shmdesc;
+     REQUEST(xShmPutImageReq);

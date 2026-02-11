@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxbackend.c b/hw/dmx/input/dmxbackend.c
+index 48de4c9..61d1bfe 100644
+--- a/hw/dmx/input/dmxbackend.c
++++ b/hw/dmx/input/dmxbackend.c
+@@ -464,9 +464,8 @@ void dmxBackendCollectEvents(DevicePtr pDev,
+ #if 11/*BP*/
+         case ButtonPress:
+         case ButtonRelease:
+-           /*
+            ErrorF("press/release at %d, %d\n", X.xbutton.x, X.xbutton.y);
+-           */
++           /* fall-through */
+ #endif
+ 	default:
+                                 /* Pass the whole event here, because

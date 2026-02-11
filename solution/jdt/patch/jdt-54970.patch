@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java
+index 45be17c..de7e1f4 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java
+@@ -1214,7 +1214,9 @@ public class Util {
+ 			case IJavaElement.COMPILATION_UNIT:
+ 				root = (PackageFragmentRoot)element.getAncestor(IJavaElement.PACKAGE_FRAGMENT_ROOT);
+ 				resource = element.getResource();
+-				if (resource != null && isExcluded(resource, root.fullInclusionPatternChars(), root.fullExclusionPatternChars()))
++				if (resource == null) 
++					return false;
++				if (isExcluded(resource, root.fullInclusionPatternChars(), root.fullExclusionPatternChars()))
+ 					return true;
+ 				return isExcluded(element.getParent());

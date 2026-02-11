@@ -1,0 +1,15 @@
+diff --git a/mfb/mfbpntwin.c b/mfb/mfbpntwin.c
+index e6dcdfd..d1c19b6 100644
+--- a/mfb/mfbpntwin.c
++++ b/mfb/mfbpntwin.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ 
+ ******************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "windowstr.h"

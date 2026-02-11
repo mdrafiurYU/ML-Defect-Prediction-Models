@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/jmx/JCRServerMBean.java b/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/jmx/JCRServerMBean.java
+index ea1468c..5f6bddb 100644
+--- a/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/jmx/JCRServerMBean.java
++++ b/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/jmx/JCRServerMBean.java
+@@ -22,6 +22,8 @@ public interface JCRServerMBean {
+ 
+     public void stop() throws Exception;
+ 
++    public void createWorkspace(String username, String password, String workspace);
++
+     public String getLocalAddress();
+ 
+     public void setLocalAddress(String address);

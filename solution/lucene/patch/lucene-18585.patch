@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/AbstractSubTypeFieldType.java b/solr/src/java/org/apache/solr/schema/AbstractSubTypeFieldType.java
+index 913163b..8ebe95d 100644
+--- a/solr/src/java/org/apache/solr/schema/AbstractSubTypeFieldType.java
++++ b/solr/src/java/org/apache/solr/schema/AbstractSubTypeFieldType.java
+@@ -103,6 +103,7 @@ public abstract class AbstractSubTypeFieldType extends FieldType implements Sche
+   /**
+    * Throws UnsupportedOperationException()
+    */
++  @Override
+   public Query getFieldQuery(QParser parser, SchemaField field, String externalVal) {
+     throw new UnsupportedOperationException();
+   }

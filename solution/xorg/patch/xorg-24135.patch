@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 94c3abd..13869c9 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -441,7 +441,7 @@ KdPointerProc(DeviceIntPtr pDevice, int onoff)
+ 	InitPointerDeviceStruct(pDev, pi->map, pi->nButtons,
+ 	    miPointerGetMotionEvents,
+ 	    (PtrCtrlProcPtr)NoopDDA,
+-	    miPointerGetMotionBufferSize());
++	    miPointerGetMotionBufferSize(), pi->nAxes);
+ 
+ #ifdef XINPUT
+         if (pi->inputClass == KD_TOUCHSCREEN) {
+@@ -1280,7 +1280,7 @@ KdInitInput (void)
+             ErrorF("Failed to add keyboard!\n");
+     }
+ 
+-    mieqInit(NULL, NULL);
++    mieqInit();
+ }
+ 
+ /*

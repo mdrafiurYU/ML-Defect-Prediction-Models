@@ -1,0 +1,11 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DateFormatTransformer.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DateFormatTransformer.java
+index e2c6e22..95c601e 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DateFormatTransformer.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DateFormatTransformer.java
+@@ -45,6 +45,7 @@ public class DateFormatTransformer extends Transformer {
+   private static final Logger LOG = LoggerFactory
+           .getLogger(DateFormatTransformer.class);
+ 
++  @Override
+   @SuppressWarnings("unchecked")
+   public Object transformRow(Map<String, Object> aRow, Context context) {

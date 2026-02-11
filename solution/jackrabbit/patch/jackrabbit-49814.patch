@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/GroupTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/GroupTest.java
+index 3a9fb15..0a3357e 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/GroupTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/GroupTest.java
+@@ -39,7 +39,7 @@ public class GroupTest extends AbstractUserTest {
+             assertTrue(next instanceof Authorizable);
+             contained = ((Authorizable)next).getID().equals(auth.getID());
+         }
+-        assertTrue("The given set of members must contain " + auth.getID(), contained);
++        assertTrue("The given set of members must contain '" + auth.getID() + "'", contained);
+     }
+ 
+     private static void assertFalseIsMember(Iterator members, Authorizable auth) throws RepositoryException {
+@@ -49,7 +49,7 @@ public class GroupTest extends AbstractUserTest {
+             assertTrue(next instanceof Authorizable);
+             contained = ((Authorizable)next).getID().equals(auth.getID());
+         }
+-        assertFalse("The given set of members must not contain " + auth.getID(), contained);
++        assertFalse("The given set of members must not contain '" + auth.getID() + "'", contained);
+     }
+ 
+     private static void assertTrueMemberOfContainsGroup(Iterator groups, Group gr) throws RepositoryException {

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
+index 7e05c27..6e08934 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
+@@ -429,7 +429,7 @@ public void acceptMethod(char[] declaringTypePackageName, char[] declaringTypeNa
+ 					
+ 					parameterPackageNames[0] = declaringDeclaringType.getPackageFragment().getElementName().toCharArray();
+ 					parameterTypeNames[0] = declaringDeclaringType.getTypeQualifiedName().toCharArray();
+-					parameterSignatures[0] = enclosingDeclaringTypeSignature;
++					parameterSignatures[0] = Signature.getTypeErasure(enclosingDeclaringTypeSignature);
+ 				}
+ 				
+ 				acceptBinaryMethod(type, selector, parameterPackageNames, parameterTypeNames, parameterSignatures, uniqueKey, isConstructor);

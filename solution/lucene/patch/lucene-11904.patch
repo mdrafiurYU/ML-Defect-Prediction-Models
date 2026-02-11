@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsIndexReader.java b/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsIndexReader.java
+index ab8cc7e..bd928a3 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsIndexReader.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsIndexReader.java
+@@ -30,9 +30,9 @@ import org.apache.lucene.util.CodecUtil;
+ public class AppendingTermsIndexReader extends FixedGapTermsIndexReader {
+ 
+   public AppendingTermsIndexReader(Directory dir, FieldInfos fieldInfos,
+-          String segment, int indexDivisor, Comparator<BytesRef> termComp)
++          String segment, int indexDivisor, Comparator<BytesRef> termComp, String codecId)
+           throws IOException {
+-    super(dir, fieldInfos, segment, indexDivisor, termComp);
++    super(dir, fieldInfos, segment, indexDivisor, termComp, codecId);
+   }
+   
+   @Override

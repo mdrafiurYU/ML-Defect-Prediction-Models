@@ -1,0 +1,15 @@
+diff --git a/miext/layer/layerpict.c b/miext/layer/layerpict.c
+index 1719edd..16e46f0 100644
+--- a/miext/layer/layerpict.c
++++ b/miext/layer/layerpict.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "layerstr.h"
+ 
+ void

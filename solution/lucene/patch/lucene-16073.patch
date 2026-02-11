@@ -1,0 +1,26 @@
+diff --git a/solr/src/test/org/apache/solr/highlight/HighlighterTest.java b/solr/src/test/org/apache/solr/highlight/HighlighterTest.java
+index e641dac..76de5bf 100755
+--- a/solr/src/test/org/apache/solr/highlight/HighlighterTest.java
++++ b/solr/src/test/org/apache/solr/highlight/HighlighterTest.java
+@@ -18,11 +18,9 @@
+ package org.apache.solr.highlight;
+ 
+ import org.apache.lucene.analysis.Analyzer;
+-import org.apache.lucene.analysis.Token;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
+ import org.apache.solr.SolrTestCaseJ4;
+-import org.apache.solr.core.SolrCore;
+ import org.apache.solr.request.SolrQueryRequest;
+ import org.apache.solr.util.*;
+ import org.apache.solr.common.params.HighlightParams;
+@@ -30,9 +28,6 @@ import org.junit.After;
+ import org.junit.BeforeClass;
+ import org.junit.Test;
+ 
+-import static org.junit.Assert.*;
+-
+-import java.io.IOException;
+ import java.io.StringReader;
+ import java.util.Arrays;
+ import java.util.HashMap;

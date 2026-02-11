@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/libc_wrapper.c b/hw/xfree86/os-support/shared/libc_wrapper.c
+index 4bd1791..3469158 100644
+--- a/hw/xfree86/os-support/shared/libc_wrapper.c
++++ b/hw/xfree86/os-support/shared/libc_wrapper.c
+@@ -2148,3 +2148,8 @@ xf86setjmperror(xf86jmp_buf env)
+ 	       xf86getjmptype());
+ }
+ 
++long
++xf86random()
++{
++    return random();
++}

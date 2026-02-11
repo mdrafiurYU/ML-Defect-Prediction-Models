@@ -1,0 +1,14 @@
+diff --git a/os/connection.c b/os/connection.c
+index 21c1ea6..697ff4e 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -151,8 +151,7 @@ extern __const__ int _nfiles;
+ #include <X11/extensions/Xagsrv.h>
+ #endif
+ #ifdef XCSECURITY
+-#define _SECURITY_SERVER
+-#include <X11/extensions/security.h>
++#include "securitysrv.h"
+ #endif
+ 
+ #ifdef X_NOT_POSIX

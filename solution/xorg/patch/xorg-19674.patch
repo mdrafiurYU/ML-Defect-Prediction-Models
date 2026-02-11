@@ -1,0 +1,17 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index ffb80dd..d987aba 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -404,10 +404,10 @@ exaDriverInit (ScreenPtr		pScreen,
+     pScreen->CreateGC = exaCreateGC;
+ 
+     pExaScr->SavedGetImage = pScreen->GetImage;
+-    pScreen->GetImage = ExaCheckGetImage;
++    pScreen->GetImage = exaGetImage;
+ 
+     pExaScr->SavedGetSpans = pScreen->GetSpans;
+-    pScreen->GetSpans = ExaCheckGetSpans;
++    pScreen->GetSpans = exaGetSpans;
+ 
+     pExaScr->SavedCopyWindow = pScreen->CopyWindow;
+     pScreen->CopyWindow = exaCopyWindow;

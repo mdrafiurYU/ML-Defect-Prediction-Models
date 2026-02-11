@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/LazyFileInputStream.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/LazyFileInputStream.java
+index def07ec..57124e9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/LazyFileInputStream.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/LazyFileInputStream.java
+@@ -67,11 +67,7 @@ public class LazyFileInputStream extends AutoCloseInputStream {
+             in = new FileInputStream(file);
+         }
+     }
+-
+-    /**
+-     * {@inheritDoc}
+-     * When the stream is consumed, the database objects held by the instance are closed.
+-     */
++    
+     public int read() throws IOException {
+         openStream();
+         return super.read();

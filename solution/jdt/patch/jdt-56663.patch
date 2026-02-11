@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java
+index 7386206..1d88cc5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java
+@@ -336,7 +336,7 @@ public class ForStatement extends Statement {
+ 			output.append('\n');
+ 			action.printStatement(tab + 1, output);
+ 		}
+-		return output.append(';');
++		return output;
+ 	}
+ 
+ 	public void resolve(BlockScope upperScope) {

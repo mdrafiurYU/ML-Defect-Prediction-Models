@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/parser/cpconfig.c b/hw/xfree86/parser/cpconfig.c
+index e2dbb3e..4eb635b 100644
+--- a/hw/xfree86/parser/cpconfig.c
++++ b/hw/xfree86/parser/cpconfig.c
+@@ -29,6 +29,10 @@
+ 
+ /* View/edit this file with tab stops set to 4 */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdarg.h>

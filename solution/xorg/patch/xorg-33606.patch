@@ -1,0 +1,36 @@
+diff --git a/xfixes/select.c b/xfixes/select.c
+index c007680..9de152f 100755
+--- a/xfixes/select.c
++++ b/xfixes/select.c
+@@ -25,6 +25,7 @@
+ #endif
+ 
+ #include "xfixesint.h"
++#include "xace.h"
+ 
+ static RESTYPE		SelectionClientType, SelectionWindowType;
+ static Bool		SelectionCallbackRegistered = FALSE;
+@@ -131,8 +132,14 @@ XFixesSelectSelectionInput (ClientPtr	pClient,
+ 			    WindowPtr	pWindow,
+ 			    CARD32	eventMask)
+ {
++    int rc;
+     SelectionEventPtr	*prev, e;
+ 
++    rc = XaceHook(XACE_SELECTION_ACCESS, pClient, selection, NULL,
++		  DixGetAttrAccess);
++    if (rc != Success)
++	return rc;
++
+     for (prev = &selectionEvents; (e = *prev); prev = &e->next)
+     {
+ 	if (e->selection == selection &&
+@@ -196,7 +203,7 @@ ProcXFixesSelectSelectionInput (ClientPtr client)
+     int		rc;
+ 
+     REQUEST_SIZE_MATCH (xXFixesSelectSelectionInputReq);
+-    rc = dixLookupWindow(&pWin, stuff->window, client, DixReadAccess);
++    rc = dixLookupWindow(&pWin, stuff->window, client, DixSetAttrAccess);
+     if (rc != Success)
+         return rc;
+     if (stuff->eventMask & ~SelectionAllEvents)

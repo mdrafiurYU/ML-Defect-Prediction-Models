@@ -1,0 +1,38 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index fa39565..d32a55f 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -697,12 +697,7 @@ ProcessOtherEvent(xEventPtr xE, DeviceIntPtr device, int count)
+ 	    }
+ 	    return;
+ 	}
+-        /* XI grabs have priority */
+-        core = *xE;
+-        core.u.u.type = coretype;
+-	if (!grab &&
+-              (CheckDeviceGrabs(device, xE, 0, count) ||
+-                 (sendCore && CheckDeviceGrabs(device, &core, 0, 1)))) {
++	if (!grab && CheckDeviceGrabs(device, xE, 0, count)) {
+ 	    device->deviceGrab.activatingKey = key;
+ 	    return;
+ 	}
+@@ -714,18 +709,12 @@ ProcessOtherEvent(xEventPtr xE, DeviceIntPtr device, int count)
+ 	xE->u.u.detail = key;
+ 	if (xE->u.u.detail == 0)
+ 	    return;
+-        if (!grab)
+-        {
+-            core = *xE;
+-            core.u.u.type = coretype;
+-            if (CheckDeviceGrabs(device, xE, 0, count) ||
+-                    (sendCore && CheckDeviceGrabs(device, &core, 0, 1)))
++        if (!grab && CheckDeviceGrabs(device, xE, 0, count))
+             {
+                 /* if a passive grab was activated, the event has been sent
+                  * already */
+                 return;
+             }
+-        }
+ 
+     } else if (xE->u.u.type == DeviceButtonRelease) {
+ 	xE->u.u.detail = key;

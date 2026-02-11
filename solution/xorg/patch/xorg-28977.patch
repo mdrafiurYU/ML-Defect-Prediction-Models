@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index 913735b..e0b758f 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -371,8 +371,11 @@ xf86DeleteInput(InputInfoPtr pInp, int flags)
+     if (pInp->drv)
+ 	pInp->drv->refCount--;
+ 
++    /* This should *really* be handled in drv->UnInit(dev) call instead */
++#if 0
+     if (pInp->private)
+ 	xfree(pInp->private);
++#endif
+ 
+     /* Remove the entry from the list. */
+     if (pInp == xf86InputDevs)

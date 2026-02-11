@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
+index ba0575d..4555f22 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
+@@ -25,6 +25,8 @@ import org.apache.lucene.analysis.TokenFilter;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.Tokenizer;
+ 
++import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper; // javadocs
++
+ /**
+  * An convenience subclass of Analyzer that makes it easy to implement
+  * {@link TokenStream} reuse.

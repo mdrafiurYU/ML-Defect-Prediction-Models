@@ -1,0 +1,13 @@
+diff --git a/Xi/xiallowev.c b/Xi/xiallowev.c
+index a8cf1b6..4df9a10 100644
+--- a/Xi/xiallowev.c
++++ b/Xi/xiallowev.c
+@@ -65,7 +65,7 @@ ProcXIAllowEvents(ClientPtr client)
+     REQUEST(xXIAllowEventsReq);
+     REQUEST_SIZE_MATCH(xXIAllowEventsReq);
+ 
+-    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixSetFocusAccess);
++    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixGetAttrAccess);
+     if (ret != Success)
+ 	return ret;
+ 

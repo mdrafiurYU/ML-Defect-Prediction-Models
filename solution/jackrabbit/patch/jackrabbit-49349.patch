@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ValueConstraint.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ValueConstraint.java
+index 2ecb87e..a77ef9b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ValueConstraint.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ValueConstraint.java
+@@ -636,7 +636,7 @@ class NameConstraint extends ValueConstraint {
+         }
+         switch (value.getType()) {
+             case PropertyType.NAME:
+-                Name n = value.getQName();
++                Name n = value.getName();
+                 if (!name.equals(n)) {
+                     throw new ConstraintViolationException(n
+                             + " does not satisfy the constraint '"

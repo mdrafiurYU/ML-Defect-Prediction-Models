@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java
+index fdd8922..a095917 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java
+@@ -18,7 +18,7 @@ public abstract class VariableBinding extends Binding {
+ 	public int modifiers;
+ 	public TypeBinding type;
+ 	public char[] name;
+-	private Constant constant;
++	protected Constant constant;
+ 	public int id; // for flow-analysis (position in flowInfo bit vector)
+ 	public long tagBits;
+ 
+@@ -39,10 +39,6 @@ public abstract class VariableBinding extends Binding {
+ 	/* Answer true if the receiver is final and cannot be changed
+ 	*/
+ 	
+-	public boolean isConstantValue() {
+-		return constant != Constant.NotAConstant;
+-	}
+-	
+ 	public final boolean isFinal() {
+ 		return (modifiers & ClassFileConstants.AccFinal) != 0;
+ 	}

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
+index 3ac3709..477055d 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
+@@ -137,7 +137,6 @@ class VarStraightBytesImpl {
+       public Source(IndexInput datIn, IndexInput idxIn) throws IOException {
+         super(datIn, idxIn, new PagedBytes(PAGED_BYTES_BITS), idxIn.readVLong());
+         addresses = PackedInts.getReader(idxIn);
+-        missingValue.bytesValue = new BytesRef(0); // empty
+       }
+ 
+       @Override

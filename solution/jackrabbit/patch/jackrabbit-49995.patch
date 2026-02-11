@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java
+index 2a11629..f51fbf8 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java
+@@ -112,7 +112,7 @@ public class XAVersionManager extends AbstractVersionManager
+         super(ntReg);
+         this.vMgr = vMgr;
+         this.session = session;
+-        this.stateMgr = new XAItemStateManager(vMgr.getSharedStateMgr(),
++        this.stateMgr = XAItemStateManager.createInstance(vMgr.getSharedStateMgr(),
+                 this, CHANGE_LOG_ATTRIBUTE_NAME, cacheFactory);
+ 
+         NodeState state;

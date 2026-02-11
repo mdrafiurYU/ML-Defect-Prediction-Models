@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/util/TestNumberUtils.java b/solr/src/test/org/apache/solr/util/TestNumberUtils.java
+index 8eb8df4..0e6c915 100644
+--- a/solr/src/test/org/apache/solr/util/TestNumberUtils.java
++++ b/solr/src/test/org/apache/solr/util/TestNumberUtils.java
+@@ -34,7 +34,7 @@ public class TestNumberUtils extends LuceneTestCase {
+     return str+"]";
+   }
+ 
+-  static Random rng = new Random();
++  static Random rng = random;
+ 
+   static int[] special = {0,10,100,1000,10000,Integer.MAX_VALUE, Integer.MIN_VALUE};
+   static int getSpecial() {

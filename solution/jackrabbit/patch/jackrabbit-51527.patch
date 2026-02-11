@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveCombinedTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveCombinedTest.java
+index 45727f9..870d004 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveCombinedTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveCombinedTest.java
+@@ -39,6 +39,7 @@ public class MoveCombinedTest extends AbstractMoveTest {
+     protected void tearDown() throws Exception {
+         if (testSession != null) {
+             testSession.logout();
++            testSession = null;
+         }
+         super.tearDown();
+     }

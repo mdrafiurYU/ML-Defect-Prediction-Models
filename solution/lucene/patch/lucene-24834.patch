@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/handler/ReplicationHandler.java b/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
+index 8fcc7e5..0f593bb 100644
+--- a/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
++++ b/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
+@@ -889,11 +889,15 @@ public class ReplicationHandler extends RequestHandlerBase implements SolrCoreAw
+    */
+   private void registerCloseHook() {
+     core.addCloseHook(new CloseHook() {
+-      public void close(SolrCore core) {
++      @Override
++      public void preClose(SolrCore core) {
+         if (snapPuller != null) {
+           snapPuller.destroy();
+         }
+       }
++
++      @Override
++      public void postClose(SolrCore core) {}
+     });
+   }

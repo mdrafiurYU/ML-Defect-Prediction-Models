@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/Path.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/Path.java
+index 330b055..753de20 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/Path.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/Path.java
+@@ -79,6 +79,10 @@ import java.io.Serializable;
+  *                  ''', '"', '|' or any whitespace
+  *                  character *)
+  * </pre>
++ *
++ * @deprecated Use {@link org.apache.jackrabbit.spi.Path} and
++ * {@link org.apache.jackrabbit.spi.PathFactory} instead. A default implementation
++ * is provided by {@link org.apache.jackrabbit.name.PathFactoryImpl}.
+  */
+ public final class Path implements Serializable {

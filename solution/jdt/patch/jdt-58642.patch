@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
+index ef467cc..fb56bfd 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
+@@ -512,7 +512,8 @@ public void generateCode(ClassFile enclosingClassFile) {
+ 	}
+ 	try {
+ 		// create the result for a compiled type
+-		ClassFile classFile = new ClassFile(this.binding, enclosingClassFile, false);
++		ClassFile classFile = ClassFile.getNewInstance(this.binding);
++		classFile.initialize(this.binding, enclosingClassFile, false);
+ 		// generate all fiels
+ 		classFile.addFieldInfos();

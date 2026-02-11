@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index 8a6a709..442bdd0 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -539,8 +539,8 @@ public class SessionImpl extends AbstractSession
+      */
+     public boolean hasCapability(String methodName, Object target, Map arguments)
+             throws RepositoryException {
+-        // TODO: implementation missing
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
++        // most trivial implementation allowed by the specification.
++        return true;
+     }
+ 
+     /**

@@ -1,0 +1,27 @@
+diff --git a/dix/dixfonts.c b/dix/dixfonts.c
+index 89f1528..1c6d37f 100644
+--- a/dix/dixfonts.c
++++ b/dix/dixfonts.c
+@@ -1908,14 +1908,6 @@ InitFonts (void)
+ {
+     patternCache = MakeFontPatternCache();
+ 
+-#ifndef BUILTIN_FONTS
+-    if (screenInfo.numScreens > screenInfo.numVideoScreens) {
+-	PrinterFontRegisterFpeFunctions();
+-	FontFileCheckRegisterFpeFunctions();
+-	check_fs_register_fpe_functions();
+-    } else 
+-#endif
+-    {
+ #ifdef BUILTIN_FONTS
+         BuiltinRegisterFpeFunctions();
+ #else
+@@ -1923,7 +1915,6 @@ InitFonts (void)
+ 	fs_register_fpe_functions();
+ #endif
+     }
+-}
+ 
+ int
+ GetDefaultPointSize ()

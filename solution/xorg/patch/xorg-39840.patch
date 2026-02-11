@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/bsd_pci.c b/hw/xfree86/os-support/bus/bsd_pci.c
+index 57ad09b..3bd9d15 100644
+--- a/hw/xfree86/os-support/bus/bsd_pci.c
++++ b/hw/xfree86/os-support/bus/bsd_pci.c
+@@ -80,7 +80,7 @@ void
+ bsdPciInit(void)
+ {
+     pciNumBuses = 1;
+-    pciBusInfo[0] = &bsd_pci;
++    pciBusInfo = &bsd_pci;
+ 
+     xf86InitVidMem();
+ }

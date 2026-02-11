@@ -1,0 +1,15 @@
+diff --git a/miext/damage/damage.h b/miext/damage/damage.h
+index 7ed1b18..c760f6b 100755
+--- a/miext/damage/damage.h
++++ b/miext/damage/damage.h
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _DAMAGE_H_
+ #define _DAMAGE_H_
+ 

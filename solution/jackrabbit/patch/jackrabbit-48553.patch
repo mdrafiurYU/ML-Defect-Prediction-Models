@@ -1,0 +1,73 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+index f1bc2a2..bb1ed60 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+@@ -88,6 +88,7 @@ import javax.jcr.lock.Lock;
+ import javax.jcr.version.VersionException;
+ import javax.jcr.version.VersionHistory;
+ import javax.jcr.version.Version;
++import javax.jcr.version.VersionManager;
+ import javax.jcr.nodetype.NoSuchNodeTypeException;
+ import javax.jcr.nodetype.ConstraintViolationException;
+ import javax.jcr.nodetype.NodeTypeManager;
+@@ -659,6 +660,17 @@ public class RepositoryServiceImpl implements RepositoryService {
+         }, sInfo);
+     }
+ 
++    public NodeId checkpoint(SessionInfo sessionInfo, final NodeId nodeId) throws UnsupportedRepositoryOperationException, RepositoryException {
++        final SessionInfoImpl sInfo = getSessionInfoImpl(sessionInfo);
++        Version newVersion = (Version) executeWithLocalEvents(new Callable() {
++            public Object run() throws RepositoryException {
++                VersionManager vMgr = sInfo.getSession().getWorkspace().getVersionManager();
++                return vMgr.checkpoint(getNodePath(nodeId, sInfo));
++            }
++        }, sInfo);
++        return idFactory.createNodeId(newVersion, sInfo.getNamePathResolver());
++    }
++
+     /**
+      * {@inheritDoc}
+      */
+@@ -789,6 +801,30 @@ public class RepositoryServiceImpl implements RepositoryService {
+     /**
+      * {@inheritDoc}
+      */
++    public Iterator merge(final SessionInfo sessionInfo,
++                          final NodeId nodeId,
++                          final String srcWorkspaceName,
++                          final boolean bestEffort,
++                          final boolean isShallow)
++            throws NoSuchWorkspaceException, AccessDeniedException, MergeException, LockException, InvalidItemStateException, RepositoryException {
++        final SessionInfoImpl sInfo = getSessionInfoImpl(sessionInfo);
++        return (Iterator) executeWithLocalEvents(new Callable() {
++            public Object run() throws RepositoryException {
++                VersionManager vMgr = sInfo.getSession().getWorkspace().getVersionManager();
++                NodeIterator it = vMgr.merge(getNodePath(nodeId, sInfo), srcWorkspaceName, bestEffort, isShallow);
++                List ids = new ArrayList();
++                while (it.hasNext()) {
++                    ids.add(idFactory.createNodeId(it.nextNode(),
++                            sInfo.getNamePathResolver()));
++                }
++                return ids.iterator();
++            }
++        }, sInfo);
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public void resolveMergeConflict(final SessionInfo sessionInfo,
+                                      final NodeId nodeId,
+                                      final NodeId[] mergeFailedIds,
+@@ -1454,6 +1490,11 @@ public class RepositoryServiceImpl implements RepositoryService {
+         return n.getNode(jcrPath);
+     }
+ 
++    private String getNodePath(NodeId nodeId, SessionInfoImpl sessionInfo) throws RepositoryException {
++        // TODO: improve. avoid roundtrip over node access.
++        return getNode(nodeId, sessionInfo).getPath();
++    }
++
+     private Property getProperty(PropertyId id, SessionInfoImpl sessionInfo) throws ItemNotFoundException, PathNotFoundException, RepositoryException {
+         Session session = sessionInfo.getSession();
+         Node n;

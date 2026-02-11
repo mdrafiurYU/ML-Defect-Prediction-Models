@@ -1,0 +1,100 @@
+diff --git a/Xi/chgptr.c b/Xi/chgptr.c
+index 9fa5c22..ef99e3a 100644
+--- a/Xi/chgptr.c
++++ b/Xi/chgptr.c
+@@ -1,5 +1,3 @@
+-/* $Xorg: chgptr.c,v 1.4 2001/02/09 02:04:33 xorgcvs Exp $ */
+-
+ /************************************************************
+ 
+ Copyright 1989, 1998  The Open Group
+@@ -45,7 +43,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ********************************************************/
+-/* $XFree86: xc/programs/Xserver/Xi/chgptr.c,v 3.6 2001/08/23 14:56:19 alanh Exp $ */
+ 
+ /***********************************************************************
+  *
+@@ -119,8 +116,7 @@ ProcXChangePointerDevice (register ClientPtr client)
+     rep.sequenceNumber = client->sequence;
+ 
+     dev = LookupDeviceIntRec (stuff->deviceid);
+-    if (dev == NULL)
+-	{
++    if (dev == NULL) {
+ 	rep.status = -1;
+ 	SendErrorToClient(client, IReqCode, X_ChangePointerDevice, 0, 
+ 	    BadDevice);
+@@ -129,9 +125,7 @@ ProcXChangePointerDevice (register ClientPtr client)
+ 
+     v = dev->valuator;
+     if (v == NULL || v->numAxes < 2 || 
+-	stuff->xaxis >= v->numAxes ||
+-	stuff->yaxis >= v->numAxes)
+-	{
++	stuff->xaxis >= v->numAxes || stuff->yaxis >= v->numAxes) {
+ 	rep.status = -1;
+ 	SendErrorToClient(client, IReqCode, X_ChangePointerDevice, 0, BadMatch);
+ 	return Success;
+@@ -145,11 +139,9 @@ ProcXChangePointerDevice (register ClientPtr client)
+ 	     (xptr->sync.frozen &&
+ 	      xptr->sync.other && !SameClient(xptr->sync.other, client)))
+ 	rep.status = GrabFrozen;
+-    else
+-	{
+-	if (ChangePointerDevice (
+-	    xptr, dev, stuff->xaxis, stuff->yaxis) != Success)
+-	    {
++    else {
++	if (ChangePointerDevice(xptr, dev, stuff->xaxis, stuff->yaxis) !=
++	    Success) {
+ 	    SendErrorToClient(client, IReqCode, X_ChangePointerDevice, 0, 
+ 		BadDevice);
+ 	    return Success;
+@@ -174,8 +166,7 @@ ProcXChangePointerDevice (register ClientPtr client)
+ 	rep.status = 0;
+ 	}
+ 
+-    WriteReplyToClient (client, sizeof (xChangePointerDeviceReply), 
+-	&rep);
++    WriteReplyToClient(client, sizeof(xChangePointerDeviceReply), &rep);
+     return Success;
+     }
+ 
+@@ -199,8 +190,7 @@ SendEventToAllWindows (DeviceIntPtr dev, Mask mask, xEvent *ev, int count)
+     int i;
+     WindowPtr pWin, p1;
+ 
+-    for (i=0; i<screenInfo.numScreens; i++)
+-	{
++    for (i = 0; i < screenInfo.numScreens; i++) {
+ 	pWin = WindowTable[i];
+ 	(void)DeliverEventsToWindow(pWin, ev, count, mask, NullGrab, dev->id);
+ 	p1 = pWin->firstChild;
+@@ -216,12 +206,12 @@ SendEventToAllWindows (DeviceIntPtr dev, Mask mask, xEvent *ev, int count)
+  */
+ 
+ void
+-FindInterestedChildren (DeviceIntPtr dev, WindowPtr p1, Mask mask, xEvent *ev, int count)
++FindInterestedChildren(DeviceIntPtr dev, WindowPtr p1, Mask mask, xEvent * ev,
++		       int count)
+ {
+     WindowPtr p2;
+ 
+-    while (p1)
+-        {
++    while (p1) {
+         p2 = p1->firstChild;
+ 	(void)DeliverEventsToWindow(p1, ev, count, mask, NullGrab, dev->id);
+ 	FindInterestedChildren (dev, p2, mask, ev, count);
+@@ -237,7 +227,8 @@ FindInterestedChildren (DeviceIntPtr dev, WindowPtr p1, Mask mask, xEvent *ev, i
+  */
+ 
+ void
+-SRepXChangePointerDevice (ClientPtr client, int size, xChangePointerDeviceReply *rep)
++SRepXChangePointerDevice(ClientPtr client, int size,
++			 xChangePointerDeviceReply * rep)
+ {
+     register char n;
+ 

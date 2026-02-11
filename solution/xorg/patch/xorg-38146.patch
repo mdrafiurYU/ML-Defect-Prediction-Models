@@ -1,0 +1,22 @@
+diff --git a/include/os.h b/include/os.h
+index fd34077..89c624c 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -212,8 +212,6 @@ extern SIGVAL GiveUp(int /*sig*/);
+ 
+ extern void UseMsg(void);
+ 
+-extern void InitGlobals(void);
+-
+ extern void ProcessCommandLine(int /*argc*/, char* /*argv*/[]);
+ 
+ extern int set_font_authorizations(
+@@ -411,8 +409,6 @@ extern XID GenerateAuthorization(
+ extern void ExpandCommandLine(int * /*pargc*/, char *** /*pargv*/);
+ #endif
+ 
+-extern void ddxInitGlobals(void);
+-
+ extern int ddxProcessArgument(int /*argc*/, char * /*argv*/ [], int /*i*/);
+ 
+ extern void ddxUseMsg(void);

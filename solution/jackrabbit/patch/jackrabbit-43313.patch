@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/PropertyInfoImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/PropertyInfoImpl.java
+index 9ae195b..f89e2b0 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/PropertyInfoImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/PropertyInfoImpl.java
+@@ -48,11 +48,10 @@ class PropertyInfoImpl
+                             NamePathResolver resolver,
+                             QValueFactory qValueFactory)
+             throws RepositoryException, NameException {
+-        super(resolver.getQName(property.getName()),
+-                resolver.getQPath(property.getPath()),
++        super(resolver.getQPath(property.getPath()),
+                 idFactory.createPropertyId(property, resolver),
+                 property.getType(), property.getDefinition().isMultiple(),
+-                getValues(property, resolver, qValueFactory)); // TODO: build QValues upon (first) usage only.
++                getValues(property, resolver, qValueFactory));
+     }
+ 
+     /**

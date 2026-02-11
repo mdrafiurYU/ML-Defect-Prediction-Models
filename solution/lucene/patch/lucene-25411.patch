@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterWithThreads.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterWithThreads.java
+index 4e27c13..dd4b302 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterWithThreads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterWithThreads.java
+@@ -184,6 +184,8 @@ public class TestIndexWriterWithThreads extends LuceneTestCase {
+           if (threads[i].addCount > 0) {
+             done = true;
+             break;
++          } else if (!threads[i].isAlive()) {
++            fail("thread failed before indexing a single document");
+           }
+       }

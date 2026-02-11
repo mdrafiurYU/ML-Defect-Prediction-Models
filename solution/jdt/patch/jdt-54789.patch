@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
+index 9dea97b..7d19275 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
+@@ -1496,7 +1496,7 @@ public class ASTConverterTestAST3_2 extends ConverterTestSetup {
+ 		assertTrue("not a method declaration", node.getNodeType() == ASTNode.METHOD_DECLARATION); //$NON-NLS-1$
+ 		MethodDeclaration methodDeclaration = (MethodDeclaration) node;
+ 		SimpleName name = methodDeclaration.getName();
+-		assertEquals("wrong line number", 3, compilationUnit.lineNumber(name.getStartPosition()));
++		assertEquals("wrong line number", 3, compilationUnit.getLineNumber(name.getStartPosition()));
+ 	}
+ 
+ 	/**

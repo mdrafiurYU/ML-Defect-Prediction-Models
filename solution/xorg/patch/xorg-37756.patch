@@ -1,0 +1,28 @@
+diff --git a/dix/dixfonts.c b/dix/dixfonts.c
+index 6fb29de..0b08e9e 100644
+--- a/dix/dixfonts.c
++++ b/dix/dixfonts.c
+@@ -1937,15 +1937,6 @@ GetDefaultPointSize ()
+ FontResolutionPtr
+ GetClientResolutions (int *num)
+ {
+-#ifdef XPRINT
+-    if (requestingClient && requestingClient->fontResFunc != NULL &&
+-	!requestingClient->clientGone)
+-    {
+-	return (*requestingClient->fontResFunc)(requestingClient, num);
+-    }
+-    else
+-#endif
+-    {
+ 	static struct _FontResolution res;
+ 	ScreenPtr   pScreen;
+ 
+@@ -1968,7 +1959,6 @@ GetClientResolutions (int *num)
+ 	*num = 1;
+ 	return &res;
+     }
+-}
+ 
+ /*
+  * returns the type index of the new fpe

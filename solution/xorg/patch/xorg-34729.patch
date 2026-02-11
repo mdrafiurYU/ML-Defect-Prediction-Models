@@ -1,0 +1,24 @@
+diff --git a/Xext/shape.c b/Xext/shape.c
+index 6515a10..9c765f2 100644
+--- a/Xext/shape.c
++++ b/Xext/shape.c
+@@ -111,9 +111,6 @@ static DISPATCH_PROC(SProcShapeSelectInput);
+ #include "panoramiXsrv.h"
+ #endif
+ 
+-#if 0
+-static unsigned char ShapeReqCode = 0;
+-#endif
+ static int ShapeEventBase = 0;
+ static RESTYPE ClientType, EventType; /* resource types for event masks */
+ 
+@@ -154,9 +151,6 @@ ShapeExtensionInit(void)
+ 				 ProcShapeDispatch, SProcShapeDispatch,
+ 				 ShapeResetProc, StandardMinorOpcode)))
+     {
+-#if 0
+-	ShapeReqCode = (unsigned char)extEntry->base;
+-#endif
+ 	ShapeEventBase = extEntry->eventBase;
+ 	EventSwapVector[ShapeEventBase] = (EventSwapPtr) SShapeNotifyEvent;
+     }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/HierarchyNodeTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/HierarchyNodeTest.java
+index b169f28..7b6b565 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/HierarchyNodeTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/HierarchyNodeTest.java
+@@ -86,7 +86,7 @@ public class HierarchyNodeTest extends AbstractJCRTest {
+     }
+ 
+     public void testGetProperties() throws RepositoryException {
+-        Session readSession = helper.getReadOnlySession();
++        Session readSession = getHelper().getReadOnlySession();
+         try {
+             dump((Node) readSession.getItem(fileNode.getPath()));
+         } finally {

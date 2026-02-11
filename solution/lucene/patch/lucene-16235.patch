@@ -1,0 +1,28 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java
+index b893e04..cdd2197 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTerm.java
+@@ -45,6 +45,8 @@ public class InstantiatedTerm
+   
+   private Term term;
+ 
++  private long totalTermFreq;
++
+   /**
+    * index of term in InstantiatedIndex
+    * @see org.apache.lucene.store.instantiated.InstantiatedIndex#getOrderedTerms() */
+@@ -92,6 +94,14 @@ public class InstantiatedTerm
+     this.associatedDocuments = associatedDocuments;
+   }
+ 
++  void addPositionsCount(long count) {
++    totalTermFreq += count;
++  }
++
++  public long getTotalTermFreq() {
++    return totalTermFreq;
++  }
++
+   /**
+    * Finds index to the first beyond the current whose document number is
+    * greater than or equal to <i>target</i>, -1 if there is no such element.

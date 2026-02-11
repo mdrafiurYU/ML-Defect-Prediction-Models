@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReadWhileSaveTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReadWhileSaveTest.java
+index 5d09523..d7a0cfd 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReadWhileSaveTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReadWhileSaveTest.java
+@@ -57,7 +57,7 @@ public class ReadWhileSaveTest extends AbstractJCRTest {
+                 // ignore
+             }
+         }
+-        System.out.println("numReads: " + numReads);
++        log.println("numReads: " + numReads);
+     }
+ 
+     private Thread runExpensiveSave() throws RepositoryException, IOException {

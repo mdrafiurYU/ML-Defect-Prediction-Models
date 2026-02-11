@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/QueryValueSource.java b/solr/src/java/org/apache/solr/search/function/QueryValueSource.java
+index 37bc35e..cf65b39 100755
+--- a/solr/src/java/org/apache/solr/search/function/QueryValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/QueryValueSource.java
+@@ -90,7 +90,7 @@ class QueryDocValues extends DocValues {
+     try {
+       if (doc < lastDocRequested) {
+         // out-of-order access.... reset scorer.
+-        scorer = weight.scorer(reader, true, false);
++        scorer = weight.scorer(reader.getTopReaderContext(), true, false);
+         if (scorer==null) return defVal;
+         scorerDoc = -1;
+       }

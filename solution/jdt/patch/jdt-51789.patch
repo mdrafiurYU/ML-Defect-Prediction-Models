@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java
+index 14ec9c4..88500b3 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java
+@@ -45,10 +45,10 @@ public final class AptUtil {
+ 				if (anno.equals(fullyQualifiedAnnotation)) {
+ 					return factory;
+ 				}
+-				else if ("*".equals(anno)) {
++				else if ("*".equals(anno)) { //$NON-NLS-1$
+ 						return factory;
+ 				}
+-				else if (anno.endsWith("*")) {
++				else if (anno.endsWith("*")) { //$NON-NLS-1$
+ 					final String prefix = anno.substring(0,
+ 							anno.length() - 2);
+ 					if (fullyQualifiedAnnotation.startsWith(prefix)) {

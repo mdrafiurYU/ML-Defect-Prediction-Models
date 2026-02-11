@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java
+index 6310f81..4031dd1 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java
+@@ -53,11 +53,7 @@ public abstract class AbstractRetentionTest extends AbstractJCRTest {
+     }
+ 
+     protected RetentionPolicy getApplicableRetentionPolicy() throws NotExecutableException, RepositoryException {
+-        return getApplicableRetentionPolicy(RepositoryStub.RETENTION_POLICY_NAME);
+-    }
+-
+-    protected RetentionPolicy getApplicableRetentionPolicy(String jcrName) throws NotExecutableException, RepositoryException {
+-        return retentionMgr.getRetentionPolicy(jcrName);
++        return helper.getRetentionPolicy(superuser);
+     }
+ 
+     protected static RetentionManager getRetentionManager(Session s) throws RepositoryException, NotExecutableException {

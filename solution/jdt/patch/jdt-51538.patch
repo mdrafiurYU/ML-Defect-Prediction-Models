@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index b90e6a1..86c4081 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -168,7 +168,7 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 			APTResult result = APTDispatch.runAPTDuringReconcile( factories, cu, javaProject );
+ 			Map<IFile, List<IProblem>> allproblems = result.getProblems();			
+ 			
+-			final List<IProblem> problemList = allproblems.get((IFile)cu.getResource());
++			final List<IProblem> problemList = allproblems.get(cu.getResource());
+ 			if( problemList != null && !problemList.isEmpty())
+ 				problems = problemList.toArray(new IProblem[problemList.size()]);	
+ 		}

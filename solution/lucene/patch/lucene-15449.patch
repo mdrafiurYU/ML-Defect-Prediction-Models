@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/JsonLoader.java b/solr/src/java/org/apache/solr/handler/JsonLoader.java
+index b96430b..c233ce6 100644
+--- a/solr/src/java/org/apache/solr/handler/JsonLoader.java
++++ b/solr/src/java/org/apache/solr/handler/JsonLoader.java
+@@ -69,6 +69,7 @@ class JsonLoader extends ContentStreamLoader {
+     }
+   }
+ 
++  @SuppressWarnings("fallthrough")
+   void processUpdate(SolrQueryRequest req, UpdateRequestProcessor processor, JSONParser parser) throws IOException 
+   {
+     int ev = parser.nextEvent();

@@ -1,0 +1,34 @@
+diff --git a/hw/kdrive/ephyr/ephyrdriext.c b/hw/kdrive/ephyr/ephyrdriext.c
+index 926fa4c..437d8c4 100644
+--- a/hw/kdrive/ephyr/ephyrdriext.c
++++ b/hw/kdrive/ephyr/ephyrdriext.c
+@@ -27,10 +27,13 @@
+  * Authors:
+  *    Dodji Seketeli <dodji@openedhand.com>
+  */
+-#ifdef HAVE_XORG_CONFIG_H
+-#include <xorg-config.h>
++
++#ifdef HAVE_CONFIG_H
++#include <kdrive-config.h>
+ #endif
+ 
++#ifdef XEPHYR_DRI
++
+ #include <string.h>
+ 
+ #define NEED_REPLIES
+@@ -79,7 +82,7 @@ static unsigned char DRIReqCode = 0;
+ extern void XFree86DRIExtensionInit(void);
+ 
+ void
+-XFree86DRIExtensionInit(void)
++ephyrDRIExtensionInit(void)
+ {
+     ExtensionEntry* extEntry;
+     EPHYR_LOG ("enter\n") ;
+@@ -689,3 +692,4 @@ SProcXF86DRIDispatch (
+     }
+ }
+ 
++#endif /*XEPHYR_DRI*/

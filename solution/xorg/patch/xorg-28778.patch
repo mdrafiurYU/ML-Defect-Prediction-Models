@@ -1,0 +1,15 @@
+diff --git a/render/animcur.c b/render/animcur.c
+index 8e4f59d..1f25e79 100644
+--- a/render/animcur.c
++++ b/render/animcur.c
+@@ -87,8 +87,8 @@ static CursorBits   animCursorBits = {
+     empty, empty, 2, 1, 1, 0, 0, 1
+ };
+ 
+-int	AnimCurScreenPrivateIndex = -1;
+-int	AnimCurGeneration;
++static int AnimCurScreenPrivateIndex = -1;
++static int AnimCurGeneration;
+ 
+ #define IsAnimCur(c)	    ((c)->bits == &animCursorBits)
+ #define GetAnimCur(c)	    ((AnimCurPtr) ((c) + 1))

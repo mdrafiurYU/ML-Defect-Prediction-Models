@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/SortedIntDocSet.java b/solr/src/java/org/apache/solr/search/SortedIntDocSet.java
+index 07a62d3..295a794 100755
+--- a/solr/src/java/org/apache/solr/search/SortedIntDocSet.java
++++ b/solr/src/java/org/apache/solr/search/SortedIntDocSet.java
+@@ -587,6 +587,7 @@ public class SortedIntDocSet extends DocSetBase {
+ 
+ 
+         return new DocIdSet() {
++          @Override
+           public DocIdSetIterator iterator() throws IOException {
+             return new DocIdSetIterator() {
+               int idx = startIdx;

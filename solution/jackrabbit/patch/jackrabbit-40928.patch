@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java
+index cbc9443..889dff2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java
+@@ -328,7 +328,9 @@ public class PropertyState extends ItemState {
+         }
+     }
+ 
+-    private InternalValue createInternalValueFromInputStream(final InputStream stream, final long length) throws RepositoryException {
++    private InternalValue createInternalValueFromInputStream(
++            final InputStream stream, final long length)
++            throws RepositoryException {
+         return InternalValue.create(new InputStream() {
+ 
+             private long consumed = 0;

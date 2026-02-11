@@ -1,0 +1,24 @@
+diff --git a/Xi/chgprop.c b/Xi/chgprop.c
+index 20c654e..f379048 100644
+--- a/Xi/chgprop.c
++++ b/Xi/chgprop.c
+@@ -81,8 +81,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXChangeDeviceDontPropagateList(client)
+-    register ClientPtr client;
++SProcXChangeDeviceDontPropagateList(register ClientPtr client)
+     {
+     register char n;
+     register long *p;
+@@ -109,8 +108,7 @@ SProcXChangeDeviceDontPropagateList(client)
+  */
+ 
+ int
+-ProcXChangeDeviceDontPropagateList (client)
+-    register ClientPtr client;
++ProcXChangeDeviceDontPropagateList (register ClientPtr client)
+     {
+     int			i;
+     WindowPtr		pWin;

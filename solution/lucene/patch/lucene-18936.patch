@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/response/TextResponseWriter.java b/solr/src/java/org/apache/solr/response/TextResponseWriter.java
+index 4c232d1..d65f1eb 100644
+--- a/solr/src/java/org/apache/solr/response/TextResponseWriter.java
++++ b/solr/src/java/org/apache/solr/response/TextResponseWriter.java
+@@ -103,7 +103,7 @@ public abstract class TextResponseWriter {
+ 
+   public abstract void writeNamedList(String name, NamedList val) throws IOException;
+ 
+-  public void writeVal(String name, Object val) throws IOException {
++  public final void writeVal(String name, Object val) throws IOException {
+ 
+     // if there get to be enough types, perhaps hashing on the type
+     // to get a handler might be faster (but types must be exact to do that...)

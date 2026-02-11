@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermPositions.java b/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermPositions.java
+index d7492df..f50d226 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermPositions.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermPositions.java
+@@ -23,7 +23,11 @@ import org.apache.lucene.index.FieldInfos;
+ import org.apache.lucene.index.Term;
+ import org.apache.lucene.store.IndexInput;
+ 
+-/** @lucene.experimental */
++/**
++ * @lucene.experimental
++ * @deprecated (4.0)
++ */
++@Deprecated
+ public final class SegmentTermPositions
+ extends SegmentTermDocs  {
+   private IndexInput proxStream;

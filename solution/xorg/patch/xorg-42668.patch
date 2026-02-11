@@ -1,0 +1,13 @@
+diff --git a/randr/rrxinerama.c b/randr/rrxinerama.c
+index 544666f..d2c3f29 100644
+--- a/randr/rrxinerama.c
++++ b/randr/rrxinerama.c
+@@ -425,7 +425,7 @@ SProcRRXineramaDispatch(ClientPtr client)
+     return BadRequest;
+ }
+ 
+-void
++_X_EXPORT void
+ RRXineramaExtensionInit(void)
+ {
+ #ifdef PANORAMIX

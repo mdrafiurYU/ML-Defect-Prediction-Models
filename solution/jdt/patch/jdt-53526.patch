@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+index ba65dc3..a0253f2 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+@@ -123,6 +123,7 @@ public class AptConfig {
+      * most of its command line options to the processor environment.  The
+      * programmatically set options are:
+      *  -classpath [set to Java build path]
++     *  -sourcepath [set to Java source path]
+      *  -s [set to generated src dir]
+      *  -d [set to binary output dir]
+      *  -target [set to compiler target version]
+@@ -173,7 +174,10 @@ public class AptConfig {
+     				sourcepathSB.append(workspaceRootPath.append(sourcepath).toOSString());
+     			}
+     		}
+-    		// if you add options here, also add them in isAutomaticProcessorOption()
++    		// if you add options here, also add them in isAutomaticProcessorOption(),
++    		// and document them in docs/reference/automatic_processor_options.html.
++    		
++    		// Classpath and sourcepath
+     		options.put("-classpath",classpathSB.toString()); //$NON-NLS-1$
+     		options.put("-sourcepath", sourcepathSB.toString()); //$NON-NLS-1$

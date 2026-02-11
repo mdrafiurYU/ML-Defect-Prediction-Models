@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 851f4dc..4e1f6d6 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1184,9 +1184,6 @@ OsVendorInit()
+   signal(SIGCHLD, SIG_DFL);	/* Need to wait for child processes */
+ #endif
+   OsDelayInitColors = TRUE;
+-#ifndef BUILTIN_FONTS
+-  loadableFonts = TRUE;
+-#endif
+ 
+   if (!beenHere)
+     xf86LogInit();

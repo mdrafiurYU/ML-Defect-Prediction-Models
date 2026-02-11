@@ -1,0 +1,15 @@
+diff --git a/render/filter.c b/render/filter.c
+index 5bd4efd..d2e8bcc 100644
+--- a/render/filter.c
++++ b/render/filter.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif

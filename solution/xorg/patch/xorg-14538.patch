@@ -1,0 +1,15 @@
+diff --git a/Xext/dpmsstubs.c b/Xext/dpmsstubs.c
+index 2408608..128c57b 100644
+--- a/Xext/dpmsstubs.c
++++ b/Xext/dpmsstubs.c
+@@ -30,6 +30,10 @@ Equipment Corporation.
+ 
+ typedef int Bool;
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "dpmsproc.h"
+ 
+ #define FALSE 0

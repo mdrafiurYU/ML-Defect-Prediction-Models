@@ -1,0 +1,13 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index 83f8b8c..18111c0 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -379,7 +379,7 @@ ProcXTestFakeInput(client)
+ 	if (ev->u.u.detail == xTrue)
+ 	{
+ 	    int x, y;
+-	    GetSpritePosition(&x, &y);
++	    GetSpritePosition(inputInfo.pointer, &x, &y);
+ 	    ev->u.keyButtonPointer.rootX += x;
+ 	    ev->u.keyButtonPointer.rootY += y;
+ 	}

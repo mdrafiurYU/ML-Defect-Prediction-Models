@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index b9a030b..9782ad7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -351,6 +351,7 @@ public static int getProblemCategory(int severity, int problemID) {
+ 				case (int)(CompilerOptions.AutoBoxing >>> 32):
+ 				case (int)(CompilerOptions.MissingOverrideAnnotation >>> 32):
+ 				case (int)(CompilerOptions.MissingDeprecatedAnnotation >>> 32):
++				case (int)(CompilerOptions.ParameterAssignment >>> 32):
+ 					return CategorizedProblem.CAT_CODE_STYLE;
+ 				
+ 				case (int)(CompilerOptions.MissingSerialVersion >>> 32):

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TestAll.java
+index d8ec618..6079426 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TestAll.java
+@@ -16,6 +16,8 @@
+  */
+ package org.apache.jackrabbit.core;
+ 
++import org.apache.jackrabbit.test.ConcurrentTestSuite;
++
+ import junit.framework.Test;
+ import junit.framework.TestCase;
+ import junit.framework.TestSuite;
+@@ -30,7 +32,7 @@ public class TestAll extends TestCase {
+      *         package, except the multi-threading related ones.
+      */
+     public static Test suite() {
+-        TestSuite suite = new TestSuite("Core tests");
++        TestSuite suite = new ConcurrentTestSuite("Core tests");
+ 
+         suite.addTestSuite(CachingHierarchyManagerTest.class);
+         suite.addTestSuite(ShareableNodeTest.class);

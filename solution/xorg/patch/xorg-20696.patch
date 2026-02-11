@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/bus/xf86Pci.h b/hw/xfree86/os-support/bus/xf86Pci.h
+index 9c67e85..69254ce 100644
+--- a/hw/xfree86/os-support/bus/xf86Pci.h
++++ b/hw/xfree86/os-support/bus/xf86Pci.h
+@@ -774,6 +774,7 @@ pointer	      xf86MapPciMem(int ScreenNum, int Flags, PCITAG Tag,
+ int	      xf86ReadPciBIOS(unsigned long Offset, PCITAG Tag, int basereg,
+ 				unsigned char *Buf, int Len);
+ pciConfigPtr *xf86scanpci(int flags);
++pciConfigPtr xf86GetPciConfigFromTag(PCITAG Tag);
+ 
+ extern int pciNumBuses;
+ 

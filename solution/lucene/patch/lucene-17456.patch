@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java b/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java
+index 314089b..85f40ab 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java
+@@ -79,7 +79,7 @@ public class TestFuzzyQuery2 extends LuceneTestCase {
+     int terms = (int) Math.pow(2, bits);
+     
+     Directory dir = newDirectory();
+-    RandomIndexWriter writer = new RandomIndexWriter(random, dir, new MockAnalyzer(MockTokenizer.KEYWORD, false));
++    RandomIndexWriter writer = new RandomIndexWriter(random, dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(MockTokenizer.KEYWORD, false)).setMergePolicy(newInOrderLogMergePolicy()));
+     
+     Document doc = new Document();
+     Field field = newField("field", "", Field.Store.NO, Field.Index.ANALYZED);

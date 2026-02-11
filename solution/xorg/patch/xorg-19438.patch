@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_mouse.c b/hw/xfree86/os-support/solaris/sun_mouse.c
+index b3fedbd..be01f89 100644
+--- a/hw/xfree86/os-support/solaris/sun_mouse.c
++++ b/hw/xfree86/os-support/solaris/sun_mouse.c
+@@ -53,6 +53,10 @@
+  * of the copyright holder.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86_OSlib.h"
+ #include "xf86OSmouse.h"

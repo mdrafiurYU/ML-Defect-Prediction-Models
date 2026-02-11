@@ -1,0 +1,17 @@
+diff --git a/hw/xgl/xglcopy.c b/hw/xgl/xglcopy.c
+index a74a78c..2404597 100644
+--- a/hw/xgl/xglcopy.c
++++ b/hw/xgl/xglcopy.c
+@@ -158,12 +158,6 @@ xglCopyProc (DrawablePtr pSrc,
+ 
+ 	    pBox++;
+ 	}
+-
+-	if (pPixmapPriv->target == xglPixmapTargetIn)
+-	{
+-	    if (!xglSyncSurface (pDst))
+-		FatalError (XGL_SW_FAILURE_STRING);
+-	}
+     } else
+ 	xglAddCurrentBitDamage (pDst);
+ }

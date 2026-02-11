@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/scan.c b/hw/xfree86/parser/scan.c
+index 9706d48..1f9b1b8 100644
+--- a/hw/xfree86/parser/scan.c
++++ b/hw/xfree86/parser/scan.c
+@@ -612,7 +612,7 @@ DoSubstitution(const char *template, const char *cmdline, const char *projroot,
+ {
+ 	char *result;
+ 	int i, l;
+-	static const char *env = NULL, *home = NULL;
++	static const char *env = NULL;
+ 	static char *hostname = NULL;
+ 	static char majorvers[3] = "";
+ 

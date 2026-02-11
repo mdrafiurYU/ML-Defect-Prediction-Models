@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
+index bc2cf96..8f7ab91 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
+@@ -590,6 +590,19 @@ public class NodeEntryImpl extends HierarchyEntryImpl implements NodeEntry {
+     }
+ 
+     /**
++     *
++     * @param childInfos
++     * @throws RepositoryException
++     */
++    public void setNodeEntries(Iterator childInfos) throws RepositoryException {
++        if (childNodeEntries == null) {
++            childNodeEntries = new ChildNodeEntriesImpl(this, factory, childInfos);
++        } else {
++            ((ChildNodeEntriesImpl) childNodeEntries).reload(childInfos);
++        }
++    }
++
++    /**
+      * @inheritDoc
+      * @see NodeEntry#addNodeEntry(Name, String, int)
+      */

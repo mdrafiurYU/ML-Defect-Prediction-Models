@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionRemoveItemTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionRemoveItemTest.java
+index 7dd0e230..f3769f6 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionRemoveItemTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionRemoveItemTest.java
+@@ -104,7 +104,7 @@ public class SessionRemoveItemTest extends AbstractJCRTest {
+         removeNode.lock(true, true);
+         Session testSession = null;
+         try {
+-            testSession = (Session) helper.getReadWriteSession();
++            testSession = helper.getReadWriteSession();
+             // removal of the locked node is a alteration of the parent, which
+             // isn't locked -> must succeed.
+             testSession.removeItem(nPath);
+@@ -137,7 +137,7 @@ public class SessionRemoveItemTest extends AbstractJCRTest {
+         Session testSession = null;
+ 
+         try {
+-            testSession = (Session) helper.getReadWriteSession();
++            testSession = helper.getReadWriteSession();
+             try {
+                 testSession.removeItem(childN.getPath());
+                 testSession.save();

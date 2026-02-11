@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveMultipleTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveMultipleTest.java
+index e169dd9..5e1258b 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveMultipleTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveMultipleTest.java
+@@ -246,7 +246,7 @@ public class MoveMultipleTest extends AbstractMoveTest {
+         Node childNode = moveNode.addNode(nodeName2, testNodeType);
+         testRootNode.save();
+ 
+-        Session otherSession = helper.getReadWriteSession();
++        Session otherSession = getHelper().getReadWriteSession();
+         try {
+             otherSession.move(originalPath, destinationPath);
+             Node mv = (Node) otherSession.getItem(destinationPath);

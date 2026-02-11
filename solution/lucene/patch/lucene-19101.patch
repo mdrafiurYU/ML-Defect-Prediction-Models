@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java b/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java
+index c11b0ac..b4c189d 100644
+--- a/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/admin/LukeRequestHandler.java
+@@ -586,7 +586,7 @@ public class LukeRequestHandler extends RequestHandlerBase
+     public TermHistogram histogram;
+     
+     TopTermQueue(int size) {
+-      initialize(size);
++      super(size);
+       histogram = new TermHistogram();
+     }

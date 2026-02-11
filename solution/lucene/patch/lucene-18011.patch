@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+index 5fc0347..929bebc 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+@@ -464,11 +464,11 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+             setReaderPooling(true).
+             setMergePolicy(newLogMergePolicy(2))
+     );
++    _TestUtil.keepFullyDeletedSegments(w);
+ 
+     Document doc = new Document();
+     doc.add(newField("f", "doctor who", Field.Store.YES, Field.Index.ANALYZED));
+     w.addDocument(doc);
+-
+     w.commit();
+ 
+     w.deleteDocuments(new Term("f", "who"));

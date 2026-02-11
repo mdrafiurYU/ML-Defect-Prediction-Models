@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FlushPolicy.java b/lucene/src/java/org/apache/lucene/index/FlushPolicy.java
+index b4b375e..0997eca 100644
+--- a/lucene/src/java/org/apache/lucene/index/FlushPolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/FlushPolicy.java
+@@ -132,7 +132,6 @@ public abstract class FlushPolicy {
+         }
+       }
+     }
+-    assert maxRamUsingThreadState.perThread.getNumDocsInRAM() > 0;
+     assert writer.get().message(
+         "set largest ram consuming thread pending on lower watermark");
+     return maxRamUsingThreadState;

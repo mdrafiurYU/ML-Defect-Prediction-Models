@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java
+index 1e81893..739943b 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java
+@@ -812,7 +812,7 @@ public final class SelectionEngine extends Engine implements ISearchRequestor {
+ 			ReferenceBinding typeBinding = (ReferenceBinding) binding;
+ 			
+ 			if(typeBinding instanceof ProblemReferenceBinding) {
+-				typeBinding = ((ProblemReferenceBinding) typeBinding).original;
++				typeBinding = ((ProblemReferenceBinding) typeBinding).closestMatch;
+ 			}
+ 			if (typeBinding == null) return;
+ 			if (isLocal(typeBinding) && this.requestor instanceof SelectionRequestor) {

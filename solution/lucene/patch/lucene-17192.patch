@@ -1,0 +1,20 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/KeywordMarkerFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/KeywordMarkerFilter.java
+index b5fb812..7a55e32 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/KeywordMarkerFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/KeywordMarkerFilter.java
+@@ -74,10 +74,12 @@ public final class KeywordMarkerFilter extends TokenFilter {
+   @Override
+   public final boolean incrementToken() throws IOException {
+     if (input.incrementToken()) {
+-      keywordAttr.setKeyword(keywordSet.contains(termAtt.buffer(), 0,
+-          termAtt.length()));
++      if (keywordSet.contains(termAtt.buffer(), 0, termAtt.length())) { 
++        keywordAttr.setKeyword(true);
++      }
+       return true;
+-    } else
++    } else {
+       return false;
++    }
+   }
+ }

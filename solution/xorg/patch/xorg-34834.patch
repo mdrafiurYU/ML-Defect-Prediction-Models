@@ -1,0 +1,19 @@
+diff --git a/hw/xprint/pcl/Pcl.h b/hw/xprint/pcl/Pcl.h
+index 217e304..216353b 100644
+--- a/hw/xprint/pcl/Pcl.h
++++ b/hw/xprint/pcl/Pcl.h
+@@ -83,10 +83,10 @@ typedef char *XPointer;
+ /******
+  * externally visible variables from PclInit.c
+  ******/
+-extern int PclScreenPrivateIndex, PclWindowPrivateIndex;
+-extern int PclContextPrivateIndex;
+-extern int PclPixmapPrivateIndex;
+-extern int PclGCPrivateIndex;
++extern DevPrivateKey PclScreenPrivateKey, PclWindowPrivateKey;
++extern DevPrivateKey PclContextPrivateKey;
++extern DevPrivateKey PclPixmapPrivateKey;
++extern DevPrivateKey PclGCPrivateKey;
+ 
+ /******
+  * externally visible variables from PclAttVal.c

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SQLJcrPathTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SQLJcrPathTest.java
+index a0c37be..b595bf9 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SQLJcrPathTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SQLJcrPathTest.java
+@@ -66,7 +66,7 @@ public class SQLJcrPathTest extends AbstractQueryTest {
+         String queryStatement = "select * from " + nodeTypeName;
+ 
+         // execute the search query
+-        Query query = session.getWorkspace().getQueryManager().createQuery(queryStatement, Query.SQL);
++        Query query = super.createQuery(queryStatement, Query.SQL);
+         QueryResult result = query.execute();
+ 
+         assertTrue("jcr:path must be present in query result row",

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/MandatoryItemTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/MandatoryItemTest.java
+index 658b229..739d84a 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/MandatoryItemTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/MandatoryItemTest.java
+@@ -56,6 +56,7 @@ public class MandatoryItemTest extends AbstractJCRTest {
+             }
+         }
+         if (childPropDef == null && childNodeDef == null) {
++            cleanUp();
+             throw new NotExecutableException();
+         }
+     }

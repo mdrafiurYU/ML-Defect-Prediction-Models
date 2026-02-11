@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/WorkspaceListener.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/WorkspaceListener.java
+index 8f6823d..56d1af6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/WorkspaceListener.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/WorkspaceListener.java
+@@ -27,12 +27,12 @@ public interface WorkspaceListener {
+ 
+     /**
+      * Workspace created on another cluster node.
+-     * 
++     *
+      * @param workspaceName
+      * @param configTemplate
+      * @throws RepositoryException
+      */
+-    public void externalWorkspaceCreated(String workspaceName,
++    void externalWorkspaceCreated(String workspaceName,
+             InputSource configTemplate) throws RepositoryException;
+ 
+ }

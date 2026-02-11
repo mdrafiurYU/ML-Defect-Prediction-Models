@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+index c7bec92..aa060e3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+@@ -440,7 +440,7 @@ public class SearchManager implements SynchronousEventListener {
+                 return iter.hasNext();
+             }
+ 
+-            public Object next() {
++            public NodeState next() {
+                 return nextNodeState();
+             }

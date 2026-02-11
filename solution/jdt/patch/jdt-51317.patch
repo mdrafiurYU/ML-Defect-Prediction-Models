@@ -1,0 +1,49 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingExpressionsTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingExpressionsTest.java
+index 4ad3101..00b23ac 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingExpressionsTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingExpressionsTest.java
+@@ -658,6 +658,7 @@ public class ASTRewritingExpressionsTest extends ASTRewritingTest {
+ 		buf.append("    public void foo() {\n");
+ 		buf.append("        new Inner();\n");
+ 		buf.append("        new <A>Inner();\n");
++		buf.append("        new<A>Inner();\n");
+ 		buf.append("        new <A, A>Inner();\n");
+ 		buf.append("    }\n");
+ 		buf.append("}\n");	
+@@ -673,7 +674,7 @@ public class ASTRewritingExpressionsTest extends ASTRewritingTest {
+ 		MethodDeclaration methodDecl= findMethodDeclaration(type, "foo");
+ 		Block block= methodDecl.getBody();
+ 		List statements= block.statements();
+-		assertTrue("Number of statements not 3", statements.size() == 3);
++		assertTrue("Number of statements not 3", statements.size() == 4);
+ 		{ // add type argument
+ 			ExpressionStatement stmt= (ExpressionStatement) statements.get(0);
+ 			ClassInstanceCreation creation= (ClassInstanceCreation) stmt.getExpression();
+@@ -690,11 +691,17 @@ public class ASTRewritingExpressionsTest extends ASTRewritingTest {
+ 			List typeArgs= creation.typeArguments();
+ 			rewrite.remove((ASTNode) typeArgs.get(0), null);
+ 		}
+-		
+-		{ // add type argument to existing
++		{ // remove type argument
+ 			ExpressionStatement stmt= (ExpressionStatement) statements.get(2);
+ 			ClassInstanceCreation creation= (ClassInstanceCreation) stmt.getExpression();
+ 
++			List typeArgs= creation.typeArguments();
++			rewrite.remove((ASTNode) typeArgs.get(0), null);
++		}
++		{ // add type argument to existing
++			ExpressionStatement stmt= (ExpressionStatement) statements.get(3);
++			ClassInstanceCreation creation= (ClassInstanceCreation) stmt.getExpression();
++
+ 			Type newTypeArg= ast.newSimpleType(ast.newSimpleName("String"));
+ 
+ 			ListRewrite listRewrite= rewrite.getListRewrite(creation, ClassInstanceCreation.TYPE_ARGUMENTS_PROPERTY);
+@@ -709,6 +716,7 @@ public class ASTRewritingExpressionsTest extends ASTRewritingTest {
+ 		buf.append("    public void foo() {\n");
+ 		buf.append("        new <A> Inner();\n");
+ 		buf.append("        new Inner();\n");
++		buf.append("        new Inner();\n");
+ 		buf.append("        new <A, A, String>Inner();\n");
+ 		buf.append("    }\n");
+ 		buf.append("}\n");

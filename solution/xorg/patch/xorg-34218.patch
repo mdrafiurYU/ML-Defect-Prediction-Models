@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index bc2fe09..2b7cb12 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -906,7 +906,7 @@ xf86VTSwitch()
+ 	    (*xf86Screens[i]->EnableDisableFBAccess) (i, TRUE);
+ 	}
+       }
+-      SaveScreens(serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
++      dixSaveScreens(serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
+ 
+       pInfo = xf86InputDevs;
+       while (pInfo) {
+@@ -970,7 +970,7 @@ xf86VTSwitch()
+     }
+ 
+     /* Turn screen saver off when switching back */
+-    SaveScreens(serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
++    dixSaveScreens(serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
+ 
+     pInfo = xf86InputDevs;
+     while (pInfo) {

@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+index b57335c..b1466af 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+@@ -29,6 +29,13 @@ public interface EclipseAnnotationProcessorEnvironment extends
+ 	CompilationUnit getAST();
+ 	
+ 	/**
++	 * @return the root of an abridged AST of the file that is currently being processed.
++	 * 		   This AST will contain binding information, but method bodies and imports
++	 * 		   may be removed for performance reasons
++	 */
++	CompilationUnit getAbridgedASTWithBindings();
++	
++	/**
+ 	 * @return a messager for registering diagnostics.
+ 	 */
+ 	EclipseMessager getMessager();

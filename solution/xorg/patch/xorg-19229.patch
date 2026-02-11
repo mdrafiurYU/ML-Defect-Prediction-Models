@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/parser/cpconfig.c b/hw/xfree86/parser/cpconfig.c
+index 4eb635b..d16a242 100644
+--- a/hw/xfree86/parser/cpconfig.c
++++ b/hw/xfree86/parser/cpconfig.c
+@@ -106,13 +106,13 @@ main (int argc, char *argv[])
+ 
+ /* Functions that the parser requires */
+ 
+-void
++_X_EXPORT void
+ VErrorF(const char *f, va_list args)
+ {
+ 	vfprintf(stderr, f, args);
+ }
+ 
+-void
++_X_EXPORT void
+ ErrorF(const char *f, ...)
+ {
+ 	va_list args;

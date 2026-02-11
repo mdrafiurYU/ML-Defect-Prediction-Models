@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 8423fca..16162b7 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1733,7 +1733,7 @@ xf86PrintBanner()
+ #if defined(BUILD_TIME)
+     t.tm_sec = BUILD_TIME % 100;
+     t.tm_min = (BUILD_TIME / 100) % 100;
+-    t.tm_hour = (BUILD_TIME / 10000);
++    t.tm_hour = (BUILD_TIME / 10000) % 100;
+     if (strftime(buf, sizeof(buf), "%d %B %Y  %I:%M:%s%p", &t))
+        ErrorF("Build Date: %s\n", buf);
+ #else

@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java b/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java
+index 2738471..2701705 100644
+--- a/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java
+@@ -55,7 +55,7 @@ public class ShortFieldSource extends NumericFieldCacheSource<ShortValues> {
+ 
+       @Override
+       public short shortVal(int doc) {
+-        return (short) arr[doc];
++        return arr[doc];
+       }
+ 
+       public float floatVal(int doc) {

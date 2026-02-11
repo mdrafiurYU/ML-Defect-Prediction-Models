@@ -1,0 +1,20 @@
+diff --git a/hw/kdrive/ephyr/ephyrglxext.c b/hw/kdrive/ephyr/ephyrglxext.c
+index 43a634d..2e08e39 100644
+--- a/hw/kdrive/ephyr/ephyrglxext.c
++++ b/hw/kdrive/ephyr/ephyrglxext.c
+@@ -42,8 +42,6 @@
+ #include "hostx.h"
+ 
+ 
+-#ifdef XEPHYR_DRI
+-
+ #ifndef TRUE
+ #define TRUE 1
+ #endif
+@@ -727,6 +725,3 @@ ephyrGLXIsDirectSwap (__GLXclientState *a_cl, GLbyte *a_pc)
+ {
+     return ephyrGLXIsDirectReal (a_cl, a_pc, TRUE) ;
+ }
+-
+-#endif /*XEPHYR_DRI*/
+-

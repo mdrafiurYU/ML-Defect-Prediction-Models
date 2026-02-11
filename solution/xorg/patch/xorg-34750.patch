@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/bios_mmap.c b/hw/xfree86/os-support/shared/bios_mmap.c
+index 51d4299..8bac87e 100644
+--- a/hw/xfree86/os-support/shared/bios_mmap.c
++++ b/hw/xfree86/os-support/shared/bios_mmap.c
+@@ -137,7 +137,7 @@ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 		return(-1);
+ 	}
+ 
+-	psize = xf86getpagesize();
++	psize = getpagesize();
+ 	Offset += Base & (psize - 1);
+ 	Base &= ~(psize - 1);
+ 	mlen = (Offset + Len + psize - 1) & ~(psize - 1);

@@ -1,0 +1,13 @@
+diff --git a/exa/exa_migration.c b/exa/exa_migration.c
+index 57d651f..06a4b93 100644
+--- a/exa/exa_migration.c
++++ b/exa/exa_migration.c
+@@ -435,6 +435,8 @@ exaAssertNotDirty (PixmapPtr pPixmap)
+ 	if (memcmp(dst, src, data_row_bytes) != 0) {
+ 	     abort();
+ 	}
++	dst += dst_pitch;
++	src += src_pitch;
+     }
+     exaFinishAccess(&pPixmap->drawable, EXA_PREPARE_SRC);
+ }

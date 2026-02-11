@@ -1,0 +1,35 @@
+diff --git a/solr/src/java/org/apache/solr/handler/admin/SolrInfoMBeanHandler.java b/solr/src/java/org/apache/solr/handler/admin/SolrInfoMBeanHandler.java
+index c5fef3c..51d100f 100644
+--- a/solr/src/java/org/apache/solr/handler/admin/SolrInfoMBeanHandler.java
++++ b/solr/src/java/org/apache/solr/handler/admin/SolrInfoMBeanHandler.java
+@@ -49,6 +49,7 @@ public class SolrInfoMBeanHandler extends RequestHandlerBase {
+   }
+   
+ 
++  @Override
+   public void handleRequestBody(SolrQueryRequest req, SolrQueryResponse rsp) throws Exception {
+     SolrCore core = req.getCore();
+     
+@@ -94,18 +95,22 @@ public class SolrInfoMBeanHandler extends RequestHandlerBase {
+     rsp.setHttpCaching(false); // never cache, no matter what init config looks like
+   }
+ 
++  @Override
+   public String getDescription() {
+     return "Get Info (and statistics) about all registered SolrInfoMBeans";
+   }
+ 
++  @Override
+   public String getSourceId() {
+     return "$Id$";
+   }
+ 
++  @Override
+   public String getSource() {
+     return "$URL$";
+   }
+ 
++  @Override
+   public String getVersion() {
+     return "$Revision$";
+   }

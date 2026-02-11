@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
+index 29a115f..9e09834 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
+@@ -1762,7 +1762,11 @@ public class JavaProject
+ 						return getPackageFragmentRoot(resource);
+ 					}
+ 					return getPackageFragmentRoot0(path);
++				} else if (segmentCount == 1) {
++					// lib being another project
++					return getPackageFragmentRoot(this.project.getWorkspace().getRoot().getProject(path.lastSegment()));
+ 				} else {
++					// lib being a folder
+ 					return getPackageFragmentRoot(this.project.getWorkspace().getRoot().getFolder(path));
+ 				}
+ 		}

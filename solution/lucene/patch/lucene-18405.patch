@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/DebugComponent.java b/solr/src/java/org/apache/solr/handler/component/DebugComponent.java
+index d105c05..a671798 100644
+--- a/solr/src/java/org/apache/solr/handler/component/DebugComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/DebugComponent.java
+@@ -86,6 +86,7 @@ public class DebugComponent extends SearchComponent
+   }
+ 
+ 
++  @Override
+   public void modifyRequest(ResponseBuilder rb, SearchComponent who, ShardRequest sreq) {
+     if (!rb.isDebug()) return;

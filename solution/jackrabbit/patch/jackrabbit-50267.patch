@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PredicateDerefQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PredicateDerefQuery.java
+index 861b8ac..52af37e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PredicateDerefQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PredicateDerefQuery.java
+@@ -140,7 +140,7 @@ public class PredicateDerefQuery extends Query {
+         if (cQuery == subQuery) {
+             return this;
+         } else {
+-            return new PredicateDerefQuery(subQuery, refProperty, nameTest, version, nsMappings);
++            return new PredicateDerefQuery(cQuery, refProperty, nameTest, version, nsMappings);
+         }
+     }

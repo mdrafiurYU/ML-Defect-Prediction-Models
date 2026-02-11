@@ -1,0 +1,11 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/RandomIndexWriter.java b/lucene/src/test/org/apache/lucene/index/RandomIndexWriter.java
+index 3033bdb..2faf22b 100644
+--- a/lucene/src/test/org/apache/lucene/index/RandomIndexWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/RandomIndexWriter.java
+@@ -87,6 +87,7 @@ public class RandomIndexWriter implements Closeable {
+     if (LuceneTestCase.VERBOSE) {
+       System.out.println("RIW config=" + w.getConfig());
+       System.out.println("codec default=" + w.getConfig().getCodecProvider().getDefaultFieldCodec());
++      w.setInfoStream(System.out);
+     }
+   }

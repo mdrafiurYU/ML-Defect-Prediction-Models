@@ -1,0 +1,16 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/_TestUtil.java b/lucene/src/test/org/apache/lucene/util/_TestUtil.java
+index e91b501..7ae6f4e 100644
+--- a/lucene/src/test/org/apache/lucene/util/_TestUtil.java
++++ b/lucene/src/test/org/apache/lucene/util/_TestUtil.java
+@@ -231,5 +231,11 @@ public class _TestUtil {
+     // keep number of open files lowish
+     LogMergePolicy lmp = (LogMergePolicy) w.getMergePolicy();
+     lmp.setMergeFactor(Math.min(5, lmp.getMergeFactor()));
++
++    MergeScheduler ms = w.getConfig().getMergeScheduler();
++    if (ms instanceof ConcurrentMergeScheduler) {
++      ((ConcurrentMergeScheduler) ms).setMaxThreadCount(2);
++      ((ConcurrentMergeScheduler) ms).setMaxMergeCount(3);
++    }
+   }
+ }

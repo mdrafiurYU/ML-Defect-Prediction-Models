@@ -1,0 +1,20 @@
+diff --git a/hw/xwin/winerror.c b/hw/xwin/winerror.c
+index 696142e..7d29213 100644
+--- a/hw/xwin/winerror.c
++++ b/hw/xwin/winerror.c
+@@ -28,6 +28,15 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
++#ifdef XVENDORNAME
++#define VENDOR_STRING XVENDORNAME
++#define VERSION_STRING XORG_RELEASE
++#define VENDOR_CONTACT BUILDERADDR
++#endif
++
+ #include "win.h"
+ 
+ /* References to external symbols */

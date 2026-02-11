@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenVHImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenVHImpl.java
+index accd377..152db3e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenVHImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenVHImpl.java
+@@ -58,7 +58,7 @@ class InternalFrozenVHImpl extends InternalFreezeImpl
+      * {@inheritDoc}
+      */
+     public NodeId getVersionHistoryId() {
+-        return new NodeId(node.getPropertyValue(NameConstants.JCR_CHILDVERSIONHISTORY).getUUID());
++        return node.getPropertyValue(NameConstants.JCR_CHILDVERSIONHISTORY).getNodeId();
+     }
+ 
+     /**
+@@ -77,7 +77,7 @@ class InternalFrozenVHImpl extends InternalFreezeImpl
+      * {@inheritDoc}
+      */
+     public NodeId getBaseVersionId() {
+-        return new NodeId(node.getPropertyValue(NameConstants.JCR_BASEVERSION).getUUID());
++        return node.getPropertyValue(NameConstants.JCR_BASEVERSION).getNodeId();
+     }
+ 
+     /**

@@ -1,0 +1,31 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/PrimitiveTypeImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/PrimitiveTypeImpl.java
+index fc88576..b0140af 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/PrimitiveTypeImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/PrimitiveTypeImpl.java
+@@ -13,11 +13,12 @@ package org.eclipse.jdt.apt.core.internal.type;
+ 
+ import com.sun.mirror.type.PrimitiveType;
+ import com.sun.mirror.util.TypeVisitor;
+-import org.eclipse.jdt.apt.core.internal.EclipseMirrorImpl;
++
++import org.eclipse.jdt.apt.core.internal.declaration.EclipseMirrorType;
+ import org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv;
+ import org.eclipse.jdt.core.dom.ITypeBinding;
+ 
+-public class PrimitiveTypeImpl implements PrimitiveType, EclipseMirrorImpl
++public class PrimitiveTypeImpl implements PrimitiveType, EclipseMirrorType
+ {	
+     private final ITypeBinding _binding;    
+     
+@@ -72,4 +73,11 @@ public class PrimitiveTypeImpl implements PrimitiveType, EclipseMirrorImpl
+ 	}
+ 	
+ 	public BaseProcessorEnv getEnvironment(){ return null; }
++	
++	public boolean isAssignmentCompatible(EclipseMirrorType left) {
++		return getTypeBinding().isAssignmentCompatible(left.getTypeBinding());
++	}
++	public boolean isSubTypeCompatible(EclipseMirrorType type) {
++		return getTypeBinding().isSubTypeCompatible(type.getTypeBinding());
++	}
+ }

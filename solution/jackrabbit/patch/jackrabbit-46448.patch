@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java
+index 3983c8d..d375b17 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java
+@@ -48,7 +48,12 @@ public abstract class AbstractUserTest extends AbstractJCRTest {
+     protected void setUp() throws Exception {
+         super.setUp();
+ 
+-        userMgr = getUserManager(superuser);
++        try {
++            userMgr = getUserManager(superuser);
++        } catch (Exception e) {
++            superuser.logout();
++            throw e;
++        }
+     }
+ 
+     protected static UserManager getUserManager(Session session) throws RepositoryException, NotExecutableException {

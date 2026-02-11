@@ -1,0 +1,28 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/BinURLDataSource.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/BinURLDataSource.java
+index 9d4d879..045d6fa 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/BinURLDataSource.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/BinURLDataSource.java
+@@ -49,6 +49,7 @@ public class BinURLDataSource extends DataSource<InputStream>{
+ 
+   public BinURLDataSource() { }
+ 
++  @Override
+   public void init(Context context, Properties initProps) {
+       this.context = context;
+     this.initProps = initProps;
+@@ -72,6 +73,7 @@ public class BinURLDataSource extends DataSource<InputStream>{
+     }
+   }
+ 
++  @Override
+   public InputStream getData(String query) {
+     URL url = null;
+     try {
+@@ -89,6 +91,7 @@ public class BinURLDataSource extends DataSource<InputStream>{
+     }
+   }
+ 
++  @Override
+   public void close() { }
+ 
+   private String getInitPropWithReplacements(String propertyName) {

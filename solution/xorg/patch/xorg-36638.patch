@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index d97ca44..8cab56e 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -149,6 +149,9 @@ typedef struct {
+     Bool        autoAddDevices; /* Whether to succeed NIDR, or ignore. */
+     Bool        autoEnableDevices; /* Whether to enable, or let the client
+                                     * control. */
++
++    Bool		dri2;
++    MessageType		dri2From;
+ } xf86InfoRec, *xf86InfoPtr;
+ 
+ #ifdef DPMSExtension

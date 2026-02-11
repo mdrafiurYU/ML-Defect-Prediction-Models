@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 0d89f89..6b06fd6 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -48,6 +48,7 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ /* $XConsortium: xf86Xinput.c /main/14 1996/10/27 11:05:25 kaleb $ */
++/* $XdotOrg: $ */
+ 
+ #include "Xfuncproto.h"
+ #include "Xmd.h"
+@@ -205,7 +206,7 @@ xf86CheckButton(int	button,
+     
+     DBG(5, ErrorF("xf86CheckButton "
+ 		  "button=%d down=%d state=%d check=%d returns ",
+-		   button, down, state, check));
++		   button, down, xf86CoreButtonState, check));
+     if ((check && down) || (!check && !down)) {
+ 	DBG(5, ErrorF("FALSE\n"));
+ 	return FALSE;

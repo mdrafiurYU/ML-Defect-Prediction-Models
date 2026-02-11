@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/schema/CustomSimilarityFactory.java b/solr/src/test/org/apache/solr/schema/CustomSimilarityFactory.java
+index 88296e0..03fbaec 100644
+--- a/solr/src/test/org/apache/solr/schema/CustomSimilarityFactory.java
++++ b/solr/src/test/org/apache/solr/schema/CustomSimilarityFactory.java
+@@ -19,6 +19,7 @@ package org.apache.solr.schema;
+ import org.apache.lucene.search.SimilarityProvider;
+ 
+ public class CustomSimilarityFactory extends SimilarityFactory {
++  @Override
+   public SimilarityProvider getSimilarityProvider() {
+     return new MockConfigurableSimilarity(params.get("echo"));
+   }

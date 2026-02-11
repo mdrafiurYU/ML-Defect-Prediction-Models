@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/DefaultISMLocking.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/DefaultISMLocking.java
+index 36c4d0b..4417d0d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/DefaultISMLocking.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/DefaultISMLocking.java
+@@ -52,8 +52,8 @@ public class DefaultISMLocking implements ISMLocking {
+         return new WriteLock() {
+ 
+             {
+-                rwLock.setActiveXid(TransactionContext.getCurrentXid());
+                 rwLock.writeLock().acquire();
++                rwLock.setActiveXid(TransactionContext.getCurrentXid());
+             }
+ 
+             /**

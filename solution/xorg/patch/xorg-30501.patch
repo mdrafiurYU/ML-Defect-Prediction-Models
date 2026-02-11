@@ -1,0 +1,14 @@
+diff --git a/composite/compinit.c b/composite/compinit.c
+index 8ce08b4..630f104 100644
+--- a/composite/compinit.c
++++ b/composite/compinit.c
+@@ -239,7 +239,8 @@ compAddAlternateVisual(ScreenPtr pScreen, CompScreenPtr cs,
+ 
+     depth = compFindVisuallessDepth (pScreen, alt->depth);
+     if (!depth)
+-	return FALSE;
++	/* alt->depth doesn't exist or already has alternate visuals. */
++	return TRUE;
+ 
+     pPictFormat = PictureMatchFormat (pScreen, alt->depth, alt->format);
+     if (!pPictFormat)

@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/ValueConstraint.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/ValueConstraint.java
+index a2c7c7e..0fb9bf2 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/ValueConstraint.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/ValueConstraint.java
+@@ -198,6 +198,7 @@ public abstract class ValueConstraint {
+             case PropertyType.PATH:
+                 return PathConstraint.create(definition, resolver);
+ 
++            case PropertyType.WEAKREFERENCE:
+             case PropertyType.REFERENCE:
+                 return ReferenceConstraint.create(definition, resolver);

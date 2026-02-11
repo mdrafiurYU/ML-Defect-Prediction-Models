@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
+index e1b36e3..63e1952 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
+@@ -49,6 +49,7 @@ public interface ISourceElementRequestor {
+ 		public TypeParameterInfo[] typeParameters;
+ 		public long[] annotationPositions;
+ 		public char[][] categories;
++		public boolean secondary;
+ 	}
+ 	
+ 	public static class TypeParameterInfo {

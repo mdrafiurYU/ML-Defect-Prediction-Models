@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/loader.c b/hw/xfree86/loader/loader.c
+index 0065812..dc474c4 100644
+--- a/hw/xfree86/loader/loader.c
++++ b/hw/xfree86/loader/loader.c
+@@ -272,7 +272,7 @@ static loader_funcs funcs[] = {
+      DLResolveSymbols,
+      DLCheckForUnresolved,
+      ARCHIVEAddressToSection,
+-     DLUnloadModule, {0, 0, 0, 0, 0}},
++     DLUnloadModule, {0, 0}},
+ };
+ 
+ int numloaders = sizeof(funcs) / sizeof(loader_funcs);

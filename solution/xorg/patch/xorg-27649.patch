@@ -1,0 +1,14 @@
+diff --git a/miext/rootless/rootlessCommon.c b/miext/rootless/rootlessCommon.c
+index 8fd922d..9cbb7fa 100644
+--- a/miext/rootless/rootlessCommon.c
++++ b/miext/rootless/rootlessCommon.c
+@@ -33,6 +33,9 @@
+ #include <dix-config.h>
+ #endif
+ 
++#include <stddef.h> /* For NULL */
++#include <limits.h> /* For CHAR_BIT */
++
+ #include "rootlessCommon.h"
+ 
+ unsigned int rootless_CopyBytes_threshold = 0;

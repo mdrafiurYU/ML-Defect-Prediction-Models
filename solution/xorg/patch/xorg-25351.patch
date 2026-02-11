@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 3df201a..4a9f369 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -1128,6 +1128,11 @@ xf86ReloadInputDevs(int sig)
+   return;
+ }
+ 
++_X_EXPORT void
++DDXRingBell(int volume, int pitch, int duration) {
++    xf86OSRingBell(volume, pitch, duration);
++}
++
+ #ifdef WSCONS_SUPPORT
+ 
+ /* XXX Currently XKB is mandatory. */

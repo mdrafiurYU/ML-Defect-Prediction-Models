@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/TypeAsPayloadTokenFilterFactory.java b/solr/src/java/org/apache/solr/analysis/TypeAsPayloadTokenFilterFactory.java
+index 8fa00ca..c34c40f 100644
+--- a/solr/src/java/org/apache/solr/analysis/TypeAsPayloadTokenFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/TypeAsPayloadTokenFilterFactory.java
+@@ -22,7 +22,17 @@ package org.apache.solr.analysis;
+ import org.apache.lucene.analysis.payloads.TypeAsPayloadTokenFilter;
+ import org.apache.lucene.analysis.TokenStream;
+ 
+-/** Factory for {@link TypeAsPayloadTokenFilter} */
++/** 
++ * Factory for {@link TypeAsPayloadTokenFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_typeaspayload" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.TypeAsPayloadTokenFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
++ * @version $Id$
++ */
+ public class TypeAsPayloadTokenFilterFactory extends BaseTokenFilterFactory {
+   public TypeAsPayloadTokenFilter create(TokenStream input) {
+     return new TypeAsPayloadTokenFilter(input);

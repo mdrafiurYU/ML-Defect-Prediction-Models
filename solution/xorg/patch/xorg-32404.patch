@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index f11051b..3688d50 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -1025,7 +1025,7 @@ __glXDRIscreenProbe(ScreenPtr pScreen)
+ 			   fd,
+ 			   api_ver,
+ 			   &interface_methods,
+-			   &screen->base.modes);
++			   &screen->base.fbconfigs);
+ 
+     if (screen->driScreen.private == NULL) {
+ 	LogMessage(X_ERROR, "AIGLX error: Calling driver entry point failed");

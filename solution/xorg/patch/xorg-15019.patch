@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxconsole.c b/hw/dmx/input/dmxconsole.c
+index 03d3e2d..7a313aa 100644
+--- a/hw/dmx/input/dmxconsole.c
++++ b/hw/dmx/input/dmxconsole.c
+@@ -39,6 +39,10 @@
+  * This file implements the console input devices.
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #define DMX_CONSOLE_DEBUG 0
+ #define DMX_WINDOW_DEBUG  0
+ 

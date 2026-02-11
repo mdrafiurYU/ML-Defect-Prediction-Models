@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/PostingsWriterBase.java b/lucene/src/java/org/apache/lucene/index/codecs/PostingsWriterBase.java
+index 7504da7..de59a46 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/PostingsWriterBase.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/PostingsWriterBase.java
+@@ -33,8 +33,10 @@ public abstract class PostingsWriterBase extends PostingsConsumer implements Clo
+ 
+   public abstract void startTerm() throws IOException;
+ 
++  public abstract void flushTermsBlock() throws IOException;
++
+   /** Finishes the current term */
+-  public abstract void finishTerm(TermStats stats, boolean isIndexTerm) throws IOException;
++  public abstract void finishTerm(TermStats stats) throws IOException;
+ 
+   public abstract void setField(FieldInfo fieldInfo);

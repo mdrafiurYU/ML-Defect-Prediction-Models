@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Module.h b/hw/xfree86/common/xf86Module.h
+index fdcd567..c8bf1ce 100644
+--- a/hw/xfree86/common/xf86Module.h
++++ b/hw/xfree86/common/xf86Module.h
+@@ -209,6 +209,7 @@ void LoaderReqSymLists(const char **, ...);
+ void LoaderReqSymbols(const char *, ...);
+ int LoaderCheckUnresolved(int);
+ void LoaderGetOS(const char **name, int *major, int *minor, int *teeny);
++Bool LoaderShouldIgnoreABI(void);
+ int LoaderGetABIVersion(const char *abiclass);
+ 
+ typedef pointer (*ModuleSetupProc)(pointer, pointer, int *, int *);

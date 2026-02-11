@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java
+index b87ffbe..ef24294 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/xml/DomUtil.java
+@@ -614,7 +614,7 @@ public class DomUtil {
+      */
+     public static String getPrefixedName(String localName, Namespace namespace) {
+         if (namespace == null
+-            || Namespace.EMPTY_NAMESPACE.equals(namespace) 
++            || Namespace.EMPTY_NAMESPACE.equals(namespace)
+             || Namespace.EMPTY_NAMESPACE.getPrefix().equals(namespace.getPrefix())) {
+             return localName;
+         }

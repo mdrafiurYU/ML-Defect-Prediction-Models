@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+index 248cc06..f3e8a31 100644
+--- a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
++++ b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+@@ -44,7 +44,7 @@ public class ValueSourceAugmenter extends DocTransformer
+   @Override
+   public String getName()
+   {
+-    return name;
++    return "function("+name+")";
+   }
+ 
+   @Override

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Priv.h b/hw/xfree86/common/xf86Priv.h
+index 8b0a432..01257fd 100644
+--- a/hw/xfree86/common/xf86Priv.h
++++ b/hw/xfree86/common/xf86Priv.h
+@@ -34,6 +34,10 @@
+  * "private" means not available to video drivers.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86PRIV_H
+ #define _XF86PRIV_H
+ 

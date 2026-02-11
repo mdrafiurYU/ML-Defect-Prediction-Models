@@ -1,0 +1,14 @@
+diff --git a/hw/dmx/dmxpict.h b/hw/dmx/dmxpict.h
+index 2ca04ed..fe2a659 100644
+--- a/hw/dmx/dmxpict.h
++++ b/hw/dmx/dmxpict.h
+@@ -112,7 +112,9 @@ extern void dmxTriFan(CARD8 op,
+ 		      INT16 xSrc, INT16 ySrc,
+ 		      int npoint, xPointFixed *points);
+ 
++extern int dmxBECreateGlyphSet(int idx, GlyphSetPtr glyphSet);
+ extern Bool dmxBEFreeGlyphSet(ScreenPtr pScreen, GlyphSetPtr glyphSet);
++extern int dmxBECreatePicture(PicturePtr pPicture);
+ extern Bool dmxBEFreePicture(PicturePtr pPicture);
+ 
+ extern int dmxPictPrivateIndex;		/**< Index for picture private data */

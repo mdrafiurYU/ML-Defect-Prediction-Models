@@ -1,0 +1,28 @@
+diff --git a/hw/kdrive/trio/s3curs.c b/hw/kdrive/trio/s3curs.c
+index 60e72c6..20afad7 100644
+--- a/hw/kdrive/trio/s3curs.c
++++ b/hw/kdrive/trio/s3curs.c
+@@ -277,11 +277,7 @@ s3RealizeCursor (ScreenPtr pScreen, CursorPtr pCursor)
+     {
+ 	if (pCursor)
+ 	{
+-#ifdef FB_OLD_SCREEN
+-	    short	x, y;
+-#else
+ 	    int		x, y;
+-#endif
+ 	    
+ 	    miPointerPosition (&x, &y);
+ 	    s3LoadCursor (pScreen, x, y);
+@@ -376,11 +372,7 @@ s3CursorEnable (ScreenPtr pScreen)
+     {
+ 	if (pCurPriv->pCursor)
+ 	{
+-#ifdef FB_OLD_SCREEN
+-	    short	x, y;
+-#else
+ 	    int		x, y;
+-#endif
+ 	    
+ 	    miPointerPosition (&x, &y);
+ 	    s3LoadCursor (pScreen, x, y);

@@ -1,0 +1,14 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index e87fe79..c75c120 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -367,6 +367,9 @@ miPointerUpdateSprite (DeviceIntPtr pDev)
+ 
+     pPointer = MIPOINTER(pDev);
+ 
++    if (!pPointer)
++        return;
++
+     pScreen = pPointer->pScreen;
+     if (!pScreen)
+ 	return;

@@ -1,0 +1,17 @@
+diff --git a/Xprint/ps/PsText.c b/Xprint/ps/PsText.c
+index 228e407..37463ba 100644
+--- a/Xprint/ps/PsText.c
++++ b/Xprint/ps/PsText.c
+@@ -329,11 +329,7 @@ PsPolyText16(
+     {
+         PsOutPtr       psOut;
+         ColormapPtr    cMap;
+-        unsigned short c,
+-                       c_hiByte,
+-                       c_lowByte,
+-                       fontPage;
+-        int            i;
++        unsigned short fontPage;
+         
+ 	if( PsUpdateDrawableGC(pGC, pDrawable, &psOut, &cMap)==FALSE ) 
+ 	    return x; 

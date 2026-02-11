@@ -1,0 +1,34 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java
+index 77cf4a7..0bbcecc 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java
+@@ -71,6 +71,11 @@ public abstract class AbstractQueryTest extends AbstractJCRTest {
+     protected QueryObjectModelFactory qf;
+ 
+     /**
++     * The query manager for {@link #superuser}
++     */
++    protected QueryManager qm;
++
++    /**
+      * Set-up the configuration values used for the test. Per default retrieves
+      * a session, configures testRoot, and nodetype and checks if the query
+      * language for the current language is available.<br>
+@@ -82,10 +87,16 @@ public abstract class AbstractQueryTest extends AbstractJCRTest {
+         jcrRoot = superuser.getNamespacePrefix(NS_JCR_URI) + ":root";
+         jcrContains = superuser.getNamespacePrefix(NS_JCR_URI) + ":contains";
+         jcrDeref = superuser.getNamespacePrefix(NS_JCR_URI) + ":deref";
+-        QueryManager qm = superuser.getWorkspace().getQueryManager();
++        qm = superuser.getWorkspace().getQueryManager();
+         qf = qm.getQOMFactory();
+     }
+ 
++    protected void tearDown() throws Exception {
++        qm = null;
++        qf = null;
++        super.tearDown();
++    }
++
+     /**
+      * Create a {@link Query} for a given {@link Statement}.
+      *

@@ -1,0 +1,12 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 8027262..e459452 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -77,6 +77,7 @@ struct _rrMode {
+     int		    refcnt;
+     xRRModeInfo	    mode;
+     char	    *name;
++    void	    *devPrivate;
+ };
+ 
+ struct _rrCrtc {

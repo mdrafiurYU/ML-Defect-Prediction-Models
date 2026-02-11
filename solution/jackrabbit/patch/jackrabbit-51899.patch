@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/NodeTypeTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/NodeTypeTest.java
+index 3f26b26..bf1afca 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/NodeTypeTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/NodeTypeTest.java
+@@ -22,6 +22,7 @@ import org.apache.jackrabbit.test.NotExecutableException;
+ 
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
++import javax.jcr.Value;
+ import javax.jcr.security.AccessControlManager;
+ import java.security.Principal;
+ import java.util.Map;
+@@ -37,7 +38,7 @@ public class NodeTypeTest extends AbstractNodeTypeManagementTest {
+             RepositoryException, NotExecutableException {
+         return EvaluationUtil.getPolicy(acMgr, path, princ);
+     }
+-    protected Map getRestrictions(Session s, String path) throws RepositoryException, NotExecutableException {
++    protected Map<String, Value> getRestrictions(Session s, String path) throws RepositoryException, NotExecutableException {
+         return EvaluationUtil.getRestrictions(s, path);
+     }
+ }
+\ No newline at end of file

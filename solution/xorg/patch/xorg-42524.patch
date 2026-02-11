@@ -1,0 +1,13 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 82c2530..0a211e5 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -538,7 +538,7 @@ ProcRRGetOutputInfo (ClientPtr client)
+     return client->noClientException;
+ }
+ 
+-void
++static void
+ RRSetPrimaryOutput(ScreenPtr pScreen, rrScrPrivPtr pScrPriv,
+ 		   RROutputPtr output)
+ {

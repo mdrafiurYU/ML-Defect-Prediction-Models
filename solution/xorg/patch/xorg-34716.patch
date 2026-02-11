@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/i386_video.c b/hw/xfree86/os-support/bsd/i386_video.c
+index e7db6c1..42b9054 100644
+--- a/hw/xfree86/os-support/bsd/i386_video.c
++++ b/hw/xfree86/os-support/bsd/i386_video.c
+@@ -301,7 +301,7 @@ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	    return(-1);
+ 	}
+ 
+-	psize = xf86getpagesize();
++	psize = getpagesize();
+ 	Offset += Base & (psize - 1);
+ 	Base &= ~(psize - 1);
+ 	mlen = (Offset + Len + psize - 1) & ~(psize - 1);

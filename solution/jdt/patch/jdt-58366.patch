@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index bfac22e..0c56a18 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -764,7 +764,7 @@ protected static char[] readTable(String filename) throws java.io.IOException {
+ 
+ 	//minimal integrity check (even size expected)
+ 	int length = bytes.length;
+-	if (length % 2 != 0)
++	if ((length & 1) != 0)
+ 		throw new java.io.IOException(Messages.bind(Messages.parser_corruptedFile, filename)); 
+ 
+ 	// convert bytes into chars

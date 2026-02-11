@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winshaddd.c b/hw/xwin/winshaddd.c
+index fce0c2b..607a067 100644
+--- a/hw/xwin/winshaddd.c
++++ b/hw/xwin/winshaddd.c
+@@ -32,6 +32,9 @@
+  */
+ /* $XFree86: xc/programs/Xserver/hw/xwin/winshaddd.c,v 1.22 2002/10/17 08:18:24 alanh Exp $ */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ 

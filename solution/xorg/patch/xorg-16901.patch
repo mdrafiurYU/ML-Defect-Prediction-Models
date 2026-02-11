@@ -1,0 +1,15 @@
+diff --git a/fb/fbcompose.c b/fb/fbcompose.c
+index 5b735fc..8cb0c86 100644
+--- a/fb/fbcompose.c
++++ b/fb/fbcompose.c
+@@ -24,6 +24,10 @@
+  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+  * SOFTWARE.
+  */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif

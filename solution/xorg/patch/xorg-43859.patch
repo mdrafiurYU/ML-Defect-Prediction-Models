@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 11a8fa5..12a3122 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -5233,7 +5233,7 @@ CheckCursorConfinement(WindowPtr pWin)
+             if (grab && (confineTo = grab->confineTo))
+             {
+                 if (!BorderSizeNotEmpty(pDev, confineTo))
+-                    (*inputInfo.pointer->deviceGrab.DeactivateGrab)(pDev);
++                    (*pDev->deviceGrab.DeactivateGrab)(pDev);
+                 else if ((pWin == confineTo) || IsParent(pWin, confineTo))
+                     ConfineCursorToWindow(pDev, confineTo, TRUE, TRUE);
+             }

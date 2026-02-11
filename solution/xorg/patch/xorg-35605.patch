@@ -1,0 +1,13 @@
+diff --git a/os/io.c b/os/io.c
+index 968f40a..be89021 100644
+--- a/os/io.c
++++ b/os/io.c
+@@ -1196,7 +1196,7 @@ AllocateOutputBuffer(void)
+     oco = (ConnectionOutputPtr)xalloc(sizeof(ConnectionOutput));
+     if (!oco)
+ 	return (ConnectionOutputPtr)NULL;
+-    oco->buf = (unsigned char *) xalloc(BUFSIZE);
++    oco->buf = (unsigned char *) xcalloc(1, BUFSIZE);
+     if (!oco->buf)
+     {
+ 	xfree(oco);

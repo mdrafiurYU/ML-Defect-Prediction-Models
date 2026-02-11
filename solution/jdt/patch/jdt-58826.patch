@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/FactoryTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/FactoryTests.java
+index 1596443..e701edf 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/FactoryTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/FactoryTests.java
+@@ -22,7 +22,7 @@ public FactoryTests(String name) {
+ }
+ 
+ public static Test suite() {
+-	return new Suite(FactoryTests.class);
++	return buildModelTestSuite(FactoryTests.class);
+ }
+ /**
+  * Ensures that a Java model element can be created from a IFile that

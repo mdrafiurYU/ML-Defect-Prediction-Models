@@ -1,0 +1,29 @@
+diff --git a/afb/afbfillrct.c b/afb/afbfillrct.c
+index 3646d78..ed2e603 100644
+--- a/afb/afbfillrct.c
++++ b/afb/afbfillrct.c
+@@ -65,7 +65,6 @@ SOFTWARE.
+ #include "maskbits.h"
+ 
+ #define MODEQ(a, b) ((a) %= (b))
+-void afbPaintOddSize();
+ 
+ /*
+ 	filled rectangles.
+@@ -76,11 +75,11 @@ helper function in the GC.
+ #define NUM_STACK_RECTS		1024
+ 
+ void
+-afbPolyFillRect(pDrawable, pGC, nrectFill, prectInit)
+-	DrawablePtr pDrawable;
+-	GCPtr pGC;
+-	int nrectFill;				/* number of rectangles to fill */
+-	xRectangle *prectInit;			/* Pointer to first rectangle to fill */
++afbPolyFillRect(DrawablePtr pDrawable, GCPtr pGC, int nrectFill, xRectangle *prectInit)
++	                      
++	          
++	              				/* number of rectangles to fill */
++	                      			/* Pointer to first rectangle to fill */
+ {
+ 	xRectangle *prect;
+ 	RegionPtr prgnClip;

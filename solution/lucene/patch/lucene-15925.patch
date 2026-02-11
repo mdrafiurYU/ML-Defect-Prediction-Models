@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/CheckIndex.java b/lucene/src/java/org/apache/lucene/index/CheckIndex.java
+index 392ab63..e825c67 100644
+--- a/lucene/src/java/org/apache/lucene/index/CheckIndex.java
++++ b/lucene/src/java/org/apache/lucene/index/CheckIndex.java
+@@ -548,10 +548,10 @@ public class CheckIndex {
+       if (infoStream != null) {
+         infoStream.print("    test: field norms.........");
+       }
+-      final byte[] b = new byte[reader.maxDoc()];
++      byte[] b;
+       for (final String fieldName : fieldNames) {
+         if (reader.hasNorms(fieldName)) {
+-          reader.norms(fieldName, b, 0);
++          b = reader.norms(fieldName);
+           ++status.totFields;
+         }
+       }

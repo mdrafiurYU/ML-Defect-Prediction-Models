@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java
+index 8366462..2cfb6bf 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java
+@@ -260,4 +260,9 @@ public class TestFrenchAnalyzer extends BaseTokenStreamTestCase {
+     FrenchAnalyzer a = new FrenchAnalyzer(Version.LUCENE_31);
+     assertAnalyzesTo(a, "Votre", new String[] { });
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new FrenchAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

@@ -1,0 +1,84 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeEntriesImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeEntriesImpl.java
+index 5b6ea4e..38387b2 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeEntriesImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeEntriesImpl.java
+@@ -35,8 +35,8 @@ import java.util.ConcurrentModificationException;
+ import java.util.Map;
+ import java.util.HashMap;
+ import java.util.Collections;
+-import java.lang.ref.WeakReference;
+ import java.lang.ref.Reference;
++import java.lang.ref.WeakReference;
+ 
+ /**
+  * <code>ChildNodeEntriesImpl</code> implements a memory sensitive implementation
+@@ -107,6 +107,18 @@ final class ChildNodeEntriesImpl implements ChildNodeEntries {
+     }
+ 
+     /**
++     * @param childEntry
++     * @return The node entry that directly preceeds the given <code>childEntry</code>
++     * or <code>null</code> if the given <code>childEntry</code> is the first
++     * or was not found in this <code>ChildNodeEntries</code>.
++     */
++    NodeEntry getPrevious(NodeEntry childEntry) {
++        LinkedEntries.LinkNode ln = entries.getLinkNode(childEntry);
++        LinkedEntries.LinkNode prevLn = (ln == null) ? null : ln.getPreviousLinkNode();
++        return (prevLn == null) ? null : prevLn.getNodeEntry();
++    }
++
++    /**
+      * @see ChildNodeEntries#isComplete()
+      */
+     public boolean isComplete() {
+@@ -191,7 +203,7 @@ final class ChildNodeEntriesImpl implements ChildNodeEntries {
+         }
+         return Collections.unmodifiableList(l).iterator();
+     }
+-    
++
+     /**
+      * @see ChildNodeEntries#get(Name)
+      */
+@@ -370,6 +382,27 @@ final class ChildNodeEntriesImpl implements ChildNodeEntries {
+     }
+ 
+     /**
++     * @see ChildNodeEntries#reorderAfter(NodeEntry, NodeEntry)
++     */
++    public void reorderAfter(NodeEntry insertEntry, NodeEntry afterEntry) {
++        // the link node to move
++        LinkedEntries.LinkNode insertLN = entries.getLinkNode(insertEntry);
++        if (insertLN == null) {
++            throw new NoSuchElementException();
++        }
++        // the link node where insertLN is ordered before
++        LinkedEntries.LinkNode afterLN = (afterEntry != null) ? entries.getLinkNode(afterEntry) : null;
++        if (afterEntry != null && afterLN == null) {
++            throw new NoSuchElementException();
++        }
++
++        LinkedEntries.LinkNode previousLN = insertLN.getPreviousLinkNode();
++        if (previousLN != afterLN) {
++            reorderAfter(insertLN, afterLN);
++        } // else: already in correct position. nothing to do
++    }
++
++    /**
+      *
+      * @param insertName
+      * @param insertLN
+@@ -653,6 +686,13 @@ final class ChildNodeEntriesImpl implements ChildNodeEntries {
+             public LinkedEntries.LinkNode getNextLinkNode() {
+                 return (LinkedEntries.LinkNode) super.getNextNode();
+             }
++
++            /**
++             * @return the next LinkNode.
++             */
++            public LinkedEntries.LinkNode getPreviousLinkNode() {
++                return (LinkedEntries.LinkNode) super.getPreviousNode();
++            }
+         }
+ 
+         //----------------------------------------------------------------------

@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/exa/exa_priv.h b/hw/xfree86/exa/exa_priv.h
+index 19bd2e7..460c4da 100644
+--- a/hw/xfree86/exa/exa_priv.h
++++ b/hw/xfree86/exa/exa_priv.h
+@@ -315,6 +315,9 @@ exaPixmapIsOffscreen(PixmapPtr p);
+ PixmapPtr
+ exaGetOffscreenPixmap (DrawablePtr pDrawable, int *xp, int *yp);
+ 
++PixmapPtr
++exaGetDrawablePixmap(DrawablePtr pDrawable);
++
+ void
+ exaMoveInPixmap (PixmapPtr pPixmap);
+ 

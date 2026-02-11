@@ -1,0 +1,18 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java
+index 1a426d9..04e5c27 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java
+@@ -104,9 +104,12 @@ public class TestIndexWriterMergePolicy extends LuceneTestCase {
+         dir,
+         newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).
+             setMaxBufferedDocs(10).
+-            setMergePolicy(newLogMergePolicy())
++            setMergePolicy(newLogMergePolicy()).
++            setMergeScheduler(new SerialMergeScheduler())
+     );
+ 
++    writer.setInfoStream(VERBOSE ? System.out : null);
++
+     for (int i = 0; i < 250; i++) {
+       addDoc(writer);
+       checkInvariants(writer);

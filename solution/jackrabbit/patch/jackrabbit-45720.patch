@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java
+index 4444b1b..032895b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java
+@@ -43,6 +43,7 @@ import javax.jcr.PathNotFoundException;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+ import javax.jcr.ValueFactory;
++import javax.jcr.PropertyType;
+ import java.security.Principal;
+ 
+ /**
+@@ -183,7 +184,7 @@ public class ACLEditor extends SecurityItemModifier implements AccessControlEdit
+             Privilege[] privs = ace.getPrivileges();
+             Value[] vs = new Value[privs.length];
+             for (int j = 0; j < privs.length; j++) {
+-                vs[j] = vf.createValue(privs[j].getName());
++                vs[j] = vf.createValue(privs[j].getName(), PropertyType.NAME);
+             }
+             setSecurityProperty(aceNode, P_PRIVILEGES, vs);

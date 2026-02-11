@@ -1,0 +1,84 @@
+diff --git a/exa/exa_render.c b/exa/exa_render.c
+index b480c6d..7042285 100644
+--- a/exa/exa_render.c
++++ b/exa/exa_render.c
+@@ -466,17 +466,18 @@ exaCompositeRects(CARD8	              op,
+ {
+     PixmapPtr pPixmap = exaGetDrawablePixmap(pDst->pDrawable);
+     ExaPixmapPriv(pPixmap);
++    RegionRec region;
++    int n;
++    ExaCompositeRectPtr r;
+     
++    if (pExaPixmap->pDamage) {
+     int xoff, yoff;
+     int x1 = MAXSHORT;
+     int y1 = MAXSHORT;
+     int x2 = MINSHORT;
+     int y2 = MINSHORT;
+-    RegionRec region;
+     RegionPtr pending_damage;
+     BoxRec box;
+-    int n;
+-    ExaCompositeRectPtr r;
+     
+     /* We have to manage the damage ourselves, since CompositeRects isn't
+      * something in the screen that can be managed by the damage extension,
+@@ -525,6 +526,7 @@ exaCompositeRects(CARD8	              op,
+     pending_damage = DamagePendingRegion(pExaPixmap->pDamage);
+     REGION_UNION(pScreen, pending_damage, pending_damage, &region);
+     REGION_TRANSLATE(pScreen, &region, -xoff, -yoff);
++    }
+     
+     /************************************************************/
+     
+@@ -546,6 +548,7 @@ exaCompositeRects(CARD8	              op,
+     
+     /************************************************************/
+ 
++    if (pExaPixmap->pDamage) {
+     /* Now we have to flush the damage out from pendingDamage => damage 
+      * Calling DamageDamageRegion has that effect. (We could pass
+      * in an empty region here, but we pass in the same region we
+@@ -555,6 +558,7 @@ exaCompositeRects(CARD8	              op,
+     DamageDamageRegion(pDst->pDrawable, &region);
+     REGION_UNINIT(pScreen, &region);
+ }
++}
+ 
+ static int
+ exaTryDriverComposite(CARD8		op,
+@@ -1067,6 +1071,8 @@ exaTrapezoids (CARD8 op, PicturePtr pSrc, PicturePtr pDst,
+ 	DrawablePtr pDraw = pDst->pDrawable;
+ 	PixmapPtr pixmap = exaGetDrawablePixmap (pDraw);
+ 	ExaPixmapPriv (pixmap);
++
++	if (pExaPixmap->pDamage) {
+ 	RegionRec migration;
+ 	RegionPtr pending_damage = DamagePendingRegion(pExaPixmap->pDamage);
+ 	int xoff, yoff;
+@@ -1084,6 +1090,7 @@ exaTrapezoids (CARD8 op, PicturePtr pSrc, PicturePtr pDst,
+ 	REGION_INIT(pScreen, &migration, &bounds, 1);
+ 	REGION_UNION(pScreen, pending_damage, pending_damage, &migration);
+ 	REGION_UNINIT(pScreen, &migration);
++	}
+ 
+ 	exaPrepareAccess(pDraw, EXA_PREPARE_DEST);
+ 
+@@ -1170,6 +1177,8 @@ exaTriangles (CARD8 op, PicturePtr pSrc, PicturePtr pDst,
+ 	DrawablePtr pDraw = pDst->pDrawable;
+ 	PixmapPtr pixmap = exaGetDrawablePixmap (pDraw);
+ 	ExaPixmapPriv (pixmap);
++
++	if (pExaPixmap->pDamage) {
+ 	RegionRec migration;
+ 	RegionPtr pending_damage = DamagePendingRegion(pExaPixmap->pDamage);
+ 	int xoff, yoff;
+@@ -1187,6 +1196,7 @@ exaTriangles (CARD8 op, PicturePtr pSrc, PicturePtr pDst,
+ 	REGION_INIT(pScreen, &migration, &bounds, 1);
+ 	REGION_UNION(pScreen, pending_damage, pending_damage, &migration);
+ 	REGION_UNINIT(pScreen, &migration);
++	}
+ 
+ 	exaPrepareAccess(pDraw, EXA_PREPARE_DEST);
+ 	(*ps->AddTriangles) (pDst, 0, 0, ntri, tris);

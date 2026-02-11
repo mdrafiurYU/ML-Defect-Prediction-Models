@@ -1,0 +1,18 @@
+diff --git a/randr/mirandr.c b/randr/mirandr.c
+index 3a99bf9..0b763e1 100644
+--- a/randr/mirandr.c
++++ b/randr/mirandr.c
+@@ -64,10 +64,11 @@ miRRCrtcSetGamma (ScreenPtr	pScreen,
+     return TRUE;
+ }
+ 
+-static Bool
++Bool
+ miRROutputSetProperty (ScreenPtr	pScreen,
+ 		       RROutputPtr	output,
+-		       Atom	property)
++		       Atom		    property,
++		       RRPropertyValuePtr   value)
+ {
+     return TRUE;
+ }

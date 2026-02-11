@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/emulRepAre.c b/hw/xfree86/xf4bpp/emulRepAre.c
+index a7f1156..9ae6214 100644
+--- a/hw/xfree86/xf4bpp/emulRepAre.c
++++ b/hw/xfree86/xf4bpp/emulRepAre.c
+@@ -28,6 +28,10 @@
+  * P. Shupak 1/88
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ 
+ void xf4bppReplicateArea( pWin, x, y, planeMask, goalWidth, goalHeight,

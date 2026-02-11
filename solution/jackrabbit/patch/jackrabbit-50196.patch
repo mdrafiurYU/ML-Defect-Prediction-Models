@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/TestAll.java
+index ced8d73..952413c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/TestAll.java
+@@ -66,6 +66,10 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(MergeNodeTest.class);
+         suite.addTestSuite(MergeNonVersionableSubNodeTest.class);
+         suite.addTestSuite(MergeSubNodeTest.class);
++        
++        // JCR 2.0
++
++        suite.addTestSuite(ActivitiesTest.class);
+ 
+         return suite;
+     }

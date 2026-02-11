@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactory.java
+index 2f6308c..6824795 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactory.java
+@@ -42,7 +42,8 @@ public interface AccessControlProviderFactory {
+     /**
+      * Initalize this factory.
+      *
+-     * @param securitySession
++     * @param securitySession Security Session.
++     * @throws RepositoryException If an error occurs.
+      */
+     void init(Session securitySession) throws RepositoryException;

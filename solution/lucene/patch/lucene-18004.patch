@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableLongField.java b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+index a3501d1..7c62da7 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableLongField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+@@ -53,6 +53,7 @@ public class SortableLongField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser qparser) {
++    field.checkFieldCacheSource(qparser);
+     return new SortableLongFieldSource(field.name);
+   }

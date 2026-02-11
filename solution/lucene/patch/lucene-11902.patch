@@ -1,0 +1,28 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/MockIndexInputWrapper.java b/lucene/src/test/org/apache/lucene/store/MockIndexInputWrapper.java
+index 724ca84..7b3a7a0 100644
+--- a/lucene/src/test/org/apache/lucene/store/MockIndexInputWrapper.java
++++ b/lucene/src/test/org/apache/lucene/store/MockIndexInputWrapper.java
+@@ -27,7 +27,7 @@ import java.util.Map;
+ 
+ public class MockIndexInputWrapper extends IndexInput {
+   private MockDirectoryWrapper dir;
+-  private String name;
++  final String name;
+   private IndexInput delegate;
+   private boolean isClone;
+ 
+@@ -52,12 +52,13 @@ public class MockIndexInputWrapper extends IndexInput {
+         if (v != null) {
+           if (v.intValue() == 1) {
+             dir.openFiles.remove(name);
++            dir.openFilesDeleted.remove(name);
+           } else {
+             v = Integer.valueOf(v.intValue()-1);
+             dir.openFiles.put(name, v);
+           }
+         }
+-        dir.files.remove(this);
++        dir.openFileHandles.remove(this);
+       }
+     }
+   }

@@ -1,0 +1,13 @@
+diff --git a/Xi/opendev.c b/Xi/opendev.c
+index 128b1bd..acda385 100644
+--- a/Xi/opendev.c
++++ b/Xi/opendev.c
+@@ -106,7 +106,7 @@ ProcXOpenDevice(ClientPtr client)
+ 	stuff->deviceid == inputInfo.keyboard->id)
+ 	return BadDevice;
+ 
+-    status = dixLookupDevice(&dev, stuff->deviceid, client, DixReadAccess);
++    status = dixLookupDevice(&dev, stuff->deviceid, client, DixUseAccess);
+     if (status == BadDevice) {  /* not open */
+ 	for (dev = inputInfo.off_devices; dev; dev = dev->next)
+ 	    if (dev->id == stuff->deviceid)

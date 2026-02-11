@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ConcurrentQueryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ConcurrentQueryTest.java
+index b65d4a0..8278ef2 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ConcurrentQueryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ConcurrentQueryTest.java
+@@ -63,6 +63,7 @@ public class ConcurrentQueryTest extends AbstractJCRTest {
+         for (Iterator it = readSessions.iterator(); it.hasNext(); ) {
+             ((Session) it.next()).logout();
+         }
++        readSessions.clear();
+     }
+ 
+     /**

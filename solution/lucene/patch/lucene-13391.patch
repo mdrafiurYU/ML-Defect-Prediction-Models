@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+index 60227b1..8cafb7e 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+@@ -570,7 +570,6 @@ public class TestAddIndexes extends LuceneTestCase {
+     Directory dir = newDirectory();
+     LogByteSizeMergePolicy lmp = new LogByteSizeMergePolicy();
+     lmp.setUseCompoundFile(false);
+-    lmp.setUseCompoundDocStore(false);
+     lmp.setMergeFactor(100);
+     IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(
+         TEST_VERSION_CURRENT, new MockAnalyzer())
+@@ -599,7 +598,6 @@ public class TestAddIndexes extends LuceneTestCase {
+     lmp = new LogByteSizeMergePolicy();
+     lmp.setMinMergeMB(0.0001);
+     lmp.setUseCompoundFile(false);
+-    lmp.setUseCompoundDocStore(false);
+     lmp.setMergeFactor(4);
+     writer = new IndexWriter(dir2, newIndexWriterConfig(TEST_VERSION_CURRENT,
+         new MockAnalyzer())

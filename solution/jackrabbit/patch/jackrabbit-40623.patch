@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+index 9046a59..97527ad 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+@@ -293,8 +293,9 @@ class ChildAxisQuery extends Query {
+         public boolean skipTo(int target) throws IOException {
+             calculateChildren();
+             nextDoc = hits.skipTo(target);
+-            while (nextDoc > -1 && !indexIsValid(nextDoc))
++            while (nextDoc > -1 && !indexIsValid(nextDoc)) {
+                 next();
++            }
+             return nextDoc > -1;
+         }

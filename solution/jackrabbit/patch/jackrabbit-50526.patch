@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
+index 51cb164..9cd3788 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
+@@ -108,8 +108,7 @@ public class VersionImpl extends NodeImpl implements Version {
+         // get base version. this can certainly be optimized
+         InternalVersionHistory vh = ((VersionHistoryImpl) getContainingHistory())
+                 .getInternalVersionHistory();
+-        NodeId id = new NodeId(vh.getVersionableUUID());
+-        Node vn = session.getNodeById(id);
++        Node vn = session.getNodeById(vh.getVersionableId());
+         InternalVersion base = ((VersionImpl) vn.getBaseVersion()).getInternalVersion();
+ 
+         InternalVersion suc = getInternalVersion().getLinearSuccessor(base);

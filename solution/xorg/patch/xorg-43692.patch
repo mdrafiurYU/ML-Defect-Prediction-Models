@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 59b616c..df1ecb9 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -720,7 +720,7 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+     OsBlockSignals();
+     RemoveDevice(pDev);
+ 
+-    if (!isMaster)
++    if (!isMaster && pInfo != NULL)
+     {
+         if(drv->UnInit)
+             drv->UnInit(drv, pInfo, 0);

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/OnParentVersionIgnoreTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/OnParentVersionIgnoreTest.java
+index 929080c..88801e8 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/OnParentVersionIgnoreTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/OnParentVersionIgnoreTest.java
+@@ -71,7 +71,7 @@ public class OnParentVersionIgnoreTest extends AbstractOnParentVersionTest {
+         // add 'ignore' child
+         String childName = addChildNode(OPVAction).getName();
+         versionableNode.save();
+-        
++
+         versionableNode.restore(v, false);
+ 
+         if (!versionableNode.hasNode(childName)) {

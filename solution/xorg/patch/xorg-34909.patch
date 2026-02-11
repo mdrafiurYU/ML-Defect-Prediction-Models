@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/rootlessCommon.h b/miext/rootless/rootlessCommon.h
+index 66b930d..b7f11bd 100644
+--- a/miext/rootless/rootlessCommon.h
++++ b/miext/rootless/rootlessCommon.h
+@@ -38,6 +38,10 @@
+ #include "rootless.h"
+ #include "fb.h"
+ 
++#ifdef SHAPE
++#include "scrnintstr.h"
++#endif /* SHAPE */
++
+ #ifdef RENDER
+ #include "picturestr.h"
+ #endif

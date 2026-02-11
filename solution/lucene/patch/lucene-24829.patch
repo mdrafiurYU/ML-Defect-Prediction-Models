@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ShortField.java b/solr/src/java/org/apache/solr/schema/ShortField.java
+index b6685db..5e6ae6e 100644
+--- a/solr/src/java/org/apache/solr/schema/ShortField.java
++++ b/solr/src/java/org/apache/solr/schema/ShortField.java
+@@ -45,7 +45,7 @@ public class ShortField extends FieldType {
+   @Override
+   public SortField getSortField(SchemaField field, boolean reverse) {
+     field.checkSortability();
+-    return new SortField(field.name, SortField.SHORT, reverse);
++    return new SortField(field.name, SortField.Type.SHORT, reverse);
+   }
+ 
+   @Override

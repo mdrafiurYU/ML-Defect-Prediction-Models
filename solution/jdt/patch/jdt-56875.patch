@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeDeclarationPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeDeclarationPattern.java
+index 664dede..1e4b026 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeDeclarationPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeDeclarationPattern.java
+@@ -112,7 +112,7 @@ public static char[] createIndexKey(int modifiers, char[] typeName, char[] packa
+ 		pos += packageLength;
+ 	}
+ 	result[pos++] = SEPARATOR;
+-	if (enclosingNamesLength > 0) {
++	if (enclosingTypeNames != null && enclosingNamesLength > 0) {
+ 		for (int i = 0, length = enclosingTypeNames.length; i < length;) {
+ 			char[] enclosingName = enclosingTypeNames[i];
+ 			int itsLength = enclosingName.length;

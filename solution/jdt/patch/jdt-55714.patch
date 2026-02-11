@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
+index c6472ae..630fc4f 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
+@@ -1221,12 +1221,6 @@ public class ASTConverterTest2 extends ConverterTestSetup {
+ 		assertNotNull("No body", methodDeclaration.getBody());
+ 		assertNotNull("No binding", methodDeclaration.resolveBinding());
+ 		assertTrue("Not an abstract method", Modifier.isAbstract(methodDeclaration.getModifiers()));
+-		List modifiers = methodDeclaration.modifiers();
+-		assertEquals("Wrong size", 2, modifiers.size());
+-		Modifier modifier1 = (Modifier) modifiers.get(0);
+-		assertTrue("Not a public modifier", modifier1.isPublic());
+-		Modifier modifier2 = (Modifier) modifiers.get(1);
+-		assertTrue("Not an abstract modifier", modifier2.isAbstract());
+ 		assertTrue("Not malformed", isMalformed(methodDeclaration)); 
+ 	}

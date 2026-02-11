@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java
+index 160f466..99893fb 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java
+@@ -55,12 +55,12 @@ public class JavaSearchTests extends AbstractJavaSearchTests implements IJavaSea
+ 		}
+ 	}
+ 	public void tearDownSuite() throws Exception {
+-		if (TEST_SUITES == null) {
++		if (JAVA_SEARCH_SUITES == null) {
+ 			deleteProject("JavaSearch");
+ 			deleteProject("JavaSearch15");
+ 		} else {
+-			TEST_SUITES.remove(getClass());
+-			if (TEST_SUITES.size() == 0) {
++			JAVA_SEARCH_SUITES.remove(getClass());
++			if (JAVA_SEARCH_SUITES.size() == 0) {
+ 				deleteProject("JavaSearch");
+ 				deleteProject("JavaSearch15");
+ 			}

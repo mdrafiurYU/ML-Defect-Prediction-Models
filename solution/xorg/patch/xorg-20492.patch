@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcCpArea.c b/hw/xfree86/xf4bpp/ppcCpArea.c
+index c6df4ef..4673fe7 100644
+--- a/hw/xfree86/xf4bpp/ppcCpArea.c
++++ b/hw/xfree86/xf4bpp/ppcCpArea.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ 
+ ******************************************************************/
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "mfbmap.h"
+ #define PSZ 8

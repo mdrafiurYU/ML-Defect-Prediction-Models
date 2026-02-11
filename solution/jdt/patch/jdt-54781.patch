@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+index d851b6a..2f3a3f3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+@@ -131,7 +131,7 @@ public class FieldReference extends Reference implements InvocationSite {
+ 		// set the generic cast after the fact, once the type expectation is fully known (no need for strict cast)
+ 		if (this.binding != null && this.binding.isValidBinding()) {
+ 			FieldBinding originalBinding = this.binding.original();
+-			if (originalBinding != this.binding) {
++			if (originalBinding != this.binding && originalBinding.type != this.binding.type) {
+ 			    // extra cast needed if method return type has type variable
+ 			    if ((originalBinding.type.tagBits & TagBits.HasTypeVariable) != 0 && runtimeTimeType.id != T_JavaLangObject) {
+ 			    	TypeBinding targetType = (!compileTimeType.isBaseType() && runtimeTimeType.isBaseType())

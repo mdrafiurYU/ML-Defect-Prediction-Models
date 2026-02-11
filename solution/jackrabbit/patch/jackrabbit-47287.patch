@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/QueryObjectModelFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/QueryObjectModelFactoryImpl.java
+index ce47cb3..3b254ca 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/QueryObjectModelFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/QueryObjectModelFactoryImpl.java
+@@ -24,7 +24,6 @@ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.QueryObjectModelFactory;
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.QueryObjectModel;
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.Selector;
+-import org.apache.jackrabbit.spi.commons.query.jsr283.qom.Constraint;
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.Ordering;
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.Column;
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.Source;
+@@ -57,6 +56,7 @@ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.QueryObjectModelConsta
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.Literal;
+ 
+ import javax.jcr.query.InvalidQueryException;
++import javax.jcr.query.qom.Constraint;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+ import java.util.BitSet;

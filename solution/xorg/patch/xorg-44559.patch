@@ -1,0 +1,19 @@
+diff --git a/Xi/querydp.h b/Xi/querydp.h
+index 48b6217..ea22376 100644
+--- a/Xi/querydp.h
++++ b/Xi/querydp.h
+@@ -30,10 +30,10 @@
+ #ifndef QUERYDP_H
+ #define QUERYDP_H 1
+ 
+-int SProcXIQueryDevicePointer(ClientPtr	/* client */);
+-int ProcXIQueryDevicePointer(ClientPtr	/* client */);
+-void SRepXIQueryDevicePointer(ClientPtr /* client */ ,
++int SProcXIQueryPointer(ClientPtr /* client */);
++int ProcXIQueryPointer(ClientPtr /* client */);
++void SRepXIQueryPointer(ClientPtr /* client */ ,
+ 			   int /* size */ ,
+-			   xXIQueryDevicePointerReply *	/* rep */);
++			xXIQueryPointerReply *	/* rep */);
+ 
+ #endif /* QUERYDP_H */

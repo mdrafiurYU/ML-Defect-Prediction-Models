@@ -1,0 +1,31 @@
+diff --git a/dix/events.c b/dix/events.c
+index 73b7fa0..cec12f0 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -5410,7 +5410,6 @@ ProcQueryPointer(ClientPtr client)
+     xQueryPointerReply rep;
+     WindowPtr pWin, t;
+     DeviceIntPtr mouse = PickPointer(client);
+-    DeviceIntPtr dev;
+     SpritePtr pSprite;
+     int rc;
+     REQUEST(xResourceReq);
+@@ -5423,18 +5422,6 @@ ProcQueryPointer(ClientPtr client)
+     if (rc != Success)
+ 	return rc;
+ 
+-    for (dev = inputInfo.devices; dev; dev = dev->next)
+-    {
+-        if (dev->isMaster && IsPointerDevice(dev) &&
+-                dev->deviceGrab.grab && dev->deviceGrab.grab->coreGrab &&
+-                SameClient(dev->deviceGrab.grab, client))
+-        {
+-            /* special case, we have a grab on the device so we need to return
+-             * this one */
+-            mouse = dev;
+-        }
+-    }
+-
+     pSprite = mouse->spriteInfo->sprite;
+     if (mouse->valuator->motionHintWindow)
+ 	MaybeStopHint(mouse, client);

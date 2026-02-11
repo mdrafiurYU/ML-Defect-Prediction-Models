@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/darwin.h b/hw/darwin/darwin.h
+index 646bb24..e2e4829 100644
+--- a/hw/darwin/darwin.h
++++ b/hw/darwin/darwin.h
+@@ -27,7 +27,8 @@
+ #ifndef _DARWIN_H
+ #define _DARWIN_H
+ 
+-#include "dix-config.h"
++// #include "dix-config.h" // This makes us crash for some reason...
++#define SHAPE
+ 
+ #include <IOKit/IOTypes.h>
+ #include "inputstr.h"

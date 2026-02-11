@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ShortField.java b/solr/src/java/org/apache/solr/schema/ShortField.java
+index 8283ffb..b6685db 100644
+--- a/solr/src/java/org/apache/solr/schema/ShortField.java
++++ b/solr/src/java/org/apache/solr/schema/ShortField.java
+@@ -50,7 +50,7 @@ public class ShortField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser qparser) {
+-
++    field.checkFieldCacheSource(qparser);
+     return new ShortFieldSource(new ShortValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }

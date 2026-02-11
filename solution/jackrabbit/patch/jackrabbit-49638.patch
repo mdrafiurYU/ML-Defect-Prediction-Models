@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/PropertyExistenceTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/PropertyExistenceTest.java
+index d825a2b..be14ea6 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/PropertyExistenceTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/PropertyExistenceTest.java
+@@ -31,7 +31,7 @@ public class PropertyExistenceTest extends AbstractQOMTest {
+         n1.setProperty(propertyName1, "abc");
+         Node n2 = testRootNode.addNode(nodeName2, testNodeType);
+         n2.setProperty(propertyName2, "abc");
+-        testRootNode.save();
++        superuser.save();
+ 
+         QueryResult result = qf.createQuery(
+                 qf.selector(testNodeType, "s"),

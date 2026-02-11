@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java b/solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java
+index 2b548a1..7bd85a3 100755
+--- a/solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java
++++ b/solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java
+@@ -220,7 +220,7 @@ public class TestFunctionQuery extends SolrTestCaseJ4 {
+     assertTrue(orig != FileFloatSource.onlyForTesting);
+ 
+ 
+-    Random r = new Random();
++    Random r = random;
+     for (int i=0; i<10; i++) {   // do more iterations for a thorough test
+       int len = r.nextInt(ids.length+1);
+       boolean sorted = r.nextBoolean();

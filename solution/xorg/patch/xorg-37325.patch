@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 6d5eaad..68dc387 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1123,7 +1123,6 @@ InitInput(argc, argv)
+     xf86Info.vtRequestsPending = FALSE;
+     xf86Info.inputPending = FALSE;
+ 
+-    if (serverGeneration == 1) {
+ 	/* Call the PreInit function for each input device instance. */
+ 	for (pDev = xf86ConfigLayout.inputs; pDev && *pDev; pDev++) {
+ 	    /* Replace obsolete keyboard driver with kbd */
+@@ -1154,7 +1153,6 @@ InitInput(argc, argv)
+ 		continue;
+ 	    }
+ 	}
+-    }
+ 
+     /* Initialise all input devices. */
+     pInfo = xf86InputDevs;

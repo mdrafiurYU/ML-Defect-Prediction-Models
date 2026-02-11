@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/parser/Input.c b/hw/xfree86/parser/Input.c
+index 3e2186a..3d98019 100644
+--- a/hw/xfree86/parser/Input.c
++++ b/hw/xfree86/parser/Input.c
+@@ -102,6 +102,9 @@ xf86parseInputSection (void)
+ 		case DRIVER:
+ 			if (xf86getSubToken (&(ptr->inp_comment)) != STRING)
+ 				Error (QUOTE_MSG, "Driver");
++                        if (strcmp(val.str, "keyboard") == 0)
++                            ptr->inp_driver = "kbd";
++                        else
+ 			ptr->inp_driver = val.str;
+ 			break;
+ 		case OPTION:

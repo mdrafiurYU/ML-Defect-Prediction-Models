@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winregistry.c b/hw/xwin/winregistry.c
+index a39428d..3571b14 100644
+--- a/hw/xwin/winregistry.c
++++ b/hw/xwin/winregistry.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ /* Prototypes */

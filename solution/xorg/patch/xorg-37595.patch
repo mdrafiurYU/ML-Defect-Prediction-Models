@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/quartzStartup.c b/hw/xquartz/quartzStartup.c
+index a4472e6..43f1502 100644
+--- a/hw/xquartz/quartzStartup.c
++++ b/hw/xquartz/quartzStartup.c
+@@ -94,7 +94,7 @@ void QuartzInitServer(int argc, char **argv, char **envp) {
+     }
+ }
+ 
+-int main(int argc, char **argv, char **envp) {
++int server_main(int argc, char **argv, char **envp) {
+     int         i;
+     int         fd[2];
+ 

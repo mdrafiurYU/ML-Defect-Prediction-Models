@@ -1,0 +1,14 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index ce086d5..8af97c6 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -458,9 +458,6 @@ updateMotionHistory(DeviceIntPtr pDev, CARD32 ms, int first_valuator,
+  * Returns the maximum number of events GetKeyboardEvents,
+  * GetKeyboardValuatorEvents, and GetPointerEvents will ever return.
+  *
+- * Should be used in DIX as:
+- * xEvent *events = xcalloc(sizeof(xEvent), GetMaximumEventsNum());
+- *
+  * This MUST be absolutely constant, from init until exit.
+  */
+ int

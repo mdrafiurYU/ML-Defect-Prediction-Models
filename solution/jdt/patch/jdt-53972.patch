@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/VariablePattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/VariablePattern.java
+index c7f04f3..9059762 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/VariablePattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/VariablePattern.java
+@@ -29,7 +29,7 @@ public VariablePattern(int patternKind, boolean findDeclarations, boolean readAc
+ 	this.writeAccess = writeAccess; // set to find any reference, write only references & all occurences
+ 	this.findReferences = readAccess || writeAccess;
+ 
+-	this.name = isCaseSensitive() ? name : CharOperation.toLowerCase(name);
++	this.name = (isCaseSensitive() || isCamelCase())  ? name : CharOperation.toLowerCase(name);
+ }
+ /*
+  * Returns whether a method declaration or message send will need to be resolved to

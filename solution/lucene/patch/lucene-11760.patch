@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java b/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
+index 2224369..e5f15c0 100644
+--- a/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
+@@ -548,7 +548,7 @@ public abstract class LogMergePolicy extends MergePolicy {
+ 
+   @Override
+   public String toString() {
+-    StringBuilder sb = new StringBuilder("[");
++    StringBuilder sb = new StringBuilder("[" + getClass().getSimpleName() + ": ");
+     sb.append("minMergeSize=").append(minMergeSize).append(", ");
+     sb.append("mergeFactor=").append(mergeFactor).append(", ");
+     sb.append("maxMergeSize=").append(maxMergeSize).append(", ");

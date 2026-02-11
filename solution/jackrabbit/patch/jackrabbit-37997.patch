@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionReadMethodsTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionReadMethodsTest.java
+index b29eb0f..621195b 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionReadMethodsTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionReadMethodsTest.java
+@@ -59,6 +59,7 @@ public class SessionReadMethodsTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null && session.isLive()) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+index c20beca..51adee4 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+@@ -626,15 +626,15 @@ public class RepositoryServiceImpl implements RepositoryService {
+     /**
+      * {@inheritDoc}
+      */
+-    public void checkin(final SessionInfo sessionInfo, final NodeId nodeId)
++    public NodeId checkin(final SessionInfo sessionInfo, final NodeId nodeId)
+             throws VersionException, UnsupportedRepositoryOperationException, InvalidItemStateException, LockException, RepositoryException {
+         final SessionInfoImpl sInfo = getSessionInfoImpl(sessionInfo);
+-        executeWithLocalEvents(new Callable() {
++        Version newVersion = (Version) executeWithLocalEvents(new Callable() {
+             public Object run() throws RepositoryException {
+-                getNode(nodeId, getSessionInfoImpl(sessionInfo)).checkin();
+-                return null;
++                return getNode(nodeId, getSessionInfoImpl(sessionInfo)).checkin();
+             }
+         }, sInfo);
++        return idFactory.createNodeId(newVersion, sInfo.getNamePathResolver());
+     }
+ 
+     /**

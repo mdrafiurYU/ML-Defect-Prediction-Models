@@ -1,0 +1,15 @@
+diff --git a/solr/src/common/org/apache/solr/common/util/FileUtils.java b/solr/src/common/org/apache/solr/common/util/FileUtils.java
+index 3ca2c28..bf4026a 100644
+--- a/solr/src/common/org/apache/solr/common/util/FileUtils.java
++++ b/solr/src/common/org/apache/solr/common/util/FileUtils.java
+@@ -54,9 +54,7 @@ public class FileUtils {
+   }
+ 
+   /**
+-   * Copied from Lucene's {@link org.apache.lucene.store.FSDirectory#sync(String)}
+-   *
+-   * @see org.apache.lucene.store.FSDirectory#sync(String)
++   * Copied from Lucene's FSDirectory.sync(String) <!-- protected -->
+    *
+    * @param fullFile the File to be synced to disk
+    * @throws IOException if the file could not be synced

@@ -1,0 +1,47 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/util/LogUtil.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/util/LogUtil.java
+index 3587fd7..0f2f260 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/util/LogUtil.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/util/LogUtil.java
+@@ -20,6 +20,7 @@ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.Name;
++import org.apache.jackrabbit.spi.ItemId;
+ import org.apache.jackrabbit.jcr2spi.state.ItemState;
+ import org.apache.jackrabbit.spi.commons.conversion.NameResolver;
+ import org.apache.jackrabbit.spi.commons.conversion.PathResolver;
+@@ -86,4 +87,33 @@ public class LogUtil {
+             return qName.toString();
+         }
+     }
++
++    /**
++     * Failsafe conversion of an <code>ItemId</code> to a human readable string
++     * resolving the path part of the specified id using the given path resolver.
++     *
++     * @param itemId
++     * @param pathResolver
++     * @return a String representation of the given <code>ItemId</code>.
++     */
++    public static String saveGetIdString(ItemId itemId, PathResolver pathResolver) {
++        Path p = itemId.getPath();
++        if (p == null || pathResolver == null) {
++            return itemId.toString();
++        } else {
++            StringBuffer bf = new StringBuffer();
++            String uniqueID = itemId.getUniqueID();
++            if (uniqueID != null) {
++                bf.append(uniqueID).append(" - ");
++            }
++            String jcrPath;
++            try {
++                jcrPath = pathResolver.getJCRPath(p);
++            } catch (NamespaceException e) {
++                jcrPath = p.toString();
++            }
++            bf.append(jcrPath);
++            return bf.toString();
++        }
++    }
+ }
+\ No newline at end of file

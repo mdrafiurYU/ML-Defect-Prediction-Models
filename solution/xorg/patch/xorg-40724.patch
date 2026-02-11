@@ -1,0 +1,14 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 65cb1b9..c74a4b1 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -367,7 +367,8 @@ typedef struct _XIPropertyHandler
+     long id;
+     int (*SetProperty) (DeviceIntPtr dev,
+                         Atom property,
+-                        XIPropertyValuePtr prop);
++                        XIPropertyValuePtr prop,
++                        BOOL checkonly);
+     int (*GetProperty) (DeviceIntPtr dev,
+                         Atom property);
+     int (*DeleteProperty) (DeviceIntPtr dev,

@@ -1,0 +1,14 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 7ea12fe..f0af4b0 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -363,7 +363,8 @@ mieqProcessInputEvents(void)
+             {
+                 CopyGetMasterEvent(e->pDev->u.master, event,
+                                    &master_event, e->nevents);
+-            }
++            } else
++                master_event = NULL;
+ 
+             /* process slave first, then master */
+             e->pDev->public.processInputProc(event, e->pDev, e->nevents);

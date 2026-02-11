@@ -1,0 +1,14 @@
+diff --git a/dix/events.c b/dix/events.c
+index 77badfd..0db2d6a 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -670,8 +670,8 @@ CheckPhysLimits(
+ #ifdef PANORAMIX
+         if (!noPanoramiXExtension)
+             XineramaSetCursorPosition (pDev, new.x, new.y, generateEvents);
+-#endif
+         else
++#endif
+         {
+             if (pScreen != pSprite->hotPhys.pScreen)
+                 pSprite->hotPhys = new;

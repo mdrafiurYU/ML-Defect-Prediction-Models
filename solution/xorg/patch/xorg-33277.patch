@@ -1,0 +1,13 @@
+diff --git a/include/privates.h b/include/privates.h
+index 6071e39..e57f167 100644
+--- a/include/privates.h
++++ b/include/privates.h
+@@ -112,7 +112,7 @@ dixSetPrivate(PrivateRec **privates, devprivate_key_t *const key, pointer val)
+  */
+ typedef struct _PrivateCallback {
+     devprivate_key_t *key;	/* private registration key */
+-    pointer value;		/* pointer to private */
++    pointer *value;		/* address of private pointer */
+ } PrivateCallbackRec;
+ 
+ extern int

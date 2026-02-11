@@ -1,0 +1,18 @@
+diff --git a/hw/xquartz/GL/visualConfigs.c b/hw/xquartz/GL/visualConfigs.c
+index 196989a..12e9777 100644
+--- a/hw/xquartz/GL/visualConfigs.c
++++ b/hw/xquartz/GL/visualConfigs.c
+@@ -177,7 +177,13 @@ void setVisualConfigs(void) {
+ 				    }
+ 				    visualConfigs[i].auxBuffers = aux ? conf->aux_buffers : 0;
+ 				    visualConfigs[i].level = 0;
++
++				    if(conf->accelerated) {
+ 				    visualConfigs[i].visualRating = GLX_NONE;
++				    } else {
++					visualConfigs[i].visualRating = GLX_SLOW_VISUAL_EXT;
++				    }
++
+ 				    visualConfigs[i].transparentPixel = GLX_NONE;
+ 				    visualConfigs[i].transparentRed = GLX_NONE;
+ 				    visualConfigs[i].transparentGreen = GLX_NONE;

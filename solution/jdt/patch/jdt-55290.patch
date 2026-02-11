@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+index 9e7dfb4..33b2093 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+@@ -433,7 +433,7 @@ protected CompilationParticipantResult[] notifyParticipants(SourceFile[] unitsAb
+ 				for (int j = unitsAboutToCompile.length; --j >= 0;)
+ 					results[j] = new CompilationParticipantResult(unitsAboutToCompile[j]);
+ 			}
+-			this.javaBuilder.participants[i].compileStarting(results);
++			this.javaBuilder.participants[i].buildStarting(results);
+ 		}
+ 	}
+ 	return results;

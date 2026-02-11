@@ -1,0 +1,12 @@
+diff --git a/GL/mesa/X/xf86glx.c b/GL/mesa/X/xf86glx.c
+index d39fafc..5dd4e7c 100644
+--- a/GL/mesa/X/xf86glx.c
++++ b/GL/mesa/X/xf86glx.c
+@@ -88,6 +88,7 @@ static __GLXscreenInfo __glDDXScreenInfo = {
+     NULL,                 /* Set up pVisualPriv in probe */
+     0,                    /* Set up numVisuals in probe */
+     0,                    /* Set up numUsableVisuals in probe */
++    NULL,                 /* GLextensions is overwritten by __glXScreenInit */
+     "Vendor String",      /* GLXvendor is overwritten by __glXScreenInit */
+     "Version String",     /* GLXversion is overwritten by __glXScreenInit */
+     "Extensions String",  /* GLXextensions is overwritten by __glXScreenInit */

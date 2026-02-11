@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index 85fb6dd..3ecb851 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -319,7 +319,7 @@ xf86GetPciDomain(PCITAG Tag)
+ }
+ 
+ _X_EXPORT pointer
+-xf86MapDomainMemory(int ScreenNum, int Flags, PCITAG Tag,
++xf86MapDomainMemory(int ScreenNum, int Flags, struct pci_device *dev,
+ 		    ADDRESS Base, unsigned long Size)
+ {
+     return xf86MapVidMem(ScreenNum, Flags, Base, Size);
+@@ -333,7 +333,7 @@ xf86MapLegacyIO(struct pci_device *dev)
+ }
+ 
+ _X_EXPORT int
+-xf86ReadLegacyVideoBIOS(PCITAG Tag, unsigned char *Buf)
++xf86ReadLegacyVideoBIOS(struct pci_device *dev, unsigned char *Buf)
+ {
+     const unsigned Len = (2 * 0x10000);
+     ADDRESS Base = 0xC0000;

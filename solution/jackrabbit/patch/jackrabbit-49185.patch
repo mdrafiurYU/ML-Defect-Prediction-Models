@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+index 8e93e7b..5c15c2c 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+@@ -310,12 +310,14 @@ public class WorkspaceManager
+      * @param language   the query language.
+      * @param namespaces the locally remapped namespaces which might be used in
+      *                   the query statement.
++     * @param limit
++     * @param offset
+      * @return
+      * @throws RepositoryException
+      */
+-    public QueryInfo executeQuery(String statement, String language, Map namespaces)
+-            throws RepositoryException {
+-        return service.executeQuery(sessionInfo, statement, language, namespaces);
++    public QueryInfo executeQuery(String statement, String language, Map namespaces,
++                                  long limit, long offset) throws RepositoryException {
++        return service.executeQuery(sessionInfo, statement, language, namespaces, limit, offset);
+     }
+ 
+     /**

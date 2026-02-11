@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBooleanTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBooleanTest.java
+index 26ccc23..64eeeeb 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBooleanTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBooleanTest.java
+@@ -68,6 +68,13 @@ public class SetValueBooleanTest extends AbstractJCRTest {
+         superuser.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        value = null;
++        node = null;
++        property1 = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test the persistence of a property modified with an BooleanValue
+      * parameter and saved from the Session

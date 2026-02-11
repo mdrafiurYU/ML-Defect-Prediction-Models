@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NamespaceStorage.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NamespaceStorage.java
+index f679a2d..4b20a7a 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NamespaceStorage.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NamespaceStorage.java
+@@ -18,9 +18,6 @@ package org.apache.jackrabbit.jcr2spi;
+ 
+ import java.util.Map;
+ 
+-import javax.jcr.NamespaceException;
+-import javax.jcr.UnsupportedRepositoryOperationException;
+-import javax.jcr.AccessDeniedException;
+ import javax.jcr.RepositoryException;
+ 
+ /**
+@@ -28,14 +25,10 @@ import javax.jcr.RepositoryException;
+  */
+ public interface NamespaceStorage {
+ 
+-    public Map getRegisteredNamespaces() throws RepositoryException;
++    Map getRegisteredNamespaces() throws RepositoryException;
+ 
+-    public String getPrefix(String uri) throws NamespaceException, RepositoryException;
++    void registerNamespace(String prefix, String uri) throws RepositoryException;
+ 
+-    public String getURI(String prefix) throws NamespaceException, RepositoryException;
+-
+-    public void registerNamespace(String prefix, String uri) throws NamespaceException, UnsupportedRepositoryOperationException, AccessDeniedException, RepositoryException;
+-
+-    public void unregisterNamespace(String uri) throws NamespaceException, UnsupportedRepositoryOperationException, AccessDeniedException, RepositoryException;
++    void unregisterNamespace(String uri) throws RepositoryException;
+ 
+ }

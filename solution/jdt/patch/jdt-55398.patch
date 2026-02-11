@@ -1,0 +1,44 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests.java
+index fca741c..541a3c6 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests.java
+@@ -19,13 +19,11 @@ public class ResolveTests extends AbstractJavaModelTests {
+ 	ICompilationUnit wc = null;
+ 	WorkingCopyOwner owner = null; 
+ 
++static {
++//	TESTS_NAMES = new String[] { "testSecondaryTypes" };
++}
+ public static Test suite() {
+-	if (false) {
+-		TestSuite suite = new Suite(ResolveTests.class.getName());
+-		suite.addTest(new ResolveTests("testLocalNameForClassFile"));
+-		return suite;
+-	}
+-	return new Suite(ResolveTests.class);
++	return buildTestSuite(ResolveTests.class);
+ }
+ 
+ public ResolveTests(String name) {
+@@ -1620,4 +1618,21 @@ public void testSingleNameInImport() throws JavaModelException {
+ 		}
+ 	}
+ }
++/**
++ * Bug 120350: [model] Secondary type not found by code resolve
++ * @throws JavaModelException
++ */
++public void testSecondaryTypes() throws JavaModelException {
++	waitUntilIndexesReady();
++	ICompilationUnit cu = getCompilationUnit("Resolve", "src", "b120350", "X.java");
++	String str = cu.getSource();
++	int start = str.indexOf("Secondary");
++	int length = "Secondary".length();
++	IJavaElement[] elements = cu.codeSelect(start, length);
++	assertElementsEqual(
++		"Unexpected elements",
++		"Secondary [in Test.java [in b120350 [in src [in Resolve]]]]",
++		elements
++	);
++}
+ }

@@ -1,0 +1,23 @@
+diff --git a/damageext/damageext.c b/damageext/damageext.c
+index c8f28e9..6083693 100755
+--- a/damageext/damageext.c
++++ b/damageext/damageext.c
+@@ -173,13 +173,17 @@ ProcDamageCreate (ClientPtr client)
+     DamageExtPtr	pDamageExt;
+     DamageReportLevel	level;
+     RegionPtr		pRegion;
++    int			rc;
+     
+     REQUEST(xDamageCreateReq);
+ 
+     REQUEST_SIZE_MATCH(xDamageCreateReq);
+     LEGAL_NEW_RESOURCE(stuff->damage, client);
+-    SECURITY_VERIFY_DRAWABLE (pDrawable, stuff->drawable, client,
++    rc = dixLookupDrawable(&pDrawable, stuff->drawable, client, 0,
+ 			      DixReadAccess);
++    if (rc != Success)
++	return rc;
++
+     switch (stuff->level) {
+     case XDamageReportRawRectangles:
+ 	level = DamageReportRawRegion;

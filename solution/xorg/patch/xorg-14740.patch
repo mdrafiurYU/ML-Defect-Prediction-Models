@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winpriv.c b/hw/xwin/winpriv.c
+index 20b0840..29221cf 100644
+--- a/hw/xwin/winpriv.c
++++ b/hw/xwin/winpriv.c
+@@ -4,6 +4,9 @@
+  * Authors: Alexander Gottwald
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include "winpriv.h"
+ #include "winwindow.h"

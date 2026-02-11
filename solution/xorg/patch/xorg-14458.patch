@@ -1,0 +1,16 @@
+diff --git a/hw/xwin/winclipboardwndproc.c b/hw/xwin/winclipboardwndproc.c
+index 249f64b..a006b46 100644
+--- a/hw/xwin/winclipboardwndproc.c
++++ b/hw/xwin/winclipboardwndproc.c
+@@ -28,6 +28,11 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
++#include <sys/types.h>
++#include <sys/time.h>
+ #include "winclipboard.h"
+ 
+ 

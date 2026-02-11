@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ReferenceTypeCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ReferenceTypeCompletionTest.java
+index e0a60b6..e7c4e8f 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ReferenceTypeCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ReferenceTypeCompletionTest.java
+@@ -10,6 +10,8 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ /**
+  * Completion is expected to be a ReferenceType.
+  */
+@@ -17,6 +19,9 @@ public class ReferenceTypeCompletionTest extends AbstractCompletionTest {
+ public ReferenceTypeCompletionTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(ReferenceTypeCompletionTest.class);
++}
+ /*
+  * Regression test for 1FTZCIG. 
+  */

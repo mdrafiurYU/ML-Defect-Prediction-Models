@@ -1,0 +1,21 @@
+diff --git a/GL/windows/glwrap.c b/GL/windows/glwrap.c
+index 807e519..656edc1 100755
+--- a/GL/windows/glwrap.c
++++ b/GL/windows/glwrap.c
+@@ -5,15 +5,12 @@
+  * Authors: Alexander Gottwald
+  */
+ 
++#include <Xwindows.h>
+ #include <GL/gl.h>
+ #include <GL/glext.h>
+ #include <glxserver.h>
+ #include <glxext.h>
+ 
+-#define WINDOWS_LEAN_AND_CLEAN
+-#include <windows.h>
+-
+-
+ #define RESOLVE_RET(procname, symbol, retval) \
+     static Bool init = TRUE; \
+     static procname proc = NULL; \

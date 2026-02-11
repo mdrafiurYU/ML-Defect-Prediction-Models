@@ -1,0 +1,18 @@
+diff --git a/fb/fbbltone.c b/fb/fbbltone.c
+index 59ba393..48f9986 100644
+--- a/fb/fbbltone.c
++++ b/fb/fbbltone.c
+@@ -232,11 +232,11 @@ fbBltOne (FbStip    *src,
+     /*
+      * Get pointer to stipple mask array for this depth
+      */
+-    fbBits = 0;	/* unused */
++    fbBits = NULL;	/* unused */
+     if (pixelsPerDst <= 8)
+ 	fbBits = fbStippleTable[pixelsPerDst];
+ #ifndef FBNOPIXADDR
+-    fbLane = 0;
++    fbLane = NULL;
+     if (transparent && fgand == 0 && dstBpp >= 8)
+ 	fbLane = fbLaneTable[dstBpp];
+ #endif

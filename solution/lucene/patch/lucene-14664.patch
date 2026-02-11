@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java b/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
+index c96a8d0..f9ac9b0 100644
+--- a/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
+@@ -95,7 +95,7 @@ public class MatchAllDocsQuery extends Query {
+     private float queryWeight;
+     private float queryNorm;
+ 
+-    public MatchAllDocsWeight(Searcher searcher) {
++    public MatchAllDocsWeight(IndexSearcher searcher) {
+       this.similarity = searcher.getSimilarity();
+     }
+ 
+@@ -147,7 +147,7 @@ public class MatchAllDocsQuery extends Query {
+   }
+ 
+   @Override
+-  public Weight createWeight(Searcher searcher) {
++  public Weight createWeight(IndexSearcher searcher) {
+     return new MatchAllDocsWeight(searcher);
+   }

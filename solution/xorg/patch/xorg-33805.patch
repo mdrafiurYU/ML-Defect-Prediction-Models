@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglinput.c b/hw/xgl/xglinput.c
+index cda21ad..9499fcf 100644
+--- a/hw/xgl/xglinput.c
++++ b/hw/xgl/xglinput.c
+@@ -224,7 +224,7 @@ xglKeybdProc (DeviceIntPtr pDevice,
+ 
+     switch (onoff) {
+     case DEVICE_INIT:
+-	if (pDev != LookupKeyboardDevice ())
++	if (pDev != (DevicePtr)inputInfo.keyboard)
+ 	    return !Success;
+ 
+ 	ret = InitKeyboardDeviceStruct (pDev,

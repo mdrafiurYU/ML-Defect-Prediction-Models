@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementRequestorAdapter.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementRequestorAdapter.java
+index 35620f1..2c408b2 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementRequestorAdapter.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementRequestorAdapter.java
+@@ -32,12 +32,12 @@ public class SourceElementRequestorAdapter implements ISourceElementRequestor {
+ 	}
+ 
+ 	/**
+-	 * @see ISourceElementRequestor#acceptImport(int, int, char[], boolean, int)
++	 * @see ISourceElementRequestor#acceptImport(int, int, char[][], boolean, int)
+ 	 */
+ 	public void acceptImport(
+ 		int declarationStart,
+ 		int declarationEnd,
+-		char[] name,
++		char[][] tokens,
+ 		boolean onDemand,
+ 		int modifiers) {
+ 		// default implementation: do nothing

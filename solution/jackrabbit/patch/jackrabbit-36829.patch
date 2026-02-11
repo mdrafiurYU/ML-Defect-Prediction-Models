@@ -1,0 +1,40 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index dc7a1a2..c9fa83d 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -51,6 +51,7 @@ import org.apache.jackrabbit.spi.XASessionInfo;
+ import org.apache.jackrabbit.spi.QValueFactory;
+ import org.apache.jackrabbit.spi.NameFactory;
+ import org.apache.jackrabbit.spi.PathFactory;
++import org.apache.jackrabbit.value.ValueFactoryQImpl;
+ import org.apache.jackrabbit.conversion.NamePathResolver;
+ import org.apache.jackrabbit.conversion.NameException;
+ import org.apache.jackrabbit.conversion.PathResolver;
+@@ -124,6 +125,8 @@ public class SessionImpl implements Session, ManagerProvider {
+     private final NamePathResolver npResolver;
+     private final NodeTypeManagerImpl ntManager;
+ 
++    private final ValueFactory valueFactory;
++
+     private final SessionItemStateManager itemStateManager;
+     private final ItemManager itemManager;
+     private final ItemStateValidator validator;
+@@ -142,6 +145,9 @@ public class SessionImpl implements Session, ManagerProvider {
+         nsMappings = new LocalNamespaceMappings(workspace.getNamespaceRegistryImpl());
+         npResolver = new DefaultNamePathResolver(nsMappings, true);
+ 
++        // build ValueFactory
++        valueFactory = new ValueFactoryQImpl(config.getRepositoryService().getQValueFactory(), npResolver);
++
+         // build nodetype manager
+         ntManager = new NodeTypeManagerImpl(workspace.getNodeTypeRegistry(), this, getJcrValueFactory());
+         validator = new ItemStateValidator(this, getPathFactory());
+@@ -718,7 +724,7 @@ public class SessionImpl implements Session, ManagerProvider {
+      * @see ManagerProvider#getJcrValueFactory()
+      */
+     public ValueFactory getJcrValueFactory() throws RepositoryException {
+-        return config.getValueFactory(getNamePathResolver());
++        return valueFactory;
+     }
+ 
+     //--------------------------------------------------------------------------

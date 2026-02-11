@@ -1,0 +1,23 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 048566e..d9f0be1 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -147,7 +147,7 @@ typedef struct {
+   */
+ void exaDDXDriverInit (ScreenPtr pScreen);
+ 
+-/* exaasync.c */
++/* exa_unaccel.c */
+ void
+ ExaCheckFillSpans  (DrawablePtr pDrawable, GCPtr pGC, int nspans,
+ 		   DDXPointPtr ppt, int *pwidth, int fSorted);
+@@ -246,6 +246,9 @@ ExaCheckRestoreAreas (PixmapPtr	pPixmap,
+ void
+ ExaCheckPaintWindow (WindowPtr pWin, RegionPtr pRegion, int what);
+ 
++CARD32
++exaGetPixmapFirstPixel (PixmapPtr pPixmap); 
++
+ /* exa_accel.c */
+ void
+ exaCopyWindow(WindowPtr pWin, DDXPointRec ptOldOrg, RegionPtr prgnSrc);

@@ -1,0 +1,38 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryHits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryHits.java
+index fc2bbc1..bafd623 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryHits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryHits.java
+@@ -25,16 +25,9 @@ import java.io.IOException;
+ public abstract class AbstractQueryHits implements QueryHits {
+ 
+     /**
+-     * Calls {@link #doClose()} and disposes the {@link PerQueryCache}.
+-     *
+-     * @throws IOException if an error occurs while releasing resources.
++     * This default implemetation does nothing.
+      */
+-    public final void close() throws IOException {
+-        try {
+-            doClose();
+-        } finally {
+-            PerQueryCache.getInstance().dispose();
+-        }
++    public void close() throws IOException {
+     }
+ 
+     /**
+@@ -61,9 +54,11 @@ public abstract class AbstractQueryHits implements QueryHits {
+     }
+ 
+     /**
+-     * Releases resources held by this hits instance.
++     * This default implementation returns <code>-1</code>.
+      *
+-     * @throws IOException if an error occurs while releasing resources.
++     * @return <code>-1</code>.
+      */
+-    protected abstract void doClose() throws IOException;
++    public int getSize() {
++        return -1;
++    }
+ }

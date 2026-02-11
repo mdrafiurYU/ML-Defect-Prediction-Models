@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
+index 3686769..9036186 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
+@@ -141,7 +141,7 @@ public class Parser {
+                 return s;
+             } else {
+                 int level = 1;
+-                StringBuffer buff = new StringBuffer();
++                StringBuilder buff = new StringBuilder();
+                 while (true) {
+                     if (isToken("]")) {
+                         if (--level <= 0) {

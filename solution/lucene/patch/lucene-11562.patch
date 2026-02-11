@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/CheckIndex.java b/lucene/src/java/org/apache/lucene/index/CheckIndex.java
+index b0ecfd7..01274be 100644
+--- a/lucene/src/java/org/apache/lucene/index/CheckIndex.java
++++ b/lucene/src/java/org/apache/lucene/index/CheckIndex.java
+@@ -304,7 +304,7 @@ public class CheckIndex {
+    *  writer. */
+   public Status checkIndex(List<String> onlySegments, CodecProvider codecs) throws IOException {
+     NumberFormat nf = NumberFormat.getInstance();
+-    SegmentInfos sis = new SegmentInfos();
++    SegmentInfos sis = new SegmentInfos(codecs);
+     Status result = new Status();
+     result.dir = dir;
+     try {

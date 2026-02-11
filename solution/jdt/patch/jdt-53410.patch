@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java
+index 7b49518..3b8dbc6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java
+@@ -248,6 +248,9 @@ public class Javadoc extends ASTNode {
+ 					scope.problemReporter().javadocInvalidValueReference(fieldRef.sourceStart, fieldRef.sourceEnd, modifiers);
+ 				}
+ 			}
++			
++			// That's it for field references
++			return;
+ 		}
+ 
+ 		// If not 1.5 level, verification is finished

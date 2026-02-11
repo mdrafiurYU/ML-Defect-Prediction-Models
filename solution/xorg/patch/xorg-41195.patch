@@ -1,0 +1,20 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index 1b6350e..c237f03 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -233,6 +233,15 @@ RRCrtcNotify (RRCrtcPtr	    crtc,
+ 	RRTransformCopy (&crtc->client_current_transform, transform);
+ 	RRCrtcChanged (crtc, TRUE);
+     }
++    if (crtc->changed)
++    {
++	RRTransformCompute (x, y,
++			    mode->mode.width, mode->mode.height,
++			    rotation,
++			    &crtc->client_current_transform,
++			    &crtc->transform, &crtc->f_transform,
++			    &crtc->f_inverse);
++    }
+     return TRUE;
+ }
+ 

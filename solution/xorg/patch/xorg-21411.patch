@@ -1,0 +1,20 @@
+diff --git a/hw/xwin/InitOutput.c b/hw/xwin/InitOutput.c
+index c5242cc..816dec9 100644
+--- a/hw/xwin/InitOutput.c
++++ b/hw/xwin/InitOutput.c
+@@ -944,15 +944,6 @@ void ddxInitGlobals(void)
+ {
+ }
+ 
+-#ifdef DDXTIME /* from ServerOSDefines */
+-CARD32
+-GetTimeInMillis (void)
+-{
+-  return GetTickCount ();
+-}
+-#endif /* DDXTIME */
+-
+-
+ /* See Porting Layer Definition - p. 20 */
+ /*
+  * Do any global initialization, then initialize each screen.

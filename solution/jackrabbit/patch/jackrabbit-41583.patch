@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java
+index 06d7b8a..ff303d0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java
+@@ -722,7 +722,9 @@ public class IndexingConfigurationImpl implements IndexingConfiguration {
+                         try {
+                             return (NodeState) ism.getItemState(cne.getId());
+                         } catch (ItemStateException e) {
+-                            throw new NoSuchElementException();
++                            NoSuchElementException nsee = new NoSuchElementException("No node with id " + cne.getId() + " found in child axis");
++                            nsee.initCause(e);
++                            throw nsee;
+                         }
+                     }
+                 };

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencePropertyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencePropertyTest.java
+index 9e1e814..aa634c0 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencePropertyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencePropertyTest.java
+@@ -47,6 +47,11 @@ public class ReferencePropertyTest extends AbstractPropertyTest {
+         referencedNode = prop.getNode();
+     }
+ 
++    protected void tearDown() throws Exception {
++        referencedNode = null;
++        super.tearDown();
++    }
++
+     /**
+      * Returns {@link javax.jcr.PropertyType#REFERENCE}.
+      * @return {@link javax.jcr.PropertyType#REFERENCE}.

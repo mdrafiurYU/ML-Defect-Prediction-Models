@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/NodeInfoImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/NodeInfoImpl.java
+index ef4772f..0271778 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/NodeInfoImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/NodeInfoImpl.java
+@@ -49,8 +49,7 @@ class NodeInfoImpl extends org.apache.jackrabbit.spi.commons.NodeInfoImpl {
+                         IdFactoryImpl idFactory,
+                         NamePathResolver resolver)
+             throws RepositoryException, NameException {
+-        super(node.getName().length() == 0 ? null : idFactory.createNodeId(node.getParent(), resolver),
+-                node.getName().length() == 0 ? NameConstants.ROOT : resolver.getQName(node.getName()),
++        super(node.getName().length() == 0 ? NameConstants.ROOT : resolver.getQName(node.getName()),
+                 resolver.getQPath(node.getPath()),
+                 idFactory.createNodeId(node, resolver), node.getIndex(),
+                 resolver.getQName(node.getPrimaryNodeType().getName()),

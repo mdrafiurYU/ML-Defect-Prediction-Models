@@ -1,0 +1,15 @@
+diff --git a/hw/xgl/xglcomp.c b/hw/xgl/xglcomp.c
+index 320221c..3783af9 100644
+--- a/hw/xgl/xglcomp.c
++++ b/hw/xgl/xglcomp.c
+@@ -170,9 +170,7 @@ xglComp (CARD8		 op,
+ 	    if (pSrc->repeat)
+ 	    {
+ 		/* tile */
+-		if (!pSrcPriv->acceleratedTile &&
+-		    (pSrc->pDrawable->width > 1 ||
+-		     pSrc->pDrawable->height > 1))
++		if (!pSrcPriv->acceleratedTile)
+ 		{
+ 		    pGeometry =
+ 			xglTiledBoxGeometry ((PixmapPtr) pSrc->pDrawable,

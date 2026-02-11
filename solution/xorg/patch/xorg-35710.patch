@@ -1,0 +1,19 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 407ac58..15b7dc3 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -77,10 +77,11 @@ extern Bool XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies);
+ EventListPtr InputEventList = NULL;
+ int InputEventListLen = 0;
+ 
+-_X_EXPORT EventListPtr
+-GetEventList()
++_X_EXPORT int
++GetEventList(EventListPtr* list)
+ {
+-    return InputEventList;
++    *list = InputEventList;
++    return InputEventListLen;
+ }
+ 
+ /**

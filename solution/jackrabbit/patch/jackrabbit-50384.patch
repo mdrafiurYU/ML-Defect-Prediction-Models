@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/OnWorkspaceInconsistency.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/OnWorkspaceInconsistency.java
+index 5c61b99..fdcb5ac 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/OnWorkspaceInconsistency.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/OnWorkspaceInconsistency.java
+@@ -58,9 +58,9 @@ public abstract class OnWorkspaceInconsistency {
+             log.error("Node {} ({}) has missing child '{}' ({})",
+                     new Object[]{
+                         resolver.getJCRPath(path),
+-                        node.getNodeId().getUUID().toString(),
++                        node.getNodeId(),
+                         resolver.getJCRName(child.getName()),
+-                        child.getId().getUUID().toString()
++                        child.getId()
+                     });
+             throw exception;
+         }

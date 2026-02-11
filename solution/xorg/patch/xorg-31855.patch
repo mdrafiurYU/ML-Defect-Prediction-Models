@@ -1,0 +1,18 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index c7e39fa..0eeb1f0 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -702,6 +702,13 @@ typedef struct _ExaDriver {
+      */
+     int maxPitchBytes;
+ 
++    /* Hooks to allow driver to its own pixmap memory management */
++    void *(*CreatePixmap)(ScreenPtr pScreen, int size, int align);
++    void (*DestroyPixmap)(ScreenPtr pScreen, void *driverPriv);
++    Bool (*ModifyPixmapHeader)(PixmapPtr pPixmap, int width, int height,
++                              int depth, int bitsPerPixel, int devKind,
++                              pointer pPixData);
++
+     /** @} */
+ } ExaDriverRec, *ExaDriverPtr;
+ 

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/MultiReader.java b/lucene/src/java/org/apache/lucene/index/MultiReader.java
+index 0d3a082..c2682e4 100644
+--- a/lucene/src/java/org/apache/lucene/index/MultiReader.java
++++ b/lucene/src/java/org/apache/lucene/index/MultiReader.java
+@@ -383,6 +383,7 @@ public class MultiReader extends IndexReader implements Cloneable {
+     return subReaders;
+   }
+   
++  @Override
+   public ReaderContext getTopReaderContext() {
+     return topLevelContext;
+   }

@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/lnx-ps2.c b/hw/dmx/input/lnx-ps2.c
+index c83b1ec..0c5b870 100644
+--- a/hw/dmx/input/lnx-ps2.c
++++ b/hw/dmx/input/lnx-ps2.c
+@@ -66,6 +66,10 @@
+  * The code is derived from code by Keith Packard (see the source code
+  * for complete references). */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "inputstr.h"
+ #include <X11/Xos.h>
+ #include <errno.h>

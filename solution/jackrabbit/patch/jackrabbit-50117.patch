@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/TestAll.java
+index 6cb6a32..7e4bd64 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/TestAll.java
+@@ -38,6 +38,7 @@ public class TestAll extends TestCase {
+         TestSuite suite = new TestSuite();
+ 
+         suite.addTestSuite(FileJournalTest.class);
++        suite.addTestSuite(LockableFileRevisionTest.class);
+ 
+         return suite;
+     }

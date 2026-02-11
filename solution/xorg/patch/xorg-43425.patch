@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winmultiwindowwm.c b/hw/xwin/winmultiwindowwm.c
+index ca9460a..ea9dfca 100644
+--- a/hw/xwin/winmultiwindowwm.c
++++ b/hw/xwin/winmultiwindowwm.c
+@@ -1428,7 +1428,7 @@ CheckAnotherWindowManager (Display *pDisplay, DWORD dwScreen)
+  */
+ 
+ void
+-winDeinitMultiWindowWM ()
++winDeinitMultiWindowWM (void)
+ {
+   ErrorF ("winDeinitMultiWindowWM - Noting shutdown in progress\n");
+   g_shutdown = TRUE;

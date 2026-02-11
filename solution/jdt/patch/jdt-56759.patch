@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
+index 9998599..5e087d1 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
+@@ -586,7 +586,7 @@ private synchronized HashtableOfObject readCategoryTable(char[] categoryName, bo
+ 		stream.close();
+ 	}
+ 
+-	if (count > 0) {
++	if (matchingWords != null && count > 0) {
+ 		stream = new DataInputStream(new BufferedInputStream(new FileInputStream(getIndexFile()), 2048));
+ 		try {
+ 			stream.skip(firstOffset);

@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/ramdac/xf86Cursor.c b/hw/xfree86/ramdac/xf86Cursor.c
+index be4fb90..592eaad 100644
+--- a/hw/xfree86/ramdac/xf86Cursor.c
++++ b/hw/xfree86/ramdac/xf86Cursor.c
+@@ -18,7 +18,8 @@
+ #include "inputstr.h"
+ extern InputInfo inputInfo;
+ 
+-DevPrivateKey xf86CursorScreenKey = &xf86CursorScreenKey;
++static int xf86CursorScreenKeyIndex;
++DevPrivateKey xf86CursorScreenKey = &xf86CursorScreenKeyIndex;
+ 
+ /* sprite functions */
+ 

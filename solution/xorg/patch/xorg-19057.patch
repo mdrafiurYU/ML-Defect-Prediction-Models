@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_mouse.c b/hw/xfree86/os-support/linux/lnx_mouse.c
+index a03e2f7..d73c698 100644
+--- a/hw/xfree86/os-support/linux/lnx_mouse.c
++++ b/hw/xfree86/os-support/linux/lnx_mouse.c
+@@ -4,6 +4,10 @@
+  * Copyright 1999 by The XFree86 Project, Inc.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "xf86.h"
+ #include "xf86Xinput.h"

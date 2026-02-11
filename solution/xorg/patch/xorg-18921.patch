@@ -1,0 +1,22 @@
+diff --git a/Xprint/Util.c b/Xprint/Util.c
+index 069595b..12a2562 100644
+--- a/Xprint/Util.c
++++ b/Xprint/Util.c
+@@ -303,7 +303,7 @@ XpFinishDocData(
+     return Success;
+ }
+ 
+-#ifndef HAS_MKSTEMP
++#ifndef HAVE_MKSTEMP
+ static
+ char *XpDirName(char *fname)
+ {
+@@ -330,7 +330,7 @@ XpOpenTmpFile(
+     char **fname,
+     FILE **stream)
+ {
+-#ifndef HAS_MKSTEMP
++#ifndef HAVE_MKSTEMP
+     char *fn = NULL;
+ 
+     /* note that there is a small race condition here... */

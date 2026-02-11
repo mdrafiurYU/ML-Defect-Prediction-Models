@@ -1,0 +1,14 @@
+diff --git a/mi/midispcur.c b/mi/midispcur.c
+index 7b203f7..918e401 100644
+--- a/mi/midispcur.c
++++ b/mi/midispcur.c
+@@ -182,9 +182,6 @@ miDCCloseScreen (index, pScreen)
+     tossPix (pScreenPriv->pSave);
+     tossPix (pScreenPriv->pTemp);
+ #ifdef ARGB_CURSOR
+-#if 0				/* This has been free()d before */
+-    tossPict (pScreenPriv->pRootPicture);
+-#endif 
+     tossPict (pScreenPriv->pTempPicture);
+ #endif
+     xfree ((pointer) pScreenPriv);

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index c7cf2b9..dc7a1a2 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -718,7 +718,7 @@ public class SessionImpl implements Session, ManagerProvider {
+      * @see ManagerProvider#getJcrValueFactory()
+      */
+     public ValueFactory getJcrValueFactory() throws RepositoryException {
+-        return config.getValueFactory();
++        return config.getValueFactory(getNamePathResolver());
+     }
+ 
+     //--------------------------------------------------------------------------

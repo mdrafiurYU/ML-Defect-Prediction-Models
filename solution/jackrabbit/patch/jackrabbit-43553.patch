@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/SystemViewExporter.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/SystemViewExporter.java
+index c6fa2a5..4eb293f 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/SystemViewExporter.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/SystemViewExporter.java
+@@ -64,6 +64,7 @@ public class SystemViewExporter extends Exporter {
+             Session session, ContentHandler handler,
+             boolean recurse, boolean binary) {
+         super(session, handler, recurse, binary);
++        addNamespace("sv", SV);
+     }
+ 
+     /**

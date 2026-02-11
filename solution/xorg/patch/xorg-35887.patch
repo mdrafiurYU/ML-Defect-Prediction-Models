@@ -1,0 +1,63 @@
+diff --git a/include/xkbsrv.h b/include/xkbsrv.h
+index e825f33..df9aefc 100644
+--- a/include/xkbsrv.h
++++ b/include/xkbsrv.h
+@@ -124,8 +124,6 @@ typedef struct	_XkbEventCause {
+ #define	_BEEP_LED_CHANGE	14
+ #define	_BEEP_BOUNCE_REJECT	15
+ 
+-struct _XkbSrvInfo; /* definition see below */
+-
+ typedef struct _XkbFilter {
+ 	CARD16			  keycode;
+ 	CARD8			  what;
+@@ -317,13 +315,8 @@ extern	int	DeviceKeyPress,DeviceKeyRelease,DeviceMotionNotify;
+ extern	int	DeviceButtonPress,DeviceButtonRelease;
+ extern	int	DeviceEnterNotify,DeviceLeaveNotify;
+ 
+-#ifdef XINPUT
+ #define	_XkbIsPressEvent(t)	(((t)==KeyPress)||((t)==DeviceKeyPress))
+ #define	_XkbIsReleaseEvent(t)	(((t)==KeyRelease)||((t)==DeviceKeyRelease))
+-#else
+-#define	_XkbIsPressEvent(t)	((t)==KeyPress)
+-#define	_XkbIsReleaseEvent(t)	((t)==KeyRelease)
+-#endif
+ 
+ #define	_XkbCoreKeycodeInRange(c,k)	(((k)>=(c)->curKeySyms.minKeyCode)&&\
+ 					 ((k)<=(c)->curKeySyms.maxKeyCode))
+@@ -343,14 +336,6 @@ extern	int	DeviceEnterNotify,DeviceLeaveNotify;
+ #define	False	0
+ #endif
+ 
+-#ifndef PATH_MAX
+-#ifdef MAXPATHLEN
+-#define	PATH_MAX MAXPATHLEN
+-#else
+-#define	PATH_MAX 1024
+-#endif
+-#endif
+-
+ _XFUNCPROTOBEGIN
+ 
+ extern void XkbUseMsg(
+@@ -987,10 +972,8 @@ extern void XkbSendNewKeyboardNotify(
+ 	xkbNewKeyboardNotify *	/* pNKN */
+ );
+ 
+-#ifdef XKBSRV_NEED_FILE_FUNCS
+-
++#include "xkbfile.h"
+ #include <X11/extensions/XKMformat.h>
+-#include <X11/extensions/XKBfile.h>
+ #include <X11/extensions/XKBrules.h>
+ 
+ #define	_XkbListKeymaps		0
+@@ -1053,8 +1036,6 @@ extern	int _XkbStrCaseCmp(
+ 	char *			/* str2 */
+ );
+ 
+-#endif /* XKBSRV_NEED_FILE_FUNCS */
+-
+ _XFUNCPROTOEND
+ 
+ #define	XkbAtomGetString(d,s)	NameForAtom(s)

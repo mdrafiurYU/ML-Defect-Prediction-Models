@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationAtomicTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationAtomicTest.java
+index 77259f3..2272e71 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationAtomicTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationAtomicTest.java
+@@ -185,7 +185,7 @@ public class AnnotationAtomicTest extends AnnotationTestBase
+         }
+         catch (Exception e)
+         {
+-            e.printStackTrace();
++            log.error("testAtomicFields failed", e);
+             fail("Exception occurs during the unit test : " + e);
+         }

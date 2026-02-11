@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistParser.java
+index f118b9f..1d9c747 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistParser.java
+@@ -75,6 +75,8 @@ public abstract class AssistParser extends Parser {
+ public AssistParser(ProblemReporter problemReporter) {
+ 	super(problemReporter, true);
+ 	this.javadocParser.checkDocComment = false;
++	
++	this.setStatementsRecovery(false);
+ }
+ public abstract char[] assistIdentifier();
+ public int bodyEnd(AbstractMethodDeclaration method){

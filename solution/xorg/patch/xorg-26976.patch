@@ -1,0 +1,18 @@
+diff --git a/composite/compwindow.c b/composite/compwindow.c
+index 2c86cdd..fed642e 100644
+--- a/composite/compwindow.c
++++ b/composite/compwindow.c
+@@ -93,10 +93,10 @@ typedef struct _compPixmapVisit {
+ static Bool
+ compRepaintBorder (ClientPtr pClient, pointer closure)
+ {
+-    WindowPtr	pWindow = LookupWindow ((XID) closure, pClient);
++    WindowPtr pWindow;
++    int rc = dixLookupWindow(&pWindow, (XID)closure, pClient,DixUnknownAccess);
+ 
+-    if (pWindow)
+-    {
++    if (rc == Success) {
+ 	RegionRec exposed;
+ 
+ 	REGION_NULL(pScreen, &exposed);

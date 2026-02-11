@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index d1603c0..6d5eaad 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -172,12 +172,11 @@ xf86CreateRootWindow(WindowPtr pWin)
+ 	  Atom prop;
+ 
+ 	  prop = MakeAtom(pProp->name, strlen(pProp->name), TRUE);
+-	  err = ChangeWindowProperty(pWin,
++	  err = dixChangeWindowProperty(serverClient, pWin,
+ 				     prop, pProp->type,
+ 				     pProp->format, PropModeReplace,
+ 				     pProp->size, pProp->data,
+-				     FALSE
+-				     );
++					FALSE);
+ 	}
+       
+       /* Look at err */

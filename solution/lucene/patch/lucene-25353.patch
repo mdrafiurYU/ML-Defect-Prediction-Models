@@ -1,0 +1,12 @@
+diff --git a/solr/src/test-framework/org/apache/solr/SolrTestCaseJ4.java b/solr/src/test-framework/org/apache/solr/SolrTestCaseJ4.java
+index 9a5ce81..f97a09a 100755
+--- a/solr/src/test-framework/org/apache/solr/SolrTestCaseJ4.java
++++ b/solr/src/test-framework/org/apache/solr/SolrTestCaseJ4.java
+@@ -430,6 +430,7 @@ public abstract class SolrTestCaseJ4 extends LuceneTestCase {
+       }
+ 
+       for (String test : tests) {
++        if (test == null || test.length()==0) continue;
+         String testJSON = test.replace('\'', '"');
+ 
+         try {

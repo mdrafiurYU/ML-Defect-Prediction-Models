@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java b/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java
+index 40bfbd7..d36e1d1 100644
+--- a/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java
++++ b/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java
+@@ -33,7 +33,7 @@ public class TestPriorityQueue extends LuceneTestCase {
+     }
+ 
+     public void testPQ() throws Exception {
+-        testPQ(10000 * RANDOM_MULTIPLIER, random);
++        testPQ(atLeast(10000), random);
+     }
+ 
+     public static void testPQ(int count, Random gen) {

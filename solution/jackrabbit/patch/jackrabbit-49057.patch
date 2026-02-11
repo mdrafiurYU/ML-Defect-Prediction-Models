@@ -1,0 +1,43 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index c9fed36..378b1aa 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -24,6 +24,7 @@ import org.apache.jackrabbit.jcr2spi.lock.LockStateManager;
+ import org.apache.jackrabbit.jcr2spi.nodetype.EffectiveNodeTypeProvider;
+ import org.apache.jackrabbit.jcr2spi.nodetype.ItemDefinitionProvider;
+ import org.apache.jackrabbit.jcr2spi.nodetype.NodeTypeRegistry;
++import org.apache.jackrabbit.jcr2spi.nodetype.NodeTypeDefinitionProvider;
+ import org.apache.jackrabbit.jcr2spi.observation.ObservationManagerImpl;
+ import org.apache.jackrabbit.jcr2spi.operation.Clone;
+ import org.apache.jackrabbit.jcr2spi.operation.Copy;
+@@ -467,14 +468,30 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+         return wspManager.getItemDefinitionProvider();
+     }
+ 
++    /**
++     * @see ManagerProvider#getNodeTypeDefinitionProvider()
++     */
++    public NodeTypeDefinitionProvider getNodeTypeDefinitionProvider() {
++        return session.getNodeTypeManager();
++    }
++
++    /**
++     * @see ManagerProvider#getEffectiveNodeTypeProvider()
++     */
+     public EffectiveNodeTypeProvider getEffectiveNodeTypeProvider() {
+         return wspManager.getEffectiveNodeTypeProvider();
+     }
+ 
++    /**
++     * @see ManagerProvider#getJcrValueFactory()
++     */
+     public ValueFactory getJcrValueFactory() throws RepositoryException {
+         return session.getJcrValueFactory();
+     }
+ 
++    /**
++     * @see ManagerProvider#getQValueFactory()
++     */
+     public QValueFactory getQValueFactory() throws RepositoryException {
+         return session.getQValueFactory();
+     }

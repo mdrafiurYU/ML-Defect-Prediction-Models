@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index be3368d..50df566 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -434,8 +434,6 @@ xf86PostMotionEvent(DeviceIntPtr	device,
+ {
+     va_list var;
+     int i = 0, nevents = 0;
+-    Bool drag = xf86SendDragEvents(device);
+-    LocalDevicePtr local = (LocalDevicePtr) device->public.devicePrivate;
+     int *valuators = NULL;
+     int flags = 0;
+ 

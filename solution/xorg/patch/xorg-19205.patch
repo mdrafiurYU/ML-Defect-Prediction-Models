@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dummylib/verrorf.c b/hw/xfree86/dummylib/verrorf.c
+index 7d6e8f8..ae692bd 100644
+--- a/hw/xfree86/dummylib/verrorf.c
++++ b/hw/xfree86/dummylib/verrorf.c
+@@ -13,7 +13,7 @@
+  * Utility functions required by libxf86_os. 
+  */
+ 
+-void
++_X_EXPORT void
+ VErrorF(const char *f, va_list args)
+ {
+     vfprintf(stderr, f, args);

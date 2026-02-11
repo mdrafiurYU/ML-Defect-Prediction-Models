@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/utils/xorgcfg/config.h b/hw/xfree86/utils/xorgcfg/config.h
+index 6c5b437..6cbdc5e 100644
+--- a/hw/xfree86/utils/xorgcfg/config.h
++++ b/hw/xfree86/utils/xorgcfg/config.h
+@@ -29,6 +29,10 @@
+  * $XFree86: xc/programs/Xserver/hw/xfree86/xf86cfg/config.h,v 1.21 2004/02/13 23:58:52 dawes Exp $
+  */
+ 
++#ifdef HAVE_CONFIG_H
++# include "xorg-config.h"
++#endif
++
+ #include <X11/IntrinsicP.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Xmu/SysUtil.h>

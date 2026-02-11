@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
+index e4b7ec9..053af47 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
+@@ -356,7 +356,7 @@ public class PrefixCodedTermsReader extends FieldsProducer {
+         if (useCache) {
+           cachedState = termsCache.get(fieldTerm);
+           if (cachedState != null) {
+-            state.copy(cachedState);
++            state.copyFrom(cachedState);
+             seekPending = true;
+             positioned = false;
+             bytesReader.term.copy(term);

@@ -1,0 +1,25 @@
+diff --git a/Xi/extgrbdev.c b/Xi/extgrbdev.c
+index 1a2584f..c982fca 100644
+--- a/Xi/extgrbdev.c
++++ b/Xi/extgrbdev.c
+@@ -184,16 +184,11 @@ ProcXExtendedGrabDevice(ClientPtr client)
+             gemasks->eventMask[xgeMask->extension & 0x7F]= xgeMask->evmask;
+     }
+ 
+-    ExtGrabDevice(client, dev, stuff->device_mode,
+-                  grab_window, confineTo, time, stuff->owner_events,
+-                  cursor, tmp[stuff->deviceid].mask,
++    rep.status = ExtGrabDevice(client, dev, stuff->device_mode,
++                               grab_window, confineTo, time,
++                               stuff->owner_events, cursor,
++                               tmp[stuff->deviceid].mask,
+                   gemasks);
+-
+-    if (rc != Success) {
+-        errval = 0;
+-        goto cleanup;
+-    }
+-
+ cleanup:
+ 
+     if (gemasks)

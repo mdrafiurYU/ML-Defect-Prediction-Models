@@ -1,0 +1,78 @@
+diff --git a/include/mpxextinit.h b/include/mpxextinit.h
+deleted file mode 100644
+index 02be6c1..0000000
+--- a/include/mpxextinit.h
++++ /dev/null
+@@ -1,72 +0,0 @@
+-/* Copyright 2006 by Peter Hutterer <peter@cs.unisa.edu.au> */
+-
+-/********************************************************************
+- * Interface of mpx/extinit.c
+- */
+-
+-#ifndef MPXEXTINIT_H
+-#define MPXEXTINIT_H
+-
+-#include "extnsionst.h"
+-
+-void
+-MPXExtensionInit(
+-	void
+-	);
+-
+-int
+-ProcMPXDispatch (
+-	ClientPtr              /* client */
+-	);
+-
+-int
+-SProcMPXDispatch(
+-	ClientPtr              /* client */
+-	);
+-
+-void
+-SReplyMPXDispatch (
+-	ClientPtr              /* client */,
+-	int                    /* len */,
+-	xMPXGetExtensionVersionReply *     /* rep */
+-	);
+-
+-void
+-SEventMPXDispatch (
+-	xEvent *               /* from */,
+-	xEvent *               /* to */
+-	);
+-
+-void
+-MPXFixExtensionEvents (
+-	ExtensionEntry 	*      /* extEntry */
+-	);
+-
+-void
+-MPXResetProc(
+-	ExtensionEntry *       /* unused */
+-	);
+-
+-Mask
+-MPXGetNextExtEventMask (
+-	void
+-);
+-
+-void
+-MPXSetMaskForExtEvent(
+-	Mask                   /* mask */,
+-	int                    /* event */
+-	);
+-
+-void
+-MPXAllowPropagateSuppress (
+-	Mask                   /* mask */
+-	);
+-
+-void
+-MPXRestoreExtensionEvents (
+-	void
+-	);
+-#endif
+-
+-

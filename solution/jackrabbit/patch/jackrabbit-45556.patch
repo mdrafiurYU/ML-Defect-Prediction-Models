@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
+index d288b63..1dd380a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
+@@ -522,6 +522,7 @@ public class RepositoryConfigurationParser extends ConfigurationParser {
+             Element provFact = getElement(element, AC_PROVIDER_ELEMENT, false);
+             if (provFact !=null ) {
+                 factConf = parseBeanConfig(element, AC_PROVIDER_ELEMENT);
++                factConf.setValidate(false); // JCR-1920
+             }
+         }
+         return new WorkspaceSecurityConfig(factConf);

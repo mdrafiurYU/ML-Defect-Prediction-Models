@@ -1,0 +1,14 @@
+diff --git a/dix/dixfonts.c b/dix/dixfonts.c
+index a1ecbfb..416adb3 100644
+--- a/dix/dixfonts.c
++++ b/dix/dixfonts.c
+@@ -98,8 +98,7 @@ static FontPathElementPtr *slept_fpes = (FontPathElementPtr *) 0;
+ static FontPatternCachePtr patternCache;
+ 
+ static int
+-FontToXError(err)
+-    int         err;
++FontToXError(int err)
+ {
+     switch (err) {
+     case Successful:

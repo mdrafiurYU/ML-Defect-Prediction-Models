@@ -1,0 +1,22 @@
+diff --git a/hw/dmx/dmxfont.c b/hw/dmx/dmxfont.c
+index 500b568..e5f8635 100644
+--- a/hw/dmx/dmxfont.c
++++ b/hw/dmx/dmxfont.c
+@@ -66,7 +66,7 @@ static char **dmxGetFontPath(int *npaths)
+     char           *newfp;
+     int             len, l, i;
+ 
+-    paths = GetFontPath(npaths, &len);
++    GetFontPath(serverClient, npaths, &len, &paths);
+ 
+     newfp = xalloc(*npaths + len);
+     c = (unsigned char *)newfp;
+@@ -194,7 +194,7 @@ static int dmxProcSetFontPath(ClientPtr client)
+     if (total >= 4)
+         return BadLength;
+ 
+-    tmpFontPath = GetFontPath(&nOldPaths, &lenOldPaths);
++    GetFontPath(serverClient, &nOldPaths, &lenOldPaths, &tmpFontPath);
+     oldFontPath = xalloc(nOldPaths + lenOldPaths);
+     memmove(oldFontPath, tmpFontPath, nOldPaths + lenOldPaths);
+ 

@@ -1,0 +1,13 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index 3733d25..d0973ff 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -113,7 +113,7 @@ static void miSpriteSetCursor(ScreenPtr pScreen, CursorPtr pCursor,
+ 			      int x, int y);
+ static void miSpriteMoveCursor(ScreenPtr pScreen, int x, int y);
+ 
+-miPointerSpriteFuncRec miSpritePointerFuncs = {
++_X_EXPORT miPointerSpriteFuncRec miSpritePointerFuncs = {
+     miSpriteRealizeCursor,
+     miSpriteUnrealizeCursor,
+     miSpriteSetCursor,

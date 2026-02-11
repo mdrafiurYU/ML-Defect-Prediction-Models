@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java
+index 2d71a31..7cdcc0a 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriter.java
+@@ -112,6 +112,10 @@ final class TermVectorsTermsWriter extends TermsHashConsumer {
+ 
+     assert docWriter.writer.testPoint("TermVectorsTermsWriter.finishDocument start");
+ 
++    if (numVectorFields == 0) {
++      return;
++    }
++
+     initTermVectorsWriter();
+ 
+     fill(docState.docID);

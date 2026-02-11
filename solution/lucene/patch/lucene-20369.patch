@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestCartesian.java b/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestCartesian.java
+index 3f417f4..06bb23f 100644
+--- a/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestCartesian.java
++++ b/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestCartesian.java
+@@ -71,7 +71,7 @@ public class TestCartesian extends LuceneTestCase {
+     super.setUp();
+     directory = newDirectory();
+ 
+-    IndexWriter writer = new IndexWriter(directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()));
++    IndexWriter writer = new IndexWriter(directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)));
+     
+     setUpPlotter( 2, 15);

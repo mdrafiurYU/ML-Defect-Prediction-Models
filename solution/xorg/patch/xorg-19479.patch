@@ -1,0 +1,24 @@
+diff --git a/Xi/ungrdevk.c b/Xi/ungrdevk.c
+index 38cfa1b..87551ed 100644
+--- a/Xi/ungrdevk.c
++++ b/Xi/ungrdevk.c
+@@ -83,8 +83,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXUngrabDeviceKey(client)
+-    register ClientPtr client;
++SProcXUngrabDeviceKey(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -103,8 +102,7 @@ SProcXUngrabDeviceKey(client)
+  */
+ 
+ int
+-ProcXUngrabDeviceKey(client)
+-    ClientPtr client;
++ProcXUngrabDeviceKey(ClientPtr client)
+     {
+     DeviceIntPtr	dev;
+     DeviceIntPtr	mdev;

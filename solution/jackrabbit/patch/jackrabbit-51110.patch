@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java
+index 123ee8c..bbd831a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java
+@@ -43,7 +43,7 @@ public class GetSupportedQueryLanguagesTest extends AbstractQueryTest {
+     protected void setUp() throws Exception {
+         isReadOnly = true;
+         super.setUp();
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+         testRootNode = session.getRootNode().getNode(testPath);
+     }

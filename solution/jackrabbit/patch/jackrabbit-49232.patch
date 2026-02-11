@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+index d4424bb..5ad9c53 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+@@ -300,6 +300,10 @@ public final class QValueFactoryImpl extends AbstractQValueFactory {
+                 public long getSize() throws RepositoryException {
+                     return getLength();
+                 }
++
++                public void dispose() {
++                }
++
+             };
+         }
+ 
+@@ -696,6 +700,10 @@ public final class QValueFactoryImpl extends AbstractQValueFactory {
+             }
+         }
+ 
++        public void dispose() {
++            discard();
++        }
++
+         //-----------------------------------------------< java.lang.Object >---
+         /**
+          * Returns a string representation of this <code>BinaryQValue</code>

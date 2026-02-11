@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/linux/tslib.c b/hw/kdrive/linux/tslib.c
+index 25474a8..eafba56 100644
+--- a/hw/kdrive/linux/tslib.c
++++ b/hw/kdrive/linux/tslib.c
+@@ -171,6 +171,8 @@ TslibInit (void)
+     if (!TsInputType)
+ 	TsInputType = KdAllocInputType ();
+ 
++    KdMouseInfoAdd(); /* allocate empty kdMouseInfo entry for ts  */
++
+     for (mi = kdMouseInfo; mi; mi = next)
+     {
+ 	next = mi->next;

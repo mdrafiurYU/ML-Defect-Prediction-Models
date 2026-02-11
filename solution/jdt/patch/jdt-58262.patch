@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/FlowInfo.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/FlowInfo.java
+index f4156fa..5f96dda 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/FlowInfo.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/FlowInfo.java
+@@ -196,21 +196,11 @@ abstract public void markAsComparedEqualToNull(LocalVariableBinding local);
+ 	abstract public void markAsDefinitelyNonNull(LocalVariableBinding local);
+ 
+ 	/**
+-	 * Record a field got definitely assigned to a non-null value.
+-	 */
+-	abstract public void markAsDefinitelyNonNull(FieldBinding field);
+-
+-	/**
+ 	 * Record a local got definitely assigned to null.
+ 	 */
+ 	abstract public void markAsDefinitelyNull(LocalVariableBinding local);
+ 
+ 	/**
+-	 * Record a field got definitely assigned to null.
+-	 */
+-	abstract public void markAsDefinitelyNull(FieldBinding field);
+-
+-	/**
+ 	 * Record a local got definitely assigned.
+ 	 */
+ 	abstract public void markAsDefinitelyAssigned(LocalVariableBinding local);

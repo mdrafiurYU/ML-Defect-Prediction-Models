@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winsetsp.c b/hw/xwin/winsetsp.c
+index e41d794..65b90ea 100644
+--- a/hw/xwin/winsetsp.c
++++ b/hw/xwin/winsetsp.c
+@@ -30,6 +30,9 @@
+  */
+ /* $XFree86: xc/programs/Xserver/hw/xwin/winsetsp.c,v 1.7 2001/11/01 12:19:42 alanh Exp $ */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ 

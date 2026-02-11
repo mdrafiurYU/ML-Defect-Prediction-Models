@@ -1,0 +1,13 @@
+diff --git a/fb/fbbits.h b/fb/fbbits.h
+index 7dfff58..e5c006d 100644
+--- a/fb/fbbits.h
++++ b/fb/fbbits.h
+@@ -829,8 +829,6 @@ POLYSEGMENT (DrawablePtr    pDrawable,
+     ul = coordToInt(pBox->x1 - xoff,     pBox->y1 - yoff);
+     lr = coordToInt(pBox->x2 - xoff - 1, pBox->y2 - yoff - 1);
+ 
+-    bits += bitsStride * yoff + xoff * MUL;
+-
+     capNotLast = pGC->capStyle == CapNotLast;
+     
+     while (nseg--)

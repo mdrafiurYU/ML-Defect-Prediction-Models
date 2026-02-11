@@ -1,0 +1,26 @@
+diff --git a/hw/kdrive/mga/mga.h b/hw/kdrive/mga/mga.h
+index 3b34620..979702e 100644
+--- a/hw/kdrive/mga/mga.h
++++ b/hw/kdrive/mga/mga.h
+@@ -100,9 +100,10 @@ typedef struct _mgaCardInfo {
+ typedef struct _mgaScreenInfo {
+     VesaScreenPrivRec vesa;
+ 
++    KaaScreenInfoRec kaa;
++
+     int pitch;
+     int pw;
+-    
+ } MgaScreenInfo;
+ 
+ #define getMgaScreenInfo(kd) ((MgaScreenInfo *) ((kd)->screen->driver))
+@@ -134,9 +135,6 @@ void
+ mgaDrawEnable (ScreenPtr pScreen);
+ 
+ void
+-mgaDrawSync (ScreenPtr pScreen);
+-
+-void
+ mgaDrawDisable (ScreenPtr pScreen);
+ 
+ void

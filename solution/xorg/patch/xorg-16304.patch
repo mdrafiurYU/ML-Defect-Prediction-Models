@@ -1,0 +1,16 @@
+diff --git a/dix/colormap.c b/dix/colormap.c
+index c21623c..47c6c51 100644
+--- a/dix/colormap.c
++++ b/dix/colormap.c
+@@ -398,9 +398,8 @@ CreateColormap (Colormap mid, ScreenPtr pScreen, VisualPtr pVisual,
+ 	pmap->devPrivates = NULL;
+     else
+     {
+-	pmap->devPrivates = (DevUnion *) xalloc (
+-	    colormapPrivateCount * sizeof(DevUnion));
+-
++	pmap->devPrivates = (DevUnion *) xcalloc (
++	    sizeof(DevUnion), colormapPrivateCount);
+ 	if (!pmap->devPrivates)
+ 	{
+ 	    FreeResource (mid, RT_NONE);

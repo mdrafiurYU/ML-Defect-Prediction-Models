@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/dummylib/xf86addrestolist.c b/hw/xfree86/dummylib/xf86addrestolist.c
+index 32789ec..d8faaac 100644
+--- a/hw/xfree86/dummylib/xf86addrestolist.c
++++ b/hw/xfree86/dummylib/xf86addrestolist.c
+@@ -5,19 +5,19 @@
+ 
+ #include "xf86.h"
+ 
+-_X_EXPORT resPtr
++resPtr
+ xf86AddResToList(resPtr rlist, resRange *Range, int entityIndex)
+ {
+     return rlist;
+ }
+ 
+-_X_EXPORT void
++void
+ xf86FreeResList(resPtr rlist)
+ {
+     return;
+ }
+ 
+-_X_EXPORT resPtr
++resPtr
+ xf86DupResList(const resPtr rlist)
+ {
+     return rlist;

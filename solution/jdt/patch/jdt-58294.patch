@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ExplicitConstructorInvocationCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ExplicitConstructorInvocationCompletionTest.java
+index ab77486..9b9d377 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ExplicitConstructorInvocationCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/ExplicitConstructorInvocationCompletionTest.java
+@@ -21,7 +21,7 @@ public ExplicitConstructorInvocationCompletionTest(String testName) {
+ 	super(testName);
+ }
+ public static Test suite() {
+-	return buildTestSuite(ExplicitConstructorInvocationCompletionTest.class);
++	return buildAllCompliancesRegressionTestSetupSuite(ExplicitConstructorInvocationCompletionTest.class);
+ }
+ /*
+  * Completion on a qualified 'super' constructor invocation.

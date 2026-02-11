@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_mouse.c b/hw/xfree86/os-support/solaris/sun_mouse.c
+index 978d942..4c8f63e 100644
+--- a/hw/xfree86/os-support/solaris/sun_mouse.c
++++ b/hw/xfree86/os-support/solaris/sun_mouse.c
+@@ -503,6 +503,9 @@ vuidMouseProc(DeviceIntPtr pPointer, int what)
+ 			pInfo->name, strerror(errno));
+ 	    }
+ 	    vuidMouseWheelInit(pInfo);
++#ifdef HAVE_ABSOLUTE_MOUSE_SCALING	    
++	    vuidMouseSendScreenSize(screenInfo.screens[0], pVuidMse);
++#endif	    
+ 	    xf86FlushInput(pInfo->fd);
+ 	}
+ 	break;

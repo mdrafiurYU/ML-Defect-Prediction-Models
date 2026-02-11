@@ -1,0 +1,61 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java
+index aa581c8..75565fb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java
+@@ -20,6 +20,10 @@ import org.apache.jackrabbit.core.config.WorkspaceConfig;
+ import org.apache.jackrabbit.core.security.AMContext;
+ import org.apache.jackrabbit.core.security.AccessManager;
+ import org.apache.jackrabbit.core.security.SystemPrincipal;
++import org.apache.jackrabbit.core.security.authorization.AccessControlProvider;
++import org.apache.jackrabbit.core.security.authorization.WorkspaceAccessManager;
++import org.apache.jackrabbit.spi.Path;
++import org.apache.jackrabbit.spi.Name;
+ 
+ import javax.jcr.AccessDeniedException;
+ import javax.jcr.ItemNotFoundException;
+@@ -84,7 +88,6 @@ class SystemSession extends SessionImpl {
+          * correctly
+          */
+         return new SystemAccessManager();
+-        //return super.createAccessManager(subject, hierMgr);
+     }
+ 
+     //--------------------------------------------------------< inner classes >
+@@ -105,6 +108,10 @@ class SystemSession extends SessionImpl {
+             // nop
+         }
+ 
++        public void init(AMContext context, AccessControlProvider acProvider, WorkspaceAccessManager wspAccessMgr) throws AccessDeniedException, Exception {
++            // nop
++        }
++
+         /**
+          * {@inheritDoc}
+          */
+@@ -139,6 +146,26 @@ class SystemSession extends SessionImpl {
+         }
+ 
+         /**
++         * Always returns true.
++         *
++         * @see AccessManager#isGranted(Path, int)
++         */
++        public boolean isGranted(Path absPath, int permissions) throws RepositoryException {
++            // allow everything
++            return true;
++        }
++
++        /**
++         * Always returns true.
++         *
++         * @see AccessManager#isGranted(Path, Name, int) 
++         */
++        public boolean isGranted(Path parentPath, Name childName, int permissions) throws ItemNotFoundException, RepositoryException {
++            // allow everything
++            return true;
++        }
++
++        /**
+          * {@inheritDoc}
+          *
+          * @return always <code>true</code>

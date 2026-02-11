@@ -1,0 +1,21 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index f21aa2d..cfe89f1 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -790,6 +790,7 @@ typedef struct _inputTransition {
+     KdMouseState   nextState;
+ } KdInputTransition;
+ 
++static const
+ KdInputTransition  kdInputMachine[num_input_states][num_input_class] = {
+     /* start */
+     {
+@@ -1046,7 +1047,7 @@ KdQueueEvent (xEvent *ev)
+ static void
+ KdRunMouseMachine (KdMouseInfo *mi, KdInputClass c, xEvent *ev)
+ {
+-    KdInputTransition	*t;
++    const KdInputTransition *t;
+     int			a;
+ 
+     t = &kdInputMachine[mi->mouseState][c];

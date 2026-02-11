@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportSysViewTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportSysViewTest.java
+index 2722a25..1c2794f 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportSysViewTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportSysViewTest.java
+@@ -67,6 +67,7 @@ public class ExportSysViewTest extends AbstractJCRTest {
+         file.delete();
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

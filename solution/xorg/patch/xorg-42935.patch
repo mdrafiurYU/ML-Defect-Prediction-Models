@@ -1,0 +1,14 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index f84e892..d03195f 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -711,8 +711,7 @@ unsigned char	grp;
+     if (!state || !ctrls)
+         return;
+ 
+-    state->mods= (state->base_mods|state->latched_mods);
+-    state->mods|= state->locked_mods;
++    state->mods= (state->base_mods|state->latched_mods|state->locked_mods);
+     state->lookup_mods= state->mods&(~ctrls->internal.mask);
+     state->grab_mods= state->lookup_mods&(~ctrls->ignore_lock.mask);
+     state->grab_mods|= 

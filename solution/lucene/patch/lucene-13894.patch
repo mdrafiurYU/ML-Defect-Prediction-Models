@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java b/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java
+index 160a69d..2356df8 100644
+--- a/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java
++++ b/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java
+@@ -70,7 +70,7 @@ public class TestJmxMonitoredMap extends LuceneTestCase {
+           throw e;
+         }
+         String url = "service:jmx:rmi:///jndi/rmi://:" + port + "/solrjmx";
+-        JmxConfiguration config = new JmxConfiguration(true, null, url);
++        JmxConfiguration config = new JmxConfiguration(true, null, url, null);
+         monitoredMap = new JmxMonitoredMap<String, SolrInfoMBean>(null, config);
+         JMXServiceURL u = new JMXServiceURL(url);
+         connector = JMXConnectorFactory.connect(u);

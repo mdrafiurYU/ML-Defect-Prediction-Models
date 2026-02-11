@@ -1,0 +1,12 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 753abc1..92d6cd2 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -473,6 +473,7 @@ InitExtensions(int argc, char *argv[])
+ #endif
+ 
+ #ifdef GLXEXT
++    if (serverGeneration == 1)
+     GlxPushProvider(&__glXDRISWRastProvider);
+     if (!noGlxExtension) GlxExtensionInit();
+ #endif

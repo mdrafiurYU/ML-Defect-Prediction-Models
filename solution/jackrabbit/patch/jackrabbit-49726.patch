@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/version/report/ReportInfo.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/version/report/ReportInfo.java
+index 40bec3d..efa4be9 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/version/report/ReportInfo.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/version/report/ReportInfo.java
+@@ -137,7 +137,7 @@ public class ReportInfo implements XmlSerializable {
+      * @return Name of the report type
+      */
+     public String getReportName() {
+-        return DomUtil.getQualifiedName(typeLocalName, typeNamespace);
++        return DomUtil.getExpandedName(typeLocalName, typeNamespace);
+     }
+ 
+     /**

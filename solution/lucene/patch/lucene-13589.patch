@@ -1,0 +1,29 @@
+diff --git a/solr/src/java/org/apache/solr/schema/LongField.java b/solr/src/java/org/apache/solr/schema/LongField.java
+index fdb90e8..30115f2 100644
+--- a/solr/src/java/org/apache/solr/schema/LongField.java
++++ b/solr/src/java/org/apache/solr/schema/LongField.java
+@@ -19,12 +19,9 @@ package org.apache.solr.schema;
+ 
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.search.SortField;
+-import org.apache.lucene.search.cache.ByteValuesCreator;
+ import org.apache.lucene.search.cache.CachedArrayCreator;
+ import org.apache.lucene.search.cache.LongValuesCreator;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+-import org.apache.solr.search.function.IntFieldSource;
+ import org.apache.solr.search.function.ValueSource;
+ import org.apache.solr.search.function.LongFieldSource;
+ 
+@@ -49,11 +46,6 @@ public class LongField extends FieldType {
+     return new LongFieldSource( new LongValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }
+ 
+-
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    xmlWriter.writeLong(name, f.stringValue());
+-  }
+-
+   @Override
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     String s = f.stringValue();

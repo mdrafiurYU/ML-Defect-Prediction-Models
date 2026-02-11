@@ -1,0 +1,44 @@
+diff --git a/Xi/setcptr.c b/Xi/setcptr.c
+index 66c8981..ad8f571 100644
+--- a/Xi/setcptr.c
++++ b/Xi/setcptr.c
+@@ -78,11 +78,10 @@ ProcXSetClientPointer(ClientPtr client)
+ 
+ 
+     pDev = LookupDeviceIntRec(stuff->deviceid);
+-    if (pDev == NULL || !IsPointerDevice(pDev))
++    if (pDev == NULL || !IsPointerDevice(pDev) || !pDev->isMaster)
+     {
+-        SendErrorToClient(client, IReqCode, X_SetClientPointer, 0,
+-                BadDevice); 
+-        return Success;
++        client->errorValue = stuff->deviceid;
++        return BadDevice;
+     }
+ 
+     if (stuff->win != None)
+@@ -90,9 +89,8 @@ ProcXSetClientPointer(ClientPtr client)
+         err = dixLookupWindow(&pWin, stuff->win, client, DixReadWriteAccess);
+         if (err != Success)
+         {
+-            SendErrorToClient(client, IReqCode, X_SetClientPointer, 
+-                    stuff->win, err);
+-            return Success;
++            client->errorValue = stuff->win;
++            return err;
+         }
+         targetClient= wClient(pWin);
+     } else
+@@ -100,9 +98,9 @@ ProcXSetClientPointer(ClientPtr client)
+     
+     if (!SetClientPointer(targetClient, client, pDev))
+     {
+-        SendErrorToClient(client, IReqCode, X_SetClientPointer, 
+-                stuff->win, BadAccess);
+-        return Success;
++        client->errorValue = stuff->win;
++        return BadAccess;
+     }
++
+     return Success;
+ }

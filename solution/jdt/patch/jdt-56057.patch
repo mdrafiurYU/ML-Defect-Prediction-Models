@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestMixed.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestMixed.java
+index fbb7ff6..c8d92ef 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestMixed.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestMixed.java
+@@ -768,7 +768,7 @@ public class JavadocTestMixed extends JavadocTest {
+ 					+ "		return \"\";\n"
+ 					+ "	}\n"
+ 					+ "}\n" },
+-					this.complianceLevel != COMPLIANCE_1_5
++					this.complianceLevel.compareTo(COMPLIANCE_1_5) < 0
+ 					? "----------\n"
+ 						+ "1. ERROR in test\\X.java (at line 23)\n"
+ 						+ "	}\n"

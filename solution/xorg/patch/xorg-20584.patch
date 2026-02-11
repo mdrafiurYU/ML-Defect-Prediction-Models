@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcQuery.c b/hw/xfree86/xf4bpp/ppcQuery.c
+index 267eef0..9591484 100644
+--- a/hw/xfree86/xf4bpp/ppcQuery.c
++++ b/hw/xfree86/xf4bpp/ppcQuery.c
+@@ -23,6 +23,10 @@
+ */
+ /* $XConsortium: ppcQuery.c /main/3 1996/02/21 17:58:18 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ 
+ void

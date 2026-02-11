@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderMoveTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderMoveTest.java
+index 30e9cce..55591ee 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderMoveTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderMoveTest.java
+@@ -39,6 +39,12 @@ public class ReorderMoveTest extends AbstractJCRTest {
+         testRootNode.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        destParent = null;
++        srcParent = null;
++        super.tearDown();
++    }
++
+    private Node[] createOrderableChildren(boolean sns) throws RepositoryException {
+         String[] childNames;
+         if (sns) {

@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java b/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java
+index 836ab46..bce9eed 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java
++++ b/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java
+@@ -36,6 +36,7 @@ import org.apache.lucene.util.BytesRef;
+ import org.apache.lucene.util.LuceneTestCase;
+ import org.apache.lucene.util.UnicodeUtil;
+ import org.apache.lucene.util._TestUtil;
++import org.apache.lucene.util.AttributeSource;
+ import org.apache.lucene.util.automaton.Automaton;
+ import org.apache.lucene.util.automaton.AutomatonTestUtil;
+ import org.apache.lucene.util.automaton.CharacterRunAutomaton;
+@@ -103,7 +104,7 @@ public class TestRegexpRandom2 extends LuceneTestCase {
+     }
+     
+     @Override
+-    protected TermsEnum getTermsEnum(IndexReader reader) throws IOException {
++    protected TermsEnum getTermsEnum(IndexReader reader, AttributeSource atts) throws IOException {
+       return new SimpleAutomatonTermsEnum(reader, field);
+     }

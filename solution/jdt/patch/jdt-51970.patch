@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnFieldName.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnFieldName.java
+index f177318..8098e19 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnFieldName.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnFieldName.java
+@@ -18,7 +18,7 @@ public class CompletionOnFieldName extends FieldDeclaration {
+ 	private static final char[] FAKENAMESUFFIX = " ".toCharArray(); //$NON-NLS-1$
+ 	public char[] realName;
+ 	public CompletionOnFieldName(char[] name, int sourceStart, int sourceEnd) {
+-		super(CharOperation.concat(name, FAKENAMESUFFIX), sourceStart, sourceEnd); //$NON-NLS-1$
++		super(CharOperation.concat(name, FAKENAMESUFFIX), sourceStart, sourceEnd);
+ 		this.realName = name;
+ 	}

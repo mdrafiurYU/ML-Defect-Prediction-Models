@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.h b/hw/xfree86/os-support/bus/Pci.h
+index 0abb34f..ebac090 100644
+--- a/hw/xfree86/os-support/bus/Pci.h
++++ b/hw/xfree86/os-support/bus/Pci.h
+@@ -207,9 +207,8 @@
+ # endif
+ #elif defined(__ia64__)
+ # if defined(linux)
+-#  define ARCH_PCI_INIT ia64linuxPciInit
++#  define ARCH_PCI_INIT linuxPciInit
+ # endif
+-# define XF86SCANPCI_WRAPPER ia64ScanPCIWrapper
+ #elif defined(__i386__) || defined(__i386)
+ # if defined(linux)
+ #  define ARCH_PCI_INIT linuxPciInit

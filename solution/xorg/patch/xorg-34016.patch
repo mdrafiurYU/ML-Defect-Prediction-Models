@@ -1,0 +1,13 @@
+diff --git a/fb/fbpixmap.c b/fb/fbpixmap.c
+index 2b77c4f..cd8cbcd 100644
+--- a/fb/fbpixmap.c
++++ b/fb/fbpixmap.c
+@@ -96,7 +96,7 @@ fbDestroyPixmap (PixmapPtr pPixmap)
+ {
+     if(--pPixmap->refcnt)
+ 	return TRUE;
+-    dixFreePrivates(*DEVPRIV_PTR(pPixmap));
++    dixFreePrivates(pPixmap->devPrivates);
+     xfree(pPixmap);
+     return TRUE;
+ }

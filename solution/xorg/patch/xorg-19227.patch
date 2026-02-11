@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/VTsw_usl.c b/hw/xfree86/os-support/shared/VTsw_usl.c
+index 3c0ca6b..b38470a 100644
+--- a/hw/xfree86/os-support/shared/VTsw_usl.c
++++ b/hw/xfree86/os-support/shared/VTsw_usl.c
+@@ -23,6 +23,10 @@
+  */
+ /* $XConsortium: VTsw_usl.c /main/3 1996/02/21 17:53:28 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "xf86.h"

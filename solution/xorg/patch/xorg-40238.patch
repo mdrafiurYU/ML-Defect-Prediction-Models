@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index ff773ef..c0554f4 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -448,7 +448,7 @@ RootlessInitializeFrame(WindowPtr pWin, RootlessWindowRec *winRec)
+ Bool
+ RootlessColormapCallback (void *data, int first_color, int n_colors, uint32_t *colors)
+ {
+-  return RootlessResolveColormap (data, first_color, n_colors, colors);
++    return (RootlessResolveColormap (data, first_color, n_colors, colors) ? XP_Success : XP_BadMatch);
+ }
+ 
+ /*

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java b/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java
+index 7ce3d66..3e6d16e 100644
+--- a/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java
++++ b/jackrabbit-standalone/src/main/java/org/apache/jackrabbit/standalone/Main.java
+@@ -185,10 +185,7 @@ public class Main {
+         }
+ 
+         message("Creating a repository copy in " + targetDir);
+-
+-        RepositoryCopier copier = new RepositoryCopier(source, target);
+-        copier.copy();
+-
++        RepositoryCopier.copy(source, target);
+         message("The repository has been successfully copied.");
+     }

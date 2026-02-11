@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTermRangeQuery.java b/lucene/src/test/org/apache/lucene/search/TestTermRangeQuery.java
+index f5e5eda..631337e 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTermRangeQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTermRangeQuery.java
+@@ -134,7 +134,7 @@ public class TestTermRangeQuery extends LuceneTestCase {
+     searcher.close();
+   }
+   
+-  private void checkBooleanTerms(Searcher searcher, TermRangeQuery query, String... terms) throws IOException {
++  private void checkBooleanTerms(IndexSearcher searcher, TermRangeQuery query, String... terms) throws IOException {
+     query.setRewriteMethod(new MultiTermQuery.TopTermsScoringBooleanQueryRewrite(50));
+     final BooleanQuery bq = (BooleanQuery) searcher.rewrite(query);
+     final Set<String> allowedTerms = asSet(terms);

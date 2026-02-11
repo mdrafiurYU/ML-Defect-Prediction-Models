@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java
+index f386716..5a5bd4f 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java
+@@ -36,6 +36,9 @@ public SourceIndexerRequestor(SourceIndexer indexer) {
+  * @see ISourceElementRequestor#acceptConstructorReference(char[], int, int)
+  */
+ public void acceptConstructorReference(char[] typeName, int argCount, int sourcePosition) {
++	if (CharOperation.indexOf(Signature.C_GENERIC_START, typeName) > 0) {
++		typeName = Signature.toCharArray(Signature.getTypeErasure(Signature.createTypeSignature(typeName, false)).toCharArray());
++	}
+ 	this.indexer.addConstructorReference(typeName, argCount);
+ 	int lastDot = CharOperation.lastIndexOf('.', typeName);
+ 	if (lastDot != -1) {

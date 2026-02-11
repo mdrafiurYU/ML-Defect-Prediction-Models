@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnMessageSend.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnMessageSend.java
+index c1fd384..b6cf4f0 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnMessageSend.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnMessageSend.java
+@@ -50,7 +50,7 @@ public class SelectionOnMessageSend extends MessageSend {
+ 			ReferenceBinding[][] interfacesToVisit = new ReferenceBinding[5][];
+ 			int lastPosition = 0;
+ 			interfacesToVisit[lastPosition] = itsInterfaces;
+-			org.eclipse.jdt.internal.core.util.SimpleSet interfacesSeen = new org.eclipse.jdt.internal.core.util.SimpleSet(itsInterfaces.length * 2);
++			org.eclipse.jdt.internal.compiler.util.SimpleSet interfacesSeen = new org.eclipse.jdt.internal.compiler.util.SimpleSet(itsInterfaces.length * 2);
+ 
+ 			for (int i = 0; i <= lastPosition; i++) {
+ 				ReferenceBinding[] interfaces = interfacesToVisit[i];

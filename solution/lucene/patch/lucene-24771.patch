@@ -1,0 +1,25 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java b/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java
+index e66f413..065fe4f 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java
+@@ -27,6 +27,8 @@ import java.util.Iterator;
+ 
+ import org.apache.lucene.index.FieldInfo;
+ import org.apache.lucene.index.FieldInfos;
++import org.apache.lucene.index.IOContext;
++import org.apache.lucene.index.IOContext.Context;
+ import org.apache.lucene.index.IndexFileNames;
+ import org.apache.lucene.index.SegmentInfo;
+ import org.apache.lucene.store.Directory;
+@@ -57,10 +59,10 @@ public class VariableGapTermsIndexReader extends TermsIndexReaderBase {
+   protected long dirOffset;
+ 
+   final String segment;
+-  public VariableGapTermsIndexReader(Directory dir, FieldInfos fieldInfos, String segment, int indexDivisor, int codecId)
++  public VariableGapTermsIndexReader(Directory dir, FieldInfos fieldInfos, String segment, int indexDivisor, int codecId, IOContext context)
+     throws IOException {
+ 
+-    in = dir.openInput(IndexFileNames.segmentFileName(segment, codecId, VariableGapTermsIndexWriter.TERMS_INDEX_EXTENSION));
++    in = dir.openInput(IndexFileNames.segmentFileName(segment, codecId, VariableGapTermsIndexWriter.TERMS_INDEX_EXTENSION), context);
+     this.segment = segment;
+     boolean success = false;

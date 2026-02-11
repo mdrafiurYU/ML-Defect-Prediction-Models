@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 7237b0b..f0b97a7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -2267,7 +2267,8 @@ public void incorrectArityForParameterizedType(ASTNode location, TypeBinding typ
+ 			new String[] {new String(type.shortReadableName()), typesAsString(false, argumentTypes, true)},
+ 			ProblemSeverities.AbortCompilation | ProblemSeverities.Error,
+ 			0,
+-			1);        
++			1);
++		return; // not reached since aborted above
+     }
+ 	this.handle(
+ 		IProblem.IncorrectArityForParameterizedType,

@@ -1,0 +1,13 @@
+diff --git a/include/os.h b/include/os.h
+index 947c6a0..7823b79 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -54,7 +54,7 @@ SOFTWARE.
+ #include "misc.h"
+ #define ALLOCATE_LOCAL_FALLBACK(_size) Xalloc((unsigned long)(_size))
+ #define DEALLOCATE_LOCAL_FALLBACK(_ptr) Xfree((pointer)(_ptr))
+-#include "Xalloca.h"
++#include <X11/Xalloca.h>
+ #ifndef IN_MODULE
+ #include <stdarg.h>
+ #else

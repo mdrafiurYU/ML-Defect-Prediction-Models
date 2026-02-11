@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SortedLuceneQueryHits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SortedLuceneQueryHits.java
+index c030664..94a4589 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SortedLuceneQueryHits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SortedLuceneQueryHits.java
+@@ -158,7 +158,7 @@ public final class SortedLuceneQueryHits extends AbstractQueryHits {
+         ScoreDoc[] docs = collector.topDocs().scoreDocs;
+         for (int i = scoreNodes.size(); i < docs.length; i++) {
+             String uuid = reader.document(docs[i].doc).get(FieldNames.UUID);
+-            NodeId id = new NodeId(UUID.fromString(uuid));
++            NodeId id = new NodeId(uuid);
+             scoreNodes.add(new ScoreNode(id, docs[i].score, docs[i].doc));
+         }
+         log.debug("getHits() {}/{}", scoreNodes.size(), numHits);

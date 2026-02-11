@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+index f55cb57..8a90827 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+@@ -532,7 +532,7 @@ public class InstantiatedIndexWriter implements Closeable {
+           if (field.tokenStreamValue() != null) {
+             tokenStream = field.tokenStreamValue();
+           } else {
+-            tokenStream = analyzer.tokenStream(field.name(), new StringReader(field.stringValue()));
++            tokenStream = analyzer.reusableTokenStream(field.name(), new StringReader(field.stringValue()));
+           }
+ 
+           // reset the TokenStream to the first token

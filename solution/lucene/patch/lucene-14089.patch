@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TrieField.java b/solr/src/java/org/apache/solr/schema/TrieField.java
+index 2e57c90..314bdb3 100644
+--- a/solr/src/java/org/apache/solr/schema/TrieField.java
++++ b/solr/src/java/org/apache/solr/schema/TrieField.java
+@@ -477,7 +477,7 @@ public class TrieField extends FieldType {
+   }
+ 
+   @Override
+-  public Field createField(SchemaField field, String externalVal, float boost) {
++  public Fieldable createField(SchemaField field, String externalVal, float boost) {
+     boolean indexed = field.indexed();
+     boolean stored = field.stored();

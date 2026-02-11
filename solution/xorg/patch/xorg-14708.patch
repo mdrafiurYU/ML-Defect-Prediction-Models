@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winpolyline.c b/hw/xwin/winpolyline.c
+index c94ba06..db9dd34 100644
+--- a/hw/xwin/winpolyline.c
++++ b/hw/xwin/winpolyline.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ /* See Porting Layer Definition - p. 50 */

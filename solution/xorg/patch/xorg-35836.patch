@@ -1,0 +1,13 @@
+diff --git a/Xi/closedev.c b/Xi/closedev.c
+index b2b5f69..94b7391 100644
+--- a/Xi/closedev.c
++++ b/Xi/closedev.c
+@@ -146,7 +146,7 @@ ProcXCloseDevice(ClientPtr client)
+     REQUEST(xCloseDeviceReq);
+     REQUEST_SIZE_MATCH(xCloseDeviceReq);
+ 
+-    rc = dixLookupDevice(&d, stuff->deviceid, client, DixGetAttrAccess);
++    rc = dixLookupDevice(&d, stuff->deviceid, client, DixUseAccess);
+     if (rc != Success)
+ 	return rc;
+ 

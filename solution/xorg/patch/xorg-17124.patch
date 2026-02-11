@@ -1,0 +1,15 @@
+diff --git a/fb/fbtrap.c b/fb/fbtrap.c
+index 09bff0b..8639695 100644
+--- a/fb/fbtrap.c
++++ b/fb/fbtrap.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ 
+ #ifdef RENDER

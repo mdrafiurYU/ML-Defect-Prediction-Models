@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/vgahw/vgaHW.h b/hw/xfree86/vgahw/vgaHW.h
+index ff7d1e5..a38ea75 100644
+--- a/hw/xfree86/vgahw/vgaHW.h
++++ b/hw/xfree86/vgahw/vgaHW.h
+@@ -156,7 +156,7 @@ typedef struct _vgaHWRec {
+ 						   = pioreg */
+     vgaHWReadProcPtr		readEnable;
+     vgaHWWriteProcPtr		writeEnable;
+-    PCITAG			Tag;
++    struct pci_device          *dev;
+ } vgaHWRec;
+ 
+ /* Some macros that VGA drivers can use in their ChipProbe() function */

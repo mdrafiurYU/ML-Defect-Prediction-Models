@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
+index 9f4bdb6..422dc05 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
+@@ -131,6 +131,15 @@ public class QueryManagerImpl implements QueryManager {
+         return qomFactory;
+     }
+ 
++    //------------------------< testing only >----------------------------------
++
++    /**
++     * @return the query handler implementation.
++     */
++    QueryHandler getQueryHandler() {
++        return searchMgr.getQueryHandler();
++    }
++
+     //---------------------------< internal >-----------------------------------
+ 
+     /**

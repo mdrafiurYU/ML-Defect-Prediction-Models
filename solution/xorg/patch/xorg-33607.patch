@@ -1,0 +1,13 @@
+diff --git a/xfixes/select.c b/xfixes/select.c
+index 9de152f..2321212 100755
+--- a/xfixes/select.c
++++ b/xfixes/select.c
+@@ -203,7 +203,7 @@ ProcXFixesSelectSelectionInput (ClientPtr client)
+     int		rc;
+ 
+     REQUEST_SIZE_MATCH (xXFixesSelectSelectionInputReq);
+-    rc = dixLookupWindow(&pWin, stuff->window, client, DixSetAttrAccess);
++    rc = dixLookupWindow(&pWin, stuff->window, client, DixGetAttrAccess);
+     if (rc != Success)
+         return rc;
+     if (stuff->eventMask & ~SelectionAllEvents)

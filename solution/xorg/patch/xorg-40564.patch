@@ -1,0 +1,22 @@
+diff --git a/dix/gc.c b/dix/gc.c
+index 83f48d4..b925694 100644
+--- a/dix/gc.c
++++ b/dix/gc.c
+@@ -1049,7 +1049,7 @@ FreeDefaultStipple(int screenNum)
+     (*pScreen->DestroyPixmap)(pScreen->PixmapPerDepth[0]);
+ }
+ 
+-_X_EXPORT int
++int
+ SetDashes(GCPtr pGC, unsigned offset, unsigned ndash, unsigned char *pdash)
+ {
+     long i;
+@@ -1155,7 +1155,7 @@ VerifyRectOrder(int nrects, xRectangle *prects, int ordering)
+     return -1;
+ }
+ 
+-_X_EXPORT int
++int
+ SetClipRects(GCPtr pGC, int xOrigin, int yOrigin, int nrects, 
+              xRectangle *prects, int ordering)
+ {

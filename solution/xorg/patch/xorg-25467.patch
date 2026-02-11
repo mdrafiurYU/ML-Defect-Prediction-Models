@@ -1,0 +1,26 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index ea6ac4e..b80371d 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -20,6 +20,8 @@
+  *	pciSetBitsByte()       - Write an 8 bit value against a mask
+  *	pciTag()               - Return tag for a given PCI bus, device, &
+  *                               function
++ *	pciDomTag()            - Return tag for a given PCI domain, bus,
++ *                               device & function
+  *	pciBusAddrToHostAddr() - Convert a PCI address to a host address
+  *	pciHostAddrToBusAddr() - Convert a host address to a PCI address
+  *	pciGetBaseSize()       - Returns the number of bits in a PCI base
+@@ -614,6 +616,12 @@ pciTag(int busnum, int devnum, int funcnum)
+ 	return(PCI_MAKE_TAG(busnum,devnum,funcnum));
+ }
+ 
++_X_EXPORT PCITAG
++pciDomTag(int domnum, int busnum, int devnum, int funcnum)
++{
++	return(PCI_MAKE_TAG(PCI_MAKE_BUS(domnum,busnum),devnum,funcnum));
++}
++
+ #if defined(PCI_MFDEV_SUPPORT)
+ 
+ Bool

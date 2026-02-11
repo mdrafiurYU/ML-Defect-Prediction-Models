@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xgltrap.c b/hw/xgl/xgltrap.c
+index 26e2bc4..6e7a508 100644
+--- a/hw/xgl/xgltrap.c
++++ b/hw/xgl/xgltrap.c
+@@ -194,7 +194,8 @@ xglTrapezoids (CARD8	     op,
+ 
+ 	pPixmap = (*pScreen->CreatePixmap) (pScreen,
+ 					    rect.width, rect.height,
+-					    maskFormat->depth);
++					    maskFormat->depth,
++					    CREATE_PIXMAP_USAGE_SCRATCH);
+ 	if (!pPixmap)
+ 	    return;
+ 

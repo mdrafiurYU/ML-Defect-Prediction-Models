@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+index 0de0ff4..c38f14e 100644
+--- a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
++++ b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+@@ -631,7 +631,8 @@ public class TestExternalCodecs extends LuceneTestCase {
+     
+     
+     final int NUM_DOCS = 173;
+-    Directory dir = newDirectory();
++    MockDirectoryWrapper dir = newDirectory();
++    dir.setCheckIndexOnClose(false); // we use a custom codec provider
+     IndexWriter w = new IndexWriter(
+         dir,
+         newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(MockTokenizer.WHITESPACE, true, true)).

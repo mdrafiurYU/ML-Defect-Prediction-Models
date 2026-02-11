@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+index c859253..8e93e7b 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+@@ -722,6 +722,12 @@ public class WorkspaceManager
+                         case Event.PROPERTY_REMOVED:
+                             type = "PropertyRemoved";
+                             break;
++                        case Event.NODE_MOVED:
++                            type = "NodeMoved";
++                            break;
++                        case Event.PERSIST:
++                            type = "Persist";
++                            break;
+                         default:
+                             type = "Unknown";
+                     }

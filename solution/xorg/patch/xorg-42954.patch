@@ -1,0 +1,12 @@
+diff --git a/xkb/ddxLoad.c b/xkb/ddxLoad.c
+index 8d7f837..6954dd1 100644
+--- a/xkb/ddxLoad.c
++++ b/xkb/ddxLoad.c
+@@ -204,7 +204,6 @@ XkbDDXCompileKeymapByNames(	XkbDescPtr		xkb,
+ 
+     snprintf(keymap, sizeof(keymap), "server-%s", display);
+ 
+-    XkbEnsureSafeMapName(keymap);
+     OutputDirectory(xkm_output_dir, sizeof(xkm_output_dir));
+ 
+ #ifdef WIN32

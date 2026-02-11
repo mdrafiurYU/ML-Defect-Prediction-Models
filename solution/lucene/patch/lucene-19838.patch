@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestIndexSearcher.java b/solr/src/test/org/apache/solr/search/TestIndexSearcher.java
+index 03fa134..7299390 100755
+--- a/solr/src/test/org/apache/solr/search/TestIndexSearcher.java
++++ b/solr/src/test/org/apache/solr/search/TestIndexSearcher.java
+@@ -36,6 +36,7 @@ public class TestIndexSearcher extends SolrTestCaseJ4 {
+     initCore("solrconfig.xml","schema.xml");
+   }
+   
++  @Override
+   public void tearDown() throws Exception {
+     super.tearDown();
+     assertU(delQ("*:*"));

@@ -1,0 +1,33 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index 3ecb851..1c5404b 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -19,7 +19,6 @@
+  *	pciTag()               - Return tag for a given PCI bus, device, &
+  *                               function
+  *	pciBusAddrToHostAddr() - Convert a PCI address to a host address
+- *	pciHostAddrToBusAddr() - Convert a host address to a PCI address
+  *	xf86scanpci()          - Return info about all PCI devices
+  *	xf86GetPciDomain()     - Return domain number from a PCITAG
+  *	xf86MapDomainMemory()  - Like xf86MapPciMem() but can handle
+@@ -262,20 +261,6 @@ pciBusAddrToHostAddr(PCITAG tag, PciAddrType type, ADDRESS addr)
+ 	  return(addr);
+ }
+ 
+-_X_EXPORT ADDRESS
+-pciHostAddrToBusAddr(PCITAG tag, PciAddrType type, ADDRESS addr)
+-{
+-  int bus = PCI_BUS_FROM_TAG(tag);
+-
+-  pciInit();
+-
+-  if ((bus >= 0) && (bus < pciNumBuses) && pciBusInfo[bus] &&
+-	pciBusInfo[bus]->funcs->pciAddrHostToBus)
+-	  return (*pciBusInfo[bus]->funcs->pciAddrHostToBus)(tag, type, addr);
+-  else
+-	  return(addr);
+-}
+-
+ _X_EXPORT PCITAG
+ pciTag(int busnum, int devnum, int funcnum)
+ {

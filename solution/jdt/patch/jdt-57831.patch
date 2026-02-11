@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterRecoveryTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterRecoveryTest.java
+index 616db3d..38c96b1 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterRecoveryTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterRecoveryTest.java
+@@ -320,7 +320,7 @@ public class ASTConverterRecoveryTest extends ConverterTestSetup {
+ 			"package test;\n" + 
+ 			"public class X {\n" + 
+ 			"  void foo(){\n" + 
+-			"    String[] s={\"\",};\n" + 
++			"    String[] s={\"\",$missing$};\n" + 
+ 			"  }\n" + 
+ 			"}\n",
+ 			result);
+@@ -742,7 +742,7 @@ public class ASTConverterRecoveryTest extends ConverterTestSetup {
+ 			"package test;\n" + 
+ 			"public class X {\n" + 
+ 			"  void foo(){\n" + 
+-			"    a[0]=;\n" + 
++			"    a[0]=$missing$;\n" + 
+ 			"  }\n" + 
+ 			"}\n",
+ 			result);

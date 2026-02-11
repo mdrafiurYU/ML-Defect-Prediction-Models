@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestWindowsMMap.java b/lucene/src/test/org/apache/lucene/store/TestWindowsMMap.java
+index 88f333f..2fe1c11 100644
+--- a/lucene/src/test/org/apache/lucene/store/TestWindowsMMap.java
++++ b/lucene/src/test/org/apache/lucene/store/TestWindowsMMap.java
+@@ -80,7 +80,7 @@ public class TestWindowsMMap extends LuceneTestCase {
+     writer.commit();
+     IndexSearcher searcher = new IndexSearcher(dir, true);
+     
+-    int num = 1000 * RANDOM_MULTIPLIER;
++    int num = atLeast(1000);
+     for(int dx = 0; dx < num; dx ++) {
+       String f = randomField();
+       Document doc = new Document();

@@ -1,0 +1,82 @@
+diff --git a/hw/xfree86/common/xf86cmap.c b/hw/xfree86/common/xf86cmap.c
+index 2000487..0aa162a 100644
+--- a/hw/xfree86/common/xf86cmap.c
++++ b/hw/xfree86/common/xf86cmap.c
+@@ -246,6 +246,14 @@ CMapCloseScreen (int i, ScreenPtr pScreen)
+ }
+ 
+ static Bool
++CMapColormapUseMax(VisualPtr pVisual, CMapScreenPtr pScreenPriv)
++{
++    if (pVisual->nplanes > 16)
++        return TRUE;
++    return ((1 << pVisual->nplanes) > pScreenPriv->maxColors);
++}
++
++static Bool
+ CMapAllocateColormapPrivate(ColormapPtr pmap)
+ {
+     CMapScreenPtr pScreenPriv = 
+@@ -255,7 +263,7 @@ CMapAllocateColormapPrivate(ColormapPtr pmap)
+     int numColors;
+     LOCO *colors;
+ 
+-    if((1 << pmap->pVisual->nplanes) > pScreenPriv->maxColors)
++    if (CMapColormapUseMax(pmap->pVisual, pScreenPriv))
+ 	numColors = pmap->pVisual->ColormapEntries;
+     else 
+ 	numColors = 1 << pmap->pVisual->nplanes; 
+@@ -371,7 +379,7 @@ CMapStoreColors(
+ 	   (CMapColormapPtr) pmap->devPrivates[CMapColormapIndex].ptr;
+ 	int i;
+ 
+-        if((1 << pVisual->nplanes) > pScreenPriv->maxColors) {
++	if (CMapColormapUseMax(pVisual, pScreenPriv)) {
+ 	    int index;
+ 
+ 	    num = 0;
+@@ -442,7 +450,7 @@ CMapInstallColormap(ColormapPtr pmap)
+ 
+     if(!(pScreenPriv->flags & CMAP_PALETTED_TRUECOLOR) &&
+ 	(pmap->pVisual->class == TrueColor) &&
+-	((1 << pmap->pVisual->nplanes) > pScreenPriv->maxColors))
++	 CMapColormapUseMax(pmap->pVisual, pScreenPriv))
+ 		return;
+ 
+     if(LOAD_PALETTE(pmap, index))
+@@ -572,7 +580,7 @@ CMapRefreshColors(ColormapPtr pmap, int defs, int* indices)
+ 	}
+ 	break;
+     case TrueColor:
+-	if((1 << pVisual->nplanes) > pScreenPriv->maxColors) {
++        if (CMapColormapUseMax(pVisual, pScreenPriv)) {
+ 	    for(i = 0; i <= reds; i++) 
+ 		colors[i].red   = gamma[i * maxValue / reds].red;
+ 	    for(i = 0; i <= greens; i++) 
+@@ -615,7 +623,7 @@ CMapRefreshColors(ColormapPtr pmap, int defs, int* indices)
+ 	}
+ 	break;
+     case DirectColor:
+-	if((1 << pVisual->nplanes) > pScreenPriv->maxColors) {
++        if (CMapColormapUseMax(pVisual, pScreenPriv)) {
+ 	    for(i = 0; i < defs; i++) { 
+ 		index = indices[i];
+ 		if(index <= reds)
+@@ -932,7 +940,7 @@ CMapChangeGamma(
+ 
+ 	if(!(pScreenPriv->flags & CMAP_PALETTED_TRUECOLOR) &&
+ 	    (pMap->pVisual->class == TrueColor) &&
+-	    ((1 << pMap->pVisual->nplanes) > pScreenPriv->maxColors)) {
++	    CMapColormapUseMax(pMap->pVisual, pScreenPriv)) {
+ 
+ 	    /* if the current map doesn't have a palette look
+ 		for another map to change the gamma on. */
+@@ -1019,7 +1027,7 @@ xf86ChangeGammaRamp(
+ 
+         if(!(pScreenPriv->flags & CMAP_PALETTED_TRUECOLOR) &&
+             (pMap->pVisual->class == TrueColor) &&
+-            ((1 << pMap->pVisual->nplanes) > pScreenPriv->maxColors)) {
++	    CMapColormapUseMax(pMap->pVisual, pScreenPriv)) {
+ 
+             /* if the current map doesn't have a palette look
+                 for another map to change the gamma on. */

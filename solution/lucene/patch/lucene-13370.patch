@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DirContentSource.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DirContentSource.java
+index 2fd7217..66dcac8 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DirContentSource.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DirContentSource.java
+@@ -202,7 +202,7 @@ public class DirContentSource extends ContentSource {
+     reader.readLine();//skip an empty line
+     String title = reader.readLine();
+     reader.readLine();//skip an empty line
+-    StringBuffer bodyBuf = new StringBuffer(1024);
++    StringBuilder bodyBuf = new StringBuilder(1024);
+     while ((line = reader.readLine()) != null) {
+       bodyBuf.append(line).append(' ');
+     }

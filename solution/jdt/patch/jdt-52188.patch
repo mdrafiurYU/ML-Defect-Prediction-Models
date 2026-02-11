@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSTag.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSTag.java
+index 9852b40..bb930a6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSTag.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSTag.java
+@@ -42,4 +42,8 @@ public class NLSTag {
+ 	public int hashCode() {
+ 		return this.start;
+ 	}
++	
++	public String toString() {
++		return "NLSTag(" + this.start + "," + this.end + "," + this.bits + ")"; //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
++	}
+ }

@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+index c02f4fa..52d5b7d 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+@@ -428,7 +428,7 @@ public class TestAddIndexes extends LuceneTestCase {
+     );
+ 
+     writer.addIndexes(aux, new MockDirectoryWrapper(random, new RAMDirectory(aux)));
+-    assertEquals(1060, writer.maxDoc());
++    assertEquals(1020, writer.maxDoc());
+     assertEquals(1000, writer.getDocCount(0));
+     writer.close();
+     dir.close();
+@@ -480,7 +480,7 @@ public class TestAddIndexes extends LuceneTestCase {
+     );
+ 
+     writer.addIndexes(aux, aux2);
+-    assertEquals(1060, writer.maxDoc());
++    assertEquals(1040, writer.maxDoc());
+     assertEquals(1000, writer.getDocCount(0));
+     writer.close();
+     dir.close();

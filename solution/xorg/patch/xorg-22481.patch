@@ -1,0 +1,15 @@
+diff --git a/mi/miwideline.h b/mi/miwideline.h
+index 96d6aae..cdfe624 100644
+--- a/mi/miwideline.h
++++ b/mi/miwideline.h
+@@ -30,6 +30,10 @@ from The Open Group.
+ 
+ /* Author:  Keith Packard, MIT X Consortium */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "mispans.h"
+ #include "mifpoly.h" /* for ICEIL */
+ 

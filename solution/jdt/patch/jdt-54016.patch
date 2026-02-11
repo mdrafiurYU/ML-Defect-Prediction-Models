@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index d92f329..8f9733f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -202,7 +202,7 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 	}
+ 
+ 	private CompilationParticipantResult cleanNotify( CompilationParticipantEvent cpe )
+-	{		
++	{
+ 		IProject p = cpe.getJavaProject().getProject();
+ 		
+ 		GeneratedFileManager gfm = GeneratedFileManager.getGeneratedFileManager( p );
+@@ -216,7 +216,7 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 			}
+ 		}
+ 		catch(CoreException e){
+-			e.printStackTrace();
++			AptPlugin.log(e, "Unable to delete annotation processor problem markers"); //$NON-NLS-1$
+ 		}
+ 		
+ 		return GENERIC_COMPILATION_RESULT;

@@ -1,0 +1,20 @@
+diff --git a/modules/grouping/src/java/org/apache/lucene/search/grouping/GroupDocs.java b/modules/grouping/src/java/org/apache/lucene/search/grouping/GroupDocs.java
+index 9de8425..0b24b5d 100644
+--- a/modules/grouping/src/java/org/apache/lucene/search/grouping/GroupDocs.java
++++ b/modules/grouping/src/java/org/apache/lucene/search/grouping/GroupDocs.java
+@@ -40,13 +40,13 @@ public class GroupDocs<GROUP_VALUE_TYPE> {
+ 
+   /** Matches the groupSort passed to {@link
+    *  AbstractFirstPassGroupingCollector}. */
+-  public final Comparable[] groupSortValues;
++  public final Object[] groupSortValues;
+ 
+   public GroupDocs(float maxScore,
+                    int totalHits,
+                    ScoreDoc[] scoreDocs,
+                    GROUP_VALUE_TYPE groupValue,
+-                   Comparable[] groupSortValues) {
++                   Object[] groupSortValues) {
+     this.maxScore = maxScore;
+     this.totalHits = totalHits;
+     this.scoreDocs = scoreDocs;

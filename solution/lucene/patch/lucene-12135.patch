@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java b/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java
+index 3e2ffb4..a2ac309 100644
+--- a/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java
++++ b/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java
+@@ -69,7 +69,7 @@ public class TestOrdValues extends FunctionTestSetup {
+ 
+     Query q = new ValueSourceQuery(vs);
+     log("test: " + q);
+-    QueryUtils.check(q, s);
++    QueryUtils.check(random, q, s);
+     ScoreDoc[] h = s.search(q, null, 1000).scoreDocs;
+     assertEquals("All docs should be matched!", N_DOCS, h.length);
+     String prevID = inOrder

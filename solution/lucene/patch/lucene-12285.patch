@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/search/MutableValue.java b/solr/src/java/org/apache/solr/search/MutableValue.java
+index 6d08543..6784308 100755
+--- a/solr/src/java/org/apache/solr/search/MutableValue.java
++++ b/solr/src/java/org/apache/solr/search/MutableValue.java
+@@ -18,7 +18,7 @@ package org.apache.solr.search;
+ 
+ /** @lucene.internal */
+ public abstract class MutableValue implements Comparable {
+-  protected boolean exists = true;
++  public boolean exists = true;
+ 
+   public abstract void copy(MutableValue source);
+   public abstract MutableValue duplicate();
+@@ -47,7 +47,7 @@ public abstract class MutableValue implements Comparable {
+   public boolean equals(Object other) {
+     Class c1 = this.getClass();
+     Class c2 = other.getClass();
+-    return (c1 == c2) ? this.equalsSameType(other) : false;
++    return (c1 == c2) && this.equalsSameType(other);
+   }
+ 
+   public abstract int hashCode();

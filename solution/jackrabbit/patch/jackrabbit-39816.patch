@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+index 12c6506..63fe531 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+@@ -411,11 +411,11 @@ public class QueryResultImpl implements QueryResult {
+          * nodes or the session does not have access to a node.
+          */
+         public long getSize() {
+-            int totalSize = getTotalSize();
+-            if (limit > 0 && totalSize > limit) {
++            long size = getTotalSize() - offset;
++            if (limit > 0 && size > limit) {
+                 return limit;
+             } else {
+-                return totalSize - offset;
++                return size;
+             }
+         }

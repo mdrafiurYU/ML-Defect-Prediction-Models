@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RepositoryCopierTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RepositoryCopierTest.java
+index 4de91e4..f4b7dfb 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RepositoryCopierTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RepositoryCopierTest.java
+@@ -71,7 +71,7 @@ public class RepositoryCopierTest extends TestCase {
+ 
+     public void testRepositoryCopy() throws Exception {
+         createSourceRepository();
+-        new RepositoryCopier(SOURCE, TARGET).copy();
++        RepositoryCopier.copy(SOURCE, TARGET);
+         verifyTargetRepository();
+     }

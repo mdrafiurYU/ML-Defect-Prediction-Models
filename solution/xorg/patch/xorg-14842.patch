@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winvideo.c b/hw/xwin/winvideo.c
+index 4e1b659..529ca76 100755
+--- a/hw/xwin/winvideo.c
++++ b/hw/xwin/winvideo.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include <X11/extensions/Xv.h>
+ #include <X11/extensions/Xvproto.h>

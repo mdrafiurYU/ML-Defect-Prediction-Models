@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java
+index 8b35457..d19be5c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java
+@@ -394,7 +394,7 @@ class ACLTemplate implements JackrabbitAccessControlList {
+      * @see org.apache.jackrabbit.api.security.JackrabbitAccessControlList#addEntry(Principal, Privilege[], boolean, Map)
+      */
+     public boolean addEntry(Principal principal, Privilege[] privileges,
+-                            boolean isAllow, Map restrictions)
++                            boolean isAllow, Map<String, Value> restrictions)
+             throws AccessControlException, RepositoryException {
+         if (restrictions != null && !restrictions.isEmpty()) {
+             throw new AccessControlException("This AccessControlList does not allow for additional restrictions.");

@@ -1,0 +1,59 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index ebd137e..ff727d5 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -329,15 +329,15 @@ miSpriteGetImage (DrawablePtr pDrawable, int sx, int sy, int w, int h,
+ 
+     SCREEN_PROLOGUE (pScreen, GetImage);
+ 
++    if (pDrawable->type == DRAWABLE_WINDOW)
++    {
+     pScreenPriv = dixLookupPrivate(&pScreen->devPrivates, miSpriteScreenKey);
+     for(pDev = inputInfo.devices; pDev; pDev = pDev->next)
+     {
+         if (DevHasCursor(pDev))
+         {
+              pCursorInfo = MISPRITE(pDev);
+-             if (pDrawable->type == DRAWABLE_WINDOW &&
+-                     pCursorInfo->isUp &&
+-                     pCursorInfo->pScreen == pScreen &&
++                 if (pCursorInfo->isUp && pCursorInfo->pScreen == pScreen &&
+                      ORG_OVERLAP(&pCursorInfo->saved,pDrawable->x,pDrawable->y,
+                          sx, sy, w, h))
+              {
+@@ -346,6 +346,7 @@ miSpriteGetImage (DrawablePtr pDrawable, int sx, int sy, int w, int h,
+              }
+         }
+     }
++    }
+ 
+     (*pScreen->GetImage) (pDrawable, sx, sy, w, h,
+ 			  format, planemask, pdstLine);
+@@ -364,6 +365,8 @@ miSpriteGetSpans (DrawablePtr pDrawable, int wMax, DDXPointPtr ppt,
+ 
+     SCREEN_PROLOGUE (pScreen, GetSpans);
+ 
++    if (pDrawable->type == DRAWABLE_WINDOW)
++    {
+     pScreenPriv = dixLookupPrivate(&pScreen->devPrivates, miSpriteScreenKey);
+ 
+     for(pDev = inputInfo.devices; pDev; pDev = pDev->next)
+@@ -372,9 +375,7 @@ miSpriteGetSpans (DrawablePtr pDrawable, int wMax, DDXPointPtr ppt,
+         {
+             pCursorInfo = MISPRITE(pDev);
+ 
+-            if (pDrawable->type == DRAWABLE_WINDOW &&
+-                    pCursorInfo->isUp &&
+-                    pCursorInfo->pScreen == pScreen)
++                if (pCursorInfo->isUp && pCursorInfo->pScreen == pScreen)
+             {
+                 DDXPointPtr    pts;
+                 int    	       *widths;
+@@ -400,6 +401,7 @@ miSpriteGetSpans (DrawablePtr pDrawable, int wMax, DDXPointPtr ppt,
+             }
+         }
+     }
++    }
+ 
+     (*pScreen->GetSpans) (pDrawable, wMax, ppt, pwidth, nspans, pdstStart);
+ 

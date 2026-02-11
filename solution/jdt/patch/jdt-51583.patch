@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
+index 99bd647..84f7612 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
+@@ -60,7 +60,7 @@ public class TypeVariableBinding extends ReferenceBinding {
+ 		if (this.superclass == null)
+ 			return TypeConstants.OK;
+ 
+-		if (argumentType.isWildcard()) {
++		if (argumentType.isWildcard() && !argumentType.isIntersectionType()) {
+ 			WildcardBinding wildcard = (WildcardBinding) argumentType;
+ 			switch(wildcard.boundKind) {
+ 				case Wildcard.EXTENDS :

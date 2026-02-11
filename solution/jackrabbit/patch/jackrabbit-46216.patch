@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java
+index ffce593..afe6f91 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java
+@@ -429,6 +429,7 @@ public class DefaultAccessManager extends AbstractAccessControlManager implement
+     }
+ 
+     /**
++     * @param subject The subject associated with the session.
+      * @return if created with system-privileges
+      */
+     private static boolean isSystemOrAdmin(Subject subject) {

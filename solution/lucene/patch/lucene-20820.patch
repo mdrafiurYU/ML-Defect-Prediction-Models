@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+index a66703c..587f605 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+@@ -70,7 +70,7 @@ public class TestNRTThreads extends LuceneTestCase {
+     final LineFileDocs docs = new LineFileDocs(random);
+     final File tempDir = _TestUtil.getTempDir("nrtopenfiles");
+     final MockDirectoryWrapper dir = new MockDirectoryWrapper(random, FSDirectory.open(tempDir));
+-    final IndexWriterConfig conf = newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer());
++    final IndexWriterConfig conf = newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random));
+     conf.setMergedSegmentWarmer(new IndexWriter.IndexReaderWarmer() {
+       @Override
+       public void warm(IndexReader reader) throws IOException {

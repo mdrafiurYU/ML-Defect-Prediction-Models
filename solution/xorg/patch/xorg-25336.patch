@@ -1,0 +1,18 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index a554f2f..aa04862 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -211,9 +211,11 @@ ActivateDevice(DeviceIntPtr dev)
+ }
+ 
+ static void
+-CoreKeyboardBell(int volume, DeviceIntPtr pDev, pointer ctrl, int something)
++CoreKeyboardBell(int volume, DeviceIntPtr pDev, pointer arg, int something)
+ {
+-    return;
++    KeybdCtrl *ctrl = arg;
++
++    DDXRingBell(volume, ctrl->bell_pitch, ctrl->bell_duration);
+ }
+ 
+ static void

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 4b58855..5fb4006 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -1365,7 +1365,7 @@ public class SearchIndex extends AbstractQueryHandler {
+                 CachingMultiIndexReader subReader = subReaders[i];
+                 int realDoc = subReader.getDocumentNumber(docId);
+                 if (realDoc >= 0) {
+-                    return realDoc;
++                    return realDoc + starts[i];
+                 }
+             }
+             return -1;

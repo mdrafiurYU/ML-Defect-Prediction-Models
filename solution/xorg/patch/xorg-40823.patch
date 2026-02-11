@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/ramdac/xf86Cursor.c b/hw/xfree86/ramdac/xf86Cursor.c
+index 592eaad..aea1d33 100644
+--- a/hw/xfree86/ramdac/xf86Cursor.c
++++ b/hw/xfree86/ramdac/xf86Cursor.c
+@@ -460,7 +460,6 @@ xf86DeviceCursorInitialize(DeviceIntPtr pDev, ScreenPtr pScreen)
+ static void
+ xf86DeviceCursorCleanup(DeviceIntPtr pDev, ScreenPtr pScreen)
+ {
+-    DeviceIntPtr it;
+     xf86CursorScreenPtr ScreenPriv = (xf86CursorScreenPtr)dixLookupPrivate(
+             &pScreen->devPrivates, xf86CursorScreenKey);
+ 

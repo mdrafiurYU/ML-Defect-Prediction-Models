@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestRangeQuery.java b/solr/src/test/org/apache/solr/search/TestRangeQuery.java
+index dcd920f..997d3d9 100644
+--- a/solr/src/test/org/apache/solr/search/TestRangeQuery.java
++++ b/solr/src/test/org/apache/solr/search/TestRangeQuery.java
+@@ -33,6 +33,7 @@ public class TestRangeQuery extends SolrTestCaseJ4 {
+     initCore("solrconfig.xml", "schema11.xml");
+   }
+ 
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     // if you override setUp or tearDown, you better call

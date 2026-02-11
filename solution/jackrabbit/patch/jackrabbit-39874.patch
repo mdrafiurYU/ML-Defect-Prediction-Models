@@ -1,0 +1,34 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/QueryResultNodeIteratorTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/QueryResultNodeIteratorTest.java
+index 22bd061..cebbe14 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/QueryResultNodeIteratorTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/QueryResultNodeIteratorTest.java
+@@ -121,7 +121,8 @@ public class QueryResultNodeIteratorTest extends AbstractQueryTest {
+      * Tests if {@link javax.jcr.NodeIterator#skip(long)} works correctly.
+      */
+     public void testSkip() throws RepositoryException {
+-        QueryResult rs = execute(testPath + "//*", Query.XPATH);
++        String query = testPath + "//*";
++        QueryResult rs = execute(query, Query.XPATH);
+         NodeIterator it = rs.getNodes();
+ 
+         // find out if there is anything we can skip
+@@ -131,7 +132,8 @@ public class QueryResultNodeIteratorTest extends AbstractQueryTest {
+             count++;
+         }
+         if (count > 1) {
+-            // re-aquire iterator
++            // re-execute the query
++            rs = execute(query, Query.XPATH);
+             it = rs.getNodes();
+             // skip all but one
+             it.skip(count - 1);
+@@ -144,7 +146,8 @@ public class QueryResultNodeIteratorTest extends AbstractQueryTest {
+                 // success
+             }
+ 
+-            // re-aquire iterator
++            // re-execute the query
++            rs = execute(query, Query.XPATH);
+             it = rs.getNodes();
+             try {
+                 it.skip(count + 1);

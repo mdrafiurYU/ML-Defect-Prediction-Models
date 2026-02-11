@@ -1,0 +1,15 @@
+diff --git a/cfb/cfbimage.c b/cfb/cfbimage.c
+index 44c2715..ce3909e 100644
+--- a/cfb/cfbimage.c
++++ b/cfb/cfbimage.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $Xorg: cfbimage.c,v 1.4 2001/02/09 02:04:38 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "windowstr.h"
+ #include "pixmapstr.h"

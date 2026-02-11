@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java
+index a77819a..db2556f 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java
+@@ -37,12 +37,12 @@ import org.apache.jackrabbit.test.api.query.AbstractQueryTest;
+  */
+ public class AbstractQOMTest extends AbstractQueryTest {
+ 
+-    protected QueryObjectModelFactory qomFactory;
++    protected QueryObjectModelFactory qf;
+ 
+     protected void setUp() throws Exception {
+         super.setUp();
+         QueryManager qm = superuser.getWorkspace().getQueryManager();
+-        qomFactory = qm.getQOMFactory();
++        qf = qm.getQOMFactory();
+     }
+ 
+     /**

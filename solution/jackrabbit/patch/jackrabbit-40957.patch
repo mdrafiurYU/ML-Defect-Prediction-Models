@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java
+index 4fccc41..db4a214 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java
+@@ -775,7 +775,7 @@ public class XPathQueryBuilder implements XPathVisitor, XPathTreeConstants {
+         String fName = tmp.substring(0, tmp.length() - 1);
+         try {
+             Name funName = resolver.getQName(fName);
+-            
++
+             if (FN_NOT.equals(funName) || FN_NOT_10.equals(funName)) {
+                 if (queryNode instanceof NAryQueryNode) {
+                     QueryNode not = factory.createNotQueryNode(queryNode);

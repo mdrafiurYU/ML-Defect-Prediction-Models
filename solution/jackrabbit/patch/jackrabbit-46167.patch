@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
+index 5a2c77f..507c9f3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
+@@ -47,10 +47,7 @@ public class VersionImpl extends NodeImpl implements Version {
+      * Create a new instance of this class.
+      * @param itemMgr item manager
+      * @param session session
+-     * @param id node id
+-     * @param state node state
+-     * @param definition node definition
+-     * @param listeners life cycle listeners
++     * @param data node data
+      */
+     public VersionImpl(ItemManager itemMgr, SessionImpl session, AbstractNodeData data) {
+         super(itemMgr, session, data);

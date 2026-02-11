@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
+index 25fb6c0..aacb4c0 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
+@@ -132,8 +132,7 @@ class CompilationUnitResolver extends Compiler {
+ 		IProblemFactory problemFactory,
+ 		IProgressMonitor monitor) {
+ 
+-		super(environment, policy, settings, requestor, problemFactory, false);
+-		this.lookupEnvironment.storeAnnotations = true; // store annotations in the bindings
++		super(environment, policy, settings, requestor, problemFactory, false, true/*store annotations in the bindings*/);
+ 		this.hasCompilationAborted = false;
+ 		this.monitor =monitor;
+ 	}

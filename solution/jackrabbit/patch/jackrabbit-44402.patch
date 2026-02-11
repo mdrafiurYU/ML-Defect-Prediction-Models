@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterContext.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterContext.java
+index 3802881..2239f37 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterContext.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterContext.java
+@@ -16,6 +16,8 @@
+  */
+ package org.apache.jackrabbit.core.cluster;
+ 
++import java.io.File;
++
+ import org.apache.jackrabbit.core.config.ClusterConfig;
+ import org.apache.jackrabbit.spi.commons.namespace.NamespaceResolver;
+ 
+@@ -34,6 +36,13 @@ public interface ClusterContext {
+     ClusterConfig getClusterConfig();
+ 
+     /**
++     * Return the repository home directory.
++     *
++     * @return repository home directory
++     */
++    File getRepositoryHome();
++
++    /**
+      * Return a namespace resolver to map prefixes to URIs and vice-versa
+      *
+      * @return namespace resolver

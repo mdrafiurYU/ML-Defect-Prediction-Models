@@ -1,0 +1,14 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index cd4ce38..9dfc71e 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -118,6 +118,9 @@ RRSetCurrentConfig (ScreenPtr		pScreen,
+ 
+ Bool RRScreenInit(ScreenPtr pScreen);
+ 
++Rotation
++RRGetRotation (ScreenPtr pScreen);
++
+ int
+ RRSetScreenConfig (ScreenPtr		pScreen,
+ 		   Rotation		rotation,

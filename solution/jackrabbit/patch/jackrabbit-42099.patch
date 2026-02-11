@@ -1,0 +1,35 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java
+index 1b837e4..384d86c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionImpl.java
+@@ -108,11 +108,7 @@ class InternalVersionImpl extends InternalVersionItemImpl
+     public InternalFrozenNode getFrozenNode() {
+         // get frozen node
+         try {
+-            NodeState.ChildNodeEntry entry = node.getState().getChildNodeEntry(NameConstants.JCR_FROZENNODE, 1);
+-            if (entry == null) {
+-                throw new InternalError("version has no frozen node: " + getId());
+-            }
+-            return (InternalFrozenNode) vMgr.getItem(entry.getId());
++            return (InternalFrozenNode) vMgr.getItem(getFrozenNodeId());
+         } catch (RepositoryException e) {
+             throw new IllegalStateException("unable to retrieve frozen node: " + e);
+         }
+@@ -121,6 +117,17 @@ class InternalVersionImpl extends InternalVersionItemImpl
+     /**
+      * {@inheritDoc}
+      */
++    public NodeId getFrozenNodeId() {
++        NodeState.ChildNodeEntry entry = node.getState().getChildNodeEntry(NameConstants.JCR_FROZENNODE, 1);
++        if (entry == null) {
++            throw new InternalError("version has no frozen node: " + getId());
++        }
++        return entry.getId();
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public Calendar getCreated() {
+         return created;
+     }

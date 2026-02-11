@@ -1,0 +1,13 @@
+diff --git a/include/dixfontstr.h b/include/dixfontstr.h
+index d1d0449..757b8bb 100644
+--- a/include/dixfontstr.h
++++ b/include/dixfontstr.h
+@@ -30,7 +30,7 @@ SOFTWARE.
+ #include "fontstruct.h"
+ #include "closure.h"
+ #define NEED_REPLIES
+-#include "X11/Xproto.h" /* for xQueryFontReply */
++#include <X11/Xproto.h> /* for xQueryFontReply */
+ 
+ #define FONTCHARSET(font)	  (font)
+ #define FONTMAXBOUNDS(font,field) (font)->info.maxbounds.field

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/WhileStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/WhileStatement.java
+index 288f7ec..d774e78 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/WhileStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/WhileStatement.java
+@@ -220,7 +220,7 @@ public class WhileStatement extends Statement {
+ 
+ 	public void resolve(BlockScope scope) {
+ 
+-		TypeBinding type = condition.resolveTypeExpecting(scope, BooleanBinding);
++		TypeBinding type = condition.resolveTypeExpecting(scope, TypeBinding.BOOLEAN);
+ 		condition.computeConversion(scope, type, type);
+ 		if (action != null)
+ 			action.resolve(scope);

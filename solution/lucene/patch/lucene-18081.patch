@@ -1,0 +1,12 @@
+diff --git a/solr/src/common/org/apache/solr/common/cloud/CloudState.java b/solr/src/common/org/apache/solr/common/cloud/CloudState.java
+index 23ec5fb..7b140e7 100644
+--- a/solr/src/common/org/apache/solr/common/cloud/CloudState.java
++++ b/solr/src/common/org/apache/solr/common/cloud/CloudState.java
+@@ -140,6 +140,7 @@ public class CloudState {
+     return liveNodesSet;
+   }
+   
++  @Override
+   public String toString() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("live nodes:" + liveNodes);

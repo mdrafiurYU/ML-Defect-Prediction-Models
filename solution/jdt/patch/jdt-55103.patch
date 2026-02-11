@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
+index 99ab063..e7030f3 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
+@@ -527,8 +527,8 @@ public IJavaElement[] findElements(IJavaElement element) {
+  * @see ICompilationUnit#findPrimaryType()
+  */
+ public IType findPrimaryType() {
+-	String typeName = Signature.getQualifier(this.getElementName());
+-	IType primaryType= this.getType(typeName);
++	String typeName = Util.getNameWithoutJavaLikeExtension(getElementName());
++	IType primaryType= getType(typeName);
+ 	if (primaryType.exists()) {
+ 		return primaryType;
+ 	}

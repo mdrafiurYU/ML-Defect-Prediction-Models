@@ -1,0 +1,15 @@
+diff --git a/Xprint/ps/PsGC.c b/Xprint/ps/PsGC.c
+index c4984d0..56ff5cd 100644
+--- a/Xprint/ps/PsGC.c
++++ b/Xprint/ps/PsGC.c
+@@ -74,6 +74,10 @@ in this Software without prior written authorization from The Open Group.
+ ** 
+ ********************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "Ps.h"
+ #include "gcstruct.h"
+ #include "pixmapstr.h"

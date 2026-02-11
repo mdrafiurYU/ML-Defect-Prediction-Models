@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/dri/drimodule.c b/hw/xfree86/dri/drimodule.c
+index d687897..de535d0 100644
+--- a/hw/xfree86/dri/drimodule.c
++++ b/hw/xfree86/dri/drimodule.c
+@@ -39,6 +39,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #endif
+ 
+ #include "xf86Module.h"
++#include "globals.h"
+ 
+ static MODULESETUPPROTO(driSetup);
+ 
+@@ -64,7 +65,7 @@ ExtensionModule XF86DRIExt =
+ {
+     XFree86DRIExtensionInit,
+     XF86DRINAME,
+-    NULL,
++    &noXFree86DRIExtension,
+     NULL,
+     NULL
+ };

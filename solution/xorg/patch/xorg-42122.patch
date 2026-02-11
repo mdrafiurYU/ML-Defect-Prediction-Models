@@ -1,0 +1,38 @@
+diff --git a/hw/xfree86/os-support/shared/VTsw_usl.c b/hw/xfree86/os-support/shared/VTsw_usl.c
+index 4d47314..ea07aae 100644
+--- a/hw/xfree86/os-support/shared/VTsw_usl.c
++++ b/hw/xfree86/os-support/shared/VTsw_usl.c
+@@ -44,7 +44,7 @@
+  * This function is the signal handler for the VT-switching signal.  It
+  * is only referenced inside the OS-support layer.
+  */
+-void
++_X_EXPORT void
+ xf86VTRequest(int sig)
+ {
+ 	signal(sig, (void(*)(int))xf86VTRequest);
+@@ -52,13 +52,13 @@ xf86VTRequest(int sig)
+ 	return;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86VTSwitchPending()
+ {
+     return(xf86Info.vtRequestsPending ? TRUE : FALSE);
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86VTSwitchAway()
+ {
+ 	xf86Info.vtRequestsPending = FALSE;
+@@ -75,7 +75,7 @@ xf86VTSwitchAway()
+ 	}
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86VTSwitchTo()
+ {
+ 	xf86Info.vtRequestsPending = FALSE;

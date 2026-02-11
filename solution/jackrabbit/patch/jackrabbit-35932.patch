@@ -1,0 +1,13 @@
+diff --git a/contrib/spi/client/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java b/contrib/spi/client/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java
+index 4da0427..84f6928 100644
+--- a/contrib/spi/client/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java
++++ b/contrib/spi/client/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java
+@@ -57,7 +57,7 @@ public class ReorderTest extends AbstractJCRTest {
+         return path.substring(path.lastIndexOf('/')+1);
+     }
+ 
+-    private static void testOrder(Node parent, Node[] children) throws RepositoryException {
++    protected static void testOrder(Node parent, Node[] children) throws RepositoryException {
+         NodeIterator it = parent.getNodes();
+         int i = 0;
+         while (it.hasNext()) {

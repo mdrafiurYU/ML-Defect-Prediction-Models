@@ -1,0 +1,15 @@
+diff --git a/hw/xquartz/pseudoramiX.h b/hw/xquartz/pseudoramiX.h
+new file mode 100644
+index 0000000..df5010d
+--- /dev/null
++++ b/hw/xquartz/pseudoramiX.h
+@@ -0,0 +1,9 @@
++/*
++ * Minimal implementation of PanoramiX/Xinerama
++ */
++
++extern int noPseudoramiXExtension;
++
++void PseudoramiXAddScreen(int x, int y, int w, int h);
++void PseudoramiXExtensionInit(int argc, char *argv[]);
++void PseudoramiXResetScreens(void);

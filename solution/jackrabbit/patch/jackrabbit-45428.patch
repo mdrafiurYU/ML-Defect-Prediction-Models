@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/SetMixin.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/SetMixin.java
+index db68786..2867550 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/SetMixin.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/SetMixin.java
+@@ -46,7 +46,9 @@ public class SetMixin extends AbstractOperation {
+         // add the jcr:mixinTypes property state as affected if it already exists
+         // and therefore gets modified by this operation.
+         try {
+-            addAffectedItemState(nodeState.getPropertyState(NameConstants.JCR_MIXINTYPES));
++            if (nodeState.hasPropertyName(NameConstants.JCR_MIXINTYPES)) {
++                addAffectedItemState(nodeState.getPropertyState(NameConstants.JCR_MIXINTYPES));
++            }
+         } catch (RepositoryException e) {
+             // jcr:mixinTypes does not exist -> ignore
+         }

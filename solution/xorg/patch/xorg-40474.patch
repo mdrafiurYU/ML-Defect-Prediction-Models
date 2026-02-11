@@ -1,0 +1,26 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 69d23a7..0933738 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -1100,20 +1100,11 @@ checkConflict(resRange *rgp, resPtr pRes, int entityIndex,
+ }
+ 
+ /*
+- * ChkConflict() -- used within xxxBus ; find conflict with any location.
+- */
+-memType
+-ChkConflict(resRange *rgp, resPtr res, xf86State state)
+-{
+-    return checkConflict(rgp, res, -2, state,FALSE);
+-}
+-
+-/*
+  * xf86ChkConflict() - This function is the low level interface to
+  * the resource broker that gets exported. Tests all resources ie.
+  * performs test with SETUP flag.
+  */
+-_X_EXPORT memType
++static memType
+ xf86ChkConflict(resRange *rgp, int entityIndex)
+ {
+     return checkConflict(rgp, Acc, entityIndex, SETUP,FALSE);

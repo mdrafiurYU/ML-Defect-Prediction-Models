@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
+index 4cbb62b..a7a7b73 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
+@@ -1131,7 +1131,6 @@ public class BundleDbPersistenceManager extends AbstractBundlePersistenceManager
+     protected synchronized NodePropBundle loadBundle(NodeId id, boolean checkBeforeLoading)
+             throws ItemStateException {
+         ResultSet rs = null;
+-        InputStream in = null;
+         try {
+             Statement stmt = connectionManager.executeStmt(bundleSelectSQL, getKey(id.getUUID()));
+             rs = stmt.getResultSet();
+@@ -1160,7 +1159,6 @@ public class BundleDbPersistenceManager extends AbstractBundlePersistenceManager
+             log.error(msg);
+             throw new ItemStateException(msg, e);
+         } finally {
+-            IOUtils.closeQuietly(in);
+             closeResultSet(rs);
+         }
+     }

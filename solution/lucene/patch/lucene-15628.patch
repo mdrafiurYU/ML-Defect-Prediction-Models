@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNorms.java b/lucene/src/test/org/apache/lucene/index/TestNorms.java
+index 460e613..ceeae15 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestNorms.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNorms.java
+@@ -41,8 +41,9 @@ public class TestNorms extends LuceneTestCase {
+ 
+   private class SimilarityOne extends DefaultSimilarity {
+     @Override
+-    public float lengthNorm(String fieldName, int numTerms) {
+-      return 1;
++    public float computeNorm(String fieldName, FieldInvertState state) {
++      // Disable length norm
++      return state.getBoost();
+     }
+   }

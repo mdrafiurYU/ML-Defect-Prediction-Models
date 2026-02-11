@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/xaa/xaaInitAccel.c b/hw/xfree86/xaa/xaaInitAccel.c
+index 0672bcf..4087142 100644
+--- a/hw/xfree86/xaa/xaaInitAccel.c
++++ b/hw/xfree86/xaa/xaaInitAccel.c
+@@ -16,8 +16,6 @@
+ #include "xf86fbman.h"
+ #include "servermd.h"
+ 
+-static const OptionInfoRec *XAAAvailableOptions(void *unused);
+-
+ /*
+  * XAA Config options
+  */
+@@ -111,13 +109,6 @@ static XF86ModuleVersionInfo xaaVersRec =
+ 
+ _X_EXPORT XF86ModuleData xaaModuleData = { &xaaVersRec, NULL, NULL };
+ 
+-/*ARGSUSED*/
+-static const OptionInfoRec *
+-XAAAvailableOptions(void *unused)
+-{
+-    return (XAAOptions);
+-}
+-
+ Bool
+ XAAInitAccel(ScreenPtr pScreen, XAAInfoRecPtr infoRec)
+ {

@@ -1,0 +1,14 @@
+diff --git a/GL/glx/glxext.h b/GL/glx/glxext.h
+index 5d56989..34d3612 100644
+--- a/GL/glx/glxext.h
++++ b/GL/glx/glxext.h
+@@ -87,6 +87,9 @@ extern int DoCreateContext(__GLXclientState *cl, GLXContextID gcId,
+     GLXContextID shareList, VisualID visual, GLuint screen, GLboolean isDirect);
+ extern int DoCreateGLXPixmap(__GLXclientState *cl, VisualID visual,
+     GLuint screenNum, XID pixmapId, XID glxpixmapId);
++extern int DoDestroyPixmap(__GLXclientState *cl, XID glxpixmapId);
++
++extern int DoQueryContext(__GLXclientState *cl, GLXContextID gcId);
+ 
+ extern void GlxExtensionInit(void);
+ 

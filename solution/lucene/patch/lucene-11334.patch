@@ -1,0 +1,36 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableLongField.java b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+index 6bd0727..c74f9ff 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableLongField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+@@ -20,6 +20,8 @@ package org.apache.solr.schema;
+ import org.apache.lucene.search.SortField;
+ import org.apache.lucene.util.BytesRef;
+ import org.apache.noggit.CharArr;
++import org.apache.solr.search.MutableValueLong;
++import org.apache.solr.search.MutableValue;
+ import org.apache.solr.search.function.ValueSource;
+ import org.apache.solr.search.function.FieldCacheSource;
+ import org.apache.solr.search.function.DocValues;
+@@ -134,6 +136,23 @@ class SortableLongFieldSource extends FieldCacheSource {
+       public String toString(int doc) {
+         return description() + '=' + longVal(doc);
+       }
++
++      @Override
++      public ValueFiller getValueFiller() {
++        return new ValueFiller() {
++          private final MutableValueLong mval = new MutableValueLong();
++
++          @Override
++          public MutableValue getValue() {
++            return mval;
++          }
++
++          @Override
++          public void fillValue(int doc) {
++            mval.value = longVal(doc);
++          }
++        };
++      }
+     };
+   }

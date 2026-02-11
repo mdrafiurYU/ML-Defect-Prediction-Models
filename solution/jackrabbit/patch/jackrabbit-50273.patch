@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DbFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DbFileSystem.java
+index 12a6133..ea8d4e4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DbFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DbFileSystem.java
+@@ -77,6 +77,17 @@ import javax.jcr.RepositoryException;
+  *       &lt;param name="schemaObjectPrefix" value="rep_"/&gt;
+  *   &lt;/FileSystem&gt;
+  * </pre>
++ * The following is a fragment from a sample configuration using Ingres:
++ * <pre>
++ *   &lt;FileSystem class="org.apache.jackrabbit.core.fs.db.DbFileSystem"&gt;
++ *       &lt;param name="driver" value="com.ingres.jdbc.IngresDriver"/&gt;
++ *       &lt;param name="url" value="jdbc:ingres://localhost:II7/test"/&gt;
++ *       &lt;param name="schema" value="ingres"/&gt;
++ *       &lt;param name="user" value="ingres"/&gt;
++ *       &lt;param name="password" value="ingres"/&gt;
++ *       &lt;param name="schemaObjectPrefix" value="rep_"/&gt;
++ *   &lt;/FileSystem&gt;
++ * </pre>
+  * The following is a fragment from a sample configuration using PostgreSQL:
+  * <pre>
+  *   &lt;FileSystem class="org.apache.jackrabbit.core.fs.db.DbFileSystem"&gt;

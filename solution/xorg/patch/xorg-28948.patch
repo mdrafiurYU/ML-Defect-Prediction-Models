@@ -1,0 +1,11 @@
+diff --git a/hw/xfree86/modes/xf86RandR12.h b/hw/xfree86/modes/xf86RandR12.h
+index 8a4668b..0d3346a 100644
+--- a/hw/xfree86/modes/xf86RandR12.h
++++ b/hw/xfree86/modes/xf86RandR12.h
+@@ -33,5 +33,6 @@ Bool xf86RandR12SetConfig(ScreenPtr pScreen, Rotation rotation, int rate,
+ Rotation xf86RandR12GetRotation(ScreenPtr pScreen);
+ void xf86RandR12GetOriginalVirtualSize(ScrnInfoPtr pScrn, int *x, int *y);
+ Bool xf86RandR12PreInit (ScrnInfoPtr pScrn);
++void xf86RandR12TellChanged (ScreenPtr pScreen);
+ 
+ #endif /* _XF86_RANDR_H_ */

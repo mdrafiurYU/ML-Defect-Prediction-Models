@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/TopFieldCollector.java b/lucene/src/java/org/apache/lucene/search/TopFieldCollector.java
+index 05e178d..bc10124 100644
+--- a/lucene/src/java/org/apache/lucene/search/TopFieldCollector.java
++++ b/lucene/src/java/org/apache/lucene/search/TopFieldCollector.java
+@@ -448,7 +448,7 @@ public abstract class TopFieldCollector extends TopDocsCollector<Entry> {
+ 
+     @Override
+     public void setNextReader(AtomicReaderContext context) throws IOException {
+-      this.docBase = context.docBase;
++      docBase = context.docBase;
+       for (int i = 0; i < comparators.length; i++) {
+         queue.setComparator(i, comparators[i].setNextReader(context));
+       }

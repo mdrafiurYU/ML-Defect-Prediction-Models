@@ -1,0 +1,28 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+index 4868758..0eefee1 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+@@ -57,6 +57,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+         MockDirectoryWrapper dir = new MockDirectoryWrapper(random, new RAMDirectory());
+         dir.setMaxSizeInBytes(diskFree);
+         IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()));
++        writer.setInfoStream(VERBOSE ? System.out : null);
+         MergeScheduler ms = writer.getConfig().getMergeScheduler();
+         if (ms instanceof ConcurrentMergeScheduler)
+           // This test intentionally produces exceptions
+@@ -101,6 +102,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+             
+             // Make sure reader can open the index:
+             IndexReader.open(dir, true).close();
++            _TestUtil.checkIndex(dir);
+           }
+             
+           dir.close();
+@@ -109,6 +111,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+           diskFree += 500;
+         } else {
+           //_TestUtil.syncConcurrentMerges(writer);
++          dir.setMaxSizeInBytes(0);
+           writer.close();
+           dir.close();
+           break;

@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
+index c42a532..ad457cb 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
+@@ -129,6 +129,7 @@ public class AbstractComparableTest extends AbstractRegressionTest {
+ 		options.put(CompilerOptions.OPTION_ReportMissingDeprecatedAnnotation, CompilerOptions.WARNING);
+ 		options.put(CompilerOptions.OPTION_ReportIncompleteEnumSwitch, CompilerOptions.WARNING);
+ 		options.put(CompilerOptions.OPTION_ReportRawTypeReference, CompilerOptions.WARNING);
++		options.put(CompilerOptions.OPTION_StatementsRecovery, CompilerOptions.DISABLED); //TODO temporary option
+ 		return options;
+ 	}

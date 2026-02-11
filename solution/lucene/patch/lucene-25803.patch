@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/LiteralValueSource.java b/solr/src/java/org/apache/solr/search/function/LiteralValueSource.java
+index 1552c36..2b76fd3 100644
+--- a/solr/src/java/org/apache/solr/search/function/LiteralValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/LiteralValueSource.java
+@@ -17,6 +17,8 @@ package org.apache.solr.search.function;
+  */
+ 
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.util.BytesRef;
+ 
+ import java.util.Map;

@@ -1,0 +1,16 @@
+diff --git a/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java b/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java
+index b4edb39..6f6a4fd 100644
+--- a/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java
++++ b/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java
+@@ -558,6 +558,11 @@ public class TestQueryParser extends LuceneTestCase {
+     assertQueryEquals("[ a TO z] AND bar", null, "+[a TO z] +bar");
+     assertQueryEquals("( bar blar { a TO z}) ", null, "bar blar {a TO z}");
+     assertQueryEquals("gack ( bar blar { a TO z}) ", null, "gack (bar blar {a TO z})");
++
++    assertQueryEquals("[* TO Z]",null,"[* TO z]");
++    assertQueryEquals("[A TO *]",null,"[a TO *]");
++    assertQueryEquals("[* TO *]",null,"[* TO *]");
++    assertQueryEquals("[\\* TO \"*\"]",null,"[\\* TO \\*]");
+  }
+     
+   public void testFarsiRangeCollating() throws Exception {

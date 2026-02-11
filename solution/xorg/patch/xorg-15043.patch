@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxeq.c b/hw/dmx/input/dmxeq.c
+index 15b2579..7a6bb11 100644
+--- a/hw/dmx/input/dmxeq.c
++++ b/hw/dmx/input/dmxeq.c
+@@ -66,6 +66,10 @@
+  * Consortium).  (Another example of similar code is provided in
+  * hw/xfree86/common/xf86Xinput.c.) */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #define DMX_EQ_DEBUG 0
+ 
+ #include "dmx.h"

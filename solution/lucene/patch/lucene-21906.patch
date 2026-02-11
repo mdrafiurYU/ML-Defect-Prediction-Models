@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexReader.java b/lucene/src/java/org/apache/lucene/index/IndexReader.java
+index 9f3494c..b0f87f1 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexReader.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexReader.java
+@@ -1420,7 +1420,7 @@ public abstract class IndexReader implements Cloneable,Closeable {
+       cfr = new CompoundFileReader(dir, filename);
+ 
+       String [] files = cfr.listAll();
+-      ArrayUtil.quickSort(files);   // sort the array of filename so that the output is more readable
++      ArrayUtil.mergeSort(files);   // sort the array of filename so that the output is more readable
+ 
+       for (int i = 0; i < files.length; ++i) {
+         long len = cfr.fileLength(files[i]);

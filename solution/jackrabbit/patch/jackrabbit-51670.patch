@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexHistory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexHistory.java
+index 26960a7..bc64f59 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexHistory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexHistory.java
+@@ -198,11 +198,11 @@ class IndexHistory {
+      */
+     String getRedoLogName(long generation) {
+         if (generation == 0) {
+-            return RedoLog.REDO_LOG;
++            return DefaultRedoLog.REDO_LOG;
+         } else {
+-            return RedoLog.REDO_LOG_PREFIX +
++            return DefaultRedoLog.REDO_LOG_PREFIX +
+                     Long.toString(generation, Character.MAX_RADIX) +
+-                    RedoLog.DOT_LOG;
++                    DefaultRedoLog.DOT_LOG;
+         }
+     }
+ }

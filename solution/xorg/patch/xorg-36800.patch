@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/quartzKeyboard.c b/hw/xquartz/quartzKeyboard.c
+index e8d9968..fd0c3cc 100644
+--- a/hw/xquartz/quartzKeyboard.c
++++ b/hw/xquartz/quartzKeyboard.c
+@@ -52,6 +52,9 @@
+ 
+ #include "quartzCommon.h"
+ 
++#undef GetWindowAttributes
++#undef ChangeWindowAttributes
++
+ #include <CoreServices/CoreServices.h>
+ #include <Carbon/Carbon.h>
+ #include <IOKit/hidsystem/event_status_driver.h>

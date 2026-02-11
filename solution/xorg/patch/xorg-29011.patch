@@ -1,0 +1,14 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 6edf138..9e48c0b 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -523,6 +523,9 @@ CloseDevice(DeviceIntPtr dev)
+     ScreenPtr screen = screenInfo.screens[0];
+     int j;
+ 
++    if (!dev)
++        return;
++
+     if (dev->inited)
+ 	(void)(*dev->deviceProc)(dev, DEVICE_CLOSE);
+ 

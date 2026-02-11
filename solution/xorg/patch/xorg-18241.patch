@@ -1,0 +1,13 @@
+diff --git a/fb/fbpict.h b/fb/fbpict.h
+index 665b92d..9546b13 100644
+--- a/fb/fbpict.h
++++ b/fb/fbpict.h
+@@ -173,7 +173,7 @@
+         x = (x + ((x >> 8) & 0xff00ff)) >> 8;                       \
+         x &= 0xff00ff;                                              \
+         x += (y >> 8) & 0xff00ff;                                   \
+-        x |= 0x1000100 - ((t >> 8) & 0xff00ff);                     \
++        x |= 0x1000100 - ((x >> 8) & 0xff00ff);                     \
+         x &= 0xff00ff;                                              \
+         x <<= 8;                                                    \
+         x += t;                                                     \

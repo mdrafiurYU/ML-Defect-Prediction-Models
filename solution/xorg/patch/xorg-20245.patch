@@ -1,0 +1,17 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 3c09560..18550ee 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -189,6 +189,12 @@ void exaDDXDriverInit (ScreenPtr pScreen);
+ 
+ /* exa_unaccel.c */
+ void
++exaPrepareAccessGC(GCPtr pGC);
++
++void
++exaFinishAccessGC(GCPtr pGC);
++
++void
+ ExaCheckFillSpans  (DrawablePtr pDrawable, GCPtr pGC, int nspans,
+ 		   DDXPointPtr ppt, int *pwidth, int fSorted);
+ 

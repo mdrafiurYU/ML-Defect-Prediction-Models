@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Requestor.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Requestor.java
+index 66c219f..756029f 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Requestor.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Requestor.java
+@@ -103,7 +103,7 @@ protected void outputClassFiles(CompilationResult unitResult) {
+ 				String relativeName = 
+ 					new String(classFile.fileName()).replace('/', File.separatorChar) + ".class";
+ 				try {
+-					ClassFile.writeToDisk(true, outputPath, relativeName, classFile.getBytes());
++					ClassFile.writeToDisk(true, outputPath, relativeName, classFile);
+ 				} catch(IOException e) {
+ 				}
+ 			}

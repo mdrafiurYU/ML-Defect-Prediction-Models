@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/dri/xf86dri.c b/hw/xfree86/dri/xf86dri.c
+index 3df025b..4a58b6c 100644
+--- a/hw/xfree86/dri/xf86dri.c
++++ b/hw/xfree86/dri/xf86dri.c
+@@ -35,6 +35,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "xf86.h"
+ #ifdef XFree86LOADER
+ #include "xf86_ansic.h"

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/ChildNodeConstraint.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/ChildNodeConstraint.java
+index 6dabb16..3e61c5d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/ChildNodeConstraint.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/ChildNodeConstraint.java
+@@ -41,7 +41,7 @@ public class ChildNodeConstraint extends HierarchyConstraint {
+      */
+     public ChildNodeConstraint(ChildNodeImpl constraint,
+                                SelectorImpl selector) {
+-        super(constraint.getPath(), selector);
++        super(constraint.getParentPath(), selector);
+     }
+ 
+     /**

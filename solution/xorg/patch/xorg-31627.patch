@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/pseudoramiX.c b/hw/darwin/quartz/pseudoramiX.c
+index 7ba6d5a..e65be69 100644
+--- a/hw/darwin/quartz/pseudoramiX.c
++++ b/hw/darwin/quartz/pseudoramiX.c
+@@ -43,6 +43,9 @@ Equipment Corporation.
+ #include <X11/extensions/panoramiXproto.h>
+ #include "globals.h"
+ 
++extern int noPseudoramiXExtension;
++extern int noPanoramiXExtension;
++
+ extern int ProcPanoramiXQueryVersion (ClientPtr client);
+ 
+ static void PseudoramiXResetProc(ExtensionEntry *extEntry);

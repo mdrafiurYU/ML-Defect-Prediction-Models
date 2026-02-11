@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/AndQueryNode.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/AndQueryNode.java
+index 8ad6e75..38af09c 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/AndQueryNode.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/AndQueryNode.java
+@@ -22,7 +22,7 @@ import javax.jcr.RepositoryException;
+  * Implements a query node that defines an AND operation between arbitrary
+  * other {@link QueryNode}s.
+  */
+-public class AndQueryNode extends NAryQueryNode {
++public class AndQueryNode extends NAryQueryNode<QueryNode> {
+ 
+     /**
+      * Creates a new <code>AndQueryNode</code> with a <code>parent</code>

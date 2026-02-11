@@ -1,0 +1,12 @@
+diff --git a/include/dix.h b/include/dix.h
+index fc862df..079645d 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -502,6 +502,7 @@ extern void WriteEventsToClient(
+ 
+ extern int TryClientEvents(
+     ClientPtr /*client*/,
++    DeviceIntPtr /* device */,
+     xEventPtr /*pEvents*/,
+     int /*count*/,
+     Mask /*mask*/,

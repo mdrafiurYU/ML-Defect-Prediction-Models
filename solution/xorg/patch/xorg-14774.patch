@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/config/dmxconfig.c b/hw/dmx/config/dmxconfig.c
+index f276283..353ce11 100644
+--- a/hw/dmx/config/dmxconfig.c
++++ b/hw/dmx/config/dmxconfig.c
+@@ -37,6 +37,10 @@
+  * combining that information with command-line configuration parameters. */
+     
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxinput.h"
+ #include "dmxconfig.h"

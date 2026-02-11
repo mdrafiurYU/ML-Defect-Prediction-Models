@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+index 9c5f7e8..d304c44 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+@@ -99,7 +99,7 @@ public FlowInfo analyseCode(BlockScope currentScope, FlowContext flowContext, Fl
+ 	boolean nonStatic = !binding.isStatic();
+ 	receiver.analyseCode(currentScope, flowContext, flowInfo, nonStatic);
+ 	if (nonStatic) {
+-		receiver.checkNPE(currentScope, flowContext, flowInfo, true);
++		receiver.checkNPE(currentScope, flowContext, flowInfo);
+ 	}
+ 	
+ 	if (valueRequired || currentScope.compilerOptions().complianceLevel >= ClassFileConstants.JDK1_4) {

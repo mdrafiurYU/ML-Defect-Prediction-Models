@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionRecoveryManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionRecoveryManager.java
+index 7454dd2..721359a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionRecoveryManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionRecoveryManager.java
+@@ -330,7 +330,10 @@ public class ConnectionRecoveryManager {
+             log.warn("Could not connect; driver: " + driver + " url: " + url + " user: " + user + " error: " + e.toString(), e);
+             throw e;
+         }
+-        connection.setAutoCommit(true);
++        // JCR-1013: Setter may fail unnecessarily on a managed connection
++        if (!connection.getAutoCommit()) {
++            connection.setAutoCommit(true);
++        }
+         try {
+             DatabaseMetaData meta = connection.getMetaData();
+             log.info("Database: " + meta.getDatabaseProductName() + " / " + meta.getDatabaseProductVersion());

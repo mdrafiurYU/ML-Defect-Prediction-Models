@@ -1,0 +1,13 @@
+diff --git a/exa/exa_migration.c b/exa/exa_migration.c
+index 571650c..7b41f4d 100644
+--- a/exa/exa_migration.c
++++ b/exa/exa_migration.c
+@@ -348,7 +348,7 @@ exaDoMoveInPixmap (ExaMigrationPtr migrate)
+     pPixmap->drawable.serialNumber = NEXT_SERIAL_NUMBER;
+ }
+ 
+-void
++_X_EXPORT void
+ exaMoveInPixmap (PixmapPtr pPixmap)
+ {
+     static ExaMigrationRec migrate = { .as_dst = FALSE, .as_src = TRUE,

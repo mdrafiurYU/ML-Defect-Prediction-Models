@@ -1,0 +1,39 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/SingleLineTestCase.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/SingleLineTestCase.java
+index 757394d..17c0ca1 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/SingleLineTestCase.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/formatter/comment/SingleLineTestCase.java
+@@ -11,7 +11,6 @@
+ package org.eclipse.jdt.core.tests.formatter.comment;
+ 
+ import junit.framework.Test;
+-import junit.framework.TestSuite;
+ 
+ import org.eclipse.jdt.core.JavaCore;
+ import org.eclipse.jdt.core.formatter.CodeFormatter;
+@@ -20,11 +19,14 @@ import org.eclipse.jdt.core.formatter.DefaultCodeFormatterConstants;
+ import org.eclipse.jdt.internal.formatter.comment.SingleCommentLine;
+ 
+ public class SingleLineTestCase extends CommentTestCase {
+-
+ 	protected static final String PREFIX= SingleCommentLine.SINGLE_COMMENT_PREFIX;
+ 
++	static {
++//		TESTS_NAMES = new String[] { "test109581" } ;
++	}
++	
+ 	public static Test suite() {
+-		return new TestSuite(SingleLineTestCase.class);
++		return buildTestSuite(SingleLineTestCase.class);
+ 	}
+ 
+ 	public SingleLineTestCase(String name) {
+@@ -212,4 +214,9 @@ public class SingleLineTestCase extends CommentTestCase {
+ 		String content= PREFIX + "test test";
+ 		assertEquals(content, testFormat(content));
+ 	}
++	public void _test109581() {
++		setUserOption(DefaultCodeFormatterConstants.FORMATTER_COMMENT_FORMAT, DefaultCodeFormatterConstants.TRUE);
++		String content= "//// some comment ////";
++		assertEquals(content + DELIMITER, testFormat(content));
++	}
+ }

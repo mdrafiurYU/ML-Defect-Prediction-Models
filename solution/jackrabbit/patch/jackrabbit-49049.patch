@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+index 7f492ef..d4424bb 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+@@ -289,8 +289,12 @@ public final class QValueFactoryImpl extends AbstractQValueFactory {
+ 
+                 public int read(byte[] b, long position) throws IOException, RepositoryException {
+                     InputStream in = getStream();
+-                    in.skip(position);
+-                    return in.read(b);
++                    try {
++                        in.skip(position);
++                        return in.read(b);
++                    } finally {
++                        in.close();
++                    }
+                 }
+ 
+                 public long getSize() throws RepositoryException {

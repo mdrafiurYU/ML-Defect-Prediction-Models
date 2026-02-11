@@ -1,0 +1,18 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
+index 477055d..7d71643 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarStraightBytesImpl.java
+@@ -164,11 +164,11 @@ class VarStraightBytesImpl {
+     }
+ 
+     @Override
+-    public DocValuesEnum getEnum(AttributeSource source) throws IOException {
++    public ValuesEnum getEnum(AttributeSource source) throws IOException {
+       return new VarStraightBytesEnum(source, cloneData(), cloneIndex());
+     }
+ 
+-    private class VarStraightBytesEnum extends DocValuesEnum {
++    private class VarStraightBytesEnum extends ValuesEnum {
+       private final PackedInts.Reader addresses;
+       private final IndexInput datIn;
+       private final IndexInput idxIn;

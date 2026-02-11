@@ -1,0 +1,36 @@
+diff --git a/Xi/gtmotion.c b/Xi/gtmotion.c
+index 02b1fee..60de64e 100644
+--- a/Xi/gtmotion.c
++++ b/Xi/gtmotion.c
+@@ -78,8 +78,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGetDeviceMotionEvents(client)
+-register ClientPtr client;
++SProcXGetDeviceMotionEvents(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -98,8 +97,7 @@ register ClientPtr client;
+  */
+ 
+ int
+-ProcXGetDeviceMotionEvents(client)
+-    ClientPtr client;
++ProcXGetDeviceMotionEvents(ClientPtr client)
+ {
+     INT32 *coords = NULL, *bufptr;
+     xGetDeviceMotionEventsReply rep;
+@@ -199,10 +197,7 @@ ProcXGetDeviceMotionEvents(client)
+  */
+ 
+ void
+-SRepXGetDeviceMotionEvents (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGetDeviceMotionEventsReply	*rep;
++SRepXGetDeviceMotionEvents (ClientPtr client, int size, xGetDeviceMotionEventsReply *rep)
+     {
+     register char n;
+ 

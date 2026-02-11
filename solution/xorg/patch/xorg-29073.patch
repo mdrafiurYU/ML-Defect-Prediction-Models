@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dri/sarea.h b/hw/xfree86/dri/sarea.h
+index a0d6084..1528cc1 100644
+--- a/hw/xfree86/dri/sarea.h
++++ b/hw/xfree86/dri/sarea.h
+@@ -89,4 +89,9 @@ typedef struct _XF86DRISAREA {
+     drm_context_t			dummy_context;
+ } XF86DRISAREARec, *XF86DRISAREAPtr;
+ 
++typedef struct _XF86DRILSAREA  {
++    drmLock                     lock;
++    drmLock                     otherLocks[31];
++} XF86DRILSAREARec, *XF86DRILSAREAPtr;
++
+ #endif

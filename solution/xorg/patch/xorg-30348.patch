@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/dri/dristruct.h b/hw/xfree86/dri/dristruct.h
+index a3bac85..5d981b8 100644
+--- a/hw/xfree86/dri/dristruct.h
++++ b/hw/xfree86/dri/dristruct.h
+@@ -99,6 +99,7 @@ typedef struct _DRIScreenPrivRec
+     DrawablePtr         fullscreen; /* pointer to fullscreen drawable */
+     drm_clip_rect_t  fullscreen_rect; /* fake rect for fullscreen mode */
+     DRIWrappedFuncsRec	wrap;
++    DestroyWindowProcPtr DestroyWindow;
+     DrawablePtr		DRIDrawables[SAREA_MAX_DRAWABLES];
+     DRIContextPrivPtr   dummyCtxPriv; /* Pointer to dummy context */
+     Bool		createDummyCtx;

@@ -1,0 +1,21 @@
+diff --git a/modules/suggest/src/java/org/apache/lucene/search/suggest/fst/FSTLookup.java b/modules/suggest/src/java/org/apache/lucene/search/suggest/fst/FSTLookup.java
+index 47d81ec..22f81b0 100644
+--- a/modules/suggest/src/java/org/apache/lucene/search/suggest/fst/FSTLookup.java
++++ b/modules/suggest/src/java/org/apache/lucene/search/suggest/fst/FSTLookup.java
+@@ -15,11 +15,11 @@ import java.util.List;
+ 
+ import org.apache.lucene.util.IOUtils;
+ import org.apache.lucene.util.IntsRef;
+-import org.apache.lucene.util.automaton.fst.Builder;
+-import org.apache.lucene.util.automaton.fst.FST;
+-import org.apache.lucene.util.automaton.fst.FST.Arc;
+-import org.apache.lucene.util.automaton.fst.NoOutputs;
+-import org.apache.lucene.util.automaton.fst.Outputs;
++import org.apache.lucene.util.fst.Builder;
++import org.apache.lucene.util.fst.FST;
++import org.apache.lucene.util.fst.FST.Arc;
++import org.apache.lucene.util.fst.NoOutputs;
++import org.apache.lucene.util.fst.Outputs;
+ 
+ import org.apache.lucene.search.suggest.Lookup;
+ import org.apache.lucene.search.suggest.tst.TSTLookup;

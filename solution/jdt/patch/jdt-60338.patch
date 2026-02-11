@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SearchTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SearchTests.java
+index 0872f35..1f7cb22 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SearchTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SearchTests.java
+@@ -1022,4 +1022,8 @@ public void testSearchPatternValidMatchRule04() {
+ 		SearchPattern.R_CAMELCASE_MATCH|SearchPattern.R_PREFIX_MATCH,
+ 		SearchPattern.R_PREFIX_MATCH);
+ }
++public void testSearchPatternValidMatchRule05() {
++	assertValidMatchRule("hashMap", SearchPattern.R_CAMELCASE_MATCH);
++	assertValidMatchRule("Hashmap", SearchPattern.R_CAMELCASE_MATCH);
++}
+ }

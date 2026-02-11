@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XAWorkspace.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XAWorkspace.java
+index 4ddaca2..f2dfada 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XAWorkspace.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XAWorkspace.java
+@@ -45,6 +45,6 @@ public class XAWorkspace extends WorkspaceImpl {
+      * {@inheritDoc}
+      */
+     protected LocalItemStateManager createItemStateManager(SharedItemStateManager shared) {
+-        return new XAItemStateManager(shared, this, rep.getItemStateCacheFactory());
++        return XAItemStateManager.createInstance(shared, this, null, rep.getItemStateCacheFactory());
+     }
+ }

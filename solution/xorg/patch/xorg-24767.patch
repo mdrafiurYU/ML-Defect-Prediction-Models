@@ -1,0 +1,24 @@
+diff --git a/hw/kdrive/linux/keyboard.c b/hw/kdrive/linux/keyboard.c
+index eb4a8f1..24653ad 100644
+--- a/hw/kdrive/linux/keyboard.c
++++ b/hw/kdrive/linux/keyboard.c
+@@ -579,7 +579,9 @@ LinuxKeyboardRead (int fd, void *closure)
+                 if (!prefix && ((b[0] & 0x7f) == KEY_Prefix0))
+                 {
+                         prefix = KEY_Prefix0;
++#ifdef DEBUG
+                         ErrorF("Prefix0");
++#endif
+                         /* swallow this up */
+                         b++;
+                         continue;
+@@ -598,7 +600,9 @@ LinuxKeyboardRead (int fd, void *closure)
+                         /* from xf86Events.c */
+                         case KEY_Prefix0:
+                         {
++#ifdef DEBUG
+                             ErrorF("Prefix0 scancode: 0x%02x\n", scancode);
++#endif
+                             switch (scancode) {
+                                 case KEY_KP_7:
+                                     scancode = KEY_Home;      break;  /* curs home */

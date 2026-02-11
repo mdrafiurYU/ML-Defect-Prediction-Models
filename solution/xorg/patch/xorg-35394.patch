@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/ddc/print_edid.c b/hw/xfree86/ddc/print_edid.c
+index 880ca07..30cd175 100644
+--- a/hw/xfree86/ddc/print_edid.c
++++ b/hw/xfree86/ddc/print_edid.c
+@@ -128,6 +128,7 @@ print_dpms_features(int scrnIndex, struct disp_features *c,
+ 	 if (DPMS_OFF(c->dpms)) xf86ErrorF(" Off");
+      } else 
+ 	 xf86DrvMsg(scrnIndex,X_INFO,"No DPMS capabilities specified");
++    if (!c->input_type) { /* analog */
+     switch (c->display_type){
+     case DISP_MONO:
+ 	xf86ErrorF("; Monochorome/GrayScale Display\n");
+@@ -142,6 +143,14 @@ print_dpms_features(int scrnIndex, struct disp_features *c,
+ 	xf86ErrorF("\n");
+ 	break;
+     }
++    } else {
++	int enc = c->display_type;
++	xf86DrvMsg(scrnIndex, X_INFO, "\nSupported color encodings: "
++		   "RGB 4:4:4 %s%s\n",
++		   enc & DISP_YCRCB444 ? "YCrCb 4:4:4 " : "",
++		   enc & DISP_YCRCB422 ? "YCrCb 4:2:2" : "");
++    }
++
+     if (STD_COLOR_SPACE(c->msc))
+ 	xf86DrvMsg(scrnIndex,X_INFO,
+ 		   "Default color space is primary color space\n"); 

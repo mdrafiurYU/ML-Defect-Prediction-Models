@@ -1,0 +1,18 @@
+diff --git a/include/property.h b/include/property.h
+index ba7d226..1207e81 100644
+--- a/include/property.h
++++ b/include/property.h
+@@ -52,6 +52,13 @@ SOFTWARE.
+ 
+ typedef struct _Property *PropertyPtr;
+ 
++extern int dixLookupProperty(
++    PropertyPtr * /*result*/,
++    WindowPtr /*pWin*/,
++    Atom /*proprty*/,
++    ClientPtr /*pClient*/,
++    Mask /*access_mode*/);
++
+ extern int dixChangeWindowProperty(
+     ClientPtr /*pClient*/,
+     WindowPtr /*pWin*/,

@@ -1,0 +1,13 @@
+diff --git a/os/connection.c b/os/connection.c
+index d8c0707..45063c8 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -135,7 +135,7 @@ extern __const__ int _nfiles;
+ #endif
+ #endif
+ #endif /* WIN32 */
+-#include "misc.h"		/* for typedef of pointer */
++#include <X11/misc.h>		/* for typedef of pointer */
+ #include "osdep.h"
+ #include <X11/Xpoll.h>
+ #include "opaque.h"

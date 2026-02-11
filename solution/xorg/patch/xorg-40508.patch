@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/os-support/bus/ix86Pci.c b/hw/xfree86/os-support/bus/ix86Pci.c
+index 80bac32..a279363 100644
+--- a/hw/xfree86/os-support/bus/ix86Pci.c
++++ b/hw/xfree86/os-support/bus/ix86Pci.c
+@@ -474,13 +474,11 @@ void
+ ix86PciInit()
+ {
+     /* Initialize pciBusInfo */
+-    pciNumBuses    = 1;
+     pciBusInfo     = &ix86Pci0;
+ 
+     /* Make sure that there is a PCI bus present. */
+     ix86PciSelectCfgmech();
+     if (ix86Pci0.configMech == PCI_CFG_MECH_UNKNOWN) {
+-	pciNumBuses    = 0;
+ 	pciBusInfo     = NULL;
+     }
+ }

@@ -1,0 +1,86 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java
+index b3e09ea..5e8ae91 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java
+@@ -36,6 +36,7 @@ import javax.jcr.version.VersionIterator;
+ 
+ import org.apache.jackrabbit.commons.iterator.RangeIteratorAdapter;
+ import org.apache.jackrabbit.commons.iterator.FrozenNodeIteratorAdapter;
++import org.apache.jackrabbit.commons.iterator.VersionIteratorAdapter;
+ import org.apache.jackrabbit.jcr2spi.ItemLifeCycleListener;
+ import org.apache.jackrabbit.jcr2spi.LazyItemIterator;
+ import org.apache.jackrabbit.jcr2spi.NodeImpl;
+@@ -115,6 +116,42 @@ public class VersionHistoryImpl extends NodeImpl implements VersionHistory {
+     }
+ 
+     /**
++     * @see VersionHistory#getAllLinearVersions()
++     */
++    public VersionIterator getAllLinearVersions() throws RepositoryException {
++        checkStatus();
++
++        // TODO: improve and use lazy loading of versions as needed.
++        // TODO: change session.getNodeByUUID to Session.getNodeByIdentifier as soon as implemented
++
++        List versions = new ArrayList();
++        Version rootV = getRootVersion();
++        Node vn = session.getNodeByUUID(getVersionableUUID());
++        Version v = vn.getBaseVersion();
++        while (v != null && !rootV.isSame(v)) {
++            versions.add(0, v);
++            v = v.getLinearPredecessor();
++        }
++        versions.add(0, rootV);
++        
++        return new VersionIteratorAdapter(versions);
++    }
++
++    /**
++     * @see VersionHistory#getAllFrozenNodes()
++     */
++    public NodeIterator getAllFrozenNodes() throws RepositoryException {
++        return new FrozenNodeIteratorAdapter(getAllVersions());
++    }
++
++    /**
++     * @see VersionHistory#getAllLinearFrozenNodes()
++     */
++    public NodeIterator getAllLinearFrozenNodes() throws RepositoryException {
++        return new FrozenNodeIteratorAdapter(getAllLinearVersions());
++    }
++    
++    /**
+      * @see VersionHistory#getVersion(String)
+      */
+     public Version getVersion(String versionName) throws VersionException, RepositoryException {
+@@ -232,30 +269,6 @@ public class VersionHistoryImpl extends NodeImpl implements VersionHistory {
+         session.getVersionStateManager().removeVersion((NodeState) getItemState(), vState);
+     }
+ 
+-
+-    /**
+-     * @see VersionHistory#getAllFrozenNodes()
+-     */
+-    public NodeIterator getAllFrozenNodes() throws RepositoryException {
+-        return new FrozenNodeIteratorAdapter(getAllVersions());
+-    }
+-
+-    /**
+-     * @see VersionHistory#getAllLinearFrozenNodes()
+-     */
+-    public NodeIterator getAllLinearFrozenNodes() throws RepositoryException {        
+-        // TODO
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+-    /**
+-     * @see VersionHistory#getAllLinearVersions()
+-     */
+-    public VersionIterator getAllLinearVersions() throws RepositoryException {
+-        // TODO
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+     /**
+      * @see VersionHistory#getVersionableIdentifier()
+      */

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java b/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java
+index 1927235..b9cafc7 100644
+--- a/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java
++++ b/lucene/src/java/org/apache/lucene/index/ConcurrentMergeScheduler.java
+@@ -145,7 +145,7 @@ public class ConcurrentMergeScheduler extends MergeScheduler {
+   /**
+    * Called whenever the running merges have changed, to pause & unpause
+    * threads. This method sorts the merge threads by their merge size in
+-   * descending order and then pauses/unpauses threads from first to lsat --
++   * descending order and then pauses/unpauses threads from first to last --
+    * that way, smaller merges are guaranteed to run before larger ones.
+    */
+   protected synchronized void updateMergeThreads() {

@@ -1,0 +1,16 @@
+diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
+index e51b0cc..cc707bd 100644
+--- a/xkb/xkbActions.c
++++ b/xkb/xkbActions.c
+@@ -42,9 +42,9 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #define EXTENSION_EVENT_BASE 64
+ 
+ static unsigned int _xkbServerGeneration;
+-static int xkbDevicePrivateIndex = -1;
++int xkbDevicePrivateIndex = -1;
+ 
+-static void
++void
+ xkbUnwrapProc(DeviceIntPtr device, DeviceHandleProc proc,
+                    pointer data)
+ {

@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleWorkspaceAccessManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleWorkspaceAccessManager.java
+index c84b7ef..80cbb8c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleWorkspaceAccessManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleWorkspaceAccessManager.java
+@@ -21,6 +21,7 @@ import org.apache.jackrabbit.core.security.authorization.WorkspaceAccessManager;
+ import javax.jcr.Session;
+ import javax.jcr.RepositoryException;
+ import java.util.Set;
++import java.security.Principal;
+ 
+ /**
+  * <code>SimpleWorkspaceAccessManager</code> always allows any set of principals
+@@ -48,7 +49,8 @@ public class SimpleWorkspaceAccessManager implements WorkspaceAccessManager {
+      *
+      * @see WorkspaceAccessManager#grants(java.util.Set, String)
+      */
+-    public boolean grants(Set principals, String workspaceName) throws RepositoryException {
++    public boolean grants(Set<Principal> principals, String workspaceName)
++            throws RepositoryException {
+         return true;
+     }
+ }
+\ No newline at end of file

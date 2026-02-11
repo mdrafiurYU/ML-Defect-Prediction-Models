@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java
+index eb65df8..aa977b5 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java
+@@ -51,7 +51,7 @@ public class SkipDeniedNodesTest extends AbstractAccessControlTest {
+ 
+     protected void setUp() throws Exception {
+         super.setUp();
+-        anonymous = helper.getReadOnlySession();
++        anonymous = getHelper().getReadOnlySession();
+ 
+         n1 = testRootNode.addNode(nodeName1);
+         n1.setProperty(propertyName1, "a");

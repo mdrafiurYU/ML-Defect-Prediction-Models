@@ -1,0 +1,14 @@
+diff --git a/include/dixstruct.h b/include/dixstruct.h
+index 1ac7d84..a6f6749 100644
+--- a/include/dixstruct.h
++++ b/include/dixstruct.h
+@@ -130,9 +130,6 @@ typedef struct _Client {
+     int         requestLogIndex;
+ #endif
+     unsigned long replyBytesRemaining;
+-#ifdef XACE
+-    pointer securityState[4];   /* 4 slots for use */
+-#endif
+ #ifdef XAPPGROUP
+     struct _AppGroupRec*	appgroup;
+ #endif

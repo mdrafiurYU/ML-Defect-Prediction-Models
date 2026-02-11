@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/FSTEnum.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/FSTEnum.java
+index 7748416..db1b7dd 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/FSTEnum.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/FSTEnum.java
+@@ -140,7 +140,7 @@ abstract class FSTEnum<T> {
+         // Arcs are fixed array -- use binary search to find
+         // the target.
+ 
+-        final FST.BytesReader in = fst.getBytesReader(0);
++        final FST<T>.BytesReader in = fst.getBytesReader(0);
+         int low = arc.arcIdx;
+         int high = arc.numArcs-1;
+         int mid = 0;
+@@ -278,7 +278,7 @@ abstract class FSTEnum<T> {
+         // Arcs are fixed array -- use binary search to find
+         // the target.
+ 
+-        final FST.BytesReader in = fst.getBytesReader(0);
++        final FST<T>.BytesReader in = fst.getBytesReader(0);
+         int low = arc.arcIdx;
+         int high = arc.numArcs-1;
+         int mid = 0;

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/vgahw/vgaHW.h b/hw/xfree86/vgahw/vgaHW.h
+index 14dbb4b..568d450 100644
+--- a/hw/xfree86/vgahw/vgaHW.h
++++ b/hw/xfree86/vgahw/vgaHW.h
+@@ -11,6 +11,10 @@
+  * Author: Dirk Hohndel
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _VGAHW_H
+ #define _VGAHW_H
+ 

@@ -1,0 +1,15 @@
+diff --git a/Xi/setbmap.c b/Xi/setbmap.c
+index b6f62dd..f29389d 100644
+--- a/Xi/setbmap.c
++++ b/Xi/setbmap.c
+@@ -101,6 +101,10 @@ ProcXSetDeviceButtonMapping(ClientPtr client)
+ 			  stuff->map_length + 3) >> 2)
+ 	return BadLength;
+ 
++    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixManageAccess);
++    if (ret != Success)
++        return ret;
++
+     rep.repType = X_Reply;
+     rep.RepType = X_SetDeviceButtonMapping;
+     rep.length = 0;

@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+index 78caa57..9a28d43 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+@@ -338,6 +338,11 @@ final class DocumentsWriter {
+     
+     if (flushingDWPT != null) {
+       maybeMerge |= doFlush(flushingDWPT);
++    } else {
++      final DocumentsWriterPerThread nextPendingFlush = flushControl.nextPendingFlush();
++      if (nextPendingFlush != null) {
++        maybeMerge |= doFlush(nextPendingFlush);
++      }
+     }
+     return maybeMerge;
+   }

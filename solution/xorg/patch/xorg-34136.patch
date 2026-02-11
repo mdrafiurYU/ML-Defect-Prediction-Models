@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/xpr.h b/hw/darwin/quartz/xpr/xpr.h
+index 73a88c0..46baac7 100644
+--- a/hw/darwin/quartz/xpr/xpr.h
++++ b/hw/darwin/quartz/xpr/xpr.h
+@@ -38,6 +38,9 @@ void AppleDRIExtensionInit(void);
+ void xprAppleWMInit(void);
+ Bool xprInit(ScreenPtr pScreen);
+ Bool xprIsX11Window(void *nsWindow, int windowNumber);
++WindowPtr xprGetX11Window(xp_window_id wid);
++WindowPtr xprGetXWindowFromAppKit(int windowNumber);
++
+ void xprHideWindows(Bool hide);
+ 
+ Bool QuartzInitCursor(ScreenPtr pScreen);

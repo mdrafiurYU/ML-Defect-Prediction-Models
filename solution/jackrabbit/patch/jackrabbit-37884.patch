@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java
+index 0fbe21b..14a664a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java
+@@ -21,11 +21,10 @@ import java.io.FileInputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+ 
+-
+ /**
+  * Data record that is based on a normal file.
+  */
+-class FileDataRecord extends AbstractDataRecord {
++public class FileDataRecord extends AbstractDataRecord {
+ 
+     /**
+      * The file that contains the binary stream.
+@@ -38,7 +37,7 @@ class FileDataRecord extends AbstractDataRecord {
+      * @param identifier data identifier
+      * @param file file that contains the binary stream
+      */
+-    public FileDataRecord(DataIdentifier identifier, File file) {
++    protected FileDataRecord(DataIdentifier identifier, File file) {
+         super(identifier);
+         assert file.isFile();
+         this.file = file;

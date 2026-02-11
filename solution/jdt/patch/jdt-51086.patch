@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java
+index 8a40bfc..a54cdb4 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java
+@@ -38,6 +38,7 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
+ import org.eclipse.jdt.core.dom.MethodInvocation;
+ import org.eclipse.jdt.core.dom.PackageDeclaration;
+ import org.eclipse.jdt.core.dom.ParameterizedType;
++import org.eclipse.jdt.core.dom.QualifiedName;
+ import org.eclipse.jdt.core.dom.SimpleName;
+ import org.eclipse.jdt.core.dom.SimpleType;
+ import org.eclipse.jdt.core.dom.TypeDeclaration;
+@@ -411,6 +412,8 @@ public class AbstractASTTests extends ModifyingResourceTests {
+ 				return ((Assignment) node).getRightHandSide().resolveTypeBinding();
+ 			case ASTNode.SIMPLE_TYPE:
+ 				return ((SimpleType) node).resolveBinding();
++			case ASTNode.QUALIFIED_NAME:
++				return ((QualifiedName) node).resolveBinding();
+ 			default:
+ 				throw new Error("Not yet implemented for this type of node: " + node);
+ 		}

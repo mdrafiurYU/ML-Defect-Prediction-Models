@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/ddc/print_edid.c b/hw/xfree86/ddc/print_edid.c
+index a55c465..d9f18fa 100644
+--- a/hw/xfree86/ddc/print_edid.c
++++ b/hw/xfree86/ddc/print_edid.c
+@@ -211,7 +211,7 @@ print_display(int scrnIndex, struct disp_features *disp,
+ 	xf86DrvMsg(scrnIndex, X_INFO, "Indeterminate output size\n");
+     }
+ 
+-    if (!gamma && v->revision >= 1.4)
++    if (!disp->gamma && v->revision >= 1.4)
+ 	xf86DrvMsg(scrnIndex, X_INFO, "Gamma defined in extension block\n");
+     else
+ 	xf86DrvMsg(scrnIndex, X_INFO, "Gamma: %.2f\n", disp->gamma);

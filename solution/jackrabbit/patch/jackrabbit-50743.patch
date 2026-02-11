@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
+index e420d51..7dc8dc5 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
+@@ -519,7 +519,7 @@ public class SerializationTest extends AbstractJCRTest {
+         session.logout();
+         superuser = null; //so tearDown won't fail
+ 
+-        session = helper.getReadWriteSession();
++        session = getHelper().getReadWriteSession();
+         treeComparator.setSession(session);
+         treeComparator.compare(treeComparator.CHECK_EMPTY);
+     }
+@@ -542,7 +542,7 @@ public class SerializationTest extends AbstractJCRTest {
+         session.logout();
+         superuser = null; //so tearDown won't fail
+ 
+-        session = helper.getReadWriteSession();
++        session = getHelper().getReadWriteSession();
+         treeComparator.setSession(session);
+         treeComparator.compare(treeComparator.CHECK_EMPTY);
+     }

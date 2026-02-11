@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/int10/helper_mem.c b/hw/xfree86/int10/helper_mem.c
+index b59f473..6f6ecc2 100644
+--- a/hw/xfree86/int10/helper_mem.c
++++ b/hw/xfree86/int10/helper_mem.c
+@@ -253,7 +253,7 @@ int10_check_bios(int scrnIndex, int codeSeg, const unsigned char* vbiosMem)
+ 	return FALSE;
+ 
+     if (bios_checksum(vbiosMem, size))
+-	xf86DrvMsg(scrnIndex, X_WARNING, "Bad V_BIOS checksum\n");
++	xf86DrvMsg(scrnIndex, X_INFO, "Bad V_BIOS checksum\n");
+ 
+     return TRUE;
+ }

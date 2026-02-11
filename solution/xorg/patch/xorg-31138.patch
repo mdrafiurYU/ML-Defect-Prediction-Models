@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/xf86Pci.h b/hw/xfree86/os-support/bus/xf86Pci.h
+index c224f97..f66c382 100644
+--- a/hw/xfree86/os-support/bus/xf86Pci.h
++++ b/hw/xfree86/os-support/bus/xf86Pci.h
+@@ -656,10 +656,7 @@ typedef struct {
+     int	      devnum;
+     int	      funcnum;
+     pciCfgSpc cfgspc;
+-    int	      basesize[7];	/* number of bits in base addr allocations */
+-    Bool      minBasesize;
+     pointer   businfo;		/* pointer to secondary's bus info structure */
+-    Bool      fakeDevice;	/* Device added by system chipset support */
+     struct pci_device * dev;
+ } pciDevice, *pciConfigPtr;
+ 

@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedThisReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedThisReference.java
+index 1c647f1..a784cfc 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedThisReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedThisReference.java
+@@ -23,6 +23,7 @@ public class QualifiedThisReference extends ThisReference {
+ 	public QualifiedThisReference(TypeReference name, int sourceStart, int sourceEnd) {
+ 		super(sourceStart, sourceEnd);
+ 		qualification = name;
++		name.bits |= IgnoreRawTypeCheck; // no need to worry about raw type usage
+ 		this.sourceStart = name.sourceStart;
+ 	}

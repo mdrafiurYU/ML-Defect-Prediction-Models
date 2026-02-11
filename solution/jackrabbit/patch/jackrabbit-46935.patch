@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
+index 2dcaad6..0fafc62 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
+@@ -36,7 +36,7 @@ import javax.jcr.PropertyType;
+  * but it only works on the basis of a field name. There is no further control
+  * over the terms to iterate, that's why we use our own implementation.
+  */
+-class SharedFieldCache {
++public class SharedFieldCache {
+ 
+     /**
+      * Expert: Stores term text values and document ordering data.

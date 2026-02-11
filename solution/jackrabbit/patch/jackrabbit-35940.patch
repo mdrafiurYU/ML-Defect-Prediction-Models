@@ -1,0 +1,26 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java
+index 7691dc7..9cbf74c 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java
+@@ -28,6 +28,14 @@ import org.apache.jackrabbit.ocm.mapper.impl.annotation.AnnotationMapperImpl;
+ import org.apache.jackrabbit.ocm.repository.RepositoryUtil;
+ import org.apache.jackrabbit.ocm.testmodel.Atomic;
+ import org.apache.jackrabbit.ocm.testmodel.Default;
++import org.apache.jackrabbit.ocm.testmodel.auto.CmsObject;
++import org.apache.jackrabbit.ocm.testmodel.auto.Content;
++import org.apache.jackrabbit.ocm.testmodel.auto.Document;
++import org.apache.jackrabbit.ocm.testmodel.auto.Folder;
++import org.apache.jackrabbit.ocm.testmodel.auto.impl.CmsObjectImpl;
++import org.apache.jackrabbit.ocm.testmodel.auto.impl.ContentImpl;
++import org.apache.jackrabbit.ocm.testmodel.auto.impl.DocumentImpl;
++import org.apache.jackrabbit.ocm.testmodel.auto.impl.FolderImpl;
+ 
+ /**
+  * Base class for testcases. Provides priviledged access to the jcr test
+@@ -66,8 +74,6 @@ public abstract class AnnotationTestBase extends AbstractTestBase
+ 		Mapper mapper = new AnnotationMapperImpl(classes);
+ 		ocm = new ObjectContentManagerImpl(session, mapper);
+ 		
+-		
+-		
+ 	}

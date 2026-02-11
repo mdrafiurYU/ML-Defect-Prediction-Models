@@ -1,0 +1,227 @@
+diff --git a/hw/xgl/xglgc.c b/hw/xgl/xglgc.c
+index 5a85ead..deb3982 100644
+--- a/hw/xgl/xglgc.c
++++ b/hw/xgl/xglgc.c
+@@ -58,7 +58,7 @@ static const GCFuncs xglGCFuncs = {
+     xglValidateGC,
+     miChangeGC,
+     miCopyGC,
+-    miDestroyGC,
++    xglDestroyGC,
+     miChangeClip,
+     miDestroyClip,
+     miCopyClip
+@@ -205,7 +205,7 @@ xglCopyArea (DrawablePtr pSrc,
+     box.x2 = box.x1 + w;
+     box.y2 = box.y1 + h;
+ 
+-    if (pGC->alu != GXcopy || (pGCPriv->flags &= ~xglGCReadOnlyDrawableFlag))
++    if (pGC->alu != GXcopy || pGCPriv->flags)
+     {
+ 	if (!xglSyncBits (pSrc, &box))
+ 	    FatalError (XGL_SW_FAILURE_STRING);
+@@ -293,12 +293,9 @@ xglPolylines (DrawablePtr pDrawable,
+ 	    if (pGC->lineStyle == LineSolid)
+ 	    {
+ 		if (xglFillLine (pDrawable, pGC, mode, npt, ppt))
+-		{
+-		    xglAddCurrentBitDamage (pDrawable);
+ 		    return;
+ 		}
+ 	    }
+-	}
+ 	
+ 	XGL_GC_FILL_OP_FALLBACK_PROLOGUE (pDrawable);
+ 	(*pGC->ops->Polylines) (pDrawable, pGC, mode, npt, ppt);
+@@ -328,12 +325,9 @@ xglPolySegment (DrawablePtr pDrawable,
+ 	    if (pGC->lineStyle == LineSolid)
+ 	    {
+ 		if (xglFillSegment (pDrawable, pGC, nsegInit, pSegInit))
+-		{
+-		    xglAddCurrentBitDamage (pDrawable);
+ 		    return;
+ 		}
+ 	    }
+-	}
+ 
+ 	XGL_GC_FILL_OP_FALLBACK_PROLOGUE (pDrawable);
+ 	(*pGC->ops->PolySegment) (pDrawable, pGC, nsegInit, pSegInit);
+@@ -367,7 +361,7 @@ xglPolyFillRect (DrawablePtr pDrawable,
+ {
+     XGL_GC_PRIV (pGC);
+ 
+-    if (pGCPriv->flags || pGC->fillStyle == FillStippled)
++    if (pGC->fillStyle == FillStippled || pGCPriv->flags)
+     {
+ 	XGL_GC_FILL_OP_FALLBACK_PROLOGUE (pDrawable);
+ 	(*pGC->ops->PolyFillRect) (pDrawable, pGC, nrect, prect);
+@@ -404,7 +398,7 @@ xglImageGlyphBlt (DrawablePtr  pDrawable,
+ {
+     XGL_GC_PRIV (pGC);
+ 
+-    if (!(pGCPriv->flags & ~xglGCBadFunctionFlag))
++    if (!pGCPriv->flags)
+     {
+ 	if (xglSolidGlyph (pDrawable,
+ 			   pGC,
+@@ -413,11 +407,8 @@ xglImageGlyphBlt (DrawablePtr  pDrawable,
+ 			   nglyph,
+ 			   ppci,
+ 			   pglyphBase))
+-	{
+-	    xglAddCurrentBitDamage (pDrawable);
+ 	    return;
+ 	}
+-    }
+ 
+     XGL_GC_OP_FALLBACK_PROLOGUE (pDrawable);
+     (*pGC->ops->ImageGlyphBlt) (pDrawable, pGC, x, y, nglyph, ppci,
+@@ -445,11 +436,8 @@ xglPolyGlyphBlt (DrawablePtr  pDrawable,
+ 			  nglyph,
+ 			  ppci,
+ 			  pglyphBase))
+-	{
+-	    xglAddCurrentBitDamage (pDrawable);
+ 	    return;
+ 	}
+-    }
+     
+     XGL_GC_FILL_OP_FALLBACK_PROLOGUE (pDrawable);
+     (*pGC->ops->PolyGlyphBlt) (pDrawable, pGC, x, y, nglyph, ppci, pglyphBase);
+@@ -478,7 +466,6 @@ xglPushPixels (GCPtr	   pGC,
+ Bool
+ xglCreateGC (GCPtr pGC)
+ {
+-    static glitz_color_t black = { 0x0, 0x0, 0x0, 0xffff };
+     ScreenPtr		 pScreen = pGC->pScreen;
+     Bool		 ret;
+     
+@@ -494,13 +481,33 @@ xglCreateGC (GCPtr pGC)
+     
+     pGCPriv->flags = 0;
+     pGCPriv->op = GLITZ_OPERATOR_SRC;
+-    pGCPriv->fg = black;
+-    pGCPriv->bg = black;
++
++    pGCPriv->fg = NULL;
++    pGCPriv->bg = NULL;
++    pGCPriv->id = ~0;
+     
+     return ret;
+ }
+ 
+ void
++xglDestroyGC (GCPtr pGC)
++{
++    XGL_GC_PRIV (pGC);
++
++    if (pGCPriv->fg)
++	glitz_surface_destroy (pGCPriv->fg);
++
++    if (pGCPriv->bg)
++	glitz_surface_destroy (pGCPriv->bg);
++
++    XGL_GC_UNWRAP (funcs);
++    XGL_GC_UNWRAP (ops);
++    (*pGC->funcs->DestroyGC) (pGC);
++    XGL_GC_WRAP (funcs, (GCFuncs *) &xglGCFuncs);
++    XGL_GC_WRAP (ops, (GCOps *) &xglGCOps);
++}
++
++void
+ xglValidateGC (GCPtr	     pGC,
+ 	       unsigned long changes,
+ 	       DrawablePtr   pDrawable)
+@@ -531,15 +538,44 @@ xglValidateGC (GCPtr	     pGC,
+     {
+ 	XGL_DRAWABLE_PIXMAP_PRIV (pDrawable);
+ 	
+-	if (pPixmapPriv->format)
+-	    pGCPriv->flags &= ~xglGCSoftwareDrawableFlag;
+-	else
++	if (pPixmapPriv->pVisual && pPixmapPriv->pVisual->format.surface)
++	{
++	    glitz_format_t *format;
++
++	    format = pPixmapPriv->pVisual->format.surface;
++	    if (format->id != pGCPriv->id)
++	    {
++		XGL_SCREEN_PRIV (pDrawable->pScreen);
++
+ 	    pGCPriv->flags |= xglGCSoftwareDrawableFlag;
+ 
+-	if (pPixmapPriv->target)
+-	    pGCPriv->flags &= ~xglGCReadOnlyDrawableFlag;
++		if (pGCPriv->fg)
++		    glitz_surface_destroy (pGCPriv->fg);
++
++		pGCPriv->fg = glitz_surface_create (pScreenPriv->drawable,
++						    format, 1, 1, 0, NULL);
++		if (pGCPriv->fg)
++		    glitz_surface_set_fill (pGCPriv->fg, GLITZ_FILL_REPEAT);
++
++		if (pGCPriv->bg)
++		    glitz_surface_destroy (pGCPriv->bg);
++
++		pGCPriv->bg = glitz_surface_create (pScreenPriv->drawable,
++						    format, 1, 1, 0, NULL);
++		if (pGCPriv->bg)
++		    glitz_surface_set_fill (pGCPriv->bg, GLITZ_FILL_REPEAT);
++
++		pGCPriv->id = format->id;
++
++		if (pGCPriv->fg && pGCPriv->bg)
++		{
++		    changes |= (GCForeground | GCBackground);
++		    pGCPriv->flags &= ~xglGCSoftwareDrawableFlag;
++		}
++	    }
++	}
+ 	else
+-	    pGCPriv->flags |= xglGCReadOnlyDrawableFlag;
++	    pGCPriv->flags |= xglGCSoftwareDrawableFlag;
+     }
+ 
+     if (changes & GCFunction)
+@@ -575,14 +611,38 @@ xglValidateGC (GCPtr	     pGC,
+ 	    pGCPriv->flags &= ~xglGCPlaneMaskFlag;
+     }
+ 
++    if (!(pGCPriv->flags & xglGCSoftwareDrawableFlag))
++    {
+     if (changes & (GCForeground | GCBackground))
+     {
++	    glitz_pixel_format_t format;
++	    glitz_buffer_t	 *buffer;
++	    CARD32		 pixel;
++
+ 	XGL_DRAWABLE_PIXMAP_PRIV (pDrawable);
+ 
+-	if (pPixmapPriv->pPixel)
++	    format.fourcc	  = GLITZ_FOURCC_RGB;
++	    format.masks	  = pPixmapPriv->pVisual->pPixel->masks;
++	    format.xoffset	  = 0;
++	    format.skip_lines     = 0;
++	    format.bytes_per_line = sizeof (CARD32);
++	    format.scanline_order = GLITZ_PIXEL_SCANLINE_ORDER_BOTTOM_UP;
++
++	    buffer = glitz_buffer_create_for_data (&pixel);
++
++	    if (changes & GCForeground)
++	    {
++		pixel = pGC->fgPixel;
++		glitz_set_pixels (pGCPriv->fg, 0, 0, 1, 1, &format, buffer);
++	    }
++
++	    if (changes & GCBackground)
+ 	{
+-	    xglPixelToColor (pPixmapPriv->pPixel, pGC->fgPixel, &pGCPriv->fg);
+-	    xglPixelToColor (pPixmapPriv->pPixel, pGC->bgPixel, &pGCPriv->bg);
++		pixel = pGC->bgPixel;
++		glitz_set_pixels (pGCPriv->bg, 0, 0, 1, 1, &format, buffer);
++	    }
++
++	    glitz_buffer_destroy (buffer);
+ 	}
+     }
+ }

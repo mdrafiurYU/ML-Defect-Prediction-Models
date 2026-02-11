@@ -1,0 +1,200 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/VariableBinding.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/VariableBinding.java
+index 2f7cc49..c0e29fd 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/VariableBinding.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/VariableBinding.java
+@@ -18,6 +18,7 @@ import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ import org.eclipse.jdt.internal.compiler.impl.Constant;
+ import org.eclipse.jdt.internal.compiler.lookup.AnnotationBinding;
+ import org.eclipse.jdt.internal.compiler.lookup.FieldBinding;
++import org.eclipse.jdt.internal.compiler.lookup.TagBits;
+ import org.eclipse.jdt.internal.compiler.lookup.TypeIds;
+ import org.eclipse.jdt.internal.core.JavaElement;
+ import org.eclipse.jdt.internal.core.LocalVariable;
+@@ -121,18 +122,6 @@ class VariableBinding implements IVariableBinding {
+ 	}
+ 
+ 	/*
+-	 * @see IVariableBinding#getVariableDeclaration()
+-	 * @since 3.1
+-	 */
+-	public IVariableBinding getVariableDeclaration() {
+-		if (this.isField()) {
+-			FieldBinding fieldBinding = (FieldBinding) this.binding;
+-			return this.resolver.getVariableBinding(fieldBinding.original());
+-		}
+-		return this;
+-	}
+-	
+-	/*
+ 	 * @see IBinding#getJavaElement()
+ 	 */
+ 	public IJavaElement getJavaElement() {
+@@ -142,43 +131,6 @@ class VariableBinding implements IVariableBinding {
+ 		return element.resolved(this.binding);
+ 	}
+ 	
+-	private JavaElement getUnresolvedJavaElement() {
+-		if (isField()) {
+-			// field
+-			FieldBinding fieldBinding = (FieldBinding) this.binding;
+-			if (fieldBinding.declaringClass == null) return null; // arraylength
+-			IType declaringType = (IType) getDeclaringClass().getJavaElement();
+-			if (declaringType == null) return null;
+-			return (JavaElement) declaringType.getField(getName());
+-		}
+-		// local variable
+-		IMethodBinding declaringMethod = getDeclaringMethod();
+-		if (declaringMethod == null) return null;
+-		JavaElement method = (JavaElement) declaringMethod.getJavaElement();
+-		if (!(this.resolver instanceof DefaultBindingResolver)) return null;
+-		VariableDeclaration localVar = (VariableDeclaration) ((DefaultBindingResolver) this.resolver).bindingsToAstNodes.get(this);
+-		if (localVar == null) return null;
+-		int nameStart;
+-		int nameLength;
+-		int sourceStart;
+-		int sourceLength;
+-		if (localVar instanceof SingleVariableDeclaration) {
+-			sourceStart = localVar.getStartPosition();
+-			sourceLength = localVar.getLength();
+-			SimpleName simpleName = ((SingleVariableDeclaration) localVar).getName();
+-			nameStart = simpleName.getStartPosition();
+-			nameLength = simpleName.getLength();
+-		} else {
+-			nameStart =  localVar.getStartPosition();
+-			nameLength = localVar.getLength();
+-			ASTNode node = localVar.getParent();
+-			sourceStart = node.getStartPosition();
+-			sourceLength = node.getLength();
+-		}
+-		char[] typeSig = this.binding.type.genericTypeSignature();
+-		return new LocalVariable(method, localVar.getName().getIdentifier(), sourceStart, sourceStart+sourceLength-1, nameStart, nameStart+nameLength-1, new String(typeSig));
+-	}
+-	
+ 	/*
+ 	 * @see IBinding#getKey()
+ 	 */
+@@ -188,14 +140,14 @@ class VariableBinding implements IVariableBinding {
+ 		}
+ 		return this.key;
+ 	}
+-
++	
+ 	/*
+ 	 * @see IBinding#getKind()
+ 	 */
+ 	public int getKind() {
+ 		return IBinding.VARIABLE;
+ 	}
+-
++	
+ 	/*
+ 	 * @see IBinding#getModifiers()
+ 	 */
+@@ -218,7 +170,7 @@ class VariableBinding implements IVariableBinding {
+ 		}
+ 		return this.name;
+ 	}
+-	
++
+ 	/*
+ 	 * @see IVariableBinding#getType()
+ 	 */
+@@ -228,6 +180,55 @@ class VariableBinding implements IVariableBinding {
+ 		}
+ 		return type;
+ 	}
++
++	private JavaElement getUnresolvedJavaElement() {
++		if (isField()) {
++			// field
++			FieldBinding fieldBinding = (FieldBinding) this.binding;
++			if (fieldBinding.declaringClass == null) return null; // arraylength
++			IType declaringType = (IType) getDeclaringClass().getJavaElement();
++			if (declaringType == null) return null;
++			return (JavaElement) declaringType.getField(getName());
++		}
++		// local variable
++		IMethodBinding declaringMethod = getDeclaringMethod();
++		if (declaringMethod == null) return null;
++		JavaElement method = (JavaElement) declaringMethod.getJavaElement();
++		if (!(this.resolver instanceof DefaultBindingResolver)) return null;
++		VariableDeclaration localVar = (VariableDeclaration) ((DefaultBindingResolver) this.resolver).bindingsToAstNodes.get(this);
++		if (localVar == null) return null;
++		int nameStart;
++		int nameLength;
++		int sourceStart;
++		int sourceLength;
++		if (localVar instanceof SingleVariableDeclaration) {
++			sourceStart = localVar.getStartPosition();
++			sourceLength = localVar.getLength();
++			SimpleName simpleName = ((SingleVariableDeclaration) localVar).getName();
++			nameStart = simpleName.getStartPosition();
++			nameLength = simpleName.getLength();
++		} else {
++			nameStart =  localVar.getStartPosition();
++			nameLength = localVar.getLength();
++			ASTNode node = localVar.getParent();
++			sourceStart = node.getStartPosition();
++			sourceLength = node.getLength();
++		}
++		char[] typeSig = this.binding.type.genericTypeSignature();
++		return new LocalVariable(method, localVar.getName().getIdentifier(), sourceStart, sourceStart+sourceLength-1, nameStart, nameStart+nameLength-1, new String(typeSig));
++	}
++	
++	/*
++	 * @see IVariableBinding#getVariableDeclaration()
++	 * @since 3.1
++	 */
++	public IVariableBinding getVariableDeclaration() {
++		if (this.isField()) {
++			FieldBinding fieldBinding = (FieldBinding) this.binding;
++			return this.resolver.getVariableBinding(fieldBinding.original());
++		}
++		return this;
++	}
+ 	
+ 	/*
+ 	 * @see IVariableBinding#getVariableId()
+@@ -237,6 +238,12 @@ class VariableBinding implements IVariableBinding {
+ 	}
+ 
+ 	/*
++	 * @see IVariableBinding#isParameter()
++	 */
++	public boolean isParameter() {
++		return (this.binding.tagBits & TagBits.IsArgument) != 0;
++	}
++	/*
+ 	 * @see IBinding#isDeprecated()
+ 	 */
+ 	public boolean isDeprecated() {
+@@ -247,6 +254,14 @@ class VariableBinding implements IVariableBinding {
+ 	}
+ 	
+ 	/*
++	 * @see IVariableBinding#isEnumConstant()
++	 * @since 3.1
++	 */
++	public boolean isEnumConstant() {
++		return (this.binding.modifiers & ClassFileConstants.AccEnum) != 0;
++	}
++
++	/*
+ 	 * @see IBinding#isEqualTo(Binding)
+ 	 * @since 3.1
+ 	 */
+@@ -293,14 +308,6 @@ class VariableBinding implements IVariableBinding {
+ 	}
+ 
+ 	/*
+-	 * @see IVariableBinding#isEnumConstant()
+-	 * @since 3.1
+-	 */
+-	public boolean isEnumConstant() {
+-		return (this.binding.modifiers & ClassFileConstants.AccEnum) != 0;
+-	}
+-
+-	/*
+ 	 * @see IBinding#isSynthetic()
+ 	 */
+ 	public boolean isSynthetic() {

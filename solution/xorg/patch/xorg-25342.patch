@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index 15d7031..f0fc909 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -369,6 +369,7 @@ typedef struct _KdOsFuncs {
+     void	    (*Disable) (void);
+     void	    (*Fini) (void);
+     void	    (*pollEvents) (void);
++    void            (*Bell) (int, int, int);
+ } KdOsFuncs;
+ 
+ typedef enum _KdSyncPolarity {

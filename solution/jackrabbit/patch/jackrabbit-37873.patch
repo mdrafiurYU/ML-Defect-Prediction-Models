@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStoreException.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStoreException.java
+index 3bebbc8..0ac0c7f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStoreException.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStoreException.java
+@@ -43,4 +43,14 @@ public class DataStoreException extends RepositoryException {
+     public DataStoreException(String message, Throwable cause) {
+         super(message, cause);
+     }
++    
++    /**
++     * Constructs a new instance of this class with the specified root cause.
++     *
++     * @param rootCause root failure cause
++     */
++    public DataStoreException(Throwable rootCause) {
++        super(rootCause);
++    }
++ 
+ }

@@ -1,0 +1,13 @@
+diff --git a/Xext/fontcache.c b/Xext/fontcache.c
+index 06b0c85..eca7309 100644
+--- a/Xext/fontcache.c
++++ b/Xext/fontcache.c
+@@ -72,7 +72,7 @@ FontCacheExtensionInit(INITARGS)
+ {
+     AddExtension(FONTCACHENAME, FontCacheNumberEvents, FontCacheNumberErrors,
+ 		 ProcFontCacheDispatch, SProcFontCacheDispatch,
+-		 FontCacheResetProc, StandardMinorOpcode)))
++		 FontCacheResetProc, StandardMinorOpcode);
+ }
+ 
+ /*ARGSUSED*/

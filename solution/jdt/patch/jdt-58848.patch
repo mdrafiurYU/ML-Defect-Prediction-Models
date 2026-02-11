@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java
+index eaf9019..14bf7e8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java
+@@ -154,6 +154,7 @@ public class MemberValuePair extends ASTNode {
+ 			}
+ 			if (leafType.isEnum()) {
+ 				if (this.value instanceof NullLiteral) {
++					// TODO (olivier) change message for annotation value must be an *enum* constant
+ 					scope.problemReporter().annotationValueMustBeConstant(this.binding.declaringClass, this.name, this.value);
+ 				}
+ 				break checkAnnotationMethodType;

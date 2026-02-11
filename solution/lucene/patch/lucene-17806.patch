@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/DefaultSimilarity.java b/lucene/src/java/org/apache/lucene/search/DefaultSimilarity.java
+index 71c8a22..758b51a 100644
+--- a/lucene/src/java/org/apache/lucene/search/DefaultSimilarity.java
++++ b/lucene/src/java/org/apache/lucene/search/DefaultSimilarity.java
+@@ -31,7 +31,7 @@ public class DefaultSimilarity extends Similarity implements SimilarityProvider
+    *
+    *  @lucene.experimental */
+   @Override
+-  public float computeNorm(String field, FieldInvertState state) {
++  public float computeNorm(FieldInvertState state) {
+     final int numTerms;
+     if (discountOverlaps)
+       numTerms = state.getLength() - state.getNumOverlap();

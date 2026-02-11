@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index e8001df..2e0c004 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -691,7 +691,7 @@ ephyrUpdateModifierState(unsigned int state)
+   int          i;
+   CARD8        mask;
+ 
+-  pkeydev = (DeviceIntPtr)LookupKeyboardDevice();
++  pkeydev = inputInfo.keyboard;
+ 
+   if (!pkeydev)
+     return;

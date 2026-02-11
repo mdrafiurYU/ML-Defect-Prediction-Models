@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+index 460e432..8ccbb4f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+@@ -2121,6 +2121,9 @@ public class NodeImpl extends ItemImpl implements Node {
+         sanityCheck();
+ 
+         NodeTypeImpl nt = (NodeTypeImpl) session.getNodeTypeManager().getNodeType(nodeTypeName);
++        if (nt.isMixin()) {
++            throw new RepositoryException(nodeTypeName + ": not a primary node type");
++        }
+         return internalAddNode(relPath, nt);
+     }

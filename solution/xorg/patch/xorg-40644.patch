@@ -1,0 +1,16 @@
+diff --git a/hw/kdrive/fake/fake.c b/hw/kdrive/fake/fake.c
+index d77c4f1..ff59798 100644
+--- a/hw/kdrive/fake/fake.c
++++ b/hw/kdrive/fake/fake.c
+@@ -121,10 +121,9 @@ fakeScreenInit (KdScreenInfo *screen)
+ {
+     FakeScrPriv *scrpriv;
+ 
+-    scrpriv = xalloc (sizeof (FakeScrPriv));
++    scrpriv = xcalloc (1, sizeof (FakeScrPriv));
+     if (!scrpriv)
+ 	return FALSE;
+-    memset (scrpriv, '\0', sizeof (FakeScrPriv));
+     screen->driver = scrpriv;
+     if (!fakeScreenInitialize (screen, scrpriv))
+     {

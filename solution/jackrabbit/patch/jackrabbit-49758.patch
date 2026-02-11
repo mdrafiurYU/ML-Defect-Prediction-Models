@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/BooleanConstraint.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/BooleanConstraint.java
+index 54dff39..fd1a0eb 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/BooleanConstraint.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/BooleanConstraint.java
+@@ -47,7 +47,7 @@ class BooleanConstraint extends ValueConstraint {
+     }
+ 
+     /**
+-     * @see ValueConstraint#check(QValue)
++     * @see org.apache.jackrabbit.spi.QValueConstraint#check(QValue)
+      */
+     public void check(QValue value) throws ConstraintViolationException, RepositoryException {
+         if (value == null) {

@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java b/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java
+index 73ee16c..4757719 100644
+--- a/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java
+@@ -60,16 +60,19 @@ public class XmlUpdateRequestHandler extends ContentStreamHandlerBase {
+   /**
+    * @deprecated use {@link #OVERWRITE}
+    */
++  @Deprecated
+   public static final String OVERWRITE_COMMITTED = "overwriteCommitted";
+   
+   /**
+    * @deprecated use {@link #OVERWRITE}
+    */
++  @Deprecated
+   public static final String OVERWRITE_PENDING = "overwritePending";
+ 
+   /**
+    * @deprecated use {@link #OVERWRITE}
+    */
++  @Deprecated
+   public static final String ALLOW_DUPS = "allowDups";
+ 
+   XMLInputFactory inputFactory;

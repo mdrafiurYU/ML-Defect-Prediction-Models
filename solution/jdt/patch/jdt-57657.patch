@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index 97f6009..00fe62f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -5694,7 +5694,7 @@ public void optimizeBranch(int oldPosition, BranchLabel lbl) {
+ 				int offset = position - ((CaseLabel) label).instructionPosition;
+ 				for (int j = 0; j < label.forwardReferenceCount; j++) {
+ 					int forwardPosition = label.forwardReferences[j];
+-					this.writeSignedShort(forwardPosition, offset);
++					this.writeSignedWord(forwardPosition, offset);
+ 				}
+ 			} else {
+ 				for (int j = 0; j < label.forwardReferenceCount; j++) {

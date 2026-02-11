@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/int10/linux.c b/hw/xfree86/os-support/linux/int10/linux.c
+index 0c77944..6ccd466 100644
+--- a/hw/xfree86/os-support/linux/int10/linux.c
++++ b/hw/xfree86/os-support/linux/int10/linux.c
+@@ -333,7 +333,7 @@ error0:
+     return NULL;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ MapCurrentInt10(xf86Int10InfoPtr pInt)
+ {
+     pointer addr;

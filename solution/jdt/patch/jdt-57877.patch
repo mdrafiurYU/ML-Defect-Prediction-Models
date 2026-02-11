@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/AbortType.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/AbortType.java
+index ac792c5..754b6d7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/AbortType.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/AbortType.java
+@@ -10,7 +10,7 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.internal.compiler.problem;
+ 
+-import org.eclipse.jdt.core.compiler.IProblem;
++import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ import org.eclipse.jdt.internal.compiler.CompilationResult;
+ 
+ /*
+@@ -23,7 +23,7 @@ public class AbortType extends AbortCompilationUnit {
+ 	
+ 	private static final long serialVersionUID = -5882417089349134385L; // backward compatible
+ 	
+-public AbortType(CompilationResult compilationResult, IProblem problem) {
++public AbortType(CompilationResult compilationResult, CategorizedProblem problem) {
+ 	super(compilationResult, problem);
+ }
+ }

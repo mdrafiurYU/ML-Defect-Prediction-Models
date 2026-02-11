@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+index 832590e..771ab8e 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+@@ -66,8 +66,8 @@ public class APTDispatch
+ 		
+ 		IWorkspace w = ResourcesPlugin.getWorkspace();
+ 		try
+-		{
+-			w.run( runnable, null );
++		{			
++			w.run(runnable, w.getRoot(), IWorkspace.AVOID_UPDATE, null);
+ 		}
+ 		catch( CoreException ce )
+ 		{

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestWordnet.java b/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestWordnet.java
+index ac8e5a2..ccd8559 100644
+--- a/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestWordnet.java
++++ b/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestWordnet.java
+@@ -63,7 +63,7 @@ public class TestWordnet extends LuceneTestCase {
+   
+   private void assertExpandsTo(String term, String expected[]) throws IOException {
+     Query expandedQuery = SynExpand.expand(term, searcher, new 
+-        MockAnalyzer(), "field", 1F);
++        MockAnalyzer(random), "field", 1F);
+     BooleanQuery expectedQuery = new BooleanQuery();
+     for (String t : expected)
+       expectedQuery.add(new TermQuery(new Term("field", t)),

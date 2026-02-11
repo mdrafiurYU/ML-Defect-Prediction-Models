@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java
+index 91bf5e8..661a5e9 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java
+@@ -1179,17 +1179,6 @@ public class DeltaProcessor {
+ 	public void flush() {
+ 		this.javaModelDeltas = new ArrayList();
+ 	}
+-	/* Returns the list of Java projects in the workspace.
+-	 * 
+-	 */
+-	IJavaProject[] getJavaProjects() {
+-		try {
+-			return this.manager.getJavaModel().getJavaProjects();
+-		} catch (JavaModelException e) {
+-			// java model doesn't exist
+-			return new IJavaProject[0];
+-		}
+-	}
+ 	/*
+ 	 * Finds the root info this path is included in.
+ 	 * Returns null if not found.

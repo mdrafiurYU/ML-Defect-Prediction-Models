@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestSizeBoundedOptimize.java b/lucene/src/test/org/apache/lucene/index/TestSizeBoundedOptimize.java
+index 75455ac..c1d7682 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestSizeBoundedOptimize.java
++++ b/lucene/src/test/org/apache/lucene/index/TestSizeBoundedOptimize.java
+@@ -63,7 +63,7 @@ public class TestSizeBoundedOptimize extends LuceneTestCase {
+ 
+     conf = newWriterConfig();
+     LogByteSizeMergePolicy lmp = new LogByteSizeMergePolicy();
+-    lmp.setMaxMergeMB((min + 1) / (1 << 20));
++    lmp.setMaxMergeMBForOptimize((min + 1) / (1 << 20));
+     conf.setMergePolicy(lmp);
+     
+     writer = new IndexWriter(dir, conf);

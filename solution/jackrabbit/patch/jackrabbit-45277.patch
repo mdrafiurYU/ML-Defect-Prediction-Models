@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
+index 24f9474..c8a2d55 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
+@@ -634,7 +634,10 @@ public class SessionImporter implements Importer, SessionListener {
+     private void checkIncludesMixReferenceable(Importer.NodeInfo nodeInfo) throws RepositoryException {
+         List l = new ArrayList();
+         l.add(nodeInfo.getNodeTypeName());
+-        l.addAll(Arrays.asList(nodeInfo.getMixinNames()));
++        Name[] mixinNames = nodeInfo.getMixinNames();
++        if (mixinNames != null && mixinNames.length > 0) {
++            l.addAll(Arrays.asList(nodeInfo.getMixinNames()));
++        }
+         if (l.contains(NameConstants.MIX_REFERENCEABLE)) {
+             // shortcut
+             return;

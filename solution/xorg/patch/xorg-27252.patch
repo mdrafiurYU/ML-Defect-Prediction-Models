@@ -1,0 +1,12 @@
+diff --git a/GL/glx/glxbyteorder.h b/GL/glx/glxbyteorder.h
+index 0bcb91f..b9d738d 100644
+--- a/GL/glx/glxbyteorder.h
++++ b/GL/glx/glxbyteorder.h
+@@ -39,6 +39,7 @@
+ #include <byteswap.h>
+ #elif defined(USE_SYS_ENDIAN_H)
+ #include <sys/endian.h>
++#else
+ #define	bswap_16(value)  \
+  	((((value) & 0xff) << 8) | ((value) >> 8))
+ 

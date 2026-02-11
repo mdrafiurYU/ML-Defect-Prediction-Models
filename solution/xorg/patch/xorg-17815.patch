@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index b4e9a1e..88d3f6c 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -23,6 +23,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef XFree86LOADER
+ #include "xf86_ansic.h"
+ 

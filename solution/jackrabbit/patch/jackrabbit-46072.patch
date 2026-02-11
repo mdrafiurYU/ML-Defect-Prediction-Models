@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PrivilegeRegistry.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PrivilegeRegistry.java
+index 52955a5..077f509 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PrivilegeRegistry.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PrivilegeRegistry.java
+@@ -202,7 +202,7 @@ public final class PrivilegeRegistry {
+      */
+     public static int getBits(Privilege[] privileges) throws AccessControlException {
+         if (privileges == null || privileges.length == 0) {
+-            throw new AccessControlException();
++            throw new AccessControlException("Privilege array is empty or null.");
+         }
+         int bits = NO_PRIVILEGE;
+         for (int i = 0; i < privileges.length; i++) {

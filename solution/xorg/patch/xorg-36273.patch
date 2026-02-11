@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/os-support/bsd/i386_video.c b/hw/xfree86/os-support/bsd/i386_video.c
+index 0dcff66..7e4a4d2 100644
+--- a/hw/xfree86/os-support/bsd/i386_video.c
++++ b/hw/xfree86/os-support/bsd/i386_video.c
+@@ -212,6 +212,9 @@ xf86OSInitVidMem(VidMemInfoPtr pVidMem)
+ 	pVidMem->mapMem = mapVidMem;
+ 	pVidMem->unmapMem = unmapVidMem;
+ 
++	if (useDevMem)
++		pci_system_init_dev_mem(devMemFd);
++
+ #ifdef HAS_MTRR_SUPPORT
+ 	if (useDevMem) {
+ 		if (cleanMTRR()) {

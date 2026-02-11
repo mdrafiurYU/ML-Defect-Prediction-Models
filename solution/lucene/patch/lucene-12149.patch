@@ -1,0 +1,76 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/ValuesEnum.java b/lucene/src/java/org/apache/lucene/index/values/ValuesEnum.java
+index eed3345..54bc8bf 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/ValuesEnum.java
++++ b/lucene/src/java/org/apache/lucene/index/values/ValuesEnum.java
+@@ -21,14 +21,16 @@ import java.io.IOException;
+ import org.apache.lucene.search.DocIdSetIterator;
+ import org.apache.lucene.util.Attribute;
+ import org.apache.lucene.util.AttributeSource;
++import org.apache.lucene.util.BytesRef;
++import org.apache.lucene.util.FloatsRef;
++import org.apache.lucene.util.LongsRef;
+ 
+-public abstract class ValuesEnum extends DocIdSetIterator{
++public abstract class ValuesEnum extends DocIdSetIterator {
+   private AttributeSource source;
+   protected final ValuesAttribute attr;
+ 
+- 
+   protected ValuesEnum(Values enumType) {
+-     this(null, enumType);
++    this(null, enumType);
+   }
+ 
+   protected ValuesEnum(AttributeSource source, Values enumType) {
+@@ -39,6 +41,22 @@ public abstract class ValuesEnum extends DocIdSetIterator{
+       attr.setType(enumType);
+   }
+ 
++  public Values type() {
++    return attr.type();
++  }
++
++  public BytesRef bytes() {
++    return attr.bytes();
++  }
++
++  public FloatsRef getFloat() {
++    return attr.floats();
++  }
++
++  public LongsRef getInt() {
++    return attr.ints();
++  }
++
+   public AttributeSource attributes() {
+     if (source == null)
+       source = new AttributeSource();
+@@ -59,4 +77,28 @@ public abstract class ValuesEnum extends DocIdSetIterator{
+ 
+   public abstract void close() throws IOException;
+ 
++  public static ValuesEnum emptyEnum(Values type) {
++    return new ValuesEnum(type) {
++      @Override
++      public int nextDoc() throws IOException {
++        return NO_MORE_DOCS;
++      }
++      
++      @Override
++      public int docID() {
++        return NO_MORE_DOCS;
++      }
++      
++      @Override
++      public int advance(int target) throws IOException {
++        return NO_MORE_DOCS;
++      }
++      
++      @Override
++      public void close() throws IOException {
++        
++      }
++    };
++  }
++
+ }

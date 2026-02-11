@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
+index 43a968e..cec206c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
+@@ -436,10 +436,8 @@ public class JavadocParser extends AbstractCommentParser {
+ 				case ':':
+ 				case '<':
+ 				case '>':
+-					readChar();
+-					this.tagSourceEnd = this.scanner.getCurrentTokenEndPosition();
+ 					validTag = false;
+-					break;
++					// fall thru next case to read character and resynch scanner
+ 				case '-': // allowed in tag names as this character is often used in doclets (bug 68087)
+ 					readChar();
+ 					this.tagSourceEnd = this.scanner.getCurrentTokenEndPosition();

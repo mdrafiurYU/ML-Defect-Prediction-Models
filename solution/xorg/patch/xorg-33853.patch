@@ -1,0 +1,16 @@
+diff --git a/render/picture.c b/render/picture.c
+index 184edb4..dd4221f 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -584,11 +584,9 @@ PictureInit (ScreenPtr pScreen, PictFormatPtr formats, int nformats)
+ 	if (!GlyphSetType)
+ 	    return FALSE;
+ 	PictureGeneration = serverGeneration;
+-#ifdef XResExtension
+ 	RegisterResourceName (PictureType, "PICTURE");
+ 	RegisterResourceName (PictFormatType, "PICTFORMAT");
+ 	RegisterResourceName (GlyphSetType, "GLYPHSET");
+-#endif
+     }
+     if (!formats)
+     {

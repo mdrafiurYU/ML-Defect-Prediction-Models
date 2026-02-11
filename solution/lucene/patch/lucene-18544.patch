@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/response/PageTool.java b/solr/src/java/org/apache/solr/response/PageTool.java
+index e6ad247..6a664d6 100644
+--- a/solr/src/java/org/apache/solr/response/PageTool.java
++++ b/solr/src/java/org/apache/solr/response/PageTool.java
+@@ -73,6 +73,7 @@ public class PageTool {
+     return current_page_number;
+   }
+ 
++  @Override
+   public String toString() {
+     return "Found " + results_found +
+            " Page " + current_page_number + " of " + page_count +

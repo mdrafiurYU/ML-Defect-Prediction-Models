@@ -1,0 +1,30 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index a2d0af9..c680778 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -239,12 +239,6 @@ extern unsigned long ldl_brx(volatile unsigned char *, int);
+ extern unsigned short ldw_brx(volatile unsigned char *, int);
+ #endif
+ 
+-#ifdef __SSP__
+-/* Propolice! */
+-extern long __guard[];
+-extern void __stack_smash_handler(char [], int);
+-#endif
+-
+ /* XFree86 things */
+ 
+ LOOKUP xfree86LookupTab[] = {
+@@ -1124,12 +1118,6 @@ LOOKUP xfree86LookupTab[] = {
+ #endif
+ #endif
+ 
+-#ifdef __SSP__
+-    /* propolice */
+-    SYMFUNC(__stack_smash_handler)
+-    SYMVAR(__guard)
+-#endif
+-
+     /* Some variables. */
+ 
+     SYMVAR(xf86stdin)

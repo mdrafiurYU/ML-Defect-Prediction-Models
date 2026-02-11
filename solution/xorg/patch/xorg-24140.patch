@@ -1,0 +1,12 @@
+diff --git a/dix/main.c b/dix/main.c
+index e186e89..5ac8f18 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -398,6 +398,7 @@ main(int argc, char *argv[], char *envp[])
+ 	    if (!CreateRootWindow(pScreen))
+ 		FatalError("failed to create root window");
+ 	}
++        InitCoreDevices();
+ 	InitInput(argc, argv);
+ 	if (InitAndStartDevices() != Success)
+ 	    FatalError("failed to initialize core devices");

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+index 55137ce..ec56f16 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+@@ -1844,7 +1844,7 @@ public final void jumpOverMethodBody() {
+ 										getNextUnicodeChar();
+ 									}
+ 							   	}
+-								recordComment(TokenNameCOMMENT_LINE);  // REVIEW why do we record comments while jumping over (method bodies)?
++								recordComment(TokenNameCOMMENT_LINE);
+ 								if (this.recordLineSeparator
+ 									&& ((this.currentCharacter == '\r') || (this.currentCharacter == '\n'))) {
+ 										if (this.checkNonExternalizedStringLiterals) {

@@ -1,0 +1,28 @@
+diff --git a/dix/events.c b/dix/events.c
+index 7d11d14..dc7bbfb 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2501,23 +2501,10 @@ void ReinitializeRootWindow(WindowPtr win, int xoff, int yoff)
+ void
+ DefineInitialRootWindow(WindowPtr win)
+ {
+-    DeviceIntPtr pDev = inputInfo.devices;
+-
+ #ifdef XEVIE
+     xeviewin = win;
+ #endif
+ 
+-    InitializeSprite(inputInfo.pointer, win);
+-
+-    while (pDev)
+-    {
+-        if (DevHasCursor(pDev))
+-        {
+-            InitializeSprite(pDev, win);
+-            ((FocusSemaphoresPtr)win->devPrivates[FocusPrivatesIndex].ptr)->enterleave++;
+-        }
+-        pDev = pDev->next;
+-    }
+ }
+ 
+ void 

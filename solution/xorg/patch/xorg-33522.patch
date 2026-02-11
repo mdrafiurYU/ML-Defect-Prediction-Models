@@ -1,0 +1,36 @@
+diff --git a/dix/dixutils.c b/dix/dixutils.c
+index e8d7daf..786f4e3 100644
+--- a/dix/dixutils.c
++++ b/dix/dixutils.c
+@@ -254,17 +254,25 @@ _X_EXPORT int
+ dixLookupClient(ClientPtr *pClient, XID rid, ClientPtr client, Mask access)
+ {
+     pointer pRes;
+-    int clientIndex = CLIENT_ID(rid);
+-    client->errorValue = rid;
++    int rc = BadValue, clientIndex = CLIENT_ID(rid);
++
++    if (!clientIndex || !clients[clientIndex] || (rid & SERVER_BIT))
++	goto bad;
++
++    rc = dixLookupResource(&pRes, rid, RC_ANY, client, DixGetAttrAccess);
++    if (rc != Success)
++	goto bad;
+ 
+-    dixLookupResource(&pRes, rid, RC_ANY, client, access);
++    rc = XaceHook(XACE_CLIENT_ACCESS, client, clients[clientIndex], access);
++    if (rc != Success)
++	goto bad;
+ 
+-    if (clientIndex && pRes && clients[clientIndex] && !(rid & SERVER_BIT)) {
+ 	*pClient = clients[clientIndex];
+ 	return Success;
+-    }
++bad:
++    client->errorValue = rid;
+     *pClient = NULL;
+-    return BadValue;
++    return rc;
+ }
+ 
+ int

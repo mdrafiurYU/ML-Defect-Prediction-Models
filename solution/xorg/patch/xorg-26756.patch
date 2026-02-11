@@ -1,0 +1,14 @@
+diff --git a/dix/events.c b/dix/events.c
+index 7cfe0ad..0a39dcd 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -328,7 +328,8 @@ static void ConfineToShape(RegionPtr shape, int *px, int *py);
+ static void PostNewCursor(void);
+ 
+ #define SyntheticMotion(x, y) \
+-    PostSyntheticMotion(x, y, sprite.screen, \
++    PostSyntheticMotion(x, y, noPanoramiXExtension ? 0 : \
++                              sprite.screen->myNum, \
+                         syncEvents.playingEvents ? \
+                           syncEvents.time.milliseconds : \
+                           currentTime.milliseconds);

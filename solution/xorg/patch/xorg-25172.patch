@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index a2e2c0f..c900266 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -444,7 +444,7 @@ KdPointerProc(DeviceIntPtr pDevice, int onoff)
+ 
+ #ifdef XINPUT
+         if (pi->inputClass == KD_TOUCHSCREEN) {
+-            InitTouchscreenClassDeviceStruct(pDevice);
++            InitAbsoluteClassDeviceStruct(pDev);
+             xiclass = AtomFromName(XI_TOUCHSCREEN);
+         }
+         else {

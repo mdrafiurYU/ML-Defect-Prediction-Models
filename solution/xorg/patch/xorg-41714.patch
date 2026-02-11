@@ -1,0 +1,13 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 43657b9..6d9b667 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -154,7 +154,7 @@ XIGetDevice(xEvent* xE)
+         int rc;
+         int id;
+ 
+-        id = ((deviceKeyButtonPointer*)xE)->deviceid;
++        id = ((deviceKeyButtonPointer*)xE)->deviceid & ~MORE_EVENTS;
+ 
+         rc = dixLookupDevice(&pDev, id, serverClient, DixUnknownAccess);
+         if (rc != Success)

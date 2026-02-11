@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+index 31e137c..4e8604f 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+@@ -915,8 +915,13 @@ public abstract class AbstractWriteTest extends AbstractEvaluationTest {
+         testUser = null;
+ 
+         // try to retrieve the acl again
+-        AccessControlManager acMgr = getAccessControlManager(helper.getSuperuserSession());
+-        acMgr.getPolicies(acPath);
++        Session s = helper.getSuperuserSession();
++        try {
++            AccessControlManager acMgr = getAccessControlManager(s);
++            acMgr.getPolicies(acPath);
++        } finally {
++            s.logout();
++        }
+     }
+ 
+     private static Node findPolicyNode(Node start) throws RepositoryException {

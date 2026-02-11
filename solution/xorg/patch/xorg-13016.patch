@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglshm.c b/hw/xgl/xglshm.c
+index 574c109..020abd3 100644
+--- a/hw/xgl/xglshm.c
++++ b/hw/xgl/xglshm.c
+@@ -64,7 +64,8 @@ xglShmPutImage (DrawablePtr  pDrawable,
+ 
+ 	    XGL_PIXMAP_PRIV (pPixmap);
+ 
+-	    if (!xglAllocatePixmapBits (pPixmap))
++	    if (!xglAllocatePixmapBits (pPixmap,
++					XGL_PIXMAP_USAGE_HINT_DEFAULT))
+ 	    {
+ 		(*pScreen->DestroyPixmap) (pPixmap);
+ 		return;

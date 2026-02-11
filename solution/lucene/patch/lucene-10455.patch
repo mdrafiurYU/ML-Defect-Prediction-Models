@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+index 70e1acf..a7920a5 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+@@ -203,7 +203,7 @@ public class TestFieldCache extends LuceneTestCase {
+   public void testEmptyIndex() throws Exception {
+     Directory dir = newDirectory();
+     IndexWriter writer= new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()).setMaxBufferedDocs(500));
+-    IndexReader r = writer.getReader();
++    IndexReader r = IndexReader.open(writer);
+     FieldCache.DocTerms terms = FieldCache.DEFAULT.getTerms(r, "foobar");
+     FieldCache.DocTermsIndex termsIndex = FieldCache.DEFAULT.getTermsIndex(r, "foobar");
+     r.close();

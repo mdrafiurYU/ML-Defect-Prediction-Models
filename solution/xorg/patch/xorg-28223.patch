@@ -1,0 +1,36 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 927d16e..579203f 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -173,6 +173,11 @@ EnableDevice(DeviceIntPtr dev)
+     dev->enabled = TRUE;
+     *prev = dev->next;
+ 
++    if (IsPointerDevice(dev) && dev->isMPDev)
++        InitializeSprite(dev, GetCurrentRootWindow());
++    else
++        PairDevices(NULL, inputInfo.pointer, dev);
++
+     for (prev = &inputInfo.devices; *prev; prev = &(*prev)->next)
+         ;
+     *prev = dev;
+@@ -221,11 +226,6 @@ ActivateDevice(DeviceIntPtr dev)
+     SendEventToAllWindows(&dummyDev, DevicePresenceNotifyMask,
+                           (xEvent *) &ev, 1);
+ 
+-    if (IsPointerDevice(dev) && dev->isMPDev)
+-        InitializeSprite(dev, GetCurrentRootWindow());
+-    else
+-        PairDevices(NULL, inputInfo.pointer, dev);
+-
+     return ret;
+ }
+ 
+@@ -448,7 +448,6 @@ InitAndStartDevices()
+             PairDevices(NULL, GuessFreePointerDevice(), dev);
+     }
+ 
+-
+     return Success;
+ }
+ 

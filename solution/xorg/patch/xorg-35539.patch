@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxFakeMtn.c b/xkb/ddxFakeMtn.c
+index 1060afe..320e0ca 100644
+--- a/xkb/ddxFakeMtn.c
++++ b/xkb/ddxFakeMtn.c
+@@ -107,7 +107,7 @@ ScreenPtr	   pScreen, oldScreen;
+ 	     oldY=  y;
+ 	else oldY+= y;
+ 
+-#define GetScreenPrivate(s) ((miPointerScreenPtr) ((s)->devPrivates[miPointerScreenIndex].ptr))	
++#define GetScreenPrivate(s) ((miPointerScreenPtr)dixLookupPrivate(&(s)->devPrivates, miPointerScreenKey))
+ 	(*(GetScreenPrivate(oldScreen))->screenFuncs->CursorOffScreen)
+ 	    (&pScreen, &oldX, &oldY);
+     }

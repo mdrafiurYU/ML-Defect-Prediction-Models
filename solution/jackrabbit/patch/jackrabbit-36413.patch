@@ -1,0 +1,27 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/inheritance/impl/ContentImpl.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/inheritance/impl/ContentImpl.java
+index bfbfe61..116a4f7 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/inheritance/impl/ContentImpl.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/inheritance/impl/ContentImpl.java
+@@ -16,18 +16,18 @@
+  */
+ package org.apache.jackrabbit.ocm.testmodel.inheritance.impl;
+ 
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Implement;
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
+ import org.apache.jackrabbit.ocm.testmodel.interfaces.Content;
+ 
+-
+-
+-
+-
+ /**
+  * Content object
+  *
+  * @author <a href="mailto:christophe.lombart@gmail.com">Christophe Lombart</a>
+  * 
+  */
++@Node(jcrType="ocm:contentimpl", isAbstract=true, extend=CmsObjectImpl.class, discriminator=false )
++@Implement(interfaceName=Content.class)
+ public abstract class ContentImpl  extends CmsObjectImpl implements Content
+ {
+ }

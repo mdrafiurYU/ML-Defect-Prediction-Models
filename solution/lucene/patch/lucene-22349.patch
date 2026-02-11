@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/automaton/TestMinimize.java b/lucene/src/test/org/apache/lucene/util/automaton/TestMinimize.java
+index 0545970..dd529a3 100644
+--- a/lucene/src/test/org/apache/lucene/util/automaton/TestMinimize.java
++++ b/lucene/src/test/org/apache/lucene/util/automaton/TestMinimize.java
+@@ -49,4 +49,9 @@ public class TestMinimize extends LuceneTestCase {
+       assertEquals(a.getNumberOfTransitions(), b.getNumberOfTransitions());
+     }
+   }
++  
++  /** n^2 space usage in Hopcroft minimization? */
++  public void testMinimizeHuge() {
++    new RegExp("+-*(A|.....|BC)*]", RegExp.NONE).toAutomaton();
++  }
+ }

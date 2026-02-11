@@ -1,0 +1,41 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTModelBridgeTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTModelBridgeTests.java
+index 1f35dd1..270897c 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTModelBridgeTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTModelBridgeTests.java
+@@ -161,7 +161,7 @@ public class ASTModelBridgeTests extends AbstractASTTests {
+ 	/*
+ 	 * Ensures that the IJavaElement of an IBinding representing an array type is correct.
+ 	 */
+-	public void testArrayType() throws JavaModelException {
++	public void testArrayType1() throws JavaModelException {
+ 		ASTNode node = buildAST(
+ 			"public class X {\n" +
+ 			"  /*start*/Object[]/*end*/ field;\n" +
+@@ -179,6 +179,27 @@ public class ASTModelBridgeTests extends AbstractASTTests {
+ 	}
+ 
+ 	/*
++	 * Ensures that the IJavaElement of an IBinding representing an array type of base type null.
++	 * (regression test for bug 100142
++	  	CCE when calling ITypeBinding#getJavaElement() on char[][]
++	 */
++	public void testArrayType2() throws JavaModelException {
++		ASTNode node = buildAST(
++			"public class X {\n" +
++			"  /*start*/char[][]/*end*/ field;\n" +
++			"}"
++		);
++		IBinding binding = ((ArrayType) node).resolveBinding();
++		assertNotNull("No binding", binding);
++		IJavaElement element = binding.getJavaElement();
++		assertElementEquals(
++			"Unexpected Java element",
++			"<null>",
++			element
++		);
++	}
++
++	/*
+ 	 * Ensures that the IJavaElement of an IBinding representing a method coming from a class file is correct.
+ 	 * (regression test for bug 91445 IMethodBinding.getJavaElement() returns an "unopen" IMethod)
+ 	 */

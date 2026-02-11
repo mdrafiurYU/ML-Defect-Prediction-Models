@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CreateCompilationUnitTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CreateCompilationUnitTests.java
+index b847ea7..4bc77da 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CreateCompilationUnitTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CreateCompilationUnitTests.java
+@@ -23,7 +23,7 @@ public CreateCompilationUnitTests(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return new Suite(CreateCompilationUnitTests.class);
++	return buildModelTestSuite(CreateCompilationUnitTests.class);
+ }
+ public void setUp() throws Exception {
+ 	super.setUp();

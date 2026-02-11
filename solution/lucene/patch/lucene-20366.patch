@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/search/QueryParsing.java b/solr/src/java/org/apache/solr/search/QueryParsing.java
+index 34eb8c2..f99c27f 100644
+--- a/solr/src/java/org/apache/solr/search/QueryParsing.java
++++ b/solr/src/java/org/apache/solr/search/QueryParsing.java
+@@ -638,7 +638,11 @@ public class QueryParsing {
+       }
+ 
+       String v = val.substring(start,pos);
+-      return flt ? Double.parseDouble(v) : Long.parseLong(v);
++      if (flt) {
++        return Double.parseDouble(v);
++      } else {
++        return Long.parseLong(v);
++      }
+     }
+ 
+     double getDouble() throws ParseException {

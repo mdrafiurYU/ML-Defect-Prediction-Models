@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xaa/xaaFallback.c b/hw/xfree86/xaa/xaaFallback.c
+index fe73aef..3fca17c 100644
+--- a/hw/xfree86/xaa/xaaFallback.c
++++ b/hw/xfree86/xaa/xaaFallback.c
+@@ -1,5 +1,9 @@
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/xaa/xaaFallback.c,v 1.4 1999/03/14 11:18:09 dawes Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "xf86.h"
+ #include "xf86_ansic.h"

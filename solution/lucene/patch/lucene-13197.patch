@@ -1,0 +1,28 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentInfos.java b/lucene/src/java/org/apache/lucene/index/SegmentInfos.java
+index e1757dd..896e622 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentInfos.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentInfos.java
+@@ -74,6 +74,8 @@ public final class SegmentInfos extends Vector<SegmentInfo> {
+   
+   private CodecProvider codecs;
+ 
++  private int format;
++
+   /**
+    * If non-null, information about loading segments_N files
+    * will be printed here.  @see #setInfoStream.
+@@ -88,6 +90,14 @@ public final class SegmentInfos extends Vector<SegmentInfo> {
+     this.codecs = codecs;
+   }
+ 
++  public void setFormat(int format) {
++    this.format = format;
++  }
++
++  public int getFormat() {
++    return format;
++  }
++
+   public final SegmentInfo info(int i) {
+     return get(i);
+   }

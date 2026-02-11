@@ -1,0 +1,19 @@
+diff --git a/include/xkbsrv.h b/include/xkbsrv.h
+index fef341a..7db9eef 100644
+--- a/include/xkbsrv.h
++++ b/include/xkbsrv.h
+@@ -576,6 +576,14 @@ extern XkbSrvLedInfoPtr XkbAllocSrvLedInfo(
+     unsigned int		/* needed_parts */
+ );
+ 
++extern XkbSrvLedInfoPtr XkbCopySrvLedInfo(
++    DeviceIntPtr		/* dev */,
++    XkbSrvLedInfoPtr		/* src */,
++    KbdFeedbackPtr		/* kf */,
++    LedFeedbackPtr		/* lf */
++);
++
++
+ extern XkbSrvLedInfoPtr XkbFindSrvLedInfo(
+     DeviceIntPtr		/* dev */,
+     unsigned int		/* class */,

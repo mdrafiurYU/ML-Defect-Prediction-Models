@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java
+index 54b017a..29ff3f6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java
+@@ -205,7 +205,7 @@ public RecoveredElement add(TypeDeclaration typeDeclaration, int bracketBalanceV
+ 		}
+ 		return this.parent.add(typeDeclaration, bracketBalanceValue);
+ 	}
+-	if ((typeDeclaration.bits & ASTNode.IsLocalTypeMASK) != 0){
++	if ((typeDeclaration.bits & ASTNode.IsLocalType) != 0){
+ 		if (methodBody == null){
+ 			Block block = new Block(0);
+ 			block.sourceStart = methodDeclaration.bodyStart;
+@@ -311,7 +311,7 @@ public AbstractMethodDeclaration updatedMethodDeclaration(){
+ 			}
+ 		}
+ 	}
+-	if (localTypeCount > 0) methodDeclaration.bits |= ASTNode.HasLocalTypeMASK;
++	if (localTypeCount > 0) methodDeclaration.bits |= ASTNode.HasLocalType;
+ 	return methodDeclaration;
+ }
+ /*

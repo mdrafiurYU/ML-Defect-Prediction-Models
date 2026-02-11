@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java b/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
+index c5c979c..7cb6994 100644
+--- a/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
+@@ -432,7 +432,7 @@ class UnionDocsAndPositionsEnum extends DocsAndPositionsEnum {
+ 
+   private static final class DocsQueue extends PriorityQueue<DocsAndPositionsEnum> {
+     DocsQueue(List<DocsAndPositionsEnum> docsEnums) throws IOException {
+-      initialize(docsEnums.size());
++      super(docsEnums.size());
+ 
+       Iterator<DocsAndPositionsEnum> i = docsEnums.iterator();
+       while (i.hasNext()) {

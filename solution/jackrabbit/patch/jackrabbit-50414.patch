@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+index d3ab4d9..6d156fb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
+ import javax.jcr.ItemNotFoundException;
+ import javax.jcr.NodeIterator;
+ import javax.jcr.RepositoryException;
++import javax.jcr.UnsupportedRepositoryOperationException;
+ import javax.jcr.query.QueryResult;
+ import javax.jcr.query.RowIterator;
+ import java.io.IOException;
+@@ -181,6 +182,12 @@ public abstract class QueryResultImpl implements QueryResult {
+         }
+     }
+ 
++    // TODO: JCR-2201: Implement QueryResult.getSelectorNames()
++    public String[] getSelectorNames() throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException(
++                "JCR-2201: Implement QueryResult.getSelectorNames()");
++    }
++
+     /**
+      * {@inheritDoc}
+      */

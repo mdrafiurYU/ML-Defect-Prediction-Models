@@ -1,0 +1,14 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index bed71be..b3b15d2 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -516,8 +516,7 @@ typedef struct _QdEvent {
+     DeviceIntPtr	device;
+     ScreenPtr		pScreen;	/* what screen the pointer was on */
+     unsigned long	months;		/* milliseconds is in the event */
+-    xEvent		*event;
+-    int			evcount;
++    InternalEvent	*event;
+ } QdEventRec;    
+ 
+ #endif /* INPUTSTRUCT_H */

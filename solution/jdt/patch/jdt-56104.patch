@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java
+index b8437e3..2142ec4 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java
+@@ -174,8 +174,8 @@ public class PackageDeclarationImpl extends DeclarationImpl implements PackageDe
+ 			final int start = node.getStartPosition();			
+ 	        return new SourcePositionImpl(start,
+ 										  node.getLength(),
+-	                                      unit.lineNumber(start),
+-	                                      unit.columnNumber(start),
++	                                      unit.getLineNumber(start),
++	                                      unit.getColumnNumber(start),
+ 	                                      this);			
+ 		}
+ 		return null;

@@ -1,0 +1,38 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 266a66c..d445916 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -301,6 +301,16 @@ DisableDevice(DeviceIntPtr dev)
+     if (*prev != dev)
+ 	return FALSE;
+ 
++    /* float attached devices */
++    if (dev->isMaster)
++    {
++        for (other = inputInfo.devices; other; other = other->next)
++        {
++            if (other->u.master == dev)
++                AttachDevice(NULL, other, NULL);
++        }
++    }
++
+     if (dev->isMaster && dev->spriteInfo->sprite)
+     {
+         for (other = inputInfo.devices; other; other = other->next)
+@@ -320,16 +330,6 @@ DisableDevice(DeviceIntPtr dev)
+     dev->next = inputInfo.off_devices;
+     inputInfo.off_devices = dev;
+ 
+-    /* float attached devices */
+-    if (dev->isMaster)
+-    {
+-        for (other = inputInfo.devices; other; other = other->next)
+-        {
+-            if (other->u.master == dev)
+-                AttachDevice(NULL, dev, NULL);
+-        }
+-    }
+-
+     ev.type = DevicePresenceNotify;
+     ev.time = currentTime.milliseconds;
+     ev.devchange = DeviceDisabled;

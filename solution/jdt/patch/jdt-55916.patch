@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ReturnStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ReturnStatement.java
+index 87c97bf..a4e749e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ReturnStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ReturnStatement.java
+@@ -211,14 +211,14 @@ public class ReturnStatement extends Statement {
+ 			    scope.problemReporter().unsafeTypeConversion(this.expression, expressionType, methodType);
+ 			}
+ 			if (this.expression instanceof CastExpression 
+-					&& (this.expression.bits & ASTNode.UnnecessaryCast) == 0) {
++					&& (this.expression.bits & (ASTNode.UnnecessaryCast|ASTNode.DisableUnnecessaryCastCheck)) == 0) {
+ 				CastExpression.checkNeedForAssignedCast(scope, methodType, (CastExpression) this.expression);
+ 			}			
+ 			return;
+ 		} else if (scope.isBoxingCompatibleWith(expressionType, methodType)) {
+ 			this.expression.computeConversion(scope, methodType, expressionType);
+ 			if (this.expression instanceof CastExpression 
+-					&& (this.expression.bits & ASTNode.UnnecessaryCast) == 0) {
++					&& (this.expression.bits & (ASTNode.UnnecessaryCast|ASTNode.DisableUnnecessaryCastCheck)) == 0) {
+ 				CastExpression.checkNeedForAssignedCast(scope, methodType, (CastExpression) this.expression);
+ 			}			return;
+ 		}

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/xf86_OSproc.h b/hw/xfree86/os-support/xf86_OSproc.h
+index 74ec766..83ce9ed 100644
+--- a/hw/xfree86/os-support/xf86_OSproc.h
++++ b/hw/xfree86/os-support/xf86_OSproc.h
+@@ -136,6 +136,10 @@ extern void xf86WrapperInit(void);
+ #include <X11/Xfuncproto.h>
+ #include "opaque.h"
+ 
++#if defined(XQUEUE)
++#include "input.h"	/* for DeviceIntPtr */
++#endif
++
+ _XFUNCPROTOBEGIN
+ 
+ /* public functions */

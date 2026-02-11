@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/assyntax.h b/hw/xfree86/os-support/assyntax.h
+index 191c7e4..1cf8435 100644
+--- a/hw/xfree86/os-support/assyntax.h
++++ b/hw/xfree86/os-support/assyntax.h
+@@ -1,4 +1,8 @@
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/os-support/assyntax.h,v 3.13 2003/08/24 17:37:03 dawes Exp $ */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef __ASSYNTAX_H__
+ #define	__ASSYNTAX_H__
+ 

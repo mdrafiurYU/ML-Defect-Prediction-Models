@@ -1,0 +1,16 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 51af9b4..d09ad3c 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -51,9 +51,8 @@ UpdateDeviceState (
+ 	DeviceEvent*           /*  xE    */);
+ 
+ extern _X_EXPORT void ProcessOtherEvent (
+-	xEventPtr /* FIXME deviceKeyButtonPointer * xE */,
+-	DeviceIntPtr           /* other */,
+-	int                    /* count */);
++	InternalEvent*         /* ev */,
++	DeviceIntPtr           /* other */);
+ 
+ extern _X_EXPORT int InitProximityClassDeviceStruct(
+ 	DeviceIntPtr           /* dev */);

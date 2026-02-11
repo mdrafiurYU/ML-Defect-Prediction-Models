@@ -1,0 +1,15 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 86b1667..5e745b3 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -167,8 +167,8 @@ typedef struct _ValuatorClassRec {
+     int		 	  numMotionEvents;
+     int                   first_motion;
+     int                   last_motion;
+-    void                  *motion; /* motion history buffer */
+-
++    void                  *motion; /* motion history buffer. Different layout
++                                      for MDs and SDs!*/
+     WindowPtr    	  motionHintWindow;
+ 
+     AxisInfoPtr 	  axes;

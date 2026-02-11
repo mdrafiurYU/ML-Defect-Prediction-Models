@@ -1,0 +1,30 @@
+diff --git a/hw/xquartz/quartzKeyboard.c b/hw/xquartz/quartzKeyboard.c
+index c75cd1d..5b8d32d 100644
+--- a/hw/xquartz/quartzKeyboard.c
++++ b/hw/xquartz/quartzKeyboard.c
+@@ -43,7 +43,7 @@
+ // Define this to get a diagnostic output to stderr which is helpful
+ // in determining how the X server is interpreting the Darwin keymap.
+ #define DUMP_DARWIN_KEYMAP
+-#define XQUARTZ_USE_XKB 
++//#define XQUARTZ_USE_XKB 
+ #define HACK_MISSING 1
+ #define HACK_KEYPAD 1
+ 
+@@ -917,13 +917,15 @@ void DarwinKeyboardReloadHandler(int screenNum, xEventPtr xe, DeviceIntPtr pDev,
+ #ifdef XQUARTZ_USE_XKB
+ 	QuartzXkbUpdate(pDev);
+ #else
++    KeySymsRec keySyms;
++    DarwinLoadKeyboardMapping(&keySyms);
++
+ 	if (pDev->key) {
+ 		if (pDev->key->curKeySyms.map) xfree(pDev->key->curKeySyms.map);
+ 		if (pDev->key->modifierKeyMap) xfree(pDev->key->modifierKeyMap);
+ 		xfree(pDev->key);
+ 	}
+ 	
+-    KeySymsRec keySyms;
+ 	if (!InitKeyClassDeviceStruct(pDev, &keySyms, keyInfo.modMap)) {
+ 		DEBUG_LOG("InitKeyClassDeviceStruct failed\n");
+ 		return;

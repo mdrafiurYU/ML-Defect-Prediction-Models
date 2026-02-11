@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadTermQuery.java b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadTermQuery.java
+index c2837b8..0ac5276 100644
+--- a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadTermQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadTermQuery.java
+@@ -110,7 +110,7 @@ public class TestPayloadTermQuery extends LuceneTestCase {
+     directory = newDirectory();
+     RandomIndexWriter writer = new RandomIndexWriter(random, directory, 
+         newIndexWriterConfig(TEST_VERSION_CURRENT, new PayloadAnalyzer())
+-        .setSimilarityProvider(similarity));
++                                                     .setSimilarityProvider(similarity).setMergePolicy(newInOrderLogMergePolicy()));
+     //writer.infoStream = System.out;
+     for (int i = 0; i < 1000; i++) {
+       Document doc = new Document();

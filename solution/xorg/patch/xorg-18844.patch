@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/ix86Pci.c b/hw/xfree86/os-support/bus/ix86Pci.c
+index 99e3ba2..6e2b650 100644
+--- a/hw/xfree86/os-support/bus/ix86Pci.c
++++ b/hw/xfree86/os-support/bus/ix86Pci.c
+@@ -136,6 +136,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <stdio.h>
+ #include "compiler.h"
+ #include "xf86.h"

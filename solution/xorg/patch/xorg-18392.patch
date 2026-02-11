@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index b1997cd..4e57d2e 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -51,6 +51,10 @@
+  */
+ 
+ #undef DBMALLOC
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "sym.h"
+ #include "colormap.h"
+ #include "cursor.h"

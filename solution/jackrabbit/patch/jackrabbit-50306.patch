@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/OrQueryNode.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/OrQueryNode.java
+index 4d24c73..44fc4ab 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/OrQueryNode.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/OrQueryNode.java
+@@ -22,7 +22,7 @@ import javax.jcr.RepositoryException;
+  * Implements a query node that defines an OR operation between arbitrary
+  * other {@link QueryNode}s.
+  */
+-public class OrQueryNode extends NAryQueryNode {
++public class OrQueryNode extends NAryQueryNode<QueryNode> {
+ 
+     /**
+      * Creates a new <code>OrQueryNode</code> with a <code>parent</code>

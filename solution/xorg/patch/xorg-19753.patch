@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/rac/xf86RACmodule.c b/hw/xfree86/rac/xf86RACmodule.c
+index 83c60e3..7221b9d 100644
+--- a/hw/xfree86/rac/xf86RACmodule.c
++++ b/hw/xfree86/rac/xf86RACmodule.c
+@@ -1,5 +1,9 @@
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/rac/xf86RACmodule.c,v 1.3 1999/01/17 10:54:12 dawes Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86Module.h"
+ 
+ static XF86ModuleVersionInfo racVersRec =

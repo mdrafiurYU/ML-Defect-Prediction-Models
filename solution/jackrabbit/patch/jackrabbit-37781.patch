@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LimitAndOffsetTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LimitAndOffsetTest.java
+index c3c8d70..9b1cc71 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LimitAndOffsetTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LimitAndOffsetTest.java
+@@ -33,6 +33,14 @@ public class LimitAndOffsetTest extends AbstractQueryTest {
+         query = createXPathQuery("/jcr:root" + testRoot + "/* order by @name");
+     }
+ 
++    protected void tearDown() throws Exception {
++        node1 = null;
++        node2 = null;
++        node3 = null;
++        query = null;
++        super.tearDown();
++    }
++
+     private QueryImpl createXPathQuery(String xpath)
+             throws InvalidQueryException, RepositoryException {
+         QueryManager queryManager = superuser.getWorkspace().getQueryManager();

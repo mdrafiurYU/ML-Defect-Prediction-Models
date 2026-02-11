@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
+index 8863e78..24189b7 100644
+--- a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
+@@ -301,7 +301,7 @@ public class TestPayloadNearQuery extends LuceneTestCase {
+ 
+     @Override public float scorePayload(int docId, String fieldName, int start, int end, byte[] payload, int offset, int length) {
+       //we know it is size 4 here, so ignore the offset/length
+-      return payload[0];
++      return payload[offset];
+     }
+     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     //Make everything else 1 so we see the effect of the payload

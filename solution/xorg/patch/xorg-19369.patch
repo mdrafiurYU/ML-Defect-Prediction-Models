@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/sysv_kbd.c b/hw/xfree86/os-support/shared/sysv_kbd.c
+index 5421b11..dd1ca33 100644
+--- a/hw/xfree86/os-support/shared/sysv_kbd.c
++++ b/hw/xfree86/os-support/shared/sysv_kbd.c
+@@ -25,6 +25,10 @@
+  */
+ /* $XConsortium: sysv_kbd.c /main/3 1996/02/21 17:53:59 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "compiler.h"

@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/dixmods/afbmodule.c b/hw/xfree86/dixmods/afbmodule.c
+index 7920aa9..74dca9a 100644
+--- a/hw/xfree86/dixmods/afbmodule.c
++++ b/hw/xfree86/dixmods/afbmodule.c
+@@ -25,6 +25,14 @@
+  * XFree86 Project.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef XFree86LOADER
+ 
+ #include "xf86Module.h"

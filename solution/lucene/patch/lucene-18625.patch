@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/StandardFilterFactory.java b/solr/src/java/org/apache/solr/analysis/StandardFilterFactory.java
+index e4a7d93..91daca1 100644
+--- a/solr/src/java/org/apache/solr/analysis/StandardFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/StandardFilterFactory.java
+@@ -27,7 +27,7 @@ import org.apache.lucene.analysis.standard.StandardFilter;
+  * <pre class="prettyprint" >
+  * &lt;fieldType name="text_stndrd" class="solr.TextField" positionIncrementGap="100"&gt;
+  *   &lt;analyzer&gt;
+- *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
+  *     &lt;filter class="solr.StandardFilterFactory"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>

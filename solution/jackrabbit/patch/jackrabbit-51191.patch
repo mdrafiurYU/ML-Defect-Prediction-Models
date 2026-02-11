@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeDefinitionImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeDefinitionImpl.java
+index 8342699..d7f82fe 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeDefinitionImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeDefinitionImpl.java
+@@ -40,7 +40,7 @@ public class NodeTypeDefinitionImpl implements NodeTypeDefinition {
+      */
+     private static final Logger log = LoggerFactory.getLogger(NodeTypeDefinitionImpl.class);
+ 
+-    private final QNodeTypeDefinition ntd;
++    protected final QNodeTypeDefinition ntd;
+     private final NamePathResolver resolver;
+     private final ValueFactory valueFactory;

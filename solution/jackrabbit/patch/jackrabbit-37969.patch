@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java
+index 93c402e..ccf253c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java
+@@ -212,6 +212,13 @@ public class BundleFsPersistenceManager extends AbstractBundlePersistenceManager
+     /**
+      * {@inheritDoc}
+      */
++    protected BundleBinding getBinding() {
++        return binding;
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public synchronized void close() throws Exception {
+         if (!initialized) {
+             throw new IllegalStateException("not initialized");

@@ -1,0 +1,13 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index a6e27e6..47383a4 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -1166,7 +1166,7 @@ ProcSELinuxGetPropertyContext(ClientPtr client)
+     if (!pProp)
+ 	return BadValue;
+ 
+-    rc = XaceHook(XACE_PROPERTY_ACCESS, client, pWin, pProp, DixGetAttrAccess);
++    rc = XaceHookPropertyAccess(client, pWin, pProp, DixGetAttrAccess);
+     if (rc != Success)
+ 	return rc;
+ 

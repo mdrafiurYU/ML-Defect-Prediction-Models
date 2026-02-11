@@ -1,0 +1,26 @@
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index 8043f5a..9033a13 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -55,13 +55,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #define	CREATE_ATOM(s)	MakeAtom(s,sizeof(s)-1,1)
+ 
+-#ifdef sgi
+-#define LED_CAPS	5
+-#define	LED_NUM		6
+-#define	LED_SCROLL	7
+-#define	PHYS_LEDS	0x7f
+-#define	LED_COMPOSE	8
+-#else
+ #if defined(__osf__) || defined(__alpha) || defined(__alpha__)
+ #define	LED_COMPOSE	2
+ #define LED_CAPS	3
+@@ -82,7 +75,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #define	PHYS_LEDS	0x07
+ #endif
+ #endif
+-#endif
+ 
+ #define	MAX_TOC	16
+ typedef struct	_SrvXkmInfo {

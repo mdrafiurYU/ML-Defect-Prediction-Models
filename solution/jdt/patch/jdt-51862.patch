@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/PackageUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/PackageUtil.java
+index 767c92f..c9cee3f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/PackageUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/PackageUtil.java
+@@ -1,9 +1,9 @@
+ package org.eclipse.jdt.apt.core.internal.util;
+-
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+-import org.eclipse.jdt.apt.core.internal.env.ProcessorEnvImpl;
++import org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv;
++
+ import org.eclipse.jdt.core.IJavaProject;
+ import org.eclipse.jdt.core.IPackageFragment;
+ import org.eclipse.jdt.core.IPackageFragmentRoot;
+@@ -19,7 +19,7 @@ public class PackageUtil {
+ 	
+ 	public static IPackageFragment[] getPackageFragments(
+ 			final String packageName, 
+-			final ProcessorEnvImpl env) {
++			final BaseProcessorEnv env) {
+ 		
+ 		IJavaProject project = env.getJavaProject();
+ 		List<IPackageFragment> packages = new ArrayList<IPackageFragment>();

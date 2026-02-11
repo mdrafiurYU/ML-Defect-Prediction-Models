@@ -1,0 +1,15 @@
+diff --git a/xkb/ddxKeyClick.c b/xkb/ddxKeyClick.c
+index c0b2b80..19a2ec9 100644
+--- a/xkb/ddxKeyClick.c
++++ b/xkb/ddxKeyClick.c
+@@ -34,8 +34,8 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "inputstr.h"
+ #include "scrnintstr.h"
+ #include "windowstr.h"
+-#include "XKBsrv.h"
+-#include "XI.h"
++#include <X11/extensions/XKBsrv.h>
++#include <X11/extensions/XI.h>
+ 
+ void
+ XkbDDXKeyClick(DeviceIntPtr pXDev,int keycode,int synthetic)

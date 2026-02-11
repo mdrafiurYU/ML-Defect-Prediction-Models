@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
+index d708a3b..bba4253 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
+@@ -266,7 +266,7 @@ public abstract class AbstractBundlePersistenceManager implements
+             }
+             return nsIndex;
+         } catch (Exception e) {
+-            throw new IllegalStateException("Unable to create nsIndex." + e);
++            throw new IllegalStateException("Unable to create nsIndex.", e);
+         }
+     }
+ 
+@@ -282,7 +282,7 @@ public abstract class AbstractBundlePersistenceManager implements
+             }
+             return nameIndex;
+         } catch (Exception e) {
+-            throw new IllegalStateException("Unable to create nsIndex." + e);
++            throw new IllegalStateException("Unable to create nsIndex.", e);
+         }
+     }

@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java b/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
+index 237add6..9b8eae8 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
++++ b/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
+@@ -183,7 +183,15 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
+       } finally {
+         if (reader != null) reader.close();
+         reader = null;
+-        if (writer != null) writer.close();
++        if (writer != null) {
++          try {
++            writer.close();
++          } catch (IndexFormatTooOldException e) {
++            // OK -- since IW gives merge scheduler a chance
++            // to merge at close, it's possible and fine to
++            // hit this exc here
++          }
++        }
+         writer = null;
+       }

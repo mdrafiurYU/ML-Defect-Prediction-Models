@@ -1,0 +1,15 @@
+diff --git a/os/oscolor.c b/os/oscolor.c
+index bb927c4..65de9e4 100644
+--- a/os/oscolor.c
++++ b/os/oscolor.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $Xorg: oscolor.c,v 1.4 2001/02/09 02:05:23 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef USE_RGB_TXT
+ 
+ #ifdef NDBM

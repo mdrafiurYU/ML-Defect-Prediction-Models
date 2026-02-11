@@ -1,0 +1,21 @@
+diff --git a/Xext/mbufbf.c b/Xext/mbufbf.c
+index afa6177..e929ab5 100644
+--- a/Xext/mbufbf.c
++++ b/Xext/mbufbf.c
+@@ -47,6 +47,7 @@ in this Software without prior written authorization from The Open Group.
+ #include "gcstruct.h"
+ #include "inputstr.h"
+ #include "validate.h"
++#include "globals.h"
+ #include <sys/time.h>
+ 
+ #define _MULTIBUF_SERVER_	/* don't want Xlib structures */
+@@ -199,8 +200,6 @@ static Bool bufChangeWindowAttributes();
+ static void bufClearToBackground();
+ static void bufCopyWindow();
+ 
+-extern WindowPtr *WindowTable;
+-
+ static Bool
+ bufMultibufferInit(pScreen, pMBScreen)
+     ScreenPtr pScreen;

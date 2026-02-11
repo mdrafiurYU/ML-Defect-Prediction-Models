@@ -1,0 +1,12 @@
+diff --git a/dix/window.c b/dix/window.c
+index 137afa0..541d199 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -929,6 +929,7 @@ CrushTree(WindowPtr pWin)
+ 		(*UnrealizeWindow)(pChild);
+ 	    }
+ 	    FreeWindowResources(pChild);
++	    dixFreePrivates(pChild->devPrivates);
+ 	    xfree(pChild);
+ 	    if ( (pChild = pSib) )
+ 		break;

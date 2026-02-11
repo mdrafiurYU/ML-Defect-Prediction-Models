@@ -1,0 +1,15 @@
+diff --git a/Xi/getmmap.h b/Xi/getmmap.h
+index deeb28f..88e4af4 100644
+--- a/Xi/getmmap.h
++++ b/Xi/getmmap.h
+@@ -24,6 +24,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ ********************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef GETMMAP_H
+ #define GETMMAP_H 1
+ 

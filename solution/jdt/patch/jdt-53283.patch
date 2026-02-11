@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
+index 9ef88fc..df8b529 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
+@@ -430,6 +430,7 @@ private Binding findImport(char[][] compoundName, int length) {
+ 	}
+ 
+ 	while (i < length) {
++		type = (ReferenceBinding)environment.convertToRawType(type); // type imports are necessarily raw for all except last
+ 		if (!type.canBeSeenBy(fPackage))
+ 			return new ProblemReferenceBinding(CharOperation.subarray(compoundName, 0, i), type, NotVisible);

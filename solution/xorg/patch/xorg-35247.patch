@@ -1,0 +1,34 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index d06ab8a..319d2ce 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -206,6 +206,9 @@ extern Bool noXkbExtension;
+ #ifdef PANORAMIX
+ extern Bool noPanoramiXExtension;
+ #endif
++#ifdef INXQUARTZ
++extern Bool noPseudoramiXExtension;
++#endif
+ #ifdef XINPUT
+ extern Bool noXInputExtension;
+ #endif
+@@ -274,6 +277,9 @@ extern void MultibufferExtensionInit(INITARGS);
+ #ifdef PANORAMIX
+ extern void PanoramiXExtensionInit(INITARGS);
+ #endif
++#ifdef INXQUARTZ
++extern void PseudoramiXExtensionInit(INITARGS);
++#endif
+ #ifdef XINPUT
+ extern void XInputExtensionInit(INITARGS);
+ #endif
+@@ -533,6 +539,9 @@ InitExtensions(argc, argv)
+   if (!noPanoramiXExtension) PanoramiXExtensionInit();
+ # endif
+ #endif
++#ifdef INXQUARTZ
++    if(!noPseudoramiXExtension) PseudoramiXExtensionInit();
++#endif
+ #ifdef SHAPE
+     if (!noShapeExtension) ShapeExtensionInit();
+ #endif

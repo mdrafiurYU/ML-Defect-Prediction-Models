@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java
+index 60ca29b..56bc760 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java
+@@ -33,6 +33,12 @@ import javax.sql.DataSource;
+ public class ConnectionFactory {
+ 
+     /**
++     * Utility classes should not have a public or default constructor.
++     */
++    private ConnectionFactory() {
++    }
++
++    /**
+      * Open a connection using the specified properties.
+      * The connection can be created using a JNDI Data Source as well. To do that,
+      * the driver class name must reference a javax.naming.Context class

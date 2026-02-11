@@ -1,0 +1,31 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 8d0a573..ad78168 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -556,6 +556,7 @@ public int computeSeverity(int problemID){
+ 		case IProblem.JavadocInvalidParamName:
+ 		case IProblem.JavadocDuplicateParamName:
+ 		case IProblem.JavadocMissingParamName:
++		case IProblem.JavadocMissingIdentifier:
+ 		case IProblem.JavadocInvalidThrowsClassName:
+ 		case IProblem.JavadocDuplicateThrowsClassName:
+ 		case IProblem.JavadocMissingThrowsClassName:
+@@ -1402,6 +1403,7 @@ public static long getIrritant(int problemID) {
+ 		case IProblem.JavadocInvalidParamName:
+ 		case IProblem.JavadocDuplicateParamName:
+ 		case IProblem.JavadocMissingParamName:
++		case IProblem.JavadocMissingIdentifier:
+ 		case IProblem.JavadocInvalidThrowsClassName:
+ 		case IProblem.JavadocDuplicateThrowsClassName:
+ 		case IProblem.JavadocMissingThrowsClassName:
+@@ -3833,6 +3835,10 @@ public void javadocMissingHashCharacter(int sourceStart, int sourceEnd, String r
+ 	String[] arguments = new String[] { ref };
+ 	this.handle(IProblem.JavadocMissingHashCharacter, arguments, arguments, sourceStart, sourceEnd);
+ }
++public void javadocMissingIdentifier(int sourceStart, int sourceEnd, int modifiers){
++	if (javadocVisibility(this.options.reportInvalidJavadocTagsVisibility, modifiers))
++		this.handle(IProblem.JavadocMissingIdentifier, NoArgument, NoArgument, sourceStart, sourceEnd);
++}
+ public void javadocMissingParamName(int sourceStart, int sourceEnd, int modifiers){
+ 	if (javadocVisibility(this.options.reportInvalidJavadocTagsVisibility, modifiers))
+ 		this.handle(IProblem.JavadocMissingParamName, NoArgument, NoArgument, sourceStart, sourceEnd);

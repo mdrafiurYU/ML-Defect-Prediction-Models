@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ReferenceBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ReferenceBinding.java
+index 7a6da07..cf88230 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ReferenceBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ReferenceBinding.java
+@@ -516,7 +516,7 @@ public ReferenceBinding findSuperTypeWithSameErasure(TypeBinding otherType) {
+ 	int lastPosition = -1;
+ 	do {
+ 		ReferenceBinding[] itsInterfaces = currentType.superInterfaces();
+-		if (itsInterfaces != NoSuperInterfaces) {
++		if (itsInterfaces != NoSuperInterfaces && itsInterfaces != null) { // can be null while connecting hierarchies
+ 			if (++lastPosition == interfacesToVisit.length)
+ 				System.arraycopy(interfacesToVisit, 0, interfacesToVisit = new ReferenceBinding[lastPosition * 2][], 0, lastPosition);
+ 			interfacesToVisit[lastPosition] = itsInterfaces;

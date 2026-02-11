@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/misc/xf86_Util.c b/hw/xfree86/os-support/misc/xf86_Util.c
+index a94ad34..9f25144 100644
+--- a/hw/xfree86/os-support/misc/xf86_Util.c
++++ b/hw/xfree86/os-support/misc/xf86_Util.c
+@@ -29,6 +29,10 @@
+  * dependencies are dealt with, as this library will be linked in last.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <ctype.h>
+ 
+ /* To prevent empty source file warnings */

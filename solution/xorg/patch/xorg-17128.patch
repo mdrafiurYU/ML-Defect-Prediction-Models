@@ -1,0 +1,15 @@
+diff --git a/render/picture.c b/render/picture.c
+index 43a70f4..a598f74 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -543,9 +543,9 @@ PictureMatchVisual (ScreenPtr pScreen, int depth, VisualPtr pVisual)
+ 	type = PictTypeIndexed;
+ 	break;
+     case TrueColor:
++    case DirectColor:
+ 	type = PictTypeDirect;
+ 	break;
+-    case DirectColor:
+     default:
+ 	return 0;
+     }

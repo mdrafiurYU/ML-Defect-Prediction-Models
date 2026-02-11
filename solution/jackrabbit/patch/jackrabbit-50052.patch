@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
+index 4cd776f..17b92a3 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
+@@ -416,7 +416,7 @@ public abstract class AbstractSession implements Session {
+      * {@link Item#remove()} on the item removed by {@link #getItem(String)}.
+      *
+      * @see Session#removeItem(String)
+-     * @param absolute path of the item to be removed
++     * @param absPath An absolute path of the item to be removed
+      * @throws RepositoryException if the item can not be removed
+      */
+     public void removeItem(String absPath) throws RepositoryException {

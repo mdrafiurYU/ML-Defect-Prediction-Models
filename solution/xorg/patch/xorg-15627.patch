@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclWindow.c b/Xprint/pcl/PclWindow.c
+index 42a6f62..cac5826 100644
+--- a/Xprint/pcl/PclWindow.c
++++ b/Xprint/pcl/PclWindow.c
+@@ -47,6 +47,10 @@ copyright holders.
+ /* $XFree86: xc/programs/Xserver/Xprint/pcl/PclWindow.c,v 1.10tsi Exp $ */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/types.h>

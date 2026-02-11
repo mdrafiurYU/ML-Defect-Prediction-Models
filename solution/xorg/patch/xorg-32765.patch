@@ -1,0 +1,13 @@
+diff --git a/fb/fbpseudocolor.c b/fb/fbpseudocolor.c
+index 411bde1..a15697d 100644
+--- a/fb/fbpseudocolor.c
++++ b/fb/fbpseudocolor.c
+@@ -275,7 +275,7 @@ xxCreateScreenResources(ScreenPtr pScreen)
+ 		       * (BitsPerPixel(depth) >> 3));
+     if (!pBits) return FALSE;
+     
+-    pPixmap = (*pScreen->CreatePixmap)(pScreen, 0, 0, depth);
++    pPixmap = (*pScreen->CreatePixmap)(pScreen, 0, 0, depth, 0);
+     if (!pPixmap) {
+ 	xfree(pBits);
+ 	return FALSE;

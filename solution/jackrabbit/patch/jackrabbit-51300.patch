@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MixinModificationTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MixinModificationTest.java
+index 50eb676..bddb807 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MixinModificationTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MixinModificationTest.java
+@@ -96,7 +96,7 @@ public class MixinModificationTest extends AbstractJCRTest {
+             throw new NotExecutableException();
+         }
+ 
+-        Session testSession = helper.getReadWriteSession();
++        Session testSession = getHelper().getReadWriteSession();
+         try {
+             Node n = (Node) testSession.getItem(nPath);
+             String uuid = n.getUUID();

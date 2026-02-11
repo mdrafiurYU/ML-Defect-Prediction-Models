@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86fbman.c b/hw/xfree86/common/xf86fbman.c
+index fef4d63..3228c9b 100644
+--- a/hw/xfree86/common/xf86fbman.c
++++ b/hw/xfree86/common/xf86fbman.c
+@@ -27,6 +27,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "xf86.h"
+ 

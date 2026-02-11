@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/LogByteSizeMergePolicy.java b/lucene/src/java/org/apache/lucene/index/LogByteSizeMergePolicy.java
+index f602e7f..520cb4a 100644
+--- a/lucene/src/java/org/apache/lucene/index/LogByteSizeMergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/LogByteSizeMergePolicy.java
+@@ -28,7 +28,7 @@ public class LogByteSizeMergePolicy extends LogMergePolicy {
+ 
+   /** Default maximum segment size.  A segment of this size
+    *  or larger will never be merged.  @see setMaxMergeMB */
+-  public static final double DEFAULT_MAX_MERGE_MB = Long.MAX_VALUE;
++  public static final double DEFAULT_MAX_MERGE_MB = 2048;
+ 
+   public LogByteSizeMergePolicy() {
+     minMergeSize = (long) (DEFAULT_MIN_MERGE_MB*1024*1024);

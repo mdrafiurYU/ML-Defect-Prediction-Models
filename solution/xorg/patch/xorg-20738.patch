@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglgc.c b/hw/xgl/xglgc.c
+index deb3982..7e7e751 100644
+--- a/hw/xgl/xglgc.c
++++ b/hw/xgl/xglgc.c
+@@ -85,9 +85,6 @@ static const GCOps xglGCOps = {
+     xglImageGlyphBlt,
+     xglPolyGlyphBlt,
+     xglPushPixels
+-#ifdef NEED_LINEHELPER
+-    , NULL
+-#endif
+ };
+ 
+ void

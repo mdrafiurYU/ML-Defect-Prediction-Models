@@ -1,0 +1,12 @@
+diff --git a/dix/main.c b/dix/main.c
+index 9d66a4f..e8039e9 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -357,6 +357,7 @@ main(int argc, char *argv[], char *envp[])
+ 	InitAtoms();
+ 	InitEvents();
+ 	InitGlyphCaching();
++	ResetExtensionPrivates();
+ 	ResetClientPrivates();
+ 	ResetScreenPrivates();
+ 	ResetWindowPrivates();

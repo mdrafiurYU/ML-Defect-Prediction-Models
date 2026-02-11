@@ -1,0 +1,22 @@
+diff --git a/cfb/cfbwindow.c b/cfb/cfbwindow.c
+index c4f027b..2345012 100644
+--- a/cfb/cfbwindow.c
++++ b/cfb/cfbwindow.c
+@@ -133,7 +133,7 @@ cfbCopyWindow(pWin, ptOldOrg, prgnSrc)
+ 
+     pbox = REGION_RECTS(&rgnDst);
+     nbox = REGION_NUM_RECTS(&rgnDst);
+-    if(!nbox || !(pptSrc = (DDXPointPtr )ALLOCATE_LOCAL(nbox * sizeof(DDXPointRec))))
++    if(!nbox || !(pptSrc = (DDXPointPtr )xalloc(nbox * sizeof(DDXPointRec))))
+     {
+ 	REGION_UNINIT(pWin->drawable.pScreen, &rgnDst);
+ 	return;
+@@ -148,7 +148,7 @@ cfbCopyWindow(pWin, ptOldOrg, prgnSrc)
+ 
+     cfbDoBitbltCopy((DrawablePtr)pwinRoot, (DrawablePtr)pwinRoot,
+ 		GXcopy, &rgnDst, pptSrc, ~0L);
+-    DEALLOCATE_LOCAL(pptSrc);
++    xfree(pptSrc);
+     REGION_UNINIT(pWin->drawable.pScreen, &rgnDst);
+ }
+ 

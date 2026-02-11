@@ -1,0 +1,43 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 1b0ecab..102587b 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -31,11 +31,14 @@ void
+ RROutputChanged (RROutputPtr output)
+ {
+     ScreenPtr	pScreen = output->pScreen;
+-    rrScrPriv (pScreen);
+ 
+     output->changed = TRUE;
++    if (pScreen)
++    {
++	rrScrPriv (pScreen);
+     pScrPriv->changed = TRUE;
+ }
++}
+ 
+ /*
+  * Create an output
+@@ -335,6 +338,9 @@ RROutputDestroyResource (pointer value, XID pid)
+ {
+     RROutputPtr	output = (RROutputPtr) value;
+     ScreenPtr	pScreen = output->pScreen;
++
++    if (pScreen)
++    {
+     rrScrPriv(pScreen);
+     int		i;
+ 
+@@ -348,6 +354,7 @@ RROutputDestroyResource (pointer value, XID pid)
+ 	    break;
+ 	}
+     }
++    }
+     if (output->modes)
+ 	xfree (output->modes);
+     if (output->crtcs)
+@@ -481,4 +488,3 @@ ProcRRGetOutputInfo (ClientPtr client)
+     
+     return client->noClientException;
+ }
+-

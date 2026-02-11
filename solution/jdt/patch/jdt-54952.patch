@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoStatement.java
+index 8fb60ae..8c21a8c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoStatement.java
+@@ -52,10 +52,10 @@ public class DoStatement extends Statement {
+ 				currentScope);
+ 
+ 		Constant cst = condition.constant;
+-		boolean isConditionTrue = cst != NotAConstant && cst.booleanValue() == true;
++		boolean isConditionTrue = cst != Constant.NotAConstant && cst.booleanValue() == true;
+ 		cst = condition.optimizedBooleanConstant();
+-		boolean isConditionOptimizedTrue = cst != NotAConstant && cst.booleanValue() == true;
+-		boolean isConditionOptimizedFalse = cst != NotAConstant && cst.booleanValue() == false;
++		boolean isConditionOptimizedTrue = cst != Constant.NotAConstant && cst.booleanValue() == true;
++		boolean isConditionOptimizedFalse = cst != Constant.NotAConstant && cst.booleanValue() == false;
+ 
+ 		int previousMode = flowInfo.reachMode();

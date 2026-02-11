@@ -1,0 +1,19 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+index fe99e24..1cc1e64 100644
+--- a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
++++ b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+@@ -514,4 +514,14 @@ public final class FuzzyTermsEnum extends TermsEnum {
+           (int)((1-minSimilarity) * (Math.min(text.length, m) + realPrefixLength)));
+     }
+   }
++  
++  /** @lucene.internal */
++  public float getMinSimilarity() {
++    return minSimilarity;
++  }
++  
++  /** @lucene.internal */
++  public float getScaleFactor() {
++    return scale_factor;
++  }
+ }

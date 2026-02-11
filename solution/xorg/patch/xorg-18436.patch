@@ -1,0 +1,15 @@
+diff --git a/xkb/ddxList.c b/xkb/ddxList.c
+index 6a070f8..7e7c375 100644
+--- a/xkb/ddxList.c
++++ b/xkb/ddxList.c
+@@ -38,8 +38,8 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "scrnintstr.h"
+ #include "windowstr.h"
+ #define	XKBSRV_NEED_FILE_FUNCS
+-#include "XKBsrv.h"
+-#include "XI.h"
++#include <X11/extensions/XKBsrv.h>
++#include <X11/extensions/XI.h>
+ 
+ #ifndef PATH_MAX
+ #ifdef MAXPATHLEN

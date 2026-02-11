@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
+index 861ad69..1e1a17e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
+@@ -303,6 +303,9 @@ public class PrincipalManagerImpl implements PrincipalManager {
+             next = seekNext();
+         }
+ 
++        /**
++         * @see org.apache.jackrabbit.core.security.principal.AbstractPrincipalIterator#seekNext()
++         */
+         protected final Principal seekNext() {
+             while (!entries.isEmpty()) {
+                 // first test if current-itr has more elements

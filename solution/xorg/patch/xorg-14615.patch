@@ -1,0 +1,13 @@
+diff --git a/os/osdep.h b/os/osdep.h
+index 1ede065..b837d76 100644
+--- a/os/osdep.h
++++ b/os/osdep.h
+@@ -351,4 +351,8 @@ extern int XdmcpAddAuthorization (ARRAY8Ptr name, ARRAY8Ptr data);
+ struct sockaddr_in;
+ extern void XdmcpRegisterBroadcastAddress (struct sockaddr_in *addr);
+ 
++#ifdef HASXDMAUTH
++extern void XdmAuthenticationInit (char *cookie, int cookie_length);
++#endif
++
+ #endif /* _OSDEP_H_ */

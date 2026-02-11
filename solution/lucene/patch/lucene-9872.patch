@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/VectorValueSource.java b/solr/src/java/org/apache/solr/search/function/VectorValueSource.java
+index 86dbe1f..4a8542d 100644
+--- a/solr/src/java/org/apache/solr/search/function/VectorValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/VectorValueSource.java
+@@ -33,7 +33,7 @@ import java.util.Map;
+  */
+ //Not crazy about the name, but...
+ public class VectorValueSource extends MultiValueSource {
+-  protected List<ValueSource> sources;
++  protected final List<ValueSource> sources;
+ 
+ 
+   public VectorValueSource(List<ValueSource> sources) {

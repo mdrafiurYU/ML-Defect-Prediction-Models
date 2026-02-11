@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index c983b9a..d358da0 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -1556,7 +1556,7 @@ pciDeviceHasBars(struct pci_device *pci)
+     int i;
+ 
+     for (i = 0; i < 6; i++)
+-	if (pci->regions[0].size)
++	if (pci->regions[i].size)
+ 	    return TRUE;
+ 
+     if (pci->rom_size)

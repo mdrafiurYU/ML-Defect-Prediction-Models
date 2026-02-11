@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 7da85ea..7ea6197 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -1282,7 +1282,8 @@ checkCoreInputDevices(serverLayoutPtr servlayoutp, Bool implicitLayout)
+      */
+     for (devs = servlayoutp->inputs; devs && *devs; devs++) {
+ 	if (!strcmp((*devs)->driver, "void") || !strcmp((*devs)->driver, "mouse") ||
+-            !strcmp((*devs)->driver, "vmmouse") || !strcmp((*devs)->driver, "evdev")) {
++            !strcmp((*devs)->driver, "vmmouse") || !strcmp((*devs)->driver, "evdev") ||
++            !strcmp((*devs)->driver, "synaptics")) {
+ 	    found = 1; break;
+ 	}
+     }

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java b/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
+index 4b9e12b..2c3dc91 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
+@@ -35,7 +35,7 @@ public class TestConstantScoreQuery extends LuceneTestCase {
+   public void testCSQ() throws Exception {
+     final Query q1 = new ConstantScoreQuery(new TermQuery(new Term("a", "b")));
+     final Query q2 = new ConstantScoreQuery(new TermQuery(new Term("a", "c")));
+-    final Query q3 = new ConstantScoreQuery(new TermRangeFilter("a", "b", "c", true, true));
++    final Query q3 = new ConstantScoreQuery(TermRangeFilter.newStringRange("a", "b", "c", true, true));
+     QueryUtils.check(q1);
+     QueryUtils.check(q2);
+     QueryUtils.checkEqual(q1,q1);

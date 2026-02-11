@@ -1,0 +1,13 @@
+diff --git a/Xi/setbmap.c b/Xi/setbmap.c
+index 3035c64..f052255 100644
+--- a/Xi/setbmap.c
++++ b/Xi/setbmap.c
+@@ -109,7 +109,7 @@ ProcXSetDeviceButtonMapping(ClientPtr client)
+     rep.sequenceNumber = client->sequence;
+     rep.status = MappingSuccess;
+ 
+-    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixSetAttrAccess);
++    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixManageAccess);
+     if (ret != Success)
+ 	return ret;
+ 

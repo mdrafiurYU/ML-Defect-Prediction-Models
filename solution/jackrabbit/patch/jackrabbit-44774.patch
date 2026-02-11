@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/MultiStatusResponse.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/MultiStatusResponse.java
+index ea3159b..a7faecf 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/MultiStatusResponse.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/MultiStatusResponse.java
+@@ -185,7 +185,7 @@ public class MultiStatusResponse implements XmlSerializable, DavConstants {
+                     propFindType == PROPFIND_ALL_PROP || propFindType == PROPFIND_ALL_PROP_INCLUDE;
+                 boolean wasRequested = propNameSet.remove(property.getName());
+                 
+-                if ((allDeadPlusRfc4918LiveProperties && !property.isProtected()) || wasRequested) {
++                if ((allDeadPlusRfc4918LiveProperties && !property.isInvisibleInAllprop()) || wasRequested) {
+                     status200.addContent(property);
+                 }
+             }

@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/update/CommitUpdateCommand.java b/solr/src/java/org/apache/solr/update/CommitUpdateCommand.java
+index 7597087..8d33e02 100644
+--- a/solr/src/java/org/apache/solr/update/CommitUpdateCommand.java
++++ b/solr/src/java/org/apache/solr/update/CommitUpdateCommand.java
+@@ -16,6 +16,9 @@
+  */
+ 
+ package org.apache.solr.update;
++
++import org.apache.solr.request.SolrQueryRequest;
++
+ /**
+  * @version $Id$
+  */
+@@ -32,8 +35,8 @@ public class CommitUpdateCommand extends UpdateCommand {
+    */
+   public int maxOptimizeSegments = 1;
+ 
+-  public CommitUpdateCommand(boolean optimize) {
+-    super("commit");
++  public CommitUpdateCommand(SolrQueryRequest req, boolean optimize) {
++    super("commit", req);
+     this.optimize=optimize;
+   }
+   public String toString() {

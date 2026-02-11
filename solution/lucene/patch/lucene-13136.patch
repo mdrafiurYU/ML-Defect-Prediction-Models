@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java b/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java
+index 432cf2f..0ff5d34 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java
+@@ -40,11 +40,12 @@ public class TestIndexFileDeleter extends LuceneTestCase {
+   public void testDeleteLeftoverFiles() throws IOException {
+     MockDirectoryWrapper dir = newDirectory();
+     dir.setPreventDoubleWrite(false);
+-    IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(
+-        TEST_VERSION_CURRENT, new MockAnalyzer())
+-        .setMaxBufferedDocs(10));
+-    ((LogMergePolicy) writer.getMergePolicy()).setMergeFactor(10);
+-    ((LogMergePolicy) writer.getMergePolicy()).setUseCompoundFile(true);
++    IndexWriter writer = new IndexWriter(
++        dir,
++        newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++            setMaxBufferedDocs(10).
++            setMergePolicy(newLogMergePolicy(true, 10))
++    );
+     int i;
+     for(i=0;i<35;i++) {
+       addDoc(writer, i);

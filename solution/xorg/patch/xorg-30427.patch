@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/utils/xorgcfg/mouse-cfg.c b/hw/xfree86/utils/xorgcfg/mouse-cfg.c
+index 5bae6d3..24aec6a 100644
+--- a/hw/xfree86/utils/xorgcfg/mouse-cfg.c
++++ b/hw/xfree86/utils/xorgcfg/mouse-cfg.c
+@@ -54,9 +54,6 @@ static struct MouseProtocol {
+     char *name;
+     int type;
+ } protocols[] = {
+-#ifdef __UNIXOS2__
+-    {"OS2Mouse",		MTYPE_AUTOMOUSE},
+-#endif
+ #ifdef __SCO__
+     {"OsMouse",			MTYPE_AUTOMOUSE},
+ #endif

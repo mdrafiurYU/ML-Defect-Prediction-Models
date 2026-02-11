@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestFlex.java b/lucene/src/test/org/apache/lucene/index/TestFlex.java
+index 1f53114..7a55f34 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestFlex.java
++++ b/lucene/src/test/org/apache/lucene/index/TestFlex.java
+@@ -71,7 +71,11 @@ public class TestFlex extends LuceneTestCase {
+     IndexReader r = w.getReader();
+     TermsEnum terms = r.getSequentialSubReaders()[0].fields().terms("f").iterator();
+     assertTrue(terms.next() != null);
+-    assertEquals(0, terms.ord());
++    try {
++      assertEquals(0, terms.ord());
++    } catch (UnsupportedOperationException uoe) {
++      // ok -- codec is not required to support this op
++    }
+     r.close();
+     w.close();
+     d.close();

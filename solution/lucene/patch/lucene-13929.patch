@@ -1,0 +1,16 @@
+diff --git a/solr/src/java/org/apache/solr/core/SolrResourceLoader.java b/solr/src/java/org/apache/solr/core/SolrResourceLoader.java
+index 3d8dfda..7d0d10d 100644
+--- a/solr/src/java/org/apache/solr/core/SolrResourceLoader.java
++++ b/solr/src/java/org/apache/solr/core/SolrResourceLoader.java
+@@ -636,10 +636,7 @@ public class SolrResourceLoader implements ResourceLoader
+     }
+     return normalizeDir( home );
+   }
+-  @Deprecated
+-  public static String locateInstanceDir() {
+-    return locateSolrHome();
+-  }
++
+ 
+   public String getInstanceDir() {
+     return instanceDir;

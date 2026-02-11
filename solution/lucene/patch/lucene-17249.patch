@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/function/MultiValueSource.java b/lucene/src/java/org/apache/lucene/search/function/MultiValueSource.java
+index 7dbccb2..b3ec768 100644
+--- a/lucene/src/java/org/apache/lucene/search/function/MultiValueSource.java
++++ b/lucene/src/java/org/apache/lucene/search/function/MultiValueSource.java
+@@ -52,6 +52,7 @@ public final class MultiValueSource extends ValueSource {
+       return other.getValues(context);
+   }
+   
++  @Override
+   public DocValues getValues(ReaderContext context) throws IOException {
+     if (context.isAtomic) {
+       return getValues((AtomicReaderContext) context);

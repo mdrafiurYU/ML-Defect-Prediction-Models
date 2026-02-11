@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java
+index eb3ba27..9c7f590 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java
+@@ -100,7 +100,7 @@ public class Argument extends LocalDeclaration {
+ 
+ 		TypeBinding exceptionType = this.type.resolveType(scope, true /* check bounds*/);
+ 		if (exceptionType == null) return null;
+-		if (exceptionType.isGenericType() || exceptionType.isBoundParameterizedType()) {
++		if (exceptionType.isBoundParameterizedType()) {
+ 			scope.problemReporter().invalidParameterizedExceptionType(exceptionType, this);
+ 			return null;
+ 		}

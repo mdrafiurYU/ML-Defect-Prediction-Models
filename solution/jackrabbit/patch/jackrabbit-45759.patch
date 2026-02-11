@@ -1,0 +1,57 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java
+index 6836e57..ef44ace 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java
+@@ -122,27 +122,41 @@ public class FileDataStore implements DataStore {
+         directory = new File(path);
+         directory.mkdirs();
+     }
+-
++    
+     /**
+-     * Returns the record with the given identifier. Note that this method
+-     * performs no sanity checks on the given identifier. It is up to the
+-     * caller to ensure that only identifiers of previously created data
+-     * records are used.
+-     *
+-     * @param identifier data identifier
+-     * @return identified data record
++     * {@inheritDoc}
+      */
+-    public DataRecord getRecord(DataIdentifier identifier) {
++    public DataRecord getRecordIfStored(DataIdentifier identifier) {
+         File file = getFile(identifier);
+         synchronized (this) {
+-            if (minModifiedDate != 0 && file.exists() && file.canWrite()) {
++            if (!file.exists()) {
++                return null;
++            }
++            if (minModifiedDate != 0 && file.canWrite()) {
+                 if (file.lastModified() < minModifiedDate) {
+                     file.setLastModified(System.currentTimeMillis());
+                 }
+             }
+             usesIdentifier(identifier);
++            return new FileDataRecord(identifier, file);
++        }
++    }
++    
++    /**
++     * Returns the record with the given identifier. Note that this method
++     * performs no sanity checks on the given identifier. It is up to the
++     * caller to ensure that only identifiers of previously created data
++     * records are used.
++     *
++     * @param identifier data identifier
++     * @return identified data record
++     */
++    public DataRecord getRecord(DataIdentifier identifier) throws DataStoreException {
++        DataRecord record = getRecordIfStored(identifier);
++        if (record == null) {
++            throw new DataStoreException("Record not found: " + identifier);
+         }
+-        return new FileDataRecord(identifier, file);
++        return record;
+     }
+ 
+     private void usesIdentifier(DataIdentifier identifier) {

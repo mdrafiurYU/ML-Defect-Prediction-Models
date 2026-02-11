@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
+index 7dc8dc5..7587ffb 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
+@@ -81,7 +81,7 @@ public class SerializationTest extends AbstractJCRTest {
+             file = File.createTempFile("serializationTest", ".xml");
+             log.print("Tempfile: " + file.getAbsolutePath());
+ 
+-            SerializationContext sc = new SerializationContext(this);
++            SerializationContext sc = new SerializationContext(this, session);
+             treeComparator = new TreeComparator(sc, session);
+             treeComparator.createComplexTree(treeComparator.WORKSPACE);
+         }
+@@ -103,9 +103,6 @@ public class SerializationTest extends AbstractJCRTest {
+             session.logout();
+             session = null;
+         }
+-        if (treeComparator != null) {
+-            treeComparator.tearDown();
+-        }
+         workspace = null;
+         super.tearDown();
+     }

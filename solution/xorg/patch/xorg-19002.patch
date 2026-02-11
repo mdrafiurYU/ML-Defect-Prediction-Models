@@ -1,0 +1,13 @@
+diff --git a/dix/atom.c b/dix/atom.c
+index 2071742..d78fa56 100644
+--- a/dix/atom.c
++++ b/dix/atom.c
+@@ -157,7 +157,7 @@ ValidAtom(Atom atom)
+     return (atom != None) && (atom <= lastAtom);
+ }
+ 
+-char *
++_X_EXPORT char *
+ NameForAtom(Atom atom)
+ {
+     NodePtr node;

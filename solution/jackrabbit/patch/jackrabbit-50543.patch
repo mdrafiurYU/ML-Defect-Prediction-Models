@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
+index 581792c..a0c4293 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
+@@ -228,7 +228,7 @@ public abstract class AbstractRecord implements Record {
+         } else if (uuidType == UUID_LITERAL) {
+             byte[] b = new byte[Constants.UUID_BYTE_LENGTH];
+             readFully(b);
+-            NodeId nodeId = new NodeId(new UUID(b));
++            NodeId nodeId = new NodeId(b);
+             nodeIdIndex.put(nodeId, nodeIdIndex.size());
+             return nodeId;
+         } else {

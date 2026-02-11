@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/ephyr/ephyr.h b/hw/kdrive/ephyr/ephyr.h
+index d7c9ecd..0e84cdb 100644
+--- a/hw/kdrive/ephyr/ephyr.h
++++ b/hw/kdrive/ephyr/ephyr.h
+@@ -142,6 +142,9 @@ ephyrShadowUpdate (ScreenPtr pScreen, shadowBufPtr pBuf);
+ 
+ #endif
+ 
++void
++ephyrUpdateModifierState(unsigned int state);
++
+ extern KdMouseFuncs EphyrMouseFuncs;
+ 
+ extern KdKeyboardFuncs	EphyrKeyboardFuncs;

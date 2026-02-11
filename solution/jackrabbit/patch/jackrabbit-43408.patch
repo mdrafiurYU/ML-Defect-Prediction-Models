@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
+index d7ee5e3..b8f9706 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
+@@ -88,8 +88,7 @@ public class QueryImpl extends AbstractQueryImpl {
+         super(session, itemMgr, index, propReg);
+         // parse query according to language
+         // build query tree using the passed factory
+-        this.root = QueryParser.parse(statement, language,
+-                session.getNamePathResolver(), factory);
++        this.root = QueryParser.parse(statement, language, session, factory);
+     }
+ 
+     /**

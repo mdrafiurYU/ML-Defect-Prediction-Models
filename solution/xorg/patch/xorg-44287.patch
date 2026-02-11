@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/xpr/xprScreen.c b/hw/xquartz/xpr/xprScreen.c
+index da262f6..1fac9ec 100644
+--- a/hw/xquartz/xpr/xprScreen.c
++++ b/hw/xquartz/xpr/xprScreen.c
+@@ -256,6 +256,9 @@ xprDisplayInit(void)
+ 
+     AppleDRIExtensionInit();
+     xprAppleWMInit();
++
++    if (!quartzEnableRootless)
++        RootlessHideAllWindows();
+ }
+ 
+ /*

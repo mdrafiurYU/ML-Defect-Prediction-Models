@@ -1,0 +1,15 @@
+diff --git a/include/opaque.h b/include/opaque.h
+index 8d7408f..277ca61 100644
+--- a/include/opaque.h
++++ b/include/opaque.h
+@@ -42,8 +42,8 @@ from The Open Group.
+ extern char *defaultTextFont;
+ extern char *defaultCursorFont;
+ extern int MaxClients;
+-extern char isItTimeToYield;
+-extern char dispatchException;
++extern volatile char isItTimeToYield;
++extern volatile char dispatchException;
+ 
+ /* bit values for dispatchException */
+ #define DE_RESET     1

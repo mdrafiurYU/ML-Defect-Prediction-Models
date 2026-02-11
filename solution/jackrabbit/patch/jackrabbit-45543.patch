@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index cddbb92..1f4b9db 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -705,6 +705,10 @@ public class SessionImpl extends AbstractSession
+         return config.getCacheBehaviour();
+     }
+ 
++    int getPollTimeout() {
++        return config.getPollTimeout();
++    }
++
+     //--------------------------------------------------------------------------
+     SessionImpl switchWorkspace(String workspaceName) throws AccessDeniedException,
+         NoSuchWorkspaceException, RepositoryException {
+@@ -858,4 +862,5 @@ public class SessionImpl extends AbstractSession
+             throw new NoSuchWorkspaceException("Unknown workspace: '" + workspaceName + "'.");
+         }
+     }
++
+ }

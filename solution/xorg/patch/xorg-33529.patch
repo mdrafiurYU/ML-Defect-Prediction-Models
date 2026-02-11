@@ -1,0 +1,13 @@
+diff --git a/dix/privates.c b/dix/privates.c
+index 1ca361c..4dbba43 100644
+--- a/dix/privates.c
++++ b/dix/privates.c
+@@ -47,7 +47,7 @@ from The Open Group.
+ #include "extnsionst.h"
+ 
+ typedef struct _PrivateDesc {
+-    pointer key;
++    DevPrivateKey key;
+     unsigned size;
+     CallbackListPtr initfuncs;
+     CallbackListPtr deletefuncs;

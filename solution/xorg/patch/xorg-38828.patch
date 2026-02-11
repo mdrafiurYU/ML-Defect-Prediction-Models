@@ -1,0 +1,24 @@
+diff --git a/fb/fb24_32.c b/fb/fb24_32.c
+index a03726b..1ebd598 100644
+--- a/fb/fb24_32.c
++++ b/fb/fb24_32.c
+@@ -1,5 +1,4 @@
+ /*
+- *
+  * Copyright © 2000 SuSE, Inc.
+  *
+  * Permission to use, copy, modify, distribute, and sell this software and its
+@@ -544,11 +543,10 @@ fb24_32ReformatTile(PixmapPtr pOldTile, int bitsPerPixel)
+     int		oldXoff, oldYoff;
+     int		newXoff, newYoff;
+ 
+-    pNewTile = fbCreatePixmapBpp (pScreen,
+-				  pOldTile->drawable.width,
++    pNewTile = pScreen->CreatePixmap(pScreen, pOldTile->drawable.width,
+ 				  pOldTile->drawable.height,
+ 				  pOldTile->drawable.depth,
+-				  bitsPerPixel, 0);
++				     pOldTile->usage_hint);
+     if (!pNewTile)
+ 	return 0;
+     fbGetDrawable (&pOldTile->drawable, 

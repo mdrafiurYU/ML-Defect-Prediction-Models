@@ -1,0 +1,15 @@
+diff --git a/GL/glx/glxscreens.c b/GL/glx/glxscreens.c
+index 5a58f26..4b228cb 100644
+--- a/GL/glx/glxscreens.c
++++ b/GL/glx/glxscreens.c
+@@ -34,6 +34,10 @@
+ **
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef IN_MODULE
+ #include <xf86_ansic.h>
+ #else

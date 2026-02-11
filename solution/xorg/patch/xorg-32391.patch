@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index 09ebb07..75d4974 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -109,7 +109,7 @@ typedef struct {
+     PciProbeType	pciFlags;
+     Pix24Flags		pixmap24;
+     MessageType		pix24From;
+-#if defined(i386) || defined(__i386__)
++#ifdef __i386__
+     Bool		pc98;
+ #endif
+     Bool		pmFlag;

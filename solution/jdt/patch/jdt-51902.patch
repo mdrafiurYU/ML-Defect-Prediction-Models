@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+index 02f4dcf..8aa9189 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+@@ -1983,6 +1983,23 @@ public void test033(){
+         "",
+         true);
+ }
++public void test034(){
++	this.runConformTest(
++		new String[] {
++			"X.java",
++			"/** */\n" + 
++			"public class X {\n" + 
++			"}",
++		},
++        "\"" + OUTPUT_DIR +  File.separator + "X.java\""
++        + " -1.5 -g -preserveAllLocals"
++        + " -cp " + File.pathSeparator + "\"" + OUTPUT_DIR
++        + "\"" + File.pathSeparator
++        + " -proceedOnError -referenceInfo -d \"" + OUTPUT_DIR + "\"",
++        "",
++        "",
++        true);
++}
+ public static Class testClass() {
+ 	return BatchCompilerTest.class;
+ }

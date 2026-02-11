@@ -1,0 +1,13 @@
+diff --git a/include/dix.h b/include/dix.h
+index d59cccc..6f2e43a 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -821,4 +821,8 @@ extern int xstrcasecmp(char *s1, char *s2);
+ /* ffs.c */
+ extern int ffs(int i);
+ 
++#ifdef MPX
++extern Bool MPHasCursor(DeviceIntPtr pDev);
++#endif
++
+ #endif /* DIX_H */

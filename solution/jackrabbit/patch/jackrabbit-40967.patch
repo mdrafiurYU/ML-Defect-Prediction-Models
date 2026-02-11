@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+index 690869e..5cde1bf 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+@@ -3892,7 +3892,8 @@ public class NodeImpl extends ItemImpl implements Node {
+             PropertyState prop = props[i];
+             propNames.add(prop.getName());
+             if (prop.isMultiValued()) {
+-                internalSetProperty(props[i].getName(), prop.getValues());
++                internalSetProperty(
++                        props[i].getName(), prop.getValues(), prop.getType());
+             } else {
+                 internalSetProperty(props[i].getName(), prop.getValues()[0]);
+             }

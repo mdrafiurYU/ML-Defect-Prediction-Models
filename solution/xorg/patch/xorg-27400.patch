@@ -1,0 +1,14 @@
+diff --git a/Xi/warpdevp.c b/Xi/warpdevp.c
+index 2b558d1..a9ddb0b 100644
+--- a/Xi/warpdevp.c
++++ b/Xi/warpdevp.c
+@@ -85,7 +85,8 @@ ProcXWarpDevicePointer(register ClientPtr client)
+ 
+     pDev = LookupDeviceIntRec(stuff->deviceid);
+     if (pDev == NULL) {
+-        SendErrorToClient(client, IReqCode, X_WarpDevicePointer, 0,
++        SendErrorToClient(client, IReqCode, X_WarpDevicePointer,
++                stuff->deviceid,
+                 BadDevice); 
+         return Success;
+     }

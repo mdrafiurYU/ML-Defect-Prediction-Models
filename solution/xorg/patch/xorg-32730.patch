@@ -1,0 +1,13 @@
+diff --git a/mi/mispans.c b/mi/mispans.c
+index 530d9df..6f30155 100644
+--- a/mi/mispans.c
++++ b/mi/mispans.c
+@@ -528,7 +528,7 @@ void miFillUniqueSpanGroup(pDraw, pGC, spanGroup)
+ 	xfree(points);
+ 	xfree(widths);
+ 	xfree(yspans);
+-	xfree(ysizes);		/* use (DE)ALLOCATE_LOCAL for these? */
++	xfree(ysizes);		/* use (DE)xalloc for these? */
+     }
+ 
+     spanGroup->count = 0;

@@ -1,0 +1,30 @@
+diff --git a/hw/xfree86/os-support/bsd/sparc64_video.c b/hw/xfree86/os-support/bsd/sparc64_video.c
+index d9dfcca..dfd5d9f 100644
+--- a/hw/xfree86/os-support/bsd/sparc64_video.c
++++ b/hw/xfree86/os-support/bsd/sparc64_video.c
+@@ -86,7 +86,7 @@ sparc64UnmapVidMem(int ScreenNum, pointer Base, unsigned long Size)
+ 	munmap(Base, Size);
+ }
+ 
+-int
++_X_EXPORT int
+ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	     int Len)
+ {
+@@ -98,14 +98,14 @@ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ /* Interrupt Handling section                                              */
+ /***************************************************************************/
+ 
+-Bool
++_X_EXPORT Bool
+ xf86DisableInterrupts()
+ {
+ 
+ 	return(TRUE);
+ }
+ 
+-void
++_X_EXPORT void
+ xf86EnableInterrupts()
+ {
+ 

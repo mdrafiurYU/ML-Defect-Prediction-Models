@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java b/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
+index e61c600..a697fa5 100644
+--- a/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
++++ b/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
+@@ -25,6 +25,7 @@ public abstract class Lookup {
+       this.value = value;
+     }
+     
++    @Override
+     public String toString() {
+       return key + "/" + value;
+     }

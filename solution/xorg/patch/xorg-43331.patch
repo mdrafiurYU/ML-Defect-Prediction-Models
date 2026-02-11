@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shadow.c b/miext/shadow/shadow.c
+index 21f1de2..5eea16b 100644
+--- a/miext/shadow/shadow.c
++++ b/miext/shadow/shadow.c
+@@ -139,7 +139,7 @@ shadowSetup(ScreenPtr pScreen)
+     if (!DamageSetup(pScreen))
+ 	return FALSE;
+ 
+-    pBuf = (shadowBufPtr) xalloc(sizeof(shadowBufRec));
++    pBuf = xalloc(sizeof(shadowBufRec));
+     if (!pBuf)
+ 	return FALSE;
+ #ifdef BACKWARDS_COMPATIBILITY

@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/LimitTokenCountFilterFactory.java b/solr/src/java/org/apache/solr/analysis/LimitTokenCountFilterFactory.java
+index 5a08142..12da7f3 100644
+--- a/solr/src/java/org/apache/solr/analysis/LimitTokenCountFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/LimitTokenCountFilterFactory.java
+@@ -22,6 +22,17 @@ import java.util.Map;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.miscellaneous.LimitTokenCountFilter;
+ 
++/**
++ * Factory for {@link LimitTokenCountFilter}. 
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_lngthcnt" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.LimitTokenCountFilterFactory" maxTokenCount="10"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
++ * @version $Id$
++ */
+ public class LimitTokenCountFilterFactory extends BaseTokenFilterFactory {
+ 
+   int maxTokenCount;

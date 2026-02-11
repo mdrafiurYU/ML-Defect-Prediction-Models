@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/lv/TestLatvianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/lv/TestLatvianAnalyzer.java
+index fddb853..7245845 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/lv/TestLatvianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/lv/TestLatvianAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestLatvianAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "tirgiem", "tirgiem");
+     checkOneTermReuse(a, "tirgus", "tirg");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new LatvianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

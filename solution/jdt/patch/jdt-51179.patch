@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+index b908cba..e5a3a64 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+@@ -197,7 +197,7 @@ public class AnnotationProcessorFactoryLoader {
+ 		ClassLoader cl = null;
+ 		if ( urlList.size() > 0 )
+ 		{
+-			URL[] urls = (URL[])urlList.toArray();
++			URL[] urls = urlList.toArray(new URL[urlList.size()]);
+ 			cl = new URLClassLoader( urls );
+ 		}
+ 		return cl;

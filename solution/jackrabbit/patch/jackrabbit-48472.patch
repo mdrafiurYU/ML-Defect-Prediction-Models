@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO8601.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO8601.java
+index e8d436f..3dd3288 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO8601.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO8601.java
+@@ -197,6 +197,10 @@ public final class ISO8601 {
+              * if any of the set values are illegal or out of range
+              */
+             cal.getTime();
++            /**
++             * in addition check the validity of the year
++             */
++            getYear(cal);
+         } catch (IllegalArgumentException e) {
+             return null;
+         }

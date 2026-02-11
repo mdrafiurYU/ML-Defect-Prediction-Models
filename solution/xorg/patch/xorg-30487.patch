@@ -1,0 +1,12 @@
+diff --git a/randr/rrinfo.c b/randr/rrinfo.c
+index 5ef1a6b..858b1ed 100644
+--- a/randr/rrinfo.c
++++ b/randr/rrinfo.c
+@@ -98,7 +98,6 @@ RRScanOldConfig (ScreenPtr pScreen, Rotation rotations)
+ 	if (!output)
+ 	    return;
+ 	RROutputSetCrtcs (output, &crtc, 1);
+-	RROutputSetCrtc (output, crtc);
+ 	RROutputSetConnection (output, RR_Connected);
+ #ifdef RENDER
+ 	RROutputSetSubpixelOrder (output, PictureGetSubpixelOrder (pScreen));

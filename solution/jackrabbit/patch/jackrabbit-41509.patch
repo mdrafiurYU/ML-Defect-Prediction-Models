@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
+index b964cf4..51e7abb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
+@@ -773,7 +773,9 @@ public class DatabaseFileSystem implements FileSystem {
+                         }
+ 
+                     } catch (Exception e) {
+-                        throw new IOException(e.getMessage());
++                        IOException ioe = new IOException(e.getMessage());
++                        ioe.initCause(e);
++                        throw ioe;
+                     } finally {
+                         if (in != null) {
+                             in.close();
+@@ -872,7 +874,9 @@ public class DatabaseFileSystem implements FileSystem {
+                         }
+ 
+                     } catch (Exception e) {
+-                        throw new IOException(e.getMessage());
++                        IOException ioe = new IOException(e.getMessage());
++                        ioe.initCause(e);
++                        throw ioe;
+                     } finally {
+                         if (in != null) {
+                             in.close();

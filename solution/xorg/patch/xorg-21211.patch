@@ -1,0 +1,43 @@
+diff --git a/render/picture.c b/render/picture.c
+index ee385e5..55763fc 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -1217,7 +1217,8 @@ ChangePicture (PicturePtr	pPicture,
+ 			    error = BadPixmap;
+ 			    break;
+ 			}
+-			if (pAlpha->pDrawable->type != DRAWABLE_PIXMAP)
++			if (pAlpha->pDrawable == NULL ||
++			    pAlpha->pDrawable->type != DRAWABLE_PIXMAP)
+ 			{
+ 			    client->errorValue = pid;
+ 			    error = BadMatch;
+@@ -1469,9 +1470,6 @@ SetPictureTransform (PicturePtr	    pPicture,
+ 	{ 0x00000, xFixed1, 0x00000 },
+ 	{ 0x00000, 0x00000, xFixed1 },
+     } };
+-    ScreenPtr		pScreen = pPicture->pDrawable->pScreen;
+-    PictureScreenPtr	ps = GetPictureScreen(pScreen);
+-    int			result;
+ 
+     if (transform && memcmp (transform, &identity, sizeof (PictTransform)) == 0)
+ 	transform = 0;
+@@ -1496,11 +1494,18 @@ SetPictureTransform (PicturePtr	    pPicture,
+     }
+     pPicture->serialNumber |= GC_CHANGE_SERIAL_BIT;
+ 
++    if (pPicture->pDrawable != NULL) {
++	int result;
++	PictureScreenPtr ps = GetPictureScreen(pPicture->pDrawable->pScreen);
++
+     result = (*ps->ChangePictureTransform) (pPicture, transform);
+ 
+     return result;
+ }
+ 
++    return Success;
++}
++
+ void
+ CopyPicture (PicturePtr	pSrc,
+ 	     Mask	mask,

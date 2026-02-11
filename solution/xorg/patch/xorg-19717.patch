@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dri/dri.c b/hw/xfree86/dri/dri.c
+index 8003f0d..8ac66fd 100644
+--- a/hw/xfree86/dri/dri.c
++++ b/hw/xfree86/dri/dri.c
+@@ -582,7 +582,7 @@ DRIExtensionInit(void)
+     int		    	i;
+     ScreenPtr		pScreen;
+ 
+-    if (DRIScreenPrivIndex < 0) {
++    if (DRIScreenPrivIndex < 0 || DRIGeneration != serverGeneration) {
+ 	return FALSE;
+     }
+ 

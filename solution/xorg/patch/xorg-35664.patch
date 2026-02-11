@@ -1,0 +1,14 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 30cbc7a..261fac9 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -690,9 +690,6 @@ static ExtensionModule staticExtensions[] = {
+ #ifdef XCSECURITY
+     { SecurityExtensionInit, SECURITY_EXTENSION_NAME, &noSecurityExtension, NULL, NULL },
+ #endif
+-#ifdef XSELINUX
+-    { SELinuxExtensionInit, SELINUX_EXTENSION_NAME, NULL, NULL, NULL },
+-#endif
+ #ifdef XPRINT
+     { XpExtensionInit, XP_PRINTNAME, NULL, NULL, NULL },
+ #endif

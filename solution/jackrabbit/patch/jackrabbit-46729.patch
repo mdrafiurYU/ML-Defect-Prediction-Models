@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java
+index a39fd63..7f23813 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java
+@@ -185,6 +185,11 @@ public abstract class AbstractJCRTest extends JUnitTest {
+     protected String mixLockable;
+ 
+     /**
++     * JCR Name mix:shareable using the namespace resolver of the current session.
++     */
++    protected String mixShareable;
++
++    /**
+      * JCR Name nt:query using the namespace resolver of the current session.
+      */
+     protected String ntQuery;
+@@ -327,6 +332,7 @@ public abstract class AbstractJCRTest extends JUnitTest {
+         mixReferenceable = superuser.getNamespacePrefix(NS_MIX_URI) + ":referenceable";
+         mixVersionable = superuser.getNamespacePrefix(NS_MIX_URI) + ":versionable";
+         mixLockable = superuser.getNamespacePrefix(NS_MIX_URI) + ":lockable";
++        mixShareable = superuser.getNamespacePrefix(NS_MIX_URI) + ":shareable";
+         ntQuery = superuser.getNamespacePrefix(NS_NT_URI) + ":query";
+ 
+         // setup custom namespaces

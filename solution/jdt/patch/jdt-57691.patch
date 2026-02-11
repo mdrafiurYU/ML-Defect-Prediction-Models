@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/StringConstant.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/StringConstant.java
+index 99b8d74..83f8fea 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/StringConstant.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/StringConstant.java
+@@ -16,14 +16,7 @@ public class StringConstant extends Constant {
+ public StringConstant(String value) {
+ 	this.value = value ;
+ }
+-public boolean compileTimeEqual(StringConstant right){
+-	//String are intermed in the compiler==>thus if two string constant
+-	//get to be compared, it is an equal on the vale which is done
+-	if (this.value == null) {
+-		return right.value == null;
+-	}
+-	return this.value.equals(right.value);
+-}
++
+ public String stringValue() {
+ 	//spec 15.17.11

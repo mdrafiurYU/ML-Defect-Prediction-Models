@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestSetNorm.java b/lucene/src/test/org/apache/lucene/search/TestSetNorm.java
+index 7c873ba..47932bf 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestSetNorm.java
++++ b/lucene/src/test/org/apache/lucene/search/TestSetNorm.java
+@@ -51,7 +51,7 @@ public class TestSetNorm extends LuceneTestCase {
+ 
+     // reset the boost of each instance of this document
+     IndexReader reader = IndexReader.open(store, false);
+-    Similarity similarity = new DefaultSimilarity().get("field");
++    Similarity similarity = new DefaultSimilarity();
+     reader.setNorm(0, "field", similarity.encodeNormValue(1.0f));
+     reader.setNorm(1, "field", similarity.encodeNormValue(2.0f));
+     reader.setNorm(2, "field", similarity.encodeNormValue(4.0f));

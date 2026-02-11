@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/RandomOperationsTask.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/RandomOperationsTask.java
+index 102f065..99c2979 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/RandomOperationsTask.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/RandomOperationsTask.java
+@@ -36,14 +36,18 @@ public abstract class RandomOperationsTask implements AbstractConcurrencyTest.Ta
+ 
+     private final int nodesPerLevel;
+ 
++    private final int saveInterval;
++
+     private final long end;
+ 
+     private boolean useXA = false;
+ 
+-    public RandomOperationsTask(String mixins[], int numLevels, int nodesPerLevel, long end) {
++    public RandomOperationsTask(String mixins[], int numLevels,
++                                int nodesPerLevel, int saveInterval, long end) {
+         this.mixins = mixins;
+         this.numLevels = numLevels;
+         this.nodesPerLevel = nodesPerLevel;
++        this.saveInterval = saveInterval;
+         this.end = end;
+     }
+ 
+@@ -51,7 +55,8 @@ public abstract class RandomOperationsTask implements AbstractConcurrencyTest.Ta
+         try {
+             OperationFactory f = new OperationFactory(session);
+             // create nodes
+-            f.createNodes(test.getPath(), numLevels, nodesPerLevel, mixins).execute();
++            f.createNodes(test.getPath(), numLevels, nodesPerLevel,
++                    mixins, saveInterval).execute();
+             // save nodes
+             f.save(test.getPath()).execute();

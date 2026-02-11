@@ -1,0 +1,12 @@
+diff --git a/dix/main.c b/dix/main.c
+index f5b89ba..2f064a9 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -498,7 +498,6 @@ main(int argc, char *argv[], char *envp[])
+ 	    FreeScreen(screenInfo.screens[i]);
+ 	    screenInfo.numScreens = i;
+ 	}
+-  	CloseDownEvents();
+ 	xfree(WindowTable);
+ 	WindowTable = NULL;
+ 	FreeFonts();

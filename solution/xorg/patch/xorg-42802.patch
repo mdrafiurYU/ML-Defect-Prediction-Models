@@ -1,0 +1,18 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index 19be1cf..12ef120 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -2130,9 +2130,12 @@ XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies)
+     memset(&changes, 0, sizeof(changes));
+     memset(&cause, 0, sizeof(cause));
+ 
+-    if (!src || !dst || src == dst)
++    if (!src || !dst)
+         return FALSE;
+ 
++    if (src == dst)
++        return TRUE;
++
+     if (!_XkbCopyClientMap(src, dst))
+         return FALSE;
+     if (!_XkbCopyServerMap(src, dst))

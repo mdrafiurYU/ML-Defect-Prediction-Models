@@ -1,0 +1,25 @@
+diff --git a/mi/miregion.c b/mi/miregion.c
+index 0eab662..4bfe9c7 100644
+--- a/mi/miregion.c
++++ b/mi/miregion.c
+@@ -85,6 +85,7 @@ Equipment Corporation.
+ #include "gc.h"
+ #include "mi.h"
+ #include "mispans.h"
++#include <pixman/pixman.h>
+ 
+ #undef assert
+ #ifdef DEBUG
+@@ -218,6 +219,12 @@ _X_EXPORT RegDataRec miEmptyData = {0, 0};
+ RegDataRec  miBrokenData = {0, 0};
+ static RegionRec   miBrokenRegion = { { 0, 0, 0, 0 }, &miBrokenData };
+ 
++extern void
++InitRegions (void)
++{
++    pixman_region_set_static_pointers (&miEmptyBox, &miEmptyData, &miBrokenData);
++}
++
+ _X_EXPORT void
+ miPrintRegion(rgn)
+     RegionPtr rgn;

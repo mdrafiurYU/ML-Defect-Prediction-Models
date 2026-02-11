@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java
+index 198ed7d..bd8124b 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java
+@@ -69,7 +69,7 @@ public class PrefixCodedTermsWriter extends FieldsConsumer {
+       PostingsWriterBase postingsWriter,
+       Comparator<BytesRef> termComp) throws IOException
+   {
+-    final String termsFileName = IndexFileNames.segmentFileName(state.segmentName, "", TERMS_EXTENSION);
++    final String termsFileName = IndexFileNames.segmentFileName(state.segmentName, state.codecId, TERMS_EXTENSION);
+     this.termsIndexWriter = termsIndexWriter;
+     this.termComp = termComp;
+     out = state.directory.createOutput(termsFileName);

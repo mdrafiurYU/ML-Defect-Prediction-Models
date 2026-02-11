@@ -1,0 +1,11 @@
+diff --git a/hw/xquartz/darwinEvents.h b/hw/xquartz/darwinEvents.h
+index 4960614..1d8e92a 100644
+--- a/hw/xquartz/darwinEvents.h
++++ b/hw/xquartz/darwinEvents.h
+@@ -41,4 +41,6 @@ void DarwinSendScrollEvents(float count, int pointer_x, int pointer_y,
+ 			    float pressure, float tilt_x, float tilt_y);
+ void DarwinUpdateModKeys(int flags);
+ 
++void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, 
++			int nevents);
+ #endif  /* _DARWIN_EVENTS_H */

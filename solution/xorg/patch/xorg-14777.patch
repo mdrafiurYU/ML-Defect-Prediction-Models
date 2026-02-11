@@ -1,0 +1,40 @@
+diff --git a/hw/xfree86/exa/exa_priv.h b/hw/xfree86/exa/exa_priv.h
+index 66d0b2f..6372292 100644
+--- a/hw/xfree86/exa/exa_priv.h
++++ b/hw/xfree86/exa/exa_priv.h
+@@ -44,11 +44,15 @@
+ #include "dix.h"
+ #include "fb.h"
+ #include "fboverlay.h"
++#ifdef RENDER
++#include "fbpict.h"
++#endif
+ 
+ #ifndef EXA_MAX_FB
+ #define EXA_MAX_FB   FB_OVERLAY_MAX
+ #endif
+ 
++typedef void (*EnableDisableFBAccessProcPtr)(int, Bool);
+ typedef struct {
+     ExaDriverPtr info;
+     CreateGCProcPtr 		 SavedCreateGC;
+@@ -63,6 +67,9 @@ typedef struct {
+ #ifdef RENDER
+     CompositeProcPtr             SavedComposite;
+ #endif
++    EnableDisableFBAccessProcPtr SavedEnableDisableFBAccess;
++    Bool			 wrappedEnableDisableFB;
++    Bool			 swappedOut;
+ } ExaScreenPrivRec, *ExaScreenPrivPtr;
+ 
+ /*
+@@ -225,6 +232,9 @@ ExaOffscreenSwapIn (ScreenPtr pScreen);
+ void
+ ExaOffscreenFini (ScreenPtr pScreen);
+ 
++void
++exaEnableDisableFBAccess (int index, Bool enable);
++
+ /* exa.c */
+ void
+ exaPixmapUseScreen (PixmapPtr pPixmap);

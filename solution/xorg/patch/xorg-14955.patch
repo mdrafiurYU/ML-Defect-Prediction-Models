@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxstat.c b/hw/dmx/dmxstat.c
+index ae3f404..3b092b2 100644
+--- a/hw/dmx/dmxstat.c
++++ b/hw/dmx/dmxstat.c
+@@ -43,6 +43,10 @@
+  * calls and monitoring their latency.  This functionality can be turned
+  * on using the -stat command-line parameter. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxstat.h"
+ #include "dmxlog.h"

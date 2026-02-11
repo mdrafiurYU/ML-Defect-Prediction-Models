@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java
+index 3c90042..5c5eaca 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java
+@@ -68,7 +68,7 @@ public class CyclicNodeTypeRegistrationTest extends AbstractJCRTest {
+         //isReadOnly = true;
+         super.setUp();
+ 
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+         manager = session.getWorkspace().getNodeTypeManager();
+         nameFactory = NameFactoryImpl.getInstance();

@@ -1,0 +1,12 @@
+diff --git a/hw/xgl/xglpixmap.c b/hw/xgl/xglpixmap.c
+index 7c3d29d..ee64547 100644
+--- a/hw/xgl/xglpixmap.c
++++ b/hw/xgl/xglpixmap.c
+@@ -106,6 +106,7 @@ xglPixmapSurfaceInit (PixmapPtr	    pPixmap,
+     pPixmapPriv->acceleratedTile = FALSE;
+     pPixmapPriv->pictureMask = ~0;
+     pPixmapPriv->target = xglPixmapTargetNo;
++    pPixmapPriv->lock = 0;
+ 
+     if (pPixmapPriv->format)
+     {

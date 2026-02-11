@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winblock.c b/hw/xwin/winblock.c
+index 1d21faf..abea60e 100644
+--- a/hw/xwin/winblock.c
++++ b/hw/xwin/winblock.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include "winmsg.h"
+ 

@@ -1,0 +1,29 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NumericTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NumericTest.java
+index 841f34d..a63c54e 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NumericTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NumericTest.java
+@@ -11,7 +11,6 @@
+ package org.eclipse.jdt.core.tests.compiler.regression;
+ 
+ import junit.framework.Test;
+-import junit.framework.TestSuite;
+ 
+ public class NumericTest extends AbstractRegressionTest {
+ 	
+@@ -19,15 +18,7 @@ public NumericTest(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-
+-	if (false) {
+-	   	TestSuite ts;
+-		//some of the tests depend on the order of this suite.
+-		ts = new TestSuite();
+-		ts.addTest(new NumericTest("test221"));
+-		return new RegressionTestSetup(ts, COMPLIANCE_1_4);
+-	}
+-	return setupSuite(testClass());
++	return buildAllCompliancesRegressionTestSetupSuite(testClass());
+ }
+ 
+ public void test001() {

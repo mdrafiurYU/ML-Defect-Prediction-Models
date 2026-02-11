@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestSpanQueryFilter.java b/lucene/src/test/org/apache/lucene/search/TestSpanQueryFilter.java
+index d593a8b..37812cb 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestSpanQueryFilter.java
++++ b/lucene/src/test/org/apache/lucene/search/TestSpanQueryFilter.java
+@@ -35,7 +35,7 @@ public class TestSpanQueryFilter extends LuceneTestCase {
+ 
+   public void testFilterWorks() throws Exception {
+     Directory dir = newDirectory();
+-    RandomIndexWriter writer = new RandomIndexWriter(random, dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newInOrderLogMergePolicy()));
++    RandomIndexWriter writer = new RandomIndexWriter(random, dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
+     for (int i = 0; i < 500; i++) {
+       Document document = new Document();
+       document.add(newField("field", English.intToEnglish(i) + " equals " + English.intToEnglish(i),

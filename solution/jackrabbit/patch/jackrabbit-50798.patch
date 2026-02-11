@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java
+index 2d57d85..3710efe 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ValueFactoryTest.java
+@@ -72,7 +72,7 @@ public class ValueFactoryTest extends AbstractJCRTest {
+ 
+     public void setUp() throws Exception {
+         super.setUp();
+-        session = helper.getReadWriteSession();
++        session = getHelper().getReadWriteSession();
+         try {
+             valueFactory = session.getValueFactory();
+         } catch (UnsupportedRepositoryOperationException e) {

@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
+index e1a66bb..1774346 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
+@@ -271,16 +271,16 @@ public class DerbyPersistenceManager extends BundleDbPersistenceManager {
+         if (DERBY_EMBEDDED_DRIVER.equals(getDriver())) {
+             Statement stmt = connectionManager.getConnection().createStatement();
+             try {
+-                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY " +
+-                        "('derby.storage.initialPages', '" + derbyStorageInitialPages + "')");
+-                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY " +
+-                        "('derby.storage.minimumRecordSize', '" + derbyStorageMinimumRecordSize + "')");
+-                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY " +
+-                        "('derby.storage.pageCacheSize', '" + derbyStoragePageCacheSize + "')");
+-                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY " +
+-                        "('derby.storage.pageReservedSpace', '" + derbyStoragePageReservedSpace + "')");
+-                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY " +
+-                        "('derby.storage.pageSize', '" + derbyStoragePageSize + "')");
++                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY "
++                        + "('derby.storage.initialPages', '" + derbyStorageInitialPages + "')");
++                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY "
++                        + "('derby.storage.minimumRecordSize', '" + derbyStorageMinimumRecordSize + "')");
++                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY "
++                        + "('derby.storage.pageCacheSize', '" + derbyStoragePageCacheSize + "')");
++                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY "
++                        + "('derby.storage.pageReservedSpace', '" + derbyStoragePageReservedSpace + "')");
++                stmt.execute("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY "
++                        + "('derby.storage.pageSize', '" + derbyStoragePageSize + "')");
+ 
+             } finally {
+                 stmt.close();

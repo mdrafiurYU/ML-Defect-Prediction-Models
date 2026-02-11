@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/Flags.c b/hw/xfree86/parser/Flags.c
+index 19b9d14..d97a199 100644
+--- a/hw/xfree86/parser/Flags.c
++++ b/hw/xfree86/parser/Flags.c
+@@ -232,7 +232,7 @@ xf86freeFlags (XF86ConfFlagsPtr flags)
+ 	xf86conffree (flags);
+ }
+ 
+-XF86OptionPtr
++_X_EXPORT XF86OptionPtr
+ xf86optionListDup (XF86OptionPtr opt)
+ {
+ 	XF86OptionPtr newopt = NULL;

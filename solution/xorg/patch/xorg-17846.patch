@@ -1,0 +1,16 @@
+diff --git a/hw/dmx/dmxpict.c b/hw/dmx/dmxpict.c
+index fb19d86..9a76a66 100644
+--- a/hw/dmx/dmxpict.c
++++ b/hw/dmx/dmxpict.c
+@@ -960,8 +960,9 @@ void dmxValidatePicture(PicturePtr pPicture, Mask mask)
+     if (pPictPriv->pict) {
+ 	XRenderPictureAttributes  attribs;
+ 
+-	if (mask & CPRepeat)
+-	    attribs.repeat = pPicture->repeat;
++	if (mask & CPRepeat) {
++	    attribs.repeat = pPicture->repeatType;
++	}
+ 	if (mask & CPAlphaMap) {
+ 	    if (pPicture->alphaMap) {
+ 		dmxPictPrivPtr  pAlphaPriv;

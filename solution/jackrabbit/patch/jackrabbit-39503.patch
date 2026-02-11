@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java
+index 9a9f58d..2042e4b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java
+@@ -75,8 +75,10 @@ public class JNDIDatabaseJournal extends DatabaseJournal {
+             DataSource dataSource = (DataSource) ic.lookup(dataSourceLocation);
+             return dataSource.getConnection();
+         } catch (NamingException e) {
+-            throw new SQLException(
+-                    "DataSource not found: " + dataSourceLocation, e);
++            SQLException exception = new SQLException(
++                    "DataSource not found: " + dataSourceLocation);
++            exception.initCause(e);
++            throw exception;
+         }
+     }

@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+index 6c978f3..fcfe317 100644
+--- a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
++++ b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+@@ -59,7 +59,8 @@ public final class FuzzyTermsEnum extends TermsEnum {
+   
+   private float bottom;
+   private BytesRef bottomTerm;
+-  // nocommit: chicken-and-egg
++
++  // TODO: chicken-and-egg
+   private final Comparator<BytesRef> termComparator = BytesRef.getUTF8SortedAsUnicodeComparator();
+   
+   private final float minSimilarity;

@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index b8f4b69..c9c8059 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -132,6 +132,9 @@ xf86ProcessCommonOptions(LocalDevicePtr local,
+     } else {
+         xf86Msg(X_CONFIG, "%s: doesn't report drag events\n", local->name);
+     }
++
++    /* Backwards compatibility. */
++    local->history_size = GetMotionHistorySize();
+ }
+ 
+ /***********************************************************************

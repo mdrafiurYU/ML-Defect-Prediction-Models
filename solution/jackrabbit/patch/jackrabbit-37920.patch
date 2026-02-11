@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsNewTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsNewTest.java
+index 8f851c7..775b687 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsNewTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsNewTest.java
+@@ -51,6 +51,11 @@ public class PropertyItemIsNewTest extends AbstractJCRTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        testNode = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test if Item.isNew() returns true direct after a new PropertyItem is set
+      * (before node is saved (transient)).

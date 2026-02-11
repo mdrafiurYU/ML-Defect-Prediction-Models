@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/request/SimpleFacets.java b/solr/src/java/org/apache/solr/request/SimpleFacets.java
+index 155560e..ff0349f 100644
+--- a/solr/src/java/org/apache/solr/request/SimpleFacets.java
++++ b/solr/src/java/org/apache/solr/request/SimpleFacets.java
+@@ -639,7 +639,7 @@ public class SimpleFacets {
+       // facet.offset when sorting by index order.
+ 
+       if (startTermBytes != null) {
+-        if (termsEnum.seek(startTermBytes, true) == TermsEnum.SeekStatus.END) {
++        if (termsEnum.seekCeil(startTermBytes, true) == TermsEnum.SeekStatus.END) {
+           termsEnum = null;
+         } else {
+           term = termsEnum.term();

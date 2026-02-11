@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+index 99ea96e..ae90bd2 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+@@ -963,7 +963,11 @@ public class WorkspaceManager
+          * @see OperationVisitor#visit(Checkout)
+          */
+         public void visit(Checkout operation) throws UnsupportedRepositoryOperationException, LockException, RepositoryException {
+-            service.checkout(sessionInfo, operation.getNodeId());
++            if (operation.supportsActivity()) {
++                service.checkout(sessionInfo, operation.getNodeId(), operation.getActivityId());
++            } else {
++                service.checkout(sessionInfo, operation.getNodeId());
++            }
+         }
+ 
+         /**

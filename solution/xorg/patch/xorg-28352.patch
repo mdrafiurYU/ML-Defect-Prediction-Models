@@ -1,0 +1,26 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index 1d23667..bb6d8a0 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -1140,6 +1140,9 @@ XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies)
+                     dtype->preserve = NULL;
+                 }
+             }
++
++            dst->map->size_types = src->map->num_types;
++            dst->map->num_types = src->map->num_types;
+         }
+         else {
+             if (dst->map->types) {
+@@ -1155,9 +1158,9 @@ XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies)
+                 xfree(dst->map->types);
+                 dst->map->types = NULL;
+             }
++            dst->map->num_types = 0;
++            dst->map->size_types = 0;
+         }
+-        dst->map->size_types = src->map->num_types;
+-        dst->map->num_types = src->map->num_types;
+ 
+         if (src->map->modmap) {
+             if (src->max_key_code != dst->max_key_code) {

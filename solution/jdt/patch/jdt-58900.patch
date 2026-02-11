@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchySerializationTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchySerializationTests.java
+index 49f0c17..619ec0e 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchySerializationTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchySerializationTests.java
+@@ -28,7 +28,7 @@ public TypeHierarchySerializationTests(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return new Suite(TypeHierarchySerializationTests.class);
++	return buildModelTestSuite(TypeHierarchySerializationTests.class);
+ }
+ private static void compare(String focus, ITypeHierarchy stored, ITypeHierarchy loaded){
+ 	if(stored instanceof RegionBasedTypeHierarchy) {

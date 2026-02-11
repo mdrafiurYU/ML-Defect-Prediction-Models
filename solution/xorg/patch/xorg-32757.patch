@@ -1,0 +1,14 @@
+diff --git a/fb/fbpixmap.c b/fb/fbpixmap.c
+index 88f693e..cddab3e 100644
+--- a/fb/fbpixmap.c
++++ b/fb/fbpixmap.c
+@@ -80,7 +80,8 @@ fbCreatePixmapBpp (ScreenPtr pScreen, int width, int height, int depth, int bpp)
+ }
+ 
+ PixmapPtr
+-fbCreatePixmap (ScreenPtr pScreen, int width, int height, int depth)
++fbCreatePixmap (ScreenPtr pScreen, int width, int height, int depth,
++		unsigned usage_hint)
+ {
+     int	bpp;
+     bpp = BitsPerPixel (depth);

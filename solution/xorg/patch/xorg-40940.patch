@@ -1,0 +1,13 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 062dede..986e3a1 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -274,7 +274,7 @@ ChangeDeviceID(DeviceIntPtr dev, xEvent* event)
+  * @param master The event after being copied
+  * @param count Number of events in original.
+  */
+-static void
++void
+ CopyGetMasterEvent(DeviceIntPtr mdev, xEvent* original,
+                    xEvent** master, int count)
+ {

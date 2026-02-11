@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java
+index c40090a..d1989f8 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java
+@@ -817,7 +817,7 @@ public String[][] resolveType(String typeName, WorkingCopyOwner owner) throws Ja
+ 				this.answers[length] = answer;
+ 			}
+ 		}
+-		public void acceptError(IProblem error) {
++		public void acceptError(CategorizedProblem error) {
+ 			// ignore
+ 		}
+ 		public void acceptField(char[] declaringTypePackageName, char[] declaringTypeName, char[] fieldName, boolean isDeclaration, char[] uniqueKey, int start, int end) {

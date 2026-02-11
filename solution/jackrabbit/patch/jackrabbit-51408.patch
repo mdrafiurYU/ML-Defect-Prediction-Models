@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCASessionHandle.java b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCASessionHandle.java
+index fd40552..694e5ef 100644
+--- a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCASessionHandle.java
++++ b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCASessionHandle.java
+@@ -356,7 +356,7 @@ public final class JCASessionHandle implements XASession {
+         return getSession().getRetentionManager();
+     }
+ 
+-    public boolean hasCapability(String arg0, Object arg1, Map arg2)
++    public boolean hasCapability(String arg0, Object arg1, Object[] arg2)
+             throws RepositoryException {
+         return getSession().hasCapability(arg0, arg1, arg2);
+     }

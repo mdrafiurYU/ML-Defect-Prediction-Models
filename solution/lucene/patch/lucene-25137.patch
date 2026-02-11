@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/BufferedDeletesStream.java b/lucene/src/java/org/apache/lucene/index/BufferedDeletesStream.java
+index 2510088..0b7f198 100644
+--- a/lucene/src/java/org/apache/lucene/index/BufferedDeletesStream.java
++++ b/lucene/src/java/org/apache/lucene/index/BufferedDeletesStream.java
+@@ -398,7 +398,7 @@ class BufferedDeletesStream {
+ 
+       // System.out.println("  term=" + term);
+ 
+-      if (termsEnum.seek(term.bytes(), false) == TermsEnum.SeekStatus.FOUND) {
++      if (termsEnum.seekExact(term.bytes(), false)) {
+         DocsEnum docsEnum = termsEnum.docs(reader.getDeletedDocs(), docs);
+ 
+         if (docsEnum != null) {

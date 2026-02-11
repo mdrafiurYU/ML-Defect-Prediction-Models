@@ -1,0 +1,18 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/LetterTokenizerFactory.java b/solr/src/java/org/apache/solr/analysis/LetterTokenizerFactory.java
+index 4362bbd..0c04c05 100644
+--- a/solr/src/java/org/apache/solr/analysis/LetterTokenizerFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/LetterTokenizerFactory.java
+@@ -23,6 +23,13 @@ import java.io.Reader;
+ import java.util.Map;
+ 
+ /**
++ * Factory for {@link LetterTokenizer}. 
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_letter" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.LetterTokenizerFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
+  * @version $Id$
+  */
+ public class LetterTokenizerFactory extends BaseTokenizerFactory {

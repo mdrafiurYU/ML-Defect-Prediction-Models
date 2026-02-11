@@ -1,0 +1,15 @@
+diff --git a/miext/cw/cw.h b/miext/cw/cw.h
+index 1f8c400..67ce9cd 100644
+--- a/miext/cw/cw.h
++++ b/miext/cw/cw.h
+@@ -164,5 +164,10 @@ void
+ cwFiniRender (ScreenPtr pScreen);
+ 
+ /* cw.c */
++
+ void
+ miInitializeCompositeWrapper(ScreenPtr pScreen);
++
++/* Must be called before miInitializeCompositeWrapper */
++void
++miDisableCompositeWrapper(ScreenPtr pScreen);

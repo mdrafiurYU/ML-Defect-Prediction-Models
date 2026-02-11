@@ -1,0 +1,21 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index c998e55..9e4b685 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -916,12 +916,15 @@ miSpriteUndisplayCursor(pDev, pScreen)
+     DeviceIntPtr pDev;
+     ScreenPtr    pScreen;
+ {
++    miCursorInfoPtr pCursorInfo;
++
+     if (!pDev->isMaster && !pDev->u.master)
+     {
+         ErrorF("[mi] miSpriteUndisplayCursor called for floating device.\n");
+         return;
+     }
+-    if (MISPRITE(pDev)->isUp)
++    pCursorInfo = MISPRITE(pDev);
++    if (pCursorInfo && pCursorInfo->isUp)
+         miSpriteRemoveCursor(pDev, pScreen);
+ }
+ 

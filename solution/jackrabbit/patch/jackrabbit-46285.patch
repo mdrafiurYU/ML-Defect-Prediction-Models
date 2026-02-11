@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/RetentionPolicyTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/RetentionPolicyTest.java
+index 65e7858..e797268 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/RetentionPolicyTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/RetentionPolicyTest.java
+@@ -301,7 +301,7 @@ public class RetentionPolicyTest extends AbstractRetentionTest {
+     }
+ 
+     private Node getLockedChildNode() throws NotExecutableException, RepositoryException {
+-        checkSupportedOption(superuser, Repository.OPTION_LOCKING_SUPPORTED);
++        checkSupportedOption(Repository.OPTION_LOCKING_SUPPORTED);
+         Node child = testRootNode.addNode(nodeName2, testNodeType);
+         if (!child.isNodeType(mixLockable)) {
+             if (child.canAddMixin(mixLockable)) {
+@@ -374,7 +374,7 @@ public class RetentionPolicyTest extends AbstractRetentionTest {
+     }
+ 
+     private Node getVersionableChildNode() throws NotExecutableException, RepositoryException {
+-        checkSupportedOption(superuser, Repository.OPTION_VERSIONING_SUPPORTED);
++        checkSupportedOption(Repository.OPTION_VERSIONING_SUPPORTED);
+         Node child = testRootNode.addNode(nodeName2, testNodeType);
+         if (!child.isNodeType(mixVersionable)) {
+             if (child.canAddMixin(mixVersionable)) {

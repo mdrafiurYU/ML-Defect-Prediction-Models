@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedTypeReference.java
+index bdf2f3b..2af5ed2 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedTypeReference.java
+@@ -54,6 +54,9 @@ public class QualifiedTypeReference extends TypeReference {
+ 		}
+ 	}
+ 
++	public char[] getLastToken() {
++		return this.tokens[this.tokens.length-1];
++	}
+ 	protected TypeBinding getTypeBinding(Scope scope) {
+ 		
+ 		if (this.resolvedType != null)

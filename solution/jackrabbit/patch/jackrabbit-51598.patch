@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/AbstractAccessControlTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/AbstractAccessControlTest.java
+index 18580dd..e5f62c6 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/AbstractAccessControlTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/AbstractAccessControlTest.java
+@@ -37,7 +37,12 @@ public abstract class AbstractAccessControlTest extends AbstractJCRTest {
+         checkSupportedOption(Repository.OPTION_ACCESS_CONTROL_SUPPORTED);
+         
+         super.setUp();
+-        acMgr = getAccessControlManager(superuser);
++        try {
++            acMgr = getAccessControlManager(superuser);
++        } catch (NotExecutableException e) {
++            cleanUp();
++            throw e;
++        }
+     }
+ 
+     protected static AccessControlManager getAccessControlManager(Session s) throws RepositoryException, NotExecutableException {

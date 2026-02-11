@@ -1,0 +1,18 @@
+diff --git a/hw/kdrive/ephyr/ephyrhostvideo.h b/hw/kdrive/ephyr/ephyrhostvideo.h
+index 86154bc..9499446 100644
+--- a/hw/kdrive/ephyr/ephyrhostvideo.h
++++ b/hw/kdrive/ephyr/ephyrhostvideo.h
+@@ -109,6 +109,13 @@ EphyrHostVideoFormat* ephyrHostXVAdaptorGetVideoFormats
+ int ephyrHostXVAdaptorGetNbPorts (const EphyrHostXVAdaptor *a_this) ;
+ int ephyrHostXVAdaptorGetFirstPortID (const EphyrHostXVAdaptor *a_this) ;
+ 
++Bool ephyrHostXVAdaptorHasPutVideo (const EphyrHostXVAdaptor *a_this,
++                                    Bool *a_result) ;
++Bool ephyrHostXVAdaptorHasPutStill (const EphyrHostXVAdaptor *a_this,
++                                    Bool *a_result) ;
++Bool ephyrHostXVAdaptorHasPutImage (const EphyrHostXVAdaptor *a_this,
++                                    Bool *a_result) ;
++
+ /*
+  * encoding
+  */

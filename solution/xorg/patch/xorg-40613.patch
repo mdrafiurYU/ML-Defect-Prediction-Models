@@ -1,0 +1,14 @@
+diff --git a/hw/dmx/input/dmxbackend.c b/hw/dmx/input/dmxbackend.c
+index b179109..14dc973 100644
+--- a/hw/dmx/input/dmxbackend.c
++++ b/hw/dmx/input/dmxbackend.c
+@@ -104,8 +104,7 @@ typedef struct _myPrivate {
+ pointer dmxBackendCreatePrivate(DeviceIntPtr pDevice)
+ {
+     GETDMXLOCALFROMPDEVICE;
+-    myPrivate *priv = xalloc(sizeof(*priv));
+-    memset(priv, 0, sizeof(*priv));
++    myPrivate *priv = xcalloc(1, sizeof(*priv));
+     priv->dmxLocal  = dmxLocal;
+     return priv;
+ }

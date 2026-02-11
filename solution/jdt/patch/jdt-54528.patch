@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+index 23ca60d..2c3f311 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+@@ -63,6 +63,8 @@ public class AptPlugin extends Plugin {
+ 			final IProject[] projects = root.getProjects();
+ 			try{
+ 				for( IProject proj : projects ){
++					if(DEBUG)
++						trace("updating project " + proj.getName() ); //$NON-NLS-1$
+ 					if( proj.hasNature(JavaCore.NATURE_ID) && proj.exists() && 
+ 						proj.isOpen() && AptConfig.isEnabled(JavaCore.create( proj ))){
+ 						final GeneratedFileManager mgr = GeneratedFileManager.getGeneratedFileManager(proj);

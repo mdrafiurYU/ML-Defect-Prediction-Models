@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordProcessor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordProcessor.java
+index a8c00b7..4eca8d9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordProcessor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordProcessor.java
+@@ -52,4 +52,11 @@ public interface ClusterRecordProcessor {
+      * @param record node type record
+      */
+     public void process(NodeTypeRecord record);
++
++    /**
++     * Process a workspace record
++     * @param record workspace record
++     */
++    public void process(WorkspaceRecord record);
++
+ }

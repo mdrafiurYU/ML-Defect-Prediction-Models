@@ -1,0 +1,13 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index 4d35c48..6779dc1 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -1083,7 +1083,7 @@ XInputExtensionInit(void)
+ 	EventSwapVector[DeviceEnterNotify] = SEventIDispatch;
+ 	EventSwapVector[DeviceLeaveNotify] = SEventIDispatch;
+ 
+-	GERegisterExtension(IReqCode, XI2EventSwap, NULL);
++	GERegisterExtension(IReqCode, XI2EventSwap);
+     } else {
+ 	FatalError("IExtensionInit: AddExtensions failed\n");
+     }

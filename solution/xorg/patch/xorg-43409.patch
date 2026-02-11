@@ -1,0 +1,22 @@
+diff --git a/hw/xwin/winengine.c b/hw/xwin/winengine.c
+index f0bc671..fb9aed8 100644
+--- a/hw/xwin/winengine.c
++++ b/hw/xwin/winengine.c
+@@ -48,7 +48,7 @@ extern const GUID _IID_IDirectDraw4;
+  */
+ 
+ void
+-winDetectSupportedEngines ()
++winDetectSupportedEngines (void)
+ {
+   OSVERSIONINFO		osvi;
+ 
+@@ -285,7 +285,7 @@ winSetEngine (ScreenPtr pScreen)
+  */
+ 
+ Bool
+-winGetDDProcAddresses ()
++winGetDDProcAddresses (void)
+ {
+   Bool			fReturn = TRUE;
+   

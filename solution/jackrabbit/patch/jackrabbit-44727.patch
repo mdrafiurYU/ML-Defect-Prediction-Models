@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java
+index 61fc50f..eaf29fd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java
+@@ -51,15 +51,6 @@ public interface InternalVersionHistory extends InternalVersionItem {
+     boolean hasVersion(Name versionName);
+ 
+     /**
+-     * Checks if the version for the given uuid exists in this history.
+-     *
+-     * @param id the id of the version
+-     * @return <code>true</code> if the version exists;
+-     *         <code>false</code> otherwise.
+-     */
+-    boolean hasVersion(NodeId id);
+-
+-    /**
+      * Returns the version with the given uuid or <code>null</code> if the
+      * respective version does not exist.
+      *

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/PrepareTestRepository.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/PrepareTestRepository.java
+index 129fd44..251b59a 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/PrepareTestRepository.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/PrepareTestRepository.java
+@@ -71,8 +71,8 @@ public class PrepareTestRepository extends AbstractJCRTest {
+     }
+ 
+     /**
+-     * Creates a test node at {@link #TEST_DATA_PATH} with a boolean,
+-     * double, long, calendar and a path property.
++     * Creates a boolean, double, long, calendar and a path property at the
++     * given node.
+      */
+     private void addPropertyTestData(Node node) throws RepositoryException {
+         node.setProperty("boolean", true);

@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQueryParserWrapper.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQueryParserWrapper.java
+index 2660b70..9bf672b 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQueryParserWrapper.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQueryParserWrapper.java
+@@ -139,9 +139,9 @@ public class TestQueryParserWrapper extends LuceneTestCase {
+ 
+       QueryNodeProcessorPipeline newProcessorPipeline = new QueryNodeProcessorPipeline(
+           getQueryProcessor().getQueryConfigHandler());
+-      newProcessorPipeline.addProcessor(new WildcardQueryNodeProcessor());
+-      newProcessorPipeline.addProcessor(new QPTestParserQueryNodeProcessor());
+-      newProcessorPipeline.addProcessor(getQueryProcessor());
++      newProcessorPipeline.add(new WildcardQueryNodeProcessor());
++      newProcessorPipeline.add(new QPTestParserQueryNodeProcessor());
++      newProcessorPipeline.add(getQueryProcessor());
+ 
+       setQueryProcessor(newProcessorPipeline);

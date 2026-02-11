@@ -1,0 +1,15 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+index 580485c..d530152 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+@@ -91,6 +91,10 @@ public class InstantiatedTermsEnum extends TermsEnum {
+   }
+ 
+   @Override
++  public void cacheCurrentTerm() {
++  }
++
++  @Override
+   public BytesRef term() {
+     return br;
+   }

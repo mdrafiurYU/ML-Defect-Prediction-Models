@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+index 492bc4c..899275b 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+@@ -418,13 +418,14 @@ protected Compiler newCompiler() {
+ 	}
+ 	
+ 	// called once when the builder is initialized... can override if needed
++	CompilerOptions compilerOptions = new CompilerOptions(projectOptions);
++	compilerOptions.performStatementsRecovery = true;
+ 	Compiler newCompiler = new Compiler(
+ 		nameEnvironment,
+ 		DefaultErrorHandlingPolicies.proceedWithAllProblems(),
+-		projectOptions,
++		compilerOptions,
+ 		this,
+-		ProblemFactory.getProblemFactory(Locale.getDefault()),
+-		true);
++		ProblemFactory.getProblemFactory(Locale.getDefault()));
+ 	CompilerOptions options = newCompiler.options;
+ 
+ 	// enable the compiler reference info support

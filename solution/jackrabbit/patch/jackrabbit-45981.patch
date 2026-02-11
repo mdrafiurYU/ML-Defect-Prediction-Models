@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index a5e2c66..a9cb344 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -2151,7 +2151,8 @@ public class RepositoryImpl extends AbstractRepository
+                                    String userData) throws RepositoryException {
+             try {
+                 EventStateCollection esc = new EventStateCollection(
+-                        getObservationDispatcher(), null, null, userData);
++                        getObservationDispatcher(), null, null);
++                esc.setUserData(userData);
+                 esc.addAll(events);
+                 esc.setTimestamp(timestamp);

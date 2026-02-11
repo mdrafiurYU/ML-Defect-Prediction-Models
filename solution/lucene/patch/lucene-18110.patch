@@ -1,0 +1,28 @@
+diff --git a/solr/src/common/org/apache/solr/common/util/NamedList.java b/solr/src/common/org/apache/solr/common/util/NamedList.java
+index 517b53d..579a7f2 100644
+--- a/solr/src/common/org/apache/solr/common/util/NamedList.java
++++ b/solr/src/common/org/apache/solr/common/util/NamedList.java
+@@ -246,6 +246,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
+     return result;
+   }
+ 
++  @Override
+   public String toString() {
+     StringBuilder sb = new StringBuilder();
+     sb.append('{');
+@@ -317,6 +318,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
+   /**
+    * Makes a <i>shallow copy</i> of the named list.
+    */
++  @Override
+   public NamedList<T> clone() {
+     ArrayList<Object> newList = new ArrayList<Object>(nvPairs.size());
+     newList.addAll(nvPairs);
+@@ -355,6 +357,7 @@ public class NamedList<T> implements Cloneable, Serializable, Iterable<Map.Entry
+             return list.getVal( index );
+           }
+ 
++          @Override
+           public String toString()
+           {
+         	  return getKey()+"="+getValue();

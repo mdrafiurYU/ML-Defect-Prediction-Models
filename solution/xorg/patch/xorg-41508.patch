@@ -1,0 +1,13 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index 76fed76..07508c8 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -133,7 +133,7 @@ Mask ExtExclusiveMasks[EMASKSIZE];
+  * Filters for various generic events.
+  * Evtype is index, mask is value at index.
+  */
+-static Mask xi_filters[4] = {
++static Mask xi_filters[] = {
+     XI_DeviceHierarchyChangedMask,
+     XI_DeviceClassesChangedMask,
+ };

@@ -1,0 +1,15 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index be596d4..9e7bbf3 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -889,8 +889,10 @@ extern _X_EXPORT int
+ ProcRRDeleteOutputProperty (ClientPtr client);
+ 
+ /* rrxinerama.c */
++#ifdef XINERAMA
+ extern _X_EXPORT void
+ RRXineramaExtensionInit(void);
++#endif
+ 
+ #endif /* _RANDRSTR_H_ */
+ 

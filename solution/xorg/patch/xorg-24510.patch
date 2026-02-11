@@ -1,0 +1,23 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 69f1e7b..63b206a 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -270,6 +270,7 @@ CoreKeyboardProc(DeviceIntPtr pDev, int what)
+          * ... yeah.
+          */
+         pDev->key->xkbInfo = NULL;
++        pDev->devPrivates[CoreDevicePrivatesIndex].ptr = NULL;
+         break;
+ 
+     default:
+@@ -298,6 +299,10 @@ CorePointerProc(DeviceIntPtr pDev, int what)
+         pDev->valuator->lasty = pDev->valuator->axisVal[1];
+         break;
+ 
++    case DEVICE_CLOSE:
++        pDev->devPrivates[CoreDevicePrivatesIndex].ptr = NULL;
++        break;
++
+     default:
+         break;
+     }

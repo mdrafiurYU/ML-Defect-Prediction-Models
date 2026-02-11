@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/Test2BTerms.java b/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
+index 25cf0c4..6fffc48 100644
+--- a/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
++++ b/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
+@@ -153,7 +153,8 @@ public class Test2BTerms extends LuceneTestCase {
+ 
+     List<BytesRef> savedTerms = null;
+ 
+-    Directory dir = newFSDirectory(_TestUtil.getTempDir("2BTerms"));
++    MockDirectoryWrapper dir = newFSDirectory(_TestUtil.getTempDir("2BTerms"));
++    dir.setThrottling(MockDirectoryWrapper.Throttling.NEVER);
+     //Directory dir = newFSDirectory(new File("/p/lucene/indices/2bindex"));
+ 
+     if (true) {

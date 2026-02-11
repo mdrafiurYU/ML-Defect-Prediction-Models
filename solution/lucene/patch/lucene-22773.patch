@@ -1,0 +1,33 @@
+diff --git a/solr/src/java/org/apache/solr/schema/FieldType.java b/solr/src/java/org/apache/solr/schema/FieldType.java
+index 2767c73..2c78c6e 100644
+--- a/solr/src/java/org/apache/solr/schema/FieldType.java
++++ b/solr/src/java/org/apache/solr/schema/FieldType.java
+@@ -167,6 +167,12 @@ public abstract class FieldType extends FieldProperties {
+       initArgs.remove("positionIncrementGap");
+     }
+ 
++    final String codec = initArgs.get("codec");
++    if (codec != null) {
++      this.codec = codec;
++      initArgs.remove("codec");
++    }
++
+     if (initArgs.size() > 0) {
+       throw new RuntimeException("schema fieldtype " + typeName
+               + "("+ this.getClass().getName() + ")"
+@@ -538,6 +544,15 @@ public abstract class FieldType extends FieldProperties {
+   }
+   
+   /**
++   * The codec ID used for this field type
++   */
++  protected String codec;
++  
++  public String getCodec() {
++    return codec;
++  }
++  
++  /**
+    * calls back to TextResponseWriter to write the field value
+    */
+   public abstract void write(TextResponseWriter writer, String name, Fieldable f) throws IOException;

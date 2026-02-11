@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index 851a345..c226bf2 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -1635,6 +1635,8 @@ xf86MatchPciInstances(const char *driverName, int vendorID,
+ 
+     *foundEntities = NULL;
+ 
++    if (!xf86PciVideoInfo)
++	return 0;
+ 
+     /* Each PCI device will contribute at least one entry.  Each device
+      * section can contribute at most one entry.  The sum of the two is

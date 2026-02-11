@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java
+index 965b70b..ef225ce 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java
+@@ -37,12 +37,15 @@ import java.util.Calendar;
+  * @see StringValue
+  * @see LongValue
+  * @see DoubleValue
++ * @see DecimalValue
+  * @see BooleanValue
+  * @see DateValue
+  * @see BinaryValue
+  * @see NameValue
+  * @see PathValue
++ * @see URIValue
+  * @see ReferenceValue
++ * @see WeakReferenceValue
+  */
+ public abstract class BaseValue implements Value {
+ 
+@@ -187,7 +190,6 @@ public abstract class BaseValue implements Value {
+         setValueConsumed();
+ 
+         try {
+-            // TODO: Is this the correct way to handle BigDecimal conversion
+             return new BigDecimal(getInternalString());
+         } catch (NumberFormatException e) {
+             throw new ValueFormatException("conversion to Decimal failed", e);

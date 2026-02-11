@@ -1,0 +1,15 @@
+diff --git a/ilbm/ilbmclip.c b/ilbm/ilbmclip.c
+index 6aa654b..704b5a9 100644
+--- a/ilbm/ilbmclip.c
++++ b/ilbm/ilbmclip.c
+@@ -51,6 +51,10 @@ SOFTWARE.
+ /* Modified jun 95 by Geert Uytterhoeven (Geert.Uytterhoeven@cs.kuleuven.ac.be)
+    to use interleaved bitplanes instead of normal bitplanes */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "miscstruct.h"
+ #include "pixmapstr.h"

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+index 5b3f8cf..4b26b06 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+@@ -144,7 +144,7 @@ public abstract class AbstractExcerpt implements HighlightingExcerptProvider {
+                 return null;
+             }
+         } finally {
+-            reader.close();
++            Util.closeOrRelease(reader);
+         }
+     }
+ 
+@@ -217,7 +217,7 @@ public abstract class AbstractExcerpt implements HighlightingExcerptProvider {
+             } finally {
+                 // only close reader if this method opened one
+                 if (reader == null) {
+-                    r.close();
++                    Util.closeOrRelease(r);
+                 }
+             }
+             rewritten = true;

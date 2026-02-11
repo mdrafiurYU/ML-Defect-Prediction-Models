@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationDefaultValueTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationDefaultValueTest.java
+index 239b80c..b95949b 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationDefaultValueTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/atomic/AnnotationDefaultValueTest.java
+@@ -85,7 +85,7 @@ public class AnnotationDefaultValueTest extends AnnotationTestBase
+ 	    }
+ 	    catch (Exception e)
+ 	    {
+-	        e.printStackTrace();
++	        log.error("testDefaultValues failed", e);
+ 	        fail("Exception occurs during the unit test : " + e);
+ 	    }
+ 	
+@@ -125,7 +125,7 @@ public class AnnotationDefaultValueTest extends AnnotationTestBase
+         }
+         catch (Exception e)
+         {
+-            e.printStackTrace();
++            log.error("testDefaultValuesRead failed", e);
+             fail("Exception occurs during the unit test : " + e);
+         }

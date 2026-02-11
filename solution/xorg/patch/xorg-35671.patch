@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index cd0c30a..9a94c04 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -115,7 +115,7 @@ _X_EXPORT void
+ xf86ProcessCommonOptions(LocalDevicePtr local,
+                          pointer	list)
+ {
+-    if (xf86SetBoolOption(list, "AlwaysCore", 0) ||
++    if (!xf86SetBoolOption(list, "AlwaysCore", 1) ||
+         !xf86SetBoolOption(list, "SendCoreEvents", 1) ||
+         !xf86SetBoolOption(list, "CorePointer", 1) ||
+         !xf86SetBoolOption(list, "CoreKeyboard", 1)) {

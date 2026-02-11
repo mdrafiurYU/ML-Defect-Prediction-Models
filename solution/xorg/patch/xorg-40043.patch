@@ -1,0 +1,12 @@
+diff --git a/glx/glxcmds.c b/glx/glxcmds.c
+index 0421026..00e5b2a 100644
+--- a/glx/glxcmds.c
++++ b/glx/glxcmds.c
+@@ -435,6 +435,7 @@ static void StopUsingContext(__GLXcontext *glxc)
+ static void StartUsingContext(__GLXclientState *cl, __GLXcontext *glxc)
+ {
+     glxc->isCurrent = GL_TRUE;
++    __glXLastContext = glxc;	
+ }
+ 
+ /**

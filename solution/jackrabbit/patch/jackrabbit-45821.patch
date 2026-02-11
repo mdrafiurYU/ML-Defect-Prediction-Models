@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java
+index 809f19f..7b05016 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java
+@@ -356,7 +356,7 @@ public class ItemValidator {
+         }
+         if (permissions > Permission.NONE) {
+             Path path = item.getPrimaryPath();
+-            if (!accessMgr.isGranted(item.getPrimaryPath(), permissions)) {
++            if (!accessMgr.isGranted(path, permissions)) {
+                 return false;
+             }
+         }

@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitAnalyzer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitAnalyzer.java
+index f8b4658..f6fb1e0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitAnalyzer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitAnalyzer.java
+@@ -55,7 +55,7 @@ public class JackrabbitAnalyzer  extends Analyzer {
+     /**
+      * @param analyzer the default jackrabbit analyzer
+      */
+-    protected void setDefaultAnalyzer(Analyzer analyzer){
++    protected void setDefaultAnalyzer(Analyzer analyzer) {
+         defaultAnalyzer = analyzer;
+     }
+ 
+@@ -65,9 +65,9 @@ public class JackrabbitAnalyzer  extends Analyzer {
+      * analyzer than the default, this analyzer is used for tokenization
+      */
+     public TokenStream tokenStream(String fieldName, Reader reader) {
+-        if(indexingConfig!=null){
++        if (indexingConfig != null) {
+             Analyzer propertyAnalyzer = indexingConfig.getPropertyAnalyzer(fieldName);
+-            if(propertyAnalyzer!=null){
++            if (propertyAnalyzer != null) {
+                 return propertyAnalyzer.tokenStream(fieldName, reader);
+             }
+         }

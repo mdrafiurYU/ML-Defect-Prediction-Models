@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventState.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventState.java
+index 951cb06..290a59c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventState.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventState.java
+@@ -505,7 +505,8 @@ public class EventState {
+             } catch (NoSuchNodeTypeException e) {
+                 log.warn("Unknown node type: " + nodeType);
+             }
+-            for (Iterator it = mixins.iterator(); it.hasNext(); ) {
++            Iterator it = mixins.iterator();
++            while (it.hasNext()) {
+                 Name mixinName = (Name) it.next();
+                 try {
+                     tmp.add(ntMgr.getNodeType(mixinName));

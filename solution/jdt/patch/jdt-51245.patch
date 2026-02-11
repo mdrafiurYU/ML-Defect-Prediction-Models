@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
+index f49c3d7..8760cbb 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
+@@ -158,6 +158,9 @@ public class FactoryPathConfigurationBlock extends BaseConfigurationBlock {
+ 	public void buttonPressed(int index) {
+ 		if (index == IDX_ADDEXTJAR) { // add new
+ 			FactoryContainer[] newEntries= openExtJarFileDialog(null);
++			if (null == newEntries) {
++				return;
++			}
+ 			int insertAt;
+ 			List selectedElements= fFactoryPathList.getSelectedElements();
+ 			if (selectedElements.size() == 1) {

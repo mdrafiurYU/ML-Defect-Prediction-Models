@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+index 3bc6d9c..038f4da 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+@@ -89,7 +89,7 @@ public class TestSpans extends LuceneTestCase {
+   }
+   
+   private void checkHits(Query query, int[] results) throws IOException {
+-    CheckHits.checkHits(query, field, searcher, results);
++    CheckHits.checkHits(random, query, field, searcher, results);
+   }
+   
+   private void orderedSlopTest3SQ(

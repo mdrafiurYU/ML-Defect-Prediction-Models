@@ -1,0 +1,32 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index c2f687a..aaa247d 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -122,7 +122,7 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+      * motion event they need to be attached to.  Sigh. */
+     if (e->u.u.type == DeviceValuator) {
+         if (laste->nevents > 6) {
+-            ErrorF("mieqEnqueue: more than six valuator events; dropping.\n");
++            ErrorF("[mi] mieqEnqueue: more than six valuator events; dropping.\n");
+             return;
+         }
+         if (oldtail == miEventQueue.head ||
+@@ -133,7 +133,7 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+               lastkbp->type == ProximityOut) ||
+             ((lastkbp->deviceid & DEVICE_BITS) !=
+              (v->deviceid & DEVICE_BITS))) {
+-            ErrorF("mieqEnequeue: out-of-order valuator event; dropping.\n");
++            ErrorF("[mi] mieqEnequeue: out-of-order valuator event; dropping.\n");
+             return;
+         }
+         memcpy(&(laste->event[laste->nevents++]), e, sizeof(xEvent));
+@@ -150,7 +150,8 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+          * stuck in an infinite loop somewhere, but SIGIO is still getting
+          * handled. */
+     	if (newtail == miEventQueue.head) {
+-            ErrorF("tossed event which came in late\n");
++            ErrorF("[mi] EQ overflowing. The server is probably stuck "
++                   "in an infinite loop.\n");
+ 	    return;
+         }
+ 	miEventQueue.tail = newtail;

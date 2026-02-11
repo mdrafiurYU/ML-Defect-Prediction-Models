@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ReferenceValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ReferenceValue.java
+index 5f901e9..8d7f7a3 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ReferenceValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ReferenceValue.java
+@@ -71,11 +71,11 @@ public class ReferenceValue extends BaseValue {
+             try {
+                 UUID.fromString(s);
+             } catch (IllegalArgumentException iae) {
+-                throw new ValueFormatException("not a valid UUID format");
++                throw new ValueFormatException("not a valid UUID format: " + s);
+             }
+             return new ReferenceValue(s);
+         } else {
+-            throw new ValueFormatException("not a valid UUID format");
++            throw new ValueFormatException("not a valid UUID format: " + s);
+         }
+     }

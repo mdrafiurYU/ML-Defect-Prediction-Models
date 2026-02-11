@@ -1,0 +1,20 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index ff29227..ab96902 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -101,13 +101,12 @@ extern _X_EXPORT int GrabKey(
+ 	BOOL                   /* ownerEvents */,
+ 	Mask                   /* mask */);
+ 
+-extern _X_EXPORT int SelectForWindow(
++extern int SelectForWindow(
+ 	DeviceIntPtr           /* dev */,
+ 	WindowPtr              /* pWin */,
+ 	ClientPtr              /* client */,
+ 	Mask                   /* mask */,
+-	Mask                   /* exclusivemasks */,
+-	Mask                   /* validmasks */);
++	Mask                   /* exclusivemasks */);
+ 
+ extern _X_EXPORT int AddExtensionClient (
+ 	WindowPtr              /* pWin */,

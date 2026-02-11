@@ -1,0 +1,22 @@
+diff --git a/Xi/getdctl.h b/Xi/getdctl.h
+index 1417d1b..f6febb2 100644
+--- a/Xi/getdctl.h
++++ b/Xi/getdctl.h
+@@ -42,10 +42,13 @@ void CopySwapDeviceResolution(ClientPtr /* client */ ,
+ 			      int	/* length */
+     );
+ 
+-void CopySwapDeviceTouchscreen(ClientPtr /* client */ ,
+-                               TouchscreenClassPtr /* ts */ ,
+-                               char * /* buf */
+-    );
++void CopySwapDeviceAbsCalib (ClientPtr client,
++                             AbsoluteClassPtr dts,
++                             char *buf);
++
++void CopySwapDeviceAbsArea (ClientPtr client,
++                            AbsoluteClassPtr dts,
++                            char *buf);
+ 
+ void CopySwapDeviceCore(ClientPtr /* client */ ,
+                         DeviceIntPtr /* dev */ ,

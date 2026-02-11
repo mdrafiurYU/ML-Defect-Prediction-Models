@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElementDelta.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElementDelta.java
+index 9c5960e..9b9059f 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElementDelta.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElementDelta.java
+@@ -714,6 +714,12 @@ protected boolean toDebugString(StringBuffer buffer, int flags) {
+ 		buffer.append("AST AFFECTED"); //$NON-NLS-1$
+ 		prev = true;
+ 	}
++	if ((flags & IJavaElementDelta.F_CATEGORIES) != 0) {
++		if (prev)
++			buffer.append(" | "); //$NON-NLS-1$
++		buffer.append("CATEGORIES"); //$NON-NLS-1$
++		prev = true;
++	}
+ 	return prev;
+ }
+ /**

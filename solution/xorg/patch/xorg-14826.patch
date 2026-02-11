@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/i2c/uda1380.c b/hw/xfree86/i2c/uda1380.c
+index fb243f8..8e36b9a 100644
+--- a/hw/xfree86/i2c/uda1380.c
++++ b/hw/xfree86/i2c/uda1380.c
+@@ -5,12 +5,19 @@
+  * License: GPL
+  *
+  * $Log$
++ * Revision 1.3  2005/07/11 02:29:50  ajax
++ * Prep for modular builds by adding guarded #include "config.h" everywhere.
++ *
+  * Revision 1.2  2005/07/01 22:43:11  daniels
+  * Change all misc.h and os.h references to <X11/foo.h>.
+  *
+  *
+  ************************************************************************************/
+ 
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
+ #include "xf86.h"
+ #include "xf86i2c.h"
+ #include "uda1380.h"

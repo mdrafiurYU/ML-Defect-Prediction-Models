@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+index e4d9d81..5e681ab 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+@@ -15,6 +15,7 @@ import org.eclipse.jdt.core.compiler.CharOperation;
+ import org.eclipse.jdt.internal.compiler.ASTVisitor;
+ import org.eclipse.jdt.internal.compiler.flow.*;
+ import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
++import org.eclipse.jdt.internal.compiler.impl.Constant;
+ import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ import org.eclipse.jdt.internal.compiler.codegen.*;
+ import org.eclipse.jdt.internal.compiler.lookup.*;
+@@ -250,7 +251,7 @@ public TypeBinding resolveType(BlockScope scope) {
+ 	// Answer the signature return type
+ 	// Base type promotion
+ 
+-	constant = NotAConstant;
++	constant = Constant.NotAConstant;
+ 	boolean receiverCast = false, argsContainCast = false; 
+ 	if (this.receiver instanceof CastExpression) {
+ 		this.receiver.bits |= DisableUnnecessaryCastCheck; // will check later on

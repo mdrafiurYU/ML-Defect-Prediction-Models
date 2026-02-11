@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
+index 996d434..4bd8a6c 100644
+--- a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
+@@ -117,7 +117,7 @@ public class TestPayloadNearQuery extends LuceneTestCase {
+     reader = writer.getReader();
+     writer.close();
+ 
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     searcher.setSimilarityProvider(similarity);
+   }

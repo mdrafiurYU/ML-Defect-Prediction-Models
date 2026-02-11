@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java
+index 44563df..13d3230 100644
+--- a/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java
+@@ -25,7 +25,8 @@ import org.apache.lucene.analysis.bg.BulgarianStemFilter;
+  * <pre class="prettyprint" >
+  * &lt;fieldType name="text_bgstem" class="solr.TextField" positionIncrementGap="100"&gt;
+  *   &lt;analyzer&gt;
+- *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+  *     &lt;filter class="solr.BulgarianStemFilterFactory"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>

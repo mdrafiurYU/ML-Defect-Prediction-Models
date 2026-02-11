@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/vectorhighlight/BaseFragmentsBuilder.java b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/vectorhighlight/BaseFragmentsBuilder.java
+index 064f1da..906c6b8 100644
+--- a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/vectorhighlight/BaseFragmentsBuilder.java
++++ b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/vectorhighlight/BaseFragmentsBuilder.java
+@@ -93,7 +93,7 @@ public abstract class BaseFragmentsBuilder implements FragmentsBuilder {
+     if( maxNumFragments < 0 )
+       throw new IllegalArgumentException( "maxNumFragments(" + maxNumFragments + ") must be positive number." );
+ 
+-    List<WeightedFragInfo> fragInfos = getWeightedFragInfoList( fieldFragList.fragInfos );
++    List<WeightedFragInfo> fragInfos = getWeightedFragInfoList( fieldFragList.getFragInfos() );
+     
+     List<String> fragments = new ArrayList<String>( maxNumFragments );
+     Field[] values = getFields( reader, docId, fieldName );

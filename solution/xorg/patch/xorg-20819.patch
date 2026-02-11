@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf8_32bpp/xf86overlay.c b/hw/xfree86/xf8_32bpp/xf86overlay.c
+index a45804e..9b04eba 100644
+--- a/hw/xfree86/xf8_32bpp/xf86overlay.c
++++ b/hw/xfree86/xf8_32bpp/xf86overlay.c
+@@ -6,6 +6,10 @@
+    Written by Mark Vojkovich (mvojkovi@ucsd.edu)
+ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "xf86.h"
+ #include "xf86_ansic.h"

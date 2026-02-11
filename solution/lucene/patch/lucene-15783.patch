@@ -1,0 +1,13 @@
+diff --git a/solr/contrib/clustering/src/test/java/org/apache/solr/handler/clustering/AbstractClusteringTestCase.java b/solr/contrib/clustering/src/test/java/org/apache/solr/handler/clustering/AbstractClusteringTestCase.java
+index 6c4f42e..c4fec5e 100644
+--- a/solr/contrib/clustering/src/test/java/org/apache/solr/handler/clustering/AbstractClusteringTestCase.java
++++ b/solr/contrib/clustering/src/test/java/org/apache/solr/handler/clustering/AbstractClusteringTestCase.java
+@@ -28,7 +28,7 @@ public abstract class AbstractClusteringTestCase extends SolrTestCaseJ4 {
+ 
+   @BeforeClass
+   public static void beforeClass() throws Exception {
+-    initCore("solrconfig.xml", "schema.xml", "solr");
++    initCore("solrconfig.xml", "schema.xml", "solr-clustering");
+     numberOfDocs = 0;
+     for (String[] doc : DOCUMENTS) {
+       assertNull(h.validateUpdate(adoc("id", Integer.toString(numberOfDocs), "url", doc[0], "title", doc[1], "snippet", doc[2])));

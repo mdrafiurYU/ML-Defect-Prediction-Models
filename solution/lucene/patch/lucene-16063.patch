@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/SnapPuller.java b/solr/src/java/org/apache/solr/handler/SnapPuller.java
+index 1a41f82..88ac166 100644
+--- a/solr/src/java/org/apache/solr/handler/SnapPuller.java
++++ b/solr/src/java/org/apache/solr/handler/SnapPuller.java
+@@ -269,7 +269,7 @@ public class SnapPuller {
+       RefCounted<SolrIndexSearcher> searcherRefCounted = null;
+       try {
+         searcherRefCounted = core.getNewestSearcher(false);
+-        commit = searcherRefCounted.get().getReader().getIndexCommit();
++        commit = searcherRefCounted.get().getIndexReader().getIndexCommit();
+       } finally {
+         if (searcherRefCounted != null)
+           searcherRefCounted.decref();

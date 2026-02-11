@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/SpanishLightStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/SpanishLightStemFilterFactory.java
+index 9f3c7a1..107679f 100644
+--- a/solr/src/java/org/apache/solr/analysis/SpanishLightStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/SpanishLightStemFilterFactory.java
+@@ -25,7 +25,8 @@ import org.apache.lucene.analysis.es.SpanishLightStemFilter;
+  * <pre class="prettyprint" >
+  * &lt;fieldType name="text_eslgtstem" class="solr.TextField" positionIncrementGap="100"&gt;
+  *   &lt;analyzer&gt;
+- *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+  *     &lt;filter class="solr.SpanishLightStemFilterFactory"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>

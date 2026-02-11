@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dixmods/glxmodule.c b/hw/xfree86/dixmods/glxmodule.c
+index 026a936..35ba74b 100644
+--- a/hw/xfree86/dixmods/glxmodule.c
++++ b/hw/xfree86/dixmods/glxmodule.c
+@@ -86,7 +86,8 @@ glxSetup(pointer module, pointer opts, int *errmaj, int *errmin)
+     setupDone = TRUE;
+ 
+     provider = LoaderSymbol("__glXDRIswrastProvider");
+-    if (provider)
++    if (provider == NULL)
++	return NULL;
+ 	GlxPushProvider(provider);
+ 
+     xf86Msg(xf86Info.aiglxFrom, "AIGLX %s\n", 

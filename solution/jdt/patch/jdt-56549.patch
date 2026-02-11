@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/ArrayTypeImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/ArrayTypeImpl.java
+index 2ad0bc2..c607657 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/ArrayTypeImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/ArrayTypeImpl.java
+@@ -50,7 +50,7 @@ public class ArrayTypeImpl implements ArrayType, EclipseMirrorImpl
+         else{
+             final ITypeBinding leaf = elementType.getElementType();
+ 			final String componentKey = BindingKey.createArrayTypeBindingKey(leaf.getKey(), dimension - 1);
+-			componentType = _env.getTypeBinding(componentKey);
++			componentType = _env.getTypeBindingFromKey(componentKey);
+             if( componentType == null )
+ 				throw new IllegalStateException("unknown component type for " + _arrayBinding); //$NON-NLS-1$
+         }

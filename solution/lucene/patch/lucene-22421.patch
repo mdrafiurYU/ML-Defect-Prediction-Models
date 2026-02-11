@@ -1,0 +1,23 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java b/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
+index af2444b..ac809b5 100644
+--- a/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
++++ b/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
+@@ -54,14 +54,16 @@ public class TestFSTs extends LuceneTestCase {
+   private MockDirectoryWrapper dir;
+ 
+   @Override
+-  public void setUp() throws IOException {
++  public void setUp() throws Exception {
++    super.setUp();
+     dir = newDirectory();
+     dir.setPreventDoubleWrite(false);
+   }
+ 
+   @Override
+-  public void tearDown() throws IOException {
++  public void tearDown() throws Exception {
+     dir.close();
++    super.tearDown();
+   }
+ 
+   private static BytesRef toBytesRef(IntsRef ir) {

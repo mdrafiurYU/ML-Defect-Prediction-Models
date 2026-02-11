@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglpict.c b/hw/xgl/xglpict.c
+index 932d31a..fee2431 100644
+--- a/hw/xgl/xglpict.c
++++ b/hw/xgl/xglpict.c
+@@ -494,7 +494,7 @@ xglSyncPicture (ScreenPtr  pScreen,
+ 		return FALSE;
+ 
+ 	    pPixmap = (*pScreen->CreatePixmap) (pScreen, width, height,
+-						pFormat->depth);
++						pFormat->depth, 0);
+ 	    if (!pPixmap)
+ 		return FALSE;
+ 

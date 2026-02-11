@@ -1,0 +1,24 @@
+diff --git a/hw/darwin/darwin.c b/hw/darwin/darwin.c
+index b08770c..87edd9a 100644
+--- a/hw/darwin/darwin.c
++++ b/hw/darwin/darwin.c
+@@ -100,7 +100,6 @@ int                     darwinDesiredDepth = -1;
+ int                     darwinDesiredRefresh = -1;
+ char                    *darwinKeymapFile = "USA.keymapping";
+ int                     darwinSyncKeymap = FALSE;
+-int                     darwinSwapAltMeta = FALSE;
+ 
+ // modifier masks for faking mouse buttons
+ int                     darwinFakeMouse2Mask = NX_ALTERNATEMASK;
+@@ -766,11 +765,6 @@ int ddxProcessArgument( int argc, char *argv[], int i )
+         return 2;
+     }
+ 
+-    if ( !strcmp( argv[i], "-swapAltMeta" ) ) {
+-        darwinSwapAltMeta = 1;
+-        return 1;
+-    }
+-
+     if ( !strcmp( argv[i], "-keymap" ) ) {
+         if ( i == argc-1 ) {
+             FatalError( "-keymap must be followed by a filename\n" );

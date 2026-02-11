@@ -1,0 +1,31 @@
+diff --git a/hw/xfree86/os-support/sco/VTsw_sco.c b/hw/xfree86/os-support/sco/VTsw_sco.c
+index e0e7912..beb86cc 100644
+--- a/hw/xfree86/os-support/sco/VTsw_sco.c
++++ b/hw/xfree86/os-support/sco/VTsw_sco.c
+@@ -58,7 +58,7 @@ xf86VTRequest(int sig)
+ }
+ 
+ Bool
+-xf86VTSwitchPending()
++xf86VTSwitchPending(void)
+ {
+   return(xf86Info.vtRequestsPending ? TRUE : FALSE);
+ }
+@@ -72,7 +72,7 @@ static int sco_ledstatus = -1;
+ static unsigned int sco_ledstate = 0;
+ 
+ Bool
+-xf86VTSwitchAway()
++xf86VTSwitchAway(void)
+ {
+   ev_flush();
+   ev_suspend();
+@@ -93,7 +93,7 @@ xf86VTSwitchAway()
+  * switched away.
+  */
+ Bool
+-xf86VTSwitchTo()
++xf86VTSwitchTo(void)
+ {
+   ev_resume();
+ 

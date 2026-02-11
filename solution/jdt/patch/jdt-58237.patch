@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClasspathSourceDirectory.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClasspathSourceDirectory.java
+index 01d4260..700afda 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClasspathSourceDirectory.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClasspathSourceDirectory.java
+@@ -85,7 +85,7 @@ public NameEnvironmentAnswer findClass(String sourceFileWithoutExtension, String
+ 	if (dirTable != null && dirTable.elementSize > 0) {
+ 		IFile file = (IFile) dirTable.get(sourceFileWithoutExtension);
+ 		if (file != null) {
+-			return new NameEnvironmentAnswer(new ResourceCompilationUnit(file), null /* no access restriction */);
++			return new NameEnvironmentAnswer(new ResourceCompilationUnit(file, file.getLocationURI()), null /* no access restriction */);
+ 		}
+ 	}
+ 	return null;

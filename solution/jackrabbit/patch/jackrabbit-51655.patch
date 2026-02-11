@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheckError.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheckError.java
+index f81ca3d..dc3911e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheckError.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheckError.java
+@@ -23,7 +23,7 @@ import java.io.IOException;
+ /**
+  * Common base class for errors detected during the consistency check.
+  */
+-abstract class ConsistencyCheckError {
++public abstract class ConsistencyCheckError {
+ 
+     /**
+      * Diagnostic message for this error.
+@@ -52,7 +52,7 @@ abstract class ConsistencyCheckError {
+      * Returns <code>true</code> if this error can be repaired.
+      * @return <code>true</code> if this error can be repaired.
+      */
+-    abstract boolean repairable();
++    public abstract boolean repairable();
+ 
+     /**
+      * Executes the repair operation.

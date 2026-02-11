@@ -1,0 +1,13 @@
+diff --git a/Xi/extgrbdev.c b/Xi/extgrbdev.c
+index c982fca..050984a 100644
+--- a/Xi/extgrbdev.c
++++ b/Xi/extgrbdev.c
+@@ -175,7 +175,7 @@ ProcXExtendedGrabDevice(ClientPtr client)
+             (XGenericEventMask*)(((XEventClass*)&stuff[1]) + stuff->event_count);
+ 
+         gemasks = xcalloc(1, sizeof(GenericMaskRec));
+-        gemasks->client = client;
++        gemasks->resource = FakeClientID(client->index);
+         gemasks->next = NULL;
+         gemasks->eventMask[xgeMask->extension & 0x7F] = xgeMask->evmask;
+ 

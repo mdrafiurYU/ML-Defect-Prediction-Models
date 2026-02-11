@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryHandler.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryHandler.java
+index 6bcc86d..bbd373c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryHandler.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryHandler.java
+@@ -126,4 +126,10 @@ public interface QueryHandler {
+                                           ItemManager itemMgr,
+                                           QueryObjectModelTree qomTree)
+             throws InvalidQueryException;
++    
++    /**
++     * @return the name of the query class to use.
++     */
++    String getQueryClass();
++    
+ }

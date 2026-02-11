@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestFileListEntityProcessor.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestFileListEntityProcessor.java
+index a9b1e9f..e28ccbd 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestFileListEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestFileListEntityProcessor.java
+@@ -16,6 +16,7 @@ package org.apache.solr.handler.dataimport;
+  * limitations under the License.
+  */
+ 
++import org.junit.Ignore;
+ import org.junit.Test;
+ 
+ import java.io.File;
+@@ -130,6 +131,7 @@ public class TestFileListEntityProcessor extends AbstractDataImportHandlerTestCa
+   }
+ 
+   @Test
++  @Ignore("Known Locale/TZ problems: see https://issues.apache.org/jira/browse/SOLR-1916")
+   public void testNTOT() throws IOException {
+     File tmpdir = File.createTempFile("test", "tmp", TEMP_DIR);
+     tmpdir.delete();

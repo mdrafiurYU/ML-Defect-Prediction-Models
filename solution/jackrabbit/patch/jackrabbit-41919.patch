@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+index 58b53d1..8383d9a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+@@ -216,7 +216,7 @@ class ChildAxisQuery extends Query implements JackrabbitQuery {
+             throws IOException {
+         if (sort.getSort().length == 0 && matchesAnyChildNode()) {
+             Query context = getContextQuery();
+-            return new ChildNodesQueryHits(searcher.execute(context, sort), session);
++            return new ChildNodesQueryHits(searcher.evaluate(context, sort), session);
+         } else {
+             return null;
+         }

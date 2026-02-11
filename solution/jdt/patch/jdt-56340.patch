@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MixedModeTesting.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MixedModeTesting.java
+index a7a75de..c9a0b21 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MixedModeTesting.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MixedModeTesting.java
+@@ -171,10 +171,11 @@ public class MixedModeTesting extends APTTestBase{
+ 		
+ 		String codeA = "package p1;\n"
+ 			+ "\n import org.eclipse.jdt.apt.tests.external.annotations.batch.*;"
++			+ "\n import gen.*;"
+ 			+ "\n@BatchGen\n"
+ 			+ "public class A {" 
+-			+ "   gen.Class0 clazz0;\n"
+-			+ "   gen.Class1 clazz1;\n" 
++			+ "   Class0 clazz0;\n"
++			+ "   Class1 clazz1;\n" 
+ 			+ "}\n";
+ 		
+ 		env.addClass( srcRoot, "p1", "A", codeA );

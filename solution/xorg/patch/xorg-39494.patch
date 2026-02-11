@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index a18118a..bfbd31c 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -47,15 +47,6 @@ static ExtensionModule extensionModules[] = {
+ 	NULL
+     },
+ #endif
+-#ifdef SHAPE
+-    {
+-	ShapeExtensionInit,
+-	SHAPENAME,
+-	&noShapeExtension,
+-	NULL,
+-	NULL
+-    },
+-#endif
+ #ifdef MULTIBUFFER
+     {
+ 	MultibufferExtensionInit,

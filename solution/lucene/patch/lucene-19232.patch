@@ -1,0 +1,32 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java b/solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java
+index 728b528..6a94d2f 100644
+--- a/solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java
+@@ -59,22 +59,27 @@ public class GeohashHaversineFunction extends ValueSource {
+     final DocValues gh2DV = geoHash2.getValues(context, readerContext);
+ 
+     return new DocValues() {
++      @Override
+       public float floatVal(int doc) {
+         return (float) doubleVal(doc);
+       }
+ 
++      @Override
+       public int intVal(int doc) {
+         return (int) doubleVal(doc);
+       }
+ 
++      @Override
+       public long longVal(int doc) {
+         return (long) doubleVal(doc);
+       }
+ 
++      @Override
+       public double doubleVal(int doc) {
+         return distance(doc, gh1DV, gh2DV);
+       }
+ 
++      @Override
+       public String strVal(int doc) {
+         return Double.toString(doubleVal(doc));
+       }

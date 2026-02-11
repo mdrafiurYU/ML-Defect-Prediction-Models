@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
+index 5fb7223..e87ebe0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
+@@ -147,7 +147,8 @@ public class ConfigurationParser {
+                     throw new ConfigurationException("Parameter value not set");
+                 }
+                 parameters.put(
+-                        name.getValue(), replaceVariables(value.getValue()));
++                        name.getValue().trim(),
++                        replaceVariables(value.getValue()));
+             }
+         }

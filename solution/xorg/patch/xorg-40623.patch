@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Xinput.h b/hw/xfree86/common/xf86Xinput.h
+index 02f657d..7617a3e 100644
+--- a/hw/xfree86/common/xf86Xinput.h
++++ b/hw/xfree86/common/xf86Xinput.h
+@@ -170,7 +170,6 @@ void xf86PostKeyEvent(DeviceIntPtr device, unsigned int key_code, int is_down,
+ 		      ...);
+ void xf86PostKeyboardEvent(DeviceIntPtr device, unsigned int key_code,
+                            int is_down);
+-void xf86XinputFinalizeInit(DeviceIntPtr dev);
+ void xf86ActivateDevice(LocalDevicePtr local);
+ Bool xf86CheckButton(int button, int down);
+ void xf86SwitchCoreDevice(LocalDevicePtr device, DeviceIntPtr core);

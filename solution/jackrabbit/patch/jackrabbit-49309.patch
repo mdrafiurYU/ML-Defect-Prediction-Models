@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopySameNameSibsTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopySameNameSibsTest.java
+index d2bae22..47fe5d2 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopySameNameSibsTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopySameNameSibsTest.java
+@@ -60,7 +60,7 @@ public class WorkspaceCopySameNameSibsTest extends AbstractWorkspaceSameNameSibs
+         int cnt = 0;
+         NodeIterator iter = node2.getNodes();
+         while (iter.hasNext()) {
+-            Node n = (Node) iter.nextNode();
++            Node n = iter.nextNode();
+ 
+             assertTrue(n.getName().equals(orderList[cnt]));
+             cnt++;

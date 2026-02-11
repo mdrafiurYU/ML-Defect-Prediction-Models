@@ -1,0 +1,45 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 3cc04f0..8e412b5 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -766,6 +766,7 @@ typedef enum {
+     FLAG_AUTO_ADD_DEVICES,
+     FLAG_AUTO_ENABLE_DEVICES,
+     FLAG_GLX_VISUALS,
++    FLAG_DRI2,
+ } FlagValues;
+    
+ static OptionInfoRec FlagOptions[] = {
+@@ -847,6 +848,8 @@ static OptionInfoRec FlagOptions[] = {
+         {0}, TRUE },
+   { FLAG_GLX_VISUALS,		"GlxVisuals",			OPTV_STRING,
+         {0}, FALSE },
++  { FLAG_DRI2,			"DRI2",				OPTV_BOOLEAN,
++	{0}, FALSE },
+   { -1,				NULL,				OPTV_NONE,
+ 	{0}, FALSE },
+ };
+@@ -1179,9 +1182,23 @@ configServerFlags(XF86ConfFlagsPtr flagsconf, XF86OptionPtr layoutopts)
+       xf86Msg(from, "Xinerama: enabled\n");
+ #endif
+ 
++#ifdef DRI2
++    xf86Info.dri2 = FALSE;
++    xf86Info.dri2From = X_DEFAULT;
++    if (xf86GetOptValBool(FlagOptions, FLAG_DRI2, &value)) {
++	xf86Info.dri2 = value;
++	xf86Info.dri2From = X_CONFIG;
++    }
++#endif
++
+     return TRUE;
+ }
+ 
++Bool xf86DRI2Enabled(void)
++{
++    return xf86Info.dri2;
++}
++
+ /*
+  * Locate the core input devices.  These can be specified/located in
+  * the following ways, in order of priority:

@@ -1,0 +1,17 @@
+diff --git a/mi/mioverlay.c b/mi/mioverlay.c
+index 2fc583e..395b1aa 100644
+--- a/mi/mioverlay.c
++++ b/mi/mioverlay.c
+@@ -54,8 +54,10 @@ typedef struct {
+    Bool				copyUnderlay;
+ } miOverlayScreenRec, *miOverlayScreenPtr;
+ 
+-static DevPrivateKey miOverlayWindowKey = &miOverlayWindowKey;
+-static DevPrivateKey miOverlayScreenKey = &miOverlayScreenKey;
++static int miOverlayWindowKeyKeyIndex;
++static DevPrivateKey miOverlayWindowKey = &miOverlayWindowKeyKeyIndex;
++static int miOverlayScreenKeyIndex;
++static DevPrivateKey miOverlayScreenKey = &miOverlayScreenKeyIndex;
+ 
+ static void RebuildTree(WindowPtr);
+ static Bool HasUnderlayChildren(WindowPtr);

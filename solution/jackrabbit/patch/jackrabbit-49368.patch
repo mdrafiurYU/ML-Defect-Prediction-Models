@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/RandomInputStream.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/RandomInputStream.java
+index d5bb068..e203767 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/RandomInputStream.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/RandomInputStream.java
+@@ -20,6 +20,9 @@ import java.io.BufferedInputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+ 
++/**
++ * An input stream that returns pseudo-random bytes.
++ */
+ public class RandomInputStream extends InputStream {
+ 
+     private static final long MUL = 0x5DEECE66DL;

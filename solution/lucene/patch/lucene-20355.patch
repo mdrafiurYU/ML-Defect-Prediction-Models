@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/core/CoreContainer.java b/solr/src/java/org/apache/solr/core/CoreContainer.java
+index ad403d0..2b0150a 100644
+--- a/solr/src/java/org/apache/solr/core/CoreContainer.java
++++ b/solr/src/java/org/apache/solr/core/CoreContainer.java
+@@ -500,7 +500,12 @@ public class CoreContainer
+     SolrCore old = null;
+     synchronized (cores) {
+       old = cores.put(name, core);
++      /*
++      * set both the name of the descriptor and the name of the
++      * core, since the descriptors name is used for persisting.
++      */
+       core.setName(name);
++      core.getCoreDescriptor().name = name;
+     }
+ 
+     if (zkController != null) {

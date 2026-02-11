@@ -1,0 +1,18 @@
+diff --git a/dix/selection.c b/dix/selection.c
+index 11a174e..6a9198e 100644
+--- a/dix/selection.c
++++ b/dix/selection.c
+@@ -206,7 +206,12 @@ ProcSetSelectionOwner(ClientPtr client)
+ 	pSel->devPrivates = NULL;
+ 
+ 	/* security creation/labeling check */
+-	(void)XaceHookSelectionAccess(client, &pSel, DixCreateAccess);
++	rc = XaceHookSelectionAccess(client, &pSel,
++				     DixCreateAccess|DixSetAttrAccess);
++	if (rc != Success) {
++	    xfree(pSel);
++	    return rc;
++	}
+ 
+ 	pSel->next = CurrentSelections;
+ 	CurrentSelections = pSel;

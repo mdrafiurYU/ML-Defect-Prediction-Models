@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java
+index 8e15188..992f418 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java
+@@ -143,8 +143,6 @@ public class UserAdministratorTest extends AbstractUserTest {
+         }
+     }
+ 
+-    // TODO: uncomment as soon as group-members are stored as weak references
+-    /*
+     public void testRemoveHimSelf() throws RepositoryException, NotExecutableException {
+         UserManager umgr = getUserManager(otherSession);
+ 
+@@ -156,7 +154,6 @@ public class UserAdministratorTest extends AbstractUserTest {
+             // success
+         }
+     }
+-    */
+ 
+     public void testRemoveParentUser() throws RepositoryException, NotExecutableException {
+         UserManager umgr = getUserManager(otherSession);

@@ -1,0 +1,14 @@
+diff --git a/hw/xnest/Init.c b/hw/xnest/Init.c
+index 2a9fc26..49a52d7 100644
+--- a/hw/xnest/Init.c
++++ b/hw/xnest/Init.c
+@@ -136,7 +136,9 @@ void OsVendorFatalError(void)
+     return;
+ }
+ 
++#if defined(DDXBEFORERESET)
+ void ddxBeforeReset(void)
+ {
+     return;
+ }
++#endif

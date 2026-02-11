@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xf8_32wid/cfb8_32widmodule.c b/hw/xfree86/xf8_32wid/cfb8_32widmodule.c
+index 95f8c9d..ff7d3de 100644
+--- a/hw/xfree86/xf8_32wid/cfb8_32widmodule.c
++++ b/hw/xfree86/xf8_32wid/cfb8_32widmodule.c
+@@ -1,5 +1,9 @@
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef XFree86LOADER
+ 
+ #include "xf86Module.h"

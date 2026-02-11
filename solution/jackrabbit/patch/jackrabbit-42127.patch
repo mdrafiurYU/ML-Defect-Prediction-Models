@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java
+index fd8e44c..b1b52d3 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/AbstractQueryTest.java
+@@ -305,15 +305,15 @@ public abstract class AbstractQueryTest extends AbstractJCRTest {
+         }
+         return (Node[]) nodes.toArray(new Node[nodes.size()]);
+     }
+-    
++
+     /**
+      * Escape an identifier suitable for the SQL parser
+-     * @TODO currently only handles dash character 
++     * @TODO currently only handles dash character
+      */
+     protected String escapeIdentifierForSQL(String identifier) {
+-      
++
+         boolean needsEscaping = identifier.indexOf('-') >= 0;
+-        
++
+         if (!needsEscaping) {
+             return identifier;
+         }

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+index d40543d..0622fc6 100644
+--- a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+@@ -52,7 +52,7 @@ final class FreqProxTermsWriter extends TermsHashConsumer {
+ 
+     final int numAllFields = allFields.size();
+ 
+-    // sort by field name
++    // Sort by field name
+     CollectionUtil.quickSort(allFields);
+ 
+     final FieldsConsumer consumer = state.segmentCodecs.codec().fieldsConsumer(state);

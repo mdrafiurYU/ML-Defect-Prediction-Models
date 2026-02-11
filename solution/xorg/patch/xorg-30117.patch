@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.h b/hw/xfree86/common/xf86Xinput.h
+index 7ef28ed..f882b26 100644
+--- a/hw/xfree86/common/xf86Xinput.h
++++ b/hw/xfree86/common/xf86Xinput.h
+@@ -163,6 +163,8 @@ extern InputInfoPtr xf86InputDevs;
+ void InitExtInput(void);
+ void xf86PostMotionEvent(DeviceIntPtr device, int is_absolute,
+ 			 int first_valuator, int num_valuators, ...);
++void xf86PostMotionEventP(DeviceIntPtr device, int is_absolute,
++			 int first_valuator, int num_valuators, int *valuators);
+ void xf86PostProximityEvent(DeviceIntPtr device, int is_in,
+ 			    int first_valuator, int num_valuators, ...);
+ void xf86PostButtonEvent(DeviceIntPtr device, int is_absolute, int button,

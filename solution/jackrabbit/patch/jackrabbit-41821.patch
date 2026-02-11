@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+index bca94f8..690fbbc 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.jackrabbit.core.value;
+ 
++import org.apache.commons.io.IOUtils;
+ import org.apache.jackrabbit.util.TransientFileFactory;
+ 
+ import java.io.File;
+@@ -68,11 +69,7 @@ public class BLOBInTempFile extends BLOBFileValue {
+         } catch (IOException e) {
+             throw new RepositoryException("Error creating temporary file", e);
+         } finally {
+-            try {
+-                in.close();
+-            } catch (IOException e) {
+-                // ignore
+-            }
++            IOUtils.closeQuietly(in);
+             if (out != null) {
+                 try {
+                     out.close();

@@ -1,0 +1,15 @@
+diff --git a/include/dix.h b/include/dix.h
+index f0e2f2a..be1cb95 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -494,6 +494,10 @@ extern int GrabDevice(
+     CARD8 * /* status */,
+     Bool /* coreGrab */);
+ 
++extern void RemoveOtherCoreGrabs(
++    ClientPtr /* client */,
++    DeviceIntPtr /* dev */);
++
+ extern void InitEvents(void);
+ extern void InitSprite(
+         DeviceIntPtr /* pDev */, 

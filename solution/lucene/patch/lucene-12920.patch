@@ -1,0 +1,30 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/FSDirectory.java b/lucene/src/java/org/apache/lucene/store/FSDirectory.java
+index 0a84803..2083086 100644
+--- a/lucene/src/java/org/apache/lucene/store/FSDirectory.java
++++ b/lucene/src/java/org/apache/lucene/store/FSDirectory.java
+@@ -321,12 +321,6 @@ public abstract class FSDirectory extends Directory {
+     staleFiles.add(io.name);
+   }
+ 
+-  @Deprecated
+-  @Override
+-  public void sync(String name) throws IOException {
+-    sync(Collections.singleton(name));
+-  }
+-
+   @Override
+   public void sync(Collection<String> names) throws IOException {
+     ensureOpen();
+@@ -383,12 +377,6 @@ public abstract class FSDirectory extends Directory {
+     isOpen = false;
+   }
+ 
+-  /** @deprecated Use {@link #getDirectory} instead. */
+-  @Deprecated
+-  public File getFile() {
+-    return getDirectory();
+-  }
+-
+   /** @return the underlying filesystem directory */
+   public File getDirectory() {
+     ensureOpen();

@@ -1,0 +1,15 @@
+diff --git a/hw/xquartz/darwin.h b/hw/xquartz/darwin.h
+index da5ad74..7fb9396 100644
+--- a/hw/xquartz/darwin.h
++++ b/hw/xquartz/darwin.h
+@@ -82,8 +82,8 @@ extern int              darwinMouseAccelChange;
+ extern int              darwinFakeButtons;
+ extern int              darwinFakeMouse2Mask;
+ extern int              darwinFakeMouse3Mask;
+-extern int              darwinAppKitModMask;
+-extern int              windowItemModMask;
++extern unsigned int     darwinAppKitModMask;
++extern unsigned int     windowItemModMask;
+ extern int              darwinSyncKeymap;
+ extern unsigned int     darwinDesiredWidth, darwinDesiredHeight;
+ extern int              darwinDesiredDepth;

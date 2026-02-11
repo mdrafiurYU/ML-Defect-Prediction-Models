@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/OpenFilesTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/OpenFilesTest.java
+index 8473bdd..a1d0ecf 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/OpenFilesTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/OpenFilesTest.java
+@@ -34,7 +34,7 @@ public class OpenFilesTest extends AbstractJCRTest {
+      * Test opening a large number of streams.
+      */
+     public void testStreams() throws RepositoryException {
+-        Session session = helper.getReadWriteSession();
++        Session session = getHelper().getReadWriteSession();
+         try {
+             Node test = session.getRootNode().addNode("test");
+             ValueFactory vf = session.getValueFactory();

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/ContentOperationsTask.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/ContentOperationsTask.java
+index 675882a..46c12b5 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/ContentOperationsTask.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/ContentOperationsTask.java
+@@ -26,8 +26,9 @@ import javax.jcr.NodeIterator;
+  */
+ public class ContentOperationsTask extends RandomOperationsTask {
+ 
+-    public ContentOperationsTask(int numLevels, int nodesPerLevel, long end) {
+-        super(new String[0], numLevels, nodesPerLevel, end);
++    public ContentOperationsTask(int numLevels, int nodesPerLevel,
++                                 int saveInterval, long end) {
++        super(new String[0], numLevels, nodesPerLevel, saveInterval, end);
+     }
+ 
+     protected Operation getRandomOperations(OperationFactory f,

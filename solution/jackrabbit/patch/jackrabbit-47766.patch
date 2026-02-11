@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java
+index 8215457..27d5818 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java
+@@ -25,7 +25,6 @@ import javax.jcr.NodeIterator;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.query.InvalidQueryException;
+ import javax.jcr.query.QueryResult;
+-import javax.jcr.query.qom.QueryObjectModelConstants;
+ 
+ import org.apache.jackrabbit.spi.commons.query.qom.Operator;
+ 
+@@ -34,7 +33,7 @@ import org.apache.jackrabbit.spi.commons.query.qom.Operator;
+  * fn:upper-case() in XPath, LOWER() and UPPER() in SQL and UpperCase and
+  * LowerCase in JQOM.
+  */
+-public class UpperLowerCaseQueryTest extends AbstractQueryTest implements QueryObjectModelConstants {
++public class UpperLowerCaseQueryTest extends AbstractQueryTest {
+ 
+     public void testEqualsGeneralComparison() throws RepositoryException {
+         check(new String[]{"foo", "Foo", "fOO", "FOO", "fooBar", "fo", "fooo"},

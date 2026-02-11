@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/analysis/MockPayloadAnalyzer.java b/lucene/src/test-framework/org/apache/lucene/analysis/MockPayloadAnalyzer.java
+index 63d99af..fe64ad8 100644
+--- a/lucene/src/test-framework/org/apache/lucene/analysis/MockPayloadAnalyzer.java
++++ b/lucene/src/test-framework/org/apache/lucene/analysis/MockPayloadAnalyzer.java
+@@ -86,6 +86,7 @@ final class MockPayloadFilter extends TokenFilter {
+ 
+   @Override
+   public void reset() throws IOException {
++    super.reset();
+     i = 0;
+     pos = 0;
+   }

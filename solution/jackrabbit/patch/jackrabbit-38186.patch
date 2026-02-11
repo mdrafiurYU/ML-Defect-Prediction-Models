@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java
+index 5a241e4..5cc5e28 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/PropertyState.java
+@@ -103,7 +103,7 @@ public class PropertyState extends ItemState {
+     /**
+      * {@inheritDoc}
+      */
+-    protected synchronized void copy(ItemState state) {
++    protected synchronized void copy(ItemState state, boolean syncModCount) {
+         synchronized (state) {
+             PropertyState propState = (PropertyState) state;
+             id = propState.id;
+@@ -111,6 +111,9 @@ public class PropertyState extends ItemState {
+             defId = propState.defId;
+             values = propState.values;
+             multiValued = propState.multiValued;
++            if (syncModCount) {
++                setModCount(state.getModCount());
++            }
+         }
+     }

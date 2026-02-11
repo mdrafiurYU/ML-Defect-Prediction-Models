@@ -1,0 +1,13 @@
+diff --git a/os/connection.c b/os/connection.c
+index 81134a8..d8c0707 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -791,7 +791,7 @@ static ClientPtr
+ AllocNewConnection (XtransConnInfo trans_conn, int fd, CARD32 conn_time, 
+     int (*Flush)(
+         ClientPtr /*who*/, OsCommPtr /*oc*/,
+-        char */*extraBuf*/, int /*extraCount*/),
++        char * /*extraBuf*/, int /*extraCount*/),
+     void (*Close)(
+         ClientPtr /*client*/),
+     LbxProxyPtr proxy)

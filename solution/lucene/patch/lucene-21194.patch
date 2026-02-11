@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java
+index c27de33..9f2ecc6 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java
++++ b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java
+@@ -70,6 +70,7 @@ final class TermVectorsTermsWriterPerField extends TermsHashConsumerPerField {
+     }
+ 
+     if (doVectors) {
++      termsWriter.hasVectors = true;
+       if (termsWriter.tvx != null) {
+         if (termsHashPerField.bytesHash.size() != 0) {
+           // Only necessary if previous doc hit a

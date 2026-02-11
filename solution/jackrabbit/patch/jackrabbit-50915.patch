@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java
+index 44c7440..aea716a 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java
+@@ -44,6 +44,7 @@ import org.apache.jackrabbit.spi.NodeInfo;
+ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.PropertyId;
+ import org.apache.jackrabbit.spi.PropertyInfo;
++import org.apache.jackrabbit.spi.QNodeDefinition;
+ import org.apache.jackrabbit.spi.QValue;
+ import org.apache.jackrabbit.spi.RepositoryService;
+ import org.apache.jackrabbit.spi.SessionInfo;
+@@ -190,6 +191,12 @@ public class GetItemsTest extends AbstractJCR2SPITest {
+     }
+ 
+     @Override
++    protected QNodeDefinition createRootNodeDefinition() {
++        fail("Not implemented");
++        return null;
++    }
++
++    @Override
+     public Iterator<ChildInfo> getChildInfos(SessionInfo sessionInfo, NodeId parentId)
+             throws RepositoryException {

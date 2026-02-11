@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+index 82592ff..b57335c 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+@@ -21,7 +21,7 @@ import com.sun.mirror.apt.AnnotationProcessorEnvironment;
+  */
+ public interface EclipseAnnotationProcessorEnvironment extends
+ 		AnnotationProcessorEnvironment 
+-{
++{	
+ 	/**
+ 	 * @return the root of the fully flushed out DOM/AST of the file that is currently being processed.	 
+ 	 *         This AST will not contain any binding information. 
+@@ -33,6 +33,12 @@ public interface EclipseAnnotationProcessorEnvironment extends
+ 	 */
+ 	EclipseMessager getMessager();
+ 	
++	/**	
++	 * @return the current processing phase. Either
++	 * @link{Phase.RECONCILE} or @link{Phase.BUILD}
++	 */
++	Phase getPhase();
++	
+ 	/**
+ 	 * Add a type dependency on the type named <code>fullyQualifiedTypeName</code>
+ 	 * @param fullyQualifiedTypeName the fully qualified (dot-separated) name of a type.

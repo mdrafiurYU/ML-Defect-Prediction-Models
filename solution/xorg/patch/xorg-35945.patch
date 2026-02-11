@@ -1,0 +1,22 @@
+diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
+index 2aacc8c..890cf42 100644
+--- a/xkb/xkbActions.c
++++ b/xkb/xkbActions.c
+@@ -843,7 +843,7 @@ _XkbFilterRedirectKey(	XkbSrvInfoPtr	xkbi,
+ 			unsigned	keycode,
+ 			XkbAction *	pAction)
+ {
+-unsigned	realMods;
++unsigned	realMods = 0;
+ xEvent 		ev;
+ int		x,y;
+ XkbStateRec	old;
+@@ -1145,7 +1145,7 @@ void
+ XkbHandleActions(DeviceIntPtr dev,DeviceIntPtr kbd,xEvent *xE,int count)
+ {
+ int		key,bit,i;
+-CARD8		realMods;
++CARD8		realMods = 0;
+ XkbSrvInfoPtr	xkbi;
+ KeyClassPtr	keyc;
+ int		changed,sendEvent;

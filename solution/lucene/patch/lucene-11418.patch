@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+index 7e30711..b1e2449 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+@@ -157,7 +157,7 @@ class FixedDerefBytesImpl {
+       }
+ 
+       @Override
+-      public BytesRef bytes(int docID) {
++      public BytesRef getBytes(int docID) {
+         final int id = (int) index.get(docID);
+         if (id == 0) {
+           return defaultValue;

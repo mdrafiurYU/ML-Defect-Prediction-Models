@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/TimeData.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/TimeData.java
+index 26b00ad..c210939 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/TimeData.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/TimeData.java
+@@ -95,7 +95,7 @@ public class TimeData {
+    * @return The String
+    */
+   public String toString(boolean withMem) {
+-    StringBuffer sb = new StringBuffer();
++    StringBuilder sb = new StringBuilder();
+     sb.append(count + "\t" + elapsed + "\t" + getRate());
+     if (withMem) sb.append("\t" + freeMem + "\t" + totalMem);
+     return sb.toString();

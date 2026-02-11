@@ -1,0 +1,60 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+index 9feb9c7..59a3b45 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+@@ -64,8 +64,6 @@ public class InstantiatedIndexWriter implements Closeable {
+ 
+   private PrintStream infoStream = null;
+ 
+-  private int maxFieldLength = IndexWriter.DEFAULT_MAX_FIELD_LENGTH;
+-
+   private final InstantiatedIndex index;
+   private final Analyzer analyzer;
+ 
+@@ -431,9 +429,7 @@ public class InstantiatedIndexWriter implements Closeable {
+   };
+ 
+   /**
+-   * Adds a document to this index.  If the document contains more than
+-   * {@link #setMaxFieldLength(int)} terms for a given field, the remainder are
+-   * discarded.
++   * Adds a document to this index.
+    */
+   public void addDocument(Document doc) throws IOException {
+     addDocument(doc, getAnalyzer());
+@@ -441,9 +437,7 @@ public class InstantiatedIndexWriter implements Closeable {
+ 
+   /**
+    * Adds a document to this index, using the provided analyzer instead of the
+-   * value of {@link #getAnalyzer()}.  If the document contains more than
+-   * {@link #setMaxFieldLength(int)} terms for a given field, the remainder are
+-   * discarded.
++   * value of {@link #getAnalyzer()}.
+    *
+    * @param doc
+    * @param analyzer
+@@ -555,9 +549,6 @@ public class InstantiatedIndexWriter implements Closeable {
+             }
+             tokens.add(token); // the vector will be built on commit.
+             fieldSetting.fieldLength++;
+-            if (fieldSetting.fieldLength > maxFieldLength) {
+-              break;
+-            }
+           }
+           tokenStream.end();
+           tokenStream.close();
+@@ -666,14 +657,6 @@ public class InstantiatedIndexWriter implements Closeable {
+     addDocument(doc, analyzer);
+   }
+ 
+-  public int getMaxFieldLength() {
+-    return maxFieldLength;
+-  }
+-
+-  public void setMaxFieldLength(int maxFieldLength) {
+-    this.maxFieldLength = maxFieldLength;
+-  }
+-
+   public Similarity getSimilarity() {
+     return similarity;
+   }

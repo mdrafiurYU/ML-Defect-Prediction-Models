@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+index 546ba14..c148bcb 100644
+--- a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
++++ b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+@@ -508,7 +508,15 @@ public class TestExternalCodecs extends LuceneTestCase {
+       TermsIndexWriterBase indexWriter;
+       boolean success = false;
+       try {
+-        indexWriter = new FixedGapTermsIndexWriter(state);
++        indexWriter = new FixedGapTermsIndexWriter(state) {
++            // We sort in reverse unicode order, so, we must
++            // disable the suffix-stripping opto that
++            // FixedGapTermsIndexWriter does by default!
++            @Override
++            protected int indexedTermPrefixLength(BytesRef priorTerm, BytesRef indexedTerm) {
++              return indexedTerm.length;
++            }
++          };
+         success = true;
+       } finally {
+         if (!success) {

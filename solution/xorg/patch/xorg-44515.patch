@@ -1,0 +1,16 @@
+diff --git a/Xi/chgdctl.c b/Xi/chgdctl.c
+index f5dd08a..89e5a2d 100644
+--- a/Xi/chgdctl.c
++++ b/Xi/chgdctl.c
+@@ -253,9 +253,9 @@ ProcXChangeDeviceControl(ClientPtr client)
+ 
+         if (status == Success) {
+             if (e->enable)
+-                EnableDevice(dev);
++                EnableDevice(dev, TRUE);
+             else
+-                DisableDevice(dev);
++                DisableDevice(dev, TRUE);
+             ret = Success;
+         } else if (status == DeviceBusy) {
+             rep.status = DeviceBusy;

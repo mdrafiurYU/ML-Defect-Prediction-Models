@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/int10/generic.c b/hw/xfree86/int10/generic.c
+index 0af7c1b..4808108 100644
+--- a/hw/xfree86/int10/generic.c
++++ b/hw/xfree86/int10/generic.c
+@@ -126,8 +126,7 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
+     int screen;
+     legacyVGARec vga;
+  
+-#ifdef _PC
+-    int size;
++#if 0
+     CARD32 cs;
+ #endif
+ 

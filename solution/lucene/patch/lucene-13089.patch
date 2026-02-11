@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/MergePolicy.java b/lucene/src/java/org/apache/lucene/index/MergePolicy.java
+index 21ef87e..fa5269f 100644
+--- a/lucene/src/java/org/apache/lucene/index/MergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/MergePolicy.java
+@@ -68,7 +68,6 @@ public abstract class MergePolicy implements java.io.Closeable {
+ 
+     SegmentInfo info;               // used by IndexWriter
+     boolean mergeDocStores;         // used by IndexWriter
+-    boolean hasVectors;             // used by IndexWriter
+     boolean optimize;               // used by IndexWriter
+     boolean registerDone;           // used by IndexWriter
+     long mergeGen;                  // used by IndexWriter

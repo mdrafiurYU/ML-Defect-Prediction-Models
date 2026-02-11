@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+index 3c52646..04a54a4 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+@@ -55,7 +55,7 @@ public class TestSpans extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     directory = newDirectory();
+-    RandomIndexWriter writer= new RandomIndexWriter(random, directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
++    RandomIndexWriter writer= new RandomIndexWriter(random, directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).setMergePolicy(newLogMergePolicy()));
+     for (int i = 0; i < docFields.length; i++) {
+       Document doc = new Document();
+       doc.add(newField(field, docFields[i], Field.Store.YES, Field.Index.ANALYZED));
+@@ -481,7 +481,7 @@ public class TestSpans extends LuceneTestCase {
+   public void testNPESpanQuery() throws Throwable {
+     final Directory dir = newDirectory();
+     final IndexWriter writer = new IndexWriter(dir, new IndexWriterConfig(
+-        TEST_VERSION_CURRENT, new MockAnalyzer()));
++        TEST_VERSION_CURRENT, new MockAnalyzer(random)));
+ 
+     // Add documents
+     addDoc(writer, "1", "the big dogs went running to the market");

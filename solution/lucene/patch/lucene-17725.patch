@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+index 4ffac05..0e8c1f4 100644
+--- a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
++++ b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+@@ -1190,7 +1190,7 @@ public class MemoryIndex {
+         int numOverlapTokens = info != null ? info.numOverlapTokens : 0;
+         float boost = info != null ? info.getBoost() : 1.0f; 
+         FieldInvertState invertState = new FieldInvertState(0, numTokens, numOverlapTokens, 0, boost);
+-        float n = fieldSim.computeNorm(fieldName, invertState);
++        float n = fieldSim.computeNorm(invertState);
+         byte norm = fieldSim.encodeNormValue(n);
+         norms = new byte[] {norm};

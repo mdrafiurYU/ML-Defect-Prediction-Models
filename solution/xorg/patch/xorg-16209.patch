@@ -1,0 +1,13 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index ea45480..0d336fd 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -841,7 +841,7 @@ fbComposite (CARD8      op,
+     RegionRec	    region;
+     int		    n;
+     BoxPtr	    pbox;
+-    CompositeFunc   func = 0;
++    CompositeFunc   func = NULL;
+     Bool	    srcRepeat = pSrc->pDrawable && pSrc->repeat == RepeatNormal;
+     Bool	    maskRepeat = FALSE;
+     Bool	    srcAlphaMap = pSrc->alphaMap != 0;

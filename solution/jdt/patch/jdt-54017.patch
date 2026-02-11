@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnPackageReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnPackageReference.java
+index b658bbb..b3b4190 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnPackageReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnPackageReference.java
+@@ -33,10 +33,11 @@ package org.eclipse.jdt.internal.codeassist.complete;
+  */
+  
+ import org.eclipse.jdt.internal.compiler.ast.*;
++import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ 
+ public class CompletionOnPackageReference extends ImportReference {
+ public CompletionOnPackageReference(char[][] tokens , long[] positions) {
+-	super(tokens, positions, true, AccDefault);
++	super(tokens, positions, true, ClassFileConstants.AccDefault);
+ }
+ public StringBuffer print(int indent, StringBuffer output, boolean withOnDemand) {

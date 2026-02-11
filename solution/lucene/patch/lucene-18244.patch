@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/core/RefCntRamDirectory.java b/solr/src/java/org/apache/solr/core/RefCntRamDirectory.java
+index e965981..29e5f65 100644
+--- a/solr/src/java/org/apache/solr/core/RefCntRamDirectory.java
++++ b/solr/src/java/org/apache/solr/core/RefCntRamDirectory.java
+@@ -51,6 +51,7 @@ public class RefCntRamDirectory extends RAMDirectory {
+     }
+   }
+ 
++  @Override
+   public final synchronized void close() {
+     decRef();
+   }

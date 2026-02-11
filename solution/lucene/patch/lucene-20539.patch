@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestMultiMMap.java b/lucene/src/test/org/apache/lucene/store/TestMultiMMap.java
+index 2105b5e..16d0d83 100644
+--- a/lucene/src/test/org/apache/lucene/store/TestMultiMMap.java
++++ b/lucene/src/test/org/apache/lucene/store/TestMultiMMap.java
+@@ -41,7 +41,7 @@ public class TestMultiMMap extends LuceneTestCase {
+   @Override
+   public void setUp() throws Exception {
+       super.setUp();
+-      workDir = new File(TEMP_DIR, "TestMultiMMap");
++      workDir = _TestUtil.getTempDir("TestMultiMMap");
+       workDir.mkdirs();
+   }

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
+index 6f0c391..6cebaa5 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
+@@ -25,7 +25,7 @@ public abstract class BasePreferencePage extends PropertyAndPreferencePage {
+ 	private BaseConfigurationBlock fConfigurationBlock;
+ 
+ 	protected Control createPreferenceContent(Composite composite) {
+-		return getConfigurationBlock().createContents(composite);
++		return getConfigurationBlock().createPreferenceContent(composite);
+ 	}
+ 	
+ 	@Override

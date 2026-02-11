@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestEntityProcessorBase.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestEntityProcessorBase.java
+index 2b7d357..42b2961 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestEntityProcessorBase.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestEntityProcessorBase.java
+@@ -57,6 +57,7 @@ public class TestEntityProcessorBase extends AbstractDataImportHandlerTestCase {
+ 
+   static class T1 extends Transformer {
+ 
++    @Override
+     public Object transformRow(Map<String, Object> aRow, Context context) {
+       aRow.put("T1", "T1 called");
+       return aRow;
+@@ -66,6 +67,7 @@ public class TestEntityProcessorBase extends AbstractDataImportHandlerTestCase {
+ 
+   static class T2 extends Transformer {
+ 
++    @Override
+     public Object transformRow(Map<String, Object> aRow, Context context) {
+       aRow.put("T2", "T2 called");
+       return aRow;

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+index 8cafb7e..c02f4fa 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+@@ -55,6 +55,7 @@ public class TestAddIndexes extends LuceneTestCase {
+     writer = newWriter(dir, newIndexWriterConfig(TEST_VERSION_CURRENT,
+         new MockAnalyzer())
+         .setOpenMode(OpenMode.CREATE));
++    writer.setInfoStream(VERBOSE ? System.out : null);
+     // add 100 documents
+     addDocs(writer, 100);
+     assertEquals(100, writer.maxDoc());

@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java
+index 1fa4166..9baf98e 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java
+@@ -227,7 +227,8 @@ public abstract class Engine implements ITypeRequestor {
+ 									String.valueOf(typeName),
+ 									String.valueOf(conflictingImportName),
+ 									false,
+-									NameLookup.ACCEPT_ALL) != null) {
++									NameLookup.ACCEPT_ALL,
++									false/*don't check restrictions*/) != null) {
+ 								return true;
+ 							}
+ 						}

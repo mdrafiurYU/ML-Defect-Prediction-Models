@@ -1,0 +1,31 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+index ad290c7..0313e83 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+@@ -92,12 +92,12 @@ public class TestLengthNormModifier extends LuceneTestCase {
+       super.tearDown();
+     }
+     
+-    public void testMissingField() {
++    public void testMissingField() throws Exception {
+ 	FieldNormModifier fnm = new FieldNormModifier(store, s);
+ 	try {
+ 	    fnm.reSetNorms("nobodyherebutuschickens");
+-	} catch (Exception e) {
+-	    assertNull("caught something", e);
++	} catch (IllegalStateException e) {
++	    // expected
+ 	}
+     }
+ 	
+@@ -115,8 +115,8 @@ public class TestLengthNormModifier extends LuceneTestCase {
+ 	FieldNormModifier fnm = new FieldNormModifier(store, s);
+ 	try {
+ 	    fnm.reSetNorms("nonorm");
+-	} catch (Exception e) {
+-	    assertNull("caught something", e);
++	} catch (IllegalStateException e) {
++	  // expected
+ 	}
+ 
+ 	// nothing should have changed

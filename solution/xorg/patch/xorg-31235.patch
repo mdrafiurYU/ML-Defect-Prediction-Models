@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/freebsdPci.c b/hw/xfree86/os-support/bus/freebsdPci.c
+index 2868daf..bfac398 100644
+--- a/hw/xfree86/os-support/bus/freebsdPci.c
++++ b/hw/xfree86/os-support/bus/freebsdPci.c
+@@ -125,8 +125,6 @@ freebsdPciInit()
+ 
+ 	pciNumBuses    = 1;
+ 	pciBusInfo[0]  = &freebsdPci0;
+-	pciFindFirstFP = pciGenFindFirst;
+-	pciFindNextFP  = pciGenFindNext;
+ }
+ 
+ static CARD32

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java
+index 5403b39..08d5707 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java
+@@ -163,4 +163,8 @@ public abstract class AbstractQueryImpl implements ExecutableQuery {
+      */
+     public abstract boolean needsSystemTree();
+ 
++    /**
++     * @return the selector names for this query.
++     */
++    public abstract Name[] getSelectorNames();
+ }

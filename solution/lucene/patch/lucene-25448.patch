@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+index 54c9381..03b6e55 100644
+--- a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
++++ b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+@@ -656,7 +656,6 @@ public class SolrIndexSearcher extends IndexSearcher implements SolrInfoMBean {
+         }
+       } else {
+         for (int docid = -1; (docid = idIter.advance(docid+1)) < max; ) {
+-          if (skipDocs != null && skipDocs.get(docid)) continue;
+           collector.collect(docid);
+         }
+       }

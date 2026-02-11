@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueStore.java
+index e185d21..3a11031 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueStore.java
+@@ -239,9 +239,7 @@ class IndexingQueueStore {
+                     out.close();
+                     out = null;
+                 }
+-                IOException ex = new IOException(e.getMessage());
+-                ex.initCause(e);
+-                throw ex;
++                throw Util.createIOException(e);
+             }
+         }
+         return out;

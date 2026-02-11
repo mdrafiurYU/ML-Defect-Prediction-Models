@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/netbsdPci.c b/hw/xfree86/os-support/bus/netbsdPci.c
+index 7dbbfde..df116c4 100644
+--- a/hw/xfree86/os-support/bus/netbsdPci.c
++++ b/hw/xfree86/os-support/bus/netbsdPci.c
+@@ -80,8 +80,6 @@ netbsdPciInit()
+ 
+ 	pciNumBuses    = 1;
+ 	pciBusInfo[0]  = &netbsdPci0;
+-	pciFindFirstFP = pciGenFindFirst;
+-	pciFindNextFP  = pciGenFindNext;
+ 	/* use businfo to get the number of devs */
+ 	if (ioctl(devpci, PCI_IOC_BUSINFO, &pci_businfo) != 0)
+ 	    FatalError("netbsdPciInit: not a PCI bus device");

@@ -1,0 +1,13 @@
+diff --git a/fb/fbglyph.c b/fb/fbglyph.c
+index 3f2ec75..9ea907d 100644
+--- a/fb/fbglyph.c
++++ b/fb/fbglyph.c
+@@ -129,7 +129,7 @@ fbGlyphIn (RegionPtr	pRegion,
+ #define CASE(a,b,c,d)	(a | (b << 1) | (c << 2) | (d << 3))
+ #endif
+ 
+-void
++_X_EXPORT void
+ fbGlyph24 (FbBits   *dstBits,
+ 	   FbStride dstStride,
+ 	   int	    dstBpp,

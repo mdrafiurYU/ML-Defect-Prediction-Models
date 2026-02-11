@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentReader.java b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+index 649caad..0fc49c2 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentReader.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+@@ -115,7 +115,7 @@ public class SegmentReader extends IndexReader implements Cloneable {
+       }
+ 
+       segment = si.name;
+-      final SegmentCodecs codecInfo = si.getCodecInfo();
++      final SegmentCodecs segmentCodecs = si.getSegmentCodecs();
+       this.readBufferSize = readBufferSize;
+       this.dir = dir;
+ 
+@@ -134,7 +134,7 @@ public class SegmentReader extends IndexReader implements Cloneable {
+         this.termsIndexDivisor = termsIndexDivisor;
+         
+         // Ask codec for its Fields
+-        fields = codecInfo.codec().fieldsProducer(new SegmentReadState(cfsDir, si, fieldInfos, readBufferSize, termsIndexDivisor));
++        fields = segmentCodecs.codec().fieldsProducer(new SegmentReadState(cfsDir, si, fieldInfos, readBufferSize, termsIndexDivisor));
+         assert fields != null;
+         success = true;
+       } finally {

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventJournalImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventJournalImpl.java
+index 98298b2..cf75978 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventJournalImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventJournalImpl.java
+@@ -16,7 +16,6 @@
+  */
+ package org.apache.jackrabbit.core.observation;
+ 
+-import java.util.Calendar;
+ import java.util.List;
+ import java.util.LinkedList;
+ import java.util.NoSuchElementException;
+@@ -177,7 +176,7 @@ public class EventJournalImpl implements EventJournal {
+         return next;
+     }
+ 
+-    public Calendar getDate() {
++    public long getDate() {
+         // TODO
+         throw new RuntimeException("Not implemented yet, see JCR-2086");
+     }

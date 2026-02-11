@@ -1,0 +1,15 @@
+diff --git a/mi/miwideline.c b/mi/miwideline.c
+index 606ccd4..44cf18f 100644
+--- a/mi/miwideline.c
++++ b/mi/miwideline.c
+@@ -35,6 +35,10 @@ from The Open Group.
+  * bresenham zero-width lines, except walks an X edge
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ #ifdef _XOPEN_SOURCE
+ #include <math.h>

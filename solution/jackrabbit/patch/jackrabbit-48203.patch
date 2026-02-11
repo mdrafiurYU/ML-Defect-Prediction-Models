@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeManagerImpl.java
+index 0379370..d828188 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeManagerImpl.java
+@@ -349,7 +349,14 @@ public class NodeTypeManagerImpl implements NodeTypeManager, NodeTypeRegistryLis
+      * @see NodeTypeManager#hasNodeType(String)
+      */
+     public boolean hasNodeType(String name) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1591");
++        try {
++            Name qName = resolver().getQName(name);
++            return hasNodeType(qName);
++        } catch (NamespaceException e) {
++            return false;
++        } catch (NameException e) {
++            return false;
++        }
+     }
+     
+     /**

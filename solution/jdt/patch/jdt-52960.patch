@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
+index 54b3aa8..cd8abe7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
+@@ -214,8 +214,8 @@ public class TypeVariableBinding extends ReferenceBinding {
+ 			                break insertLoop;
+ 			            }
+ 			        }
+-			        // no free spot found, need to grow
+-			        System.arraycopy(constraintSubstitutes, 0, constraintSubstitutes = new TypeBinding[2*length], 0, length);
++			        // no free spot found, need to grow by one
++			        System.arraycopy(constraintSubstitutes, 0, constraintSubstitutes = new TypeBinding[length+1], 0, length);
+ 		    	}
+ 		        constraintSubstitutes[length] = otherType;
+ 		        variableSubstitutes[variableConstraint] = constraintSubstitutes;

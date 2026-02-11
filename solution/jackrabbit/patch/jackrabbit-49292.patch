@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+index 5c15c2c..b3d41dc 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+@@ -312,12 +312,13 @@ public class WorkspaceManager
+      *                   the query statement.
+      * @param limit
+      * @param offset
++     * @param boundValues
+      * @return
+      * @throws RepositoryException
+      */
+     public QueryInfo executeQuery(String statement, String language, Map namespaces,
+-                                  long limit, long offset) throws RepositoryException {
+-        return service.executeQuery(sessionInfo, statement, language, namespaces, limit, offset);
++                                  long limit, long offset, Map<String, QValue> boundValues) throws RepositoryException {
++        return service.executeQuery(sessionInfo, statement, language, namespaces, limit, offset, boundValues);
+     }
+ 
+     /**

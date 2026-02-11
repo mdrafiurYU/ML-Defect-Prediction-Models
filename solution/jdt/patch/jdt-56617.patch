@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java
+index 3a7b5b0..b0625a0 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java
+@@ -2112,7 +2112,7 @@ public void test0095() throws JavaModelException {
+ 	);
+ 	
+ 	String key = ((IType) elements[0]).getKey();
+-	String signature = new BindingKey(key).internalToSignature();
++	String signature = new BindingKey(key).toSignature();
+ 	String[] typeArguments = Signature.getTypeArguments(signature);
+ 	assertStringsEqual(
+ 		"Unexpected type arguments",

@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/value/ValueFormatTest.java b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/value/ValueFormatTest.java
+index 061f74e..8252953 100644
+--- a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/value/ValueFormatTest.java
++++ b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/value/ValueFormatTest.java
+@@ -28,6 +28,7 @@ import org.apache.jackrabbit.spi.commons.conversion.DefaultNamePathResolver;
+ import org.apache.jackrabbit.spi.commons.conversion.MalformedPathException;
+ import org.apache.jackrabbit.spi.commons.name.PathFactoryImpl;
+ import org.apache.jackrabbit.spi.commons.name.NameFactoryImpl;
++import org.apache.jackrabbit.spi.commons.name.NameConstants;
+ import org.apache.jackrabbit.spi.QValueFactory;
+ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.QValue;
+@@ -125,4 +126,25 @@ public class ValueFormatTest extends TestCase {
+         assertEquals(qv, ValueFormat.getQValue(v, resolver, qvFactory));
+         assertEquals(qv, ValueFormat.getQValue(reference, PropertyType.WEAKREFERENCE, resolver, qvFactory));        
+     }
++
++    public void testGetJCRString() throws RepositoryException, URISyntaxException {
++        List<QValue> qvs = new ArrayList();
++
++        String reference = UUID.randomUUID().toString();
++        qvs.add(qvFactory.create(reference, PropertyType.WEAKREFERENCE));
++        qvs.add(qvFactory.create(reference, PropertyType.REFERENCE));
++        qvs.add(qvFactory.create("anyString", PropertyType.STRING));
++        qvs.add(qvFactory.create(true));
++        qvs.add(qvFactory.create(12345));
++        qvs.add(qvFactory.create(12345.7889));
++        qvs.add(qvFactory.create(new URI("http://jackrabbit.apache.org")));
++        qvs.add(qvFactory.create(new BigDecimal(Double.MIN_VALUE)));
++        qvs.add(qvFactory.create(new byte[] {'a','b','c'}));
++        qvs.add(qvFactory.create(NameConstants.JCR_ACTIVITIES));
++        qvs.add(ValueFormat.getQValue("/a/b/c", PropertyType.PATH, resolver, qvFactory));
++
++        for (QValue qv : qvs) {
++            assertEquals(ValueFormat.getJCRValue(qv, resolver, vFactory).getString(), ValueFormat.getJCRString(qv, resolver));
++        }
++    }
+ }
+\ No newline at end of file

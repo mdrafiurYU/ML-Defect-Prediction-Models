@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestRollback.java b/lucene/src/test/org/apache/lucene/index/TestRollback.java
+index c1a0d1f..f80026d 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestRollback.java
++++ b/lucene/src/test/org/apache/lucene/index/TestRollback.java
+@@ -38,7 +38,7 @@ public class TestRollback extends LuceneTestCase {
+     rw.close();
+ 
+     // If buffer size is small enough to cause a flush, errors ensue...
+-    IndexWriter w = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()).setMaxBufferedDocs(2).setOpenMode(IndexWriterConfig.OpenMode.APPEND));
++    IndexWriter w = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer(random)).setMaxBufferedDocs(2).setOpenMode(IndexWriterConfig.OpenMode.APPEND));
+ 
+     Term pkTerm = new Term("pk", "");
+     for (int i = 0; i < 3; i++) {

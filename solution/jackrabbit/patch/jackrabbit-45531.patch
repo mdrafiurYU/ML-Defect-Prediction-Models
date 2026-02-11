@@ -1,0 +1,114 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+index b5fe91b..da96547 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+@@ -63,6 +63,11 @@ public class ChangeLogRecord extends ClusterRecord {
+     static final char EVENT_IDENTIFIER = 'E';
+ 
+     /**
++     * Identifier: USER DATA.
++     */
++    static final char USER_DATA_IDENTIFIER = 'U';
++
++    /**
+      * Operation type: added.
+      */
+     private static final int ADDED = 1;
+@@ -93,6 +98,11 @@ public class ChangeLogRecord extends ClusterRecord {
+     private List events;
+ 
+     /**
++     * The user data.
++     */
++    private String userData;
++
++    /**
+      * First identifier read.
+      */
+     private int identifier;
+@@ -110,14 +120,17 @@ public class ChangeLogRecord extends ClusterRecord {
+      * @param record record
+      * @param workspace workspace
+      * @param timestamp when the changes for this record were persisted.
++     * @param userData the user data associated with these changes.
+      */
+     public ChangeLogRecord(ChangeLog changes, List events,
+-                           Record record, String workspace, long timestamp) {
++                           Record record, String workspace,
++                           long timestamp, String userData) {
+         super(record, workspace);
+ 
+         this.changes = changes;
+         this.events = events;
+         this.timestamp = timestamp;
++        this.userData = userData;
+     }
+ 
+     /**
+@@ -146,6 +159,9 @@ public class ChangeLogRecord extends ClusterRecord {
+             case DATE_IDENTIFIER:
+                 readTimestampRecord();
+                 break;
++            case USER_DATA_IDENTIFIER:
++                readUserDataRecord();
++                break;
+             case NODE_IDENTIFIER:
+                 readNodeRecord();
+                 break;
+@@ -182,6 +198,15 @@ public class ChangeLogRecord extends ClusterRecord {
+     }
+ 
+     /**
++     * Reads the user data record.
++     *
++     * @throws JournalException if an error occurs.
++     */
++    private void readUserDataRecord() throws JournalException {
++        userData = record.readString();
++    }
++
++    /**
+      * Read a node record.
+      *
+      * @throws JournalException if an error occurs
+@@ -313,6 +338,7 @@ public class ChangeLogRecord extends ClusterRecord {
+      */
+     protected void doWrite() throws JournalException {
+         writeTimestampRecord();
++        writeUserDataRecord();
+         Iterator deletedStates = changes.deletedStates();
+         while (deletedStates.hasNext()) {
+             ItemState state = (ItemState) deletedStates.next();
+@@ -359,6 +385,18 @@ public class ChangeLogRecord extends ClusterRecord {
+     }
+ 
+     /**
++     * Writes the user data record.
++     *
++     * @throws JournalException if an error occurs.
++     */
++    private void writeUserDataRecord() throws JournalException {
++        if (userData != null) {
++            record.writeChar(USER_DATA_IDENTIFIER);
++            record.writeString(userData);
++        }
++    }
++
++    /**
+      * Write a node record
+      *
+      * @param operation operation
+@@ -445,4 +483,13 @@ public class ChangeLogRecord extends ClusterRecord {
+     public long getTimestamp() {
+         return timestamp;
+     }
++
++    /**
++     * Returns the user data.
++     *
++     * @return the user data.
++     */
++    public String getUserData() {
++        return userData;
++    }
+ }

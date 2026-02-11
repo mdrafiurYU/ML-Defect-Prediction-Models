@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/libc_wrapper.c b/hw/xfree86/os-support/shared/libc_wrapper.c
+index 66d15b2..a77e2b9 100644
+--- a/hw/xfree86/os-support/shared/libc_wrapper.c
++++ b/hw/xfree86/os-support/shared/libc_wrapper.c
+@@ -23,6 +23,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #if defined(linux) && !defined(__GLIBC__)
+ #undef __STRICT_ANSI__
+ #endif

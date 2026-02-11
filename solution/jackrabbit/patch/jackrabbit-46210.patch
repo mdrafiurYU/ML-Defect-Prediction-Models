@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java
+index 5ea00bb..a9bdab2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java
+@@ -69,6 +69,8 @@ public abstract class AbstractQueryHandler implements QueryHandler {
+     /**
+      * This method must be implemented by concrete sub classes and will be
+      * called from {@link #init}.
++     *
++     * @throws IOException If an error occurs.
+      */
+     protected abstract void doInit() throws IOException;

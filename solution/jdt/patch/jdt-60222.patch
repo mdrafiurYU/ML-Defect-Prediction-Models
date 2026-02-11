@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
+index 66f47af..b4e5221 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
+@@ -237,6 +237,9 @@ public class BasicSearchEngine {
+ 	 * @param matchRule
+ 	 */
+ 	public static String getMatchRuleString(final int matchRule) {
++		if (matchRule == 0) {
++			return "R_EXACT_MATCH"; //$NON-NLS-1$
++		}
+ 		StringBuffer buffer = new StringBuffer();
+ 		for (int i=1; i<=8; i++) {
+ 			int bit = matchRule & (1<<(i-1));

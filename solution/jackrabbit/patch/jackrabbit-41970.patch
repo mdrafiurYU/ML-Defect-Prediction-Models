@@ -1,0 +1,48 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/WorkspaceConfig.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/WorkspaceConfig.java
+index 13cf136..85fb285 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/WorkspaceConfig.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/WorkspaceConfig.java
+@@ -63,11 +63,6 @@ public class WorkspaceConfig {
+     private ISMLockingConfig ismLockingConfig;
+ 
+     /**
+-     * Event listeners configuration.
+-     */
+-    private EventListenerConfig[] elcs;
+-    
+-    /**
+      * Creates a workspace configuration object.
+      *
+      * @param home home directory
+@@ -80,8 +75,7 @@ public class WorkspaceConfig {
+      */
+     public WorkspaceConfig(String home, String name, boolean clustered,
+                            FileSystemConfig fsc, PersistenceManagerConfig pmc,
+-                           SearchConfig sc, ISMLockingConfig ismLockingConfig,
+-                           EventListenerConfig[] elcs) {
++                           SearchConfig sc, ISMLockingConfig ismLockingConfig) {
+         this.home = home;
+         this.name = name;
+         this.clustered = clustered;
+@@ -93,7 +87,6 @@ public class WorkspaceConfig {
+         } else {
+             this.ismLockingConfig = ISMLockingConfig.createDefaultConfig();
+         }
+-        this.elcs = elcs;
+     }
+ 
+     /**
+@@ -132,13 +125,6 @@ public class WorkspaceConfig {
+     }
+ 
+     /**
+-     * @return the configuration for the event listeners.
+-     */
+-    public EventListenerConfig[] getEventListenersConfig() {
+-        return elcs;
+-    }
+-    
+-    /**
+      * Returns the file system configuration.
+      *
+      * @return file system configuration

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
+index 1f9a24d..cbad1d0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
+@@ -708,7 +708,7 @@ public abstract class AbstractBundlePersistenceManager implements
+     private void putBundle(NodePropBundle bundle) throws ItemStateException {
+         storeBundle(bundle);
+         bundle.markOld();
+-        log.debug("stored bundle " + bundle.getId());
++        log.debug("stored bundle {}", bundle.getId());
+ 
+         missing.remove(bundle.getId());
+         // only put to cache if already exists. this is to ensure proper overwrite

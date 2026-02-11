@@ -1,0 +1,136 @@
+diff --git a/hw/xgl/xgl.h b/hw/xgl/xgl.h
+index 8158f5b..ceb18dd 100644
+--- a/hw/xgl/xgl.h
++++ b/hw/xgl/xgl.h
+@@ -55,7 +55,7 @@ typedef struct _GCFuncs *GCFuncsPtr;
+ 
+ extern WindowPtr *WindowTable;
+ 
+-#define XGL_DEFAULT_PBO_MASK 0 /* don't use PBO as default */
++#define XGL_DEFAULT_PBO_MASK 0
+ 
+ typedef struct _xglScreenInfo {
+     glitz_drawable_t *drawable;
+@@ -63,14 +63,16 @@ typedef struct _xglScreenInfo {
+     unsigned int     height;
+     unsigned int     widthMm;
+     unsigned int     heightMm;
+-    Bool	     fullscreen;
+     int		     geometryDataType;
+     int		     geometryUsage;
+     Bool	     yInverted;
+     int		     pboMask;
+     Bool	     lines;
++    Bool	     fbo;
+ } xglScreenInfoRec, *xglScreenInfoPtr;
+ 
++extern xglScreenInfoRec xglScreenInfo;
++
+ typedef struct _xglPixelFormat {
+     CARD8		depth, bitsPerRGB;
+     glitz_pixel_masks_t masks;
+@@ -213,6 +215,7 @@ typedef struct _xglScreen {
+     Bool			  yInverted;
+     int				  pboMask;
+     Bool			  lines;
++    Bool			  fbo;
+     xglGeometryRec		  scratchGeometry;
+     
+ #ifdef RENDER
+@@ -489,15 +492,13 @@ xglParseFindNext (char *cur,
+ 		  char *last);
+ 
+ void
+-xglParseScreen (xglScreenInfoPtr pScreenInfo,
+-		char	         *arg);
++xglParseScreen (char *arg);
+ 
+ void
+ xglUseMsg (void);
+ 
+ int
+-xglProcessArgument (xglScreenInfoPtr pScreenInfo,
+-		    int		     argc,
++xglProcessArgument (int	 argc,
+ 		    char	     **argv,
+ 		    int		     i);
+ 
+@@ -505,8 +506,7 @@ xglProcessArgument (xglScreenInfoPtr pScreenInfo,
+ /* xglscreen.c */
+ 
+ Bool
+-xglScreenInit (ScreenPtr        pScreen,
+-	       xglScreenInfoPtr pScreenInfo);
++xglScreenInit (ScreenPtr pScreen);
+ 
+ Bool
+ xglFinishScreenInit (ScreenPtr pScreen);
+@@ -872,6 +872,10 @@ void
+ xglAddCurrentSurfaceDamage (DrawablePtr pDrawable);
+ 
+ void
++xglAddBitDamage (DrawablePtr pDrawable,
++		 RegionPtr   pRegion);
++
++void
+ xglAddCurrentBitDamage (DrawablePtr pDrawable);
+ 
+ 
+@@ -1327,10 +1331,47 @@ xglAddTraps (PicturePtr pDst,
+ 
+ #endif
+ 
++#ifdef XLOADABLE
++
++/* xglloader.c */
++
++typedef struct _xglSymbol {
++    void       **ptr;
++    const char *name;
++} xglSymbolRec, *xglSymbolPtr;
++
++void *
++xglLoadModule (const char *name);
++
++void
++xglUnloadModule (void *handle);
++
++Bool
++xglLookupSymbols (void         *handle,
++		  xglSymbolPtr sym,
++		  int	       nSym);
++
++#endif
++
+ #ifdef GLXEXT
+ 
++/* xglglx.c */
++
++Bool
++xglLoadGLXModules (void);
++
++void
++xglUnloadGLXModules (void);
++
++#endif
++
++/* xglhash.c */
++
+ typedef struct _xglHashTable *xglHashTablePtr;
+ 
++Bool
++xglLoadHashFuncs (void *handle);
++
+ xglHashTablePtr
+ xglNewHashTable (void);
+ 
+@@ -1361,9 +1402,4 @@ unsigned int
+ xglHashFindFreeKeyBlock (xglHashTablePtr pTable,
+ 			 unsigned int	 numKeys);
+ 
+-Bool
+-xglInitVisualConfigs (ScreenPtr pScreen);
+-
+-#endif
+-
+ #endif /* _XGL_H_ */

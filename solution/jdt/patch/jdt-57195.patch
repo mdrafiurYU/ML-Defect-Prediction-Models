@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+index cc4aa98..40a08ab 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+@@ -4115,9 +4115,21 @@ class ASTConverter {
+ 		this.scanner.resetTo(start, end);
+ 		try {
+ 			int token;
++			int balance = 0;
+ 			while ((token = this.scanner.getNextToken()) != TerminalTokens.TokenNameEOF) {
+ 				switch(token) {
++					case TerminalTokens.TokenNameLBRACE :
++						balance++;
++						break;
++					case TerminalTokens.TokenNameRBRACE :
++						balance --;
++						break;
+ 					case TerminalTokens.TokenNameCOMMA :
++						if(this.scanner instanceof RecoveryScanner && ((RecoveryScanner)this.scanner).isFakeTokenInserted()) {
++							return this.scanner.startPosition;
++						}
++						if (balance == 0) return this.scanner.startPosition - 1;
++						break;
+ 					case TerminalTokens.TokenNameSEMICOLON :
+ 						if(this.scanner instanceof RecoveryScanner && ((RecoveryScanner)this.scanner).isFakeTokenInserted()) {
+ 							return this.scanner.startPosition;

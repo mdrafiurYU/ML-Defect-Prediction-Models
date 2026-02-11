@@ -1,0 +1,22 @@
+diff --git a/xkb/ddxKillSrv.c b/xkb/ddxKillSrv.c
+index ee0acb0..740268e 100644
+--- a/xkb/ddxKillSrv.c
++++ b/xkb/ddxKillSrv.c
+@@ -45,17 +45,9 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include <X11/extensions/XKBsrv.h>
+ #include <X11/extensions/XI.h>
+ 
+-#ifdef XF86DDXACTIONS
+-#include "xf86.h"
+-#endif
+-
+ int
+ XkbDDXTerminateServer(DeviceIntPtr dev,KeyCode key,XkbAction *act)
+ {
+-#ifdef XF86DDXACTIONS
+-    xf86ProcessActionEvent(ACTION_TERMINATE, NULL);
+-#else
+     GiveUp(1);
+-#endif
+     return 0;
+ }

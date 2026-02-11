@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AnnotationValueConversionTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AnnotationValueConversionTests.java
+index c8b4043..f7906ea 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AnnotationValueConversionTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AnnotationValueConversionTests.java
+@@ -17,10 +17,9 @@ import org.eclipse.core.resources.IFolder;
+ import org.eclipse.core.resources.IProject;
+ import org.eclipse.core.runtime.IPath;
+ import org.eclipse.jdt.apt.tests.annotations.ProcessorTestStatus;
+-import org.eclipse.jdt.core.tests.builder.Tests;
+ import org.eclipse.jdt.core.tests.util.Util;
+ 
+-public class AnnotationValueConversionTests extends Tests 
++public class AnnotationValueConversionTests extends APTTestBase 
+ {
+ 	private int counter = 0;
+ 	private String projectName = null;
+@@ -32,10 +31,6 @@ public class AnnotationValueConversionTests extends Tests
+ 		return new TestSuite( AnnotationValueConversionTests.class );
+ 	}
+ 	
+-	public String getProjectName() {
+-		return projectName;
+-	}
+-	
+ 	public String getUniqueProjectName(){
+ 		projectName = AnnotationValueConversionTests.class.getName() + "Project" + counter; //$NON-NLS-1$
+ 		counter ++;

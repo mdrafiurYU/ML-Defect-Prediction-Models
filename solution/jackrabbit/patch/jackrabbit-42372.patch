@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+index e3ff37f..28c1483 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+@@ -758,7 +758,7 @@ public abstract class ItemImpl implements Item {
+             }
+         }
+     }
+-    
++
+     /**
+      * Process all items given in iterator and check whether <code>mix:shareable</code>
+      * or (some derived node type) has been added or removed:
+@@ -789,7 +789,7 @@ public abstract class ItemImpl implements Item {
+                 if (!wasShareable && isShareable) {
+                     // mix:shareable has been added
+                     ns.addShare(ns.getParentId());
+-                    
++
+                 } else if (wasShareable && !isShareable) {
+                     // mix:shareable has been removed: not supported
+                     String msg = "Removing mix:shareable is not supported.";
+@@ -1279,7 +1279,7 @@ public abstract class ItemImpl implements Item {
+ 
+                 // process transient items marked as 'removed'
+                 removeTransientItems(removed.iterator());
+-                
++
+                 // process transient items that have change in mixins
+                 processShareableNodes(dirty.iterator());

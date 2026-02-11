@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/sql/ASTContainsExpression.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/sql/ASTContainsExpression.java
+index 54a813f..bbf8885 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/sql/ASTContainsExpression.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/sql/ASTContainsExpression.java
+@@ -16,13 +16,13 @@
+  */
+ package org.apache.jackrabbit.core.query.sql;
+ 
+-import org.apache.jackrabbit.name.QName;
++import org.apache.jackrabbit.spi.Name;
+ 
+ public class ASTContainsExpression extends SimpleNode {
+ 
+     private String query;
+ 
+-    private QName property;
++    private Name property;
+ 
+     public ASTContainsExpression(int id) {
+         super(id);
+@@ -40,11 +40,11 @@ public class ASTContainsExpression extends SimpleNode {
+         this.query = query;
+     }
+ 
+-    public QName getPropertyName() {
++    public Name getPropertyName() {
+         return property;
+     }
+ 
+-    public void setPropertyName(QName property) {
++    public void setPropertyName(Name property) {
+         this.property = property;
+     }

@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/os-support/shared/VTsw_noop.c b/hw/xfree86/os-support/shared/VTsw_noop.c
+index b43908f..a3cfe40 100644
+--- a/hw/xfree86/os-support/shared/VTsw_noop.c
++++ b/hw/xfree86/os-support/shared/VTsw_noop.c
+@@ -35,19 +35,19 @@
+  * No-op functions for OSs without VTs
+  */
+ 
+-_X_EXPORT Bool
++Bool
+ xf86VTSwitchPending()
+ {
+ 	return(FALSE);
+ }
+ 
+-_X_EXPORT Bool
++Bool
+ xf86VTSwitchAway()
+ {
+ 	return(FALSE);
+ }
+ 
+-_X_EXPORT Bool
++Bool
+ xf86VTSwitchTo()
+ {
+ 	return(TRUE);

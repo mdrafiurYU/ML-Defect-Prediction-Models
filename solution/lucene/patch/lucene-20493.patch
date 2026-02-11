@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
+index e3d68a7..f2ecd1e 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
+@@ -100,7 +100,7 @@ public class TestIndexWriterOnJRECrash extends TestNRTThreads {
+     cmd.add("org.junit.runner.JUnitCore");
+     cmd.add(getClass().getName());
+     ProcessBuilder pb = new ProcessBuilder(cmd);
+-    pb.directory(TEMP_DIR);
++    pb.directory(tempDir);
+     pb.redirectErrorStream(true);
+     Process p = pb.start();
+     InputStream is = p.getInputStream();

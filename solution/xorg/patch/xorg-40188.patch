@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/xpr/xprCursor.c b/hw/xquartz/xpr/xprCursor.c
+index 76ab75c..c1890a2 100644
+--- a/hw/xquartz/xpr/xprCursor.c
++++ b/hw/xquartz/xpr/xprCursor.c
+@@ -56,7 +56,8 @@ typedef struct {
+     miPointerSpriteFuncPtr  spriteFuncs;
+ } QuartzCursorScreenRec, *QuartzCursorScreenPtr;
+ 
+-static DevPrivateKey darwinCursorScreenKey = &darwinCursorScreenKey;
++static int darwinCursorScreenKeyIndex;
++static DevPrivateKey darwinCursorScreenKey = &darwinCursorScreenKeyIndex;
+ 
+ #define CURSOR_PRIV(pScreen) ((QuartzCursorScreenPtr) \
+     dixLookupPrivate(&pScreen->devPrivates, darwinCursorScreenKey))

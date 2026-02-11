@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+index 6239685..450f29a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+@@ -307,8 +307,11 @@ public class LocalItemStateManager
+         if (!editMode) {
+             throw new IllegalStateException("Not in edit mode");
+         }
+-        update(changeLog);
+-        changeLog.reset();
++        // JCR-1813: Only execute the update when there are some changes
++        if (changeLog.hasUpdates()) {
++            update(changeLog);
++            changeLog.reset();
++        }
+ 
+         editMode = false;
+     }

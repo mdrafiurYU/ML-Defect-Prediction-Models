@@ -1,0 +1,16 @@
+diff --git a/render/glyph.c b/render/glyph.c
+index ae04f60..87b332e 100644
+--- a/render/glyph.c
++++ b/render/glyph.c
+@@ -441,10 +441,9 @@ bail:
+ Bool
+ AllocateGlyphHash (GlyphHashPtr hash, GlyphHashSetPtr hashSet)
+ {
+-    hash->table = (GlyphRefPtr) xalloc (hashSet->size * sizeof (GlyphRefRec));
++    hash->table = xcalloc (hashSet->size, sizeof (GlyphRefRec));
+     if (!hash->table)
+ 	return FALSE;
+-    memset (hash->table, 0, hashSet->size * sizeof (GlyphRefRec));
+     hash->hashSet = hashSet;
+     hash->tableEntries = 0;
+     return TRUE;

@@ -1,0 +1,147 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java
+index 0dfd5fe..3929191 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java
+@@ -61,77 +61,98 @@ import java.util.Iterator;
+  * <p/>
+  * The EBNF grammar of the compact node type definition:<br>
+  * <pre>
+- * cnd ::= ns_mapping* node_type_def+
++ *   Cnd ::= {NamespaceMapping | NodeTypeDef}
+  *
+- * ns_mapping ::= "&lt;" prefix "=" namespace "&gt;"
++ *   NamespaceMapping ::= '<' Prefix '=' Uri '>'
++ *   Prefix ::= String
++ *   Uri ::= String
+  *
+- * prefix ::= string
++ *   NodeTypeDef ::= NodeTypeName [Supertypes]
++ *                   [NodeTypeAttribute {NodeTypeAttribute}]
++ *                   {PropertyDef | ChildNodeDef}
+  *
+- * namespace ::= string
++ *   NodeTypeName ::= '[' String ']'
+  *
+- * node_type_def ::= node_type_name [super_types] [options] {property_def | node_def}
++ *   Supertypes ::= '>' (StringList | '?')
+  *
+- * node_type_name ::= "[" string "]"
++ *   Option ::= Orderable | Mixin | Abstract | NoQuery | PrimaryItem
+  *
+- * super_types ::= "&gt;" string_list
++ *   Orderable ::= ('orderable' | 'ord' | 'o') ['?']
+  *
+- * options ::= orderable_opt | mixin_opt | orderable_opt mixin_opt | mixin_opt orderable_opt
+  *
+- * orderable_opt ::= "orderable" | "ord" | "o"
++ *   Mixin ::= ('mixin' | 'mix' | 'm') ['?']
+  *
+- * mixin_opt ::= "mixin" | "mix" | "m"
++ *   Abstract ::= ('abstract' | 'abs' | 'a') ['?']
+  *
+- * property_def ::= "-" property_name [property_type_decl] [default_values] [attributes] [value_constraints]
++ *   NoQuery ::= ('noquery' | 'nq') ['?']
+  *
+- * property_name ::= string
++ *   PrimaryItem ::= ('primaryitem'| '!')(String | '?')
+  *
+- * property_type_decl ::= "(" property_type ")"
++ *   PropertyDef ::= PropertyName [PropertyType] [DefaultValues]
++ *                   [PropertyAttribute {PropertyAttribute}]
++ *                   [ValueConstraints]
+  *
+- * property_type ::= "STRING" | "String |"string" |
+- *                   "BINARY" | "Binary" | "binary" |
+- *                   "LONG" | "Long" | "long" |
+- *                   "DOUBLE" | "Double" | "double" |
+- *                   "BOOLEAN" | "Boolean" | "boolean" |
+- *                   "DATE" | "Date" | "date" |
+- *                   "NAME | "Name | "name |
+- *                   "PATH" | "Path" | "path" |
+- *                   "REFERENCE" | "Reference" | "reference" |
+- *                   "UNDEFINED" | "Undefined" | "undefined" | "*"
++ *   PropertyName ::= '-' String
+  *
++ *   PropertyType ::= '(' ('STRING' | 'BINARY' | 'LONG' | 'DOUBLE' |
++ *                         'BOOLEAN' | 'DATE' | 'NAME' | 'PATH' |
++ *                         'REFERENCE' | 'WEAKREFERENCE' |
++ *                         'DECIMAL' | 'URI' | 'UNDEFINED' | '*' |
++ *                         '?') ')'
+  *
+- * default_values ::= "=" string_list
++ *   DefaultValues ::= '=' (StringList | '?')
+  *
+- * value_constraints ::= "&lt;" string_list
++ *   ValueConstraints ::= '<' (StringList | '?')
+  *
+- * node_def ::= "+" node_name [required_types] [default_type] [attributes]
++ *   ChildNodeDef ::= NodeName [RequiredTypes] [DefaultType]
++ *                    [NodeAttribute {NodeAttribute}]
+  *
+- * node_name ::= string
++ *   NodeName ::= '+' String
+  *
+- * required_types ::= "(" string_list ")"
++ *   RequiredTypes ::= '(' (String_list | '?') ')'
+  *
+- * default_type ::= "=" string
++ *   DefaultType ::= '=' (String | '?')
+  *
+- * attributes ::= "primary" | "pri" | "!" |
+- *                "autocreated" | "aut" | "a" |
+- *                "mandatory" | "man" | "m" |
+- *                "protected" | "pro" | "p" |
+- *                "multiple" | "mul" | "*" |
+- *                "COPY" | "Copy" | "copy" |
+- *                "VERSION" | "Version" | "version" |
+- *                "INITIALIZE" | "Initialize" | "initialize" |
+- *                "COMPUTE" | "Compute" | "compute" |
+- *                "IGNORE" | "Ignore" | "ignore" |
+- *                "ABORT" | "Abort" | "abort"
++ *   PropertyAttribute ::= Autocreated | Mandatory | Protected |
++ *                         Opv | Multiple | QueryOps | NoFullText |
++ *                         NoQueryOrder
+  *
+- * string_list ::= string {"," string}
++ *   NodeAttribute ::= Autocreated | Mandatory | Protected |
++ *                     Opv | Sns
+  *
+- * string ::= quoted_string | unquoted_string
++ *   Autocreated ::= ('autocreated' | 'aut' | 'a' )['?']
+  *
+- * quoted_string :: = "'" unquoted_string "'"
++ *   Mandatory ::= ('mandatory' | 'man' | 'm') ['?']
+  *
+- * unquoted_string ::= [A-Za-z0-9:_]+
++ *   Protected ::= ('protected' | 'pro' | 'p') ['?']
++ *
++ *   Opv ::= 'COPY' | 'VERSION' | 'INITIALIZE' | 'COMPUTE' |
++ *          'IGNORE' | 'ABORT' | ('OPV' '?')
++ *
++ *   Multiple ::= ('multiple' | 'mul' | '*') ['?']
++ *
++ *   QueryOps ::= ('queryops' | 'qop')
++ *               (( ''' Operator { ',' Operator} ''' ) | '?')
++ *   Operator ::= '=' | '<>' | '<' | '<=' | '>' | '>=' | 'LIKE'
++ *
++ *   NoFullText ::= ('nofulltext' | 'nof') ['?']
++ *
++ *   NoQueryOrder ::= ('noqueryorder' | 'nqord') ['?']
++ *
++ *   Sns ::= ('sns' | '*') ['?']
++ *
++ *   StringList ::= String {',' String}
++ *   String ::= QuotedString | UnquotedString
++ *
++ *   QuotedString ::= SingleQuotedString | DoubleQuotedString
++ *
++ *   SingleQuotedString ::= ''' UnquotedString '''
++ *
++ *   DoubleQuotedString ::= '"' UnquotedString '"'
++ *   UnquotedString ::= XmlChar {XmlChar}
+  * </pre>
+  */
++
+ public class CompactNodeTypeDefReader {
+ 
+     /**

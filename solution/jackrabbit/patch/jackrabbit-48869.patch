@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
+index 0fafc62..6e36ab4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
+@@ -270,6 +270,8 @@ public class SharedFieldCache {
+                 return new Long(LongField.stringToLong(value));
+             case PropertyType.DOUBLE:
+                 return new Double(DoubleField.stringToDouble(value));
++            case PropertyType.DECIMAL:
++                return DecimalField.stringToDecimal(value);
+             default:
+                 return value;
+         }

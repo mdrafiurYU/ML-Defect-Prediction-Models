@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java b/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
+index a183c99..b12a78a 100644
+--- a/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
++++ b/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
+@@ -78,7 +78,6 @@ public class MockRandomCodec extends Codec {
+     final IndexOutput out = state.directory.createOutput(seedFileName);
+     out.writeLong(seed);
+     out.close();
+-    state.flushedFiles.add(seedFileName);
+ 
+     final Random random = new Random(seed);
+     PostingsWriterBase postingsWriter;

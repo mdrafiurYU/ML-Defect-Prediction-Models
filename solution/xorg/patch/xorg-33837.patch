@@ -1,0 +1,14 @@
+diff --git a/randr/rrmode.c b/randr/rrmode.c
+index 1117581..d7cc916 100644
+--- a/randr/rrmode.c
++++ b/randr/rrmode.c
+@@ -266,9 +266,7 @@ RRModeInit (void)
+     RRModeType = CreateNewResourceType (RRModeDestroyResource);
+     if (!RRModeType)
+ 	return FALSE;
+-#ifdef XResExtension
+     RegisterResourceName (RRModeType, "MODE");
+-#endif
+     return TRUE;
+ }
+ 

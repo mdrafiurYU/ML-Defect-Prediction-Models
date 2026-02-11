@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/modes/xf86Modes.h b/hw/xfree86/modes/xf86Modes.h
+index acdea65..af5987b 100644
+--- a/hw/xfree86/modes/xf86Modes.h
++++ b/hw/xfree86/modes/xf86Modes.h
+@@ -64,6 +64,9 @@ DisplayModePtr xf86CVTMode(int HDisplay, int VDisplay, float VRefresh,
+ 			   Bool Reduced, Bool Interlaced);
+ DisplayModePtr xf86GTFMode(int h_pixels, int v_lines, float freq, int interlaced, int margins);
+ 
++Bool
++xf86ModeIsReduced(DisplayModePtr mode);
++
+ void
+ xf86ValidateModesFlags(ScrnInfoPtr pScrn, DisplayModePtr modeList,
+ 		       int flags);

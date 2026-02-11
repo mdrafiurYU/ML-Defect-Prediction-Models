@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
+index 98021e2..f4dde2a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
+@@ -720,7 +720,7 @@ public class TypeDeclaration
+ 			}
+ 		}
+ 		// enable enum support ?
+-		if (this.binding.isEnum()) {
++		if (this.binding.isEnum() && !this.binding.isAnonymousType()) {
+ 			this.enumValuesSyntheticfield = this.binding.addSyntheticFieldForEnumValues();
+ 		}
+ 	}

@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ThreadSafetyTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ThreadSafetyTests.java
+index 6559ba7..3f6f14f 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ThreadSafetyTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ThreadSafetyTests.java
+@@ -31,13 +31,7 @@ public ThreadSafetyTests(String name) {
+ }
+ 
+ public static Test suite() {
+-
+-	if (false){
+-		TestSuite suite = new Suite(ThreadSafetyTests.class.getName());
+-		suite.addTest(new ThreadSafetyTests("testDeadlock01"));
+-		return suite;
+-	}
+-	return new Suite(ThreadSafetyTests.class);	
++	return buildModelTestSuite(ThreadSafetyTests.class);	
+ }
+ /**
+  * 33231 - deadlocked if activating initializer while some concurrent action is populating the JavaModel

@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java b/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java
+index 6c50001..0367bd9 100644
+--- a/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java
++++ b/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java
+@@ -42,7 +42,7 @@ public class SpellCheckComponentTest extends SolrTestCaseJ4 {
+ 
+   @BeforeClass
+   public static void beforeClass() throws Exception {
+-    initCore("solrconfig.xml","schema.xml");
++    initCore("solrconfig-spellcheckcomponent.xml","schema.xml");
+     assertU(adoc("id", "0", "lowerfilt", "This is a title"));
+     assertU((adoc("id", "1", "lowerfilt",
+             "The quick reb fox jumped over the lazy brown dogs.")));

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java b/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
+index 6fd423c..53d2dea 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
+@@ -50,7 +50,7 @@ public class TestTimeLimitingCollector extends LuceneTestCase {
+   private static final int N_DOCS = 3000;
+   private static final int N_THREADS = 50;
+ 
+-  private Searcher searcher;
++  private IndexSearcher searcher;
+   private Directory directory;
+   private IndexReader reader;

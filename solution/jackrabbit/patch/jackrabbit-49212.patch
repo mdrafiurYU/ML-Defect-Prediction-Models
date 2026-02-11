@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java
+index 173bd4b..9c97a80 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java
+@@ -34,7 +34,7 @@ public class BinaryValueImpl extends BinaryValue implements JackrabbitValue {
+      * @param blob the blob
+      */
+     BinaryValueImpl(BLOBFileValue blob) throws RepositoryException {
+-        super(blob.getStream());
++        super(blob);
+         this.blob = blob;
+     }
+ 
+@@ -47,15 +47,6 @@ public class BinaryValueImpl extends BinaryValue implements JackrabbitValue {
+     }
+ 
+     /**
+-     * Get the wrapped blob file value
+-     * 
+-     * @return the blob file value
+-     */
+-    BLOBFileValue getBlob() {
+-        return blob;
+-    }
+-    
+-    /**
+      * Get the data identifier if one is available.
+      * 
+      * @return the data identifier or null

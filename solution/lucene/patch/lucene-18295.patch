@@ -1,0 +1,18 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/PathHierarchyTokenizerFactory.java b/solr/src/java/org/apache/solr/analysis/PathHierarchyTokenizerFactory.java
+index 5038076..c93db87 100644
+--- a/solr/src/java/org/apache/solr/analysis/PathHierarchyTokenizerFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/PathHierarchyTokenizerFactory.java
+@@ -24,6 +24,13 @@ import org.apache.lucene.analysis.path.PathHierarchyTokenizer;
+ 
+ 
+ /**
++ * Factory for {@link PathHierarchyTokenizer}. 
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_path" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="\" replace="/"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
+  * @version $Id$
+  */
+ public class PathHierarchyTokenizerFactory extends BaseTokenizerFactory {

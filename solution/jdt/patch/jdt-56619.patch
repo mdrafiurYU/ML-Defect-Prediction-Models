@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java
+index 0aee474..c52f888 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java
+@@ -151,7 +151,8 @@ public class DeltaProcessingState implements IResourceChangeListener {
+ 				projectResource.setDescription(description, null);
+ 		
+ 			} catch(CoreException e){
+-				throw new JavaModelException(e);
++				if (!ExternalJavaProject.EXTERNAL_PROJECT_NAME.equals(this.project.getElementName()))
++					throw new JavaModelException(e);
+ 			}
+ 		}
+ 	}

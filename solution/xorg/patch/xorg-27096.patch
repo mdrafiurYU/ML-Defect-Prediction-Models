@@ -1,0 +1,40 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index e8a7b79..d4c96f6 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -457,7 +457,7 @@ ProcRRGetCrtcInfo (ClientPtr client)
+     int				i, j, k, n;
+     
+     REQUEST_SIZE_MATCH(xRRGetCrtcInfoReq);
+-    crtc = LookupCrtc(client, stuff->crtc, SecurityReadAccess);
++    crtc = LookupCrtc(client, stuff->crtc, DixReadAccess);
+ 
+     if (!crtc)
+ 	return RRErrorBase + BadRRCrtc;
+@@ -766,7 +766,7 @@ ProcRRGetCrtcGammaSize (ClientPtr client)
+     int				n;
+ 
+     REQUEST_SIZE_MATCH(xRRGetCrtcGammaSizeReq);
+-    crtc = LookupCrtc (client, stuff->crtc, SecurityReadAccess);
++    crtc = LookupCrtc (client, stuff->crtc, DixReadAccess);
+     if (!crtc)
+ 	return RRErrorBase + BadRRCrtc;
+     
+@@ -793,7 +793,7 @@ ProcRRGetCrtcGamma (ClientPtr client)
+     unsigned long		len;
+     
+     REQUEST_SIZE_MATCH(xRRGetCrtcGammaReq);
+-    crtc = LookupCrtc (client, stuff->crtc, SecurityReadAccess);
++    crtc = LookupCrtc (client, stuff->crtc, DixReadAccess);
+     if (!crtc)
+ 	return RRErrorBase + BadRRCrtc;
+     
+@@ -826,7 +826,7 @@ ProcRRSetCrtcGamma (ClientPtr client)
+     CARD16			*red, *green, *blue;
+     
+     REQUEST_SIZE_MATCH(xRRSetCrtcGammaReq);
+-    crtc = LookupCrtc (client, stuff->crtc, SecurityWriteAccess);
++    crtc = LookupCrtc (client, stuff->crtc, DixWriteAccess);
+     if (!crtc)
+ 	return RRErrorBase + BadRRCrtc;
+     

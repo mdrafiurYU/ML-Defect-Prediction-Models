@@ -1,0 +1,20 @@
+diff --git a/os/osdep.h b/os/osdep.h
+index 1b8dcf7..af1d5a9 100644
+--- a/os/osdep.h
++++ b/os/osdep.h
+@@ -58,7 +58,6 @@ SOFTWARE.
+ 
+ #include <X11/Xdmcp.h>
+ 
+-#ifndef sgi	    /* SGI defines OPEN_MAX in a useless way */
+ #ifdef _POSIX_SOURCE
+ #include <limits.h>
+ #else
+@@ -66,7 +65,6 @@ SOFTWARE.
+ #include <limits.h>
+ #undef _POSIX_SOURCE
+ #endif
+-#endif
+ 
+ #ifndef OPEN_MAX
+ #ifdef SVR4

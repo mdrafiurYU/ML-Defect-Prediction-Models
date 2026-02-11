@@ -1,0 +1,12 @@
+diff --git a/hw/dmx/input/atKeynames.h b/hw/dmx/input/atKeynames.h
+index 85f13ac..e632ca2 100644
+--- a/hw/dmx/input/atKeynames.h
++++ b/hw/dmx/input/atKeynames.h
+@@ -67,7 +67,6 @@
+ #define ScrollLockMask	Mod5Mask
+ 
+ #define KeyPressed(k) (keyc->postdown[k >> 3] & (1 << (k & 7)))
+-#define ModifierDown(k) ((keyc->state & (k)) == (k))
+ 
+ /*
+  * NOTE: The AT/MF keyboards can generate (via the 8042) two (MF: three)

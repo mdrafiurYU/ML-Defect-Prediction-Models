@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+index a7d5749..06c27f5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+@@ -261,7 +261,7 @@ public class ClusterNode implements Runnable,
+                 sync();
+             } catch (ClusterException e) {
+                 String msg = "Periodic sync of journal failed: " + e.getMessage();
+-                log.error(msg);
++                log.error(msg, e);
+             } catch (Exception e) {
+                 String msg = "Unexpected error while syncing of journal: " + e.getMessage();
+                 log.error(msg, e);

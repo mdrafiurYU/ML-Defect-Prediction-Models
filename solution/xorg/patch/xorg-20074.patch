@@ -1,0 +1,12 @@
+diff --git a/mi/mioverlay.c b/mi/mioverlay.c
+index 9820cc6..88b3bf8 100644
+--- a/mi/mioverlay.c
++++ b/mi/mioverlay.c
+@@ -2029,7 +2029,6 @@ HasUnderlayChildren(WindowPtr pWin)
+ static Bool
+ CollectUnderlayChildrenRegions(WindowPtr pWin, RegionPtr pReg)
+ {
+-    ScreenPtr pScreen = pWin->drawable.pScreen;
+     WindowPtr pChild;
+     miOverlayTreePtr pTree;
+     Bool hasUnderlay;

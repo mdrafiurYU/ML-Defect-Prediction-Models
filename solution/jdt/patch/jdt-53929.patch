@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/MemoryIndex.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/MemoryIndex.java
+index c590b02..4e449b8 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/MemoryIndex.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/MemoryIndex.java
+@@ -57,7 +57,7 @@ HashtableOfObject addQueryResults(char[][] categories, char[] key, int matchRule
+ 	// results maps a word -> EntryResult
+ 	Object[] paths = this.docsToReferences.keyTable;
+ 	Object[] referenceTables = this.docsToReferences.valueTable;
+-	if (matchRule == (SearchPattern.R_EXACT_MATCH + SearchPattern.R_CASE_SENSITIVE) && key != null) {
++	if (matchRule == (SearchPattern.R_EXACT_MATCH | SearchPattern.R_CASE_SENSITIVE) && key != null) {
+ 		nextPath : for (int i = 0, l = referenceTables.length; i < l; i++) {
+ 			HashtableOfObject categoryToWords = (HashtableOfObject) referenceTables[i];
+ 			if (categoryToWords != null) {

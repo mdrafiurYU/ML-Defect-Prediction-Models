@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java
+index 4ed3a81..c27de33 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java
++++ b/lucene/src/java/org/apache/lucene/index/TermVectorsTermsWriterPerField.java
+@@ -263,6 +263,7 @@ final class TermVectorsTermsWriterPerField extends TermsHashConsumerPerField {
+     int[] lastOffsets;                                 // Last offset we saw
+     int[] lastPositions;                               // Last position where this term occurred
+ 
++    @Override
+     ParallelPostingsArray newInstance(int size) {
+       return new TermVectorsPostingsArray(size);
+     }

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/PackedIntsImpl.java b/lucene/src/java/org/apache/lucene/index/values/PackedIntsImpl.java
+index f0c7a6c..f37f7bb 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/PackedIntsImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/PackedIntsImpl.java
+@@ -41,7 +41,7 @@ class PackedIntsImpl {
+   static class IntsWriter extends Writer {
+    
+ 
+-    // nocommit - can we bulkcopy this on a merge?
++    // TODO: can we bulkcopy this on a merge?
+     private LongsRef intsRef;
+     private long[] docToValue;
+     private long minValue;

@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/SnapPuller.java b/solr/src/java/org/apache/solr/handler/SnapPuller.java
+index b93d34f..20ce25e 100644
+--- a/solr/src/java/org/apache/solr/handler/SnapPuller.java
++++ b/solr/src/java/org/apache/solr/handler/SnapPuller.java
+@@ -508,6 +508,7 @@ public class SnapPuller {
+ 
+   private void reloadCore() {
+     new Thread() {
++      @Override
+       public void run() {
+         try {
+           solrCore.getCoreDescriptor().getCoreContainer().reload(solrCore.getName());

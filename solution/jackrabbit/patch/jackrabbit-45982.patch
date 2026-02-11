@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
+index 11e45ca..ab49550 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
+@@ -28,6 +28,7 @@ import java.io.FileNotFoundException;
+ import java.io.FileOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.io.BufferedOutputStream;
+ 
+ /**
+  * Default temporary record used for appending to some journal.
+@@ -328,7 +329,7 @@ public class AppendRecord extends AbstractRecord {
+                 String msg = "Unable to open output stream on: " + file.getPath();
+                 throw new JournalException(msg, e);
+             }
+-            dataOut = new DataOutputStream(fileOut);
++            dataOut = new DataOutputStream(new BufferedOutputStream(fileOut));
+ 
+             try {
+                 dataOut.write(byteOut.toByteArray());

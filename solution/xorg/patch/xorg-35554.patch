@@ -1,0 +1,13 @@
+diff --git a/Xi/xiselev.c b/Xi/xiselev.c
+index 601b10c..f24dd36 100644
+--- a/Xi/xiselev.c
++++ b/Xi/xiselev.c
+@@ -65,7 +65,7 @@ ProcXiSelectEvent(ClientPtr client)
+     REQUEST(xXiSelectEventReq);
+     REQUEST_SIZE_MATCH(xXiSelectEventReq);
+ 
+-    rc = dixLookupWindow(&pWin, stuff->window, client, DixWriteAccess);
++    rc = dixLookupWindow(&pWin, stuff->window, client, DixReceiveAccess);
+     if (rc != Success)
+         return rc;
+ 

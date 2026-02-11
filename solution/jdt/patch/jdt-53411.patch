@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java
+index 38e9d86..d285963 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java
+@@ -10,6 +10,8 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ /**
+  * Completion is expected to be in an inner type
+  */
+@@ -17,6 +19,9 @@ public class InnerTypeCompletionTest extends AbstractCompletionTest {
+ public InnerTypeCompletionTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(InnerTypeCompletionTest.class);
++}
+ /*
+  * Test completion in the first method of an anonymous inner class
+  */

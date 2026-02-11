@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxdrawable.h b/GL/glx/glxdrawable.h
+index 4514e26..e6d2cd6 100644
+--- a/GL/glx/glxdrawable.h
++++ b/GL/glx/glxdrawable.h
+@@ -58,6 +58,8 @@ struct __GLXdrawable {
+     void (*destroy)(__GLXdrawable *private);
+     GLboolean (*resize)(__GLXdrawable *private);
+     GLboolean (*swapBuffers)(__GLXdrawable *);
++    void      (*copySubBuffer)(__GLXdrawable *drawable,
++			       int x, int y, int w, int h);
+ 
+     /*
+     ** list of drawable private structs

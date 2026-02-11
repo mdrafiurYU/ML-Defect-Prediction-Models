@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/IdFactoryLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/IdFactoryLogger.java
+index 1fda94b..4e08576 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/IdFactoryLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/IdFactoryLogger.java
+@@ -74,4 +74,18 @@ public class IdFactoryLogger extends AbstractLogger implements IdFactory {
+             }}, "createNodeId(String)", new Object[]{uniqueID});
+     }
+ 
++    public String toJcrIdentifier(final NodeId nodeId) {
++        return (String) execute(new SafeCallable() {
++            public Object call() {
++                return idFactory.toJcrIdentifier(nodeId);
++            }}, "toJcrIdentifier(String)", new Object[]{nodeId});
++    }
++
++    public NodeId fromJcrIdentifier(final String jcrIdentifier) {
++        return (NodeId) execute(new SafeCallable() {
++            public Object call() {
++                return idFactory.fromJcrIdentifier(jcrIdentifier);
++            }}, "fromJcrIdentifier(String)", new Object[]{jcrIdentifier});
++    }
++
+ }

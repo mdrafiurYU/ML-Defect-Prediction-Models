@@ -1,0 +1,20 @@
+diff --git a/dix/main.c b/dix/main.c
+index 119828b..ca0028a 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -102,6 +102,7 @@ Equipment Corporation.
+ #include "dixfont.h"
+ #include "extnsionst.h"
+ #include "privates.h"
++#include "registry.h"
+ #ifdef XPRINT
+ #include "DiPrint.h"
+ #endif
+@@ -354,6 +355,7 @@ main(int argc, char *argv[], char *envp[])
+ 	InitGlyphCaching();
+ 	if (!dixResetPrivates())
+ 	    FatalError("couldn't init private data storage");
++	dixResetRegistry();
+ 	ResetFontPrivateIndex();
+ 	InitCallbackManager();
+ 	InitVisualWrap();

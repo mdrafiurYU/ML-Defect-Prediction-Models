@@ -1,0 +1,18 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/ByteRunAutomaton.java b/lucene/src/java/org/apache/lucene/util/automaton/ByteRunAutomaton.java
+index 1774ff7..ae8d203 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/ByteRunAutomaton.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/ByteRunAutomaton.java
+@@ -20,7 +20,12 @@ package org.apache.lucene.util.automaton;
+ public class ByteRunAutomaton extends RunAutomaton {
+   
+   public ByteRunAutomaton(Automaton a) {
+-    super(new UTF32ToUTF8().convert(a), 256, true);
++    this(a, false);
++  }
++  
++  /** expert: if utf8 is true, the input is already byte-based */
++  public ByteRunAutomaton(Automaton a, boolean utf8) {
++    super(utf8 ? a : new UTF32ToUTF8().convert(a), 256, true);
+   }
+ 
+   /**

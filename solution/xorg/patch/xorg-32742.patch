@@ -1,0 +1,14 @@
+diff --git a/fb/fb.h b/fb/fb.h
+index 379a00a..380e2e1 100644
+--- a/fb/fb.h
++++ b/fb/fb.h
+@@ -1624,7 +1624,8 @@ PixmapPtr
+ fbCreatePixmapBpp (ScreenPtr pScreen, int width, int height, int depth, int bpp);
+ 
+ PixmapPtr
+-fbCreatePixmap (ScreenPtr pScreen, int width, int height, int depth);
++fbCreatePixmap (ScreenPtr pScreen, int width, int height, int depth,
++		unsigned usage_hint);
+ 
+ Bool
+ fbDestroyPixmap (PixmapPtr pPixmap);

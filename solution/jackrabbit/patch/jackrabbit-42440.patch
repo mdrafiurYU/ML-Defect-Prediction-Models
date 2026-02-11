@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryObjectModelImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryObjectModelImpl.java
+index af64840..499ff41 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryObjectModelImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryObjectModelImpl.java
+@@ -100,7 +100,8 @@ public class QueryObjectModelImpl extends AbstractQueryImpl {
+         Query query = JQOM2LuceneQueryBuilder.createQuery(qomTree, session,
+                 index.getContext().getItemStateManager(),
+                 index.getNamespaceMappings(), index.getTextAnalyzer(),
+-                propReg, index.getSynonymProvider(), getBindVariableValues());
++                propReg, index.getSynonymProvider(), getBindVariableValues(),
++                index.getIndexFormatVersion());
+ 
+         ColumnImpl[] columns = qomTree.getColumns();
+         Name[] selectProps = new Name[columns.length];

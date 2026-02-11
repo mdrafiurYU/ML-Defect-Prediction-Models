@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java
+index db2556f..5f3aeda 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/AbstractQOMTest.java
+@@ -24,11 +24,9 @@ import javax.jcr.Node;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+ import javax.jcr.query.Query;
+-import javax.jcr.query.QueryManager;
+ import javax.jcr.query.QueryResult;
+ import javax.jcr.query.Row;
+ import javax.jcr.query.RowIterator;
+-import javax.jcr.query.qom.QueryObjectModelFactory;
+ 
+ import org.apache.jackrabbit.test.api.query.AbstractQueryTest;
+ 
+@@ -37,14 +35,6 @@ import org.apache.jackrabbit.test.api.query.AbstractQueryTest;
+  */
+ public class AbstractQOMTest extends AbstractQueryTest {
+ 
+-    protected QueryObjectModelFactory qf;
+-
+-    protected void setUp() throws Exception {
+-        super.setUp();
+-        QueryManager qm = superuser.getWorkspace().getQueryManager();
+-        qf = qm.getQOMFactory();
+-    }
+-
+     /**
+      * Binds the given <code>value</code> to the variable named
+      * <code>var</code>.

@@ -1,0 +1,14 @@
+diff --git a/exa/exa_migration.c b/exa/exa_migration.c
+index 7968521..d69526b 100644
+--- a/exa/exa_migration.c
++++ b/exa/exa_migration.c
+@@ -299,6 +299,9 @@ exaDoMoveInPixmap (ExaMigrationPtr migrate)
+     if (pPixmap->drawable.bitsPerPixel < 8)
+ 	return;
+ 
++    if (pExaPixmap->accel_blocked)
++	return;
++
+     if (pExaPixmap->area == NULL) {
+ 	pExaPixmap->area =
+ 	    exaOffscreenAlloc (pScreen, pExaPixmap->fb_size,

@@ -1,0 +1,26 @@
+diff --git a/hw/xnest/Display.c b/hw/xnest/Display.c
+index 301ab13..602a6c9 100644
+--- a/hw/xnest/Display.c
++++ b/hw/xnest/Display.c
+@@ -48,7 +48,6 @@ Drawable xnestDefaultDrawables[MAXDEPTH + 1];
+ Pixmap xnestIconBitmap;
+ Pixmap xnestScreenSaverPixmap;
+ XlibGC xnestBitmapGC;
+-Window xnestConfineWindow;
+ unsigned long xnestEventMask;
+ 
+ void
+@@ -136,13 +135,6 @@ xnestOpenDisplay(int argc, char *argv[])
+   
+   xnestBitmapGC = XCreateGC(xnestDisplay, xnestDefaultDrawables[1], 0L, NULL);
+   
+-  xnestConfineWindow = XCreateWindow(xnestDisplay, 
+-				     DefaultRootWindow(xnestDisplay),
+-				     0, 0, 1, 1, 0, 0,
+-				     InputOnly,
+-				     CopyFromParent,
+-				     0L, NULL);
+-  
+   if (!(xnestUserGeometry & XValue))
+     xnestX = 0;
+   

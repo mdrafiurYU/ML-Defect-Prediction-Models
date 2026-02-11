@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
+index 7b6c8f0..1fdccbf 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
+@@ -335,7 +335,7 @@ class IndexMerger extends Thread implements IndexListener {
+                     }
+                 }
+             } catch (Throwable e) {
+-                log.error("Error while merging indexes: " + e);
++                log.error("Error while merging indexes: ", e);
+             }
+         }
+         log.info("IndexMerger terminated");

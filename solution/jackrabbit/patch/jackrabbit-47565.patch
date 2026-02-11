@@ -1,0 +1,113 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/DescendantNodeTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/DescendantNodeTest.java
+index 676e161..3c98ae0 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/DescendantNodeTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/DescendantNodeTest.java
+@@ -38,11 +38,6 @@ public class DescendantNodeTest extends AbstractQOMTest {
+         Query q = qomFactory.createQuery(qomFactory.selector(testNodeType, "s"),
+                 qomFactory.descendantNode("s", testRoot), null, null);
+         checkResult(q.execute(), new Node[]{n});
+-
+-        // using default selector
+-        q = qomFactory.createQuery(qomFactory.selector(testNodeType),
+-                qomFactory.descendantNode(testRoot), null, null);
+-        checkResult(q.execute(), new Node[]{n});
+     }
+ 
+     public void testDescendantNodes() throws RepositoryException {
+@@ -54,11 +49,6 @@ public class DescendantNodeTest extends AbstractQOMTest {
+         Query q = qomFactory.createQuery(qomFactory.selector(testNodeType, "s"),
+                 qomFactory.descendantNode("s", testRoot), null, null);
+         checkResult(q.execute(), new Node[]{n1, n2, n21});
+-
+-        // using default selector
+-        q = qomFactory.createQuery(qomFactory.selector(testNodeType),
+-                qomFactory.descendantNode(testRoot), null, null);
+-        checkResult(q.execute(), new Node[]{n1, n2, n21});
+     }
+ 
+     public void testPathDoesNotExist() throws RepositoryException {
+@@ -66,12 +56,6 @@ public class DescendantNodeTest extends AbstractQOMTest {
+                 qomFactory.descendantNode("s", testRoot + "/" + nodeName1),
+                 null, null);
+         checkResult(q.execute(), new Node[]{});
+-
+-        // using default selector
+-        q = qomFactory.createQuery(qomFactory.selector(testNodeType),
+-                qomFactory.descendantNode(testRoot + "/" + nodeName1),
+-                null, null);
+-        checkResult(q.execute(), new Node[]{});
+     }
+ 
+     public void testDescendantNodesDoNotMatchSelector()
+@@ -89,11 +73,6 @@ public class DescendantNodeTest extends AbstractQOMTest {
+                 Query q = qomFactory.createQuery(qomFactory.selector(nt.getName(), "s"),
+                         qomFactory.descendantNode("s", testRoot), null, null);
+                 checkResult(q.execute(), new Node[]{});
+-
+-                // using default selector
+-                q = qomFactory.createQuery(qomFactory.selector(nt.getName()),
+-                        qomFactory.descendantNode(testRoot), null, null);
+-                checkResult(q.execute(), new Node[]{});
+                 return;
+             }
+         }
+@@ -110,16 +89,6 @@ public class DescendantNodeTest extends AbstractQOMTest {
+         } catch (InvalidQueryException e) {
+             // expected
+         }
+-
+-        // using default selector
+-        try {
+-            Query q = qomFactory.createQuery(qomFactory.selector(testNodeType),
+-                    qomFactory.descendantNode(testPath), null, null);
+-            q.execute();
+-            fail("DescendantNode with relative path argument must throw InvalidQueryException");
+-        } catch (InvalidQueryException e) {
+-            // expected
+-        }
+     }
+ 
+     public void testSyntacticallyInvalidPath() throws RepositoryException {
+@@ -132,17 +101,6 @@ public class DescendantNodeTest extends AbstractQOMTest {
+         } catch (InvalidQueryException e) {
+             // expected
+         }
+-
+-        // using default selector
+-        try {
+-            Query q = qomFactory.createQuery(qomFactory.selector(testNodeType),
+-                    qomFactory.descendantNode(testRoot + "/" + nodeName1 +
+-                    "["), null, null);
+-            q.execute();
+-            fail("DescendantNode with syntactically invalid path argument must throw InvalidQueryException");
+-        } catch (InvalidQueryException e) {
+-            // expected
+-        }
+     }
+ 
+     public void testNotASelectorName() throws RepositoryException {
+@@ -154,24 +112,6 @@ public class DescendantNodeTest extends AbstractQOMTest {
+         } catch (InvalidQueryException e) {
+             // expected
+         }
+-
+-        // using default selector
+-        try {
+-            Query q = qomFactory.createQuery(qomFactory.selector(testNodeType),
+-                    qomFactory.descendantNode("x", testRoot), null, null);
+-            q.execute();
+-            fail("DescendantNode with an invalid selector name must throw InvalidQueryException");
+-        } catch (InvalidQueryException e) {
+-            // expected
+-        }
+     }
+ 
+-    public void testDefaultSelector() throws RepositoryException {
+-        Node n = testRootNode.addNode(nodeName1, testNodeType);
+-        testRootNode.save();
+-
+-        Query q = qomFactory.createQuery(qomFactory.selector(testNodeType, "s"),
+-                qomFactory.descendantNode(testRoot), null, null);
+-        checkResult(q.execute(), new Node[]{n});
+-    }
+ }

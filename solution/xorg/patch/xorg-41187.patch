@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index d093b1a..026ec78 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -305,7 +305,8 @@ struct _xf86Crtc {
+      * Current transformation matrix
+      */
+     PictTransform   crtc_to_framebuffer;
+-    PictTransform   framebuffer_to_crtc;
++    struct pict_f_transform f_crtc_to_framebuffer;
++    struct pict_f_transform f_framebuffer_to_crtc;
+     PictFilterPtr   filter;
+     xFixed	    *params;
+     int		    nparams;

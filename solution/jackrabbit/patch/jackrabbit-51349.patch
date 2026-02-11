@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DoublePropertyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DoublePropertyTest.java
+index fa0fa74..82341da 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DoublePropertyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DoublePropertyTest.java
+@@ -130,17 +130,15 @@ public class DoublePropertyTest extends AbstractPropertyTest {
+         }
+         try {
+             val.getDouble();
+-            fail("Non stream method call after stream method call " +
+-                    "should throw an IllegalStateException.");
+         } catch (IllegalStateException ise) {
+-            //ok
++            fail("Non stream method call after stream method call " +
++                    "should not throw an IllegalStateException.");
+         }
+         try {
+             ins = otherVal.getStream();
+-            fail("Stream method call after a non stream method call " +
+-                    "should throw an IllegalStateException.");
+         } catch (IllegalStateException ise) {
+-            // ok
++            fail("Stream method call after a non stream method call " +
++                    "should not throw an IllegalStateException.");
+         } finally {
+             if (in != null) {
+                 in.close();

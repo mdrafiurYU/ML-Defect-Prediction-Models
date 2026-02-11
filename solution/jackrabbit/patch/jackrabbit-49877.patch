@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java
+index 91f3a9d..61fe7a9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java
+@@ -102,7 +102,7 @@ public class JackrabbitIndexSearcher
+             hits = ((JackrabbitQuery) query).execute(this, session, sort);
+         }
+         if (hits == null) {
+-            if (sort == null) {
++            if (sort.getSort().length == 0) {
+                 hits = new LuceneQueryHits(reader, this, query);
+             } else {
+                 hits = new SortedLuceneQueryHits(

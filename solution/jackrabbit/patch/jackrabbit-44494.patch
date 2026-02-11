@@ -1,0 +1,45 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index b85c48b..2d0d35c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -31,7 +31,6 @@ import org.apache.jackrabbit.core.cluster.LockEventChannel;
+ import org.apache.jackrabbit.core.cluster.UpdateEventChannel;
+ import org.apache.jackrabbit.core.cluster.UpdateEventListener;
+ import org.apache.jackrabbit.core.config.ClusterConfig;
+-import org.apache.jackrabbit.core.config.DataStoreConfig;
+ import org.apache.jackrabbit.core.config.PersistenceManagerConfig;
+ import org.apache.jackrabbit.core.config.RepositoryConfig;
+ import org.apache.jackrabbit.core.config.SecurityManagerConfig;
+@@ -272,11 +271,9 @@ public class RepositoryImpl extends AbstractRepository
+             nsReg = createNamespaceRegistry(new BasedFileSystem(repStore, "/namespaces"));
+             ntReg = createNodeTypeRegistry(nsReg, new BasedFileSystem(repStore, "/nodetypes"));
+ 
+-            if (repConfig.getDataStoreConfig() != null) {
++            dataStore = repConfig.getDataStore();
++            if (dataStore != null) {
+                 assert InternalValue.USE_DATA_STORE;
+-                dataStore = createDataStore();
+-            } else {
+-                dataStore = null;
+             }
+ 
+             // init workspace configs
+@@ -694,18 +691,6 @@ public class RepositoryImpl extends AbstractRepository
+         }
+     }
+ 
+-    /**
+-     * Create a data store object using the data store configuration.
+-     *
+-     * @return the data store object
+-     */
+-    protected DataStore createDataStore() throws RepositoryException {
+-        DataStoreConfig dsc = repConfig.getDataStoreConfig();
+-        DataStore dataStore = (DataStore) dsc.newInstance();
+-        dataStore.init(repConfig.getHomeDir());
+-        return dataStore;
+-    }
+-
+     protected NamespaceRegistryImpl getNamespaceRegistry() {
+         // check sanity of this instance
+         sanityCheck();

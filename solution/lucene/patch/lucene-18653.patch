@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queries/src/test/org/apache/lucene/search/ChainedFilterTest.java b/lucene/contrib/queries/src/test/org/apache/lucene/search/ChainedFilterTest.java
+index 1494dfe..27e091b 100644
+--- a/lucene/contrib/queries/src/test/org/apache/lucene/search/ChainedFilterTest.java
++++ b/lucene/contrib/queries/src/test/org/apache/lucene/search/ChainedFilterTest.java
+@@ -84,7 +84,7 @@ public class ChainedFilterTest extends LuceneTestCase {
+     //Date pastTheEnd = parseDate("2099 Jan 1");
+     // dateFilter = DateFilter.Before("date", pastTheEnd);
+     // just treat dates as strings and select the whole range for now...
+-    dateFilter = new TermRangeFilter("date","","ZZZZ",true,true);
++    dateFilter = TermRangeFilter.newStringRange("date","","ZZZZ",true,true);
+ 
+     bobFilter = new QueryWrapperFilter(
+         new TermQuery(new Term("owner", "bob")));

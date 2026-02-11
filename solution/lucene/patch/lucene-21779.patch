@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java b/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
+index 7cb6994..8e18b52 100644
+--- a/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
+@@ -214,7 +214,7 @@ public class MultiPhraseQuery extends Query {
+           docFreq = reader.docFreq(term.field(), term.bytes());
+         }
+ 
+-        postingsFreqs[pos] = new PhraseQuery.PostingsAndFreq(postingsEnum, docFreq, positions.get(pos).intValue());
++        postingsFreqs[pos] = new PhraseQuery.PostingsAndFreq(postingsEnum, docFreq, positions.get(pos).intValue(), terms[0]);
+       }
+ 
+       // sort by increasing docFreq order

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+index 8b6d136..b01fad0 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+@@ -31,7 +31,7 @@ public static boolean isDeclaringPackageFragment(IPackageFragment packageFragmen
+ 	char[] fileName = typeBinding.getFileName();
+ 	if (fileName != null) {
+ 		// retrieve the actual file name from the full path (sources are generally only containing it already)
+-		CharOperation.replace(fileName, '/', '\\');
++		fileName = CharOperation.replaceOnCopy(fileName, '/', '\\'); // ensure to not do any side effect on file name (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=136016)
+ 		fileName = CharOperation.lastSegment(fileName, '\\');
+ 		
+ 		try {

@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java b/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java
+index 943b6d6..e5cc768 100644
+--- a/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java
++++ b/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java
+@@ -46,7 +46,7 @@ public class TestLuceneDictionary extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     store = newDirectory();
+-    IndexWriter writer = new IndexWriter(store, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(MockTokenizer.WHITESPACE, false)));
++    IndexWriter writer = new IndexWriter(store, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random, MockTokenizer.WHITESPACE, false)));
+ 
+     Document doc;

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86VidMode.c b/hw/xfree86/common/xf86VidMode.c
+index 81e4b96..f911643 100644
+--- a/hw/xfree86/common/xf86VidMode.c
++++ b/hw/xfree86/common/xf86VidMode.c
+@@ -183,7 +183,7 @@ VidModeGetDotClock(int scrnIndex, int Clock)
+ 	return 0;
+ 
+     pScrn = xf86Screens[scrnIndex];
+-    if ((pScrn->progClock) || (Clock > MAXCLOCKS))
++    if ((pScrn->progClock) || (Clock >= MAXCLOCKS))
+ 	return Clock;
+     else  
+ 	return pScrn->clock[Clock];

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefinitionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefinitionImpl.java
+index 5bf528b..447addb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefinitionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefinitionImpl.java
+@@ -113,6 +113,11 @@ public class NodeTypeDefinitionImpl implements NodeTypeDefinition {
+         return ntd.isMixin();
+     }
+ 
++    public boolean isQueryable() {
++        // TODO 
++        throw new RuntimeException("Not implemented yet, see JCR-1591");
++    }
++
+     /**
+      * {@inheritDoc}
+      */

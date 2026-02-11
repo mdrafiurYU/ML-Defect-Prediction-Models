@@ -1,0 +1,13 @@
+diff --git a/dix/window.c b/dix/window.c
+index ca4335c..717c5a7 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -1522,7 +1522,7 @@ PatchUp:
+ 
+ 	REGION_NULL(pScreen, &exposed);
+ 	REGION_SUBTRACT(pScreen, &exposed, &pWin->borderClip, &pWin->winSize);
+-	(*pWin->drawable.pScreen->PaintWindowBorder)(pWin, &exposed, PW_BORDER);
++	miPaintWindow(pWin, &exposed, PW_BORDER);
+ 	REGION_UNINIT(pScreen, &exposed);
+     }
+     return error;

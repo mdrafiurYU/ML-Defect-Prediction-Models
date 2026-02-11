@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/loader/dlloader.h b/hw/xfree86/loader/dlloader.h
+index 1dfae27..6475291 100644
+--- a/hw/xfree86/loader/dlloader.h
++++ b/hw/xfree86/loader/dlloader.h
+@@ -27,10 +27,11 @@
+ 
+ #ifndef _DLLOADER_H
+ #define _DLLOADER_H
+-extern void *DLLoadModule(loaderPtr, int, LOOKUP **);
++extern void *DLLoadModule(loaderPtr, int, LOOKUP **, int flags);
+ extern void DLResolveSymbols(void *);
+ extern int DLCheckForUnresolved(void *);
+ extern void DLUnloadModule(void *);
+ extern void *DLFindSymbol(const char *name);
++extern void *DLFindSymbolLocal(pointer module, const char *name);
+ 
+ #endif

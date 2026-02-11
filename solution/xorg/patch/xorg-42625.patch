@@ -1,0 +1,13 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 83a355e..567790c 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -576,7 +576,7 @@ miPointerMove (DeviceIntPtr pDev, ScreenPtr pScreen, int x, int y)
+         }
+     }
+ 
+-    nevents = GetPointerEvents(events, pDev, MotionNotify, 0, POINTER_ABSOLUTE, 0, 2, valuators);
++    nevents = GetPointerEvents(events, pDev, MotionNotify, 0, POINTER_SCREEN | POINTER_ABSOLUTE, 0, 2, valuators);
+ 
+     OsBlockSignals();
+ #ifdef XQUARTZ

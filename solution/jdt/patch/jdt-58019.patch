@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+index 907725d..095addd 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+@@ -37,6 +37,7 @@ public interface TagBits {
+ 	long KnowsDefaultAbstractMethods = ASTNode.Bit11; // type
+ 
+ 	long IsArgument = ASTNode.Bit11; // local
++	long ClearPrivateModifier = ASTNode.Bit11; // constructor binding
+ 	
+ 	// Reusable bit currently used by Scopes
+ 	long InterfaceVisited = ASTNode.Bit12;

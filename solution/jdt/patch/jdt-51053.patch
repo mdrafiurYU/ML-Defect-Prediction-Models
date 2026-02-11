@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+index a2c68c7..742fddd 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+@@ -231,7 +231,7 @@ public class AnnotationProcessorFactoryLoader {
+ 				{ 
+ 					if ( container == null )
+ 					{
+-						container = new PluginFactoryContainer(extensions[i].getLabel());
++						container = new PluginFactoryContainer(extensions[i].getNamespace());
+ 						factories.add( container );
+ 					}
+ 					container.addFactoryName( configElements[j].getAttribute("class") );

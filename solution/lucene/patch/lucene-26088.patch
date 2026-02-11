@@ -1,0 +1,16 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/distance/GeohashFunction.java b/solr/src/java/org/apache/solr/search/function/distance/GeohashFunction.java
+index df146f7..55d1aad 100644
+--- a/solr/src/java/org/apache/solr/search/function/distance/GeohashFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/distance/GeohashFunction.java
+@@ -16,9 +16,9 @@ package org.apache.solr.search.function.distance;
+  * limitations under the License.
+  */
+ 
+-import org.apache.solr.search.function.ValueSource;
+-import org.apache.solr.search.function.DocValues;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.spatial.geohash.GeoHashUtils;
+ 
+ import java.util.Map;

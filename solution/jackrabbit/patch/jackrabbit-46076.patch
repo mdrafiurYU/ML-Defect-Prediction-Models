@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java
+index c4791c8..b55625c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java
+@@ -79,6 +79,18 @@ public class IndexFormatVersion {
+     }
+ 
+     /**
++     * Returns <code>true</code> if this version is at least as high as the
++     * given <code>version</code>.
++     *
++     * @param version the other version to compare.
++     * @return <code>true</code> if this version is at least as high as the
++     *         provided; <code>false</code> otherwise.
++     */
++    public boolean isAtLeast(IndexFormatVersion version) {
++        return this.version >= version.getVersion();
++    }
++
++    /**
+      * @return a string representation of this index format version.
+      */
+     public String toString() {

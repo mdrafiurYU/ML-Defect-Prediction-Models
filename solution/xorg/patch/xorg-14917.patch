@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxpict.c b/hw/dmx/dmxpict.c
+index 7e831a5..fb19d86 100644
+--- a/hw/dmx/dmxpict.c
++++ b/hw/dmx/dmxpict.c
+@@ -36,6 +36,10 @@
+  *  Provide support for the RENDER extension (version 0.8).
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxsync.h"
+ #include "dmxpict.h"

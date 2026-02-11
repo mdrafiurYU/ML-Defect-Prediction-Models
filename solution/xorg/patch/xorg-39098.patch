@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index e78ba33..3085996 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -684,14 +684,6 @@ _X_HIDDEN void *xfree86LookupTab[] = {
+     SYMFUNC(DPMSSet)
+     SYMFUNC(DPMSSupported)
+ #endif
+-/* xf86Debug.c */
+-#ifdef BUILDDEBUG
+-    SYMFUNC(xf86Break1)
+-    SYMFUNC(xf86Break2)
+-    SYMFUNC(xf86Break3)
+-    SYMFUNC(xf86SPTimestamp)
+-    SYMFUNC(xf86STimestamp)
+-#endif
+ 
+     SYMFUNC(pciTag)
+     SYMFUNC(pciBusAddrToHostAddr)

@@ -1,0 +1,15 @@
+diff --git a/afb/afbpolypnt.c b/afb/afbpolypnt.c
+index a9d96ed..b8ea3ed 100644
+--- a/afb/afbpolypnt.c
++++ b/afb/afbpolypnt.c
+@@ -90,8 +90,8 @@ afbPolyPoint(pDrawable, pGC, mode, npt, pptInit)
+ 	register unsigned char *rrops;
+ 	afbPrivGC *pGCPriv;
+ 
+-	pGCPriv = (afbPrivGC *) pGC->devPrivates[afbGCPrivateIndex].ptr;
+-
++	pGCPriv = (afbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++						afbGCPrivateKey);
+ 	afbGetPixelWidthSizeDepthAndPointer(pDrawable, nlwidth, sizeDst, depthDst,
+ 													 pBaseSave);
+ 

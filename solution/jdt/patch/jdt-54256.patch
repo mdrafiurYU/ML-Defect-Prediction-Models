@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/FieldInfo.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/FieldInfo.java
+index 14146f1..b43b6eb 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/FieldInfo.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/FieldInfo.java
+@@ -63,7 +63,8 @@ public FieldInfo (byte classFileBytes[], int offsets[], int offset) {
+ 					}
+ 					break;
+ 				case 'R' :
+-					if (CharOperation.equals(attributeName, AttributeNamesConstants.RuntimeVisibleAnnotationsName)) {
++					if (CharOperation.equals(attributeName, AttributeNamesConstants.RuntimeVisibleAnnotationsName)
++							|| CharOperation.equals(attributeName, AttributeNamesConstants.RuntimeInvisibleAnnotationsName)) {
+ 						decodeStandardAnnotations(readOffset);
+ 					}
+ 			}

@@ -1,0 +1,17 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/standard/StandardFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/standard/StandardFilter.java
+index 7eeb87c..8771466 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/standard/StandardFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/standard/StandardFilter.java
+@@ -31,12 +31,6 @@ import org.apache.lucene.util.Version;
+ public class StandardFilter extends TokenFilter {
+   private final Version matchVersion;
+   
+-  /** @deprecated Use {@link #StandardFilter(Version, TokenStream)} instead. */
+-  @Deprecated
+-  public StandardFilter(TokenStream in) {
+-    this(Version.LUCENE_30, in);
+-  }
+-  
+   public StandardFilter(Version matchVersion, TokenStream in) {
+     super(in);
+     this.matchVersion = matchVersion;

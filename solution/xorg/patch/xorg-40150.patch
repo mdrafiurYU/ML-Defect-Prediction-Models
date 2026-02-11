@@ -1,0 +1,14 @@
+diff --git a/glx/glxext.c b/glx/glxext.c
+index 6ba404f..c2171a8 100644
+--- a/glx/glxext.c
++++ b/glx/glxext.c
+@@ -54,7 +54,8 @@ RESTYPE __glXSwapBarrierRes;
+ */
+ xGLXSingleReply __glXReply;
+ 
+-static DevPrivateKey glxClientPrivateKey = &glxClientPrivateKey;
++static int glxClientPrivateKeyIndex;
++static DevPrivateKey glxClientPrivateKey = &glxClientPrivateKeyIndex;
+ 
+ /*
+ ** Client that called into GLX dispatch.

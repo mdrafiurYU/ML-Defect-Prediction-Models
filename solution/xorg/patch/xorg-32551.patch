@@ -1,0 +1,38 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 556bfc8..b40e8bd 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -630,16 +630,6 @@ InitExtensions(argc, argv)
+     if (!noXFree86DRIExtension) XFree86DRIExtensionInit();
+ #endif
+ #endif
+-
+-#ifdef GLXEXT
+-#ifdef INXDARWINAPP
+-    DarwinGlxPushProvider(__DarwinglXMesaProvider);
+-    if (!noGlxExtension) DarwinGlxExtensionInit();
+-#else
+-    GlxPushProvider(&__glXMesaProvider);
+-    if (!noGlxExtension) GlxExtensionInit();
+-#endif // INXDARWINAPP
+-#endif // GLXEXT
+ #ifdef XFIXES
+     /* must be before Render to layer DisplayCursor correctly */
+     if (!noXFixesExtension) XFixesExtensionInit();
+@@ -665,6 +655,16 @@ InitExtensions(argc, argv)
+ #ifdef DAMAGE
+     if (!noDamageExtension) DamageExtensionInit();
+ #endif
++
++#ifdef GLXEXT
++#ifdef INXDARWINAPP
++    DarwinGlxPushProvider(__DarwinglXMesaProvider);
++    if (!noGlxExtension) DarwinGlxExtensionInit();
++#else
++    GlxPushProvider(&__glXMesaProvider);
++    if (!noGlxExtension) GlxExtensionInit();
++#endif
++#endif
+ }
+ 
+ void

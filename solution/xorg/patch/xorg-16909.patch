@@ -1,0 +1,62 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index 0a927ed..26e6297 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -134,6 +134,7 @@ xf86RandRSetMode (ScreenPtr	    pScreen,
+     int			oldmmWidth = pScreen->mmWidth;
+     int			oldmmHeight = pScreen->mmHeight;
+     WindowPtr		pRoot = WindowTable[pScreen->myNum];
++    Bool		ret = TRUE;
+     
+     if (pRoot)
+ 	(*scrp->EnableDisableFBAccess) (pScreen->myNum, FALSE);
+@@ -168,7 +169,7 @@ xf86RandRSetMode (ScreenPtr	    pScreen,
+ 	scrp->virtualY = pScreen->height = oldHeight;
+ 	pScreen->mmWidth = oldmmWidth;
+ 	pScreen->mmHeight = oldmmHeight;
+-	return FALSE;
++	ret = FALSE;
+     }
+     /*
+      * Make sure the layout is correct
+@@ -182,7 +183,7 @@ xf86RandRSetMode (ScreenPtr	    pScreen,
+     xf86SetViewport (pScreen, 0, 0);
+     if (pRoot)
+ 	(*scrp->EnableDisableFBAccess) (pScreen->myNum, TRUE);
+-    return TRUE;
++    return ret;
+ }
+ 
+ static Bool
+@@ -196,6 +197,7 @@ xf86RandRSetConfig (ScreenPtr		pScreen,
+     DisplayModePtr	    mode;
+     int			    px, py;
+     Bool		    useVirtual = FALSE;
++    Rotation		    oldRotation = randrp->rotation;
+ 
+     miPointerPosition (&px, &py);
+     for (mode = scrp->modes; ; mode = mode->next)
+@@ -238,8 +240,22 @@ xf86RandRSetConfig (ScreenPtr		pScreen,
+ 	randrp->rotation = rotation;
+     }
+     
+-    if (!xf86RandRSetMode (pScreen, mode, useVirtual, pSize->mmWidth, pSize->mmHeight))
++    if (!xf86RandRSetMode (pScreen, mode, useVirtual, pSize->mmWidth, pSize->mmHeight)) {
++	if(randrp->rotation != oldRotation) {
++	   /* Have the driver undo its thing. */
++	   if (scrp->DriverFunc) {
++	       xorgRRRotation RRRotation;
++	       RRRotation.RRConfig.rotation = oldRotation;
++	       RRRotation.RRConfig.rate = xf86RandRModeRefresh (scrp->currentMode);
++	       RRRotation.RRConfig.width = pScreen->width;
++	       RRRotation.RRConfig.height = pScreen->height;
++	       (*scrp->DriverFunc)(scrp, RR_SET_CONFIG, &RRRotation);
++	   }
++
++	   randrp->rotation = oldRotation;
++	}
+ 	return FALSE;
++    }
+     /*
+      * Move the cursor back where it belongs; SwitchMode repositions it
+      */

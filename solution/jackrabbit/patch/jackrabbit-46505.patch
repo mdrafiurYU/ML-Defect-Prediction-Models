@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitQuery.java
+index b786a55..624b20b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitQuery.java
+@@ -17,6 +17,7 @@
+ package org.apache.jackrabbit.core.query.lucene;
+ 
+ import org.apache.lucene.search.Sort;
++import org.apache.lucene.search.Query;
+ import org.apache.jackrabbit.core.SessionImpl;
+ 
+ import java.io.IOException;
+@@ -34,7 +35,7 @@ public interface JackrabbitQuery {
+      * this query should be executed using the regular Lucene API.
+      * <p/>
+      * <b>Important note:</b> an implementation <b>must not</b> call
+-     * {@link JackrabbitIndexSearcher#execute(org.apache.lucene.search.Query, Sort)}
++     * {@link JackrabbitIndexSearcher#execute(Query, Sort, long)}
+      * with this query instance as a parameter, otherwise a stack overflow will
+      * occur.
+      *

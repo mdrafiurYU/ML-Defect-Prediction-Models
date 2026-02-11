@@ -1,0 +1,13 @@
+diff --git a/Xext/xcmisc.c b/Xext/xcmisc.c
+index 44d2b19..a42d2e2 100644
+--- a/Xext/xcmisc.c
++++ b/Xext/xcmisc.c
+@@ -66,7 +66,7 @@ XCMiscExtensionInit(INITARGS)
+ {
+     AddExtension(XCMiscExtensionName, 0, 0,
+ 		 ProcXCMiscDispatch, SProcXCMiscDispatch,
+-		 XCMiscResetProc, StandardMinorOpcode))
++		 XCMiscResetProc, StandardMinorOpcode);
+ }
+ 
+ /*ARGSUSED*/

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index a5bb11b..d093b1a 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -309,6 +309,8 @@ struct _xf86Crtc {
+     PictFilterPtr   filter;
+     xFixed	    *params;
+     int		    nparams;
++    int		    filter_width;
++    int		    filter_height;
+     Bool	    transform_in_use;
+     /**
+      * Bounding box in screen space

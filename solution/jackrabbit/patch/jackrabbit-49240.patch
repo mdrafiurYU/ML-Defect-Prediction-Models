@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
+index d8ba57f..0f74f25 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
+@@ -456,6 +456,10 @@ class QValueFactoryImpl extends AbstractQValueFactory {
+                 public long getSize() throws RepositoryException {
+                     return getLength();
+                 }
++
++                public void dispose() {
++                }
++
+             };
+         }
+ 
+@@ -874,6 +878,10 @@ class QValueFactoryImpl extends AbstractQValueFactory {
+                 public long getSize() throws RepositoryException {
+                     return getLength();
+                 }
++
++                public void dispose() {
++                }
++
+             };
+         }

@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionContext.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionContext.java
+index 9ca3a35..b2518a9 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionContext.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionContext.java
+@@ -18,6 +18,7 @@ package org.eclipse.jdt.internal.codeassist;
+ public class InternalCompletionContext {
+ 	protected char[][] expectedTypesSignatures;
+ 	protected char[][] expectedTypesKeys;
++	protected boolean inJavadoc;
+ 	
+ 	protected void setExpectedTypesSignatures(char[][] expectedTypesSignatures) {
+ 		this.expectedTypesSignatures = expectedTypesSignatures;
+@@ -26,4 +27,8 @@ public class InternalCompletionContext {
+ 	protected void setExpectedTypesKeys(char[][] expectedTypesKeys) {
+ 		this.expectedTypesKeys = expectedTypesKeys;
+ 	}
++
++	protected void setInJavadoc(boolean inJavadoc) {
++		this.inJavadoc = inJavadoc;
++	}
+ }

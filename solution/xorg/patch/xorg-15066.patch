@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxmap.c b/hw/dmx/input/dmxmap.c
+index 02a4107..cf1be58 100644
+--- a/hw/dmx/input/dmxmap.c
++++ b/hw/dmx/input/dmxmap.c
+@@ -49,6 +49,10 @@
+  * XI_Device* names for these routines.
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmxinputinit.h"
+ #include "dmxmap.h"
+ 

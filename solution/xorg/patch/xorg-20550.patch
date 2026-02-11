@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/kbd.c b/hw/xfree86/os-support/shared/kbd.c
+index 822c8fe..b9aeafd 100644
+--- a/hw/xfree86/os-support/shared/kbd.c
++++ b/hw/xfree86/os-support/shared/kbd.c
+@@ -32,7 +32,7 @@
+ 
+ #include "xf86OSKbd.h"
+ 
+-Bool
++_X_EXPORT Bool
+ xf86OSKbdPreInit(InputInfoPtr pInfo)
+ {
+     return FALSE;

@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shrotate.c b/miext/shadow/shrotate.c
+index 927bc61..8e46fce 100644
+--- a/miext/shadow/shrotate.c
++++ b/miext/shadow/shrotate.c
+@@ -53,7 +53,7 @@ void
+ shadowUpdateRotatePacked (ScreenPtr	pScreen,
+ 			  shadowBufPtr	pBuf)
+ {
+-    RegionPtr	damage = &pBuf->damage;
++    RegionPtr	damage = shadowDamage (pBuf);
+     PixmapPtr	pShadow = pBuf->pPixmap;
+     int		nbox = REGION_NUM_RECTS (damage);
+     BoxPtr	pbox = REGION_RECTS (damage);

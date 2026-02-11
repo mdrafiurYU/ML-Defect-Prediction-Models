@@ -1,0 +1,17 @@
+diff --git a/render/glyphstr.h b/render/glyphstr.h
+index d47dfec..4f87460 100644
+--- a/render/glyphstr.h
++++ b/render/glyphstr.h
+@@ -44,9 +44,11 @@ typedef struct _Glyph {
+     unsigned char   sha1[20];
+     CARD32	    size; /* info + bitmap */
+     xGlyphInfo	    info;
+-    /* bits follow */
++    /* per-screen pixmaps follow */
+ } GlyphRec, *GlyphPtr;
+ 
++#define GlyphPixmap(glyph) ((PixmapPtr *) ((glyph) + 1))
++
+ typedef struct _GlyphRef {
+     CARD32	signature;
+     GlyphPtr	glyph;

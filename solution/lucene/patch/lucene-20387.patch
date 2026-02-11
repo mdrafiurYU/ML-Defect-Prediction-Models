@@ -1,0 +1,30 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ConstValueSource.java b/solr/src/java/org/apache/solr/search/function/ConstValueSource.java
+index d829fc9..ad495a1 100755
+--- a/solr/src/java/org/apache/solr/search/function/ConstValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/ConstValueSource.java
+@@ -41,7 +41,7 @@ public class ConstValueSource extends ConstNumberSource {
+ 
+   @Override
+   public DocValues getValues(Map context, AtomicReaderContext readerContext) throws IOException {
+-    return new DocValues() {
++    return new FloatDocValues(this) {
+       @Override
+       public float floatVal(int doc) {
+         return constant;
+@@ -59,13 +59,13 @@ public class ConstValueSource extends ConstNumberSource {
+         return dv;
+       }
+       @Override
+-      public String strVal(int doc) {
+-        return Float.toString(constant);
+-      }
+-      @Override
+       public String toString(int doc) {
+         return description();
+       }
++      @Override
++      public Object objectVal(int doc) {
++        return constant;
++      }
+     };
+   }

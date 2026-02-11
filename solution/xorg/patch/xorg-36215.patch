@@ -1,0 +1,13 @@
+diff --git a/mi/miexpose.c b/mi/miexpose.c
+index 2d3b0d5..5c2bd03 100644
+--- a/mi/miexpose.c
++++ b/mi/miexpose.c
+@@ -288,8 +288,6 @@ miHandleExposures(pSrcDrawable, pDstDrawable,
+ #endif
+     if (extents)
+     {
+-	WindowPtr pWin = (WindowPtr)pDstDrawable;
+-
+ 	expBox = *REGION_EXTENTS(pscr, &rgnExposed);
+ 	REGION_RESET(pscr, &rgnExposed, &expBox);
+     }

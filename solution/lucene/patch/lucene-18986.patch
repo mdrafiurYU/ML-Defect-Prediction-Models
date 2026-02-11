@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/spellchecker/src/java/org/apache/lucene/search/spell/SuggestWordQueue.java b/lucene/contrib/spellchecker/src/java/org/apache/lucene/search/spell/SuggestWordQueue.java
+index af3f9d0..7d8de51 100755
+--- a/lucene/contrib/spellchecker/src/java/org/apache/lucene/search/spell/SuggestWordQueue.java
++++ b/lucene/contrib/spellchecker/src/java/org/apache/lucene/search/spell/SuggestWordQueue.java
+@@ -41,7 +41,7 @@ public final class SuggestWordQueue extends PriorityQueue<SuggestWord> {
+    * @param size The size of the queue
+    */
+   public SuggestWordQueue (int size) {
+-    initialize(size);
++    super(size);
+     comparator = DEFAULT_COMPARATOR;
+   }
+ 
+@@ -51,7 +51,7 @@ public final class SuggestWordQueue extends PriorityQueue<SuggestWord> {
+    * @param comparator The comparator.
+    */
+   public SuggestWordQueue(int size, Comparator<SuggestWord> comparator){
+-    initialize(size);
++    super(size);
+     this.comparator = comparator;
+   }

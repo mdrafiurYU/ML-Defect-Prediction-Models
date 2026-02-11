@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java b/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java
+index 8e3e8c8..56b9d48 100644
+--- a/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java
+@@ -61,6 +61,20 @@ import java.util.Map;
+  * term, frequency, position, offset, IDF.
+  * <p/>
+  * <b>Note</b> Returning IDF can be expensive.
++ * 
++ * <pre class="prettyprint">
++ * &lt;searchComponent name="tvComponent" class="solr.TermVectorComponent"/&gt;
++ * 
++ * &lt;requestHandler name="/terms" class="solr.SearchHandler"&gt;
++ *   &lt;lst name="defaults"&gt;
++ *     &lt;bool name="tv"&gt;true&lt;/bool&gt;
++ *   &lt;/lst&gt;
++ *   &lt;arr name="last-component"&gt;
++ *     &lt;str&gt;tvComponent&lt;/str&gt;
++ *   &lt;/arr&gt;
++ * &lt;/requestHandler&gt;</pre>
++ *
++ * @version $Id$
+  */
+ public class TermVectorComponent extends SearchComponent implements SolrCoreAware {

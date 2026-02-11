@@ -1,0 +1,33 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_init.c b/hw/xfree86/os-support/linux/lnx_init.c
+index 85b6def..9775180 100644
+--- a/hw/xfree86/os-support/linux/lnx_init.c
++++ b/hw/xfree86/os-support/linux/lnx_init.c
+@@ -245,14 +245,14 @@ xf86OpenConsole(void)
+ 	    lnx_savefont();
+ #endif
+ 	    /*
+-	     * now get the VT
++	     * now get the VT.  This _must_ succeed, or else fail completely.
+ 	     */
+ 	    if (ioctl(xf86Info.consoleFd, VT_ACTIVATE, xf86Info.vtno) < 0)
+-	        xf86Msg(X_WARNING, "xf86OpenConsole: VT_ACTIVATE failed: %s\n",
++	        FatalError("xf86OpenConsole: VT_ACTIVATE failed: %s\n",
+ 		        strerror(errno));
+ 
+ 	    if (ioctl(xf86Info.consoleFd, VT_WAITACTIVE, xf86Info.vtno) < 0)
+-	        xf86Msg(X_WARNING, "xf86OpenConsole: VT_WAITACTIVE failed: %s\n",
++	        FatalError("xf86OpenConsole: VT_WAITACTIVE failed: %s\n",
+ 		    strerror(errno));
+ 
+ 	    if (ioctl(xf86Info.consoleFd, VT_GETMODE, &VT) < 0)
+@@ -350,6 +350,10 @@ xf86CloseConsole()
+ 	    if (ioctl(xf86Info.consoleFd, VT_ACTIVATE, activeVT) < 0)
+ 	        xf86Msg(X_WARNING, "xf86CloseConsole: VT_ACTIVATE failed: %s\n",
+ 		        strerror(errno));
++	    if (ioctl(xf86Info.consoleFd, VT_WAITACTIVE, activeVT) < 0)
++		xf86Msg(X_WARNING,
++			"xf86CloseConsole: VT_WAITACTIVE failed: %s\n",
++			strerror(errno));
+ 	    activeVT = -1;
+         }
+ 

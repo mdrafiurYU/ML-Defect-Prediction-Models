@@ -1,0 +1,15 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java b/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java
+index d5bcc81..68d3e60 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java
+@@ -71,7 +71,10 @@ import java.text.Collator;
+  *   CollationKeyFilter to generate index terms, do not use
+  *   ICUCollationKeyFilter on the query side, or vice versa.
+  * </p>
++ * @deprecated Use {@link CollationAttributeFactory} instead, which encodes
++ *  terms directly as bytes. This filter will be removed in Lucene 5.0
+  */
++@Deprecated
+ public final class CollationKeyFilter extends TokenFilter {
+   private final Collator collator;
+   private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);

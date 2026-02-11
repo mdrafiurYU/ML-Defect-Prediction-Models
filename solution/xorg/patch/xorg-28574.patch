@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dixmods/glxmodule.c b/hw/xfree86/dixmods/glxmodule.c
+index 401707a..5384f43 100644
+--- a/hw/xfree86/dixmods/glxmodule.c
++++ b/hw/xfree86/dixmods/glxmodule.c
+@@ -95,7 +95,7 @@ __glXMesaProxyScreenProbe(ScreenPtr pScreen)
+   static __GLXprovider *provider;
+ 
+   if (provider == NULL) {
+-    GLcore = LoadSubModuleLocal(glxModule, "GLcore", NULL, NULL, NULL, NULL, 
++    GLcore = LoadSubModule(glxModule, "GLcore", NULL, NULL, NULL, NULL, 
+ 				NULL, NULL);
+     if (GLcore == NULL)
+       return NULL;

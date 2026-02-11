@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+index 0b3c591..2b9ff57 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+@@ -77,6 +77,10 @@ public class AptPlugin extends Plugin {
+ 	 * Convenience wrapper around log(IStatus), to log an exception.
+ 	 */
+ 	public static void log(Throwable e, String message) {
++		// TODO: before ship, remove this printing. Instead just log
++		System.err.println(message);
++		e.printStackTrace();
++		
+ 		log(new Status(IStatus.ERROR, PLUGIN_ID, STATUS_EXCEPTION, message, e)); 
+ 	}

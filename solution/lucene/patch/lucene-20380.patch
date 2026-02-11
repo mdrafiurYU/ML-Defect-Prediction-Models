@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestOmitTf.java b/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
+index 0741dc6..2ca72dc 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
++++ b/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
+@@ -257,7 +257,7 @@ public class TestOmitTf extends LuceneTestCase {
+         newIndexWriterConfig(TEST_VERSION_CURRENT, analyzer).
+             setMaxBufferedDocs(2).
+             setSimilarityProvider(new SimpleSimilarityProvider()).
+-            setMergePolicy(newInOrderLogMergePolicy(2))
++            setMergePolicy(newLogMergePolicy(2))
+     );
+     writer.setInfoStream(VERBOSE ? System.out : null);

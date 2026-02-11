@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index 63c34f7..8b96e09 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -603,7 +603,7 @@ public class SessionImpl extends AbstractSession
+      */
+     public GarbageCollector createDataStoreGarbageCollector() throws RepositoryException, ItemStateException {
+         ArrayList pmList = new ArrayList();
+-        VersionManagerImpl vm = (VersionManagerImpl)rep.getVersionManager();
++        VersionManagerImpl vm = (VersionManagerImpl) rep.getVersionManager();
+         PersistenceManager pm = vm.getPersistenceManager();
+         pmList.add(pm);
+         String[] wspNames = rep.getWorkspaceNames();

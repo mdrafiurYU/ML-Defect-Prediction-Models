@@ -1,0 +1,13 @@
+diff --git a/Xi/selectev.c b/Xi/selectev.c
+index 1f6713a..7d3ef9d 100644
+--- a/Xi/selectev.c
++++ b/Xi/selectev.c
+@@ -178,7 +178,7 @@ ProcXSelectExtensionEvent(register ClientPtr client)
+ 	return Success;
+     }
+ 
+-    if (HandleDevicePresenceMask(client, pWin, (XEventClass *) & stuff[i],
++    if (HandleDevicePresenceMask(client, pWin, (XEventClass *) & stuff[1],
+                                 &stuff->count) != Success) {
+        SendErrorToClient(client, IReqCode, X_SelectExtensionEvent, 0,
+                          BadAlloc);

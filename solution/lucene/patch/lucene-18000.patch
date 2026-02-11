@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java b/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java
+index d8e16cc..f86aea3 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java
+@@ -112,7 +112,7 @@ public class TestFieldMaskingSpanQuery extends LuceneTestCase {
+                                          field("last",   "jones")     }));
+     reader = writer.getReader();
+     writer.close();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+   }
+ 
+   @Override

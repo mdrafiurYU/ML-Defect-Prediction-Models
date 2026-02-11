@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxcb.c b/hw/dmx/dmxcb.c
+index fa79dd2..b1f47bd 100644
+--- a/hw/dmx/dmxcb.c
++++ b/hw/dmx/dmxcb.c
+@@ -35,6 +35,10 @@
+ /** \file
+  * This code queries and modifies the connection block. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxcb.h"
+ #include "dmxinput.h"

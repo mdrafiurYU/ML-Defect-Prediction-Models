@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index bbb5855..dd9c34e 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -764,16 +764,6 @@ xf86SigHandler(int signo)
+   FatalError("Caught signal %d.  Server aborting\n", signo);
+ }
+ 
+-#ifdef MEMDEBUG
+-void
+-xf86SigMemDebug(int signo)
+-{
+-    CheckMemory();
+-    (void) signal(signo, xf86SigMemDebug);
+-    return;
+-}
+-#endif
+-
+ static void
+ xf86ReleaseKeys(DeviceIntPtr pDev)
+ {

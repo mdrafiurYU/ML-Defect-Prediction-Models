@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/PropertyValueOperand.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/PropertyValueOperand.java
+index 6bbaade..4dfc458 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/PropertyValueOperand.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/PropertyValueOperand.java
+@@ -104,7 +104,7 @@ public class PropertyValueOperand extends DynamicOperand {
+         if (prop == null) {
+             return EMPTY;
+         } else {
+-            if (prop.getDefinition().isMultiple()) {
++            if (prop.isMultiple()) {
+                 return prop.getValues();
+             } else {
+                 return new Value[]{prop.getValue()};

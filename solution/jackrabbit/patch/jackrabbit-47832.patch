@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
+index 9c46a86..36789d1 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
+@@ -55,6 +55,9 @@ public class RepositoryImpl extends AbstractRepository implements Referenceable
+     private RepositoryImpl(RepositoryConfig config) throws RepositoryException {
+         this.config = config;
+         descriptors = config.getRepositoryService().getRepositoryDescriptors();
++
++        // Remove features that are not (yet) supported through the SPI layer
++        descriptors.remove(Repository.OPTION_SHAREABLE_NODES_SUPPORTED);
+     }
+ 
+     public static Repository create(RepositoryConfig config) throws RepositoryException {

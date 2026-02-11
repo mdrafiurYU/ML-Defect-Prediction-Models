@@ -1,0 +1,24 @@
+diff --git a/randr/mirandr.c b/randr/mirandr.c
+index bcc8e0f..7300cfe 100644
+--- a/randr/mirandr.c
++++ b/randr/mirandr.c
+@@ -52,7 +52,7 @@ miRRCrtcSet (ScreenPtr	pScreen,
+ 	     int	y,
+ 	     Rotation	rotation,
+ 	     int	numOutput,
+-	     RROutputPtr    *outputs)
++	     RROutputConfigPtr    outputs)
+ {
+     return TRUE;
+ }
+@@ -114,6 +114,10 @@ miRandRInit (ScreenPtr pScreen)
+ 	return FALSE;
+     if (!RROutputSetCrtcs (output, &crtc, 1))
+ 	return FALSE;
++    if (!RROutputSetPossibleOptions (output, 0))
++	return FALSE;
++    if (!RROutputSetCurrentOptions (output, 0))
++	return FALSE;
+     if (!RROutputSetConnection (output, RR_Connected))
+ 	return FALSE;
+     RRCrtcNotify (crtc, mode, 0, 0, RR_Rotate_0, 1, &output);

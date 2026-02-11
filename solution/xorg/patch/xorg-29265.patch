@@ -1,0 +1,25 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 2ecec96..98c2885 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -100,16 +100,14 @@ RegisterOtherDevice(DeviceIntPtr device)
+ {
+     device->public.processInputProc = ProcessOtherEvent;
+     device->public.realInputProc = ProcessOtherEvent;
+-    (device)->deviceGrab.ActivateGrab = ActivateKeyboardGrab;
+-    (device)->deviceGrab.DeactivateGrab = DeactivateKeyboardGrab;
+     if (DeviceIsPointerType(device))
+     {
+-        (device)->coreGrab.ActivateGrab = ActivatePointerGrab;
+-        (device)->coreGrab.DeactivateGrab = DeactivatePointerGrab;
++        (device)->deviceGrab.ActivateGrab = ActivatePointerGrab;
++        (device)->deviceGrab.DeactivateGrab = DeactivatePointerGrab;
+     } else
+     {
+-        (device)->coreGrab.ActivateGrab = ActivateKeyboardGrab;
+-        (device)->coreGrab.DeactivateGrab = DeactivateKeyboardGrab;
++        (device)->deviceGrab.ActivateGrab = ActivateKeyboardGrab;
++        (device)->deviceGrab.DeactivateGrab = DeactivateKeyboardGrab;
+     }
+ }
+ 

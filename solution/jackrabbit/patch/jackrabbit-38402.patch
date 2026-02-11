@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java
+index 70ec7ba..1d3a34a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java
+@@ -479,8 +479,6 @@ public class DbDataStore implements DataStore {
+             initDatabaseType();
+             connectionPool = new Pool(this, maxConnections);
+             ConnectionRecoveryManager conn = getConnection();
+-            conn = new ConnectionRecoveryManager(false, driver, url, user, password);
+-            conn.setAutoReconnect(true);
+             DatabaseMetaData meta = conn.getConnection().getMetaData();
+             log.info("Using JDBC driver " + meta.getDriverName() + " " + meta.getDriverVersion());
+             meta.getDriverVersion();

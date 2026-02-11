@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index 1f4b9db..abe3437 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -24,7 +24,7 @@ import org.apache.jackrabbit.jcr2spi.hierarchy.HierarchyEntry;
+ import org.apache.jackrabbit.jcr2spi.hierarchy.HierarchyManager;
+ import org.apache.jackrabbit.jcr2spi.hierarchy.NodeEntry;
+ import org.apache.jackrabbit.jcr2spi.hierarchy.HierarchyManagerImpl;
+-import org.apache.jackrabbit.jcr2spi.lock.LockManager;
++import org.apache.jackrabbit.jcr2spi.lock.LockStateManager;
+ import org.apache.jackrabbit.jcr2spi.nodetype.EffectiveNodeTypeProvider;
+ import org.apache.jackrabbit.jcr2spi.nodetype.ItemDefinitionProvider;
+ import org.apache.jackrabbit.jcr2spi.nodetype.NodeTypeManagerImpl;
+@@ -618,7 +618,7 @@ public class SessionImpl extends AbstractSession
+     /**
+      * @see ManagerProvider#getLockManager()
+      */
+-    public LockManager getLockManager() {
++    public LockStateManager getLockManager() {
+         return workspace.getLockManager();
+     }

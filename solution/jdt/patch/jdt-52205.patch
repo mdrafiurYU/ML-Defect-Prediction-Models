@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
+index ca305c8..7fea712 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
+@@ -121,7 +121,7 @@ public class CaseStatement extends Statement {
+ 			} else {
+ 				return constantExpression.constant;
+ 			}
+-		} else if (scope.isBoxingCompatibleWith(switchExpressionType, caseType)) {
++		} else if (scope.isBoxingCompatibleWith(caseType, switchExpressionType)) {
+ 			constantExpression.computeConversion(scope, caseType, switchExpressionType);
+ 			return constantExpression.constant;
+ 		}

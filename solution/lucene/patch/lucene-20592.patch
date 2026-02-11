@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanAnalyzer.java
+index b329298..c3bc23f 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanAnalyzer.java
+@@ -63,4 +63,9 @@ public class TestGermanAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "Schaltflächen", "schaltflach");
+     checkOneTermReuse(a, "Schaltflaechen", "schaltflaech");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new GermanAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

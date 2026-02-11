@@ -1,0 +1,26 @@
+diff --git a/hw/xfree86/os-support/bus/altixPCI.h b/hw/xfree86/os-support/bus/altixPCI.h
+deleted file mode 100644
+index 2a738f3..0000000
+--- a/hw/xfree86/os-support/bus/altixPCI.h
++++ /dev/null
+@@ -1,20 +0,0 @@
+-#ifdef HAVE_XORG_CONFIG_H
+-#include <xorg-config.h>
+-#endif
+-
+-#ifndef PCI_ALTIX_H
+-#define PCI_ALTIX_H 1
+-
+-#include <X11/Xdefs.h>
+-#include <Pci.h>
+-
+-Bool xorgProbeAltix(scanpciWrapperOpt flags);
+-void xf86PreScanAltix(void);
+-void xf86PostScanAltix(void);
+-
+-/* Some defines for PCI */
+-#define VENDOR_SGI 0x10A9
+-#define CHIP_TIO_CA 0x1010
+-#define CHIP_PIC_PCI 0x1011
+-
+-#endif

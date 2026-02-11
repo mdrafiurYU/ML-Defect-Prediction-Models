@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index a9d6722..ea36d0a 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -662,8 +662,10 @@ xf86DDCMonitorSet(int scrnIndex, MonPtr Monitor, xf86MonPtr DDC)
+ 
+     Monitor->DDC = DDC;
+ 
++    if (Monitor->widthmm <= 0 && Monitor->heightmm <= 0) {
+     Monitor->widthmm = 10 * DDC->features.hsize;
+     Monitor->heightmm = 10 * DDC->features.vsize;
++    }
+ 
+     /*
+      * If this is a digital display, then we can use reduced blanking.

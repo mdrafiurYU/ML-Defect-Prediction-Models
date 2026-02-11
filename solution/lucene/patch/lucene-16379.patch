@@ -1,0 +1,27 @@
+diff --git a/solr/src/java/org/apache/solr/request/SimpleFacets.java b/solr/src/java/org/apache/solr/request/SimpleFacets.java
+index 65c948e..9d5e49b 100644
+--- a/solr/src/java/org/apache/solr/request/SimpleFacets.java
++++ b/solr/src/java/org/apache/solr/request/SimpleFacets.java
+@@ -147,14 +147,17 @@ public class SimpleFacets {
+       List<Query> qlist = new ArrayList<Query>();
+ 
+       // add the base query
+-      qlist.add(rb.getQuery());
++      if (!excludeSet.containsKey(rb.getQuery())) {
++        qlist.add(rb.getQuery());
++      }
+ 
+       // add the filters
+-      for (Query q : rb.getFilters()) {
+-        if (!excludeSet.containsKey(q)) {
+-          qlist.add(q);
++      if (rb.getFilters() != null) {
++        for (Query q : rb.getFilters()) {
++          if (!excludeSet.containsKey(q)) {
++            qlist.add(q);
++          }
+         }
+-
+       }
+ 
+       // get the new base docset for this facet

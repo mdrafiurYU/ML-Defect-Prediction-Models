@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Configure.c b/hw/xfree86/common/xf86Configure.c
+index 4c980a2..f896c29 100644
+--- a/hw/xfree86/common/xf86Configure.c
++++ b/hw/xfree86/common/xf86Configure.c
+@@ -823,7 +823,7 @@ DoConfigure()
+     	homebuf[PATH_MAX-1] = '\0';
+     	home = homebuf;
+     	if (!(filename =
+-	     (char *)ALLOCATE_LOCAL(strlen(home) + 
++	     (char *)xalloc(strlen(home) + 
+ 	  			 strlen(configfile) + 3)))
+ 
+       	if (home[0] == '/' && home[1] == '\0')

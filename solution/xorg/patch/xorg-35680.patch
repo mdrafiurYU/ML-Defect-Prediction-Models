@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 15aa16e..4a8e480 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -3312,7 +3312,7 @@ ProcessPointerEvent (xEvent *xE, DeviceIntPtr mouse, int count)
+ 		deactivateGrab = TRUE;
+ 	    break;
+ 	default: 
+-	    FatalError("bogus pointer event from ddx");
++	    FatalError("bogus pointer event from ddx: %d", xE->u.u.type);
+ 	}
+     }
+     else if (!CheckMotion(xE))

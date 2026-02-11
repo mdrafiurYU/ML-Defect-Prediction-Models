@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java b/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
+index cab6a66..6066ef9 100755
+--- a/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
++++ b/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
+@@ -345,12 +345,6 @@ public class TestBufferedIndexInput extends LuceneTestCase {
+         dir.deleteFile(name);
+       }
+       @Override
+-      public void touchFile(String name)
+-        throws IOException
+-      {
+-        dir.touchFile(name);
+-      }
+-      @Override
+       public long fileModified(String name)
+         throws IOException
+       {

@@ -1,0 +1,48 @@
+diff --git a/Xi/xiproperty.c b/Xi/xiproperty.c
+index 1e4ed46..2ff5cae 100644
+--- a/Xi/xiproperty.c
++++ b/Xi/xiproperty.c
+@@ -97,7 +97,8 @@ long
+ XIRegisterPropertyHandler(DeviceIntPtr         dev,
+                           int (*SetProperty) (DeviceIntPtr dev,
+                                               Atom property,
+-                                              XIPropertyValuePtr prop),
++                                              XIPropertyValuePtr prop,
++                                              BOOL checkonly),
+                           int (*GetProperty) (DeviceIntPtr dev,
+                                               Atom property),
+                           int (*DeleteProperty) (DeviceIntPtr dev,
+@@ -346,14 +347,21 @@ XIChangeDeviceProperty (DeviceIntPtr dev, Atom property, Atom type,
+ 
+         if (dev->properties.handlers)
+         {
+-            XIPropertyHandlerPtr handler = dev->properties.handlers;
++            XIPropertyHandlerPtr handler;
++            BOOL checkonly = TRUE;
++            /* run through all handlers with checkonly TRUE, then again with
++             * checkonly FALSE. Handlers MUST return error codes on the
++             * checkonly run, errors on the second run are ignored */
++            do
++            {
++                handler = dev->properties.handlers;
+             while(handler)
+             {
+                 if (handler->SetProperty)
+                 {
+                     rc = handler->SetProperty(dev, prop->propertyName,
+-                                              &new_value);
+-                    if (rc != Success)
++                                &new_value, checkonly);
++                        if (checkonly && rc != Success)
+                     {
+                         if (new_value.data)
+                             xfree (new_value.data);
+@@ -362,6 +370,8 @@ XIChangeDeviceProperty (DeviceIntPtr dev, Atom property, Atom type,
+                 }
+                 handler = handler->next;
+             }
++                checkonly = !checkonly;
++            } while (!checkonly);
+         }
+         if (prop_value->data)
+             xfree (prop_value->data);

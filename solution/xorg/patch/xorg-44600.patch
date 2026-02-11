@@ -1,0 +1,12 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 0a541a7..0fd3488 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -507,6 +507,7 @@ typedef struct _DeviceIntRec {
+         int             valuators[MAX_VALUATORS];
+         float           remainder[MAX_VALUATORS];
+         int             numValuators;
++        DeviceIntPtr    slave;
+     } last;
+ 
+     /* Input device property handling. */

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 4f84a4c..19120ce 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -428,7 +428,7 @@ xf86ReleaseKeys(DeviceIntPtr pDev)
+             sigstate = xf86BlockSIGIO ();
+             nevents = GetKeyboardEvents(xf86Events, pDev, KeyRelease, i);
+             for (j = 0; j < nevents; j++)
+-                mieqEnqueue(pDev, (xf86Events + j)->event);
++                mieqEnqueue(pDev, (InternalEvent*)(xf86Events + j)->event);
+             xf86UnblockSIGIO(sigstate);
+         }
+     }

@@ -1,0 +1,17 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestPropInject.java b/solr/src/test/org/apache/solr/core/TestPropInject.java
+index 858388a..345feac 100644
+--- a/solr/src/test/org/apache/solr/core/TestPropInject.java
++++ b/solr/src/test/org/apache/solr/core/TestPropInject.java
+@@ -26,10 +26,12 @@ import org.apache.solr.update.DirectUpdateHandler2;
+ import org.apache.solr.util.AbstractSolrTestCase;
+ 
+ public class TestPropInject extends AbstractSolrTestCase {
++  @Override
+   public String getSchemaFile() {
+     return "schema.xml";
+   }
+ 
++  @Override
+   public String getSolrConfigFile() {
+     return "solrconfig-propinject.xml";
+   }

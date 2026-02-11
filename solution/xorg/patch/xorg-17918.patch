@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dixmods/recordmod.c b/hw/xfree86/dixmods/recordmod.c
+index 4eebf0e..2825555 100644
+--- a/hw/xfree86/dixmods/recordmod.c
++++ b/hw/xfree86/dixmods/recordmod.c
+@@ -1,5 +1,9 @@
+ /* $XFree86: xc/programs/Xserver/record/recordmod.c,v 1.5 1999/01/26 05:54:21 dawes Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "xf86Module.h"
+ 
+ extern Bool noTestExtensions;

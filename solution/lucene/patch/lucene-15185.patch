@@ -1,0 +1,37 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+index 7a29870..2deb8b2 100644
+--- a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
++++ b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+@@ -30,6 +30,7 @@ import org.apache.lucene.util.ReaderUtil; // javadoc
+ 
+ import org.apache.lucene.index.DirectoryReader; // javadoc
+ import org.apache.lucene.index.MultiReader; // javadoc
++import org.apache.lucene.index.IndexReader.ReaderContext;
+ 
+ /**
+  * This class forces a composite reader (eg a {@link
+@@ -55,10 +56,12 @@ import org.apache.lucene.index.MultiReader; // javadoc
+ 
+ public final class SlowMultiReaderWrapper extends FilterIndexReader {
+ 
++  private final ReaderContext readerContext;
+   private final Map<String,byte[]> normsCache = new HashMap<String,byte[]>();
+   
+   public SlowMultiReaderWrapper(IndexReader other) {
+     super(other);
++    readerContext = new AtomicReaderContext(this); // emulate atomic reader!
+   }
+ 
+   @Override
+@@ -104,6 +107,11 @@ public final class SlowMultiReaderWrapper extends FilterIndexReader {
+   }
+   
+   @Override
++  public ReaderContext getTopReaderContext() {
++    return readerContext;
++  }
++  
++  @Override
+   protected void doSetNorm(int n, String field, byte value)
+       throws CorruptIndexException, IOException {
+     synchronized(normsCache) {

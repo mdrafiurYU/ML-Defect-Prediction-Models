@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java
+index 2b04872..9989cd5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java
+@@ -282,7 +282,7 @@ public class ParameterizedGenericMethodBinding extends ParameterizedMethodBindin
+ 		int length = originalVariables.length;
+ 		TypeBinding[] rawArguments = new TypeBinding[length];
+ 		for (int i = 0; i < length; i++) {
+-			rawArguments[i] = originalVariables[i].upperBound();
++			rawArguments[i] =  environment.convertToRawType(originalVariables[i].erasure());
+ 		}		
+ 	    this.isRaw = true;
+ 		this.isUnchecked = false;

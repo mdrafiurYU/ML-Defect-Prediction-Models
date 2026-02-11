@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+index cea27b1..d3d84b1 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+@@ -137,6 +137,10 @@ public class TestAll extends TestCase {
+ 
+         // JCR 2.0
+         
++        //// new Workspace features
++        
++        suite.addTestSuite(WorkspaceTest.class);
++        
+         //// shareable nodes
+         
+         suite.addTestSuite(ShareableNodeTest.class);

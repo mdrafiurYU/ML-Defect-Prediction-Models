@@ -1,0 +1,56 @@
+diff --git a/composite/compinit.c b/composite/compinit.c
+index 630f104..c557eeb 100644
+--- a/composite/compinit.c
++++ b/composite/compinit.c
+@@ -63,6 +63,7 @@ compCloseScreen (int index, ScreenPtr pScreen)
+     pScreen->CloseScreen = cs->CloseScreen;
+     pScreen->BlockHandler = cs->BlockHandler;
+     pScreen->InstallColormap = cs->InstallColormap;
++    pScreen->ChangeWindowAttributes = cs->ChangeWindowAttributes;
+     pScreen->ReparentWindow = cs->ReparentWindow;
+     pScreen->MoveWindow = cs->MoveWindow;
+     pScreen->ResizeWindow = cs->ResizeWindow;
+@@ -109,6 +110,33 @@ compInstallColormap (ColormapPtr pColormap)
+     pScreen->InstallColormap = compInstallColormap;
+ }
+ 
++/* Fake backing store via automatic redirection */
++static Bool
++compChangeWindowAttributes(WindowPtr pWin, unsigned long mask)
++{
++    ScreenPtr pScreen = pWin->drawable.pScreen;
++    CompScreenPtr cs = GetCompScreen (pScreen);
++    Bool ret;
++
++    pScreen->ChangeWindowAttributes = cs->ChangeWindowAttributes;
++    ret = pScreen->ChangeWindowAttributes(pWin, mask);
++
++    if (ret && (mask & CWBackingStore)) {
++	if (pWin->backingStore != NotUseful) {
++	    compRedirectWindow(serverClient, pWin, CompositeRedirectAutomatic);
++	    pWin->backStorage = TRUE;
++	} else {
++	    compUnredirectWindow(serverClient, pWin,
++				 CompositeRedirectAutomatic);
++	    pWin->backStorage = FALSE;
++	}
++    }
++
++    pScreen->ChangeWindowAttributes = compChangeWindowAttributes;
++
++    return ret;
++}
++
+ static void
+ compScreenUpdate (ScreenPtr pScreen)
+ {
+@@ -424,6 +452,9 @@ compScreenInit (ScreenPtr pScreen)
+     cs->InstallColormap = pScreen->InstallColormap;
+     pScreen->InstallColormap = compInstallColormap;
+ 
++    cs->ChangeWindowAttributes = pScreen->ChangeWindowAttributes;
++    pScreen->ChangeWindowAttributes = compChangeWindowAttributes;
++
+     cs->BlockHandler = pScreen->BlockHandler;
+     pScreen->BlockHandler = compBlockHandler;
+ 

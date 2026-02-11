@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCThread.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCThread.java
+index 9716205..943dba2 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCThread.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCThread.java
+@@ -60,6 +60,7 @@ public class GCThread implements Runnable, ScanEventListener {
+                 LOG.debug("Waiting...");
+                 Thread.sleep(10);
+             }
++            gc.close();
+         } catch (Exception ex) {
+             LOG.error("Error scanning", ex);
+             exception = ex;
+@@ -75,10 +76,10 @@ public class GCThread implements Runnable, ScanEventListener {
+     }
+ 
+     private int listIdentifiers(GarbageCollector gc) throws DataStoreException {
+-        Iterator it = gc.getDataStore().getAllIdentifiers();
++        Iterator<DataIdentifier> it = gc.getDataStore().getAllIdentifiers();
+         int count = 0;
+         while (it.hasNext()) {
+-            DataIdentifier id = (DataIdentifier) it.next();
++            DataIdentifier id = it.next();
+             LOG.debug("  " + id);
+             count++;
+         }

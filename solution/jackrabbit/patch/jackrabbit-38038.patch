@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyDoubleTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyDoubleTest.java
+index ce0a8ef..6ac3728 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyDoubleTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyDoubleTest.java
+@@ -46,6 +46,11 @@ public class SetPropertyDoubleTest extends AbstractJCRTest {
+         ensureCanSetProperty(testNode, propertyName1, testNode.getSession().getValueFactory().createValue(0.0d));
+     }
+ 
++    protected void tearDown() throws Exception {
++        testNode = null;
++        super.tearDown();
++    }
++
+     /**
+      * Tests if adding a property with <code>Node.setProperty(String,
+      * double)</code> works with <code>Session.save()</code>

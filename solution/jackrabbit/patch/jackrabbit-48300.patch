@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java
+index e137a62..999338c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java
+@@ -65,8 +65,8 @@ public class PostgreSQLPersistenceManager extends BundleDbPersistenceManager {
+         if (getDriver() == null) {
+             setDriver("org.postgresql.Driver");
+         }
+-        if (getSchema() == null) {
+-            setSchema("postgresql");
++        if (getDatabaseType() == null) {
++            setDatabaseType("postgresql");
+         }
+         super.init(context);
+     }

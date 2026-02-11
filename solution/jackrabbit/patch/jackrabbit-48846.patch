@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+index 5874f4e..1e7137f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+@@ -104,8 +104,9 @@ public class NodeTypeDef implements Cloneable {
+             // property definitions
+             for (Iterator iter = propDefs.iterator(); iter.hasNext();) {
+                 PropDef pd = (PropDef) iter.next();
+-                // REFERENCE value constraints
+-                if (pd.getRequiredType() == PropertyType.REFERENCE) {
++                // [WEAK]REFERENCE value constraints
++                if (pd.getRequiredType() == PropertyType.REFERENCE
++                        || pd.getRequiredType() == PropertyType.WEAKREFERENCE) {
+                     ValueConstraint[] ca = pd.getValueConstraints();
+                     if (ca != null) {
+                         for (int j = 0; j < ca.length; j++) {

@@ -1,0 +1,22 @@
+diff --git a/mi/mipolygen.c b/mi/mipolygen.c
+index 7623fc4..04bc2c6 100644
+--- a/mi/mipolygen.c
++++ b/mi/mipolygen.c
+@@ -66,11 +66,12 @@ SOFTWARE.
+  */
+ 
+ Bool
+-miFillGeneralPoly(dst, pgc, count, ptsIn)
+-    DrawablePtr dst;
+-    GCPtr	pgc;
+-    int		count;              /* number of points        */
+-    DDXPointPtr ptsIn;              /* the points              */
++miFillGeneralPoly(
++    DrawablePtr dst,
++    GCPtr	pgc,
++    int		count,              /* number of points        */
++    DDXPointPtr ptsIn               /* the points              */
++    )
+ {
+     EdgeTableEntry *pAET;  /* the Active Edge Table   */
+     int y;                 /* the current scanline    */

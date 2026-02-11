@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ItemDefinitionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ItemDefinitionImpl.java
+index 342cd8e..9e7c32e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ItemDefinitionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/ItemDefinitionImpl.java
+@@ -98,6 +98,9 @@ abstract class ItemDefinitionImpl implements ItemDefinition {
+      * {@inheritDoc}
+      */
+     public NodeType getDeclaringNodeType() {
++        if (ntMgr == null) {
++            return null;
++        }
+         try {
+             return ntMgr.getNodeType(itemDef.getDeclaringNodeType());
+         } catch (NoSuchNodeTypeException e) {

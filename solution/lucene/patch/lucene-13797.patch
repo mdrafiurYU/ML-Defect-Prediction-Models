@@ -1,0 +1,82 @@
+diff --git a/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java b/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java
+index 6f5e971..b096b38 100644
+--- a/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java
++++ b/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java
+@@ -22,6 +22,7 @@ package org.apache.solr.update;
+ 
+ import org.apache.lucene.index.IndexWriter;
+ import org.apache.lucene.index.Term;
++import org.apache.lucene.queryParser.ParseException;
+ import org.apache.lucene.search.BooleanClause;
+ import org.apache.lucene.search.BooleanQuery;
+ import org.apache.lucene.search.Query;
+@@ -47,6 +48,7 @@ import org.apache.solr.common.params.ModifiableSolrParams;
+ import org.apache.solr.common.params.SolrParams;
+ import org.apache.solr.request.LocalSolrQueryRequest;
+ import org.apache.solr.request.SolrQueryRequest;
++import org.apache.solr.search.QParser;
+ import org.apache.solr.search.QueryParsing;
+ import org.apache.solr.common.SolrException;
+ import org.apache.solr.common.util.NamedList;
+@@ -219,33 +221,40 @@ public class DirectUpdateHandler2 extends UpdateHandler {
+ 
+   // why not return number of docs deleted?
+   // Depending on implementation, we may not be able to immediately determine the num...
+-   public void deleteByQuery(DeleteUpdateCommand cmd) throws IOException {
+-     deleteByQueryCommands.incrementAndGet();
+-     deleteByQueryCommandsCumulative.incrementAndGet();
++  public void deleteByQuery(DeleteUpdateCommand cmd) throws IOException {
++    deleteByQueryCommands.incrementAndGet();
++    deleteByQueryCommandsCumulative.incrementAndGet();
+ 
+     boolean madeIt=false;
+     boolean delAll=false;
+     try {
+-     Query q = QueryParsing.parseQuery(cmd.query, schema);
+-     delAll = MatchAllDocsQuery.class == q.getClass();
+-
+-     iwCommit.lock();
+-     try {
+-       if (delAll) {
+-         deleteAll();
+-       } else {
+-        openWriter();
+-        writer.deleteDocuments(q);
+-       }
+-     } finally {
+-       iwCommit.unlock();
+-     }
++      Query q = null;
++      try {
++        QParser parser = QParser.getParser(cmd.query, "lucene", cmd.req);
++        q = parser.getQuery();
++      } catch (ParseException e) {
++        throw new SolrException(SolrException.ErrorCode.BAD_REQUEST, e);
++      }
++
++      delAll = MatchAllDocsQuery.class == q.getClass();
++
++      iwCommit.lock();
++      try {
++        if (delAll) {
++          deleteAll();
++        } else {
++          openWriter();
++          writer.deleteDocuments(q);
++        }
++      } finally {
++        iwCommit.unlock();
++      }
+ 
+-     madeIt=true;
++      madeIt=true;
+ 
+-     if( tracker.timeUpperBound > 0 ) {
+-       tracker.scheduleCommitWithin( tracker.timeUpperBound );
+-     }
++      if( tracker.timeUpperBound > 0 ) {
++        tracker.scheduleCommitWithin( tracker.timeUpperBound );
++      }
+     } finally {
+       if (!madeIt) {
+         numErrors.incrementAndGet();

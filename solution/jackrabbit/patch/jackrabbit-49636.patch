@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactoryImpl.java
+index 11b3fba..b47f26f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProviderFactoryImpl.java
+@@ -43,8 +43,8 @@ public class AccessControlProviderFactoryImpl implements AccessControlProviderFa
+     /**
+      * The name of the security workspace (containing users...)
+      */
+-    private String secWorkspaceName = null;
+-    private String defaultWorkspaceName = null;
++    private String secWorkspaceName;
++    private String defaultWorkspaceName;
+ 
+     //---------------------------------------< AccessControlProviderFactory >---
+     /**

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java
+index 0172c7e..e857188 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java
+@@ -23,6 +23,7 @@ import org.apache.jackrabbit.jcr2spi.lock.LockStateManager;
+ import org.apache.jackrabbit.jcr2spi.version.VersionManager;
+ import org.apache.jackrabbit.jcr2spi.nodetype.ItemDefinitionProvider;
+ import org.apache.jackrabbit.jcr2spi.nodetype.EffectiveNodeTypeProvider;
++import org.apache.jackrabbit.jcr2spi.nodetype.NodeTypeDefinitionProvider;
+ import org.apache.jackrabbit.spi.QValueFactory;
+ import org.apache.jackrabbit.spi.commons.conversion.NameResolver;
+ 
+@@ -67,6 +68,8 @@ public interface ManagerProvider {
+ 
+     public ItemDefinitionProvider getItemDefinitionProvider();
+ 
++    public NodeTypeDefinitionProvider getNodeTypeDefinitionProvider();
++
+     public EffectiveNodeTypeProvider getEffectiveNodeTypeProvider();
+ 
+     /**

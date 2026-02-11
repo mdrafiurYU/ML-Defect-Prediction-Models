@@ -1,0 +1,44 @@
+diff --git a/include/screenint.h b/include/screenint.h
+index 1f1434a..bf8da44 100644
+--- a/include/screenint.h
++++ b/include/screenint.h
+@@ -55,12 +55,8 @@ typedef struct _Visual *VisualPtr;
+ typedef struct _Depth  *DepthPtr;
+ typedef struct _Screen *ScreenPtr;
+ 
+-extern void ResetScreenPrivates(void);
+-
+ extern int AllocateScreenPrivateIndex(void);
+ 
+-extern void ResetWindowPrivates(void);
+-
+ extern int AllocateWindowPrivateIndex(void);
+ 
+ extern Bool AllocateWindowPrivate(
+@@ -68,8 +64,6 @@ extern Bool AllocateWindowPrivate(
+     int /* index */,
+     unsigned /* amount */);
+ 
+-extern void ResetGCPrivates(void);
+-
+ extern int AllocateGCPrivateIndex(void);
+ 
+ extern Bool AllocateGCPrivate(
+@@ -86,8 +80,6 @@ extern int AddScreen(
+     int /*argc*/,
+     char** /*argv*/);
+ 
+-extern void ResetPixmapPrivates(void);
+-
+ extern int AllocatePixmapPrivateIndex(void);
+ 
+ extern Bool AllocatePixmapPrivate(
+@@ -95,8 +87,6 @@ extern Bool AllocatePixmapPrivate(
+     int /* index */,
+     unsigned /* amount */);
+ 
+-extern void ResetColormapPrivates(void);
+-
+ 
+ typedef struct _ColormapRec *ColormapPtr;
+ typedef int (*InitCmapPrivFunc)(ColormapPtr, int);

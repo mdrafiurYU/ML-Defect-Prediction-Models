@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index ec04361..12c3a07 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -1093,12 +1093,12 @@ LOOKUP xfree86LookupTab[] = {
+ #endif
+ #endif
+ #if defined(__ia64__)
+-    SYMFUNC(_outw)
+-    SYMFUNC(_outb)
+-    SYMFUNC(_outl)
+-    SYMFUNC(_inb)
+-    SYMFUNC(_inw)
+-    SYMFUNC(_inl)
++    SYMFUNC(outw)
++    SYMFUNC(outb)
++    SYMFUNC(outl)
++    SYMFUNC(inb)
++    SYMFUNC(inw)
++    SYMFUNC(inl)
+ #endif
+ #if defined(__arm__)
+     SYMFUNC(outw)

@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java
+index 4e03a5a..9f6d1d3 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java
+@@ -20,7 +20,6 @@ import org.apache.jackrabbit.test.AbstractJCRTest;
+ import org.apache.jackrabbit.test.NotExecutableException;
+ import org.apache.jackrabbit.test.RepositoryStub;
+ import org.apache.jackrabbit.core.retention.RetentionPolicyImpl;
+-import org.apache.jackrabbit.core.SessionImpl;
+ 
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
+@@ -69,12 +68,6 @@ public abstract class AbstractRetentionTest extends AbstractJCRTest {
+         }
+     }
+ 
+-    protected static void checkSupportedOption(Session s, String option) throws NotExecutableException {
+-        if (Boolean.FALSE.toString().equals(s.getRepository().getDescriptor(option))) {
+-            throw new NotExecutableException();
+-        }
+-    }
+-
+     protected static org.apache.jackrabbit.api.jsr283.Session getJsr283Session(Session s) throws NotExecutableException {
+         // TODO: get rid of method once jsr 283 is released
+         if (s instanceof org.apache.jackrabbit.api.jsr283.Session) {

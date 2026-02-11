@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java
+index f2268c9..4c96b09 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java
+@@ -429,17 +429,15 @@ public class ConditionalExpression extends OperatorExpression {
+ 			}
+ 		}
+ 		if (use15specifics) {
++			// >= 1.5 : LUB(operand types) must exist
++			TypeBinding commonType = null;
+ 			if (valueIfTrueType == NullBinding) {
+-				valueIfTrue.computeConversion(scope, valueIfTrueType, originalValueIfTrueType);
+-				valueIfFalse.computeConversion(scope, valueIfFalseType, originalValueIfFalseType);
+-				return this.resolvedType = valueIfFalseType;
++				commonType = valueIfFalseType;
+ 			} else if (valueIfFalseType == NullBinding) {
+-				valueIfTrue.computeConversion(scope, valueIfTrueType, originalValueIfTrueType);
+-				valueIfFalse.computeConversion(scope, valueIfFalseType, originalValueIfFalseType);
+-				return this.resolvedType = valueIfTrueType;
++				commonType = valueIfTrueType;
++			} else {
++				commonType = scope.lowerUpperBound(new TypeBinding[] { valueIfTrueType, valueIfFalseType });
+ 			}
+-			// >= 1.5 : LUB(operand types) must exist
+-			TypeBinding commonType = scope.lowerUpperBound(new TypeBinding[] { valueIfTrueType, valueIfFalseType });
+ 			if (commonType != null) {
+ 				valueIfTrue.computeConversion(scope, commonType, originalValueIfTrueType);
+ 				valueIfFalse.computeConversion(scope, commonType, originalValueIfFalseType);

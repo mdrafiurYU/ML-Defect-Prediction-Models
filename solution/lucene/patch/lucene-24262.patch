@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java b/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
+index 8962200..23e1afb 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
++++ b/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
+@@ -139,7 +139,7 @@ class ElevationComparatorSource extends FieldComparatorSource {
+ 
+   @Override
+   public FieldComparator newComparator(final String fieldname, final int numHits, int sortPos, boolean reversed) throws IOException {
+-   return new FieldComparator() {
++   return new FieldComparator<Integer>() {
+ 
+      FieldCache.DocTermsIndex idIndex;
+      private final int[] values = new int[numHits];
+@@ -184,7 +184,7 @@ class ElevationComparatorSource extends FieldComparatorSource {
+      }
+ 
+      @Override
+-     public Comparable<?> value(int slot) {
++     public Integer value(int slot) {
+        return Integer.valueOf(values[slot]);
+      }
+    };

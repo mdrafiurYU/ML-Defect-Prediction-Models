@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+index f9a6b5e..e61b622 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+@@ -106,7 +106,7 @@ public class NodeTypeDef implements Cloneable {
+         for (NodeDef nd: nodeDefs) {
+             qNodeDefs[i++] = ((NodeDefImpl) nd).getQNodeDefinition();
+         }
+-        QPropertyDefinition[] qPropDefs = new QPropertyDefinition[nodeDefs.size()];
++        QPropertyDefinition[] qPropDefs = new QPropertyDefinition[propDefs.size()];
+         i=0;
+         for (PropDef pd: propDefs) {
+             qPropDefs[i++] = ((PropDefImpl) pd).getQPropertyDefinition();

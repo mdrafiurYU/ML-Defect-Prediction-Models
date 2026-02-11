@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TrieDateField.java b/solr/src/java/org/apache/solr/schema/TrieDateField.java
+index 24dcdc7..4f48c98 100755
+--- a/solr/src/java/org/apache/solr/schema/TrieDateField.java
++++ b/solr/src/java/org/apache/solr/schema/TrieDateField.java
+@@ -193,7 +193,7 @@ public class TrieDateField extends DateField {
+ 
+     Field f;
+     if (stored) {
+-      f = new Field(field.getName(), arr, Field.Store.YES);
++      f = new Field(field.getName(), arr);
+       if (indexed) f.setTokenStream(ts);
+     } else {
+       f = new Field(field.getName(), ts);

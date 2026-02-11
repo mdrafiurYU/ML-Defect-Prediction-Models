@@ -1,0 +1,107 @@
+diff --git a/Xi/queryst.c b/Xi/queryst.c
+index d125e2d..c4cc5a2 100644
+--- a/Xi/queryst.c
++++ b/Xi/queryst.c
+@@ -1,4 +1,3 @@
+-/* $Xorg: queryst.c,v 1.4 2001/02/09 02:04:34 xorgcvs Exp $ */
+ /*
+ 
+ Copyright 1998, 1998  The Open Group
+@@ -26,7 +25,6 @@ other dealings in this Software without prior written authorization
+ from The Open Group.
+ 
+ */
+-/* $XFree86: xc/programs/Xserver/Xi/queryst.c,v 3.4 2001/01/17 22:13:26 dawes Exp $ */
+ 
+ /***********************************************************************
+  *
+@@ -102,10 +100,8 @@ ProcXQueryDeviceState(register ClientPtr client)
+     rep.sequenceNumber = client->sequence;
+ 
+     dev = LookupDeviceIntRec (stuff->deviceid);
+-    if (dev == NULL)
+-	{
+-	SendErrorToClient(client, IReqCode, X_QueryDeviceState, 0, 
+-		BadDevice);
++    if (dev == NULL) {
++	SendErrorToClient(client, IReqCode, X_QueryDeviceState, 0, BadDevice);
+ 	return Success;
+ 	}
+ 
+@@ -114,36 +110,29 @@ ProcXQueryDeviceState(register ClientPtr client)
+ 	MaybeStopDeviceHint(dev, client);
+ 
+     k = dev->key;
+-    if (k != NULL)
+-	{
++    if (k != NULL) {
+ 	total_length += sizeof (xKeyState);
+ 	num_classes++;
+ 	}
+ 
+     b = dev->button;
+-    if (b != NULL)
+-	{
++    if (b != NULL) {
+ 	total_length += sizeof (xButtonState);
+ 	num_classes++;
+ 	}
+ 
+-    if (v != NULL)
+-	{
+-	total_length += (sizeof(xValuatorState) + 
+-			(v->numAxes * sizeof(int)));
++    if (v != NULL) {
++	total_length += (sizeof(xValuatorState) + (v->numAxes * sizeof(int)));
+ 	num_classes++;
+ 	}
+     buf = (char *) xalloc (total_length);
+-    if (!buf)
+-	{
+-	SendErrorToClient(client, IReqCode, X_QueryDeviceState, 0, 
+-		BadAlloc);
++    if (!buf) {
++	SendErrorToClient(client, IReqCode, X_QueryDeviceState, 0, BadAlloc);
+ 	return Success;
+ 	}
+     savbuf = buf;
+ 
+-    if (k != NULL)
+-	{
++    if (k != NULL) {
+ 	tk = (xKeyState *) buf;
+ 	tk->class = KeyClass;
+ 	tk->length = sizeof (xKeyState);
+@@ -153,8 +142,7 @@ ProcXQueryDeviceState(register ClientPtr client)
+ 	buf += sizeof (xKeyState);
+ 	}
+ 
+-    if (b != NULL)
+-	{
++    if (b != NULL) {
+ 	tb = (xButtonState *) buf;
+ 	tb->class = ButtonClass;
+ 	tb->length = sizeof (xButtonState);
+@@ -164,19 +152,16 @@ ProcXQueryDeviceState(register ClientPtr client)
+ 	buf += sizeof (xButtonState);
+ 	}
+ 
+-    if (v != NULL)
+-	{
++    if (v != NULL) {
+ 	tv = (xValuatorState *) buf;
+ 	tv->class = ValuatorClass;
+ 	tv->length = sizeof (xValuatorState);
+ 	tv->num_valuators = v->numAxes;
+ 	tv->mode = v->mode;
+ 	buf += sizeof(xValuatorState);
+-	for (i=0, values=v->axisVal; i<v->numAxes; i++)
+-	    {
++	for (i = 0, values = v->axisVal; i < v->numAxes; i++) {
+ 	    *((int *) buf) = *values++;
+-	    if (client->swapped)
+-		{
++	    if (client->swapped) {
+ 		swapl ((int *) buf, n);/* macro - braces needed */
+ 		}
+ 	    buf += sizeof(int);

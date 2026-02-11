@@ -1,0 +1,23 @@
+diff --git a/mpx/selectev.h b/mpx/selectev.h
+new file mode 100644
+index 0000000..7026199
+--- /dev/null
++++ b/mpx/selectev.h
+@@ -0,0 +1,17 @@
++/* Copyright 2006 by Peter Hutterer <peter@cs.unisa.edu.au> */
++
++
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
++#ifndef SELECTEV_H
++#define SELECTEV_H 1
++
++int SProcMPXSelectEvents(ClientPtr	/* client */
++    );
++
++int ProcMPXSelectEvents(ClientPtr	/* client */
++    );
++
++#endif /* SELECTEV_H */

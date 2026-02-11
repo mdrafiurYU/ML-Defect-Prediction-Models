@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index 2717a9c..4636af4 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -2429,12 +2429,8 @@ xf86LoadOneModule(char *name, pointer opt)
+     if (!name)
+ 	return NULL;
+ 
+-#ifndef NORMALISE_MODULE_NAME
+-    Name = xstrdup(name);
+-#else
+     /* Normalise the module name */
+     Name = xf86NormalizeName(name);
+-#endif
+ 
+     /* Skip empty names */
+     if (Name == NULL)

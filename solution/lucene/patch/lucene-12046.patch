@@ -1,0 +1,11 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CreateIndexTask.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CreateIndexTask.java
+index a347c9c..503f4bc 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CreateIndexTask.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CreateIndexTask.java
+@@ -133,6 +133,7 @@ public class CreateIndexTask extends PerfTask {
+ 
+     final String defaultCodec = config.get("default.codec", null);
+     if (defaultCodec != null) {
++      CodecProvider.setDefaultCodec(defaultCodec);
+       CodecProvider.getDefault().setDefaultFieldCodec(defaultCodec);
+     }

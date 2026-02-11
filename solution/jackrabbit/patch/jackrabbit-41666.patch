@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/sql2/ParserTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/sql2/ParserTest.java
+index 3773a6c..3579a66 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/sql2/ParserTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/sql2/ParserTest.java
+@@ -66,7 +66,7 @@ public class ParserTest extends AbstractQueryTest {
+             }
+             // System.out.println(line);
+             try {
+-                parser.createPreparedQuery(line);
++                parser.createQueryObjectModel(line);
+                 fuzz(line);
+             } catch (RepositoryException e) {
+                 line = reader.readLine();
+@@ -108,7 +108,7 @@ public class ParserTest extends AbstractQueryTest {
+             }
+             String q = buff.toString();
+             try {
+-                parser.createPreparedQuery(q);
++                parser.createQueryObjectModel(q);
+             } catch (InvalidQueryException e) {
+                 // OK
+             } catch (NamespaceException e) {

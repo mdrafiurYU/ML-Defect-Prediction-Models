@@ -1,0 +1,55 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+index c068c18..b822383 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+@@ -142,6 +142,16 @@ public class SharedItemStateManager
+     private final boolean usesReferences;
+ 
+     /**
++     * Flag indicating whether this item state manager is checking referential
++     * integrity when storing modifications. The default is to to check
++     * for referential integrity.
++     * Should be changed very carefully by experienced developers only.
++     *
++     * @see https://issues.apache.org/jira/browse/JCR-954
++     */
++    private boolean checkReferences = true;
++
++    /**
+      * id of root node
+      */
+     private final NodeId rootNodeId;
+@@ -194,6 +204,17 @@ public class SharedItemStateManager
+     }
+ 
+     /**
++     * Enables or disables the referential integrity checking, this
++     * should be used very carefully by experienced developers only.
++     *
++     * @see https://issues.apache.org/jira/browse/JCR-954
++     * @param checkReferences whether to do referential integrity checks
++     */
++    public void setCheckReferences(boolean checkReferences) {
++        this.checkReferences = checkReferences;
++    }
++
++    /**
+      * enables or disables the write-lock hack. this should only be called by
+      * the {@link XAVersionManager}.
+      *
+@@ -549,10 +570,11 @@ public class SharedItemStateManager
+                     updateReferences(local, virtualProvider);
+                 }
+ 
+-                /**
+-                 * Check whether reference targets exist/were not removed
+-                 */
+-                checkReferentialIntegrity(local);
++                // If enabled, check whether reference targets
++                // exist/were not removed
++                if (checkReferences) {
++                    checkReferentialIntegrity(local);
++                }
+ 
+                 /**
+                  * prepare the events. this needs to be after the referential

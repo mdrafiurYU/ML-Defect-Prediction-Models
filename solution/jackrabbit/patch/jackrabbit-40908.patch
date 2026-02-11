@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java
+index 4bd5cab..b389e89 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java
+@@ -128,6 +128,10 @@ final class DocNumberCache {
+      */
+     Entry get(String uuid) {
+         LRUMap cacheSegment = docNumbers[getSegmentIndex(uuid.charAt(0))];
++        // uuid may be invalid
++        if (uuid.length() != UUID.UUID_FORMATTED_LENGTH) {
++            return null;
++        }
+         UUID key = UUID.fromString(uuid);
+         Entry entry;
+         synchronized (cacheSegment) {

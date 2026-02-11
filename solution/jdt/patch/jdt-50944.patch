@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
+index 4c4c09b..0b610d3 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
+@@ -452,6 +452,9 @@ protected void reportDeclaration(MethodBinding methodBinding, MatchLocator locat
+ 	String[] parameterTypes = new String[parameterLength];
+ 	for (int i = 0; i  < parameterLength; i++) {
+ 		char[] typeName = parameters[i].shortReadableName();
++		if (parameters[i].isMemberType()) {
++			typeName = CharOperation.subarray(typeName, CharOperation.indexOf('.', typeName)+1, typeName.length);
++		}
+ 		parameterTypes[i] = Signature.createTypeSignature(typeName, false);
+ 	}
+ 	IMethod method = type.getMethod(new String(bindingSelector), parameterTypes);

@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/egl/kinput.c b/hw/xgl/egl/kinput.c
+index 90997d2..b374bf5 100644
+--- a/hw/xgl/egl/kinput.c
++++ b/hw/xgl/egl/kinput.c
+@@ -454,9 +454,6 @@ KdKeybdProc(DeviceIntPtr pDevice, int onoff)
+ #else
+ 	memset(&names, 0, sizeof(XkbComponentNamesRec));
+ 
+-	if (XkbInitialMap)
+-	    names.keymap = XkbInitialMap;
+-
+ 	XkbSetRulesDflts ("base", "pc101", "us", NULL, NULL);
+ 	ret = XkbInitKeyboardDeviceStruct (pDev,
+ 					   &names,

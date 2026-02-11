@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_io.c b/hw/xfree86/os-support/bsd/bsd_io.c
+index 3b1f588..6e288d4 100644
+--- a/hw/xfree86/os-support/bsd/bsd_io.c
++++ b/hw/xfree86/os-support/bsd/bsd_io.c
+@@ -43,7 +43,7 @@
+ #define KBD_FD(i) ((i).kbdFd != -1 ? (i).kbdFd : (i).consoleFd)
+ #endif
+ 
+-void
++_X_EXPORT void
+ xf86SoundKbdBell(int loudness, int pitch, int duration)
+ {
+ #ifdef WSCONS_SUPPORT

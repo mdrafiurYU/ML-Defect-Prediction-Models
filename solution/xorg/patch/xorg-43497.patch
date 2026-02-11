@@ -1,0 +1,13 @@
+diff --git a/glx/glxdrawable.h b/glx/glxdrawable.h
+index 45000bf..259b11e 100644
+--- a/glx/glxdrawable.h
++++ b/glx/glxdrawable.h
+@@ -49,6 +49,8 @@ struct __GLXdrawable {
+     GLboolean (*swapBuffers)(__GLXdrawable *);
+     void      (*copySubBuffer)(__GLXdrawable *drawable,
+ 			       int x, int y, int w, int h);
++    void      (*waitX)(__GLXdrawable *);
++    void      (*waitGL)(__GLXdrawable *);
+ 
+     DrawablePtr pDraw;
+     XID drawId;

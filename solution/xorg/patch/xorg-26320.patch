@@ -1,0 +1,13 @@
+diff --git a/randr/rrscreen.c b/randr/rrscreen.c
+index e59947b..e382540 100644
+--- a/randr/rrscreen.c
++++ b/randr/rrscreen.c
+@@ -69,7 +69,7 @@ RREditConnectionInfo (ScreenPtr pScreen)
+     root->mmHeight = pScreen->mmHeight;
+ }
+ 
+-static void
++void
+ RRSendConfigNotify (ScreenPtr pScreen)
+ {
+     WindowPtr	pWin = WindowTable[pScreen->myNum];

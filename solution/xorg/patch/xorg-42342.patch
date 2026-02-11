@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaOverlay.c b/hw/xfree86/xaa/xaaOverlay.c
+index 273183e..a104e74 100644
+--- a/hw/xfree86/xaa/xaaOverlay.c
++++ b/hw/xfree86/xaa/xaaOverlay.c
+@@ -112,7 +112,7 @@ XAASetColorKey8_32(
+     SET_SYNC_FLAG(infoRec);
+ }
+ 
+-void 
++_X_EXPORT void
+ XAASetupOverlay8_32Planar(ScreenPtr pScreen)
+ {
+     XAAInfoRecPtr infoRec = GET_XAAINFORECPTR_FROM_SCREEN(pScreen);

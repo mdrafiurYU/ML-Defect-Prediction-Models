@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java
+index 19f0808..00fcc56 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java
+@@ -123,8 +123,12 @@ public abstract class AbstractMergeTest extends AbstractJCRTest {
+                 }
+             } finally {
+                 superuserW2.logout();
++                superuserW2 = null;
+             }
+         }
++        workspace = null;
++        workspaceW2 = null;
++        testRootNodeW2 = null;
+ 
+         super.tearDown();
+     }

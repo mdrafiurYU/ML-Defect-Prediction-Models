@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/exa/exa_render.c b/hw/xfree86/exa/exa_render.c
+index d57a221..e71f535 100644
+--- a/hw/xfree86/exa/exa_render.c
++++ b/hw/xfree86/exa/exa_render.c
+@@ -718,6 +718,8 @@ exaGlyphs (CARD8	op,
+ 	    {
+ 		exaCopyArea (&pScratchPixmap->drawable, &pPixmap->drawable, pGC,
+ 			     0, 0, glyph->info.width, glyph->info.height, 0, 0);
++	    } else {
++		exaDrawableDirty (&pPixmap->drawable);
+ 	    }
+ 
+ 	    if (maskFormat)

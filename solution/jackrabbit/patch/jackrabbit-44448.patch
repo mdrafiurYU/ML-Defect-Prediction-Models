@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationDescriptorReader.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationDescriptorReader.java
+index 7c641d1..1312b27 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationDescriptorReader.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationDescriptorReader.java
+@@ -240,6 +240,8 @@ public class AnnotationDescriptorReader implements DescriptorReader
+ 			setElementClassName(collectionDescriptor, field.getGenericType());
+ 		}
+ 
++		collectionDescriptor.setJcrElementName(collectionAnnotation.jcrElementName());
++
+ 		if (! collectionAnnotation.collectionClassName().equals(Object.class))
+ 		{
+ 			collectionDescriptor.setCollectionClassName(collectionAnnotation.collectionClassName().getName());

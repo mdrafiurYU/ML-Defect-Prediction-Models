@@ -1,0 +1,13 @@
+diff --git a/dix/privates.c b/dix/privates.c
+index ca03317..0e8c9ef 100644
+--- a/dix/privates.c
++++ b/dix/privates.c
+@@ -295,7 +295,7 @@ dixLookupPrivateOffset(RESTYPE type)
+     return offsets[type];
+ }
+ 
+-int
++_X_EXPORT int
+ dixResetPrivates(void)
+ {
+     int i;

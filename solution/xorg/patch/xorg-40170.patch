@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/dixmods/extmod/xf86vmode.c b/hw/xfree86/dixmods/extmod/xf86vmode.c
+index 559f18b..6485a04 100644
+--- a/hw/xfree86/dixmods/extmod/xf86vmode.c
++++ b/hw/xfree86/dixmods/extmod/xf86vmode.c
+@@ -53,7 +53,8 @@ from Kaleb S. KEITHLEY
+ #define DEFAULT_XF86VIDMODE_VERBOSITY	3
+ 
+ static int VidModeErrorBase;
+-static DevPrivateKey VidModeClientPrivateKey = &VidModeClientPrivateKey;
++static int VidModeClientPrivateKeyIndex;
++static DevPrivateKey VidModeClientPrivateKey = &VidModeClientPrivateKeyIndex;
+ 
+ /* This holds the client's version information */
+ typedef struct {
+@@ -142,7 +143,8 @@ typedef struct _XF86VidModeScreenPrivate {
+     Bool		hasWindow;
+ } XF86VidModeScreenPrivateRec, *XF86VidModeScreenPrivatePtr;
+    
+-static DevPrivateKey ScreenPrivateKey = &ScreenPrivateKey;
++static int ScreenPrivateKeyIndex;
++static DevPrivateKey ScreenPrivateKey = &ScreenPrivateKeyIndex;
+ 
+ #define GetScreenPrivate(s) ((ScreenSaverScreenPrivatePtr) \
+     dixLookupPrivate(&(s)->devPrivates, ScreenPrivateKey))

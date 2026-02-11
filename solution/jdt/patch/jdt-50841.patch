@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java
+index 54c4829..2e485ad 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java
+@@ -110,7 +110,7 @@ private int decodeElementValue(int offset) {
+ 			readOffset += 2;
+ 			break;
+ 		case '@' :
+-			readOffset += decodeAnnotation(readOffset);
++			readOffset = decodeAnnotation(readOffset);
+ 			break;
+ 		case '[' :
+ 			int numberOfValues = u2At(readOffset);

@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/cloud/AbstractDistributedZkTestCase.java b/solr/src/test/org/apache/solr/cloud/AbstractDistributedZkTestCase.java
+index 053b077..3fe2983 100644
+--- a/solr/src/test/org/apache/solr/cloud/AbstractDistributedZkTestCase.java
++++ b/solr/src/test/org/apache/solr/cloud/AbstractDistributedZkTestCase.java
+@@ -51,6 +51,7 @@ public abstract class AbstractDistributedZkTestCase extends BaseDistributedSearc
+     System.setProperty("solr.test.sys.prop2", "proptwo");
+   }
+   
++  @Override
+   protected void createServers(int numShards) throws Exception {
+     System.setProperty("collection", "control_collection");
+     controlJetty = createJetty(testDir, testDir + "/control/data", "control_shard");

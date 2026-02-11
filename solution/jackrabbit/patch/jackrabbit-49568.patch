@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+index ae63126..14ceeb8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+@@ -189,8 +189,8 @@ public class PropertyImpl extends ItemImpl implements Property {
+         switch (value.getType()) {
+             case PropertyType.NAME:
+             case PropertyType.PATH:
+-                Value jcrValue = ValueFormat.getJCRValue(value, session, session.getValueFactory());
+-                length = jcrValue.getString().length();
++                String str = ValueFormat.getJCRString(value, session);
++                length = str.length();
+                 break;
+             default:
+                 length = value.getLength();

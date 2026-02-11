@@ -1,0 +1,48 @@
+diff --git a/hw/kdrive/vxworks/vxworks.c b/hw/kdrive/vxworks/vxworks.c
+deleted file mode 100644
+index c9e2be7..0000000
+--- a/hw/kdrive/vxworks/vxworks.c
++++ /dev/null
+@@ -1,42 +0,0 @@
+-/*
+- * Copyright © 1999 Network Computing Devices, Inc.  All rights reserved.
+- *
+- * Author: Keith Packard
+- */
+-
+-#ifdef HAVE_CONFIG_H
+-#include <kdrive-config.h>
+-#endif
+-#include "kdrive.h"
+-#include <X11/keysym.h>
+-
+-Bool
+-VxWorksSpecialKey (KeySym sym)
+-{
+-    switch (sym) {
+-    case XK_Sys_Req:
+-	download(1, "setup", 0);
+-	return TRUE;
+-    case XK_Break:
+-	download(1, "launcher", 0);
+-	return TRUE;
+-    }
+-    return FALSE;
+-}
+-
+-void
+-KdOsAddInputDrivers (void)
+-{
+-    KdAddPointerDriver(&VxWorksMouseDriver);
+-    KdAddPointerDriver(&VxWorksKeyboardDriver);
+-}
+-
+-KdOsFuncs   VxWorksFuncs = {
+-    .SpecialKey = VxWorksSpecialKey,
+-};
+-
+-void
+-OsVendorInit (void)
+-{
+-    KdOsInit (&VxWorksFuncs);
+-}

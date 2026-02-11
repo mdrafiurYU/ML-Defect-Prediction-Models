@@ -1,0 +1,16 @@
+diff --git a/exa/exa_accel.c b/exa/exa_accel.c
+index e3e4ecf..8ba5dc6 100644
+--- a/exa/exa_accel.c
++++ b/exa/exa_accel.c
+@@ -250,7 +250,10 @@ exaMoveInPixmap (PixmapPtr pPixmap)
+ 
+     if (pExaScr->info->accel.UploadToScreen)
+     {
+-	if (pExaScr->info->accel.UploadToScreen(pPixmap, src, src_pitch))
++	if (pExaScr->info->accel.UploadToScreen(pPixmap, 0, 0,
++						pPixmap->drawable.width,
++						pPixmap->drawable.height,
++						src, src_pitch))
+ 	    return;
+     }
+ 

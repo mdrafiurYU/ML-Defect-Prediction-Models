@@ -1,0 +1,17 @@
+diff --git a/hw/xquartz/xpr/xprScreen.c b/hw/xquartz/xpr/xprScreen.c
+index a4ee303..18406b8 100644
+--- a/hw/xquartz/xpr/xprScreen.c
++++ b/hw/xquartz/xpr/xprScreen.c
+@@ -423,12 +423,8 @@ static QuartzModeProcsRec xprModeProcs = {
+     xprSetupScreen,
+     xprInitInput,
+     QuartzInitCursor,
+-    NULL,               // No need to update cursor
+     QuartzSuspendXCursor,
+     QuartzResumeXCursor,
+-    NULL,               // No capture or release in rootless mode
+-    NULL,
+-    NULL,               // Xplugin sends screen change events directly
+     xprAddPseudoramiXScreens,
+     xprUpdateScreen,
+     xprIsX11Window,

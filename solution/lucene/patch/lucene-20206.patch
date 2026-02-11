@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java b/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java
+index 8205e73..c5fd09b 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java
+@@ -310,7 +310,7 @@ public final class TermInfosReader {
+         }
+       } else {
+         assert sameTermInfo(ti, tiOrd, enumerator);
+-        assert (int) enumerator.position == tiOrd.termOrd;
++        assert enumerator.position == tiOrd.termOrd;
+       }
+     } else {
+       ti = null;

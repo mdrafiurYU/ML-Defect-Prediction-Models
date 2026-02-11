@@ -1,0 +1,64 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index 8f52c1e..bbae483 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -1052,6 +1052,18 @@ ProcSELinuxGetSelectionManager(ClientPtr client)
+ }
+ 
+ static int
++ProcSELinuxSetDeviceCreateContext(ClientPtr client)
++{
++    return Success;
++}
++
++static int
++ProcSELinuxGetDeviceCreateContext(ClientPtr client)
++{
++    return Success;
++}
++
++static int
+ ProcSELinuxSetDeviceContext(ClientPtr client)
+ {
+     char *ctx;
+@@ -1134,6 +1146,10 @@ ProcSELinuxDispatch(ClientPtr client)
+ 	return ProcSELinuxSetSelectionManager(client);
+     case X_SELinuxGetSelectionManager:
+     	return ProcSELinuxGetSelectionManager(client);
++    case X_SELinuxSetDeviceCreateContext:
++    	return ProcSELinuxSetDeviceCreateContext(client);
++    case X_SELinuxGetDeviceCreateContext:
++    	return ProcSELinuxGetDeviceCreateContext(client);
+     case X_SELinuxSetDeviceContext:
+     	return ProcSELinuxSetDeviceContext(client);
+     case X_SELinuxGetDeviceContext:
+@@ -1185,6 +1201,18 @@ SProcSELinuxGetSelectionManager(ClientPtr client)
+ }
+ 
+ static int
++SProcSELinuxSetDeviceCreateContext(ClientPtr client)
++{
++    return ProcSELinuxSetDeviceCreateContext(client);
++}
++
++static int
++SProcSELinuxGetDeviceCreateContext(ClientPtr client)
++{
++    return ProcSELinuxGetDeviceCreateContext(client);
++}
++
++static int
+ SProcSELinuxSetDeviceContext(ClientPtr client)
+ {
+     return ProcSELinuxSetDeviceContext(client);
+@@ -1247,6 +1275,10 @@ SProcSELinuxDispatch(ClientPtr client)
+ 	return SProcSELinuxSetSelectionManager(client);
+     case X_SELinuxGetSelectionManager:
+     	return SProcSELinuxGetSelectionManager(client);
++    case X_SELinuxSetDeviceCreateContext:
++    	return SProcSELinuxSetDeviceCreateContext(client);
++    case X_SELinuxGetDeviceCreateContext:
++    	return SProcSELinuxGetDeviceCreateContext(client);
+     case X_SELinuxSetDeviceContext:
+     	return SProcSELinuxSetDeviceContext(client);
+     case X_SELinuxGetDeviceContext:

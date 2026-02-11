@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/AbstractMethodTests.java b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/AbstractMethodTests.java
+index 9c17221..272ffa3 100644
+--- a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/AbstractMethodTests.java
++++ b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/AbstractMethodTests.java
+@@ -17,14 +17,14 @@ import org.eclipse.jdt.core.JavaModelException;
+ import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ import org.eclipse.jdt.core.tests.util.Util;
+ 
+-public class AbstractMethodTests extends Tests {
++public class AbstractMethodTests extends BuilderTests {
+ 	
+ 	public AbstractMethodTests(String name) {
+ 		super(name);
+ 	}
+ 	
+ 	public static Test suite() {
+-		return new TestSuite(AbstractMethodTests.class);
++		return buildTestSuite(AbstractMethodTests.class);
+ 	}
+ 
+ 	/**

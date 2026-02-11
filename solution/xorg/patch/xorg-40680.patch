@@ -1,0 +1,15 @@
+diff --git a/hw/kdrive/linux/tslib.c b/hw/kdrive/linux/tslib.c
+index 50cd7cb..e0e860e 100644
+--- a/hw/kdrive/linux/tslib.c
++++ b/hw/kdrive/linux/tslib.c
+@@ -95,8 +95,8 @@ TsRead (int fd, void *closure)
+                     y = event.y - private->lasty;
+ 	    	}
+             }
+-            private->lastx = x;
+-            private->lasty = y;
++            private->lastx = event.x;
++            private->lasty = event.y;
+         } else {
+             flags = 0;
+             x = private->lastx;

@@ -1,0 +1,27 @@
+diff --git a/hw/vfb/InitOutput.c b/hw/vfb/InitOutput.c
+index a2d8661..812326a 100644
+--- a/hw/vfb/InitOutput.c
++++ b/hw/vfb/InitOutput.c
+@@ -225,22 +225,6 @@ void
+ DarwinHandleGUI(int argc, char *argv[])
+ {
+ }
+-
+-void GlxExtensionInit();
+-void GlxWrapInitVisuals(void *procPtr);
+-
+-void
+-DarwinGlxExtensionInit()
+-{
+-    GlxExtensionInit();
+-}
+-
+-void
+-DarwinGlxWrapInitVisuals(
+-    void *procPtr)
+-{
+-    GlxWrapInitVisuals(procPtr);
+-}
+ #endif
+ 
+ void

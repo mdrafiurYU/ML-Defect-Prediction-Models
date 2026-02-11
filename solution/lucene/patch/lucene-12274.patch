@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+index 7897a70..8a551cd 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+@@ -349,6 +349,9 @@ public class TestIndexWriterReader extends LuceneTestCase {
+ 
+     void close(boolean doWait) throws Throwable {
+       didClose = true;
++      if (doWait) {
++        mainWriter.waitForMerges();
++      }
+       mainWriter.close(doWait);
+     }

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnxResource.c b/hw/xfree86/os-support/linux/lnxResource.c
+index 690d3bc..d012979 100644
+--- a/hw/xfree86/os-support/linux/lnxResource.c
++++ b/hw/xfree86/os-support/linux/lnxResource.c
+@@ -19,7 +19,7 @@
+ /* Avoid Imakefile changes */
+ #include "bus/Pci.h"
+ 
+-resRange PciAvoid[] =
++_X_EXPORT resRange PciAvoid[] =
+ {
+ #if !defined(__sparc__) || !defined(INCLUDE_XF86_NO_DOMAIN)
+     _PCI_AVOID_PC_STYLE,

@@ -1,0 +1,36 @@
+diff --git a/Xi/getvers.c b/Xi/getvers.c
+index 1ad0ce7..efd2683 100644
+--- a/Xi/getvers.c
++++ b/Xi/getvers.c
+@@ -79,8 +79,7 @@ XExtensionVersion	AllExtensionVersions[128];
+  */
+ 
+ int
+-SProcXGetExtensionVersion(client)
+-    register ClientPtr client;
++SProcXGetExtensionVersion(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -98,8 +97,7 @@ SProcXGetExtensionVersion(client)
+  */
+ 
+ int
+-ProcXGetExtensionVersion (client)
+-    register ClientPtr client;
++ProcXGetExtensionVersion (register ClientPtr client)
+     {
+     xGetExtensionVersionReply	rep;
+ 
+@@ -142,10 +140,7 @@ ProcXGetExtensionVersion (client)
+  */
+ 
+ void
+-SRepXGetExtensionVersion (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGetExtensionVersionReply	*rep;
++SRepXGetExtensionVersion (ClientPtr client, int size, xGetExtensionVersionReply *rep)
+     {
+     register char n;
+ 

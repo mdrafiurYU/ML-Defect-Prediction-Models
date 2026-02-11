@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocOrderNodeIteratorImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocOrderNodeIteratorImpl.java
+index b61a448..7c85dd0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocOrderNodeIteratorImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocOrderNodeIteratorImpl.java
+@@ -18,7 +18,7 @@ package org.apache.jackrabbit.core.query.lucene;
+ 
+ import org.apache.jackrabbit.core.ItemManager;
+ import org.apache.jackrabbit.core.NodeImpl;
+-import org.apache.jackrabbit.name.Path;
++import org.apache.jackrabbit.spi.Path;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+@@ -192,8 +192,8 @@ class DocOrderNodeIteratorImpl implements ScoreNodeIterator {
+                                 invalidIDs.add(n2.getNodeId());
+                                 throw new SortFailedException();
+                             }
+-                            Path.PathElement[] path1 = node1.getPrimaryPath().getElements();
+-                            Path.PathElement[] path2 = node2.getPrimaryPath().getElements();
++                            Path.Element[] path1 = node1.getPrimaryPath().getElements();
++                            Path.Element[] path2 = node2.getPrimaryPath().getElements();
+ 
+                             // find nearest common ancestor
+                             int commonDepth = 0; // root

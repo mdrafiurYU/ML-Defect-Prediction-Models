@@ -1,0 +1,33 @@
+diff --git a/solr/src/java/org/apache/solr/request/UnInvertedField.java b/solr/src/java/org/apache/solr/request/UnInvertedField.java
+index 9014d1e..ede2328 100755
+--- a/solr/src/java/org/apache/solr/request/UnInvertedField.java
++++ b/solr/src/java/org/apache/solr/request/UnInvertedField.java
+@@ -882,6 +882,7 @@ public class UnInvertedField {
+     return te.skipTo(termNum);
+   }
+ 
++  @Override
+   public String toString() {
+     return "{field=" + field
+             + ",memSize="+memSize()
+@@ -1158,6 +1159,7 @@ class TermIndex {
+       ArrayList<BytesRef> lst;
+       PagedBytes bytes;
+ 
++      @Override
+       protected BytesRef setTerm() throws IOException {
+         BytesRef br = super.setTerm();
+         if (br != null && (pos & intervalMask)==0) {
+@@ -1173,10 +1175,12 @@ class TermIndex {
+         return br;
+       }
+ 
++      @Override
+       public BytesRef skipTo(int termNumber) throws IOException {
+         throw new UnsupportedOperationException();
+       }
+ 
++      @Override
+       public void close() throws IOException {
+         nTerms=pos;
+         super.close();

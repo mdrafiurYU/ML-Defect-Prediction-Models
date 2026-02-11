@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/FieldBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/FieldBinding.java
+index 852c241..419a94d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/FieldBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/FieldBinding.java
+@@ -261,7 +261,11 @@ public long getAnnotationTagBits() {
+ 
+ public AnnotationBinding[] getAnnotations() {
+ 	FieldBinding originalField = this.original();
+-	return originalField.declaringClass.retrieveAnnotations(originalField);
++	ReferenceBinding declaringClassBinding = originalField.declaringClass;
++	if (declaringClassBinding == null) {
++		return Binding.NO_ANNOTATIONS;
++	}	
++	return declaringClassBinding.retrieveAnnotations(originalField);
+ }
+ 
+ /* Answer true if the receiver has default visibility

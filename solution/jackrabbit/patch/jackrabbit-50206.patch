@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueReferenceTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueReferenceTest.java
+index a5373b3..af2c013 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueReferenceTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueReferenceTest.java
+@@ -152,15 +152,7 @@ public class SetValueReferenceTest extends AbstractJCRTest {
+      *                                referenceable nodes.
+      */
+     private void ensureReferenceable(Node n) throws RepositoryException, NotExecutableException {
+-        if (n.isNodeType(mixReferenceable)) {
+-            return;
+-        }
+-        if (n.canAddMixin(mixReferenceable)) {
+-            n.addMixin(mixReferenceable);
+-            // some implementations may require a save after addMixin()
+-            n.getSession().save();
+-        } else {
+-            throw new NotExecutableException("Node is not referenceable: " + n.getPath());
+-        }
++        ensureMixinType(n, mixReferenceable);
++        n.getSession().save();
+     }
+ }

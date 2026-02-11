@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+index 313c6d6..2a8e8b4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+@@ -114,7 +114,7 @@ public class ChangeLogRecord extends ClusterRecord {
+     /**
+      * Last used session for event sources.
+      */
+-    private Session lastSession;
++    private ClusterSession lastSession;
+ 
+     /**
+      * Create a new instance of this class. Used when serializing.
+@@ -358,7 +358,7 @@ public class ChangeLogRecord extends ClusterRecord {
+      * @return session
+      */
+     private Session getOrCreateSession(String userId) {
+-        if (lastSession == null || !lastSession.getUserID().equals(userId)) {
++        if (lastSession == null || !lastSession.isUserId(userId)) {
+             lastSession = new ClusterSession(userId);
+         }
+         return lastSession;

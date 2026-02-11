@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ExternalModificationTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ExternalModificationTest.java
+index c485e2f..07bcffe 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ExternalModificationTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ExternalModificationTest.java
+@@ -47,7 +47,7 @@ public class ExternalModificationTest extends AbstractJCRTest {
+         refNode.addMixin(mixReferenceable);
+         testRootNode.save();
+ 
+-        testSession = helper.getReadWriteSession();
++        testSession = getHelper().getReadWriteSession();
+     }
+ 
+     protected void tearDown() throws Exception {

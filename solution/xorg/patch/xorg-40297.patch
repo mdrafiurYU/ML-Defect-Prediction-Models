@@ -1,0 +1,25 @@
+diff --git a/dix/window.c b/dix/window.c
+index b588f44..6cba23d 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -486,15 +486,14 @@ InitRootWindow(WindowPtr pWin)
+     rootCursor->refcnt++;
+ 
+ 
+-    if (!blackRoot && !whiteRoot) {
++    if (party_like_its_1989) {
+         MakeRootTile(pWin);
+         backFlag |= CWBackPixmap;
+-    }
+-    else {
+-        if (blackRoot)
+-            pWin->background.pixel = pScreen->blackPixel;
+-        else
++    } else {
++	if (whiteRoot)
+             pWin->background.pixel = pScreen->whitePixel;
++        else
++            pWin->background.pixel = pScreen->blackPixel;
+         backFlag |= CWBackPixel;
+     } 
+ 

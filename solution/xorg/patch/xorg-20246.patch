@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xaa/xaaROP.c b/hw/xfree86/xaa/xaaROP.c
+index 0f39db9..f9fe04d 100644
+--- a/hw/xfree86/xaa/xaaROP.c
++++ b/hw/xfree86/xaa/xaaROP.c
+@@ -1,5 +1,9 @@
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/misc.h>
+ #include "xf86.h"

@@ -1,0 +1,46 @@
+diff --git a/mfb/mfbbitblt.c b/mfb/mfbbitblt.c
+index 0f84df3..270fd96 100644
+--- a/mfb/mfbbitblt.c
++++ b/mfb/mfbbitblt.c
+@@ -400,10 +400,7 @@ int dstx, dsty;
+ static unsigned long	copyPlaneGeneration;
+ static int		copyPlaneScreenIndex = -1;
+ 
+-Bool
+-mfbRegisterCopyPlaneProc (pScreen, proc)
+-    ScreenPtr	pScreen;
+-    RegionPtr	(*proc)(
++typedef RegionPtr (*CopyPlaneFuncPtr)(
+         DrawablePtr         /* pSrcDrawable */,
+         DrawablePtr         /* pDstDrawable */,
+         GCPtr               /* pGC */,
+@@ -414,6 +411,11 @@ mfbRegisterCopyPlaneProc (pScreen, proc)
+         int                 /* dstx */,
+         int                 /* dsty */,
+         unsigned long       /* bitPlane */);
++
++Bool
++mfbRegisterCopyPlaneProc (pScreen, proc)
++    ScreenPtr	pScreen;
++    CopyPlaneFuncPtr proc;
+ {
+     if (copyPlaneGeneration != serverGeneration)
+     {
+@@ -422,7 +424,7 @@ mfbRegisterCopyPlaneProc (pScreen, proc)
+ 	    return FALSE;
+ 	copyPlaneGeneration = serverGeneration;
+     }
+-    pScreen->devPrivates[copyPlaneScreenIndex].fptr = proc;
++    pScreen->devPrivates[copyPlaneScreenIndex].fptr = (CopyPlaneFuncPtr)proc;
+     return TRUE;
+ }
+ 
+@@ -468,7 +470,7 @@ unsigned long plane;
+     if (pSrcDrawable->depth != 1)
+     {
+ 	if (copyPlaneScreenIndex >= 0 &&
+-	    (copyPlane =
++	    (copyPlane = (CopyPlaneFuncPtr)
+ 		pSrcDrawable->pScreen->devPrivates[copyPlaneScreenIndex].fptr)
+ 	    )
+ 	{

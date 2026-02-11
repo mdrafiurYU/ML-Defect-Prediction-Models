@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java b/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
+index a10689c..6469ca9 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
+@@ -1243,7 +1243,7 @@ public abstract class LuceneTestCase extends Assert {
+     }
+     
+     @Override
+-    public String toString() {
++    public synchronized String toString() {
+       return "RandomCodecProvider: " + previousMappings.toString();
+     }
+   }

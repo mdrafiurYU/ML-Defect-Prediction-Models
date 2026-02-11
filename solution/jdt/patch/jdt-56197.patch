@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+index 2e2fd5a..735e06a 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+@@ -203,11 +203,11 @@ public abstract class APTTestBase extends Tests{
+ 		try {
+ 			IMarker[] markers = null;
+ 			int total = 0;
+-			final IMarker[] processorMarkers = resource.findMarkers(AptPlugin.APT_PROCESSOR_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);
++			final IMarker[] processorMarkers = resource.findMarkers(AptPlugin.APT_BATCH_PROCESSOR_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);
+ 			total = processorMarkers.length;
+ 			markers = processorMarkers;
+ 				
+-			final IMarker[] factoryPathMarkers = resource.findMarkers(AptPlugin.APT_BUILD_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);			
++			final IMarker[] factoryPathMarkers = resource.findMarkers(AptPlugin.APT_LOADER_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);			
+ 			if( factoryPathMarkers.length != 0 ){
+ 				if( total != 0 ){
+ 					final int len = factoryPathMarkers.length;

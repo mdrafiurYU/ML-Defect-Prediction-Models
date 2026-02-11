@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index 86fc483..cd7db60 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -111,7 +111,7 @@ import java.util.Set;
+  * A <code>RepositoryImpl</code> ...
+  */
+ public class RepositoryImpl extends AbstractRepository
+-        implements org.apache.jackrabbit.api.jsr283.Repository, JackrabbitRepository, SessionListener, EventListener, WorkspaceListener {
++        implements javax.jcr.Repository, JackrabbitRepository, SessionListener, EventListener, WorkspaceListener {
+ 
+     private static Logger log = LoggerFactory.getLogger(RepositoryImpl.class);

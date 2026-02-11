@@ -1,0 +1,16 @@
+diff --git a/render/render.c b/render/render.c
+index 300b784..1a1cd7a 100644
+--- a/render/render.c
++++ b/render/render.c
+@@ -1209,6 +1209,11 @@ ProcRenderAddGlyphs (ClientPtr client)
+ 				       glyphSet->format,
+ 				       CPComponentAlpha, &component_alpha,
+ 				       serverClient, &error);
++
++		/* The picture takes a reference to the pixmap, so we
++		   drop ours. */
++		(pScreen->DestroyPixmap) (pDstPix);
++
+ 		if (! pDst)
+ 		{
+ 		    err = BadAlloc;

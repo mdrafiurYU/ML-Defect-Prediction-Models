@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index 93d64fd..cbec1ad 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -32,6 +32,10 @@
+  * None of the data structures here should be used by video drivers.
+  */ 
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86PRIVSTR_H
+ #define _XF86PRIVSTR_H
+ 

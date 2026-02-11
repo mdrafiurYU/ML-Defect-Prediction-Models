@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java
+index b0025fb..1d2c41f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java
+@@ -87,7 +87,7 @@ public interface AccessControlEditor {
+      * if same other access control related exception occurs.
+      * @throws RepositoryException if another error occurs.
+      */
+-    AccessControlPolicy[] editAccessControlPolicies(Principal principal) throws AccessDeniedException, AccessControlException, RepositoryException;
++    JackrabbitAccessControlPolicy[] editAccessControlPolicies(Principal principal) throws AccessDeniedException, AccessControlException, RepositoryException;
+ 
+     /**
+      * Stores the policy template to the respective node.

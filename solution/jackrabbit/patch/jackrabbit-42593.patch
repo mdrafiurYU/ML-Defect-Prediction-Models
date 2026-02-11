@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+index 5b1fdab..3799d09 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+@@ -1170,6 +1170,11 @@ public class BatchedItemOperations extends ItemValidator {
+ 
+         EffectiveNodeType ent = getEffectiveNodeType(node);
+ 
++        // check shareable
++        if (ent.includesNodeType(NameConstants.MIX_SHAREABLE)) {
++            node.addShare(parent.getNodeId());
++        }
++
+         if (!node.getMixinTypeNames().isEmpty()) {
+             // create jcr:mixinTypes property
+             PropDef pd = ent.getApplicablePropertyDef(NameConstants.JCR_MIXINTYPES,

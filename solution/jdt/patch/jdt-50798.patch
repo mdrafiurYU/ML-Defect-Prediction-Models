@@ -1,0 +1,56 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java
+index bcffbbf..8b57a37 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java
+@@ -12,13 +12,10 @@
+ package org.eclipse.jdt.apt.ui.internal.preferences;
+ 
+ import org.eclipse.core.resources.IProject;
+-import org.eclipse.core.runtime.IStatus;
+ import org.eclipse.jdt.apt.core.util.AptPreferenceConstants;
+-import org.eclipse.jdt.internal.ui.preferences.OptionsConfigurationBlock;
+ import org.eclipse.jdt.internal.ui.util.PixelConverter;
+ import org.eclipse.jdt.internal.ui.wizards.IStatusChangeListener;
+ import org.eclipse.jdt.internal.ui.wizards.dialogfields.DialogField;
+-import org.eclipse.jdt.internal.ui.wizards.dialogfields.IDialogFieldListener;
+ import org.eclipse.jdt.internal.ui.wizards.dialogfields.SelectionButtonDialogField;
+ import org.eclipse.jdt.internal.ui.wizards.dialogfields.StringDialogField;
+ import org.eclipse.jface.dialogs.Dialog;
+@@ -29,7 +26,7 @@ import org.eclipse.swt.widgets.Composite;
+ import org.eclipse.swt.widgets.Control;
+ import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
+ 
+-public class AptConfigurationBlock extends OptionsConfigurationBlock {
++public class AptConfigurationBlock extends BaseConfigurationBlock {
+ 		
+ 	private static final Key KEY_APTENABLED= getAptCoreKey(AptPreferenceConstants.APT_ENABLED);
+ 	private static final Key KEY_GENSRCDIR= getAptCoreKey(AptPreferenceConstants.APT_GENSRCDIR);
+@@ -41,17 +38,6 @@ public class AptConfigurationBlock extends OptionsConfigurationBlock {
+ 		};	
+ 	}
+ 	
+-	private static Key getAptCoreKey(String name) {
+-		return getKey("org.eclipse.jdt.apt.core", name);
+-	}
+-	
+-	private class UpdateAdapter implements IDialogFieldListener {
+-		
+-		public void dialogFieldChanged(DialogField field) {
+-			updateModel(field);
+-		}
+-	}
+-	
+ 	private SelectionButtonDialogField fAptEnabledField;
+ 	private StringDialogField fGenSrcDirField;
+ 	private StringDialogField fGenBinDirField;
+@@ -106,10 +92,6 @@ public class AptConfigurationBlock extends OptionsConfigurationBlock {
+ 		return composite;
+ 	}
+ 	
+-	private void updateStatus(IStatus status) {
+-		fContext.statusChanged(status);
+-	}
+-	
+ 	/* (non-Javadoc)
+ 	 * @see org.eclipse.jdt.internal.ui.preferences.OptionsConfigurationBlock#validateSettings(java.lang.String, java.lang.String)
+ 	 */

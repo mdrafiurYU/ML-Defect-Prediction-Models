@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 8f26b61..d926ca4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -422,7 +422,7 @@ public class SearchIndex extends AbstractQueryHandler {
+ 
+         indexingConfig = createIndexingConfiguration(nsMappings);
+         analyzer.setIndexingConfig(indexingConfig);
+-        
++
+         index = new MultiIndex(indexDir, this, excludedIDs, nsMappings);
+         if (index.numDocs() == 0) {
+             index.createInitialIndex(
+@@ -891,7 +891,7 @@ public class SearchIndex extends AbstractQueryHandler {
+     }
+ 
+     /**
+-     * @param namespaceMappings The namespace mappings 
++     * @param namespaceMappings The namespace mappings
+      * @return the fulltext indexing configuration or <code>null</code> if there
+      *         is no configuration.
+      */

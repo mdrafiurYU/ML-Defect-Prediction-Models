@@ -1,0 +1,17 @@
+diff --git a/Xi/opendev.c b/Xi/opendev.c
+index 0b0671d..192cddc 100644
+--- a/Xi/opendev.c
++++ b/Xi/opendev.c
+@@ -106,12 +106,6 @@ ProcXOpenDevice(ClientPtr client)
+     REQUEST(xOpenDeviceReq);
+     REQUEST_SIZE_MATCH(xOpenDeviceReq);
+ 
+-    if (stuff->deviceid == inputInfo.pointer->id ||
+-	stuff->deviceid == inputInfo.keyboard->id) {
+-	SendErrorToClient(client, IReqCode, X_OpenDevice, 0, BadDevice);
+-	return Success;
+-    }
+-
+     if ((dev = LookupDeviceIntRec(stuff->deviceid)) == NULL) {	/* not open */
+ 	for (dev = inputInfo.off_devices; dev; dev = dev->next)
+ 	    if (dev->id == stuff->deviceid)

@@ -1,0 +1,57 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/EmptyRepository.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/EmptyRepository.java
+index 32a89de..429bbcf 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/EmptyRepository.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/EmptyRepository.java
+@@ -19,6 +19,7 @@ package org.apache.jackrabbit.commons.repository;
+ import javax.jcr.Credentials;
+ import javax.jcr.NoSuchWorkspaceException;
+ import javax.jcr.Session;
++import javax.jcr.Value;
+ 
+ import org.apache.jackrabbit.commons.AbstractRepository;
+ 
+@@ -34,6 +35,7 @@ public class EmptyRepository extends AbstractRepository {
+     /**
+      * Returns <code>null</code> since this repository contains no descriptors.
+      *
++     * @param key descriptor key
+      * @return <code>null</code>
+      */
+     public String getDescriptor(String key) {
+@@ -41,6 +43,36 @@ public class EmptyRepository extends AbstractRepository {
+     }
+ 
+     /**
++     * Returns <code>null</code> since this repository contains no descriptors.
++     *
++     * @param key descriptor key
++     * @return <code>null</code>
++     */
++    public Value getDescriptorValue(String key) {
++        return null;
++    }
++
++    /**
++     * Returns <code>null</code> since this repository contains no descriptors.
++     *
++     * @param key descriptor key
++     * @return <code>null</code>
++     */
++    public Value[] getDescriptorValues(String key) {
++        return null;
++    }
++
++    /**
++     * Returns <code>false</code> since this repository contains no descriptors.
++     *
++     * @param key descriptor key
++     * @return <code>false</code>
++     */
++    public boolean isSingleValueDescriptor(String key) {
++        return false;
++    }
++
++    /**
+      * Returns an empty array since this repository contains no descriptors.
+      *
+      * @return empty array

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java b/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java
+index da3be2f..eeb282e 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java
+@@ -81,7 +81,7 @@ public class TestFilteredQuery extends LuceneTestCase {
+     reader = writer.getReader();
+     writer.close ();
+ 
+-    searcher = new IndexSearcher (reader);
++    searcher = newSearcher(reader);
+     query = new TermQuery (new Term ("field", "three"));
+     filter = newStaticFilterB();
+   }

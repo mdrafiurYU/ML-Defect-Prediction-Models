@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+index 809fddd..65f2778 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+@@ -1143,7 +1143,8 @@ public class MultiIndex {
+                     new Long(finished.size()));
+ 
+             // remove documents from the queue
+-            for (Iterator it = finished.keySet().iterator(); it.hasNext(); ) {
++            Iterator it = finished.keySet().iterator();
++            while (it.hasNext()) {
+                 try {
+                     indexingQueue.removeDocument(it.next().toString());
+                 } catch (IOException e) {

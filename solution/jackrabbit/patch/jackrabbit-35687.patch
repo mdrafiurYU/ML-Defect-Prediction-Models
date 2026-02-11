@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/TestAll.java
+index a6d5454..183cc2b 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/TestAll.java
+@@ -34,6 +34,7 @@ public class TestAll extends TestCase {
+         TestSuite suite = new TestSuite("Data tests");
+         suite.addTestSuite(NodeTypeTest.class);
+         suite.addTestSuite(ExportImportTest.class);
++        suite.addTestSuite(GarbageCollectorTest.class);
+         return suite;
+     }

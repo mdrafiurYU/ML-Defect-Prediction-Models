@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/linuxPci.c b/hw/xfree86/os-support/bus/linuxPci.c
+index 634d22f..bbc5917 100644
+--- a/hw/xfree86/os-support/bus/linuxPci.c
++++ b/hw/xfree86/os-support/bus/linuxPci.c
+@@ -115,7 +115,7 @@ linuxPciInit(void)
+ 	return;
+     }
+     pciNumBuses    = 1;
+-    pciBusInfo[0]  = &linuxPci0;
++    pciBusInfo	   = &linuxPci0;
+ }
+ 
+ /**

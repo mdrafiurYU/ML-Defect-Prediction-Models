@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/sysv/xqueue.c b/hw/xfree86/os-support/sysv/xqueue.c
+index a14fc32..6c2132c 100644
+--- a/hw/xfree86/os-support/sysv/xqueue.c
++++ b/hw/xfree86/os-support/sysv/xqueue.c
+@@ -480,6 +480,7 @@ XqMouseProc(DeviceIntPtr pPointer, int what)
+       
+     case DEVICE_ON:
+ 	pMse->lastButtons = 0;
++	pMse->lastMappedButtons = 0;
+ 	pMse->emulateState = 0;
+ 	pPointer->public.on = TRUE;
+ 	ret = XqEnable(pInfo);

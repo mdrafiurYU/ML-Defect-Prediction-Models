@@ -1,0 +1,14 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/CmsObject.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/CmsObject.java
+index fd6cd61..a9fabeb 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/CmsObject.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/CmsObject.java
+@@ -16,6 +16,9 @@
+  */
+ package org.apache.jackrabbit.ocm.testmodel.interfaces;
+ 
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
++
++@Node(isInterface=true, jcrType="ocm:cmsobject", discriminator=false )
+ public interface CmsObject {
+ 
+ 	public String getName();

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessor.java
+index b515ce9..7479ab0 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessor.java
+@@ -25,7 +25,7 @@ public class ExtraDependencyAnnotationProcessor implements AnnotationProcessor
+ 
+ 	public void process()
+ 	{
+-		_env.getTypeDeclaration( "p1.p2.p3.p4.C" );
++		_env.getTypeDeclaration( "p1.p2.p3.p4.C" ); //$NON-NLS-1$
+ 	}
+ 
+ 	AnnotationProcessorEnvironment	_env;

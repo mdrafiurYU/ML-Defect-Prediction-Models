@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/LockInfoImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/LockInfoImpl.java
+index 0b79b0e..04906ca 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/LockInfoImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/LockInfoImpl.java
+@@ -70,6 +70,7 @@ public class LockInfoImpl implements LockInfo, Serializable {
+      * @param isDeep whether this lock is deep or not
+      * @param isSessionScoped whether this lock is session scoped or not
+      * @param nodeId the node id of the locked node.
++     * @deprecated Use {@link #LockInfoImpl(String, String, boolean, boolean, long, boolean, NodeId)} instaed.
+      */
+     public LockInfoImpl(String lockToken, String lockOwner, boolean isDeep,
+                         boolean isSessionScoped, NodeId nodeId) {

@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Bus.h b/hw/xfree86/common/xf86Bus.h
+index dfc4176..83ba83c 100644
+--- a/hw/xfree86/common/xf86Bus.h
++++ b/hw/xfree86/common/xf86Bus.h
+@@ -47,6 +47,7 @@ typedef struct racInfo {
+     xf86AccessPtr mem_new;
+     xf86AccessPtr io_new;
+     xf86AccessPtr io_mem_new;
++    xf86SetAccessFuncPtr old;
+ } AccessFuncRec, *AccessFuncPtr;
+ 
+ 
+@@ -63,6 +64,7 @@ typedef struct {
+     Bool                        inUse;
+     BusRec                      bus;
+     EntityAccessPtr             access;
++    AccessFuncPtr               rac;
+     pointer                     busAcc;
+     int                         lastScrnFlag;
+     DevUnion *                  entityPrivates;

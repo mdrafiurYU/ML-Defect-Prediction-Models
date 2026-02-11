@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/os-support/xf86drm.h b/hw/xfree86/os-support/xf86drm.h
+index 18e4564..1d93f6f 100644
+--- a/hw/xfree86/os-support/xf86drm.h
++++ b/hw/xfree86/os-support/xf86drm.h
+@@ -36,7 +36,9 @@
+ #define _XF86DRM_H_
+ 
+ #include <drm.h>
++#if HAVE_LIBDRM_2_2
+ #include <xf86mm.h>
++#endif
+ 
+ 				/* Defaults, if nothing set in xf86config */
+ #define DRM_DEV_UID	 0

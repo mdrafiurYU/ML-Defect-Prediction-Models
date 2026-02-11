@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/RequestHandlerUtils.java b/solr/src/java/org/apache/solr/handler/RequestHandlerUtils.java
+index 34eb84e..d7d8576 100755
+--- a/solr/src/java/org/apache/solr/handler/RequestHandlerUtils.java
++++ b/solr/src/java/org/apache/solr/handler/RequestHandlerUtils.java
+@@ -49,7 +49,7 @@ public class RequestHandlerUtils
+    * Check the request parameters and decide if it should commit or optimize.
+    * If it does, it will check parameters for "waitFlush" and "waitSearcher"
+    * 
+-   * @deprecated Use {@link #handleCommit(UpdateRequestProcessor,SolrParams,boolean)}
++   * @deprecated Use {@link #handleCommit(SolrQueryRequest,UpdateRequestProcessor,SolrParams,boolean)}
+    *
+    * @since solr 1.2
+    */

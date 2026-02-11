@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeCreationTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeCreationTest.java
+index 614e05e..1c9847e 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeCreationTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/NodeTypeCreationTest.java
+@@ -336,12 +336,8 @@ public class NodeTypeCreationTest extends AbstractJCRTest {
+         ndt.setDefaultPrimaryTypeName(expandedName);
+         assertEquals(jcrName, ndt.getDefaultPrimaryTypeName());
+ 
+-        try {
+-            ndt.setDefaultPrimaryTypeName(null);
+-            fail("null isn't a valid jcr name");
+-        } catch (ConstraintViolationException e) {
+-            // success
+-        }
++        ndt.setDefaultPrimaryTypeName(null);
++        assertEquals("setting null must clear the name.", null, ndt.getDefaultPrimaryTypeName());
+ 
+         ndt.setRequiredPrimaryTypeNames(new String[] {expandedName});
+         assertNotNull(ndt.getRequiredPrimaryTypeNames());

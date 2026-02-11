@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/InvertedDocConsumer.java b/lucene/src/java/org/apache/lucene/index/InvertedDocConsumer.java
+index 76ca1d7..063a920 100644
+--- a/lucene/src/java/org/apache/lucene/index/InvertedDocConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/InvertedDocConsumer.java
+@@ -35,4 +35,10 @@ abstract class InvertedDocConsumer {
+   /** Attempt to free RAM, returning true if any RAM was
+    *  freed */
+   abstract boolean freeRAM();
++
++  FieldInfos fieldInfos;
++
++  void setFieldInfos(FieldInfos fieldInfos) {
++    this.fieldInfos = fieldInfos;
+   }
++}

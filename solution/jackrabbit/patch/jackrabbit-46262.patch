@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/io/OutputContextImpl.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/io/OutputContextImpl.java
+index 128453c..94a9202 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/io/OutputContextImpl.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/io/OutputContextImpl.java
+@@ -57,10 +57,13 @@ public class OutputContextImpl implements OutputContext {
+     }
+ 
+     public void setContentLength(long contentLength) {
+-        int length = Integer.parseInt(contentLength + "");
+-        if (length >= 0) {
+-            response.setContentLength(length);
+-        }
++        if (contentLength >= 0) {
++            if (contentLength <= Integer.MAX_VALUE) {
++                response.setContentLength((int) contentLength);
++            } else {
++                response.addHeader(DavConstants.HEADER_CONTENT_LENGTH, Long.toString(contentLength));
++            }
++        } // else: negative content length -> ignore.
+     }
+ 
+     public void setContentType(String contentType) {

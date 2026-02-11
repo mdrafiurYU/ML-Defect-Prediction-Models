@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/combined/WriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/combined/WriteTest.java
+index 4bf4eb2..d44d52c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/combined/WriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/combined/WriteTest.java
+@@ -46,7 +46,12 @@ public class WriteTest extends org.apache.jackrabbit.core.security.authorization
+         super.setUp();
+ 
+         // simple test to check if proper provider is present:
+-        getPrincipalBasedPolicy(acMgr, path, getTestUser().getPrincipal());
++        try {
++            getPrincipalBasedPolicy(acMgr, path, getTestUser().getPrincipal());
++        } catch (Exception e) {
++            superuser.logout();
++            throw e;
++        }
+     }
+ 
+     private JackrabbitAccessControlList getPrincipalBasedPolicy(AccessControlManager acM, String path, Principal principal) throws RepositoryException, AccessDeniedException, NotExecutableException {

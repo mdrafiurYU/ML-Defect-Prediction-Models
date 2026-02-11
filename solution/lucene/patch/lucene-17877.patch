@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+index db54970..e615636 100644
+--- a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
++++ b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+@@ -248,7 +248,7 @@ final class JustCompileSearch {
+     }
+ 
+     @Override
+-    public float computeNorm(String fieldName, FieldInvertState state) {
++    public float computeNorm(FieldInvertState state) {
+       throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+     }

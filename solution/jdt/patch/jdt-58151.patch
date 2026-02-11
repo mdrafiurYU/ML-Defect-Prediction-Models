@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java
+index 5de536c..ed84ece 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Util.java
+@@ -1042,9 +1042,12 @@ public class Util {
+ 			throw new JavaModelException(e, IJavaModelStatusConstants.ELEMENT_DOES_NOT_EXIST);
+ 		}
+ 		try {
+-			return org.eclipse.jdt.internal.compiler.util.Util.getInputStreamAsCharArray(stream, -1, encoding);
++			long length = EFS.getStore(file.getLocationURI()).fetchInfo().getLength();
++			return org.eclipse.jdt.internal.compiler.util.Util.getInputStreamAsCharArray(stream, (int) length, encoding);
+ 		} catch (IOException e) {
+ 			throw new JavaModelException(e, IJavaModelStatusConstants.IO_EXCEPTION);
++		} catch (CoreException e) {
++			throw new JavaModelException(e);
+ 		} finally {
+ 			try {
+ 				stream.close();

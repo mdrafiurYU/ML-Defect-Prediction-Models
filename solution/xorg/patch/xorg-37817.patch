@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index e53756f..9961624 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -475,6 +475,7 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+         drv = pInfo->drv;
+         idev = pInfo->conf_idev;
+     }
++    OsBlockSignals();
+     RemoveDevice(pDev);
+ 
+     if (pDev->isMaster)
+@@ -484,6 +485,7 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+         drv->UnInit(drv, pInfo, 0);
+     else
+         xf86DeleteInput(pInfo, 0);
++    OsReleaseSignals();
+ 
+     /* devices added through HAL aren't in the config layout */
+     it = xf86ConfigLayout.inputs;

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java
+index 6b1af4c..eb7ed67 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java
+@@ -672,7 +672,7 @@ public class TestNRTManager extends LuceneTestCase {
+ 
+   private int runQuery(IndexSearcher s, Query q) throws Exception {
+     s.search(q, 10);
+-    return s.search(q, null, 10, new Sort(new SortField("title", SortField.STRING))).totalHits;
++    return s.search(q, null, 10, new Sort(new SortField("title", SortField.Type.STRING))).totalHits;
+   }
+ 
+   private void smokeTestSearcher(IndexSearcher s) throws Exception {

@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+index 80de785..058a932 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+@@ -703,11 +703,7 @@ public class NodeTypeManagerImpl implements JackrabbitNodeTypeManager,
+             ArrayList result = new ArrayList();
+ 
+             // register new node types
+-            Collection registeredDefs = registerNodeTypes(addedDefs);
+-            for (Iterator iter = registeredDefs.iterator(); iter.hasNext();) {
+-                NodeTypeDef nodeTypeDef = (NodeTypeDef) iter.next();
+-                result.add(getNodeType(nodeTypeDef.getName()));
+-            }
++            result.addAll(registerNodeTypes(addedDefs));
+ 
+             // reregister already existing node types
+             for (Iterator iter = modifiedDefs.iterator(); iter.hasNext();) {

@@ -1,0 +1,13 @@
+diff --git a/Xi/gtmotion.c b/Xi/gtmotion.c
+index 4f4d7cb..7994890 100644
+--- a/Xi/gtmotion.c
++++ b/Xi/gtmotion.c
+@@ -137,7 +137,7 @@ ProcXGetDeviceMotionEvents(ClientPtr client)
+ 	coords = (INT32 *) xalloc(tsize);
+ 	if (!coords)
+ 	    return BadAlloc;
+-	rep.nEvents = (v->GetMotionProc) (dev, (xTimecoord *) coords,	/* XXX */
++	rep.nEvents = GetMotionHistory(dev, (xTimecoord *) coords,/* XXX */
+ 					  start.milliseconds, stop.milliseconds,
+ 					  (ScreenPtr) NULL);
+     }

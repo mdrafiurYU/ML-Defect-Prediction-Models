@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index d9f1dd9..bcad246 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -75,6 +75,7 @@ extern DeviceAssocRec mouse_assoc;
+ #endif
+ 
+ #ifdef XKB
++#undef XKB_IN_SERVER
+ #define XKB_IN_SERVER
+ #include <X11/extensions/XKBsrv.h>
+ #endif

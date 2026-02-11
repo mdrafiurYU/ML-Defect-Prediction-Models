@@ -1,0 +1,15 @@
+diff --git a/Xprint/raster/Raster.c b/Xprint/raster/Raster.c
+index 5c69d44..3651c3f 100644
+--- a/Xprint/raster/Raster.c
++++ b/Xprint/raster/Raster.c
+@@ -48,6 +48,10 @@ copyright holders.
+ ** 
+ ********************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <errno.h>
+ #include <stdio.h>
+ #include <string.h>

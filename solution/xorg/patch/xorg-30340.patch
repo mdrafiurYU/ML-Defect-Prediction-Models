@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/dri/dri.h b/hw/xfree86/dri/dri.h
+index e49bb6f..c0da700 100644
+--- a/hw/xfree86/dri/dri.h
++++ b/hw/xfree86/dri/dri.h
+@@ -231,12 +231,12 @@ extern Bool DRIDestroyContext(ScreenPtr pScreen, XID context);
+ extern Bool DRIContextPrivDelete(pointer pResource, XID id);
+ 
+ extern Bool DRICreateDrawable(ScreenPtr pScreen,
+-                              Drawable id,
++                              ClientPtr client,
+                               DrawablePtr pDrawable,
+                               drm_drawable_t * hHWDrawable);
+ 
+ extern Bool DRIDestroyDrawable(ScreenPtr pScreen, 
+-                               Drawable id,
++			       ClientPtr client,
+                                DrawablePtr pDrawable);
+ 
+ extern Bool DRIDrawablePrivDelete(pointer pResource,
+@@ -299,6 +299,8 @@ extern void DRIWindowExposures(WindowPtr pWin,
+                               RegionPtr prgn,
+                               RegionPtr bsreg);
+ 
++extern Bool DRIDestroyWindow(WindowPtr pWin);
++
+ extern void DRICopyWindow(WindowPtr pWin,
+                           DDXPointRec ptOldOrg,
+                           RegionPtr prgnSrc);

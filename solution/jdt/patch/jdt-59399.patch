@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java
+index 6ba4dc2..9199dbb 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SwitchStatement.java
+@@ -387,7 +387,7 @@ public class SwitchStatement extends Statement {
+ 		// generated (if any), and have them directly branch to a better
+ 		// location (the argument label).
+ 		// we know at this point that the breakLabel already got placed
+-		if (this.breakLabel.hasForwardReferences()) {
++		if (this.breakLabel.forwardReferenceCount > 0) {
+ 			label.appendForwardReferencesFrom(this.breakLabel);
+ 		}
+ 	}

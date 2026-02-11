@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 6236e5e..0bb8435 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -115,7 +115,7 @@ public class SearchIndex extends AbstractQueryHandler {
+     /**
+      * The default value for property {@link #maxMergeDocs}.
+      */
+-    public static final int DEFAULT_MAX_MERGE_DOCS = 100000;
++    public static final int DEFAULT_MAX_MERGE_DOCS = Integer.MAX_VALUE;
+ 
+     /**
+      * the default value for property {@link #mergeFactor}.

@@ -1,0 +1,28 @@
+diff --git a/mpx/getvers.h b/mpx/getvers.h
+new file mode 100644
+index 0000000..da24018
+--- /dev/null
++++ b/mpx/getvers.h
+@@ -0,0 +1,22 @@
++/* Copyright 2006 by Peter Hutterer <peter@cs.unisa.edu.au> */
++
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
++#ifndef GETVERS_H
++#define GETVERS_H 1
++
++int SProcMPXGetExtensionVersion(ClientPtr	/* client */
++    );
++
++int ProcMPXGetExtensionVersion(ClientPtr	/* client */
++    );
++
++void SRepMPXGetExtensionVersion(ClientPtr /* client */ ,
++			      int /* size */ ,
++			      mpxGetExtensionVersionReply *	/* rep */
++    );
++
++#endif
++

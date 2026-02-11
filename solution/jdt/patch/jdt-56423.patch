@@ -1,0 +1,44 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java
+index 8c99350..0632815 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java
+@@ -32,6 +32,7 @@ import org.eclipse.jdt.internal.compiler.ast.Expression;
+ import org.eclipse.jdt.internal.compiler.ast.Wildcard;
+ import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ import org.eclipse.jdt.internal.compiler.env.IDependent;
++import org.eclipse.jdt.internal.compiler.lookup.AnnotationBinding;
+ import org.eclipse.jdt.internal.compiler.lookup.ArrayBinding;
+ import org.eclipse.jdt.internal.compiler.lookup.BaseTypeBinding;
+ import org.eclipse.jdt.internal.compiler.lookup.Binding;
+@@ -74,6 +75,22 @@ class TypeBinding implements ITypeBinding {
+ 		this.resolver = resolver;
+ 	}
+ 
++	public IResolvedAnnotation[] getAnnotations() { 
++		IResolvedAnnotation[] domInstances = ResolvedAnnotation.NoAnnotations;
++		if (this.binding.isAnnotationType() || this.binding.isClass() || this.binding.isEnum() || this.binding.isInterface()) {
++			org.eclipse.jdt.internal.compiler.lookup.ReferenceBinding refType = 
++				(org.eclipse.jdt.internal.compiler.lookup.ReferenceBinding) this.binding;
++			AnnotationBinding[] internalAnnotations = refType.getAnnotations();
++			int length = internalAnnotations == null ? 0 : internalAnnotations.length;
++			if (length > 0) {
++				domInstances = new ResolvedAnnotation[length];
++				for (int i = 0; i < length; i++)
++					domInstances[i] = this.resolver.getAnnotationInstance(internalAnnotations[i]);
++			}
++		}
++		return domInstances;
++	}
++
+ 	/*
+ 	 * @see ITypeBinding#getBinaryName()
+ 	 * @since 3.0
+@@ -1173,7 +1190,7 @@ class TypeBinding implements ITypeBinding {
+ 	private boolean shouldBeRemoved(org.eclipse.jdt.internal.compiler.lookup.MethodBinding methodBinding) {
+ 		return methodBinding.isDefaultAbstract() || methodBinding.isSynthetic() || (methodBinding.isConstructor() && isInterface());
+ 	}
+-	
++
+ 	/* 
+ 	 * For debugging purpose only.
+ 	 * @see java.lang.Object#toString()

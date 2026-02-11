@@ -1,0 +1,13 @@
+diff --git a/dix/window.c b/dix/window.c
+index 1ccf126..b896ef7 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -2155,7 +2155,7 @@ WhereDoIGoInTheStack(
+ 	    return pWin->nextSib;
+       default:
+       {
+-	ErrorF("Internal error in ConfigureWindow, smode == %d\n",smode );
++	/* should never happen; make something up. */
+ 	return pWin->nextSib;
+       }
+     }

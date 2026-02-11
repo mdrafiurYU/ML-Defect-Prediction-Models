@@ -1,0 +1,40 @@
+diff --git a/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java b/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java
+index a81ef26..28cc754 100644
+--- a/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java
++++ b/solr/src/java/org/apache/solr/update/DirectUpdateHandler2.java
+@@ -270,17 +270,6 @@ public class DirectUpdateHandler2 extends UpdateHandler {
+     deleteByIdCommands.incrementAndGet();
+     deleteByIdCommandsCumulative.incrementAndGet();
+ 
+-    if (!cmd.fromPending && !cmd.fromCommitted) {
+-      numErrors.incrementAndGet();
+-      numErrorsCumulative.incrementAndGet();
+-      throw new SolrException( SolrException.ErrorCode.BAD_REQUEST,"meaningless command: " + cmd);
+-    }
+-    if (!cmd.fromPending || !cmd.fromCommitted) {
+-      numErrors.incrementAndGet();
+-      numErrorsCumulative.incrementAndGet();
+-      throw new SolrException( SolrException.ErrorCode.BAD_REQUEST,"operation not supported" + cmd);
+-    }
+-
+     iwCommit.lock();
+     try {
+       openWriter();
+@@ -300,17 +289,6 @@ public class DirectUpdateHandler2 extends UpdateHandler {
+      deleteByQueryCommands.incrementAndGet();
+      deleteByQueryCommandsCumulative.incrementAndGet();
+ 
+-     if (!cmd.fromPending && !cmd.fromCommitted) {
+-       numErrors.incrementAndGet();
+-       numErrorsCumulative.incrementAndGet();
+-       throw new SolrException( SolrException.ErrorCode.BAD_REQUEST,"meaningless command: " + cmd);
+-     }
+-     if (!cmd.fromPending || !cmd.fromCommitted) {
+-       numErrors.incrementAndGet();
+-       numErrorsCumulative.incrementAndGet();
+-       throw new SolrException( SolrException.ErrorCode.BAD_REQUEST,"operation not supported" + cmd);
+-     }
+-
+     boolean madeIt=false;
+     boolean delAll=false;
+     try {

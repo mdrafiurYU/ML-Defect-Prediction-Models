@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/mfbzerarc.c b/hw/xfree86/xf4bpp/mfbzerarc.c
+index 4853f88..54aa3b0 100644
+--- a/hw/xfree86/xf4bpp/mfbzerarc.c
++++ b/hw/xfree86/xf4bpp/mfbzerarc.c
+@@ -36,6 +36,10 @@ in this Software without prior written authorization from the X Consortium.
+  * The Computer Journal, November 1967, Volume 10, Number 3, pp. 282-289
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "mfbmap.h"

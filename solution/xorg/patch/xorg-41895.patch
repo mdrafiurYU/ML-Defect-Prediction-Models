@@ -1,0 +1,14 @@
+diff --git a/glx/indirect_reqsize.c b/glx/indirect_reqsize.c
+index 954eecd..c47f01e 100644
+--- a/glx/indirect_reqsize.c
++++ b/glx/indirect_reqsize.c
+@@ -572,6 +572,9 @@ __glXTexImage3DReqSize(const GLbyte *pc, Bool swap)
+         type = bswap_32(type);
+     }
+ 
++    if (*(CARD32 *) (pc + 76))
++        return 0;
++
+     return __glXImageSize(format, type, target, width, height, depth,
+                           image_height, row_length, skip_images,
+                           skip_rows, alignment);

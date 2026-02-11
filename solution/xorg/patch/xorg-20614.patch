@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_bios.c b/hw/xfree86/os-support/solaris/sun_bios.c
+index 8319de0..18f6558 100644
+--- a/hw/xfree86/os-support/solaris/sun_bios.c
++++ b/hw/xfree86/os-support/solaris/sun_bios.c
+@@ -43,7 +43,7 @@ extern char *apertureDevName;
+ /*
+  * Read BIOS via mmap()ing physical memory.
+  */
+-int
++_X_EXPORT int
+ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	     int Len)
+ {

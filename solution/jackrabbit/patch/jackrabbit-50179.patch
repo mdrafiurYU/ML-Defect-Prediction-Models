@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyAssumeTypeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyAssumeTypeTest.java
+index e60b2ca..0cb9b05 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyAssumeTypeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyAssumeTypeTest.java
+@@ -374,7 +374,8 @@ public class SetPropertyAssumeTypeTest extends AbstractJCRTest {
+         setUpNodeWithUndefinedProperty(false);
+ 
+         Node referenceableNode = testRootNode.addNode(nodeName2);
+-        referenceableNode.addMixin(mixReferenceable);
++        ensureMixinType(referenceableNode, mixReferenceable);
++
+         // some implementations may require a save after addMixin()
+         testRootNode.save();

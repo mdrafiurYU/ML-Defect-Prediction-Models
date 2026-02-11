@@ -1,0 +1,14 @@
+diff --git a/hw/xnest/Pixmap.c b/hw/xnest/Pixmap.c
+index 612df8d..1f42001 100644
+--- a/hw/xnest/Pixmap.c
++++ b/hw/xnest/Pixmap.c
+@@ -35,7 +35,8 @@ is" without express or implied warranty.
+ int xnestPixmapPrivateIndex;	    
+ 
+ PixmapPtr
+-xnestCreatePixmap(ScreenPtr pScreen, int width, int height, int depth)
++xnestCreatePixmap(ScreenPtr pScreen, int width, int height, int depth,
++		  unsigned usage_hint)
+ {
+   PixmapPtr pPixmap;
+ 

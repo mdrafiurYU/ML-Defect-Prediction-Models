@@ -1,0 +1,15 @@
+diff --git a/xfixes/xfixes.h b/xfixes/xfixes.h
+index e1e3e09..0f1e3b0 100755
+--- a/xfixes/xfixes.h
++++ b/xfixes/xfixes.h
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _XFIXES_H_
+ #define _XFIXES_H_
+ 

@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexingRuleTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexingRuleTest.java
+index 230cb03..d35d06c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexingRuleTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexingRuleTest.java
+@@ -82,4 +82,15 @@ public class IndexingRuleTest extends AbstractIndexingTest {
+                 "/*[jcr:contains(., 'quick')]";
+         checkResult(executeQuery(stmt), new Node[]{node1});
+     }
++
++    public void testNodeType() throws RepositoryException {
++        // assumes there is an index-rule for nt:hierarchyNode that
++        // does not include the property jcr:created
++        Node node1 = testRootNode.addNode(nodeName1, "nt:folder");
++        testRootNode.save();
++        String stmt = "/jcr:root" + testRootNode.getPath() +
++                "/*[@" + jcrCreated + " = xs:dateTime('" +
++                node1.getProperty(jcrCreated).getString() + "')]";
++        checkResult(executeQuery(stmt), new Node[]{});
++    }
+ }

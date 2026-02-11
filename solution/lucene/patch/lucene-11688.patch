@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java b/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java
+index e2bc805..8422df7 100644
+--- a/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java
++++ b/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java
+@@ -1045,7 +1045,7 @@ public abstract class QueryParserBase {
+ 
+     String termImage=discardEscapeChar(term.image);
+     if (wildcard) {
+-      q = getWildcardQuery(qfield, termImage);
++      q = getWildcardQuery(qfield, term.image);
+     } else if (prefix) {
+       q = getPrefixQuery(qfield,
+           discardEscapeChar(term.image.substring

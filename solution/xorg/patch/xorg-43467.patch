@@ -1,0 +1,16 @@
+diff --git a/include/scrnintstr.h b/include/scrnintstr.h
+index a309077..ab50e7a 100644
+--- a/include/scrnintstr.h
++++ b/include/scrnintstr.h
+@@ -611,9 +611,9 @@ typedef struct _ScreenInfo {
+     int		unused;
+ } ScreenInfo;
+ 
+-extern ScreenInfo screenInfo;
++extern _X_EXPORT ScreenInfo screenInfo;
+ 
+-extern void InitOutput(
++extern _X_EXPORT void InitOutput(
+     ScreenInfo 	* /*pScreenInfo*/,
+     int     	/*argc*/,
+     char    	** /*argv*/);

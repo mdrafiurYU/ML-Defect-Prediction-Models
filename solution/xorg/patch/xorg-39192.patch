@@ -1,0 +1,28 @@
+diff --git a/include/dixfont.h b/include/dixfont.h
+index 516d91b..d61dd7e 100644
+--- a/include/dixfont.h
++++ b/include/dixfont.h
+@@ -33,10 +33,6 @@ SOFTWARE.
+ 
+ typedef struct _DIXFontProp *DIXFontPropPtr;
+ 
+-extern FPEFunctions *fpe_functions;
+-
+-extern int FontToXError(int /*err*/);
+-
+ extern Bool SetDefaultFont(char * /*defaultfontname*/);
+ 
+ extern void QueueFontWakeup(FontPathElementPtr /*fpe*/);
+@@ -110,12 +106,6 @@ extern int GetFontPath(ClientPtr client,
+ 		       int *length,
+ 		       unsigned char **result);
+ 
+-extern int LoadGlyphs(ClientPtr /*client*/,
+-		      FontPtr /*pfont*/,
+-		      unsigned /*nchars*/,
+-		      int /*item_size*/,
+-		      unsigned char * /*data*/);
+-
+ extern void DeleteClientFontStuff(ClientPtr /*client*/);
+ 
+ /* Quartz support on Mac OS X pulls in the QuickDraw

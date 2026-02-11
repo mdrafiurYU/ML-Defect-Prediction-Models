@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
+index e990c41..5ba9f9e 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
+@@ -187,7 +187,7 @@ public class ObservationManagerImpl implements ObservationManager, InternalEvent
+ 
+     public EventJournal getEventJournal(
+             int eventTypes, String absPath, boolean isDeep,
+-            String[] uuid, String[] nodeTypeName, boolean noLocal)
++            String[] uuid, String[] nodeTypeName)
+             throws RepositoryException {
+         throw new UnsupportedRepositoryOperationException("JCR-2108");
+     }

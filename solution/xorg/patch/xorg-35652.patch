@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index acd7006..d0d892a 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -38,6 +38,15 @@ static MODULESETUPPROTO(extmodSetup);
+  * Array describing extensions to be initialized
+  */
+ static ExtensionModule extensionModules[] = {
++#ifdef XSELINUX
++    {
++	SELinuxExtensionInit,
++	SELINUX_EXTENSION_NAME,
++	NULL,
++	NULL,
++	NULL
++    },
++#endif
+ #ifdef SHAPE
+     {
+ 	ShapeExtensionInit,

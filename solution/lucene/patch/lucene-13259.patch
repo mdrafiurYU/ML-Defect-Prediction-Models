@@ -1,0 +1,42 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DocData.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DocData.java
+index 7d22e88..7415211 100755
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DocData.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DocData.java
+@@ -29,6 +29,7 @@ public class DocData {
+   private String body;
+   private String title;
+   private String date;
++  private int id;
+   private Properties props;
+   
+   public void clear() {
+@@ -37,6 +38,7 @@ public class DocData {
+     title = null;
+     date = null;
+     props = null;
++    id = -1;
+   }
+   
+   public String getBody() {
+@@ -57,6 +59,10 @@ public class DocData {
+     return name;
+   }
+ 
++  public int getID() {
++    return id;
++  }
++
+   public Properties getProps() {
+     return props;
+   }
+@@ -85,6 +91,10 @@ public class DocData {
+     this.name = name;
+   }
+ 
++  public void setID(int id) {
++    this.id = id;
++  }
++
+   public void setProps(Properties props) {
+     this.props = props;
+   }

@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/loader/loader.c b/hw/xfree86/loader/loader.c
+index 56016d2..5bd221f 100644
+--- a/hw/xfree86/loader/loader.c
++++ b/hw/xfree86/loader/loader.c
+@@ -117,8 +117,6 @@ _LoaderListPop(int handle)
+ void
+ LoaderInit(void)
+ {
+-    const char *osname = NULL;
+-
+     char *ld_bind_now = getenv("LD_BIND_NOW");
+     if (ld_bind_now && *ld_bind_now) {
+         xf86Msg(X_ERROR, "LD_BIND_NOW is set, dlloader will NOT work!\n");
+@@ -139,10 +137,6 @@ LoaderInit(void)
+ 		   GET_ABI_MAJOR(LoaderVersionInfo.extensionVersion),
+ 		   GET_ABI_MINOR(LoaderVersionInfo.extensionVersion));
+ 
+-    LoaderGetOS(&osname, NULL, NULL, NULL);
+-    if (osname)
+-	xf86MsgVerb(X_INFO, 2, "Loader running on %s\n", osname);
+-
+ #if defined(__UNIXWARE__) && !defined(__GNUC__)
+     /* For UnixWare we need to load the C Runtime libraries which are
+      * normally auto-linked by the compiler. Otherwise we are bound to

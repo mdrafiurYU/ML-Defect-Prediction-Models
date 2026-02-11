@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RowIteratorImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RowIteratorImpl.java
+index 9ebd0e0..7676712 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RowIteratorImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RowIteratorImpl.java
+@@ -341,7 +341,7 @@ class RowIteratorImpl implements RowIterator {
+                     return valueFactory.createValue(p);
+                 } else if (n.hasProperty(col.getPropertyName())) {
+                     Property p = n.getProperty(col.getPropertyName());
+-                    if (p.getDefinition().isMultiple()) {
++                    if (p.isMultiple()) {
+                         // mvp values cannot be returned
+                         return null;
+                     } else {

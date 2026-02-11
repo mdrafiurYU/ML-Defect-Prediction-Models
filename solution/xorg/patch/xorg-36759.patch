@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index 8c8a4ce..3b6b36a 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -173,15 +173,6 @@ static ExtensionModule extensionModules[] = {
+ 	NULL
+     },
+ #endif
+-#ifdef EVI
+-    {
+-	EVIExtensionInit,
+-	EVINAME,
+-	&noEVIExtension,
+-	NULL,
+-	NULL
+-    },
+-#endif
+ #ifdef XV
+     {
+ 	XvExtensionInit,

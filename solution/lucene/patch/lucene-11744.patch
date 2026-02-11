@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestSubScorerFreqs.java b/lucene/src/test/org/apache/lucene/search/TestSubScorerFreqs.java
+index cafe41d..99ca35f 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestSubScorerFreqs.java
++++ b/lucene/src/test/org/apache/lucene/search/TestSubScorerFreqs.java
+@@ -63,7 +63,9 @@ public class TestSubScorerFreqs extends LuceneTestCase {
+   public static void finish() throws Exception {
+     s.getIndexReader().close();
+     s.close();
++    s = null;
+     dir.close();
++    dir = null;
+   }
+ 
+   private static class CountingCollector extends Collector {

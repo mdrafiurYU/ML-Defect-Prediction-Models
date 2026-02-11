@@ -1,0 +1,27 @@
+diff --git a/solr/contrib/dataimporthandler/src/extras/test/java/org/apache/solr/handler/dataimport/TestMailEntityProcessor.java b/solr/contrib/dataimporthandler/src/extras/test/java/org/apache/solr/handler/dataimport/TestMailEntityProcessor.java
+index 8a1f108..2ac19b3 100644
+--- a/solr/contrib/dataimporthandler/src/extras/test/java/org/apache/solr/handler/dataimport/TestMailEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/extras/test/java/org/apache/solr/handler/dataimport/TestMailEntityProcessor.java
+@@ -191,18 +191,22 @@ public class TestMailEntityProcessor extends AbstractDataImportHandlerTestCase {
+       super(null, ".", null);
+     }
+ 
++    @Override
+     public boolean upload(SolrInputDocument doc) {
+       return docs.add(doc);
+     }
+ 
++    @Override
+     public void log(int event, String name, Object row) {
+       // Do nothing
+     }
+ 
++    @Override
+     public void doDeleteAll() {
+       deleteAllCalled = Boolean.TRUE;
+     }
+ 
++    @Override
+     public void commit(boolean b) {
+       commitCalled = Boolean.TRUE;
+     }

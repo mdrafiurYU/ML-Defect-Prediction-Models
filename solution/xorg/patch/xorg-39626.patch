@@ -1,0 +1,14 @@
+diff --git a/dix/main.c b/dix/main.c
+index c34bc8a..35e59bd 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -284,9 +284,6 @@ int main(int argc, char *argv[], char *envp[])
+ 	{
+ 	    CreateWellKnownSockets();
+ 	    InitProcVectors();
+-	    clients = (ClientPtr *)xalloc(MAXCLIENTS * sizeof(ClientPtr));
+-	    if (!clients)
+-		FatalError("couldn't create client array");
+ 	    for (i=1; i<MAXCLIENTS; i++) 
+ 		clients[i] = NullClient;
+ 	    serverClient = (ClientPtr)xalloc(sizeof(ClientRec));

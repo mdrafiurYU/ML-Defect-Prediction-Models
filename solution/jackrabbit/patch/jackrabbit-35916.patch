@@ -1,0 +1,52 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+index f61b1fb..f66099b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+@@ -42,6 +42,7 @@ public class NodeTypeDef implements Cloneable {
+ 
+     private boolean mixin;
+     private boolean orderableChildNodes;
++    private boolean abstractStatus;
+     private QName primaryItemName;
+     private HashSet propDefs;
+     private HashSet nodeDefs;
+@@ -59,6 +60,7 @@ public class NodeTypeDef implements Cloneable {
+         supertypes = QName.EMPTY_ARRAY;
+         mixin = false;
+         orderableChildNodes = false;
++        abstractStatus = false;
+     }
+ 
+     /**
+@@ -167,6 +169,15 @@ public class NodeTypeDef implements Cloneable {
+     }
+ 
+     /**
++     * Sets the 'abstract' flag.
++     *
++     * @param abstractStatus flag
++     */
++    public void setAbstract(boolean abstractStatus) {
++        this.abstractStatus = abstractStatus;
++    }
++
++    /**
+      * Sets the name of the primary item (one of the child items of the node's
+      * of this node type)
+      *
+@@ -246,6 +257,15 @@ public class NodeTypeDef implements Cloneable {
+     }
+ 
+     /**
++     * Returns the value of the 'abstract' flag.
++     *
++     * @return true if this node type is abstract; false otherwise.
++     */
++    public boolean isAbstract() {
++        return abstractStatus;
++    }
++
++    /**
+      * Returns the name of the primary item (one of the child items of the
+      * node's of this node type) or <code>null</code> if not set.
+      *

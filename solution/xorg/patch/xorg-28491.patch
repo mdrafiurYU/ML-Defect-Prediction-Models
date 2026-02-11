@@ -1,0 +1,22 @@
+diff --git a/Xext/saver.c b/Xext/saver.c
+index 7e3ebf4..a9f1dd3 100644
+--- a/Xext/saver.c
++++ b/Xext/saver.c
+@@ -66,7 +66,7 @@ static unsigned char ScreenSaverReqCode = 0;
+ #endif
+ static int ScreenSaverEventBase = 0;
+ 
+-extern DISPATCH_PROC(ProcScreenSaverQueryInfo);
++static DISPATCH_PROC(ProcScreenSaverQueryInfo);
+ static DISPATCH_PROC(ProcScreenSaverDispatch);
+ static DISPATCH_PROC(ProcScreenSaverQueryVersion);
+ static DISPATCH_PROC(ProcScreenSaverSelectInput);
+@@ -774,7 +774,7 @@ ProcScreenSaverQueryVersion (client)
+     return (client->noClientException);
+ }
+ 
+-int
++static int
+ ProcScreenSaverQueryInfo (client)
+     register ClientPtr	client;
+ {

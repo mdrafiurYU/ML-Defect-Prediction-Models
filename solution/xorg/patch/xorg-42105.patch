@@ -1,0 +1,13 @@
+diff --git a/Xext/xvmain.c b/Xext/xvmain.c
+index 613f54d..f5c80f3 100644
+--- a/Xext/xvmain.c
++++ b/Xext/xvmain.c
+@@ -857,7 +857,7 @@ XvdiGrabPort(
+ 
+   if ((pPort->pDraw) && (client != pPort->client))
+     {
+-      XVCALL(diStopVideo)((ClientPtr)NULL, pPort, pPort->pDraw);
++      XvdiStopVideo((ClientPtr)NULL, pPort, pPort->pDraw);
+     }
+ 
+   pPort->grab.client = client;

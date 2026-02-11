@@ -1,0 +1,25 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 9bed5c8..a456da0 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -269,20 +269,6 @@ ExaCheckGetSpans (DrawablePtr pDrawable,
+ 		 char *pdstStart);
+ 
+ void
+-ExaCheckSaveAreas (PixmapPtr	pPixmap,
+-		  RegionPtr	prgnSave,
+-		  int		xorg,
+-		  int		yorg,
+-		  WindowPtr	pWin);
+-
+-void
+-ExaCheckRestoreAreas (PixmapPtr	pPixmap,
+-		     RegionPtr	prgnSave,
+-		     int	xorg,
+-		     int    	yorg,
+-		     WindowPtr	pWin);
+-
+-void
+ ExaCheckPaintWindow (WindowPtr pWin, RegionPtr pRegion, int what);
+ 
+ CARD32

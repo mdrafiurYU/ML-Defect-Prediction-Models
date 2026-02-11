@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/InitOutput.c b/hw/xwin/InitOutput.c
+index 0dd43d7..69bdbdc 100644
+--- a/hw/xwin/InitOutput.c
++++ b/hw/xwin/InitOutput.c
+@@ -39,7 +39,7 @@ from The Open Group.
+ #include <mntent.h>
+ #endif
+ #if defined(XKB) && defined(WIN32)
+-#include "XKBsrv.h"
++#include <X11/extensions/XKBsrv.h>
+ #endif
+ #ifdef RELOCATE_PROJECTROOT
+ #include <shlobj.h>

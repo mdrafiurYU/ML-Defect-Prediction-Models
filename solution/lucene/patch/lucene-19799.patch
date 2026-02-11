@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/response/XMLWriter.java b/solr/src/java/org/apache/solr/response/XMLWriter.java
+index ddc2b66..a2a7fb9 100644
+--- a/solr/src/java/org/apache/solr/response/XMLWriter.java
++++ b/solr/src/java/org/apache/solr/response/XMLWriter.java
+@@ -33,6 +33,7 @@ import org.apache.solr.common.util.NamedList;
+ import org.apache.solr.common.util.XML;
+ import org.apache.solr.request.SolrQueryRequest;
+ import org.apache.solr.schema.SchemaField;
++import org.apache.solr.search.ReturnFields;
+ 
+ 
+ public final class XMLWriter extends TextResponseWriter {
+@@ -192,7 +193,7 @@ public final class XMLWriter extends TextResponseWriter {
+     incLevel();
+ 
+     for (String fname : doc.getFieldNames()) {
+-      if (!returnFields.contains(fname)) {
++      if (!returnFields.wantsField(fname)) {
+         continue;
+       }

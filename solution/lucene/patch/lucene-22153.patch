@@ -1,0 +1,33 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FieldInfo.java b/lucene/src/java/org/apache/lucene/index/FieldInfo.java
+index 26b8d30..472c486 100644
+--- a/lucene/src/java/org/apache/lucene/index/FieldInfo.java
++++ b/lucene/src/java/org/apache/lucene/index/FieldInfo.java
+@@ -127,6 +127,7 @@ public final class FieldInfo {
+   }
+   
+   private boolean vectorsCommitted;
++  private boolean docValuesCommitted;
+  
+   /**
+    * Reverts all uncommitted changes on this {@link FieldInfo}
+@@ -138,6 +139,10 @@ public final class FieldInfo {
+       storePositionWithTermVector = false;
+       storeTermVector = false;  
+     }
++    
++    if (docValues != null && !docValuesCommitted) {
++      docValues = null;
++    }
+   }
+ 
+   /**
+@@ -150,4 +155,9 @@ public final class FieldInfo {
+     assert storeTermVector;
+     vectorsCommitted = true;
+   }
++  
++  void commitDocValues() {
++    assert hasDocValues();
++    docValuesCommitted = true;
++  }
+ }

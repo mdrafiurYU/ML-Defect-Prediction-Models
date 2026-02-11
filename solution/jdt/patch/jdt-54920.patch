@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.core.tests.model/workspace/Formatter/test609/A_in.java b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test609/A_in.java
+new file mode 100644
+index 0000000..6fd5ecb
+--- /dev/null
++++ b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test609/A_in.java
+@@ -0,0 +1,21 @@
++class A {
++	public void foo() {
++		int i = 0;
++		switch (i) {
++			case 0:
++				// handling 0
++				System.out.println("Case was 0");
++				// fall through
++			case 1:
++				// handling 1.
++				// some additional remark (also handles 0).
++				System.out.println("Case was 0 or 1");
++				break;
++			case 2:
++			// fall through
++			default:
++				// some default action
++				System.out.println("Case was :" + i);
++		}
++	}
++}

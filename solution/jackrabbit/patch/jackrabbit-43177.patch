@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemData.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemData.java
+index fd7e28f..92621ce 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemData.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemData.java
+@@ -134,6 +134,15 @@ public abstract class ItemData {
+     }
+ 
+     /**
++     * Return the parent id of this item.
++     *
++     * @return parent id
++     */
++    public NodeId getParentId() {
++        return getState().getParentId();
++    }
++
++    /**
+      * {@inheritDoc}
+      */
+     public String toString() {

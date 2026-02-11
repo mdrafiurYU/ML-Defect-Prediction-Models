@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+index ce7a0e7..270eda7 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+@@ -50,7 +50,7 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+ 
+     IndexWriter writer;
+ 
+-    final Random r = new java.util.Random(47);
++    final Random r = new Random(random.nextLong());
+     volatile Throwable failure;
+ 
+     public IndexerThread(int i, IndexWriter writer) {
+@@ -128,7 +128,7 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+   ThreadLocal<Thread> doFail = new ThreadLocal<Thread>();
+ 
+   private class MockIndexWriter extends IndexWriter {
+-    Random r = new java.util.Random(17);
++    Random r = new Random(random.nextLong());
+ 
+     public MockIndexWriter(Directory dir, IndexWriterConfig conf) throws IOException {
+       super(dir, conf);

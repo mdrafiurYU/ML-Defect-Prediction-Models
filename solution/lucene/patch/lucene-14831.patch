@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestSearch.java b/lucene/src/test/org/apache/lucene/TestSearch.java
+index 2687a99..199422a 100644
+--- a/lucene/src/test/org/apache/lucene/TestSearch.java
++++ b/lucene/src/test/org/apache/lucene/TestSearch.java
+@@ -94,7 +94,7 @@ public class TestSearch extends LuceneTestCase {
+       }
+       writer.close();
+ 
+-      Searcher searcher = new IndexSearcher(directory, true);
++      IndexSearcher searcher = new IndexSearcher(directory, true);
+ 
+       String[] queries = {
+         "a b",

@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/fbdevhw/fbdevhw.c b/hw/xfree86/fbdevhw/fbdevhw.c
+index 5269277..495d88b 100644
+--- a/hw/xfree86/fbdevhw/fbdevhw.c
++++ b/hw/xfree86/fbdevhw/fbdevhw.c
+@@ -152,6 +152,14 @@ fbdevHWFreeRec(ScrnInfoPtr pScrn)
+ 	FBDEVHWPTRLVAL(pScrn) = NULL;
+ }
+ 
++int
++fbdevHWGetFD(ScrnInfoPtr pScrn)
++{
++    fbdevHWPtr fPtr = fbdevHWGetRec(pScrn);
++
++    return fPtr->fd;
++}
++
+ /* -------------------------------------------------------------------- */
+ /* some helpers for printing debug informations                         */
+ 

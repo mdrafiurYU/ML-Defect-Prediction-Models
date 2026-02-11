@@ -1,0 +1,13 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 97ae6c0..2562094 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -64,6 +64,8 @@ struct _ExaOffscreenArea {
+     ExaOffscreenState   state;
+ 
+     ExaOffscreenArea    *next;
++
++    unsigned            eviction_cost;
+ };
+ 
+ /**

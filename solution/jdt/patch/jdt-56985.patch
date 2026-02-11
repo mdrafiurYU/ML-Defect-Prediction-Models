@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 809efb6..e4bf0e7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1418,6 +1418,7 @@ public static long getIrritant(int problemID) {
+ 
+ 		case IProblem.LocalVariableCannotBeNull :
+ 		case IProblem.LocalVariableCanOnlyBeNull :
++		case IProblem.LocalVariableMayBeNull :
+ 			return CompilerOptions.NullReference;
+ 			
+ 		case IProblem.BoxingConversion :
+@@ -4049,6 +4050,15 @@ public void localVariableHiding(LocalDeclaration local, Binding hiddenVariable,
+ 			local.sourceEnd);
+ 	}
+ }
++public void localVariableMayBeNull(LocalVariableBinding local, ASTNode location) {
++	String[] arguments = new String[] {new String(local.name)};
++	this.handle(
++		IProblem.LocalVariableMayBeNull,
++		arguments,
++		arguments,
++		location.sourceStart,
++		location.sourceEnd);
++}
+ public void methodMustOverride(AbstractMethodDeclaration method) {
+ 	MethodBinding binding = method.binding;
+ 	this.handle(

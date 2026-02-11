@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/function/TestCustomScoreQuery.java b/lucene/src/test/org/apache/lucene/search/function/TestCustomScoreQuery.java
+index 33fc59d..9c32afd 100755
+--- a/lucene/src/test/org/apache/lucene/search/function/TestCustomScoreQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/function/TestCustomScoreQuery.java
+@@ -329,7 +329,7 @@ public class TestCustomScoreQuery extends FunctionTestSetup {
+     }
+   }
+ 
+-  private void logResult(String msg, Searcher s, Query q, int doc, float score1) throws IOException {
++  private void logResult(String msg, IndexSearcher s, Query q, int doc, float score1) throws IOException {
+     log(msg+" "+score1);
+     log("Explain by: "+q);
+     log(s.explain(q,doc));

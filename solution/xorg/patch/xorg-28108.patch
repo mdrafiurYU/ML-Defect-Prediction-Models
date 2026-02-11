@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86fbman.c b/hw/xfree86/common/xf86fbman.c
+index d64cfae..537d53d 100644
+--- a/hw/xfree86/common/xf86fbman.c
++++ b/hw/xfree86/common/xf86fbman.c
+@@ -968,7 +968,7 @@ localAllocateOffscreenLinear(
+ 	linear->size = h * w;
+ 	linear->offset = (pitch * area->box.y1) + area->box.x1;
+ 	if (gran > 1)
+-            linear->offset += ((linear->offset + gran - 1) / gran) * gran;
++            linear->offset = ((linear->offset + gran - 1) / gran) * gran;
+ 	linear->granularity = gran;
+ 	linear->MoveLinearCallback = moveCB;
+ 	linear->RemoveLinearCallback = removeCB;

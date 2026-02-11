@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRefresh.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRefresh.java
+index eeca6a2..cdd9e4a 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRefresh.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRefresh.java
+@@ -60,7 +60,7 @@ public class LockRefresh extends AbstractOperation {
+ 
+     //----------------------------------------< Access Operation Parameters >---
+     public NodeId getNodeId() throws RepositoryException {
+-        return (NodeId) nodeState.getNodeId();
++        return nodeState.getNodeId();
+     }
+ 
+     //------------------------------------------------------------< Factory >---

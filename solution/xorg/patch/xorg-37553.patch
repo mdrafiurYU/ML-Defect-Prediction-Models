@@ -1,0 +1,56 @@
+diff --git a/composite/compint.h b/composite/compint.h
+index 4b0fe08..1c19ccd 100644
+--- a/composite/compint.h
++++ b/composite/compint.h
+@@ -155,6 +155,7 @@ typedef struct _CompScreen {
+     VisualID			*alternateVisuals;
+ 
+     WindowPtr                   pOverlayWin;
++    Window			overlayWid;
+     CompOverlayClientPtr        pOverlayClients;
+     
+ } CompScreenRec, *CompScreenPtr;
+@@ -172,6 +173,7 @@ extern DevPrivateKey CompSubwindowsPrivateKey;
+ 
+ extern RESTYPE		CompositeClientWindowType;
+ extern RESTYPE		CompositeClientSubwindowsType;
++extern RESTYPE		CompositeClientOverlayType;
+ 
+ /*
+  * compalloc.c
+@@ -230,6 +232,25 @@ Bool
+ compScreenInit (ScreenPtr pScreen);
+ 
+ /*
++ * compoverlay.c
++ */
++
++void
++compFreeOverlayClient (CompOverlayClientPtr pOcToDel);
++
++CompOverlayClientPtr
++compFindOverlayClient (ScreenPtr pScreen, ClientPtr pClient);
++    
++CompOverlayClientPtr
++compCreateOverlayClient (ScreenPtr pScreen, ClientPtr pClient);
++
++Bool
++compCreateOverlayWindow (ScreenPtr pScreen);
++
++void
++compDestroyOverlayWindow (ScreenPtr pScreen);
++
++/*
+  * compwindow.c
+  */
+ 
+@@ -292,9 +313,6 @@ compCopyWindow (WindowPtr pWin, DDXPointRec ptOldOrg, RegionPtr prgnSrc);
+ void
+ compWindowUpdate (WindowPtr pWin);
+ 
+-void
+-deleteCompOverlayClientsForScreen (ScreenPtr pScreen);
+-
+ WindowPtr
+ CompositeRealChildHead (WindowPtr pWin);
+ 

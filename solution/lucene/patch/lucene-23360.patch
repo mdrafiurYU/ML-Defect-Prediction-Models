@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+index a56cc36..4a869b3 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFieldCache.java
+@@ -217,6 +217,7 @@ public class TestFieldCache extends LuceneTestCase {
+     IndexReader r = IndexReader.open(writer, true);
+     FieldCache.DocTerms terms = FieldCache.DEFAULT.getTerms(r, "foobar");
+     FieldCache.DocTermsIndex termsIndex = FieldCache.DEFAULT.getTermsIndex(r, "foobar");
++    writer.close();
+     r.close();
+     dir.close();
+   }

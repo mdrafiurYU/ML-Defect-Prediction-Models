@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java b/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java
+index 410aadc..9b57fb6 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java
+@@ -79,6 +79,9 @@ public class TestAutomatonQuery extends LuceneTestCase {
+   }
+   
+   private int automatonQueryNrHits(AutomatonQuery query) throws IOException {
++    if (VERBOSE) {
++      System.out.println("TEST: run aq=" + query);
++    }
+     return searcher.search(query, 5).totalHits;
+   }

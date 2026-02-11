@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java b/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java
+index 03985b1..b3d0128 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java
+@@ -65,7 +65,7 @@ public class TestPhrasePrefixQuery extends LuceneTestCase {
+     IndexReader reader = writer.getReader();
+     writer.close();
+     
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     
+     // PhrasePrefixQuery query1 = new PhrasePrefixQuery();
+     MultiPhraseQuery query1 = new MultiPhraseQuery();

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index 2a7ff99..ed7106a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -5518,8 +5518,8 @@ public void resetForProblemClinit(ClassFile targetClassFile) {
+ private final void resizeByteArray() {
+ 	int length = bCodeStream.length;
+ 	int requiredSize = length + length;
+-	if (classFileOffset > requiredSize) {
+-		// must be sure to grow by enough
++	if (classFileOffset >= requiredSize) {
++		// must be sure to grow enough
+ 		requiredSize = classFileOffset + length;
+ 	}
+ 	System.arraycopy(bCodeStream, 0, bCodeStream = new byte[requiredSize], 0, length);

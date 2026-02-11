@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_kmod.c b/hw/xfree86/os-support/bsd/bsd_kmod.c
+index b6c7558..34e4341 100644
+--- a/hw/xfree86/os-support/bsd/bsd_kmod.c
++++ b/hw/xfree86/os-support/bsd/bsd_kmod.c
+@@ -19,7 +19,7 @@
+  * Return:
+  *    0 for failure, 1 for success
+  */
+-_X_EXPORT int xf86LoadKernelModule(const char *modName)
++int xf86LoadKernelModule(const char *modName)
+ {
+     if (kldload(modName) != -1)
+ 	return 1;

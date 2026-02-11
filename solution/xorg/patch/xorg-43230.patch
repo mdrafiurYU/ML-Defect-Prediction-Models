@@ -1,0 +1,22 @@
+diff --git a/hw/xnest/Font.c b/hw/xnest/Font.c
+index 26faf16..7b388f0 100644
+--- a/hw/xnest/Font.c
++++ b/hw/xnest/Font.c
+@@ -40,7 +40,7 @@ xnestRealizeFont(ScreenPtr pScreen, FontPtr pFont)
+   int nprops;
+   FontPropPtr props;
+   int i;
+-  char *name;
++  const char *name;
+ 
+   FontSetPrivate(pFont, xnestFontPrivateIndex, NULL);
+ 
+@@ -58,7 +58,7 @@ xnestRealizeFont(ScreenPtr pScreen, FontPtr pFont)
+ 
+   if (!value_atom) return False;
+ 
+-  name = (char *)NameForAtom(value_atom);
++  name = NameForAtom(value_atom);
+ 
+   if (!name) return False;
+ 

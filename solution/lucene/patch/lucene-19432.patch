@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/util/SolrPluginUtils.java b/solr/src/java/org/apache/solr/util/SolrPluginUtils.java
+index f98b430..6cdf1d6 100644
+--- a/solr/src/java/org/apache/solr/util/SolrPluginUtils.java
++++ b/solr/src/java/org/apache/solr/util/SolrPluginUtils.java
+@@ -703,6 +703,7 @@ public class SolrPluginUtils {
+      * DisjunctionMaxQuery.  (so yes: aliases which point at other
+      * aliases should work)
+      */
++    @Override
+     protected Query getFieldQuery(String field, String queryText, boolean quoted)
+       throws ParseException {

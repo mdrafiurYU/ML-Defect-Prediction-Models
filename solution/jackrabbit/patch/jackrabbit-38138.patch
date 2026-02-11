@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/state/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/state/TestAll.java
+index 552f274..0fc1bb1 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/state/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/state/TestAll.java
+@@ -36,6 +36,8 @@ public class TestAll extends TestCase {
+         TestSuite suite = new TestSuite("State tests");
+ 
+         suite.addTestSuite(ChangeLogTest.class);
++        suite.addTestSuite(DefaultISMLockingTest.class);
++        suite.addTestSuite(FineGrainedISMLockingTest.class);
+ 
+         return suite;
+     }

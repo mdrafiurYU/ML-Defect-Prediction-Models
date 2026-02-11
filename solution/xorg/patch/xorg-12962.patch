@@ -1,0 +1,15 @@
+diff --git a/hw/xgl/glx/xglx.c b/hw/xgl/glx/xglx.c
+index c89c496..dc2482e 100644
+--- a/hw/xgl/glx/xglx.c
++++ b/hw/xgl/glx/xglx.c
+@@ -67,7 +67,9 @@ ScreenPtr	 currentScreen = NULL;
+ xglScreenInfoRec xglScreenInfo = {
+     NULL, 0, 0, 0, 0, FALSE,
+     DEFAULT_GEOMETRY_DATA_TYPE,
+-    DEFAULT_GEOMETRY_USAGE
++    DEFAULT_GEOMETRY_USAGE,
++    FALSE,
++    XGL_DEFAULT_PBO_MASK
+ };
+ 
+ static Bool

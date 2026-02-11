@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableDoubleField.java b/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
+index cbb8d04..4df79f5 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
+@@ -149,6 +149,12 @@ class SortableDoubleFieldSource extends FieldCacheSource {
+       }
+ 
+       @Override
++      public Object objectVal(int doc) {
++        int ord=termsIndex.getOrd(doc);
++        return ord==0 ? null  : NumberUtils.SortableStr2double(termsIndex.lookup(ord, spare));
++      }
++
++      @Override
+       public String toString(int doc) {
+         return description() + '=' + doubleVal(doc);
+       }

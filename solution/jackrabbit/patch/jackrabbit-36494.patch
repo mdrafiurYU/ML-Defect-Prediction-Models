@@ -1,0 +1,21 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/proxy/Detail.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/proxy/Detail.java
+index e844209..85ed752 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/proxy/Detail.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/proxy/Detail.java
+@@ -16,10 +16,14 @@
+  */
+ package org.apache.jackrabbit.ocm.testmodel.proxy;
+ 
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Field;
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
++
++@Node
+ public class Detail 
+ {
+-    private String path;
+-	private String field;
++    @Field(path=true) private String path;
++	@Field private String field;
+ 
+     
+ 	public String getPath() {

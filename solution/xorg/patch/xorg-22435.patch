@@ -1,0 +1,15 @@
+diff --git a/mi/miscanfill.h b/mi/miscanfill.h
+index 06baee3..49058c1 100644
+--- a/mi/miscanfill.h
++++ b/mi/miscanfill.h
+@@ -28,6 +28,10 @@ from The Open Group.
+ */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef SCANFILLINCLUDED
+ #define SCANFILLINCLUDED
+ /*

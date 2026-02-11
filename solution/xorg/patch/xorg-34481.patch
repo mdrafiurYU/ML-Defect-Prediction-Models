@@ -1,0 +1,30 @@
+diff --git a/miext/rootless/rootlessScreen.c b/miext/rootless/rootlessScreen.c
+index 6b54042..538b698 100644
+--- a/miext/rootless/rootlessScreen.c
++++ b/miext/rootless/rootlessScreen.c
+@@ -65,6 +65,7 @@ extern Bool RootlessCreateGC(GCPtr pGC);
+ int rootlessGCPrivateIndex = -1;
+ int rootlessScreenPrivateIndex = -1;
+ int rootlessWindowPrivateIndex = -1;
++int rootlessWindowOldPixmapPrivateIndex = -1;
+ 
+ 
+ /*
+@@ -618,6 +619,8 @@ RootlessAllocatePrivates(ScreenPtr pScreen)
+         if (rootlessGCPrivateIndex == -1) return FALSE;
+         rootlessWindowPrivateIndex = AllocateWindowPrivateIndex();
+         if (rootlessWindowPrivateIndex == -1) return FALSE;
++        rootlessWindowOldPixmapPrivateIndex = AllocateWindowPrivateIndex();
++        if (rootlessWindowOldPixmapPrivateIndex == -1) return FALSE;
+         rootlessGeneration = serverGeneration;
+     }
+ 
+@@ -627,6 +630,8 @@ RootlessAllocatePrivates(ScreenPtr pScreen)
+         return FALSE;
+     if (!AllocateWindowPrivate(pScreen, rootlessWindowPrivateIndex, 0))
+         return FALSE;
++    if (!AllocateWindowPrivate(pScreen, rootlessWindowOldPixmapPrivateIndex, 0))
++        return FALSE;
+ 
+     s = xalloc(sizeof(RootlessScreenRec));
+     if (! s) return FALSE;

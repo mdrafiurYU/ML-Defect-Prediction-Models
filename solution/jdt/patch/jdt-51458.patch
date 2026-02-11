@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+index 0c9fe93..08da3e3 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+@@ -80,7 +80,7 @@ public class APTDispatch
+ 		}
+ 		catch( CoreException ce )
+ 		{
+-			AptPlugin.log(ce, "Could not run APT");
++			AptPlugin.log(ce, "Could not run APT"); //$NON-NLS-1$
+ 		}
+ 			
+ 		return runnable.getResult();

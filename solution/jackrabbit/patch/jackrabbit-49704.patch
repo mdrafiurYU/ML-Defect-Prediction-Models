@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/ResourceType.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/ResourceType.java
+index 4985346..81051af 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/ResourceType.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/ResourceType.java
+@@ -182,7 +182,7 @@ public class ResourceType extends AbstractDavProperty {
+         private TypeName(String localName, Namespace namespace) {
+             this.localName = localName;
+             this.namespace = namespace;
+-            hashCode = DomUtil.getQualifiedName(localName, namespace).hashCode();
++            hashCode = DomUtil.getExpandedName(localName, namespace).hashCode();
+         }
+ 
+         public int hashCode() {

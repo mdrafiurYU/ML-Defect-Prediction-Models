@@ -1,0 +1,20 @@
+diff --git a/GL/glx/glxserver.h b/GL/glx/glxserver.h
+index a30a853..e8449b2 100644
+--- a/GL/glx/glxserver.h
++++ b/GL/glx/glxserver.h
+@@ -225,12 +225,9 @@ extern void glxSwapQueryServerStringReply(ClientPtr client,
+  */
+ 
+ extern int __glXTypeSize(GLenum enm);
+-extern int __glXImageSize(GLenum format, GLenum type, GLsizei w, GLsizei h,
+-			  GLint rowLength, GLint skipRows, GLint alignment);
+-extern int __glXImage3DSize(GLenum format, GLenum type,
+-			    GLsizei w, GLsizei h, GLsizei d,
+-			    GLint imageHeight, GLint rowLength,
+-			    GLint skipImages, GLint skipRows,
++extern int __glXImageSize(GLenum format, GLenum type,
++    GLenum target, GLsizei w, GLsizei h, GLsizei d,
++    GLint imageHeight, GLint rowLength, GLint skipImages, GLint skipRows,
+ 			    GLint alignment);
+ 
+ extern int __glXCallListsReqSize(GLbyte *pc, Bool swap);

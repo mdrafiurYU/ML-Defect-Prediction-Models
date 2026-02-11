@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/zx1PCI.c b/hw/xfree86/os-support/bus/zx1PCI.c
+index 561fbd9..d78e0c4 100644
+--- a/hw/xfree86/os-support/bus/zx1PCI.c
++++ b/hw/xfree86/os-support/bus/zx1PCI.c
+@@ -469,7 +469,7 @@ void
+ xf86PreScanZX1(void)
+ {
+     resRange range;
+-    unsigned long mapSize = xf86getpagesize();
++    unsigned long mapSize = getpagesize();
+     unsigned long tmp, base, ioaaddr;
+     unsigned long flagsd, based, lastd, maskd, routed;
+     unsigned long flags0, base0, last0, mask0, route0;

@@ -1,0 +1,18 @@
+diff --git a/hw/xwin/InitInput.c b/hw/xwin/InitInput.c
+index 550c5a0..fd4f26f 100644
+--- a/hw/xwin/InitInput.c
++++ b/hw/xwin/InitInput.c
+@@ -102,6 +102,13 @@ ProcessInputEvents (void)
+ }
+ 
+ 
++void DDXRingBell(int volume, int pitch, int duration)
++{
++  /* winKeybdBell is used instead */
++  return;
++}
++
++
+ int
+ TimeSinceLastInputEvent ()
+ {

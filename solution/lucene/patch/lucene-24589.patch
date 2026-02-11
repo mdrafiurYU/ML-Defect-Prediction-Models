@@ -1,0 +1,19 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/DataOutput.java b/lucene/src/java/org/apache/lucene/store/DataOutput.java
+index af125bd..ca33925 100644
+--- a/lucene/src/java/org/apache/lucene/store/DataOutput.java
++++ b/lucene/src/java/org/apache/lucene/store/DataOutput.java
+@@ -60,6 +60,14 @@ public abstract class DataOutput {
+     writeByte((byte)(i >>  8));
+     writeByte((byte) i);
+   }
++  
++  /** Writes a short as two bytes.
++   * @see DataInput#readShort()
++   */
++  public void writeShort(short i) throws IOException {
++    writeByte((byte)(i >>  8));
++    writeByte((byte) i);
++  }
+ 
+   /** Writes an int in a variable-length format.  Writes between one and
+    * five bytes.  Smaller values take fewer bytes.  Negative numbers are not

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
+index dba1381..cc13186 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
+@@ -171,7 +171,7 @@ public final class CachingMultiIndexReader
+ 
+     /**
+      * {@inheritDoc}
+-     */ 
++     */
+     public IndexReader[] getIndexReaders() {
+         IndexReader readers[] = new IndexReader[subReaders.length];
+         System.arraycopy(subReaders, 0, readers, 0, subReaders.length);
+@@ -211,7 +211,7 @@ public final class CachingMultiIndexReader
+         }
+         return -1;
+     }
+-    
++
+     /**
+      * Returns the reader index for document <code>n</code>.
+      * Implementation copied from lucene MultiReader class.

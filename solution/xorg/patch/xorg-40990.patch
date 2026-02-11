@@ -1,0 +1,74 @@
+diff --git a/hw/xquartz/GL/visualConfigs.c b/hw/xquartz/GL/visualConfigs.c
+index 12e9777..f7f253f 100644
+--- a/hw/xquartz/GL/visualConfigs.c
++++ b/hw/xquartz/GL/visualConfigs.c
+@@ -86,6 +86,7 @@ void setVisualConfigs(void) {
+       conf->total_color_buffers indicates the RGB/RGBA color depths.
+       
+       conf->total_accum_buffers iterations for accum (with at least 1 if equal to 0) 
++	 
+      */
+ 
+     assert(NULL != caps.configurations);
+@@ -98,7 +99,6 @@ void setVisualConfigs(void) {
+ 	    continue;
+ 
+ 	numConfigs += (conf->stereo ? 2 : 1) 
+-	    * 2 /*depth*/ 
+ 	    * (conf->aux_buffers ? 2 : 1) 
+ 	    * conf->buffers
+ 	    * ((conf->total_stencil_bit_depths > 0) ? conf->total_stencil_bit_depths : 1)
+@@ -126,7 +126,6 @@ void setVisualConfigs(void) {
+     i = 0; /* current buffer */
+     for(conf = caps.configurations; conf; conf = conf->next) {
+ 	for(stereo = 0; stereo < (conf->stereo ? 2 : 1); ++stereo) {
+-	    for(depth = 0; depth < 2; ++depth) {
+ 		for(aux = 0; aux < (conf->aux_buffers ? 2 : 1); ++aux) {
+ 		    for(buffers = 0; buffers < conf->buffers; ++buffers) {
+ 			for(stencil = 0; stencil < ((conf->total_stencil_bit_depths > 0) ? 
+@@ -134,8 +133,8 @@ void setVisualConfigs(void) {
+ 			    for(color = 0; color < conf->total_color_buffers; ++color) {
+ 				for(accum = 0; accum < ((conf->total_accum_buffers > 0) ?
+ 							conf->total_accum_buffers : 1); ++accum) {
+-				    visualConfigs[i].vid = -1;
+-				    visualConfigs[i].class = -1;
++				visualConfigs[i].vid = (VisualID)(-1);
++				visualConfigs[i].class = TrueColor;
+ 		     
+ 				    visualConfigs[i].rgba = true;
+ 				    visualConfigs[i].redSize = conf->color_buffers[color].r;
+@@ -143,6 +142,15 @@ void setVisualConfigs(void) {
+ 				    visualConfigs[i].blueSize = conf->color_buffers[color].b;
+ 				    visualConfigs[i].alphaSize = conf->color_buffers[color].a;
+ 				
++				visualConfigs[i].bufferSize = conf->color_buffers[color].r +
++				    conf->color_buffers[color].g + conf->color_buffers[color].b +
++				    conf->color_buffers[color].a;
++				
++				/*
++				 * I'm uncertain about these masks.
++				 * I don't think we actually care what the values are in our
++				 * libGL, so it doesn't seem to make a difference.
++				 */
+ 				    visualConfigs[i].redMask = -1;
+ 				    visualConfigs[i].greenMask = -1;
+ 				    visualConfigs[i].blueMask = -1;
+@@ -166,9 +174,8 @@ void setVisualConfigs(void) {
+ 
+ 				    visualConfigs[i].doubleBuffer = buffers ? TRUE : FALSE;
+ 				    visualConfigs[i].stereo = stereo ? TRUE : FALSE;
+-				    visualConfigs[i].bufferSize = -1;
+ 				    
+-				    visualConfigs[i].depthSize = depth ? 24 : 0;
++				visualConfigs[i].depthSize = 24;
+ 				    
+ 				    if(conf->total_stencil_bit_depths > 0) {
+ 					visualConfigs[i].stencilSize = conf->stencil_bit_depths[stencil];
+@@ -206,7 +213,6 @@ void setVisualConfigs(void) {
+ 		}
+ 	    }
+ 	}
+-    }
+ 
+     if (i != numConfigs) {
+ 	ErrorF("numConfigs calculation error in setVisualConfigs!  numConfigs is %d  i is %d\n", numConfigs, i);

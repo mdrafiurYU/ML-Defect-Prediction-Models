@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 5e3eb2a..5503e24 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -440,9 +440,7 @@ xf86ProcessActionEvent(ActionEvent action, void *arg)
+ extern u_char SpecialServerMap[];
+ #endif
+ 
+-#if !defined(__UNIXOS2__) && \
+-    !defined(__SOL8__) && \
+-    (!defined(sun) || defined(i386)) 
++#if !defined(__UNIXOS2__)
+ void
+ xf86PostKbdEvent(unsigned key)
+ {

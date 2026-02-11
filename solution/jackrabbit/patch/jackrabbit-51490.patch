@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractJCR2SPITest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractJCR2SPITest.java
+index 92bcb3c..e0fe130 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractJCR2SPITest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractJCR2SPITest.java
+@@ -434,10 +434,10 @@ public abstract class AbstractJCR2SPITest extends TestCase implements Repository
+         return repositoryService.mergeActivity(sessionInfo, activityId);
+     }
+ 
+-    public NodeId createConfiguration(SessionInfo sessionInfo, NodeId nodeId, NodeId baselineId)
++    public NodeId createConfiguration(SessionInfo sessionInfo, NodeId nodeId)
+             throws RepositoryException {
+ 
+-        return repositoryService.createConfiguration(sessionInfo, nodeId, baselineId);
++        return repositoryService.createConfiguration(sessionInfo, nodeId);
+     }
+ 
+     //----------------------------------------------------------< Searching >---

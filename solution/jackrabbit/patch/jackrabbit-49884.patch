@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueTest.java
+index d4879a6..0979ea1 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/IndexingQueueTest.java
+@@ -147,7 +147,7 @@ public class IndexingQueueTest extends AbstractIndexingTest {
+             }
+         }
+ 
+-        String stmt = testPath + "//element(*, nt:resource)[jcr:contains(., 'fox')]";
++        String stmt = testPath + "//element(*, nt:resource)[jcr:contains(., 'fox')] order by @jcr:score descending";
+         Query q = qm.createQuery(stmt, Query.XPATH);
+         assertEquals(num, q.execute().getNodes().getSize());
+     }

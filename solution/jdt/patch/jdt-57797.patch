@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+index a2f5c7f..e14504f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+@@ -43,7 +43,7 @@ public FlowInfo analyseCode(BlockScope currentScope, FlowContext flowContext, Fl
+ 	boolean nonStatic = !binding.isStatic();
+ 	flowInfo = receiver.analyseCode(currentScope, flowContext, flowInfo, nonStatic).unconditionalInits();
+ 	if (nonStatic) {
+-		receiver.checkNPE(currentScope, flowContext, flowInfo, true);
++		receiver.checkNPE(currentScope, flowContext, flowInfo);
+ 	}
+ 
+ 	if (arguments != null) {

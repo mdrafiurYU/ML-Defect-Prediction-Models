@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
+index 2de8243..991385a 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
+@@ -1028,7 +1028,7 @@ public class NameLookup implements SuffixConstants {
+ 						IJavaElement cu = compilationUnits[i];
+ 						String cuName = cu.getElementName();
+ 						int lastDot = cuName.lastIndexOf('.');
+-						if (!topLevelTypeName.equals(cuName.substring(0, lastDot))) 
++						if (lastDot != topLevelTypeName.length() || !topLevelTypeName.regionMatches(0, cuName, 0, lastDot)) 
+ 							continue;
+ 						IType type = ((ICompilationUnit) cu).getType(topLevelTypeName);
+ 						type = getMemberType(type, name, firstDot);

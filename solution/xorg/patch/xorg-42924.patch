@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxLoad.c b/xkb/ddxLoad.c
+index c24b2cc..8d7f837 100644
+--- a/xkb/ddxLoad.c
++++ b/xkb/ddxLoad.c
+@@ -404,7 +404,7 @@ XkbRF_RulesPtr	rules;
+ 	return False;
+     }
+ 
+-    rules = XkbRF_Create(0, 0);
++    rules = XkbRF_Create();
+     if (!rules) {
+         LogMessage(X_ERROR, "XKB: Couldn't create rules struct\n");
+ 	fclose(file);

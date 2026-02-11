@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 8b446c6..0d15e3a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -5427,7 +5427,8 @@ public void unsafeCast(CastExpression castExpression, Scope scope) {
+ 	TypeBinding erasedLeaf = erasedCastType.leafComponentType();
+ 	int dim = erasedCastType.dimensions();
+ 	if (erasedLeaf.isGenericType()) {
+-		erasedCastType = scope.environment().createRawType((ReferenceBinding)erasedLeaf, erasedLeaf.enclosingType());
++		ReferenceBinding leafEnclosing = scope.environment().convertToParameterizedType(erasedLeaf.enclosingType());
++		erasedCastType = scope.environment().createRawType((ReferenceBinding)erasedLeaf, leafEnclosing);
+ 		if (dim > 0) erasedCastType = scope.environment().createArrayType(erasedCastType, dim);
+ 	}	
+ 	this.handle(

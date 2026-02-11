@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/Hits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/Hits.java
+index 4ec4817..be13cda 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/Hits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/Hits.java
+@@ -38,7 +38,8 @@ public interface Hits {
+     
+     /** 
+      * Skips to the first match beyond the current whose document number is
+-     * greater than or equal to the given target.
++     * greater than or equal to the given target. Returns -1 if there is no
++     * matching document number greater than target.
+      */
+     int skipTo(int target) throws IOException;

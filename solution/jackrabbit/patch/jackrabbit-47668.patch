@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index 263cf57..7823ad5 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -516,4 +516,22 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+     protected ObservationManager createObservationManager(NamePathResolver resolver, NodeTypeRegistry ntRegistry) {
+         return new ObservationManagerImpl(wspManager, resolver, ntRegistry);
+     }
++
++    public void createWorkspace(String name) throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1104");
++    }
++
++    public void createWorkspace(String name, String srcWorkspace)
++            throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1104");
++    }
++
++    public void deleteWorkspace(String name) throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1104");
++    }
++
++    public javax.jcr.version.VersionManager getVersionManager()
++            throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1104");
++    }
+ }

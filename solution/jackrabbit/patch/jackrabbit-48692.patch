@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DoubleValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DoubleValue.java
+index e178cb3..d5d5c78 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DoubleValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DoubleValue.java
+@@ -21,6 +21,7 @@ import javax.jcr.RepositoryException;
+ import javax.jcr.ValueFormatException;
+ import java.util.Calendar;
+ import java.util.Date;
++import java.math.BigDecimal;
+ 
+ /**
+  * A <code>DoubleValue</code> provides an implementation
+@@ -178,4 +179,19 @@ public class DoubleValue extends BaseValue {
+             throw new ValueFormatException("empty value");
+         }
+     }
++
++    /**
++     * {@inheritDoc}
++     */
++    public BigDecimal getDecimal()
++            throws ValueFormatException, IllegalStateException,
++            RepositoryException {
++        setValueConsumed();
++
++        if (dblNumber != null) {
++            return new BigDecimal(dblNumber.doubleValue());
++        } else {
++            throw new ValueFormatException("empty value");
++        }
++    }
+ }

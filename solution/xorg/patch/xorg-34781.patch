@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/appledri.c b/hw/darwin/quartz/xpr/appledri.c
+index 45d1a7e..95a4439 100644
+--- a/hw/darwin/quartz/xpr/appledri.c
++++ b/hw/darwin/quartz/xpr/appledri.c
+@@ -35,7 +35,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #define NEED_REPLIES
+ #define NEED_EVENTS

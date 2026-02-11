@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerThread.java b/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerThread.java
+index 0f2fed9..5bd7321 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerThread.java
++++ b/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerThread.java
+@@ -24,8 +24,8 @@ import java.io.IOException;
+ 
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.Fieldable;
++import org.apache.lucene.index.codecs.docvalues.DocValuesConsumer;
+ import org.apache.lucene.index.values.ValuesAttribute;
+-import org.apache.lucene.index.values.codec.DocValuesConsumer;
+ import org.apache.lucene.util.ArrayUtil;
+ import org.apache.lucene.util.AttributeSource;
+ import org.apache.lucene.util.RamUsageEstimator;
+@@ -407,4 +407,4 @@ final class DocFieldProcessorPerThread extends DocConsumerPerThread {
+       }
+     }
+   }
+-}
+\ No newline at end of file
++}

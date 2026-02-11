@@ -1,0 +1,22 @@
+diff --git a/afb/afbpntwin.c b/afb/afbpntwin.c
+index 6082f7c..89c4489 100644
+--- a/afb/afbpntwin.c
++++ b/afb/afbpntwin.c
+@@ -57,6 +57,7 @@ SOFTWARE.
+ #include "regionstr.h"
+ #include "pixmapstr.h"
+ #include "scrnintstr.h"
++#include "privates.h"
+ 
+ #include "afb.h"
+ #include "maskbits.h"
+@@ -71,7 +72,8 @@ afbPaintWindow(pWin, pRegion, what)
+ 	register afbPrivWin		*pPrivWin;
+ 	unsigned char rrops[AFB_MAX_DEPTH];
+ 
+-	pPrivWin = (afbPrivWin *)(pWin->devPrivates[afbWindowPrivateIndex].ptr);
++    pPrivWin = (afbPrivWin *)dixLookupPrivate(&pWin->devPrivates,
++					      afbWindowPrivateKey);
+ 
+ 	switch (what) {
+ 		case PW_BACKGROUND:

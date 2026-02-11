@@ -1,0 +1,24 @@
+diff --git a/damageext/damageext.c b/damageext/damageext.c
+index e1724ec..1597465 100755
+--- a/damageext/damageext.c
++++ b/damageext/damageext.c
+@@ -29,7 +29,7 @@
+ static unsigned char	DamageReqCode;
+ static int		DamageEventBase;
+ static int		DamageErrorBase;
+-static int		DamageClientPrivateIndex;
++static DevPrivateKey	DamageClientPrivateKey = &DamageClientPrivateKey;
+ static RESTYPE		DamageExtType;
+ static RESTYPE		DamageExtWinType;
+ 
+@@ -511,9 +511,7 @@ DamageExtensionInit(void)
+     if (!DamageExtWinType)
+ 	return;
+ 
+-    DamageClientPrivateIndex = AllocateClientPrivateIndex ();
+-    if (!AllocateClientPrivate (DamageClientPrivateIndex, 
+-				sizeof (DamageClientRec)))
++    if (!dixRequestPrivate(DamageClientPrivateKey, sizeof (DamageClientRec)))
+ 	return;
+     if (!AddCallback (&ClientStateCallback, DamageClientCallback, 0))
+ 	return;

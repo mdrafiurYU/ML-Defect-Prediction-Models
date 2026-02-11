@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
+index fb51ad7..1deba9b 100644
+--- a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
++++ b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
+@@ -182,5 +182,11 @@ public class TextTest extends TestCase {
+             fail("Text.unescape(" + string + "): " + unexpected.getMessage());
+         }
+     }
++        
++    public void testEscapeIllegalJcrChars() throws Exception {
+ 
++        // single and double quote are valid since JCR 2.0
++        assertEquals("local'name", Text.escapeIllegalJcrChars("local'name"));
++        assertEquals("local\"name", Text.escapeIllegalJcrChars("local\"name"));       
++    }
+ }

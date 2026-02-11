@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+index c0bdbd5..1185e65 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+@@ -25,7 +25,7 @@ import org.apache.jackrabbit.core.query.lucene.hits.ScorerHits;
+ import org.apache.jackrabbit.core.state.ItemStateException;
+ import org.apache.jackrabbit.core.state.ItemStateManager;
+ import org.apache.jackrabbit.core.state.NodeState;
+-import org.apache.jackrabbit.name.QName;
++import org.apache.jackrabbit.spi.Name;
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.Term;
+@@ -389,7 +389,7 @@ class ChildAxisQuery extends Query {
+                                 return false;
+                             } else {
+                                 // only use the last one
+-                                QName name = entry.getName();
++                                Name name = entry.getName();
+                                 List childNodes = state.getChildNodeEntries(name);
+                                 if (childNodes.size() == 0
+                                         || !((NodeState.ChildNodeEntry) childNodes.get(childNodes.size() - 1))

@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Screen.c b/hw/xnest/Screen.c
+index d08e482..86f856e 100644
+--- a/hw/xnest/Screen.c
++++ b/hw/xnest/Screen.c
+@@ -294,8 +294,6 @@ xnestOpenScreen(int index, ScreenPtr pScreen, int argc, char *argv[])
+   pScreen->UnrealizeWindow = xnestUnrealizeWindow;
+   pScreen->PostValidateTree = NULL;
+   pScreen->WindowExposures = xnestWindowExposures;
+-  pScreen->PaintWindowBackground = xnestPaintWindowBackground;
+-  pScreen->PaintWindowBorder = xnestPaintWindowBorder;
+   pScreen->CopyWindow = xnestCopyWindow;
+   pScreen->ClipNotify = xnestClipNotify;
+ 

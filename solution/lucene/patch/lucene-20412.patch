@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java b/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java
+index 7c8632d..68c7952 100755
+--- a/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java
+@@ -40,7 +40,7 @@ public class DoubleConstValueSource extends ConstNumberSource {
+ 
+   @Override
+   public DocValues getValues(Map context, AtomicReaderContext readerContext) throws IOException {
+-    return new DocValues() {
++    return new DoubleDocValues(this) {
+       @Override
+       public float floatVal(int doc) {
+         return fv;
+@@ -67,6 +67,11 @@ public class DoubleConstValueSource extends ConstNumberSource {
+       }
+ 
+       @Override
++      public Object objectVal(int doc) {
++        return constant;
++      }
++
++      @Override
+       public String toString(int doc) {
+         return description();
+       }

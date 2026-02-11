@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyr.h b/hw/kdrive/ephyr/ephyr.h
+index d1ee500..3d468af 100644
+--- a/hw/kdrive/ephyr/ephyr.h
++++ b/hw/kdrive/ephyr/ephyr.h
+@@ -47,7 +47,7 @@ typedef struct _ephyrPriv {
+ } EphyrPriv;
+ 
+ typedef struct _ephyrFakexaPriv {
+-    ExaDriverRec exa;
++    ExaDriverPtr exa;
+     Bool is_synced;
+ 
+     /* The following are arguments and other information from Prepare* calls

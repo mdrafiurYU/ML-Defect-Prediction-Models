@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index e227617..da6e590 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -425,6 +425,7 @@ InitAndStartDevices(void)
+     for (dev = inputInfo.devices;
+ 	 dev && (dev != inputInfo.keyboard);
+ 	 dev = dev->next)
++	;
+     if (!dev || (dev != inputInfo.keyboard)) {
+ 	ErrorF("No core keyboard\n");
+ 	return BadImplementation;

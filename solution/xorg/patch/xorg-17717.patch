@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/ddc/print_vdif.c b/hw/xfree86/ddc/print_vdif.c
+index 8329e12..6c890c2 100644
+--- a/hw/xfree86/ddc/print_vdif.c
++++ b/hw/xfree86/ddc/print_vdif.c
+@@ -1,5 +1,9 @@
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/ddc/print_vdif.c,v 1.4tsi Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "vdif.h"
+ #include <X11/misc.h>
+ #include "xf86DDC.h"

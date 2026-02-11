@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 0aa60c0..53cf393 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -2115,6 +2115,7 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 						case readyToCloseOrOtherEntry:
+ 							state = readyToCloseOrOtherEntry;
+ 							addNewEntry(InsideClasspath, InsideSourcepath, bootclasspaths, classpaths, sourcepathClasspaths, currentClasspathName, currentRuleSpecs, mode, customEncoding);
++							currentRuleSpecs.clear();
+ 							break;
+ 						case rulesReadyToClose:
+ 							state = rulesNeedAnotherRule;

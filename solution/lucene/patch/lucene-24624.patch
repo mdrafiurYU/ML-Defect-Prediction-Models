@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/LongValuesCreator.java b/lucene/src/java/org/apache/lucene/search/cache/LongValuesCreator.java
+index 27c1672..caf14e0 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/LongValuesCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/LongValuesCreator.java
+@@ -61,8 +61,8 @@ public class LongValuesCreator extends CachedArrayCreator<LongValues>
+   }
+   
+   @Override
+-  public int getSortTypeID() {
+-    return SortField.LONG;
++  public SortField.Type getSortType() {
++    return SortField.Type.LONG;
+   }
+ 
+ 
+@@ -162,4 +162,4 @@ public class LongValuesCreator extends CachedArrayCreator<LongValues>
+       vals.valid = new Bits.MatchNoBits( maxDoc );
+     }
+   }
+-}
+\ No newline at end of file
++}

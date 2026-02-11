@@ -1,0 +1,22 @@
+diff --git a/render/mipict.c b/render/mipict.c
+index c7b6c6b..bbe8478 100644
+--- a/render/mipict.c
++++ b/render/mipict.c
+@@ -405,7 +405,7 @@ miCompositeSourceValidate (PicturePtr	pPicture,
+  * an allocation failure, but rendering ignores those anyways.
+  */
+ 
+-Bool
++_X_EXPORT Bool
+ miComputeCompositeRegion (RegionPtr	pRegion,
+ 			  PicturePtr	pSrc,
+ 			  PicturePtr	pMask,
+@@ -610,7 +610,7 @@ miRenderPixelToColor (PictFormatPtr format,
+     }
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ miPictureInit (ScreenPtr pScreen, PictFormatPtr formats, int nformats)
+ {
+     PictureScreenPtr    ps;

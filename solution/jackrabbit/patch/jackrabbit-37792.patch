@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeletedNodesTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeletedNodesTest.java
+index 5c808c6..4c436cb 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeletedNodesTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeletedNodesTest.java
+@@ -45,8 +45,10 @@ public class SkipDeletedNodesTest extends AbstractQueryTest {
+         try {
+             if (s2 != null) {
+                 s2.logout();
++                s2 = null;
+             }
+         } finally {
++            qm = null;
+             super.tearDown();
+         }
+     }

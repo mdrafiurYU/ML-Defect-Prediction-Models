@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+index f1ec386..afb5f17 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+@@ -581,6 +581,9 @@ public final class SegmentInfo {
+     if (this.dir != dir) {
+       s.append('x');
+     }
++    if (hasVectors) {
++      s.append('v');
++    }
+     s.append(docCount);
+ 
+     int delCount = getDelCount() + pendingDelCount;

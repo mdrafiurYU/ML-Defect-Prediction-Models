@@ -1,0 +1,32 @@
+diff --git a/dix/events.c b/dix/events.c
+index 57a356d..5ea9a65 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -1664,6 +1664,9 @@ DeliverEventsToWindow(DeviceIntPtr pDev, register WindowPtr pWin, xEvent
+ 		              this mask is the mask of the grab. */
+     int type = pEvents->u.u.type;
+ 
++    if (!ACDeviceAllowed(pWin, pDev))
++        return 0;
++
+     /* CantBeFiltered means only window owner gets the event */
+     if ((filter == CantBeFiltered) || !(type & EXTENSION_EVENT_BASE))
+     {
+@@ -2748,6 +2751,9 @@ DeliverGrabbedEvent(register xEvent *xE, register DeviceIntPtr thisDev,
+     }
+     if (!deliveries)
+     {
++        if (ACDeviceAllowed(grab->window, thisDev))
++        {
++
+ 	FixUpEventFromWindow(thisDev, xE, grab->window, None, TRUE);
+ 	deliveries = TryClientEvents(rClient(grab), xE, count,
+ 				     (Mask)grab->eventMask,
+@@ -2759,6 +2765,7 @@ DeliverGrabbedEvent(register xEvent *xE, register DeviceIntPtr thisDev,
+ 			   ))
+ 	    thisDev->valuator->motionHintWindow = grab->window;
+     }
++    }
+     if (deliveries && !deactivateGrab && (xE->u.u.type != MotionNotify
+ #ifdef XINPUT
+ 					  && xE->u.u.type != DeviceMotionNotify

@@ -1,0 +1,14 @@
+diff --git a/afb/afbfillarc.c b/afb/afbfillarc.c
+index fa685ba..cfc3133 100644
+--- a/afb/afbfillarc.c
++++ b/afb/afbfillarc.c
+@@ -321,7 +321,8 @@ afbPolyFillArcSolid(register DrawablePtr pDraw, GCPtr pGC, int narcs, xArc *parc
+ 	RegionPtr cclip;
+ 	unsigned char *rrops;
+ 
+-	priv = (afbPrivGC *) pGC->devPrivates[afbGCPrivateIndex].ptr;
++	priv = (afbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++					     afbGCPrivateKey);
+ 	rrops = priv->rrops;
+ 	cclip = pGC->pCompositeClip;
+ 	for (arc = parcs, i = narcs; --i >= 0; arc++) {

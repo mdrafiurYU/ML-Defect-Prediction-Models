@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NamespaceRegistryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NamespaceRegistryImpl.java
+index 5c0cfff..0c1b88f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NamespaceRegistryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NamespaceRegistryImpl.java
+@@ -21,8 +21,6 @@ import org.apache.jackrabbit.core.cluster.NamespaceEventListener;
+ import org.apache.jackrabbit.core.fs.FileSystem;
+ import org.apache.jackrabbit.core.fs.FileSystemResource;
+ import org.apache.jackrabbit.spi.commons.namespace.NamespaceResolver;
+-import org.apache.jackrabbit.spi.commons.conversion.NameResolver;
+-import org.apache.jackrabbit.spi.commons.conversion.PathResolver;
+ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.util.XMLChar;
+ import org.slf4j.Logger;
+@@ -84,10 +82,6 @@ public class NamespaceRegistryImpl
+ 
+     private int lastIndex = 0;
+ 
+-    private NameResolver nameResolver;
+-
+-    private PathResolver pathResolver;
+-
+     private final FileSystem nsRegStore;
+ 
+     /**
+@@ -282,14 +276,6 @@ public class NamespaceRegistryImpl
+         }
+     }
+ 
+-    public NameResolver getNameResolver() {
+-        return nameResolver;
+-    }
+-
+-    public PathResolver getPathResolver() {
+-        return pathResolver;
+-    }
+-
+     /**
+      * Returns a prefix that is unique among the already registered prefixes.
+      *

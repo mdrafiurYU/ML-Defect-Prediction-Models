@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/FunctionQuery.java b/solr/src/java/org/apache/solr/search/function/FunctionQuery.java
+index 397798f..1a6ad49 100644
+--- a/solr/src/java/org/apache/solr/search/function/FunctionQuery.java
++++ b/solr/src/java/org/apache/solr/search/function/FunctionQuery.java
+@@ -67,7 +67,7 @@ public class FunctionQuery extends Query {
+ 
+     public FunctionWeight(IndexSearcher searcher) throws IOException {
+       this.searcher = searcher;
+-      this.context = func.newContext();
++      this.context = func.newContext(searcher);
+       func.createWeight(context, searcher);
+     }

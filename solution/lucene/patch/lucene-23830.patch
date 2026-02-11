@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java b/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java
+index 8fa688a..e48c1ec 100644
+--- a/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java
++++ b/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java
+@@ -287,7 +287,7 @@ public class TestSurrogates extends LuceneTestCase {
+ 
+     for(int f=0;f<numField;f++) {
+       String field = "f" + f;
+-      final int numTerms = 10000 * RANDOM_MULTIPLIER;
++      final int numTerms = (TEST_NIGHTLY ? 10000 : 1000) * RANDOM_MULTIPLIER;
+ 
+       final Set<String> uniqueTerms = new HashSet<String>();

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/PlainTextExtractorTest.java b/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/PlainTextExtractorTest.java
+index 8ecf093..b4c7f6e 100644
+--- a/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/PlainTextExtractorTest.java
++++ b/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/PlainTextExtractorTest.java
+@@ -92,7 +92,7 @@ public class PlainTextExtractorTest extends TestCase {
+             Reader reader = extractor.extractText(
+                     new ByteArrayInputStream(text.getBytes()),
+                     "text/plain", "unsupported");
+-            assertEquals("", ExtractorHelper.read(reader));
++            assertEquals(text, ExtractorHelper.read(reader));
+         } catch (UnsupportedEncodingException e) {
+             fail("PlainTextExtractor does not handle unsupported encodings");
+         }

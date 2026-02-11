@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestWildcard.java b/lucene/src/test/org/apache/lucene/search/TestWildcard.java
+index 22f4cc5..2808935 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestWildcard.java
++++ b/lucene/src/test/org/apache/lucene/search/TestWildcard.java
+@@ -300,7 +300,7 @@ public class TestWildcard
+     Directory dir = newDirectory();
+     RandomIndexWriter iw = new RandomIndexWriter(random, dir, 
+         newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer())
+-        .setMergePolicy(newInOrderLogMergePolicy()));
++        .setMergePolicy(newLogMergePolicy()));
+     for (int i = 0; i < docs.length; i++) {
+       Document doc = new Document();
+       doc.add(newField(field,docs[i],Store.NO,Index.ANALYZED));

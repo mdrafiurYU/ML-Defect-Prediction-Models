@@ -1,0 +1,28 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index 3ff609f..cd6cac2 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -1175,6 +1175,11 @@ fbComposite (CARD8      op,
+ 			func = fbCompositeSrc_8888x0888;
+ 			break;
+ 		    case PICT_r5g6b5:
++#ifdef USE_MMX
++			if (fbHaveMMX())
++			    func = fbCompositeSrc_8888x0565mmx;
++			else
++#endif
+ 			func = fbCompositeSrc_8888x0565;
+ 			break;
+ 		    default:
+@@ -1221,6 +1226,11 @@ fbComposite (CARD8      op,
+ 			func = fbCompositeSrc_8888x0888;
+ 			break;
+ 		    case PICT_b5g6r5:
++#ifdef USE_MMX
++			if (fbHaveMMX())
++			    func = fbCompositeSrc_8888x0565mmx;
++			else
++#endif
+ 			func = fbCompositeSrc_8888x0565;
+ 			break;
+ 		    default:

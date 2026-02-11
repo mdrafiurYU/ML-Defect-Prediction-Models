@@ -1,0 +1,33 @@
+diff --git a/fb/fbwindow.c b/fb/fbwindow.c
+index 968b5a6..cac662c 100644
+--- a/fb/fbwindow.c
++++ b/fb/fbwindow.c
+@@ -118,6 +118,9 @@ fbCopyWindowProc (DrawablePtr	pSrcDrawable,
+ 	       upsidedown);
+ 	pbox++;
+     }
++
++    fbFinishAccess (pDstDrawable);
++    fbFinishAccess (pSrcDrawable);
+ }
+ 
+ void 
+@@ -249,6 +252,8 @@ fbFillRegionSolid (DrawablePtr	pDrawable,
+ 	fbValidateDrawable (pDrawable);
+ 	pbox++;
+     }
++
++    fbFinishAccess (pDrawable);
+ }
+ 
+ #ifdef PANORAMIX
+@@ -311,6 +316,9 @@ fbFillRegionTiled (DrawablePtr	pDrawable,
+ 		yRot - (pbox->y1 + dstYoff));
+ 	pbox++;
+     }
++
++    fbFinishAccess (&pTile->drawable);
++    fbFinishAccess (pDrawable);
+ }
+ 
+ void

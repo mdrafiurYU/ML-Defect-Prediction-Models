@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxserver.h b/GL/glx/glxserver.h
+index fa09c15..b6b5592 100644
+--- a/GL/glx/glxserver.h
++++ b/GL/glx/glxserver.h
+@@ -110,6 +110,8 @@ void __glXScreenInitVisuals(__GLXscreen *screen);
+ extern __GLXcontext *__glXLastContext;
+ extern __GLXcontext *__glXForceCurrent(__GLXclientState*, GLXContextTag, int*);
+ 
++extern ClientPtr __pGlxClient;
++
+ int __glXError(int error);
+ 
+ /*

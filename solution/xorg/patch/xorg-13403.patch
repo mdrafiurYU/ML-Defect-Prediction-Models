@@ -1,0 +1,15 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 26e48f6..8a8c1ed 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -84,6 +84,10 @@ SOFTWARE.
+ #undef DAMAGE
+ #undef XFIXES
+ #undef XEVIE
++#else
++#ifndef LOADABLEPRINTDDX
++#undef XPRINT
++#endif /* LOADABLEPRINTDDX */
+ #endif /* PRINT_ONLY_SERVER */
+ 
+ 

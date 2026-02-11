@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+index 8295bee..2097ecd 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+@@ -217,6 +217,7 @@ protected void matchReportReference(ASTNode reference, IJavaElement element, Bin
+ 			positions[0] = (((long)jsTypeRef.sourceStart) << 32) + jsTypeRef.sourceEnd;
+ 			typeBinding = jsTypeRef.resolvedType;
+ 		}
++		if (positions == null) return;
+ 		if (typeBinding instanceof ArrayBinding)
+ 			typeBinding = ((ArrayBinding) typeBinding).leafComponentType;
+ 		if (typeBinding instanceof ProblemReferenceBinding)

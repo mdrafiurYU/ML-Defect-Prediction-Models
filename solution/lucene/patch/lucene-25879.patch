@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/OrdFieldSource.java b/solr/src/java/org/apache/solr/search/function/OrdFieldSource.java
+index 6cdc52a..9b54f6d 100644
+--- a/solr/src/java/org/apache/solr/search/function/OrdFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/OrdFieldSource.java
+@@ -21,6 +21,8 @@ import org.apache.lucene.common.mutable.MutableValue;
+ import org.apache.lucene.common.mutable.MutableValueInt;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.search.FieldCache;
+ import org.apache.lucene.util.ReaderUtil;

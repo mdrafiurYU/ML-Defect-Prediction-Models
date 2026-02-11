@@ -1,0 +1,13 @@
+diff --git a/damageext/damageextint.h b/damageext/damageextint.h
+index dfafc93..e06f28c 100644
+--- a/damageext/damageextint.h
++++ b/damageext/damageextint.h
+@@ -48,7 +48,7 @@ typedef struct _DamageClient {
+     int		critical;
+ } DamageClientRec, *DamageClientPtr;
+ 
+-#define GetDamageClient(pClient)    ((DamageClientPtr) (pClient)->devPrivates[DamageClientPrivateIndex].ptr)
++#define GetDamageClient(pClient) ((DamageClientPtr)dixLookupPrivate(&(pClient)->devPrivates, DamageClientPrivateKey))
+ 
+ typedef struct _DamageExt {
+     DamagePtr		pDamage;

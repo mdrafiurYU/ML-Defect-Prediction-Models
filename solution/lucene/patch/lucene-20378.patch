@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
+index 5deafd6..2c21045 100644
+--- a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
++++ b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
+@@ -197,6 +197,11 @@ public class Highlighter
+ 	    tokenStream.reset();
+ 	    
+ 		TextFragment currentFrag =	new TextFragment(newText,newText.length(), docFrags.size());
++		
++    if (fragmentScorer instanceof QueryScorer) {
++      ((QueryScorer) fragmentScorer).setMaxDocCharsToAnalyze(maxDocCharsToAnalyze);
++    }
++    
+ 		TokenStream newStream = fragmentScorer.init(tokenStream);
+ 		if(newStream != null) {
+ 		  tokenStream = newStream;

@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableIntField.java b/solr/src/java/org/apache/solr/schema/SortableIntField.java
+index 6e991bc..012aa5b 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableIntField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableIntField.java
+@@ -156,6 +156,12 @@ class SortableIntFieldSource extends FieldCacheSource {
+       }
+ 
+       @Override
++      public Object objectVal(int doc) {
++        int ord=termsIndex.getOrd(doc);
++        return ord==0 ? null  : NumberUtils.SortableStr2int(termsIndex.lookup(ord, spare));
++      }
++
++      @Override
+       public ValueFiller getValueFiller() {
+         return new ValueFiller() {
+           private final MutableValueInt mval = new MutableValueInt();

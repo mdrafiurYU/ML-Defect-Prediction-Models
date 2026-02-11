@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/DoubleField.java b/solr/src/java/org/apache/solr/schema/DoubleField.java
+index c668c2a..80f5e98 100644
+--- a/solr/src/java/org/apache/solr/schema/DoubleField.java
++++ b/solr/src/java/org/apache/solr/schema/DoubleField.java
+@@ -47,7 +47,7 @@ public class DoubleField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser qparser) {
+-    // fieldCache doesn't support double
++    field.checkFieldCacheSource(qparser);
+     return new DoubleFieldSource( new DoubleValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }

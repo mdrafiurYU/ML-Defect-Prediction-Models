@@ -1,0 +1,12 @@
+diff --git a/Xi/opendev.c b/Xi/opendev.c
+index 41edb0f..502bdfc 100644
+--- a/Xi/opendev.c
++++ b/Xi/opendev.c
+@@ -126,6 +126,7 @@ ProcXOpenDevice(ClientPtr client)
+     if (status != Success)
+ 	return status;
+ 
++    memset(&rep, 0, sizeof(xOpenDeviceReply));
+     rep.repType = X_Reply;
+     rep.RepType = X_OpenDevice;
+     rep.sequenceNumber = client->sequence;

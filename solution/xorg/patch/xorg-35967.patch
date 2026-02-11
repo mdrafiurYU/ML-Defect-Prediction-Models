@@ -1,0 +1,15 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 66edcc1..bd9a87c 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -5784,10 +5784,8 @@ char *			str;
+ 	    return status;
+     }
+     else if (length!=0)  {
+-#ifdef DEBUG
+ 	ErrorF("Internal Error!  BadLength in ProcXkbGetDeviceInfo\n");
+ 	ErrorF("                 Wrote %d fewer bytes than expected\n",length);
+-#endif
+ 	return BadLength;
+     }
+     if (stuff->wanted&(~supported)) {

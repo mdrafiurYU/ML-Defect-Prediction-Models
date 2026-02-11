@@ -1,0 +1,14 @@
+diff --git a/dix/window.c b/dix/window.c
+index b896ef7..70e32fb 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -290,9 +290,7 @@ SetWindowToDefaults(WindowPtr pWin)
+     pWin->deliverableEvents = 0;
+     pWin->dontPropagate = 0;
+     pWin->forcedBS = FALSE;
+-#ifdef COMPOSITE
+     pWin->redirectDraw = RedirectDrawNone;
+-#endif
+ }
+ 
+ static void

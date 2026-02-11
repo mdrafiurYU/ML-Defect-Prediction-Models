@@ -1,0 +1,13 @@
+diff --git a/dix/initatoms.c b/dix/initatoms.c
+index a5972af..de101bd 100644
+--- a/dix/initatoms.c
++++ b/dix/initatoms.c
+@@ -11,7 +11,7 @@
+ #include <X11/Xatom.h>
+ #include "misc.h"
+ #include "dix.h"
+-void MakePredeclaredAtoms()
++void MakePredeclaredAtoms(void)
+ {
+     if (MakeAtom("PRIMARY", 7, 1) != XA_PRIMARY) AtomError();
+     if (MakeAtom("SECONDARY", 9, 1) != XA_SECONDARY) AtomError();

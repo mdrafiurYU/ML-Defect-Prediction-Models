@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNorms.java b/lucene/src/test/org/apache/lucene/index/TestNorms.java
+index 73d1267..460e613 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestNorms.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNorms.java
+@@ -179,7 +179,7 @@ public class TestNorms extends LuceneTestCase {
+     IndexReader ir = IndexReader.open(dir, false);
+     for (int i = 0; i < NUM_FIELDS; i++) {
+       String field = "f"+i;
+-      byte b[] = ir.norms(field);
++      byte b[] = MultiNorms.norms(ir, field);
+       assertEquals("number of norms mismatches",numDocNorms,b.length);
+       ArrayList<Float> storedNorms = (i==1 ? modifiedNorms : norms);
+       for (int j = 0; j < b.length; j++) {

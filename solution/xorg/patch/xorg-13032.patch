@@ -1,0 +1,23 @@
+diff --git a/hw/xgl/xgltrap.c b/hw/xgl/xgltrap.c
+index 48d228d..b4c2878 100644
+--- a/hw/xgl/xgltrap.c
++++ b/hw/xgl/xgltrap.c
+@@ -66,17 +66,13 @@ xglCreateMaskPicture (ScreenPtr     pScreen,
+     {
+ 	XGL_PIXMAP_PRIV (pPixmap);
+ 	
+-	if (!xglAllocatePixmapBits (pPixmap))
++	if (!xglAllocatePixmapBits (pPixmap, XGL_PIXMAP_USAGE_HINT_DEFAULT))
+ 	{
+ 	    (*pScreen->DestroyPixmap) (pPixmap);
+ 	    return 0;
+ 	}
+ 
+ 	pPixmapPriv->target = xglPixmapTargetNo;
+-
+-	/* force negative stride */
+-	if (pPixmapPriv->stride > 0)
+-	    pPixmapPriv->stride = -pPixmapPriv->stride;
+     }
+     
+     pGC = GetScratchGC (pPixmap->drawable.depth, pScreen);

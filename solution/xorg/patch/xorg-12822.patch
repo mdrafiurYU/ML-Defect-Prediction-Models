@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winshaddd.c b/hw/xwin/winshaddd.c
+index 4e89e25..fce0c2b 100644
+--- a/hw/xwin/winshaddd.c
++++ b/hw/xwin/winshaddd.c
+@@ -681,7 +681,7 @@ winCloseScreenShadowDD (int nIndex, ScreenPtr pScreen)
+   pScreenPriv->fActive = FALSE;
+ 
+   /* Call the wrapped CloseScreen procedure */
+-  pScreen->CloseScreen = pScreenPriv->CloseScreen;
++  WIN_UNWRAP(CloseScreen);
+   fReturn = (*pScreen->CloseScreen) (nIndex, pScreen);
+ 
+   /* Free the screen DC */

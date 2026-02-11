@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java b/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java
+index c16e294..e74cd1a 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java
+@@ -32,7 +32,7 @@ public abstract class TermsIndexWriterBase {
+     public abstract void finish() throws IOException;
+   }
+ 
+-  public abstract FieldWriter addField(FieldInfo fieldInfo);
++  public abstract FieldWriter addField(FieldInfo fieldInfo) throws IOException;
+ 
+   public abstract void close() throws IOException;
+-}
+\ No newline at end of file
++}

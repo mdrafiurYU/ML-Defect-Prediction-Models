@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaGC.c b/hw/xfree86/xaa/xaaGC.c
+index e220811..f3434c9 100644
+--- a/hw/xfree86/xaa/xaaGC.c
++++ b/hw/xfree86/xaa/xaaGC.c
+@@ -38,7 +38,7 @@ Bool
+ XAACreateGC(GCPtr pGC)
+ {
+     ScreenPtr    pScreen = pGC->pScreen;
+-    XAAGCPtr     pGCPriv = (XAAGCPtr)(pGC->devPrivates[XAAGCIndex].ptr);
++    XAAGCPtr     pGCPriv = (XAAGCPtr)(pGC->devPrivates[XAAGetGCIndex()].ptr);
+     Bool         ret;
+ 
+     XAA_SCREEN_PROLOGUE(pScreen,CreateGC);

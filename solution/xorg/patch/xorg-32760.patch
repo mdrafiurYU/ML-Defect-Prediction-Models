@@ -1,0 +1,20 @@
+diff --git a/cfb/cfbfillrct.c b/cfb/cfbfillrct.c
+index 4c78c24..fc2d31b 100644
+--- a/cfb/cfbfillrct.c
++++ b/cfb/cfbfillrct.c
+@@ -196,7 +196,7 @@ cfbPolyFillRect(pDrawable, pGC, nrectFill, prectInit)
+     numRects = REGION_NUM_RECTS(prgnClip) * nrectFill;
+     if (numRects > NUM_STACK_RECTS)
+     {
+-	pboxClippedBase = (BoxPtr)ALLOCATE_LOCAL(numRects * sizeof(BoxRec));
++	pboxClippedBase = (BoxPtr)xalloc(numRects * sizeof(BoxRec));
+ 	if (!pboxClippedBase)
+ 	    return;
+     }
+@@ -301,5 +301,5 @@ cfbPolyFillRect(pDrawable, pGC, nrectFill, prectInit)
+ 	(*BoxFill) (pDrawable, pGC,
+ 		    pboxClipped-pboxClippedBase, pboxClippedBase);
+     if (pboxClippedBase != stackRects)
+-    	DEALLOCATE_LOCAL(pboxClippedBase);
++    	xfree(pboxClippedBase);
+ }

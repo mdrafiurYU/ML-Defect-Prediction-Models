@@ -1,0 +1,13 @@
+diff --git a/exa/exa_render.c b/exa/exa_render.c
+index 7b854df..26b29ab 100644
+--- a/exa/exa_render.c
++++ b/exa/exa_render.c
+@@ -74,7 +74,7 @@ static void exaCompositeFallbackPictDesc(PicturePtr pict, char *string, int n)
+ 	     pict->pDrawable->height, pict->repeat ?
+ 	     " R" : "");
+ 
+-    snprintf(string, n, "0x%lx:%c fmt %s (%s)", (long)pict->pDrawable, loc, format, size);
++    snprintf(string, n, "%p:%c fmt %s (%s)", pict->pDrawable, loc, format, size);
+ }
+ 
+ static void

@@ -1,0 +1,13 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 6dfde4c..7b732eb 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -72,7 +72,7 @@ exaGetPixmapOffset(PixmapPtr pPix)
+ {
+     ExaScreenPriv (pPix->drawable.pScreen);
+ 
+-    return ((unsigned long)ExaGetPixmapAddress(pPix) -
++    return ((unsigned long)(unsigned long *)ExaGetPixmapAddress(pPix) -
+ 	    (unsigned long)pExaScr->info->memoryBase);
+ }
+ 

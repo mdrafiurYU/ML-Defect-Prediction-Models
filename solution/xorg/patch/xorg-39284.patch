@@ -1,0 +1,16 @@
+diff --git a/os/io.c b/os/io.c
+index 4f4a109..e1d43e5 100644
+--- a/os/io.c
++++ b/os/io.c
+@@ -70,11 +70,7 @@ SOFTWARE.
+ #include <X11/Xmd.h>
+ #include <errno.h>
+ #if !defined(WIN32)
+-#ifndef Lynx
+ #include <sys/uio.h>
+-#else
+-#include <uio.h>
+-#endif
+ #endif
+ #include <X11/X.h>
+ #define NEED_REPLIES

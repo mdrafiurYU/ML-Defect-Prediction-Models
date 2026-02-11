@@ -1,0 +1,22 @@
+diff --git a/os/access.c b/os/access.c
+index 75e6de3..62af2f9 100644
+--- a/os/access.c
++++ b/os/access.c
+@@ -1,5 +1,5 @@
+ /* $Xorg: access.c,v 1.5 2001/02/09 02:05:23 xorgcvs Exp $ */
+-/* $XdotOrg: xserver/xorg/os/access.c,v 1.14 2006/01/07 00:45:17 ajax Exp $ */
++/* $XdotOrg: xserver/xorg/os/access.c,v 1.15 2006/02/15 20:44:13 ajax Exp $ */
+ /***********************************************************
+ 
+ Copyright 1987, 1998  The Open Group
+@@ -1392,10 +1392,6 @@ _X_EXPORT Bool LocalClient(ClientPtr client)
+ 	return FALSE;
+     }
+ #endif
+-#ifdef LBX
+-    if (!((OsCommPtr)client->osPrivate)->trans_conn)
+-	return FALSE;
+-#endif
+     if (!_XSERVTransGetPeerAddr (((OsCommPtr)client->osPrivate)->trans_conn,
+ 	&notused, &alen, &from))
+     {

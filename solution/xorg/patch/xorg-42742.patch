@@ -1,0 +1,18 @@
+diff --git a/glx/glxdriswrast.c b/glx/glxdriswrast.c
+index 5b3ecb0..de89d38 100644
+--- a/glx/glxdriswrast.c
++++ b/glx/glxdriswrast.c
+@@ -55,6 +55,13 @@
+ #include "dispatch.h"
+ #include "extension_string.h"
+ 
++/* RTLD_LOCAL is not defined on Cygwin */
++#ifdef __CYGWIN__
++#ifndef RTLD_LOCAL
++#define RTLD_LOCAL 0
++#endif
++#endif
++
+ typedef struct __GLXDRIscreen   __GLXDRIscreen;
+ typedef struct __GLXDRIcontext  __GLXDRIcontext;
+ typedef struct __GLXDRIdrawable __GLXDRIdrawable;

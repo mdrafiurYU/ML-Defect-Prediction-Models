@@ -1,0 +1,12 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index dc6a6e0..7decf8f 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -503,4 +503,7 @@ exaDoMigration (ExaMigrationPtr pixmaps, int npixmaps, Bool can_accel);
+ void
+ exaPixmapSave (ScreenPtr pScreen, ExaOffscreenArea *area);
+ 
++Bool
++exaDamageDestForMigration(PixmapPtr pPix, RegionPtr region);
++
+ #endif /* EXAPRIV_H */

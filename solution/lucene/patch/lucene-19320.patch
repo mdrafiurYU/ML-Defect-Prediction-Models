@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java b/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java
+index bac6c8c..c811802 100644
+--- a/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java
++++ b/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java
+@@ -49,6 +49,7 @@ public class IndexBasedSpellChecker extends AbstractLuceneSpellChecker {
+   protected float threshold;
+   protected IndexReader reader;
+ 
++  @Override
+   public String init(NamedList config, SolrCore core) {
+     super.init(config, core);
+     threshold = config.get(THRESHOLD_TOKEN_FREQUENCY) == null ? 0.0f
+@@ -68,6 +69,7 @@ public class IndexBasedSpellChecker extends AbstractLuceneSpellChecker {
+     }
+   }
+ 
++  @Override
+   public void build(SolrCore core, SolrIndexSearcher searcher) {
+     IndexReader reader = null;
+     try {

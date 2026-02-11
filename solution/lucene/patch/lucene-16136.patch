@@ -1,0 +1,19 @@
+diff --git a/solr/src/test/org/apache/solr/schema/DateFieldTest.java b/solr/src/test/org/apache/solr/schema/DateFieldTest.java
+index 47186b1..334067f 100644
+--- a/solr/src/test/org/apache/solr/schema/DateFieldTest.java
++++ b/solr/src/test/org/apache/solr/schema/DateFieldTest.java
+@@ -20,14 +20,9 @@ package org.apache.solr.schema;
+ import org.apache.lucene.util.LuceneTestCase;
+ import org.apache.solr.schema.DateField;
+ import org.apache.solr.util.DateMathParser;
+-import org.apache.lucene.document.Fieldable;
+-
+ import java.util.Date;
+ import java.util.TimeZone;
+ import java.util.Locale;
+-import java.text.DateFormat;
+-
+-import junit.framework.TestCase;
+ 
+ public class DateFieldTest extends LuceneTestCase {
+   public static TimeZone UTC = TimeZone.getTimeZone("UTC");

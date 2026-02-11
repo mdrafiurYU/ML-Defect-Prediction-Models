@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe.java
+index e8ab6ac..536730f 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe.java
+@@ -1009,12 +1009,14 @@ public class Scribe {
+ 			if (this.memberAlignment != null) {
+ 				// select the last alignment
+ 				if (this.currentAlignment.location.inputOffset > this.memberAlignment.location.inputOffset) {
+-					this.indentationLevel = Math.max(this.indentationLevel, this.currentAlignment.breakIndentationLevel);
++					if (this.currentAlignment.couldBreak() && this.currentAlignment.wasSplit) {
++						this.currentAlignment.performFragmentEffect();
++					}
+ 				} else {
+ 					this.indentationLevel = Math.max(this.indentationLevel, this.memberAlignment.breakIndentationLevel);
+ 				}
+-			} else {
+-				this.indentationLevel = Math.max(this.indentationLevel, this.currentAlignment.breakIndentationLevel);
++			} else if (this.currentAlignment.couldBreak() && this.currentAlignment.wasSplit) {
++				this.currentAlignment.performFragmentEffect();
+ 			}
+ 		}
+ 		this.scanner.resetTo(currentTokenEndPosition, this.scannerEndPosition - 1);

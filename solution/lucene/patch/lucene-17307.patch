@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+index 69063eb..5ed6c08 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+@@ -157,6 +157,7 @@ public class TestAddIndexes extends LuceneTestCase {
+ 
+     setUpDirs(dir, aux);
+     IndexWriter writer = newWriter(dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setOpenMode(OpenMode.APPEND));
++    writer.setInfoStream(VERBOSE ? System.out : null);
+     writer.addIndexes(aux);
+ 
+     // Adds 10 docs, then replaces them with another 10

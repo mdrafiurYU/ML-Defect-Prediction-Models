@@ -1,0 +1,17 @@
+diff --git a/include/input.h b/include/input.h
+index f2fe6d1..e7017cb 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -418,6 +418,12 @@ extern int GetProximityEvents(
+     int num_valuators,
+     int *valuators);
+ 
++extern void PostSyntheticMotion(
++    int x,
++    int y,
++    int screenNum,
++    unsigned long time);
++
+ extern int GetMotionHistorySize(
+     void);
+ 

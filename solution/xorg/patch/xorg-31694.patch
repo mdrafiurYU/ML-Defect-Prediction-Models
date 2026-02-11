@@ -1,0 +1,22 @@
+diff --git a/composite/compext.c b/composite/compext.c
+index 944f8d8..ece51d0 100644
+--- a/composite/compext.c
++++ b/composite/compext.c
+@@ -674,6 +674,9 @@ CompositeExtensionInit (void)
+     ExtensionEntry  *extEntry;
+     int		    s;
+ 
++    /* Assume initialization is going to fail */
++    noCompositeExtension = TRUE;
++
+     for (s = 0; s < screenInfo.numScreens; s++) {
+ 	ScreenPtr pScreen = screenInfo.screens[s];
+ 	VisualPtr vis;
+@@ -731,4 +734,7 @@ CompositeExtensionInit (void)
+ 	    return;
+     miRegisterRedirectBorderClipProc (compSetRedirectBorderClip,
+ 				      compGetRedirectBorderClip);
++
++    /* Initialization succeeded */
++    noCompositeExtension = FALSE;
+ }

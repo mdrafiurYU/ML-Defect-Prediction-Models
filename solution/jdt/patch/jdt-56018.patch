@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
+index 8f4b091..e61dd67 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
+@@ -1154,4 +1154,16 @@ void setSourceStart(int sourceStart);
+ 	int JavadocParameterizedConstructorArgumentTypeMismatch = Javadoc + Internal + 858;
+ 	/** @since 3.1 */
+ 	int JavadocTypeArgumentsForRawGenericConstructor = Javadoc + Internal + 859;
++
++	/**
++	 * External problems -- These are problems defined by other plugins
++	 */
++
++	/** @since 3.2 */
++	int ExternalProblemNotFixable = 900;
++
++	// indicates an externally defined problem that has a quick-assist processor
++	// associated with it
++	/** @since 3.2 */
++	int ExternalProblemFixable = 901;
+ }

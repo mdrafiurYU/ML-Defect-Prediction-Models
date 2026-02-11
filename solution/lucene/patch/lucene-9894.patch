@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/State.java b/lucene/src/java/org/apache/lucene/util/automaton/State.java
+index b19c7c9..52bed71 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/State.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/State.java
+@@ -269,4 +269,9 @@ public class State implements Serializable, Comparable<State> {
+   public int compareTo(State s) {
+     return s.id - id;
+   }
++
++  @Override
++  public int hashCode() {
++    return id;
++  }  
+ }

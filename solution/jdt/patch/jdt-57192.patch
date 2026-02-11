@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java
+index d1ed38d..cdc7707 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java
+@@ -33,7 +33,7 @@ public class ClassFileWorkingCopy extends CompilationUnit {
+ 	public IClassFile classFile;
+ 	
+ public ClassFileWorkingCopy(IClassFile classFile, WorkingCopyOwner owner) {
+-	super((PackageFragment) classFile.getParent(), ((BinaryType) ((ClassFile) classFile).getType()).getSourceFileName(), owner);
++	super((PackageFragment) classFile.getParent(), ((BinaryType) ((ClassFile) classFile).getType()).getSourceFileName(null/*no info available*/), owner);
+ 	this.classFile = classFile;
+ }

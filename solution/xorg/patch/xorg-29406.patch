@@ -1,0 +1,17 @@
+diff --git a/hw/xwin/winmouse.c b/hw/xwin/winmouse.c
+index f0092e9..1507dd3 100644
+--- a/hw/xwin/winmouse.c
++++ b/hw/xwin/winmouse.c
+@@ -100,9 +100,10 @@ winMouseProc (DeviceIntPtr pDeviceInt, int iState)
+       InitPointerDeviceStruct (pDevice,
+ 			       map,
+ 			       lngMouseButtons + lngWheelEvents,
+-			       miPointerGetMotionEvents,
++			       GetMotionHistory,
+ 			       winMouseCtrl,
+-			       miPointerGetMotionBufferSize ());
++			       GetMotionHistorySize(),
++			       2);
+       free(map);
+ 
+ #if defined(XFree86Server) && defined(XINPUT)

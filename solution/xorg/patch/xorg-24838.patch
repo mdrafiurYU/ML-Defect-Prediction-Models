@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 45a50d8..ff3840c 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -164,7 +164,7 @@ static IHPtr InputHandlers = NULL;
+ 
+ 
+ Bool
+-LegalModifier(unsigned int key, DevicePtr pDev)
++LegalModifier(unsigned int key, DeviceIntPtr pDev)
+ {
+     return TRUE;
+ }

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index d6ef93a..0ddee4b 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -182,7 +182,7 @@ ProcessInputEvents ()
+  * Handle keyboard events that cause some kind of "action"
+  * (i.e., server termination, video mode changes, VT switches, etc.)
+  */
+-void
++_X_EXPORT void
+ xf86ProcessActionEvent(ActionEvent action, void *arg)
+ {
+ #ifdef DEBUG

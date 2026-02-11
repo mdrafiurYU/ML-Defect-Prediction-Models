@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/os-support/linux/int10/linux.c b/hw/xfree86/os-support/linux/int10/linux.c
+index 69df311..a911378 100644
+--- a/hw/xfree86/os-support/linux/int10/linux.c
++++ b/hw/xfree86/os-support/linux/int10/linux.c
+@@ -27,6 +27,14 @@
+ #define ALLOC_ENTRIES(x) ((V_RAM / x) - 1)
+ #define SHMERRORPTR (pointer)(-1)
+ 
++#include <fcntl.h>
++#include <errno.h>
++#include <sys/mman.h>
++#include <sys/ipc.h>
++#include <sys/shm.h>
++#include <unistd.h>
++#include <string.h>
++
+ static int counter = 0;
+ static unsigned long int10Generation = 0;
+ 

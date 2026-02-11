@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86DoScanPci.c b/hw/xfree86/common/xf86DoScanPci.c
+index 9907705..51892f0 100644
+--- a/hw/xfree86/common/xf86DoScanPci.c
++++ b/hw/xfree86/common/xf86DoScanPci.c
+@@ -57,7 +57,7 @@ ScanPciDisplayPCICardInfo(void)
+ 
+     xf86EnableIO();
+ 
+-    if (xf86scanpci(0) == NULL) {
++    if (! xf86scanpci()) {
+         xf86MsgVerb(X_NONE, 0, "No PCI info available\n");
+ 	return;
+     }

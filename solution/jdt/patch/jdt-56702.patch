@@ -1,0 +1,36 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+index 33826a3..4b879a5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+@@ -98,7 +98,9 @@ public FlowInfo analyseCode(BlockScope currentScope, FlowContext flowContext, Fl
+ public FlowInfo analyseCode(BlockScope currentScope, FlowContext flowContext, FlowInfo flowInfo, boolean valueRequired) {
+ 	boolean nonStatic = !binding.isStatic();
+ 	receiver.analyseCode(currentScope, flowContext, flowInfo, nonStatic);
+-	if (nonStatic) receiver.checkNullStatus(currentScope, flowContext, flowInfo, FlowInfo.NON_NULL);
++	if (nonStatic) {
++		receiver.checkNPE(currentScope, flowContext, flowInfo, true);
++	}
+ 	
+ 	if (valueRequired || currentScope.compilerOptions().complianceLevel >= ClassFileConstants.JDK1_4) {
+ 		manageSyntheticAccessIfNecessary(currentScope, flowInfo, true /*read-access*/);
+@@ -349,7 +351,8 @@ public boolean isTypeAccess() {
+  * No need to emulate access to protected fields since not implicitly accessed
+  */
+ public void manageSyntheticAccessIfNecessary(BlockScope currentScope, FlowInfo flowInfo, boolean isReadAccess) {
+-	if (!flowInfo.isReachable()) return;
++	if ((flowInfo.tagBits & FlowInfo.UNREACHABLE) != 0)	return;
++
+ 	// if field from parameterized type got found, use the original field at codegen time
+ 	this.codegenBinding = this.binding.original();
+ 	
+@@ -415,6 +418,10 @@ public void manageSyntheticAccessIfNecessary(BlockScope currentScope, FlowInfo f
+ 	}		
+ }
+ 
++public int nullStatus(FlowInfo flowInfo) {
++	return FlowInfo.UNKNOWN;
++}
++
+ public Constant optimizedBooleanConstant() {
+ 	switch (this.resolvedType.id) {
+ 		case T_boolean :

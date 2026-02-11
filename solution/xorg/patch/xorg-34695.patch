@@ -1,0 +1,25 @@
+diff --git a/Xext/panoramiX.c b/Xext/panoramiX.c
+index 95df043..d054cf8 100644
+--- a/Xext/panoramiX.c
++++ b/Xext/panoramiX.c
+@@ -65,9 +65,6 @@ extern VisualPtr glxMatchVisual(ScreenPtr pScreen,
+ 				ScreenPtr pMatchScreen);
+ #endif
+ 
+-#if 0
+-static unsigned char PanoramiXReqCode = 0;
+-#endif
+ /*
+  *	PanoramiX data declarations
+  */
+@@ -471,10 +468,6 @@ void PanoramiXExtensionInit(int argc, char *argv[])
+ 	    break;
+  	}
+ 
+-#if 0
+-	PanoramiXReqCode = (unsigned char)extEntry->base;
+-#endif
+-
+ 	/*
+ 	 *	First make sure all the basic allocations succeed.  If not,
+ 	 *	run in non-PanoramiXeen mode.

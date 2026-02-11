@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/x-list.c b/hw/darwin/quartz/xpr/x-list.c
+index 356bb79..3596dd3 100644
+--- a/hw/darwin/quartz/xpr/x-list.c
++++ b/hw/darwin/quartz/xpr/x-list.c
+@@ -27,7 +27,9 @@
+    promote the sale, use or other dealings in this Software without
+    prior written authorization. */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #include "x-list.h"
+ #include <stdlib.h>

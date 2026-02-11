@@ -1,0 +1,25 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java
+index e813e4e..fea8532 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java
+@@ -194,7 +194,7 @@ public class DataImportHandler extends RequestHandlerBase implements
+                 req.getCore().getUpdateProcessingChain(params.get(UpdateParams.UPDATE_PROCESSOR));
+         UpdateRequestProcessor processor = processorChain.createProcessor(req, rsp);
+         SolrResourceLoader loader = req.getCore().getResourceLoader();
+-        SolrWriter sw = getSolrWriter(processor, loader, requestParams);
++        SolrWriter sw = getSolrWriter(processor, loader, requestParams, req);
+ 
+         if (requestParams.debug) {
+           if (debugEnabled) {
+@@ -276,9 +276,9 @@ public class DataImportHandler extends RequestHandlerBase implements
+   }
+ 
+   private SolrWriter getSolrWriter(final UpdateRequestProcessor processor,
+-                                   final SolrResourceLoader loader, final DataImporter.RequestParams requestParams) {
++                                   final SolrResourceLoader loader, final DataImporter.RequestParams requestParams, SolrQueryRequest req) {
+ 
+-    return new SolrWriter(processor, loader.getConfigDir(), myName) {
++    return new SolrWriter(processor, loader.getConfigDir(), myName, req) {
+ 
+       @Override
+       public boolean upload(SolrInputDocument document) {

@@ -1,0 +1,25 @@
+diff --git a/hw/kdrive/fbdev/fbdev.c b/hw/kdrive/fbdev/fbdev.c
+index 86384f0..904d5f3 100644
+--- a/hw/kdrive/fbdev/fbdev.c
++++ b/hw/kdrive/fbdev/fbdev.c
+@@ -38,11 +38,17 @@ fbdevInitialize (KdCardInfo *card, FbdevPriv *priv)
+ {
+     int		    k;
+     unsigned long   off;
+-    if ((priv->fd = open("/dev/fb0", O_RDWR)) < 0 && \
+-        (priv->fd = open("/dev/fb/0", O_RDWR)) < 0) {
+-	perror("Error opening /dev/fb0");
++
++    if (fbdevDevicePath == NULL) 
++      fbdevDevicePath = "/dev/fb0";
++
++    if ((priv->fd = open(fbdevDevicePath, O_RDWR)) < 0)
++      {
++	ErrorF("Error opening framebuffer %s: %s\n", 
++	       fbdevDevicePath, strerror(errno));
+ 	return FALSE;
+     }
++
+     /* quiet valgrind */
+     memset (&priv->fix, '\0', sizeof (priv->fix));
+     if ((k=ioctl(priv->fd, FBIOGET_FSCREENINFO, &priv->fix)) < 0) {

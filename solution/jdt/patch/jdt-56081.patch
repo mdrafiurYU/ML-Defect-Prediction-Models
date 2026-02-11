@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationValueImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationValueImpl.java
+index fa90d1b..508e922 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationValueImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationValueImpl.java
+@@ -125,8 +125,8 @@ public class AnnotationValueImpl implements EclipseMirrorImpl, AnnotationValue
+ 		final int offset = astNode.getStartPosition();		
+         return new SourcePositionImpl(astNode.getStartPosition(),
+ 									  astNode.getLength(),
+-                                      unit.lineNumber(offset),
+-                                      unit.columnNumber(offset),
++                                      unit.getLineNumber(offset),
++                                      unit.getColumnNumber(offset),
+                                       this);
+     }

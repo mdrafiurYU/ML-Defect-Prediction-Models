@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPersistentQueryPathLevel1Test.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPersistentQueryPathLevel1Test.java
+index d7b13fb..8515975 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPersistentQueryPathLevel1Test.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPersistentQueryPathLevel1Test.java
+@@ -50,6 +50,7 @@ public class GetPersistentQueryPathLevel1Test extends AbstractQueryTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

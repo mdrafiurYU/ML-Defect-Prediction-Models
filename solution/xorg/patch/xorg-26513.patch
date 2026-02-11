@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/ddc/ddcProperty.c b/hw/xfree86/ddc/ddcProperty.c
+index 87c91b8..ddf580c 100644
+--- a/hw/xfree86/ddc/ddcProperty.c
++++ b/hw/xfree86/ddc/ddcProperty.c
+@@ -69,7 +69,7 @@ DDCModesFromEstablished(int scrnIndex, struct established_timings *timing)
+ 
+     for (i = 0; i < 17; i++) {
+         if (bits & (0x01 << i)) {
+-            Mode = xf86DusplicateMode(&DDCEstablishedModes[i]);
++            Mode = xf86DuplicateMode(&DDCEstablishedModes[i]);
+             Modes = xf86ModesAdd(Modes, Mode);
+         }
+     }

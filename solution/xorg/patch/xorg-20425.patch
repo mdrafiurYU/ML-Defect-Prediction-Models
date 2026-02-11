@@ -1,0 +1,14 @@
+diff --git a/composite/compext.c b/composite/compext.c
+index cc9b665..a7ad4e2 100644
+--- a/composite/compext.c
++++ b/composite/compext.c
+@@ -501,7 +501,8 @@ ProcCompositeReleaseOverlayWindow (ClientPtr client)
+ 	return BadMatch;
+     }
+ 
+-    deleteCompOverlayClient(pOc, pOc->pScreen);
++    /* The delete function will free the client structure */
++    FreeResource (pOc->resource, 0);
+ 
+     cs = GetCompScreen(pScreen);
+     if (cs->pOverlayClients == NULL) {

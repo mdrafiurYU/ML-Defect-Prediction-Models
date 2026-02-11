@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/spelling/IndexBasedSpellCheckerTest.java b/solr/src/test/org/apache/solr/spelling/IndexBasedSpellCheckerTest.java
+index fac22e9..82087c0 100644
+--- a/solr/src/test/org/apache/solr/spelling/IndexBasedSpellCheckerTest.java
++++ b/solr/src/test/org/apache/solr/spelling/IndexBasedSpellCheckerTest.java
+@@ -227,6 +227,7 @@ public class IndexBasedSpellCheckerTest extends SolrTestCaseJ4 {
+   }
+ 
+   private class TestSpellChecker extends IndexBasedSpellChecker{
++    @Override
+     public SpellChecker getSpellChecker(){
+       return spellChecker;
+     }

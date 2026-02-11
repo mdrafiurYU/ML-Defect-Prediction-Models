@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 7edd23c..fd72053 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1864,6 +1864,7 @@ bestModeForAspect(xf86CrtcConfigPtr config, Bool *enabled, float aspect)
+ 
+     nextEnabledOutput(config, enabled, &o);
+     while ((mode = nextAspectMode(config->output[o], mode, aspect))) {
++	test = mode;
+ 	for (p = o; nextEnabledOutput(config, enabled, &p); ) {
+ 	    test = xf86OutputFindClosestMode(config->output[p], mode);
+ 	    if (!test)

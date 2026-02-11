@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/AbstractItemStateFactory.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/AbstractItemStateFactory.java
+index 69a7239..75beca7 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/AbstractItemStateFactory.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/AbstractItemStateFactory.java
+@@ -76,4 +76,16 @@ public abstract class AbstractItemStateFactory implements ItemStateFactory {
+             listeners[i].created(createdState);
+         }
+     }
++
++    /**
++     *
++     * @param state
++     */
++    void notifyUpdated(ItemState state, int previousStatus) {
++        ItemStateCreationListener[] listeners = getListeners();
++        for (int i = 0; i < listeners.length; i++) {
++            // now inform about creation
++            listeners[i].statusChanged(state, previousStatus);
++        }
++    }
+ }
+\ No newline at end of file

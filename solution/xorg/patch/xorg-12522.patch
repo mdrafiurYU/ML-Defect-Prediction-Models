@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_kbd.c b/hw/xfree86/os-support/linux/lnx_kbd.c
+index 17f9e53..48a62e2 100644
+--- a/hw/xfree86/os-support/linux/lnx_kbd.c
++++ b/hw/xfree86/os-support/linux/lnx_kbd.c
+@@ -215,6 +215,13 @@ SetKbdRepeat(InputInfoPtr pInfo, char rad)
+ 
+ #if defined(__alpha__) || defined (__i386__) || defined(__ia64__)
+ 
++  if (!xorgHWAccess) {
++      if (xf86EnableIO())
++	  xorgHWAccess = TRUE;
++      else 
++	  return;
++  }
++      
+   /* The ioport way */
+ 
+   for (i = 0; i < RATE_COUNT; i++)

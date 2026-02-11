@@ -1,0 +1,13 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 757d57a..4c967b2 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -390,6 +390,8 @@ DeepCopyDeviceClasses(DeviceIntPtr from, DeviceIntPtr to)
+     if (from->valuator)
+     {
+         ValuatorClassPtr v;
++        if (to->valuator)
++            xfree(to->valuator->motion);
+         to->valuator = xrealloc(to->valuator, sizeof(ValuatorClassRec) +
+                 from->valuator->numAxes * sizeof(AxisInfo) +
+                 from->valuator->numAxes * sizeof(unsigned int));

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/PropertyId.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/PropertyId.java
+index 753b85c..88cb585 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/PropertyId.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/id/PropertyId.java
+@@ -24,7 +24,7 @@ import org.apache.jackrabbit.spi.commons.name.NameFactoryImpl;
+  * property using the UUID of the parent node and the name of
+  * the property. Once created a property identifier instance is immutable.
+  */
+-public class PropertyId extends ItemId {
++public class PropertyId implements ItemId {
+ 
+     /** Serial version UID of this class. */
+     static final long serialVersionUID = 1118783735407446009L;

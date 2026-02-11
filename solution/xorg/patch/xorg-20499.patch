@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcDepth.c b/hw/xfree86/xf4bpp/ppcDepth.c
+index 5c3aff6..8a67cdd 100644
+--- a/hw/xfree86/xf4bpp/ppcDepth.c
++++ b/hw/xfree86/xf4bpp/ppcDepth.c
+@@ -30,6 +30,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "scrnintstr.h"
+ 

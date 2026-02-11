@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/analysis/NumericTokenStream.java b/lucene/src/java/org/apache/lucene/analysis/NumericTokenStream.java
+index b98a246..4dc63e9 100644
+--- a/lucene/src/java/org/apache/lucene/analysis/NumericTokenStream.java
++++ b/lucene/src/java/org/apache/lucene/analysis/NumericTokenStream.java
+@@ -293,6 +293,11 @@ public final class NumericTokenStream extends TokenStream {
+     return (shift < valSize);
+   }
+ 
++  /** Returns the precision step. */
++  public int getPrecisionStep() {
++    return precisionStep;
++  }
++  
+   // members
+   private final NumericTermAttribute numericAtt = addAttribute(NumericTermAttribute.class);
+   private final TypeAttribute typeAtt = addAttribute(TypeAttribute.class);

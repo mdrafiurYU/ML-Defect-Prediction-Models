@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/os-support/linux/int10/linux.c b/hw/xfree86/os-support/linux/int10/linux.c
+index 6ccd466..45ddaa8 100644
+--- a/hw/xfree86/os-support/linux/int10/linux.c
++++ b/hw/xfree86/os-support/linux/int10/linux.c
+@@ -252,7 +252,8 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
+ 	for (cs = V_BIOS;  cs < SYS_BIOS;  cs += V_BIOS_SIZE)
+ 	    if (xf86ReadBIOS(cs, 0, (pointer)cs, V_BIOS_SIZE) < V_BIOS_SIZE)
+ 		xf86DrvMsg(screen, X_WARNING,
+-			   "Unable to retrieve all of segment 0x%06lX.\n", cs);
++			   "Unable to retrieve all of segment 0x%06lX.\n",
++			   (long)cs);
+ #ifdef DEBUG
+ 	ErrorF("done\n");
+ #endif

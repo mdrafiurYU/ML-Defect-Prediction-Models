@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/loader/loadmod.c b/hw/xfree86/loader/loadmod.c
+index ea559aa..1b5c717 100644
+--- a/hw/xfree86/loader/loadmod.c
++++ b/hw/xfree86/loader/loadmod.c
+@@ -118,12 +118,7 @@ static char **defaultPathList = NULL;
+ static Bool
+ PathIsAbsolute(const char *path)
+ {
+-#ifdef __UNIXOS2__
+-    return (*path == '/' || (strlen(path) > 2 && isalpha(elem[0]) &&
+-		elem[1] == ':' && elem[2] == '/'));
+-#else
+     return (*path == '/');
+-#endif
+ }	
+ 
+ /*

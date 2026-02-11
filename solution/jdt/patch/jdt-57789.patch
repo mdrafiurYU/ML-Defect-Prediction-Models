@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForeachStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForeachStatement.java
+index 9596446..c854a18 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForeachStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForeachStatement.java
+@@ -81,7 +81,7 @@ public class ForeachStatement extends Statement {
+ 		continueLabel = new BranchLabel();
+ 
+ 		// process the element variable and collection
+-		this.collection.checkNPE(currentScope, flowContext, flowInfo, true);
++		this.collection.checkNPE(currentScope, flowContext, flowInfo);
+ 		flowInfo = this.elementVariable.analyseCode(scope, flowContext, flowInfo);
+ 		FlowInfo condInfo = this.collection.analyseCode(scope, flowContext, flowInfo.copy());

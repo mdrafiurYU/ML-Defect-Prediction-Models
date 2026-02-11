@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/ProcessorOptionInputDialog.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/ProcessorOptionInputDialog.java
+index 0003045..7b83f9b 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/ProcessorOptionInputDialog.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/ProcessorOptionInputDialog.java
+@@ -120,7 +120,7 @@ public class ProcessorOptionInputDialog extends StatusDialog {
+ 		} else if (newVal.indexOf('=') >= 0) {
+ 			status.setError(Messages.ProcessorOptionInputDialog_equalsSignNotValid);
+ 		} else if (AptConfig.isAutomaticProcessorOption(newKey)) {
+-			status.setWarning(Messages.AptConfigurationBlock_warningIgnoredOptions); //$NON-NLS-1$
++			status.setWarning(Messages.AptConfigurationBlock_warningIgnoredOptions); 
+ 		}
+ 		updateStatus(status);
+ 	}

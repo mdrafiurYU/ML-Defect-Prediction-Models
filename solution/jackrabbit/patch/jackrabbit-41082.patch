@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ChildAxisQueryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ChildAxisQueryTest.java
+index 46291fd..7281cb6 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ChildAxisQueryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/ChildAxisQueryTest.java
+@@ -232,15 +232,15 @@ public class ChildAxisQueryTest extends AbstractQueryTest {
+         executeXPathQuery(base + "*/*, 'lazy')]",
+                 new Node[]{});
+     }
+-    
++
+     public void testSimpleQuery() throws Exception {
+         Node foo = testRootNode.addNode("foo");
+         testRootNode.addNode("bar");
+-       
++
+         testRootNode.save();
+ 
+         String sql = "SELECT * FROM nt:unstructured WHERE jcr:path LIKE '"+testRoot+"/foo'";
+         executeSQLQuery(sql, new Node[] {foo});
+     }
+-    
++
+ }

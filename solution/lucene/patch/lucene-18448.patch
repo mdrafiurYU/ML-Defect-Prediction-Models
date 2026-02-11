@@ -1,0 +1,25 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+index 8c71ad7..2c8d977 100644
+--- a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+@@ -224,7 +224,7 @@ public class PhraseQuery extends Query {
+     public Explanation explain(AtomicReaderContext context, int doc)
+       throws IOException {
+ 
+-      Explanation result = new Explanation();
++      ComplexExplanation result = new ComplexExplanation();
+       result.setDescription("weight("+getQuery()+" in "+doc+"), product of:");
+ 
+       StringBuilder docFreqs = new StringBuilder();
+@@ -303,10 +303,7 @@ public class PhraseQuery extends Query {
+ 
+       // combine them
+       result.setValue(queryExpl.getValue() * fieldExpl.getValue());
+-
+-      if (queryExpl.getValue() == 1.0f)
+-        return fieldExpl;
+-
++      result.setMatch(tfExplanation.isMatch());
+       return result;
+     }
+   }

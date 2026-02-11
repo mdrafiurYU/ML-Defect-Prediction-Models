@@ -1,0 +1,32 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentMerger.java b/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
+index c460810..c7d72f5 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
+@@ -75,6 +75,7 @@ final class SegmentMerger {
+   private final CodecProvider codecs;
+   private Codec codec;
+   private SegmentWriteState segmentWriteState;
++  private boolean hasVectors;
+ 
+   private PayloadProcessorProvider payloadProcessorProvider;
+   
+@@ -100,6 +101,10 @@ final class SegmentMerger {
+     return fieldInfos.hasProx();
+   }
+ 
++  boolean hasVectors() {
++    return hasVectors;
++  }
++
+   /**
+    * Add an IndexReader to the collection of readers that are to be merged
+    * @param reader
+@@ -427,7 +432,7 @@ final class SegmentMerger {
+   private final void mergeVectors() throws IOException {
+     TermVectorsWriter termVectorsWriter = 
+       new TermVectorsWriter(directory, segment, fieldInfos);
+-
++    hasVectors = true;
+     try {
+       int idx = 0;
+       for (final IndexReader reader : readers) {

@@ -1,0 +1,12 @@
+diff --git a/xkb/xkbEvents.c b/xkb/xkbEvents.c
+index e11b609..bf3e828 100644
+--- a/xkb/xkbEvents.c
++++ b/xkb/xkbEvents.c
+@@ -405,6 +405,7 @@ XID		winID = 0;
+ 
+     if ((force||(xkbi->desc->ctrls->enabled_ctrls&XkbAudibleBellMask))&&
+ 							(!eventOnly)) {
++        if (kbd->kbdfeed->BellProc)
+ 	(*kbd->kbdfeed->BellProc)(percent,kbd,(pointer)pCtrl,class);
+     }
+     interest = kbd->xkb_interest;

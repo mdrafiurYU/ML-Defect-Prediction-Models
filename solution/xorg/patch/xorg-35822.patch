@@ -1,0 +1,13 @@
+diff --git a/Xi/chgfctl.c b/Xi/chgfctl.c
+index 696b74a..3155e87 100644
+--- a/Xi/chgfctl.c
++++ b/Xi/chgfctl.c
+@@ -444,7 +444,7 @@ ProcXChangeFeedbackControl(ClientPtr client)
+     REQUEST_AT_LEAST_SIZE(xChangeFeedbackControlReq);
+ 
+     len = stuff->length - (sizeof(xChangeFeedbackControlReq) >> 2);
+-    rc = dixLookupDevice(&dev, stuff->deviceid, client, DixSetAttrAccess);
++    rc = dixLookupDevice(&dev, stuff->deviceid, client, DixManageAccess);
+     if (rc != Success)
+ 	return rc;
+ 

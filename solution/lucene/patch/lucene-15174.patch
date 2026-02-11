@@ -1,0 +1,25 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentReader.java b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+index 1909f62..66ebced 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentReader.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+@@ -51,7 +51,7 @@ public class SegmentReader extends IndexReader implements Cloneable {
+ 
+   private SegmentInfo si;
+   private int readBufferSize;
+-
++  private final ReaderContext readerContext = new AtomicReaderContext(this);
+   CloseableThreadLocal<FieldsReader> fieldsReaderLocal = new FieldsReaderLocal();
+   CloseableThreadLocal<TermVectorsReader> termVectorsLocal = new CloseableThreadLocal<TermVectorsReader>();
+ 
+@@ -1183,6 +1183,11 @@ public class SegmentReader extends IndexReader implements Cloneable {
+     buffer.append(si.toString(core.dir, pendingDeleteCount));
+     return buffer.toString();
+   }
++  
++  @Override
++  public ReaderContext getTopReaderContext() {
++    return readerContext;
++  }
+ 
+   /**
+    * Return the name of the segment this reader is reading.

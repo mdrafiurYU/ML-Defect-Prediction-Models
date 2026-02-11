@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java
+index c66ef55..fbedb59 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedGenericMethodBinding.java
+@@ -462,7 +462,7 @@ public class ParameterizedGenericMethodBinding extends ParameterizedMethodBindin
+ 	 */
+ 	public MethodBinding tiebreakMethod() {
+ 		if (this.tiebreakMethod == null) {
+-			this.tiebreakMethod = new ParameterizedGenericMethodBinding(this.originalMethod, (RawTypeBinding)null, this.environment);
++			this.tiebreakMethod = this.isRaw ? this : new ParameterizedGenericMethodBinding(this.originalMethod, (RawTypeBinding)null, this.environment);
+ 		} 
+ 		return this.tiebreakMethod;
+ 	}

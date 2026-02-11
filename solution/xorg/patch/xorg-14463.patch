@@ -1,0 +1,25 @@
+diff --git a/hw/xwin/InitOutput.c b/hw/xwin/InitOutput.c
+index ffa3e85..c5242cc 100644
+--- a/hw/xwin/InitOutput.c
++++ b/hw/xwin/InitOutput.c
+@@ -129,6 +129,11 @@ winLogVersionInfo (void);
+ Bool
+ winValidateArgs (void);
+ 
++#ifdef RELOCATE_PROJECTROOT
++const char *
++winGetBaseDir(void);
++#endif
++
+ /*
+  * For the depth 24 pixmap we default to 32 bits per pixel, but
+  * we change this pixmap format later if we detect that the display
+@@ -379,7 +384,7 @@ winCheckMount(void)
+ #endif
+ 
+ #ifdef RELOCATE_PROJECTROOT
+-static const char * 
++const char * 
+ winGetBaseDir(void)
+ {
+     static BOOL inited = FALSE;

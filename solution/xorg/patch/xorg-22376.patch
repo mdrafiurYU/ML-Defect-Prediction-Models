@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 0963bef..dba2cc4 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -256,6 +256,8 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMFUNC(GetScratchPixmapHeader)
+     SYMFUNC(FreeScratchPixmapHeader)
+     /* privates.c */
++    SYMFUNC(AllocateExtensionPrivate)
++    SYMFUNC(AllocateExtensionPrivateIndex)
+     SYMFUNC(AllocateClientPrivate)
+     SYMFUNC(AllocateClientPrivateIndex)
+     SYMFUNC(AllocateGCPrivate)

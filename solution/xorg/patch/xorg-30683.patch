@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 4cfdab7..76894ca 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -5139,6 +5139,8 @@ ProcUngrabKeyboard(ClientPtr client)
+     REQUEST_SIZE_MATCH(xResourceReq);
+     UpdateCurrentTime();
+ 
++    grab = device->deviceGrab.grab;
++
+     if (!grab || !grab->coreGrab || !SameClient(grab, client))
+     {
+ 	for (grabbed = inputInfo.devices; grabbed; grabbed = grabbed->next)

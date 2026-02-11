@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java
+index 33094c5..d978bb7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java
+@@ -120,7 +120,7 @@ public class AssertStatement extends Statement {
+ 
+ 	public void resolve(BlockScope scope) {
+ 
+-		assertExpression.resolveTypeExpecting(scope, BooleanBinding);
++		assertExpression.resolveTypeExpecting(scope, TypeBinding.BOOLEAN);
+ 		if (exceptionArgument != null) {
+ 			TypeBinding exceptionArgumentType = exceptionArgument.resolveType(scope);
+ 			if (exceptionArgumentType != null){

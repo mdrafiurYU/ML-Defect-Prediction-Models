@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheManager.java
+index a8c1c61..7d350ee 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheManager.java
+@@ -67,14 +67,14 @@ public class CacheManager implements CacheAccessListener {
+ 
+     /** The maximum memory per cache (unless, there is some unused memory). */
+     private long maxMemoryPerCache = DEFAULT_MAX_MEMORY_PER_CACHE;
+-    
++
+     /** The minimum resize interval time */
+     private long minResizeInterval = DEFAULT_MIN_RESIZE_INTERVAL;
+-     
++
+         /** The last time the caches where resized. */
+     private volatile long nextResize = System.currentTimeMillis() + DEFAULT_MIN_RESIZE_INTERVAL;
+ 
+-    
++
+     public long getMaxMemory() {
+         return maxMemory;
+     }
+@@ -98,7 +98,7 @@ public class CacheManager implements CacheAccessListener {
+     public void setMinMemoryPerCache(final long minMemoryPerCache) {
+         this.minMemoryPerCache = minMemoryPerCache;
+     }
+-    
++
+     public long getMinResizeInterval() {
+         return minResizeInterval;
+     }

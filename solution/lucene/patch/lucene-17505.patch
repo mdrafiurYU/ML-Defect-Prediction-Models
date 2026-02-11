@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/commongrams/CommonGramsFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/commongrams/CommonGramsFilter.java
+index 966baf6..2839406 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/commongrams/CommonGramsFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/commongrams/CommonGramsFilter.java
+@@ -116,6 +116,7 @@ public final class CommonGramsFilter extends TokenFilter {
+    * eliminate the middle bigram "of-the"and save a disk seek and a whole set of
+    * position lookups.
+    */
++  @Override
+   public boolean incrementToken() throws IOException {
+     // get the next piece of input
+     if (savedState != null) {

@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java
+index 85b66fe..b6f635d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java
+@@ -295,7 +295,8 @@ public static final boolean camelCaseMatch(char[] pattern, int patternStart, int
+ 					break;
+ 				default:
+ 					// end of camelCase part of pattern
+-					break nextPatternChar;				}
++					break nextPatternChar;
++			}
+ 		} else if (Character.isJavaIdentifierPart(patternChar) 
+ 						&& !Character.isUpperCase(patternChar)) {
+ 			// end of camelCase part of pattern

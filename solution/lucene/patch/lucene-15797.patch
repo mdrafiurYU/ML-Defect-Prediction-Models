@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/cloud/ZkControllerTest.java b/solr/src/test/org/apache/solr/cloud/ZkControllerTest.java
+index 785ea20..4cbbd9e 100644
+--- a/solr/src/test/org/apache/solr/cloud/ZkControllerTest.java
++++ b/solr/src/test/org/apache/solr/cloud/ZkControllerTest.java
+@@ -71,7 +71,7 @@ public class ZkControllerTest extends SolrTestCaseJ4 {
+     try {
+       server = new ZkTestServer(zkDir);
+       server.run();
+-
++      AbstractZkTestCase.tryCleanSolrZkNode(server.getZkHost());
+       AbstractZkTestCase.makeSolrZkNode(server.getZkHost());
+ 
+       zkClient = new SolrZkClient(server.getZkAddress(), TIMEOUT);

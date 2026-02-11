@@ -1,0 +1,24 @@
+diff --git a/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynExpand.java b/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynExpand.java
+index 908cfd6..646abf7 100755
+--- a/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynExpand.java
++++ b/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynExpand.java
+@@ -33,6 +33,7 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.Term;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.search.BooleanClause;
+ import org.apache.lucene.search.BooleanQuery;
+ import org.apache.lucene.search.Collector;
+@@ -160,9 +161,9 @@ public final class SynExpand {
+         }
+ 
+         @Override
+-        public void setNextReader(IndexReader reader, int docBase)
++        public void setNextReader(AtomicReaderContext context)
+             throws IOException {
+-          this.reader = reader;
++          this.reader = context.reader;
+         }
+ 
+         @Override

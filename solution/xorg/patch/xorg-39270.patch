@@ -1,0 +1,44 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index fc1ac64..67249dc 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -101,9 +101,6 @@ extern Bool noDbeExtension;
+ #ifdef DPMSExtension
+ extern Bool noDPMSExtension;
+ #endif
+-#ifdef FONTCACHE
+-extern Bool noFontCacheExtension;
+-#endif
+ #ifdef GLXEXT
+ extern Bool noGlxExtension;
+ #endif
+@@ -284,9 +281,6 @@ extern void XFree86DRIExtensionInit(INITARGS);
+ #ifdef DPMSExtension
+ extern void DPMSExtensionInit(INITARGS);
+ #endif
+-#ifdef FONTCACHE
+-extern void FontCacheExtensionInit(INITARGS);
+-#endif
+ #ifdef RENDER
+ extern void RenderExtensionInit(INITARGS);
+ #endif
+@@ -340,9 +334,6 @@ static ExtensionToggle ExtensionToggleList[] =
+ #ifdef DPMSExtension
+     { "DPMS", &noDPMSExtension },
+ #endif
+-#ifdef FONTCACHE
+-    { "FontCache", &noFontCacheExtension },
+-#endif
+ #ifdef GLXEXT
+     { "GLX", &noGlxExtension },
+ #endif
+@@ -504,9 +495,6 @@ InitExtensions(int argc, char *argv[])
+ #if defined(DPMSExtension) && !defined(NO_HW_ONLY_EXTS)
+     if (!noDPMSExtension) DPMSExtensionInit();
+ #endif
+-#ifdef FONTCACHE
+-    if (!noFontCacheExtension) FontCacheExtensionInit();
+-#endif
+ #ifdef XF86BIGFONT
+     if (!noXFree86BigfontExtension) XFree86BigfontExtensionInit();
+ #endif

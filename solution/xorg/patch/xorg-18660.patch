@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_kqueue_apm.c b/hw/xfree86/os-support/bsd/bsd_kqueue_apm.c
+index 07cc55f..06544ee 100644
+--- a/hw/xfree86/os-support/bsd/bsd_kqueue_apm.c
++++ b/hw/xfree86/os-support/bsd/bsd_kqueue_apm.c
+@@ -28,6 +28,10 @@
+  */
+ /* $OpenBSD: bsd_kqueue_apm.c,v 1.5 2002/07/30 23:07:42 matthieu Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/os.h>
+ #include "xf86.h"

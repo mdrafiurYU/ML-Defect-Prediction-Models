@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java b/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java
+index 98ba2b4..46c4cf2 100644
+--- a/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java
++++ b/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java
+@@ -77,17 +77,6 @@ public class MockSingleIntIndexOutput extends IntIndexOutput {
+       }
+       lastFP = fp;
+     }
+-
+-    @Override
+-    public void write(IntIndexOutput indexOut, boolean absolute) 
+-      throws IOException {
+-      if (absolute) {
+-        indexOut.writeVLong(fp);
+-      } else {
+-        indexOut.writeVLong(fp - lastFP);
+-      }
+-      lastFP = fp;
+-    }
+       
+     @Override
+     public String toString() {

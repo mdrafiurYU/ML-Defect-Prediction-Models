@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxinit.c b/hw/dmx/dmxinit.c
+index 438c4eb..ddc4d2b 100644
+--- a/hw/dmx/dmxinit.c
++++ b/hw/dmx/dmxinit.c
+@@ -38,6 +38,10 @@
+  * Provide expected functions for initialization from the ddx layer and
+  * global variables for the DMX server. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxinit.h"
+ #include "dmxsync.h"

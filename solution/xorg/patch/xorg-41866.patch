@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index 8471914..79d3017 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -411,7 +411,7 @@ xf86RandRSetNewVirtualAndDimensions(ScreenPtr pScreen,
+     return TRUE;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86RandRInit (ScreenPtr    pScreen)
+ {
+     rrScrPrivPtr	rp;

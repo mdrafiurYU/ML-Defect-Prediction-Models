@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Configure.c b/hw/xfree86/common/xf86Configure.c
+index fac9fc0..4b9d418 100644
+--- a/hw/xfree86/common/xf86Configure.c
++++ b/hw/xfree86/common/xf86Configure.c
+@@ -625,8 +625,6 @@ configureModuleSection (void)
+     	    module = xf86confmalloc(sizeof(XF86LoadRec));
+     	    memset((XF86LoadPtr)module,0,sizeof(XF86LoadRec));
+     	    module->load_name = *el;
+-	    /* HACK, remove GLcore, glx, loads it as a submodule */
+-	    if (strcmp(*el, "GLcore"))
+ 	    	ptr->mod_load_lst = (XF86LoadPtr)xf86addListItem(
+ 					(glp)ptr->mod_load_lst, (glp)module);
+     	}

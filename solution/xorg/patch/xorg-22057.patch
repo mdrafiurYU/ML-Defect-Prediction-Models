@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/linuxPci.c b/hw/xfree86/os-support/bus/linuxPci.c
+index a97e6f0..c6dad1f 100644
+--- a/hw/xfree86/os-support/bus/linuxPci.c
++++ b/hw/xfree86/os-support/bus/linuxPci.c
+@@ -85,7 +85,7 @@ static pciBusFuncs_t linuxFuncs0 = {
+ /* pciAddrHostToBus */	pciAddrNOOP,
+ /* linuxTransAddrBusToHost is busted on sparc64 but the PCI rework tree
+  * makes it all moot, so we kludge it for now */
+-#if defined(__sparc64__)
++#if defined(__sparc__)
+ /* pciAddrBusToHost */  pciAddrNOOP,
+ #else
+ /* pciAddrBusToHost */	linuxTransAddrBusToHost,

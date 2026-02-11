@@ -1,0 +1,13 @@
+diff --git a/exa/exa_render.c b/exa/exa_render.c
+index 6a9e53f..a510e54 100644
+--- a/exa/exa_render.c
++++ b/exa/exa_render.c
+@@ -774,7 +774,7 @@ exaCreateAlphaPicture (ScreenPtr     pScreen,
+     }
+ 
+     pPixmap = (*pScreen->CreatePixmap) (pScreen, width, height,
+-					pPictFormat->depth);
++					pPictFormat->depth, 0);
+     if (!pPixmap)
+ 	return 0;
+     pGC = GetScratchGC (pPixmap->drawable.depth, pScreen);

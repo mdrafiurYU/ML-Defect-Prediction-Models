@@ -1,0 +1,11 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java b/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java
+index f6f1a27..3bda623 100644
+--- a/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java
++++ b/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java
+@@ -105,6 +105,5 @@ public class TestMergeSchedulerExternal extends LuceneTestCase {
+     assertTrue(mergeCalled);
+     assertTrue(excCalled);
+     dir.close();
+-    assertTrue(ConcurrentMergeScheduler.anyUnhandledExceptions());
+   }
+ }

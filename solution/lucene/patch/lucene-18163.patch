@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/NumericPayloadTokenFilterFactory.java b/solr/src/java/org/apache/solr/analysis/NumericPayloadTokenFilterFactory.java
+index 69469ea..0181b96 100644
+--- a/solr/src/java/org/apache/solr/analysis/NumericPayloadTokenFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/NumericPayloadTokenFilterFactory.java
+@@ -27,6 +27,7 @@ import java.util.Map;
+ public class NumericPayloadTokenFilterFactory extends BaseTokenFilterFactory {
+   private float payload;
+   private String typeMatch;
++  @Override
+   public void init(Map<String, String> args) {
+     super.init(args);
+     payload = Float.parseFloat(args.get("payload"));

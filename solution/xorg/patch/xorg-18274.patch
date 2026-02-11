@@ -1,0 +1,16 @@
+diff --git a/os/xalloc.c b/os/xalloc.c
+index 6740e89..ad606b2 100644
+--- a/os/xalloc.c
++++ b/os/xalloc.c
+@@ -35,9 +35,9 @@ Pascal Haible.
+ 
+ #include <stdlib.h>	/* for malloc() etc. */
+ 
+-#include "Xos.h"
++#include <X11/Xos.h>
+ #include "misc.h"
+-#include "X.h"
++#include <X11/X.h>
+ 
+ #ifdef XALLOC_LOG
+ #include <stdio.h>

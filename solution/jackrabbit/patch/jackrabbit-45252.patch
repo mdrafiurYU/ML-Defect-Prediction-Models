@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+index 2d4d876..e8895c8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+@@ -615,7 +615,7 @@ public class ClusterNode implements Runnable,
+ 
+             try {
+                 ChangeLogRecord clr = new ChangeLogRecord(changes, events,
+-                        record, workspace);
++                        record, workspace, update.getTimestamp());
+                 clr.write();
+                 succeeded = true;
+             } catch (JournalException e) {

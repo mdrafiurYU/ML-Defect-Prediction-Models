@@ -1,0 +1,65 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 568bc9e..74ec282 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -169,9 +169,6 @@ extern Bool noXcupExtension;
+ #ifdef RES
+ extern Bool noResExtension;
+ #endif
+-#ifdef XAPPGROUP
+-extern Bool noXagExtension;
+-#endif
+ #ifdef XCMISC
+ extern Bool noXCMiscExtension;
+ #endif
+@@ -240,10 +237,6 @@ typedef void (*InitExtension)(INITARGS);
+ #ifdef XPRINT
+ #include <X11/extensions/Print.h>
+ #endif
+-#ifdef XAPPGROUP
+-#define _XAG_SERVER_
+-#include <X11/extensions/Xagstr.h>
+-#endif
+ #ifdef XCSECURITY
+ #include "securitysrv.h"
+ #include <X11/extensions/securstr.h>
+@@ -314,9 +307,6 @@ extern void RecordExtensionInit(INITARGS);
+ #ifdef DBE
+ extern void DbeExtensionInit(INITARGS);
+ #endif
+-#ifdef XAPPGROUP
+-extern void XagExtensionInit(INITARGS);
+-#endif
+ #ifdef XCSECURITY
+ extern void SecurityExtensionInit(INITARGS);
+ #endif
+@@ -446,9 +436,6 @@ static ExtensionToggle ExtensionToggleList[] =
+ #ifdef RES
+     { "X-Resource", &noResExtension },
+ #endif
+-#ifdef XAPPGROUP
+-    { "XC-APPGROUP", &noXagExtension },
+-#endif
+ #ifdef XCMISC
+     { "XC-MISC", &noXCMiscExtension },
+ #endif
+@@ -584,9 +571,6 @@ InitExtensions(argc, argv)
+ #ifdef DBE
+     if (!noDbeExtension) DbeExtensionInit();
+ #endif
+-#ifdef XAPPGROUP
+-    if (!noXagExtension) XagExtensionInit();
+-#endif
+ #ifdef XCSECURITY
+     if (!noSecurityExtension) SecurityExtensionInit();
+ #endif
+@@ -678,9 +662,6 @@ static ExtensionModule staticExtensions[] = {
+ #ifdef XKB
+     { XkbExtensionInit, XkbName, &noXkbExtension, NULL, NULL },
+ #endif
+-#ifdef XAPPGROUP
+-    { XagExtensionInit, XAGNAME, &noXagExtension, NULL, NULL },
+-#endif
+ #ifdef XCSECURITY
+     { SecurityExtensionInit, SECURITY_EXTENSION_NAME, &noSecurityExtension, NULL, NULL },
+ #endif

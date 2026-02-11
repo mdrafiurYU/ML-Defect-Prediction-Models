@@ -1,0 +1,26 @@
+diff --git a/include/extinit.h b/include/extinit.h
+index 6cf7bf7..d7aa541 100644
+--- a/include/extinit.h
++++ b/include/extinit.h
+@@ -122,6 +122,12 @@ SDeviceLeaveNotifyEvent (
+         );
+ 
+ void
++SPointerKeyboardPairingChangedNotifyEvent (
++        pairingChangedNotify * /* from */,
++        pairingChangedNotify * /* to */
++        );
++
++void
+ FixExtensionEvents (
+ 	ExtensionEntry 	*      /* extEntry */
+ 	);
+@@ -143,7 +149,7 @@ AssignTypeAndName (
+ 	char *                 /* name */
+ 	);
+ 
+-Bool MayNeedPointer(
++Bool IsPointerDevice(
+         DeviceIntPtr            /* dev */
+         );
+ 

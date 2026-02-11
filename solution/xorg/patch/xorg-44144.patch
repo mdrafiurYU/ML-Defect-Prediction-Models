@@ -1,0 +1,17 @@
+diff --git a/hw/kdrive/linux/keyboard.c b/hw/kdrive/linux/keyboard.c
+index d36c31d..28ece3d 100644
+--- a/hw/kdrive/linux/keyboard.c
++++ b/hw/kdrive/linux/keyboard.c
+@@ -737,10 +737,10 @@ LinuxKeyboardInit (KdKeyboardInfo *ki)
+ 
+     if (ki->path)
+         xfree(ki->path);
+-    ki->path = KdSaveString("console");
++    ki->path = strdup("console");
+     if (ki->name)
+         xfree(ki->name);
+-    ki->name = KdSaveString("Linux console keyboard");
++    ki->name = strdup("Linux console keyboard");
+ 
+     readKernelMapping (ki);
+ 

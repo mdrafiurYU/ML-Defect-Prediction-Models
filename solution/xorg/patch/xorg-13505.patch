@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/win.h b/hw/xwin/win.h
+index 8175081..eb97a78 100644
+--- a/hw/xwin/win.h
++++ b/hw/xwin/win.h
+@@ -142,7 +142,9 @@
+ 
+ #include <errno.h>
+ #if defined(XWIN_MULTIWINDOWEXTWM) || defined(XWIN_CLIPBOARD) || defined(XWIN_MULTIWINDOW) 
++#define HANDLE void *
+ #include <pthread.h>
++#undef HANDLE
+ #endif
+ 
+ #ifdef HAS_MMAP

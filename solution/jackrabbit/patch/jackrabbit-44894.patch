@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+index 315ce1c..9b04e4a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+@@ -834,8 +834,8 @@ public class SharedItemStateManager
+         /**
+          * {@inheritDoc}
+          */
+-        public EventStateCollection getEvents() {
+-            return events;
++        public List getEvents() {
++            return events.getEvents();
+         }
+     }

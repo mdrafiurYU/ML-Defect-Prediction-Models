@@ -1,0 +1,21 @@
+diff --git a/config/hal.c b/config/hal.c
+index 52a0113..1575422 100644
+--- a/config/hal.c
++++ b/config/hal.c
+@@ -283,13 +283,15 @@ disconnect_hook(void *data)
+     struct config_hal_info *info = data;
+ 
+     if (info->hal_ctx) {
++        if (dbus_connection_get_is_connected(info->system_bus)) {
+         dbus_error_init(&error);
+         if (!libhal_ctx_shutdown(info->hal_ctx, &error))
+             DebugF("[config/hal] couldn't shut down context: %s (%s)\n",
+                    error.name, error.message);
+-        libhal_ctx_free(info->hal_ctx);
+         dbus_error_free(&error);
+     }
++        libhal_ctx_free(info->hal_ctx);
++    }
+ 
+     info->hal_ctx = NULL;
+     info->system_bus = NULL;

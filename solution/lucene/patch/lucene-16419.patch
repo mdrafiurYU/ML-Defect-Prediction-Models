@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java b/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java
+index ad266b5..9adc363 100644
+--- a/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java
++++ b/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java
+@@ -215,7 +215,10 @@ public class TestParser extends LuceneTestCase {
+ 	}
+ 	private void dumpResults(String qType,Query q, int numDocs) throws IOException
+ 	{
+-		TopDocs hits = searcher.search(q, null, numDocs);
++                if (VERBOSE) {
++                  System.out.println("TEST: query=" + q);
++                }
++                TopDocs hits = searcher.search(q, null, numDocs);
+ 		assertTrue(qType +" should produce results ", hits.totalHits>0);
+ 		if(VERBOSE)
+ 		{

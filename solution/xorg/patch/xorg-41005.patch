@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 05f9947..33936bd 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4325,8 +4325,6 @@ EnterLeaveEvent(
+     devEnterLeave = (deviceEnterNotify*)&event;
+     devEnterLeave->type = (type == EnterNotify) ? DeviceEnterNotify :
+         DeviceLeaveNotify;
+-    devEnterLeave->type = (type == EnterNotify) ? DeviceEnterNotify :
+-        DeviceLeaveNotify;
+     devEnterLeave->mode |= (event.u.enterLeave.flags << 4);
+     devEnterLeave->deviceid = mouse->id;
+     mskidx = mouse->id;

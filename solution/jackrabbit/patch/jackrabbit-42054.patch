@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/DigesterUuidTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/DigesterUuidTest.java
+index d41f4c1..a28af84 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/DigesterUuidTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/DigesterUuidTest.java
+@@ -78,6 +78,8 @@ public class DigesterUuidTest extends DigesterTestBase
+             a.setPath("/test");
+             a.setStringData("testdata");
+             ocm.insert(a);
++            String uuidA = a.getUuid();
++            assertNotNull("uuid is null", uuidA);
+             ocm.save();
+ 
+             // --------------------------------------------------------------------------------
+@@ -85,7 +87,7 @@ public class DigesterUuidTest extends DigesterTestBase
+             // --------------------------------------------------------------------------------
+             a = (A) ocm.getObject( "/test");
+             assertNotNull("a is null", a);
+-            String uuidA = a.getUuid();
++            uuidA = a.getUuid();
+             assertNotNull("uuid is null", uuidA);
+             System.out.println("UUID : " + uuidA);

@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.model/workspace/Formatter/test621/A_in.java b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test621/A_in.java
+new file mode 100644
+index 0000000..a4f4d8e
+--- /dev/null
++++ b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test621/A_in.java
+@@ -0,0 +1,17 @@
++public class Test {
++
++        public static <T> void service() {}
++
++        public static void main(String[] args) {
++                Test.<String>service(); //XXX <<<<
++                Test t = new Test();
++                t.<String>service2(); //XXX <<<<
++                new Test().<String>service2(); //XXX <<<<
++        }
++
++        public <T> void service3() {    }
++
++        public <T> void service2() {
++                this.<T>service3(); //XXX <<<<
++        }
++}

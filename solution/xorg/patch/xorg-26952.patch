@@ -1,0 +1,19 @@
+diff --git a/Xi/selectev.c b/Xi/selectev.c
+index 7d3ef9d..8c893ca 100644
+--- a/Xi/selectev.c
++++ b/Xi/selectev.c
+@@ -170,11 +170,9 @@ ProcXSelectExtensionEvent(register ClientPtr client)
+ 	return Success;
+     }
+ 
+-    pWin = (WindowPtr) LookupWindow(stuff->window, client);
+-    if (!pWin) {
+-	client->errorValue = stuff->window;
+-	SendErrorToClient(client, IReqCode, X_SelectExtensionEvent, 0,
+-			  BadWindow);
++    ret = dixLookupWindow(&pWin, stuff->window, client, DixUnknownAccess);
++    if (ret != Success) {
++	SendErrorToClient(client, IReqCode, X_SelectExtensionEvent, 0, ret);
+ 	return Success;
+     }
+ 

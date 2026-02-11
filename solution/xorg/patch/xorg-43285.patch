@@ -1,0 +1,13 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index 467fd8f..f4b281a 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -226,7 +226,7 @@ miSpriteInitialize (ScreenPtr               pScreen,
+     if (!DamageSetup (pScreen))
+ 	return FALSE;
+ 
+-    pScreenPriv = (miSpriteScreenPtr) xalloc (sizeof (miSpriteScreenRec));
++    pScreenPriv = xalloc (sizeof (miSpriteScreenRec));
+     if (!pScreenPriv)
+ 	return FALSE;
+ 

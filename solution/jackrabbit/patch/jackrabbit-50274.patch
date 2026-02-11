@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/DerefTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/DerefTest.java
+index fa74433..93e60d2 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/DerefTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/DerefTest.java
+@@ -148,6 +148,11 @@ public class DerefTest extends AbstractQueryTest {
+ //                new Node[]{testRootNode});
+     }
+ 
++    public void testRewrite() throws RepositoryException {
++        executeXPathQuery("//*[people/jcr:deref(@worksfor, '*')/@foo=1]",
++                new Node[]{});
++    }
++
+     /**
+      * Checks if jcr:deref works when dereferencing into the version storage.
+      */

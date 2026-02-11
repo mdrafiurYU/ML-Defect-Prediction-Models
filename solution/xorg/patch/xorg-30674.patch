@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/ephyr/ephyrinit.c b/hw/kdrive/ephyr/ephyrinit.c
+index 850dc76..56b4f16 100644
+--- a/hw/kdrive/ephyr/ephyrinit.c
++++ b/hw/kdrive/ephyr/ephyrinit.c
+@@ -57,7 +57,9 @@ InitInput (int argc, char **argv)
+   KdPointerInfo *pi;
+         
+   KdAddKeyboardDriver(&EphyrKeyboardDriver);
++  KdAddKeyboardDriver(&LinuxEvdevKeyboardDriver);
+   KdAddPointerDriver(&EphyrMouseDriver);
++  KdAddPointerDriver(&LinuxEvdevMouseDriver);
+ 
+   if (!kdHasKbd) {
+     ki = KdNewKeyboard();

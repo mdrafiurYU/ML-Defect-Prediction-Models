@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 592d4e3..9ed2884 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -304,16 +304,13 @@ xf86Wakeup(pointer blockData, int err, pointer pReadmask)
+  *    signal handler for the SIGIO signal.
+  */
+ static void
+-xf86SigioReadInput(int fd,
+-		   void *closure)
++xf86SigioReadInput(int fd, void *closure)
+ {
+     int errno_save = errno;
+-    int sigstate = xf86BlockSIGIO();
+-    InputInfoPtr pInfo = (InputInfoPtr) closure;
++    InputInfoPtr pInfo = closure;
+ 
+     pInfo->read_input(pInfo);
+ 
+-    xf86UnblockSIGIO(sigstate);
+     errno = errno_save;
+ }
+ 

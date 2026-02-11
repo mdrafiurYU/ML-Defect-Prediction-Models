@@ -1,0 +1,12 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index 098fbe3..c84ec61 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -460,6 +460,7 @@ RRCrtcSetRotations (RRCrtcPtr crtc,
+ 		    Rotation rotations)
+ {
+     crtc->rotations = rotations;
++    return TRUE;
+ }
+ 
+ /*

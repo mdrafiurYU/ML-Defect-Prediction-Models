@@ -1,0 +1,19 @@
+diff --git a/mi/misprite.h b/mi/misprite.h
+index 96d2d7d..72dc06f 100644
+--- a/mi/misprite.h
++++ b/mi/misprite.h
+@@ -89,6 +89,14 @@ typedef struct {
+ 		int /*dx*/,
+ 		int /*dy*/
+ );
++    Bool	(*DeviceCursorInitialize)(
++                DeviceIntPtr /*pDev*/,
++		ScreenPtr /*pScreen*/
++);
++    void	(*DeviceCursorCleanup)(
++                DeviceIntPtr /*pDev*/,
++		ScreenPtr /*pScreen*/
++);
+ 
+ } miSpriteCursorFuncRec, *miSpriteCursorFuncPtr;
+ 

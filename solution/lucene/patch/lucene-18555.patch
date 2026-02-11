@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/PersianCharFilterFactory.java b/solr/src/java/org/apache/solr/analysis/PersianCharFilterFactory.java
+index f165ce3..8afd32c 100644
+--- a/solr/src/java/org/apache/solr/analysis/PersianCharFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/PersianCharFilterFactory.java
+@@ -26,7 +26,7 @@ import org.apache.lucene.analysis.fa.PersianCharFilter;
+  * &lt;fieldType name="text_fa" class="solr.TextField" positionIncrementGap="100"&gt;
+  *   &lt;analyzer&gt;
+  *     &lt;charFilter class="solr.PersianCharFilterFactory"/&gt;
+- *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>
+  * @version $Id$

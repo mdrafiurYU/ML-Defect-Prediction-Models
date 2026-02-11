@@ -1,0 +1,14 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 42c2f2d..90af553 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -63,6 +63,9 @@ do {								\
+ 	ErrorF("EXA fallback at %s: ", __FUNCTION__);		\
+ 	ErrorF x;						\
+ } while (0)
++
++char
++exaDrawableLocation(DrawablePtr pDrawable);
+ #else
+ #define EXA_FALLBACK(x)
+ #endif

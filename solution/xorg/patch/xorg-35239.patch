@@ -1,0 +1,12 @@
+diff --git a/hw/xquartz/quartzStartup.c b/hw/xquartz/quartzStartup.c
+index 8600ec8..1b2a226 100644
+--- a/hw/xquartz/quartzStartup.c
++++ b/hw/xquartz/quartzStartup.c
+@@ -106,6 +106,6 @@ void DarwinHandleGUI(int argc, char **argv, char **envp) {
+     extern void _InitHLTB(void);
+     
+     _InitHLTB();    
+-    X11ControllerMain(argc, argv, server_thread, NULL);
++    X11ControllerMain(argc, (const char **)argv, server_thread, NULL);
+     exit(0);
+ }

@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/fbdev/fbdev.h b/hw/kdrive/fbdev/fbdev.h
+index d37b995..b7951db 100644
+--- a/hw/kdrive/fbdev/fbdev.h
++++ b/hw/kdrive/fbdev/fbdev.h
+@@ -53,6 +53,7 @@ typedef struct _fbdevScrPriv {
+ } FbdevScrPriv;
+ 
+ extern KdCardFuncs  fbdevFuncs;
++extern char*        fbdevDevicePath;
+ 
+ Bool
+ fbdevInitialize (KdCardInfo *card, FbdevPriv *priv);

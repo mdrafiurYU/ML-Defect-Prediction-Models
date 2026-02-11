@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerStatementsRecoveryTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerStatementsRecoveryTests.java
+index 95cee52..19ec9f9 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerStatementsRecoveryTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerStatementsRecoveryTests.java
+@@ -67,7 +67,7 @@ static {
+ //	TESTS_RANGE = new int[] { 16, -1 };
+ }
+ public static Test suite() {
+-	return buildTestSuite(ReconcilerStatementsRecoveryTests.class);
++	return buildModelTestSuite(ReconcilerStatementsRecoveryTests.class);
+ }
+ protected void assertProblems(String message, String expected) {
+ 	assertProblems(message, expected, this.problemRequestor);

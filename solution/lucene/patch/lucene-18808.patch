@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/IndexableBinaryStringTools.java b/lucene/src/java/org/apache/lucene/util/IndexableBinaryStringTools.java
+index d7f4c92..140277e 100644
+--- a/lucene/src/java/org/apache/lucene/util/IndexableBinaryStringTools.java
++++ b/lucene/src/java/org/apache/lucene/util/IndexableBinaryStringTools.java
+@@ -39,7 +39,10 @@ import java.nio.ByteBuffer;
+  * <p/>
+  *
+  * @lucene.experimental
++ * @deprecated Implement {@link TermToBytesRefAttribute} and store bytes directly
++ * instead. This class will be removed in Lucene 5.0
+  */
++@Deprecated
+ public final class IndexableBinaryStringTools {
+ 
+   private static final CodingCase[] CODING_CASES = {

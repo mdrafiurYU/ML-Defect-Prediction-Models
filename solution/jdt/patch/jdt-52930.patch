@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java
+index 8aec22b..da45cf0 100644
+--- a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java
++++ b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java
+@@ -133,7 +133,7 @@ public class FullSourceWorkspaceBuildTests extends FullSourceWorkspaceTests {
+ 			CompilationUnitDeclaration unitDeclaration = parser.dietParse(unit, unitResult);
+ 			parser.getMethodBodies(unitDeclaration);
+ 			parsedCharacters += content.length;
+-			parsedLines += unitResult.lineSeparatorPositions.length;
++			parsedLines += unitResult.getLineSeparatorPositions().length;
+ 		}
+ 		stopMeasuring();

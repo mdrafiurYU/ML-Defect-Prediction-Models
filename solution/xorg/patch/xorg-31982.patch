@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyrhostvideo.c b/hw/kdrive/ephyr/ephyrhostvideo.c
+index 59a01bb..d86f976 100644
+--- a/hw/kdrive/ephyr/ephyrhostvideo.c
++++ b/hw/kdrive/ephyr/ephyrhostvideo.c
+@@ -64,7 +64,7 @@ EphyrHostXVQueryAdaptors (EphyrHostXVAdaptorArray **a_adaptors)
+         goto out ;
+ 
+     ret = XvQueryAdaptors (hostx_get_display (),
+-                           DefaultRootWindow (hostx_get_display),
++                           DefaultRootWindow (hostx_get_display ()),
+                            &result->nb_adaptors,
+                            &result->adaptors) ;
+     if (ret != Success) {

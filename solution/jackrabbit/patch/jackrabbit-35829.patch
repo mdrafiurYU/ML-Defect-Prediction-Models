@@ -1,0 +1,13 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationMapperImpl.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationMapperImpl.java
+index e8cd9f2..b14c109 100755
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationMapperImpl.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/AnnotationMapperImpl.java
+@@ -31,7 +31,7 @@ import org.apache.jackrabbit.ocm.mapper.impl.AbstractMapperImpl;
+ public class AnnotationMapperImpl extends AbstractMapperImpl implements Mapper {
+ 
+ 	
+-	public AnnotationMapperImpl(List<String> annotatedClassNames)
++	public AnnotationMapperImpl(List<Class> annotatedClassNames)
+ 	{		
+         descriptorReader = new AnnotationDescriptorReader(annotatedClassNames);
+         this.buildMapper();

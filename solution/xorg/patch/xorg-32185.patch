@@ -1,0 +1,37 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index 63e0cb1..85aab28 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -43,6 +43,8 @@ extern int KdTsPhyScreen;
+ KdKeyboardInfo *ephyrKbd;
+ KdPointerInfo *ephyrMouse;
+ EphyrKeySyms ephyrKeySyms;
++Bool ephyrNoDRI=FALSE ;
++Bool ephyrNoXV=FALSE ;
+ 
+ static int mouseState = 0;
+ 
+@@ -616,18 +618,23 @@ ephyrInitScreen (ScreenPtr pScreen)
+   pScreen->CreateColormap = ephyrCreateColormap;
+ 
+ #ifdef XV
++  if (!ephyrNoXV) {
+   if (!ephyrInitVideo (pScreen)) {
+       EPHYR_LOG_ERROR ("failed to initialize xvideo\n") ;
+   } else {
+       EPHYR_LOG ("initialized xvideo okay\n") ;
+   }
++  }
+ #endif /*XV*/
+ 
+ #ifdef XEPHYR_DRI
++  if (!ephyrNoDRI) {
+     ephyrDRIExtensionInit (pScreen) ;
+     ephyrHijackGLXExtension () ;
+     ephyrProxyExtensionInit ("ATIFGLRXDRI") ;
++  }
+ #endif
++
+   return TRUE;
+ }
+ 

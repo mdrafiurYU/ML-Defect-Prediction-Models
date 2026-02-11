@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclAttVal.c b/Xprint/pcl/PclAttVal.c
+index 88fcf23..adbd197 100644
+--- a/Xprint/pcl/PclAttVal.c
++++ b/Xprint/pcl/PclAttVal.c
+@@ -33,6 +33,10 @@ dealings in this Software without prior written authorization from said
+ copyright holders.
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "Pcl.h"
+ #include "AttrValid.h"
+ 

@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/FloatValuesCreator.java b/lucene/src/java/org/apache/lucene/search/cache/FloatValuesCreator.java
+index bfd6f07..40909cc 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/FloatValuesCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/FloatValuesCreator.java
+@@ -61,8 +61,8 @@ public class FloatValuesCreator extends CachedArrayCreator<FloatValues>
+   }
+   
+   @Override
+-  public int getSortTypeID() {
+-    return SortField.FLOAT;
++  public SortField.Type getSortType() {
++    return SortField.Type.FLOAT;
+   }
+ 
+ 
+@@ -162,4 +162,4 @@ public class FloatValuesCreator extends CachedArrayCreator<FloatValues>
+       vals.valid = new Bits.MatchNoBits( maxDoc );
+     }
+   }
+-}
+\ No newline at end of file
++}

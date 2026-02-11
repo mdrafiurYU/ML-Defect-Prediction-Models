@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractRegressionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractRegressionTest.java
+index 537e02c..b59557f 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractRegressionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractRegressionTest.java
+@@ -91,9 +91,11 @@ public abstract class AbstractRegressionTest extends AbstractCompilerTest implem
+ 				FileInputStream stream = new FileInputStream(f);
+ 				ClassFileReader.read(stream, className + ".class", true);
+ 				stream.close();
+-			} catch (org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException e1) {
++			} catch (org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException e) {
++				e.printStackTrace();
+ 				assertTrue("ClassFormatException", false);
+-			} catch (IOException e1) {
++			} catch (IOException e) {
++				e.printStackTrace();
+ 				assertTrue("IOException", false);
+ 			}
+ 		} finally {

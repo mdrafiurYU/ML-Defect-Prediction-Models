@@ -1,0 +1,22 @@
+diff --git a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
+index f8dad95..d6a7cf5 100644
+--- a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
++++ b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
+@@ -22,6 +22,7 @@ import org.apache.lucene.analysis.MockAnalyzer;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.IndexWriter;
+ import org.apache.lucene.index.MultiFields;
++import org.apache.lucene.index.MultiNorms;
+ import org.apache.lucene.index.Term;
+ import org.apache.lucene.search.IndexSearcher;
+ import org.apache.lucene.search.TermQuery;
+@@ -67,8 +68,7 @@ public class TestEmptyIndex extends LuceneTestCase {
+   }
+ 
+   private void testNorms(IndexReader r) throws IOException {
+-    byte[] norms;
+-    norms = r.norms("foo");
++    byte[] norms = MultiNorms.norms(r, "foo");
+     if (norms != null) {
+       assertEquals(0, norms.length);
+       norms = new byte[10];

@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index 8107beb..559bc89 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -85,7 +85,8 @@ FILE *debug_log_fp = NULL;
+  * X server shared global variables
+  */
+ int                     darwinScreensFound = 0;
+-DevPrivateKey           darwinScreenKey = &darwinScreenKey;
++static int              darwinScreenKeyIndex;
++DevPrivateKey           darwinScreenKey = &darwinScreenKeyIndex;
+ io_connect_t            darwinParamConnect = 0;
+ int                     darwinEventReadFD = -1;
+ int                     darwinEventWriteFD = -1;

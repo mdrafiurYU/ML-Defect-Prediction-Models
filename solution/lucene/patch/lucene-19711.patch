@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java b/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java
+index a81f83d..ad3efa7 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java
+@@ -334,7 +334,7 @@ public class _TestUtil {
+   public static void add(Document doc, FieldInfos fieldInfos) {
+     List<Fieldable> fields = doc.getFields();
+     for (Fieldable field : fields) {
+-      fieldInfos.add(field.name(), field.isIndexed(), field.isTermVectorStored(), field.isStorePositionWithTermVector(),
++      fieldInfos.addOrUpdate(field.name(), field.isIndexed(), field.isTermVectorStored(), field.isStorePositionWithTermVector(),
+               field.isStoreOffsetWithTermVector(), field.getOmitNorms(), false, field.getOmitTermFreqAndPositions());
+     }
+   }

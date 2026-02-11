@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/UpdateEventListener.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/UpdateEventListener.java
+index 1a23d25..951b26c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/UpdateEventListener.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/UpdateEventListener.java
+@@ -17,6 +17,8 @@
+ package org.apache.jackrabbit.core.cluster;
+ 
+ import java.util.List;
++
++import org.apache.jackrabbit.core.observation.EventState;
+ import org.apache.jackrabbit.core.state.ChangeLog;
+ import javax.jcr.RepositoryException;
+ 
+@@ -34,7 +36,7 @@ public interface UpdateEventListener {
+      * @param userData the user data associated with this update.
+      * @throws RepositoryException if the update cannot be processed
+      */
+-    void externalUpdate(ChangeLog changes, List events, long timestamp, String userData)
++    void externalUpdate(ChangeLog changes, List<EventState> events, long timestamp, String userData)
+             throws RepositoryException;
+ 
+ }

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
+index e85bcfd..17bf254 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
+@@ -144,7 +144,7 @@ public abstract class AbstractRecord implements Record {
+     public void writeNodeTypeDef(NodeTypeDef ntd) throws JournalException {
+         try {
+             StringWriter sw = new StringWriter();
+-            CompactNodeTypeDefWriter writer = new CompactNodeTypeDefWriter(sw, nsResolver, resolver, true);
++            CompactNodeTypeDefWriter writer = new CompactNodeTypeDefWriter(sw, nsResolver, resolver);
+             writer.write(ntd);
+             writer.close();

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Checkin.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Checkin.java
+index 22eb5aa..abb10fa 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Checkin.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Checkin.java
+@@ -88,7 +88,7 @@ public class Checkin extends AbstractOperation {
+     
+     /**
+      *
+-     * @return The nodeState to be checked in.
++     * @return The <code>NodeId</code> of the nodeState to be checked in.
+      */
+     public NodeId getNodeId() throws RepositoryException {
+         return nodeState.getNodeEntry().getWorkspaceId();

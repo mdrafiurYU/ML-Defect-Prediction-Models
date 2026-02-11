@@ -1,0 +1,70 @@
+diff --git a/Xi/selectev.c b/Xi/selectev.c
+index 057050c..3483804 100644
+--- a/Xi/selectev.c
++++ b/Xi/selectev.c
+@@ -1,5 +1,3 @@
+-/* $Xorg: selectev.c,v 1.4 2001/02/09 02:04:34 xorgcvs Exp $ */
+-
+ /************************************************************
+ 
+ Copyright 1989, 1998  The Open Group
+@@ -45,7 +43,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ********************************************************/
+-/* $XFree86: xc/programs/Xserver/Xi/selectev.c,v 3.2 2001/01/17 22:13:26 dawes Exp $ */
+ 
+ /***********************************************************************
+  *
+@@ -96,8 +93,7 @@ SProcXSelectExtensionEvent (register ClientPtr client)
+     swapl(&stuff->window, n);
+     swaps(&stuff->count, n);
+     p = (long *) &stuff[1];
+-    for (i=0; i<stuff->count; i++)
+-        {
++    for (i = 0; i < stuff->count; i++) {
+         swapl(p, n);
+ 	p++;
+         }
+@@ -121,16 +117,14 @@ ProcXSelectExtensionEvent (register ClientPtr client)
+     REQUEST(xSelectExtensionEventReq);
+     REQUEST_AT_LEAST_SIZE(xSelectExtensionEventReq);
+ 
+-    if (stuff->length !=(sizeof(xSelectExtensionEventReq)>>2) + stuff->count)
+-	{
++    if (stuff->length != (sizeof(xSelectExtensionEventReq) >> 2) + stuff->count) {
+ 	SendErrorToClient (client, IReqCode, X_SelectExtensionEvent, 0, 
+ 		BadLength);
+ 	return Success;
+ 	}
+ 
+     pWin = (WindowPtr) LookupWindow (stuff->window, client);
+-    if (!pWin)
+-        {
++    if (!pWin) {
+ 	client->errorValue = stuff->window;
+ 	SendErrorToClient(client, IReqCode, X_SelectExtensionEvent, 0, 
+ 		BadWindow);
+@@ -138,15 +132,16 @@ ProcXSelectExtensionEvent (register ClientPtr client)
+         }
+ 
+     if ((ret = CreateMaskFromList (client, (XEventClass *)&stuff[1], 
+-	stuff->count, tmp, NULL, X_SelectExtensionEvent)) != Success)
++				  stuff->count, tmp, NULL,
++				  X_SelectExtensionEvent)) != Success)
+ 	return Success;
+ 
+     for (i=0; i<EMASKSIZE; i++)
+-	if (tmp[i].dev != NULL)
+-	    {
+-	    if ((ret = SelectForWindow((DeviceIntPtr)tmp[i].dev, pWin, client, tmp[i].mask, 
+-		ExtExclusiveMasks[i], ExtValidMasks[i])) != Success)
+-		{
++	if (tmp[i].dev != NULL) {
++	    if ((ret =
++		 SelectForWindow((DeviceIntPtr) tmp[i].dev, pWin, client,
++				 tmp[i].mask, ExtExclusiveMasks[i],
++				 ExtValidMasks[i])) != Success) {
+ 		SendErrorToClient(client, IReqCode, X_SelectExtensionEvent, 0, 
+ 			ret);
+ 		return Success;

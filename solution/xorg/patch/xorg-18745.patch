@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/460gxPCI.c b/hw/xfree86/os-support/bus/460gxPCI.c
+index 9855b8b..255dfa1 100644
+--- a/hw/xfree86/os-support/bus/460gxPCI.c
++++ b/hw/xfree86/os-support/bus/460gxPCI.c
+@@ -29,6 +29,10 @@
+  * This file contains the glue necessary for support of Intel's 460GX chipset.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "460gxPCI.h"
+ #include "xf86.h"
+ #include "Pci.h"

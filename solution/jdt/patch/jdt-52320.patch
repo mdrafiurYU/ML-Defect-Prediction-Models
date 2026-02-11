@@ -1,0 +1,55 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java
+index 6cb5aa9..1b6545d 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java
+@@ -1131,4 +1131,50 @@ public void test0015() {
+ 		expectedCompletionDietUnitToString,	
+ 		testName);
+ }
++/*
++ * https://bugs.eclipse.org/bugs/show_bug.cgi?id=107580
++ */
++public void test0016() {
++	String s = 
++		"public enum Enum {								\n"
++			+ "  BEGIN(\"blabla\"),						\n"
++			+ "  END(\"blabla\").							\n"
++			+ "}											\n"; 	
++
++	String expectedDietUnitToString = 
++		"public enum Enum {\n" + 
++		"  BEGIN(\"blabla\"),\n" + 
++		"  END(\"blabla\"),\n" + 
++		"  public Enum() {\n" + 
++		"  }\n" + 
++		"  <clinit>() {\n" + 
++		"  }\n" + 
++		"}\n";
++	
++	
++	String expectedDietPlusBodyUnitToString = 
++		"public enum Enum {\n" + 
++		"  BEGIN(\"blabla\"),\n" + 
++		"  END(\"blabla\"),\n" + 
++		"  public Enum() {\n" + 
++		"    super();\n" + 
++		"  }\n" + 
++		"  <clinit>() {\n" + 
++		"  }\n" + 
++		"}\n";
++
++	String expectedFullUnitToString = expectedDietUnitToString;
++	
++	String expectedCompletionDietUnitToString = 
++		expectedDietUnitToString;
++	
++	String testName = "<enum recovery>";
++	checkParse(
++		s.toCharArray(),
++		expectedDietUnitToString,
++		expectedDietPlusBodyUnitToString,
++		expectedFullUnitToString,
++		expectedCompletionDietUnitToString,	
++		testName);
++}
+ }

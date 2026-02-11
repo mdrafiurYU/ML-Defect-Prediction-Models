@@ -1,0 +1,13 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 8b877bc..9e293f0 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -68,6 +68,8 @@ SOFTWARE.
+ #define POINTER_ABSOLUTE (1 << 2)
+ #define POINTER_ACCELERATE (1 << 3)
+ 
++extern int CoreDevicePrivatesIndex, CoreDevicePrivatesGeneration;
++
+ /* Kludge: OtherClients and InputClients must be compatible, see code */
+ 
+ typedef struct _OtherClients {

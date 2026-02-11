@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java
+index 3a3a81d..88e87da 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java
+@@ -240,7 +240,7 @@ class LocalNamespaceMappings extends AbstractNamespaceResolver
+                 // a different prefix there's no collision
+                 return;
+             }
+-            // need to change enw prefix locally by appending underscore(s)
++            // need to change new prefix locally by appending underscore(s)
+             // in order to guarantee unambiguous mappings
+             String uniquePrefix = newPrefix + "_";
+             while (prefixToURI.containsKey(uniquePrefix)) {

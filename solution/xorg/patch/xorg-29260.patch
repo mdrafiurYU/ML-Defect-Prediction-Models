@@ -1,0 +1,13 @@
+diff --git a/include/dix.h b/include/dix.h
+index 93472e8..1828f43 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -691,4 +691,8 @@ extern Bool DevHasCursor(DeviceIntPtr pDev);
+ extern Bool IsPointerDevice( DeviceIntPtr dev);
+ extern Bool IsKeyboardDevice(DeviceIntPtr dev);
+ 
++
++/* GE stuff */
++void SetGenericFilter(int extension, Mask* filters);
++
+ #endif /* DIX_H */

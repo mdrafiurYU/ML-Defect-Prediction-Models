@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionSelector.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionSelector.java
+index cc6607c..6c13174 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionSelector.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionSelector.java
+@@ -55,9 +55,9 @@ public interface VersionSelector {
+      * is unable to select one, it can return <code>null</code>. Please note,
+      * that a version selector is not allowed to return the root version.
+      *
+-     * @param versionHistory
++     * @param versionHistory version history to select a version from
+      * @return A version or <code>null</code>.
+-     * @throws RepositoryException if an error occurrs.
++     * @throws RepositoryException if an error occurs.
+      */
+     Version select(VersionHistory versionHistory) throws RepositoryException;

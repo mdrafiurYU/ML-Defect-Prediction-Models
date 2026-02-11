@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+index f71584b..504fdce 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+@@ -236,7 +236,6 @@ public class InternalValue {
+      * Create an internal value that is backed by a temporary file.
+      *
+      * @param value the stream
+-     * @param store the data store
+      * @return the internal value
+      */
+     public static InternalValue createTemporary(InputStream value) throws RepositoryException {
+@@ -272,7 +271,6 @@ public class InternalValue {
+ 
+     /**
+      * @param value
+-     * @param temp
+      * @return
+      * @throws IOException
+      */

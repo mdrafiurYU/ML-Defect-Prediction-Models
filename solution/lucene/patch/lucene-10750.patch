@@ -1,0 +1,12 @@
+diff --git a/solr/src/webapp/src/org/apache/solr/client/solrj/embedded/EmbeddedSolrServer.java b/solr/src/webapp/src/org/apache/solr/client/solrj/embedded/EmbeddedSolrServer.java
+index e0cd871..ffeb71f 100644
+--- a/solr/src/webapp/src/org/apache/solr/client/solrj/embedded/EmbeddedSolrServer.java
++++ b/solr/src/webapp/src/org/apache/solr/client/solrj/embedded/EmbeddedSolrServer.java
+@@ -245,6 +245,7 @@ public class EmbeddedSolrServer extends SolrServer
+    * 
+    * @deprecated use {@link BinaryResponseWriter#getParsedResponse(SolrQueryRequest, SolrQueryResponse)}
+    */
++  @Deprecated
+   public NamedList<Object> getParsedResponse( SolrQueryRequest req, SolrQueryResponse rsp )
+   {
+     return BinaryResponseWriter.getParsedResponse(req, rsp);

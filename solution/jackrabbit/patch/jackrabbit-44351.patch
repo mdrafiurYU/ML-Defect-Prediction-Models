@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+index 3cdf5a6..d0151b5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+@@ -539,14 +539,15 @@ public class MultiIndex {
+             }
+         } catch (IOException e) {
+             // close readers obtained so far
+-            for (Iterator it = indexReaders.keySet().iterator(); it.hasNext();) {
+-                ReadOnlyIndexReader reader = (ReadOnlyIndexReader) it.next();
++            for (Iterator it = indexReaders.entrySet().iterator(); it.hasNext();) {
++                Map.Entry entry = (Map.Entry) it.next();
++                ReadOnlyIndexReader reader = (ReadOnlyIndexReader) entry.getKey();
+                 try {
+                     reader.close();
+                 } catch (IOException ex) {
+                     log.warn("Exception closing index reader: " + ex);
+                 }
+-                ((PersistentIndex) indexReaders.get(reader)).resetListener();
++                ((PersistentIndex) entry.getValue()).resetListener();
+             }
+             throw e;
+         }

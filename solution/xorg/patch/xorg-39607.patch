@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/xaa/xaaCpyPlane.c b/hw/xfree86/xaa/xaaCpyPlane.c
+index cd9e9d4..a0ebb75 100644
+--- a/hw/xfree86/xaa/xaaCpyPlane.c
++++ b/hw/xfree86/xaa/xaaCpyPlane.c
+@@ -110,12 +110,12 @@ XAACopyPlaneNtoNColorExpand(
+     int Bpp = pSrc->bitsPerPixel >> 3;
+     unsigned long mask = TmpBitPlane;
+ 
+-    if(TmpBitPlane < 8) {
++    if(TmpBitPlane < (1 << 8)) {
+ 	offset = 0;
+-    } else if(TmpBitPlane < 16) {
++    } else if(TmpBitPlane < (1 << 16)) {
+ 	offset = 1;
+ 	mask >>= 8;
+-    } else if(TmpBitPlane < 24) {
++    } else if(TmpBitPlane < (1 << 24)) {
+ 	offset = 2;
+ 	mask >>= 16;
+     } else {

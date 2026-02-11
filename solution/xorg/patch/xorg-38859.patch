@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/compiler.h b/hw/xfree86/common/compiler.h
+index 9e7f821..a20baa3 100644
+--- a/hw/xfree86/common/compiler.h
++++ b/hw/xfree86/common/compiler.h
+@@ -498,7 +498,7 @@ extern unsigned int inb(unsigned long port);
+ extern unsigned int inw(unsigned long port);
+ extern unsigned int inl(unsigned long port);
+  
+-#   elif defined(linux) && (defined(__amd64__) || defined(__x86_64__))
++#   elif defined(linux) && defined(__amd64__)
+  
+ #    include <inttypes.h>
+ 

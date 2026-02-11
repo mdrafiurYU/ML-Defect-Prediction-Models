@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java
+index 6bbb25c..d03fdbc 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexerRequestor.java
+@@ -81,9 +81,9 @@ public void acceptPackage(int declarationStart, int declarationEnd, char[] name)
+ 	this.packageName = name;
+ }
+ /**
+- * @see ISourceElementRequestor#acceptProblem(IProblem)
++ * @see ISourceElementRequestor#acceptProblem(CategorizedProblem)
+  */
+-public void acceptProblem(IProblem problem) {
++public void acceptProblem(CategorizedProblem problem) {
+ 	// implements interface method
+ }
+ /**

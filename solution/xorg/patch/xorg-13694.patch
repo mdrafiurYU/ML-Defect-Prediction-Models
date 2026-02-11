@@ -1,0 +1,86 @@
+diff --git a/hw/kdrive/i810/i810.h b/hw/kdrive/i810/i810.h
+index bb8091f..5d1a0db 100644
+--- a/hw/kdrive/i810/i810.h
++++ b/hw/kdrive/i810/i810.h
+@@ -122,11 +122,14 @@ typedef struct {
+    ErrorF("BEGIN_LP_RING %d in %s:%d\n", n, __FILE__, __LINE__)
+ #endif
+ 
+-#define BEGIN_LP_RING(n)						\
++#define LP_RING_LOCALS \
+    unsigned int outring, ringmask;					\
+-   volatile unsigned char *virt;							\
+-   if (n>2 && (I810_DEBUG&DEBUG_ALWAYS_SYNC)) i810Sync( screen );	\
+-   if (i810c->LpRing.space < n*4) i810WaitLpRing( screen, n*4, 0);	\
++    volatile unsigned char *virt
++
++#define BEGIN_LP_RING(n)						\
++    if (n>2 && (I810_DEBUG&DEBUG_ALWAYS_SYNC))				\
++	i810Sync(i810s);	\
++    if (i810c->LpRing.space < n*4) i810WaitLpRing(i810s, n*4, 0);	\
+    i810c->LpRing.space -= n*4;						\
+    if (I810_DEBUG & DEBUG_VERBOSE_RING) 				\
+       LP_RING_MESSAGE(n);						\
+@@ -193,6 +196,7 @@ extern int I810_DEBUG;
+ #define PCI_CHIP_I810_DC100_BRIDGE 0x7122
+ #define PCI_CHIP_I810_E_BRIDGE     0x7124
+ #define PCI_CHIP_I815_BRIDGE       0x1130
++#define PCI_CHIP_I845G             0x2562
+ #endif
+ 
+ 
+@@ -286,8 +290,6 @@ typedef struct _i810CardInfo {
+     unsigned long OverlayStart;
+     int colorKey;
+ 
+-    Bool NeedToSync; /* Need to sync accel stuff */
+-
+     int nextColorExpandBuf;
+ 
+     ScreenBlockHandlerProcPtr BlockHandler;
+@@ -296,7 +298,9 @@ typedef struct _i810CardInfo {
+     KdVideoAdaptorPtr adaptor;
+ #endif
+ 
+-} I810CardInfo;
++} i810CardInfo;
++
++typedef struct _i810CardInfo I810CardInfo;	/* compatibility */
+ 
+ #define getI810CardInfo(kd)	((I810CardInfo *) ((kd)->card->driver))
+ #define i810CardInfo(kd)	I810CardInfo *i810c = getI810CardInfo(kd)
+@@ -312,8 +316,14 @@ typedef struct _i810Cursor {
+ } i810Cursor, *i810CursorPtr;
+ 
+ typedef struct _i810ScreenInfo {
++    i810CardInfo *i810c;
+     i810Cursor cursor;
+-} I810ScreenInfo;
++
++    int pitch;
++    KaaScreenInfoRec kaa;
++} i810ScreenInfo;
++
++typedef struct _i810ScreenInfo I810ScreenInfo;	/* compatibility */
+ 
+ #define I810_CURSOR_HEIGHT 64
+ #define I810_CURSOR_WIDTH 64
+@@ -349,9 +359,6 @@ void
+ i810EnableAccel (ScreenPtr);
+ 
+ void	
+-i810SyncAccel (ScreenPtr);
+-
+-void        
+ i810DisableAccel (ScreenPtr);
+ 
+ void        
+@@ -423,7 +430,7 @@ void
+ i810VGASave(KdCardInfo *card, vgaRegPtr save, int flags);
+ 
+ void 
+-i810PrintErrorState(KdCardInfo *card);
++i810PrintErrorState(i810CardInfo *i810c);
+ 
+ void
+ i810VGAGetIOBase(i810VGAPtr vgap);

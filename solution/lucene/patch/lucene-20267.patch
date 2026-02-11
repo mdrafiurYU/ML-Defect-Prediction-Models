@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestDocTermOrds.java b/lucene/src/test/org/apache/lucene/index/TestDocTermOrds.java
+index fc77177..beeafd0 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestDocTermOrds.java
++++ b/lucene/src/test/org/apache/lucene/index/TestDocTermOrds.java
+@@ -60,7 +60,7 @@ public class TestDocTermOrds extends LuceneTestCase {
+ 
+   public void testSimple() throws Exception {
+     Directory dir = newDirectory();
+-    final RandomIndexWriter w = new RandomIndexWriter(random, dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newInOrderLogMergePolicy()));
++    final RandomIndexWriter w = new RandomIndexWriter(random, dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
+     Document doc = new Document();
+     Field field = newField("field", "", Field.Index.ANALYZED);
+     doc.add(field);

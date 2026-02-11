@@ -1,0 +1,15 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index a26933d..523a76f 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -192,6 +192,10 @@ typedef struct {
+      * damage, which may be overreported) of a pixmap's system and FB copies.
+      */
+     RegionRec	    validSys, validFB;
++    /**
++     * Driver private storage per EXA pixmap
++     */
++    void *driverPriv;
+ } ExaPixmapPrivRec, *ExaPixmapPrivPtr;
+  
+ typedef struct _ExaMigrationRec {

@@ -1,0 +1,23 @@
+diff --git a/hw/xquartz/quartz.c b/hw/xquartz/quartz.c
+index 2cba5df..0635b48 100644
+--- a/hw/xquartz/quartz.c
++++ b/hw/xquartz/quartz.c
+@@ -39,7 +39,6 @@
+ #include "quartz.h"
+ #include "darwin.h"
+ #include "darwinEvents.h"
+-#include "quartzAudio.h"
+ #include "pseudoramiX.h"
+ #define _APPLEWM_SERVER_
+ #include "applewmExt.h"
+@@ -156,10 +155,6 @@ void QuartzInitOutput(
+     int argc,
+     char **argv )
+ {
+-    if (serverGeneration == 1) {
+-        QuartzAudioInit();
+-    }
+-
+     if (!RegisterBlockAndWakeupHandlers(QuartzBlockHandler,
+                                         QuartzWakeupHandler,
+                                         NULL))

@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index f8f3577..5be0841 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -611,6 +611,7 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+     InputDriverPtr drv;
+     IDevRec *idev;
+     IDevPtr *it;
++    Bool isMaster = pDev->isMaster;
+ 
+     if (pInfo) /* need to get these before RemoveDevice */
+     {
+@@ -621,7 +622,7 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+     OsBlockSignals();
+     RemoveDevice(pDev);
+ 
+-    if (!pDev->isMaster)
++    if (!isMaster)
+     {
+         if(drv->UnInit)
+             drv->UnInit(drv, pInfo, 0);

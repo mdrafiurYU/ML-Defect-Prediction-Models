@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTopDocsMerge.java b/lucene/src/test/org/apache/lucene/search/TestTopDocsMerge.java
+index 906a9da..7c459f7 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTopDocsMerge.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTopDocsMerge.java
+@@ -197,7 +197,7 @@ public class TestTopDocsMerge extends LuceneTestCase {
+       }
+ 
+       // ... then all shards:
+-      final Weight w = query.weight(searcher);
++      final Weight w = searcher.createNormalizedWeight(query);
+ 
+       final TopDocs[] shardHits = new TopDocs[subSearchers.length];
+       for(int shardIDX=0;shardIDX<subSearchers.length;shardIDX++) {

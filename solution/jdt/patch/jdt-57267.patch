@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+index c84d53e..fc579dc 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+@@ -27947,4 +27947,19 @@ public void _test904() {
+ 			},
+ 		"");
+ }
++
++// array in super bound
++public void test905() {
++	this.runConformTest(
++		new String[] {
++			"X.java",
++			"import java.util.List;\n" + 
++			" \n" + 
++			"class X {\n" + 
++			"    void foo(List<? super Object[]> p) {\n" + 
++			"        p.add(new Object[0]);\n" + 
++			"    }\n" + 
++			"}"},
++		"");
++}
+ }

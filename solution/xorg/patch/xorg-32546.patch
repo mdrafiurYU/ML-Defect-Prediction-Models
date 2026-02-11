@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dixmods/glxmodule.c b/hw/xfree86/dixmods/glxmodule.c
+index 847f0d4..0ff867d 100644
+--- a/hw/xfree86/dixmods/glxmodule.c
++++ b/hw/xfree86/dixmods/glxmodule.c
+@@ -45,7 +45,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ static MODULESETUPPROTO(glxSetup);
+ 
+-static const char *initdeps[] = { "DOUBLE-BUFFER", NULL };
++static const char *initdeps[] = { "DOUBLE-BUFFER", "COMPOSITE", NULL };
+ 
+ static ExtensionModule GLXExt =
+ {

@@ -1,0 +1,15 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataConfig.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataConfig.java
+index 5a13802..f548ff6 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataConfig.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataConfig.java
+@@ -175,6 +175,10 @@ public class DataConfig {
+     public String getPk(){
+       return pk == null ? pkMappingFromSchema : pk;
+     }
++
++    public String getSchemaPk(){
++      return pkMappingFromSchema != null ? pkMappingFromSchema : pk;
++    }
+   }
+ 
+   public static class Script {

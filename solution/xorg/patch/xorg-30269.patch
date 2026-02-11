@@ -1,0 +1,15 @@
+diff --git a/composite/compext.c b/composite/compext.c
+index 9cf6bfe..944f8d8 100644
+--- a/composite/compext.c
++++ b/composite/compext.c
+@@ -138,10 +138,6 @@ ProcCompositeQueryVersion (ClientPtr client)
+ 	rep.minorVersion = stuff->minorVersion;
+     } else {
+ 	rep.majorVersion = SERVER_COMPOSITE_MAJOR;
+-	if (stuff->majorVersion == SERVER_COMPOSITE_MAJOR && 
+-	    stuff->minorVersion < SERVER_COMPOSITE_MINOR)
+-	    rep.minorVersion = stuff->minorVersion;
+-	else
+ 	    rep.minorVersion = SERVER_COMPOSITE_MINOR;
+     }
+     pCompositeClient->major_version = rep.majorVersion;

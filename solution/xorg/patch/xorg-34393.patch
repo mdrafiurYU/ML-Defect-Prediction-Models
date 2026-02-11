@@ -1,0 +1,12 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 919bcda..577e17c 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -148,6 +148,7 @@ int ProcInitialConnection();
+ #endif
+ 
+ #ifdef XSERVER_DTRACE
++#include "registry.h"
+ #include "Xserver-dtrace.h"
+ #endif
+ 

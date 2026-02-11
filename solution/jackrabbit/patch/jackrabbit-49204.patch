@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index fc1f836..35fc959 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -1223,7 +1223,7 @@ public class SessionImpl extends AbstractSession
+     public ValueFactory getValueFactory()
+             throws UnsupportedRepositoryOperationException, RepositoryException {
+         if (valueFactory == null) {
+-            valueFactory = new ValueFactoryImpl(this);
++            valueFactory = new ValueFactoryImpl(this, rep.getDataStore());
+         }
+         return valueFactory;
+     }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordIterator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordIterator.java
+index 1dc2d5f..e0221a0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordIterator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRecordIterator.java
+@@ -27,7 +27,7 @@ import java.util.NoSuchElementException;
+  * Record cursor that returns unseen revisions in ascending order on every
+  * iteration.
+  */
+-class FileRecordIterator implements RecordIterator {
++public class FileRecordIterator implements RecordIterator {
+ 
+     /**
+      * Log files to scan for revisions.

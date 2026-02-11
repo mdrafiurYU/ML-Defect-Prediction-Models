@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/ramdac/xf86HWCurs.c b/hw/xfree86/ramdac/xf86HWCurs.c
+index 91caea0..b76b800 100644
+--- a/hw/xfree86/ramdac/xf86HWCurs.c
++++ b/hw/xfree86/ramdac/xf86HWCurs.c
+@@ -73,6 +73,13 @@ static unsigned char* RealizeCursorInterleave64(xf86CursorInfoPtr, CursorPtr);
+ Bool
+ xf86InitHardwareCursor(ScreenPtr pScreen, xf86CursorInfoPtr infoPtr)
+ {
++
++#ifdef MPX
++    /* Graphics cards cannot render multiple cursors in hardware. We have to
++       software render them. */
++    return FALSE;
++#endif
++
+     if ((infoPtr->MaxWidth <= 0) || (infoPtr->MaxHeight <= 0))
+ 	return FALSE;
+ 

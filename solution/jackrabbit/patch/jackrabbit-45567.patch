@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
+index 9738b53..49ca1aa 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
+@@ -239,7 +239,7 @@ class EventConsumer {
+         }
+         // check if filtered iterator has at least one event
+         EventIterator it = new FilteredEventIterator(events.iterator(),
+-                events.getTimestamp(), filter, denied);
++                events.getTimestamp(), events.getUserData(), filter, denied);
+         if (it.hasNext()) {
+             listener.onEvent(it);
+         } else {

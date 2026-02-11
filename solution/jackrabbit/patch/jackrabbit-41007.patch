@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRevision.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRevision.java
+index 87989f3..13c700f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRevision.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/FileRevision.java
+@@ -26,7 +26,7 @@ import java.io.RandomAccessFile;
+ /**
+  * Maintains a file-based revision counter with locking, assuring uniqueness.
+  */
+-public class FileRevision {
++public class FileRevision implements InstanceRevision {
+ 
+     /**
+      * Logger.

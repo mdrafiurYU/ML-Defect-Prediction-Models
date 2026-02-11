@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemManager.java
+index 874ace8..cbb99a1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemManager.java
+@@ -155,7 +155,7 @@ public class ItemManager implements Dumpable, ItemStateListener {
+ 
+             // fallback: try finding applicable definition
+             NodeImpl parent = (NodeImpl) getItem(state.getParentId());
+-            NodeState parentState = (NodeState) parent.getItemState();
++            NodeState parentState = parent.getNodeState();
+             ChildNodeEntry cne = parentState.getChildNodeEntry(state.getNodeId());
+             def = parent.getApplicableChildNodeDefinition(cne.getName(), state.getNodeTypeName());
+             state.setDefinitionId(def.unwrap().getId());

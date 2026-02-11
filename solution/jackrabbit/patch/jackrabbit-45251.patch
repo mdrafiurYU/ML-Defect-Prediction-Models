@@ -1,0 +1,107 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+index a5f73d6..3a7c074 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+@@ -43,6 +43,11 @@ import org.apache.jackrabbit.spi.Path;
+ public class ChangeLogRecord extends ClusterRecord {
+ 
+     /**
++     * Identifier: DATE
++     */
++    static final char DATE_IDENTIFIER = 'D';
++
++    /**
+      * Identifier: NODE.
+      */
+     static final char NODE_IDENTIFIER = 'N';
+@@ -78,6 +83,11 @@ public class ChangeLogRecord extends ClusterRecord {
+     private ChangeLog changes;
+ 
+     /**
++     * The time when the changes happened. Milliseconds since January 1 1970 UTC.
++     */
++    private long timestamp = System.currentTimeMillis();
++
++    /**
+      * List of <code>EventState</code>s.
+      */
+     private List events;
+@@ -96,7 +106,7 @@ public class ChangeLogRecord extends ClusterRecord {
+      * Create a new instance of this class. Used when serializing.
+      *
+      * @param changes changes
+-     * @param list of <code>EventState</code>s
++     * @param events list of <code>EventState</code>s
+      * @param record record
+      * @param workspace workspace
+      */
+@@ -131,6 +141,9 @@ public class ChangeLogRecord extends ClusterRecord {
+ 
+         while (identifier != END_MARKER) {
+             switch (identifier) {
++            case DATE_IDENTIFIER:
++                readTimestampRecord();
++                break;
+             case NODE_IDENTIFIER:
+                 readNodeRecord();
+                 break;
+@@ -158,6 +171,15 @@ public class ChangeLogRecord extends ClusterRecord {
+     }
+ 
+     /**
++     * Reads the timestamp record.
++     *
++     * @throws JournalException if an error occurs.
++     */
++    private void readTimestampRecord() throws JournalException {
++        timestamp = record.readLong();
++    }
++
++    /**
+      * Read a node record.
+      *
+      * @throws JournalException if an error occurs
+@@ -288,6 +310,7 @@ public class ChangeLogRecord extends ClusterRecord {
+      * {@inheritDoc}
+      */
+     protected void doWrite() throws JournalException {
++        writeTimestampRecord();
+         Iterator deletedStates = changes.deletedStates();
+         while (deletedStates.hasNext()) {
+             ItemState state = (ItemState) deletedStates.next();
+@@ -324,6 +347,16 @@ public class ChangeLogRecord extends ClusterRecord {
+     }
+ 
+     /**
++     * Writes the timestamp record.
++     *
++     * @throws JournalException if an error occurs.
++     */
++    private void writeTimestampRecord() throws JournalException {
++        record.writeChar(DATE_IDENTIFIER);
++        record.writeLong(timestamp);
++    }
++
++    /**
+      * Write a node record
+      *
+      * @param operation operation
+@@ -397,9 +430,17 @@ public class ChangeLogRecord extends ClusterRecord {
+      * Return the events.
+      *
+      * @return events
+-     * @return
+      */
+     public List getEvents() {
+         return Collections.unmodifiableList(events);
+     }
++
++    /**
++     * Returns the timestamp.
++     *
++     * @return the timestamp.
++     */
++    public long getTimestamp() {
++        return timestamp;
++    }
+ }

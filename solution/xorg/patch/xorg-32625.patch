@@ -1,0 +1,14 @@
+diff --git a/afb/afb.h b/afb/afb.h
+index 943c2c6..769e450 100644
+--- a/afb/afb.h
++++ b/afb/afb.h
+@@ -483,7 +483,8 @@ extern PixmapPtr afbCreatePixmap(
+ 	ScreenPtr /*pScreen*/,
+ 	int /*width*/,
+ 	int /*height*/,
+-	int /*depth*/
++	int /*depth*/,
++	unsigned /*usage_hint*/
+ );
+ 
+ extern Bool afbDestroyPixmap(

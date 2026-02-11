@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winwin32rootlesswindow.c b/hw/xwin/winwin32rootlesswindow.c
+index 8c34343..693d5cd 100755
+--- a/hw/xwin/winwin32rootlesswindow.c
++++ b/hw/xwin/winwin32rootlesswindow.c
+@@ -30,6 +30,9 @@
+  *		Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include "winprefs.h"
+ 

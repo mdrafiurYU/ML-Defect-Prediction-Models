@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/automaton/AutomatonTestUtil.java b/lucene/src/test-framework/org/apache/lucene/util/automaton/AutomatonTestUtil.java
+index 6b9ef6e..69704f0 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/automaton/AutomatonTestUtil.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/automaton/AutomatonTestUtil.java
+@@ -80,9 +80,9 @@ public class AutomatonTestUtil {
+     return new String(buffer, 0, end);
+   }
+   
+-  // picks a random int code point, avoiding surrogates;
+-  // throws IllegalArgumentException if this transition only
+-  // accepts surrogates
++  /** picks a random int code point, avoiding surrogates;
++   * throws IllegalArgumentException if this transition only
++   * accepts surrogates */
+   private static int getRandomCodePoint(final Random r, final Transition t) {
+     final int code;
+     if (t.max < UnicodeUtil.UNI_SUR_HIGH_START ||

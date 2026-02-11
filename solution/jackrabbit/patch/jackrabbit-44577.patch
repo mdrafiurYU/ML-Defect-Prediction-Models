@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java
+index ee36ad6..f476376 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java
+@@ -86,7 +86,7 @@ public class XALockManager implements LockManager, InternalXAResource {
+             info = lockMgr.getLockInfo(node.getNodeId());
+         }
+         if (info == null) {
+-            throw new LockException("Node not locked: " + node.safeGetJCRPath());
++            throw new LockException("Node not locked: " + node);
+         }
+         SessionImpl session = (SessionImpl) node.getSession();
+         NodeImpl holder = (NodeImpl) session.getItemManager().getItem(info.getId());

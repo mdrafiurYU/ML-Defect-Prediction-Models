@@ -1,0 +1,37 @@
+diff --git a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/XMLTextExtractor.java b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/XMLTextExtractor.java
+index 1127c3a..83c63a8 100644
+--- a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/XMLTextExtractor.java
++++ b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/XMLTextExtractor.java
+@@ -28,6 +28,8 @@ import javax.xml.parsers.ParserConfigurationException;
+ import javax.xml.parsers.SAXParser;
+ import javax.xml.parsers.SAXParserFactory;
+ 
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ import org.xml.sax.InputSource;
+ import org.xml.sax.SAXException;
+ import org.xml.sax.XMLReader;
+@@ -45,6 +47,12 @@ import org.xml.sax.XMLReader;
+ public class XMLTextExtractor extends AbstractTextExtractor {
+ 
+     /**
++     * Logger instance.
++     */
++    private static final Logger logger =
++        LoggerFactory.getLogger(XMLTextExtractor.class);
++
++    /**
+      * Creates a new <code>XMLTextExtractor</code> instance.
+      */
+     public XMLTextExtractor() {
+@@ -93,8 +101,10 @@ public class XMLTextExtractor extends AbstractTextExtractor {
+ 
+             return new CharArrayReader(writer.toCharArray());
+         } catch (ParserConfigurationException e) {
++            logger.warn("Failed to extract XML text content", e);
+             return new StringReader("");
+         } catch (SAXException e) {
++            logger.warn("Failed to extract XML text content", e);
+             return new StringReader("");
+         } finally {
+             stream.close();

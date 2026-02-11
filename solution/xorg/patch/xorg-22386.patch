@@ -1,0 +1,15 @@
+diff --git a/mi/mipolycon.c b/mi/mipolycon.c
+index de33045..10c43a7 100644
+--- a/mi/mipolycon.c
++++ b/mi/mipolycon.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $Xorg: mipolycon.c,v 1.4 2001/02/09 02:05:21 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "gcstruct.h"
+ #include "pixmap.h"
+ #include "mi.h"

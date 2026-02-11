@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/BaseProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/BaseProcessor.java
+index fd1440a..56799ba 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/BaseProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/BaseProcessor.java
+@@ -30,6 +30,21 @@ public abstract class BaseProcessor implements AnnotationProcessor {
+ 		}
+ 	}
+ 	
++	protected void assertEqual(final Object expected, final Object actual, final String message) {
++		if( expected == null ){
++			final Messager msgr = _env.getMessager();
++			msgr.printError(message + " actual: " + actual );
++		}
++		else if( actual == null ){
++			final Messager msgr = _env.getMessager();
++			msgr.printError(message + "expected " + expected );
++		}
++		else if( !expected.equals(actual) ){
++			final Messager msgr = _env.getMessager();
++			msgr.printError(message + " expected: " + expected + " actual: " + actual );
++		}
++	}
++	
+ 	protected void assertEqual(final String expected, final String actual, final String message){
+ 		if( expected == null ){
+ 			final Messager msgr = _env.getMessager();

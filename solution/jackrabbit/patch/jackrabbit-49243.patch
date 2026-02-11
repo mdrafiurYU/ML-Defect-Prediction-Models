@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+index 5f803b2..a0262a8 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+@@ -1040,6 +1040,16 @@ public class RepositoryServiceImpl implements RepositoryService {
+                 sInfo.getNamePathResolver(), getQValueFactory());
+     }
+ 
++    public QueryInfo executeQuery(SessionInfo sessionInfo, String statement, String language, Map namespaces, long limit, long offset) throws RepositoryException {
++        SessionInfoImpl sInfo = getSessionInfoImpl(sessionInfo);
++        Query query = createQuery(sInfo.getSession(), statement,
++                language, namespaces);
++        query.setLimit(limit);
++        query.setOffset(offset);
++        return new QueryInfoImpl(query.execute(), idFactory,
++                sInfo.getNamePathResolver(), getQValueFactory());
++    }
++
+     /**
+      * {@inheritDoc}
+      */

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index 6c3c095..4ca7dfc 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -133,8 +133,6 @@ void xf86DeallocateResourcesForEntity(int entityIndex, unsigned long type);
+ resPtr xf86RegisterResources(int entityIndex, resList list,
+ 			     unsigned long Access);
+ Bool xf86CheckPciMemBase(struct pci_device * pPci, memType base);
+-void xf86SetAccessFuncs(EntityInfoPtr pEnt, xf86SetAccessFuncPtr funcs,
+-			xf86SetAccessFuncPtr oldFuncs);
+ Bool xf86IsEntityPrimary(int entityIndex);
+ resPtr xf86ReallocatePciResources(int entityIndex, resPtr pRes);
+ resPtr xf86SetOperatingState(resList list, int entityIndex, int mask);

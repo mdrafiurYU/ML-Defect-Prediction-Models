@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java
+index 3a0c20f..c9535b2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java
+@@ -203,7 +203,9 @@ public abstract class ItemState implements Serializable {
+      */
+     protected void reconnect() {
+         if (this.overlayedState == null) {
+-            throw new IllegalStateException("Item state cannot be reconnected because there's no underlying state to reconnect to: " + this);
++            throw new IllegalStateException(
++                    "Item state cannot be reconnected because there's no"
++                    + " underlying state to reconnect to: " + this);
+         }
+     }

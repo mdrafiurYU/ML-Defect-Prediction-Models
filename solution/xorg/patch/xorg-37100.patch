@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Globals.c b/hw/xfree86/common/xf86Globals.c
+index 0dc42c6..14bef39 100644
+--- a/hw/xfree86/common/xf86Globals.c
++++ b/hw/xfree86/common/xf86Globals.c
+@@ -100,9 +100,7 @@ xf86InfoRec xf86Info = {
+ 	FALSE,		/* vtSysreq */
+ 	SKWhenNeeded,	/* ddxSpecialKeys */
+ 	NULL,		/* pMouse */
+-#ifdef XINPUT
+ 	NULL,		/* mouseLocal */
+-#endif
+ 	-1,		/* lastEventTime */
+ 	FALSE,		/* vtRequestsPending */
+ 	FALSE,		/* inputPending */

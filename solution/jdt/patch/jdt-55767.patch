@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+index 5227956..8fe105b 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+@@ -433,7 +433,7 @@ public TypeBinding resolveType(BlockScope scope) {
+ 		}
+ 		// abstract private methods cannot occur nor abstract static............
+ 	}
+-	if (isMethodUseDeprecated(binding, scope))
++	if (isMethodUseDeprecated(binding, scope, true))
+ 		scope.problemReporter().deprecatedMethod(binding, this);
+ 
+ 	// from 1.5 compliance on, array#clone() returns the array type (but binding still shows Object)

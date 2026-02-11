@@ -1,0 +1,15 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index d946e7d..c2f687a 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -128,7 +128,9 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+         if (oldtail == miEventQueue.head ||
+             !(lastkbp->type == DeviceMotionNotify ||
+               lastkbp->type == DeviceButtonPress ||
+-              lastkbp->type == DeviceButtonRelease) ||
++              lastkbp->type == DeviceButtonRelease ||
++              lastkbp->type == ProximityIn ||
++              lastkbp->type == ProximityOut) ||
+             ((lastkbp->deviceid & DEVICE_BITS) !=
+              (v->deviceid & DEVICE_BITS))) {
+             ErrorF("mieqEnequeue: out-of-order valuator event; dropping.\n");

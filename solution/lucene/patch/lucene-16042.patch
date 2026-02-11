@@ -1,0 +1,30 @@
+diff --git a/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java b/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java
+index 66f353e..257aef3 100644
+--- a/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java
++++ b/solr/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java
+@@ -40,6 +40,10 @@ public class SpellCheckComponentTest extends SolrTestCaseJ4 {
+   @BeforeClass
+   public static void beforeClass() throws Exception {
+     initCore("solrconfig-spellcheckcomponent.xml","schema.xml");
++  }
++  
++  public void setUp() throws Exception {
++    super.setUp();
+     assertU(adoc("id", "0", "lowerfilt", "This is a title"));
+     assertU((adoc("id", "1", "lowerfilt",
+             "The quick reb fox jumped over the lazy brown dogs.")));
+@@ -55,6 +59,14 @@ public class SpellCheckComponentTest extends SolrTestCaseJ4 {
+     assertU((commit()));
+   }
+   
++  public void tearDown() throws Exception {
++    super.tearDown();
++    assertU(delQ("*:*"));
++    optimize();
++    assertU((commit()));
++
++  }
++  
+   @Test
+   public void testExtendedResultsCount() throws Exception {
+     assertJQ(req("qt",rh, SpellCheckComponent.COMPONENT_NAME, "true", SpellCheckComponent.SPELLCHECK_BUILD, "true", "q","bluo", SpellCheckComponent.SPELLCHECK_COUNT,"5", SpellCheckComponent.SPELLCHECK_EXTENDED_RESULTS,"false")

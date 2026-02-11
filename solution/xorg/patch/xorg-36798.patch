@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.h b/hw/xfree86/dixmods/extmod/modinit.h
+index 6c87b15..7282e6e 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.h
++++ b/hw/xfree86/dixmods/extmod/modinit.h
+@@ -83,12 +83,6 @@ extern void FontCacheExtensionInit(INITARGS);
+ #include "fontcachstr.h"
+ #endif
+ 
+-#ifdef TOGCUP
+-extern void XcupExtensionInit(INITARGS);
+-#define _XCUP_SERVER_
+-#include <X11/extensions/Xcupstr.h>
+-#endif
+-
+ #ifdef XV
+ extern void XvExtensionInit(INITARGS);
+ extern void XvMCExtensionInit(INITARGS);

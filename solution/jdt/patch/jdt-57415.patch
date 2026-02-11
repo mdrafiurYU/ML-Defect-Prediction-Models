@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+index 5ec8c1f..e5c2641 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+@@ -462,7 +462,7 @@ protected BuildContext[] notifyParticipants(SourceFile[] unitsAboutToCompile) {
+ 				}
+ 				if (!uniqueFiles.includes(sourceFile))
+ 					uniqueFiles.add(sourceFile);
+-					CompilationParticipantResult newResult = new CompilationParticipantResult(sourceFile);
++					CompilationParticipantResult newResult = new BuildContext(sourceFile);
+ 					// is there enough room to add all the addedGeneratedFiles.length ?
+ 					if (toAdd == null) {
+ 						toAdd = new CompilationParticipantResult[addedGeneratedFiles.length];

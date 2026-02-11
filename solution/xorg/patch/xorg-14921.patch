@@ -1,0 +1,53 @@
+diff --git a/fb/fbmmx.c b/fb/fbmmx.c
+index a89359f..da3cda0 100644
+--- a/fb/fbmmx.c
++++ b/fb/fbmmx.c
+@@ -2300,13 +2300,13 @@ enum CPUFeatures {
+     CMOV = 0x10
+ };
+ 
+-static uint detectCPUFeatures(void) {
+-    uint result;
++static unsigned int detectCPUFeatures(void) {
++    unsigned int result;
+     char vendor[13];
+     vendor[0] = 0;
+     vendor[12] = 0;
+     /* see p. 118 of amd64 instruction set manual Vol3 */
+-    asm ("push %%ebx\n"
++    __asm__ ("push %%ebx\n"
+          "pushf\n"
+          "pop %%eax\n"
+          "mov %%eax, %%ebx\n"
+@@ -2337,9 +2337,9 @@ static uint detectCPUFeatures(void) {
+         : "%eax", "%ebx", "%ecx", "%edx"
+         );
+ 
+-    uint features = 0;
++    unsigned int features = 0;
+     if (result) {
+-        // result now contains the standard feature bits
++        /* result now contains the standard feature bits */
+         if (result & (1 << 15))
+             features |= CMOV;
+         if (result & (1 << 23))
+@@ -2351,8 +2351,8 @@ static uint detectCPUFeatures(void) {
+         if ((result & MMX) && !(result & SSE) && (strcmp(vendor, "AuthenticAMD") == 0)) {
+             /* check for AMD MMX extensions */
+ 
+-            uint result;            
+-            asm("mov $0x80000000, %%eax\n"
++            unsigned int result;            
++            __asm__("mov $0x80000000, %%eax\n"
+                 "cpuid\n"
+                 "xor %%edx, %%edx\n"
+                 "cmp $0x1, %%eax\n"
+@@ -2380,7 +2380,7 @@ fbHaveMMX (void)
+     
+     if (!initialized)
+     {
+-        uint features = detectCPUFeatures();
++        unsigned int features = detectCPUFeatures();
+ 	mmx_present = (features & (MMX|MMX_Extensions)) == (MMX|MMX_Extensions);
+         initialized = TRUE;
+     }

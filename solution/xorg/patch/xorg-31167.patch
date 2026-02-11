@@ -1,0 +1,35 @@
+diff --git a/hw/xfree86/common/xf86AutoConfig.c b/hw/xfree86/common/xf86AutoConfig.c
+index 15c2033..f9fba8b 100644
+--- a/hw/xfree86/common/xf86AutoConfig.c
++++ b/hw/xfree86/common/xf86AutoConfig.c
+@@ -213,24 +213,24 @@ xf86AutoConfig(void)
+ {
+     const char **p;
+     char buf[1024];
+-    struct pci_device ** pciptr;
++    struct pci_device_iterator *iter;
+     struct pci_device * info = NULL;
+     char *driver = NULL;
+     ConfigStatus ret;
+ 
+     /* Find the primary device, and get some information about it. */
+-    if (xf86PciVideoInfo) {
+-	for (pciptr = xf86PciVideoInfo; (info = *pciptr); pciptr++) {
++    iter = pci_slot_match_iterator_create(NULL);
++    while ((info = pci_device_next(iter)) != NULL) {
+ 	    if (xf86IsPrimaryPci(info)) {
+ 		break;
+ 	    }
+ 	}
++
++    pci_iterator_destroy(iter);
++
+ 	if (!info) {
+ 	    ErrorF("Primary device is not PCI\n");
+ 	}
+-    } else {
+-	ErrorF("xf86PciVideoInfo is not set\n");
+-    }
+ 
+     if (info)
+ 	driver = videoPtrToDriverName(info);

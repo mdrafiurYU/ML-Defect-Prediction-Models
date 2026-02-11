@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/hi/TestHindiAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/hi/TestHindiAnalyzer.java
+index dcebfc3..343a52b 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/hi/TestHindiAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/hi/TestHindiAnalyzer.java
+@@ -47,4 +47,9 @@ public class TestHindiAnalyzer extends BaseTokenStreamTestCase {
+         HindiAnalyzer.getDefaultStopSet(), exclusionSet);
+     checkOneTermReuse(a, "हिंदी", "हिंदी");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new HindiAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

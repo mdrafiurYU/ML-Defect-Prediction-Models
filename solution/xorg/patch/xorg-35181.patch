@@ -1,0 +1,30 @@
+diff --git a/hw/xquartz/X11Application.h b/hw/xquartz/X11Application.h
+index 8615657..c42e6a5 100644
+--- a/hw/xquartz/X11Application.h
++++ b/hw/xquartz/X11Application.h
+@@ -64,17 +64,15 @@ extern X11Application *X11App;
+ 
+ #endif /* __OBJC__ */
+ 
+-extern void X11ApplicationSetWindowMenu (int nitems, const char **items,
++void X11ApplicationSetWindowMenu (int nitems, const char **items,
+ 					 const char *shortcuts);
+-extern void X11ApplicationSetWindowMenuCheck (int idx);
+-extern void X11ApplicationSetFrontProcess (void);
+-extern void X11ApplicationSetCanQuit (int state);
+-extern void X11ApplicationServerReady (void);
+-extern void X11ApplicationShowHideMenubar (int state);
+-
+-extern void X11ApplicationMain (int argc, const char *argv[],
+-				void (*server_thread) (void *),
+-				void *server_arg);
++void X11ApplicationSetWindowMenuCheck (int idx);
++void X11ApplicationSetFrontProcess (void);
++void X11ApplicationSetCanQuit (int state);
++void X11ApplicationServerReady (void);
++void X11ApplicationShowHideMenubar (int state);
++
++void X11ApplicationMain(int argc, char **argv, void (*server_thread) (void *), void *server_arg);
+ 
+ extern int X11EnableKeyEquivalents;
+ extern int quartzHasRoot, quartzEnableRootless;

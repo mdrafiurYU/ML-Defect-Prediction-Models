@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+index 11fa03e..0955f03 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.jackrabbit.core.value;
+ 
++import org.apache.commons.io.IOUtils;
+ import org.apache.jackrabbit.core.data.DataStore;
+ import org.apache.jackrabbit.core.fs.FileSystemResource;
+ import org.apache.jackrabbit.spi.commons.conversion.MalformedPathException;
+@@ -130,11 +131,7 @@ public class InternalValue {
+                     try {
+                         return createTemporary(stream);
+                     } finally {
+-                        try {
+-                            stream.close();
+-                        } catch (IOException e) {
+-                            // ignore
+-                        }
++                        IOUtils.closeQuietly(stream);
+                     }
+                 }
+             case PropertyType.BOOLEAN:

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventFilter.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventFilter.java
+index 3839bd9..f9bb08e 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventFilter.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventFilter.java
+@@ -31,7 +31,7 @@ public interface EventFilter extends Serializable {
+     /**
+      * If an implementation returns <code>true</code> the <code>event</code>
+      * will be included in the event bundle returned by {@link
+-     * RepositoryService#getEvents(SessionInfo, long, EventFilter[])}. A return
++     * RepositoryService#getEvents(Subscription, long)}. A return
+      * value of <code>false</code> indicates that the client is not interested
+      * in the <code>event</code>.
+      *

@@ -1,0 +1,22 @@
+diff --git a/Xext/dpms.c b/Xext/dpms.c
+index 0723c46..54871c5 100644
+--- a/Xext/dpms.c
++++ b/Xext/dpms.c
+@@ -188,12 +188,15 @@ static int
+ ProcDPMSEnable(client)
+     ClientPtr client;
+ {
+-    /* REQUEST(xDPMSEnableReq); */
++    Bool was_enabled = DPMSEnabled;
+ 
+     REQUEST_SIZE_MATCH(xDPMSEnableReq);
+ 
+-    if (DPMSCapableFlag)
++    if (DPMSCapableFlag) {
+ 	DPMSEnabled = TRUE;
++	if (!was_enabled)
++	    SetScreenSaverTimer();
++    }
+ 
+     return(client->noClientException);
+ }

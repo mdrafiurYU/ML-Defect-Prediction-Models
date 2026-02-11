@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/VersionOperationsTask.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/VersionOperationsTask.java
+index d3dbd98..ca55d4a 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/VersionOperationsTask.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/task/VersionOperationsTask.java
+@@ -26,8 +26,10 @@ import javax.jcr.NodeIterator;
+  */
+ public class VersionOperationsTask extends RandomOperationsTask {
+ 
+-    public VersionOperationsTask(int numLevels, int nodesPerLevel, long end) {
+-        super(new String[]{"mix:versionable"}, numLevels, nodesPerLevel, end);
++    public VersionOperationsTask(int numLevels, int nodesPerLevel,
++                                 int saveInterval, long end) {
++        super(new String[]{"mix:versionable"}, numLevels, nodesPerLevel,
++                saveInterval, end);
+     }
+ 
+     protected Operation getRandomOperations(OperationFactory f,

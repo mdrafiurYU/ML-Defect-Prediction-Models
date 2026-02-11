@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java
+index dc5c576..e7800cb 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractIndexingTest.java
+@@ -43,4 +43,11 @@ public class AbstractIndexingTest extends AbstractQueryTest {
+         testRootNode = null;
+         super.tearDown();
+     }
++
++    /**
++     * @return the query handler inside the {@link #qm query manager}.
++     */
++    protected QueryHandler getQueryHandler() {
++        return ((QueryManagerImpl) qm).getQueryHandler();
++    }
+ }

@@ -1,0 +1,20 @@
+diff --git a/dix/grabs.c b/dix/grabs.c
+index 714fea3..e1dd6c5 100644
+--- a/dix/grabs.c
++++ b/dix/grabs.c
+@@ -91,6 +91,7 @@ CreateGrab(
+ 		      (device == inputInfo.pointer));
+     grab->window = window;
+     grab->eventMask = eventMask;
++    grab->deviceMask = 0;
+     grab->ownerEvents = ownerEvents;
+     grab->keyboardMode = keyboardMode;
+     grab->pointerMode = pointerMode;
+@@ -104,6 +105,7 @@ CreateGrab(
+     grab->detail.pMask = NULL;
+     grab->confineTo = confineTo;
+     grab->cursor = cursor;
++    grab->genericMasks = NULL;
+     if (cursor)
+ 	cursor->refcnt++;
+     return grab;

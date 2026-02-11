@@ -1,0 +1,14 @@
+diff --git a/include/window.h b/include/window.h
+index 4353adf..8c25799 100644
+--- a/include/window.h
++++ b/include/window.h
+@@ -156,8 +156,7 @@ extern _X_EXPORT void GetWindowAttributes(
+     ClientPtr /*client*/,
+     xGetWindowAttributesReply* /* wa */);
+ 
+-extern _X_EXPORT RegionPtr CreateUnclippedWinSize(
+-    WindowPtr /*pWin*/);
++extern RegionPtr CreateUnclippedWinSize(WindowPtr);
+ 
+ extern _X_EXPORT void GravityTranslate(
+     int /*x*/,

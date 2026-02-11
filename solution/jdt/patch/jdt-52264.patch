@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java
+index 89d7bc7..6ce6104 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java
+@@ -196,6 +196,7 @@ public class Assignment extends Expression {
+ 			return this.resolvedType;
+ 		} else if (scope.isBoxingCompatibleWith(rhsType, lhsType) 
+ 							|| (rhsType.isBaseType()  // narrowing then boxing ?
++									&& scope.compilerOptions().sourceLevel >= JDK1_5 // autoboxing
+ 									&& !lhsType.isBaseType()
+ 									&& this.expression.isConstantValueOfTypeAssignableToType(rhsType, scope.environment().computeBoxingType(lhsType)))) {
+ 			this.expression.computeConversion(scope, lhsType, rhsType);

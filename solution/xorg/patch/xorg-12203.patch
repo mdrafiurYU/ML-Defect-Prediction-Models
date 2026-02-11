@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/i2c/xf86i2c.c b/hw/xfree86/i2c/xf86i2c.c
+index 77e3c26..1995196 100644
+--- a/hw/xfree86/i2c/xf86i2c.c
++++ b/hw/xfree86/i2c/xf86i2c.c
+@@ -87,7 +87,7 @@ I2CUDelay(I2CBusPtr b, int usec)
+       d_secs  = (a_secs - b_secs);
+       d_usecs = (a_usecs - b_usecs);
+       diff = d_secs*1000000 + d_usecs;
+-    } while (diff>0 && diff< (usec + 1));
++    } while (diff>=0 && diff< (usec + 1));
+   }
+ }
+ #endif

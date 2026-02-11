@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemManager.java
+index ba3eb21..ac9ffdd 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemManager.java
+@@ -50,7 +50,7 @@ import javax.jcr.Item;
+  * If the parent <code>Session</code> is an <code>XASession</code>, there is
+  * one <code>ItemManager</code> instance per started global transaction.
+  */
+-public interface ItemManager extends ItemLifeCycleListener {
++public interface ItemManager {
+ 
+     /**
+      * Disposes this <code>ItemManager</code> and frees resources.

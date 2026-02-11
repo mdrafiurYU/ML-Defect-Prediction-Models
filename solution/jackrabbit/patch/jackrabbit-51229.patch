@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java
+index 1b68473..9574853 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractMergeTest.java
+@@ -96,7 +96,7 @@ public abstract class AbstractMergeTest extends AbstractJCRTest {
+         }
+ 
+         // initialise a new session on second workspace as superuser
+-        superuserW2 = helper.getSuperuserSession(workspaceName);
++        superuserW2 = getHelper().getSuperuserSession(workspaceName);
+ 
+         workspace = superuser.getWorkspace();
+         workspaceW2 = superuserW2.getWorkspace();

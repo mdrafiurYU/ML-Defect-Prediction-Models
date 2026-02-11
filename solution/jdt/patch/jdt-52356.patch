@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java
+index 5be1919..ba823f6 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/AbstractASTTests.java
+@@ -275,7 +275,15 @@ public class AbstractASTTests extends ModifyingResourceTests {
+ 		contents = markerInfo.source;
+ 
+ 		cu.getBuffer().setContents(contents);
+-		CompilationUnit unit = cu.reconcile(AST.JLS3, false, null, null);
++		CompilationUnit unit;
++		if (cu.isWorkingCopy()) 
++			unit = cu.reconcile(AST.JLS3, false, null, null);
++		else {
++			ASTParser parser = ASTParser.newParser(AST.JLS3);
++			parser.setSource(cu);
++			parser.setResolveBindings(true);
++			unit = (CompilationUnit) parser.createAST(null);
++		}
+ 		
+ 		if (reportErrors) {
+ 			StringBuffer buffer = new StringBuffer();

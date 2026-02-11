@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index db39980..a9ce211 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -171,7 +171,7 @@ xf86ActivateDevice(LocalDevicePtr local)
+         local->dev = dev;      
+         
+         dev->coreEvents = local->flags & XI86_ALWAYS_CORE; 
+-        dev->isMPDev = !(local->flags & XI86_SHARED_POINTER);
++        dev->spriteInfo->spriteOwner = !(local->flags & XI86_SHARED_POINTER);
+ 
+ #ifdef XKB
+         if (!IsPointerDevice(dev))

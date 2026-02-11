@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java
+index 6c5e12d..5904f2c 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java
+@@ -342,11 +342,15 @@ protected int resolveLevel(NameReference nameRef) {
+  */
+ protected int resolveLevelForType(TypeBinding typeBinding) {
+ 	FieldPattern fieldPattern = (FieldPattern) this.pattern;
++	TypeBinding fieldTypeBinding = typeBinding;
++	if (fieldTypeBinding != null && fieldTypeBinding.isParameterizedType()) {
++		fieldTypeBinding = typeBinding.erasure();
++	}
+ 	return resolveLevelForType(
+ 			fieldPattern.typeSimpleName,
+ 			fieldPattern.typeQualification,
+ 			fieldPattern.getTypeArguments(),
+ 			0,
+-			typeBinding);
++			fieldTypeBinding);
+ }
+ }

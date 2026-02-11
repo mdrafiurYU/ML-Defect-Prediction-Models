@@ -1,0 +1,71 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java
+index 52ff10a..c7cc4b9 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java
+@@ -19,14 +19,16 @@ package org.apache.jackrabbit.test.api;
+ import org.apache.jackrabbit.test.AbstractJCRTest;
+ import org.apache.jackrabbit.test.NotExecutableException;
+ 
+-import javax.jcr.Property;
+-import javax.jcr.Value;
+-import javax.jcr.RepositoryException;
+-import javax.jcr.Node;
+ import java.io.ByteArrayInputStream;
+ import java.io.InputStream;
+ import java.io.IOException;
+ 
++import javax.jcr.Binary;
++import javax.jcr.Node;
++import javax.jcr.Property;
++import javax.jcr.RepositoryException;
++import javax.jcr.Value;
++
+ /**
+  * Tests the various {@link Property#setValue(Value)} methods.
+  * <p>
+@@ -113,6 +115,21 @@ public class SetValueBinaryTest extends AbstractJCRTest {
+     }
+ 
+     /**
++     * Test the persistence of a property modified with an BinaryValue parameter
++     * and saved from the Session
++     */
++    public void testBinarySessionJcr2() throws RepositoryException, IOException {
++        property1.setValue(value);
++        superuser.save();
++        InputStream in = property1.getValue().getBinary().getStream();
++        try {
++            compareStream(data, in);
++        } finally {
++            in.close();
++        }
++    }
++
++    /**
+      * Test the persistence of a property modified with an input stream
+      * parameter and saved from the parent Node
+      */
+@@ -133,6 +150,23 @@ public class SetValueBinaryTest extends AbstractJCRTest {
+     }
+ 
+     /**
++     * Test the persistence of a property modified with an input stream
++     * parameter and saved from the parent Node
++     */
++    public void testBinaryParentJcr2() throws RepositoryException, IOException {
++        Binary bin = value.getBinary();
++        property1.setValue(bin);
++        node.save();
++        bin = property1.getValue().getBinary();
++        InputStream in = bin.getStream();
++        try {
++            compareStream(data, in);
++        } finally {
++            in.close();
++        }
++    }
++
++    /**
+      * Test the deletion of a property by assigning it a null value, saved from
+      * the Session
+      */

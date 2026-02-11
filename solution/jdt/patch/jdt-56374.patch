@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ClassFileReader.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ClassFileReader.java
+index 9b1916e..baa1656 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ClassFileReader.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ClassFileReader.java
+@@ -275,6 +275,7 @@ public class ClassFileReader extends ClassFileStruct implements IClassFileReader
+ 		} catch(ClassFormatException e) {
+ 			throw e;
+ 		} catch (Exception e) {
++			e.printStackTrace();
+ 			throw new ClassFormatException(ClassFormatException.ERROR_TRUNCATED_INPUT); 
+ 		}
+ 	}

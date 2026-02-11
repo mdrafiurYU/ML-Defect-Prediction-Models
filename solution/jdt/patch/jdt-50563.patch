@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index 7852354..ef58ead 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -39,7 +39,6 @@ import org.eclipse.jdt.core.compiler.PostReconcileCompilationEvent;
+ import org.eclipse.jdt.core.compiler.PostReconcileCompilationResult;
+ import org.eclipse.jdt.core.compiler.PreBuildCompilationEvent;
+ import org.eclipse.jdt.core.compiler.PreBuildCompilationResult;
+-import org.eclipse.jdt.internal.compiler.env.ICompilationUnit;
+ 
+ import com.sun.mirror.apt.AnnotationProcessorFactory;
+ 
+@@ -56,15 +55,6 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 		_factoryLoader.loadFactoriesFromPlugins();
+         _factories = _factoryLoader.getFactories();
+ 	}
+-	
+-    private String getUnitName( ICompilationUnit sourceUnit )
+-    {
+-    	char[] mainTypeName = sourceUnit.getMainTypeName();
+-    	StringBuffer sb = new StringBuffer( mainTypeName.length + DOT_JAVA.length() );
+-    	sb.append( mainTypeName );
+-    	sb.append( DOT_JAVA );
+-    	return sb.toString();
+-    }
+ 
+ 	public CompilationParticipantResult notify( CompilationParticipantEvent cpe )
+ 	{

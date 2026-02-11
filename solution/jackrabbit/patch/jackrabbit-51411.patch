@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeDefinitionTemplateImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeDefinitionTemplateImpl.java
+index 9bb71a1..b8f3dc4 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeDefinitionTemplateImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeDefinitionTemplateImpl.java
+@@ -102,7 +102,9 @@ class NodeDefinitionTemplateImpl
+      */
+     public void setDefaultPrimaryTypeName(String defaultPrimaryType) throws ConstraintViolationException {
+         try {
+-            this.defaultPrimaryTypeName = resolver.getQName(defaultPrimaryType);
++            this.defaultPrimaryTypeName = defaultPrimaryType == null
++                    ? null
++                    : resolver.getQName(defaultPrimaryType);
+         } catch (RepositoryException e) {
+             throw new ConstraintViolationException(e);
+         }

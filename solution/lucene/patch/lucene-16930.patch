@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+index 313bf73..8c71ad7 100644
+--- a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+@@ -146,7 +146,7 @@ public class PhraseQuery extends Query {
+ 
+     public PhraseWeight(IndexSearcher searcher)
+       throws IOException {
+-      this.similarity = searcher.getSimilarity();
++      this.similarity = searcher.getSimilarityProvider().get(field);
+ 
+       idfExp = similarity.idfExplain(terms, searcher);
+       idf = idfExp.getIdf();

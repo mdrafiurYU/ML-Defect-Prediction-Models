@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetPropertyTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetPropertyTest.java
+index 9fb124b..360ada0 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetPropertyTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetPropertyTest.java
+@@ -62,6 +62,7 @@ public class GetPropertyTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (readOnly != null) {
+             readOnly.logout();
++            readOnly = null;
+         }
+         super.tearDown();
+     }

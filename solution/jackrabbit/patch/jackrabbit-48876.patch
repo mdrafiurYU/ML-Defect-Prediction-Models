@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
+index 9036186..f33c2a8 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
+@@ -933,10 +933,7 @@ public class Parser {
+         }
+         checkLiterals(false);
+         
+-        // TODO createValue(BigDecimal) is not yet implemented
+-        // currentValue = valueFactory.createValue(bd);
+-        currentValue = valueFactory.createValue(bd.doubleValue());
+-        
++        currentValue = valueFactory.createValue(bd);
+         currentTokenType = VALUE;
+     }

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/PMContext.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/PMContext.java
+index 2affa52..7a5772a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/PMContext.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/PMContext.java
+@@ -76,7 +76,7 @@ public class PMContext {
+                      FileSystem fs,
+                      NodeId rootNodeId,
+                      NamespaceRegistry nsReg,
+-                     NodeTypeRegistry ntReg, 
++                     NodeTypeRegistry ntReg,
+                      DataStore dataStore) {
+         this.physicalHomeDir = homeDir;
+         this.fs = fs;
+@@ -128,7 +128,7 @@ public class PMContext {
+     public NodeTypeRegistry getNodeTypeRegistry() {
+         return ntReg;
+     }
+-    
++
+     /**
+      * Returns the data store
+      *

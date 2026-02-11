@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNewestSegment.java b/lucene/src/test/org/apache/lucene/index/TestNewestSegment.java
+index 38c4c55..56ec3f3 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestNewestSegment.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNewestSegment.java
+@@ -24,7 +24,7 @@ import org.apache.lucene.util.LuceneTestCase;
+ public class TestNewestSegment extends LuceneTestCase {
+   public void testNewestSegment() throws Exception {
+     Directory directory = newDirectory();
+-    IndexWriter writer = new IndexWriter(directory, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()));
++    IndexWriter writer = new IndexWriter(directory, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer(random)));
+     assertNull(writer.newestSegment());
+     writer.close();
+     directory.close();

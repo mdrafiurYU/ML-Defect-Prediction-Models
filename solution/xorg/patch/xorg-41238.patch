@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Configure.c b/hw/xfree86/common/xf86Configure.c
+index 7778060..b4ec729 100644
+--- a/hw/xfree86/common/xf86Configure.c
++++ b/hw/xfree86/common/xf86Configure.c
+@@ -771,7 +771,7 @@ DoConfigure(void)
+     xf86config->conf_layout_lst = configureLayoutSection();
+ 
+     home = getenv("HOME");
+-    if ((home == NULL) || (home[0] = '\0')) {
++    if ((home == NULL) || (home[0] == '\0')) {
+     	home = "/";
+     } else {
+ 	/* Determine if trailing slash is present or needed */

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+index 9013b7d..0f974fc 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+@@ -1177,7 +1177,7 @@ public abstract class ItemImpl implements Item {
+                         NodeId newParentId = nodeState.getParentId();
+                         if (oldParentId != null) {
+                             if (newParentId == null) {
+-                                // node has been removed, add old parent
++                                // node has been removed, add old parents
+                                 // to dependencies
+                                 if (overlayedState.isShareable()) {
+                                     dependentIDs.addAll(overlayedState.getSharedSet());

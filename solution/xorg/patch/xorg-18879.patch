@@ -1,0 +1,10 @@
+diff --git a/hw/vfb/InitOutput.c b/hw/vfb/InitOutput.c
+index 630d3e1..be97685 100644
+--- a/hw/vfb/InitOutput.c
++++ b/hw/vfb/InitOutput.c
+@@ -1044,3 +1044,5 @@ InitOutput(ScreenInfo *screenInfo, int argc, char **argv)
+ int SelectWaitTime = 10000; /* usec */
+ #endif
+ 
++void xf86WrapperInit(void);
++void xf86WrapperInit(void) { /* THANKS XFREE86 */ }

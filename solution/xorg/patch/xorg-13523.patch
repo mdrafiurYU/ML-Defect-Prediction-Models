@@ -1,0 +1,12 @@
+diff --git a/dix/main.c b/dix/main.c
+index 41c626c..87ff45a 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -362,6 +362,7 @@ main(int argc, char *argv[], char *envp[])
+ #endif
+ 	ResetColormapPrivates();
+ 	ResetFontPrivateIndex();
++	ResetDevicePrivateIndex();
+ 	InitCallbackManager();
+ 	InitVisualWrap();
+ 	InitOutput(&screenInfo, argc, argv);

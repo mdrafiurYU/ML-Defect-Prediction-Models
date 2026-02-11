@@ -1,0 +1,74 @@
+diff --git a/exa/exa_unaccel.c b/exa/exa_unaccel.c
+index 79c4074..9925f35 100644
+--- a/exa/exa_unaccel.c
++++ b/exa/exa_unaccel.c
+@@ -250,52 +250,6 @@ ExaCheckPaintWindow (WindowPtr pWin, RegionPtr pRegion, int what)
+ }
+ 
+ void
+-ExaCheckCopyWindow (WindowPtr pWin, DDXPointRec ptOldOrg, RegionPtr prgnSrc)
+-{
+-    exaWaitSync (pWin->drawable.pScreen);
+-    exaDrawableDirty ((DrawablePtr)pWin);
+-    fbCopyWindow (pWin, ptOldOrg, prgnSrc);
+-}
+-
+-#if EXA_MAX_FB > 1
+-void
+-ExaCheckPaintKey(DrawablePtr  pDrawable,
+-		RegionPtr    pRegion,
+-		CARD32       pixel,
+-		int          layer)
+-{
+-    exaWaitSync (pDrawable->pScreen);
+-    exaDrawableDirty (pDrawable);
+-    fbOverlayPaintKey (pDrawable,  pRegion, pixel, layer);
+-}
+-
+-void
+-ExaCheckOverlayCopyWindow  (WindowPtr pWin, DDXPointRec ptOldOrg, RegionPtr prgnSrc)
+-{
+-    exaWaitSync (pWin->drawable.pScreen);
+-    exaDrawableDirty ((DrawablePtr)pWin);
+-    fbOverlayCopyWindow (pWin, ptOldOrg, prgnSrc);
+-}
+-#endif
+-
+-void
+-ExaScreenInitAsync (ScreenPtr pScreen)
+-{
+-    pScreen->GetImage = ExaCheckGetImage;
+-    pScreen->GetSpans = ExaCheckGetSpans;
+-    pScreen->PaintWindowBackground = ExaCheckPaintWindow;
+-    pScreen->PaintWindowBorder = ExaCheckPaintWindow;
+-    pScreen->CopyWindow = ExaCheckCopyWindow;
+-    pScreen->BackingStoreFuncs.SaveAreas = ExaCheckSaveAreas;
+-    pScreen->BackingStoreFuncs.RestoreAreas = ExaCheckRestoreAreas;
+-
+-#ifdef RENDER
+-    ExaPictureInitAsync (pScreen);
+-#endif
+-}
+-
+-
+-void
+ ExaCheckComposite (CARD8      op,
+ 		  PicturePtr pSrc,
+ 		  PicturePtr pMask,
+@@ -325,16 +279,6 @@ ExaCheckComposite (CARD8      op,
+ 		 height);
+ }
+ 
+-void
+-ExaPictureInitAsync (ScreenPtr pScreen)
+-{
+-    PictureScreenPtr    ps;
+-
+-    ps = GetPictureScreen(pScreen);
+-    ps->Composite = ExaCheckComposite;
+-}
+-
+-
+ /*
+  * Only need to stall for copyarea/copyplane
+  */

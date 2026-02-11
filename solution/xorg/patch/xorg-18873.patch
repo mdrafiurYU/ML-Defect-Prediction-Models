@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/ppcPci.c b/hw/xfree86/os-support/bus/ppcPci.c
+index 1be10ab..7a438af 100644
+--- a/hw/xfree86/os-support/bus/ppcPci.c
++++ b/hw/xfree86/os-support/bus/ppcPci.c
+@@ -58,6 +58,10 @@
+  * SOFTWARE.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <stdio.h>
+ #include "compiler.h"
+ #include "xf86.h"

@@ -1,0 +1,14 @@
+diff --git a/fb/fbmmx.c b/fb/fbmmx.c
+index db06ea2..d058ffa 100644
+--- a/fb/fbmmx.c
++++ b/fb/fbmmx.c
+@@ -41,7 +41,9 @@
+ #endif
+ 
+ #include <mmintrin.h>
++#ifdef USE_SSE
+ #include <xmmintrin.h> /* for _mm_shuffle_pi16 and _MM_SHUFFLE */
++#endif
+ 
+ #ifdef RENDER
+ 

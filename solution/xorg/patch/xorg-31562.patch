@@ -1,0 +1,14 @@
+diff --git a/miext/damage/damage.h b/miext/damage/damage.h
+index 4cfc812..102da6e 100755
+--- a/miext/damage/damage.h
++++ b/miext/damage/damage.h
+@@ -75,6 +75,9 @@ DamageEmpty (DamagePtr pDamage);
+ RegionPtr
+ DamageRegion (DamagePtr		    pDamage);
+ 
++RegionPtr
++DamagePendingRegion (DamagePtr	    pDamage);
++
+ void
+ DamageDamageRegion (DrawablePtr	    pDrawable,
+ 		    const RegionPtr pRegion);

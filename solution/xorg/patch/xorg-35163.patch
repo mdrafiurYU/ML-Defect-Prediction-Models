@@ -1,0 +1,12 @@
+diff --git a/include/xkbsrv.h b/include/xkbsrv.h
+index 6425e37..bf386e7 100644
+--- a/include/xkbsrv.h
++++ b/include/xkbsrv.h
+@@ -258,6 +258,7 @@ typedef struct
+ 	    device->public.processInputProc = proc; \
+ 	oldprocs->processInputProc = \
+ 	oldprocs->realInputProc = device->public.realInputProc; \
++	if (proc != device->public.enqueueInputProc) \
+ 	device->public.realInputProc = proc; \
+ 	oldprocs->unwrapProc = device->unwrapProc; \
+ 	device->unwrapProc = unwrapproc;

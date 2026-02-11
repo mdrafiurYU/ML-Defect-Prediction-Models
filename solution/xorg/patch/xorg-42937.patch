@@ -1,0 +1,14 @@
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index d85fbd4..bcee26c 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -506,9 +506,6 @@ InitKeyboardDeviceStruct(DeviceIntPtr dev, XkbRMLVOSet *rmlvo,
+ 
+     XkbInitControls(dev, xkbi);
+ 
+-    /* XXX: Doesn't XUCD make this redundant? */
+-    memcpy(dev->key->modifierMap, xkb->map->modmap, xkb->max_key_code + 1);
+-
+     XkbInitIndicatorMap(xkbi);
+ 
+     XkbDDXInitDevice(dev);

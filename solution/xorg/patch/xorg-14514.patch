@@ -1,0 +1,16 @@
+diff --git a/hw/xwin/winscrinit.c b/hw/xwin/winscrinit.c
+index 0c8d23a..a18139c 100644
+--- a/hw/xwin/winscrinit.c
++++ b/hw/xwin/winscrinit.c
+@@ -611,7 +611,10 @@ winFinishScreenInitFB (int index,
+ 		      &pScreenPriv->pmServerStarted,
+ 		      pScreenInfo->dwScreen,
+ 		      (HWND)&pScreenPriv->hwndScreen,
+-		      pScreenInfo->fInternalWM))
++#ifdef XWIN_MULTIWINDOWEXTWM
++		      pScreenInfo->fInternalWM ||
++#endif
++		      FALSE))
+         {
+           ErrorF ("winFinishScreenInitFB - winInitWM () failed.\n");
+           return FALSE;

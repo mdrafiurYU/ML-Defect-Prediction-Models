@@ -1,0 +1,70 @@
+diff --git a/hw/kdrive/ephyr/hostx.c b/hw/kdrive/ephyr/hostx.c
+index fd84ec0..1a71d06 100644
+--- a/hw/kdrive/ephyr/hostx.c
++++ b/hw/kdrive/ephyr/hostx.c
+@@ -107,6 +107,9 @@ extern EphyrKeySyms   ephyrKeySyms;
+ 
+ extern int            monitorResolution;
+ 
++char           *ephyrResName = NULL;
++int             ephyrResNameFromCmd = 0;
++
+ static void
+ hostx_set_fullscreen_hint(void);
+ 
+@@ -296,6 +299,13 @@ hostx_handle_signal (int signum)
+               HostXWantDamageDebug);
+ }
+ 
++void
++hostx_use_resname (char *name, int fromcmd)
++{
++  ephyrResName = name;
++  ephyrResNameFromCmd = fromcmd;
++}
++
+ int
+ hostx_init (void)
+ {
+@@ -304,6 +314,8 @@ hostx_init (void)
+   Pixmap                cursor_pxm;
+   XColor                col;
+   int                   index;
++  char                  *tmpstr;
++  XClassHint            *class_hint;
+ 
+   attr.event_mask =
+     ButtonPressMask
+@@ -327,6 +339,8 @@ hostx_init (void)
+   HostX.depth   = DefaultDepth(HostX.dpy, HostX.screen);
+   HostX.visual  = DefaultVisual(HostX.dpy, HostX.screen);
+ 
++  class_hint = XAllocClassHint();
++
+   for (index = 0 ; index < HostX.n_screens ; index++)
+     {
+       struct EphyrHostScreen *host_screen = &HostX.screens[index];
+@@ -389,9 +403,23 @@ hostx_init (void)
+ 
+               hostx_set_fullscreen_hint();
+             }
++
++          if (class_hint) 
++            {
++              tmpstr = getenv("RESOURCE_NAME");
++              if (tmpstr && (!ephyrResNameFromCmd))
++                ephyrResName = tmpstr;
++              class_hint->res_name = ephyrResName;
++              class_hint->res_class = "Xephyr";
++              XSetClassHint(hostx_get_display(), host_screen->win, class_hint);
++
++            }
++
+         }
+     }
+ 
++  if (class_hint)
++      XFree(class_hint);
+ 
+   XParseColor (HostX.dpy, DefaultColormap (HostX.dpy,HostX.screen),
+                "red", &col);

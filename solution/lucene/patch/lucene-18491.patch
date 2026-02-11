@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/highlight/RegexFragmenter.java b/solr/src/java/org/apache/solr/highlight/RegexFragmenter.java
+index ec18e33..a958d66 100644
+--- a/solr/src/java/org/apache/solr/highlight/RegexFragmenter.java
++++ b/solr/src/java/org/apache/solr/highlight/RegexFragmenter.java
+@@ -54,6 +54,7 @@ public class RegexFragmenter extends HighlightingPluginBase implements SolrFragm
+   protected String defaultPatternRaw;
+   protected Pattern defaultPattern;
+ 
++  @Override
+   public void init(NamedList args) {
+     super.init(args);
+     defaultPatternRaw = LuceneRegexFragmenter.DEFAULT_PATTERN_RAW;

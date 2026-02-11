@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/xf86OSmouse.h b/hw/xfree86/os-support/xf86OSmouse.h
+index 7cb7322..8792629 100644
+--- a/hw/xfree86/os-support/xf86OSmouse.h
++++ b/hw/xfree86/os-support/xf86OSmouse.h
+@@ -28,6 +28,10 @@
+ 
+ /* Public interface to OS-specific mouse support. */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86OSMOUSE_H_
+ #define _XF86OSMOUSE_H_
+ 

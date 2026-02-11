@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+index 02ee10f..01ed13a 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+@@ -15,6 +15,7 @@ import java.io.IOException;
+ import java.io.InputStream;
+ 
+ import org.eclipse.core.runtime.*;
++import org.eclipse.jdt.apt.core.internal.AnnotationProcessorFactoryLoader;
+ import org.eclipse.jdt.apt.core.util.AptConfig;
+ import org.osgi.framework.BundleContext;
+ 
+@@ -39,6 +40,7 @@ public class AptPlugin extends Plugin {
+ 		initDebugTracing();
+ 		checkToolsJar();
+ 		AptConfig.initialize();
++		AnnotationProcessorFactoryLoader.getLoader();
+ 	}
+ 
+ 	/**

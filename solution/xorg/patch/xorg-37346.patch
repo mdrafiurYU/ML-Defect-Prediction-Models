@@ -1,0 +1,35 @@
+diff --git a/GL/glx/glxutil.c b/GL/glx/glxutil.c
+index 11e9f89..aa23a95 100644
+--- a/GL/glx/glxutil.c
++++ b/GL/glx/glxutil.c
+@@ -81,8 +81,8 @@ __glXDeassociateContext(__GLXcontext *glxc)
+     __GLXcontext *curr, *prev;
+ 
+     prev = NULL;
+-    for ( curr = glxc->drawPriv->drawGlxc
+-	  ; curr != NULL
++    if (glxc->drawPriv) {
++        for ( curr = glxc->drawPriv->drawGlxc; curr != NULL
+ 	  ; prev = curr, curr = curr->nextDrawPriv ) {
+ 	if (curr == glxc) {
+ 	    /* found context.  Deassociate. */
+@@ -96,9 +96,10 @@ __glXDeassociateContext(__GLXcontext *glxc)
+ 	    break;
+ 	}
+     }
+-
++    }
+ 
+     prev = NULL;
++    if (glxc->readPriv) {
+     for ( curr = glxc->readPriv->readGlxc
+ 	  ; curr != NULL 
+ 	  ; prev = curr, curr = curr->nextReadPriv ) {
+@@ -115,6 +116,7 @@ __glXDeassociateContext(__GLXcontext *glxc)
+ 	}
+     }
+ }
++}
+ 
+ /*****************************************************************************/
+ /* Drawable private stuff */

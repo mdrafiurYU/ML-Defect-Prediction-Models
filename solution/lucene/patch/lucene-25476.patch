@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
+index e09cf3f..b042eb1 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
+@@ -47,7 +47,7 @@ public class TestIndexWriterOnJRECrash extends TestNRTThreads {
+     tempDir.mkdir();
+   }
+   
+-  @Override
++  @Override @Nightly
+   public void testNRTThreads() throws Exception {
+     String vendor = Constants.JAVA_VENDOR;
+     assumeTrue(vendor + " JRE not supported.",

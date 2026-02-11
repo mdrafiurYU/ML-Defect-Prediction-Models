@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JNDIRepositoryStub.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JNDIRepositoryStub.java
+index 1bed588..be25abb 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JNDIRepositoryStub.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JNDIRepositoryStub.java
+@@ -17,6 +17,9 @@
+ package org.apache.jackrabbit.test;
+ 
+ import javax.jcr.Repository;
++import javax.jcr.RepositoryException;
++import javax.jcr.Session;
++import javax.jcr.retention.RetentionPolicy;
+ import javax.naming.InitialContext;
+ import javax.naming.NamingException;
+ import javax.rmi.PortableRemoteObject;
+@@ -63,4 +66,9 @@ public class JNDIRepositoryStub extends RepositoryStub {
+         return repository;
+     }
+ 
++    public RetentionPolicy getRetentionPolicy(Session session) throws NotExecutableException, RepositoryException {
++        // TODO
++        throw new NotExecutableException("");
++    }
++
+ }

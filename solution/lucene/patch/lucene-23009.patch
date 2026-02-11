@@ -1,0 +1,36 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+index 3f97ac8..d5aced8 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+@@ -228,14 +228,19 @@ final class DocumentsWriter {
+       }
+ 
+       final Iterator<ThreadState> threadsIterator = perThreadPool.getActivePerThreadsIterator();
+-
+       while (threadsIterator.hasNext()) {
+-        ThreadState perThread = threadsIterator.next();
++        final ThreadState perThread = threadsIterator.next();
+         perThread.lock();
+         try {
+           if (perThread.isActive()) { // we might be closed
+-            perThread.perThread.abort();
+-            perThread.perThread.checkAndResetHasAborted();
++            try {
++              perThread.perThread.abort();
++            } catch (IOException ex) {
++              // continue
++            } finally {
++              perThread.perThread.checkAndResetHasAborted();
++              flushControl.doOnAbort(perThread);
++            }
+           } else {
+             assert closed;
+           }
+@@ -243,7 +248,6 @@ final class DocumentsWriter {
+           perThread.unlock();
+         }
+       }
+-
+       success = true;
+     } finally {
+       if (infoStream != null) {

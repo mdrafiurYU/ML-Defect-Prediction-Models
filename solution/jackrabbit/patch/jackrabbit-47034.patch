@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java
+index b57c625..8ee428d 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java
+@@ -154,4 +154,9 @@ public class ValueFactoryImpl implements ValueFactory {
+         throw new UnsupportedOperationException("JCR-1609");
+     }
+ 
++    public Value createValue(Node node, boolean weak)
++            throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1609");
++    }
++
+ }

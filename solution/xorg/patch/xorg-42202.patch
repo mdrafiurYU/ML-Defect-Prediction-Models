@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/write.c b/hw/xfree86/parser/write.c
+index 3b77b93..6b1eac9 100644
+--- a/hw/xfree86/parser/write.c
++++ b/hw/xfree86/parser/write.c
+@@ -137,7 +137,7 @@ doWriteConfigFile (const char *filename, XF86ConfigPtr cptr)
+ 
+ #ifndef HAS_NO_UIDS
+ 
+-int
++_X_EXPORT int
+ xf86writeConfigFile (const char *filename, XF86ConfigPtr cptr)
+ {
+ 	int ret;

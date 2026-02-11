@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestAll.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestAll.java
+index 91682bb..965e01b 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestAll.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestAll.java
+@@ -61,6 +61,6 @@ public class TestAll extends TestCase {
+ 		testClasses.add(ParserTest.class);
+ 		testClasses.add(ComplianceDiagnoseTest.class);
+ 
+-		return AbstractCompilerTest.suite(TestAll.class.getName(), CompilerTestSetup.class, testClasses);
++		return AbstractCompilerTest.buildAllCompliancesSetupSuite(TestAll.class, CompilerTestSetup.class, testClasses);
+ 	}
+ }

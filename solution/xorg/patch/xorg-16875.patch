@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/os2Stub.c b/hw/xnest/os2Stub.c
+index 2e3b7b3..0868b44 100644
+--- a/hw/xnest/os2Stub.c
++++ b/hw/xnest/os2Stub.c
+@@ -33,7 +33,7 @@
+ /* things so it cannot be used as a general select.                             */
+ 
+ #define I_NEED_OS2_H
+-#include "Xpoll.h"
++#include <X11/Xpoll.h>
+ #include <stdio.h>
+ #include <sys/select.h>
+ #include <sys/errno.h>

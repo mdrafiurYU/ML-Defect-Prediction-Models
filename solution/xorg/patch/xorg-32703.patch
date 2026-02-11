@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/fbdev/fbdev.c b/hw/kdrive/fbdev/fbdev.c
+index 6e8b3ff..177be0b 100644
+--- a/hw/kdrive/fbdev/fbdev.c
++++ b/hw/kdrive/fbdev/fbdev.c
+@@ -598,7 +598,7 @@ fbdevCreateColormap (ColormapPtr pmap)
+     case FB_VISUAL_STATIC_PSEUDOCOLOR:
+ 	pVisual = pmap->pVisual;
+ 	nent = pVisual->ColormapEntries;
+-	pdefs = ALLOCATE_LOCAL (nent * sizeof (xColorItem));
++	pdefs = xalloc (nent * sizeof (xColorItem));
+ 	if (!pdefs)
+ 	    return FALSE;
+ 	for (i = 0; i < nent; i++)
+@@ -610,7 +610,7 @@ fbdevCreateColormap (ColormapPtr pmap)
+ 	    pmap->red[i].co.local.green = pdefs[i].green;
+ 	    pmap->red[i].co.local.blue = pdefs[i].blue;
+ 	}
+-	DEALLOCATE_LOCAL (pdefs);
++	xfree (pdefs);
+ 	return TRUE;
+     default:
+ 	return fbInitializeColormap (pmap);

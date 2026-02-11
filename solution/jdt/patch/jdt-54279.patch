@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java
+index 5904f2c..2c58d13 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/FieldLocator.java
+@@ -196,7 +196,7 @@ protected void matchReportReference(ASTNode reference, IJavaElement element, Bin
+ 						break;
+ 					case INACCURATE_MATCH:
+ 						match = locator.newFieldReferenceMatch(element, elementBinding, SearchMatch.A_INACCURATE, -1, -1, reference);
+-						if (fieldBinding.type.isParameterizedType() && this.pattern.hasTypeArguments()) {
++						if (fieldBinding.type != null && fieldBinding.type.isParameterizedType() && this.pattern.hasTypeArguments()) {
+ 							updateMatch((ParameterizedTypeBinding) fieldBinding.type, this.pattern.getTypeArguments(), locator);
+ 						}
+ 						matches[indexOfFirstFieldBinding] = match;

@@ -1,0 +1,29 @@
+diff --git a/solr/src/java/org/apache/solr/search/FieldQParserPlugin.java b/solr/src/java/org/apache/solr/search/FieldQParserPlugin.java
+index d1d9a31..f9dded8 100644
+--- a/solr/src/java/org/apache/solr/search/FieldQParserPlugin.java
++++ b/solr/src/java/org/apache/solr/search/FieldQParserPlugin.java
+@@ -16,24 +16,14 @@
+  */
+ package org.apache.solr.search;
+ 
+-import org.apache.lucene.analysis.Analyzer;
+-import org.apache.lucene.analysis.Token;
+-import org.apache.lucene.analysis.TokenStream;
+-import org.apache.lucene.index.Term;
+ import org.apache.lucene.queryParser.ParseException;
+ import org.apache.lucene.search.*;
+ import org.apache.solr.common.params.SolrParams;
+ import org.apache.solr.common.util.NamedList;
+-import org.apache.solr.common.SolrException;
+ import org.apache.solr.request.SolrQueryRequest;
+ import org.apache.solr.schema.FieldType;
+-import org.apache.solr.schema.TextField;
+ import org.apache.solr.schema.SchemaField;
+ 
+-import java.io.IOException;
+-import java.io.StringReader;
+-import java.util.ArrayList;
+-
+ 
+ /**
+  * Create a field query from the input value, applying text analysis and constructing a phrase query if appropriate.

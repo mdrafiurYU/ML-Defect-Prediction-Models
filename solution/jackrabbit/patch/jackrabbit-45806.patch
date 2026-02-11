@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/server/AbstractWebdavServlet.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/server/AbstractWebdavServlet.java
+index 25c8b8a..cc6cbd8 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/server/AbstractWebdavServlet.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/server/AbstractWebdavServlet.java
+@@ -384,7 +384,7 @@ abstract public class AbstractWebdavServlet extends HttpServlet implements DavCo
+      * @throws IOException
+      */
+     protected void doGet(WebdavRequest request, WebdavResponse response,
+-                         DavResource resource) throws IOException {
++                         DavResource resource) throws IOException, DavException {
+         spoolResource(request, response, resource, true);
+     }

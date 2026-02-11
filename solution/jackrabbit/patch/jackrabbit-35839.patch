@@ -1,0 +1,13 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/RowIteratorImpl.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/RowIteratorImpl.java
+index 7f009f6..5b5c535 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/RowIteratorImpl.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/RowIteratorImpl.java
+@@ -244,7 +244,7 @@ class RowIteratorImpl implements RowIterator {
+                 // create the map first
+                 Map tmp = new HashMap();
+                 for (int i = 0; i < columnNames.length; i++) {
+-                    tmp.put(columnNames[i], Integer.valueOf(i));
++                    tmp.put(columnNames[i], new Integer(i));
+                 }
+                 propertyMap = tmp;
+             }

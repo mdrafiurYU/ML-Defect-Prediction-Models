@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/QParserPlugin.java b/solr/src/java/org/apache/solr/search/QParserPlugin.java
+index 7873c5e..70feed3 100755
+--- a/solr/src/java/org/apache/solr/search/QParserPlugin.java
++++ b/solr/src/java/org/apache/solr/search/QParserPlugin.java
+@@ -40,6 +40,7 @@ public abstract class QParserPlugin implements NamedListInitializedPlugin {
+     FunctionRangeQParserPlugin.NAME, FunctionRangeQParserPlugin.class,
+     SpatialFilterQParserPlugin.NAME, SpatialFilterQParserPlugin.class,
+     SpatialBoxQParserPlugin.NAME, SpatialBoxQParserPlugin.class,
++    JoinQParserPlugin.NAME, JoinQParserPlugin.class,
+   };
+ 
+   /** return a {@link QParser} */

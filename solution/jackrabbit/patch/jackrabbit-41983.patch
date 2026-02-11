@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java
+index 56f8638..af73b15 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java
+@@ -139,7 +139,7 @@ public class NamespaceRegistryTest extends AbstractJCRTest {
+         assertEquals("Namespace URI was not registered.", namespaceUri, nsp.getURI(namespacePrefix));
+ 
+         Item created;
+-        
++
+         try {
+             created = testRootNode.addNode(namespacePrefix + ":root");
+             testRootNode.save();

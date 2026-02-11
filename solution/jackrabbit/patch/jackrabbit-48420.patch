@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
+index cb08350..43c0694 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
+@@ -167,12 +167,20 @@ public class ObservationManagerImpl implements ObservationManager, InternalEvent
+         return new EventListenerIteratorAdapter(activeListeners.keySet());
+     }
+ 
++    /**
++     * @see javax.jcr.observation.ObservationManager#getEventJournal()
++     */
+     public EventJournal getEventJournal() throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1849");
++        // TODO
++        throw new UnsupportedRepositoryOperationException("JCR-2108");
+     }
+ 
++    /**
++     * @see javax.jcr.observation.ObservationManager#setUserData(String) 
++     */
+     public void setUserData(String userData) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1904");
++        // TODO
++        throw new UnsupportedRepositoryOperationException("JCR-2108");
+     }
+ 
+     //-----------------------< InternalEventListener >--------------------------

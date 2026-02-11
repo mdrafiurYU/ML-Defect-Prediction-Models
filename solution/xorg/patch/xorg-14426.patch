@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winclipboardinit.c b/hw/xwin/winclipboardinit.c
+index 01a56cd..6a0cbaf 100644
+--- a/hw/xwin/winclipboardinit.c
++++ b/hw/xwin/winclipboardinit.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "dixstruct.h"
+ #include "winclipboard.h"
+ 

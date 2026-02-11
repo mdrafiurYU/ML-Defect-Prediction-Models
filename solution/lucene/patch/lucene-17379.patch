@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestCodecs.java b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+index c257966..8bd12c9 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestCodecs.java
++++ b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+@@ -362,7 +362,7 @@ public class TestCodecs extends LuceneTestCase {
+ 
+   private ScoreDoc[] search(final IndexWriter writer, final Query q, final int n) throws IOException {
+     final IndexReader reader = writer.getReader();
+-    final IndexSearcher searcher = new IndexSearcher(reader);
++    final IndexSearcher searcher = newSearcher(reader);
+     try {
+       return searcher.search(q, null, n).scoreDocs;
+     }

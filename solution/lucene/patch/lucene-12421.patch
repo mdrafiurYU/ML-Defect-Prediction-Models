@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MultiTermQueryWrapperFilter.java b/lucene/src/java/org/apache/lucene/search/MultiTermQueryWrapperFilter.java
+index 52c6840..f9895e6 100644
+--- a/lucene/src/java/org/apache/lucene/search/MultiTermQueryWrapperFilter.java
++++ b/lucene/src/java/org/apache/lucene/search/MultiTermQueryWrapperFilter.java
+@@ -118,7 +118,7 @@ public class MultiTermQueryWrapperFilter<Q extends MultiTermQuery> extends Filte
+       return DocIdSet.EMPTY_DOCIDSET;
+     }
+ 
+-    final TermsEnum termsEnum = query.getTermsEnum(reader);
++    final TermsEnum termsEnum = query.getTermsEnum(terms);
+     assert termsEnum != null;
+     if (termsEnum.next() != null) {
+       // fill into a OpenBitSet

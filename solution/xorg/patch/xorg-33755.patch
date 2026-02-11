@@ -1,0 +1,13 @@
+diff --git a/hw/darwin/quartz/xpr/xprFrame.c b/hw/darwin/quartz/xpr/xprFrame.c
+index 76c719e..c5b84f0 100644
+--- a/hw/darwin/quartz/xpr/xprFrame.c
++++ b/hw/darwin/quartz/xpr/xprFrame.c
+@@ -337,7 +337,7 @@ xprDamageRects(RootlessFrameID wid, int nrects, const BoxRec *rects,
+ void
+ xprSwitchWindow(RootlessWindowPtr pFrame, WindowPtr oldWin)
+ {
+-    DeleteProperty(oldWin, xa_native_window_id());
++    DeleteProperty(serverClient, oldWin, xa_native_window_id());
+ 
+     xprSetNativeProperty(pFrame);
+ }

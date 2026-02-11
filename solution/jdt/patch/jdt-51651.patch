@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorDeclarationTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorDeclarationTests.java
+index 7f07943..0b45ff8 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorDeclarationTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorDeclarationTests.java
+@@ -64,13 +64,13 @@ public class MirrorDeclarationTests extends Tests {
+ 	
+ 	public static String getProjectName()
+ 	{
+-		return MirrorDeclarationTests.class.getName() + "Project";
++		return MirrorDeclarationTests.class.getName() + "Project"; //$NON-NLS-1$
+ 	}
+ 
+ 	public IPath getSourcePath()
+ 	{
+ 		IProject project = env.getProject( getProjectName() );
+-		IFolder srcFolder = project.getFolder( "src" );
++		IFolder srcFolder = project.getFolder( "src" ); //$NON-NLS-1$
+ 		IPath srcRoot = srcFolder.getFullPath();
+ 		return srcRoot;
+ 	}

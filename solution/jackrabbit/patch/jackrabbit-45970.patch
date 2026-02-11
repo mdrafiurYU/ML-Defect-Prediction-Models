@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+index 58821cb..17e9072 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+@@ -252,7 +252,9 @@ public class NodeTypeManagerImpl implements JackrabbitNodeTypeManager,
+ 
+                     nodeTypeDefs.addAll(reader.getNodeTypeDefs());
+                 } catch (ParseException e) {
+-                    throw new IOException(e.getMessage());
++                    IOException e2 = new IOException(e.getMessage());
++                    e2.initCause(e);
++                    throw e2;
+                 }
+             } else {
+                 throw new UnsupportedRepositoryOperationException(
+@@ -692,7 +694,7 @@ public class NodeTypeManagerImpl implements JackrabbitNodeTypeManager,
+ 
+             return new NodeTypeIteratorAdapter(result);
+         } catch (InvalidNodeTypeDefException e) {
+-            throw new InvalidNodeTypeDefinitionException(e.getMessage());
++            throw new InvalidNodeTypeDefinitionException(e.getMessage(), e);
+         }
+     }

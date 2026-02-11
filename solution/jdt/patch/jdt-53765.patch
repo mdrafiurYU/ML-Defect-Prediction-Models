@@ -1,0 +1,30 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java
+index 0940f30..095ea0e 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java
+@@ -3466,4 +3466,25 @@ public void test101() {
+ 		"----------\n"
+ 	);
+ }
++//https://bugs.eclipse.org/bugs/show_bug.cgi?id=108856
++public void test102() {
++	this.runConformTest(
++		new String[] {
++			"X.java",
++			"public class X {\n" + 
++			"	public static void main(String[] s) {\n" + 
++			"		new Object() {\n" + 
++			"			{\n" + 
++			"				new Object() {\n" + 
++			"					{\n" + 
++			"						System.out.println(this.getClass().getName());\n" + 
++			"					}\n" + 
++			"				};\n" + 
++			"			}\n" + 
++			"		};\n" + 
++			"	}\n" + 
++			"}\n"
++		},
++		"X$2");
++}
+ }

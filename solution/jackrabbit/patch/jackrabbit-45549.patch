@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/EventFilterImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/EventFilterImpl.java
+index d92f2d4..187b5c1 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/EventFilterImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/EventFilterImpl.java
+@@ -176,4 +176,22 @@ public class EventFilterImpl implements EventFilter, Serializable {
+     public boolean getNoLocal() {
+         return noLocal;
+     }
++
++    /**
++     * Returns a string representation of this EventFilter instance.
++     * {@inheritDoc}
++     */
++    public String toString() {
++        return new StringBuffer(getClass().getName())
++            .append("[")
++            .append("eventTypes: ").append(eventTypes).append(", ")
++            .append("absPath: ").append(absPath).append(", ")
++            .append("isDeep: ").append(isDeep).append(", ")
++            .append("uuids: ").append(uuids).append(", ")
++            .append("nodeTypeNames: ").append(nodeTypeNames).append(", ")
++            .append("noLocal: ").append(noLocal)
++            .append("]")
++            .toString();
++    }
++
+ }

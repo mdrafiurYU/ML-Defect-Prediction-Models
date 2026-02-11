@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/IndexSearcher.java b/lucene/src/java/org/apache/lucene/search/IndexSearcher.java
+index cd1dd0a..6e885c0 100644
+--- a/lucene/src/java/org/apache/lucene/search/IndexSearcher.java
++++ b/lucene/src/java/org/apache/lucene/search/IndexSearcher.java
+@@ -787,7 +787,7 @@ public class IndexSearcher {
+     }
+ 
+     public Iterator<T> iterator() {
+-      // use the shortcut here - this is only used in a privat context
++      // use the shortcut here - this is only used in a private context
+       return this;
+     }
+   }

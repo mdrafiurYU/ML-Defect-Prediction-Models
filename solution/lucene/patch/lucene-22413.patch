@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTermScorer.java b/lucene/src/test/org/apache/lucene/search/TestTermScorer.java
+index d770640..d4f9198 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTermScorer.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTermScorer.java
+@@ -65,6 +65,7 @@ public class TestTermScorer extends LuceneTestCase {
+     indexSearcher.close();
+     indexReader.close();
+     directory.close();
++    super.tearDown();
+   }
+ 
+   public void test() throws IOException {

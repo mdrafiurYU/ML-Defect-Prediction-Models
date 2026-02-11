@@ -1,0 +1,20 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 0ebe07b..bd3c76e 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -226,7 +226,6 @@ typedef struct {
+      * location.
+      */
+     DamagePtr	    pDamage;
+-    Bool	    pendingDamage;
+     /**
+      * The valid regions mark the valid bits (at least, as they're derived from
+      * damage, which may be overreported) of a pixmap's system and FB copies.
+@@ -494,7 +493,4 @@ exaDoMigration (ExaMigrationPtr pixmaps, int npixmaps, Bool can_accel);
+ void
+ exaPixmapSave (ScreenPtr pScreen, ExaOffscreenArea *area);
+ 
+-Bool
+-exaDamageDestForMigration(DrawablePtr pDrawable, PixmapPtr pPix, RegionPtr region);
+-
+ #endif /* EXAPRIV_H */

@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/spans/FieldMaskingSpanQuery.java b/lucene/src/java/org/apache/lucene/search/spans/FieldMaskingSpanQuery.java
+index 16c88f3..be130bc 100644
+--- a/lucene/src/java/org/apache/lucene/search/spans/FieldMaskingSpanQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/spans/FieldMaskingSpanQuery.java
+@@ -107,11 +107,6 @@ public class FieldMaskingSpanQuery extends SpanQuery {
+   }
+ 
+   @Override
+-  public Similarity getSimilarity(IndexSearcher searcher) {
+-    return maskedQuery.getSimilarity(searcher);
+-  }
+-
+-  @Override
+   public Query rewrite(IndexReader reader) throws IOException {
+     FieldMaskingSpanQuery clone = null;

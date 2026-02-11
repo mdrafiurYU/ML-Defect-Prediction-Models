@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeTypeInstanceHandler.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeTypeInstanceHandler.java
+index e667761..89e2738 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeTypeInstanceHandler.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeTypeInstanceHandler.java
+@@ -104,6 +104,12 @@ public class NodeTypeInstanceHandler {
+             if (NameConstants.MIX_LASTMODIFIED.equals(declaringNT)) {
+                 genValues = new InternalValue[]{InternalValue.create(userId)};
+             }
++        } else if (NameConstants.JCR_ETAG.equals(name)) {
++            // jcr:etag property of a mix:etag
++            if (NameConstants.MIX_ETAG.equals(declaringNT)) {
++                // TODO: provide real implementation
++                genValues = new InternalValue[]{InternalValue.create("")};
++            }
+         }
+         return genValues;
+     }

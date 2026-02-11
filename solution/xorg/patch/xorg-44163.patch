@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/linux/tslib.c b/hw/kdrive/linux/tslib.c
+index 7ad7a88..19c8e84 100644
+--- a/hw/kdrive/linux/tslib.c
++++ b/hw/kdrive/linux/tslib.c
+@@ -169,7 +169,7 @@ TslibInit (KdPointerInfo *pi)
+     /* hacktastic */
+     private->phys_screen = 0;
+     pi->nAxes = 3;
+-    pi->name = KdSaveString("Touchscreen");
++    pi->name = strdup("Touchscreen");
+     pi->inputClass = KD_TOUCHSCREEN;
+ 
+     return Success;

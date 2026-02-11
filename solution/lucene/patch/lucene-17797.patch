@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/NormsWriterPerField.java b/lucene/src/java/org/apache/lucene/index/NormsWriterPerField.java
+index 49a726e..05cf2fb 100644
+--- a/lucene/src/java/org/apache/lucene/index/NormsWriterPerField.java
++++ b/lucene/src/java/org/apache/lucene/index/NormsWriterPerField.java
+@@ -74,7 +74,7 @@ final class NormsWriterPerField extends InvertedDocEndConsumerPerField implement
+         assert norms.length == upto;
+         norms = ArrayUtil.grow(norms, 1+upto);
+       }
+-      final float norm = similarity.computeNorm(fieldInfo.name, fieldState);
++      final float norm = similarity.computeNorm(fieldState);
+       norms[upto] = similarity.encodeNormValue(norm);
+       docIDs[upto] = docState.docID;
+       upto++;

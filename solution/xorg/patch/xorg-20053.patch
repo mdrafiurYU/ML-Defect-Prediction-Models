@@ -1,0 +1,24 @@
+diff --git a/composite/compwindow.c b/composite/compwindow.c
+index 1f84096..87055b7 100644
+--- a/composite/compwindow.c
++++ b/composite/compwindow.c
+@@ -144,11 +144,19 @@ Bool
+ compCheckRedirect (WindowPtr pWin)
+ {
+     CompWindowPtr   cw = GetCompWindow (pWin);
++    CompScreenPtr   cs = GetCompScreen(pWin->drawable.pScreen);
+     Bool	    should;
+ 
+     should = pWin->realized && (pWin->drawable.class != InputOnly) &&
+ 	     (cw != NULL);
+     
++    /* Never redirect the overlay window */
++    if (cs->pOverlayWin != NULL) {
++	if (pWin == cs->pOverlayWin) {
++	    should = FALSE;
++	}
++    }	
++    
+     if (should != pWin->redirectDraw)
+     {
+ 	if (should)

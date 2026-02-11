@@ -1,0 +1,12 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 3e8054d..8a4b8c1 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -288,6 +288,7 @@ exaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth)
+                                        paddedWidth, NULL);
+          pExaPixmap->driverPriv = driver_priv;
+          pExaPixmap->score = EXA_PIXMAP_SCORE_PINNED;
++        pExaPixmap->fb_ptr = NULL;
+     } else {
+          pExaPixmap->driverPriv = NULL;
+          /* Glyphs have w/h equal to zero, and may not be migrated. See exaGlyphs. */

@@ -1,0 +1,19 @@
+diff --git a/hw/kdrive/ephyr/ephyrhostglx.c b/hw/kdrive/ephyr/ephyrhostglx.c
+index f5db5be..6d783d2 100644
+--- a/hw/kdrive/ephyr/ephyrhostglx.c
++++ b/hw/kdrive/ephyr/ephyrhostglx.c
+@@ -41,7 +41,6 @@
+ #include "ephyrlog.h"
+ #include "hostx.h"
+ 
+-#ifdef XEPHYR_DRI
+ enum VisualConfRequestType {
+     EPHYR_GET_FB_CONFIG,
+     EPHYR_VENDOR_PRIV_GET_FB_CONFIG_SGIX,
+@@ -687,6 +686,3 @@ out:
+     EPHYR_LOG ("leave\n") ;
+     return is_ok ;
+ }
+-
+-#endif /*XEPHYR_DRI*/
+-

@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index b5acf86..4756e3c 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -62,6 +62,7 @@ import org.apache.jackrabbit.jcr2spi.lock.LockStateManager;
+ import org.apache.jackrabbit.jcr2spi.nodetype.EffectiveNodeTypeProvider;
+ import org.apache.jackrabbit.jcr2spi.nodetype.ItemDefinitionProvider;
+ import org.apache.jackrabbit.jcr2spi.nodetype.NodeTypeManagerImpl;
++import org.apache.jackrabbit.jcr2spi.nodetype.NodeTypeDefinitionProvider;
+ import org.apache.jackrabbit.jcr2spi.operation.Move;
+ import org.apache.jackrabbit.jcr2spi.operation.Operation;
+ import org.apache.jackrabbit.jcr2spi.security.AccessManager;
+@@ -753,6 +754,13 @@ public class SessionImpl extends AbstractSession
+     }
+ 
+     /**
++     * @see ManagerProvider#getNodeTypeDefinitionProvider()
++     */
++    public NodeTypeDefinitionProvider getNodeTypeDefinitionProvider() {
++        return ntManager;
++    }
++
++    /**
+      * @see ManagerProvider#getEffectiveNodeTypeProvider()
+      */
+     public EffectiveNodeTypeProvider getEffectiveNodeTypeProvider() {

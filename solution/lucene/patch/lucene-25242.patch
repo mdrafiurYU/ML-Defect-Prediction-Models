@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+index a52ab27..050da2b 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+@@ -1029,7 +1029,7 @@ public class TestIndexWriter extends LuceneTestCase {
+     Directory dir = newDirectory();
+     try {
+       // Create my own random file:
+-      IndexOutput out = dir.createOutput("myrandomfile");
++      IndexOutput out = dir.createOutput("myrandomfile", IOContext.DEFAULT);
+       out.writeByte((byte) 42);
+       out.close();

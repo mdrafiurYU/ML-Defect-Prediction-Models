@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.h b/hw/xfree86/os-support/bus/Pci.h
+index 4a6ff67..ee6e9d7 100644
+--- a/hw/xfree86/os-support/bus/Pci.h
++++ b/hw/xfree86/os-support/bus/Pci.h
+@@ -101,6 +101,10 @@
+  * This file has the private Pci definitions.  The public ones are imported
+  * from xf86Pci.h.  Drivers should not use this file.
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _PCI_H
+ #define _PCI_H 1
+ 

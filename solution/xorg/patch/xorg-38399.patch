@@ -1,0 +1,13 @@
+diff --git a/glx/glxdriswrast.c b/glx/glxdriswrast.c
+index 50dee51..9d987c2 100644
+--- a/glx/glxdriswrast.c
++++ b/glx/glxdriswrast.c
+@@ -532,7 +532,7 @@ __glXDRIscreenProbe(ScreenPtr pScreen)
+ 
+     xfree(screen);
+ 
+-    LogMessage(X_ERROR, "AIGLX: reverting to software rendering\n");
++    FatalError("GLX: could not load software renderer\n");
+ 
+     return NULL;
+ }

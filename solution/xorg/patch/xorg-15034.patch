@@ -1,0 +1,15 @@
+diff --git a/Xi/getkmap.h b/Xi/getkmap.h
+index b0dfb9f..5c2e3b1 100644
+--- a/Xi/getkmap.h
++++ b/Xi/getkmap.h
+@@ -24,6 +24,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ ********************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef GETKMAP_H
+ #define GETKMAP_H 1
+ 

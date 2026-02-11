@@ -1,0 +1,78 @@
+diff --git a/Xi/xipassivegrab.c b/Xi/xipassivegrab.c
+index f53b050..a8807bd 100644
+--- a/Xi/xipassivegrab.c
++++ b/Xi/xipassivegrab.c
+@@ -95,12 +95,21 @@ ProcXIPassiveGrabDevice(ClientPtr client)
+ 	return ret;
+ 
+     if (stuff->grab_type != XIGrabtypeButton &&
+-        stuff->grab_type != XIGrabtypeKeysym)
++        stuff->grab_type != XIGrabtypeKeysym &&
++        stuff->grab_type != XIGrabtypeEnter &&
++        stuff->grab_type != XIGrabtypeFocusIn)
+     {
+         client->errorValue = stuff->grab_type;
+         return BadValue;
+     }
+ 
++    if ((stuff->grab_type == XIGrabtypeEnter ||
++         stuff->grab_type == XIGrabtypeFocusIn) && stuff->detail != 0)
++    {
++        client->errorValue = stuff->detail;
++        return BadValue;
++    }
++
+     /* Can't grab for modifiers on an attached slave device */
+     if (!IsMaster(dev))
+     {
+@@ -175,6 +184,11 @@ ProcXIPassiveGrabDevice(ClientPtr client)
+                 status = GrabKey(client, dev, mod_dev, stuff->detail,
+                                  &param, GRABTYPE_XI2, &mask);
+                 break;
++            case XIGrabtypeEnter:
++            case XIGrabtypeFocusIn:
++                status = GrabWindow(client, dev, stuff->grab_type,
++                                    &param, &mask);
++                break;
+         }
+ 
+         if (status != GrabSuccess)
+@@ -251,12 +265,21 @@ ProcXIPassiveUngrabDevice(ClientPtr client)
+ 	return rc;
+ 
+     if (stuff->grab_type != XIGrabtypeButton &&
+-        stuff->grab_type != XIGrabtypeKeysym)
++        stuff->grab_type != XIGrabtypeKeysym &&
++        stuff->grab_type != XIGrabtypeEnter &&
++        stuff->grab_type != XIGrabtypeFocusIn)
+     {
+         client->errorValue = stuff->grab_type;
+         return BadValue;
+     }
+ 
++    if ((stuff->grab_type == XIGrabtypeEnter ||
++         stuff->grab_type == XIGrabtypeFocusIn) && stuff->detail != 0)
++    {
++        client->errorValue = stuff->detail;
++        return BadValue;
++    }
++
+     rc = dixLookupWindow(&win, stuff->grab_window, client, DixSetAttrAccess);
+     if (rc != Success)
+         return rc;
+@@ -269,8 +292,13 @@ ProcXIPassiveUngrabDevice(ClientPtr client)
+     tempGrab.resource = client->clientAsMask;
+     tempGrab.device = dev;
+     tempGrab.window = win;
+-    tempGrab.type =
+-        (stuff->grab_type == XIGrabtypeButton) ? XI_ButtonPress : XI_KeyPress;
++    switch(stuff->grab_type)
++    {
++        case XIGrabtypeButton:  tempGrab.type = XI_ButtonPress; break;
++        case XIGrabtypeKeysym:  tempGrab.type = XI_KeyPress;    break;
++        case XIGrabtypeEnter:   tempGrab.type = XI_Enter;       break;
++        case XIGrabtypeFocusIn: tempGrab.type = XI_FocusIn;     break;
++    }
+     tempGrab.grabtype = GRABTYPE_XI2;
+     tempGrab.modifierDevice = mod_dev;
+     tempGrab.modifiersDetail.pMask = NULL;

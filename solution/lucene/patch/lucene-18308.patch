@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/NGramTokenizerFactory.java b/solr/src/java/org/apache/solr/analysis/NGramTokenizerFactory.java
+index 95beaed..a9525b2 100755
+--- a/solr/src/java/org/apache/solr/analysis/NGramTokenizerFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/NGramTokenizerFactory.java
+@@ -24,7 +24,14 @@ import java.io.Reader;
+ import java.util.Map;
+ 
+ /**
+- * Creates new instances of {@link NGramTokenizer}.
++ * Factory for {@link NGramTokenizer}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_ngrm" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="2"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
++ * @version $Id$
+  */
+ public class NGramTokenizerFactory extends BaseTokenizerFactory {
+     private int maxGramSize = 0;

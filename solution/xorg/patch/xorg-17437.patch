@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/dixmods/dbemodule.c b/hw/xfree86/dixmods/dbemodule.c
+index 7daa838..62fbcfd 100644
+--- a/hw/xfree86/dixmods/dbemodule.c
++++ b/hw/xfree86/dixmods/dbemodule.c
+@@ -5,6 +5,7 @@
+ #endif
+ 
+ #include "xf86Module.h"
++#include "globals.h"
+ 
+ static MODULESETUPPROTO(dbeSetup);
+ 
+@@ -13,7 +14,7 @@ extern void DbeExtensionInit(INITARGS);
+ ExtensionModule dbeExt = {
+     DbeExtensionInit,
+     "DOUBLE-BUFFER",
+-    NULL,
++    &noDbeExtension,
+     NULL,
+     NULL
+ };

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/ramdac/xf86Cursor.h b/hw/xfree86/ramdac/xf86Cursor.h
+index 08cca6b..469f48f 100644
+--- a/hw/xfree86/ramdac/xf86Cursor.h
++++ b/hw/xfree86/ramdac/xf86Cursor.h
+@@ -44,5 +44,8 @@ void xf86ForceHWCursor (ScreenPtr pScreen, Bool on);
+ #define HARDWARE_CURSOR_NIBBLE_SWAPPED			0x00000800
+ #define HARDWARE_CURSOR_SHOW_TRANSPARENT		0x00001000
+ #define HARDWARE_CURSOR_UPDATE_UNHIDDEN			0x00002000
++#ifdef ARGB_CURSOR
++#define HARDWARE_CURSOR_ARGB				0x00004000
++#endif
+ 
+ #endif /* _XF86CURSOR_H */

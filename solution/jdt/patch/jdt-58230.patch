@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
+index c4864bb..5c0c665 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
+@@ -483,6 +483,10 @@ public boolean isReifiable() {
+ 		}
+ 		if (current.isStatic())
+ 			return true;
++		if (current.isLocalType()) {
++			NestedTypeBinding nestedType = (NestedTypeBinding) current.erasure();
++			if (nestedType.scope.methodScope().isStatic) return true;
++		}
+ 	} while ((current = current.enclosingType()) != null);
+ 	return true;
+ }

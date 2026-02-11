@@ -1,0 +1,12 @@
+diff --git a/Xi/xipassivegrab.c b/Xi/xipassivegrab.c
+index 95acdf0..f53b050 100644
+--- a/Xi/xipassivegrab.c
++++ b/Xi/xipassivegrab.c
+@@ -266,6 +266,7 @@ ProcXIPassiveUngrabDevice(ClientPtr client)
+     else
+         mod_dev = dev;
+ 
++    tempGrab.resource = client->clientAsMask;
+     tempGrab.device = dev;
+     tempGrab.window = win;
+     tempGrab.type =

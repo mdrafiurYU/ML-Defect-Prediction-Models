@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/QueryValueSource.java b/solr/src/java/org/apache/solr/search/function/QueryValueSource.java
+index 93ee470..37bc35e 100755
+--- a/solr/src/java/org/apache/solr/search/function/QueryValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/QueryValueSource.java
+@@ -59,7 +59,7 @@ public class QueryValueSource extends ValueSource {
+   }
+ 
+   @Override
+-  public void createWeight(Map context, Searcher searcher) throws IOException {
++  public void createWeight(Map context, IndexSearcher searcher) throws IOException {
+     Weight w = q.weight(searcher);
+     context.put(this, w);
+   }

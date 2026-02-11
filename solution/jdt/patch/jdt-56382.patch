@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java
+index 8f9a1a2..aea5002 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java
+@@ -84,6 +84,8 @@ public class CodeAttribute extends ClassFileAttribute implements ICodeAttribute
+ 				this.attributes[attributesIndex++] = new LocalVariableTypeAttribute(classFileBytes, constantPool, offset + readOffset);
+ 			} else if (equals(attributeName, IAttributeNamesConstants.STACK_MAP_TABLE)) {
+ 				this.attributes[attributesIndex++] = new StackMapTableAttribute(classFileBytes, constantPool, offset + readOffset);
++			} else if (equals(attributeName, IAttributeNamesConstants.STACK_MAP)) {
++				this.attributes[attributesIndex++] = new StackMapAttribute(classFileBytes, constantPool, offset + readOffset);
+ 			} else {
+ 				this.attributes[attributesIndex++] = new ClassFileAttribute(classFileBytes, constantPool, offset + readOffset);
+ 			}

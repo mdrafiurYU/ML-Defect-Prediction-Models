@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/FunctionQParser.java b/solr/src/java/org/apache/solr/search/FunctionQParser.java
+index a2312e1..c5e710a 100755
+--- a/solr/src/java/org/apache/solr/search/FunctionQParser.java
++++ b/solr/src/java/org/apache/solr/search/FunctionQParser.java
+@@ -48,7 +48,7 @@ public class FunctionQParser extends QParser {
+   }
+ 
+   public void setParseToEnd(boolean parseToEnd) {
+-    this.parseMultipleSources = parseMultipleSources;
++    this.parseToEnd = parseToEnd;
+   }
+ 
+   /** throw exception if there is extra stuff at the end of the parsed valuesource(s). */

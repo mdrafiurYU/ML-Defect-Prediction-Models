@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/SingleFieldTestDb.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/SingleFieldTestDb.java
+index f526d07..dffb925 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/SingleFieldTestDb.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/SingleFieldTestDb.java
+@@ -41,7 +41,7 @@ public class SingleFieldTestDb {
+       fieldName = fName;
+       IndexWriter writer = new IndexWriter(db, new IndexWriterConfig(
+           Version.LUCENE_CURRENT,
+-          new MockAnalyzer()));
++          new MockAnalyzer(random)));
+       for (int j = 0; j < docs.length; j++) {
+         Document d = new Document();
+         d.add(new Field(fieldName, docs[j], Field.Store.NO, Field.Index.ANALYZED));

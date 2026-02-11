@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.c b/hw/xfree86/ddc/xf86DDC.c
+index f526cb4..36b2146 100644
+--- a/hw/xfree86/ddc/xf86DDC.c
++++ b/hw/xfree86/ddc/xf86DDC.c
+@@ -216,11 +216,14 @@ xf86DoEDID_DDC2(int scrnIndex, I2CBusPtr pBus)
+ #ifdef DEBUG
+     if (!tmp)
+ 	ErrorF("Cannot interpret EDID block\n");
++    else
+     ErrorF("Sections to follow: %i\n",tmp->no_sections);
+ #endif
++    if (tmp) {
+     VDIF_Block = 
+ 	VDIFRead(scrnIndex, pBus, EDID1_LEN * (tmp->no_sections + 1));    
+     tmp->vdif = xf86InterpretVdif(VDIF_Block);
++    }
+ 
+     return tmp;
+ }

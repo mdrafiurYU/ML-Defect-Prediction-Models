@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winclipboardxevents.c b/hw/xwin/winclipboardxevents.c
+index 28a8cd2..95e86b1 100644
+--- a/hw/xwin/winclipboardxevents.c
++++ b/hw/xwin/winclipboardxevents.c
+@@ -713,6 +713,8 @@ winClipboardFlushXEvents (HWND hwnd,
+ 	      hGlobal = GlobalAlloc (GMEM_MOVEABLE, iConvertDataLen);
+ 	    }
+ 
++	  free (pszReturnData);
++
+ 	  /* Check that global memory was allocated */
+ 	  if (!hGlobal)
+ 	    {

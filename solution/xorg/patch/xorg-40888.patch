@@ -1,0 +1,27 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index a2d0313..9f74718 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -65,7 +65,7 @@ extern int darwinMainScreenX, darwinMainScreenY;
+ 
+ #define DEFINE_ATOM_HELPER(func,atom_name)                      \
+   static Atom func (void) {                                       \
+-    static unsigned int generation;                             \
++    static unsigned int generation = 0;                             \
+     static Atom atom;                                           \
+     if (generation != serverGeneration) {                       \
+       generation = serverGeneration;                          \
+@@ -82,13 +82,6 @@ static Bool no_configure_window;
+ static Bool windows_hidden;
+ // TODO - abstract xp functions
+ 
+-static const int normal_window_levels[AppleWMNumWindowLevels+1] = {
+-  0, 3, 4, 5, LONG_MIN + 30, LONG_MIN + 29,
+-};
+-static const int rooted_window_levels[AppleWMNumWindowLevels+1] = {
+-  202, 203, 204, 205, 201, 200
+-};
+-
+ static inline int
+ configure_window (xp_window_id id, unsigned int mask,
+                   const xp_window_changes *values)

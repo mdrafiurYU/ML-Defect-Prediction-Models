@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
+index f1a3117..e401f1d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
+@@ -1090,6 +1090,13 @@ void setSourceStart(int sourceStart);
+ 	 */
+ 	/** @since 3.1 */
+ 	int CorruptedSignature = Internal + 700;
++	/**
++	 * Corrupted source
++	 */
++	/** @since 3.2 */
++	int InvalidEncoding = Internal + 701;
++	/** @since 3.2 */
++	int CannotReadSource = Internal + 702;
+ 
+ 	/**
+ 	 * Autoboxing

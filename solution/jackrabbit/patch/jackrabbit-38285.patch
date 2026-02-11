@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanSetPropertyDoubleTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanSetPropertyDoubleTest.java
+index fa7783b..4d34e6d 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanSetPropertyDoubleTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanSetPropertyDoubleTest.java
+@@ -59,6 +59,7 @@ public class CanSetPropertyDoubleTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

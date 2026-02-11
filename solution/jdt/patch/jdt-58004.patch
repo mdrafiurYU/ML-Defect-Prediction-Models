@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+index 4c0252c..0c41a24 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+@@ -206,7 +206,7 @@ public class ExplicitConstructorCall extends Statement implements InvocationSite
+ 			if ((declaringClass.tagBits & (TagBits.IsAnonymousType|TagBits.IsLocalType)) != 0
+ 					&& currentScope.compilerOptions().isPrivateConstructorAccessChangingVisibility) {
+ 				// constructor will not be dumped as private, no emulation required thus
+-				this.codegenBinding.modifiers |= ExtraCompilerModifiers.AccClearPrivateModifier;
++				this.codegenBinding.tagBits |= TagBits.ClearPrivateModifier;
+ 			} else {
+ 				syntheticAccessor = ((SourceTypeBinding) declaringClass).addSyntheticMethod(this.codegenBinding, isSuperAccess());
+ 				currentScope.problemReporter().needToEmulateMethodAccess(this.codegenBinding, this);

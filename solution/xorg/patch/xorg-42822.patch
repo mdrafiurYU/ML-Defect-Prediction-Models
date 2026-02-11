@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/sparc64_video.c b/hw/xfree86/os-support/bsd/sparc64_video.c
+index fe3b5e7..ea520c4 100644
+--- a/hw/xfree86/os-support/bsd/sparc64_video.c
++++ b/hw/xfree86/os-support/bsd/sparc64_video.c
+@@ -82,7 +82,7 @@ sparc64UnmapVidMem(int ScreenNum, pointer Base, unsigned long Size)
+ 	munmap(Base, Size);
+ }
+ 
+-_X_EXPORT int
++int
+ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	     int Len)
+ {

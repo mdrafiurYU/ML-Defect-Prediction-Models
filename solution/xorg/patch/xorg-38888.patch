@@ -1,0 +1,13 @@
+diff --git a/dix/dixfonts.c b/dix/dixfonts.c
+index 83b264a..89f1528 100644
+--- a/dix/dixfonts.c
++++ b/dix/dixfonts.c
+@@ -1920,8 +1920,6 @@ InitFonts (void)
+         BuiltinRegisterFpeFunctions();
+ #else
+ 	FontFileRegisterFpeFunctions();
+-#endif
+-#ifndef NOFONTSERVERACCESS
+ 	fs_register_fpe_functions();
+ #endif
+     }

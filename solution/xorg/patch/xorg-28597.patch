@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/parser/Flags.c b/hw/xfree86/parser/Flags.c
+index 7ab70d1..4adea1a 100644
+--- a/hw/xfree86/parser/Flags.c
++++ b/hw/xfree86/parser/Flags.c
+@@ -441,15 +441,6 @@ xf86uLongToString(unsigned long i)
+ 	return s;
+ }
+ 
+-void
+-xf86debugListOptions(XF86OptionPtr Options)
+-{
+-	while (Options) {
+-		ErrorF("Option: %s Value: %s\n",Options->opt_name,Options->opt_val);
+-		Options = Options->list.next;
+-	}
+-}
+-
+ XF86OptionPtr
+ xf86parseOption(XF86OptionPtr head)
+ {

@@ -1,0 +1,31 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index b2f31c1..ff58823 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -359,6 +359,7 @@ miPointerWarpCursor (pDev, pScreen, x, y)
+     int	   	 x, y;
+ {
+     miPointerPtr pPointer;
++    BOOL changedScreen = FALSE;
+     
+     if (!pDev->isMaster && !pDev->u.master)
+         return;
+@@ -366,7 +367,10 @@ miPointerWarpCursor (pDev, pScreen, x, y)
+     SetupScreen (pScreen);
+ 
+     if (pPointer->pScreen != pScreen)
++    {
+ 	(*pScreenPriv->screenFuncs->NewEventScreen) (pDev, pScreen, TRUE);
++        changedScreen = TRUE;
++    }
+ 
+     if (GenerateEvent)
+     {
+@@ -387,6 +391,7 @@ miPointerWarpCursor (pDev, pScreen, x, y)
+ 	pPointer->y = y;
+ 	pPointer->pScreen = pScreen;
+     }
++    if (changedScreen)
+     UpdateSpriteForScreen (pDev, pScreen) ;
+ }
+ 

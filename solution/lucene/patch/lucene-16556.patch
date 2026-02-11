@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java b/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java
+index 60ca441..68ec78a 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexReader.java
+@@ -164,9 +164,6 @@ public class VariableGapTermsIndexReader extends TermsIndexReaderBase {
+       this.fieldInfo = fieldInfo;
+       this.indexStart = indexStart;
+ 
+-      // We still create the indexReader when indexDivisor
+-      // is -1, so that PrefixCodedTermsReader can call
+-      // isIndexTerm for each field:
+       if (indexDivisor > 0) {
+         loadTermsIndex();
+       }

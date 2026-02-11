@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/rac/xf86RAC.c b/hw/xfree86/rac/xf86RAC.c
+index 05ea7ac..1f2d3a1 100644
+--- a/hw/xfree86/rac/xf86RAC.c
++++ b/hw/xfree86/rac/xf86RAC.c
+@@ -254,9 +254,6 @@ GCOps RACGCOps = {
+     RACPolyRectangle, RACPolyArc, RACFillPolygon, RACPolyFillRect, 
+     RACPolyFillArc, RACPolyText8, RACPolyText16, RACImageText8, 
+     RACImageText16, RACImageGlyphBlt, RACPolyGlyphBlt, RACPushPixels,
+-#ifdef NEED_LINEHELPER
+-    NULL,
+-#endif
+     {NULL}		/* devPrivate */
+ };
+ 

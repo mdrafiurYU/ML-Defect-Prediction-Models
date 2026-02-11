@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/response/BinaryResponseWriter.java b/solr/src/java/org/apache/solr/response/BinaryResponseWriter.java
+index 76e018c..4dac4ab 100755
+--- a/solr/src/java/org/apache/solr/response/BinaryResponseWriter.java
++++ b/solr/src/java/org/apache/solr/response/BinaryResponseWriter.java
+@@ -132,7 +132,7 @@ public class BinaryResponseWriter implements BinaryQueryResponseWriter {
+ 
+     public SolrDocument getDoc(Document doc) {
+       SolrDocument solrDoc = new SolrDocument();
+-      for (Fieldable f : (List<Fieldable>) doc.getFields()) {
++      for (Fieldable f : doc.getFields()) {
+         String fieldName = f.name();
+         if (returnFields != null && !returnFields.contains(fieldName)) continue;
+         SchemaField sf = schema.getFieldOrNull(fieldName);

@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryHelper.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryHelper.java
+index ae588b0..f863bff 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryHelper.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryHelper.java
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.jackrabbit.test;
+ 
++import java.security.Principal;
+ import java.util.HashMap;
+ import java.util.Map;
+ 
+@@ -187,4 +188,20 @@ public class RepositoryHelper {
+     public Credentials getSuperuserCredentials() {
+         return repoStub.getSuperuserCredentials();
+     }
++    
++    /**
++     * Returns a {@link Principal} identifiying a known user.
++     * @param session
++     */
++    public Principal getKnownPrincipal(Session session) throws RepositoryException {
++        return repoStub.getKnownPrincipal(session);
++    }
++    
++    /**
++     * Returns a {@link Principal} identifiying an unknown user.
++     * @param session
++     */
++    public Principal getUnknownPrincipal(Session session) throws NotExecutableException, RepositoryException {
++        return repoStub.getUnknownPrincipal(session);
++    }
+ }

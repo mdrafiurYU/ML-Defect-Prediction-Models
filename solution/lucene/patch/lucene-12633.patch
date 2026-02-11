@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java b/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java
+index 101220a..dc1c815 100644
+--- a/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java
++++ b/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java
+@@ -76,7 +76,7 @@ public class TestRemoteSearchable extends RemoteTestCase {
+     document = searcher.doc(0, fs);
+     assertTrue("document is null and it shouldn't be", document != null);
+     assertTrue("document.getFields() Size: " + document.getFields().size() + " is not: " + 1, document.getFields().size() == 1);
+-    fs = new MapFieldSelector(new String[]{"other"});
++    fs = new MapFieldSelector("other");
+     document = searcher.doc(0, fs);
+     assertTrue("document is null and it shouldn't be", document != null);
+     assertTrue("document.getFields() Size: " + document.getFields().size() + " is not: " + 1, document.getFields().size() == 1);

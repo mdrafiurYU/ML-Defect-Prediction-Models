@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+index 1185343..2094cc8 100644
+--- a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
++++ b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+@@ -1024,7 +1024,7 @@ public class SolrIndexSearcher extends IndexSearcher implements SolrInfoMBean {
+       useFilterCache=true;
+       SortField[] sfields = cmd.getSort().getSort();
+       for (SortField sf : sfields) {
+-        if (sf.getType() == SortField.SCORE) {
++        if (sf.getType() == SortField.Type.SCORE) {
+           useFilterCache=false;
+           break;
+         }

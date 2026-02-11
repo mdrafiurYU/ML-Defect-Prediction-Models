@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/CopyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/CopyTest.java
+index 7004122..acab0be 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/CopyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/CopyTest.java
+@@ -49,7 +49,7 @@ public class CopyTest extends AbstractVersionTest {
+         try {
+             String dstPath = getProperty("destination");
+             superuser.getNode(dstPath).remove();
+-            testRootNode.save();
++            testRootNode.getSession().save();
+         } catch (Exception e) {
+             log.println("Exception in tearDown: " + e.toString());
+         } finally {

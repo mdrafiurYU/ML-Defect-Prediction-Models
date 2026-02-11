@@ -1,0 +1,14 @@
+diff --git a/xkb/ddxKeyClick.c b/xkb/ddxKeyClick.c
+index f48296d..51d78f5 100644
+--- a/xkb/ddxKeyClick.c
++++ b/xkb/ddxKeyClick.c
+@@ -42,9 +42,5 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ void
+ XkbDDXKeyClick(DeviceIntPtr pXDev,int keycode,int synthetic)
+ {
+-#ifdef DEBUG
+-    if (xkbDebugFlags)
+-	ErrorF("Click.\n");
+-#endif
+     return;
+ }

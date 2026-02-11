@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java
+index 51ea1a4..44f7ac2 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java
+@@ -195,8 +195,7 @@ public abstract class TypeDeclarationImpl extends MemberDeclarationImpl implemen
+     
+     public String toString()
+     {		
+-    	final ITypeBinding binding = getTypeBinding();
+-		return binding.getQualifiedName();    
++    	return getQualifiedName();
+     }
+ 
+     public boolean isFromSource(){ return getDeclarationBinding().isFromSource(); }

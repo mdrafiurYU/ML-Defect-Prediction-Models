@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestCodecs.java b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+index 55554e3..bae4eb4 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestCodecs.java
++++ b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+@@ -321,7 +321,7 @@ public class TestCodecs extends LuceneTestCase {
+   public void testSepPositionAfterMerge() throws IOException {
+     final Directory dir = newDirectory();
+     final IndexWriterConfig config = newIndexWriterConfig(Version.LUCENE_31,
+-      new MockAnalyzer());
++      new MockAnalyzer(random));
+     config.setCodecProvider(new MockSepCodecs());
+     final IndexWriter writer = new IndexWriter(dir, config);

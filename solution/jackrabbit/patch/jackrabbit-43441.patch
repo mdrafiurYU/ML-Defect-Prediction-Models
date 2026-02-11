@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index d78958c..0ad892a 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -36,7 +36,6 @@ import org.apache.jackrabbit.jcr2spi.lock.LockManager;
+ import org.apache.jackrabbit.jcr2spi.lock.LockManagerImpl;
+ import org.apache.jackrabbit.jcr2spi.version.VersionManager;
+ import org.apache.jackrabbit.jcr2spi.version.VersionManagerImpl;
+-import org.apache.jackrabbit.jcr2spi.name.NamespaceRegistryImpl;
+ import org.apache.jackrabbit.jcr2spi.observation.ObservationManagerImpl;
+ import org.apache.jackrabbit.jcr2spi.xml.WorkspaceContentHandler;
+ import org.apache.jackrabbit.jcr2spi.config.CacheBehaviour;
+@@ -458,10 +457,6 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+         return wspManager.getNodeTypeRegistry();
+     }
+ 
+-    NamespaceRegistryImpl getNamespaceRegistryImpl() {
+-        return wspManager.getNamespaceRegistryImpl();
+-    }
+-
+     /**
+      * Returns the state manager associated with the workspace
+      * represented by <i>this</i> <code>WorkspaceImpl</code> instance.

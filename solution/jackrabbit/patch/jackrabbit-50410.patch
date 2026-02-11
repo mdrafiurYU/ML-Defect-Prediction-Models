@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
+index 7b3c21c..fb48bac 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
+@@ -48,7 +48,7 @@ public abstract class NodeResolverTest extends AbstractJCRTest {
+         nodeResolver = createNodeResolver(superuser);
+     }
+ 
+-    private static UserImpl getCurrentUser(Session session) throws NotExecutableException, RepositoryException {
++    protected static UserImpl getCurrentUser(Session session) throws NotExecutableException, RepositoryException {
+         if (!(session instanceof JackrabbitSession)) {
+             throw new NotExecutableException();
+         }

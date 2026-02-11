@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
+index eacedfa..44a8c6f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
+@@ -265,7 +265,7 @@ public class XASessionImpl extends SessionImpl
+      * @return transaction context
+      */
+     private TransactionContext createTransaction(Xid xid) {
+-        TransactionContext tx = new TransactionContext(txResources, getTransactionTimeout());
++        TransactionContext tx = new TransactionContext(xid, txResources, getTransactionTimeout());
+         txGlobal.put(xid, tx);
+         return tx;
+     }

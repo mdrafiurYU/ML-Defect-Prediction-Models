@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java
+index 51f6e54..17bdce5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ConnectionFactory.java
+@@ -57,7 +57,7 @@ public class ConnectionFactory {
+                     // JNDI context
+                     Context context = (Context) d.newInstance();
+                     DataSource ds = (DataSource) context.lookup(url);
+-                    if (isNullOrEmpty(user) && isNullOrEmpty(password)) {
++                    if (user == null && password == null) {
+                         return ds.getConnection();
+                     } else {
+                         return ds.getConnection(user, password);
+@@ -85,14 +85,5 @@ public class ConnectionFactory {
+         }
+         return DriverManager.getConnection(url, user, password);
+     }
+-    
+-    /**
+-     * Check if a String is null or empty (the length is null).
+-     *
+-     * @return true if it is null or empty
+-     */
+-    private static boolean isNullOrEmpty(String s) {
+-        return s == null || s.length() == 0;
+-    }
+ 
+ }

@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestDoc.java b/lucene/src/test/org/apache/lucene/index/TestDoc.java
+index 98dd3d1..e15fc51 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestDoc.java
++++ b/lucene/src/test/org/apache/lucene/index/TestDoc.java
+@@ -204,8 +204,8 @@ public class TestDoc extends LuceneTestCase {
+       r2.close();
+       
+       final SegmentInfo info = new SegmentInfo(merged, si1.docCount + si2.docCount, si1.dir,
+-                                               false, merger.getSegmentCodecs(),
+-                                               merger.fieldInfos());
++                                               false, merger.fieldInfos().hasProx(), merger.getSegmentCodecs(),
++                                               merger.fieldInfos().hasVectors());
+       
+       if (useCompoundFile) {
+         Collection<String> filesToDelete = merger.createCompoundFile(merged + ".cfs", info);

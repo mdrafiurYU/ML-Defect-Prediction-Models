@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 5702d2f..e73044e 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -1680,7 +1680,7 @@ AllowSome(ClientPtr client,
+ 		{
+ 		    if (dev == thisDev)
+ 			continue;
+-                    devgrabinfo = (core) ? &dev->deviceGrab : &dev->deviceGrab;
++                    devgrabinfo = &dev->deviceGrab;
+ 		    if (devgrabinfo->grab
+                             && SameClient(devgrabinfo->grab, client))
+ 			devgrabinfo->sync.state = THAWED;

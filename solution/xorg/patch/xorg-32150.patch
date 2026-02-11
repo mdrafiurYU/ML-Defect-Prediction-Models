@@ -1,0 +1,34 @@
+diff --git a/hw/kdrive/ephyr/ephyrdriext.c b/hw/kdrive/ephyr/ephyrdriext.c
+index ac68054..d54da21 100644
+--- a/hw/kdrive/ephyr/ephyrdriext.c
++++ b/hw/kdrive/ephyr/ephyrdriext.c
+@@ -447,11 +447,10 @@ static int
+ ProcXF86DRIGetDrawableInfo (register ClientPtr client)
+ {
+     xXF86DRIGetDrawableInfoReply	rep;
+-    DrawablePtr pDrawable;
+-    int X, Y, W, H;
++    DrawablePtr drawable;
++    int X, Y, W, H, backX, backY, rc;
+     drm_clip_rect_t * pClipRects, *pClippedRects;
+     drm_clip_rect_t * pBackClipRects;
+-    int backX, backY, rc;
+ 
+     EPHYR_LOG ("enter\n") ;
+     REQUEST(xXF86DRIGetDrawableInfoReq);
+@@ -469,13 +468,13 @@ ProcXF86DRIGetDrawableInfo (register ClientPtr client)
+      * We must properly do the mapping
+      * between xephyr drawable and the host drawable
+      */
+-    rc = dixLookupDrawable(&pDrawable, stuff->drawable, client, 0,
++    rc = dixLookupDrawable(&drawable, stuff->drawable, client, 0,
+             DixReadAccess);
+     if (rc != Success)
+         return rc;
+ 
+     if (!ephyrDRIGetDrawableInfo (stuff->screen,
+-                0 /*should be the drawable in hostx*/,
++                                  drawable/*should be the drawable in hostx*/,
+                 (unsigned int*)&rep.drawableTableIndex,
+                 (unsigned int*)&rep.drawableTableStamp,
+                 (int*)&X,

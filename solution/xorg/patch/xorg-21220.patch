@@ -1,0 +1,17 @@
+diff --git a/render/picturestr.h b/render/picturestr.h
+index 25969a6..f1617f6 100644
+--- a/render/picturestr.h
++++ b/render/picturestr.h
+@@ -355,7 +355,12 @@ typedef struct _PictureScreen {
+      */
+     ChangePictureTransformProcPtr   ChangePictureTransform;
+ 
++    /**
++     * Called immediately after a picture's transform is changed through the
++     * SetPictureFilter request.  Not called for source-only pictures.
++     */
+     ChangePictureFilterProcPtr	ChangePictureFilter;
++
+     DestroyPictureFilterProcPtr	DestroyPictureFilter;
+ 
+     TrapezoidsProcPtr		Trapezoids;

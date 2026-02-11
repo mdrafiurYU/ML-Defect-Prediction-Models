@@ -1,0 +1,15 @@
+diff --git a/iplan2p4/ipl.h b/iplan2p4/ipl.h
+index d6cf45b..356e433 100644
+--- a/iplan2p4/ipl.h
++++ b/iplan2p4/ipl.h
+@@ -32,6 +32,10 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ /* Modified nov 94 by Martin Schaller (Martin_Schaller@maus.r.de) for use with
+ interleaved planes */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "pixmap.h"
+ #include "region.h"

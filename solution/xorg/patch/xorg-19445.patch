@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_vid.c b/hw/xfree86/os-support/solaris/sun_vid.c
+index 60d60f9..3db537a 100644
+--- a/hw/xfree86/os-support/solaris/sun_vid.c
++++ b/hw/xfree86/os-support/solaris/sun_vid.c
+@@ -23,6 +23,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #if defined(i386) || defined(__x86)
+ #define _NEED_SYSI86
+ #endif

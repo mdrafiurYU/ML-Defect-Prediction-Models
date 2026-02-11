@@ -1,0 +1,16 @@
+diff --git a/render/picture.c b/render/picture.c
+index 35e2a28..2fbd09e 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -413,8 +413,9 @@ PictureInitIndexedFormat(ScreenPtr pScreen, PictFormatPtr format)
+ 	    (ColormapPtr) LookupIDByType(pScreen->defColormap, RT_COLORMAP);
+     } else {
+ 	VisualPtr pVisual = PictureFindVisual(pScreen, format->index.vid);
+-	if (!CreateColormap(FakeClientID (0), pScreen, pVisual,
+-		    &format->index.pColormap, AllocNone, 0))
++	if (CreateColormap(FakeClientID (0), pScreen, pVisual,
++		    &format->index.pColormap, AllocNone, 0)
++		!= Success)
+ 	    return FALSE;
+     }
+     if (!ps->InitIndexed(pScreen, format))

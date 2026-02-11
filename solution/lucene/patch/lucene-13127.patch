@@ -1,0 +1,37 @@
+diff --git a/solr/src/test/org/apache/solr/analysis/TestUAX29URLEmailTokenizerFactory.java b/solr/src/test/org/apache/solr/analysis/TestUAX29URLEmailTokenizerFactory.java
+index f3982d4..558778d 100644
+--- a/solr/src/test/org/apache/solr/analysis/TestUAX29URLEmailTokenizerFactory.java
++++ b/solr/src/test/org/apache/solr/analysis/TestUAX29URLEmailTokenizerFactory.java
+@@ -19,6 +19,9 @@ package org.apache.solr.analysis;
+ 
+ import java.io.Reader;
+ import java.io.StringReader;
++import java.util.HashMap;
++import java.util.Map;
++
+ import org.apache.lucene.analysis.Tokenizer;
+ 
+ /**
+@@ -152,4 +155,22 @@ public class TestUAX29URLEmailTokenizerFactory extends BaseTokenTestCase {
+         }
+     );
+   }
++
++  public void testMaxTokenLength() throws Exception {
++    StringBuilder builder = new StringBuilder();
++    for (int i = 0 ; i < 100 ; ++i) {
++      builder.append("abcdefg"); // 7 * 100 = 700 char "word"
++    }
++    String longWord = builder.toString();
++    String content = "one two three " + longWord + " four five six";
++    Reader reader = new StringReader(content);
++    Map<String,String> args = new HashMap<String,String>();
++    args.put("luceneMatchVersion", DEFAULT_VERSION_PARAM.get("luceneMatchVersion"));
++    args.put("maxTokenLength", "1000");
++    UAX29URLEmailTokenizerFactory factory = new UAX29URLEmailTokenizerFactory();
++    factory.init(args);
++    Tokenizer stream = factory.create(reader);
++    assertTokenStreamContents(stream, 
++        new String[] {"one", "two", "three", longWord, "four", "five", "six" });
++  }
+ }

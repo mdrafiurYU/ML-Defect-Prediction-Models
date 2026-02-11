@@ -1,0 +1,38 @@
+diff --git a/dix/events.c b/dix/events.c
+index fcd6eec..29fe789 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -1988,6 +1988,7 @@ static WindowPtr
+ XYToWindow(int x, int y)
+ {
+     register WindowPtr  pWin;
++    BoxRec		box;
+ 
+     spriteTraceGood = 1;	/* root window still there */
+     pWin = ROOT->firstChild;
+@@ -2006,6 +2007,11 @@ XYToWindow(int x, int y)
+ 		 * borderSize
+ 		 */
+ 		&& (!wBoundingShape(pWin) || PointInBorderSize(pWin, x, y))
++	    && (!wInputShape(pWin) ||
++		POINT_IN_REGION(pWin->drawable.pScreen,
++				wInputShape(pWin),
++				x - pWin->drawable.x,
++				y - pWin->drawable.y, &box))
+ #endif
+ 		)
+ 	{
+@@ -2277,7 +2283,12 @@ XineramaPointInWindowIsVisible(
+ 	x = xoff - panoramiXdataPtr[i].x;
+ 	y = yoff - panoramiXdataPtr[i].y;
+ 
+-	if(POINT_IN_REGION(pScreen, &pWin->borderClip, x, y, &box))
++	if(POINT_IN_REGION(pScreen, &pWin->borderClip, x, y, &box)
++	   && (!wInputShape(pWin) ||
++	       POINT_IN_REGION(pWin->drawable.pScreen,
++			       wInputShape(pWin),
++			       x - pWin->drawable.x, 
++			       y - pWin->drawable.y, &box)))
+             return TRUE;
+ 
+     }

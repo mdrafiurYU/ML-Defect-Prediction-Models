@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/Messages.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/Messages.java
+index 9adcdf5..28ced1f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/Messages.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/Messages.java
+@@ -223,7 +223,12 @@ public final class Messages {
+ 		final String[] variants = buildVariants(bundleName);
+ 		// search the dirs in reverse order so the cascading defaults is set correctly
+ 		for (int i = variants.length; --i >= 0;) {
+-			final InputStream input = loader.getResourceAsStream(variants[i]);
++			InputStream input = null;
++			if (loader == null) {
++				input = ClassLoader.getSystemResourceAsStream(variants[i]);
++			} else {
++				input = loader.getResourceAsStream(variants[i]);
++			}
+ 			if (input == null)
+ 				continue;
+ 			try {

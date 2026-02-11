@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/mga/mgadraw.c b/hw/kdrive/mga/mgadraw.c
+index f961fc3..71d506c 100644
+--- a/hw/kdrive/mga/mgadraw.c
++++ b/hw/kdrive/mga/mgadraw.c
+@@ -317,6 +317,7 @@ mgaDrawEnable (ScreenPtr pScreen)
+ void
+ mgaDrawDisable (ScreenPtr pScreen)
+ {
++    kaaWaitSync(pScreen);
+ }
+ 
+ void

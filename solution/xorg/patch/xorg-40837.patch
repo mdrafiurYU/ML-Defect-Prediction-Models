@@ -1,0 +1,12 @@
+diff --git a/hw/xquartz/pbproxy/x-selection.h b/hw/xquartz/pbproxy/x-selection.h
+index 7a26a21..67170ac 100644
+--- a/hw/xquartz/pbproxy/x-selection.h
++++ b/hw/xquartz/pbproxy/x-selection.h
+@@ -107,6 +107,7 @@ struct atom_list {
+ 
+ - (void) reload_preferences;
+ - (BOOL) is_active;
++- (void) send_none:(XSelectionRequestEvent *)e;
+ @end
+ 
+ /* main.m */

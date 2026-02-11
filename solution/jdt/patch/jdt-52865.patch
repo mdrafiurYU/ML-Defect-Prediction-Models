@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+index 4578409..b368dc6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+@@ -367,6 +367,18 @@ public class CastExpression extends Expression {
+ 		return this.expression.nullStatus(flowInfo);
+ 	}
+ 	
++	/**
++	 * @see org.eclipse.jdt.internal.compiler.ast.Expression#optimizedBooleanConstant()
++	 */
++	public Constant optimizedBooleanConstant() {
++		switch(this.resolvedType.id) {
++			case T_boolean :
++			case T_JavaLangBoolean :
++				return this.expression.optimizedBooleanConstant();
++		}
++		return NotAConstant;
++	}
++	
+ 	public StringBuffer printExpression(int indent, StringBuffer output) {
+ 
+ 		output.append('(');

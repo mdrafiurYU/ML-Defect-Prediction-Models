@@ -1,0 +1,51 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+index 21d5a59..db54970 100644
+--- a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
++++ b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+@@ -243,11 +243,6 @@ final class JustCompileSearch {
+   static final class JustCompileSimilarity extends Similarity {
+ 
+     @Override
+-    public float coord(int overlap, int maxOverlap) {
+-      throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+-    }
+-
+-    @Override
+     public float idf(int docFreq, int numDocs) {
+       throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+     }
+@@ -258,11 +253,6 @@ final class JustCompileSearch {
+     }
+ 
+     @Override
+-    public float queryNorm(float sumOfSquaredWeights) {
+-      throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+-    }
+-
+-    @Override
+     public float sloppyFreq(int distance) {
+       throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+     }
+@@ -270,8 +260,22 @@ final class JustCompileSearch {
+     @Override
+     public float tf(float freq) {
+       throw new UnsupportedOperationException(UNSUPPORTED_MSG);
++    }  
++  }
++  
++  static final class JustCompileSimilarityProvider implements SimilarityProvider {
++
++    public float queryNorm(float sumOfSquaredWeights) {
++      throw new UnsupportedOperationException(UNSUPPORTED_MSG);
++    }
++    
++    public float coord(int overlap, int maxOverlap) {
++      throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+     }
+     
++    public Similarity get(String field) {
++      throw new UnsupportedOperationException(UNSUPPORTED_MSG);
++    }
+   }
+ 
+   static final class JustCompileSpanFilter extends SpanFilter {

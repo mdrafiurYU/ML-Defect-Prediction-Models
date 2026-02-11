@@ -1,0 +1,13 @@
+diff --git a/afb/afbpixmap.c b/afb/afbpixmap.c
+index 5a81679..5ae50fb 100644
+--- a/afb/afbpixmap.c
++++ b/afb/afbpixmap.c
+@@ -113,7 +113,7 @@ afbDestroyPixmap(pPixmap)
+ {
+ 	if(--pPixmap->refcnt)
+ 		return(TRUE);
+-	dixFreePrivates(*DEVPRIV_PTR(pPixmap));
++	dixFreePrivates(pPixmap->devPrivates);
+ 	xfree(pPixmap);
+ 	return(TRUE);
+ }

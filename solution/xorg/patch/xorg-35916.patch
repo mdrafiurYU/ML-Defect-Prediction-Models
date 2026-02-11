@@ -1,0 +1,23 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index bd9a87c..ea5189f 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -5157,7 +5157,6 @@ ProcXkbGetKbdByName(ClientPtr client)
+     if (stuff->load)
+ 	 fwant= XkbGBN_AllComponentsMask;
+     else fwant= stuff->want|stuff->need;
+-    if (!names.keymap) {
+ 	if ((!names.compat)&&
+     		(fwant&(XkbGBN_CompatMapMask|XkbGBN_IndicatorMapMask))) {
+ 	    names.compat= _XkbDupString("%");
+@@ -5173,10 +5172,6 @@ ProcXkbGetKbdByName(ClientPtr client)
+ 	    names.geometry= _XkbDupString("%");
+ 	    geom_changed= False;
+ 	}
+-    }
+-    else {
+-	geom_changed= True;
+-    }
+ 
+     bzero(mapFile,PATH_MAX);
+     rep.type= X_Reply;

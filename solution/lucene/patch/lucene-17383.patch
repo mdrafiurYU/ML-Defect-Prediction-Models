@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestDocsAndPositions.java b/lucene/src/test/org/apache/lucene/index/TestDocsAndPositions.java
+index 7929a45..a3f0248 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestDocsAndPositions.java
++++ b/lucene/src/test/org/apache/lucene/index/TestDocsAndPositions.java
+@@ -36,6 +36,7 @@ public class TestDocsAndPositions extends LuceneTestCase {
+   private String fieldName;
+   private boolean usePayload;
+ 
++  @Override
+   public void setUp() throws Exception {
+     super.setUp();
+     fieldName = "field" + random.nextInt();

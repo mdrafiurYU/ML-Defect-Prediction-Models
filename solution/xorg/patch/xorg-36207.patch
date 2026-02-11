@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/xpr/xprFrame.c b/hw/xquartz/xpr/xprFrame.c
+index b9a33de..864ef0d 100644
+--- a/hw/xquartz/xpr/xprFrame.c
++++ b/hw/xquartz/xpr/xprFrame.c
+@@ -90,7 +90,7 @@ xprSetNativeProperty(RootlessWindowPtr pFrame)
+         /* FIXME: move this to AppleWM extension */
+ 
+         data = native_id;
+-        ChangeWindowProperty(pFrame->win, xa_native_window_id(),
++        dixChangeWindowProperty(serverClient, pFrame->win, xa_native_window_id(),
+                              XA_INTEGER, 32, PropModeReplace, 1, &data, TRUE);
+     }
+ }

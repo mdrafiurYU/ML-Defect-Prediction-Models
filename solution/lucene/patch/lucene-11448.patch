@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/FieldComparator.java b/lucene/src/java/org/apache/lucene/search/FieldComparator.java
+index 49ae530..d5f34bb 100644
+--- a/lucene/src/java/org/apache/lucene/search/FieldComparator.java
++++ b/lucene/src/java/org/apache/lucene/search/FieldComparator.java
+@@ -353,7 +353,7 @@ public abstract class FieldComparator {
+ 
+     @Override
+     public FieldComparator setNextReader(IndexReader reader, int docBase) throws IOException {
+-      currentReaderValues = reader.docValues(field).getCached(true);
++      currentReaderValues = reader.docValues(field).getSource();
+       return this;
+     }
+     
+@@ -555,7 +555,7 @@ public abstract class FieldComparator {
+ 
+     @Override
+     public FieldComparator setNextReader(IndexReader reader, int docBase) throws IOException {
+-      currentReaderValues = reader.docValues(field).getCached(true);
++      currentReaderValues = reader.docValues(field).getSource();
+       return this;
+     }

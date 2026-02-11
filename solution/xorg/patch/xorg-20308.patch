@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxcmdsswap.c b/GL/glx/glxcmdsswap.c
+index ed1276f..0f8b674 100644
+--- a/GL/glx/glxcmdsswap.c
++++ b/GL/glx/glxcmdsswap.c
+@@ -345,7 +345,7 @@ int __glXSwapUseXFont(__GLXclientState *cl, GLbyte *pc)
+ 
+ int __glXSwapQueryExtensionsString(__GLXclientState *cl, GLbyte *pc)
+ {
+-    xGLXQueryExtensionsStringReq *req = NULL;
++    xGLXQueryExtensionsStringReq *req = (xGLXQueryExtensionsStringReq *)pc;
+     __GLX_DECLARE_SWAP_VARIABLES;
+ 
+     __GLX_SWAP_SHORT(&req->length);

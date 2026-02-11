@@ -1,0 +1,15 @@
+diff --git a/cfb/cfbpush8.c b/cfb/cfbpush8.c
+index 26e509c..3492c8e 100644
+--- a/cfb/cfbpush8.c
++++ b/cfb/cfbpush8.c
+@@ -30,6 +30,10 @@ in this Software without prior written authorization from The Open Group.
+ */
+ /* $Xorg: cfbpush8.c,v 1.4 2001/02/09 02:04:38 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #if PSZ == 8
+ 
+ #include	<X11/X.h>

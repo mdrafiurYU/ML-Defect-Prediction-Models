@@ -1,0 +1,35 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeAttic.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeAttic.java
+index 4397967..38d44a5 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeAttic.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildNodeAttic.java
+@@ -38,6 +38,10 @@ class ChildNodeAttic {
+     ChildNodeAttic() {
+     }
+ 
++    boolean isEmpty() {
++        return attic.isEmpty();
++    }
++
+     boolean contains(Name name, int index) {
+         for (Iterator it = attic.iterator(); it.hasNext();) {
+             NodeEntryImpl ne = (NodeEntryImpl) it.next();
+@@ -48,6 +52,19 @@ class ChildNodeAttic {
+         return false;
+     }
+ 
++    boolean contains(Name name, int index, String uniqueId) {
++        for (Iterator it = attic.iterator(); it.hasNext();) {
++            NodeEntryImpl ne = (NodeEntryImpl) it.next();
++            if (uniqueId != null && uniqueId.equals(ne.getUniqueID())) {
++                return true;
++            } else if (ne.matches(name, index)) {
++                return true;
++            }
++        }
++        // not found
++        return false;
++    }
++
+     List get(Name name) {
+         List l = new ArrayList();
+         for (Iterator it = attic.iterator(); it.hasNext();) {

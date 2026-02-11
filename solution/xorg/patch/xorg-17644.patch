@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/os-support/usl/usl_kbd.h b/hw/xfree86/os-support/usl/usl_kbd.h
+new file mode 100644
+index 0000000..990c13c
+--- /dev/null
++++ b/hw/xfree86/os-support/usl/usl_kbd.h
+@@ -0,0 +1,14 @@
++/* $XdotOrg$ */
++#ifndef SCO_KBD_HDR
++#define SCO_KBD_HDR
++
++typedef struct {
++  int orig_kbm;
++  struct termio kbdtty;
++  keymap_t keymap, noledmap;
++  int xq;
++} USLKbdPrivRec, *USLKbdPrivPtr;
++
++extern void KbdGetMapping(InputInfoPtr pInfo, KeySymsPtr pKeySyms,
++  CARD8 *pModMap);
++#endif /* SCO_KBD_HDR */

@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index 06c5df0..9ecebe4 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -551,6 +551,9 @@ void DarwinUpdateModKeys(int flags) {
+ 	old_flags = flags;
+ }
+ 
++void DarwinListenOnOpenFD(int fd) {
++    DarwinSendDDXEvent(kXquartzListenOnOpenFD, 1, fd);
++}
+ 
+ /*
+  * DarwinSendDDXEvent

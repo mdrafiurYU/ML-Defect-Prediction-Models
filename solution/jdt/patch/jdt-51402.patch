@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
+index d092fd3..a7a3cce 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
+@@ -1110,6 +1110,10 @@ private boolean isLocalDeclaration() {
+ 	}
+ 	return false;
+ }
++protected void parse() {
++	this.diet = true;
++	super.parse();
++}
+ /*
+  * Investigate one entire unit.
+  */

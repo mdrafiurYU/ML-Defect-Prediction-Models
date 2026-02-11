@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/tst/OldRequestHandler.java b/solr/src/java/org/apache/solr/tst/OldRequestHandler.java
+index a42461f..13183e3 100644
+--- a/solr/src/java/org/apache/solr/tst/OldRequestHandler.java
++++ b/solr/src/java/org/apache/solr/tst/OldRequestHandler.java
+@@ -63,7 +63,7 @@ public class OldRequestHandler implements SolrRequestHandler {
+     // we can use the Lucene sort ability.
+     Sort sort = null;
+     if (commands.size() >= 2) {
+-      sort = QueryParsing.parseSort(commands.get(1), req.getSchema());
++      sort = QueryParsing.parseSort(commands.get(1), req);
+     }

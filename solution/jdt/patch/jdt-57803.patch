@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
+index b5bcfa2..a49f0cc 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
+@@ -131,7 +131,7 @@ public class RecoveryScanner extends Scanner {
+ 					this.pendingTokensPtr = this.data.insertedTokens[i].length - 1;
+ 					this.fakeTokenSource = CharOperation.NO_CHAR;
+ 					this.isInserted = true;
+-					this.startPosition = this.currentPosition - 1;
++					this.startPosition = this.currentPosition;
+ 					this.skipNextInsertedTokens = i;
+ 					return this.pendingTokens[this.pendingTokensPtr--];
+ 				}

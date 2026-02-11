@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessScreen.c b/miext/rootless/rootlessScreen.c
+index 0bcd2f7..489d3fb 100644
+--- a/miext/rootless/rootlessScreen.c
++++ b/miext/rootless/rootlessScreen.c
+@@ -84,7 +84,7 @@ RootlessUpdateScreenPixmap(ScreenPtr pScreen)
+ 
+     pPix = (*pScreen->GetScreenPixmap)(pScreen);
+     if (pPix == NULL) {
+-        pPix = (*pScreen->CreatePixmap)(pScreen, 0, 0, pScreen->rootDepth);
++        pPix = (*pScreen->CreatePixmap)(pScreen, 0, 0, pScreen->rootDepth, 0);
+         (*pScreen->SetScreenPixmap)(pPix);
+     }
+ 

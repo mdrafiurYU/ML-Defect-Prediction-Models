@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesSameNameSibsTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesSameNameSibsTest.java
+index c1cdfde..31fb828 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesSameNameSibsTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesSameNameSibsTest.java
+@@ -50,7 +50,7 @@ public class WorkspaceCopyBetweenWorkspacesSameNameSibsTest extends AbstractWork
+         int cnt = 0;
+         NodeIterator iter = node2.getNodes();
+         while (iter.hasNext()) {
+-            Node n = (Node) iter.nextNode();
++            Node n = iter.nextNode();
+ 
+             assertTrue(n.getName().equals(orderList[cnt]));
+             cnt++;

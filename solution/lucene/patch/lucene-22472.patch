@@ -1,0 +1,26 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java b/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java
+index 514af9f..644d81b 100644
+--- a/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java
++++ b/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java
+@@ -298,7 +298,7 @@ public class TestDocValuesIndexing extends LuceneTestCase {
+ 
+         for (int i = 0; i < base; i++) {
+           double value = floats.getFloat(i);
+-          assertEquals(" floats failed for doc: " + i + " base: " + base,
++          assertEquals(val + " failed for doc: " + i + " base: " + base,
+               missing.doubleValue, value, 0.0d);
+         }
+         DocValuesEnum floatEnum = getValuesEnum(floatReader);
+@@ -528,9 +528,11 @@ public class TestDocValuesIndexing extends LuceneTestCase {
+           valField.setInt(i);
+           break;
+         case FLOAT_32:
+-        case FLOAT_64:
+           valField.setFloat(2.0f * i);
+           break;
++        case FLOAT_64:
++          valField.setFloat(2.0d * i);
++          break;
+         default:
+           fail("unexpected value " + value);
+         }

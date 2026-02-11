@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CharLiteral.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CharLiteral.java
+index de69a08..e9a4891 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CharLiteral.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CharLiteral.java
+@@ -90,7 +90,7 @@ public void generateCode(BlockScope currentScope, CodeStream codeStream, boolean
+ 	codeStream.recordPositionsFrom(pc, this.sourceStart);
+ }
+ public TypeBinding literalType(BlockScope scope) {
+-	return CharBinding;
++	return TypeBinding.CHAR;
+ }
+ public void traverse(ASTVisitor visitor, BlockScope blockScope) {
+ 	visitor.visit(this, blockScope);

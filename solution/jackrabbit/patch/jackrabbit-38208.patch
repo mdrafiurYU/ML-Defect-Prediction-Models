@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
+index 8cb9cdd..c57ae6c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
+@@ -124,6 +124,8 @@ public class SetValueLockExceptionTest extends AbstractJCRTest {
+         if (testNode.holdsLock()) {
+             testNode.unlock();
+         }
++        testNode = null;
++        referenceNode = null;
+         superuser.save();
+         super.tearDown();
+     }

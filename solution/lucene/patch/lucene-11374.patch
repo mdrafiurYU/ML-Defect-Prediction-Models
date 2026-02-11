@@ -1,0 +1,36 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java b/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java
+index 0731a1c..838e939 100644
+--- a/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java
++++ b/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java
+@@ -19,6 +19,7 @@ package org.apache.lucene.index;
+ 
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.FieldSelector;
++import org.apache.lucene.index.values.DocValues;
+ import org.apache.lucene.index.values.ValuesEnum;
+ import org.apache.lucene.store.Directory;
+ import org.apache.lucene.util.Bits;
+@@ -59,6 +60,11 @@ public class FilterIndexReader extends IndexReader {
+     public Terms terms(String field) throws IOException {
+       return in.terms(field);
+     }
++
++    @Override
++    public DocValues docValues(String field) throws IOException {
++      return in.docValues(field);
++    }
+   }
+ 
+   /** Base class for filtering {@link Terms}
+@@ -117,6 +123,11 @@ public class FilterIndexReader extends IndexReader {
+     public TermsEnum terms() throws IOException {
+       return in.terms();
+     }
++
++    @Override
++    public DocValues docValues() throws IOException {
++      return in.docValues();
++    }
+   }
+ 
+   /** Base class for filtering {@link TermsEnum} implementations. */

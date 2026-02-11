@@ -1,0 +1,18 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+index 375aae8..7897a70 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+@@ -281,12 +281,7 @@ public class TestIndexWriterReader extends LuceneTestCase {
+     
+     Directory mainDir = newDirectory();
+     IndexWriter mainWriter = new IndexWriter(mainDir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()));
+-
+-    // try to keep open file count down:
+-    LogMergePolicy lmp = (LogMergePolicy) mainWriter.getMergePolicy();
+-    if (lmp.getMergeFactor() > 5) {
+-      lmp.setMergeFactor(5);
+-    }
++    _TestUtil.reduceOpenFiles(mainWriter);
+ 
+     mainWriter.setInfoStream(infoStream);
+     AddDirectoriesThreads addDirThreads = new AddDirectoriesThreads(numIter, mainWriter);

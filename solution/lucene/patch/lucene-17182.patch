@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SimilarityFactory.java b/solr/src/java/org/apache/solr/schema/SimilarityFactory.java
+index 25b03a0..f2e29d5 100644
+--- a/solr/src/java/org/apache/solr/schema/SimilarityFactory.java
++++ b/solr/src/java/org/apache/solr/schema/SimilarityFactory.java
+@@ -16,7 +16,7 @@ package org.apache.solr.schema;
+  * limitations under the License.
+  */
+ 
+-import org.apache.lucene.search.Similarity;
++import org.apache.lucene.search.SimilarityProvider;
+ import org.apache.solr.common.params.SolrParams;
+ 
+ public abstract class SimilarityFactory {
+@@ -25,5 +25,5 @@ public abstract class SimilarityFactory {
+   public void init(SolrParams params) { this.params = params; }
+   public SolrParams getParams() { return params; }
+ 
+-  public abstract Similarity getSimilarity();
++  public abstract SimilarityProvider getSimilarityProvider();
+ }

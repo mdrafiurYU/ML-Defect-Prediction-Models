@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-client/src/main/java/org/apache/jackrabbit/client/RepositoryFactoryImpl.java b/jackrabbit-jcr-client/src/main/java/org/apache/jackrabbit/client/RepositoryFactoryImpl.java
+index eeef6e1..9017de4 100644
+--- a/jackrabbit-jcr-client/src/main/java/org/apache/jackrabbit/client/RepositoryFactoryImpl.java
++++ b/jackrabbit-jcr-client/src/main/java/org/apache/jackrabbit/client/RepositoryFactoryImpl.java
+@@ -73,7 +73,7 @@ public class RepositoryFactoryImpl implements RepositoryFactory {
+                 config = (RepositoryConfig) param;
+             }
+             if (config == null) {
+-                config = org.apache.jackrabbit.client.spi2dav.RepositoryConfigImpl.create(parameters);
++                config = org.apache.jackrabbit.client.spi2davex.RepositoryConfigImpl.create(parameters);
+                 if (config == null) {
+                     config = org.apache.jackrabbit.client.spi2dav.RepositoryConfigImpl.create(parameters);
+                 }

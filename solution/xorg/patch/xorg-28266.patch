@@ -1,0 +1,19 @@
+diff --git a/mi/mipushpxl.c b/mi/mipushpxl.c
+index 6526aa0..3695f30 100644
+--- a/mi/mipushpxl.c
++++ b/mi/mipushpxl.c
+@@ -86,10 +86,10 @@ miPushPixels(pGC, pBitMap, pDrawable, dx, dy, xOrg, yOrg)
+ {
+     int		h, dxDivPPW, ibEnd;
+     MiBits *pwLineStart;
+-    register MiBits	*pw, *pwEnd;
+-    register MiBits msk;
+-    register int ib, w;
+-    register int ipt;		/* index into above arrays */
++    MiBits	*pw, *pwEnd;
++    MiBits 	msk;
++    int 	ib, w;
++    int 	ipt;		/* index into above arrays */
+     Bool 	fInBox;
+     DDXPointRec	pt[NPT], ptThisLine;
+     int		width[NPT];

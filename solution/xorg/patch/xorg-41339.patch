@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Pixmap.c b/hw/xnest/Pixmap.c
+index 08305b1..676a2ba 100644
+--- a/hw/xnest/Pixmap.c
++++ b/hw/xnest/Pixmap.c
+@@ -90,7 +90,7 @@ xnestPixmapToRegion(PixmapPtr pPixmap)
+   register RegionPtr pReg, pTmpReg;
+   register int x, y;
+   unsigned long previousPixel, currentPixel;
+-  BoxRec Box;
++  BoxRec Box = { 0, 0, 0, 0 };
+   Bool overlap;
+   
+   ximage = XGetImage(xnestDisplay, xnestPixmap(pPixmap), 0, 0,

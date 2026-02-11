@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+index 6fe25bb..2d65ca8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+@@ -294,7 +294,7 @@ public class QueryResultImpl implements QueryResult {
+                 numResults = result.length();
+             }
+ 
+-            int start = resultNodes.size() + invalid + (int)offset;
++            int start = resultNodes.size() + invalid + (int) offset;
+             int max = Math.min(result.length(), numResults);
+             for (int i = start; i < max && resultNodes.size() < maxResultSize; i++) {
+                 NodeId id = NodeId.valueOf(result.doc(i).get(FieldNames.UUID));

@@ -1,0 +1,21 @@
+diff --git a/mpx/listdev.h b/mpx/listdev.h
+index 0d2e0dc..079fe8e 100644
+--- a/mpx/listdev.h
++++ b/mpx/listdev.h
+@@ -31,7 +31,7 @@ void SizeMPXDeviceInfo(DeviceIntPtr /* d */ ,
+ 
+ void SetMPXDeviceInfo(ClientPtr /* client */ ,
+ 		    DeviceIntPtr /* d */ ,
+-		    mpxDeviceInfoPtr /* dev */ ,
++		    xMPXDeviceInfoPtr /* dev */ ,
+ 		    char ** /* devbuf */ ,
+ 		    char **	/* namebuf */
+     );
+@@ -48,6 +48,6 @@ void MPXCopySwapDevice(ClientPtr /* client */ ,
+ 
+ void SRepMPXListDevices(ClientPtr /* client */ ,
+ 			   int /* size */ ,
+-			   mpxListDevicesReply *	/* rep */
++			   xMPXListDevicesReply *	/* rep */
+     );
+ #endif

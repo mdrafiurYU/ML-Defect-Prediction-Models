@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xf4bpp/mfbfillarc.c b/hw/xfree86/xf4bpp/mfbfillarc.c
+index d5b5372..89aeadd 100644
+--- a/hw/xfree86/xf4bpp/mfbfillarc.c
++++ b/hw/xfree86/xf4bpp/mfbfillarc.c
+@@ -253,7 +253,8 @@ xf4bppPolyFillArcSolid
+     mfbPrivGC *priv;
+     int rop;
+ 
+-    priv = (mfbPrivGC *) pGC->devPrivates[mfbGetGCPrivateIndex()].ptr;
++    priv = (mfbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++					 mfbGetGCPrivateKey());
+     rop = priv->rop;
+     if ((rop == RROP_NOP) || !(pGC->planemask & 1))
+ #else

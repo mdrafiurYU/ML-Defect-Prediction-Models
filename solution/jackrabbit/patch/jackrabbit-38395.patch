@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
+index fc5ae76..92f8395 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
+@@ -77,7 +77,9 @@ public class PredefinedNodeTypeTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        manager = null;
+         super.tearDown();
+     }

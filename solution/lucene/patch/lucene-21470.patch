@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java
+index 8cad850..d67fe95 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java
+@@ -195,7 +195,6 @@ public class DocumentsWriterPerThread {
+     assert numDocsInRAM == 0 : "num docs " + numDocsInRAM;
+     pendingDeletes.clear();
+     deleteSlice = null;
+-      
+   }
+ 
+   void setAborting() {

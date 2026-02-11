@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/pbproxy/pbproxy.h b/hw/xquartz/pbproxy/pbproxy.h
+index bd5f65b..bfeb868 100644
+--- a/hw/xquartz/pbproxy/pbproxy.h
++++ b/hw/xquartz/pbproxy/pbproxy.h
+@@ -12,7 +12,9 @@
+ #include <X11/extensions/shape.h>
+ #undef   Cursor
+ 
++#ifndef DEBUG
+ #define DEBUG 0
++#endif
+ 
+ /* from main.m */
+ extern void x_set_is_active (BOOL state);

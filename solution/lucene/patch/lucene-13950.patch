@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestSearchPerf.java b/solr/src/test/org/apache/solr/search/TestSearchPerf.java
+index dd0a27b..dde009e 100755
+--- a/solr/src/test/org/apache/solr/search/TestSearchPerf.java
++++ b/solr/src/test/org/apache/solr/search/TestSearchPerf.java
+@@ -111,7 +111,7 @@ public class TestSearchPerf extends AbstractSolrTestCase {
+         doc.addField("t10_100_ws", sb.toString());
+       }
+ 
+-      AddUpdateCommand cmd = new AddUpdateCommand();
++      AddUpdateCommand cmd = new AddUpdateCommand(req);
+       cmd.solrDoc = doc;
+       processor.processAdd(cmd);
+     }

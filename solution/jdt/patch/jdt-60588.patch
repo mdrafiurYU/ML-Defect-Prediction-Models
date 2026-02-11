@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index 6791761..40b7e12 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -1054,7 +1054,7 @@ public String getJavadocContents(IProgressMonitor monitor) throws JavaModelExcep
+ 	if (cachedJavadoc != null && cachedJavadoc != EMPTY_JAVADOC) {
+ 		return cachedJavadoc;
+ 	}
+-	String option = this.getJavaProject().getOption(JavaCore.ENABLE_JAVADOC_ATTACHMENTS, true);
++	String option = this.getJavaProject().getOption(JavaCore.ENABLE_JAVADOC_ATTACHMENTS_ACCESSES, true);
+ 	if (JavaCore.DISABLED.equals(option)) {
+ 		return null;
+ 	}

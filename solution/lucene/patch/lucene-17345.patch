@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestPayloads.java b/lucene/src/test/org/apache/lucene/index/TestPayloads.java
+index ac12cf2..5841c79 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestPayloads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestPayloads.java
+@@ -163,7 +163,8 @@ public class TestPayloads extends LuceneTestCase {
+         PayloadAnalyzer analyzer = new PayloadAnalyzer();
+         IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(
+             TEST_VERSION_CURRENT, analyzer)
+-            .setOpenMode(OpenMode.CREATE));
++            .setOpenMode(OpenMode.CREATE)
++            .setMergePolicy(newInOrderLogMergePolicy()));
+         
+         // should be in sync with value in TermInfosWriter
+         final int skipInterval = 16;

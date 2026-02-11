@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/rootlessScreen.c b/miext/rootless/rootlessScreen.c
+index 21c62c4..6b76973 100644
+--- a/miext/rootless/rootlessScreen.c
++++ b/miext/rootless/rootlessScreen.c
+@@ -31,6 +31,10 @@
+ /* $XFree86: xc/programs/Xserver/miext/rootless/rootlessScreen.c,v 1.2 2003/04/30 23:15:35 torrey Exp $ */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "mi.h"
+ #include "scrnintstr.h"
+ #include "gcstruct.h"

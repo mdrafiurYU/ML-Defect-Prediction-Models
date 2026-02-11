@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/os-support/linux/int10/linux.c b/hw/xfree86/os-support/linux/int10/linux.c
+index a911378..64087a2 100644
+--- a/hw/xfree86/os-support/linux/int10/linux.c
++++ b/hw/xfree86/os-support/linux/int10/linux.c
+@@ -79,12 +79,6 @@ static Int10LinuxSubModuleState int10LinuxLoadSubModule(ScrnInfoPtr pScrn);
+ #endif /* DoSubModules */
+ 
+ xf86Int10InfoPtr
+-xf86InitInt10(int entityIndex)
+-{
+-    return xf86ExtendedInitInt10(entityIndex, 0);
+-}
+-
+-xf86Int10InfoPtr
+ xf86ExtendedInitInt10(int entityIndex, int Flags)
+ {
+     xf86Int10InfoPtr pInt = NULL;

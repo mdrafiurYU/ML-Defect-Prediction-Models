@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_acpi.c b/hw/xfree86/os-support/linux/lnx_acpi.c
+index c806b45..9d1dea7 100644
+--- a/hw/xfree86/os-support/linux/lnx_acpi.c
++++ b/hw/xfree86/os-support/linux/lnx_acpi.c
+@@ -130,6 +130,7 @@ lnxACPIOpen(void)
+ 	strcpy(addr.sun_path, ACPI_SOCKET);
+ 	if ((r = connect(fd, (struct sockaddr*)&addr, sizeof(addr))) == -1) {
+ 	    shutdown(fd, 2);
++	    close(fd);
+ 	    fd = -1;
+ 	}
+     }
+@@ -162,6 +163,7 @@ lnxCloseACPI(void)
+     if (ACPIihPtr) {
+ 	fd = xf86RemoveInputHandler(ACPIihPtr);
+ 	shutdown(fd, 2);
++	close(fd);
+ 	ACPIihPtr = NULL;
+     }
+ }

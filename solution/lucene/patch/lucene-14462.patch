@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/schema/BinaryField.java b/solr/src/java/org/apache/solr/schema/BinaryField.java
+index aa87230..5cc4cc1 100644
+--- a/solr/src/java/org/apache/solr/schema/BinaryField.java
++++ b/solr/src/java/org/apache/solr/schema/BinaryField.java
+@@ -79,8 +79,7 @@ public class BinaryField extends FieldType  {
+       len = buf.length;
+     }
+ 
+-    Field f = new Field(field.getName(), buf, offset, len,
+-            getFieldStore(field, null));
++    Field f = new Field(field.getName(), buf, offset, len);
+     f.setBoost(boost);
+     return f;
+   }

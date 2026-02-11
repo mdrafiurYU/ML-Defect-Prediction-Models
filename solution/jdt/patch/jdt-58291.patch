@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/IndexManager.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/IndexManager.java
+index dad8a33..a7fa320 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/IndexManager.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/IndexManager.java
+@@ -172,7 +172,7 @@ public SourceElementParser getSourceElementParser(IJavaProject project, ISourceE
+ 	Map options = project.getOptions(true);
+ 	options.put(JavaCore.COMPILER_TASK_TAGS, ""); //$NON-NLS-1$
+ 	
+-	SourceElementParser parser = new SourceElementParser(
++	SourceElementParser parser = new IndexingParser(
+ 		requestor, 
+ 		new DefaultProblemFactory(Locale.getDefault()),
+ 		new CompilerOptions(options),

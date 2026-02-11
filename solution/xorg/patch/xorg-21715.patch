@@ -1,0 +1,13 @@
+diff --git a/GL/glx/singlepixswap.c b/GL/glx/singlepixswap.c
+index 59d1a69..b22dc5f 100644
+--- a/GL/glx/singlepixswap.c
++++ b/GL/glx/singlepixswap.c
+@@ -517,3 +517,8 @@ int __glXDispSwap_GetColorTable(__GLXclientState *cl, GLbyte *pc)
+ 
+     return Success;
+ }
++
++int __glXDispSwap_GetCompressedTexImageARB(__GLXclientState *cl, GLbyte *pc)
++{
++    return BadRequest;
++}

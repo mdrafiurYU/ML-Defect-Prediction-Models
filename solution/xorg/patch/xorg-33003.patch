@@ -1,0 +1,12 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 8dc7c7f..4439ffc 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -372,6 +372,7 @@ miPointerWarpCursor (pDev, pScreen, x, y)
+ 	pPointer->y = y;
+ 	pPointer->pScreen = pScreen;
+     }
++    UpdateSpriteForScreen (pDev, pScreen) ;
+ }
+ 
+ /*

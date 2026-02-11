@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index 1881796..71fdd10 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -994,6 +994,10 @@ public String getAttachedJavadoc(IProgressMonitor monitor, String defaultEncodin
+ 	int indexOfNextSummary = contents.indexOf(JavadocConstants.NESTED_CLASS_SUMMARY);
+ 	if (indexOfNextSummary == -1) {
+ 		// try to find constructor summary start
++		indexOfNextSummary = contents.indexOf(JavadocConstants.FIELD_SUMMARY);
++	}
++	if (indexOfNextSummary == -1) {
++		// try to find constructor summary start
+ 		indexOfNextSummary = contents.indexOf(JavadocConstants.CONSTRUCTOR_SUMMARY);
+ 	}
+ 	if (indexOfNextSummary == -1) {

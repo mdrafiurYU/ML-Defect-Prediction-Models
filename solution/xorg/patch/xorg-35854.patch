@@ -1,0 +1,13 @@
+diff --git a/Xi/setmmap.c b/Xi/setmmap.c
+index be3d3cb..34efde5 100644
+--- a/Xi/setmmap.c
++++ b/Xi/setmmap.c
+@@ -98,7 +98,7 @@ ProcXSetDeviceModifierMapping(ClientPtr client)
+     REQUEST(xSetDeviceModifierMappingReq);
+     REQUEST_AT_LEAST_SIZE(xSetDeviceModifierMappingReq);
+ 
+-    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixSetAttrAccess);
++    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixManageAccess);
+     if (ret != Success)
+ 	return ret;
+ 

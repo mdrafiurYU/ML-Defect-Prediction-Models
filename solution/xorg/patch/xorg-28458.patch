@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/Screen.c b/hw/xfree86/parser/Screen.c
+index b7a64b0..79e1d24 100644
+--- a/hw/xfree86/parser/Screen.c
++++ b/hw/xfree86/parser/Screen.c
+@@ -83,7 +83,7 @@ static xf86ConfigSymTabRec DisplayTab[] =
+ 
+ #define CLEANUP xf86freeDisplayList
+ 
+-XF86ConfDisplayPtr
++static XF86ConfDisplayPtr
+ xf86parseDisplaySubSection (void)
+ {
+ 	int token;

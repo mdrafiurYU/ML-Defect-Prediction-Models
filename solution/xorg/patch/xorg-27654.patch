@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Rotate.c b/hw/xfree86/modes/xf86Rotate.c
+index 1e79063..1d55a6e 100644
+--- a/hw/xfree86/modes/xf86Rotate.c
++++ b/hw/xfree86/modes/xf86Rotate.c
+@@ -22,6 +22,10 @@
+ 
+ #ifdef HAVE_XORG_CONFIG_H
+ #include <xorg-config.h>
++#else
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ #endif
+ 
+ #include <stddef.h>

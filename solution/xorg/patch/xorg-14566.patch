@@ -1,0 +1,13 @@
+diff --git a/Xprint/AttrValid.c b/Xprint/AttrValid.c
+index b2b0182..cf94760 100644
+--- a/Xprint/AttrValid.c
++++ b/Xprint/AttrValid.c
+@@ -48,7 +48,7 @@ static XpOidMediumDiscreteSizeList DefaultMediumSizeList = {
+     &DefaultMediumSize, 1
+ };
+ static XpOidMediumSourceSize DefaultMediumSourceSize = {
+-    xpoid_unspecified, XpOidMediumSS_DISCRETE, &DefaultMediumSizeList
++    xpoid_unspecified, XpOidMediumSS_DISCRETE, { &DefaultMediumSizeList }
+ };
+ static XpOidMediumSS DefaultMediumSS = {
+     &DefaultMediumSourceSize, 1

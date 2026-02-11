@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlPolicyIteratorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlPolicyIteratorTest.java
+index 83bb065..7eb1391 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlPolicyIteratorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlPolicyIteratorTest.java
+@@ -92,9 +92,10 @@ public class AccessControlPolicyIteratorTest extends AbstractAccessControlTest {
+             throw new NotExecutableException();
+         }
+     }
+-    /*
++
+     // TODO: uncomment as soon as RangeIterator is adjusted.
+-    public void testgetNumberRemaining() {
++    /*
++    public void testgetNumberRemaining() throws NotExecutableException, RepositoryException {
+         checkCanReadAc(path);
+         AccessControlPolicyIterator it = acMgr.getApplicablePolicies(path);

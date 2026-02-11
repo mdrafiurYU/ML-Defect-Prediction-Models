@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/search/QueryGrammerSet.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/search/QueryGrammerSet.java
+index fc981e0..2388d56 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/search/QueryGrammerSet.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/search/QueryGrammerSet.java
+@@ -115,7 +115,7 @@ public class QueryGrammerSet extends AbstractDavProperty implements SearchConsta
+         Grammer(String localName, Namespace namespace) {
+             this.localName = localName;
+             this.namespace = namespace;
+-            hashCode = DomUtil.getQualifiedName(localName, namespace).hashCode();
++            hashCode = DomUtil.getExpandedName(localName, namespace).hashCode();
+         }
+ 
+         public int hashCode() {

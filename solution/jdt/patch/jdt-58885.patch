@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java
+index 7278c70..a1b7752 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java
+@@ -36,6 +36,8 @@ public void tearDownSuite() throws Exception {
+ }
+ 
+ public static Test suite() {
++	return buildModelTestSuite(SnippetCompletionTests.class);
++	/*
+ 	TestSuite suite = new Suite(SnippetCompletionTests.class.getName());
+ 	
+ 	suite.addTest(new SnippetCompletionTests("testCodeSnippetAssistForClassFile"));
+@@ -49,6 +51,7 @@ public static Test suite() {
+ 	suite.addTest(new SnippetCompletionTests("testCodeSnippetAssistInsideNumber"));
+ 	
+ 	return suite;
++	*/
+ }
+ 
+ public void testCodeSnippetAssistForClassFile() throws JavaModelException {

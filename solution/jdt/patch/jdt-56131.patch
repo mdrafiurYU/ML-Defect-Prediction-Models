@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
+index a3ceeff..00bd323 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
+@@ -254,7 +254,7 @@ public class ConstructorDeclaration extends AbstractMethodDeclaration {
+ 					codeStream.addVisibleLocalVariable(argBinding = arguments[i].binding);
+ 					argBinding.recordInitializationStartPC(0);
+ 					TypeBinding argType;
+-					if ((argType = argBinding.type) == LongBinding || (argType == DoubleBinding)) {
++					if ((argType = argBinding.type) == TypeBinding.LONG || (argType == TypeBinding.DOUBLE)) {
+ 						argSlotSize += 2;
+ 					} else {
+ 						argSlotSize++;

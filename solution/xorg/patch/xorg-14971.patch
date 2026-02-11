@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxvisual.c b/hw/dmx/dmxvisual.c
+index ff3fb89..23ff0ac 100644
+--- a/hw/dmx/dmxvisual.c
++++ b/hw/dmx/dmxvisual.c
+@@ -35,6 +35,10 @@
+ /** \file
+  * This file provides support for visuals. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxvisual.h"
+ 

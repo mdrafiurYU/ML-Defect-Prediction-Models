@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86DGA.c b/hw/xfree86/common/xf86DGA.c
+index 3d9bdfe..4e47f2e 100644
+--- a/hw/xfree86/common/xf86DGA.c
++++ b/hw/xfree86/common/xf86DGA.c
+@@ -29,6 +29,10 @@
+  * Written by Mark Vojkovich
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86str.h"
+ #include "xf86Priv.h"

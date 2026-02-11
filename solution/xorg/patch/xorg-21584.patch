@@ -1,0 +1,22 @@
+diff --git a/GL/glx/indirect_table.h b/GL/glx/indirect_table.h
+index a2562a0..4af1ccb 100644
+--- a/GL/glx/indirect_table.h
++++ b/GL/glx/indirect_table.h
+@@ -53,7 +53,7 @@ struct __glXDispatchInfo {
+      * is the non-byte-swapped version, and the second element is the
+      * byte-swapped version.
+      */
+-    void * const (*dispatch_functions)[2];
++    const void *(*dispatch_functions)[2];
+ 
+     /**
+      * Pointer to size validation data.  This table is indexed with the same
+@@ -70,7 +70,7 @@ struct __glXDispatchInfo {
+      * If size checking is not to be performed on this type of protocol
+      * data, this pointer will be \c NULL.
+      */
+-    const int_fast16_t * size_table[2];
++    const int_fast16_t (*size_table)[2];
+ 
+     /**
+      * Array of functions used to calculate the variable-size portion of

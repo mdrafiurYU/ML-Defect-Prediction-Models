@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+index 771ab8e..b7f166f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+@@ -18,6 +18,7 @@ import java.util.Map;
+ import java.util.Set;
+ 
+ import org.eclipse.core.resources.IFile;
++import org.eclipse.core.resources.IResource;
+ import org.eclipse.core.resources.IWorkspace;
+ import org.eclipse.core.resources.ResourcesPlugin;
+ import org.eclipse.core.runtime.CoreException;
+@@ -66,8 +67,12 @@ public class APTDispatch
+ 		
+ 		IWorkspace w = ResourcesPlugin.getWorkspace();
+ 		try
+-		{			
+-			w.run(runnable, w.getRoot(), IWorkspace.AVOID_UPDATE, null);
++		{	
++			// need to do something here to avoid the "Invalid Begin Rule..." errors.  Not sure what is correct.
++			IResource r;
++			r = w.getRoot();
++			
++			w.run( runnable, r, IWorkspace.AVOID_UPDATE, null );
+ 		}
+ 		catch( CoreException ce )
+ 		{

@@ -1,0 +1,29 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index aa67dc4..7c4d539 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -3612,8 +3612,13 @@ CloseDownRetainedResources()
+     }
+ }
+ 
++extern int clientPrivateLen;
++extern unsigned *clientPrivateSizes;
++extern unsigned totalClientSize;
++
+ void InitClient(ClientPtr client, int i, pointer ospriv)
+ {
++    bzero(client, totalClientSize);
+     client->index = i;
+     client->sequence = 0; 
+     client->clientAsMask = ((Mask)i) << CLIENTOFFSET;
+@@ -3664,10 +3669,6 @@ void InitClient(ClientPtr client, int i, pointer ospriv)
+ #endif
+ }
+ 
+-extern int clientPrivateLen;
+-extern unsigned *clientPrivateSizes;
+-extern unsigned totalClientSize;
+-
+ int
+ InitClientPrivates(ClientPtr client)
+ {

@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryImpl.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryImpl.java
+index b6aa0cc..5741a03 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryImpl.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryImpl.java
+@@ -149,9 +149,13 @@ public class BinaryImpl implements Binary {
+             return raf.read(b);
+         } else {
+             // this instance is backed by an in-memory buffer
+-            int length = buffer.length - (int) position;
+-            System.arraycopy(buffer, (int) position, b, 0, length);
+-            return length;
++            int length = Math.min(b.length, buffer.length - (int) position);
++            if (length > 0) {
++                System.arraycopy(buffer, (int) position, b, 0, length);
++                return length;
++            } else {
++                return -1;
++            }
+         }
+     }

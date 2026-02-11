@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/scanpci/xf86PciData.h b/hw/xfree86/scanpci/xf86PciData.h
+index 2253de8..0533d78 100644
+--- a/hw/xfree86/scanpci/xf86PciData.h
++++ b/hw/xfree86/scanpci/xf86PciData.h
+@@ -27,6 +27,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef PCI_DATA_H_
+ #define PCI_DATA_H_
+ 

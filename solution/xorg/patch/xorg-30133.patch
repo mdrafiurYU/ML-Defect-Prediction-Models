@@ -1,0 +1,19 @@
+diff --git a/fb/fbfill.c b/fb/fbfill.c
+index 35e4427..4f13a02 100644
+--- a/fb/fbfill.c
++++ b/fb/fbfill.c
+@@ -221,10 +221,10 @@ fbSolidBoxClipped (DrawablePtr	pDrawable,
+ #ifdef USE_MMX
+ 	if (!and && fbHaveMMX())
+ 	{
+-		if (fbSolidFillmmx (pDrawable,
+-		                    partX1, partY1,
+-				    (partX2 - partX1), (partY2 - partY1),
+-				    xor)) {
++	    if (fbFillmmx (dst, dstStride, dstBpp,
++			   partX1 + dstXoff, partX2 + dstYoff, (partX2 - partX1), (partY2 - partY1),
++			   xor))
++	    {
+ 			fbFinishAccess (pDrawable);
+ 			return;
+ 		}

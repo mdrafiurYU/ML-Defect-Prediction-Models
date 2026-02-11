@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/ConditionalFlowInfo.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/ConditionalFlowInfo.java
+index 3a6652e..77b98da 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/ConditionalFlowInfo.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/ConditionalFlowInfo.java
+@@ -102,6 +102,11 @@ public boolean isPotentiallyAssigned(LocalVariableBinding local) {
+ 			|| initsWhenFalse.isPotentiallyAssigned(local);
+ }
+ 	
++public boolean isPotentiallyNonNull(LocalVariableBinding local) {
++	return initsWhenTrue.isPotentiallyNonNull(local) 
++		|| initsWhenFalse.isPotentiallyNonNull(local);
++}	
++	
+ public boolean isPotentiallyNull(LocalVariableBinding local) {
+ 	return initsWhenTrue.isPotentiallyNull(local) 
+ 		|| initsWhenFalse.isPotentiallyNull(local);

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/LockInfoImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/LockInfoImpl.java
+index 5c839a3..0b5598b 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/LockInfoImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/LockInfoImpl.java
+@@ -39,8 +39,8 @@ class LockInfoImpl extends org.apache.jackrabbit.spi.commons.LockInfoImpl {
+      */
+     private LockInfoImpl(Lock lock, IdFactoryImpl idFactory,
+                          NamePathResolver resolver) throws RepositoryException {
+-        super(lock.getLockToken(), lock.getLockOwner(),
+-                lock.isDeep(), lock.isSessionScoped(),
++        super(lock.getLockToken(), lock.getLockOwner(), lock.isDeep(),
++                lock.isSessionScoped(), lock.getSecondsRemaining(), lock.isLockOwningSession(), 
+                 idFactory.createNodeId(lock.getNode(), resolver));
+     }

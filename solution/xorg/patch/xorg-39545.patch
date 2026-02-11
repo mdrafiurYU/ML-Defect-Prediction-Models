@@ -1,0 +1,17 @@
+diff --git a/include/ptrveloc.h b/include/ptrveloc.h
+index 1b92a07..8e56e4d 100644
+--- a/include/ptrveloc.h
++++ b/include/ptrveloc.h
+@@ -104,8 +104,11 @@ InitFilterChain(DeviceVelocityPtr s, float rdecay, float degression,
+ extern int
+ SetAccelerationProfile(DeviceVelocityPtr s, int profile_num);
+ 
++extern DeviceVelocityPtr
++GetDevicePredictableAccelData(DeviceIntPtr pDev);
++
+ extern void
+-SetDeviceSpecificAccelerationProfile(DeviceIntPtr s,
++SetDeviceSpecificAccelerationProfile(DeviceVelocityPtr s,
+                                      PointerAccelerationProfileFunc profile);
+ 
+ extern void

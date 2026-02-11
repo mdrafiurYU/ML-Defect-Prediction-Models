@@ -1,0 +1,18 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 6e95c95..160071b 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -406,9 +406,12 @@ RROutputDestroyResource (pointer value, XID pid)
+ 	    }
+ 	}
+     }
+-    /* XXX destroy all modes? */
+     if (output->modes)
++    {
++	for (m = 0; m < output->numModes; m++)
++	    RRModeDestroy (output->modes[m]);
+ 	xfree (output->modes);
++    }
+     
+     for (m = 0; m < output->numUserModes; m++)
+ 	RRModeDestroy (output->userModes[m]);

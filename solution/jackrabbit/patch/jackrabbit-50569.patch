@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java
+index 1762609..3457f38 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java
+@@ -461,7 +461,7 @@ public class NodeStateEx {
+         NodeId parentId = nodeState.getNodeId();
+         // create a new node state
+         if (id == null) {
+-            id = new NodeId(UUID.randomUUID());
++            id = new NodeId();
+         }
+         NodeState state = stateMgr.createNew(id, nodeTypeName, parentId);

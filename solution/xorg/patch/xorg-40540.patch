@@ -1,0 +1,18 @@
+diff --git a/exa/exa_glyphs.c b/exa/exa_glyphs.c
+index 2acc891..169763f 100644
+--- a/exa/exa_glyphs.c
++++ b/exa/exa_glyphs.c
+@@ -871,11 +871,13 @@ exaGlyphs (CARD8 	 op,
+ 	list++;
+     }
+     
++    if (buffer.count) {
+     if (maskFormat)
+ 	exaGlyphsToMask(pMask, &buffer);
+     else
+ 	exaGlyphsToDst(op, pSrc, pDst, &buffer,
+ 		       xSrc, ySrc, xDst, yDst);
++    }
+     
+     if (maskFormat)
+     {

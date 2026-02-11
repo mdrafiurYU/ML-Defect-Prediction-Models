@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/memory/src/test/org/apache/lucene/index/memory/MemoryIndexTest.java b/lucene/contrib/memory/src/test/org/apache/lucene/index/memory/MemoryIndexTest.java
+index 8be566a..197721b 100644
+--- a/lucene/contrib/memory/src/test/org/apache/lucene/index/memory/MemoryIndexTest.java
++++ b/lucene/contrib/memory/src/test/org/apache/lucene/index/memory/MemoryIndexTest.java
+@@ -143,9 +143,9 @@ public class MemoryIndexTest extends BaseTokenStreamTestCase {
+    */
+   private Analyzer randomAnalyzer() {
+     switch(random.nextInt(3)) {
+-      case 0: return new MockAnalyzer(MockTokenizer.SIMPLE, true);
+-      case 1: return new MockAnalyzer(MockTokenizer.SIMPLE, true, MockTokenFilter.ENGLISH_STOPSET, true);
+-      default: return new MockAnalyzer(MockTokenizer.WHITESPACE, false);
++      case 0: return new MockAnalyzer(random, MockTokenizer.SIMPLE, true);
++      case 1: return new MockAnalyzer(random, MockTokenizer.SIMPLE, true, MockTokenFilter.ENGLISH_STOPSET, true);
++      default: return new MockAnalyzer(random, MockTokenizer.WHITESPACE, false);
+     }
+   }

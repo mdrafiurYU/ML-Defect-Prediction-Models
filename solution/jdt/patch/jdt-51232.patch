@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
+index 9409edb..c268d71 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
+@@ -621,7 +621,7 @@ public class ProcessorEnvImpl implements AnnotationProcessorEnvironment,
+ 		if (type != null) {
+ 			TypeDeclarationImpl typeDecl = (TypeDeclarationImpl)getTypeDeclaration(type);
+ 			ITypeBinding binding = typeDecl.getDeclarationBinding();
+-			return new PackageDeclarationImpl(binding.getPackage(), typeDecl, this, true);
++			return new PackageDeclarationImpl(binding.getPackage(), typeDecl, this, true, pkgFrags);
+ 		}
+ 
+ 		// No classes or source files found

@@ -1,0 +1,22 @@
+diff --git a/miext/cw/cw_ops.c b/miext/cw/cw_ops.c
+index 6ba804b..80b7280 100644
+--- a/miext/cw/cw_ops.c
++++ b/miext/cw/cw_ops.c
+@@ -28,6 +28,7 @@
+ #include <stdlib.h>
+ 
+ #include "gcstruct.h"
++#include "pixmapstr.h"
+ #include "cw.h"
+ 
+ #define SETUP_BACKING_DST(_pDst, _pGC) \
+@@ -43,6 +44,9 @@
+ 	&src_off_y)
+ 
+ #define PROLOGUE(pGC) do { \
++    if (pBackingGC->serialNumber != pBackingDst->serialNumber) { \
++	ValidateGC(pBackingDst, pBackingGC); \
++    } \
+     pGC->funcs = pGCPrivate->wrapFuncs;\
+     pGC->ops = pGCPrivate->wrapOps;\
+ } while (0)

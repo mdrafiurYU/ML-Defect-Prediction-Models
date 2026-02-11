@@ -1,0 +1,24 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestExtendedDismaxParser.java b/solr/src/test/org/apache/solr/search/TestExtendedDismaxParser.java
+index 3ff940b..1b89080 100755
+--- a/solr/src/test/org/apache/solr/search/TestExtendedDismaxParser.java
++++ b/solr/src/test/org/apache/solr/search/TestExtendedDismaxParser.java
+@@ -20,15 +20,19 @@ package org.apache.solr.search;
+ import org.apache.solr.util.AbstractSolrTestCase;
+ 
+ public class TestExtendedDismaxParser extends AbstractSolrTestCase {
++  @Override
+   public String getSchemaFile() { return "schema12.xml"; }
++  @Override
+   public String getSolrConfigFile() { return "solrconfig.xml"; }
+   // public String getCoreName() { return "collection1"; }
+ 
++  @Override
+   public void setUp() throws Exception {
+     // if you override setUp or tearDown, you better call
+     // the super classes version
+     super.setUp();
+   }
++  @Override
+   public void tearDown() throws Exception {
+     // if you override setUp or tearDown, you better call
+     // the super classes version

@@ -1,0 +1,13 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/ObjectConverterImpl.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/ObjectConverterImpl.java
+index 907c5c3..454cb1d 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/ObjectConverterImpl.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/ObjectConverterImpl.java
+@@ -586,7 +586,8 @@ public class ObjectConverterImpl implements ObjectConverter {
+ 			throw new JcrMappingException(
+ 					"Class of type: "
+ 							+ object.getClass().getName()
+-							+ " has no path mapping. Maybe attribute path=\"true\" for a field element of this class in jcrmapping.xml is missing?");
++							+ " has no path mapping. Maybe attribute path=\"true\" for a field element of this class in mapping descriptor is missing " +
++							  " or maybe it is defined in an ancestor class which has no mapping descriptor.");
+ 		}
+ 		String pathField = pathFieldDescriptor.getFieldName();

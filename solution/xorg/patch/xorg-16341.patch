@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/exa/exa_render.c b/hw/xfree86/exa/exa_render.c
+index 9909d7f..5bfb07c 100644
+--- a/hw/xfree86/exa/exa_render.c
++++ b/hw/xfree86/exa/exa_render.c
+@@ -469,6 +469,23 @@ exaComposite(CARD8	op,
+         return;
+     }
+ 
++    /* simplify the drivers by reducing here */
++    switch (op) {
++	case PictOpDisjointClear:
++	case PictOpConjointClear:
++	    op = PictOpClear;
++	    break;    
++	case PictOpDisjointSrc:
++	case PictOpConjointSrc:
++	    op = PictOpSrc;
++	    break;    
++	case PictOpDisjointDst:
++	case PictOpConjointDst:
++	case PictOpDst:
++	    return;    
++	default:
++	    break;
++    }
+ 
+     if (!pMask && pSrc->pDrawable)
+     {

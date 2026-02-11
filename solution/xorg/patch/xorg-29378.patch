@@ -1,0 +1,14 @@
+diff --git a/fb/fbtrap.c b/fb/fbtrap.c
+index 4c67bcd..478a80f 100644
+--- a/fb/fbtrap.c
++++ b/fb/fbtrap.c
+@@ -117,6 +117,9 @@ fbRasterizeTrapezoid (PicturePtr    pPicture,
+     RenderEdge	l, r;
+     xFixed	t, b;
+     
++    if (!xTrapezoidValid (trap))
++	return;
++
+     fbGetDrawable (pPicture->pDrawable, buf, stride, bpp, pxoff, pyoff);
+ 
+     width = pPicture->pDrawable->width;

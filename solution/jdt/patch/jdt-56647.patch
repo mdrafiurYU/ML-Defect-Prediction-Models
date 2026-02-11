@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/JavaSearchPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/JavaSearchPattern.java
+index 25c5813..7833b1b 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/JavaSearchPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/JavaSearchPattern.java
+@@ -237,7 +237,7 @@ public class JavaSearchPattern extends SearchPattern {
+ 	void storeTypeSignaturesAndArguments(IType type) {
+ 		BindingKey key;
+ 		if (type.isResolved() && (key = new BindingKey(type.getKey())).isParameterizedType()) {
+-			String signature = key.internalToSignature();
++			String signature = key.toSignature();
+ 			this.typeSignatures = Util.splitTypeLevelsSignature(signature);
+ 			setTypeArguments(Util.getAllTypeArguments(this.typeSignatures));
+ 		} else {

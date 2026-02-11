@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+index 43cd837..f0488f5 100644
+--- a/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
++++ b/lucene/src/test/org/apache/lucene/search/JustCompileSearch.java
+@@ -215,7 +215,7 @@ final class JustCompileSearch {
+     }
+ 
+     @Override
+-    protected boolean score(Collector collector, int max, int firstDocID)
++    public boolean score(Collector collector, int max, int firstDocID)
+         throws IOException {
+       throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+     }

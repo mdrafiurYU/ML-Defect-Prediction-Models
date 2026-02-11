@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+index c4533ee..9f1816d 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+@@ -51,6 +51,7 @@ public abstract class APTTestBase extends Tests{
+ 		super.setUp();
+ 
+ 		env.resetWorkspace();
++		TestUtil.enableAutoBuild(false);
+ 
+ 		// project will be deleted by super-class's tearDown() method
+ 		final String projectName = getProjectName();

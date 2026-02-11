@@ -1,0 +1,16 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index 2ebde22..21f9539 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -330,6 +330,11 @@ struct _KdKeyboardInfo {
+     int                 inputClass;
+ #ifdef XKB
+     XkbDescPtr          xkb;
++    char                *xkbRules;
++    char                *xkbModel;
++    char                *xkbLayout;
++    char                *xkbVariant;
++    char                *xkbOptions;
+ #endif
+     int                 LockLed;
+ 

@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index d926ca4..f319c50 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -1122,7 +1122,7 @@ public class SearchIndex extends AbstractQueryHandler {
+      */
+     protected void retrieveAggregateRoot(Set removedNodeIds, Map map) {
+         if (indexingConfig != null) {
+-            AggregateRule aggregateRules[] = indexingConfig.getAggregateRules();
++            AggregateRule[] aggregateRules = indexingConfig.getAggregateRules();
+             if (aggregateRules == null) {
+                 return;
+             }
+@@ -1136,7 +1136,8 @@ public class SearchIndex extends AbstractQueryHandler {
+                     TermDocs tDocs = reader.termDocs();
+                     try {
+                         ItemStateManager ism = getContext().getItemStateManager();
+-                        for (Iterator it = removedNodeIds.iterator(); it.hasNext(); ) {
++                        Iterator it = removedNodeIds.iterator();
++                        while (it.hasNext()) {
+                             NodeId id = (NodeId) it.next();
+                             aggregateUUIDs = aggregateUUIDs.createTerm(
+                                     id.getUUID().toString());

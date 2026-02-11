@@ -1,0 +1,18 @@
+diff --git a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+index 44bdca9..05f3df8 100644
+--- a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
++++ b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+@@ -90,9 +90,10 @@ public class ValueSourceAugmenter extends DocTransformer
+       }
+ 
+       int localId = docid - rcontext.docBase;
+-      float val = values.floatVal(localId);  // TODO: handle all types -- see: SOLR-2443
+-
+-      doc.setField( name, val );
++      Object val = values.objectVal(localId);
++      if (val != null) {
++        doc.setField( name, val );
++      }
+     } catch (IOException e) {
+       throw new SolrException(SolrException.ErrorCode.SERVER_ERROR, "exception at docid " + docid + " for valuesource " + valueSource, e, false);
+     }

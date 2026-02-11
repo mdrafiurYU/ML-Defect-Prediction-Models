@@ -1,0 +1,23 @@
+diff --git a/fb/fbedgeimp.h b/fb/fbedgeimp.h
+index 8773935..57da31a 100644
+--- a/fb/fbedgeimp.h
++++ b/fb/fbedgeimp.h
+@@ -76,12 +76,14 @@ rasterizeEdges (FbBits		*buf,
+ 		x &= FB_MASK;
+ 
+ 		FbMaskBits (x, width, startmask, nmiddle, endmask);
+-		if (startmask)
+-		    *a++ |= startmask;
++		if (startmask) {
++		    WRITE(a, READ(a) | startmask);
++		    a++;
++		}
+ 		while (nmiddle--)
+-		    *a++ = FB_ALLONES;
++		    WRITE(a++, FB_ALLONES);
+ 		if (endmask)
+-		    *a |= endmask;
++		    WRITE(a, READ(a) | endmask);
+ 	    }
+ #else
+ 	    {

@@ -1,0 +1,14 @@
+diff --git a/mfb/mfbzerarc.c b/mfb/mfbzerarc.c
+index 964e2f1..624e45f 100644
+--- a/mfb/mfbzerarc.c
++++ b/mfb/mfbzerarc.c
+@@ -92,7 +92,8 @@ mfbZeroArcSS(
+     PixelType pmask;
+     register PixelType *paddr;
+ 
+-    if (((mfbPrivGC *)(pGC->devPrivates[mfbGCPrivateIndex].ptr))->rop ==
++    if (((mfbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++				       mfbGetGCPrivateKey()))->rop ==
+ 	RROP_BLACK)
+ 	pixel = 0;
+     else

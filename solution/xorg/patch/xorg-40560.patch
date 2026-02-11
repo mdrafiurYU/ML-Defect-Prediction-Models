@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 7a43e66..0157368 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2767,7 +2767,7 @@ CheckMotion(xEvent *xE, DeviceIntPtr pDev)
+  * Windows have restructured, we need to update the sprite position and the
+  * sprite's cursor.
+  */
+-_X_EXPORT void
++void
+ WindowsRestructured(void)
+ {
+     DeviceIntPtr pDev = inputInfo.devices;

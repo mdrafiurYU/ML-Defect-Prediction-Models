@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResourceImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResourceImpl.java
+index 01a9705..78e4892 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResourceImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResourceImpl.java
+@@ -146,6 +146,13 @@ public class SearchResourceImpl implements SearchResource {
+                     session.setNamespacePrefix(prefix, uri);
+                 }
+                 q = qMgr.createQuery(sInfo.getQuery(), sInfo.getLanguageName());
++
++                if (SearchInfo.NRESULTS_UNDEFINED != sInfo.getNumberResults()) {
++                    q.setLimit(sInfo.getNumberResults());
++                }
++                if (SearchInfo.OFFSET_UNDEFINED != sInfo.getOffset()) {
++                    q.setOffset(sInfo.getOffset());
++                }
+             } finally {
+                 // reset namespace mappings
+                 for (Iterator it = namespaces.values().iterator(); it.hasNext(); ) {

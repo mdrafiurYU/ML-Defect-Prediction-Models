@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java
+index 22c911f..08f764e 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java
+@@ -34,6 +34,15 @@ public class CompletionOnJavadocParamNameReference extends JavadocSingleNameRefe
+ 		this.completionFlags |= flags;
+ 	}
+ 
++	/**
++	 * Get completion node flags.
++	 * 
++	 * @return int Flags of the javadoc completion node.
++	 */
++	public int getCompletionFlags() {
++		return this.completionFlags;
++	}
++
+ 	/* (non-Javadoc)
+ 	 * @see org.eclipse.jdt.internal.compiler.ast.AllocationExpression#printExpression(int, java.lang.StringBuffer)
+ 	 */

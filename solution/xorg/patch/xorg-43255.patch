@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbfmisc.c b/xkb/xkbfmisc.c
+index be8accb..aa660df 100644
+--- a/xkb/xkbfmisc.c
++++ b/xkb/xkbfmisc.c
+@@ -163,7 +163,7 @@ XkbWriteXKBKeymapForNames(	FILE *			file,
+ 				unsigned		want,
+ 				unsigned		need)
+ {
+-char *		tmp;
++const char *	tmp;
+ unsigned	complete;
+ XkbNamesPtr	old_names;
+ int		multi_section;

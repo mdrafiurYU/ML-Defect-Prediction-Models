@@ -1,0 +1,10 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/InvertedDocEndConsumer.java b/lucene/src/java/org/apache/lucene/index/InvertedDocEndConsumer.java
+index 8c28566..351529f 100644
+--- a/lucene/src/java/org/apache/lucene/index/InvertedDocEndConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/InvertedDocEndConsumer.java
+@@ -25,5 +25,4 @@ abstract class InvertedDocEndConsumer {
+   abstract InvertedDocEndConsumerPerThread addThread(DocInverterPerThread docInverterPerThread);
+   abstract void flush(Map<InvertedDocEndConsumerPerThread,Collection<InvertedDocEndConsumerPerField>> threadsAndFields, SegmentWriteState state) throws IOException;
+   abstract void abort();
+-  abstract void setFieldInfos(FieldInfos fieldInfos);
+ }

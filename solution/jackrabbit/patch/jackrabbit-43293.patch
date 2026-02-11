@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java
+index 7b858cf..bd11eed 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java
+@@ -35,10 +35,10 @@ public class CollectionLazyLoader implements LazyLoader {
+ 	private CollectionConverter collectionConverter;
+ 	private Session session;
+ 	private Node collectionParentNode;
+-	private CollectionDescriptor collectionDescriptor; 
++	private CollectionDescriptor collectionDescriptor;
+ 	private Class collectionFieldClass;
+ 	
+-	public CollectionLazyLoader(CollectionConverter collectionConverter, Session session, Node parentNode, 
++	public CollectionLazyLoader(CollectionConverter collectionConverter, Session session, Node parentNode,
+ 			                                               CollectionDescriptor collectionDescriptor, Class collectionFieldClass ) {
+ 		this.collectionConverter = collectionConverter;
+ 		this.session = session;

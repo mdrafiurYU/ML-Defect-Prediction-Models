@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java
+index a94391a..0b098c3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java
+@@ -11,6 +11,7 @@
+ package org.eclipse.jdt.internal.compiler.ast;
+ 
+ import org.eclipse.jdt.internal.compiler.ASTVisitor;
++import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ import org.eclipse.jdt.internal.compiler.codegen.*;
+ import org.eclipse.jdt.internal.compiler.flow.*;
+ import org.eclipse.jdt.internal.compiler.lookup.*;
+@@ -237,7 +238,7 @@ public class QualifiedAllocationExpression extends AllocationExpression {
+ 						ReferenceBinding currentType = (ReferenceBinding)receiverType;
+ 						do {
+ 							// isStatic() is answering true for toplevel types
+-							if ((currentType.modifiers & AccStatic) != 0) break checkParameterizedAllocation;
++							if ((currentType.modifiers & ClassFileConstants.AccStatic) != 0) break checkParameterizedAllocation;
+ 							if (currentType.isRawType()) break checkParameterizedAllocation;
+ 						} while ((currentType = currentType.enclosingType())!= null);
+ 						ParameterizedQualifiedTypeReference qRef = (ParameterizedQualifiedTypeReference) this.type;

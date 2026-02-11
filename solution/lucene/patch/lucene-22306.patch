@@ -1,0 +1,16 @@
+diff --git a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingParams.java b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingParams.java
+index 67a73b7..565becf 100644
+--- a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingParams.java
++++ b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingParams.java
+@@ -28,6 +28,11 @@ public interface ExtractingParams {
+    */
+   public static final String LOWERNAMES = "lowernames";
+ 
++  /**
++   * if true, ignore TikaException (give up to extract text but index meta data)
++   */
++  public static final String IGNORE_TIKA_EXCEPTION = "ignoreTikaException";
++
+ 
+   /**
+    * The param prefix for mapping Tika metadata to Solr fields.

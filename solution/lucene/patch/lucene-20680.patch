@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/fa/TestPersianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/fa/TestPersianAnalyzer.java
+index d38d0f6..e4ef894 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/fa/TestPersianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/fa/TestPersianAnalyzer.java
+@@ -219,4 +219,9 @@ public class TestPersianAnalyzer extends BaseTokenStreamTestCase {
+     assertAnalyzesTo(a, "The quick brown fox.", new String[] { "quick",
+         "brown", "fox" });
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new PersianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

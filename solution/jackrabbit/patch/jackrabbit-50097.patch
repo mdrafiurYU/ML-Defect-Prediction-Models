@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceReferenceableTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceReferenceableTest.java
+index 8d5591e..f8d23d0 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceReferenceableTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceReferenceableTest.java
+@@ -53,11 +53,10 @@ abstract class AbstractWorkspaceReferenceableTest extends AbstractWorkspaceCopyB
+      * @param node
+      * @return referenceable node.
+      */
+-    protected Node addMixinReferenceableToNode(Node node) throws RepositoryException {
+-        if (!node.isNodeType(mixReferenceable)) {
+-            node.addMixin(mixReferenceable);
+-            node.save();
+-        }
++    protected Node addMixinReferenceableToNode(Node node) throws RepositoryException,
++            NotExecutableException {
++        ensureMixinType(node, mixReferenceable);
++        node.save();
+         return node;
+     }
+ }
+\ No newline at end of file

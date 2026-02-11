@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/parser/Extensions.c b/hw/xfree86/parser/Extensions.c
+index 0c51a6e..b64f081 100644
+--- a/hw/xfree86/parser/Extensions.c
++++ b/hw/xfree86/parser/Extensions.c
+@@ -31,6 +31,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86Parser.h"
+ #include "xf86tokens.h"
+ #include "Configint.h"

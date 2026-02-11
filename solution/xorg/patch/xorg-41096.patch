@@ -1,0 +1,73 @@
+diff --git a/hw/xquartz/GL/indirect.c b/hw/xquartz/GL/indirect.c
+index 5f508a4..3cdb012 100644
+--- a/hw/xquartz/GL/indirect.c
++++ b/hw/xquartz/GL/indirect.c
+@@ -298,17 +298,27 @@ static void surface_notify(void *_arg, void *data) {
+     }
+ }
+ 
+-static void attach(__GLXAquaContext *context, __GLXAquaDrawable *draw) {
++static BOOL attach(__GLXAquaContext *context, __GLXAquaDrawable *draw) {
+     DrawablePtr pDraw;
++    
+ 	GLAQUA_DEBUG_MSG("attach(%p, %p)\n", context, draw);
++	
++    if(NULL == context || NULL == draw)
++	return TRUE;
++
+     pDraw = draw->base.pDraw;
+ 
++    if(NULL == pDraw) {
++	ErrorF("%s:attach() pDraw is NULL!\n", __FILE__);
++	return TRUE;
++    }
++
+     if (draw->sid == 0) {
+ //        if (!quartzProcs->CreateSurface(pDraw->pScreen, pDraw->id, pDraw,
+         if (!DRICreateSurface(pDraw->pScreen, pDraw->id, pDraw,
+                                         0, &draw->sid, NULL,
+                                         surface_notify, draw))
+-            return;
++            return TRUE;
+         draw->pDraw = pDraw;
+ 	} 
+ 
+@@ -323,7 +333,7 @@ static void attach(__GLXAquaContext *context, __GLXAquaDrawable *draw) {
+                 x_hash_table_remove(surface_hash, x_cvt_uint_to_vptr(draw->sid));
+ 
+             draw->sid = 0;
+-            return;
++            return TRUE;
+         }
+ 
+         context->isAttached = TRUE;
+@@ -341,6 +351,8 @@ static void attach(__GLXAquaContext *context, __GLXAquaDrawable *draw) {
+         GLAQUA_DEBUG_MSG("attached 0x%x to 0x%x\n", (unsigned int) pDraw->id,
+                          (unsigned int) draw->sid);
+     } 
++
++    return FALSE;
+ }
+ 
+ #if 0     // unused
+@@ -374,7 +386,8 @@ static int __glXAquaContextMakeCurrent(__GLXcontext *baseContext) {
+ 
+     GLAQUA_DEBUG_MSG("glAquaMakeCurrent (ctx 0x%p)\n", baseContext);
+     
+-    attach(context, drawPriv);
++    if(attach(context, drawPriv))
++	return /*error*/ 0;
+ 
+     gl_err = CGLSetCurrentContext(context->ctx);
+     if (gl_err != 0)
+@@ -1310,8 +1323,8 @@ static __GLXscreen * __glXAquaScreenProbe(ScreenPtr pScreen) {
+     screen->base.fbconfigs = configs;
+     screen->base.numFBConfigs = 1; 
+ 
+-    screen->base.visuals = configs;
+-    screen->base.numVisuals = 1;
++    screen->base.visuals = NULL;
++    screen->base.numVisuals = 0;
+ 
+     GlxSetVisualConfig(GLX_ALL_VISUALS);
+ 

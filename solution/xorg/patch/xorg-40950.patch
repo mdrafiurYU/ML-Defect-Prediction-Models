@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index df47598..f072109 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1185,9 +1185,11 @@ xf86InitialOutputPositions (ScrnInfoPtr scrn, DisplayModePtr *modes)
+ 		    output->initial_x += xf86ModeWidth (modes[or], relative->initial_rotation);
+ 		    break;
+ 		case OPTION_ABOVE:
++		    if (modes[o])
+ 		    output->initial_y -= xf86ModeHeight (modes[o], output->initial_rotation);
+ 		    break;
+ 		case OPTION_LEFT_OF:
++		    if (modes[o])
+ 		    output->initial_x -= xf86ModeWidth (modes[o], output->initial_rotation);
+ 		    break;
+ 		default:

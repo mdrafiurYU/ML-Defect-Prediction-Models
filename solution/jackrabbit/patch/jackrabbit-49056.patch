@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+index 8f5cd50..be423a4 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+@@ -110,8 +110,7 @@ public final class QValueValue implements Value {
+      * @see javax.jcr.Value#getBinary()
+      */
+     public Binary getBinary() throws RepositoryException {
+-        // TODO
+-        throw new RuntimeException("Not implemented yet, see JCR-2056");
++        return qvalue.getBinary();
+     }
+ 
+     /**

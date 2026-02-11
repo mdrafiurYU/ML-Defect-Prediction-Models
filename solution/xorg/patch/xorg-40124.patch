@@ -1,0 +1,20 @@
+diff --git a/composite/compinit.c b/composite/compinit.c
+index 7914a8d..495188e 100644
+--- a/composite/compinit.c
++++ b/composite/compinit.c
+@@ -46,9 +46,12 @@
+ 
+ #include "compint.h"
+ 
+-DevPrivateKey CompScreenPrivateKey = &CompScreenPrivateKey;
+-DevPrivateKey CompWindowPrivateKey = &CompWindowPrivateKey;
+-DevPrivateKey CompSubwindowsPrivateKey = &CompSubwindowsPrivateKey;
++static int CompScreenPrivateKeyIndex;
++DevPrivateKey CompScreenPrivateKey = &CompScreenPrivateKeyIndex;
++static int CompWindowPrivateKeyIndex;
++DevPrivateKey CompWindowPrivateKey = &CompWindowPrivateKeyIndex;
++static int CompSubwindowsPrivateKeyIndex;
++DevPrivateKey CompSubwindowsPrivateKey = &CompSubwindowsPrivateKeyIndex;
+ 
+ 
+ static Bool

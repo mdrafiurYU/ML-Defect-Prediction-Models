@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+index 9526bdc..7eca3ad 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+@@ -812,6 +812,7 @@ public class JavaModelManager implements ISaveParticipant, IContentTypeChangeLis
+ 		public IEclipsePreferences preferences;
+ 		public Hashtable options;
+ 		public HashMap secondaryTypes;
++		public HashMap javadocCache;
+ 		
+ 		public PerProjectInfo(IProject project) {
+ 
+@@ -846,6 +847,7 @@ public class JavaModelManager implements ISaveParticipant, IContentTypeChangeLis
+ 			this.rawClasspath = newRawClasspath;
+ 			this.resolvedClasspath = null;
+ 			this.resolvedPathToRawEntries = null;
++			this.javadocCache = null;
+ 		}
+ 		public String toString() {
+ 			StringBuffer buffer = new StringBuffer();

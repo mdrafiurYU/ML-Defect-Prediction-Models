@@ -1,0 +1,13 @@
+diff --git a/GL/glx/indirect_reqsize.c b/GL/glx/indirect_reqsize.c
+index 3906bd1..1c332da 100644
+--- a/GL/glx/indirect_reqsize.c
++++ b/GL/glx/indirect_reqsize.c
+@@ -31,7 +31,7 @@
+ #include "indirect_size.h"
+ #include "indirect_reqsize.h"
+ 
+-#if defined(linux)
++#if defined(__linux__) || defined(__GNU__)
+ #  include <byteswap.h>
+ #  define SWAP_32(v)  do { (v) = bswap_32(v); } while(0)
+ #else

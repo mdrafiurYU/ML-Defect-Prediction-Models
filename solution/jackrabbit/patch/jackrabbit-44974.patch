@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-benchmark/src/main/java/org/apache/jackrabbit/benchmark/BenchmarkSuite.java b/jackrabbit-jcr-benchmark/src/main/java/org/apache/jackrabbit/benchmark/BenchmarkSuite.java
+index cbd2aae..e8b0266 100644
+--- a/jackrabbit-jcr-benchmark/src/main/java/org/apache/jackrabbit/benchmark/BenchmarkSuite.java
++++ b/jackrabbit-jcr-benchmark/src/main/java/org/apache/jackrabbit/benchmark/BenchmarkSuite.java
+@@ -24,5 +24,7 @@ public class BenchmarkSuite extends TestSuite {
+     public BenchmarkSuite() {
+         super("JCR Benchmarks");
+         addTestSuite(BigCollectionTest.class);
++        addTestSuite(RefreshTest.class);
++        addTestSuite(LoginTest.class);
+     }
+ }

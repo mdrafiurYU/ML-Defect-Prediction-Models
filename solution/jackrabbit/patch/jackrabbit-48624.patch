@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/batch/ConsolidatedBatchTest.java b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/batch/ConsolidatedBatchTest.java
+index 491de23..aa68d2b 100644
+--- a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/batch/ConsolidatedBatchTest.java
++++ b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/batch/ConsolidatedBatchTest.java
+@@ -16,7 +16,6 @@
+  */
+ package org.apache.jackrabbit.spi.commons.batch;
+ 
+-import javax.jcr.PathNotFoundException;
+ import javax.jcr.PropertyType;
+ import javax.jcr.RepositoryException;
+ 
+@@ -379,7 +378,7 @@ public class ConsolidatedBatchTest extends TestCase {
+         return createNodeId(createPath(nodeId));
+     }
+ 
+-    public PropertyId createPropertyId(String propertyId) throws PathNotFoundException {
++    public PropertyId createPropertyId(String propertyId) throws RepositoryException {
+         Path path = createPath(propertyId);
+         return idFactory.createPropertyId(createNodeId(path.getAncestor(1)), path.getNameElement().getName());
+     }

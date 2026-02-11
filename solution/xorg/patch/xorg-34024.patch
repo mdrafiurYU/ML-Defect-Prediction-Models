@@ -1,0 +1,13 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index b780170..bacbe6e 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -545,7 +545,7 @@ SELinuxReceive(CallbackListPtr *pcbl, pointer unused, pointer calldata)
+ {
+     XaceReceiveAccessRec *rec = calldata;
+     SELinuxStateRec *subj, *obj;
+-    SELinuxAuditRec auditdata = { .client = rec->client };
++    SELinuxAuditRec auditdata = { .client = NULL };
+     int rc, i;
+ 
+     subj = dixLookupPrivate(&rec->client->devPrivates, stateKey);

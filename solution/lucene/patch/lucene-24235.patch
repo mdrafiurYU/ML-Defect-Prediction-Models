@@ -1,0 +1,44 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java b/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java
+index 8d97d1d..a3196f4 100644
+--- a/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/TieredMergePolicy.java
+@@ -82,6 +82,7 @@ public class TieredMergePolicy extends MergePolicy {
+   private double expungeDeletesPctAllowed = 10.0;
+   private boolean useCompoundFile = true;
+   private double noCFSRatio = 0.1;
++  private double reclaimDeletesWeight = 2.0;
+ 
+   /** Maximum number of segments to be merged at a time
+    *  during "normal" merging.  For explicit merging (eg,
+@@ -133,6 +134,23 @@ public class TieredMergePolicy extends MergePolicy {
+     return maxMergedSegmentBytes/1024/1024.;
+   }
+ 
++  /** Controls how aggressively merges that reclaim more
++   *  deletions are favored.  Higher values favor selecting
++   *  merges that reclaim deletions.  A value of 0.0 means
++   *  deletions don't impact merge selection. */
++  public TieredMergePolicy setReclaimDeletesWeight(double v) {
++    if (v < 0.0) {
++      throw new IllegalArgumentException("reclaimDeletesWeight must be >= 0.0 (got " + v + ")");
++    }
++    reclaimDeletesWeight = v;
++    return this;
++  }
++
++  /** See {@link #setReclaimDeletesWeight}. */
++  public double getReclaimDeletesWeight() {
++    return reclaimDeletesWeight;
++  }
++
+   /** Segments smaller than this are "rounded up" to this
+    *  size, ie treated as equal (floor) size for merge
+    *  selection.  This is to prevent frequent flushing of
+@@ -435,7 +453,7 @@ public class TieredMergePolicy extends MergePolicy {
+ 
+     // Strongly favor merges that reclaim deletes:
+     final double nonDelRatio = ((double) totAfterMergeBytes)/totBeforeMergeBytes;
+-    mergeScore *= nonDelRatio;
++    mergeScore *= Math.pow(nonDelRatio, reclaimDeletesWeight);
+ 
+     final double finalMergeScore = mergeScore;

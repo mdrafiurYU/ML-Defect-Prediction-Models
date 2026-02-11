@@ -1,0 +1,23 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java b/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java
+index 260f4f7..c249116 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java
+@@ -96,11 +96,17 @@ public class CodecProvider {
+     return infosReader;
+   }
+ 
+-  static private final CodecProvider defaultCodecs = new DefaultCodecProvider();
++  static private CodecProvider defaultCodecs = new DefaultCodecProvider();
+ 
+   public static CodecProvider getDefault() {
+     return defaultCodecs;
+   }
++
++  /** For testing only
++   *  @lucene.internal */
++  public static void setDefault(CodecProvider cp) {
++    defaultCodecs = cp;
++  }
+   
+   /**
+    * Sets the {@link Codec} for a given field. Not that setting a field's codec is

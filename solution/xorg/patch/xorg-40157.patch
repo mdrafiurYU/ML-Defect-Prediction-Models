@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/common/xf86DPMS.c b/hw/xfree86/common/xf86DPMS.c
+index 4fb901a..5ee5e24 100644
+--- a/hw/xfree86/common/xf86DPMS.c
++++ b/hw/xfree86/common/xf86DPMS.c
+@@ -47,7 +47,8 @@
+ 
+ 
+ #ifdef DPMSExtension
+-static DevPrivateKey DPMSKey = NULL;
++static int DPMSKeyIndex;
++static DevPrivateKey DPMSKey;
+ static Bool DPMSClose(int i, ScreenPtr pScreen);
+ static int DPMSCount = 0;
+ #endif
+@@ -62,7 +63,7 @@ xf86DPMSInit(ScreenPtr pScreen, DPMSSetProcPtr set, int flags)
+     pointer DPMSOpt;
+     MessageType enabled_from = X_INFO;
+ 
+-    DPMSKey = &DPMSKey;
++    DPMSKey = &DPMSKeyIndex;
+ 
+     if (DPMSDisabledSwitch)
+ 	DPMSEnabled = FALSE;

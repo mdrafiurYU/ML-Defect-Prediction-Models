@@ -1,0 +1,31 @@
+diff --git a/render/miindex.c b/render/miindex.c
+index 4105269..4e0cf00 100644
+--- a/render/miindex.c
++++ b/render/miindex.c
+@@ -232,7 +232,7 @@ FindBestGray (miIndexedPtr pIndexed, Pixel *pixels, int num, int gray)
+     return best;
+ }
+ 
+-_X_EXPORT Bool
++Bool
+ miInitIndexed (ScreenPtr	pScreen,
+ 	       PictFormatPtr	pFormat)
+ {
+@@ -318,7 +318,7 @@ miInitIndexed (ScreenPtr	pScreen,
+     return TRUE;
+ }
+ 
+-_X_EXPORT void
++void
+ miCloseIndexed (ScreenPtr	pScreen,
+ 		PictFormatPtr	pFormat)
+ {
+@@ -334,7 +334,7 @@ miCloseIndexed (ScreenPtr	pScreen,
+     }
+ }
+ 
+-_X_EXPORT void
++void
+ miUpdateIndexed (ScreenPtr	pScreen,
+ 		 PictFormatPtr	pFormat,
+ 		 int		ndef,

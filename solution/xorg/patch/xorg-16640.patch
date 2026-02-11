@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_agp.c b/hw/xfree86/os-support/linux/lnx_agp.c
+index 97ed215..a3a32b7 100644
+--- a/hw/xfree86/os-support/linux/lnx_agp.c
++++ b/hw/xfree86/os-support/linux/lnx_agp.c
+@@ -139,6 +139,8 @@ xf86GetAGPInfo(int screenNum)
+ 		return NULL;
+ 	}
+ 
++	memset((char*)&agpinf, 0, sizeof(agpinf));
++
+ 	if (ioctl(gartFd, AGPIOC_INFO, &agpinf) != 0) {
+ 		xf86DrvMsg(screenNum, X_ERROR,
+ 			   "xf86GetAGPInfo: AGPIOC_INFO failed (%s)\n",
+@@ -154,6 +156,8 @@ xf86GetAGPInfo(int screenNum)
+ 	info->systemPages = agpinf.pg_system;
+ 	info->usedPages = agpinf.pg_used;
+ 
++	xf86DrvMsg(screenNum, X_INFO, "Kernel reported %d total, %d used\n", agpinf.pg_total, agpinf.pg_used);
++
+ 	return info;
+ }
+ 

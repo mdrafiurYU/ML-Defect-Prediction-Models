@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxDevBtn.c b/xkb/ddxDevBtn.c
+index 3de8f87..dd7d445 100644
+--- a/xkb/ddxDevBtn.c
++++ b/xkb/ddxDevBtn.c
+@@ -60,7 +60,7 @@ int			nAxes, i, count;
+     if (nAxes > 6)
+ 	nAxes = 6;
+ 
+-    GetSpritePosition(&x,&y);
++    GetSpritePosition(dev, &x,&y);
+     btn= (deviceKeyButtonPointer *) &events[0];
+     val= (deviceValuator *) &events[1];
+     if (press)		btn->type= DeviceButtonPress;

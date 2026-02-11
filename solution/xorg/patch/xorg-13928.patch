@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/src/kdrive.c b/hw/kdrive/src/kdrive.c
+index b27a640..0271d4e 100644
+--- a/hw/kdrive/src/kdrive.c
++++ b/hw/kdrive/src/kdrive.c
+@@ -224,7 +224,7 @@ KdDisableScreen (ScreenPtr pScreen)
+     
+     if (!pScreenPriv->enabled)
+ 	return;
+-    KdCheckSync (pScreen);
++    kaaWaitSync (pScreen);
+     if (!pScreenPriv->closed)
+ 	KdSetRootClip (pScreen, FALSE);
+     KdDisableColormap (pScreen);

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java
+index f92124d..b4cccd1 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/UpperLowerCaseQueryTest.java
+@@ -146,8 +146,7 @@ public class UpperLowerCaseQueryTest extends AbstractQueryTest {
+     public void testLikeComparisonRandom() throws RepositoryException {
+         String abcd = "abcd";
+         Random random = new Random();
+-        long end = System.currentTimeMillis() + 1000 * RUN_NUM_SECONDS;
+-        while (end > System.currentTimeMillis()) {
++        for (int i = 0; i < 50; i++) {
+             String pattern = "";
+             pattern += getRandomChar(abcd, random);
+             pattern += getRandomChar(abcd, random);

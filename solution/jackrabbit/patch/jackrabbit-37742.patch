@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractMoveTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractMoveTest.java
+index 1927e94..c6de259 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractMoveTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractMoveTest.java
+@@ -55,6 +55,13 @@ abstract class AbstractMoveTest extends AbstractJCRTest {
+         destinationPath = destParentNode.getPath() + "/" + nodeName2;
+     }
+ 
++    protected void tearDown() throws Exception {
++        srcParentNode = null;
++        destParentNode = null;
++        moveNode = null;
++        super.tearDown();
++    }
++
+     protected abstract boolean isSessionMove();
+ 
+     protected void doMove(String srcPath, String destPath)

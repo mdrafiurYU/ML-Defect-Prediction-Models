@@ -1,0 +1,29 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/ResponseBuilder.java b/solr/src/java/org/apache/solr/handler/component/ResponseBuilder.java
+index 49eaf33..ea86f88 100644
+--- a/solr/src/java/org/apache/solr/handler/component/ResponseBuilder.java
++++ b/solr/src/java/org/apache/solr/handler/component/ResponseBuilder.java
+@@ -23,6 +23,7 @@ import org.apache.solr.common.util.NamedList;
+ import org.apache.solr.common.util.RTimer;
+ import org.apache.solr.common.util.SimpleOrderedMap;
+ import org.apache.solr.request.SolrQueryRequest;
++import org.apache.solr.request.SolrRequestInfo;
+ import org.apache.solr.response.SolrQueryResponse;
+ import org.apache.solr.search.DocListAndSet;
+ import org.apache.solr.search.QParser;
+@@ -67,6 +68,16 @@ public class ResponseBuilder
+ 
+   public List<SearchComponent> components;
+ 
++  SolrRequestInfo requestInfo;
++
++  public ResponseBuilder(SolrQueryRequest req, SolrQueryResponse rsp, List<SearchComponent> components)
++  {
++    this.req = req;
++    this.rsp = rsp;
++    this.components = components;
++    this.requestInfo = SolrRequestInfo.getRequestInfo();
++  }
++
+   //////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////
+   //// Distributed Search section

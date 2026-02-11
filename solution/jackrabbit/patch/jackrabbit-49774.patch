@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefReader.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefReader.java
+index 9505d42..b7618e8 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefReader.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefReader.java
+@@ -643,11 +643,11 @@ public class CompactNodeTypeDefReader {
+     }
+ 
+     /**
+-     * Converts the given string into a qualified name using the current
++     * Converts the given string into a <code>Name</code> using the current
+      * namespace mapping.
+      *
+      * @param stringName
+-     * @return the qualified name
++     * @return A <code>Name</code> object.
+      * @throws ParseException if the conversion fails
+      */
+     private Name toName(String stringName) throws ParseException {

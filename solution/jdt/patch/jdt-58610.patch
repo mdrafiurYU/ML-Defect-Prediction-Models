@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForField.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForField.java
+index 96e08d2..29fa68e 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForField.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForField.java
+@@ -24,7 +24,7 @@ public class JavadocTestForField extends JavadocTest {
+ 		return JavadocTestForField.class;
+ 	}
+ 	public static Test suite() {
+-		return buildTestSuite(javadocTestClass());
++		return buildAllCompliancesRegressionTestSetupSuite(javadocTestClass());
+ 	}
+ 	static { // Use this static to initialize testNames (String[]) , testRange (int[2]), testNumbers (int[])
+ 	}

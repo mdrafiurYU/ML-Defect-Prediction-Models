@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractEvaluationTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractEvaluationTest.java
+index 80906cb..1daaa98 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractEvaluationTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractEvaluationTest.java
+@@ -111,7 +111,7 @@ public abstract class AbstractEvaluationTest extends AbstractAccessControlTest {
+ 
+     protected Session getTestSession() throws RepositoryException {
+         if (testSession == null) {
+-            testSession = helper.getRepository().login(creds);
++            testSession = getHelper().getRepository().login(creds);
+         }
+         return testSession;
+     }

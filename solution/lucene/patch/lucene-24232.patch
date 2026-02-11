@@ -1,0 +1,31 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestCachingCollector.java b/lucene/src/test/org/apache/lucene/search/TestCachingCollector.java
+index e812f25..050ce07 100755
+--- a/lucene/src/test/org/apache/lucene/search/TestCachingCollector.java
++++ b/lucene/src/test/org/apache/lucene/search/TestCachingCollector.java
+@@ -17,15 +17,11 @@ package org.apache.lucene.search;
+  * limitations under the License.
+  */
+ 
+-import java.io.IOException;
+-
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+-import org.apache.lucene.search.CachingCollector;
+-import org.apache.lucene.search.Collector;
+-import org.apache.lucene.search.Scorer;
+-import org.apache.lucene.search.Weight;
+ import org.apache.lucene.util.LuceneTestCase;
+ 
++import java.io.IOException;
++
+ public class TestCachingCollector extends LuceneTestCase {
+ 
+   private static final double ONE_BYTE = 1.0 / (1024 * 1024); // 1 byte out of MB
+@@ -76,7 +72,7 @@ public class TestCachingCollector extends LuceneTestCase {
+ 
+   public void testBasic() throws Exception {
+     for (boolean cacheScores : new boolean[] { false, true }) {
+-      CachingCollector cc = CachingCollector.create(new NoOpCollector(false), cacheScores, 1);
++      CachingCollector cc = CachingCollector.create(new NoOpCollector(false), cacheScores, 1.0);
+       cc.setScorer(new MockScorer());
+ 
+       // collect 1000 docs

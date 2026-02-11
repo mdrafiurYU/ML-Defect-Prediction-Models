@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermState.java b/lucene/src/java/org/apache/lucene/index/TermState.java
+index 1225175..a45f17c 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermState.java
++++ b/lucene/src/java/org/apache/lucene/index/TermState.java
+@@ -21,7 +21,7 @@ package org.apache.lucene.index;
+  * Encapsulates all required internal state to position the associated
+  * {@link TermsEnum} without re-seeking.
+  * 
+- * @see TermsEnum#seek(org.apache.lucene.util.BytesRef, TermState)
++ * @see TermsEnum#seekExact(org.apache.lucene.util.BytesRef, TermState)
+  * @see TermsEnum#termState()
+  * @lucene.experimental
+  */

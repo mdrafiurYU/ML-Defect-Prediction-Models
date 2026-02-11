@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiScorer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiScorer.java
+index 1489ed6..9efa0de 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiScorer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiScorer.java
+@@ -107,7 +107,8 @@ class MultiScorer extends Scorer {
+                 return next();
+             } else {
+                 // no more document
+-                return hasNext = false;
++                hasNext = false;
++                return hasNext;
+             }
+         }
+     }

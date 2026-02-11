@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/utils/xorgconfig/xorgconfig.c b/hw/xfree86/utils/xorgconfig/xorgconfig.c
+index 736b011..8d9c03f 100644
+--- a/hw/xfree86/utils/xorgconfig/xorgconfig.c
++++ b/hw/xfree86/utils/xorgconfig/xorgconfig.c
+@@ -2442,7 +2442,7 @@ write_fontpath_section(FILE *f)
+ 		len = nextdir - thisdir;
+ 		nextdir++;
+ 	    }
+-	    if (len > sizeof(cur))
++	    if (len >= sizeof(cur))
+ 		continue;
+ 	    strncpy(cur, thisdir, len);
+ 	    cur[len] = '\0';

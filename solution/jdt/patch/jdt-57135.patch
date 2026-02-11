@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+index b877d90..89de3df 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+@@ -27824,7 +27824,7 @@ public void test899() {
+ }
+ //https://bugs.eclipse.org/bugs/show_bug.cgi?id=97693
+ public void test900() {
+-	this.runConformTest(
++	this.runNegativeTest(
+ 		new String[] {
+ 			"X.java", // =================
+ 			"public class X<R> {\n" +

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xf4bpp/ppcIO.c b/hw/xfree86/xf4bpp/ppcIO.c
+index 313fcb0..83952d1 100644
+--- a/hw/xfree86/xf4bpp/ppcIO.c
++++ b/hw/xfree86/xf4bpp/ppcIO.c
+@@ -146,7 +146,7 @@ v16CreateScreenResources
+ 	/* create a pixmap with no data, then redirect it to point to
+ 	 * the screen
+ 	 */
+-	pPixmap = (*pScreen->CreatePixmap)(pScreen, 0, 0, pScreen->rootDepth);
++	pPixmap = (*pScreen->CreatePixmap)(pScreen, 0, 0, pScreen->rootDepth, 0);
+ 	if (!pPixmap)
+ 	    return FALSE;
+ 

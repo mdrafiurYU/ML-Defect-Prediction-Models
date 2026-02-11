@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/fake/fake.c b/hw/kdrive/fake/fake.c
+index 6211ab8..d77c4f1 100644
+--- a/hw/kdrive/fake/fake.c
++++ b/hw/kdrive/fake/fake.c
+@@ -324,8 +324,6 @@ fakeRandRSetConfig (ScreenPtr		pScreen,
+     
+     scrpriv->randr = KdAddRotation (screen->randr, randr);
+ 
+-    KdOffscreenSwapOut (screen->pScreen);
+-
+     fakeUnmapFramebuffer (screen);
+     
+     if (!fakeMapFramebuffer (screen))

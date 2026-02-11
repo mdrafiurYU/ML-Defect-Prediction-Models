@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/xf8_16bpp/xf8_16module.c b/hw/xfree86/xf8_16bpp/xf8_16module.c
+index d8bfbde..1a739b0 100644
+--- a/hw/xfree86/xf8_16bpp/xf8_16module.c
++++ b/hw/xfree86/xf8_16bpp/xf8_16module.c
+@@ -46,7 +46,6 @@ cfb8_16ScreenInit(ScreenPtr pScreen, pointer pbits16, pointer pbits8,
+                                    dpix, dpiy, width16, width8, 16, 8, 16, 8));
+ }
+ 
+-#ifdef XFree86LOADER
+ #include "xf86Module.h"
+ 
+ static MODULESETUPPROTO(xf8_16bppSetup);
+@@ -76,4 +75,3 @@ xf8_16bppSetup(pointer module, pointer opts, int *errmaj, int *errmin)
+     return (pointer)LoadSubModule(module, "fb", NULL, NULL, NULL, NULL,
+ 			          errmaj, errmin);
+ }
+-#endif

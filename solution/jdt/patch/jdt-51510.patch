@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
+index 15b49a9..8b1732e 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
+@@ -105,7 +105,7 @@ public abstract class JarFactoryContainer extends FactoryContainer
+ 	        rd.close();
+     	}
+     	catch (IOException e) {
+-    		AptPlugin.log(e, "Error reading annotation processor jar file");
++    		AptPlugin.log(e, "Error reading annotation processor jar file"); //$NON-NLS-1$
+     	}
+     }

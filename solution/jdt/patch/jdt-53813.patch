@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
+index 990cc10..2187056 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
+@@ -654,7 +654,7 @@ public class BasicSearchEngine {
+ 										char[][] enclosingTypeNames = CharOperation.NO_CHAR_CHAR;
+ 										while (enclosing != null) {
+ 											enclosingTypeNames = CharOperation.arrayConcat(new char[][] {enclosing.name}, enclosingTypeNames);
+-											if ((enclosing.bits & ASTNode.IsMemberTypeMASK) != 0) {
++											if ((enclosing.bits & ASTNode.IsMemberType) != 0) {
+ 												enclosing = enclosing.enclosingType;
+ 											} else {
+ 												enclosing = null;
+@@ -882,7 +882,7 @@ public class BasicSearchEngine {
+ 									while (enclosing != null) {
+ 										qualification = CharOperation.concat(qualification, enclosing.name, '.');
+ 										enclosingTypeNames = CharOperation.arrayConcat(new char[][] {enclosing.name}, enclosingTypeNames);
+-										if ((enclosing.bits & ASTNode.IsMemberTypeMASK) != 0) {
++										if ((enclosing.bits & ASTNode.IsMemberType) != 0) {
+ 											enclosing = enclosing.enclosingType;
+ 										} else {
+ 											enclosing = null;

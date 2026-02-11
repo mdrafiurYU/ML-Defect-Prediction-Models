@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/src/kaa.c b/hw/kdrive/src/kaa.c
+index 178544c..6c07f2d 100644
+--- a/hw/kdrive/src/kaa.c
++++ b/hw/kdrive/src/kaa.c
+@@ -192,7 +192,7 @@ kaaMoveInPixmap (PixmapPtr pPixmap)
+ 
+     if (pKaaScr->info->UploadToScreen)
+     {
+-	if (pKaaScr->info->UploadToScreen(pPixmap, src, src_pitch))
++	if (pKaaScr->info->UploadToScreen(pPixmap, (char *) src, src_pitch))
+ 	    return;
+     }
+ 

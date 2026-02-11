@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/response/BaseResponseWriter.java b/solr/src/java/org/apache/solr/response/BaseResponseWriter.java
+index 2d80526..b636048 100644
+--- a/solr/src/java/org/apache/solr/response/BaseResponseWriter.java
++++ b/solr/src/java/org/apache/solr/response/BaseResponseWriter.java
+@@ -115,7 +115,6 @@ public abstract class BaseResponseWriter {
+             }
+             responseWriter.writeDoc(sdoc);
+           }
+-          responseWriter.end();
+         } else {
+           ArrayList<SolrDocument> list = new ArrayList<SolrDocument>(docList
+               .size());

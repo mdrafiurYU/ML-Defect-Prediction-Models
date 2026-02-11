@@ -1,0 +1,26 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index e459452..0b8c61e 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -305,6 +305,12 @@ RRScreenSizeSet (ScreenPtr  pScreen,
+ 		 CARD32	    mmHeight);
+ 
+ /*
++ * Send ConfigureNotify event to root window when 'something' happens
++ */
++void
++RRSendConfigNotify (ScreenPtr pScreen);
++    
++/*
+  * screen dispatch
+  */
+ int 
+@@ -629,4 +635,8 @@ ProcRRListOutputProperties (ClientPtr client);
+ int
+ ProcRRDeleteOutputProperty (ClientPtr client);
+ 
++/* rrxinerama.c */
++void
++RRXineramaExtensionInit(void);
++
+ #endif /* _RANDRSTR_H_ */

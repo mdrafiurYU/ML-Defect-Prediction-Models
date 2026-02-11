@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/at_scancode.c b/hw/xfree86/os-support/shared/at_scancode.c
+index 0b9bc67..8947254 100644
+--- a/hw/xfree86/os-support/shared/at_scancode.c
++++ b/hw/xfree86/os-support/shared/at_scancode.c
+@@ -26,6 +26,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86Xinput.h"
+ #include "xf86OSKbd.h"

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/TypesUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/TypesUtil.java
+index 3d7ae9e..c6a3af5 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/TypesUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/TypesUtil.java
+@@ -164,7 +164,7 @@ public class TypesUtil implements Types
+ 			
+ 			final String typeKey = BindingKey.createParameterizedTypeBindingKey(memberBinding.getKey(), argKeys);
+ 			final ITypeBinding resultBinding = _env.getTypeBinding(typeKey);
+-			return (DeclaredType)Factory.createReferenceType(resultBinding, _env);
++			return Factory.createReferenceType(resultBinding, _env);
+ 		}
+ 		else{ 
+ 			if( numArgs != 0 )

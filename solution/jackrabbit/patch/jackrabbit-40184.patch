@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+index c5278e3..b4bd720 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+@@ -239,8 +239,8 @@ public class SearchManager implements SynchronousEventListener {
+         queryImplClassName = params.getProperty(PARAM_QUERY_IMPL, DEFAULT_QUERY_IMPL_CLASS);
+         preparedQueryImplClassName = params.getProperty(PARAM_PREPARED_QUERY_IMPL, DEFAULT_PREPARED_QUERY_IMPL_CLASS);
+         if (params.containsKey(PARAM_IDLE_TIME)) {
+-            String msg = "Parameter 'idleTime' is not supported anymore. " +
+-                    "Please use 'maxIdleTime' in the repository configuration.";
++            String msg = "Parameter 'idleTime' is not supported anymore. "
++                + "Please use 'maxIdleTime' in the repository configuration.";
+             log.warn(msg);
+         }

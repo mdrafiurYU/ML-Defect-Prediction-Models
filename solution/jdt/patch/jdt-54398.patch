@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/Label.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/Label.java
+index bd34117..ac1a1c4 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/Label.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/Label.java
+@@ -102,6 +102,7 @@ public void appendForwardReferencesFrom(Label otherLabel) {
+ 				mergedForwardReferences[indexInMerge++] = value2;
+ 			}
+ 		}
++		mergedForwardReferences[indexInMerge++] = value1;
+ 	}
+ 	for (; j < max2; j++) {
+ 		mergedForwardReferences[indexInMerge++] = otherLabel.forwardReferences[j];

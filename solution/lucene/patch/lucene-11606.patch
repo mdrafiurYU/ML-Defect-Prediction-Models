@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/ToStringUtils.java b/lucene/src/java/org/apache/lucene/util/ToStringUtils.java
+index 030c5cc..2f1d06b 100644
+--- a/lucene/src/java/org/apache/lucene/util/ToStringUtils.java
++++ b/lucene/src/java/org/apache/lucene/util/ToStringUtils.java
+@@ -20,7 +20,10 @@ package org.apache.lucene.util;
+ /**
+  * Helper methods to ease implementing {@link Object#toString()}.
+  */
+-public class ToStringUtils {
++public final class ToStringUtils {
++
++  private ToStringUtils() {} // no instance
++
+   /**
+    * for printing boost only if not 1.0
+    */

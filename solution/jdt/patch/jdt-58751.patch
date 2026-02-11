@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+index 056f638..91bf987 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+@@ -1909,7 +1909,7 @@ class ASTConverter {
+ 			final SimpleName name = new SimpleName(this.ast);
+ 			name.internalSetIdentifier(new String(expression.selector));
+ 			int nameSourceStart =  (int) (expression.nameSourcePosition >>> 32);
+-			int nameSourceLength = (int)(expression.nameSourcePosition & 0xFFFFFFFF) - nameSourceStart + 1;
++			int nameSourceLength = ((int) expression.nameSourcePosition) - nameSourceStart + 1;
+ 			name.setSourceRange(nameSourceStart, nameSourceLength);
+ 			if (this.resolveBindings) {
+ 				recordNodes(name, expression);
+@@ -1961,7 +1961,7 @@ class ASTConverter {
+ 			final SimpleName name = new SimpleName(this.ast);
+ 			name.internalSetIdentifier(new String(expression.selector));
+ 			int nameSourceStart =  (int) (expression.nameSourcePosition >>> 32);
+-			int nameSourceLength = (int)(expression.nameSourcePosition & 0xFFFFFFFF) - nameSourceStart + 1;
++			int nameSourceLength = ((int) expression.nameSourcePosition) - nameSourceStart + 1;
+ 			name.setSourceRange(nameSourceStart, nameSourceLength);
+ 			methodInvocation.setName(name);
+ 			if (this.resolveBindings) {

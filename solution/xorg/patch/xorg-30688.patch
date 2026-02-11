@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/linux/linux.c b/hw/kdrive/linux/linux.c
+index 0e4a77c..23cd8f5 100644
+--- a/hw/kdrive/linux/linux.c
++++ b/hw/kdrive/linux/linux.c
+@@ -456,7 +456,9 @@ KdOsAddInputDrivers ()
+ #ifdef TSLIB
+     KdAddPointerDriver(&TsDriver);
+ #endif
++    KdAddPointerDriver(&LinuxEvdevMouseDriver);
+     KdAddKeyboardDriver(&LinuxKeyboardDriver);
++    KdAddKeyboardDriver(&LinuxEvdevKeyboardDriver);
+ }
+ 
+ static void

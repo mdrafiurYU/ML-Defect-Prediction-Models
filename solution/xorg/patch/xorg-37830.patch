@@ -1,0 +1,125 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index e49b3df..28f3b4e 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -50,7 +50,7 @@ _X_EXPORT DevPrivateKey miPointerScreenKey = &miPointerScreenKey;
+ static DevPrivateKey miPointerPrivKey = &miPointerPrivKey;
+ 
+ #define MIPOINTER(dev) \
+-    ((DevHasCursor((dev))) ? \
++    ((DevHasCursor((dev)) || (!dev->isMaster && !dev->u.master)) ? \
+         (miPointerPtr)dixLookupPrivate(&(dev)->devPrivates, miPointerPrivKey): \
+         (miPointerPtr)dixLookupPrivate(&(dev)->u.master->devPrivates, miPointerPrivKey))
+ 
+@@ -193,9 +193,6 @@ miPointerDisplayCursor (pDev, pScreen, pCursor)
+ {
+     miPointerPtr pPointer;
+     
+-    if (!pDev->isMaster && !pDev->u.master)
+-        return FALSE;
+-
+     /* return for keyboards */
+     if ((pDev->isMaster && !DevHasCursor(pDev)) ||
+         (!pDev->isMaster && pDev->u.master && !DevHasCursor(pDev->u.master)))
+@@ -217,9 +214,6 @@ miPointerConstrainCursor (pDev, pScreen, pBox)
+ {
+     miPointerPtr pPointer;
+ 
+-    if (!pDev->isMaster && !pDev->u.master)
+-        return;
+-    
+     pPointer = MIPOINTER(pDev);
+ 
+     pPointer->limits = *pBox;
+@@ -313,14 +307,14 @@ miPointerDeviceCleanup(pDev, pScreen)
+     DeviceIntPtr pDev;
+     ScreenPtr pScreen;
+ {
+-    if (DevHasCursor(pDev))
+-    {
++    if (!pDev->isMaster && pDev->u.master)
++        return;
++
+         SetupScreen(pScreen);
+         (*pScreenPriv->spriteFuncs->DeviceCursorCleanup)(pDev, pScreen);
+         xfree(dixLookupPrivate(&pDev->devPrivates, miPointerPrivKey));
+         dixSetPrivate(&pDev->devPrivates, miPointerPrivKey, NULL);
+     }
+-}
+ 
+ 
+ /* Once signals are ignored, the WarpCursor function can call this */
+@@ -334,8 +328,6 @@ miPointerWarpCursor (pDev, pScreen, x, y)
+     miPointerPtr pPointer;
+     BOOL changedScreen = FALSE;
+ 
+-    if (!pDev->isMaster && !pDev->u.master)
+-        return;
+     pPointer = MIPOINTER(pDev);
+     SetupScreen (pScreen);
+ 
+@@ -388,7 +380,7 @@ miPointerUpdateSprite (DeviceIntPtr pDev)
+     int			x, y, devx, devy;
+     miPointerPtr        pPointer;
+ 
+-    if (!pDev || !pDev->coreEvents || (!pDev->isMaster && !pDev->u.master))
++    if (!pDev || !pDev->coreEvents)
+         return;
+ 
+     pPointer = MIPOINTER(pDev);
+@@ -479,9 +471,6 @@ miPointerSetScreen(DeviceIntPtr pDev, int screen_no, int x, int y)
+ 	ScreenPtr pScreen;
+         miPointerPtr pPointer; 
+         
+-        if (!pDev->isMaster && !pDev->u.master)
+-            return;
+-
+         pPointer = MIPOINTER(pDev);
+ 
+ 	pScreen = screenInfo.screens[screen_no];
+@@ -502,10 +491,8 @@ miPointerCurrentScreen ()
+ _X_EXPORT ScreenPtr
+ miPointerGetScreen(DeviceIntPtr pDev)
+ {
+-    if (!pDev || (!pDev->isMaster && !pDev->u.master))
+-        return NULL;
+-
+-    return MIPOINTER(pDev)->pScreen;
++    miPointerPtr pPointer = MIPOINTER(pDev);
++    return (pPointer) ? pPointer->pScreen : NULL;
+ }
+ 
+ /* Move the pointer to x, y on the current screen, update the sprite, and
+@@ -525,9 +512,6 @@ miPointerMoved (DeviceIntPtr pDev, ScreenPtr pScreen, int x, int y,
+     miPointerPtr pPointer;
+     SetupScreen(pScreen);
+ 
+-    if (!pDev->isMaster && !pDev->u.master) 
+-        return;
+-
+     pPointer = MIPOINTER(pDev);
+ 
+     /* Hack: We mustn't call into ->MoveCursor for anything but the
+@@ -557,9 +541,6 @@ miPointerSetPosition(DeviceIntPtr pDev, int *x, int *y, unsigned long time)
+ 
+     miPointerPtr        pPointer; 
+     
+-    if (!pDev->isMaster && !pDev->u.master)
+-        return;
+-
+     pPointer = MIPOINTER(pDev);
+     pScreen = pPointer->pScreen;
+     if (!pScreen)
+@@ -613,12 +594,6 @@ miPointerPosition (int *x, int *y)
+ _X_EXPORT void
+ miPointerGetPosition(DeviceIntPtr pDev, int *x, int *y)
+ {
+-    if (!pDev->isMaster && !pDev->u.master)
+-    {
+-        ErrorF("[mi] miPointerGetPosition called for floating device.\n");
+-        return;
+-    }
+-
+     *x = MIPOINTER(pDev)->x;
+     *y = MIPOINTER(pDev)->y;
+ }

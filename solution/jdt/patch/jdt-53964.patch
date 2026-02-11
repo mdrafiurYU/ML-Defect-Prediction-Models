@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferencePattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferencePattern.java
+index d250d44..7a0338f 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferencePattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/TypeReferencePattern.java
+@@ -34,7 +34,7 @@ import org.eclipse.jdt.internal.core.util.Util;
+ 		this(matchRule);
+ 	
+ 		this.qualification = isCaseSensitive() ? qualification : CharOperation.toLowerCase(qualification);
+-		this.simpleName = isCaseSensitive() ? simpleName : CharOperation.toLowerCase(simpleName);
++		this.simpleName = (isCaseSensitive() || isCamelCase())  ? simpleName : CharOperation.toLowerCase(simpleName);
+ 	
+ 		if (simpleName == null)
+ 			this.segments = this.qualification == null ? ONE_STAR_CHAR : CharOperation.splitOn('.', this.qualification);

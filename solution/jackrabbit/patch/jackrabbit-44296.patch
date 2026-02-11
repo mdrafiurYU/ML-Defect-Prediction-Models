@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+index 71b84db..39b333a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+@@ -187,11 +187,7 @@ public class SearchManager implements SynchronousEventListener {
+                          NodeId rootNodeId,
+                          SearchManager parentMgr,
+                          NodeId excludedNodeId) throws RepositoryException {
+-        if (config.getFileSystemConfig() != null) {
+-            fs = config.getFileSystemConfig().createFileSystem();
+-        } else {
+-            fs = null;
+-        }
++        this.fs = config.getFileSystem();
+         this.config = config;
+         this.ntReg = ntReg;
+         this.nsReg = nsReg;

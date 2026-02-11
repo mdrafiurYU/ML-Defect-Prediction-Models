@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/dixmods/extmod/xf86misc.c b/hw/xfree86/dixmods/extmod/xf86misc.c
+index a35db1f..3ce3c42 100644
+--- a/hw/xfree86/dixmods/extmod/xf86misc.c
++++ b/hw/xfree86/dixmods/extmod/xf86misc.c
+@@ -504,6 +504,7 @@ ProcXF86MiscSetClientVersion(ClientPtr client)
+ 	    return BadAlloc;
+ 	MPRIV(client) = pPriv;
+     }
++    if (xf86GetVerbosity() > 1) 
+     ErrorF("SetClientVersion: %i %i\n",stuff->major,stuff->minor);
+     pPriv->major = stuff->major;
+     pPriv->minor = stuff->minor;

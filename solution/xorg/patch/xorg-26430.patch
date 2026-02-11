@@ -1,0 +1,13 @@
+diff --git a/include/dixevents.h b/include/dixevents.h
+index 2a9458f..c78fb0e 100644
+--- a/include/dixevents.h
++++ b/include/dixevents.h
+@@ -102,4 +102,8 @@ extern int ProcUngrabButton(ClientPtr /* client */);
+ 
+ extern int ProcRecolorCursor(ClientPtr /* client */);
+ 
++#ifdef PANORAMIX
++extern void PostSyntheticMotion(int x, int y, ScreenPtr pScreen, unsigned long time);
++#endif
++
+ #endif /* DIXEVENTS_H */

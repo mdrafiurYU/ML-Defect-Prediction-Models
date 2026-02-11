@@ -1,0 +1,13 @@
+diff --git a/randr/rrinfo.c b/randr/rrinfo.c
+index 6fd4ee5..e92caad 100644
+--- a/randr/rrinfo.c
++++ b/randr/rrinfo.c
+@@ -39,8 +39,6 @@ RROldModeAdd (RROutputPtr output, RRScreenSizePtr size, int refresh)
+     
+     modeInfo.width = size->width;
+     modeInfo.height = size->height;
+-    modeInfo.mmWidth = size->mmWidth;
+-    modeInfo.mmHeight = size->mmHeight;
+     modeInfo.hTotal = size->width;
+     modeInfo.vTotal = size->height;
+     modeInfo.dotClock = ((CARD32) size->width * (CARD32) size->height *

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Not.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Not.java
+index a172a9d..497d5c8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Not.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Not.java
+@@ -24,12 +24,13 @@ package org.apache.jackrabbit.core.query.jsr283.qom;
+  *
+  * @since JCR 2.0
+  */
+-public interface Not
+-        extends Constraint {
++public interface Not extends Constraint {
++
+     /**
+      * Gets the constraint negated by this <code>Not</code> constraint.
+      *
+      * @return the constraint; non-null
+      */
+-    public Constraint getConstraint();
++    Constraint getConstraint();
++
+ }

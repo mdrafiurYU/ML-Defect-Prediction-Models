@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java
+index 5f6036b..900c30c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/db/DbDataStore.java
+@@ -536,6 +536,7 @@ public class DbDataStore implements DataStore {
+         Properties prop = new Properties();
+         try {
+             prop.load(new BufferedInputStream(in));
++            in.close();
+         } catch (IOException e) {
+             String msg = "Configuration error: Could not read properties '" + databaseType + ".properties'";
+             log.debug(msg);

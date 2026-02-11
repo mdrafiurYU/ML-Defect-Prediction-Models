@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxwindow.c b/hw/dmx/dmxwindow.c
+index 2db72d7..25456e2 100644
+--- a/hw/dmx/dmxwindow.c
++++ b/hw/dmx/dmxwindow.c
+@@ -35,6 +35,10 @@
+ /** \file
+  * This file provides support for window-related functions. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxsync.h"
+ #include "dmxwindow.h"

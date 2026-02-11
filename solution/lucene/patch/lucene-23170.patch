@@ -1,0 +1,34 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/suggest/fst/OutputStreamDataOutput.java b/solr/src/java/org/apache/solr/spelling/suggest/fst/OutputStreamDataOutput.java
+deleted file mode 100644
+index cba0a33..0000000
+--- a/solr/src/java/org/apache/solr/spelling/suggest/fst/OutputStreamDataOutput.java
++++ /dev/null
+@@ -1,28 +0,0 @@
+-package org.apache.solr.spelling.suggest.fst;
+-
+-import java.io.IOException;
+-import java.io.OutputStream;
+-
+-import org.apache.lucene.store.DataOutput;
+-
+-/**
+- * A {@link DataOutput} wrapping a plain {@link OutputStream}.
+- */
+-public class OutputStreamDataOutput extends DataOutput {
+-  
+-  private final OutputStream os;
+-  
+-  public OutputStreamDataOutput(OutputStream os) {
+-    this.os = os;
+-  }
+-  
+-  @Override
+-  public void writeByte(byte b) throws IOException {
+-    os.write(b);
+-  }
+-  
+-  @Override
+-  public void writeBytes(byte[] b, int offset, int length) throws IOException {
+-    os.write(b, offset, length);
+-  }
+-}

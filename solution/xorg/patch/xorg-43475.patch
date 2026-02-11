@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index 3e62e7e..64f7fe9 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -471,7 +471,7 @@ DDCModesFromStandardTiming(struct std_timings *timing, ddc_quirk_t quirks,
+ 			   int timing_level, Bool rb)
+ {
+     DisplayModePtr Modes = NULL, Mode = NULL;
+-    int i;
++    int i, hsize, vsize, refresh;
+ 
+     for (i = 0; i < STD_TIMINGS; i++) {
+ 	hsize = timing[i].hsize;

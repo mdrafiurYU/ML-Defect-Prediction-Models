@@ -1,0 +1,15 @@
+diff --git a/mfb/mfbwindow.c b/mfb/mfbwindow.c
+index 1f277e4..56f3f46 100644
+--- a/mfb/mfbwindow.c
++++ b/mfb/mfbwindow.c
+@@ -48,6 +48,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XFree86$ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "scrnintstr.h"
+ #include "windowstr.h"

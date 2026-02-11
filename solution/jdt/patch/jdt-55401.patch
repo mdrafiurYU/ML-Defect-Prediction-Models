@@ -1,0 +1,29 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+index e225c03..0903265 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+@@ -515,7 +515,7 @@ public class AptConfig {
+ 			AptPlugin.log(status);
+ 			throw e;
+ 		}
+-		setBoolean(jproject, AptPreferenceConstants.APT_ENABLED, enabled);
++		setBoolean(jproject, AptPreferenceConstants.APT_ENABLED, enabled);	
+ 	}
+ 	
+ 	private static boolean getBoolean(IJavaProject jproj, String optionName) {
+@@ -635,6 +635,7 @@ public class AptConfig {
+     }
+ 	
+ 	private static void setBoolean(IJavaProject jproject, String optionName, boolean value) {
++		AptPlugin.ensureAptProject(jproject);
+ 		IScopeContext context = (null != jproject) ? 
+ 				new ProjectScope(jproject.getProject()) : new InstanceScope();
+ 		IEclipsePreferences node = context.getNode(AptPlugin.PLUGIN_ID);
+@@ -643,6 +644,7 @@ public class AptConfig {
+ 	}
+ 	
+ 	private static void setString(IJavaProject jproject, String optionName, String value) {
++		AptPlugin.ensureAptProject(jproject);
+ 		IScopeContext context = (null != jproject) ? 
+ 				new ProjectScope(jproject.getProject()) : new InstanceScope();
+ 		IEclipsePreferences node = context.getNode(AptPlugin.PLUGIN_ID);

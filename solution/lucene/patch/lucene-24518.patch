@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
+index 656a5a4..4582a8a 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
+@@ -400,7 +400,7 @@ public class InstantiatedIndexReader extends IndexReader {
+         if (i < 0) {
+           i = -i - 1;
+         }
+-        if (i >= orderedTerms.length || orderedTerms[i].field() != field) {
++        if (i >= orderedTerms.length || !orderedTerms[i].field().equals(field)) {
+           // field does not exist
+           return null;
+         }

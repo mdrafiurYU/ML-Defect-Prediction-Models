@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
+index cb11642..6e684ed 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
+@@ -201,7 +201,7 @@ public class ConfigurationParser {
+         try {
+             return Text.replaceVariables(variables, value, false);
+         } catch (IllegalArgumentException e) {
+-            throw new ConfigurationException(e.getMessage());
++            throw new ConfigurationException(e.getMessage(), e);
+         }
+     }

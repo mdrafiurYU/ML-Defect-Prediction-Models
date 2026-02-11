@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/SingleFunction.java b/solr/src/java/org/apache/solr/search/function/SingleFunction.java
+index 06c7bae..e040dc5 100755
+--- a/solr/src/java/org/apache/solr/search/function/SingleFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/SingleFunction.java
+@@ -17,7 +17,7 @@
+ 
+ package org.apache.solr.search.function;
+ 
+-import org.apache.lucene.search.Searcher;
++import org.apache.lucene.search.IndexSearcher;
+ 
+ import java.io.IOException;
+ import java.util.Map;
+@@ -49,7 +49,7 @@ import java.util.Map;
+   }
+ 
+   @Override
+-  public void createWeight(Map context, Searcher searcher) throws IOException {
++  public void createWeight(Map context, IndexSearcher searcher) throws IOException {
+     source.createWeight(context, searcher);
+   }
+ }
+\ No newline at end of file

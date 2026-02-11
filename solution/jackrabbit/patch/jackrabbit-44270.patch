@@ -1,0 +1,35 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/RepositoryLifecycleTestSetup.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/RepositoryLifecycleTestSetup.java
+index 9ed968d..30c001a 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/RepositoryLifecycleTestSetup.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/RepositoryLifecycleTestSetup.java
+@@ -18,8 +18,6 @@ package org.apache.jackrabbit.ocm;
+ 
+ import junit.extensions.TestSetup;
+ import junit.framework.Test;
+-
+-import org.apache.jackrabbit.ocm.repository.RepositoryUtil;
+ /**
+  * A TestSetup that opens/close the JCR repository.
+  *
+@@ -35,17 +33,17 @@ public class RepositoryLifecycleTestSetup extends TestSetup {
+      */
+     protected void setUp() throws Exception {
+         super.setUp();
+-        System.out.println("registering repository ... ");
+-        RepositoryUtil.registerRepository("repositoryTest",
+-                "./src/test/test-config/repository.xml", "./target/repository");
++//        System.out.println("registering repository ... ");
++//        RepositoryUtil.registerRepository("repositoryTest",
++//                "./src/test/test-config/repository.xml", "./target/repository");
+     }
+ 
+     /**
+      * @see junit.extensions.TestSetup#tearDown()
+      */
+     protected void tearDown() throws Exception {
+-        RepositoryUtil.unRegisterRepository("repositoryTest");
+-        System.out.println("repository shutdown");
++//        RepositoryUtil.unRegisterRepository("repositoryTest");
++//        System.out.println("repository shutdown");
+         super.tearDown();
+     }

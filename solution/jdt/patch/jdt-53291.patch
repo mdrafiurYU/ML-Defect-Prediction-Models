@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java
+index 439a301..02064af 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java
+@@ -372,7 +372,7 @@ protected void consumeEnterAnonymousClassBody() {
+ 
+ 	TypeDeclaration anonymousType = new TypeDeclaration(this.compilationUnit.compilationResult); 
+ 	anonymousType.name = TypeDeclaration.ANONYMOUS_EMPTY_NAME;
+-	anonymousType.bits |= ASTNode.AnonymousAndLocalMask;
++	anonymousType.bits |= (ASTNode.IsAnonymousType|ASTNode.IsLocalType);
+ 	QualifiedAllocationExpression alloc = new SelectionOnQualifiedAllocationExpression(anonymousType); 
+ 	markEnclosingMemberWithLocalType();
+ 	pushOnAstStack(anonymousType);

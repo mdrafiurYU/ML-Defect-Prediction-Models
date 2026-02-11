@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
+index 9b7e2a9..8410a01 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
+@@ -159,8 +159,6 @@ public abstract class ReusableAnalyzerBase extends Analyzer {
+      */
+     protected boolean reset(final Reader reader) throws IOException {
+       source.reset(reader);
+-      if(sink != source)
+-        sink.reset(); // only reset if the sink reference is different from source
+       return true;
+     }

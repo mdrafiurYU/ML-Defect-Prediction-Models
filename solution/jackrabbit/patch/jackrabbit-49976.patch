@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
+index b763117..cc5fea8 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql2/Parser.java
+@@ -248,7 +248,7 @@ public class Parser {
+     private Constraint parseCondition() throws RepositoryException {
+         Constraint a;
+         if (readIf("NOT")) {
+-            a = parseConstraint();
++            a = factory.not(parseConstraint());
+         } else if (readIf("(")) {
+             a = parseConstraint();
+             read(")");

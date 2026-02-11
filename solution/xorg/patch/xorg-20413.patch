@@ -1,0 +1,14 @@
+diff --git a/fb/fbstipple.c b/fb/fbstipple.c
+index 44aa5f3..1754130 100644
+--- a/fb/fbstipple.c
++++ b/fb/fbstipple.c
+@@ -148,8 +148,7 @@ fbEvenStipple (FbBits	*dst,
+     /*
+      * Get pointer to stipple mask array for this depth
+      */
+-    fbBits = 0;	/* unused */
+-    if (pixelsPerDst <= 8)
++    /* fbStippleTable covers all valid bpp (4,8,16,32) */
+ 	fbBits = fbStippleTable[pixelsPerDst];
+     
+     while (height--)

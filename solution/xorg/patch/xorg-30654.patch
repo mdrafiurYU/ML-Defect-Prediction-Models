@@ -1,0 +1,20 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index df2ac5a..4377354 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -1146,6 +1146,7 @@ KdParseKbdOptions (KdKeyboardInfo *ki)
+ 
+     for (option = ki->options; option; option = option->next)
+     {
++#ifdef XKB
+         if (strcasecmp(option->key, "XkbRules") == 0)
+             ki->xkbRules = option->value;
+         else if (strcasecmp(option->key, "XkbModel") == 0)
+@@ -1157,6 +1158,7 @@ KdParseKbdOptions (KdKeyboardInfo *ki)
+         else if (strcasecmp(option->key, "XkbOptions") == 0)
+             ki->xkbOptions = option->value;
+        else
++#endif
+            ErrorF("Kbd option key (%s) of value (%s) not assigned!\n", 
+                     option->key, option->value);
+     }

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index 3d50c28..5ff7f76 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -4549,7 +4549,7 @@ public void ireturn() {
+ 	bCodeStream[classFileOffset++] = Opcodes.OPC_ireturn;
+ }
+ public boolean isDefinitelyAssigned(Scope scope, int initStateIndex, LocalVariableBinding local) {
+-	// Dependant of UnconditionalFlowInfo.isDefinitelyAssigned(..)
++	// Mirror of UnconditionalFlowInfo.isDefinitelyAssigned(..)
+ 	if (initStateIndex == -1)
+ 		return false;
+ 	if (local.isArgument) {

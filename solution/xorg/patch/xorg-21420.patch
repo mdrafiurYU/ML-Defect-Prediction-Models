@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/loader/loaderProcs.h b/hw/xfree86/loader/loaderProcs.h
+index 0e77e6b..324fa9e 100644
+--- a/hw/xfree86/loader/loaderProcs.h
++++ b/hw/xfree86/loader/loaderProcs.h
+@@ -103,11 +103,6 @@ ModuleDescPtr AddSibling(ModuleDescPtr head, ModuleDescPtr new);
+ void LoaderSetPath(const char *path);
+ void LoaderSortExtensions(void);
+ 
+-void LoaderVReqSymLists(const char **, va_list args);
+-void LoaderVReqSymbols(const char *, va_list args);
+-void LoaderVRefSymLists(const char **, va_list args);
+-void LoaderVRefSymbols(const char *, va_list args);
+-
+ void LoaderShowStack(void);
+ void *LoaderSymbolHandle(const char *, int);
+ int LoaderUnload(int);

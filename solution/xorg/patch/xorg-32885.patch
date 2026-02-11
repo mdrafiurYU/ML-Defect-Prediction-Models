@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglscreen.c b/hw/xgl/xglscreen.c
+index 9b7297b..cd3b59a 100644
+--- a/hw/xgl/xglscreen.c
++++ b/hw/xgl/xglscreen.c
+@@ -447,7 +447,7 @@ xglCreateSolidAlphaPicture (ScreenPtr pScreen)
+     if (!pGC)
+ 	return;
+ 
+-    pPixmap = (*pScreen->CreatePixmap) (pScreen, 1, 1, pFormat->depth);
++    pPixmap = (*pScreen->CreatePixmap) (pScreen, 1, 1, pFormat->depth, 0);
+     if (!pPixmap)
+ 	return;
+ 

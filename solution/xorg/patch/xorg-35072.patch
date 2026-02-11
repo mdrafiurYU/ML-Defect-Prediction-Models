@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/modes/xf86Modes.h b/hw/xfree86/modes/xf86Modes.h
+index 3722d25..9ad5ee6 100644
+--- a/hw/xfree86/modes/xf86Modes.h
++++ b/hw/xfree86/modes/xf86Modes.h
+@@ -42,6 +42,7 @@
+ 
+ double xf86ModeHSync(DisplayModePtr mode);
+ double xf86ModeVRefresh(DisplayModePtr mode);
++unsigned int xf86ModeBandwidth(DisplayModePtr mode, int depth);
+ 
+ int
+ xf86ModeWidth (DisplayModePtr mode, Rotation rotation);
+@@ -79,6 +80,10 @@ xf86ValidateModesSync(ScrnInfoPtr pScrn, DisplayModePtr modeList,
+ 		      MonPtr mon);
+ 
+ void
++xf86ValidateModesBandwidth(ScrnInfoPtr pScrn, DisplayModePtr modeList,
++			   unsigned int bandwidth, int depth);
++
++void
+ xf86PruneInvalidModes(ScrnInfoPtr pScrn, DisplayModePtr *modeList,
+ 		      Bool verbose);
+ 

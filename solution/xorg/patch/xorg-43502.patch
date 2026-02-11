@@ -1,0 +1,12 @@
+diff --git a/Xext/shm.c b/Xext/shm.c
+index 7b63484..1f963c1 100644
+--- a/Xext/shm.c
++++ b/Xext/shm.c
+@@ -309,6 +309,7 @@ ProcShmQueryVersion(ClientPtr client)
+     int n;
+ 
+     REQUEST_SIZE_MATCH(xShmQueryVersionReq);
++    memset(&rep, 0, sizeof(xShmQueryVersionReply));
+     rep.type = X_Reply;
+     rep.length = 0;
+     rep.sequenceNumber = client->sequence;

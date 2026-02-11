@@ -1,0 +1,20 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 68499f1..4fb680f 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -134,6 +134,7 @@ int ProcInitialConnection();
+ #include "panoramiX.h"
+ #include "panoramiXsrv.h"
+ #endif
++#include "privates.h"
+ #include "xace.h"
+ #ifdef XAPPGROUP
+ #include "appgroup.h"
+@@ -3651,6 +3652,7 @@ CloseDownClient(ClientPtr client)
+ #ifdef SMART_SCHEDULE
+ 	SmartLastClient = NullClient;
+ #endif
++	dixFreePrivates(*DEVPRIV_PTR(client));
+ 	xfree(client);
+ 
+ 	while (!clients[currentMaxClients-1])

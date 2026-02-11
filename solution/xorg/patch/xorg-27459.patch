@@ -1,0 +1,13 @@
+diff --git a/include/dixstruct.h b/include/dixstruct.h
+index b5ffcca..530009a 100644
+--- a/include/dixstruct.h
++++ b/include/dixstruct.h
+@@ -140,6 +140,8 @@ typedef struct _Client {
+     long    smart_stop_tick;
+     long    smart_check_tick;
+ #endif
++    
++    DeviceIntPtr clientPtr;
+ }           ClientRec;
+ 
+ #ifdef SMART_SCHEDULE

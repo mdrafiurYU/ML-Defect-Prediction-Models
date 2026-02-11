@@ -1,0 +1,52 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java b/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
+index 3f35f99..96ba18d 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
+@@ -50,8 +50,6 @@ import org.apache.lucene.util.LuceneTestCase;
+ import org.apache.lucene.util._TestUtil;
+ 
+ public class TestIndexReaderReopen extends LuceneTestCase {
+-    
+-  private File indexDir;
+   
+   public void testReopen() throws Exception {
+     final Directory dir1 = newDirectory();
+@@ -151,22 +149,12 @@ public class TestIndexReaderReopen extends LuceneTestCase {
+   // at the end of every iteration, commit the index and reopen/recreate the reader.
+   // in each iteration verify the work of previous iteration. 
+   // try this once with reopen once recreate, on both RAMDir and FSDir.
+-  public void testCommitReopenFS () throws IOException {
+-    Directory dir = newFSDirectory(indexDir);
+-    doTestReopenWithCommit(random, dir, true);
+-    dir.close();
+-  }
+-  public void testCommitRecreateFS () throws IOException {
+-    Directory dir = newFSDirectory(indexDir);
+-    doTestReopenWithCommit(random, dir, false);
+-    dir.close();
+-  }
+-  public void testCommitReopenRAM () throws IOException {
++  public void testCommitReopen () throws IOException {
+     Directory dir = newDirectory();
+     doTestReopenWithCommit(random, dir, true);
+     dir.close();
+   }
+-  public void testCommitRecreateRAM () throws IOException {
++  public void testCommitRecreate () throws IOException {
+     Directory dir = newDirectory();
+     doTestReopenWithCommit(random, dir, false);
+     dir.close();
+@@ -1086,13 +1074,6 @@ public class TestIndexReaderReopen extends LuceneTestCase {
+     protected abstract IndexReader openReader() throws IOException;
+     protected abstract void modifyIndex(int i) throws IOException;
+   }
+-
+-
+-  @Override
+-  public void setUp() throws Exception {
+-    super.setUp();
+-    indexDir = _TestUtil.getTempDir("IndexReaderReopen");
+-  }
+   
+   public void testCloseOrig() throws Throwable {
+     Directory dir = newDirectory();

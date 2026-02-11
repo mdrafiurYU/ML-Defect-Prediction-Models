@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/VersionIteratorImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/VersionIteratorImplTest.java
+index 0550a3e..52ded27 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/VersionIteratorImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/VersionIteratorImplTest.java
+@@ -57,6 +57,8 @@ public class VersionIteratorImplTest extends TestCase {
+         public boolean isMoreRecent(InternalVersion v) {return false;}
+         public boolean isRootVersion() {return false;}
+         public InternalVersionItem getParent() {return null;}
++        public InternalVersion getLinearSuccessor(InternalVersion baseVersion) { return null; }
++        public InternalVersion getLinearPredecessor() { return null; }
+     }
+ 
+     public void testVersionIterator() throws Exception {

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapAttribute.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapAttribute.java
+index ba0a702..81965be 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapAttribute.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapAttribute.java
+@@ -30,6 +30,6 @@ public interface FieldBoostMapAttribute extends Attribute {
+   /**
+    * @param boosts a mapping from field name to its default boost
+    */
+-  public void setFieldBoostMap(Map<CharSequence, Float> boosts);
+-  public Map<CharSequence, Float> getFieldBoostMap();
++  public void setFieldBoostMap(Map<String, Float> boosts);
++  public Map<String, Float> getFieldBoostMap();
+ }

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
+index 5c8de59..955e265 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
+@@ -243,7 +243,7 @@ public abstract class HierarchyBuilder {
+ 			false/* do NOT wait for indexes */,
+ 			false/*don't check restrictions*/,
+ 			null);
+-		return answer == null ? null : answer.type;
++		return answer == null || answer.type == null || !answer.type.isBinary() ? null : answer.type;
+ 		
+ 	}
+ 	protected void worked(IProgressMonitor monitor, int work) {

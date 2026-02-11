@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiteralsTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiteralsTest.java
+index 826388d..08d391e 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiteralsTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiteralsTest.java
+@@ -27,7 +27,7 @@ public ExternalizeStringLiteralsTest(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return buildTestSuite(testClass());
++	return buildAllCompliancesRegressionTestSetupSuite(testClass());
+ }
+ 
+ public void test001() {

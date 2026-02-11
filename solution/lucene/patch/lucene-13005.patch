@@ -1,0 +1,28 @@
+diff --git a/solr/src/test/org/apache/solr/core/AlternateDirectoryTest.java b/solr/src/test/org/apache/solr/core/AlternateDirectoryTest.java
+index 93ca71c..75df1bb 100755
+--- a/solr/src/test/org/apache/solr/core/AlternateDirectoryTest.java
++++ b/solr/src/test/org/apache/solr/core/AlternateDirectoryTest.java
+@@ -42,14 +42,20 @@ public class AlternateDirectoryTest extends SolrTestCaseJ4 {
+     assertQ(req("q","*:*","qt","standard"));
+     assertTrue(TestFSDirectoryFactory.openCalled);
+     assertTrue(TestIndexReaderFactory.newReaderCalled);
++    TestFSDirectoryFactory.dir.close();
+   }
+ 
+   static public class TestFSDirectoryFactory extends DirectoryFactory {
+     public static volatile boolean openCalled = false;
+-
+-    public FSDirectory open(String path) throws IOException {
++    public static volatile Directory dir;
++    
++    public Directory open(String path) throws IOException {
+       openCalled = true;
+-      return FSDirectory.open(new File(path));
++      // need to close the directory, or otherwise the test fails.
++      if (dir != null) {
++        dir.close();
++      }
++      return dir = newFSDirectory(new File(path));
+     }
+ 
+   }

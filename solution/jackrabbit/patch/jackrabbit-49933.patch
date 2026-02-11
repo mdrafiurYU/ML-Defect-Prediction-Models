@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLProvider.java
+index df45dd2..09a7e1f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLProvider.java
+@@ -321,6 +321,7 @@ public class ACLProvider extends AbstractAccessControlProvider implements Access
+                     switch (ev.getType()) {
+                         case Event.NODE_ADDED:
+                         case Event.NODE_REMOVED:
++                        case Event.NODE_MOVED:
+                             reload = acPaths.contains(Text.getRelativeParent(path, 2));
+                             break;
+                         case Event.PROPERTY_ADDED:
+@@ -328,6 +329,7 @@ public class ACLProvider extends AbstractAccessControlProvider implements Access
+                         case Event.PROPERTY_REMOVED:
+                             reload = acPaths.contains(Text.getRelativeParent(path, 3));
+                             break;
++
+                         default:
+                             // illegal event-type: should never occur. ignore
+                             break;

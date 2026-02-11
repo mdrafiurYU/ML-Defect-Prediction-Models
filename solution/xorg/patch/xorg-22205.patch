@@ -1,0 +1,29 @@
+diff --git a/fb/fbimage.c b/fb/fbimage.c
+index bf5c06b..4798709 100644
+--- a/fb/fbimage.c
++++ b/fb/fbimage.c
+@@ -170,6 +170,8 @@ fbPutZImage (DrawablePtr	pDrawable,
+ 		   pm,
+ 		   dstBpp);
+     }
++
++    fbFinishAccess (pDrawable);
+ }
+ 	     
+ void
+@@ -277,6 +279,8 @@ fbPutXYImage (DrawablePtr	pDrawable,
+ 		      fgand, fgxor, bgand, bgxor);
+ 	}
+     }
++
++    fbFinishAccess (pDrawable);
+ }
+ 
+ void
+@@ -361,4 +365,6 @@ fbGetImage (DrawablePtr	    pDrawable,
+ 		    fbXorStip(GXcopy,0,FB_STIP_ALLONES),
+ 		    planeMask);
+     }
++
++    fbFinishAccess (pDrawable);
+ }

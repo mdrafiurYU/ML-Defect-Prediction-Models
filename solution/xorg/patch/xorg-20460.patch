@@ -1,0 +1,16 @@
+diff --git a/hw/dmx/input/dmxconsole.c b/hw/dmx/input/dmxconsole.c
+index 7a313aa..835909e 100644
+--- a/hw/dmx/input/dmxconsole.c
++++ b/hw/dmx/input/dmxconsole.c
+@@ -696,9 +696,10 @@ static void dmxConsoleComputeWidthHeight(myPrivate *priv,
+ void dmxConsoleReInit(DevicePtr pDev)
+ {
+     GETPRIVFROMPDEV;
+-    Display *dpy = priv->display;
++    Display *dpy;
+ 
+     if (!priv || !priv->initialized) return;
++    dpy = priv->display;
+     
+     dmxConsoleComputeWidthHeight(priv,
+                                  &priv->width, &priv->height,

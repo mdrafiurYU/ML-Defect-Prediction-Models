@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java
+index ebdc66c..340eb34 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java
+@@ -50,6 +50,7 @@ public class IfStatement extends Statement {
+ 		if (thenStatement instanceof EmptyStatement) thenStatement.bits |= IsUsefulEmptyStatement;
+ 		this.elseStatement = elseStatement;
+ 		if (elseStatement instanceof IfStatement) elseStatement.bits |= IsElseIfStatement;
++		if (elseStatement instanceof EmptyStatement) elseStatement.bits |= IsUsefulEmptyStatement;
+ 		this.sourceStart = sourceStart;
+ 		this.sourceEnd = sourceEnd;
+ 	}

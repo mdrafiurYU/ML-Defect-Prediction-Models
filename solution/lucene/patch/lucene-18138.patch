@@ -1,0 +1,38 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java b/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java
+index 31b0c23..bd9046b 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/CodecProvider.java
+@@ -24,11 +24,6 @@ import java.util.Map;
+ import java.util.Set;
+ import java.util.Map.Entry;
+ 
+-import org.apache.lucene.index.codecs.preflex.PreFlexCodec;
+-import org.apache.lucene.index.codecs.pulsing.PulsingCodec;
+-import org.apache.lucene.index.codecs.simpletext.SimpleTextCodec;
+-import org.apache.lucene.index.codecs.standard.StandardCodec;
+-
+ /** Holds a set of codecs, keyed by name.  You subclass
+  *  this, instantiate it, and register your codecs, then
+  *  pass this instance to IndexReader/IndexWriter (via
+@@ -97,7 +92,7 @@ public class CodecProvider {
+     return infosReader;
+   }
+ 
+-  static private CodecProvider defaultCodecs = new DefaultCodecProvider();
++  static private CodecProvider defaultCodecs = new CoreCodecProvider();
+ 
+   public static CodecProvider getDefault() {
+     return defaultCodecs;
+@@ -185,12 +180,3 @@ public class CodecProvider {
+     setDefaultFieldCodec(other.getDefaultFieldCodec());
+   }
+ }
+-
+-class DefaultCodecProvider extends CodecProvider {
+-  DefaultCodecProvider() {
+-    register(new StandardCodec());
+-    register(new PreFlexCodec());
+-    register(new PulsingCodec(1));
+-    register(new SimpleTextCodec());
+-  }
+-}

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+index 8d03ce6..a526da5 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+@@ -90,11 +90,17 @@ public final class QValueValue implements Value {
+         }
+     }
+ 
++    /**
++     * @see javax.jcr.Value#getDecimal()
++     */
+     public BigDecimal getDecimal() throws ValueFormatException, IllegalStateException, RepositoryException {
+         // TODO
+         throw new RuntimeException("Not implemented yet, see JCR-1609");
+     }
+ 
++    /**
++     * @see javax.jcr.Value#getBinary()
++     */
+     public Binary getBinary() throws RepositoryException {
+         // TODO
+         throw new RuntimeException("Not implemented yet, see JCR-2056");

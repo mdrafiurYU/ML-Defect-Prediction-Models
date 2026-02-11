@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/PropertyDefinitionImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/PropertyDefinitionImpl.java
+index 60d6eae..72168ee 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/PropertyDefinitionImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/PropertyDefinitionImpl.java
+@@ -85,6 +85,18 @@ public final class PropertyDefinitionImpl extends ItemDefinitionImpl implements
+ 	return isMultiple;
+     }
+ 
++    public String[] getAvailableQueryOperators() {
++        throw new UnsupportedOperationException("JCR-2091");
++    }
++
++    public boolean isFullTextSearchable() {
++        throw new UnsupportedOperationException("JCR-2091");
++    }
++
++    public boolean isQueryOrderable() {
++        throw new UnsupportedOperationException("JCR-2091");
++    }
++
+     //-------------------------------------< implementation specific method >---
+     /**
+      * Return xml representation
+@@ -135,4 +147,5 @@ public final class PropertyDefinitionImpl extends ItemDefinitionImpl implements
+     String getElementName() {
+ 	return PROPERTYDEFINITION_ELEMENT;
+     }
++
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+index 5206059..ad290c7 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+@@ -66,7 +66,7 @@ public class TestLengthNormModifier extends LuceneTestCase {
+       super.setUp();
+       store = newDirectory();
+ 	IndexWriter writer = new IndexWriter(store, newIndexWriterConfig(
+-                                                                         TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
++                                                                         TEST_VERSION_CURRENT, new MockAnalyzer(random)).setMergePolicy(newLogMergePolicy()));
+ 	
+ 	for (int i = 0; i < NUM_DOCS; i++) {
+ 	    Document d = new Document();

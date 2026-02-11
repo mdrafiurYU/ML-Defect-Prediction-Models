@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/glxProxy/glxext.c b/hw/dmx/glxProxy/glxext.c
+index 554739e..6033823 100644
+--- a/hw/dmx/glxProxy/glxext.c
++++ b/hw/dmx/glxProxy/glxext.c
+@@ -18,6 +18,10 @@
+ **
+ */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ 
+ #define NEED_REPLIES

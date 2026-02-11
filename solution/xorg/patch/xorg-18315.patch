@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/int10/xf86int10module.c b/hw/xfree86/int10/xf86int10module.c
+index 2bb49cb..391c183 100644
+--- a/hw/xfree86/int10/xf86int10module.c
++++ b/hw/xfree86/int10/xf86int10module.c
+@@ -4,6 +4,10 @@
+  *   execute BIOS int 10h calls in x86 real mode environment
+  *                 Copyright 1999 Egbert Eich
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86str.h"
+ #include "xf86Pci.h"

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/ReqOptSumScorer.java b/lucene/src/java/org/apache/lucene/search/ReqOptSumScorer.java
+index c8e1b81..ad9a9c1 100644
+--- a/lucene/src/java/org/apache/lucene/search/ReqOptSumScorer.java
++++ b/lucene/src/java/org/apache/lucene/search/ReqOptSumScorer.java
+@@ -38,7 +38,7 @@ class ReqOptSumScorer extends Scorer {
+       Scorer reqScorer,
+       Scorer optScorer)
+   {
+-    super(null); // No similarity used.
++    super(reqScorer.weight);
+     this.reqScorer = reqScorer;
+     this.optScorer = optScorer;
+   }

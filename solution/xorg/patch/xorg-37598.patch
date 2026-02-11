@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 68dc387..851f4dc 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -632,10 +632,10 @@ InitOutput(ScreenInfo *pScreenInfo, int argc, char **argv)
+     /*
+      * Locate bus slot that had register IO enabled at server startup
+      */
+-
++    if (xorgHWAccess) {
+     xf86AccessInit();
+     xf86FindPrimaryDevice();
+-
++    }
+     /*
+      * Now call each of the Probe functions.  Each successful probe will
+      * result in an extra entry added to the xf86Screens[] list for each

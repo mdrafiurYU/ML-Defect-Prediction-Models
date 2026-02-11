@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ReorderTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ReorderTest.java
+index b0b923e..0bf7213 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ReorderTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ReorderTest.java
+@@ -87,7 +87,7 @@ public class ReorderTest extends AbstractObservationTest {
+         // not deterministic, there exist various re-order seqences. the minimal
+         // is:
+         // nodename1[2] has been reordered to the end + nodeName3 has been removed
+-        checkNodeAdded(added, new String[]{nodeName1 + "[4]"});
+-        checkNodeRemoved(removed, new String[]{nodeName1 + "[2]", nodeName3});
++        checkNodeAdded(added, new String[]{nodeName1 + "[4]"}, null);
++        checkNodeRemoved(removed, new String[]{nodeName1 + "[2]", nodeName3}, null);
+     }
+ }

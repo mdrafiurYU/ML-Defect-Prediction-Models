@@ -1,0 +1,14 @@
+diff --git a/glx/glxscreens.c b/glx/glxscreens.c
+index 505f797..d928bdf 100644
+--- a/glx/glxscreens.c
++++ b/glx/glxscreens.c
+@@ -48,7 +48,8 @@
+ #include "glxutil.h"
+ #include "glxext.h"
+ 
+-static DevPrivateKey glxScreenPrivateKey = &glxScreenPrivateKey;
++static int glxScreenPrivateKeyIndex;
++static DevPrivateKey glxScreenPrivateKey = &glxScreenPrivateKeyIndex;
+ 
+ const char GLServerVersion[] = "1.4";
+ static const char GLServerExtensions[] = 

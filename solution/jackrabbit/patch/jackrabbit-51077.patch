@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java
+index b6fdf08..c9c36a9 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetLanguageTest.java
+@@ -42,7 +42,7 @@ public class GetLanguageTest extends AbstractQueryTest {
+     protected void setUp() throws Exception {
+         isReadOnly = true;
+         super.setUp();
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+         testRootNode = session.getRootNode().getNode(testPath);
+     }

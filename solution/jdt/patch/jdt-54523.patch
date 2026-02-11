@@ -1,0 +1,36 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocCompletionContextTests_1_5.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocCompletionContextTests_1_5.java
+index 6f18d28..a8993c0 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocCompletionContextTests_1_5.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocCompletionContextTests_1_5.java
+@@ -73,6 +73,7 @@ public void test0001() throws JavaModelException {
+ 		"completion offset="+(cursorLocation)+"\n" +
+ 		"completion range=["+(tokenStart)+", "+(tokenEnd)+"]\n" +
+ 		"completion token=\"ZZZZ\"\n" +
++		"completion token kind=TOKEN_KIND_NAME\n" +
+ 		"expectedTypesSignatures=null\n" +
+ 		"expectedTypesKeys=null",
+ 		result.context);
+@@ -100,6 +101,7 @@ public void test0002() throws JavaModelException {
+ 		"completion offset="+(cursorLocation)+"\n" +
+ 		"completion range=["+(tokenStart)+", "+(tokenEnd)+"]\n" +
+ 		"completion token=\"\"\n" +
++		"completion token kind=TOKEN_KIND_NAME\n" +
+ 		"expectedTypesSignatures=null\n" +
+ 		"expectedTypesKeys=null",
+ 		result.context);
+@@ -127,6 +129,7 @@ public void test0003() throws JavaModelException {
+ 		"completion offset="+(cursorLocation)+"\n" +
+ 		"completion range=["+(tokenStart)+", "+(tokenEnd)+"]\n" +
+ 		"completion token=\"ZZ\"\n" +
++		"completion token kind=TOKEN_KIND_NAME\n" +
+ 		"expectedTypesSignatures=null\n" +
+ 		"expectedTypesKeys=null",
+ 		result.context);
+@@ -154,6 +157,7 @@ public void test0004() throws JavaModelException {
+ 		"completion offset="+(cursorLocation)+"\n" +
+ 		"completion range=["+(tokenStart)+", "+(tokenEnd)+"]\n" +
+ 		"completion token=\"\"\n" +
++		"completion token kind=TOKEN_KIND_NAME\n" +
+ 		"expectedTypesSignatures=null\n" +
+ 		"expectedTypesKeys=null",
+ 		result.context);

@@ -1,0 +1,41 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
+index 04a614d..06411de 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
+@@ -649,6 +649,36 @@ public abstract class AbstractReadableRepositoryService extends AbstractReposito
+         throw new UnsupportedRepositoryOperationException();
+     }
+ 
++    /**
++     * @throws UnsupportedRepositoryOperationException always.
++     */
++    public NodeId createActivity(SessionInfo sessionInfo, String title) throws UnsupportedRepositoryOperationException, RepositoryException {
++        throw new UnsupportedRepositoryOperationException();
++    }
++
++    /**
++     * @throws UnsupportedRepositoryOperationException always.
++     */
++    public void removeActivity(SessionInfo sessionInfo, NodeId activityId) throws UnsupportedRepositoryOperationException, RepositoryException {
++        throw new UnsupportedRepositoryOperationException();
++
++    }
++
++    /**
++     * @throws UnsupportedRepositoryOperationException always.
++     */
++    public Iterator mergeActivity(SessionInfo sessionInfo, NodeId activityId) throws UnsupportedRepositoryOperationException, RepositoryException {
++        throw new UnsupportedRepositoryOperationException();
++
++    }
++
++    /**
++     * @throws UnsupportedRepositoryOperationException always.
++     */
++    public NodeId createConfiguration(SessionInfo sessionInfo, NodeId nodeId, NodeId baselineId) throws UnsupportedRepositoryOperationException, RepositoryException {
++        throw new UnsupportedRepositoryOperationException();
++    }
++
+     //-----------------------------< observation >------------------------------
+ 
+     /**

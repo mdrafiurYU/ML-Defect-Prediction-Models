@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/exceptionhandling/ExceptionHandlingProcessorFactory.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/exceptionhandling/ExceptionHandlingProcessorFactory.java
+new file mode 100644
+index 0000000..079e515
+--- /dev/null
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/exceptionhandling/ExceptionHandlingProcessorFactory.java
+@@ -0,0 +1,22 @@
++package org.eclipse.jdt.apt.tests.annotations.exceptionhandling;
++
++import com.sun.mirror.apt.AnnotationProcessor;
++import com.sun.mirror.apt.AnnotationProcessorEnvironment;
++import com.sun.mirror.declaration.AnnotationTypeDeclaration;
++
++import java.util.Set;
++
++import org.eclipse.jdt.apt.tests.annotations.BaseFactory;
++
++
++public class ExceptionHandlingProcessorFactory extends BaseFactory
++{
++
++	public ExceptionHandlingProcessorFactory() {
++        super(ExceptionHandlingAnnotation.class.getName());
++    }
++
++    public AnnotationProcessor getProcessorFor(Set<AnnotationTypeDeclaration> declarations, AnnotationProcessorEnvironment env) {
++        return new ExceptionHandlingProcessor(declarations, env);
++    }
++}

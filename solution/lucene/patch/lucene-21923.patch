@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+index a23bdbe..70adec7 100644
+--- a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+@@ -234,7 +234,7 @@ public class PhraseQuery extends Query {
+ 
+       // sort by increasing docFreq order
+       if (slop == 0) {
+-        ArrayUtil.quickSort(postingsFreqs);
++        ArrayUtil.mergeSort(postingsFreqs);
+       }
+ 
+       if (slop == 0) {				  // optimize exact case

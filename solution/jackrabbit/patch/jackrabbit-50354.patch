@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/SessionImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/SessionImplTest.java
+index 33e5744..8481792 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/SessionImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/SessionImplTest.java
+@@ -36,7 +36,7 @@ public class SessionImplTest extends AbstractJCRTest {
+      * instead of AccessControlException
+      */
+     public void testCheckAddNodePermissionOnRoot() throws RepositoryException {
+-        Session session = helper.getReadOnlySession();
++        Session session = getHelper().getReadOnlySession();
+         try {
+             session.checkPermission("/", "add_node");
+         } catch (PathNotFoundException e) {
+@@ -59,7 +59,7 @@ public class SessionImplTest extends AbstractJCRTest {
+         SimpleCredentials credentials =
+             new SimpleCredentials("admin", "admin".toCharArray());
+         credentials.setAttribute("test", "attribute");
+-        Session session = helper.getRepository().login(credentials);
++        Session session = getHelper().getRepository().login(credentials);
+         try {
+             String[] names = session.getAttributeNames();
+             assertEquals(1, names.length);

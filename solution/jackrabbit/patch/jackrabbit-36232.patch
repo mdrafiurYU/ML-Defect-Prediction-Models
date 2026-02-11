@@ -1,0 +1,14 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/version/AllTests.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/version/AllTests.java
+index 739300d..53af08d 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/version/AllTests.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/version/AllTests.java
+@@ -36,8 +36,8 @@ public class AllTests {
+     public static Test buildSuite() {
+         TestSuite suite= new TestSuite("Test for org.apache.jackrabbit.ocm.manager.version");
+         //$JUnit-BEGIN$
+-        suite.addTestSuite(ObjectContentManagerBasicVersionningTest.class);
+-       
++        suite.addTestSuite(AnnotationBasicVersionningTest.class);
++        suite.addTestSuite(DigesterBasicVersionningTest.class);
+         
+         //$JUnit-END$

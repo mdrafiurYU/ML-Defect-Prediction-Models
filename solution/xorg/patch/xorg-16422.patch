@@ -1,0 +1,20 @@
+diff --git a/cfb/cfbpixmap.c b/cfb/cfbpixmap.c
+index f7e06bd..704ab4e 100644
+--- a/cfb/cfbpixmap.c
++++ b/cfb/cfbpixmap.c
+@@ -72,10 +72,13 @@ cfbCreatePixmap (pScreen, width, height, depth)
+     int		depth;
+ {
+     PixmapPtr pPixmap;
+-    int datasize;
+-    int paddedWidth;
++    size_t datasize;
++    size_t paddedWidth;
+ 
+     paddedWidth = PixmapBytePad(width, depth);
++
++    if (paddedWidth / 4 > 32767 || height > 32767)
++	return NullPixmap;
+     datasize = height * paddedWidth;
+     pPixmap = AllocatePixmap(pScreen, datasize);
+     if (!pPixmap)

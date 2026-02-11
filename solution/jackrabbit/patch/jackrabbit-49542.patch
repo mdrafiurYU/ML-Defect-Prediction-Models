@@ -1,0 +1,41 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/NodeNameOperand.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/NodeNameOperand.java
+index 9fb4c87..660a5d6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/NodeNameOperand.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/NodeNameOperand.java
+@@ -16,14 +16,11 @@
+  */
+ package org.apache.jackrabbit.core.query.lucene.constraint;
+ 
+-import java.io.IOException;
+-
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+ import javax.jcr.PropertyType;
+ 
+ import org.apache.jackrabbit.core.query.lucene.ScoreNode;
+-import org.apache.jackrabbit.core.query.lucene.Util;
+ import org.apache.jackrabbit.core.SessionImpl;
+ 
+ /**
+@@ -38,16 +35,12 @@ public class NodeNameOperand extends DynamicOperand {
+      * @param sn      the score node.
+      * @param context the evaluation context.
+      * @return the node name.
+-     * @throws IOException if an error occurs while reading the name.
++     * @throws RepositoryException if an error occurs while reading the name.
+      */
+     public Value[] getValues(ScoreNode sn, EvaluationContext context)
+-            throws IOException {
+-        try {
+-            SessionImpl session = context.getSession();
+-            String name = session.getNodeById(sn.getNodeId()).getName();
+-            return new Value[]{session.getValueFactory().createValue(name, PropertyType.NAME)};
+-        } catch (RepositoryException e) {
+-            throw Util.createIOException(e);
+-        }
++            throws RepositoryException {
++        SessionImpl session = context.getSession();
++        String name = session.getNodeById(sn.getNodeId()).getName();
++        return new Value[]{session.getValueFactory().createValue(name, PropertyType.NAME)};
+     }
+ }

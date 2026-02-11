@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+index 17119bc..e25fbae 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+@@ -2265,8 +2265,9 @@ public abstract class Scope
+ 						break;
+ 					case CLASS_SCOPE :
+ 						SourceTypeBinding sourceType = ((ClassScope) scope).referenceContext.binding;
+-						if (sourceType.isHierarchyBeingConnected()) {
+-							// type variables take precedence over the source type, ex. class X <X> extends X == class X <Y> extends Y 
++						if (scope == this && sourceType.isHierarchyBeingConnected()) {
++							// type variables take precedence over the source type, ex. class X <X> extends X == class X <Y> extends Y
++							// but not when we step out to the enclosing type
+ 							TypeVariableBinding typeVariable = sourceType.getTypeVariable(name);
+ 							if (typeVariable != null)
+ 								return typeVariable;

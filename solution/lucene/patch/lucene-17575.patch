@@ -1,0 +1,24 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermDocumentInformation.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermDocumentInformation.java
+index 843eb08..c8d9138 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermDocumentInformation.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermDocumentInformation.java
+@@ -2,7 +2,6 @@ package org.apache.lucene.store.instantiated;
+ 
+ import org.apache.lucene.index.TermVectorOffsetInfo;
+ 
+-import java.io.Serializable;
+ import java.util.Comparator;
+ 
+ /**
+@@ -38,10 +37,7 @@ import java.util.Comparator;
+  * </pre>
+  * 
+  */
+-public class InstantiatedTermDocumentInformation
+-    implements Serializable {
+-
+-  private static final long serialVersionUID = 1l;
++public class InstantiatedTermDocumentInformation {
+ 
+   public static final Comparator<InstantiatedTermDocumentInformation> termComparator = new Comparator<InstantiatedTermDocumentInformation>() {
+     public int compare(InstantiatedTermDocumentInformation instantiatedTermDocumentInformation, InstantiatedTermDocumentInformation instantiatedTermDocumentInformation1) {

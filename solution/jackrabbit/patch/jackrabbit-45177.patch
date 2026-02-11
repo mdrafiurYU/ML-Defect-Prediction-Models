@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/DigesterBeanDescriptorTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/DigesterBeanDescriptorTest.java
+index 88d280f..11a05da 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/DigesterBeanDescriptorTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/DigesterBeanDescriptorTest.java
+@@ -263,7 +263,7 @@ public class DigesterBeanDescriptorTest extends DigesterTestBase {
+             page = (Page) ocm.getObject("/test");
+             paragraphs = page.getParagraphs();
+             for (Paragraph paragraph : paragraphs) {
+-				System.out.println("Paragraph path : " + paragraph.getPath());				
++				log.info("Paragraph path : " + paragraph.getPath());				
+ 			}
+             Paragraph p1 = (Paragraph) ocm.getObject("/test/paragraph[2]");
+             Page paraPage = p1.getPage();

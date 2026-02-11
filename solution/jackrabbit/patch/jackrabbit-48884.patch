@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValueFactory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValueFactory.java
+index 38cf26f..61b0901 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValueFactory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValueFactory.java
+@@ -133,6 +133,14 @@ public final class InternalValueFactory extends AbstractQValueFactory {
+         return InternalValue.create(value);
+     }
+ 
++    public QValue create(URI value) throws RepositoryException {
++        return InternalValue.create(value);
++    }
++
++    public QValue create(BigDecimal value) throws RepositoryException {
++        return InternalValue.create(value);
++    }
++
+     public QValue create(byte[] value) throws RepositoryException {
+         return InternalValue.create(value);
+     }

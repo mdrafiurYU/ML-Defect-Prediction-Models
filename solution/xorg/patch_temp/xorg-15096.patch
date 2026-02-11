@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/lnx-keyboard.c b/hw/dmx/input/lnx-keyboard.c
+index c162aa9..97cc307 100644
+--- a/hw/dmx/input/lnx-keyboard.c
++++ b/hw/dmx/input/lnx-keyboard.c
+@@ -123,6 +123,10 @@
+  * Zborowski, and David Dawes (see the source code for complete
+  * references). */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ /*****************************************************************************/
+ /* Define some macros to make it easier to move this file to another
+  * part of the Xserver tree.  All calls to the dmx* layer are #defined

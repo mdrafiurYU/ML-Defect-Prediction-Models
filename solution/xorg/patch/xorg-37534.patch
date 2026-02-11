@@ -1,0 +1,44 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index 9e4b685..1218023 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -125,7 +125,6 @@ static void miSpriteSetCursor(DeviceIntPtr pDev, ScreenPtr pScreen,
+                               CursorPtr pCursor, int x, int y);
+ static void miSpriteMoveCursor(DeviceIntPtr pDev, ScreenPtr pScreen, 
+                                int x, int y);
+-static void miSpriteUndisplayCursor(DeviceIntPtr pDev, ScreenPtr pScreen);
+ 
+ _X_EXPORT miPointerSpriteFuncRec miSpritePointerFuncs = {
+     miSpriteRealizeCursor,
+@@ -134,7 +133,6 @@ _X_EXPORT miPointerSpriteFuncRec miSpritePointerFuncs = {
+     miSpriteMoveCursor,
+     miSpriteDeviceCursorInitialize,
+     miSpriteDeviceCursorCleanup,
+-    miSpriteUndisplayCursor
+ };
+ 
+ /*
+@@ -911,23 +909,6 @@ miSpriteDeviceCursorCleanup(pDev, pScreen)
+     }
+ }
+ 
+-static void
+-miSpriteUndisplayCursor(pDev, pScreen)
+-    DeviceIntPtr pDev;
+-    ScreenPtr    pScreen;
+-{
+-    miCursorInfoPtr pCursorInfo;
+-
+-    if (!pDev->isMaster && !pDev->u.master)
+-    {
+-        ErrorF("[mi] miSpriteUndisplayCursor called for floating device.\n");
+-        return;
+-    }
+-    pCursorInfo = MISPRITE(pDev);
+-    if (pCursorInfo && pCursorInfo->isUp)
+-        miSpriteRemoveCursor(pDev, pScreen);
+-}
+-
+ /*
+  * undraw/draw cursor
+  */

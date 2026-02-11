@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredField.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredField.java
+index 8eebd38..e2f98e3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredField.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredField.java
+@@ -121,7 +121,13 @@ public FieldDeclaration updatedFieldDeclaration(){
+ 					typeDeclaration.bodyEnd = this.fieldDeclaration.declarationSourceEnd;
+ 				}
+ 				if (recoveredType.preserveContent){
+-					fieldDeclaration.initialization = recoveredType.updatedTypeDeclaration().allocation;
++					TypeDeclaration anonymousType = recoveredType.updatedTypeDeclaration();
++					fieldDeclaration.initialization = anonymousType.allocation;
++					if(this.fieldDeclaration.declarationSourceEnd == 0) {
++						int end = anonymousType.declarationSourceEnd;
++						this.fieldDeclaration.declarationSourceEnd = end;
++						this.fieldDeclaration.declarationEnd = end;
++					}
+ 				}
+ 			}
+ 			if (this.anonymousTypeCount > 0) fieldDeclaration.bits |= ASTNode.HasLocalType;

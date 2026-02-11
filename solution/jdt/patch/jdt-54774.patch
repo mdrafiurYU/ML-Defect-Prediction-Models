@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
+index d8a9bf3..97db2ef 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
+@@ -527,9 +527,7 @@ public abstract class Expression extends Statement {
+ 		}
+ 		if (match != null && (
+ 				castType.isBoundParameterizedType() 
+-				|| castType.isGenericType() 
+-				|| 	expressionType.isBoundParameterizedType() 
+-				|| expressionType.isGenericType())) {
++				|| 	expressionType.isBoundParameterizedType())) {
+ 			
+ 			if (match.isProvablyDistinctFrom(isNarrowing ? expressionType : castType, 0)) {
+ 				return false;

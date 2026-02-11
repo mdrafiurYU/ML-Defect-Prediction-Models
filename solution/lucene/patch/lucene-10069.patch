@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/pattern/TestPatternTokenizer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/pattern/TestPatternTokenizer.java
+index f3f086e..2e8ac60 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/pattern/TestPatternTokenizer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/pattern/TestPatternTokenizer.java
+@@ -98,6 +98,7 @@ public class TestPatternTokenizer extends BaseTokenStreamTestCase
+    * TODO: rewrite tests not to use string comparison.
+    * @deprecated only tests TermAttribute!
+    */
++  @Deprecated
+   private static String tsToString(TokenStream in) throws IOException {
+     StringBuilder out = new StringBuilder();
+     CharTermAttribute termAtt = in.addAttribute(CharTermAttribute.class);

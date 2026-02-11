@@ -1,0 +1,15 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 15945c1..f527932 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -107,8 +107,8 @@ typedef struct _ExaAccelInfo {
+      */
+     Bool        (*PrepareCopy) (PixmapPtr       pSrcPixmap,
+                                 PixmapPtr       pDstPixmap,
+-                                Bool            upsidedown,
+-                                Bool            reverse,
++                                int             dx,
++                                int             dy,
+                                 int             alu,
+                                 Pixel           planemask);
+     void        (*Copy) (PixmapPtr       pDstPixmap,

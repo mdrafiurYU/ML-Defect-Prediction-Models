@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+index ac7bd85..1b08b6f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+@@ -240,7 +240,7 @@ public class PropertyImpl extends ItemImpl implements Property {
+         session.getValidator().checkModify(this, options, Permission.NONE);
+ 
+         // make sure the parent is checked-out and neither locked nor under retention
+-        options = ItemValidator.CHECK_VERSIONING | ItemValidator.CHECK_LOCK |
++        options = ItemValidator.CHECK_CHECKED_OUT | ItemValidator.CHECK_LOCK |
+                 ItemValidator.CHECK_HOLD | ItemValidator.CHECK_RETENTION;
+         session.getValidator().checkModify(parent, options, Permission.NONE);
+     }

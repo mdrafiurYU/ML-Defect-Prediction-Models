@@ -1,0 +1,13 @@
+diff --git a/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java b/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java
+index 06a7c98..7eb26fd 100644
+--- a/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java
++++ b/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java
+@@ -212,7 +212,7 @@ public class BlockGroupingCollector extends Collector {
+           // Swap pending scores
+           final float[] savScores = og.scores;
+           og.scores = pendingSubScores;
+-          pendingSubScores = og.scores;
++          pendingSubScores = savScores;
+         }
+         og.readerContext = currentReaderContext;
+         //og.groupOrd = lastGroupOrd;

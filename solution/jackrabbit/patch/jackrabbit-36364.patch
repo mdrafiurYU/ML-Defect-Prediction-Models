@@ -1,0 +1,34 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/identifier/IdFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/identifier/IdFactoryImpl.java
+index edb7f31..5cd931f 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/identifier/IdFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/identifier/IdFactoryImpl.java
+@@ -17,17 +17,27 @@
+ package org.apache.jackrabbit.identifier;
+ 
+ import org.apache.jackrabbit.spi.IdFactory;
++import org.apache.jackrabbit.spi.PathFactory;
++import org.apache.jackrabbit.name.PathFactoryImpl;
+ 
+ /**
+  * <code>IdFactoryImpl</code>...
+  */
+ public final class IdFactoryImpl extends AbstractIdFactory {
+ 
+-    private static final IdFactory INSTANCE = new IdFactoryImpl();
++    private static IdFactory INSTANCE;
+ 
+-    private IdFactoryImpl() {}
++    private IdFactoryImpl() {
++    }
+ 
+     public static IdFactory getInstance() {
++        if (INSTANCE == null) {
++            INSTANCE = new IdFactoryImpl();
++        }
+         return IdFactoryImpl.INSTANCE;
+     }
++
++    protected PathFactory getPathFactory() {
++        return PathFactoryImpl.getInstance();
++    }
+ }

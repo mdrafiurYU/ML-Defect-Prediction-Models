@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/xaa/xaaPict.c b/hw/xfree86/xaa/xaaPict.c
+index a1ff510..a7acf45 100644
+--- a/hw/xfree86/xaa/xaaPict.c
++++ b/hw/xfree86/xaa/xaaPict.c
+@@ -219,6 +219,12 @@ XAADoComposite (
+     if (pDst->alphaMap || pSrc->alphaMap || (pMask && pMask->alphaMap))
+ 	return FALSE;
+ 	
++    if ((pSrc->repeat && pSrc->repeatType != RepeatNormal) ||
++	(pMask && pMask->repeat && pMask->repeatType != RepeatNormal))
++    {
++	return FALSE;
++    }
++
+     xDst += pDst->pDrawable->x;
+     yDst += pDst->pDrawable->y;
+     xSrc += pSrc->pDrawable->x;

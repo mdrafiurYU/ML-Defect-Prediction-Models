@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index eae6cb1..3610c17 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -128,7 +128,7 @@ extern Bool noXkbExtension;
+ #ifdef USE_VT_SYSREQ
+ static Bool VTSysreqToggle = FALSE;
+ #endif /* !USE_VT_SYSREQ */
+-static Bool VTSwitchEnabled = TRUE;	/* Allows run-time disabling for
++_X_EXPORT Bool VTSwitchEnabled = TRUE;	/* Allows run-time disabling for
+                                          *BSD and for avoiding VT
+                                          switches when using the DRI
+                                          automatic full screen mode.*/

@@ -1,0 +1,49 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/ParallelReader.java b/lucene/src/java/org/apache/lucene/index/ParallelReader.java
+index 775c865..b1ffd23 100644
+--- a/lucene/src/java/org/apache/lucene/index/ParallelReader.java
++++ b/lucene/src/java/org/apache/lucene/index/ParallelReader.java
+@@ -21,11 +21,8 @@ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.FieldSelector;
+ import org.apache.lucene.document.FieldSelectorResult;
+ import org.apache.lucene.document.Fieldable;
+-import org.apache.lucene.index.IndexReader.ReaderContext;
+ import org.apache.lucene.util.Bits;
+-import org.apache.lucene.util.ReaderUtil;
+ import org.apache.lucene.search.FieldCache; // not great (circular); used only to purge FieldCache entry on close
+-import org.apache.lucene.search.Similarity;
+ import org.apache.lucene.util.BytesRef;
+ 
+ import java.io.IOException;
+@@ -439,6 +436,8 @@ public class ParallelReader extends IndexReader {
+       return bytes;
+     if (!hasNorms(field))
+       return null;
++    if (normsCache.containsKey(field)) // cached omitNorms, not missing key
++      return null;
+ 
+     bytes = MultiNorms.norms(reader, field);
+     normsCache.put(field, bytes);
+@@ -446,23 +445,6 @@ public class ParallelReader extends IndexReader {
+   }
+ 
+   @Override
+-  public synchronized void norms(String field, byte[] result, int offset)
+-    throws IOException {
+-    // TODO: maybe optimize
+-    ensureOpen();
+-    IndexReader reader = fieldToReader.get(field);
+-    if (reader==null)
+-      return;
+-    
+-    byte[] norms = norms(field);
+-    if (norms == null) {
+-      Arrays.fill(result, offset, result.length, Similarity.getDefault().encodeNormValue(1.0f));
+-    } else {
+-      System.arraycopy(norms, 0, result, offset, maxDoc());
+-    }
+-  }
+-
+-  @Override
+   protected void doSetNorm(int n, String field, byte value)
+     throws CorruptIndexException, IOException {
+     IndexReader reader = fieldToReader.get(field);

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Xinput.h b/hw/xfree86/common/xf86Xinput.h
+index 444b2d4..73dcdb7 100644
+--- a/hw/xfree86/common/xf86Xinput.h
++++ b/hw/xfree86/common/xf86Xinput.h
+@@ -128,6 +128,10 @@ typedef struct _LocalDeviceRec {
+     Bool		    (*reverse_conversion_proc)(
+ 					struct _LocalDeviceRec *local,
+ 					int x, int y, int *valuators);
++    int                     (*set_device_valuators)
++				(struct _LocalDeviceRec *local,
++				 int *valuators, int first_valuator,
++				 int num_valuators);
+     
+     int			    fd;
+     Atom		    atom;

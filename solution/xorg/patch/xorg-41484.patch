@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/ramdac/BT.c b/hw/xfree86/ramdac/BT.c
+index 5aa27a1..dc1bcd5 100644
+--- a/hw/xfree86/ramdac/BT.c
++++ b/hw/xfree86/ramdac/BT.c
+@@ -65,7 +65,7 @@ BTramdacSave(ScrnInfoPtr pScrn, RamDacRecPtr ramdacPtr,
+ 	    ramdacReg->DacRegs[i] = (*ramdacPtr->ReadDAC)(pScrn, i);
+ }
+ 
+-RamDacHelperRecPtr
++_X_EXPORT RamDacHelperRecPtr
+ BTramdacProbe(ScrnInfoPtr pScrn, RamDacSupportedInfoRecPtr ramdacs/*, RamDacRecPtr ramdacPtr*/)
+ {
+     RamDacRecPtr ramdacPtr = RAMDACSCRPTR(pScrn);

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Versions.c b/hw/xfree86/common/xf86Versions.c
+index 7b20ef9..6de7d53 100644
+--- a/hw/xfree86/common/xf86Versions.c
++++ b/hw/xfree86/common/xf86Versions.c
+@@ -26,6 +26,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86OSmouse.h"
+ #include "xf86OSKbd.h"

@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/xaa/xaaBitmap.c b/hw/xfree86/xaa/xaaBitmap.c
+index cda1687..f7ae78d 100644
+--- a/hw/xfree86/xaa/xaaBitmap.c
++++ b/hw/xfree86/xaa/xaaBitmap.c
+@@ -255,7 +255,7 @@ BitmapScanline_Shifted_Inverted_Careful(
+     avoid the invert.
+ */ 
+ 
+-_X_EXPORT void
++void
+ #ifdef TRIPLE_BITS
+ EXPNAME(XAAWriteBitmapColorExpand3)(
+ #else
+@@ -373,7 +373,7 @@ SECOND_PASS:
+ 
+ #ifndef FIXEDBASE
+ 
+-_X_EXPORT void
++void
+ #ifdef TRIPLE_BITS
+ EXPNAME(XAAWriteBitmapScanlineColorExpand3)(
+ #else

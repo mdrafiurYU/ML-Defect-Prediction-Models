@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RangeQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RangeQuery.java
+index d7d157b..63a2c07 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RangeQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/RangeQuery.java
+@@ -423,7 +423,8 @@ public class RangeQuery extends Query implements Transformable {
+                 startTerms.add(new Term(lowerTerm.field(), termText.toString()));
+             }
+ 
+-            for (Iterator it = startTerms.iterator(); it.hasNext(); ) {
++            Iterator it = startTerms.iterator();
++            while (it.hasNext()) {
+                 Term startTerm = (Term) it.next();
+ 
+                 TermEnum terms = reader.terms(startTerm);

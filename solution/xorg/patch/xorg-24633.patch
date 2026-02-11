@@ -1,0 +1,12 @@
+diff --git a/dix/events.c b/dix/events.c
+index 571a576..781e467 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4868,6 +4868,7 @@ int GetKeyboardValuatorEvents(xEvent *events, DeviceIntPtr pDev, int type,
+                 if (!inputInfo.keyboard->devPrivates[CoreDevicePrivatesIndex].ptr &&
+                     ckeyc->xkbInfo)
+                     XkbFreeInfo(ckeyc->xkbInfo);
++                /* FIXME we really need a map copy here. */
+                 ckeyc->xkbInfo = pDev->key->xkbInfo;
+                 XkbSendMapNotify(inputInfo.keyboard, &mn);
+             }

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86xv.c b/hw/xfree86/common/xf86xv.c
+index 821ece1..0caca80 100644
+--- a/hw/xfree86/common/xf86xv.c
++++ b/hw/xfree86/common/xf86xv.c
+@@ -687,8 +687,6 @@ xf86XVCopyClip(
+    XvPortRecPrivatePtr portPriv,
+    GCPtr pGC
+ ){
+-    ScreenPtr pScreen = pGC->pScreen;
+-
+     /* copy the new clip if it exists */
+     if((pGC->clientClipType == CT_REGION) && pGC->clientClip) {
+ 	if(!portPriv->clientClip)

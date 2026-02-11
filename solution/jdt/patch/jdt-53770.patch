@@ -1,0 +1,32 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
+index 0cd6673..9cc56f0 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
+@@ -208,11 +208,11 @@ protected void consumeClassHeaderName1() {
+ 	TypeDeclaration typeDecl = new TypeDeclaration(this.compilationUnit.compilationResult);
+ 	if (nestedMethod[nestedType] == 0) {
+ 		if (nestedType != 0) {
+-			typeDecl.bits |= ASTNode.IsMemberTypeMASK;
++			typeDecl.bits |= ASTNode.IsMemberType;
+ 		}
+ 	} else {
+ 		// Record that the block has a declaration for local types
+-		typeDecl.bits |= ASTNode.IsLocalTypeMASK;
++		typeDecl.bits |= ASTNode.IsLocalType;
+ 		markEnclosingMemberWithLocalType();
+ 		blockReal();
+ 	}
+@@ -661,11 +661,11 @@ protected void consumeInterfaceHeaderName1() {
+ 	TypeDeclaration typeDecl = new TypeDeclaration(this.compilationUnit.compilationResult);
+ 	if (nestedMethod[nestedType] == 0) {
+ 		if (nestedType != 0) {
+-			typeDecl.bits |= ASTNode.IsMemberTypeMASK;
++			typeDecl.bits |= ASTNode.IsMemberType;
+ 		}
+ 	} else {
+ 		// Record that the block has a declaration for local types
+-		typeDecl.bits |= ASTNode.IsLocalTypeMASK;
++		typeDecl.bits |= ASTNode.IsLocalType;
+ 		markEnclosingMemberWithLocalType();
+ 		blockReal();
+ 	}

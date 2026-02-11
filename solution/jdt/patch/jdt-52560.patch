@@ -1,0 +1,35 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java
+index d08988a..46fb654 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java
+@@ -14,6 +14,7 @@ package org.eclipse.jdt.apt.core.internal.util;
+ import org.eclipse.jdt.apt.core.internal.EclipseMirrorImpl;
+ import org.eclipse.jdt.apt.core.internal.NonEclipseImplementationException;
+ import org.eclipse.jdt.apt.core.internal.declaration.DeclarationImpl;
++import org.eclipse.jdt.apt.core.internal.declaration.EclipseDeclarationImpl;
+ import org.eclipse.jdt.apt.core.internal.declaration.MemberDeclarationImpl;
+ import org.eclipse.jdt.core.dom.IBinding;
+ import org.eclipse.jdt.core.dom.IMethodBinding;
+@@ -34,6 +35,10 @@ public class DeclarationsUtil implements Declarations
+ 		if (sub == sup || sub.equals(sup))
+ 			return false;
+ 		
++		if( ! ((EclipseDeclarationImpl)sub).isBindingBased() ||  
++			! ((EclipseDeclarationImpl)sup).isBindingBased() )
++			return false;
++		
+ 		MemberDeclarationImpl subImpl = (MemberDeclarationImpl)sub;
+ 		MemberDeclarationImpl supImpl = (MemberDeclarationImpl)sup;
+ 		
+@@ -125,7 +130,10 @@ public class DeclarationsUtil implements Declarations
+     {
+         if( memberDecl == null ) return null;
+         if( memberDecl instanceof EclipseMirrorImpl ){
+-            return ((DeclarationImpl)memberDecl).getDeclarationBinding();
++        	if( memberDecl instanceof DeclarationImpl )
++        		return ((DeclarationImpl)memberDecl).getDeclarationBinding();
++        	else
++        		return null;
+         }
+         throw new NonEclipseImplementationException("only applicable to eclipse type system objects." + //$NON-NLS-1$
+                                                     " Found " + memberDecl.getClass().getName()); //$NON-NLS-1$

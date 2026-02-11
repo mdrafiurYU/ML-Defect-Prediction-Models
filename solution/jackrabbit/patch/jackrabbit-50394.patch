@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/util/Serializer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/util/Serializer.java
+index 0b02405..89e33d6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/util/Serializer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/util/Serializer.java
+@@ -80,7 +80,7 @@ public final class Serializer {
+         if (state.getParentId() == null) {
+             out.write(NULL_UUID_PLACEHOLDER_BYTES);
+         } else {
+-            out.write(state.getParentId().getUUID().getRawBytes());
++            out.write(state.getParentId().getRawBytes());
+         }
+         // definitionId
+         out.writeUTF(state.getDefinitionId().toString());
+@@ -105,7 +105,7 @@ public final class Serializer {
+         for (Iterator<ChildNodeEntry> iter = collChildren.iterator(); iter.hasNext();) {
+             ChildNodeEntry entry = iter.next();
+             out.writeUTF(entry.getName().toString());   // name
+-            out.write(entry.getId().getUUID().getRawBytes());    // uuid
++            out.write(entry.getId().getRawBytes());    // uuid
+         }
+     }

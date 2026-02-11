@@ -1,0 +1,15 @@
+diff --git a/mi/miwindow.c b/mi/miwindow.c
+index 1ebb0ce..280d0f8 100644
+--- a/mi/miwindow.c
++++ b/mi/miwindow.c
+@@ -46,6 +46,10 @@ SOFTWARE.
+ 
+ ******************************************************************/
+ /* $Xorg: miwindow.c,v 1.4 2001/02/09 02:05:22 xorgcvs Exp $ */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "regionstr.h"
+ #include "region.h"

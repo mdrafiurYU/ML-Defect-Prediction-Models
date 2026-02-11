@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocAllocationExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocAllocationExpression.java
+index d255f0a..dff9ae4 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocAllocationExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocAllocationExpression.java
+@@ -18,10 +18,12 @@ public class JavadocAllocationExpression extends AllocationExpression {
+ 	public int tagSourceStart, tagSourceEnd;
+ 	public int tagValue;
+ 	public boolean superAccess = false;
++	public int originalSourceEnd;
+ 	
+ 	public JavadocAllocationExpression(int start, int end) {
+ 		this.sourceStart = start;
+ 		this.sourceEnd = end;
++		this.originalSourceEnd = end;
+ 		this.bits |= InsideJavadoc;
+ 	}
+ 	public JavadocAllocationExpression(long pos) {

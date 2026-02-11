@@ -1,0 +1,12 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index fe7f8dc..b21c73d 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -413,7 +413,6 @@ ChangeMasterDeviceClasses(DeviceIntPtr device,
+ 
+     master->public.devicePrivate = device->public.devicePrivate;
+ 
+-    FreeAllDeviceClasses((ClassesPtr)&master->key);
+     DeepCopyDeviceClasses(device, master);
+ 
+     /* event is already correct size, see comment in GetPointerEvents */

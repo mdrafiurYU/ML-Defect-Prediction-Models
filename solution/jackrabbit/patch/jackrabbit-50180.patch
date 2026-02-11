@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
+index 5ea91d9..bf5a905 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
+@@ -78,6 +78,7 @@ public class GCConcurrentTest extends AbstractJCRTest {
+         Thread.sleep(10);
+         gc.setStop(true);
+         Thread.sleep(10);
++        gcThread.join();
+         gc.throwException();
+     }

@@ -1,0 +1,14 @@
+diff --git a/include/input.h b/include/input.h
+index d6a38e6..dbf6aee 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -402,6 +402,9 @@ extern int GetMaximumEventsNum(void);
+ extern EventListPtr InitEventList(int num_events);
+ extern void FreeEventList(EventListPtr list, int num_events);
+ 
++extern void CreateClassesChangedEvent(EventListPtr event, 
++                                      DeviceIntPtr master,
++                                      DeviceIntPtr slave);
+ extern int GetPointerEvents(
+     EventListPtr events,
+     DeviceIntPtr pDev,

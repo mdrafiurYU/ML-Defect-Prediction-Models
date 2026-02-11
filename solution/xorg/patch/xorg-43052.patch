@@ -1,0 +1,12 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index daee7ed..2ee4f9b 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -181,6 +181,7 @@ typedef struct _ButtonClassRec {
+     unsigned short	state;
+     Mask		motionMask;
+     CARD8		down[DOWN_LENGTH];
++    CARD8		postdown[DOWN_LENGTH];
+     CARD8		map[MAP_LENGTH];
+     union _XkbAction    *xkb_acts;
+ } ButtonClassRec, *ButtonClassPtr;

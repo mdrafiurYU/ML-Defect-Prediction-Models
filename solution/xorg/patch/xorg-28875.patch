@@ -1,0 +1,34 @@
+diff --git a/Xi/setbmap.c b/Xi/setbmap.c
+index 14b1689..bdfa513 100644
+--- a/Xi/setbmap.c
++++ b/Xi/setbmap.c
+@@ -78,9 +78,9 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXSetDeviceButtonMapping(register ClientPtr client)
++SProcXSetDeviceButtonMapping(ClientPtr client)
+ {
+-    register char n;
++    char n;
+ 
+     REQUEST(xSetDeviceButtonMappingReq);
+     swaps(&stuff->length, n);
+@@ -94,7 +94,7 @@ SProcXSetDeviceButtonMapping(register ClientPtr client)
+  */
+ 
+ int
+-ProcXSetDeviceButtonMapping(register ClientPtr client)
++ProcXSetDeviceButtonMapping(ClientPtr client)
+ {
+     int ret;
+     xSetDeviceButtonMappingReply rep;
+@@ -149,7 +149,7 @@ void
+ SRepXSetDeviceButtonMapping(ClientPtr client, int size,
+ 			    xSetDeviceButtonMappingReply * rep)
+ {
+-    register char n;
++    char n;
+ 
+     swaps(&rep->sequenceNumber, n);
+     swapl(&rep->length, n);

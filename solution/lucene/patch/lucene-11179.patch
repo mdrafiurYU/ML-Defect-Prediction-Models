@@ -1,0 +1,43 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/automaton/TestDeterminism.java b/lucene/src/test/org/apache/lucene/util/automaton/TestDeterminism.java
+index fb51e3c..baee909 100644
+--- a/lucene/src/test/org/apache/lucene/util/automaton/TestDeterminism.java
++++ b/lucene/src/test/org/apache/lucene/util/automaton/TestDeterminism.java
+@@ -20,16 +20,11 @@ package org.apache.lucene.util.automaton;
+ import org.apache.lucene.util.LuceneTestCase;
+ 
+ /**
+- * Not thorough, but tries to test determinism correctness
++ * Not completely thorough, but tries to test determinism correctness
+  * somewhat randomly.
+  */
+ public class TestDeterminism extends LuceneTestCase {
+   
+-  @Override
+-  public void setUp() throws Exception {
+-    super.setUp();
+-  }
+-  
+   /** test a bunch of random regular expressions */
+   public void testRegexps() throws Exception {
+       int num = 500 * RANDOM_MULTIPLIER;
+@@ -37,6 +32,20 @@ public class TestDeterminism extends LuceneTestCase {
+         assertAutomaton(AutomatonTestUtil.randomRegexp(random).toAutomaton());
+   }
+   
++  /** test against a simple, unoptimized det */
++  public void testAgainstSimple() throws Exception {
++    int num = 2000 * RANDOM_MULTIPLIER;
++    for (int i = 0; i < num; i++) {
++      Automaton a = AutomatonTestUtil.randomAutomaton(random);
++      Automaton b = a.clone();
++      AutomatonTestUtil.determinizeSimple(a);
++      b.deterministic = false; // force det
++      b.determinize();
++      // TODO: more verifications possible?
++      assertTrue(BasicOperations.sameLanguage(a, b));
++    }
++  }
++  
+   private static void assertAutomaton(Automaton a) {
+     Automaton clone = a.clone();
+     // complement(complement(a)) = a

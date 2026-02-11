@@ -1,0 +1,21 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index 0767420..cfd4da9 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -427,6 +427,16 @@ RRCrtcGammaSetSize (RRCrtcPtr	crtc,
+ }
+ 
+ /*
++ * Set the allowable rotations of the CRTC.
++ */
++Bool
++RRCrtcSetRotations (RRCrtcPtr crtc,
++		    Rotation rotations)
++{
++    crtc->rotations = rotations;
++}
++
++/*
+  * Initialize crtc type
+  */
+ Bool

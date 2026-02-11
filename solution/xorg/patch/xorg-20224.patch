@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/loadext.c b/hw/xfree86/loader/loadext.c
+index 5a795d3..787538f 100644
+--- a/hw/xfree86/loader/loadext.c
++++ b/hw/xfree86/loader/loadext.c
+@@ -63,7 +63,7 @@ NewExtensionModule(void)
+     }
+ }
+ 
+-void
++_X_EXPORT void
+ LoadExtension(ExtensionModule * e, Bool builtin)
+ {
+     ExtensionModule *newext;

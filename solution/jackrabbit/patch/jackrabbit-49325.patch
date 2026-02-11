@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java
+index 7269eed..a12954b 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java
+@@ -49,7 +49,7 @@ public abstract class AbstractCopy extends AbstractOperation {
+         throws RepositoryException {
+ 
+         NodeState srcItemState = getNodeState(srcPath, srcMgrProvider.getHierarchyManager());
+-        this.srcState = (NodeState)srcItemState;
++        this.srcState = srcItemState;
+         this.destParentState = getNodeState(destPath.getAncestor(1), destMgrProvider.getHierarchyManager());
+ 
+         // check for illegal index present in destination path

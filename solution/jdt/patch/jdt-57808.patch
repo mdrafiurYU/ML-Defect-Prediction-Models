@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
+index 8d0dc84..86eafee 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
+@@ -36,7 +36,7 @@ public void placeEnd() {
+ 		// discard empty exception handler
+ 		this.count--;
+ 	} else {
+-		this.ranges[this.count++] = codeStream.position;
++		this.ranges[this.count++] = endPosition;
+ 	}
+ }
+ 
+@@ -52,7 +52,7 @@ public void placeStart() {
+ 	if (this.count == (length = this.ranges.length)) {
+ 		System.arraycopy(this.ranges, 0, this.ranges = new int[length*2], 0, length);
+ 	}
+-	this.ranges[this.count++] = codeStream.position;
++	this.ranges[this.count++] = startPosition;
+ }
+ public String toString() {
+ 	String basic = getClass().getName();

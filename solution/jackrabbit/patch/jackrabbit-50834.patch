@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
+index a58e1c1..1b2c746 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
+@@ -65,13 +65,15 @@ class GroupImpl extends AuthorizableImpl implements Group {
+     //-------------------------------------------------------< Authorizable >---
+     /**
+      * Returns the name of the node that defines this <code>Group</code>, that
+-     * has been used taking the principal name as hint.
++     * has been used taking the principal name as hint, unescaping any chars
++     * that have been escaped to circumvent incompatitibilities with JCR name
++     * limitations.
+      *
+      * @return name of the node that defines this <code>Group</code>.
+      * @see Authorizable#getID()
+      */
+     public String getID() throws RepositoryException {
+-        return getNode().getName();
++        return Text.unescapeIllegalJcrChars(getNode().getName());
+     }
+ 
+     /**

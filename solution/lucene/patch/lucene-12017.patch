@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/Automaton.java b/lucene/src/java/org/apache/lucene/util/automaton/Automaton.java
+index aed2e52..b4a8930 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/Automaton.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/Automaton.java
+@@ -487,7 +487,7 @@ public class Automaton implements Serializable, Cloneable {
+    * Returns a sorted array of transitions for each state (and sets state
+    * numbers).
+    */
+-  Transition[][] getSortedTransitions() {
++  public Transition[][] getSortedTransitions() {
+     final State[] states = getNumberedStates();
+     Transition[][] transitions = new Transition[states.length][];
+     for (State s : states) {

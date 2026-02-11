@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RestoreAndCheckoutTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RestoreAndCheckoutTest.java
+index 5ee9a30..f22739f 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RestoreAndCheckoutTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/RestoreAndCheckoutTest.java
+@@ -32,7 +32,7 @@ public class RestoreAndCheckoutTest extends AbstractJCRTest {
+ 	private static final int NODES_COUNT = 10;
+ 
+ 	public void testRestoreAndCheckout() throws RepositoryException {
+-		Session session = helper.getSuperuserSession();
++		Session session = getHelper().getSuperuserSession();
+ 		
+ 		Node rootNode = session.getRootNode();
+ 		Node myRoot = rootNode.addNode("myRoot");

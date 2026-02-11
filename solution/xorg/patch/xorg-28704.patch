@@ -1,0 +1,25 @@
+diff --git a/Xi/chgptr.c b/Xi/chgptr.c
+index 22c8a5f..a949068 100644
+--- a/Xi/chgptr.c
++++ b/Xi/chgptr.c
+@@ -82,9 +82,9 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXChangePointerDevice(register ClientPtr client)
++SProcXChangePointerDevice(ClientPtr client)
+ {
+-    register char n;
++    char n;
+ 
+     REQUEST(xChangePointerDeviceReq);
+     swaps(&stuff->length, n);
+@@ -99,7 +99,7 @@ SProcXChangePointerDevice(register ClientPtr client)
+  */
+ 
+ int
+-ProcXChangePointerDevice(register ClientPtr client)
++ProcXChangePointerDevice(ClientPtr client)
+ {
+     REQUEST(xChangePointerDeviceReq);
+     REQUEST_SIZE_MATCH(xChangePointerDeviceReq);

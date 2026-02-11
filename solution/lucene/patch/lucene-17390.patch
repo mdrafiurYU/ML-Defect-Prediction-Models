@@ -1,0 +1,32 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java b/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java
+index 5f4dfd3..c17dc38 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestFilterIndexReader.java
+@@ -38,9 +38,11 @@ public class TestFilterIndexReader extends LuceneTestCase {
+       TestFields(Fields in) {
+         super(in);
+       }
++      @Override
+       public FieldsEnum iterator() throws IOException {
+         return new TestFieldsEnum(super.iterator());
+       }
++      @Override
+       public Terms terms(String field) throws IOException {
+         return new TestTerms(super.terms(field));
+       }
+@@ -51,6 +53,7 @@ public class TestFilterIndexReader extends LuceneTestCase {
+         super(in);
+       }
+ 
++      @Override
+       public TermsEnum iterator() throws IOException {
+         return new TestTermsEnum(super.iterator());
+       }
+@@ -61,6 +64,7 @@ public class TestFilterIndexReader extends LuceneTestCase {
+         super(in);
+       }
+ 
++      @Override
+       public TermsEnum terms() throws IOException {
+         return new TestTermsEnum(super.terms());
+       }

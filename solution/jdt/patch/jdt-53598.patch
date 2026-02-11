@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MarkerInfo.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MarkerInfo.java
+index 42f5d0c..88778d7 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MarkerInfo.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MarkerInfo.java
+@@ -53,6 +53,10 @@ public class MarkerInfo {
+ 		throw new IllegalStateException("Unhandled severity level: " + severity); //$NON-NLS-1$
+ 	}
+ 	
++	public boolean isError(){
++		return severity == Severity.ERROR;
++	}
++	
+ 	/**
+ 	 * Copy this info into the provided marker
+ 	 */

@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxDevBtn.c b/xkb/ddxDevBtn.c
+index 709efc1..03fb440 100644
+--- a/xkb/ddxDevBtn.c
++++ b/xkb/ddxDevBtn.c
+@@ -116,7 +116,7 @@ DeviceIntPtr		master = NULL;
+         if (!IsPointerDevice(master))
+             master = GetPairedDevice(dev->u.master);
+ 
+-        CopyGetMasterEvent(master, &events, masterEvents, count);
++        CopyGetMasterEvent(master, dev, &events, masterEvents, count);
+     }
+ 
+     (*dev->public.processInputProc)((xEventPtr)btn, dev, count);

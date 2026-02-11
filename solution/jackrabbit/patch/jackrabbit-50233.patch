@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JCRTestSuite.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JCRTestSuite.java
+index 3e7b375..8e970f8 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JCRTestSuite.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/JCRTestSuite.java
+@@ -16,12 +16,10 @@
+  */
+ package org.apache.jackrabbit.test;
+ 
+-import junit.framework.TestSuite;
+-
+ /**
+  * Test suite that includes all the JCR API tests
+  */
+-public class JCRTestSuite extends TestSuite {
++public class JCRTestSuite extends ConcurrentTestSuite {
+ 
+     public JCRTestSuite() {
+         super("JCR API tests");

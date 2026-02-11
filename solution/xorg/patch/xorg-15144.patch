@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/usb-other.c b/hw/dmx/input/usb-other.c
+index 968c894..9ac9e16 100644
+--- a/hw/dmx/input/usb-other.c
++++ b/hw/dmx/input/usb-other.c
+@@ -37,6 +37,10 @@
+  * This code implements a low-level device driver for a non-keyboard,
+  * non-mouse USB device (e.g., a joystick or gamepad). */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "usb-private.h"
+ 
+ /*****************************************************************************/

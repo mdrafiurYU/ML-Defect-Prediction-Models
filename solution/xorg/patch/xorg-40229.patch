@@ -1,0 +1,13 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 7e1ce35..4f216bd 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -1235,7 +1235,7 @@ InitValuatorClassDeviceStruct(DeviceIntPtr dev, int numAxes,
+     if (!dev)
+         return FALSE;
+ 
+-    valc = (ValuatorClassPtr)xalloc(sizeof(ValuatorClassRec) +
++    valc = (ValuatorClassPtr)xcalloc(1, sizeof(ValuatorClassRec) +
+ 				    numAxes * sizeof(AxisInfo) +
+ 				    numAxes * sizeof(unsigned int));
+     if (!valc)

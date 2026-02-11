@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/quickfix/APTQuickFixProcessor.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/quickfix/APTQuickFixProcessor.java
+index 82ab358..76d452c 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/quickfix/APTQuickFixProcessor.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/quickfix/APTQuickFixProcessor.java
+@@ -164,7 +164,7 @@ public class APTQuickFixProcessor implements IQuickFixProcessor {
+         public List<V> get(K key)
+         {
+             List<V> list = fData.get(key);
+-            return list != null ? list : Collections.EMPTY_LIST;
++            return list != null ? list : Collections.<V>emptyList();
+         } 
+         
+         public Set<K> keySet()

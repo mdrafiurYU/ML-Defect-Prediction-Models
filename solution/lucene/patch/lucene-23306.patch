@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/MultiReader.java b/lucene/src/java/org/apache/lucene/index/MultiReader.java
+index 7a943fa..a674709 100644
+--- a/lucene/src/java/org/apache/lucene/index/MultiReader.java
++++ b/lucene/src/java/org/apache/lucene/index/MultiReader.java
+@@ -407,6 +407,6 @@ public class MultiReader extends IndexReader implements Cloneable {
+ 
+   @Override
+   public PerDocValues perDocValues() throws IOException {
+-    throw new UnsupportedOperationException("please use MultiPerDoc#getPerDocs, or wrap your IndexReader with SlowMultiReaderWrapper, if you really need a top level Fields");
++    throw new UnsupportedOperationException("please use MultiPerDocValues#getPerDocs, or wrap your IndexReader with SlowMultiReaderWrapper, if you really need a top level Fields");
+   }
+ }

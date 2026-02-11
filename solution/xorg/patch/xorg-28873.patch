@@ -1,0 +1,17 @@
+diff --git a/hw/xprint/ddxInit.c b/hw/xprint/ddxInit.c
+index 8e7ec2e..a465c4c 100644
+--- a/hw/xprint/ddxInit.c
++++ b/hw/xprint/ddxInit.c
+@@ -89,6 +89,12 @@ InitOutput(
+ 
+ }
+ 
++void
++DDXRingBell(int volume, int pitch, int duration)
++{
++   /* dummy func; link fails without */
++}
++
+ static void
+ BellProc(
+     int volume,

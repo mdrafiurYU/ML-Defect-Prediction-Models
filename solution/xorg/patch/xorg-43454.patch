@@ -1,0 +1,12 @@
+diff --git a/dix/main.c b/dix/main.c
+index 3c25e2e..1c66c86 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -362,7 +362,6 @@ int main(int argc, char *argv[], char *envp[])
+ 
+ 	for (i = 0; i < screenInfo.numScreens; i++)
+ 	    InitRootWindow(WindowTable[i]);
+-	DefineInitialRootWindow(WindowTable[0]);
+ 
+         InitCoreDevices();
+ 	InitInput(argc, argv);

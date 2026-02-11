@@ -1,0 +1,16 @@
+diff --git a/include/input.h b/include/input.h
+index a816385..59f4e7f 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -506,11 +506,6 @@ extern Bool RegisterPairingClient(ClientPtr client);
+ extern DeviceIntPtr GuessFreePointerDevice(void);
+ extern DeviceIntPtr NextFreePointerDevice(void);
+ 
+-extern void CopyGetMasterEvent(DeviceIntPtr mdev,
+-			       xEvent* original,
+-			       xEvent** master,
+-			       int count);
+-
+ extern int AllocMasterDevice(ClientPtr client,
+                              char* name,
+                              DeviceIntPtr* ptr,

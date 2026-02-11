@@ -1,0 +1,40 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java b/solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java
+index f54c3aa..734543e 100644
+--- a/solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java
+@@ -100,22 +100,27 @@ public class HaversineFunction extends ValueSource {
+ 
+     final DocValues vals2 = p2.getValues(context, readerContext);
+     return new DocValues() {
++      @Override
+       public float floatVal(int doc) {
+         return (float) doubleVal(doc);
+       }
+ 
++      @Override
+       public int intVal(int doc) {
+         return (int) doubleVal(doc);
+       }
+ 
++      @Override
+       public long longVal(int doc) {
+         return (long) doubleVal(doc);
+       }
+ 
++      @Override
+       public double doubleVal(int doc) {
+         return distance(doc, vals1, vals2);
+       }
+ 
++      @Override
+       public String strVal(int doc) {
+         return Double.toString(doubleVal(doc));
+       }
+@@ -159,6 +164,7 @@ public class HaversineFunction extends ValueSource {
+     return result;
+   }
+ 
++  @Override
+   public String description() {
+     StringBuilder sb = new StringBuilder();
+     sb.append(name()).append('(');

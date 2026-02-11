@@ -1,0 +1,28 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 6aba9db..c313796 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -996,10 +996,6 @@ ProcGetAtomName(ClientPtr client)
+     }
+ }
+ 
+-#ifdef K5AUTH
+-extern int k5_bad();
+-#endif
+-
+ int
+ ProcSetSelectionOwner(ClientPtr client)
+ {
+@@ -3541,12 +3537,6 @@ InitProcVectors(void)
+             ProcVector[i] = SwappedProcVector[i] = ProcBadRequest;
+ 	    ReplySwapVector[i] = ReplyNotSwappd;
+ 	}
+-#ifdef K5AUTH
+-	if (!k5_Vector[i])
+-	{
+-	    k5_Vector[i] = k5_bad;
+-	}
+-#endif
+     }
+     for(i = LASTEvent; i < 128; i++)
+     {

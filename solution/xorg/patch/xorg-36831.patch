@@ -1,0 +1,22 @@
+diff --git a/hw/xquartz/X11Application.h b/hw/xquartz/X11Application.h
+index 9d1ee41..47c605c 100644
+--- a/hw/xquartz/X11Application.h
++++ b/hw/xquartz/X11Application.h
+@@ -31,7 +31,7 @@
+ #define X11APPLICATION_H 1
+ 
+ #if __OBJC__
+-#import <Cocoa/Cocoa.h>
++
+ #import "X11Controller.h"
+ 
+ @interface X11Application : NSApplication {
+@@ -55,7 +55,7 @@
+ - (void) prefs_set_string:(NSString *)key value:(NSString *)value;
+ - (void) prefs_synchronize;
+ 
+-- (BOOL) x_active;
++- (OSX_BOOL) x_active;
+ 
+ @end
+ 

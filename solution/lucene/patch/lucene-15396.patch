@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/ValueSourceParser.java b/solr/src/java/org/apache/solr/search/ValueSourceParser.java
+index f9ceb1f..116058f 100755
+--- a/solr/src/java/org/apache/solr/search/ValueSourceParser.java
++++ b/solr/src/java/org/apache/solr/search/ValueSourceParser.java
+@@ -890,8 +890,6 @@ abstract class Double2Parser extends NamedParser {
+ 
+     @Override
+     public void createWeight(Map context, IndexSearcher searcher) throws IOException {
+-      a.createWeight(context,searcher);
+-      b.createWeight(context,searcher);
+     }
+ 
+     public int hashCode() {

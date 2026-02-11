@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/function/TestValueSource.java b/lucene/src/test/org/apache/lucene/search/function/TestValueSource.java
+index d6b9f78..1cb688d 100644
+--- a/lucene/src/test/org/apache/lucene/search/function/TestValueSource.java
++++ b/lucene/src/test/org/apache/lucene/search/function/TestValueSource.java
+@@ -40,7 +40,7 @@ public class TestValueSource extends LuceneTestCase {
+       w.commit();
+     }
+ 
+-    IndexReader r = IndexReader.open(w);
++    IndexReader r = IndexReader.open(w, true);
+     w.close();
+ 
+     assertTrue(r.getSequentialSubReaders().length > 1);

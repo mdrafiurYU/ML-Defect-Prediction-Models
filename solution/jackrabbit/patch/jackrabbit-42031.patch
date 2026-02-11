@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSameNameSiblingTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSameNameSiblingTest.java
+index 9d0ca83..5aad5cf 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSameNameSiblingTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSameNameSiblingTest.java
+@@ -197,6 +197,14 @@ public class AnnotationSameNameSiblingTest extends DigesterTestBase
+ 					 a.setInputStream(new ByteArrayInputStream("Another Stream".getBytes()));
+ 				}
+ 				ocm.insert(a);
++				if (i==1)
++				{
++				    assertTrue("Invalid Path" , a.getPath().equals("/test") );
++				}
++				else
++				{
++					assertTrue("Invalid Path" , a.getPath().equals("/test" + "[" + i + "]") );
++				}
+ 				
+ 				
+ 			}

@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxdpms.c b/hw/dmx/dmxdpms.c
+index 48f7488..5bcce18 100644
+--- a/hw/dmx/dmxdpms.c
++++ b/hw/dmx/dmxdpms.c
+@@ -40,6 +40,10 @@
+  * (and restored at Xdmx server shutdown time).
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxdpms.h"
+ #include "dmxlog.h"

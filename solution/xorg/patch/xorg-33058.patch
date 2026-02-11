@@ -1,0 +1,27 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 507e7b0..0589097 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -283,6 +283,22 @@ typedef struct _LedFeedbackClassRec {
+ } LedFeedbackClassRec;
+ 
+ 
++typedef struct _ClassesRec {
++    KeyClassPtr		key;
++    ValuatorClassPtr	valuator;
++    ButtonClassPtr	button;
++    FocusClassPtr	focus;
++    ProximityClassPtr	proximity;
++    AbsoluteClassPtr    absolute;
++    KbdFeedbackPtr	kbdfeed;
++    PtrFeedbackPtr	ptrfeed;
++    IntegerFeedbackPtr	intfeed;
++    StringFeedbackPtr	stringfeed;
++    BellFeedbackPtr	bell;
++    LedFeedbackPtr	leds;
++} ClassesRec;
++
++
+ /**
+  * Sprite information for a device.
+  */

@@ -1,0 +1,25 @@
+diff --git a/hw/xwin/InitOutput.c b/hw/xwin/InitOutput.c
+index abc35b9..291593b 100644
+--- a/hw/xwin/InitOutput.c
++++ b/hw/xwin/InitOutput.c
+@@ -1120,20 +1120,3 @@ winCheckDisplayNumber ()
+ 
+   return TRUE;
+ }
+-
+-#ifdef DPMSExtension
+-Bool DPMSSupported(void)
+-{
+-  return FALSE;
+-}
+-
+-void DPMSSet(int level)
+-{
+-  return;
+-}
+-
+-int DPMSGet(int *plevel)
+-{
+-  return 0;
+-}
+-#endif

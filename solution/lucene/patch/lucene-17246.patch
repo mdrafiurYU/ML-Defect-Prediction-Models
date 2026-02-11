@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+index c546b2a..3763e54 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+@@ -684,7 +684,7 @@ public class TestIndexWriterDelete extends LuceneTestCase {
+ 
+     MockDirectoryWrapper dir = newDirectory();
+     IndexWriter modifier = new IndexWriter(dir, newIndexWriterConfig(
+-                                                                     TEST_VERSION_CURRENT, new MockAnalyzer(MockTokenizer.WHITESPACE, false)).setMaxBufferedDeleteTerms(2).setReaderPooling(false));
++                                                                     TEST_VERSION_CURRENT, new MockAnalyzer(MockTokenizer.WHITESPACE, false)).setMaxBufferedDeleteTerms(2).setReaderPooling(false).setMergePolicy(newLogMergePolicy()));
+     modifier.setInfoStream(VERBOSE ? System.out : null);
+ 
+     LogMergePolicy lmp = (LogMergePolicy) modifier.getConfig().getMergePolicy();

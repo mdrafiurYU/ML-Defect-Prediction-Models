@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/BitUtil.java b/lucene/src/java/org/apache/lucene/util/BitUtil.java
+index 9ee5835..d72001a 100644
+--- a/lucene/src/java/org/apache/lucene/util/BitUtil.java
++++ b/lucene/src/java/org/apache/lucene/util/BitUtil.java
+@@ -20,7 +20,9 @@ package org.apache.lucene.util; // from org.apache.solr.util rev 555343
+ /**  A variety of high efficiency bit twiddling routines.
+  * @lucene.internal
+  */
+-public class BitUtil {
++public final class BitUtil {
++
++  private BitUtil() {} // no instance
+ 
+   /** Returns the number of bits set in the long */
+   public static int pop(long x) {

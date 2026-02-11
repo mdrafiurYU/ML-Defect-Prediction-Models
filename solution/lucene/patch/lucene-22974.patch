@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/store/NRTCachingDirectory.java b/lucene/contrib/misc/src/java/org/apache/lucene/store/NRTCachingDirectory.java
+index 0c09773..05ac00f 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/store/NRTCachingDirectory.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/store/NRTCachingDirectory.java
+@@ -269,7 +269,7 @@ public class NRTCachingDirectory extends Directory {
+         in = cache.openInput(fileName);
+         in.copyBytes(out, in.length());
+       } finally {
+-        IOUtils.closeSafely(in, out);
++        IOUtils.closeSafely(false, in, out);
+       }
+       synchronized(this) {
+         cache.deleteFile(fileName);

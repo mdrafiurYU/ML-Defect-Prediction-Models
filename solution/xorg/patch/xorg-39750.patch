@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index d358da0..0dd7fc7 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -60,7 +60,6 @@
+ #include "mivalidate.h"
+ #include "xf86RAC.h"
+ #include "xf86Bus.h"
+-#include "xf86Version.h"
+ 
+ /* For xf86GetClocks */
+ #if defined(CSRG_BASED) || defined(__GNU__)
+@@ -2352,12 +2351,6 @@ xf86DisableRandR()
+ }
+ 
+ _X_EXPORT CARD32
+-xf86GetVersion()
+-{
+-    return XF86_VERSION_CURRENT;
+-}
+-
+-_X_EXPORT CARD32
+ xf86GetModuleVersion(pointer module)
+ {
+     return (CARD32)LoaderGetModuleVersion(module);

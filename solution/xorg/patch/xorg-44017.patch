@@ -1,0 +1,24 @@
+diff --git a/xfixes/xfixes.h b/xfixes/xfixes.h
+index 81dd83d..ade2f82 100644
+--- a/xfixes/xfixes.h
++++ b/xfixes/xfixes.h
+@@ -29,8 +29,8 @@
+ 
+ #include "resource.h"
+ 
+-extern RESTYPE	RegionResType;
+-extern int	XFixesErrorBase;
++extern _X_EXPORT RESTYPE RegionResType;
++extern _X_EXPORT int XFixesErrorBase;
+ 
+ #define VERIFY_REGION(pRegion, rid, client, mode) { \
+     pRegion = SecurityLookupIDByType (client, rid, RegionResType, mode); \
+@@ -45,7 +45,7 @@ extern int	XFixesErrorBase;
+     if (rid) VERIFY_REGION(pRegion, rid, client, mode); \
+ }
+ 
+-RegionPtr
++extern _X_EXPORT RegionPtr
+ XFixesRegionCopy (RegionPtr pRegion);
+ 
+ 

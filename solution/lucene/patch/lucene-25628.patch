@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+index 69bf4b4..fd41c32 100755
+--- a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
++++ b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+@@ -1,9 +1,9 @@
+ package org.apache.solr.search;
+ 
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.search.*;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+-import org.apache.solr.search.function.ValueSource;
+ import org.apache.solr.common.SolrException;
+ 
+ import java.io.IOException;

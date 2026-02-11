@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+index 7afae87..eb3e4c2 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+@@ -17,6 +17,7 @@ import java.io.OutputStream;
+ import java.io.PrintWriter;
+ import java.io.StringWriter;
+ 
++import org.eclipse.jdt.apt.core.AptPlugin;
+ import org.eclipse.jdt.apt.core.internal.generatedfile.GeneratedFileManager;
+ import org.eclipse.jdt.apt.core.internal.util.FileSystemUtil;
+ 
+@@ -98,7 +99,7 @@ public class FilerImpl implements Filer {
+     		catch ( Exception e )
+     		{
+     			// TODO - stop throwing this exception
+-    			e.printStackTrace();
++    			AptPlugin.log(e, "Failure getting the output file");
+     			throw new IOException();
+     		}
+     	}

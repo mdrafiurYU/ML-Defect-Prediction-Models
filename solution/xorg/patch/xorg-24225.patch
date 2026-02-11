@@ -1,0 +1,225 @@
+diff --git a/hw/kdrive/linux/evdev.c b/hw/kdrive/linux/evdev.c
+index d83b13a..6c08cfa 100644
+--- a/hw/kdrive/linux/evdev.c
++++ b/hw/kdrive/linux/evdev.c
+@@ -62,12 +62,14 @@ typedef struct _kevdevMouse {
+     struct input_absinfo    absinfo[ABS_MAX + 1];
+     int			    max_rel;
+     int			    max_abs;
++
++    int                     fd;
+ } Kevdev;
+ 
+ static void
+-EvdevMotion (KdMouseInfo    *mi)
++EvdevMotion (KdPointerInfo    *pi)
+ {
+-    Kevdev		*ke = mi->driver;
++    Kevdev                *ke = pi->driverPrivate;
+     int			i;
+ 
+     for (i = 0; i <= ke->max_rel; i++)
+@@ -103,8 +105,8 @@ EvdevMotion (KdMouseInfo    *mi)
+ static void
+ EvdevRead (int evdevPort, void *closure)
+ {
+-    KdMouseInfo		*mi = closure;
+-    Kevdev		*ke = mi->driver;
++    KdPointerInfo                *pi = closure;
++    Kevdev                       *ke = pi->driverPrivate;
+     int			i;
+     struct input_event	events[NUM_EVENTS];
+     int			n;
+@@ -119,7 +121,7 @@ EvdevRead (int evdevPort, void *closure)
+ 	case EV_SYN:
+ 	    break;
+ 	case EV_KEY:
+-	    EvdevMotion (mi);
++            EvdevMotion (pi);
+ 	    ASSIGNBIT(ke->key,events[i].code, events[i].value);
+ 	    if (events[i].code < 0x100)
+ 		ErrorF ("key %d %d\n", events[i].code, events[i].value);
+@@ -134,7 +136,7 @@ EvdevRead (int evdevPort, void *closure)
+ 	    break;
+ 	}
+     }
+-    EvdevMotion (mi);
++    EvdevMotion (pi);
+ }
+ 
+ int EvdevInputType;
+@@ -148,41 +150,46 @@ char *kdefaultEvdev[] =  {
+ 
+ #define NUM_DEFAULT_EVDEV    (sizeof (kdefaultEvdev) / sizeof (kdefaultEvdev[0]))
+ 
+-static Bool
+-EvdevInit (void)
++static Status
++EvdevInit (KdPointerInfo *pi)
+ {
+     int		i;
+     int		fd;
+-    KdMouseInfo	*mi, *next;
+     int		n = 0;
+     char	*prot;
+ 
+-    if (!EvdevInputType)
+-	EvdevInputType = KdAllocInputType ();
+-
+-    for (mi = kdMouseInfo; mi; mi = next)
+-    {
+-	next = mi->next;
+-	prot = mi->prot;
+-	if (mi->inputType)
+-	    continue;
+-	if (!mi->name)
+-	{
+-	    for (i = 0; i < NUM_DEFAULT_EVDEV; i++)
+-	    {
++    if (!pi->path) {
++        for (i = 0; i < NUM_DEFAULT_EVDEV; i++) {
+ 		fd = open (kdefaultEvdev[i], 2);
+-		if (fd >= 0)
+-		{
+-		    mi->name = KdSaveString (kdefaultEvdev[i]);
++                if (fd >= 0) {
++                    pi->path = KdSaveString (kdefaultEvdev[i]);
+ 		    break;
+ 		}
+ 	    }
+ 	}
+-	else
+-	    fd = open (mi->name, 2);
++    else {
++        fd = open (pi->path, 2);
++        if (fd < 0) {
++            ErrorF("Failed to open evdev device %s\n", pi->path);
++            return BadMatch;
++        }
++    }
++
++    return Success;
++}
+ 	    
+-	if (fd >= 0)
++static Status
++EvdevEnable (KdPointerInfo *pi)
+ 	{
++    int fd;
++
++    if (!pi || !pi->path)
++        return BadImplementation;
++
++    fd = open(pi->path, 2);
++    if (fd < 0)
++        return BadMatch;
++
+ 	    unsigned long   ev[NBITS(EV_MAX)];
+ 	    Kevdev	    *ke;
+ 	    
+@@ -190,13 +197,13 @@ EvdevInit (void)
+ 	    {
+ 		perror ("EVIOCGBIT 0");
+ 		close (fd);
+-		continue;
++        return BadMatch;
+ 	    }
+ 	    ke = xalloc (sizeof (Kevdev));
+ 	    if (!ke)
+ 	    {
+ 		close (fd);
+-		continue;
++        return BadAlloc;
+ 	    }
+ 	    memset (ke, '\0', sizeof (Kevdev));
+ 	    if (ISBITSET (ev, EV_KEY))
+@@ -207,7 +214,7 @@ EvdevInit (void)
+ 		    perror ("EVIOCGBIT EV_KEY");
+ 		    xfree (ke);
+ 		    close (fd);
+-		    continue;
++            return BadMatch;
+ 		}
+ 	    }
+ 	    if (ISBITSET (ev, EV_REL))
+@@ -218,7 +225,7 @@ EvdevInit (void)
+ 		    perror ("EVIOCGBIT EV_REL");
+ 		    xfree (ke);
+ 		    close (fd);
+-		    continue;
++            return BadMatch;
+ 		}
+ 		for (ke->max_rel = REL_MAX; ke->max_rel >= 0; ke->max_rel--)
+ 		    if (ISBITSET(ke->relbits, ke->max_rel))
+@@ -234,7 +241,7 @@ EvdevInit (void)
+ 		    perror ("EVIOCGBIT EV_ABS");
+ 		    xfree (ke);
+ 		    close (fd);
+-		    continue;
++            return BadMatch;
+ 		}
+ 		for (ke->max_abs = ABS_MAX; ke->max_abs >= 0; ke->max_abs--)
+ 		    if (ISBITSET(ke->absbits, ke->max_abs))
+@@ -253,38 +260,43 @@ EvdevInit (void)
+ 		{
+ 		    xfree (ke);
+ 		    close (fd);
+-		    continue;
+-		}
++            return BadValue;
+ 	    }
+-	    mi->driver = ke;
+-	    mi->inputType = EvdevInputType;
+-	    if (KdRegisterFd (EvdevInputType, fd, EvdevRead, (void *) mi))
+-		n++;
+ 	}
++    if (!KdRegisterFd (fd, EvdevRead, pi)) {
++        xfree (ke);
++        close (fd);
++        return BadAlloc;
+     }
+-    return TRUE;
++    pi->driverPrivate = ke;
++    return Success;
+ }
+ 
+ static void
+-EvdevFini (void)
++EvdevDisable (KdPointerInfo *pi)
+ {
+-    KdMouseInfo	*mi;
++    Kevdev              *ke;
+ 
+-    KdUnregisterFds (EvdevInputType, TRUE);
+-    for (mi = kdMouseInfo; mi; mi = mi->next)
+-    {
+-	if (mi->inputType == EvdevInputType)
+-	{
+-	    xfree (mi->driver);
+-	    mi->driver = 0;
+-	    mi->inputType = 0;
+-	}
++    if (!pi || !pi->driverPrivate)
++        return;
++
++    KdUnregisterFd (pi, ke->fd, TRUE);
++    xfree (ke);
++    pi->driverPrivate = 0;
+     }
++
++static void
++EvdevFini (KdPointerInfo *pi)
++{
+ }
+ 
+-KdMouseFuncs LinuxEvdevMouseFuncs = {
++KdPointerDriver LinuxEvdevMouseDriver = {
++    "evdev",
+     EvdevInit,
++    EvdevEnable,
++    EvdevDisable,
+     EvdevFini,
++    NULL,
+ };
+ 
+ #if 0

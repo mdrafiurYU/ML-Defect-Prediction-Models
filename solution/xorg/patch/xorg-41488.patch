@@ -1,0 +1,35 @@
+diff --git a/include/dix.h b/include/dix.h
+index 66af953..1e3e78d 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -169,8 +169,6 @@ extern void SendErrorToClient(
+ extern void MarkClientException(
+     ClientPtr /*client*/);
+ 
+-extern void ddxBeforeReset (void);
+-
+ /* dixutils.c */
+ 
+ extern void CopyISOLatin1Lowered(
+@@ -381,10 +379,6 @@ extern int DeliverDeviceEvents(
+ extern void DefineInitialRootWindow(
+     WindowPtr /* win */);
+ 
+-extern void SetupSprite(
+-    DeviceIntPtr /* pDev */,
+-    ScreenPtr    /* pScreen */);
+-
+ extern void InitializeSprite(
+     DeviceIntPtr /* pDev */,
+     WindowPtr    /* pWin */);
+@@ -454,10 +448,6 @@ extern int GrabDevice(
+     Bool /* coreGrab */);
+ 
+ extern void InitEvents(void);
+-extern void InitSprite(
+-        DeviceIntPtr /* pDev */, 
+-        Bool /* hasCursor */
+-        );
+ 
+ extern void CloseDownEvents(void);
+ 

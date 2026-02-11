@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxdummy.c b/hw/dmx/input/dmxdummy.c
+index d55aa5f..d6e614e 100644
+--- a/hw/dmx/input/dmxdummy.c
++++ b/hw/dmx/input/dmxdummy.c
+@@ -37,6 +37,10 @@
+  * server, but that don't actually provide any events.  This is useful
+  * for testing. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxinputinit.h"
+ #include "dmxdummy.h"

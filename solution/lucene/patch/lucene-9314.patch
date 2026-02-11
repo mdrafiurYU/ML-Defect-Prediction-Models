@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/QueryComponent.java b/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
+index 36bc89e..9fe18f5 100644
+--- a/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
+@@ -96,7 +96,7 @@ public class QueryComponent extends SearchComponent
+       if (fqs!=null && fqs.length!=0) {
+         List<Query> filters = rb.getFilters();
+         if (filters==null) {
+-          filters = new ArrayList<Query>();
++          filters = new ArrayList<Query>(fqs.length);
+           rb.setFilters( filters );
+         }
+         for (String fq : fqs) {

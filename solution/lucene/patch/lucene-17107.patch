@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java b/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java
+index 7b9086f..c79e1e5 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java
+@@ -295,7 +295,7 @@ public class TestMultiPhraseQuery extends LuceneTestCase {
+     
+     IndexReader reader = writer.getReader();
+     IndexSearcher searcher = new IndexSearcher(reader);
+-    searcher.setSimilarity(new DefaultSimilarity() {
++    searcher.setSimilarityProvider(new DefaultSimilarity() {
+       
+       @Override
+       public IDFExplanation idfExplain(Collection<Term> terms,

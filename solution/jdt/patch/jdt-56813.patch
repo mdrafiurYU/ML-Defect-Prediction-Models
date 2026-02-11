@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java
+index 7eff6e2..b90a20c 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java
+@@ -23,7 +23,11 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
+ 
+ public class MessagerImpl implements Messager, EclipseMessager
+ {
+-	public static enum Severity{ ERROR, WARNING, INFO};
++	public static enum Severity { 
++		ERROR, 
++		WARNING, 
++		INFO
++	}
+     private final CompilationProcessorEnv _env;
+ 
+     MessagerImpl(CompilationProcessorEnv env){

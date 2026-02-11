@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/input/dmxinputinit.c b/hw/dmx/input/dmxinputinit.c
+index 7b5cc73..277e164 100644
+--- a/hw/dmx/input/dmxinputinit.c
++++ b/hw/dmx/input/dmxinputinit.c
+@@ -755,7 +755,7 @@ static DeviceIntPtr dmxAddDevice(DMXLocalInputInfoPtr dmxLocal)
+     if (!name || !registerProcPtr)
+         dmxLog(dmxFatal, "Cannot add device %s\n", dmxLocal->name);
+ 
+-    pDevice                       = AddInputDevice(dmxDeviceOnOff, TRUE);
++    pDevice                       = AddInputDevice(serverClient, dmxDeviceOnOff, TRUE);
+     if (!pDevice) {
+         dmxLog(dmxError, "Too many devices -- cannot add device %s\n",
+                dmxLocal->name);

@@ -1,0 +1,13 @@
+diff --git a/Xext/bigreq.c b/Xext/bigreq.c
+index fcd848a..d388790 100644
+--- a/Xext/bigreq.c
++++ b/Xext/bigreq.c
+@@ -66,8 +66,6 @@ BigReqExtensionInit(INITARGS)
+ 			ProcBigReqDispatch, ProcBigReqDispatch,
+ 			BigReqResetProc, StandardMinorOpcode);
+ #endif
+-
+-    DeclareExtensionSecurity(XBigReqExtensionName, TRUE);
+ }
+ 
+ /*ARGSUSED*/

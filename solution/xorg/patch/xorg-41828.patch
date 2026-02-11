@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 5b39293..8e6cef0 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1365,7 +1365,7 @@ xf86InitialPanning (ScrnInfoPtr scrn)
+ 	    output->initialTotalArea.y2 = output->initialTotalArea.y1 + height;
+ 	    break;
+ 	default:
+-	    xf86DrvMsg (output->scrn->scrnIndex, X_ERROR,
++	    xf86DrvMsg (scrn->scrnIndex, X_ERROR,
+ 			"Broken panning specification '%s' for output %s in config file\n",
+ 			panning, output->name);
+ 	}

@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/document/TestDocument.java b/lucene/src/test/org/apache/lucene/document/TestDocument.java
+index 51a71bf..c505df6 100644
+--- a/lucene/src/test/org/apache/lucene/document/TestDocument.java
++++ b/lucene/src/test/org/apache/lucene/document/TestDocument.java
+@@ -156,7 +156,7 @@ public class TestDocument extends LuceneTestCase {
+     writer.addDocument(makeDocumentWithFields());
+     IndexReader reader = writer.getReader();
+     
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     
+     // search for something that does exists
+     Query query = new TermQuery(new Term("keyword", "test1"));
+@@ -238,7 +238,7 @@ public class TestDocument extends LuceneTestCase {
+     writer.addDocument(doc);
+     
+     IndexReader reader = writer.getReader();
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     
+     Query query = new TermQuery(new Term("keyword", "test"));

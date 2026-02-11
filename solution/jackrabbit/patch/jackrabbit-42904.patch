@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlPolicyIterator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlPolicyIterator.java
+new file mode 100644
+index 0000000..d8eb729
+--- /dev/null
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlPolicyIterator.java
+@@ -0,0 +1,23 @@
++package org.apache.jackrabbit.core.security.jsr283.security;
++
++import javax.jcr.RangeIterator;
++
++/**
++ * Allows easy iteration through a list of <code>AccessControlPolicy</code>s
++ * with <code>nextAccessControlPolicy</code> as well as a <code>skip</code>
++ * method inherited from <code>RangeIterator</code>.
++ *
++ * @since JCR 2.0
++ */
++public interface AccessControlPolicyIterator extends RangeIterator {
++    
++    /**
++     * Returns the next <code>AccessControlPolicy</code> in the iteration.
++     *
++     * @return the next <code>AccessControlPolicy</code> in the iteration.
++     * @throws java.util.NoSuchElementException if iteration has no more
++     *         <code>AccessControlPolicy</code>s.
++    */
++   public AccessControlPolicy nextAccessControlPolicy();
++
++}

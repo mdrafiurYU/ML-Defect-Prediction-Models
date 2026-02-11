@@ -1,0 +1,13 @@
+diff --git a/exa/exa_unaccel.c b/exa/exa_unaccel.c
+index 64c06c7..6e75d78 100644
+--- a/exa/exa_unaccel.c
++++ b/exa/exa_unaccel.c
+@@ -373,7 +373,7 @@ ExaCheckAddTraps (PicturePtr	pPicture,
+  *
+  * XXX This really belongs in fb, so it can be aware of tiling and etc.
+  */
+-CARD32
++_X_EXPORT CARD32
+ exaGetPixmapFirstPixel (PixmapPtr pPixmap)
+ {
+     CARD32 pixel;

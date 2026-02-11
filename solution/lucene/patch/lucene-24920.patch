@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/TermFreqValueSource.java b/solr/src/java/org/apache/solr/search/function/TermFreqValueSource.java
+index 5f8e143..a5b45ac 100755
+--- a/solr/src/java/org/apache/solr/search/function/TermFreqValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/TermFreqValueSource.java
+@@ -50,7 +50,7 @@ public class TermFreqValueSource extends DocFreqValueSource {
+ 
+       public void reset() throws IOException {
+         // no one should call us for deleted docs?
+-        docs = terms.docs(null, indexedBytes, null);
++        docs = terms == null ? null : terms.docs(null, indexedBytes, null);
+         if (docs == null) {
+           docs = new DocsEnum() {
+             @Override

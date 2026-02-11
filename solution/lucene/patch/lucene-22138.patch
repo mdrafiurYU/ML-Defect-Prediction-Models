@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/AnalyzerQueryNodeProcessor.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/AnalyzerQueryNodeProcessor.java
+index ea99515..b0f61c5 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/AnalyzerQueryNodeProcessor.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/AnalyzerQueryNodeProcessor.java
+@@ -123,6 +123,11 @@ public class AnalyzerQueryNodeProcessor extends QueryNodeProcessorImpl {
+ 
+       TokenStream source = this.analyzer.tokenStream(field, new StringReader(
+           text));
++      try {
++        source.reset();
++      } catch (IOException e1) {
++        throw new RuntimeException(e1);
++      }
+       CachingTokenFilter buffer = new CachingTokenFilter(source);
+ 
+       PositionIncrementAttribute posIncrAtt = null;

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java
+index 986d196..756dac1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java
+@@ -278,6 +278,8 @@ public class JackrabbitRepositoryStub extends RepositoryStub {
+         }
+ 
+         Node resource = node.addNode("myResource", "nt:resource");
++        // nt:resource not longer referenceable since JCR 2.0
++        resource.addMixin("mix:referenceable");
+         resource.setProperty("jcr:encoding", ENCODING);
+         resource.setProperty("jcr:mimeType", "text/plain");
+         resource.setProperty(

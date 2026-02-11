@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_pci.c b/hw/xfree86/os-support/linux/lnx_pci.c
+index 2b83561..8eedfa4 100644
+--- a/hw/xfree86/os-support/linux/lnx_pci.c
++++ b/hw/xfree86/os-support/linux/lnx_pci.c
+@@ -138,7 +138,7 @@ static struct pci_dev *xf86OSLinuxGetPciDevs(void) {
+ }
+ 
+ /* Query the kvirt address (64bit) of a BAR range from size for a given TAG */
+-_X_EXPORT unsigned long
++unsigned long
+ xf86GetOSOffsetFromPCI(PCITAG tag, int space, unsigned long base)
+ {
+     unsigned int ndx;

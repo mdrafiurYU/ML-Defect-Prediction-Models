@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglgc.c b/hw/xgl/xglgc.c
+index 82e2829..6107559 100644
+--- a/hw/xgl/xglgc.c
++++ b/hw/xgl/xglgc.c
+@@ -206,7 +206,7 @@ xglCopyArea (DrawablePtr pSrc,
+     box.x2 = box.x1 + w;
+     box.y2 = box.y1 + h;
+ 
+-    if (pGCPriv->flags &= ~xglGCReadOnlyDrawableFlag)
++    if (pGC->alu != GXcopy || (pGCPriv->flags &= ~xglGCReadOnlyDrawableFlag))
+     {
+ 	if (!xglSyncBits (pSrc, &box))
+ 	    FatalError (XGL_SW_FAILURE_STRING);

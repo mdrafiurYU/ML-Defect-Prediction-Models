@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
+index 6dcaa97..3a6e52f 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
+@@ -123,7 +123,7 @@ public class GarbageCollectorTest extends AbstractJCRTest implements ScanEventLi
+ 
+         n.remove();
+         session.save();
+-        
++
+         GarbageCollector gc = ((SessionImpl)session).createDataStoreGarbageCollector();
+ 
+         if (gc.getDataStore() instanceof FileDataStore) {
+@@ -212,6 +212,8 @@ public class GarbageCollectorTest extends AbstractJCRTest implements ScanEventLi
+         }
+ 
+         deleteMyNodes();
++
++        s2.logout();
+     }
+ 
+     public void afterScanning(Node n) throws RepositoryException {

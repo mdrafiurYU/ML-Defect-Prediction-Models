@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java
+index 15f64de..4f9831c 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/TypeDeclarationImpl.java
+@@ -132,14 +132,14 @@ public abstract class TypeDeclarationImpl extends MemberDeclarationImpl implemen
+     public DeclaredType getContainingType()
+     {
+         final ITypeBinding outer = getTypeBinding().getDeclaringClass();
+-        return (DeclaredType)Factory.createReferenceType(outer, _env);
++        return Factory.createReferenceType(outer, _env);
+     }
+ 
+     public TypeDeclaration getDeclaration()
+     {
+         final ITypeBinding declBinding = getDeclarationBinding();
+         if( declBinding == _binding ) return this;
+-        else return (TypeDeclaration)Factory.createReferenceType(declBinding, _env);
++        else return Factory.createReferenceType(declBinding, _env);
+     }
+     
+     public Collection<InterfaceType> getSuperinterfaces()

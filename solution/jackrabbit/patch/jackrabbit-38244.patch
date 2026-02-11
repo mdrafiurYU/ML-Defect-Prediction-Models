@@ -1,0 +1,80 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java
+index fe82a0e..3e3600c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java
+@@ -16,17 +16,13 @@
+  */
+ package org.apache.jackrabbit.core.state;
+ 
++import java.util.Iterator;
++
+ import org.apache.commons.collections.map.LinkedMap;
+ import org.apache.jackrabbit.core.ItemId;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import java.util.Set;
+-import java.util.Collections;
+-import java.util.Collection;
+-import java.util.ArrayList;
+-import java.util.Iterator;
+-
+ /**
+  * An <code>ItemStateCache</code> implementation that internally uses a
+  * {@link LinkedMap} to maintain a cache of <code>ItemState</code> objects. The
+@@ -112,6 +108,15 @@ public class MLRUItemStateCache implements ItemStateCache, Cache {
+     /**
+      * {@inheritDoc}
+      */
++    public ItemState[] retrieveAll() {
++        synchronized (cache) {
++            return (ItemState[]) cache.values().toArray(new ItemState[cache.size()]);
++        }
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public void update(ItemId id) {
+         touch();
+         synchronized (cache) {
+@@ -188,39 +193,6 @@ public class MLRUItemStateCache implements ItemStateCache, Cache {
+         }
+     }
+ 
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public int size() {
+-        synchronized (cache) {
+-            return cache.size();
+-        }
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public Set keySet() {
+-        synchronized (cache) {
+-            return Collections.unmodifiableSet(cache.keySet());
+-        }
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public Collection values() {
+-        synchronized (cache) {
+-            ArrayList list = new ArrayList(cache.size());
+-            Iterator iter = cache.values().iterator();
+-            while (iter.hasNext()) {
+-                Entry entry = (Entry) iter.next();
+-                list.add(entry.state);
+-            }
+-            return list;
+-        }
+-    }
+-
+     private void touch() {
+         accessCount++;
+         if ((accessCount % CacheAccessListener.ACCESS_INTERVAL) == 0) {

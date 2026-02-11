@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java
+index e35acf4..ee1a6da 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java
+@@ -39,6 +39,8 @@ public class TestEnglishAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "book", "book");
+     // stopword
+     assertAnalyzesTo(a, "the", new String[] {});
++    // possessive removal
++    checkOneTermReuse(a, "steven's", "steven");
+   }
+   
+   /** test use of exclusion set */

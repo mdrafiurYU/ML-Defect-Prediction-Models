@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+index e34aba4..a7d5749 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+@@ -330,6 +330,15 @@ public class ClusterNode implements Runnable,
+     }
+ 
+     /**
++     * Return the journal created by this cluster node.
++     * 
++     * @return journal
++     */
++    public Journal getJournal() {
++        return journal;
++    }
++
++    /**
+      * Return the instance id to be used for this node in the cluster.
+      * @param id configured id, <code>null</code> to take random id
+      */

@@ -1,0 +1,21 @@
+diff --git a/fb/fbwindow.c b/fb/fbwindow.c
+index cac662c..5b3f446 100644
+--- a/fb/fbwindow.c
++++ b/fb/fbwindow.c
+@@ -233,11 +233,12 @@ fbFillRegionSolid (DrawablePtr	pDrawable,
+     while (n--)
+     {
+ #ifdef USE_MMX
+-        if (!has_mmx || !fbSolidFillmmx (pDrawable,
+-	                                pbox->x1,
+-					pbox->y1,
++	if (!has_mmx || !fbFillmmx (dst, dstStride, dstBpp,
++				    pbox->x1 + dstXoff, pbox->y1 + dstYoff,
+ 					(pbox->x2 - pbox->x1),
+-					(pbox->y2 - pbox->y1), xor)) {
++				    (pbox->y2 - pbox->y1),
++				    xor))
++	{
+ #endif
+ 	fbSolid (dst + (pbox->y1 + dstYoff) * dstStride,
+ 		 dstStride,

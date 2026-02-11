@@ -1,0 +1,14 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 8f60561..aa2b4c9 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -126,9 +126,6 @@ ProcessOtherEvent(xEventPtr xE, DeviceIntPtr device, int count)
+     ValuatorClassPtr v = device->valuator;
+     deviceValuator *xV = (deviceValuator *) xE;
+ 
+-    if (grab && grab->coreGrab && !device->deviceGrab.fromPassiveGrab)
+-        return;
+-
+     CheckMotion(xE, device);
+ 
+     if (xE->u.u.type != DeviceValuator && xE->u.u.type != GenericEvent) {

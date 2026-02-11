@@ -1,0 +1,15 @@
+diff --git a/GL/glx/g_disptab.c b/GL/glx/g_disptab.c
+index 8c8dc2c..93a9d62 100644
+--- a/GL/glx/g_disptab.c
++++ b/GL/glx/g_disptab.c
+@@ -29,6 +29,10 @@
+ ** version 1.2.1 Specification.
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "glxserver.h"
+ #include "glxext.h"
+ #include "g_disptab.h"

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleNameReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleNameReference.java
+index 1615daa..ef3478c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleNameReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleNameReference.java
+@@ -34,7 +34,7 @@ public class JavadocSingleNameReference extends SingleNameReference {
+ 	public void resolve(BlockScope scope, boolean warn) {
+ 		
+ 		LocalVariableBinding variableBinding = scope.findVariable(this.token);
+-		if (variableBinding != null && variableBinding.isValidBinding() && variableBinding.isArgument) {
++		if (variableBinding != null && variableBinding.isValidBinding() && ((variableBinding.tagBits & TagBits.IsArgument) != 0)) {
+ 			this.binding = variableBinding;
+ 			return;
+ 		}

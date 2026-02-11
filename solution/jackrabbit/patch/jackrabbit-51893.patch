@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java
+index d981602..ec06950 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java
+@@ -418,7 +418,7 @@ public class SessionImporter implements Importer {
+                     && prop.getType() != PropertyType.WEAKREFERENCE) {
+                 continue;
+             }
+-            if (prop.getDefinition().isMultiple()) {
++            if (prop.isMultiple()) {
+                 Value[] values = prop.getValues();
+                 Value[] newVals = new Value[values.length];
+                 for (int i = 0; i < values.length; i++) {

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java b/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
+index cab656c..8962200 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
++++ b/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
+@@ -39,7 +39,7 @@ public class TestElevationComparator extends LuceneTestCase {
+     Directory directory = newDirectory();
+     IndexWriter writer = new IndexWriter(
+         directory,
+-        newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++        newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).
+             setMaxBufferedDocs(2).
+             setMergePolicy(newLogMergePolicy(1000))
+     );

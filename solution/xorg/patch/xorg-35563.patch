@@ -1,0 +1,18 @@
+diff --git a/Xi/xiselev.c b/Xi/xiselev.c
+index f24dd36..2bfbd82 100644
+--- a/Xi/xiselev.c
++++ b/Xi/xiselev.c
+@@ -69,9 +69,13 @@ ProcXiSelectEvent(ClientPtr client)
+     if (rc != Success)
+         return rc;
+ 
++    if (stuff->deviceid & (0x1 << 7)) /* all devices */
++        pDev = NULL;
++    else {
+     rc = dixLookupDevice(&pDev, stuff->deviceid, client, DixReadAccess);
+     if (rc != Success)
+         return rc;
++    }
+ 
+     GEWindowSetMask(client, pDev, pWin, IReqCode, stuff->mask);
+ 

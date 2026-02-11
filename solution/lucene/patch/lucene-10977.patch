@@ -1,0 +1,14 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/WriteLineDocTask.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/WriteLineDocTask.java
+index 8aed3bb..c5a3adb 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/WriteLineDocTask.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/WriteLineDocTask.java
+@@ -142,9 +142,7 @@ public class WriteLineDocTask extends PerfTask {
+    */
+   @Override
+   public void setParams(String params) {
+-    if (super.supportsParams()) {
+-      super.setParams(params);
+-    }
++    super.setParams(params);
+     docSize = (int) Float.parseFloat(params); 
+   }

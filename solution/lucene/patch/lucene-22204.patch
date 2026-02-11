@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/index/codecs/mockintblock/MockFixedIntBlockCodec.java b/lucene/src/test-framework/org/apache/lucene/index/codecs/mockintblock/MockFixedIntBlockCodec.java
+index b653471..0fa3f9b 100644
+--- a/lucene/src/test-framework/org/apache/lucene/index/codecs/mockintblock/MockFixedIntBlockCodec.java
++++ b/lucene/src/test-framework/org/apache/lucene/index/codecs/mockintblock/MockFixedIntBlockCodec.java
+@@ -186,7 +186,7 @@ public class MockFixedIntBlockCodec extends Codec {
+   }
+ 
+   @Override
+-  public void files(Directory dir, SegmentInfo segmentInfo, String codecId, Set<String> files) {
++  public void files(Directory dir, SegmentInfo segmentInfo, String codecId, Set<String> files) throws IOException {
+     SepPostingsReaderImpl.files(segmentInfo, codecId, files);
+     BlockTermsReader.files(dir, segmentInfo, codecId, files);
+     FixedGapTermsIndexReader.files(dir, segmentInfo, codecId, files);

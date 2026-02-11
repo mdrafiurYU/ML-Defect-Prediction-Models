@@ -1,0 +1,14 @@
+diff --git a/solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java b/solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java
+index 1cb7b04..b70ba1f 100644
+--- a/solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java
++++ b/solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java
+@@ -29,7 +29,8 @@ public class SpellPossibilityIteratorTest extends SolrTestCaseJ4 {
+ 
+ 	private static Map<Token, LinkedHashMap<String, Integer>> suggestions = new LinkedHashMap<Token, LinkedHashMap<String, Integer>>();
+ 
+-	@Before
++	@Override
++  @Before
+ 	public void setUp() throws Exception {
+ 	  super.setUp();
+ 		suggestions.clear();

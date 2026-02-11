@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/fbdevhw/fbdevhw.c b/hw/xfree86/fbdevhw/fbdevhw.c
+index 13be785..a1f6748 100644
+--- a/hw/xfree86/fbdevhw/fbdevhw.c
++++ b/hw/xfree86/fbdevhw/fbdevhw.c
+@@ -625,14 +625,11 @@ fbdevHWSetVideoModes(ScrnInfoPtr pScrn)
+ 			pScrn->virtualY = mode->VDisplay;
+ 
+ 		if (NULL == pScrn->modes) {
+-			pScrn->modes = xnfalloc(sizeof(DisplayModeRec));
+-			this = pScrn->modes;
+-			memcpy(this,mode,sizeof(DisplayModeRec));
++			this = pScrn->modes = xf86DuplicateMode(mode);
+ 			this->next = this;
+ 			this->prev = this;
+ 		} else {
+-			this = xnfalloc(sizeof(DisplayModeRec));
+-			memcpy(this,mode,sizeof(DisplayModeRec));
++			this = xf86DuplicateMode(mode);
+ 			this->next = pScrn->modes;
+ 			this->prev = last;
+ 			last->next = this;

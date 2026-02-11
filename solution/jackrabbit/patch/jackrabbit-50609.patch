@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java
+index 9449226..1f66212 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java
+@@ -58,8 +58,7 @@ public class LuceneQueryHits implements QueryHits {
+             return null;
+         }
+         int doc = scorer.doc();
+-        String uuid = reader.document(doc).get(FieldNames.UUID);
+-        NodeId id = new NodeId(UUID.fromString(uuid));
++        NodeId id = new NodeId(reader.document(doc).get(FieldNames.UUID));
+         return new ScoreNode(id, scorer.score(), doc);
+     }

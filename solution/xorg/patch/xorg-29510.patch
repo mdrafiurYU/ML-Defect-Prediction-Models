@@ -1,0 +1,13 @@
+diff --git a/fb/fb.h b/fb/fb.h
+index e605078..7d94886 100644
+--- a/fb/fb.h
++++ b/fb/fb.h
+@@ -2146,4 +2146,8 @@ void
+ fbPaintWindow(WindowPtr pWin, RegionPtr pRegion, int what);
+ 
+ 
++pixman_image_t *image_from_pict (PicturePtr pict,
++				 Bool       has_clip);
++
+ #endif /* _FB_H_ */
++

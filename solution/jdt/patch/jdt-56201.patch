@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
+index 6f3540d..084118e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
+@@ -178,6 +178,8 @@ public abstract class Expression extends Statement {
+ 	
+ 	public Constant constant;
+ 	
++	public int statementEnd = -1;
++	
+ 	//Some expression may not be used - from a java semantic point
+ 	//of view only - as statements. Other may. In order to avoid the creation
+ 	//of wrappers around expression in order to tune them as expression

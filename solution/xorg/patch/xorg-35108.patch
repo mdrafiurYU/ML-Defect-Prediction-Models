@@ -1,0 +1,20 @@
+diff --git a/hw/kdrive/ati/ati_stub.c b/hw/kdrive/ati/ati_stub.c
+index 3669fd7..f881b7f 100644
+--- a/hw/kdrive/ati/ati_stub.c
++++ b/hw/kdrive/ati/ati_stub.c
+@@ -50,14 +50,7 @@ InitOutput(ScreenInfo *pScreenInfo, int argc, char **argv)
+ void
+ InitInput(int argc, char **argv)
+ {
+-        KdKeyboardInfo *ki = NULL;
+-        
+-        KdAddPointerDriver(&LinuxMouseDriver);
+-        ki = KdNewKeyboard();
+-        if (ki) {
+-            ki->driver = &LinuxKeyboardDriver;
+-            KdAddKeyboard(ki);
+-        }
++	KdOsAddInputDrivers();
+ 	KdInitInput();
+ }
+ 

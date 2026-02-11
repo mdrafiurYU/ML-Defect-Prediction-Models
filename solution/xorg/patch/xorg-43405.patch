@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/win.h b/hw/xwin/win.h
+index 32d3b02..8005d5b 100644
+--- a/hw/xwin/win.h
++++ b/hw/xwin/win.h
+@@ -1218,6 +1218,8 @@ winSetShapeRootless (WindowPtr pWindow);
+ HICON
+ winXIconToHICON (WindowPtr pWin, int iconSize);
+ 
++void
++winSelectIcons(WindowPtr pWin, HICON *pIcon, HICON *pSmallIcon);
+ 
+ #ifdef XWIN_MULTIWINDOW
+ /*

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/ResolveMergeConflict.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/ResolveMergeConflict.java
+index bb41a99..d240538 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/ResolveMergeConflict.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/ResolveMergeConflict.java
+@@ -94,7 +94,8 @@ public class ResolveMergeConflict extends AbstractOperation {
+     /**
+      *
+      * @param nodeState
+-     * @param versionState
++     * @param mergeFailedIds
++     * @param predecessorIds
+      * @param resolveDone
+      */
+     public static Operation create(NodeState nodeState, NodeId[] mergeFailedIds, NodeId[] predecessorIds, boolean resolveDone) {

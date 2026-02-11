@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesConsumer.java b/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesConsumer.java
+index 3d39701..5f9cd97 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesConsumer.java
+@@ -88,10 +88,9 @@ public abstract class DocValuesConsumer {
+     }
+   }
+ 
+-  public static DocValuesConsumer create(String segmentName,
+-      Directory directory, FieldInfo field, String codecId, Comparator<BytesRef> comp)
++  public static DocValuesConsumer create(String id,
++      Directory directory, FieldInfo field, Comparator<BytesRef> comp)
+       throws IOException {
+-    final String id = segmentName + "_" + codecId;
+     return Writer.create(field.getDocValues(), id, directory, comp);
+   }
+ }

@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BinaryTypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BinaryTypeBinding.java
+index 9f8ff61..6f005bd 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BinaryTypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BinaryTypeBinding.java
+@@ -124,6 +124,7 @@ public BinaryTypeBinding(PackageBinding packageBinding, IBinaryType binaryType,
+ 	}
+ 
+ 	this.modifiers = binaryType.getModifiers();
++	// TODO (kent) what about ANNOTATION_TYPE_DECL case ?
+ 	if (binaryType.getKind() == IGenericType.INTERFACE_DECL)
+ 		this.modifiers |= AccInterface;

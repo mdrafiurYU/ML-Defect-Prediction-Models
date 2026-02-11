@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java
+index 0689a3a..d0144d1 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThread.java
+@@ -305,6 +305,12 @@ public class DocumentsWriterPerThread {
+       return newSegment;
+     } finally {
+       if (!success) {
++        if (segment != null) {
++          synchronized(parent.indexWriter) {
++            parent.indexWriter.deleter.refresh(segment);
++          }
++        }
++
+         abort();
+       }
+     }

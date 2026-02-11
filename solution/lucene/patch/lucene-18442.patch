@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/HTMLStripCharFilterFactory.java b/solr/src/java/org/apache/solr/analysis/HTMLStripCharFilterFactory.java
+index 70130d9..096a07b 100644
+--- a/solr/src/java/org/apache/solr/analysis/HTMLStripCharFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/HTMLStripCharFilterFactory.java
+@@ -21,7 +21,18 @@ package org.apache.solr.analysis;
+ import org.apache.lucene.analysis.CharStream;
+ import org.apache.lucene.analysis.charfilter.HTMLStripCharFilter;
+ 
+-public class HTMLStripCharFilterFactory extends BaseCharFilterFactory {
++/**
++* Factory for {@link HTMLStripCharFilter}. 
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_html" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;charFilter class="solr.HTMLStripCharFilterFactory"/&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre
++ * @version $Id$  
++ */
++ public class HTMLStripCharFilterFactory extends BaseCharFilterFactory {
+ 
+   public HTMLStripCharFilter create(CharStream input) {
+     return new HTMLStripCharFilter(input);

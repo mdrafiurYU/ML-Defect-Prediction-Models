@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/IntField.java b/solr/src/java/org/apache/solr/schema/IntField.java
+index 3199ff8..a5d0adf 100644
+--- a/solr/src/java/org/apache/solr/schema/IntField.java
++++ b/solr/src/java/org/apache/solr/schema/IntField.java
+@@ -40,7 +40,7 @@ public class IntField extends FieldType {
+   @Override
+   public SortField getSortField(SchemaField field,boolean reverse) {
+     field.checkSortability();
+-    return new SortField(field.name,SortField.INT, reverse);
++    return new SortField(field.name,SortField.Type.INT, reverse);
+   }
+ 
+   @Override

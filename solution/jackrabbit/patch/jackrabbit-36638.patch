@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java
+index 6f442cb..80a6e54 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java
+@@ -121,7 +121,8 @@ public class PreparedQueryImpl
+         }
+         return new QueryResultImpl(index, itemMgr,
+                 session.getNamespaceResolver(), session.getAccessManager(),
+-                this, query, selectProps, orderProps, orderSpecs,
++                // TODO: spell suggestion missing
++                this, query, null, selectProps, orderProps, orderSpecs,
+                 getRespectDocumentOrder(), offset, limit);
+     }

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestDocumentWriter.java b/lucene/src/test/org/apache/lucene/index/TestDocumentWriter.java
+index 0cb8a0d..fa51319 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestDocumentWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestDocumentWriter.java
+@@ -314,7 +314,7 @@ public class TestDocumentWriter extends LuceneTestCase {
+ 
+     _TestUtil.checkIndex(dir);
+ 
+-    SegmentReader reader = SegmentReader.getOnlySegmentReader(dir);
++    SegmentReader reader = getOnlySegmentReader(IndexReader.open(dir, false));
+     FieldInfos fi = reader.fieldInfos();
+     // f1
+     assertFalse("f1 should have no norms", reader.hasNorms("f1"));

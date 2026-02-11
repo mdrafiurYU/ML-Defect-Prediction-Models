@@ -1,0 +1,39 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index c4ba146..bb2a97d 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -324,16 +324,12 @@ Bool DarwinEQInit(DevicePtr pKbd, DevicePtr pPtr) {
+  */
+ void ProcessInputEvents(void) {
+     xEvent  xe;
+-    // button number and modifier mask of currently pressed fake button
+-    input_check_flag=0;
++	int x = sizeof(xe);
+ 
+-    //    ErrorF("calling mieqProcessInputEvents\n");
+     mieqProcessInputEvents();
+ 
+     // Empty the signaling pipe
+-    int x = sizeof(xe);
+     while (x == sizeof(xe)) {
+-//      DEBUG_LOG("draining pipe\n");
+       x = read(darwinEventReadFD, &xe, sizeof(xe));
+     }
+ }
+@@ -343,7 +339,7 @@ void ProcessInputEvents(void) {
+ void DarwinPokeEQ(void) {
+   char nullbyte=0;
+   input_check_flag++;
+-  //  <daniels> bushing: oh, i ... er ... christ.
++	//  <daniels> oh, i ... er ... christ.
+   write(darwinEventWriteFD, &nullbyte, 1);
+ }
+ 
+@@ -389,6 +385,7 @@ void DarwinSendPointerEvents(int ev_type, int ev_button, int pointer_x, int poin
+       return;
+     }
+   }
++
+   if (ev_type == ButtonRelease && darwinFakeButtons && darwinFakeMouseButtonDown) {
+     // If last mousedown was a fake click, don't check for
+     // mouse modifiers here. The user may have released the

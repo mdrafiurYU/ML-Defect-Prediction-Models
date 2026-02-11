@@ -1,0 +1,23 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index 0727ad8..0ed7e68 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -56,16 +56,10 @@ _XkbLookupAnyDevice(DeviceIntPtr *pDev, int id, ClientPtr client,
+     int rc = XkbKeyboardErrorCode;
+ 
+     if (id == XkbUseCoreKbd) {
+-	if (inputInfo.keyboard)
+-	    id = inputInfo.keyboard->id;
+-	else
+-	    goto out;
++        id = PickKeyboard(client)->id;
+     }
+     if (id == XkbUseCorePtr) {
+-	if (inputInfo.pointer)
+-	    id = inputInfo.pointer->id;
+-	else
+-	    goto out;
++        id = PickPointer(client)->id;
+     }
+     rc = dixLookupDevice(pDev, id, client, access_mode);
+ out:

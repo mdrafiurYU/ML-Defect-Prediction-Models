@@ -1,0 +1,15 @@
+diff --git a/Xprint/Oid.c b/Xprint/Oid.c
+index 575f505..7f0acaf 100644
+--- a/Xprint/Oid.c
++++ b/Xprint/Oid.c
+@@ -31,6 +31,10 @@ dealings in this Software without prior written authorization from said
+ copyright holders.
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "attributes.h"
+ 
+ /*

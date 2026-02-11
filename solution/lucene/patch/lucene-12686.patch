@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/icu/src/test/org/apache/lucene/collation/TestICUCollationKeyFilter.java b/modules/analysis/icu/src/test/org/apache/lucene/collation/TestICUCollationKeyFilter.java
+index 30c2f59..1fc37ee 100644
+--- a/modules/analysis/icu/src/test/org/apache/lucene/collation/TestICUCollationKeyFilter.java
++++ b/modules/analysis/icu/src/test/org/apache/lucene/collation/TestICUCollationKeyFilter.java
+@@ -91,6 +91,7 @@ public class TestICUCollationKeyFilter extends CollationTestBase {
+     // The ICU Collator and java.text.Collator implementations differ in their
+     // orderings - "BFJHD" is the ordering for the ICU Collator for Locale.US.
+     testCollationKeySort
+-      (usAnalyzer, franceAnalyzer, swedenAnalyzer, denmarkAnalyzer, "BFJHD");
++    (usAnalyzer, franceAnalyzer, swedenAnalyzer, denmarkAnalyzer, 
++     "BFJHD", "ECAGI", "BJDFH", "BJDHF");
+   }
+ }

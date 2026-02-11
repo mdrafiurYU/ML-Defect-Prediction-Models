@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java b/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java
+index a0a6c17..bd838c8 100755
+--- a/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java
+@@ -30,6 +30,7 @@ public class SumFloatFunction extends MultiFloatFunction {
+     return "sum";
+   }
+ 
++  @Override
+   protected float func(int doc, DocValues[] valsArr) {
+     float val = 0.0f;
+     for (DocValues vals : valsArr) {

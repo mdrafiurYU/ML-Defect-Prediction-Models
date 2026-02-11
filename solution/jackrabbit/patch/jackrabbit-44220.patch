@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/XmlHandler.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/XmlHandler.java
+index 1ed45c2..060d29a 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/XmlHandler.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/XmlHandler.java
+@@ -123,13 +123,22 @@ public class XmlHandler extends DefaultHandler {
+                 contentNode.setProperty(JcrConstants.JCR_ENCODING, "UTF-8");
+             } catch (RepositoryException e) {
+                 // ignore, since given nodetype could not allow encoding
+-                // deliberately not rethrowing an IOException.
++                // deliberately not re-throwing an IOException.
+             }
+         }
+         return success;
+     }
+ 
+     /**
++     * {@inheritDoc}
++     *
++     * @return <code>true</code>, always.
++     */
++    protected boolean forceCompatibleContentNodes() {
++        return true;
++    }
++
++    /**
+      * @see IOHandler#canExport(ExportContext, boolean)
+      */
+     public boolean canExport(ExportContext context, boolean isCollection) {

@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclText.c b/Xprint/pcl/PclText.c
+index a7f37be..be79477 100644
+--- a/Xprint/pcl/PclText.c
++++ b/Xprint/pcl/PclText.c
+@@ -46,6 +46,10 @@ copyright holders.
+ */
+ /* $XFree86: xc/programs/Xserver/Xprint/pcl/PclText.c,v 1.10tsi Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef DO_TWO_BYTE_PCL
+ #include "iconv.h"
+ #endif /* DO_TWO_BYTE_PCL */

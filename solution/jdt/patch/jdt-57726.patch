@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java
+index a146e51..6939aba 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java
+@@ -126,7 +126,7 @@ public class EqualExpression extends BinaryExpression {
+ 					right.constant,
+ 					rightType.id);
+ 			if (((this.bits & OperatorMASK) >> OperatorSHIFT) == NOT_EQUAL)
+-				constant = Constant.fromValue(!constant.booleanValue());
++				constant = BooleanConstant.fromValue(!constant.booleanValue());
+ 		} else {
+ 			this.constant = Constant.NotAConstant;
+ 			// no optimization for null == null

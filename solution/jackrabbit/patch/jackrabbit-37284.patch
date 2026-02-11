@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/SimpleWebdavServlet.java b/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/SimpleWebdavServlet.java
+index 63ec7fd..42777c5 100644
+--- a/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/SimpleWebdavServlet.java
++++ b/jackrabbit-webapp/src/main/java/org/apache/jackrabbit/j2ee/SimpleWebdavServlet.java
+@@ -249,7 +249,7 @@ public class SimpleWebdavServlet extends AbstractWebdavServlet {
+      * returned.
+      *
+      * @return the resource factory
+-     * @see org.apache.jackrabbit.server.AbstractWebdavServlet#getResourceFactory()
++     * @see AbstractWebdavServlet#getResourceFactory()
+      */
+     public DavResourceFactory getResourceFactory() {
+         if (resourceFactory == null) {
+@@ -312,7 +312,7 @@ public class SimpleWebdavServlet extends AbstractWebdavServlet {
+      * is returned.
+      *
+      * @return the session provider
+-     * @see org.apache.jackrabbit.server.AbstractWebdavServlet#getDavSessionProvider()
++     * @see AbstractWebdavServlet#getDavSessionProvider()
+      */
+     public synchronized DavSessionProvider getDavSessionProvider() {
+         if (davSessionProvider == null) {
+@@ -339,7 +339,7 @@ public class SimpleWebdavServlet extends AbstractWebdavServlet {
+      *
+      * @return the header value retrieved from the corresponding init parameter
+      * or {@link #DEFAULT_AUTHENTICATE_HEADER}.
+-     * @see org.apache.jackrabbit.server.AbstractWebdavServlet#getAuthenticateHeaderValue()
++     * @see AbstractWebdavServlet#getAuthenticateHeaderValue()
+      */
+     public String getAuthenticateHeaderValue() {
+         return authenticate_header;

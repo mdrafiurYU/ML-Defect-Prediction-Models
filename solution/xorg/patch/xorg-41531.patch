@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/xaa/xaaBitOrder.c b/hw/xfree86/xaa/xaaBitOrder.c
+index 9dbd00f..22e8261 100644
+--- a/hw/xfree86/xaa/xaaBitOrder.c
++++ b/hw/xfree86/xaa/xaaBitOrder.c
+@@ -4,9 +4,10 @@
+ #endif
+ 
+ #include <X11/Xmd.h>
++#include <X11/Xfuncproto.h>
+ CARD32 XAAReverseBitOrder(CARD32 v);
+ 
+-CARD32
++_X_EXPORT CARD32
+ XAAReverseBitOrder(CARD32 v)
+ {
+  return (((0x01010101 & v) << 7) | ((0x02020202 & v) << 5) | 

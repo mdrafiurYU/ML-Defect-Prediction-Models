@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index 46cb6c4..a9f9ddc 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -71,6 +71,10 @@ static Bool quirk_dt_sync_hm_vp (int scrnIndex, xf86MonPtr DDC)
+     if (memcmp (DDC->vendor.name, "VSC", 4) == 0 &&
+ 	DDC->vendor.prod_id == 58653)
+ 	return TRUE;
++    /* Samsung SyncMaster 205BW */
++    if (memcmp (DDC->vendor.name, "SAM", 4) == 0 &&
++	DDC->vendor.prod_id == 541)
++	return TRUE;
+ 
+     return FALSE;
+ }

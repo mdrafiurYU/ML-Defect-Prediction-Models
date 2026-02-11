@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/request/UnInvertedField.java b/solr/src/java/org/apache/solr/request/UnInvertedField.java
+index 0bbf2a8..c92423e 100755
+--- a/solr/src/java/org/apache/solr/request/UnInvertedField.java
++++ b/solr/src/java/org/apache/solr/request/UnInvertedField.java
+@@ -40,7 +40,6 @@ import org.apache.solr.search.*;
+ import org.apache.solr.util.ByteUtils;
+ import org.apache.solr.util.LongPriorityQueue;
+ import org.apache.solr.util.PrimUtils;
+-import org.apache.solr.util.BoundedTreeSet;
+ import org.apache.solr.handler.component.StatsValues;
+ import org.apache.solr.handler.component.FieldFacetStats;
+ import org.apache.lucene.util.OpenBitSet;
+@@ -1002,6 +1001,11 @@ class NumberedTermsEnum extends TermsEnum {
+     return tenum.docFreq();
+   }
+ 
++  @Override
++  public void cacheCurrentTerm() {
++    throw new UnsupportedOperationException();
++  }
++
+   public BytesRef skipTo(BytesRef target) throws IOException {
+ 
+     // already here

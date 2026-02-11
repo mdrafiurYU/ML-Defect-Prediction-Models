@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
+index bf936de..3cbf9cd 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
+@@ -236,12 +236,15 @@ public abstract class HierarchyBuilder {
+ 		char[] bName = typeInfo.getName();
+ 		qualifiedName = new String(ClassFile.translatedName(bName));
+ 		if (qualifiedName.equals(this.focusQualifiedName)) return getType();
+-		return this.nameLookup.findType(qualifiedName,
++		NameLookup.Answer answer = this.nameLookup.findType(qualifiedName,
+ 			false,
+ 			flag,
+ 			true/* consider secondary types */,
+ 			false/* do NOT wait for indexes */,
++			false/*don't check restrictions*/,
+ 			null);
++		return answer == null ? null : answer.type;
++		
+ 	}
+ 	protected void worked(IProgressMonitor monitor, int work) {
+ 		if (monitor != null) {

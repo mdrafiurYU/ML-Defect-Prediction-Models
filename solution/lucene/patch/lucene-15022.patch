@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java b/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
+index cd5595b..a9e9c78 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
+@@ -352,7 +352,7 @@ public class TestPhraseQuery extends LuceneTestCase {
+     IndexReader reader = writer.getReader();
+     writer.close();
+ 
+-    Searcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = new IndexSearcher(reader);
+     PhraseQuery query = new PhraseQuery();
+     query.add(new Term("field", "firstname"));
+     query.add(new Term("field", "lastname"));

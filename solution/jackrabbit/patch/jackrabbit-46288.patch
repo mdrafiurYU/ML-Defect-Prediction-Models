@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/LockDiscovery.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/LockDiscovery.java
+index 5562c5b..f834d28 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/LockDiscovery.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/LockDiscovery.java
+@@ -207,6 +207,19 @@ public class LockDiscovery extends AbstractDavProperty {
+             throw new UnsupportedOperationException("Not implemented");
+         }
+ 
++        public String getLockroot() {
++            Element root = DomUtil.getChildElement(alElement, XML_LOCKROOT, NAMESPACE);
++            if (root != null) {
++                return DomUtil.getChildTextTrim(root, XML_HREF, NAMESPACE);
++            }
++            // no lockroot element
++            return null;
++        }
++
++        public void setLockroot(String lockroot) {
++            throw new UnsupportedOperationException("Not implemented");
++        }
++
+         public Type getType() {
+             return Type.createFromXml(DomUtil.getChildElement(alElement, XML_LOCKTYPE, NAMESPACE));
+         }

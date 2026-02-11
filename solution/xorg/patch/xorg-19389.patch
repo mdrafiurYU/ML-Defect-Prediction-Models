@@ -1,0 +1,33 @@
+diff --git a/miext/shadow/shadow.h b/miext/shadow/shadow.h
+index 2b51f2c..5f4f8cc 100644
+--- a/miext/shadow/shadow.h
++++ b/miext/shadow/shadow.h
+@@ -129,6 +129,10 @@ shadowUpdateRotate16_90 (ScreenPtr    pScreen,
+ 			 shadowBufPtr pBuf);
+ 
+ void
++shadowUpdateRotate16_90YX (ScreenPtr    pScreen,
++			   shadowBufPtr pBuf);
++
++void
+ shadowUpdateRotate32_90 (ScreenPtr    pScreen,
+ 			 shadowBufPtr pBuf);
+ 
+@@ -153,9 +157,17 @@ shadowUpdateRotate16_270 (ScreenPtr    pScreen,
+ 			  shadowBufPtr pBuf);
+ 
+ void
++shadowUpdateRotate16_270YX (ScreenPtr    pScreen,
++			    shadowBufPtr pBuf);
++
++void
+ shadowUpdateRotate32_270 (ScreenPtr    pScreen,
+ 			  shadowBufPtr pBuf);
+ 
++void
++shadowUpdateRotate16 (ScreenPtr    pScreen,
++		      shadowBufPtr pBuf);
++
+ typedef void (* shadowUpdateProc)(ScreenPtr, shadowBufPtr);
+ 
+ shadowUpdateProc shadowUpdatePackedWeak(void);

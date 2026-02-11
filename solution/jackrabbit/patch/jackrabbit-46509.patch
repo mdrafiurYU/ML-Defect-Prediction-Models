@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/VersionTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/VersionTest.java
+index db152cf..ba6c597 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/VersionTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/VersionTest.java
+@@ -30,6 +30,9 @@ import java.util.Map;
+  * <code>VersionTest</code>...
+  */
+ public class VersionTest extends AbstractVersionManagementTest {
++    protected boolean isExecutable() {
++        return EvaluationUtil.isExecutable(acMgr);
++    }
+     protected JackrabbitAccessControlList getPolicy(AccessControlManager acMgr, String path, Principal princ) throws
+             RepositoryException, NotExecutableException {
+         return EvaluationUtil.getPolicy(acMgr, path, princ);

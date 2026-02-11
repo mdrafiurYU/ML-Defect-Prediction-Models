@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfig.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfig.java
+index 243d2c8..307d6c5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfig.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfig.java
+@@ -132,7 +132,7 @@ public class RepositoryConfig {
+      */
+     public static RepositoryConfig create(InputSource xml, String home)
+             throws ConfigurationException {
+-        Properties variables = new Properties();
++        Properties variables = new Properties(System.getProperties());
+         variables.setProperty(
+                 RepositoryConfigurationParser.REPOSITORY_HOME_VARIABLE, home);
+         RepositoryConfigurationParser parser =
+@@ -408,7 +408,7 @@ public class RepositoryConfig {
+             if (!homeDir.exists()) {
+                 homeDir.mkdir();
+             }
+-            Properties variables = new Properties();
++            Properties variables = new Properties(parser.getVariables());
+             variables.setProperty(
+                     RepositoryConfigurationParser.WORKSPACE_HOME_VARIABLE,
+                     homeDir.getPath());

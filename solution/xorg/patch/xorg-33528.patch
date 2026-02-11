@@ -1,0 +1,26 @@
+diff --git a/Xext/xacestr.h b/Xext/xacestr.h
+index e4db3a1..10c625b 100644
+--- a/Xext/xacestr.h
++++ b/Xext/xacestr.h
+@@ -71,13 +71,20 @@ typedef struct {
+ } XaceDrawableAccessRec;
+ 
+ /* XACE_MAP_ACCESS */
+-/* XACE_BACKGRND_ACCESS */
+ typedef struct {
+     ClientPtr client;
+     WindowPtr pWin;
+     int status;
+ } XaceMapAccessRec;
+ 
++/* XACE_CLIENT_ACCESS */
++typedef struct {
++    ClientPtr client;
++    ClientPtr target;
++    Mask access_mode;
++    int status;
++} XaceClientAccessRec;
++
+ /* XACE_EXT_DISPATCH */
+ /* XACE_EXT_ACCESS */
+ typedef struct {

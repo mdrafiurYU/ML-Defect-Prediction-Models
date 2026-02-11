@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestRemoveDuplicatesTokenFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestRemoveDuplicatesTokenFilter.java
+index 946f978..9f3a28a 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestRemoveDuplicatesTokenFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestRemoveDuplicatesTokenFilter.java
+@@ -47,6 +47,7 @@ public class TestRemoveDuplicatesTokenFilter extends BaseTokenStreamTestCase {
+           CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
+           OffsetAttribute offsetAtt = addAttribute(OffsetAttribute.class);
+           PositionIncrementAttribute posIncAtt = addAttribute(PositionIncrementAttribute.class);
++          @Override
+           public boolean incrementToken() {
+             if (toks.hasNext()) {
+               clearAttributes();

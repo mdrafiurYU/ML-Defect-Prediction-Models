@@ -1,0 +1,22 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 738bd36..a6e246a 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -402,6 +402,7 @@ GetKeyboardValuatorEvents(xEvent *events, DeviceIntPtr pDev, int type,
+     if (!events)
+         return 0;
+ 
++    /* DO NOT WANT */
+     if (type != KeyPress && type != KeyRelease)
+         return 0;
+ 
+@@ -409,6 +410,9 @@ GetKeyboardValuatorEvents(xEvent *events, DeviceIntPtr pDev, int type,
+         (pDev->coreEvents && !inputInfo.keyboard->key))
+         return 0;
+ 
++    if (key_code < 8 || key_code > 255)
++        return 0;
++
+     if (pDev->coreEvents)
+         numEvents = 2;
+     else

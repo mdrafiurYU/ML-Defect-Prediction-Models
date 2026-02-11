@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
+index 7220e8b..8d0dc84 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
+@@ -27,7 +27,7 @@ public void place() {
+ 	// register the handler inside the codeStream then normal place
+ 	codeStream.registerExceptionHandler(this);
+ 	if (CodeStream.DEBUG) System.out.println("\t\t\t\t<place at: "+codeStream.position+" - "+ this); //$NON-NLS-1$ //$NON-NLS-2$
+-	this.position = codeStream.position;
++	this.position = codeStream.getPosition();
+ }
+ 
+ public void placeEnd() {

@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LabeledStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LabeledStatement.java
+index 246d56c..ec743db 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LabeledStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LabeledStatement.java
+@@ -19,7 +19,7 @@ public class LabeledStatement extends Statement {
+ 	
+ 	public Statement statement;
+ 	public char[] label;
+-	public Label targetLabel;
++	public BranchLabel targetLabel;
+ 	public int labelEnd;
+ 
+ 	// for local variables table attributes
+@@ -59,7 +59,7 @@ public class LabeledStatement extends Statement {
+ 								flowContext,
+ 								this,
+ 								label,
+-								(targetLabel = new Label()),
++								(targetLabel = new BranchLabel()),
+ 								currentScope)),
+ 						flowInfo)
+ 					.mergedWith(labelContext.initsOnBreak);

@@ -1,0 +1,12 @@
+diff --git a/randr/randr.c b/randr/randr.c
+index 946aad3..d0bbfe5 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -1187,6 +1187,7 @@ SProcRRSelectInput (ClientPtr client)
+ 
+     swaps(&stuff->length, n);
+     swapl(&stuff->window, n);
++    swaps(&stuff->enable, n);
+     return ProcRRSelectInput(client);
+ }
+ 

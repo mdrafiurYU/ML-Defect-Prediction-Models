@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexWriter.java
+index d106088..c8d3d3e 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/VariableGapTermsIndexWriter.java
+@@ -159,7 +159,7 @@ public class VariableGapTermsIndexWriter extends TermsIndexWriterBase {
+ 
+   public VariableGapTermsIndexWriter(SegmentWriteState state, IndexTermSelector policy) throws IOException {
+     final String indexFileName = IndexFileNames.segmentFileName(state.segmentName, state.codecId, TERMS_INDEX_EXTENSION);
+-    out = state.directory.createOutput(indexFileName);
++    out = state.directory.createOutput(indexFileName, state.context);
+     boolean success = false;
+     try {
+       fieldInfos = state.fieldInfos;

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java
+index 46566fb..58cc38a 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/TestAll.java
+@@ -96,6 +96,9 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(ExternalModificationTest.class);
+         suite.addTestSuite(IsSameTest.class);
+ 
++        // repository
++        suite.addTestSuite(LoginTest.class);
++        
+         return suite;
+     }
+ }
+\ No newline at end of file

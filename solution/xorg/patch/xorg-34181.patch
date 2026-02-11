@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index d4f01d3..b5ee21d 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1307,10 +1307,6 @@ AbortDDX()
+   /*
+    * try to restore the original video state
+    */
+-#if defined(HAS_USL_VTS) && !defined(linux)
+-  /* Need the sleep when starting X from within another X session */
+-  sleep(1);
+-#endif
+ #ifdef DPMSExtension /* Turn screens back on */
+   if (DPMSPowerLevel != DPMSModeOn)
+       DPMSSet(DPMSModeOn);

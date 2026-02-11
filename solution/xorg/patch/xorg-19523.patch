@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86fbman.c b/hw/xfree86/common/xf86fbman.c
+index 31c84c4..debd828 100644
+--- a/hw/xfree86/common/xf86fbman.c
++++ b/hw/xfree86/common/xf86fbman.c
+@@ -1209,7 +1209,7 @@ xf86InitFBManager(
+    }
+ 
+    if (FullBox->y2 < FullBox->y1) return FALSE;
+-   if (FullBox->x2 < FullBox->x2) return FALSE;
++   if (FullBox->x2 < FullBox->x1) return FALSE;
+ 
+    REGION_INIT(pScreen, &ScreenRegion, &ScreenBox, 1); 
+    REGION_INIT(pScreen, &FullRegion, FullBox, 1); 

@@ -1,0 +1,33 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index 1cf643a..7db4c48 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -422,16 +422,16 @@ miSpriteSourceValidate (DrawablePtr pDrawable, int x, int y, int width,
+ 
+     SCREEN_PROLOGUE (pScreen, SourceValidate);
+ 
+-    pScreenPriv = (miSpriteScreenPtr)dixLookupPrivate(&pScreen->devPrivates,
+-						      miSpriteScreenKey);
++    if (pDrawable->type == DRAWABLE_WINDOW)
++    {
++	pScreenPriv = dixLookupPrivate(&pScreen->devPrivates,miSpriteScreenKey);
+ 
+     for(pDev = inputInfo.devices; pDev; pDev = pDev->next)
+     {
+         if (DevHasCursor(pDev))
+         {
+             pCursorInfo = MISPRITE(pDev);
+-            if (pDrawable->type == DRAWABLE_WINDOW && pCursorInfo->isUp &&
+-                    pCursorInfo->pScreen == pScreen &&
++		if (pCursorInfo->isUp && pCursorInfo->pScreen == pScreen &&
+                     ORG_OVERLAP(&pCursorInfo->saved, pDrawable->x, pDrawable->y,
+                         x, y, width, height))
+             {
+@@ -440,6 +440,7 @@ miSpriteSourceValidate (DrawablePtr pDrawable, int x, int y, int width,
+             }
+         }
+     }
++    }
+ 
+     if (pScreen->SourceValidate)
+ 	(*pScreen->SourceValidate) (pDrawable, x, y, width, height);

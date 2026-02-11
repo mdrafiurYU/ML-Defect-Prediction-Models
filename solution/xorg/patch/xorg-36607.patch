@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxscreens.c b/GL/glx/glxscreens.c
+index b49a775..41ee029 100644
+--- a/GL/glx/glxscreens.c
++++ b/GL/glx/glxscreens.c
+@@ -488,7 +488,7 @@ addMinimalSet(__GLXscreen *pGlxScreen)
+ 	    continue;
+ 
+ 	pGlxScreen->visuals[j] = config;
+-	config->visualID = visuals[j].vid;
++	config->visualID = visuals[i].vid;
+ 	j++;
+     }
+ 

@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java
+index bd22258..7f8d8c3 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java
+@@ -22,6 +22,7 @@ import javax.jcr.PropertyType;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.ValueFormatException;
+ import java.util.Calendar;
++import java.math.BigDecimal;
+ 
+ /**
+  * A <code>DateValue</code> provides an implementation
+@@ -191,4 +192,19 @@ public class DateValue extends BaseValue {
+             throw new ValueFormatException("empty value");
+         }
+     }
++
++    /**
++     * {@inheritDoc}
++     */
++    public BigDecimal getDecimal()
++            throws ValueFormatException, IllegalStateException,
++            RepositoryException {
++        setValueConsumed();
++
++        if (date != null) {
++            return new BigDecimal(date.getTimeInMillis());
++        } else {
++            throw new ValueFormatException("empty value");
++        }
++    }
+ }

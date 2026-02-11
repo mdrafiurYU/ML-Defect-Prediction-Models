@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/response/RubyResponseWriter.java b/solr/src/java/org/apache/solr/response/RubyResponseWriter.java
+index 7ee0b5b..585b248 100644
+--- a/solr/src/java/org/apache/solr/response/RubyResponseWriter.java
++++ b/solr/src/java/org/apache/solr/response/RubyResponseWriter.java
+@@ -45,7 +45,9 @@ public class RubyResponseWriter implements QueryResponseWriter {
+ 
+ class RubyWriter extends NaNFloatWriter {
+ 
++  @Override
+   protected String getNaN() { return "(0.0/0.0)"; }
++  @Override
+   protected String getInf() { return "(1.0/0.0)"; }
+ 
+   public RubyWriter(Writer writer, SolrQueryRequest req, SolrQueryResponse rsp) {

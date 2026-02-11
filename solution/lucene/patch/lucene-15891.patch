@@ -1,0 +1,23 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestConfig.java b/solr/src/test/org/apache/solr/core/TestConfig.java
+index 4d78b6b..03676c8 100644
+--- a/solr/src/test/org/apache/solr/core/TestConfig.java
++++ b/solr/src/test/org/apache/solr/core/TestConfig.java
+@@ -21,18 +21,13 @@ import org.apache.lucene.index.IndexWriter;
+ import org.apache.solr.SolrTestCaseJ4;
+ import org.apache.solr.handler.admin.ShowFileRequestHandler;
+ import org.apache.solr.request.SolrQueryRequest;
+-import org.apache.solr.search.SolrIndexReader;
+-import org.apache.solr.search.SolrIndexSearcher;
+ import org.apache.solr.update.DirectUpdateHandler2;
+ import org.apache.solr.update.SolrIndexConfig;
+-import org.apache.solr.util.RefCounted;
+ import org.junit.BeforeClass;
+ import org.junit.Test;
+ import org.w3c.dom.Node;
+ import org.w3c.dom.NodeList;
+ 
+-import static org.junit.Assert.*;
+-
+ import javax.xml.xpath.XPathConstants;
+ import java.io.IOException;
+ import java.io.InputStream;

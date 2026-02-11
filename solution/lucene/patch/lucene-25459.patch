@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/DateField.java b/solr/src/java/org/apache/solr/schema/DateField.java
+index f7e16bd..7b9f9cc 100644
+--- a/solr/src/java/org/apache/solr/schema/DateField.java
++++ b/solr/src/java/org/apache/solr/schema/DateField.java
+@@ -19,6 +19,8 @@ package org.apache.solr.schema;
+ 
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.search.Query;
+ import org.apache.lucene.search.SortField;
+ import org.apache.lucene.search.TermRangeQuery;

@@ -1,0 +1,25 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index a08acfa..409bc4d 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -298,10 +298,6 @@ void
+ exaGetImage (DrawablePtr pDrawable, int x, int y, int w, int h,
+ 	     unsigned int format, unsigned long planeMask, char *d);
+ 
+-void
+-exaGetSpans (DrawablePtr pDrawable, int wMax, DDXPointPtr ppt, int *pwidth,
+-	     int nspans, char *pdstStart);
+-
+ extern const GCOps exaOps;
+ 
+ #ifdef MITSHM
+@@ -339,6 +335,9 @@ ExaOffscreenFini (ScreenPtr pScreen);
+ 
+ /* exa.c */
+ void
++ExaDoPrepareAccess(DrawablePtr pDrawable, int index);
++
++void
+ exaPrepareAccess(DrawablePtr pDrawable, int index);
+ 
+ void

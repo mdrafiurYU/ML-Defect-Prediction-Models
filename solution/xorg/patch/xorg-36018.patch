@@ -1,0 +1,29 @@
+diff --git a/hw/dmx/glxProxy/glxcmds.c b/hw/dmx/glxProxy/glxcmds.c
+index 6771cf1..85e0f87 100644
+--- a/hw/dmx/glxProxy/glxcmds.c
++++ b/hw/dmx/glxProxy/glxcmds.c
+@@ -66,7 +66,6 @@
+ 
+ #ifdef PANORAMIX
+ #include "panoramiXsrv.h"
+-extern XID *PanoramiXVisualTable;
+ #endif
+ 
+ extern __GLXFBConfig **__glXFBConfigs;
+@@ -2824,14 +2823,8 @@ int __glXGetFBConfigs(__GLXclientState *cl, GLbyte *pc)
+ #ifdef PANORAMIX
+ 	   else if (!noPanoramiXExtension) {
+ 	      /* convert the associated visualId to the panoramix one */
+-              for (v=0; v<255; v++) {
+-		 if ( PanoramiXVisualTable[ v * MAXSCREENS + screen ] ==
+-		      associatedVisualId ) {
+-		    associatedVisualId = v;
+-		    break;
+-		 } 
+-	      }
+-	      pFBConfig->associatedVisualId = associatedVisualId;
++	      pFBConfig->associatedVisualId =
++		  PanoramiXTranslateVisualID(screen, v);
+ 	   }
+ #endif
+ 	}

@@ -1,0 +1,40 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+index 5df70bc..54f31f3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+@@ -888,6 +888,7 @@ public class CompilerOptions {
+ 			OPTION_ReportNonStaticAccessToStatic,
+ 			OPTION_ReportNullReference,
+ 			OPTION_ReportOverridingPackageDefaultMethod,
++			OPTION_ReportParameterAssignment,
+ 			OPTION_ReportPossibleAccidentalBooleanAssignment,
+ 			OPTION_ReportSyntheticAccessEmulation,
+ 			OPTION_ReportTypeParameterHiding,
+@@ -903,7 +904,6 @@ public class CompilerOptions {
+ 			OPTION_ReportUnusedPrivateMember,
+ 			OPTION_ReportVarargsArgumentNeedCast,
+ 			OPTION_ReportUnhandledWarningToken,
+-			OPTION_ReportParameterAssignment,
+ 		};
+ 		return result;
+ 	}
+@@ -955,8 +955,6 @@ public class CompilerOptions {
+ 					return "unchecked"; //$NON-NLS-1$
+ 				case (int) UnusedLabel:
+ 					return "unused"; //$NON-NLS-1$
+-				case (int) (ParameterAssignment >>> 32) :
+-					return "paramAssign"; //$NON-NLS-1$
+ 			}
+ 		}
+ 		return null;
+@@ -993,10 +991,6 @@ public class CompilerOptions {
+ 				if ("nls".equals(warningToken)) //$NON-NLS-1$
+ 					return NonExternalizedString;
+ 				break;
+-			case 'p' :
+-				if ("paramAssign".equals(warningToken)) //$NON-NLS-1$
+-					return ParameterAssignment;
+-				break;
+ 			case 's' :
+ 				if ("serial".equals(warningToken)) //$NON-NLS-1$
+ 					return MissingSerialVersion;

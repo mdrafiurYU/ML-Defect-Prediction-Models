@@ -1,0 +1,14 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java
+index bc79618..86939ec 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java
+@@ -437,7 +437,9 @@ public class ClassDescriptor {
+      * @param className
+      */
+     public void setExtend(String className) {
+-        if (className.equals("")) className = null;
++        if (className != null && className.length() == 0) {
++            className = null;
++        }
+     	this.superClassName = className;
+     }

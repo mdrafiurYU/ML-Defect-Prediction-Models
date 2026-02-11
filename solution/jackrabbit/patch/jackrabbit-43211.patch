@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersion.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersion.java
+index a6b96f9..aa4c3d7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersion.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersion.java
+@@ -49,21 +49,21 @@ public interface InternalVersion extends InternalVersionItem {
+     NodeId getFrozenNodeId();
+ 
+     /**
+-     * Equivalent to {@link Version#getCreated()}
++     * Equivalent to {@link javax.jcr.version.Version#getCreated()}
+      *
+      * @see javax.jcr.version.Version#getCreated()
+      */
+     Calendar getCreated();
+ 
+     /**
+-     * Equivalent to {@link Version#getSuccessors()}}
++     * Equivalent to {@link javax.jcr.version.Version#getSuccessors()}}
+      *
+      * @see javax.jcr.version.Version#getSuccessors()
+      */
+     InternalVersion[] getSuccessors();
+ 
+     /**
+-     * Equivalent to {@link Version#getPredecessors()}}
++     * Equivalent to {@link javax.jcr.version.Version#getPredecessors()}}
+      *
+      * @see javax.jcr.version.Version#getPredecessors()
+      */

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
+index 6080c63..14192ff 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/AbstractSession.java
+@@ -454,7 +454,7 @@ public abstract class AbstractSession implements Session {
+      * @throws SAXException if the SAX event handler failed
+      * @throws RepositoryException if another error occurs
+      */
+-    private void export(String path, Exporter exporter)
++    private synchronized void export(String path, Exporter exporter)
+             throws PathNotFoundException, SAXException, RepositoryException {
+         Item item = getItem(path);
+         if (item.isNode()) {

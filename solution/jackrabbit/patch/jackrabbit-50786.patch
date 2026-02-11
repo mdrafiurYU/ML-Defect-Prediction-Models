@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java
+index 7c6e222..5700f8b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java
+@@ -319,7 +319,6 @@ abstract class AuthorizableImpl implements Authorizable, UserConstants {
+             return true;
+         } catch (RepositoryException e) {
+             // revert all pending changes and rethrow.
+-            log.warn("Error while editing group membership:", e.getMessage());
+             getSession().refresh(false);
+             throw e;
+         }
+@@ -372,7 +371,7 @@ abstract class AuthorizableImpl implements Authorizable, UserConstants {
+                 }
+             } catch (ItemNotFoundException e) {
+                 // groupNode doesn't exist any more
+-                log.warn("Group node referenced by " + getID() + " doesn't exist -> Ignored from membership list.");
++                log.warn("Group node referenced by " + getID() + " doesn't exist anymore -> Ignored from membership list.");
+                 // TODO: ev. clean up list of group memberships
+             }
+         }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
+index 670c516..469e2ca 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
+@@ -729,7 +729,7 @@ public class RepositoryConfigurationParser extends ConfigurationParser {
+      * @return file system factory
+      * @throws ConfigurationException if the bean configuration is invalid
+      */
+-    private FileSystemFactory getFileSystemFactory(Element parent, String name)
++    protected FileSystemFactory getFileSystemFactory(Element parent, String name)
+             throws ConfigurationException {
+         final BeanConfig config = parseBeanConfig(parent, name);
+         return new FileSystemFactory() {

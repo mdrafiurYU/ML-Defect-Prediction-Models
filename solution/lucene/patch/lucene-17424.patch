@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java b/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java
+index 58e4e4d..f5809dd 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestAutomatonQuery.java
+@@ -40,6 +40,7 @@ public class TestAutomatonQuery extends LuceneTestCase {
+ 
+   private final String FN = "field";
+   
++  @Override
+   public void setUp() throws Exception {
+     super.setUp();
+     directory = newDirectory();
+@@ -65,6 +66,7 @@ public class TestAutomatonQuery extends LuceneTestCase {
+     writer.close();
+   }
+   
++  @Override
+   public void tearDown() throws Exception {
+     searcher.close();
+     reader.close();

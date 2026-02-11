@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java
+index ee1a6da..b10ae03 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/en/TestEnglishAnalyzer.java
+@@ -52,4 +52,9 @@ public class TestEnglishAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "books", "books");
+     checkOneTermReuse(a, "book", "book");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new EnglishAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

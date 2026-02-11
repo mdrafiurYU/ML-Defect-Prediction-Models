@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchJavadocTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchJavadocTests.java
+index 7c6111b..c623a8b 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchJavadocTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchJavadocTests.java
+@@ -417,6 +417,7 @@ public class JavaSearchJavadocTests extends JavaSearchTests {
+ 				getJavaSearchScope(), 
+ 				this.resultCollector);
+ 		assertSearchResults(
++				"src/j1/JavadocInvalidRef.java void j1.JavadocInvalidRef.invalid() [javadocSearchedMethod(int)] EXACT_MATCH INSIDE_JAVADOC\n" + 
+ 				"src/j1/JavadocValidRef.java void j1.JavadocValidRef.valid() [javadocSearchedMethod(String)] EXACT_MATCH INSIDE_JAVADOC",
+ 				this.resultCollector);
+ 	}
+@@ -458,6 +459,7 @@ public class JavaSearchJavadocTests extends JavaSearchTests {
+ 				getJavaSearchScope(), 
+ 				this.resultCollector);
+ 		assertSearchResults(
++				"src/j1/JavadocInvalidRef.java void j1.JavadocInvalidRef.invalid() [javadocSearchedMethod(int)] EXACT_MATCH INSIDE_JAVADOC\n" + 
+ 				"src/j1/JavadocValidRef.java void j1.JavadocValidRef.valid() [javadocSearchedMethod(String)] EXACT_MATCH INSIDE_JAVADOC",
+ 				this.resultCollector);
+ 	}

@@ -1,0 +1,13 @@
+diff --git a/Xext/xace.c b/Xext/xace.c
+index 54e910f..4d34dc3 100644
+--- a/Xext/xace.c
++++ b/Xext/xace.c
+@@ -84,7 +84,7 @@ int XaceHook(int hook, ...)
+ 	    XaceDeviceAccessRec rec = {
+ 		va_arg(ap, ClientPtr),
+ 		va_arg(ap, DeviceIntPtr),
+-		va_arg(ap, Bool),
++		va_arg(ap, Mask),
+ 		Success /* default allow */
+ 	    };
+ 	    calldata = &rec;

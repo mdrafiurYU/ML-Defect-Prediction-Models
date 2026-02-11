@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java
+index 45e11b2..ebf9dfe 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java
+@@ -284,8 +284,7 @@ public class XAItemStateManager extends LocalItemStateManager implements Interna
+             return true;
+         }
+         try {
+-            NodeReferences refs = getReferences(id);
+-            return refs.getReferences().size() > 0;
++            return getReferences(id).hasReferences();
+         } catch (ItemStateException e) {
+             return false;
+         }

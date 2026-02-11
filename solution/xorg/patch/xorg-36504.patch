@@ -1,0 +1,18 @@
+diff --git a/Xi/chdevhier.c b/Xi/chdevhier.c
+index e9a5076..36797d9 100644
+--- a/Xi/chdevhier.c
++++ b/Xi/chdevhier.c
+@@ -272,10 +272,10 @@ ProcXChangeDeviceHierarchy(ClientPtr client)
+                             goto unwind;
+                         }
+ 
+-                        if ((IsPointerDevice(newmaster) &&
+-                                    !IsPointerDevice(ptr)) ||
++                        if (!((IsPointerDevice(newmaster) &&
++                                    IsPointerDevice(ptr)) ||
+                                 (IsKeyboardDevice(newmaster) &&
+-                                 !IsKeyboardDevice(ptr)))
++                                 IsKeyboardDevice(ptr))))
+                         {
+                             rc = BadDevice;
+                             goto unwind;

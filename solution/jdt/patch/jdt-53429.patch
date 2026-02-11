@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/MethodInvocationCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/MethodInvocationCompletionTest.java
+index 0f877f0..a1c57e5 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/MethodInvocationCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/MethodInvocationCompletionTest.java
+@@ -10,6 +10,8 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ /**
+  * Completion is expected to be a MethodInvocation.
+  */
+@@ -17,6 +19,9 @@ public class MethodInvocationCompletionTest extends AbstractCompletionTest {
+ public MethodInvocationCompletionTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(MethodInvocationCompletionTest.class);
++}
+ /*
+  * Completion with no receiver inside a for statement.
+  */

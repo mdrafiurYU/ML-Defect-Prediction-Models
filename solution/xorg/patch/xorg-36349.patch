@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 6a2f7ba..bf9331e 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -349,7 +349,7 @@ getValuatorEvents(xEvent *events, DeviceIntPtr pDev, int first_valuator,
+     for (i = first_valuator; i < final_valuator; i += 6, xv++, events++) {
+         xv->type = DeviceValuator;
+         xv->first_valuator = i;
+-        xv->num_valuators = ((num_valuators - i) > 6) ? 6 : (final_valuator - i);
++        xv->num_valuators = ((final_valuator - i) > 6) ? 6 : (final_valuator - i);
+         xv->deviceid = pDev->id;
+         switch (final_valuator - i) {
+         case 6:

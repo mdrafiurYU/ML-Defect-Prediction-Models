@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/read.c b/hw/xfree86/parser/read.c
+index 308ee03..430da0a 100644
+--- a/hw/xfree86/parser/read.c
++++ b/hw/xfree86/parser/read.c
+@@ -80,8 +80,6 @@ static xf86ConfigSymTabRec TopLevelTab[] =
+ static int
+ xf86validateConfig (XF86ConfigPtr p)
+ {
+-	/*if (!xf86validateDevice (p))
+-		return FALSE;*/
+ 	if (!xf86validateScreen (p))
+ 		return FALSE;
+ 	if (!xf86validateInput (p))

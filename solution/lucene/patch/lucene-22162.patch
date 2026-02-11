@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java b/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java
+index 56b9d48..24c5256 100644
+--- a/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/TermVectorComponent.java
+@@ -208,7 +208,7 @@ public class TermVectorComponent extends SearchComponent implements SolrCoreAwar
+ 
+       if (keyField != null) {
+         Document document = reader.document(docId, fieldSelector);
+-        Fieldable uniqId = document.getField(uniqFieldName);
++        Fieldable uniqId = document.getFieldable(uniqFieldName);
+         String uniqVal = null;
+         if (uniqId != null) {
+           uniqVal = keyField.getType().storedToReadable(uniqId);

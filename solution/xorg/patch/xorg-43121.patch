@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 217e01c..30308ad 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -3155,10 +3155,11 @@ xf86_crtc_notify(ScreenPtr screen)
+ Bool
+ xf86_crtc_supports_gamma(ScrnInfoPtr pScrn)
+ {
++    if (xf86CrtcConfigPrivateIndex != -1) {
+     xf86CrtcConfigPtr xf86_config = XF86_CRTC_CONFIG_PTR(pScrn);
+     xf86CrtcPtr crtc;
+ 
+-    if ((xf86CrtcConfigPrivateIndex == -1) || !xf86_config)
++	if (!xf86_config)
+ 	return FALSE;
+ 
+     if (xf86_config->num_crtc == 0)
+@@ -3167,3 +3168,6 @@ xf86_crtc_supports_gamma(ScrnInfoPtr pScrn)
+ 
+     return (crtc->funcs->gamma_set != NULL);
+ }
++
++    return FALSE;
++}

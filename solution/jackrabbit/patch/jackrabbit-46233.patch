@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java
+index ba74e8e..9bccda8 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java
+@@ -230,6 +230,7 @@ abstract class HierarchyEntryImpl implements HierarchyEntry {
+             } else if (mergeResult.modified()) {
+                 currentState.setStatus(Status.MODIFIED);
+             } // else: not modified. just leave status as it is.
++            mergeResult.dispose();
+         }
+     }

@@ -1,0 +1,37 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+index 6b5652f..4948afc 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+@@ -81,12 +81,15 @@ public class AptPlugin extends Plugin {
+ 	}
+ 	
+ 	/**
+-	 * Convenience wrapper around log(IStatus), to log an exception.
++	 * Convenience wrapper around log(IStatus), to log an exception
++	 * with severity of ERROR.
+ 	 */
+ 	public static void log(Throwable e, String message) {
+ 		// TODO: before ship, remove this printing. Instead just log
+ 		System.err.println(message);
+-		e.printStackTrace();
++		if (e != null) {
++			e.printStackTrace();
++		}
+ 		
+ 		log(new Status(IStatus.ERROR, PLUGIN_ID, STATUS_EXCEPTION, message, e)); 
+ 	}
+@@ -107,6 +110,14 @@ public class AptPlugin extends Plugin {
+ 		return new Status(IStatus.WARNING, PLUGIN_ID, STATUS_EXCEPTION, message, e);
+ 	}
+ 	
++	/**
++	 * Convenience wrapper for rethrowing exceptions as CoreExceptions,
++	 * with severity of INFO.
++	 */
++	public static Status createInfoStatus(Throwable e, String message) {
++		return new Status(IStatus.INFO, PLUGIN_ID, STATUS_EXCEPTION, message, e);
++	}
++	
+ 	private void initDebugTracing() {		
+ 		String option = Platform.getDebugOption(APT_DEBUG_OPTION);
+ 		if(option != null) DEBUG = option.equalsIgnoreCase("true") ; //$NON-NLS-1$

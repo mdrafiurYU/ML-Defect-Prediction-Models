@@ -1,0 +1,24 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index 0ed7e68..8409ece 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -2014,11 +2014,6 @@ XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies)
+         }
+     }
+ 
+-    if (inputInfo.keyboard->key->xkbInfo &&
+-        inputInfo.keyboard->key->xkbInfo->desc == dst) {
+-        pDev = inputInfo.keyboard;
+-    }
+-    else {
+         for (tmpDev = inputInfo.devices; tmpDev && !pDev;
+              tmpDev = tmpDev->next) {
+             if (tmpDev->key && tmpDev->key->xkbInfo &&
+@@ -2035,7 +2030,6 @@ XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies)
+                 break;
+             }
+         }
+-    }
+ 
+     if (sendNotifies) {
+         if (!pDev) {

@@ -1,0 +1,12 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 3398949..d0cc858 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -122,6 +122,7 @@ typedef struct _GrabRec {
+ 
+ typedef struct _KeyClassRec {
+     CARD8		down[DOWN_LENGTH];
++    CARD8		postdown[DOWN_LENGTH];
+     KeyCode 		*modifierKeyMap;
+     KeySymsRec		curKeySyms;
+     int			modifierKeyCount[8];

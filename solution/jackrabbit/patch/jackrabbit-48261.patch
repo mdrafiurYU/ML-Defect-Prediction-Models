@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java
+index e109075..4572f8f 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java
+@@ -61,4 +61,28 @@ public interface QPropertyDefinition extends QItemDefinition {
+      * @return the 'multiple' flag.
+      */
+     public boolean isMultiple();
++
++    /**
++     * Returns the availabe query operators.
++     *
++     * @return the availabe query operators.
++     * @since JCR 2.0
++     */
++    public Name[] getAvailableQueryOperators();
++
++    /**
++     * Reports whether this property definition is full text searchable.
++     *
++     * @return <code>true</code> if this property definition is full text searchable.
++     * @since JCR 2.0
++     */
++    public boolean isFullTextSearcheable();
++
++    /**
++     * Reports whether this property definition is query-orderable.
++     *
++     * @return <code>true</code> if this property definition is query-orderable.
++     * @since JCR 2.0
++     */
++    public boolean isQueryOrderable();
+ }

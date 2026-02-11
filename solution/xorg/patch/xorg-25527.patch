@@ -1,0 +1,13 @@
+diff --git a/GL/glx/indirect_util.c b/GL/glx/indirect_util.c
+index 93f1484..2d64f33 100644
+--- a/GL/glx/indirect_util.c
++++ b/GL/glx/indirect_util.c
+@@ -28,7 +28,7 @@
+ #include <X11/Xmd.h>
+ #include <GL/gl.h>
+ #include <GL/glxproto.h>
+-#ifdef __linux__
++#if defined(__linux__) || defined(__GNU__)
+ #include <byteswap.h>
+ #elif defined(__OpenBSD__)
+ #include <sys/endian.h>

@@ -1,0 +1,15 @@
+diff --git a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+index 38860cb..c1d73d0 100644
+--- a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
++++ b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+@@ -874,6 +874,10 @@ public class MemoryIndex implements Serializable {
+       }
+ 
+       @Override
++      public void cacheCurrentTerm() {
++      }
++
++      @Override
+       public long ord() {
+         return termUpto;
+       }

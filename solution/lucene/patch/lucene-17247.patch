@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java b/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
+index 606ee1e..635970f 100644
+--- a/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
++++ b/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
+@@ -39,8 +39,10 @@ public class TestFileSwitchDirectory extends LuceneTestCase {
+     fileExtensions.add(IndexFileNames.FIELDS_EXTENSION);
+     fileExtensions.add(IndexFileNames.FIELDS_INDEX_EXTENSION);
+     
+-    Directory primaryDir = new MockDirectoryWrapper(random, new RAMDirectory());
+-    Directory secondaryDir = new MockDirectoryWrapper(random, new RAMDirectory());
++    MockDirectoryWrapper primaryDir = new MockDirectoryWrapper(random, new RAMDirectory());
++    primaryDir.setCheckIndexOnClose(false); // only part of an index
++    MockDirectoryWrapper secondaryDir = new MockDirectoryWrapper(random, new RAMDirectory());
++    secondaryDir.setCheckIndexOnClose(false); // only part of an index
+     
+     FileSwitchDirectory fsd = new FileSwitchDirectory(fileExtensions, primaryDir, secondaryDir, true);
+     IndexWriter writer = new IndexWriter(

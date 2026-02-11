@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+index ecfee8a..80a335e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+@@ -1001,6 +1001,8 @@ public class CompilerOptions {
+ 			case 'n' :
+ 				if ("nls".equals(warningToken)) //$NON-NLS-1$
+ 					return NonExternalizedString;
++				if ("null".equals(warningToken)) //$NON-NLS-1$
++					return NullReference;
+ 				break;
+ 			case 's' :
+ 				if ("serial".equals(warningToken)) //$NON-NLS-1$

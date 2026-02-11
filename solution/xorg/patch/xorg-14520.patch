@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winengine.c b/hw/xwin/winengine.c
+index c7eb128..f0bc671 100644
+--- a/hw/xwin/winengine.c
++++ b/hw/xwin/winengine.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include "winmsg.h"
+ 

@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java
+index 6ab0fe9..7610f13 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java
+@@ -13,6 +13,8 @@ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
+ import java.util.Map;
+ 
++import junit.framework.Test;
++
+ import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
+ 
+ 
+@@ -21,6 +23,9 @@ public class AnnotationCompletionParserTest extends AbstractCompletionTest {
+ public AnnotationCompletionParserTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(AnnotationCompletionParserTest.class);
++}
+ 
+ protected Map getCompilerOptions() {
+ 	Map options = super.getCompilerOptions();

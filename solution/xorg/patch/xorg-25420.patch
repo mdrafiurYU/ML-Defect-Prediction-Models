@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index 7dfcfea..659e566 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -133,6 +133,9 @@ typedef struct {
+ 	Bool		allowClosedown;
+ 	ServerGrabInfoRec server;
+     } grabInfo;
++
++    Bool        allowEmptyInput;  /* Allow the server to start with no input
++                                   * devices. */
+ } xf86InfoRec, *xf86InfoPtr;
+ 
+ #ifdef DPMSExtension

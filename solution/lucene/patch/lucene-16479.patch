@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+index f8e67b2..c18d764 100644
+--- a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
++++ b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+@@ -244,6 +244,11 @@ public final class FuzzyTermsEnum extends TermsEnum {
+   public int docFreq() {
+     return actualEnum.docFreq();
+   }
++
++  @Override
++  public long totalTermFreq() {
++    return actualEnum.totalTermFreq();
++  }
+   
+   @Override
+   public DocsEnum docs(Bits skipDocs, DocsEnum reuse) throws IOException {

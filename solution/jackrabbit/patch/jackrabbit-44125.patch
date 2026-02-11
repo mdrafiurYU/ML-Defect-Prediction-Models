@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java
+index 5aa3074..be2a03a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java
+@@ -246,7 +246,7 @@ public class LockTest extends AbstractJCRTest {
+     public void testCheckedIn()
+             throws NotExecutableException, RepositoryException {
+ 
+-        if (!isSupported(Repository.OPTION_LOCKING_SUPPORTED)) {
++        if (!isSupported(Repository.OPTION_VERSIONING_SUPPORTED)) {
+             throw new NotExecutableException("Versioning is not supported.");
+         }

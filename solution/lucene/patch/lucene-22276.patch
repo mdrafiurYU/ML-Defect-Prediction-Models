@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynLookup.java b/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynLookup.java
+index 4cc4836..215e200 100644
+--- a/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynLookup.java
++++ b/lucene/contrib/wordnet/src/java/org/apache/lucene/wordnet/SynLookup.java
+@@ -124,7 +124,7 @@ public class SynLookup {
+ 		List<String> top = new LinkedList<String>(); // needs to be separately listed..
+ 
+ 		// [1] Parse query into separate words so that when we expand we can avoid dups
+-		TokenStream ts = a.tokenStream( field, new StringReader( query));
++		TokenStream ts = a.reusableTokenStream( field, new StringReader( query));
+     CharTermAttribute termAtt = ts.addAttribute(CharTermAttribute.class);
+     
+ 		while (ts.incrementToken()) {

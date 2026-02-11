@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java
+index e6563af..34e8714 100644
+--- a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java
++++ b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/TestBuilderParticipant.java
+@@ -17,16 +17,16 @@ public class TestBuilderParticipant extends CompilationParticipant {
+ 
+ 	public static CompilationParticipant PARTICIPANT;
+ 
+-public int buildStarting(IJavaProject project) {
+-	return PARTICIPANT.buildStarting(project);
++public int aboutToBuild(IJavaProject project) {
++	return PARTICIPANT.aboutToBuild(project);
+ }
+ 
+ public void cleanStarting(IJavaProject project) {
+ 	PARTICIPANT.cleanStarting(project);
+ }
+ 
+-public void compileStarting(ICompilationParticipantResult[] files) {
+-	PARTICIPANT.compileStarting(files);
++public void buildStarting(ICompilationParticipantResult[] files) {
++	PARTICIPANT.buildStarting(files);
+ }
+ 
+ public boolean isActive(IJavaProject project) {

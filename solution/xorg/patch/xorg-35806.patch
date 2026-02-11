@@ -1,0 +1,30 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 622c318..605c6b3 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -733,7 +733,6 @@ typedef enum {
+     FLAG_DISABLEMODINDEV,
+     FLAG_MODINDEVALLOWNONLOCAL,
+     FLAG_ALLOWMOUSEOPENFAIL,
+-    FLAG_VTINIT,
+     FLAG_VTSYSREQ,
+     FLAG_XKBDISABLE,
+     FLAG_PCIPROBE1,
+@@ -785,8 +784,6 @@ static OptionInfoRec FlagOptions[] = {
+ 	{0}, FALSE },
+   { FLAG_ALLOWMOUSEOPENFAIL,	"AllowMouseOpenFail",		OPTV_BOOLEAN,
+ 	{0}, FALSE },
+-  { FLAG_VTINIT,		"VTInit",			OPTV_STRING,
+-	{0}, FALSE },
+   { FLAG_VTSYSREQ,		"VTSysReq",			OPTV_BOOLEAN,
+ 	{0}, FALSE },
+   { FLAG_XKBDISABLE,		"XkbDisable",			OPTV_BOOLEAN,
+@@ -977,8 +974,6 @@ configServerFlags(XF86ConfFlagsPtr flagsconf, XF86OptionPtr layoutopts)
+ #endif
+     }
+ 
+-    xf86Info.vtinit = xf86GetOptValString(FlagOptions, FLAG_VTINIT);
+-
+     if (xf86IsOptionSet(FlagOptions, FLAG_PCIPROBE1))
+ 	xf86Info.pciFlags = PCIProbe1;
+     if (xf86IsOptionSet(FlagOptions, FLAG_PCIPROBE2))

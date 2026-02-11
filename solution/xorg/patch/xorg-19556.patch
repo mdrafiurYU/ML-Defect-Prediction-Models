@@ -1,0 +1,102 @@
+diff --git a/Xi/gtmotion.c b/Xi/gtmotion.c
+index 60de64e..435ab0b 100644
+--- a/Xi/gtmotion.c
++++ b/Xi/gtmotion.c
+@@ -1,5 +1,3 @@
+-/* $Xorg: gtmotion.c,v 1.4 2001/02/09 02:04:34 xorgcvs Exp $ */
+-
+ /************************************************************
+ 
+ Copyright 1989, 1998  The Open Group
+@@ -45,7 +43,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ********************************************************/
+-/* $XFree86: xc/programs/Xserver/Xi/gtmotion.c,v 3.6 2001/10/28 03:32:53 tsi Exp $ */
+ 
+ /***********************************************************************
+  *
+@@ -113,15 +110,13 @@ ProcXGetDeviceMotionEvents(ClientPtr client)
+ 
+     REQUEST_SIZE_MATCH(xGetDeviceMotionEventsReq);
+     dev = LookupDeviceIntRec (stuff->deviceid);
+-    if (dev == NULL)
+-	{
++    if (dev == NULL) {
+ 	SendErrorToClient(client, IReqCode, X_GetDeviceMotionEvents, 0, 
+ 	    BadDevice);
+ 	return Success;
+ 	}
+     v = dev->valuator;
+-    if (v==NULL || v->numAxes == 0)
+-	{
++    if (v == NULL || v->numAxes == 0) {
+ 	SendErrorToClient(client, IReqCode, X_GetDeviceMotionEvents, 0, 
+ 	    BadMatch);
+ 	return Success;
+@@ -139,45 +134,38 @@ ProcXGetDeviceMotionEvents(ClientPtr client)
+     start = ClientTimeToServerTime(stuff->start);
+     stop = ClientTimeToServerTime(stuff->stop);
+     if (CompareTimeStamps(start, stop) == LATER ||
+-	CompareTimeStamps(start, currentTime) == LATER)
+-	{
++	CompareTimeStamps(start, currentTime) == LATER) {
+     	WriteReplyToClient(client, sizeof(xGetDeviceMotionEventsReply), &rep);
+         return Success;
+ 	}
+     if (CompareTimeStamps(stop, currentTime) == LATER)
+         stop = currentTime;
+     num_events = v->numMotionEvents;
+-    if (num_events)
+-    {
++    if (num_events) {
+ 	size = sizeof(Time) + (axes * sizeof (INT32));
+ 	tsize = num_events * size;
+ 	coords = (INT32 *) ALLOCATE_LOCAL(tsize);
+-	if (!coords)
+-	    {
++	if (!coords) {
+ 	    SendErrorToClient(client, IReqCode, X_GetDeviceMotionEvents, 0, 
+ 	        BadAlloc);
+ 	    return Success;
+ 	    }
+-	rep.nEvents = (v->GetMotionProc) (
+-		dev, (xTimecoord *)coords, /* XXX */
+-		start.milliseconds, stop.milliseconds, (ScreenPtr)NULL);
++	rep.nEvents = (v->GetMotionProc) (dev, (xTimecoord *) coords,	/* XXX */
++					  start.milliseconds, stop.milliseconds,
++					  (ScreenPtr) NULL);
+     }
+-    if (rep.nEvents > 0)
+-	{
++    if (rep.nEvents > 0) {
+         length = (rep.nEvents * size +3) >> 2;
+         rep.length = length;
+ 	}
+     nEvents = rep.nEvents;
+     WriteReplyToClient(client, sizeof(xGetDeviceMotionEventsReply), &rep);
+-    if (nEvents)
+-        {
+-	if (client->swapped)
+-	    {
++    if (nEvents) {
++	if (client->swapped) {
+     	    register 	char n;
+ 
+ 	    bufptr = coords;
+-	    for (i=0; i<nEvents * (axes+1); i++)
+-		{
++	    for (i = 0; i < nEvents * (axes + 1); i++) {
+     		swapl(bufptr, n);
+ 		bufptr++;
+ 		}
+@@ -197,7 +185,8 @@ ProcXGetDeviceMotionEvents(ClientPtr client)
+  */
+ 
+ void
+-SRepXGetDeviceMotionEvents (ClientPtr client, int size, xGetDeviceMotionEventsReply *rep)
++SRepXGetDeviceMotionEvents(ClientPtr client, int size,
++			   xGetDeviceMotionEventsReply * rep)
+ {
+     register char n;
+ 

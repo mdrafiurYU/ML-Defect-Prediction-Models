@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/vgaBitBlt.c b/hw/xfree86/xf4bpp/vgaBitBlt.c
+index dc7b796..e133122 100644
+--- a/hw/xfree86/xf4bpp/vgaBitBlt.c
++++ b/hw/xfree86/xf4bpp/vgaBitBlt.c
+@@ -5,6 +5,10 @@
+ 
+ /* $XConsortium: vgaBitBlt.c /main/8 1996/10/27 11:06:39 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "vgaReg.h"

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/CodecUtil.java b/lucene/src/java/org/apache/lucene/util/CodecUtil.java
+index 1ee912e..93aa5dc 100644
+--- a/lucene/src/java/org/apache/lucene/util/CodecUtil.java
++++ b/lucene/src/java/org/apache/lucene/util/CodecUtil.java
+@@ -31,6 +31,8 @@ import java.io.IOException;
+  */
+ 
+ public final class CodecUtil {
++  private CodecUtil() {} // no instance
++
+   private final static int CODEC_MAGIC = 0x3fd76c17;
+ 
+   public static IndexOutput writeHeader(IndexOutput out, String codec, int version)

@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+index 882c9d8..e762474 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+@@ -379,6 +379,7 @@ public class NodeTypeManagerImpl extends AbstractNodeTypeManager implements Jack
+      */
+     public NodeTypeIterator getAllNodeTypes() throws RepositoryException {
+         Name[] ntNames = ntReg.getRegisteredNodeTypes();
++        Arrays.sort(ntNames);
+         ArrayList<NodeType> list = new ArrayList<NodeType>(ntNames.length);
+         for (Name ntName : ntNames) {
+             list.add(getNodeType(ntName));
+@@ -391,6 +392,7 @@ public class NodeTypeManagerImpl extends AbstractNodeTypeManager implements Jack
+      */
+     public NodeTypeIterator getPrimaryNodeTypes() throws RepositoryException {
+         Name[] ntNames = ntReg.getRegisteredNodeTypes();
++        Arrays.sort(ntNames);
+         ArrayList<NodeType> list = new ArrayList<NodeType>(ntNames.length);
+         for (Name ntName : ntNames) {
+             NodeType nt = getNodeType(ntName);
+@@ -406,6 +408,7 @@ public class NodeTypeManagerImpl extends AbstractNodeTypeManager implements Jack
+      */
+     public NodeTypeIterator getMixinNodeTypes() throws RepositoryException {
+         Name[] ntNames = ntReg.getRegisteredNodeTypes();
++        Arrays.sort(ntNames);
+         ArrayList<NodeType> list = new ArrayList<NodeType>(ntNames.length);
+         for (Name ntName : ntNames) {
+             NodeType nt = getNodeType(ntName);

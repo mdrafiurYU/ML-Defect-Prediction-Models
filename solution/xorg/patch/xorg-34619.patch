@@ -1,0 +1,12 @@
+diff --git a/hw/darwin/apple/bundle-main.c b/hw/darwin/apple/bundle-main.c
+index d46e7b2..10d2f20 100644
+--- a/hw/darwin/apple/bundle-main.c
++++ b/hw/darwin/apple/bundle-main.c
+@@ -615,6 +615,7 @@ display_exists_p (int number)
+ 		return FALSE;
+ 	
+     sprintf (buf, ":%d", number);
++    conn = xcb_connect(buf, NULL);
+     if (xcb_connection_has_error(conn)) return FALSE;
+ 	
+     xcb_disconnect(conn);

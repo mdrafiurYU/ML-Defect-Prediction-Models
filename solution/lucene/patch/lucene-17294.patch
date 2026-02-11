@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestRealTime.java b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestRealTime.java
+index 383cd80..413d7f5 100644
+--- a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestRealTime.java
++++ b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestRealTime.java
+@@ -36,7 +36,7 @@ public class TestRealTime extends LuceneTestCase {
+ 
+     InstantiatedIndex index = new InstantiatedIndex();
+     InstantiatedIndexReader reader = new InstantiatedIndexReader(index);
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     InstantiatedIndexWriter writer = new InstantiatedIndexWriter(index);
+ 
+     Document doc;

@@ -1,0 +1,20 @@
+diff --git a/dix/events.c b/dix/events.c
+index bf2df9f..0b9b768 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -6604,15 +6604,3 @@ ExtGrabDevice(ClientPtr client,
+     return GrabSuccess;
+ }
+ 
+-
+-_X_EXPORT int
+-ExtUngrabDevice(ClientPtr client, DeviceIntPtr dev)
+-{
+-    GrabInfoPtr grabinfo = &dev->deviceGrab;
+-    if (grabinfo->grab && SameClient(grabinfo->grab, client))
+-        (*grabinfo->DeactivateGrab)(dev);
+-    return GrabSuccess;
+-}
+-
+-
+-

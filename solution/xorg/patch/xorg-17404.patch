@@ -1,0 +1,12 @@
+diff --git a/Xext/shm.c b/Xext/shm.c
+index b30a368..806008c 100644
+--- a/Xext/shm.c
++++ b/Xext/shm.c
+@@ -1233,6 +1233,7 @@ SProcShmCreatePixmap(client)
+     REQUEST(xShmCreatePixmapReq);
+     swaps(&stuff->length, n);
+     REQUEST_SIZE_MATCH(xShmCreatePixmapReq);
++    swapl(&stuff->pid, n);
+     swapl(&stuff->drawable, n);
+     swaps(&stuff->width, n);
+     swaps(&stuff->height, n);

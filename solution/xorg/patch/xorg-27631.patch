@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index 0476a68..77c0c87 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -27,6 +27,10 @@
+  */
+ #ifdef HAVE_XORG_CONFIG_H
+ #include <xorg-config.h>
++#else
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ #endif
+ 
+ #include "xf86.h"

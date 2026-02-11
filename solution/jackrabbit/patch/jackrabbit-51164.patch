@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/HoldEffectTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/HoldEffectTest.java
+index 2798a09..60c6aca 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/HoldEffectTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/HoldEffectTest.java
+@@ -44,7 +44,7 @@ public class HoldEffectTest extends AbstractRetentionTest {
+         childP = testRootNode.setProperty(propertyName1, v);
+         superuser.save();
+ 
+-        otherS = helper.getSuperuserSession();
++        otherS = getHelper().getSuperuserSession();
+     }
+ 
+     protected void tearDown() throws Exception {

@@ -1,0 +1,14 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 0a93c3b..4c5a9b7 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -426,9 +426,6 @@ Dispatch(void)
+ 
+ 	nready = WaitForSomething(clientReady);
+ 
+-        /* this is an enormous hack and NEEDS TO GO AWAY. */
+-        configDispatch();
+-
+ #ifdef SMART_SCHEDULE
+ 	if (nready && !SmartScheduleDisable)
+ 	{

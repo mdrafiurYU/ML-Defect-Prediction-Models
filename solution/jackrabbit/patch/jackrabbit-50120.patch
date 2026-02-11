@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java
+index 81c2b57..380dd9d 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QPropertyDefinition.java
+@@ -45,7 +45,7 @@ public interface QPropertyDefinition extends QItemDefinition {
+      *
+      * @return the array of value constraints.
+      */
+-    public String[] getValueConstraints();
++    public QValueConstraint[] getValueConstraints();
+ 
+     /**
+      * Returns the array of default values or <code>null</code> if no default
+@@ -68,7 +68,7 @@ public interface QPropertyDefinition extends QItemDefinition {
+      * @return the availabe query operators.
+      * @since JCR 2.0
+      */
+-    public Name[] getAvailableQueryOperators();
++    public String[] getAvailableQueryOperators();
+ 
+     /**
+      * Reports whether this property definition is full text searchable.

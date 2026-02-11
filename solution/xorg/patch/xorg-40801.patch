@@ -1,0 +1,16 @@
+diff --git a/hw/xquartz/pbproxy/x-selection.h b/hw/xquartz/pbproxy/x-selection.h
+index 0be8d81..7a26a21 100644
+--- a/hw/xquartz/pbproxy/x-selection.h
++++ b/hw/xquartz/pbproxy/x-selection.h
+@@ -32,8 +32,10 @@
+ #define X_SELECTION_H 1
+ 
+ #include "pbproxy.h"
++
++#include <X11/extensions/Xfixes.h>
++
+ #include <AppKit/NSPasteboard.h>
+-#include <X11/extensions/xfixes.h>
+ 
+ /* This stores image data or text. */
+ struct propdata {

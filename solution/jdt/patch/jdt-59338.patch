@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ArrayTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ArrayTest.java
+index b0da99e..8bc1234 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ArrayTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ArrayTest.java
+@@ -116,8 +116,10 @@ public void test005() {
+ 				"\n",
+ 				ClassFileBytesDisassembler.DETAILED); 
+ 	} catch (org.eclipse.jdt.core.util.ClassFormatException e) {
++		e.printStackTrace();
+ 		assertTrue("ClassFormatException", false);
+ 	} catch (IOException e) {
++		e.printStackTrace();
+ 		assertTrue("IOException", false);
+ 	}

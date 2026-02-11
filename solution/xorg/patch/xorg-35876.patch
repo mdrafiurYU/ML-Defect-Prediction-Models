@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Rotate.c b/hw/xfree86/modes/xf86Rotate.c
+index c129d9b..e2d6295 100644
+--- a/hw/xfree86/modes/xf86Rotate.c
++++ b/hw/xfree86/modes/xf86Rotate.c
+@@ -580,7 +580,7 @@ xf86CrtcRotate (xf86CrtcPtr crtc, DisplayModePtr mode, Rotation rotation)
+     }
+     else
+     {
+-	PictureTransformTranslate (&crtc_to_fb, &fb_to_crtc, crtc->x, crtc->y);
++	PictureTransformTranslate (&crtc_to_fb, &fb_to_crtc, F(crtc->x), F(crtc->y));
+ 	PictureTransformIsInverse ("offset", &crtc_to_fb, &fb_to_crtc);
+ 	
+ 	/* 

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java
+index 45eed81..ff1e2bb 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java
+@@ -56,7 +56,7 @@ public class NodeDiscoveringNodeTypesTest extends AbstractJCRTest {
+         isReadOnly = true;
+         super.setUp();
+ 
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+         testRootNode = session.getRootNode().getNode(testPath);
+         NodeIterator nodes = testRootNode.getNodes();
+         try {

@@ -1,0 +1,23 @@
+diff --git a/hw/kdrive/fake/fake.c b/hw/kdrive/fake/fake.c
+index b06e766..25b0c81 100644
+--- a/hw/kdrive/fake/fake.c
++++ b/hw/kdrive/fake/fake.c
+@@ -56,18 +56,9 @@ fakeCardInit (KdCardInfo *card)
+     return TRUE;
+ }
+ 
+-static Bool
+-fakeModeSupported (KdScreenInfo		*screen,
+-		    const KdMonitorTiming	*t)
+-{
+-    return TRUE;
+-}
+-
+ Bool
+ fakeScreenInitialize (KdScreenInfo *screen, FakeScrPriv *scrpriv)
+ {
+-    const KdMonitorTiming *t;
+-    
+     if (!screen->width || !screen->height)
+     {
+ 	screen->width = 1024;

@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/glxProxy/glxswap.c b/hw/dmx/glxProxy/glxswap.c
+index 8fa04f8..1e184f9 100644
+--- a/hw/dmx/glxProxy/glxswap.c
++++ b/hw/dmx/glxProxy/glxswap.c
+@@ -402,7 +402,7 @@ void SwapBarrierReset(void)
+     int  i;
+ 
+     for (i = 0; i <= GLX_MAX_SWAP_BARRIERS; i++) {
+-	SwapBarrierPtr  pBarrier, pNextBarrier;;
++	SwapBarrierPtr  pBarrier, pNextBarrier;
+ 	for (pBarrier = SwapBarrierList[i];
+ 	     pBarrier;
+ 	     pBarrier = pNextBarrier) {

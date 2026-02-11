@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java b/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
+index f98619f..0f93567 100644
+--- a/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
++++ b/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
+@@ -110,7 +110,7 @@ public class MockIndexOutputWrapper extends IndexOutput {
+       }
+       throw new IOException(message);
+     } else {
+-      if (dir.randomState.nextBoolean()) {
++      if (dir.randomState.nextInt(200) == 0) {
+         final int half = len/2;
+         delegate.writeBytes(b, offset, half);
+         Thread.yield();

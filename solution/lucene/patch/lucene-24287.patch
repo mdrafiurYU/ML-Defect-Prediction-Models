@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java b/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java
+index 2dd1d87..b717550 100644
+--- a/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java
++++ b/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java
+@@ -37,6 +37,10 @@ public abstract class FieldCacheSource extends ValueSource {
+     return cache;
+   }
+ 
++  public String getField() {
++    return field;
++  }
++
+   @Override
+   public String description() {
+     return field;

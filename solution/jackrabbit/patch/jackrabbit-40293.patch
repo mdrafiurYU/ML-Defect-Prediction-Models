@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Column.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Column.java
+index d6d71e1..7e07cf9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Column.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Column.java
+@@ -54,12 +54,13 @@ package org.apache.jackrabbit.core.query.jsr283.qom;
+  * @since JCR 2.0
+  */
+ public interface Column {
++
+     /**
+      * Gets the name of the selector.
+      *
+      * @return the selector name; non-null
+      */
+-    public String getSelectorName();
++    String getSelectorName();
+ 
+     /**
+      * Gets the name of the property.
+@@ -68,7 +69,7 @@ public interface Column {
+      *         each single-value non-residual property of the
+      *         selector's node type
+      */
+-    public String getPropertyName();
++    String getPropertyName();
+ 
+     /**
+      * Gets the column name.
+@@ -78,5 +79,6 @@ public interface Column {
+      *         <code>getPropertyName</code> is null and non-null
+      *         otherwise
+      */
+-    public String getColumnName();
++    String getColumnName();
++
+ }

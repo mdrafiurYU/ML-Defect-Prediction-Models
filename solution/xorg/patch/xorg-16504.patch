@@ -1,0 +1,15 @@
+diff --git a/composite/compinit.c b/composite/compinit.c
+index 5109a74..bc4099b 100644
+--- a/composite/compinit.c
++++ b/composite/compinit.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif

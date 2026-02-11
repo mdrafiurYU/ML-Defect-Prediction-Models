@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/Outputs.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/Outputs.java
+index 18f4dc2..66efc3f 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/Outputs.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/Outputs.java
+@@ -54,4 +54,8 @@ public abstract class Outputs<T> {
+   public abstract T getNoOutput();
+ 
+   public abstract String outputToString(T output);
++
++  public T merge(T first, T second) {
++    throw new UnsupportedOperationException();
++  }
+ }

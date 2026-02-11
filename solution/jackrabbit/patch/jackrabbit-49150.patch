@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index 6c94a50..49f9142 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -39,6 +39,7 @@ import org.apache.jackrabbit.core.config.SecurityManagerConfig;
+ import org.apache.jackrabbit.core.config.VersioningConfig;
+ import org.apache.jackrabbit.core.config.WorkspaceConfig;
+ import org.apache.jackrabbit.core.data.DataStore;
++import org.apache.jackrabbit.core.data.DataStoreException;
+ import org.apache.jackrabbit.core.fs.BasedFileSystem;
+ import org.apache.jackrabbit.core.fs.FileSystem;
+ import org.apache.jackrabbit.core.fs.FileSystemException;
+@@ -1147,6 +1148,15 @@ public class RepositoryImpl extends AbstractRepository
+                 log.error("failed to persist repository properties", e);
+             }
+         }
++        
++        if (dataStore != null) {
++            try {
++                // close the datastore
++                dataStore.close();
++            } catch (DataStoreException e) {
++                log.error("error while closing datastore", e);
++            }
++        }
+ 
+         if (repStore != null) {
+             try {

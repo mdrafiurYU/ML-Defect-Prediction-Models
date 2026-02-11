@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+index 8b4cc88..2ee792a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDef.java
+@@ -308,21 +308,16 @@ public class NodeTypeDef implements Cloneable {
+ 
+     //-------------------------------------------< java.lang.Object overrides >
+     public Object clone() {
+-        try {
+-            NodeTypeDef clone = (NodeTypeDef) super.clone();
+-            clone.name = name;
+-            clone.primaryItemName = primaryItemName;
+-            clone.supertypes = supertypes; // immutable, thus ok to share
+-            clone.mixin = mixin;
+-            clone.orderableChildNodes = orderableChildNodes;
+-            clone.abstractStatus = abstractStatus;
+-            clone.nodeDefs = (HashSet) nodeDefs.clone();
+-            clone.propDefs = (HashSet) propDefs.clone();
+-            return clone;
+-        } catch (CloneNotSupportedException e) {
+-            // won't happen
+-            throw new InternalError("Failed to clone NodeTypeDef object");
+-        }
++        NodeTypeDef clone = new NodeTypeDef();
++        clone.name = name;
++        clone.primaryItemName = primaryItemName;
++        clone.supertypes = supertypes; // immutable, thus ok to share
++        clone.mixin = mixin;
++        clone.orderableChildNodes = orderableChildNodes;
++        clone.abstractStatus = abstractStatus;
++        clone.nodeDefs = (HashSet) nodeDefs.clone();
++        clone.propDefs = (HashSet) propDefs.clone();
++        return clone;
+     }
+ 
+     public boolean equals(Object obj) {

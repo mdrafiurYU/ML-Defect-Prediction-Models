@@ -1,0 +1,22 @@
+diff --git a/Xi/stubs.c b/Xi/stubs.c
+index 27afcea..0678c4c 100644
+--- a/Xi/stubs.c
++++ b/Xi/stubs.c
+@@ -296,3 +296,17 @@ ChangeDeviceControl(register ClientPtr client, DeviceIntPtr dev,
+ 	return (BadMatch);
+     }
+ }
++
++
++/****************************************************************************
++ *
++ * Caller: configAddDevice (and others)
++ *
++ * Add a new device with the specified options.
++ *
++ */
++void
++NewInputDeviceRequest(InputOption *options)
++{
++    return;
++}

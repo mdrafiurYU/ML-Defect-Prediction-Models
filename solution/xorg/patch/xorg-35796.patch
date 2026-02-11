@@ -1,0 +1,21 @@
+diff --git a/dix/dixfonts.c b/dix/dixfonts.c
+index 04f1f1b..8def6ee 100644
+--- a/dix/dixfonts.c
++++ b/dix/dixfonts.c
+@@ -1934,12 +1934,15 @@ GetDefaultPointSize ()
+ FontResolutionPtr
+ GetClientResolutions (int *num)
+ {
++#ifdef XPRINT
+     if (requestingClient && requestingClient->fontResFunc != NULL &&
+ 	!requestingClient->clientGone)
+     {
+ 	return (*requestingClient->fontResFunc)(requestingClient, num);
+     }
+-    else {
++    else
++#endif
++    {
+ 	static struct _FontResolution res;
+ 	ScreenPtr   pScreen;
+ 

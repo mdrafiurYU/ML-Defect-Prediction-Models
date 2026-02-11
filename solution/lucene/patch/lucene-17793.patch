@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/MockDataSource.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/MockDataSource.java
+index 7b747d7..6fd7213 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/MockDataSource.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/MockDataSource.java
+@@ -45,13 +45,16 @@ public class MockDataSource extends
+     cache.clear();
+   }
+ 
++  @Override
+   public void init(Context context, Properties initProps) {
+   }
+ 
++  @Override
+   public Iterator<Map<String, Object>> getData(String query) {
+     return cache.get(query);
+   }
+ 
++  @Override
+   public void close() {
+     cache.clear();

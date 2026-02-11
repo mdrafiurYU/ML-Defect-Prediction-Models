@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionHistoryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionHistoryTest.java
+index 02ea6a6..137682a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionHistoryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionHistoryTest.java
+@@ -86,6 +86,12 @@ public class VersionHistoryTest extends AbstractVersionTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        vHistory = null;
++        version = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test if initially there is an auto-created root version present in the
+      * version history.

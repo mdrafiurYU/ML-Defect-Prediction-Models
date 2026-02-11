@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/os-support/shared/ioperm_noop.c b/hw/xfree86/os-support/shared/ioperm_noop.c
+index 1d7851a..805cacc 100644
+--- a/hw/xfree86/os-support/shared/ioperm_noop.c
++++ b/hw/xfree86/os-support/shared/ioperm_noop.c
+@@ -35,13 +35,13 @@
+ #include "xf86Priv.h"
+ #include "xf86_OSlib.h"
+ 
+-_X_EXPORT Bool
++Bool
+ xf86EnableIO()
+ {
+ 	return TRUE;
+ }
+ 
+-_X_EXPORT void
++void
+ xf86DisableIO()
+ {
+ 	return;

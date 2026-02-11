@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/update/processor/SignatureUpdateProcessorFactoryTest.java b/solr/src/test/org/apache/solr/update/processor/SignatureUpdateProcessorFactoryTest.java
+index 9b07cab..25f1a63 100755
+--- a/solr/src/test/org/apache/solr/update/processor/SignatureUpdateProcessorFactoryTest.java
++++ b/solr/src/test/org/apache/solr/update/processor/SignatureUpdateProcessorFactoryTest.java
+@@ -62,7 +62,7 @@ public class SignatureUpdateProcessorFactoryTest extends SolrTestCaseJ4 {
+   void checkNumDocs(int n) {
+     SolrQueryRequest req = req();
+     try {
+-      assertEquals(n, req.getSearcher().getReader().numDocs());
++      assertEquals(n, req.getSearcher().getIndexReader().numDocs());
+     } finally {
+       req.close();
+     }

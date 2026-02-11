@@ -1,0 +1,14 @@
+diff --git a/exa/exa_offscreen.c b/exa/exa_offscreen.c
+index 53931d8..d62db90 100644
+--- a/exa/exa_offscreen.c
++++ b/exa/exa_offscreen.c
+@@ -349,7 +349,9 @@ exaOffscreenInit (ScreenPtr pScreen)
+     area->next = NULL;
+     area->score = 0;
+ 
++#if DEBUG_OFFSCREEN
+     ErrorF("============ initial memory block of %d\n", area->size);
++#endif
+ 
+     /* Add it to the free areas */
+     pExaScr->info->card.offScreenAreas = area;

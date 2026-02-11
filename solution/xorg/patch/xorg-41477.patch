@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/ramdac/xf86RamDac.h b/hw/xfree86/ramdac/xf86RamDac.h
+index 1f03dfb..3d2982e 100644
+--- a/hw/xfree86/ramdac/xf86RamDac.h
++++ b/hw/xfree86/ramdac/xf86RamDac.h
+@@ -113,8 +113,6 @@ RamDacHelperRecPtr RamDacHelperCreateInfoRec(void);
+ void RamDacDestroyInfoRec(RamDacRecPtr RamDacRec);
+ void RamDacHelperDestroyInfoRec(RamDacHelperRecPtr RamDacRec);
+ Bool RamDacInit(ScrnInfoPtr pScrn, RamDacRecPtr RamDacRec);
+-void RamDacSetGamma(ScrnInfoPtr pScrn, Bool Real8BitDac);
+-void RamDacRestoreDACValues(ScrnInfoPtr pScrn);
+ Bool RamDacHandleColormaps(ScreenPtr pScreen, int maxColors, int sigRGBbits,
+ 			   unsigned int flags);
+ void RamDacFreeRec(ScrnInfoPtr pScrn);

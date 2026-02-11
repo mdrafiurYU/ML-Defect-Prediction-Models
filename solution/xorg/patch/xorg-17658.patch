@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/drm/xf86drmRandom.c b/hw/xfree86/os-support/drm/xf86drmRandom.c
+index 8db57a5..301aaf4 100644
+--- a/hw/xfree86/os-support/drm/xf86drmRandom.c
++++ b/hw/xfree86/os-support/drm/xf86drmRandom.c
+@@ -73,6 +73,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #define RANDOM_MAIN 0
+ 
+ #if RANDOM_MAIN

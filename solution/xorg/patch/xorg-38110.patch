@@ -1,0 +1,21 @@
+diff --git a/hw/xnest/Args.c b/hw/xnest/Args.c
+index 209f175..b95f700 100644
+--- a/hw/xnest/Args.c
++++ b/hw/xnest/Args.c
+@@ -49,16 +49,6 @@ int xnestNumScreens = 0;
+ Bool xnestDoDirectColormaps = False;
+ Window xnestParentWindow = 0;
+ 
+-/* ddxInitGlobals - called by |InitGlobals| from os/util.c */
+-void ddxInitGlobals(void)
+-{
+-#ifdef COMPOSITE
+-    /* XXX terrible hack */
+-    extern Bool noCompositeExtension;
+-    noCompositeExtension = TRUE;
+-#endif
+-}
+-
+ int
+ ddxProcessArgument (int argc, char *argv[], int i)
+ {

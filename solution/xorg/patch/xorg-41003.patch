@@ -1,0 +1,14 @@
+diff --git a/dix/events.c b/dix/events.c
+index 9cdf49f..05f9947 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4383,7 +4383,8 @@ EnterNotifies(DeviceIntPtr pDev,
+ 	return;
+     EnterNotifies(pDev, ancestor, parent, mode, detail);
+     EnterLeaveEvent(pDev, EnterNotify, mode, detail, parent,
+-                    child->drawable.id); }
++                    child->drawable.id);
++}
+ 
+ 
+ /**

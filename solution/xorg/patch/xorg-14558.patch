@@ -1,0 +1,20 @@
+diff --git a/Xext/xevie.c b/Xext/xevie.c
+index 5566418..fa9568c 100644
+--- a/Xext/xevie.c
++++ b/Xext/xevie.c
+@@ -142,13 +142,13 @@ XevieExtensionInit ()
+     if (!AddCallback(&ServerGrabCallback,XevieServerGrabStateCallback,NULL))
+        return;
+ 
+-    if (extEntry = AddExtension (XEVIENAME,
++    if ((extEntry = AddExtension (XEVIENAME,
+ 				0,
+ 				XevieNumberErrors,
+ 				ProcDispatch,
+ 				SProcDispatch,
+ 				ResetProc,
+-				StandardMinorOpcode)) {
++				StandardMinorOpcode))) {
+ 	ReqCode = (unsigned char)extEntry->base;
+ 	ErrorBase = extEntry->errorBase;
+     }

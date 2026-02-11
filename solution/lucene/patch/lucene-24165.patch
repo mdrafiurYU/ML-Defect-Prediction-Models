@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+index 82e9760..3fc7266 100644
+--- a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
++++ b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+@@ -61,6 +61,11 @@ public final class SlowMultiReaderWrapper extends FilterIndexReader {
+   }
+ 
+   @Override
++  public String toString() {
++    return "SlowMultiReaderWrapper(" + in + ")";
++  }
++
++  @Override
+   public Fields fields() throws IOException {
+     return MultiFields.getFields(in);
+   }

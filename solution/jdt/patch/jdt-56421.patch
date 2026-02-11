@@ -1,0 +1,33 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java
+index 6ccd15a..13dc56e 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java
+@@ -23,6 +23,10 @@ public char[] superQualification;
+ public char[] superSimpleName;
+ public char superClassOrInterface;
+ 
++// set to CLASS_SUFFIX for only matching classes 
++// set to INTERFACE_SUFFIX for only matching interfaces
++// set to TYPE_SUFFIX for matching both classes and interfaces
++public char typeSuffix; 
+ public char[] pkgName;
+ public char[] simpleName;
+ public char[] enclosingTypeName;
+@@ -152,6 +156,17 @@ public SuperTypeReferencePattern(
+ 	((InternalSearchPattern)this).mustResolve = superQualification != null;
+ 	this.superRefKind = superRefKind;
+ }
++public SuperTypeReferencePattern(
++	char[] superQualification,
++	char[] superSimpleName,
++	int superRefKind,
++	char typeSuffix,
++	int matchRule) {
++
++	this(superQualification, superSimpleName, superRefKind, matchRule);
++	this.typeSuffix = typeSuffix;
++	((InternalSearchPattern)this).mustResolve = superQualification != null || typeSuffix != IIndexConstants.TYPE_SUFFIX;
++}
+ SuperTypeReferencePattern(int matchRule) {
+ 	super(SUPER_REF_PATTERN, matchRule);
+ }

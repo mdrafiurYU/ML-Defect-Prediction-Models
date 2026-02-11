@@ -1,0 +1,16 @@
+diff --git a/include/pixmapstr.h b/include/pixmapstr.h
+index 4162c66..5f0e0c5 100644
+--- a/include/pixmapstr.h
++++ b/include/pixmapstr.h
+@@ -72,10 +72,10 @@ typedef struct _Drawable {
+ 
+ typedef struct _Pixmap {
+     DrawableRec		drawable;
++    PrivateRec		*devPrivates;
+     int			refcnt;
+     int			devKind;
+     DevUnion		devPrivate;
+-    PrivateRec		*devPrivates;
+ #ifdef COMPOSITE
+     short		screen_x;
+     short		screen_y;

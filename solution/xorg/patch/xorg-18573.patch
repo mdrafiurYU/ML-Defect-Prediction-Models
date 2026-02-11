@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_KbdMap.c b/hw/xfree86/os-support/bsd/bsd_KbdMap.c
+index fcff3d6..d225c1f 100644
+--- a/hw/xfree86/os-support/bsd/bsd_KbdMap.c
++++ b/hw/xfree86/os-support/bsd/bsd_KbdMap.c
+@@ -8,6 +8,10 @@
+  * and from xf86KbdCODrv.c by Holger Veit
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xmd.h>
+ #include "input.h"

@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/src/kaa.c b/hw/kdrive/src/kaa.c
+index 7ee6c0b..9cf9bf2 100644
+--- a/hw/kdrive/src/kaa.c
++++ b/hw/kdrive/src/kaa.c
+@@ -294,7 +294,7 @@ kaaDestroyPixmap (PixmapPtr pPixmap)
+ }
+ 
+ static PixmapPtr 
+-kaaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth)
++kaaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth, unsigned usage_hint)
+ {
+     PixmapPtr		pPixmap;
+     KaaPixmapPrivPtr	pKaaPixmap;

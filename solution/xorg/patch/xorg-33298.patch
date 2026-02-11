@@ -1,0 +1,22 @@
+diff --git a/dix/window.c b/dix/window.c
+index e33140d..02496f5 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -529,8 +529,6 @@ InitRootWindow(WindowPtr pWin)
+     /* We SHOULD check for an error value here XXX */
+     (*pScreen->ChangeWindowAttributes)(pWin, backFlag);
+ 
+-    XaceHook(XACE_WINDOW_INIT, serverClient, pWin);
+-
+     MapWindow(pWin, serverClient);
+ }
+ 
+@@ -763,8 +761,6 @@ CreateWindow(Window wid, register WindowPtr pParent, int x, int y, unsigned w,
+     REGION_NULL(pScreen, &pWin->winSize);
+     REGION_NULL(pScreen, &pWin->borderSize);
+ 
+-    XaceHook(XACE_WINDOW_INIT, client, pWin);
+-
+     pHead = RealChildHead(pParent);
+     if (pHead)
+     {

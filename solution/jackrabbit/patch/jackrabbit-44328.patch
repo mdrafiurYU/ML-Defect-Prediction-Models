@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+index 70d6278..d678b59 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+@@ -1322,13 +1322,17 @@ public abstract class ItemImpl implements Item {
+     //--------------------------------------------------------------< Object >
+ 
+     /**
+-     * Returns the ({@link #safeGetJCRPath() safe}) path of this item
+-     * for use in diagnostic output.
++     * Returns a string with the type and ({@link #safeGetJCRPath() safe}) path
++     * of this item for use in diagnostic output.
+      *
+      * @return item path
+      */
+     public String toString() {
+-        return safeGetJCRPath();
++        if (isNode()) {
++            return "node " + safeGetJCRPath();
++        } else {
++            return "property " + safeGetJCRPath();
++        }
+     }
+ 
+ }

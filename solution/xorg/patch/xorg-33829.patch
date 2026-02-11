@@ -1,0 +1,14 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index db5007e..6384857 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -500,9 +500,7 @@ RRCrtcInit (void)
+     RRCrtcType = CreateNewResourceType (RRCrtcDestroyResource);
+     if (!RRCrtcType)
+ 	return FALSE;
+-#ifdef XResExtension
+ 	RegisterResourceName (RRCrtcType, "CRTC");
+-#endif
+     return TRUE;
+ }
+ 

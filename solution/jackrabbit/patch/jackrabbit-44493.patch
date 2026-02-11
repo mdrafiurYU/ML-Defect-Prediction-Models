@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndexReader.java
+index 3a7dc6a..861cd9a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndexReader.java
+@@ -25,7 +25,7 @@ import java.io.IOException;
+  * <code>MultiIndexReader</code> exposes methods to get access to the contained
+  * {@link IndexReader}s of this <code>MultiIndexReader</code>.
+  */
+-public interface MultiIndexReader {
++public interface MultiIndexReader extends ReleaseableIndexReader {
+ 
+     /**
+      * @return the <code>IndexReader</code>s that are contained in this
+@@ -53,5 +53,4 @@ public interface MultiIndexReader {
+      * @throws IOException if an error occurs while reading from the index.
+      */
+     int getDocumentNumber(ForeignSegmentDocId docId) throws IOException;
+-
+ }

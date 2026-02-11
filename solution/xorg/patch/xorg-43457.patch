@@ -1,0 +1,35 @@
+diff --git a/glx/glxdri.c b/glx/glxdri.c
+index 8fb90cb..fb95782 100644
+--- a/glx/glxdri.c
++++ b/glx/glxdri.c
+@@ -647,7 +647,7 @@ __glXDRIscreenCreateContext(__GLXscreen *baseScreen,
+ 	if (visual->vid == glxConfig->visualID)
+ 	    break;
+     if (i == pScreen->numVisuals)
+-	return GL_FALSE;
++	return NULL;
+ 
+     context->hwContextID = FakeClientID(0);
+ 
+@@ -656,6 +656,9 @@ __glXDRIscreenCreateContext(__GLXscreen *baseScreen,
+ 			      context->hwContextID, &hwContext);
+     __glXleaveServer(GL_FALSE);
+ 
++    if (!retval)
++    	return NULL;
++
+     context->driContext =
+ 	screen->legacy->createNewContext(screen->driScreen,
+ 					 config->driConfig,
+@@ -707,6 +710,11 @@ __glXDRIscreenCreateDrawable(__GLXscreen *screen,
+ 			       pDraw, &hwDrawable);
+     __glXleaveServer(GL_FALSE);
+ 
++    if (!retval) {
++    	xfree(private);
++    	return NULL;
++    }
++
+     /* The last argument is 'attrs', which is used with pbuffers which
+      * we currently don't support. */
+ 

@@ -1,0 +1,38 @@
+diff --git a/miext/rootless/safeAlpha/safeAlphaPicture.c b/miext/rootless/safeAlpha/safeAlphaPicture.c
+index 57f1ae1..8f66315 100644
+--- a/miext/rootless/safeAlpha/safeAlphaPicture.c
++++ b/miext/rootless/safeAlpha/safeAlphaPicture.c
+@@ -46,6 +46,7 @@
+ #include "fbpict.h"
+ #include "safeAlpha.h"
+ #include "rootlessCommon.h"
++# define mod(a,b)	((b) == 1 ? 0 : (a) >= 0 ? (a) % (b) : (b) - (-a) % (b))
+ 
+ /* Optimized version of fbCompositeSolidMask_nx8x8888 */
+ void
+@@ -145,6 +146,16 @@ SafeAlphaComposite (CARD8           op,
+ 		    CARD16          width,
+ 		    CARD16          height)
+ {
++  if (!pSrc) {
++    ErrorF("SafeAlphaComposite: pSrc must not be null!\n");
++    return;
++  }
++
++  if (!pDst) {
++    ErrorF("SafeAlphaComposite: pDst must not be null!\n");
++    return;
++  }
++  
+     int oldDepth = pDst->pDrawable->depth;
+     int oldFormat = pDst->format;
+     
+@@ -167,7 +178,7 @@ SafeAlphaComposite (CARD8           op,
+         pDst->format = PICT_a8r8g8b8;
+     }
+     
+-    if (pSrc && pMask && pSrc->pDrawable && pMask->pDrawable &&
++  if (pSrc->pDrawable && pMask && pMask->pDrawable &&
+ 	!pSrc->transform && !pMask->transform &&
+ 	!pSrc->alphaMap && !pMask->alphaMap &&
+ 	!pMask->repeat && !pMask->componentAlpha && !pDst->alphaMap &&

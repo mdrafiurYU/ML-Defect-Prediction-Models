@@ -1,0 +1,15 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/el/GreekAnalyzerTest.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/el/GreekAnalyzerTest.java
+index d8a1f69..88e924e 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/el/GreekAnalyzerTest.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/el/GreekAnalyzerTest.java
+@@ -87,4 +87,9 @@ public class GreekAnalyzerTest extends BaseTokenStreamTestCase {
+     assertAnalyzesToReuse(a, "ΠΡΟΫΠΟΘΕΣΕΙΣ  Άψογος, ο μεστός και οι άλλοι",
+         new String[] { "προυποθεσ", "αψογ", "μεστ", "αλλ" });
+   }
+-	}
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new GreekAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
++}

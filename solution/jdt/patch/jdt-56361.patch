@@ -1,0 +1,45 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/util/IStackMapAttribute.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/util/IStackMapAttribute.java
+new file mode 100644
+index 0000000..e3b1aa3
+--- /dev/null
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/util/IStackMapAttribute.java
+@@ -0,0 +1,39 @@
++/*******************************************************************************
++ * Copyright (c) 2000, 2005 IBM Corporation and others.
++ * All rights reserved. This program and the accompanying materials
++ * are made available under the terms of the Eclipse Public License v1.0
++ * which accompanies this distribution, and is available at
++ * http://www.eclipse.org/legal/epl-v10.html
++ *
++ * Contributors:
++ *     IBM Corporation - initial API and implementation
++ *******************************************************************************/
++package org.eclipse.jdt.core.util;
++
++/**
++ * This class represents a stack map attribute.
++ * 
++ * This interface may be implemented by clients.
++ *  
++ * @since 3.2
++ */
++public interface IStackMapAttribute extends IClassFileAttribute {
++	
++	/**
++	 * Answer back the number of stack map frames of this atribute as specified in
++	 * the JVM specifications.
++	 * 
++	 * @return the number of stack map frames of this atribute as specified in
++	 * the JVM specifications
++	 */
++	int getNumberOfEntries();
++
++	/**
++	 * Answer back the stack map frames for this attribute as specified
++	 * in the JVM specifications.
++	 * 
++	 * @return the stack map frames for this attribute as specified
++	 * in the JVM specifications
++	 */
++	IStackMapFrame[] getStackMapFrame();
++}

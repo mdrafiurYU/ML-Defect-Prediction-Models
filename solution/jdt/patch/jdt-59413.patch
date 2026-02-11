@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+index 7e6f2ba..d6b99c9 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+@@ -1679,6 +1679,7 @@ public abstract class Scope implements TypeConstants, TypeIds {
+ 											if (problemField == null)
+ 												problemField = temp;
+ 										} else if (temp.isStatic()) {
++											if (foundField == temp) continue;
+ 											ImportReference importReference = importBinding.reference;
+ 											if (importReference != null) importReference.used = true;
+ 											if (foundInImport)

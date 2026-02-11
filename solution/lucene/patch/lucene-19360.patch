@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/update/DeleteUpdateCommand.java b/solr/src/java/org/apache/solr/update/DeleteUpdateCommand.java
+index ff2ad47..79b865a 100644
+--- a/solr/src/java/org/apache/solr/update/DeleteUpdateCommand.java
++++ b/solr/src/java/org/apache/solr/update/DeleteUpdateCommand.java
+@@ -30,6 +30,7 @@ public class DeleteUpdateCommand extends UpdateCommand {
+     super("delete", req);
+   }
+ 
++  @Override
+   public String toString() {
+     StringBuilder sb = new StringBuilder(commandName);
+     sb.append(':');

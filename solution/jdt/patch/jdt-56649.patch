@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Clinit.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Clinit.java
+index 0872cea..d6d445d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Clinit.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Clinit.java
+@@ -45,7 +45,8 @@ public class Clinit extends AbstractMethodDeclaration {
+ 					FlowInfo.DEAD_END);
+ 
+ 			// check for missing returning path
+-			this.needFreeReturn = flowInfo.isReachable();
++			this.needFreeReturn = (flowInfo.tagBits & FlowInfo.UNREACHABLE) == 0;
++
+ 
+ 			// check missing blank final field initializations
+ 			flowInfo = flowInfo.mergedWith(staticInitializerFlowContext.initsOnReturn);

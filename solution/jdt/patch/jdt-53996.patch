@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 1ea7534..8b446c6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -4367,6 +4367,14 @@ public void notCompatibleTypesErrorInForeach(Expression expression, TypeBinding
+ 		expression.sourceStart,
+ 		expression.sourceEnd);
+ }
++public void noAdditionalBoundAfterTypeVariable(TypeReference boundReference) {
++	this.handle(
++		IProblem.NoAdditionalBoundAfterTypeVariable,
++		new String[] { new String(boundReference.resolvedType.readableName()) },
++		new String[] { new String(boundReference.resolvedType.shortReadableName()) },
++		boundReference.sourceStart,
++		boundReference.sourceEnd);
++}
+ public void objectCannotBeGeneric(TypeDeclaration typeDecl) {
+ 	this.handle(
+ 		IProblem.ObjectCannotBeGeneric,

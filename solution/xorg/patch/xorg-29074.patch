@@ -1,0 +1,22 @@
+diff --git a/os/log.c b/os/log.c
+index b1d628c..e8aa3fa 100644
+--- a/os/log.c
++++ b/os/log.c
+@@ -221,7 +221,7 @@ LogInit(const char *fname, const char *backup)
+ }
+ 
+ void
+-LogClose()
++LogClose(void)
+ {
+     if (logFile) {
+ 	fclose(logFile);
+@@ -616,7 +616,7 @@ Error(char *str)
+ }
+ 
+ void
+-LogPrintMarkers()
++LogPrintMarkers(void)
+ {
+     /* Show what the message marker symbols mean. */
+     ErrorF("Markers: ");

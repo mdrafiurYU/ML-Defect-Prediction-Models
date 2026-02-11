@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xf4bpp/mfbzerarc.c b/hw/xfree86/xf4bpp/mfbzerarc.c
+index c7a8c4d..61fc7b1 100644
+--- a/hw/xfree86/xf4bpp/mfbzerarc.c
++++ b/hw/xfree86/xf4bpp/mfbzerarc.c
+@@ -108,7 +108,8 @@ v16ZeroArcSS
+     int pmask;
+     register int *paddr;
+ 
+-    if (((mfbPrivGC *)(pGC->devPrivates[mfbGetGCPrivateIndex()].ptr))->rop ==
++    if (((mfbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++				       mfbGetGCPrivateKey()))->rop ==
+ 	RROP_BLACK)
+ 	pixel = 0;
+     else

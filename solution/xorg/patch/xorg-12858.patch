@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglcomp.c b/hw/xgl/xglcomp.c
+index 3783af9..3d153f3 100644
+--- a/hw/xgl/xglcomp.c
++++ b/hw/xgl/xglcomp.c
+@@ -72,9 +72,6 @@ xglComp (CARD8		 op,
+     BoxPtr	    pBox;
+     int		    nBox;
+ 
+-    if (pDst->dither != None)
+-	return FALSE;
+-    
+     if (pDst->alphaMap)
+ 	return FALSE;
+ 

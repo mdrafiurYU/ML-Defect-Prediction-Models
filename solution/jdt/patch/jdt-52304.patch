@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java
+index dc7d371..06c6d8d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java
+@@ -214,7 +214,7 @@ public class LocalDeclaration extends AbstractVariableDeclaration {
+ 												&& initialization.isConstantValueOfTypeAssignableToType(initializationType, scope.environment().computeBoxingType(variableType)))) {
+ 						this.initialization.computeConversion(scope, variableType, initializationType);
+ 					} else {
+-						scope.problemReporter().typeMismatchError(initializationType, variableType, this);
++						scope.problemReporter().typeMismatchError(initializationType, variableType, this.initialization);
+ 					}
+ 				}
+ 			}

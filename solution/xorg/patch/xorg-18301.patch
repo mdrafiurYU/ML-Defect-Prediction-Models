@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglhash.c b/hw/xgl/xglhash.c
+index 2635422..c6c22ad 100644
+--- a/hw/xgl/xglhash.c
++++ b/hw/xgl/xglhash.c
+@@ -52,7 +52,7 @@ Bool
+ xglLoadHashFuncs (void *handle)
+ {
+ 
+-#ifdef XLOADABLE
++#ifdef XGL_MODULAR
+     xglSymbolRec sym[] = {
+ 	SYM (__hashFunc.NewHashTable,	      "_mesa_NewHashTable"),
+ 	SYM (__hashFunc.DeleteHashTable,      "_mesa_DeleteHashTable"),

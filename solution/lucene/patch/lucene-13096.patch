@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestDocSet.java b/solr/src/test/org/apache/solr/search/TestDocSet.java
+index f37b34f..e52aecb 100644
+--- a/solr/src/test/org/apache/solr/search/TestDocSet.java
++++ b/solr/src/test/org/apache/solr/search/TestDocSet.java
+@@ -35,7 +35,7 @@ import org.apache.lucene.search.DocIdSetIterator;
+  * @version $Id$
+  */
+ public class TestDocSet extends LuceneTestCase {
+-  Random rand = new Random();
++  Random rand = random;
+   float loadfactor;
+ 
+   public OpenBitSet getRandomSet(int sz, int bitsToSet) {

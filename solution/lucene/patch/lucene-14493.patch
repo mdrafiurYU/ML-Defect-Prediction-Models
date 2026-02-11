@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java
+index 0d1832a..fa87f7f 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsWriter.java
+@@ -74,7 +74,6 @@ public class PrefixCodedTermsWriter extends FieldsConsumer {
+     this.termComp = termComp;
+     out = state.directory.createOutput(termsFileName);
+     termsIndexWriter.setTermsOutput(out);
+-    state.flushedFiles.add(termsFileName);
+ 
+     fieldInfos = state.fieldInfos;
+     writeHeader(out);

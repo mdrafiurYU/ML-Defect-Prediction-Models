@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeAddMixinTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeAddMixinTest.java
+index cf3df71..100473b 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeAddMixinTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeAddMixinTest.java
+@@ -180,7 +180,7 @@ public class NodeAddMixinTest extends AbstractJCRTest {
+ 
+         Session session = testRootNode.getSession();
+ 
+-        if (!isSupported(Repository.OPTION_LOCKING_SUPPORTED)) {
++        if (!isSupported(Repository.OPTION_VERSIONING_SUPPORTED)) {
+             throw new NotExecutableException("Versioning is not supported.");
+         }

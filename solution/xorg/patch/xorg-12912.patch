@@ -1,0 +1,23 @@
+diff --git a/hw/xwin/winmultiwindowwndproc.c b/hw/xwin/winmultiwindowwndproc.c
+index 0254bb0..3987511 100755
+--- a/hw/xwin/winmultiwindowwndproc.c
++++ b/hw/xwin/winmultiwindowwndproc.c
+@@ -265,14 +265,18 @@ ValidateSizing (HWND hwnd, WindowPtr pWin,
+   return TRUE;
+ }
+ 
++extern Bool winInDestroyWindowsWindow;
+ static void winRaiseWindow(WindowPtr pWin)
+ {
++  if (!winInDestroyWindowsWindow)
++  {
+     /* Call configure window directly to make sure it gets processed 
+      * in time
+      */
+     XID vlist[1] = { 0 }; 
+     ConfigureWindow(pWin, CWStackMode, vlist, NULL); 
+ }
++}
+ 
+ 
+ /*

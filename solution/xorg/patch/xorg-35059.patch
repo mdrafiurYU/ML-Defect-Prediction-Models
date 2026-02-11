@@ -1,0 +1,21 @@
+diff --git a/include/dixstruct.h b/include/dixstruct.h
+index 2a3e696..7f14aba 100644
+--- a/include/dixstruct.h
++++ b/include/dixstruct.h
+@@ -29,6 +29,7 @@ SOFTWARE.
+ #include "cursor.h"
+ #include "gc.h"
+ #include "pixmap.h"
++#include "privates.h"
+ #include <X11/Xmd.h>
+ 
+ /*
+@@ -110,7 +111,7 @@ typedef struct _Client {
+     Bool	big_requests;		/* supports large requests */
+     int		priority;
+     ClientState clientState;
+-    DevUnion	*devPrivates;
++    PrivateRec	*devPrivates;
+ #ifdef XKB
+     unsigned short	xkbClientFlags;
+     unsigned short	mapNotifyMask;

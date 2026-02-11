@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+index f30ca3f..6805351 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+@@ -614,6 +614,7 @@ public final class QValueFactoryImpl implements QValueFactory {
+                     }
+                 }
+             } finally {
++                in.close();
+                 if (out != null) {
+                     out.close();
+                 }

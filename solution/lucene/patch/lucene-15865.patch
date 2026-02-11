@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/TotalHitCountCollector.java b/lucene/src/java/org/apache/lucene/search/TotalHitCountCollector.java
+index 444fa67..533d69c 100644
+--- a/lucene/src/java/org/apache/lucene/search/TotalHitCountCollector.java
++++ b/lucene/src/java/org/apache/lucene/search/TotalHitCountCollector.java
+@@ -17,7 +17,7 @@ package org.apache.lucene.search;
+  * limitations under the License.
+  */
+ 
+-import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ 
+ /**
+  * Just counts the total number of hits.
+@@ -38,7 +38,7 @@ public class TotalHitCountCollector extends Collector {
+     totalHits++;
+   }
+ 
+-  public void setNextReader(IndexReader reader, int docBase) {
++  public void setNextReader(AtomicReaderContext context) {
+   }
+ 
+   public boolean acceptsDocsOutOfOrder() {

@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/en/KStemFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/en/KStemFilter.java
+index 859180a..6e88ab9 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/en/KStemFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/en/KStemFilter.java
+@@ -55,8 +55,7 @@ public final class KStemFilter extends TokenFilter {
+     char[] term = termAttribute.buffer();
+     int len = termAttribute.length();
+     if ((!keywordAtt.isKeyword()) && stemmer.stem(term, len)) {
+-      char[] chars = stemmer.asString().toCharArray();
+-      termAttribute.copyBuffer(chars, 0, chars.length);
++      termAttribute.setEmpty().append(stemmer.asCharSequence());
+     }
+ 
+     return true;

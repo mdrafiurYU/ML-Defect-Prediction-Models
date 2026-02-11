@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/Signature.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/Signature.java
+index 8385652..f24b975 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/Signature.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/Signature.java
+@@ -1409,7 +1409,7 @@ public static char[][] getTypeParameters(char[] methodOrTypeSignature) throws Il
+ 			if (i < 0 || i >= length) 
+ 				throw new IllegalArgumentException();
+ 			// iterate over bounds
+-			nextBound: while (methodOrTypeSignature[i] == ':') {
++			while (methodOrTypeSignature[i] == ':') {
+ 				i++; // skip colon
+ 				switch (methodOrTypeSignature[i]) {
+ 					case ':':

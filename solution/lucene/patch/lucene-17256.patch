@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/TopTermsRewrite.java b/lucene/src/java/org/apache/lucene/search/TopTermsRewrite.java
+index b75ec16..472e99d 100644
+--- a/lucene/src/java/org/apache/lucene/search/TopTermsRewrite.java
++++ b/lucene/src/java/org/apache/lucene/search/TopTermsRewrite.java
+@@ -87,7 +87,7 @@ public abstract class TopTermsRewrite<Q extends Query> extends TermCollectingRew
+       @Override
+       public boolean collect(BytesRef bytes) throws IOException {
+         final float boost = boostAtt.getBoost();
+-        // ignore uncompetetive hits
++        // ignore uncompetitive hits
+         if (stQueue.size() == maxSize) {
+           final ScoreTerm t = stQueue.peek();
+           if (boost < t.boost)

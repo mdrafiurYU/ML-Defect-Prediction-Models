@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ati/ati_draw.c b/hw/kdrive/ati/ati_draw.c
+index 28cc7b0..f71dac5 100644
+--- a/hw/kdrive/ati/ati_draw.c
++++ b/hw/kdrive/ati/ati_draw.c
+@@ -897,7 +897,7 @@ ATIDrawEnable(ScreenPtr pScreen)
+ void
+ ATIDrawDisable(ScreenPtr pScreen)
+ {
+-
++	kaaWaitSync(pScreen);
+ 	ATIDMATeardown(pScreen);
+ }
+ 

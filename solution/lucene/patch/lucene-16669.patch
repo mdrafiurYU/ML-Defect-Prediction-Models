@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/FunctionQuery.java b/solr/src/java/org/apache/solr/search/function/FunctionQuery.java
+index 44eb99e..beb43bc 100644
+--- a/solr/src/java/org/apache/solr/search/function/FunctionQuery.java
++++ b/solr/src/java/org/apache/solr/search/function/FunctionQuery.java
+@@ -95,7 +95,7 @@ public class FunctionQuery extends Query {
+ 
+     @Override
+     public Scorer scorer(AtomicReaderContext context, ScorerContext scorerContext) throws IOException {
+-      return new AllScorer(searcher.getSimilarity(), context, this);
++      return new AllScorer(context, this);
+     }
+ 
+     @Override
+@@ -114,8 +114,8 @@ public class FunctionQuery extends Query {
+     final boolean hasDeletions;
+     final Bits delDocs;
+ 
+-    public AllScorer(Similarity similarity, AtomicReaderContext context, FunctionWeight w) throws IOException {
+-      super(similarity);
++    public AllScorer(AtomicReaderContext context, FunctionWeight w) throws IOException {
++      super(w);
+       this.weight = w;
+       this.qWeight = w.getValue();
+       this.reader = context.reader;

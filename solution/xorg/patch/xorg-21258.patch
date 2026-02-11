@@ -1,0 +1,16 @@
+diff --git a/GL/glx/glxscreens.h b/GL/glx/glxscreens.h
+index 8a2b238..96373db 100644
+--- a/GL/glx/glxscreens.h
++++ b/GL/glx/glxscreens.h
+@@ -59,6 +59,11 @@ struct __GLXscreen {
+ 				   __GLcontextModes *modes,
+ 				   __GLXcontext *shareContext);
+ 
++    __GLXdrawable *(*createDrawable)(__GLXscreen *context,
++				     DrawablePtr pDraw,
++				     XID drawId,
++				     __GLcontextModes *modes);
++
+     ScreenPtr pScreen;
+ 
+     /**

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/coffloader.c b/hw/xfree86/loader/coffloader.c
+index 298ca5d..d29b39a 100644
+--- a/hw/xfree86/loader/coffloader.c
++++ b/hw/xfree86/loader/coffloader.c
+@@ -1149,7 +1149,7 @@ COFFCollectSections(COFFModulePtr cofffile)
+  * Public API for the COFF implementation of the loader.
+  */
+ void *
+-COFFLoadModule(loaderPtr modrec, int cofffd, LOOKUP **ppLookup)
++COFFLoadModule(loaderPtr modrec, int cofffd, LOOKUP **ppLookup, int flags)
+ {
+     COFFModulePtr cofffile;
+     FILHDR *header;

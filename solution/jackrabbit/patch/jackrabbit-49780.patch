@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java
+index 27c748b..a916473 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java
+@@ -129,7 +129,7 @@ class NumericConstraint extends ValueConstraint {
+     }
+ 
+     /**
+-     * @see ValueConstraint#check(QValue)
++     * @see org.apache.jackrabbit.spi.QValueConstraint#check(QValue)
+      */
+     public void check(QValue value) throws ConstraintViolationException, RepositoryException {
+         if (value == null) {

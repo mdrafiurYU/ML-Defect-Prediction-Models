@@ -1,0 +1,22 @@
+diff --git a/hw/xgl/xglglx.c b/hw/xgl/xglglx.c
+index f22603e..99ff72d 100644
+--- a/hw/xgl/xglglx.c
++++ b/hw/xgl/xglglx.c
+@@ -139,7 +139,7 @@ Bool
+ xglLoadGLXModules (void)
+ {
+ 
+-#ifdef XLOADABLE
++#ifdef XGL_MODULAR
+     if (!glXHandle)
+     {
+ 	xglSymbolRec sym[] = {
+@@ -207,7 +207,7 @@ void
+ xglUnloadGLXModules (void)
+ {
+ 
+-#ifdef XLOADABLE
++#ifdef XGL_MODULAR
+     if (glXHandle)
+     {
+ 	xglUnloadModule (glXHandle);

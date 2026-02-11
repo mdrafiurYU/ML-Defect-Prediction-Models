@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.c b/hw/xfree86/ddc/xf86DDC.c
+index 0f24c52..8080c8d 100644
+--- a/hw/xfree86/ddc/xf86DDC.c
++++ b/hw/xfree86/ddc/xf86DDC.c
+@@ -337,6 +337,12 @@ DDCRead_DDC2(int scrnIndex, I2CBusPtr pBus, int start, int len)
+     unsigned char *R_Buffer;
+     int i;
+     
++    /*
++     * Slow down the bus so that older monitors don't 
++     * miss things.
++     */
++    pBus->RiseFallTime = 20;
++    
+     if (!(dev = xf86I2CFindDev(pBus, 0x00A0))) {
+ 	dev = xf86CreateI2CDevRec();
+ 	dev->DevName = "ddc2";

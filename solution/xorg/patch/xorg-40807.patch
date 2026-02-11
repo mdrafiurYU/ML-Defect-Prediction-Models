@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/common/xf86AutoConfig.c b/hw/xfree86/common/xf86AutoConfig.c
+index 793ecfa..a9a1fd2 100644
+--- a/hw/xfree86/common/xf86AutoConfig.c
++++ b/hw/xfree86/common/xf86AutoConfig.c
+@@ -39,6 +39,9 @@
+ #include "xf86Config.h"
+ #include "xf86Priv.h"
+ #include "xf86_OSlib.h"
++#ifdef __sparc__
++# include "xf86sbusBus.h"
++#endif
+ #include "dirent.h"
+ 
+ #ifdef sun
+@@ -472,6 +475,13 @@ listPossibleVideoDrivers(char *matches[], int nmatches)
+ 	}
+     }
+ #endif
++#ifdef __sparc__
++    {
++	char *sbusDriver = sparcDriverName();
++	if (sbusDriver)
++	    matches[i++] = xnfstrdup(sbusDriver);
++    }
++#endif
+ 
+     /* Find the primary device, and get some information about it. */
+     iter = pci_slot_match_iterator_create(NULL);

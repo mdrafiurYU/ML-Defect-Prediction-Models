@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
+index 436a639..2518cf8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
+@@ -411,9 +411,11 @@ public class TryStatement extends SubRoutineStatement {
+ 		if (this.isSubRoutineEscaping) {
+ 				codeStream.goto_(this.subRoutineStartLabel);
+ 		} else {
+-			if (currentScope.compilerOptions().inlineJsrBytecode) { 
++			if (currentScope.compilerOptions().inlineJsrBytecode) {
+ 				// cannot use jsr bytecode, then simply inline the subroutine
++				this.exitAnyExceptionHandler();				
+ 				this.finallyBlock.generateCode(currentScope, codeStream);
++				this.enterAnyExceptionHandler(codeStream);
+ 			} else {
+ 				// classic subroutine invocation, distinguish case of non-returning subroutine
+ 				codeStream.jsr(this.subRoutineStartLabel);

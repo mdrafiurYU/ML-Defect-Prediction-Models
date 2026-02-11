@@ -1,0 +1,11 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/sep/IntIndexInput.java b/lucene/src/java/org/apache/lucene/index/codecs/sep/IntIndexInput.java
+index 741272a..631476d 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/sep/IntIndexInput.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/sep/IntIndexInput.java
+@@ -48,6 +48,7 @@ public abstract class IntIndexInput implements Closeable {
+ 
+     public abstract void set(Index other);
+     
++    @Override
+     public abstract Object clone();
+   }

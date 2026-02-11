@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xaa/xaaNonTEText.c b/hw/xfree86/xaa/xaaNonTEText.c
+index d4661e8..d32c0bb 100644
+--- a/hw/xfree86/xaa/xaaNonTEText.c
++++ b/hw/xfree86/xaa/xaaNonTEText.c
+@@ -291,8 +291,7 @@ PolyGlyphBltAsSingleBitmap (
+ 
+     pitch = (Right - Left + 31) >> 5;
+     size = (pitch << 2) * (Bottom - Top);
+-    block = (CARD32*)xalloc(size);
+-    bzero(block, size);
++    block = xcalloc(1, size);
+ 
+     topLine = 10000; botLine = -10000;
+ 

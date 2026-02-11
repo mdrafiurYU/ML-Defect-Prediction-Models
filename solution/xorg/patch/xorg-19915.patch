@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/scanpci/xf86PciStr.h b/hw/xfree86/scanpci/xf86PciStr.h
+index bb36d51..307dfac 100644
+--- a/hw/xfree86/scanpci/xf86PciStr.h
++++ b/hw/xfree86/scanpci/xf86PciStr.h
+@@ -31,6 +31,10 @@
+  * to the scanpci and pcidata modules.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86_PCISTR_H
+ #define _XF86_PCISTR_H
+ 

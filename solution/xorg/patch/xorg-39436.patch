@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 748e895..4441ecc 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -226,8 +226,6 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMVAR(DPMSDisabledSwitch)
+     SYMVAR(defaultDPMSEnabled)
+ #endif
+-    /* bigreq */
+-    SYMVAR(maxBigRequestSize)
+ #ifdef XV
+     /* XXX These are exported from the DDX, not DIX. */
+     SYMVAR(XvScreenInitProc)
+@@ -341,9 +339,6 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMVAR(noTestExtensions)
+     SYMFUNC(GiveUp)
+ 
+-#ifdef BIGREQS
+-    SYMVAR(noBigReqExtension)
+-#endif
+ #ifdef COMPOSITE
+     SYMVAR(noCompositeExtension)
+ #endif

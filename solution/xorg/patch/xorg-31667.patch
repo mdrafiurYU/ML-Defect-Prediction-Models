@@ -1,0 +1,24 @@
+diff --git a/exa/exa_accel.c b/exa/exa_accel.c
+index 8500c5b..2acade2 100644
+--- a/exa/exa_accel.c
++++ b/exa/exa_accel.c
+@@ -1324,9 +1324,6 @@ exaGetImage (DrawablePtr pDrawable, int x, int y, int w, int h,
+     int xoff, yoff;
+     Bool ok;
+ 
+-    if (pExaScr->swappedOut)
+-	goto fallback;
+-
+     pixmaps[0].as_dst = FALSE;
+     pixmaps[0].as_src = TRUE;
+     pixmaps[0].pPix = pPix = exaGetDrawablePixmap (pDrawable);
+@@ -1341,6 +1338,9 @@ exaGetImage (DrawablePtr pDrawable, int x, int y, int w, int h,
+ 
+     REGION_INIT(pScreen, &Reg, &Box, 1);
+ 
++    if (pExaScr->swappedOut)
++	goto fallback;
++
+     exaDoMigration(pixmaps, 1, FALSE);
+ 
+     pPix = exaGetOffscreenPixmap (pDrawable, &xoff, &yoff);

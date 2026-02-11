@@ -1,0 +1,14 @@
+diff --git a/hw/xnest/Screen.c b/hw/xnest/Screen.c
+index 4e8616d..ca903d7 100644
+--- a/hw/xnest/Screen.c
++++ b/hw/xnest/Screen.c
+@@ -45,7 +45,8 @@ is" without express or implied warranty.
+ 
+ Window xnestDefaultWindows[MAXSCREENS];
+ Window xnestScreenSaverWindows[MAXSCREENS];
+-DevPrivateKey xnestCursorScreenKey = &xnestCursorScreenKey;
++static int xnestCursorScreenKeyIndex;
++DevPrivateKey xnestCursorScreenKey = &xnestCursorScreenKeyIndex;
+ 
+ ScreenPtr
+ xnestScreen(Window window)

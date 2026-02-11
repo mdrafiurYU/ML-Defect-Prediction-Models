@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QNodeTypeDefinition.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QNodeTypeDefinition.java
+index 8fa31df..35df5c1 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QNodeTypeDefinition.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QNodeTypeDefinition.java
+@@ -20,12 +20,14 @@ import org.apache.jackrabbit.name.QName;
+ 
+ import java.util.Collection;
+ 
++import javax.jcr.nodetype.NodeType;
++
+ /**
+- * <code>QNodeTypeDefinition</code> is the qualified SPI representation of
+- * a {@link NodeDefinition node definition}. It refers to qualified names only
+- * and is therefore independant of session-specific namespace mappings.
+- *
+- * @see javax.jcr.nodetype.NodeDefinition
++ * <code>QNodeTypeDefinition</code> is the qualified SPI representation of a
++ * {@link javax.jcr.nodetype.NodeType node type}. It refers to qualified names
++ * only and is therefore independant of session-specific namespace mappings.
++ * 
++ * @see javax.jcr.nodetype.NodeType
+  */
+ public interface QNodeTypeDefinition {

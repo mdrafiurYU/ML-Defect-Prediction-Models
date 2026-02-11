@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 0a0d977..716e41e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -490,6 +490,11 @@ public class SearchIndex extends AbstractQueryHandler {
+ 
+         log.info("Index initialized: {} Version: {}",
+                 new Object[]{path, index.getIndexFormatVersion()});
++        if (!index.getIndexFormatVersion().equals(getIndexFormatVersion())) {
++            log.warn("Using Version {} for reading. Please re-index version " +
++                    "storage for optimal performance.",
++                    new Integer(getIndexFormatVersion().getVersion()));
++        }
+     }
+ 
+     /**
+@@ -719,9 +724,7 @@ public class SearchIndex extends AbstractQueryHandler {
+         try {
+             ep = (ExcerptProvider) excerptProviderClass.newInstance();
+         } catch (Exception e) {
+-            IOException ex = new IOException();
+-            ex.initCause(e);
+-            throw ex;
++            throw Util.createIOException(e);
+         }
+         ep.init(query, this);
+         return ep;

@@ -1,0 +1,18 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index d445916..fe70e78 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -775,6 +775,13 @@ CloseDevice(DeviceIntPtr dev)
+     classes = (ClassesPtr)&dev->key;
+     FreeAllDeviceClasses(classes);
+ 
++    if (dev->isMaster)
++    {
++        classes = dixLookupPrivate(&dev->devPrivates, UnusedClassesPrivateKey);
++        FreeAllDeviceClasses(classes);
++    }
++
++
+ #ifdef XKB
+     while (dev->xkb_interest)
+ 	XkbRemoveResourceClient((DevicePtr)dev,dev->xkb_interest->resource);

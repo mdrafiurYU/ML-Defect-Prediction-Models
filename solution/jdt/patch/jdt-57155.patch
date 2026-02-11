@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragment.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragment.java
+index 424b5d1..73ff2d8 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragment.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragment.java
+@@ -170,7 +170,10 @@ public IClassFile getClassFile(String classFileName) {
+ 	if (!org.eclipse.jdt.internal.compiler.util.Util.isClassFileName(classFileName)) {
+ 		throw new IllegalArgumentException(Messages.element_invalidClassFileName); 
+ 	}
+-	return new ClassFile(this, classFileName);
++	// don't hold on the .class file extension to save memory
++	// also make sure to copy the string (so that it doesn't hold on the underlying char[] that might be much bigger than necessary)
++	String nameWithoutExtension = new String(classFileName.substring(0, classFileName.length() - 6)); // don't hold on the .class file extension to save memory
++	return new ClassFile(this, nameWithoutExtension);
+ }
+ /**
+  * Returns a the collection of class files in this - a folder package fragment which has a root

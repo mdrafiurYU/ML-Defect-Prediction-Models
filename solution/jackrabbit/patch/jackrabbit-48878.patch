@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemCollection.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemCollection.java
+index 7c5e2d7..50144ef 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemCollection.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/DefaultItemCollection.java
+@@ -898,6 +898,7 @@ public class DefaultItemCollection extends AbstractItemResource
+                 properties.add(new NodeTypeProperty(JCR_MIXINNODETYPES, n.getMixinNodeTypes(), false));
+                 properties.add(new DefaultDavProperty(JCR_INDEX, new Integer(n.getIndex()), true));
+                 addHrefProperty(JCR_REFERENCES, n.getReferences(), true);
++                addHrefProperty(JCR_WEAK_REFERENCES, n.getWeakReferences(), true);
+                 if (n.isNodeType(JcrConstants.MIX_REFERENCEABLE)) {
+                     properties.add(new DefaultDavProperty(JCR_UUID, n.getUUID(), true));
+                 }

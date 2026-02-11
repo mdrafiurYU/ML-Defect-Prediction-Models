@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/cloud/BasicDistributedZkTest.java b/solr/src/test/org/apache/solr/cloud/BasicDistributedZkTest.java
+index 2452a90..23b420c 100644
+--- a/solr/src/test/org/apache/solr/cloud/BasicDistributedZkTest.java
++++ b/solr/src/test/org/apache/solr/cloud/BasicDistributedZkTest.java
+@@ -60,7 +60,7 @@ public class BasicDistributedZkTest extends AbstractDistributedZkTestCase {
+   
+   @BeforeClass
+   public static void beforeClass() throws Exception {
+-    System.setProperty("solr.solr.home", SolrTestCaseJ4.TEST_HOME);
++    System.setProperty("solr.solr.home", SolrTestCaseJ4.TEST_HOME());
+   }
+   
+   @Override

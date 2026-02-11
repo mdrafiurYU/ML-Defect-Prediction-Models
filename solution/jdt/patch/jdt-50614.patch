@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+index d372da4..8782a3f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+@@ -881,7 +881,11 @@ TypeBinding getTypeFromTypeSignature(SignatureWrapper wrapper, TypeVariableBindi
+ 	// type must be a ReferenceBinding at this point, cannot be a BaseTypeBinding or ArrayTypeBinding
+ 	ReferenceBinding actualType = (ReferenceBinding) type;
+ 	TypeBinding[] typeArguments = getTypeArgumentsFromSignature(wrapper, staticVariables, enclosingType, actualType);
+-	ParameterizedTypeBinding parameterizedType = createParameterizedType(actualType, typeArguments, null);
++	ReferenceBinding actualEnclosing = actualType.enclosingType();
++	if (actualEnclosing != null) { // convert needed if read some static member type
++		actualEnclosing = (ReferenceBinding) convertToRawType(actualEnclosing);
++	}
++	ParameterizedTypeBinding parameterizedType = createParameterizedType(actualType, typeArguments, actualEnclosing);
+ 
+ 	while (wrapper.signature[wrapper.start] == '.') {
+ 		wrapper.start++; // skip '.'

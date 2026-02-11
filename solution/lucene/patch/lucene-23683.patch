@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java b/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
+index 2a53e0f..9a8713a 100644
+--- a/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
++++ b/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
+@@ -182,7 +182,7 @@ public abstract class AbstractLuceneSpellChecker extends SolrSpellChecker {
+ 
+       if (options.extendedResults == true && reader != null && field != null) {
+         term = term.createTerm(tokenText);
+-        result.add(token, reader.docFreq(term));
++        result.addFrequency(token, reader.docFreq(term));
+         int countLimit = Math.min(options.count, suggestions.length);
+         if(countLimit>0)
+         {

@@ -1,0 +1,14 @@
+diff --git a/dix/events.c b/dix/events.c
+index adc180b..447732d 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2233,7 +2233,8 @@ FixUpEventFromWindow(
+             event->child = None;
+         }
+ 
+-        if (event->evtype == XI_Enter || event->evtype == XI_Leave)
++        if (event->evtype == XI_Enter || event->evtype == XI_Leave ||
++            event->evtype == XI_FocusIn || event->evtype == XI_FocusOut)
+             ((xXIEnterEvent*)event)->same_screen =
+                 (pSprite->hot.pScreen == pWin->drawable.pScreen);
+ 

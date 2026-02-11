@@ -1,0 +1,41 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 7fbaddb..69d4abc 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -148,10 +148,6 @@ extern void DeleteWindowFromAnyExtEvents(
+ 	WindowPtr              /* pWin */,
+ 	Bool                   /* freeResources */);
+ 
+-extern void DeleteDeviceFromAnyExtEvents(
+-	WindowPtr              /* pWin */,
+-	DeviceIntPtr           /* dev */);
+-
+ extern int MaybeSendDeviceMotionNotifyHint (
+ 	deviceKeyButtonPointer * /* pEvents */,
+ 	Mask                   /* mask */);
+@@ -164,11 +160,6 @@ extern void CheckDeviceGrabAndHintWindow (
+ 	ClientPtr              /* client */,
+ 	Mask                   /* deliveryMask */);
+ 
+-extern Mask DeviceEventMaskForClient(
+-	DeviceIntPtr           /* dev */,
+-	WindowPtr              /* pWin */,
+-	ClientPtr              /* client */);
+-
+ extern void MaybeStopDeviceHint(
+ 	DeviceIntPtr           /* dev */,
+ 	ClientPtr              /* client */);
+@@ -179,13 +170,6 @@ extern int DeviceEventSuppressForWindow(
+ 	Mask                   /* mask */,
+ 	int                    /* maskndx */);
+ 
+-void FindInterestedChildren(
+-        DeviceIntPtr           /* dev */,
+-        WindowPtr              /* p1 */,
+-        Mask                   /* mask */,
+-        xEvent *               /* ev */,
+-        int                    /* count */);
+-
+ void SendEventToAllWindows(
+         DeviceIntPtr           /* dev */,
+         Mask                   /* mask */,

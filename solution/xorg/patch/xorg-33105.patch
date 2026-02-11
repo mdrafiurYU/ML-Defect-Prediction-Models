@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index 52f5dcf..efcca5a 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -829,7 +829,7 @@ ephyrWarpCursor (ScreenPtr pScreen, int x, int y)
+ {
+     ephyrBlockSigio ();
+     ephyrCurScreen = pScreen->myNum;
+-    miPointerWarpCursor (pScreen, x, y);
++    miPointerWarpCursor (inputInfo.pointer, pScreen, x, y);
+     ephyrUnblockSigio ();
+ }
+ 

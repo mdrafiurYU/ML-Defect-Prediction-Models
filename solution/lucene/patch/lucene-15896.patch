@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
+index d6a7cf5..1eb03fd 100644
+--- a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
++++ b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestEmptyIndex.java
+@@ -71,12 +71,6 @@ public class TestEmptyIndex extends LuceneTestCase {
+     byte[] norms = MultiNorms.norms(r, "foo");
+     if (norms != null) {
+       assertEquals(0, norms.length);
+-      norms = new byte[10];
+-      Arrays.fill(norms, (byte)10);
+-      r.norms("foo", norms, 10);
+-      for (byte b : norms) {
+-        assertEquals((byte)10, b);
+-      }
+     }
+   }

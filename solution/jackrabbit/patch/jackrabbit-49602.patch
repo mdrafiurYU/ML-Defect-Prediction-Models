@@ -1,0 +1,49 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java
+index cc8379e..7f93697 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java
+@@ -32,7 +32,6 @@ import org.slf4j.LoggerFactory;
+ import org.slf4j.Logger;
+ 
+ import javax.jcr.RepositoryException;
+-import javax.jcr.ValueFactory;
+ import javax.jcr.observation.Event;
+ 
+ /**
+@@ -52,11 +51,6 @@ final class EventImpl implements Event {
+     private final NamePathResolver resolver;
+ 
+     /**
+-     * The value factory of the session that created this event iterator.
+-     */
+-    private final ValueFactory valueFactory;
+-
+-    /**
+      * The IdFactory
+      */
+     private final IdFactory idFactory;
+@@ -77,14 +71,12 @@ final class EventImpl implements Event {
+      *
+      * @param event   the underlying SPI <code>Event</code>.
+      * @param resolver
+-     * @param valueFactory
+      * @param idFactory
+      */
+     EventImpl(org.apache.jackrabbit.spi.Event event,
+-              NamePathResolver resolver, ValueFactory valueFactory, IdFactory idFactory) {
++              NamePathResolver resolver, IdFactory idFactory) {
+         this.event = event;
+         this.resolver = resolver;
+-        this.valueFactory = valueFactory;
+         this.idFactory = idFactory;
+     }
+ 
+@@ -134,7 +126,7 @@ final class EventImpl implements Event {
+             QValue value = infos.get(key);
+             String strValue = null;
+             if (value != null) {
+-                strValue = ValueFormat.getJCRValue(value, resolver, valueFactory).getString();
++                strValue = ValueFormat.getJCRString(value, resolver);
+             }
+             jcrInfo.put(resolver.getJCRName(key), strValue);
+         }

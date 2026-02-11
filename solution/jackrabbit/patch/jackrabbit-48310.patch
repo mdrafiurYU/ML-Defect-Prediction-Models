@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+index bbdd656..ab694b1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+@@ -549,11 +549,11 @@ public class InternalValue extends AbstractQValue {
+     }
+ 
+     private InternalValue(long value) {
+-        super(new Long(value));
++        super(Long.valueOf(value));
+     }
+ 
+     private InternalValue(double value) {
+-        super(new Double(value));
++        super(Double.valueOf(value));
+     }
+ 
+     private InternalValue(Calendar value) {

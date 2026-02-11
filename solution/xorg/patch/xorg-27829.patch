@@ -1,0 +1,18 @@
+diff --git a/hw/darwin/quartz/xpr/xprAppleWM.c b/hw/darwin/quartz/xpr/xprAppleWM.c
+index 0c827e2..fdf404c 100644
+--- a/hw/darwin/quartz/xpr/xprAppleWM.c
++++ b/hw/darwin/quartz/xpr/xprAppleWM.c
+@@ -31,12 +31,11 @@
+ #include <xorg-config.h>
+ #endif
+ #include "xpr.h"
+-#include "applewmExt.h"
++#include "quartz/applewmExt.h"
+ #include "rootless.h"
+ #include "Xplugin.h"
+ #include <X11/X.h>
+ 
+-
+ static int xprSetWindowLevel(
+     WindowPtr pWin,
+     int level)

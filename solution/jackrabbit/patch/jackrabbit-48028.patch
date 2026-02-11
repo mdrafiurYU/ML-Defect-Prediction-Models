@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java
+index 62f3f3d..60c1139 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java
+@@ -46,7 +46,7 @@ public class ShareableNodeTest extends AbstractJCRTest {
+     
+     protected void setUp() throws Exception {
+         super.setUp();
+-        ensureSupportsFeature(Repository.OPTION_SHAREABLE_NODES_SUPPORTED);
++        checkSupportedOption(Repository.OPTION_SHAREABLE_NODES_SUPPORTED);
+         ensureKnowsNodeType(superuser, "mix:shareable");
+     }

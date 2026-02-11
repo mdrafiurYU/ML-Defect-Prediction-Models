@@ -1,0 +1,27 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+index ec9c914..e38f064 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+@@ -236,7 +236,6 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+     assertEquals(count, count2);
+     r2.close();
+ 
+-    _TestUtil.checkIndex(dir);
+     dir.close();
+   }
+ 
+@@ -287,7 +286,6 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+     assertEquals(count, count2);
+     r2.close();
+ 
+-    _TestUtil.checkIndex(dir);
+     dir.close();
+   }
+ 
+@@ -349,7 +347,6 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+       // expected
+     }
+     w.close();
+-    _TestUtil.checkIndex(dir);
+     dir.close();
+   }

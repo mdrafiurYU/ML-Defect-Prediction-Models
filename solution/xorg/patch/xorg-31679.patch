@@ -1,0 +1,18 @@
+diff --git a/hw/xwin/winscrinit.c b/hw/xwin/winscrinit.c
+index a9b061a..52adba8 100644
+--- a/hw/xwin/winscrinit.c
++++ b/hw/xwin/winscrinit.c
+@@ -336,13 +336,6 @@ winFinishScreenInitFB (int index,
+   /* Place our save screen function */
+   pScreen->SaveScreen = winSaveScreen;
+ 
+-  /* Backing store functions */
+-  /*
+-   * FIXME: Backing store support still doesn't seem to be working.
+-   */
+-  pScreen->BackingStoreFuncs.SaveAreas = fbSaveAreas;
+-  pScreen->BackingStoreFuncs.RestoreAreas = fbRestoreAreas;
+-
+   /* Finish fb initialization */
+   if (!fbFinishScreenInit (pScreen,
+ 			   pScreenInfo->pfb,

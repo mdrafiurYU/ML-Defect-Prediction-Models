@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/DigesterTestBase.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/DigesterTestBase.java
+index a021fa7..63ab249 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/DigesterTestBase.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/DigesterTestBase.java
+@@ -57,10 +57,11 @@ public abstract class DigesterTestBase extends AbstractTestBase
+                            "./src/test/test-config/jcrmapping-beandescriptor.xml",
+                            "./src/test/test-config/jcrmapping-inheritance.xml",
+                            "./src/test/test-config/jcrmapping-jcrnodetypes.xml",
+-                           "./src/test/test-config/jcrmapping-uuid.xml"};
++                           "./src/test/test-config/jcrmapping-uuid.xml",
++                           "./src/test/test-config/jcrmapping-complex-collections.xml"};
+ 		session = RepositoryUtil.login(repository, "superuser", "superuser");
+ 		ocm = new ObjectContentManagerImpl(session, files);
+ 		
+ 	}
+ 
+-}
+\ No newline at end of file
++}

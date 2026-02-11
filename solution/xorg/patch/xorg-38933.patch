@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.h b/hw/xfree86/ddc/xf86DDC.h
+index 8e1eaac..42d9ce6 100644
+--- a/hw/xfree86/ddc/xf86DDC.h
++++ b/hw/xfree86/ddc/xf86DDC.h
+@@ -45,6 +45,10 @@ extern xf86MonPtr xf86InterpretEDID(
+     int screenIndex, Uchar *block
+ );
+ 
++extern xf86MonPtr xf86InterpretEEDID(
++    int screenIndex, Uchar *block
++);
++
+ extern void 
+ xf86DDCMonitorSet(int scrnIndex, MonPtr Monitor, xf86MonPtr DDC);
+ 

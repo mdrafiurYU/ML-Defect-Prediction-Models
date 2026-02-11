@@ -1,0 +1,13 @@
+diff --git a/exa/exa_offscreen.c b/exa/exa_offscreen.c
+index 6fe646a..c666b00 100644
+--- a/exa/exa_offscreen.c
++++ b/exa/exa_offscreen.c
+@@ -429,7 +429,7 @@ ExaOffscreenMarkUsed (PixmapPtr pPixmap)
+     ExaScreenPriv (pPixmap->drawable.pScreen);
+     static int iter = 0;
+ 
+-    if (!pExaPixmap->area)
++    if (!pExaPixmap || !pExaPixmap->area)
+ 	return;
+ 
+     /* The numbers here are arbitrary.  We may want to tune these. */

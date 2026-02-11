@@ -1,0 +1,12 @@
+diff --git a/os/connection.c b/os/connection.c
+index 860404f..6012a8e 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1059,6 +1059,7 @@ CheckConnections(void)
+             FD_SET(curclient, &tmask);
+             r = Select (curclient + 1, &tmask, NULL, NULL, &notime);
+             if (r < 0)
++                if (ConnectionTranslation[curclient] > 0)
+ 		CloseDownClient(clients[ConnectionTranslation[curclient]]);
+ 	    mask &= ~((fd_mask)1 << curoff);
+ 	}

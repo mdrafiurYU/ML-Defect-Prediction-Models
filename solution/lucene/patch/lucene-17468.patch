@@ -1,0 +1,15 @@
+diff --git a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/utils/StringBuilderReader.java b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/utils/StringBuilderReader.java
+index c6e9510..a10d537 100644
+--- a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/utils/StringBuilderReader.java
++++ b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/utils/StringBuilderReader.java
+@@ -158,8 +158,10 @@ public class StringBuilderReader extends Reader {
+     synchronized (lock) {
+       this.sb = sb;
+       length = sb.length();
++      next = mark = 0;
+     }
+   }
++  
+   @Override
+   public long skip(long ns) throws IOException {
+     synchronized (lock) {

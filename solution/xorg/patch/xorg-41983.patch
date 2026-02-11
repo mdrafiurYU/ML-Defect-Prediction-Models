@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winshaddd.c b/hw/xwin/winshaddd.c
+index a2c1dc9..5f5daeb 100644
+--- a/hw/xwin/winshaddd.c
++++ b/hw/xwin/winshaddd.c
+@@ -508,7 +508,7 @@ winShadowUpdateDD (ScreenPtr pScreen,
+ {
+   winScreenPriv(pScreen);
+   winScreenInfo		*pScreenInfo = pScreenPriv->pScreenInfo;
+-  RegionPtr		damage = &pBuf->damage;
++  RegionPtr		damage = shadowDamage(pBuf);
+   HRESULT		ddrval = DD_OK;
+   RECT			rcDest, rcSrc;
+   POINT			ptOrigin;

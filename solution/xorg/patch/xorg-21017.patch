@@ -1,0 +1,71 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 5d93da0..7626c84 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -1,4 +1,4 @@
+-/* $XdotOrg: xserver/xorg/mi/miinitext.c,v 1.32 2006/03/12 00:11:34 krh Exp $ */
++/* $XdotOrg: xserver/xorg/mi/miinitext.c,v 1.33 2006/06/01 18:47:01 daniels Exp $ */
+ /* $XFree86: xc/programs/Xserver/mi/miinitext.c,v 3.67 2003/01/12 02:44:27 dawes Exp $ */
+ /***********************************************************
+ 
+@@ -143,9 +143,6 @@ extern Bool noFontCacheExtension;
+ #ifdef GLXEXT
+ extern Bool noGlxExtension;
+ #endif
+-#ifdef LBX
+-extern Bool noLbxExtension;
+-#endif
+ #ifdef SCREENSAVER
+ extern Bool noScreenSaverExtension;
+ #endif
+@@ -241,10 +238,6 @@ typedef void (*InitExtension)(INITARGS);
+ #ifdef XKB
+ #include <X11/extensions/XKB.h>
+ #endif
+-#ifdef LBX
+-#define _XLBX_SERVER_
+-#include <X11/extensions/lbxstr.h>
+-#endif
+ #ifdef XPRINT
+ #include <X11/extensions/Print.h>
+ #endif
+@@ -319,9 +312,6 @@ extern void XCMiscExtensionInit(INITARGS);
+ #ifdef XRECORD
+ extern void RecordExtensionInit(INITARGS);
+ #endif
+-#ifdef LBX
+-extern void LbxExtensionInit(INITARGS);
+-#endif
+ #ifdef DBE
+ extern void DbeExtensionInit(INITARGS);
+ #endif
+@@ -430,9 +420,6 @@ static ExtensionToggle ExtensionToggleList[] =
+ #ifdef GLXEXT
+     { "GLX", &noGlxExtension },
+ #endif
+-#ifdef LBX
+-    { "LBX", &noLbxExtension },
+-#endif
+ #ifdef SCREENSAVER
+     { "MIT-SCREEN-SAVER", &noScreenSaverExtension },
+ #endif
+@@ -598,9 +585,6 @@ InitExtensions(argc, argv)
+ #ifdef XRECORD
+     if (!noTestExtensions) RecordExtensionInit(); 
+ #endif
+-#ifdef LBX
+-    if (!noLbxExtension) LbxExtensionInit();
+-#endif
+ #ifdef DBE
+     if (!noDbeExtension) DbeExtensionInit();
+ #endif
+@@ -706,9 +690,6 @@ static ExtensionModule staticExtensions[] = {
+ #ifdef XKB
+     { XkbExtensionInit, XkbName, &noXkbExtension, NULL, NULL },
+ #endif
+-#ifdef LBX
+-    { LbxExtensionInit, LBXNAME, &noLbxExtension, NULL, NULL },
+-#endif
+ #ifdef XAPPGROUP
+     { XagExtensionInit, XAGNAME, &noXagExtension, NULL, NULL },
+ #endif

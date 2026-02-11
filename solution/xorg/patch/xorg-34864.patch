@@ -1,0 +1,27 @@
+diff --git a/os/connection.c b/os/connection.c
+index 6012a8e..be7521f 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1057,7 +1057,9 @@ CheckConnections(void)
+ 	    curclient = curoff + (i * (sizeof(fd_mask)*8));
+             FD_ZERO(&tmask);
+             FD_SET(curclient, &tmask);
++            do {
+             r = Select (curclient + 1, &tmask, NULL, NULL, &notime);
++            } while (r < 0 && (errno == EINTR || errno == EAGAIN));
+             if (r < 0)
+                 if (ConnectionTranslation[curclient] > 0)
+                     CloseDownClient(clients[ConnectionTranslation[curclient]]);
+@@ -1071,8 +1073,11 @@ CheckConnections(void)
+ 	curclient = XFD_FD(&savedAllClients, i);
+ 	FD_ZERO(&tmask);
+ 	FD_SET(curclient, &tmask);
++        do {
+ 	r = Select (curclient + 1, &tmask, NULL, NULL, &notime);
+-	if (r < 0 && GetConnectionTranslation(curclient) > 0)
++        } while (r < 0 && (errno == EINTR || errno == EAGAIN));
++	if (r < 0)
++            if (GetConnectionTranslation(curclient) > 0)
+ 	    CloseDownClient(clients[GetConnectionTranslation(curclient)]);
+     }	
+ #endif

@@ -1,0 +1,13 @@
+diff --git a/mi/mivaltree.c b/mi/mivaltree.c
+index 2585422..cfcdab7 100644
+--- a/mi/mivaltree.c
++++ b/mi/mivaltree.c
+@@ -769,7 +769,7 @@ miValidateTree (
+ 		if (pScreen->ClipNotify)
+ 		    (* pScreen->ClipNotify) (pWin, 0, 0);
+ 		REGION_EMPTY( pScreen, &pWin->borderClip);
+-		pWin->valdata = (ValidatePtr)NULL;
++		pWin->valdata = NULL;
+ 	    }
+ 	}
+     }

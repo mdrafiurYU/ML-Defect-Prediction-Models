@@ -1,0 +1,13 @@
+diff --git a/os/oscolor.c b/os/oscolor.c
+index cc45aaf..69eadc2 100644
+--- a/os/oscolor.c
++++ b/os/oscolor.c
+@@ -1590,6 +1590,8 @@ OsLookupColor(int		screen,
+ 	mid = (low + high) / 2;
+ 	c = &BuiltinColors[mid];
+ 	r = strncasecmp (&BuiltinColorNames[c->name], name, len);
++	if (r == 0 && strlen (&BuiltinColorNames[c->name]) > len)
++	    r++;
+ 	if (r == 0)
+ 	{
+ 	    *pred = c->red * 0x101;

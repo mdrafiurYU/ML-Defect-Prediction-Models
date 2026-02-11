@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/br/TestBrazilianStemmer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/br/TestBrazilianStemmer.java
+index b21e35f..80f6ab1 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/br/TestBrazilianStemmer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/br/TestBrazilianStemmer.java
+@@ -157,4 +157,8 @@ public class TestBrazilianStemmer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, input, expected);
+   }
+ 
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new BrazilianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }
+\ No newline at end of file

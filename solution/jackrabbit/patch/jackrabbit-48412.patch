@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryManagerImpl.java
+index f9db638..3f0f9de 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryManagerImpl.java
+@@ -97,8 +97,12 @@ public class QueryManagerImpl implements QueryManager {
+         return wspManager.getSupportedQueryLanguages();
+     }
+ 
++    /**
++     * @see QueryManager#getQOMFactory()
++     */
+     public QueryObjectModelFactory getQOMFactory() {
+-        throw new UnsupportedOperationException("JCR-1104");
++        // TODO
++        throw new UnsupportedOperationException("JCR-2107: Implementation missing");        
+     }
+ 
+     //------------------------------------------------------------< private >---

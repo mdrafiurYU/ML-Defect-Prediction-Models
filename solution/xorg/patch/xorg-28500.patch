@@ -1,0 +1,13 @@
+diff --git a/dix/extension.c b/dix/extension.c
+index dc1a76f..fb4ee6b 100644
+--- a/dix/extension.c
++++ b/dix/extension.c
+@@ -66,7 +66,7 @@ SOFTWARE.
+ #define LAST_EVENT  128
+ #define LAST_ERROR 255
+ 
+-ScreenProcEntry AuxillaryScreenProcs[MAXSCREENS];
++static ScreenProcEntry AuxillaryScreenProcs[MAXSCREENS];
+ 
+ static ExtensionEntry **extensions = (ExtensionEntry **)NULL;
+ 

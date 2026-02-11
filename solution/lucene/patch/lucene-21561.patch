@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java
+index ccc06cf..9cf8806 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java
+@@ -375,4 +375,8 @@ final class DocumentsWriterDeleteQueue {
+       globalBufferLock.unlock();
+     }
+   }
++  
++  public long bytesUsed() {
++    return globalBufferedDeletes.bytesUsed.get();
++  }
+ }

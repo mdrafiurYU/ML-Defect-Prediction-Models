@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/linux/tslib.c b/hw/kdrive/linux/tslib.c
+index 41b74fa..371aece 100644
+--- a/hw/kdrive/linux/tslib.c
++++ b/hw/kdrive/linux/tslib.c
+@@ -118,7 +118,7 @@ TslibEnable (KdPointerInfo *pi)
+     private->fd = ts_fd(private->tsDev);
+     if (!private->tsDev || ts_config(private->tsDev) || private->fd < 0) {
+         ErrorF("[tslib/TslibEnable] failed to open %s\n", pi->path);
+-        if (private->fd > 0);
++        if (private->fd >= 0)
+             close(private->fd);
+         return BadAlloc;
+     }

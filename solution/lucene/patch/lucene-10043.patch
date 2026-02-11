@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
+index 62f322f..449230a 100644
+--- a/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/payloads/TestPayloadNearQuery.java
+@@ -71,7 +71,7 @@ public class TestPayloadNearQuery extends LuceneTestCase {
+     public PayloadFilter(TokenStream input, String fieldName) {
+       super(input);
+       this.fieldName = fieldName;
+-      payAtt = (PayloadAttribute) addAttribute(PayloadAttribute.class);
++      payAtt = addAttribute(PayloadAttribute.class);
+     }
+ 
+     @Override

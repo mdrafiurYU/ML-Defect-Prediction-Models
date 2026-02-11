@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+index 661b475..e25f080 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+@@ -619,7 +619,7 @@ public final class SegmentInfo implements Cloneable {
+ 
+     if (useCompoundFile) {
+       fileSet.add(IndexFileNames.segmentFileName(name, "", IndexFileNames.COMPOUND_FILE_EXTENSION));
+-      if (version != null && StringHelper.getVersionComparator().compare("4.0", version) <= 0) {
++      if (version != null && StringHelper.getVersionComparator().compare("3.4", version) <= 0) {
+         fileSet.add(IndexFileNames.segmentFileName(name, "",
+             IndexFileNames.COMPOUND_FILE_ENTRIES_EXTENSION));
+       }

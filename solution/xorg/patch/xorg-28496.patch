@@ -1,0 +1,58 @@
+diff --git a/mi/miregion.c b/mi/miregion.c
+index 5422099..e980ad1 100644
+--- a/mi/miregion.c
++++ b/mi/miregion.c
+@@ -221,7 +221,7 @@ _X_EXPORT BoxRec miEmptyBox = {0, 0, 0, 0};
+ _X_EXPORT RegDataRec miEmptyData = {0, 0};
+ 
+ RegDataRec  miBrokenData = {0, 0};
+-RegionRec   miBrokenRegion = { { 0, 0, 0, 0 }, &miBrokenData };
++static RegionRec   miBrokenRegion = { { 0, 0, 0, 0 }, &miBrokenData };
+ 
+ _X_EXPORT void
+ miPrintRegion(rgn)
+@@ -913,7 +913,7 @@ miRegionOp(
+  *
+  *-----------------------------------------------------------------------
+  */
+-void
++static void
+ miSetExtents (pReg)
+     RegionPtr pReg;
+ {
+@@ -2182,35 +2182,6 @@ miTranslateRegion(pReg, x, y)
+     }
+ }
+ 
+-Bool
+-miRegionDataCopy(
+-    RegionPtr dst,
+-    RegionPtr src)
+-{
+-    good(dst);
+-    good(src);
+-    if (dst->data) 
+-	return TRUE;
+-    if (dst == src)
+-	return TRUE;
+-    if (!src->data || !src->data->size)
+-    {
+-	xfreeData(dst);
+-	dst->data = (RegDataPtr)NULL;
+-	return TRUE;
+-    }
+-    if (!dst->data || (dst->data->size < src->data->numRects))
+-    {
+-	xfreeData(dst);
+-	dst->data = xallocData(src->data->numRects);
+-	if (!dst->data)
+-	    return miRegionBreak (dst);
+-    }
+-    dst->data->size = src->data->size;
+-    dst->data->numRects = src->data->numRects;
+-    return TRUE;
+-}
+-
+ _X_EXPORT void
+ miRegionReset(pReg, pBox)
+     RegionPtr pReg;

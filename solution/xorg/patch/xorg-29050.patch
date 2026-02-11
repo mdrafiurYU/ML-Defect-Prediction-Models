@@ -1,0 +1,40 @@
+diff --git a/hw/xnest/Events.c b/hw/xnest/Events.c
+index a209241..38fefa7 100644
+--- a/hw/xnest/Events.c
++++ b/hw/xnest/Events.c
+@@ -52,7 +52,7 @@ ProcessInputEvents()
+ }
+ 
+ int
+-TimeSinceLastInputEvent()
++TimeSinceLastInputEvent(void)
+ {
+     if (lastEventTime == 0)
+         lastEventTime = GetTimeInMillis();
+@@ -60,7 +60,7 @@ TimeSinceLastInputEvent()
+ }
+ 
+ void
+-SetTimeSinceLastInputEvent()
++SetTimeSinceLastInputEvent(void)
+ {
+   lastEventTime = GetTimeInMillis();
+ }
+@@ -78,7 +78,7 @@ xnestNotExposurePredicate(Display *display, XEvent *event, char *args)
+ }
+ 
+ void
+-xnestCollectExposures()
++xnestCollectExposures(void)
+ {
+   XEvent X;
+   WindowPtr pWin;
+@@ -113,7 +113,7 @@ xnestQueueKeyEvent(int type, unsigned int keycode)
+ }
+ 
+ void
+-xnestCollectEvents()
++xnestCollectEvents(void)
+ {
+   XEvent X;
+   xEvent x;

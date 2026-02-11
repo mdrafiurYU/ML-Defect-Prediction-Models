@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/core/search/SearchPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/core/search/SearchPattern.java
+index 4d71889..42a1545 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/core/search/SearchPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/core/search/SearchPattern.java
+@@ -1247,7 +1247,7 @@ public static SearchPattern createPattern(IJavaElement element, int limitTo, int
+ 						typeQualification = CharOperation.subarray(typeErasure, 0, lastDot);
+ 						if (!field.isBinary()) {
+ 							// prefix with a '*' as the full qualification could be bigger (because of an import)
+-							CharOperation.concat(IIndexConstants.ONE_STAR, typeQualification);
++							typeQualification = CharOperation.concat(IIndexConstants.ONE_STAR, typeQualification);
+ 						}
+ 					}
+ 				} catch (JavaModelException e) {

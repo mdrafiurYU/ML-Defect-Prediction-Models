@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+index 653b9c9..357ee66 100755
+--- a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
++++ b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+@@ -41,14 +41,17 @@ public class SolrConstantScoreQuery extends ConstantScoreQuery {
+   }
+ 
+   /** Returns the encapsulated filter */
++  @Override
+   public Filter getFilter() {
+     return filter;
+   }
+ 
++  @Override
+   public Query rewrite(IndexReader reader) throws IOException {
+     return this;
+   }
+ 
++  @Override
+   public void extractTerms(Set terms) {
+     // OK to not add any terms when used for MultiSearcher,
+     // but may not be OK for highlighting

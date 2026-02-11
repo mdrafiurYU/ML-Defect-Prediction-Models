@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/loader/misym.c b/hw/xfree86/loader/misym.c
+index 3e10cd7..b2b62df 100644
+--- a/hw/xfree86/loader/misym.c
++++ b/hw/xfree86/loader/misym.c
+@@ -76,6 +76,9 @@
+ #ifdef RENDER
+ #include "mipict.h"
+ #endif
++#ifdef COMPOSITE
++#include "cw/cw.h"
++#endif
+ 
+ /* mi things */
+ 
+@@ -209,6 +212,9 @@ LOOKUP miLookupTab[] = {
+ #ifdef RENDER
+     SYMFUNC(miGlyphExtents)
+ #endif
++#ifdef COMPOSITE
++    SYMFUNC(miDisableCompositeWrapper)
++#endif
+ 
+     {0, 0}
+ };

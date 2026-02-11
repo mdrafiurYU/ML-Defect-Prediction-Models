@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/MultiFieldsEnum.java b/lucene/src/java/org/apache/lucene/index/MultiFieldsEnum.java
+index 02b52d7..66a2ad8 100644
+--- a/lucene/src/java/org/apache/lucene/index/MultiFieldsEnum.java
++++ b/lucene/src/java/org/apache/lucene/index/MultiFieldsEnum.java
+@@ -94,7 +94,7 @@ public final  class MultiFieldsEnum extends FieldsEnum {
+     if (queue.size() > 0) {
+       while(true) {
+         top[numTop++] = queue.pop();
+-        if (queue.size() == 0 || (queue.top()).current != top[0].current) {
++        if (queue.size() == 0 || !(queue.top()).current.equals(top[0].current)) {
+           break;
+         }
+       }

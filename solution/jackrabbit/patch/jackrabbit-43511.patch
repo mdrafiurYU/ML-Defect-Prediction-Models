@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFactoryQImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFactoryQImpl.java
+index 8521279..b9e84c6 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFactoryQImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFactoryQImpl.java
+@@ -114,7 +114,7 @@ public class ValueFactoryQImpl implements ValueFactory {
+      */
+     public Value createValue(boolean value) {
+         try {
+-            QValue qvalue = qfactory.create(Boolean.toString(value), PropertyType.BOOLEAN);
++            QValue qvalue = qfactory.create(value);
+             return new QValueValue(qvalue, resolver);
+         } catch (RepositoryException ex) {
+             throw new RuntimeException(ex);

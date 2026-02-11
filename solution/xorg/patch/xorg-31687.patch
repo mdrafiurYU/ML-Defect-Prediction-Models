@@ -1,0 +1,18 @@
+diff --git a/include/bstorestr.h b/include/bstorestr.h
+index 14e2fe1..cf7820b 100644
+--- a/include/bstorestr.h
++++ b/include/bstorestr.h
+@@ -45,13 +45,11 @@ typedef    PixmapPtr (* BackingStoreGetImagePixmapProcPtr)(void);
+ typedef    PixmapPtr (* BackingStoreGetSpansPixmapProcPtr)(void);
+ 
+ typedef struct _BSFuncs {
+-
+ 	BackingStoreSaveAreasProcPtr SaveAreas;
+ 	BackingStoreRestoreAreasProcPtr RestoreAreas;
+ 	BackingStoreSetClipmaskRgnProcPtr SetClipmaskRgn;
+ 	BackingStoreGetImagePixmapProcPtr GetImagePixmap;
+ 	BackingStoreGetSpansPixmapProcPtr GetSpansPixmap;
+-
+ } BSFuncRec, *BSFuncPtr;
+ 
+ #endif /* _BSTORESTR_H_ */

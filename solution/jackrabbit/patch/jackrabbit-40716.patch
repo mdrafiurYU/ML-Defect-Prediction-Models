@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ReadOnlyIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ReadOnlyIndexReader.java
+index 9bc0c5f..2b91b49 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ReadOnlyIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ReadOnlyIndexReader.java
+@@ -343,7 +343,7 @@ class ReadOnlyIndexReader extends FilterIndexReader {
+         /**
+          * @inheritDoc
+          */
+-        public byte[] getPayload(byte data[], int offset) throws IOException {
++        public byte[] getPayload(byte[] data, int offset) throws IOException {
+             return ((TermPositions) in).getPayload(data, offset);
+         }

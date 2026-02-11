@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+index f7ecf28..83ed23e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/InternalValue.java
+@@ -79,7 +79,8 @@ public class InternalValue {
+     /**
+      * If set to 'true', the data store is used when configured in repository.xml
+      */
+-    public static final boolean USE_DATA_STORE = Boolean.valueOf(System.getProperty("org.jackrabbit.useDataStore", "true")).booleanValue();
++    public static final boolean USE_DATA_STORE =
++        Boolean.valueOf(System.getProperty("org.jackrabbit.useDataStore", "true")).booleanValue();
+ 
+     /**
+      * Temporary binary values smaller or equal this size are kept in memory

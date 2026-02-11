@@ -1,0 +1,15 @@
+diff --git a/Xext/xace.c b/Xext/xace.c
+index 6a7df31..e85a517 100644
+--- a/Xext/xace.c
++++ b/Xext/xace.c
+@@ -262,10 +262,7 @@ XaceResetProc(ExtensionEntry *extEntry)
+     int i;
+ 
+     for (i=0; i<XACE_NUM_HOOKS; i++)
+-    {
+ 	DeleteCallbackList(&XaceHooks[i]);
+-	XaceHooks[i] = NULL;
+-    }
+ } /* XaceResetProc */
+ 
+ 

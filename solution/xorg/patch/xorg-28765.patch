@@ -1,0 +1,25 @@
+diff --git a/Xi/getfocus.c b/Xi/getfocus.c
+index 1bcb673..245b5f1 100644
+--- a/Xi/getfocus.c
++++ b/Xi/getfocus.c
+@@ -75,9 +75,9 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGetDeviceFocus(register ClientPtr client)
++SProcXGetDeviceFocus(ClientPtr client)
+ {
+-    register char n;
++    char n;
+ 
+     REQUEST(xGetDeviceFocusReq);
+     swaps(&stuff->length, n);
+@@ -138,7 +138,7 @@ ProcXGetDeviceFocus(ClientPtr client)
+ void
+ SRepXGetDeviceFocus(ClientPtr client, int size, xGetDeviceFocusReply * rep)
+ {
+-    register char n;
++    char n;
+ 
+     swaps(&rep->sequenceNumber, n);
+     swapl(&rep->length, n);

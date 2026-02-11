@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index 5dccd39..888a9e3 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -138,13 +138,13 @@
+ 
+ /* Global data */
+ 
+-pciBusInfo_t *pciBusInfo = NULL;
++pciBusFuncs_t *pciBusFuncs = NULL;
+ 
+ _X_EXPORT ADDRESS
+ pciBusAddrToHostAddr(PCITAG tag, PciAddrType type, ADDRESS addr)
+ {
+-    if (pciBusInfo->funcs->pciAddrBusToHost)
+-	return pciBusInfo->funcs->pciAddrBusToHost(tag, type, addr);
++    if (pciBusFuncs && pciBusFuncs->pciAddrBusToHost)
++	return pciBusFuncs->pciAddrBusToHost(tag, type, addr);
+     else
+ 	return addr;
+ }

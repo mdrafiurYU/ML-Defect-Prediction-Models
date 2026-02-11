@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java
+index ade23b6..11eb719 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java
+@@ -338,6 +338,7 @@ public abstract class ASTNode implements BaseTypes, CompilerModifiers, TypeConst
+ 				scope.problemReporter().forbiddenReference(type, this, restriction.getMessageTemplate(), restriction.getProblemId());
+ 			}
+ 		}
++		
+ 		if (!refType.isViewedAsDeprecated()) return false;
+ 		
+ 		// inside same unit - no report

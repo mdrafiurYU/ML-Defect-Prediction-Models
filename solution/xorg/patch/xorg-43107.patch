@@ -1,0 +1,34 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index cb13deb..217e01c 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -3117,6 +3117,8 @@ xf86_crtc_clip_video_helper(ScrnInfoPtr pScrn,
+ xf86_crtc_notify_proc_ptr
+ xf86_wrap_crtc_notify (ScreenPtr screen, xf86_crtc_notify_proc_ptr new)
+ {
++    if (xf86CrtcConfigPrivateIndex != -1)
++    {
+     ScrnInfoPtr		scrn = xf86Screens[screen->myNum];
+     xf86CrtcConfigPtr	config = XF86_CRTC_CONFIG_PTR(scrn);
+     xf86_crtc_notify_proc_ptr	old;
+@@ -3125,15 +3127,20 @@ xf86_wrap_crtc_notify (ScreenPtr screen, xf86_crtc_notify_proc_ptr new)
+     config->xf86_crtc_notify = new;
+     return old;
+ }
++    return NULL;
++}
+ 
+ void
+ xf86_unwrap_crtc_notify(ScreenPtr screen, xf86_crtc_notify_proc_ptr old)
+ {
++    if (xf86CrtcConfigPrivateIndex != -1)
++    {
+     ScrnInfoPtr		scrn = xf86Screens[screen->myNum];
+     xf86CrtcConfigPtr	config = XF86_CRTC_CONFIG_PTR(scrn);
+ 
+     config->xf86_crtc_notify = old;
+ }
++}
+ 
+ void
+ xf86_crtc_notify(ScreenPtr screen)

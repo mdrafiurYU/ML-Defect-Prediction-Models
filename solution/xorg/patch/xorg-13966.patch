@@ -1,0 +1,13 @@
+diff --git a/Xprint/pcl/PclInit.c b/Xprint/pcl/PclInit.c
+index f48ece0..3d0a731 100644
+--- a/Xprint/pcl/PclInit.c
++++ b/Xprint/pcl/PclInit.c
+@@ -86,7 +86,7 @@ copyright holders.
+ #include "Pcl.h"
+ 
+ #include "cfb.h"
+-#include "Xos.h"	/* for unlink() */
++#include <X11/Xos.h>	/* for unlink() */
+ 
+ #include "attributes.h"
+ #include "DiPrint.h"

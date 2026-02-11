@@ -1,0 +1,13 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 2d12388..40a3a52 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -209,7 +209,7 @@ mieqProcessInputEvents()
+                 miEventQueue.head = 0;
+             else
+                 ++miEventQueue.head;
+-            NewCurrentScreen (miEventQueue.pDequeueScreen, x, y);
++            NewCurrentScreen (e->pDev, miEventQueue.pDequeueScreen, x, y);
+         }
+         else {
+             if (miEventQueue.head == QUEUE_SIZE - 1)

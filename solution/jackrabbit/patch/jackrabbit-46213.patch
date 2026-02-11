@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/ImpersonationCallback.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/ImpersonationCallback.java
+index e94a8da..b173656 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/ImpersonationCallback.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/ImpersonationCallback.java
+@@ -48,6 +48,9 @@ public class ImpersonationCallback implements Callback {
+     /**
+      * Returns the impersonator {@link Subject} set on this callback or
+      * <code>null</code> if not set.
++     *
++     * @return the impersonator {@link Subject} set on this callback or
++     * <code>null</code> if not set.
+      */
+     public Subject getImpersonator() {
+         return impersonator;

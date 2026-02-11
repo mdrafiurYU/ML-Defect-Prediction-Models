@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xaa/xaaDashLine.c b/hw/xfree86/xaa/xaaDashLine.c
+index 1a4732b..63233e0 100644
+--- a/hw/xfree86/xaa/xaaDashLine.c
++++ b/hw/xfree86/xaa/xaaDashLine.c
+@@ -35,7 +35,8 @@ XAAPolyLinesDashed(
+ #endif
+ ){
+     XAAInfoRecPtr infoRec = GET_XAAINFORECPTR_FROM_GC(pGC);
+-    XAAGCPtr   pGCPriv = (XAAGCPtr) (pGC)->devPrivates[XAAGetGCIndex()].ptr;
++    XAAGCPtr   pGCPriv = (XAAGCPtr)dixLookupPrivate(&pGC->devPrivates,
++						    XAAGetGCKey());
+     BoxPtr pboxInit = REGION_RECTS(pGC->pCompositeClip);
+     int nboxInit = REGION_NUM_RECTS(pGC->pCompositeClip);
+     unsigned int bias = miGetZeroLineBias(pDrawable->pScreen);

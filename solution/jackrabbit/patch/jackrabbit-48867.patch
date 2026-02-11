@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/RemoveVersion.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/RemoveVersion.java
+index 39ef9a4..6aa6e9e 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/RemoveVersion.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/RemoveVersion.java
+@@ -40,7 +40,7 @@ public class RemoveVersion extends Remove {
+ 
+     private NodeEntry versionableEntry = null;
+ 
+-    protected RemoveVersion(ItemState removeState, NodeState parent, VersionManager mgr)
++    private RemoveVersion(ItemState removeState, NodeState parent, VersionManager mgr)
+             throws RepositoryException {
+         super(removeState, parent);
+         try {
+@@ -79,8 +79,8 @@ public class RemoveVersion extends Remove {
+         }
+ 
+         // invalidate the versionhistory entry and all its children
+-        // in order to the the v-graph recalculated
+-        removeState.getHierarchyEntry().getParent().invalidate(true);
++        // in order to have the v-graph recalculated
++        parent.getNodeEntry().invalidate(true);
+     }
+ 
+     //----------------------------------------< Access Operation Parameters >---

@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 50b89f7..660cf3b 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -444,7 +444,12 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 				this.parameters.put(Logger.CLASS, e.getClass());
+ 				this.printTag(Logger.EXCEPTION, this.parameters, true, true);
+ 			}
+-			this.printlnErr(stackTrace);
++			String message = e.getMessage();
++			if (message == null) {
++				this.printlnErr(stackTrace);
++			} else {
++				this.printlnErr(message);
++			}
+ 		}
+ 
+ 		/**

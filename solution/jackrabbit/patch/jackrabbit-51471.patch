@@ -1,0 +1,45 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
+index e3f23ec..77afa16 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
+@@ -22,7 +22,6 @@ import org.slf4j.LoggerFactory;
+ import javax.jcr.RepositoryException;
+ import java.io.ByteArrayInputStream;
+ import java.io.InputStream;
+-import java.io.UnsupportedEncodingException;
+ import java.util.Arrays;
+ 
+ /**
+@@ -122,14 +121,14 @@ class BLOBInMemory extends BLOBFileValue {
+         // the data will be garbage collected
+     }
+ 
+-    void discard() {
++    public void dispose() {
+         // do nothing
+         // this object could still be referenced
+         // the data will be garbage collected
+     }
+ 
+-    boolean isImmutable() {
+-        return true;
++    BLOBFileValue copy() throws RepositoryException {
++        return this;
+     }
+ 
+     public long getSize() {
+@@ -140,14 +139,6 @@ class BLOBInMemory extends BLOBFileValue {
+         return new ByteArrayInputStream(data);
+     }
+ 
+-    String getString() throws RepositoryException {
+-        try {
+-            return new String(data, "UTF-8");
+-        } catch (UnsupportedEncodingException e) {
+-            throw new RepositoryException("UTF-8 not supported on this platform", e);
+-        }
+-    }
+-
+     public String toString() {
+         StringBuilder buff = new StringBuilder(PREFIX.length() + 2 * data.length);
+         buff.append(PREFIX);

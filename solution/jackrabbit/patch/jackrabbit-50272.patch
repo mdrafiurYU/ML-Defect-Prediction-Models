@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/DefaultQueryNodeFactory.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/DefaultQueryNodeFactory.java
+index 29338e2..1acd5bf 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/DefaultQueryNodeFactory.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/DefaultQueryNodeFactory.java
+@@ -89,7 +89,7 @@ public class DefaultQueryNodeFactory implements QueryNodeFactory {
+      */
+     public RelationQueryNode createRelationQueryNode(QueryNode parent,
+                                                      int operation) {
+-        return new RelationQueryNode(parent, operation);
++        return new RelationQueryNode(parent, operation, this);
+     }
+ 
+     /**

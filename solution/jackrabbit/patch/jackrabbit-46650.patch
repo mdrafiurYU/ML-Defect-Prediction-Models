@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/FrozenNodeIteratorAdapter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/FrozenNodeIteratorAdapter.java
+index bf79716..4ceb83d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/FrozenNodeIteratorAdapter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/FrozenNodeIteratorAdapter.java
+@@ -43,7 +43,7 @@ public class FrozenNodeIteratorAdapter extends RangeIteratorAdapter implements N
+         try {
+             return ((Version) next()).getFrozenNode();
+         } catch (RepositoryException e) {
+-            throw new IllegalStateException(e.toString());
++            throw (IllegalStateException) new IllegalStateException(e.toString()).initCause(e);
+         }
+     }
+ }
+\ No newline at end of file

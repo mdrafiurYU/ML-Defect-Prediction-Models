@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/loader/loader.c b/hw/xfree86/loader/loader.c
+index 774a4c4..b05c48e 100644
+--- a/hw/xfree86/loader/loader.c
++++ b/hw/xfree86/loader/loader.c
+@@ -363,6 +363,12 @@ LoaderSetOptions(unsigned long opts)
+     LoaderOptions |= opts;
+ }
+ 
++_X_EXPORT Bool
++LoaderShouldIgnoreABI(void)
++{
++    return (LoaderOptions & LDR_OPT_ABI_MISMATCH_NONFATAL) != 0;
++}
++
+ _X_EXPORT int
+ LoaderGetABIVersion(const char *abiclass)
+ {

@@ -1,0 +1,14 @@
+diff --git a/Xprint/etc/init.d/xprint.cpp b/Xprint/etc/init.d/xprint.cpp
+index 56fae1d..dbfd1e1 100644
+--- a/Xprint/etc/init.d/xprint.cpp
++++ b/Xprint/etc/init.d/xprint.cpp
+@@ -176,6 +176,9 @@ export OPENWINHOME=/usr/openwin
+ #elif defined(OS_AIX)
+ XPROJECTROOT=/usr/lpp/X11
+ #else
++#if defined(ProjectRoot)
++[ -d ProjectRoot/bin ]	&& XPROJECTROOT=ProjectRoot
++#endif
+ [ -d /usr/X11/bin ]     && XPROJECTROOT=/usr/X11
+ [ -d /usr/X11R6/bin ]   && XPROJECTROOT=/usr/X11R6
+ #endif

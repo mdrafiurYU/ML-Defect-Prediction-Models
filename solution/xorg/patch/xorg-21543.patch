@@ -1,0 +1,26 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index 6a10554..cfa9996 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -137,19 +137,13 @@ static const char CREATE_NEW_SCREEN_FUNC[] =
+ static void
+ __glXDRIleaveServer(void)
+ {
+-  int i;
+-
+-  for (i = 0; i < screenInfo.numScreens; i++)
+-    DRIDoBlockHandler(i, NULL, NULL, NULL);
++  DRIBlockHandler(NULL, NULL, NULL);
+ }
+     
+ static void
+ __glXDRIenterServer(void)
+ {
+-  int i;
+-
+-  for (i = 0; i < screenInfo.numScreens; i++)
+-    DRIDoWakeupHandler(i, NULL, 0, NULL);
++  DRIWakeupHandler(NULL, 0, NULL);
+ }
+ 
+ static void

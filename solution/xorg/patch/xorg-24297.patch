@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86MiscExt.c b/hw/xfree86/common/xf86MiscExt.c
+index bdb02ce..3e741ba 100644
+--- a/hw/xfree86/common/xf86MiscExt.c
++++ b/hw/xfree86/common/xf86MiscExt.c
+@@ -366,7 +366,7 @@ MiscExtCreateStruct(MiscExtStructType mse_or_kbd)
+ 	InputInfoPtr pInfo = xf86InputDevs;
+ 	
+ 	while (pInfo) {
+-	    if (xf86IsCorePointer(pInfo->dev))
++	    if (pInfo->dev == inputInfo.pointer)
+ 		break;
+ 	    pInfo = pInfo->next;
+ 	}

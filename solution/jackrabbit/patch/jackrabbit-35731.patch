@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/DbNameIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/DbNameIndex.java
+index f100f89..e53352d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/DbNameIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/DbNameIndex.java
+@@ -140,7 +140,7 @@ public class DbNameIndex implements StringIndex {
+         // assert index does not exist
+         ResultSet rs = null;
+         try {
+-            Statement stmt = connectionManager.executeStmt(nameInsertSQL, new Object[]{string}, Statement.RETURN_GENERATED_KEYS);
++            Statement stmt = connectionManager.executeStmt(nameInsertSQL, new Object[]{string}, true, 0);
+             rs = stmt.getGeneratedKeys();
+             if (!rs.next()) {
+                 return -1;

@@ -1,0 +1,13 @@
+diff --git a/config/hal.c b/config/hal.c
+index 4427deb..45238c0 100644
+--- a/config/hal.c
++++ b/config/hal.c
+@@ -251,6 +251,8 @@ unwind:
+         xfree(xkb_model);
+     if (xkb_layout)
+         xfree(xkb_layout);
++    if (xkb_variant)
++        xfree(xkb_variant);
+     if (xkb_options)
+         xfree(xkb_options);
+     if (config_info)

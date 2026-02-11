@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/int10/linux.c b/hw/xfree86/os-support/linux/int10/linux.c
+index 9e2c619..67eb161 100644
+--- a/hw/xfree86/os-support/linux/int10/linux.c
++++ b/hw/xfree86/os-support/linux/int10/linux.c
+@@ -245,7 +245,7 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
+      * 64K bytes at a time.
+      */
+     if (!videoBiosMapped) {
+-	(void)memset((pointer)V_BIOS, 0, SYS_BIOS - V_BIOS);
++	memset((pointer)V_BIOS, 0, SYS_BIOS - V_BIOS);
+ #ifdef DEBUG
+ 	ErrorF("Reading BIOS\n");
+ #endif

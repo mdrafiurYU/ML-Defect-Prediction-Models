@@ -1,0 +1,24 @@
+diff --git a/dix/dixutils.c b/dix/dixutils.c
+index c0728da..44d82c9 100644
+--- a/dix/dixutils.c
++++ b/dix/dixutils.c
+@@ -882,9 +882,7 @@ static CallbackFuncsRec default_cbfuncs =
+     _DeleteCallbackList
+ };
+ 
+-/* ===== Public Procedures ===== */
+-
+-Bool
++static Bool
+ CreateCallbackList(CallbackListPtr *pcbl, CallbackFuncsPtr cbfuncs)
+ {
+     CallbackListPtr  cbl;
+@@ -916,6 +914,8 @@ CreateCallbackList(CallbackListPtr *pcbl, CallbackFuncsPtr cbfuncs)
+     return TRUE;
+ }
+ 
++/* ===== Public Procedures ===== */
++
+ _X_EXPORT Bool 
+ AddCallback(CallbackListPtr *pcbl, CallbackProcPtr callback, pointer data)
+ {

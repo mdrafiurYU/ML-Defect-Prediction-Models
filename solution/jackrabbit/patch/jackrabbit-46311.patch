@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/name/JcrName.java b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/name/JcrName.java
+index 8038283..d82990b 100644
+--- a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/name/JcrName.java
++++ b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/name/JcrName.java
+@@ -39,6 +39,15 @@ public final class JcrName {
+         list.add(new JcrName("...", "", "..."));
+         list.add(new JcrName(".a.", "", ".a."));
+ 
++        // expanded names
++        list.add(new JcrName("{}a", "", "a"));
++        list.add(new JcrName("{}name", "", "name"));
++        list.add(new JcrName("{}na me", "", "na me"));
++        list.add(new JcrName("{prefix}name", "prefix", "name"));
++        list.add(new JcrName("{prefix}na me", "prefix", "na me"));        
++        list.add(new JcrName("{}...", "", "..."));
++        list.add(new JcrName("{}.a.", "", ".a."));
++
+         // invalid names
+         list.add(new JcrName(":name"));
+         list.add(new JcrName("."));

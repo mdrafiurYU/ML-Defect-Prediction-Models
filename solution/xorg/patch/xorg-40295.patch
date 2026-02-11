@@ -1,0 +1,19 @@
+diff --git a/dix/ffs.c b/dix/ffs.c
+index b75657d..d0bd3e5 100644
+--- a/dix/ffs.c
++++ b/dix/ffs.c
+@@ -30,6 +30,8 @@ The Open Group.
+ #include <dix-config.h>
+ #endif
+ 
++#ifndef HAVE_FFS
++
+ #include "dix.h"
+ 
+ int
+@@ -42,3 +44,5 @@ ffs(int i)
+ 	i >>= 1;
+     return j;
+ }
++
++#endif

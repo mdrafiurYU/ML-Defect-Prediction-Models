@@ -1,0 +1,30 @@
+diff --git a/render/picturestr.h b/render/picturestr.h
+index 8a926ce..60be68a 100644
+--- a/render/picturestr.h
++++ b/render/picturestr.h
+@@ -185,11 +185,13 @@ typedef struct _Picture {
+ } PictureRec;
+ 
+ typedef Bool (*PictFilterValidateParamsProcPtr) (ScreenPtr pScreen, int id,
+-						 xFixed *params, int nparams);
++						 xFixed *params, int nparams,
++						 int *width, int *height);
+ typedef struct {
+     char			    *name;
+     int				    id;
+     PictFilterValidateParamsProcPtr ValidateParams;
++    int				    width, height;
+ } PictFilterRec, *PictFilterPtr;
+ 
+ #define PictFilterNearest	0
+@@ -458,7 +460,9 @@ PictureGetFilterName (int id);
+ int
+ PictureAddFilter (ScreenPtr			    pScreen,
+ 		  char				    *filter,
+-		  PictFilterValidateParamsProcPtr   ValidateParams);
++		  PictFilterValidateParamsProcPtr   ValidateParams,
++		  int				    width,
++		  int				    height);
+ 
+ Bool
+ PictureSetFilterAlias (ScreenPtr pScreen, char *filter, char *alias);

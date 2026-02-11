@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/ddc/interpret_edid.c b/hw/xfree86/ddc/interpret_edid.c
+index c4d8963..1e57731 100644
+--- a/hw/xfree86/ddc/interpret_edid.c
++++ b/hw/xfree86/ddc/interpret_edid.c
+@@ -132,7 +132,7 @@ handle_edid_quirks(xf86MonPtr m)
+     }
+ }
+ 
+-xf86MonPtr
++_X_EXPORT xf86MonPtr
+ xf86InterpretEDID(int scrnIndex, Uchar *block)
+ {
+     xf86MonPtr m;

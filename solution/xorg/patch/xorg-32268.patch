@@ -1,0 +1,12 @@
+diff --git a/GL/glx/glxext.c b/GL/glx/glxext.c
+index b35175e..5b621d3 100644
+--- a/GL/glx/glxext.c
++++ b/GL/glx/glxext.c
+@@ -145,7 +145,6 @@ static int ClientGone(int clientIndex, XID id)
+ 	for (i=0; i < cl->numCurrentContexts; i++) {
+ 	    cx = cl->currentContexts[i];
+ 	    if (cx) {
+-		__glXDeassociateContext(cx);
+ 		cx->isCurrent = GL_FALSE;
+ 		if (!cx->idExists) {
+ 		    __glXFreeContext(cx);

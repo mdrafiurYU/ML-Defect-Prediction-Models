@@ -1,0 +1,40 @@
+diff --git a/hw/xfree86/os-support/drm/xf86drm.c b/hw/xfree86/os-support/drm/xf86drm.c
+index 0980e78..a466304 100644
+--- a/hw/xfree86/os-support/drm/xf86drm.c
++++ b/hw/xfree86/os-support/drm/xf86drm.c
+@@ -40,14 +40,17 @@
+ #ifdef XFree86Server
+ # include "xf86.h"
+ # include "xf86_OSproc.h"
+-# include "drm.h"
+-# include "xf86_ansic.h"
+ # define _DRM_MALLOC xalloc
+ # define _DRM_FREE   xfree
+ # ifndef XFree86LOADER
+ #  include <sys/mman.h>
+ # endif
+ #else
++# define _DRM_MALLOC malloc
++# define _DRM_FREE   free
++#endif
++
++#include "drm.h"
+ # include <stdio.h>
+ # include <stdlib.h>
+ # include <unistd.h>
+@@ -63,15 +66,6 @@
+ # include <sys/mman.h>
+ # include <sys/time.h>
+ # include <stdarg.h>
+-# ifdef DRM_USE_MALLOC
+-#  define _DRM_MALLOC malloc
+-#  define _DRM_FREE   free
+-# else
+-#  define _DRM_MALLOC malloc
+-#  define _DRM_FREE   free
+-# endif
+-# include "drm.h"
+-#endif
+ 
+ /* No longer needed with CVS kernel modules on alpha 
+ #if defined(__alpha__) && defined(__linux__)

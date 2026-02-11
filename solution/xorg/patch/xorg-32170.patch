@@ -1,0 +1,30 @@
+diff --git a/hw/xgl/xgl.h b/hw/xgl/xgl.h
+index 5710bbf..7bca1d5 100644
+--- a/hw/xgl/xgl.h
++++ b/hw/xgl/xgl.h
+@@ -272,8 +272,6 @@ typedef struct _xglScreen {
+     CreateWindowProcPtr		  CreateWindow;
+     DestroyWindowProcPtr	  DestroyWindow;
+     ChangeWindowAttributesProcPtr ChangeWindowAttributes;
+-    PaintWindowBackgroundProcPtr  PaintWindowBackground;
+-    PaintWindowBorderProcPtr	  PaintWindowBorder;
+     CopyWindowProcPtr		  CopyWindow;
+     CreateGCProcPtr		  CreateGC;
+     CloseScreenProcPtr		  CloseScreen;
+@@ -1090,16 +1088,6 @@ xglCopyWindow (WindowPtr   pWin,
+ 	       DDXPointRec ptOldOrg,
+ 	       RegionPtr   prgnSrc);
+ 
+-void
+-xglPaintWindowBackground (WindowPtr pWin,
+-			  RegionPtr pRegion,
+-			  int	    what);
+-
+-void
+-xglPaintWindowBorder (WindowPtr pWin,
+-		      RegionPtr pRegion,
+-		      int	what);
+-
+ PixmapPtr
+ xglGetWindowPixmap (WindowPtr pWin);
+ 

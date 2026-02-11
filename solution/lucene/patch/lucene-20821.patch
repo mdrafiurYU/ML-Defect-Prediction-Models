@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/ro/TestRomanianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/ro/TestRomanianAnalyzer.java
+index 44e3424..ee6f94b 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/ro/TestRomanianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/ro/TestRomanianAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestRomanianAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "absenţa", "absenţa");
+     checkOneTermReuse(a, "absenţi", "absenţ");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new RomanianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

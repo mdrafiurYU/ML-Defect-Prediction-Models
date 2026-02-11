@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/HashtableOfObject.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/HashtableOfObject.java
+index db0bcce..243a22b 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/HashtableOfObject.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/HashtableOfObject.java
+@@ -39,6 +39,14 @@ public final class HashtableOfObject implements Cloneable {
+ 		this.valueTable = new Object[extraRoom];
+ 	}
+ 
++	public void clear() {
++		for (int i = this.keyTable.length; --i >= 0;) {
++			this.keyTable[i] = null;
++			this.valueTable[i] = null;
++		}
++		this.elementSize = 0;
++	}
++
+ 	public Object clone() throws CloneNotSupportedException {
+ 		HashtableOfObject result = (HashtableOfObject) super.clone();
+ 		result.elementSize = this.elementSize;

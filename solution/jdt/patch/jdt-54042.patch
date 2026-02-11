@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnPackageReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnPackageReference.java
+index a9de37d..af3437a 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnPackageReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionOnPackageReference.java
+@@ -30,10 +30,11 @@ package org.eclipse.jdt.internal.codeassist.select;
+  */
+  
+ import org.eclipse.jdt.internal.compiler.ast.ImportReference;
++import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ 
+ public class SelectionOnPackageReference extends ImportReference {
+ public SelectionOnPackageReference(char[][] tokens , long[] positions) {
+-	super(tokens, positions, true, AccDefault);
++	super(tokens, positions, true, ClassFileConstants.AccDefault);
+ }
+ public StringBuffer print(int tab, StringBuffer output, boolean withOnDemand) {
+ 	printIndent(tab, output).append("<SelectOnPackage:"); //$NON-NLS-1$

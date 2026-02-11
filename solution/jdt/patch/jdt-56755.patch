@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MethodDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MethodDeclaration.java
+index 108bc0f..16c07d4 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MethodDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MethodDeclaration.java
+@@ -90,7 +90,8 @@ public class MethodDeclaration extends AbstractMethodDeclaration {
+ 			// check for missing returning path
+ 			TypeBinding returnTypeBinding = binding.returnType;
+ 			if ((returnTypeBinding == TypeBinding.VOID) || isAbstract()) {
+-				this.needFreeReturn = flowInfo.isReachable();
++				this.needFreeReturn =
++					(flowInfo.tagBits & FlowInfo.UNREACHABLE) == 0;
+ 			} else {
+ 				if (flowInfo != FlowInfo.DEAD_END) { 
+ 					scope.problemReporter().shouldReturn(returnTypeBinding, this);

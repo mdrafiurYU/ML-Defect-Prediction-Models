@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/egl/xegl.c b/hw/xgl/egl/xegl.c
+index 70db7c0..c671dbe 100644
+--- a/hw/xgl/egl/xegl.c
++++ b/hw/xgl/egl/xegl.c
+@@ -252,7 +252,7 @@ xeglInitInput (int  argc,
+ 
+ Bool
+ xeglLegalModifier (unsigned int key,
+-		   DevicePtr    pDev)
++		   DeviceIntPtr pDev)
+ {
+     return KdLegalModifier (key, pDev);
+ }

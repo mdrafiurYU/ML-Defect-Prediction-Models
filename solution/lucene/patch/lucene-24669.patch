@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java b/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java
+index 38c60c5..f78f07e 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java
++++ b/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java
+@@ -86,7 +86,7 @@ public class TestCustomSearcherSort extends LuceneTestCase {
+     // log("Run testFieldSortCustomSearcher");
+     // define the sort criteria
+     Sort custSort = new Sort(
+-        new SortField("publicationDate_", SortField.STRING),
++        new SortField("publicationDate_", SortField.Type.STRING),
+         SortField.FIELD_SCORE);
+     IndexSearcher searcher = new CustomSearcher(reader, 2);
+     // search and check hits
+@@ -100,7 +100,7 @@ public class TestCustomSearcherSort extends LuceneTestCase {
+     // log("Run testFieldSortSingleSearcher");
+     // define the sort criteria
+     Sort custSort = new Sort(
+-        new SortField("publicationDate_", SortField.STRING),
++        new SortField("publicationDate_", SortField.Type.STRING),
+         SortField.FIELD_SCORE);
+     IndexSearcher searcher = new CustomSearcher(reader, 2);
+     // search and check hits

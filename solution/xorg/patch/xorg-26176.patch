@@ -1,0 +1,21 @@
+diff --git a/randr/randr.c b/randr/randr.c
+index 63d471c..926e32f 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -477,6 +477,7 @@ RRScanOldConfig (ScreenPtr pScreen, Rotation rotations)
+ 	if (!output)
+ 	    return;
+ 	RROutputSetCrtcs (output, &crtc, 1);
++	RROutputSetCrtc (output, crtc);
+ 	RROutputSetConnection (output, RR_Connected);
+     }
+ 
+@@ -552,7 +553,7 @@ RRScanOldConfig (ScreenPtr pScreen, Rotation rotations)
+ 
+     /* notice current mode */
+     if (newMode)
+-	RRCrtcSet (output->crtc, newMode, 0, 0, pScrPriv->rotation,
++	RRCrtcNotify (output->crtc, newMode, 0, 0, pScrPriv->rotation,
+ 		   1, &output);
+ }
+ #endif

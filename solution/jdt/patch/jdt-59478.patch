@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index 7f475e1..7cfc963 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -1040,11 +1040,7 @@ public String getAttachedJavadoc(IProgressMonitor monitor) throws JavaModelExcep
+ 		indexOfFirstParagraph = contents.indexOf("<p>", searchStart); //$NON-NLS-1$
+ 		if (indexOfFirstParagraph == -1) {
+ 			indexOfFirstParagraph = indexOfNextSummary;
+-		} else {
+-			indexOfFirstParagraph += 3 /* size of <P> */;
+ 		}
+-	} else {
+-		indexOfFirstParagraph += 3 /* size of <P> */;
+ 	}
+ 	return contents.substring(indexOfFirstParagraph, indexOfNextSummary);
+ }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
+index cc13186..7e1ff8a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
+@@ -173,7 +173,7 @@ public final class CachingMultiIndexReader
+      * {@inheritDoc}
+      */
+     public IndexReader[] getIndexReaders() {
+-        IndexReader readers[] = new IndexReader[subReaders.length];
++        IndexReader[] readers = new IndexReader[subReaders.length];
+         System.arraycopy(subReaders, 0, readers, 0, subReaders.length);
+         return readers;
+     }

@@ -1,0 +1,16 @@
+diff --git a/include/input.h b/include/input.h
+index 2debce9..4ba0cad 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -485,7 +485,10 @@ extern Bool ACDeviceAllowed(WindowPtr win,
+ 
+ /* Implemented by the DDX. */
+ extern int NewInputDeviceRequest(
+-    InputOption *options);
++    InputOption *options,
++    DeviceIntPtr *dev);
++extern void DeleteInputDeviceRequest(
++    DeviceIntPtr dev);
+ 
+ extern void DDXRingBell(
+     int volume,

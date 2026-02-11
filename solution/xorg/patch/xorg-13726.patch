@@ -1,0 +1,11 @@
+diff --git a/hw/xnest/Events.h b/hw/xnest/Events.h
+index 9ed211c..c61b26c 100644
+--- a/hw/xnest/Events.h
++++ b/hw/xnest/Events.h
+@@ -26,5 +26,6 @@ extern CARD32 lastEventTime;
+ void SetTimeSinceLastInputEvent(void);
+ void xnestCollectExposures(void);
+ void xnestCollectEvents(void);
++void xnestQueueKeyEvent(int type, unsigned int keycode);
+ 
+ #endif /* XNESTEVENTS_H */

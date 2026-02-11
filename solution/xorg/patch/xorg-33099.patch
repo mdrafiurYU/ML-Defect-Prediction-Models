@@ -1,0 +1,14 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 98cd290..4c9c4fb 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -572,9 +572,6 @@ InitCoreDevices(void)
+     if (!AllocateDevicePrivate(inputInfo.pointer, CoreDevicePrivatesIndex))
+         FatalError("Couldn't allocate pointer devPrivates\n");
+     inputInfo.pointer->devPrivates[CoreDevicePrivatesIndex].ptr = NULL;
+-
+-    ActivateDevice(inputInfo.keyboard);
+-    ActivateDevice(inputInfo.pointer);
+ }
+ 
+ /**

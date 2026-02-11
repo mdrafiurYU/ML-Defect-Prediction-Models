@@ -1,0 +1,22 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index 6f0d1ac..fe3816e 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -123,7 +123,7 @@ ProcXTestCompareCursor(ClientPtr client)
+     else if (stuff->cursor == XTestCurrentCursor)
+         pCursor = GetSpriteCursor(ptr);
+     else {
+-        rc = dixLookupResource((pointer *)&pCursor, stuff->cursor, RT_CURSOR,
++        rc = dixLookupResourceByType((pointer *)&pCursor, stuff->cursor, RT_CURSOR,
+                 client, DixReadAccess);
+         if (rc != Success)
+         {
+@@ -156,7 +156,7 @@ ProcXTestFakeInput(ClientPtr client)
+     int numValuators = 0;
+     int firstValuator = 0;
+     EventListPtr events;
+-    int nevents;
++    int nevents = 0;
+     int i;
+     int base = 0;
+ 

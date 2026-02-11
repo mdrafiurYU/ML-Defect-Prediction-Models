@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
+index 9098be1..b3de5b8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
+@@ -268,7 +268,8 @@ public class ACLProvider extends AbstractAccessControlProvider implements Access
+      * </ul>
+      *
+      * @param session to the workspace to set-up inital ACL to
+-     * @throws RepositoryException
++     * @param editor for the specified session.
++     * @throws RepositoryException If an error occurs.
+      */
+     private static void initRootACL(SessionImpl session, AccessControlEditor editor) throws RepositoryException {
+         try {

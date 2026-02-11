@@ -1,0 +1,13 @@
+diff --git a/include/servermd.h b/include/servermd.h
+index f10e6bc..7c8dd58 100644
+--- a/include/servermd.h
++++ b/include/servermd.h
+@@ -110,7 +110,7 @@ SOFTWARE.
+ 					/* byte boundries */
+ #endif /* hpux || __hppa__ */
+ 
+-#if defined(__powerpc__) || defined(__ppc__)
++#if defined(__powerpc__) || defined(__ppc__) || defined(__ppc64__)
+ 
+ #define IMAGE_BYTE_ORDER        MSBFirst
+ #define BITMAP_BIT_ORDER        MSBFirst

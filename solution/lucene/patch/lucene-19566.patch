@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/TestLBHttpSolrServer.java b/solr/src/test/org/apache/solr/client/solrj/TestLBHttpSolrServer.java
+index 8886a94..75f4e34 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/TestLBHttpSolrServer.java
++++ b/solr/src/test/org/apache/solr/client/solrj/TestLBHttpSolrServer.java
+@@ -48,6 +48,7 @@ public class TestLBHttpSolrServer extends LuceneTestCase {
+   SolrInstance[] solr = new SolrInstance[3];
+   HttpClient httpClient;
+ 
++  @Override
+   public void setUp() throws Exception {
+     super.setUp();
+     httpClient = new HttpClient(new MultiThreadedHttpConnectionManager());

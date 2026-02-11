@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/elfloader.h b/hw/xfree86/loader/elfloader.h
+index 6e9f02c..8cb09ee 100644
+--- a/hw/xfree86/loader/elfloader.h
++++ b/hw/xfree86/loader/elfloader.h
+@@ -30,7 +30,7 @@
+ #ifndef _ELFLOADER_H
+ #define _ELFLOADER_H
+ /* elfloader.c */
+-extern void *ELFLoadModule(loaderPtr, int, LOOKUP **);
++extern void *ELFLoadModule(loaderPtr, int, LOOKUP **, int flags);
+ extern void ELFResolveSymbols(void *);
+ extern int ELFCheckForUnresolved(void *);
+ extern char *ELFAddressToSection(void *, unsigned long);

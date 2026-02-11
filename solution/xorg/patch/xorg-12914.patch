@@ -1,0 +1,67 @@
+diff --git a/hw/xgl/xglarea.c b/hw/xgl/xglarea.c
+index b09e454..849f1a7 100644
+--- a/hw/xgl/xglarea.c
++++ b/hw/xgl/xglarea.c
+@@ -40,6 +40,7 @@ xglAreaMoveOut (xglAreaPtr pArea)
+ {
+     (*pArea->pRoot->funcs->MoveOut) (pArea, pArea->closure);
+ 
++    pArea->closure = (pointer) 0;
+     pArea->state = xglAreaAvailable;
+ }
+ 
+@@ -108,34 +109,37 @@ xglAreaDestroy (xglAreaPtr pArea)
+ static xglAreaPtr
+ xglAreaGetTopScoredSubArea (xglAreaPtr pArea)
+ {
++    if (!pArea)
++	return NULL;
++		
+     switch (pArea->state) {
+     case xglAreaOccupied:
+ 	return pArea;
+     case xglAreaAvailable:
+ 	break;
+-    case xglAreaDivided:
+-    {
++    case xglAreaDivided: {
+ 	xglAreaPtr tmp, top = NULL;
+ 	int	   i;
+ 	
+ 	for (i = 0; i < 4; i++)
+ 	{
+-	    if (pArea->pArea[i])
+-	    {
+ 		tmp = xglAreaGetTopScoredSubArea (pArea->pArea[i]);
+-		if (!tmp)
+-		    break;
+-		    
+-		if ((!top) ||
+-		    (*pArea->pRoot->funcs->CompareScore) (tmp,
++	    if (tmp && top)
++	    {
++		if ((*pArea->pRoot->funcs->CompareScore) (tmp,
+ 							  tmp->closure,
+ 							  top->closure) > 0)
+ 		    top = tmp;
+ 	    }
++	    else if (tmp)
++	    {
++		top = tmp;
++	    }
+ 	}
+ 	return top;
+     }
+     }
++    
+     return NULL;
+ }
+ 
+@@ -254,6 +258,7 @@ xglAreaFind (xglAreaPtr pArea,
+ 	    pArea->pArea[i] = NULL;
+ 	}
+ 	
++	pArea->closure = (pointer) 0;
+ 	pArea->state = xglAreaAvailable;
+ 	if (xglFindArea (pArea, width, height, TRUE, closure))
+ 	    return TRUE;

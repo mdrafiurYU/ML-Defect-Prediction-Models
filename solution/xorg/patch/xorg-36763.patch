@@ -1,0 +1,22 @@
+diff --git a/hw/xquartz/xpr/xprScreen.c b/hw/xquartz/xpr/xprScreen.c
+index fccaff0..8219046 100644
+--- a/hw/xquartz/xpr/xprScreen.c
++++ b/hw/xquartz/xpr/xprScreen.c
+@@ -35,6 +35,7 @@
+ #include "inputstr.h"
+ #include "quartz.h"
+ #include "xpr.h"
++#include "xprEvent.h"
+ #include "pseudoramiX.h"
+ #include "darwin.h"
+ #include "rootless.h"
+@@ -44,9 +45,6 @@
+ #include "applewmExt.h"
+ #include "micmap.h"
+ 
+-// From xprFrame.c
+-WindowPtr xprGetXWindow(xp_window_id wid);
+-
+ #ifdef DAMAGE
+ # include "damage.h"
+ #endif

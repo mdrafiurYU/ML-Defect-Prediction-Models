@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+index c035486..87f0253 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+@@ -43,6 +43,7 @@ public FlowInfo analyseCode(
+ 			unconditionalInits();
+ 		FlowInfo initsWhenFalse = flowInfo.copy();
+ 		flowInfo.markAsComparedEqualToNonNull(local);
++		// no impact upon enclosing try context
+ 		return FlowInfo.conditional(flowInfo, initsWhenFalse);
+ 	}
+ 	return expression.analyseCode(currentScope, flowContext, flowInfo).

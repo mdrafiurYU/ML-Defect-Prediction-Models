@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index 135e419..1db61d9 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -473,7 +473,7 @@ void DarwinSendKeyboardEvents(int ev_type, int keycode) {
+ 		return;
+ 	}
+ 
+-	if (darwinSyncKeymap && darwinKeymapFile == NULL) {
++	if (darwinSyncKeymap) {
+ 		/* See if keymap has changed. */
+ 
+ 		static unsigned int last_seed;

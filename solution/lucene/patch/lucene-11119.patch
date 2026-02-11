@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/document/ValuesField.java b/lucene/src/java/org/apache/lucene/document/ValuesField.java
+index df9332d..43fc6bd 100644
+--- a/lucene/src/java/org/apache/lucene/document/ValuesField.java
++++ b/lucene/src/java/org/apache/lucene/document/ValuesField.java
+@@ -130,7 +130,6 @@ public class ValuesField extends AbstractField {
+     default:
+       throw new IllegalArgumentException("unknown type: " + type);
+     }
+-    
+     return valField.set(field);
+   }
+ }

@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
+index dea09ab..e6e49d9 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/Util.java
+@@ -82,14 +82,15 @@ public static void compile(String[] pathsAndContents, Map options, String output
+ 					return false;
+ 				}
+ 			};
++		CompilerOptions compilerOptions = new CompilerOptions(options);
++		compilerOptions.performStatementsRecovery = false;
+ 		Compiler batchCompiler = 
+ 			new Compiler(
+ 				nameEnvironment, 
+ 				errorHandlingPolicy, 
+-				options,
++				compilerOptions,
+ 				requestor, 
+-				problemFactory,
+-				false);
++				problemFactory);
+ 		batchCompiler.options.produceReferenceInfo = true;
+ 		batchCompiler.compile(compilationUnits(pathsAndContents)); // compile all files together
+ 		System.err.print(requestor.problemLog); // problem log empty if no problems

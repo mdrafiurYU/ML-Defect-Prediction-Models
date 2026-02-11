@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/WorkspaceRestoreTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/WorkspaceRestoreTest.java
+index f55ecff..f2b0fe6 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/WorkspaceRestoreTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/WorkspaceRestoreTest.java
+@@ -73,7 +73,7 @@ public class WorkspaceRestoreTest extends AbstractVersionTest {
+             fail("Failed to create a second versionable node: " + e.getMessage());
+         }
+         try {
+-            wSuperuser = helper.getSuperuserSession(workspaceName);
++            wSuperuser = getHelper().getSuperuserSession(workspaceName);
+         } catch (RepositoryException e) {
+             fail("Failed to retrieve superuser session for second workspace '" + workspaceName + "': " + e.getMessage());
+         }

@@ -1,0 +1,53 @@
+diff --git a/Xi/chgkmap.c b/Xi/chgkmap.c
+index 24d3643..047b899 100644
+--- a/Xi/chgkmap.c
++++ b/Xi/chgkmap.c
+@@ -1,5 +1,3 @@
+-/* $Xorg: chgkmap.c,v 1.4 2001/02/09 02:04:33 xorgcvs Exp $ */
+-
+ /************************************************************
+ 
+ Copyright 1989, 1998  The Open Group
+@@ -45,7 +43,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ********************************************************/
+-/* $XFree86: xc/programs/Xserver/Xi/chgkmap.c,v 3.2 2001/01/17 22:13:24 dawes Exp $ */
+ 
+ /********************************************************************
+  *
+@@ -90,8 +87,7 @@ SProcXChangeDeviceKeyMapping(register ClientPtr client)
+     REQUEST_AT_LEAST_SIZE(xChangeDeviceKeyMappingReq);
+     p = (long *) &stuff[1];
+     count = stuff->keyCodes * stuff->keySymsPerKeyCode;
+-    for (i = 0; i < count; i++)
+-        {
++    for (i = 0; i < count; i++) {
+         swapl(p, n);
+ 	p++;
+         }
+@@ -115,8 +111,7 @@ ProcXChangeDeviceKeyMapping(register ClientPtr client)
+     REQUEST_AT_LEAST_SIZE(xChangeDeviceKeyMappingReq);
+ 
+     dev = LookupDeviceIntRec (stuff->deviceid);
+-    if (dev == NULL)
+-	{
++    if (dev == NULL) {
+ 	SendErrorToClient (client, IReqCode, X_ChangeDeviceKeyMapping, 0, 
+ 		BadDevice);
+ 	return Success;
+@@ -124,11 +119,10 @@ ProcXChangeDeviceKeyMapping(register ClientPtr client)
+     len = stuff->length - (sizeof(xChangeDeviceKeyMappingReq) >> 2);  
+ 
+     ret = ChangeKeyMapping (client, dev, len, DeviceMappingNotify, 
+-	stuff->firstKeyCode, stuff->keyCodes, stuff->keySymsPerKeyCode, 
+-	(KeySym *)&stuff[1]);
++			   stuff->firstKeyCode, stuff->keyCodes,
++			   stuff->keySymsPerKeyCode, (KeySym *) & stuff[1]);
+ 
+     if (ret != Success)
+-	SendErrorToClient (client, IReqCode, X_ChangeDeviceKeyMapping, 0, 
+-		ret);
++	SendErrorToClient(client, IReqCode, X_ChangeDeviceKeyMapping, 0, ret);
+     return Success;
+     }

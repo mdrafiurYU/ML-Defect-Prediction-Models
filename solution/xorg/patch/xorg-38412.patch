@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dixmods/glxmodule.c b/hw/xfree86/dixmods/glxmodule.c
+index 35ba74b..f6fda4b 100644
+--- a/hw/xfree86/dixmods/glxmodule.c
++++ b/hw/xfree86/dixmods/glxmodule.c
+@@ -85,7 +85,7 @@ glxSetup(pointer module, pointer opts, int *errmaj, int *errmin)
+ 
+     setupDone = TRUE;
+ 
+-    provider = LoaderSymbol("__glXDRIswrastProvider");
++    provider = LoaderSymbol("__glXDRISWRastProvider");
+     if (provider == NULL)
+ 	return NULL;
+     GlxPushProvider(provider);

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java
+index 3c57f73..a47d950 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java
+@@ -46,7 +46,7 @@ public class ACLTemplateTest extends AbstractACLTemplateTest {
+         SessionImpl sImpl = (SessionImpl) superuser;
+         PrincipalManager princicipalMgr = sImpl.getPrincipalManager();
+         PrivilegeRegistry privilegeRegistry = new PrivilegeRegistry(sImpl);
+-        return new ACLTemplate(path, princicipalMgr, privilegeRegistry);
++        return new ACLTemplate(path, princicipalMgr, privilegeRegistry, sImpl.getValueFactory());
+     }
+ 
+     public void testMultipleEntryEffect() throws RepositoryException, NotExecutableException {

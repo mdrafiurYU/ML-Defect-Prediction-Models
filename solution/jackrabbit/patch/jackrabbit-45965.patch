@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+index ab9044b..f84ea51 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+@@ -191,8 +191,10 @@ public class BLOBValue extends BLOBFileValue {
+                         + ": the specified resource does not exist");
+             }
+         } catch (FileSystemException fse) {
+-            throw new IOException(fsResource.getPath()
++            IOException e2 = new IOException(fsResource.getPath()
+                     + ": Error while creating value: " + fse.toString());
++            e2.initCause(fse);
++            throw e2;
+         }
+         // this instance is backed by a resource in the virtual file system
+         this.fsResource = fsResource;

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java
+index b3602f5..3e4a25b 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java
+@@ -24,9 +24,9 @@ public CaseLabel(CodeStream codeStream) {
+ 
+ /*
+ * Put down  a reference to the array at the location in the codestream.
++* #placeInstruction() must be performed prior to any #branch()
+ */
+ void branch() {
+-	this.tagBits |= USED;	
+ 	if (position == POS_NOT_SET) {
+ 		addForwardReference(codeStream.position);
+ 		// Leave 4 bytes free to generate the jump offset afterwards

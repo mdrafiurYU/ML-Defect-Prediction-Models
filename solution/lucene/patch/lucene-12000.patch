@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java b/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java
+index 62b066b..ca1dca0 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java
++++ b/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java
+@@ -50,7 +50,7 @@ public class TestMultiLevelSkipList extends LuceneTestCase {
+   
+   class CountingRAMDirectory extends MockDirectoryWrapper {
+     public CountingRAMDirectory(Directory delegate) {
+-      super(delegate);
++      super(random, delegate);
+     }
+ 
+     public IndexInput openInput(String fileName) throws IOException {

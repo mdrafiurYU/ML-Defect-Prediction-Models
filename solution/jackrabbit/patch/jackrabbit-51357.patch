@@ -1,0 +1,45 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java
+index a442fae..73ee09d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java
+@@ -93,14 +93,13 @@ public class SessionItemStateManager
+      * @param stateMgr the local item state manager
+      * @param ntReg node type registry
+      */
+-    public SessionItemStateManager(NodeId rootNodeId,
++    protected SessionItemStateManager(NodeId rootNodeId,
+                                    LocalItemStateManager stateMgr,
+                                    NodeTypeRegistry ntReg) {
+         transientStore = new ItemStateMap();
+         atticStore = new ItemStateMap();
+ 
+         this.stateMgr = stateMgr;
+-        stateMgr.addListener(this);
+ 
+         // create hierarchy manager that uses both transient and persistent state
+         hierMgr = new CachingHierarchyManager(rootNodeId, this);
+@@ -110,6 +109,24 @@ public class SessionItemStateManager
+     }
+ 
+     /**
++     * Creates a new <code>SessionItemStateManager</code> instance.
++     *
++     * @param rootNodeId the root node id
++     * @param stateMgr the local item state manager
++     * @param ntReg node type registry
++     * @return the session item state manager.
++     */
++    public static SessionItemStateManager createInstance(
++            NodeId rootNodeId,
++            LocalItemStateManager stateMgr,
++            NodeTypeRegistry ntReg) {
++        SessionItemStateManager mgr = new SessionItemStateManager(
++                rootNodeId, stateMgr, ntReg);
++        stateMgr.addListener(mgr);
++        return mgr;
++    }
++
++    /**
+      * Returns the hierarchy manager
+      *
+      * @return the hierarchy manager

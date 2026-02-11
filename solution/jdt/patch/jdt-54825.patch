@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThisReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThisReference.java
+index 35d6e8a..e00308a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThisReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThisReference.java
+@@ -113,7 +113,7 @@ public class ThisReference extends Reference {
+ 		if (!this.isImplicitThis() &&!checkAccess(scope.methodScope())) {
+ 			return null;
+ 		}
+-		return this.resolvedType = scope.enclosingSourceType();
++		return this.resolvedType = scope.enclosingReceiverType();
+ 	}
+ 
+ 	public void traverse(ASTVisitor visitor, BlockScope blockScope) {

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/UpperCaseImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/UpperCaseImpl.java
+index 7c62f88..60b5094 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/UpperCaseImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/UpperCaseImpl.java
+@@ -32,7 +32,7 @@ public class UpperCaseImpl extends DynamicOperandImpl implements UpperCase {
+     private final DynamicOperandImpl operand;
+ 
+     UpperCaseImpl(NamePathResolver resolver, DynamicOperandImpl operand) {
+-        super(resolver);
++        super(resolver, operand.getSelectorQName());
+         this.operand = operand;
+     }

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/SimilarityDelegator.java b/lucene/src/java/org/apache/lucene/search/SimilarityDelegator.java
+index b83800c..d68e18a 100644
+--- a/lucene/src/java/org/apache/lucene/search/SimilarityDelegator.java
++++ b/lucene/src/java/org/apache/lucene/search/SimilarityDelegator.java
+@@ -20,7 +20,7 @@ import org.apache.lucene.index.FieldInvertState;
+  */
+ 
+ /** Expert: Delegating scoring implementation.  Useful in {@link
+- * Query#getSimilarity(Searcher)} implementations, to override only certain
++ * Query#getSimilarity(IndexSearcher)} implementations, to override only certain
+  * methods of a Searcher's Similarity implementation.. */
+ public class SimilarityDelegator extends Similarity {

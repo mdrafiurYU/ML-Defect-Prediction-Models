@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 24d904a..ad1748a 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1137,6 +1137,7 @@ InitInput(argc, argv)
+     else {
+ #ifdef USE_DEPRECATED_KEYBOARD_DRIVER
+       /* Only set this if we're allowing the old driver. */
++	if (xf86Info.kbdProc != NULL) 
+       xf86Info.pKeyboard = AddInputDevice(xf86Info.kbdProc, TRUE);
+ #endif
+     }

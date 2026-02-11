@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index bd39d2c..1bd8a6b 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -325,7 +325,7 @@ xf86GetRotation(ScreenPtr pScreen)
+     if (xf86RandRIndex == -1)
+        return RR_Rotate_0;
+ 
+-    return XF86RANDRInfo(pScreen)->rotation;
++    return XF86RANDRINFO(pScreen)->rotation;
+ }
+ 
+ Bool

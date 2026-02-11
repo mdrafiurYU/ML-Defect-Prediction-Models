@@ -1,0 +1,15 @@
+diff --git a/cfb/cfb8bit.c b/cfb/cfb8bit.c
+index 4d10cb0..0bc5deb 100644
+--- a/cfb/cfb8bit.c
++++ b/cfb/cfb8bit.c
+@@ -35,6 +35,10 @@ from The Open Group.
+  */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #if PSZ == 8
+ 
+ #include	<X11/X.h>

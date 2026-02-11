@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/HyphenationCompoundWordTokenFilterFactory.java b/solr/src/java/org/apache/solr/analysis/HyphenationCompoundWordTokenFilterFactory.java
+index 339f166..a90cef5 100644
+--- a/solr/src/java/org/apache/solr/analysis/HyphenationCompoundWordTokenFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/HyphenationCompoundWordTokenFilterFactory.java
+@@ -61,6 +61,7 @@ public class HyphenationCompoundWordTokenFilterFactory extends BaseTokenFilterFa
+   private int maxSubwordSize;
+   private boolean onlyLongestMatch;
+   
++  @Override
+   public void init(Map<String, String> args) {
+     super.init(args);
+     assureMatchVersion();

@@ -1,0 +1,15 @@
+diff --git a/mi/mispans.c b/mi/mispans.c
+index 6885af2..c0b40b8 100644
+--- a/mi/mispans.c
++++ b/mi/mispans.c
+@@ -48,6 +48,10 @@ SOFTWARE.
+ 
+ /* $Xorg: mispans.c,v 1.4 2001/02/09 02:05:21 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "pixmapstr.h"
+ #include "gcstruct.h"

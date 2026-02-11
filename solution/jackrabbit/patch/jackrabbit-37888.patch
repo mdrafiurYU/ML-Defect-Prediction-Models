@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeReadMethodsTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeReadMethodsTest.java
+index bdd0444..bf76836 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeReadMethodsTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeReadMethodsTest.java
+@@ -81,7 +81,9 @@ public class NodeReadMethodsTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        childNode = null;
+         super.tearDown();
+     }

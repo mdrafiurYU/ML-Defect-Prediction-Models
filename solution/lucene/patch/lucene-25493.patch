@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/request/UnInvertedField.java b/solr/src/java/org/apache/solr/request/UnInvertedField.java
+index 881193d..825301c 100755
+--- a/solr/src/java/org/apache/solr/request/UnInvertedField.java
++++ b/solr/src/java/org/apache/solr/request/UnInvertedField.java
+@@ -227,13 +227,13 @@ public class UnInvertedField extends DocTermOrds {
+       TermsEnum te = getOrdTermsEnum(searcher.getIndexReader());
+       if (prefix != null && prefix.length() > 0) {
+         final BytesRef prefixBr = new BytesRef(prefix);
+-        if (te.seek(prefixBr, true) == TermsEnum.SeekStatus.END) {
++        if (te.seekCeil(prefixBr, true) == TermsEnum.SeekStatus.END) {
+           startTerm = numTermsInField;
+         } else {
+           startTerm = (int) te.ord();
+         }
+         prefixBr.append(UnicodeUtil.BIG_TERM);
+-        if (te.seek(prefixBr, true) == TermsEnum.SeekStatus.END) {
++        if (te.seekCeil(prefixBr, true) == TermsEnum.SeekStatus.END) {
+           endTerm = numTermsInField;
+         } else {
+           endTerm = (int) te.ord();

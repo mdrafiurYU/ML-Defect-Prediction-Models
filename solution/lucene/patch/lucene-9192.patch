@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+index 3338f2e..5f736ac 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+@@ -71,7 +71,7 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+           writer.updateDocument(idTerm, doc);
+         } catch (RuntimeException re) {
+           if (VERBOSE) {
+-            System.out.println("EXC: ");
++            System.out.println(Thread.currentThread().getName() + ": EXC: ");
+             re.printStackTrace(System.out);
+           }
+           try {

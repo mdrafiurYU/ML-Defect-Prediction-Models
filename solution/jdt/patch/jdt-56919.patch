@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+index 765f830..5cb2ba6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+@@ -32,8 +32,10 @@ public interface TagBits {
+ 	long HasParameterAnnotations = ASTNode.Bit11; // method
+ 	
+ 	// test bit to see if default abstract methods were computed
+-	long KnowsDefaultAbstractMethods = ASTNode.Bit11;
++	long KnowsDefaultAbstractMethods = ASTNode.Bit11; // type
+ 
++	long IsArgument = ASTNode.Bit11; // local
++	
+ 	// Reusable bit currently used by Scopes
+ 	long InterfaceVisited = ASTNode.Bit12;

@@ -1,0 +1,18 @@
+diff --git a/mi/mi.h b/mi/mi.h
+index 182cea5..4431239 100644
+--- a/mi/mi.h
++++ b/mi/mi.h
+@@ -221,11 +221,10 @@ extern _X_EXPORT void mieqProcessInputEvents(
+     void
+ );
+ 
+-extern void CopyGetMasterEvent(
+-    DeviceIntPtr /* mdev */,
++extern DeviceIntPtr CopyGetMasterEvent(
+     DeviceIntPtr /* sdev */,
+     InternalEvent* /* original */,
+-    EventListPtr /* master */
++    EventListPtr /* mlist */
+ );
+ 
+ /**

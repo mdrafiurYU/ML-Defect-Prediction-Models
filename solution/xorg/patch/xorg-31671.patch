@@ -1,0 +1,32 @@
+diff --git a/hw/xprint/ps/PsWindow.c b/hw/xprint/ps/PsWindow.c
+index 1317fd7..26075a8 100644
+--- a/hw/xprint/ps/PsWindow.c
++++ b/hw/xprint/ps/PsWindow.c
+@@ -340,13 +340,6 @@ PsPaintWindow(
+     newValues[ABSY] = (pointer)0;
+   }
+ 
+-/*
+- * XXX Backing store is turned off for the PS driver
+-
+-  if( pWin->backStorage )
+-    (*pWin->drawable.pScreen->DrawGuarantee) (pWin, pGC, GuaranteeVisBack);
+- */
+-
+   mask = gcmask;
+   gcmask = 0;
+   i = 0;
+@@ -433,13 +426,6 @@ PsPaintWindow(
+   (*pGC->ops->PolyFillRect)((DrawablePtr)pWin, pGC, numRects, prect);
+   DEALLOCATE_LOCAL(prect);
+ 
+-/*
+- * XXX Backing store is turned off for the PS driver
+-
+-  if( pWin->backStorage )
+-    (*pWin->drawable.pScreen->DrawGuarantee) (pWin, pGC, GuaranteeNothing);
+- */
+-
+   if( what==PW_BORDER )
+   {
+     REGION_UNINIT(pScreen, &pWin->clipList);

@@ -1,0 +1,12 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 4ee7084..fc1c23f 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -254,4 +254,7 @@ extern void
+ XISendDeviceChangedEvent(DeviceIntPtr device, DeviceIntPtr master,
+                          DeviceChangedEvent *dce);
+ 
++extern void XISetEventMask(DeviceIntPtr dev, WindowPtr win, ClientPtr client,
++                           unsigned int len, unsigned char* mask);
++
+ #endif /* EXEVENTS_H */

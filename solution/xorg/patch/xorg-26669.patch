@@ -1,0 +1,28 @@
+diff --git a/os/access.c b/os/access.c
+index cdb1758..d61edef 100644
+--- a/os/access.c
++++ b/os/access.c
+@@ -202,9 +202,7 @@ SOFTWARE.
+ #include "dixstruct.h"
+ #include "osdep.h"
+ 
+-#ifdef XACE
+ #include "xace.h"
+-#endif
+ 
+ #ifndef PATH_MAX
+ #ifdef MAXPATHLEN
+@@ -1528,11 +1526,11 @@ AuthorizedClient(ClientPtr client)
+ {
+     if (!client || defeatAccessControl)
+ 	return TRUE;
+-#ifdef XACE
++
+     /* untrusted clients can't change host access */
+     if (!XaceHook(XACE_HOSTLIST_ACCESS, client, SecurityWriteAccess))
+ 	return FALSE;
+-#endif
++
+     return LocalClient(client);
+ }
+ 

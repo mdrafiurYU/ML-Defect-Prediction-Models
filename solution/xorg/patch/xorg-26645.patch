@@ -1,0 +1,111 @@
+diff --git a/dix/property.c b/dix/property.c
+index da98383..0946b65 100644
+--- a/dix/property.c
++++ b/dix/property.c
+@@ -58,9 +58,7 @@ SOFTWARE.
+ #include "dixstruct.h"
+ #include "dispatch.h"
+ #include "swaprep.h"
+-#ifdef XACE
+ #include "xace.h"
+-#endif
+ 
+ /*****************************************************************
+  * Property Stuff
+@@ -118,27 +116,19 @@ ProcRotateProperties(ClientPtr client)
+ 	return(BadAlloc);
+     for (i = 0; i < stuff->nAtoms; i++)
+     {
+-#ifdef XACE
+ 	char action = XaceHook(XACE_PROPERTY_ACCESS, client, pWin, atoms[i],
+ 				SecurityReadAccess|SecurityWriteAccess);
+-#endif
+-        if (!ValidAtom(atoms[i])
+-#ifdef XACE
+-	    || (SecurityErrorOperation == action)
+-#endif
+-	   )
+-        {
++
++        if (!ValidAtom(atoms[i]) || (SecurityErrorOperation == action)) {
+             DEALLOCATE_LOCAL(props);
+ 	    client->errorValue = atoms[i];
+             return BadAtom;
+         }
+-#ifdef XACE
+-	if (SecurityIgnoreOperation == action)
+-        {
++	if (SecurityIgnoreOperation == action) {
+             DEALLOCATE_LOCAL(props);
+ 	    return Success;
+ 	}
+-#endif
++
+         for (j = i + 1; j < stuff->nAtoms; j++)
+             if (atoms[j] == atoms[i])
+             {
+@@ -233,7 +223,6 @@ ProcChangeProperty(ClientPtr client)
+ 	return(BadAtom);
+     }
+ 
+-#ifdef XACE
+     switch (XaceHook(XACE_PROPERTY_ACCESS, client, pWin, stuff->property,
+ 					SecurityWriteAccess))
+     {
+@@ -243,7 +232,6 @@ ProcChangeProperty(ClientPtr client)
+ 	case SecurityIgnoreOperation:
+ 	    return Success;
+     }
+-#endif
+ 
+     err = ChangeWindowProperty(pWin, stuff->property, stuff->type, (int)format,
+ 			       (int)mode, len, (pointer)&stuff[1], TRUE);
+@@ -460,6 +448,7 @@ ProcGetProperty(ClientPtr client)
+     unsigned long n, len, ind;
+     WindowPtr pWin;
+     xGetPropertyReply reply;
++    Mask access_mode = SecurityReadAccess;
+     REQUEST(xGetPropertyReq);
+ 
+     REQUEST_SIZE_MATCH(xGetPropertyReq);
+@@ -501,10 +490,6 @@ ProcGetProperty(ClientPtr client)
+     if (!pProp) 
+ 	return NullPropertyReply(client, None, 0, &reply);
+ 
+-#ifdef XACE
+-    {
+-	Mask access_mode = SecurityReadAccess;
+-
+ 	if (stuff->delete)
+ 	    access_mode |= SecurityDestroyAccess;
+ 	switch(XaceHook(XACE_PROPERTY_ACCESS, client, pWin, stuff->property,
+@@ -514,11 +499,9 @@ ProcGetProperty(ClientPtr client)
+ 		client->errorValue = stuff->property;
+ 		return BadAtom;;
+ 	    case SecurityIgnoreOperation:
+-		return NullPropertyReply(client, pProp->type, pProp->format,
+-					 &reply);
++	return NullPropertyReply(client, pProp->type, pProp->format, &reply);
+ 	}
+-    }
+-#endif
++
+     /* If the request type and actual type don't match. Return the
+     property information, but not the data. */
+ 
+@@ -663,7 +646,6 @@ ProcDeleteProperty(register ClientPtr client)
+ 	return (BadAtom);
+     }
+ 
+-#ifdef XACE
+     switch(XaceHook(XACE_PROPERTY_ACCESS, client, pWin, stuff->property,
+ 				       SecurityDestroyAccess))
+     {
+@@ -673,7 +655,6 @@ ProcDeleteProperty(register ClientPtr client)
+ 	case SecurityIgnoreOperation:
+ 	    return Success;
+     }
+-#endif
+ 
+     result = DeleteProperty(pWin, stuff->property);
+     if (client->noClientException != Success)

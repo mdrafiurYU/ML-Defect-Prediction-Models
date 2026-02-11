@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java b/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
+index 3415247..ae980e2 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
+@@ -562,6 +562,6 @@ public class TestBasics extends LuceneTestCase {
+   }
+ 
+   private void checkHits(Query query, int[] results) throws IOException {
+-    CheckHits.checkHits(query, "field", searcher, results);
++    CheckHits.checkHits(random, query, "field", searcher, results);
+   }
+ }

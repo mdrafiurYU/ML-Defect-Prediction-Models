@@ -1,0 +1,23 @@
+diff --git a/lucene/src/java/org/apache/lucene/document/AbstractField.java b/lucene/src/java/org/apache/lucene/document/AbstractField.java
+index 2fd4397..54ea023 100755
+--- a/lucene/src/java/org/apache/lucene/document/AbstractField.java
++++ b/lucene/src/java/org/apache/lucene/document/AbstractField.java
+@@ -49,6 +49,8 @@ public abstract class AbstractField implements Fieldable {
+   // length/offset for all primitive types
+   protected int binaryLength;
+   protected int binaryOffset;
++  protected PerDocFieldValues docValues;
++
+ 
+   protected AbstractField()
+   {
+@@ -294,8 +296,7 @@ public abstract class AbstractField implements Fieldable {
+     result.append('>');
+     return result.toString();
+   }
+-  protected PerDocFieldValues docValues;
+-  
++
+   public PerDocFieldValues getDocValues() {
+     return docValues;
+   }

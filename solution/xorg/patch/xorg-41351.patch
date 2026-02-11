@@ -1,0 +1,13 @@
+diff --git a/dix/window.c b/dix/window.c
+index ff5ba4a..c31fa87 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -3091,6 +3091,8 @@ void
+ SendVisibilityNotify(WindowPtr pWin)
+ {
+     xEvent event;
++    if (!MapUnmapEventsEnabled(pWin))
++        return;
+ #ifndef NO_XINERAMA_PORT
+     unsigned int visibility = pWin->visibility;
+ #endif

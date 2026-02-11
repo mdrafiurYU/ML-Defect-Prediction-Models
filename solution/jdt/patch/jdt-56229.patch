@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
+index 5f6c807..6b9897c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/ExceptionLabel.java
+@@ -22,14 +22,14 @@ public class ExceptionLabel extends Label {
+ 
+ 		super(codeStream);
+ 		this.exceptionType = exceptionType;
+-		this.placeStart();	
++		this.placeStart();
++		this.tagBits |= USED;
+ 	}
+ 
+ 	public boolean isStandardLabel(){
+ 
+ 		return false;
+ 	}
+-
+ 	public void place() {
+ 
+ 		// register the handler inside the codeStream then normal place

@@ -1,0 +1,15 @@
+diff --git a/dix/gc.c b/dix/gc.c
+index 743d6e6..dce737c 100644
+--- a/dix/gc.c
++++ b/dix/gc.c
+@@ -48,6 +48,10 @@ SOFTWARE.
+ 
+ /* $Xorg: gc.c,v 1.4 2001/02/09 02:04:40 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xmd.h>
+ #include <X11/Xproto.h>

@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.c b/hw/xfree86/ddc/xf86DDC.c
+index 36b2146..c5b070d 100644
+--- a/hw/xfree86/ddc/xf86DDC.c
++++ b/hw/xfree86/ddc/xf86DDC.c
+@@ -10,10 +10,10 @@
+ 
+ #include "misc.h"
+ #include "xf86.h"
+-#include "xf86_ansic.h"
+ #include "xf86_OSproc.h"
+ #include "xf86DDC.h"
+ #include "ddcPriv.h"
++#include <string.h>
+ 
+ #ifdef XFree86LOADER
+ static const OptionInfoRec *DDCAvailableOptions(void *unused);

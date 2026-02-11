@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_bell.c b/hw/xfree86/os-support/solaris/sun_bell.c
+index 29ecd73..b25f40d 100644
+--- a/hw/xfree86/os-support/solaris/sun_bell.c
++++ b/hw/xfree86/os-support/solaris/sun_bell.c
+@@ -48,7 +48,7 @@
+ 
+ #define AUDIO_DEVICE    "/dev/audio"
+ 
+-_X_EXPORT void
++void
+ xf86OSRingBell(int loudness, int pitch, int duration)
+ {
+     static short    samples[BELL_SAMPLES];

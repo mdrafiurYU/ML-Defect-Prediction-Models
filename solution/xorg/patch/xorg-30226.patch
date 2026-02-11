@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 4da74e5..daf53de 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -125,9 +125,6 @@ extern Bool noXkbExtension;
+  * This has been generalised to work with Linux and *BSD+syscons (DHD)
+  */
+ 
+-#ifdef USE_VT_SYSREQ
+-static Bool VTSysreqToggle = FALSE;
+-#endif /* !USE_VT_SYSREQ */
+ _X_EXPORT Bool VTSwitchEnabled = TRUE;	/* Allows run-time disabling for
+                                          *BSD and for avoiding VT
+                                          switches when using the DRI

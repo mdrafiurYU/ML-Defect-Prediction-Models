@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/Scorer.java b/lucene/src/java/org/apache/lucene/search/Scorer.java
+index 84e5143..907cdf3 100644
+--- a/lucene/src/java/org/apache/lucene/search/Scorer.java
++++ b/lucene/src/java/org/apache/lucene/search/Scorer.java
+@@ -90,7 +90,7 @@ public abstract class Scorer extends DocIdSetIterator {
+    *          this method.
+    * @return true if more matching documents may remain.
+    */
+-  protected boolean score(Collector collector, int max, int firstDocID) throws IOException {
++  public boolean score(Collector collector, int max, int firstDocID) throws IOException {
+     collector.setScorer(this);
+     int doc = firstDocID;
+     while (doc < max) {

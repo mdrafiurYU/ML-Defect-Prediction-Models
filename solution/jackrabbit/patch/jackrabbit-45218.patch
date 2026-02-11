@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
+index 8f9f673..ea11d7c 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
+@@ -23,6 +23,7 @@ import org.apache.jackrabbit.test.NotExecutableException;
+ 
+ import javax.jcr.Node;
+ import javax.jcr.RepositoryException;
++import javax.jcr.Session;
+ import javax.jcr.lock.Lock;
+ import javax.jcr.lock.LockException;
+ 
+@@ -142,4 +143,18 @@ public class DeepLockTest extends AbstractJCRTest {
+             // expected
+         }
+     }
++
++    public void testRemoveLockedChild() throws RepositoryException {
++        Session otherSession = helper.getReadWriteSession();
++        try {
++            Node child = (Node) otherSession.getItem(childNode.getPath());
++            child.remove();
++            otherSession.save();
++            fail("A node below a deeply locked node cannot be removed by another Session.");
++        } catch (LockException e) {
++            // success
++        } finally {
++            otherSession.logout();
++        }
++    }
+ }
+\ No newline at end of file

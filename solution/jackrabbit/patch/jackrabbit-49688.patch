@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/observation/DefaultEventType.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/observation/DefaultEventType.java
+index b5b0d23..43d72af 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/observation/DefaultEventType.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/observation/DefaultEventType.java
+@@ -64,7 +64,7 @@ public class DefaultEventType implements EventType {
+         if (localName == null || "".equals(localName)) {
+             throw new IllegalArgumentException("null and '' are not valid local names of an event type.");
+         }
+-        String key = DomUtil.getQualifiedName(localName, namespace);
++        String key = DomUtil.getExpandedName(localName, namespace);
+         if (eventTypes.containsKey(key)) {
+             return (EventType) eventTypes.get(key);
+         } else {

@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winglobals.c b/hw/xwin/winglobals.c
+index 53fc02f..af8190d 100644
+--- a/hw/xwin/winglobals.c
++++ b/hw/xwin/winglobals.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ 

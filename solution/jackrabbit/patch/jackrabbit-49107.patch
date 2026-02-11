@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+index 844e228..5371d23 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+@@ -4645,9 +4645,7 @@ public class NodeImpl extends ItemImpl implements Node {
+     /**
+      * {@inheritDoc}
+      */
+-    // TODO rename method to 'getProperties' once JCR 2.0 api has been fixed
+-    public PropertyIterator getProperty(String[]
+-            nameGlobs)
++    public PropertyIterator getProperties(String[] nameGlobs)
+             throws RepositoryException {
+         // check state of this instance
+         sanityCheck();

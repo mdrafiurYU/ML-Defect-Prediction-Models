@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java b/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
+index 1ef74c7..01ec7ec 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
++++ b/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
+@@ -74,7 +74,6 @@ public class TestStressIndexing2 extends LuceneTestCase {
+   
+   public void testRandom() throws Throwable {
+     Directory dir1 = newDirectory();
+-    // dir1 = FSDirectory.open("foofoofoo");
+     Directory dir2 = newDirectory();
+     // mergeFactor=2; maxBufferedDocs=2; Map docs = indexRandom(1, 3, 2, dir1);
+     int maxThreadStates = 1+random.nextInt(10);

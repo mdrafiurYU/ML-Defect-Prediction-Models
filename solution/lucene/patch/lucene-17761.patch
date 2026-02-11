@@ -1,0 +1,22 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+index 7dfa6a3..6c91a09 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestLengthNormModifier.java
+@@ -49,7 +49,7 @@ public class TestLengthNormModifier extends LuceneTestCase {
+     /** inverts the normal notion of lengthNorm */
+     public static SimilarityProvider s = new DefaultSimilarity() {
+         @Override
+-        public float computeNorm(String fieldName, FieldInvertState state) {
++        public float computeNorm(FieldInvertState state) {
+           return state.getBoost() * (discountOverlaps ? state.getLength() - state.getNumOverlap() : state.getLength());
+         }
+       };
+@@ -165,7 +165,7 @@ public class TestLengthNormModifier extends LuceneTestCase {
+ 	// override the norms to be inverted
+ 	SimilarityProvider s = new DefaultSimilarity() {
+             @Override
+-            public float computeNorm(String fieldName, FieldInvertState state) {
++            public float computeNorm(FieldInvertState state) {
+               return state.getBoost() * (discountOverlaps ? state.getLength() - state.getNumOverlap() : state.getLength());
+             }
+           };

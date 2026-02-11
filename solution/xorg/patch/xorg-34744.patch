@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/quartzKeyboard.c b/hw/darwin/quartz/quartzKeyboard.c
+index 49c5bfd..b87249f 100644
+--- a/hw/darwin/quartz/quartzKeyboard.c
++++ b/hw/darwin/quartz/quartzKeyboard.c
+@@ -31,7 +31,9 @@
+    prior written authorization.
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #include "quartzCommon.h"
+ 

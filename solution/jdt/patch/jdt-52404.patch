@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 9e27b94..fe22b59 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -740,6 +740,7 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 				this.log.println("# " + version); //$NON-NLS-1$
+ 				if (printToOut) {
+ 					this.out.println(version);
++					this.out.flush();
+ 				}
+ 			} else if (printToOut) {
+ 				final String version = Main.bind("misc.version", //$NON-NLS-1$
+@@ -750,6 +751,7 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 					}
+ 				);
+ 				this.out.println(version);
++				this.out.flush();
+ 			}
+ 		}

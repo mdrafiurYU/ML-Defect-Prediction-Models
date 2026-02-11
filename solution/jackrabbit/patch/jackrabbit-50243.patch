@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+index fa48580..635c21c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+@@ -241,7 +241,7 @@ public class MultiIndex {
+         removeDeletable();
+ 
+         // initialize IndexMerger
+-        merger = new IndexMerger(this);
++        merger = new IndexMerger(this, handler.getIndexMergerPoolSize());
+         merger.setMaxMergeDocs(handler.getMaxMergeDocs());
+         merger.setMergeFactor(handler.getMergeFactor());
+         merger.setMinMergeDocs(handler.getMinMergeDocs());

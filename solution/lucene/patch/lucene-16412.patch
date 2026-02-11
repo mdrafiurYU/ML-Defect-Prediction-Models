@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java b/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java
+index e74cd1a..3798501 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/TermsIndexWriterBase.java
+@@ -28,7 +28,7 @@ public abstract class TermsIndexWriterBase {
+   public abstract void setTermsOutput(IndexOutput out);
+ 
+   public abstract class FieldWriter {
+-    public abstract boolean checkIndexTerm(BytesRef text, int docFreq) throws IOException;
++    public abstract boolean checkIndexTerm(BytesRef text, TermStats stats) throws IOException;
+     public abstract void finish() throws IOException;
+   }

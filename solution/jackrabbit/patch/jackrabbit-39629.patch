@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/hits/ArrayHitsTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/hits/ArrayHitsTest.java
+new file mode 100644
+index 0000000..75523e2
+--- /dev/null
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/hits/ArrayHitsTest.java
+@@ -0,0 +1,14 @@
++package org.apache.jackrabbit.core.query.lucene.hits;
++
++import junit.framework.TestCase;
++
++public class ArrayHitsTest extends TestCase {
++
++    public void testSkipToDocumentNumberGreaterThanLastMatch() throws Exception {
++        ArrayHits hits = new ArrayHits();
++        hits.set(1);
++        int doc = hits.skipTo(2);
++        assertEquals(-1, doc);
++    }
++    
++}

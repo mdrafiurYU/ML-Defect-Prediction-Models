@@ -1,0 +1,19 @@
+diff --git a/Xprint/ps/Ps.h b/Xprint/ps/Ps.h
+index 68c95f9..4effc20 100644
+--- a/Xprint/ps/Ps.h
++++ b/Xprint/ps/Ps.h
+@@ -357,6 +357,14 @@ extern Bool InitializePsDriver(int ndx, ScreenPtr pScreen, int argc,
+ extern XpContextPtr PsGetContextFromWindow(WindowPtr win);
+ 
+ /*
++ *  Functions in PsCache.c
++ */
++
++extern int PsBmIsImageCached(int gWidth, int gHeight, char *pBuffer);
++extern int PsBmPutImageInCache(int gWidth, int gHeight, char *pBuffer);
++extern void PsBmClearImageCache(void);
++
++/*
+  *  Functions in PsPrint.c
+  */
+ 

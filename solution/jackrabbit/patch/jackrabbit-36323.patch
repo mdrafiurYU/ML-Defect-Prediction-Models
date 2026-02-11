@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingPathResolver.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingPathResolver.java
+index 21d4665..fc523da 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingPathResolver.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingPathResolver.java
+@@ -22,6 +22,8 @@ import javax.jcr.NamespaceException;
+  * Path resolver decorator that uses a generational cache to speed up
+  * parsing and formatting of JCR paths. Uncached paths are resolved using
+  * the underlying decorated path resolver.
++ *
++ * @deprecated Use {@link org.apache.jackrabbit.conversion.CachingPathResolver} instead.
+  */
+ public class CachingPathResolver implements PathResolver {

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+index 8cbb0f3..78e0191 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+@@ -278,7 +278,7 @@ public class CompletionJavadocParser extends JavadocParser {
+ 	 * Init tags arrays for current source level.
+ 	 */
+ 	private void initLevelTags() {
+-		int level = ((int)(this.sourceLevel >>> 16)) - ClassFileConstants.MAJOR_VERSION_1_1 + 1;
++		int level = ((int)(this.complianceLevel >>> 16)) - ClassFileConstants.MAJOR_VERSION_1_1 + 1;
+ 		// Init block tags
+ 		this.levelTags[BLOCK_IDX] = new char[BLOCK_ALL_TAGS_LENGTH][];
+ 		this.levelTagsLength[BLOCK_IDX] = 0;

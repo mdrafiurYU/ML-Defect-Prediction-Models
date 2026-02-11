@@ -1,0 +1,17 @@
+diff --git a/hw/vfb/InitOutput.c b/hw/vfb/InitOutput.c
+index 86e3fbe..212f79b 100644
+--- a/hw/vfb/InitOutput.c
++++ b/hw/vfb/InitOutput.c
+@@ -255,10 +255,12 @@ OsVendorFatalError()
+ {
+ }
+ 
++#if defined(DDXBEFORERESET)
+ void ddxBeforeReset(void)
+ {
+     return;
+ }
++#endif
+ 
+ void
+ ddxUseMsg()

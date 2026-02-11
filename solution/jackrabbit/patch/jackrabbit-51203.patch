@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java
+index 441b73c..7e0248b 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java
+@@ -99,11 +99,14 @@ abstract class InternalVersionManagerBase implements InternalVersionManager {
+      */
+     public InternalBaseline getBaseline(NodeId id) throws RepositoryException {
+         // lock handling via getItem()
+-        InternalBaseline v = (InternalBaseline) getItem(id);
+-        if (v == null) {
++        InternalVersionItem item = getItem(id);
++        if (item == null) {
+             log.warn("Versioning item not found: " + id);
++        } else if (!(item instanceof InternalBaseline)) {
++            log.warn("Versioning item is not a baseline: " + id);
++            item = null;
+         }
+-        return v;
++        return (InternalBaseline) item;
+     }
+ 
+     /**

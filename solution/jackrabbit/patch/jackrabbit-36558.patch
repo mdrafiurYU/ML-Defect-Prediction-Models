@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
+index d94b03e..e3c8fcf 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
+@@ -286,7 +286,7 @@ class IndexMerger extends Thread implements IndexListener {
+             }
+             try {
+                 log.debug("create new index");
+-                PersistentIndex index = multiIndex.getOrCreateIndex(null, true);
++                PersistentIndex index = multiIndex.getOrCreateIndex(null);
+                 boolean success = false;
+                 try {

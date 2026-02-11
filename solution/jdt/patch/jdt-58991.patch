@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/InclusionPatternsTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/InclusionPatternsTests.java
+index 93bce9c..5c1f2fa 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/InclusionPatternsTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/InclusionPatternsTests.java
+@@ -31,7 +31,7 @@ static {
+ //	TESTS_NAMES = new String[] { "testIncludeCUOnly02" };
+ }
+ public static Test suite() {
+-	return buildTestSuite(InclusionPatternsTests.class);
++	return buildModelTestSuite(InclusionPatternsTests.class);
+ }
+ protected void setClasspath(String[] sourceFoldersAndInclusionPatterns) throws JavaModelException {
+ 	this.project.setRawClasspath(createClasspath(sourceFoldersAndInclusionPatterns, true/*inclusion*/, false/*no exclusion*/), null);

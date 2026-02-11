@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcWinFS.c b/hw/xfree86/xf4bpp/ppcWinFS.c
+index d7fd6b7..820b80e 100644
+--- a/hw/xfree86/xf4bpp/ppcWinFS.c
++++ b/hw/xfree86/xf4bpp/ppcWinFS.c
+@@ -46,6 +46,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XConsortium: ppcWinFS.c /main/3 1996/02/21 17:58:39 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "mfbmap.h"
+ #include "mfb.h"

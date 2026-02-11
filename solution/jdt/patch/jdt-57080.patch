@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
+index ba1f360..e22cf11 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
+@@ -23,7 +23,7 @@ public abstract class Statement extends ASTNode {
+ 	 * INTERNAL USE ONLY.
+ 	 * This is used to redirect inter-statements jumps.
+ 	 */
+-	public void branchChainTo(Label label) {
++	public void branchChainTo(BranchLabel label) {
+ 		// do nothing by default
+ 	}

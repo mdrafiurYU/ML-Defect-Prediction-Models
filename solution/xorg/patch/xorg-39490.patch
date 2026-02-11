@@ -1,0 +1,20 @@
+diff --git a/os/WaitFor.c b/os/WaitFor.c
+index da12976..f07388b 100644
+--- a/os/WaitFor.c
++++ b/os/WaitFor.c
+@@ -364,7 +364,6 @@ WaitForSomething(int *pClientsReady)
+ 	    curclient = XFD_FD(&savedClientsReadable, i);
+ 	    client_index = GetConnectionTranslation(curclient);
+ #endif
+-#ifdef XSYNC
+ 		/*  We implement "strict" priorities.
+ 		 *  Only the highest priority client is returned to
+ 		 *  dix.  If multiple clients at the same priority are
+@@ -391,7 +390,6 @@ WaitForSomething(int *pClientsReady)
+ 		 *  clients get batched together
+ 		 */
+ 		else if (client_priority == highest_priority)
+-#endif
+ 		{
+ 		    pClientsReady[nready++] = client_index;
+ 		}

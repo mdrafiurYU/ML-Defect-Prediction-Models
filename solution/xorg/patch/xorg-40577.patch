@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/int10/helper_exec.c b/hw/xfree86/int10/helper_exec.c
+index c3af5bc..ff8143f 100644
+--- a/hw/xfree86/int10/helper_exec.c
++++ b/hw/xfree86/int10/helper_exec.c
+@@ -488,13 +488,6 @@ pci_device_for_cfg_address (CARD32 addr)
+ 		return NULL;
+ 	}
+ 
+-	if (pci_device_next(iter)) {
+-		char buf[128]; /* enough to store "%u@%u" */
+-		xf86FormatPciBusNumber(tag >> 16, buf);
+-		ErrorF("Multiple devices matching %s:%u:%u\n",
+-				buf, slot_match.dev, slot_match.func);
+-	}
+-
+ 	return dev;
+ }
+ 

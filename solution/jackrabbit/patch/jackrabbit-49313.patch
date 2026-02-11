@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
+index e4a34e8..5ea91d9 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
+@@ -30,6 +30,7 @@ import javax.jcr.Node;
+ import javax.jcr.Property;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
++import javax.jcr.ValueFactory;
+ 
+ /**
+  * Test case for concurrent garbage collection
+@@ -58,7 +59,8 @@ public class GCConcurrentTest extends AbstractJCRTest {
+                 gcThread.start();
+             }
+             Node n = node(root, "test" + i);
+-            n.setProperty("data", randomInputStream(i));
++            ValueFactory vf = session.getValueFactory();
++            n.setProperty("data", vf.createBinary(randomInputStream(i)));
+             session.save();
+             LOG.debug("saved: " + i);
+         }
+@@ -66,7 +68,7 @@ public class GCConcurrentTest extends AbstractJCRTest {
+         for (int i = 0; i < len; i++) {
+             Node n = root.getNode("test" + i);
+             Property p = n.getProperty("data");
+-            InputStream in = p.getStream();
++            InputStream in = p.getBinary().getStream();
+             InputStream expected = randomInputStream(i);
+             checkStreams(expected, in);
+             n.remove();

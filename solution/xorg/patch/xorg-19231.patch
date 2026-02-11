@@ -1,0 +1,13 @@
+diff --git a/miext/cw/cw.c b/miext/cw/cw.c
+index ebc9a6f..9c2ea96 100644
+--- a/miext/cw/cw.c
++++ b/miext/cw/cw.c
+@@ -666,7 +666,7 @@ miInitializeCompositeWrapper(ScreenPtr pScreen)
+ #endif
+ }
+ 
+-void
++_X_EXPORT void
+ miDisableCompositeWrapper(ScreenPtr pScreen)
+ {
+     cwDisabled[pScreen->myNum] = TRUE;

@@ -1,0 +1,15 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index ca1cdb1..db83d1b 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -118,6 +118,10 @@ typedef struct {
+     int		    score;
+     int		    devKind;
+     DevUnion	    devPrivate;
++
++    /* True if the in-screen copy has been modified compared to the
++     * system-memory copy.
++     */
+     Bool	    dirty;
+     unsigned int    size;
+ } ExaPixmapPrivRec, *ExaPixmapPrivPtr;

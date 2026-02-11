@@ -1,0 +1,22 @@
+diff --git a/dix/dixutils.c b/dix/dixutils.c
+index 44d82c9..30327d3 100644
+--- a/dix/dixutils.c
++++ b/dix/dixutils.c
+@@ -550,7 +550,7 @@ RemoveBlockAndWakeupHandlers (BlockHandlerProcPtr blockHandler,
+ }
+ 
+ void
+-InitBlockAndWakeupHandlers ()
++InitBlockAndWakeupHandlers (void)
+ {
+     xfree (handlers);
+     handlers = (BlockHandlerPtr) 0;
+@@ -950,7 +950,7 @@ DeleteCallbackList(CallbackListPtr *pcbl)
+ }
+ 
+ void 
+-InitCallbackManager()
++InitCallbackManager(void)
+ {
+     int i;
+ 

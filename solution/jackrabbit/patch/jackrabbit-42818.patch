@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java
+index 46973b7..ed017c1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java
+@@ -43,8 +43,11 @@ public abstract class AbstractNodeData extends ItemData {
+ 
+     /**
+      * Create a new instance of this class.
++     *
++     * @param id item id
+      */
+-    protected AbstractNodeData() {
++    protected AbstractNodeData(ItemId id) {
++        super(id);
+     }
+ 
+     /**

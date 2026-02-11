@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/TestAll.java
+index 574f39d..99fa3a0 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/TestAll.java
+@@ -39,6 +39,9 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(NotUserAdministratorTest.class);
+         suite.addTestSuite(GroupAdministratorTest.class);
+ 
++        suite.addTestSuite(IndexNodeResolverTest.class);
++        suite.addTestSuite(TraversingNodeResolverTest.class);
++
+         return suite;
+     }
+ }

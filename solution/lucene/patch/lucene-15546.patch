@@ -1,0 +1,37 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FieldInvertState.java b/lucene/src/java/org/apache/lucene/index/FieldInvertState.java
+index 9dc9ffc..321c892 100644
+--- a/lucene/src/java/org/apache/lucene/index/FieldInvertState.java
++++ b/lucene/src/java/org/apache/lucene/index/FieldInvertState.java
+@@ -73,6 +73,10 @@ public final class FieldInvertState {
+     return length;
+   }
+ 
++  public void setLength(int length) {
++    this.length = length;
++  }
++  
+   /**
+    * Get the number of terms with <code>positionIncrement == 0</code>.
+    * @return the numOverlap
+@@ -81,6 +85,10 @@ public final class FieldInvertState {
+     return numOverlap;
+   }
+ 
++  public void setNumOverlap(int numOverlap) {
++    this.numOverlap = numOverlap;
++  }
++  
+   /**
+    * Get end offset of the last processed term.
+    * @return the offset
+@@ -99,6 +107,10 @@ public final class FieldInvertState {
+     return boost;
+   }
+   
++  public void setBoost(float boost) {
++    this.boost = boost;
++  }
++  
+   public AttributeSource getAttributeSource() {
+     return attributeSource;
+   }

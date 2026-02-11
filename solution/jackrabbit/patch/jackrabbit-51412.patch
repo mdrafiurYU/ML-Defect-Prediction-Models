@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplConfig.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplConfig.java
+index 9512131..db24c91 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplConfig.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplConfig.java
+@@ -72,7 +72,8 @@ abstract public class VersionManagerImplConfig extends VersionManagerImplMerge {
+      * @return the node id of the configuration
+      * @throws RepositoryException if an error occurs
+      */
+-    protected NodeId restore(NodeStateEx parent, Name name, InternalBaseline baseline)
++    protected NodeId restore(NodeStateEx parent, Name name,
++                             InternalBaseline baseline)
+             throws RepositoryException {
+         // check if nt:configuration exists
+         NodeId configId = baseline.getConfigurationId();

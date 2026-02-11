@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxglcore.c b/GL/glx/glxglcore.c
+index 00279b7..dafa9bc 100644
+--- a/GL/glx/glxglcore.c
++++ b/GL/glx/glxglcore.c
+@@ -510,7 +510,7 @@ handle_error:
+ 
+     xfree(screen);
+ 
+-    ErrorF("GLX: could not load software renderer\n");
++    FatalError("GLX: could not load software renderer\n");
+ 
+     return NULL;
+ }

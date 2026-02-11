@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AllJavaModelTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AllJavaModelTests.java
+index 389c3e7..86f61b9 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AllJavaModelTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AllJavaModelTests.java
+@@ -48,6 +48,9 @@ private static Class[] getAllTestClasses() {
+ 		// Source attachment tests
+ 		AttachSourceTests.class,
+ 		
++		// Attached javadoc tests
++		AttachedJavadocTests.class,
++	
+ 		// Java search tests
+ 		RunJavaSearchTests.class,
+ 			
+@@ -166,10 +169,6 @@ private static Class[] getAllTestClasses() {
+ 		
+ 		// Class file tests
+ 		ClassFileTests.class,
+-		
+-		// Attached javadoc tests
+-		// AttachedJavadocTests.class
+-	
+ 	};
+ 	
+ 	Class[] deprecatedClasses = getDeprecatedJDOMTestClasses();

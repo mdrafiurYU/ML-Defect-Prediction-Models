@@ -1,0 +1,33 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 7ad226f..6d6c054 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -291,7 +291,9 @@ exaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth)
+         pExaPixmap->fb_ptr = NULL;
+     } else {
+          pExaPixmap->driverPriv = NULL;
+-         /* Glyphs have w/h equal to zero, and may not be migrated. See exaGlyphs. */
++         /* Scratch pixmaps may have w/h equal to zero, and may not be
++	  * migrated.
++	  */
+         if (!w || !h)
+ 	    pExaPixmap->score = EXA_PIXMAP_SCORE_PINNED;
+         else
+@@ -696,7 +698,6 @@ exaCloseScreen(int i, ScreenPtr pScreen)
+ #ifdef RENDER
+     if (ps) {
+ 	ps->Composite = pExaScr->SavedComposite;
+-	ps->Glyphs = pExaScr->SavedGlyphs;
+ 	ps->Trapezoids = pExaScr->SavedTrapezoids;
+     }
+ #endif
+@@ -865,9 +866,6 @@ exaDriverInit (ScreenPtr		pScreen,
+ 	pExaScr->SavedTriangles = ps->Triangles;
+ 	ps->Triangles = exaTriangles;
+ 
+-	pExaScr->SavedGlyphs = ps->Glyphs;
+-	ps->Glyphs = exaGlyphs;
+-
+ 	pExaScr->SavedTrapezoids = ps->Trapezoids;
+ 	ps->Trapezoids = exaTrapezoids;
+     }

@@ -1,0 +1,16 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 62d4bbf..bd7c7c5 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -419,6 +419,11 @@ miRROutputSetProperty (ScreenPtr	    pScreen,
+ 		       RRPropertyValuePtr   value);
+ 
+ Bool
++miRROutputGetProperty (ScreenPtr	    pScreen,
++		       RROutputPtr	    output,
++		       Atom		    property);
++
++Bool
+ miRROutputValidateMode (ScreenPtr	    pScreen,
+ 			RROutputPtr	    output,
+ 			RRModePtr	    mode);

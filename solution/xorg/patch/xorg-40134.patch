@@ -1,0 +1,17 @@
+diff --git a/dbe/dbe.c b/dbe/dbe.c
+index d34708d..1a08bda 100644
+--- a/dbe/dbe.c
++++ b/dbe/dbe.c
+@@ -62,8 +62,10 @@
+ static Bool (* DbeInitFunct[MAXSCREENS])();	/* pScreen, pDbeScreenPriv */
+ 
+ /* These are static globals copied to DBE's screen private for use by DDX */
+-static DevPrivateKey dbeScreenPrivKey = &dbeScreenPrivKey;
+-static DevPrivateKey dbeWindowPrivKey = &dbeWindowPrivKey;
++static int dbeScreenPrivKeyIndex;
++static DevPrivateKey dbeScreenPrivKey = &dbeScreenPrivKeyIndex;
++static int dbeWindowPrivKeyIndex;
++static DevPrivateKey dbeWindowPrivKey = &dbeWindowPrivKeyIndex;
+ 
+ /* These are static globals copied to DBE's screen private for use by DDX */
+ static RESTYPE	dbeDrawableResType;

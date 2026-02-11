@@ -1,0 +1,22 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index b4a8ed3..d588f56 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -2906,7 +2906,7 @@ ProcXkbSetCompatMap(ClientPtr client)
+     }
+ 
+     /* Yay, the dry-runs succeed. Let's apply */
+-    rc = _XkbSetCompatMap(client, dev, stuff, data, TRUE);
++    rc = _XkbSetCompatMap(client, dev, stuff, data, FALSE);
+     if (rc != Success)
+         return rc;
+     if (stuff->deviceSpec == XkbUseCoreKbd)
+@@ -2919,7 +2919,7 @@ ProcXkbSetCompatMap(ClientPtr client)
+                 rc = XaceHook(XACE_DEVICE_ACCESS, client, other, DixManageAccess);
+                 if (rc == Success)
+                 {
+-                    rc = _XkbSetCompatMap(client, other, stuff, data, TRUE);
++                    rc = _XkbSetCompatMap(client, other, stuff, data, FALSE);
+                     if (rc != Success)
+                         return rc;
+                 }

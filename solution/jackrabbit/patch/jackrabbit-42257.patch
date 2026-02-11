@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java
+index 7e72559..7629184 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleFsPersistenceManager.java
+@@ -554,7 +554,7 @@ public class BundleFsPersistenceManager extends AbstractBundlePersistenceManager
+             if (u == null) {
+                 continue;
+             }
+-            if (bigger != null && bigger.toString().compareTo(u.toString()) < 0) {
++            if (bigger != null && bigger.toString().compareTo(u.toString()) >= 0) {
+                 continue;
+             }
+             NodeId n = new NodeId(u);

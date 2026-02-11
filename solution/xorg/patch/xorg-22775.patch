@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shrot16pack.c b/miext/shadow/shrot16pack.c
+index 0928464..2ec41bb 100644
+--- a/miext/shadow/shrot16pack.c
++++ b/miext/shadow/shrot16pack.c
+@@ -25,4 +25,8 @@
+ #define FUNC	shadowUpdateRotate16
+ #define Data	CARD16
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "shrotpack.h"

@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Globals.c b/hw/xfree86/common/xf86Globals.c
+index 2066a2b..49321b1 100644
+--- a/hw/xfree86/common/xf86Globals.c
++++ b/hw/xfree86/common/xf86Globals.c
+@@ -216,7 +216,9 @@ Bool xf86sFlag = FALSE;
+ Bool xf86bsEnableFlag = FALSE;
+ Bool xf86bsDisableFlag = FALSE;
+ Bool xf86silkenMouseDisableFlag = FALSE;
++#ifdef HAVE_ACPI
+ Bool xf86acpiDisableFlag = FALSE;
++#endif
+ char *xf86LayoutName = NULL;
+ char *xf86ScreenName = NULL;
+ char *xf86PointerName = NULL;

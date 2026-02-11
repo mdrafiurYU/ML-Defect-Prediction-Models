@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyTest.java
+index 53de238..74ee92b 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyTest.java
+@@ -58,7 +58,7 @@ public class PropertyTest extends AbstractJCRTest {
+         testRootNode.save();
+ 
+         // accuire the same property through a different session
+-        Session session = helper.getSuperuserSession();
++        Session session = getHelper().getSuperuserSession();
+         try {
+             Property prop2 = session.getProperty(prop1.getPath());

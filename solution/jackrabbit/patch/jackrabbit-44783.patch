@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterException.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterException.java
+index 439045e..d195668 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterException.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterException.java
+@@ -16,12 +16,10 @@
+  */
+ package org.apache.jackrabbit.core.cluster;
+ 
+-import org.apache.jackrabbit.BaseException;
+-
+ /**
+  * The <code>ClusterException</code> signals an error within a cluster operation.
+  */
+-public class ClusterException extends BaseException {
++public class ClusterException extends Exception {
+ 
+     /**
+      * Constructs a new instance of this class with the specified detail

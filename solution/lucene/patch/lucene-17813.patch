@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestRegexpQuery.java b/lucene/src/test/org/apache/lucene/search/TestRegexpQuery.java
+index 65552c4..7503667 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestRegexpQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestRegexpQuery.java
+@@ -54,7 +54,7 @@ public class TestRegexpQuery extends LuceneTestCase {
+     writer.addDocument(doc);
+     reader = writer.getReader();
+     writer.close();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+   }
+   
+   @Override

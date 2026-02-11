@@ -1,0 +1,24 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java b/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java
+index 84a9d21..f02d6f9 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java
+@@ -54,7 +54,9 @@ public class _TestUtil {
+   /** Returns temp dir, containing String arg in its name;
+    *  does not create the directory. */
+   public static File getTempDir(String desc) {
+-    return new File(LuceneTestCase.TEMP_DIR, desc + "." + new Random().nextLong());
++    File f = new File(LuceneTestCase.TEMP_DIR, desc + "." + new Random().nextLong());
++    LuceneTestCase.tempDirs.add(f.getAbsolutePath());
++    return f;
+   }
+ 
+   /**
+@@ -89,7 +91,8 @@ public class _TestUtil {
+     rmDir(destDir);
+ 
+     destDir.mkdir();
+-
++    LuceneTestCase.tempDirs.add(destDir.getAbsolutePath());
++    
+     while (entries.hasMoreElements()) {
+       ZipEntry entry = entries.nextElement();

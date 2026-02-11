@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java
+index 239145a..58b503c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java
+@@ -125,7 +125,7 @@ public TypeBinding resolveType(BlockScope scope) {
+ 
+ 	TypeBinding tb = super.resolveType(scope);
+ 	if (constant == FORMAT_ERROR) {
+-		constant = NotAConstant;
++		constant = Constant.NotAConstant;
+ 		scope.problemReporter().constantOutOfFormat(this);
+ 		this.resolvedType = null;
+ 		return null;

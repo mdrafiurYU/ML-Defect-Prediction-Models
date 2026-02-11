@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/GL/indirect.c b/hw/xquartz/GL/indirect.c
+index e71516a..9b54b0c 100644
+--- a/hw/xquartz/GL/indirect.c
++++ b/hw/xquartz/GL/indirect.c
+@@ -167,7 +167,7 @@ __glXAquaScreenCreateContext(__GLXscreen *screen,
+   
+     GLAQUA_DEBUG_MSG("glXAquaScreenCreateContext\n");
+     
+-    context = xalloc (sizeof (__GLXAquaContext));
++    context = xcalloc(1, sizeof (__GLXAquaContext));
+     
+     if (context == NULL)
+ 	return NULL;

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/460gxPCI.h b/hw/xfree86/os-support/bus/460gxPCI.h
+index 9459705..65a19b2 100644
+--- a/hw/xfree86/os-support/bus/460gxPCI.h
++++ b/hw/xfree86/os-support/bus/460gxPCI.h
+@@ -25,6 +25,10 @@
+  * XFree86 Project.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef PCI_460GX_H
+ #define PCI_460GX_H 1
+ 

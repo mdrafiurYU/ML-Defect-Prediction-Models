@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcBStore.c b/hw/xfree86/xf4bpp/ppcBStore.c
+index 295f521..7686b6f 100644
+--- a/hw/xfree86/xf4bpp/ppcBStore.c
++++ b/hw/xfree86/xf4bpp/ppcBStore.c
+@@ -62,6 +62,10 @@ software without specific, written prior permission.
+ */
+ /* $XConsortium: ppcBStore.c /main/5 1996/02/21 17:57:06 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "vgaVideo.h"
+ #include "ibmTrace.h"

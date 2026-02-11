@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java
+index 53acdf9..44563df 100644
+--- a/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/BulgarianStemFilterFactory.java
+@@ -20,7 +20,17 @@ package org.apache.solr.analysis;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.bg.BulgarianStemFilter;
+ 
+-/** Factory for {@link BulgarianStemFilter} */
++/** 
++ * Factory for {@link BulgarianStemFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_bgstem" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.BulgarianStemFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre>
++ * @version $Id$
++ */
+ public class BulgarianStemFilterFactory extends BaseTokenFilterFactory {
+   public TokenStream create(TokenStream input) {
+     return new BulgarianStemFilter(input);

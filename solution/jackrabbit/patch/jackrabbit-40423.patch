@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/NodeName.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/NodeName.java
+index adb927a..4f44f09 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/NodeName.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/NodeName.java
+@@ -25,12 +25,13 @@ package org.apache.jackrabbit.core.query.jsr283.qom;
+  *
+  * @since JCR 2.0
+  */
+-public interface NodeName
+-        extends DynamicOperand {
++public interface NodeName extends DynamicOperand {
++
+     /**
+      * Gets the name of the selector against which to evaluate this operand.
+      *
+      * @return the selector name; non-null
+      */
+-    public String getSelectorName();
++    String getSelectorName();
++
+ }

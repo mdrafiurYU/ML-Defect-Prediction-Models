@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/dri2/dri2.c b/hw/xfree86/dri2/dri2.c
+index 7c703a7..3bc533e 100644
+--- a/hw/xfree86/dri2/dri2.c
++++ b/hw/xfree86/dri2/dri2.c
+@@ -348,6 +348,14 @@ DRI2Connect(ScreenPtr pScreen, int *fd, const char **driverName,
+     return TRUE;
+ }
+ 
++unsigned int
++DRI2GetPixmapHandle(PixmapPtr pPixmap, unsigned int *flags)
++{
++    DRI2ScreenPtr ds = DRI2GetScreen(pPixmap->drawable.pScreen);
++
++    return ds->getPixmapHandle(pPixmap, flags);
++}
++
+ static void *
+ DRI2SetupSAREA(ScreenPtr pScreen, size_t driverSareaSize)
+ {

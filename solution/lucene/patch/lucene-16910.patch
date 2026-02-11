@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/spans/SpansQueryConfigHandler.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/spans/SpansQueryConfigHandler.java
+index 520d4ef..b614938 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/spans/SpansQueryConfigHandler.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/spans/SpansQueryConfigHandler.java
+@@ -33,7 +33,7 @@ public class SpansQueryConfigHandler extends QueryConfigHandler {
+   }
+ 
+   @Override
+-  public FieldConfig getFieldConfig(CharSequence fieldName) {
++  public FieldConfig getFieldConfig(String fieldName) {
+ 
+     // there is no field configuration, always return null
+     return null;

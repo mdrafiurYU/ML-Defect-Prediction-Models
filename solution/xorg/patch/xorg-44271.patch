@@ -1,0 +1,13 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index e3a4656..3d34481 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -590,7 +590,7 @@ miPointerMove (DeviceIntPtr pDev, ScreenPtr pScreen, int x, int y)
+     darwinEvents_lock();
+ #endif
+     for (i = 0; i < nevents; i++)
+-        mieqEnqueue(pDev, events[i].event);
++        mieqEnqueue(pDev, (InternalEvent*)events[i].event);
+ #ifdef XQUARTZ
+     darwinEvents_unlock();
+ #endif

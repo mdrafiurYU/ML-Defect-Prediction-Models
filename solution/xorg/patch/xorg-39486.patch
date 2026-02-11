@@ -1,0 +1,25 @@
+diff --git a/hw/dmx/dmxwindow.h b/hw/dmx/dmxwindow.h
+index 72c76aa..353d0a3 100644
+--- a/hw/dmx/dmxwindow.h
++++ b/hw/dmx/dmxwindow.h
+@@ -48,9 +48,7 @@ typedef struct _dmxWinPriv {
+     unsigned long  attribMask;
+     Colormap       cmap;
+     Visual        *visual;
+-#ifdef SHAPE
+     Bool           isShaped;
+-#endif
+ #ifdef RENDER
+     Bool           hasPict;
+ #endif
+@@ -97,10 +95,8 @@ extern void dmxResizeRootWindow(WindowPtr pRoot,
+ 
+ extern Bool dmxBEDestroyWindow(WindowPtr pWindow);
+ 
+-#ifdef SHAPE
+ /* Support for shape extension */
+ extern void dmxSetShape(WindowPtr pWindow);
+-#endif
+ 
+ /** Private index.  \see dmxwindow.c \see dmxscrinit.c */
+ extern DevPrivateKey dmxWinPrivateKey;

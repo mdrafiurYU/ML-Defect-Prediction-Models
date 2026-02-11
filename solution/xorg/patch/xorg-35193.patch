@@ -1,0 +1,11 @@
+diff --git a/hw/xquartz/X11Controller.h b/hw/xquartz/X11Controller.h
+index bfbb04f..47f5220 100644
+--- a/hw/xquartz/X11Controller.h
++++ b/hw/xquartz/X11Controller.h
+@@ -78,4 +78,6 @@
+ 
+ #endif /* __OBJC__ */
+ 
++void X11ControllerMain(int argc, const char **argv, void (*server_thread) (void *), void *server_arg);
++
+ #endif /* X11CONTROLLER_H */

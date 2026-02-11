@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
+index 98c6b01..1b55ee0 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
+@@ -1901,7 +1901,7 @@ public void testReconcileParticipant04() throws CoreException {
+ 		"  }\n" +
+ 		"}"
+ 	);
+-	org.eclipse.jdt.core.dom.CompilationUnit ast = this.workingCopy.reconcile(ICompilationUnit.NO_AST, false, null, null);
++	org.eclipse.jdt.core.dom.CompilationUnit ast = this.workingCopy.reconcile(AST.JLS3, false, null, null);
+ 	assertSame(
+ 		"Unexpected participant delta",
+ 		participant.ast,

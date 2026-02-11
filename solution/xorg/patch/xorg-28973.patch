@@ -1,0 +1,26 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index a9a743b..7edcc51 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -2307,7 +2307,7 @@ ChangeDeviceControl(register ClientPtr client, DeviceIntPtr pDev,
+ }
+ 
+ int
+-NewInputDeviceRequest(InputOption *options)
++NewInputDeviceRequest(InputOption *options, DeviceIntPtr *pdev)
+ {
+     InputOption *option = NULL;
+     KdPointerInfo *pi = NULL;
+@@ -2372,6 +2372,12 @@ NewInputDeviceRequest(InputOption *options)
+         }
+     }
+ 
++    if (pi) {
++        *pdev = pi->dixdev;
++    } else if(ki) {
++        *pdev = ki->dixdev;
++    }
++
+     return Success;
+ }
+ 

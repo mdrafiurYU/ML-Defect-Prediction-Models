@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index ebc460f..05ac570 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -142,6 +142,19 @@ xf86DeleteInputDriver(int drvIndex)
+     xf86InputDriverList[drvIndex] = NULL;
+ }
+ 
++InputDriverPtr
++xf86LookupInputDriver(const char *name)
++{
++    int i;
++
++    for (i = 0; i < xf86NumInputDrivers; i++) {
++       if (xf86InputDriverList[i] && xf86InputDriverList[i]->driverName &&
++           xf86NameCmp(name, xf86InputDriverList[i]->driverName) == 0)
++           return xf86InputDriverList[i];
++    }
++    return NULL;
++}
++
+ _X_EXPORT void
+ xf86AddModuleInfo(ModuleInfoPtr info, pointer module)
+ {

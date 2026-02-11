@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/DefaultProblem.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/DefaultProblem.java
+index bf8b368..bbf6475 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/DefaultProblem.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/DefaultProblem.java
+@@ -63,7 +63,8 @@ public String errorReportSource(char[] unitSource, int tagBits) {
+ 
+ 	//sanity .....
+ 	if ((this.startPosition > this.endPosition)
+-		|| ((this.startPosition < 0) && (this.endPosition < 0)))
++		|| ((this.startPosition < 0) && (this.endPosition < 0))
++		|| unitSource.length == 0)
+ 		return Messages.problem_noSourceInformation; 
+ 
+ 	StringBuffer errorBuffer = new StringBuffer();

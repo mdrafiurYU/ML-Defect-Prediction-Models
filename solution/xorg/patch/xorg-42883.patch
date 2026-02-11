@@ -1,0 +1,19 @@
+diff --git a/hw/dmx/input/dmxcommon.h b/hw/dmx/input/dmxcommon.h
+index a9b260c..68f2b52 100644
+--- a/hw/dmx/input/dmxcommon.h
++++ b/hw/dmx/input/dmxcommon.h
+@@ -54,14 +54,10 @@
+     XModifierKeymap         *savedModMap;   \
+     int                     stateSaved
+ 
+-#ifdef XKB
+ #define DMX_COMMON_XKB                      \
+     DMX_COMMON_OTHER;                       \
+     XkbDescPtr              xkb;            \
+     XkbIndicatorRec         savedIndicators
+-#else
+-#define DMX_COMMON_XKB      DMX_COMMON_OTHER
+-#endif
+ 
+ #define DMX_COMMON_PRIVATE                  \
+     DMX_COMMON_XKB;                         \

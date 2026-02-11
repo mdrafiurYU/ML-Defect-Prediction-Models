@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql/JCRSQLQueryBuilder.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql/JCRSQLQueryBuilder.java
+index 056777d..2b00e51 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql/JCRSQLQueryBuilder.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/sql/JCRSQLQueryBuilder.java
+@@ -470,7 +470,9 @@ public class JCRSQLQueryBuilder implements JCRSQLParserVisitor {
+         // pass to operands
+         node.childrenAccept(this, andQuery);
+ 
+-        parent.addOperand(andQuery);
++        if (andQuery.getNumOperands() > 0) {
++            parent.addOperand(andQuery);
++        }
+         return parent;
+     }
+ 
+@@ -480,7 +482,9 @@ public class JCRSQLQueryBuilder implements JCRSQLParserVisitor {
+         // pass to operand
+         node.childrenAccept(this, notQuery);
+ 
+-        parent.addOperand(notQuery);
++        if (notQuery.getNumOperands() > 0) {
++            parent.addOperand(notQuery);
++        }
+         return parent;
+     }

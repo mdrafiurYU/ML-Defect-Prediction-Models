@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index b5b4927..48c178b 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -988,6 +988,7 @@ configServerFlags(XF86ConfFlagsPtr flagsconf, XF86OptionPtr layoutopts)
+ 	    } else if (!xf86NameCmp(s,"sync")) {
+ 		xf86Msg(X_CONFIG, "Syncing logfile enabled\n");
+ 		xf86Info.log = LogSync;
++		LogSetParameter(XLOG_FLUSH, TRUE);
+ 		LogSetParameter(XLOG_SYNC, TRUE);
+ 	    } else {
+ 		xf86Msg(X_WARNING,"Unknown Log option\n");

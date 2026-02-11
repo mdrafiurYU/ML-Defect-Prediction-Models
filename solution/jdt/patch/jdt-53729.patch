@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index 2a9035b..450f98d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -8488,7 +8488,8 @@ protected void parse() {
+ 			break ProcessTerminals;
+ 		}
+ 			
+-		ProcessNonTerminals : do { /* reduce */
++		// ProcessNonTerminals : 
++		do { /* reduce */
+ 			consumeRule(act);
+ 			this.stateStackTop -= (rhs[act] - 1);
+ 			act = ntAction(this.stack[this.stateStackTop], lhs[act]);

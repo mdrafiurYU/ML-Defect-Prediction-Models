@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxglcore.c b/GL/glx/glxglcore.c
+index 6aa4e7f..4cc00a3 100644
+--- a/GL/glx/glxglcore.c
++++ b/GL/glx/glxglcore.c
+@@ -363,7 +363,7 @@ createMesaVisuals(__GLXMESAscreen *pMesaScreen)
+ {
+     __GLcontextModes *config;
+     ScreenPtr pScreen;
+-    VisualPtr visual;
++    VisualPtr visual = NULL;
+     int i, j;
+ 
+     i = 0;

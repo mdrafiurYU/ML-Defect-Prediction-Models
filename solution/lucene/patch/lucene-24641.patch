@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestSearch.java b/lucene/src/test/org/apache/lucene/TestSearch.java
+index a79b5c2..3ee5447 100644
+--- a/lucene/src/test/org/apache/lucene/TestSearch.java
++++ b/lucene/src/test/org/apache/lucene/TestSearch.java
+@@ -112,7 +112,7 @@ public class TestSearch extends LuceneTestCase {
+ 
+       Sort sort = new Sort(new SortField[] {
+           SortField.FIELD_SCORE,
+-          new SortField("id", SortField.INT)});
++          new SortField("id", SortField.Type.INT)});
+ 
+       QueryParser parser = new QueryParser(TEST_VERSION_CURRENT, "contents", analyzer);
+       parser.setPhraseSlop(4);

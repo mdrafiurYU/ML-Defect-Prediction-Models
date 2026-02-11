@@ -1,0 +1,31 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+index 57f8e3e..4058f28 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+@@ -69,11 +69,9 @@ public class InstantiatedTermsEnum extends TermsEnum {
+       return SeekStatus.END;
+     }
+ 
+-    if (terms[upto].field() == field) {
++    if (terms[upto].field().equals(field)) {
+       return SeekStatus.FOUND;
+     } else {
+-      // make sure field was interned
+-      assert !terms[upto].field().equals(field);
+       return SeekStatus.END;
+     }
+   }
+@@ -84,12 +82,10 @@ public class InstantiatedTermsEnum extends TermsEnum {
+     if (upto >= terms.length) {
+       return null;
+     }
+-    if (terms[upto].field() == field) {
++    if (terms[upto].field().equals(field)) {
+       br.copy(terms[upto].getTerm().text());
+       return br;
+     } else {
+-      // make sure field was interned
+-      assert !terms[upto].field().equals(field);
+       return null;
+     }
+   }

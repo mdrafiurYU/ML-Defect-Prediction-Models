@@ -1,0 +1,22 @@
+diff --git a/xkb/ddxLoad.c b/xkb/ddxLoad.c
+index 4d5dfb6..6b6575d 100644
+--- a/xkb/ddxLoad.c
++++ b/xkb/ddxLoad.c
+@@ -329,7 +329,7 @@ FILE *	file;
+     return file;
+ }
+ 
+-unsigned
++_X_EXPORT unsigned
+ XkbDDXLoadKeymapByNames(	DeviceIntPtr		keybd,
+ 				XkbComponentNamesPtr	names,
+ 				unsigned		want,
+@@ -379,7 +379,7 @@ unsigned	missing;
+     return (need|want)&(~missing);
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ XkbDDXNamesFromRules(	DeviceIntPtr		keybd,
+ 			char *			rules_name,
+ 			XkbRF_VarDefsPtr	defs,

@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/QueryParsing.java b/solr/src/java/org/apache/solr/search/QueryParsing.java
+index 624f627..1ffbdef 100644
+--- a/solr/src/java/org/apache/solr/search/QueryParsing.java
++++ b/solr/src/java/org/apache/solr/search/QueryParsing.java
+@@ -828,6 +828,7 @@ public class QueryParsing {
+       return pos < end ? val.charAt(pos) : 0;
+     }
+ 
++    @Override
+     public String toString() {
+       return "'" + val + "'" + ", pos=" + pos;
+     }

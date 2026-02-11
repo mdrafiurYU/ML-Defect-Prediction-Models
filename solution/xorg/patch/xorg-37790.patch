@@ -1,0 +1,13 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index 791f6a2..a42faa7 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -500,7 +500,7 @@ ProcXTestFakeInput(client)
+         xfree(master_event);
+     } else
+         (*dev->public.processInputProc)(ev, dev, nev);
+-    if (extension)
++    if (!extension)
+         xfree(ev);
+     return client->noClientException;
+ }

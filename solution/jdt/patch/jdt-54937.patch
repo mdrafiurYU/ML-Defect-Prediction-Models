@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
+index f6f9fe2..7453bb6 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
+@@ -4962,8 +4962,9 @@ public class CodeFormatterVisitor extends ASTVisitor {
+ 				} else if (!wasACase) {
+ 					this.scribe.printNewLine();
+ 				}
++				this.scribe.printComment();
+ 			}
+-		}		
++		}
+ 		
+ 		if ((wasACase || wasAStatement) && this.preferences.indent_switchstatements_compare_to_cases) {
+ 			this.scribe.unIndent();

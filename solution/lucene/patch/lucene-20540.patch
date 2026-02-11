@@ -1,0 +1,34 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java b/solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java
+index 3b672a2..430549c 100644
+--- a/solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java
+@@ -60,28 +60,12 @@ public class ReciprocalFloatFunction extends ValueSource {
+   @Override
+   public DocValues getValues(Map context, AtomicReaderContext readerContext) throws IOException {
+     final DocValues vals = source.getValues(context, readerContext);
+-    return new DocValues() {
++    return new FloatDocValues(this) {
+       @Override
+       public float floatVal(int doc) {
+         return a/(m*vals.floatVal(doc) + b);
+       }
+       @Override
+-      public int intVal(int doc) {
+-        return (int)floatVal(doc);
+-      }
+-      @Override
+-      public long longVal(int doc) {
+-        return (long)floatVal(doc);
+-      }
+-      @Override
+-      public double doubleVal(int doc) {
+-        return (double)floatVal(doc);
+-      }
+-      @Override
+-      public String strVal(int doc) {
+-        return Float.toString(floatVal(doc));
+-      }
+-      @Override
+       public String toString(int doc) {
+         return Float.toString(a) + "/("
+                 + m + "*float(" + vals.toString(doc) + ')'

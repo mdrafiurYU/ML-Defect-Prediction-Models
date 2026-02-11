@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java
+index 40ab029..496c161 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java
+@@ -55,6 +55,10 @@ public class ClusterRecordDeserializer {
+             clusterRecord = new NodeTypeRecord(record);
+             clusterRecord.read();
+             break;
++        case WorkspaceRecord.IDENTIFIER:
++            clusterRecord = new WorkspaceRecord(record);
++            clusterRecord.read();
++            break;
+         case ClusterRecord.END_MARKER:
+             // JCR-1813: Invalid journal records during XATransactions
+             // Some journal records may be empty due to JCR-1813 and other

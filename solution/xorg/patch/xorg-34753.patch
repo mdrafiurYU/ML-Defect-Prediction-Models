@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/quartzPasteboard.c b/hw/darwin/quartz/quartzPasteboard.c
+index 2130197..0cecff5 100644
+--- a/hw/darwin/quartz/quartzPasteboard.c
++++ b/hw/darwin/quartz/quartzPasteboard.c
+@@ -30,7 +30,9 @@
+  * use or other dealings in this Software without prior written authorization.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #include "quartzPasteboard.h"
+ 

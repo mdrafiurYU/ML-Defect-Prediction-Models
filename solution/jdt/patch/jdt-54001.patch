@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+index 4948afc..5a546a7 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+@@ -32,6 +32,9 @@ public class AptPlugin extends Plugin {
+ 	public static final int STATUS_CANTLOADPLUGINFACTORY = 3;
+ 	public static final String ERRTXT_NOTOOLSJAR = Messages.AptPlugin_couldNotFindToolsDotJar;
+ 	
++	/** Marker ID used for build problem, e.g., missing factory jar */
++	public static final String APT_BUILD_PROBLEM_MARKER = PLUGIN_ID + ".buildproblem"; //$NON-NLS-1$
++	
+ 	private static AptPlugin thePlugin = null; // singleton object
+ 	
+ 	public void start(BundleContext context) throws Exception {

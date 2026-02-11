@@ -1,0 +1,17 @@
+diff --git a/os/xdmauth.c b/os/xdmauth.c
+index f88d25a..0d7691e 100644
+--- a/os/xdmauth.c
++++ b/os/xdmauth.c
+@@ -436,10 +436,12 @@ XdmToID (unsigned short cookie_length, char *cookie)
+ 	{
+ 	    xfree (client);
+ 	    xfree (cookie);
++	    xfree (plain);
+ 	    return auth->id;
+ 	}
+     }
+     xfree (cookie);
++    xfree (plain);
+     return (XID) -1;
+ }
+ 

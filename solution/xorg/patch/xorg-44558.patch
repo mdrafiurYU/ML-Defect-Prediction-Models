@@ -1,0 +1,13 @@
+diff --git a/include/eventconvert.h b/include/eventconvert.h
+index dc3fd73..277a6c4 100644
+--- a/include/eventconvert.h
++++ b/include/eventconvert.h
+@@ -28,7 +28,7 @@
+ #include "input.h"
+ #include "events.h"
+ 
+-#define FP1616(integral, frac) (integral * (1 << 16) + frac * (1 << 16))
++#define FP1616(integral, frac) ((integral) * (1 << 16) + (frac) * (1 << 16))
+ 
+ _X_INTERNAL int EventToCore(InternalEvent *event, xEvent *core);
+ _X_INTERNAL int EventToXI(InternalEvent *ev, xEvent **xi, int *count);

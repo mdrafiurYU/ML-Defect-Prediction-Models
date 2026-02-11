@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexWriter.java b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+index c2a7158..95ef0b9 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+@@ -222,7 +222,7 @@ public class IndexWriter implements Closeable {
+   final SegmentInfos segmentInfos;       // the segments
+ 
+   private DocumentsWriter docWriter;
+-  private final IndexFileDeleter deleter;
++  final IndexFileDeleter deleter;
+ 
+   private Set<SegmentInfo> segmentsToOptimize = new HashSet<SegmentInfo>();           // used by optimize to note those needing optimization
+   private int optimizeMaxNumSegments;

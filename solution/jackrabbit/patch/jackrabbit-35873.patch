@@ -1,0 +1,18 @@
+diff --git a/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/server/ServerSessionInfo.java b/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/server/ServerSessionInfo.java
+index 4f9a0e4..8af255b 100644
+--- a/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/server/ServerSessionInfo.java
++++ b/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/server/ServerSessionInfo.java
+@@ -69,13 +69,4 @@ class ServerSessionInfo extends ServerObject implements RemoteSessionInfo {
+     public void removeLockToken(String lockToken) throws RemoteException {
+         sessionInfo.removeLockToken(lockToken);
+     }
+-
+-    public String getLastEventBundleId() throws RemoteException {
+-        return sessionInfo.getLastEventBundleId();
+-    }
+-
+-    public void setLastEventBundleId(String eventBundleId)
+-            throws RemoteException {
+-        sessionInfo.setLastEventBundleId(eventBundleId);
+-    }
+ }

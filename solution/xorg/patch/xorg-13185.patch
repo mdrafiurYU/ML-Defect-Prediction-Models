@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/utils/xorgcfg/config.c b/hw/xfree86/utils/xorgcfg/config.c
+index 66fbcf8..4d656a5 100644
+--- a/hw/xfree86/utils/xorgcfg/config.c
++++ b/hw/xfree86/utils/xorgcfg/config.c
+@@ -149,7 +149,7 @@ StartConfig(void)
+     ident_widget = XtVaCreateManagedWidget("identifier", asciiTextWidgetClass,
+ 					   top,
+ 					   XtNeditType, XawtextEdit,
+-					   NULL, 0);
++					   NULL);
+     configp = XtCreateManagedWidget("work", formWidgetClass,
+ 				    pane, NULL, 0);
+     current = XtCreateManagedWidget("wellcome", labelWidgetClass,

@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index 39ca5b6..9c936eb 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -27,6 +27,7 @@ import java.util.Set;
+ 
+ import org.eclipse.core.resources.IFile;
+ import org.eclipse.core.resources.IProject;
++import org.eclipse.jdt.apt.core.AptPlugin;
+ import org.eclipse.jdt.apt.core.internal.APTDispatch.APTResult;
+ import org.eclipse.jdt.apt.core.internal.generatedfile.GeneratedFileManager;
+ import org.eclipse.jdt.apt.core.util.AptConfig;
+@@ -177,7 +178,7 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 		}
+ 		catch ( Throwable t )
+ 		{
+-			t.printStackTrace();
++			AptPlugin.log(t, "Failure processing");
+ 		}	
+ 		return new PostReconcileCompilationResult(problems);
+ 	}

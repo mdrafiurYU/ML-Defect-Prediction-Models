@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winmultiwindowwndproc.c b/hw/xwin/winmultiwindowwndproc.c
+index 93ddcd4..b4f53dc 100755
+--- a/hw/xwin/winmultiwindowwndproc.c
++++ b/hw/xwin/winmultiwindowwndproc.c
+@@ -277,7 +277,7 @@ static void winRaiseWindow(WindowPtr pWin)
+      * in time
+      */
+     XID vlist[1] = { 0 };
+-    ConfigureWindow(pWin, CWStackMode, vlist, NULL); 
++    ConfigureWindow(pWin, CWStackMode, vlist, serverClient); 
+     winInRaiseWindow = oldstate;
+   }
+ }

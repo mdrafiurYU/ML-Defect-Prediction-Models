@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
+index ab7ebe1..28e9c99 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
+@@ -380,6 +380,12 @@ class InternalVersionHistoryImpl extends InternalVersionItemImpl
+         // detach from the version graph
+         v.internalDetach();
+ 
++        // check if referenced by an activity
++        InternalActivityImpl activity = v.getActivity();
++        if (activity != null) {
++            activity.removeVersion(v);
++        }
++
+         // remove from persistence state
+         node.removeNode(v.getName());
+ 
+@@ -518,6 +524,12 @@ class InternalVersionHistoryImpl extends InternalVersionItemImpl
+         NodeId versionId = new NodeId(UUID.randomUUID());
+         NodeStateEx vNode = node.addNode(name, NameConstants.NT_VERSION, versionId, true);
+ 
++        // check for jcr:activity
++        if (src.hasProperty(NameConstants.JCR_ACTIVITY)) {
++            InternalValue act = src.getProperty(NameConstants.JCR_ACTIVITY).internalGetValue();
++            vNode.setPropertyValue(NameConstants.JCR_ACTIVITY, act);
++        }
++
+         // initialize 'created', 'predecessors' and 'successors'
+         vNode.setPropertyValue(NameConstants.JCR_CREATED, InternalValue.create(getCurrentTime()));
+         vNode.setPropertyValues(NameConstants.JCR_PREDECESSORS, PropertyType.REFERENCE, predecessors);

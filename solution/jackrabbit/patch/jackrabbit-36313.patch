@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingNameResolver.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingNameResolver.java
+index c619f19..952b27d 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingNameResolver.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/name/CachingNameResolver.java
+@@ -22,6 +22,8 @@ import javax.jcr.NamespaceException;
+  * Name resolver decorator that uses a generational cache to speed up
+  * parsing and formatting of JCR names. Uncached names are resolved using
+  * the underlying decorated name resolver.
++ *
++ * @deprecated Use {@link org.apache.jackrabbit.conversion.CachingNameResolver} instead.
+  */
+ public class CachingNameResolver implements NameResolver {

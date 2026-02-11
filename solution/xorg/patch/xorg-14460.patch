@@ -1,0 +1,15 @@
+diff --git a/XTrap/xtrapdi.c b/XTrap/xtrapdi.c
+index 8019add..1435dcd 100644
+--- a/XTrap/xtrapdi.c
++++ b/XTrap/xtrapdi.c
+@@ -51,6 +51,10 @@ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #define NEED_REPLIES
+ #define NEED_EVENTS
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef EXTMODULE
+ #include <stdio.h>
+ #include <errno.h>

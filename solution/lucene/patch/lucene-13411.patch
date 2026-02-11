@@ -1,0 +1,18 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/CheckHits.java b/lucene/src/test/org/apache/lucene/search/CheckHits.java
+index a9078b1..0efa525 100644
+--- a/lucene/src/test/org/apache/lucene/search/CheckHits.java
++++ b/lucene/src/test/org/apache/lucene/search/CheckHits.java
+@@ -454,13 +454,6 @@ public class CheckHits {
+    */
+   public static class ExplanationAsserter extends Collector {
+ 
+-    /**
+-     * @deprecated
+-     * @see CheckHits#EXPLAIN_SCORE_TOLERANCE_DELTA
+-     */
+-    @Deprecated
+-    public static float SCORE_TOLERANCE_DELTA = 0.00005f;
+-
+     Query q;
+     Searcher s;
+     String d;

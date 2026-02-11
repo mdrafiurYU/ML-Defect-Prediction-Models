@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+index 4b096d2..28047ae 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+@@ -48,7 +48,8 @@ public class BLOBInTempFile extends BLOBFileValue {
+      * The input stream is always closed by this method.
+      *
+      * @param in the input stream
+-     * @throws IOException
++     * @param temp
++     * @throws RepositoryException
+      */
+     private BLOBInTempFile(InputStream in, boolean temp) throws RepositoryException {
+         this.temp = temp;

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86ShowOpts.c b/hw/xfree86/common/xf86ShowOpts.c
+index b8efa73..077d936 100644
+--- a/hw/xfree86/common/xf86ShowOpts.c
++++ b/hw/xfree86/common/xf86ShowOpts.c
+@@ -76,7 +76,7 @@ optionTypeToSting(OptionValueType type)
+     }
+ }
+ 
+-void DoShowOptions (void) {
++_X_EXPORT void DoShowOptions (void) {
+ 	int  i = 0;
+ 	char **vlist  = 0;
+ 	char *pSymbol = 0;

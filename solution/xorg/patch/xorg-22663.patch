@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/rootlessCommon.c b/miext/rootless/rootlessCommon.c
+index b24d2a2..3332110 100644
+--- a/miext/rootless/rootlessCommon.c
++++ b/miext/rootless/rootlessCommon.c
+@@ -30,6 +30,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/miext/rootless/rootlessCommon.c,v 1.6 2004/07/02 01:30:33 torrey Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "rootlessCommon.h"
+ 
+ unsigned int rootless_CopyBytes_threshold = 0;

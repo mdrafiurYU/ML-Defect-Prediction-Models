@@ -1,0 +1,28 @@
+diff --git a/Xi/getfocus.c b/Xi/getfocus.c
+index 9cac93b..1bcb673 100644
+--- a/Xi/getfocus.c
++++ b/Xi/getfocus.c
+@@ -1,5 +1,3 @@
+-/* $Xorg: getfocus.c,v 1.4 2001/02/09 02:04:34 xorgcvs Exp $ */
+-
+ /************************************************************
+ 
+ Copyright 1989, 1998  The Open Group
+@@ -45,7 +43,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ********************************************************/
+-/* $XFree86: xc/programs/Xserver/Xi/getfocus.c,v 3.2 2001/01/17 22:13:24 dawes Exp $ */
+ 
+ /***********************************************************************
+  *
+@@ -104,8 +101,7 @@ ProcXGetDeviceFocus(ClientPtr client)
+     REQUEST_SIZE_MATCH(xGetDeviceFocusReq);
+ 
+     dev = LookupDeviceIntRec (stuff->deviceid);
+-    if (dev == NULL || !dev->focus)
+-	{
++    if (dev == NULL || !dev->focus) {
+ 	SendErrorToClient(client, IReqCode, X_GetDeviceFocus, 0, BadDevice);
+ 	return Success;
+ 	}

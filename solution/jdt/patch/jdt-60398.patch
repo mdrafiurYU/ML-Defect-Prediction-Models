@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMember.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMember.java
+index bc30f39..5d36722 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMember.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMember.java
+@@ -56,8 +56,11 @@ public String[] getCategories() throws JavaModelException {
+ 		// ensure the class file's buffer is open so that categories are computed
+ 		((ClassFile)getClassFile()).getBuffer();
+ 		
+-		if (mapper.categories != null) 
+-			return (String[]) mapper.categories.get(this);
++		if (mapper.categories != null) {
++			String[] categories = (String[]) mapper.categories.get(this);
++			if (categories != null)
++				return categories;
++		}
+ 	}
+ 	return CharOperation.NO_STRINGS;	
+ }

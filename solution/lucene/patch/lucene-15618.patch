@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java b/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java
+index 4a0e6b7..157c087 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java
+@@ -42,8 +42,9 @@ public class TestIndexReaderCloneNorms extends LuceneTestCase {
+ 
+   private class SimilarityOne extends DefaultSimilarity {
+     @Override
+-    public float lengthNorm(String fieldName, int numTerms) {
+-      return 1;
++    public float computeNorm(String fieldName, FieldInvertState state) {
++      // diable length norm
++      return state.getBoost();
+     }
+   }

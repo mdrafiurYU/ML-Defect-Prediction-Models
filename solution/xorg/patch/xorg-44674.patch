@@ -1,0 +1,23 @@
+diff --git a/include/dix.h b/include/dix.h
+index d4bec5f..bfb0369 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -350,6 +350,10 @@ extern void ActivateKeyboardGrab(
+ extern void DeactivateKeyboardGrab(
+     DeviceIntPtr /* keybd */);
+ 
++extern BOOL ActivateFocusInGrab(
++    DeviceIntPtr /* dev */,
++    WindowPtr /* win */);
++
+ extern void AllowSome(
+     ClientPtr	/* client */,
+     TimeStamp /* time */,
+@@ -582,6 +586,7 @@ extern Bool IsKeyboardDevice(DeviceIntPtr dev);
+ extern Bool IsPointerEvent(InternalEvent *event);
+ extern Bool IsMaster(DeviceIntPtr dev);
+ 
++
+ /*
+  * These are deprecated compatibility functions and will be removed soon!
+  * Please use the noted replacements instead.

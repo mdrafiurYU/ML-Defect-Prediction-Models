@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/core/SolrResourceLoader.java b/solr/src/java/org/apache/solr/core/SolrResourceLoader.java
+index 39d6a95..3d8dfda 100644
+--- a/solr/src/java/org/apache/solr/core/SolrResourceLoader.java
++++ b/solr/src/java/org/apache/solr/core/SolrResourceLoader.java
+@@ -278,6 +278,8 @@ public class SolrResourceLoader implements ResourceLoader
+       }
+       // delegate to the class loader (looking into $INSTANCE_DIR/lib jars)
+       is = classLoader.getResourceAsStream(resource);
++      if (is == null)
++        is = classLoader.getResourceAsStream(getConfigDir() + resource);
+     } catch (Exception e) {
+       throw new RuntimeException("Error opening " + resource, e);
+     }

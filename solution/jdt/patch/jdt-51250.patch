@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java
+index b11cbc5..8beb868 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java
+@@ -69,7 +69,6 @@ public class MirrorTestAnnotationProcessor implements AnnotationProcessor {
+ 		PackageDeclaration pkg = typeDecl.getPackage();
+ 		assertEquals("Package", CodeExample.CODE_PACKAGE, pkg.getQualifiedName());
+ 		
+-		// TODO: test the actual contents, not just sizes of the results
+ 		Collection<FieldDeclaration> fields = typeDecl.getFields();
+ 		assertEquals("Number of fields: " + fields, 3, fields.size());

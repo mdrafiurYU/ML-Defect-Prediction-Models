@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86AutoConfig.c b/hw/xfree86/common/xf86AutoConfig.c
+index 5f96711..793ecfa 100644
+--- a/hw/xfree86/common/xf86AutoConfig.c
++++ b/hw/xfree86/common/xf86AutoConfig.c
+@@ -295,11 +295,10 @@ autoConfigDevice(GDevPtr preconf_device)
+     if (preconf_device) {
+         ptr = preconf_device;
+     } else {
+-        ptr = (GDevPtr)xalloc(sizeof(GDevRec));
++        ptr = xcalloc(1, sizeof(GDevRec));
+         if (!ptr) {
+             return NULL;
+         }
+-        memset((GDevPtr)ptr, 0, sizeof(GDevRec));
+         ptr->chipID = -1;
+         ptr->chipRev = -1;
+         ptr->irq = -1;

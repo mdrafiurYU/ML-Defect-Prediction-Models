@@ -1,0 +1,20 @@
+diff --git a/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/remote/RemoteSessionInfo.java b/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/remote/RemoteSessionInfo.java
+index b2facb9..695b9bd 100644
+--- a/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/remote/RemoteSessionInfo.java
++++ b/contrib/spi/spi-rmi/src/main/java/org/apache/jackrabbit/spi/rmi/remote/RemoteSessionInfo.java
+@@ -48,15 +48,4 @@ public interface RemoteSessionInfo extends Remote {
+      * Remote version of {@link org.apache.jackrabbit.spi.SessionInfo#removeLockToken(String)}.
+      */
+     public void removeLockToken(String lockToken) throws RemoteException;
+-
+-    /**
+-     * Remote version of {@link org.apache.jackrabbit.spi.SessionInfo#getLastEventBundleId()}.
+-     */
+-    public String getLastEventBundleId() throws RemoteException;
+-
+-    /**
+-     * Remote version of {@link org.apache.jackrabbit.spi.SessionInfo#setLastEventBundleId(String)}.
+-     */
+-    public void setLastEventBundleId(String eventBundleId) throws RemoteException;
+-
+ }

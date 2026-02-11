@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_agp.c b/hw/xfree86/os-support/linux/lnx_agp.c
+index 4c1722f..e5eb30c 100644
+--- a/hw/xfree86/os-support/linux/lnx_agp.c
++++ b/hw/xfree86/os-support/linux/lnx_agp.c
+@@ -117,7 +117,7 @@ GARTInit(int screenNum)
+ }
+ 
+ Bool
+-xf86AgpGARTSupported()
++xf86AgpGARTSupported(void)
+ {
+ 	return GARTInit(-1);
+ }

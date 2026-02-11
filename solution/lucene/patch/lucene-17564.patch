@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/synonym/TestSynonymFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/synonym/TestSynonymFilter.java
+index 2c68e04..29c26d6 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/synonym/TestSynonymFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/synonym/TestSynonymFilter.java
+@@ -395,6 +395,7 @@ public class TestSynonymFilter extends BaseTokenStreamTestCase {
+       this(tokens.toArray(new Token[tokens.size()]));
+     }
+     
++    @Override
+     public boolean incrementToken() throws IOException {
+       if (index >= tokens.length)
+         return false;

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java
+index 3551474..4225e28 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java
+@@ -65,8 +65,10 @@ public class BLOBInResource extends BLOBFileValue {
+             }
+             length = fsResource.length();
+         } catch (FileSystemException fse) {
+-            throw new IOException(fsResource.getPath()
++            IOException e2 = new IOException(fsResource.getPath()
+                     + ": Error while creating value: " + fse.toString());
++            e2.initCause(fse);
++            throw e2;
+         }
+         this.fsResource = fsResource;
+     }

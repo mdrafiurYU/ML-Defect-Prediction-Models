@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java
+index 496c161..350e687 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterRecordDeserializer.java
+@@ -40,6 +40,7 @@ public class ClusterRecordDeserializer {
+         case ChangeLogRecord.NODE_IDENTIFIER:
+         case ChangeLogRecord.PROPERTY_IDENTIFIER:
+         case ChangeLogRecord.EVENT_IDENTIFIER:
++        case ChangeLogRecord.DATE_IDENTIFIER:
+             clusterRecord = new ChangeLogRecord(c, record, workspace);
+             clusterRecord.read();
+             break;

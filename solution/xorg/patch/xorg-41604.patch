@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 948a56b..bd64e03 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -96,6 +96,7 @@ xf86CrtcCreate (ScrnInfoPtr		scrn,
+     crtc = xcalloc (sizeof (xf86CrtcRec), 1);
+     if (!crtc)
+ 	return NULL;
++    crtc->version = XF86_CRTC_VERSION;
+     crtc->scrn = scrn;
+     crtc->funcs = funcs;
+ #ifdef RANDR_12_INTERFACE

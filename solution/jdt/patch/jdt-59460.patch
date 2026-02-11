@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
+index 163fd02..35143d7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
+@@ -439,9 +439,11 @@ public boolean isProvablyDistinctFrom(TypeBinding otherType, int depth) {
+ 		break;
+ 
+ 	case Binding.RAW_TYPE:
++		if (depth > 0) return true;
+ 		return this.erasure().isProvablyDistinctFrom(otherType.erasure(), 0);
+ 
+ 	case Binding.GENERIC_TYPE:
++		if (depth > 0) return true;
+ 		return this != otherType.erasure();
+ 	}
+ 	return this != otherType;

@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestCodecs.java b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+index 769ea0e..38c80c3 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestCodecs.java
++++ b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+@@ -20,6 +20,7 @@ package org.apache.lucene.index;
+ import java.io.IOException;
+ import java.util.Arrays;
+ import java.util.HashSet;
++import java.util.concurrent.atomic.AtomicLong;
+ 
+ import org.apache.lucene.analysis.MockAnalyzer;
+ import org.apache.lucene.document.Document;
+@@ -607,7 +608,7 @@ public class TestCodecs extends LuceneTestCase {
+ 
+     final int termIndexInterval = this.nextInt(13, 27);
+     final SegmentCodecs codecInfo = SegmentCodecs.build(fieldInfos, CodecProvider.getDefault());
+-    final SegmentWriteState state = new SegmentWriteState(null, dir, SEGMENT, fieldInfos, null, 10000, 10000, termIndexInterval, codecInfo);
++    final SegmentWriteState state = new SegmentWriteState(null, dir, SEGMENT, fieldInfos, null, 10000, 10000, termIndexInterval, codecInfo, new AtomicLong());
+ 
+     final FieldsConsumer consumer = state.segmentCodecs.codec().fieldsConsumer(state);
+     Arrays.sort(fields);

@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
+index 108958f..e02465a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
+@@ -294,6 +294,13 @@ public class AllocationExpression extends Expression implements InvocationSite {
+ 				}
+ 			}
+ 			if (argHasError) {
++				if (this.resolvedType instanceof ReferenceBinding) {
++					// record a best guess, for clients who need hint about possible contructor match
++					TypeBinding[] pseudoArgs = new TypeBinding[length];
++					for (int i = length; --i >= 0;)
++						pseudoArgs[i] = argumentTypes[i] == null ? this.resolvedType : argumentTypes[i]; // replace args with errors with receiver
++					this.binding = scope.getConstructor((ReferenceBinding) this.resolvedType, pseudoArgs, this);
++				}
+ 				return this.resolvedType;
+ 			}
+ 		}

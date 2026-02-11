@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/BoostedQuery.java b/solr/src/java/org/apache/solr/search/function/BoostedQuery.java
+index a8d4872..3564d92 100755
+--- a/solr/src/java/org/apache/solr/search/function/BoostedQuery.java
++++ b/solr/src/java/org/apache/solr/search/function/BoostedQuery.java
+@@ -96,7 +96,7 @@ public class BoostedQuery extends Query {
+       if(subQueryScorer == null) {
+         return null;
+       }
+-      return new BoostedQuery.CustomScorer(getSimilarity(searcher), context, this, subQueryScorer, boostVal);
++      return new BoostedQuery.CustomScorer(searcher.getSimilarity(), context, this, subQueryScorer, boostVal);
+     }
+ 
+     @Override

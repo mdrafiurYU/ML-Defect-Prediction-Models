@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/memory/MemoryCodec.java b/lucene/src/java/org/apache/lucene/index/codecs/memory/MemoryCodec.java
+index f753066..6034c44 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/memory/MemoryCodec.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/memory/MemoryCodec.java
+@@ -533,7 +533,7 @@ public class MemoryCodec extends Codec {
+   private final static class FSTTermsEnum extends TermsEnum {
+     private final FieldInfo field;
+     private final BytesRefFSTEnum<BytesRef> fstEnum;
+-    private final ByteArrayDataInput buffer = new ByteArrayDataInput(null);
++    private final ByteArrayDataInput buffer = new ByteArrayDataInput();
+     private boolean didDecode;
+ 
+     private int docFreq;

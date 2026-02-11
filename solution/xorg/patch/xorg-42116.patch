@@ -1,0 +1,44 @@
+diff --git a/exa/exa_render.c b/exa/exa_render.c
+index 45cfff7..63ea5c1 100644
+--- a/exa/exa_render.c
++++ b/exa/exa_render.c
+@@ -1054,15 +1054,15 @@ exaTrapezoids (CARD8 op, PicturePtr pSrc, PicturePtr pDst,
+     BoxRec		bounds;
+ 
+     if (maskFormat) {
++	PicturePtr	pPicture;
++	INT16		xDst, yDst;
++	INT16		xRel, yRel;
++
+ 	miTrapezoidBounds (ntrap, traps, &bounds);
+ 
+ 	if (bounds.y1 >= bounds.y2 || bounds.x1 >= bounds.x2)
+ 	    return;
+ 
+-	PicturePtr	pPicture;
+-	INT16		xDst, yDst;
+-	INT16		xRel, yRel;
+-
+ 	xDst = traps[0].left.p1.x >> 16;
+ 	yDst = traps[0].left.p1.y >> 16;
+ 
+@@ -1118,15 +1118,15 @@ exaTriangles (CARD8 op, PicturePtr pSrc, PicturePtr pDst,
+     BoxRec		bounds;
+ 
+     if (maskFormat) {
++	PicturePtr	pPicture;
++	INT16		xDst, yDst;
++	INT16		xRel, yRel;
++
+ 	miTriangleBounds (ntri, tris, &bounds);
+ 
+ 	if (bounds.y1 >= bounds.y2 || bounds.x1 >= bounds.x2)
+ 	    return;
+ 
+-	PicturePtr	pPicture;
+-	INT16		xDst, yDst;
+-	INT16		xRel, yRel;
+-
+ 	xDst = tris[0].p1.x >> 16;
+ 	yDst = tris[0].p1.y >> 16;
+ 

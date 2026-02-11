@@ -1,0 +1,13 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 225d3e5..757d57a 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -378,7 +378,7 @@ DeepCopyDeviceClasses(DeviceIntPtr from, DeviceIntPtr to)
+     }
+ 
+     ALLOC_COPY_CLASS_IF(key, KeyClassRec);
+-    if (to->key)
++    if (to->key && from->key)
+     {
+ #ifdef XKB
+         to->key->xkbInfo = NULL;

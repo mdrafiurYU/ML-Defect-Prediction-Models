@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+index 426fa44..e9cd290 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+@@ -1340,7 +1340,7 @@ public class SharedItemStateManager
+      * Checks if this item state manager has the given item state without
+      * considering the virtual item state managers.
+      */
+-    private boolean hasNonVirtualItemState(ItemId id) {
++    protected boolean hasNonVirtualItemState(ItemId id) {
+         if (cache.isCached(id)) {
+             return true;
+         }

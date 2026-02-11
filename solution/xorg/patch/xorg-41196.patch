@@ -1,0 +1,13 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index c237f03..c431637 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -233,7 +233,7 @@ RRCrtcNotify (RRCrtcPtr	    crtc,
+ 	RRTransformCopy (&crtc->client_current_transform, transform);
+ 	RRCrtcChanged (crtc, TRUE);
+     }
+-    if (crtc->changed)
++    if (crtc->changed && mode)
+     {
+ 	RRTransformCompute (x, y,
+ 			    mode->mode.width, mode->mode.height,

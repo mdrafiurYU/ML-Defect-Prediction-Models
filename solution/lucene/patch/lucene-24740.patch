@@ -1,0 +1,45 @@
+diff --git a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java
+index 04236c2..315c2cb 100644
+--- a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java
++++ b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java
+@@ -75,8 +75,7 @@ public class SearchWithSortTask extends ReadTask {
+         } else {
+           throw new RuntimeException("You must specify the sort type ie page:int,subject:string");
+         }
+-        int type = getType(typeString);
+-        sortField0 = new SortField(fieldName, type);
++        sortField0 = new SortField(fieldName, SortField.Type.valueOf(typeString.toUpperCase()));
+       }
+       sortFields[upto++] = sortField0;
+     }
+@@ -89,30 +88,6 @@ public class SearchWithSortTask extends ReadTask {
+     this.sort = new Sort(sortFields);
+   }
+ 
+-  private int getType(String typeString) {
+-    int type;
+-    if (typeString.equals("float")) {
+-      type = SortField.FLOAT;
+-    } else if (typeString.equals("double")) {
+-      type = SortField.DOUBLE;
+-    } else if (typeString.equals("byte")) {
+-      type = SortField.BYTE;
+-    } else if (typeString.equals("short")) {
+-      type = SortField.SHORT;
+-    } else if (typeString.equals("int")) {
+-      type = SortField.INT;
+-    } else if (typeString.equals("long")) {
+-      type = SortField.LONG;
+-    } else if (typeString.equals("string")) {
+-      type = SortField.STRING;
+-    } else if (typeString.equals("string_val")) {
+-      type = SortField.STRING_VAL;
+-    } else {
+-      throw new RuntimeException("Unrecognized sort field type " + typeString);
+-    }
+-    return type;
+-  }
+-
+   @Override
+   public boolean supportsParams() {
+     return true;

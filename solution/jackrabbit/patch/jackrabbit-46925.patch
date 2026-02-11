@@ -1,0 +1,44 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java
+index 7f23813..5e85628 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/AbstractJCRTest.java
+@@ -115,6 +115,11 @@ public abstract class AbstractJCRTest extends JUnitTest {
+     protected String jcrRootVersion;
+ 
+     /**
++     * JCR Name jcr:isCheckedOut using the namespace resolver of the current session.
++     */
++    protected String jcrIsCheckedOut;
++
++    /**
+      * JCR Name jcr:baseVersion using the namespace resolver of the current session.
+      */
+     protected String jcrBaseVersion;
+@@ -180,6 +185,11 @@ public abstract class AbstractJCRTest extends JUnitTest {
+     protected String mixVersionable;
+ 
+     /**
++     * JCR Name mix:simpleVersionable using the namespace resolver of the current session.
++     */
++    protected String mixSimpleVersionable;
++
++    /**
+      * JCR Name mix:lockable using the namespace resolver of the current session.
+      */
+     protected String mixLockable;
+@@ -319,6 +329,7 @@ public abstract class AbstractJCRTest extends JUnitTest {
+         jcrFrozenUuid = superuser.getNamespacePrefix(NS_JCR_URI) + ":frozenUuid";
+         jcrRootVersion = superuser.getNamespacePrefix(NS_JCR_URI) + ":rootVersion";
+         jcrBaseVersion = superuser.getNamespacePrefix(NS_JCR_URI) + ":baseVersion";
++        jcrIsCheckedOut = superuser.getNamespacePrefix(NS_JCR_URI) + ":isCheckedOut";
+         jcrUUID = superuser.getNamespacePrefix(NS_JCR_URI) + ":uuid";
+         jcrLockOwner = superuser.getNamespacePrefix(NS_JCR_URI) + ":lockOwner";
+         jcrlockIsDeep = superuser.getNamespacePrefix(NS_JCR_URI) + ":lockIsDeep";
+@@ -331,6 +342,7 @@ public abstract class AbstractJCRTest extends JUnitTest {
+         ntFrozenNode = superuser.getNamespacePrefix(NS_NT_URI) + ":frozenNode";
+         mixReferenceable = superuser.getNamespacePrefix(NS_MIX_URI) + ":referenceable";
+         mixVersionable = superuser.getNamespacePrefix(NS_MIX_URI) + ":versionable";
++        mixSimpleVersionable = superuser.getNamespacePrefix(NS_MIX_URI) + ":simpleVersionable";
+         mixLockable = superuser.getNamespacePrefix(NS_MIX_URI) + ":lockable";
+         mixShareable = superuser.getNamespacePrefix(NS_MIX_URI) + ":shareable";
+         ntQuery = superuser.getNamespacePrefix(NS_NT_URI) + ":query";

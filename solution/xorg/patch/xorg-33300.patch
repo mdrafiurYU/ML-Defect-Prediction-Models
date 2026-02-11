@@ -1,0 +1,13 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index b7a0925..00180b9 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -1715,7 +1715,7 @@ SecurityCheckPropertyAccess(CallbackListPtr *pcbl, pointer unused,
+ 
+     /* if client trusted or window untrusted, allow operation */
+ 
+-    if ( (TRUSTLEVEL(client) == XSecurityClientTrusted) ||
++    if (!client || (TRUSTLEVEL(client) == XSecurityClientTrusted) ||
+ 	 (TRUSTLEVEL(wClient(pWin)) != XSecurityClientTrusted) )
+ 	return;
+ 

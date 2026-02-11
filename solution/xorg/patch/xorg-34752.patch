@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/GC.c b/hw/xnest/GC.c
+index a52ce1f..06e6e02 100644
+--- a/hw/xnest/GC.c
++++ b/hw/xnest/GC.c
+@@ -35,7 +35,7 @@ is" without express or implied warranty.
+ #include "XNFont.h"
+ #include "Color.h"
+ 
+-int xnestGCPrivateIndex;
++DevPrivateKey xnestGCPrivateKey = &xnestGCPrivateKey;
+ 
+ static GCFuncs xnestFuncs = {
+   xnestValidateGC,

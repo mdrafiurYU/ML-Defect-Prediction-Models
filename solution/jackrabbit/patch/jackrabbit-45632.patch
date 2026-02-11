@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
+index be423b4..88013f0 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
+@@ -116,7 +116,7 @@ public class UpdateEventFactory {
+         events.add(createEventState(p2, n2, Event.PROPERTY_REMOVED));
+         events.add(createEventState(n3, Event.NODE_REMOVED, "{}n3"));
+ 
+-        return new UpdateEvent(changes, events, System.currentTimeMillis());
++        return new UpdateEvent(changes, events, System.currentTimeMillis(), "user-data");
+     }

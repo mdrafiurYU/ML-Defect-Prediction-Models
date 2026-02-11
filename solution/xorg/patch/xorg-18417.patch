@@ -1,0 +1,42 @@
+diff --git a/render/picturestr.h b/render/picturestr.h
+index ab6785c..e81d769 100644
+--- a/render/picturestr.h
++++ b/render/picturestr.h
+@@ -306,6 +306,12 @@ typedef void	(*AddTrianglesProcPtr)	    (PicturePtr	    pPicture,
+ 					     int	    ntri,
+ 					     xTriangle	    *tris);
+ 
++typedef Bool	(*RealizeGlyphProcPtr)	    (ScreenPtr	    pScreen,
++					     GlyphPtr	    glyph);
++
++typedef void	(*UnrealizeGlyphProcPtr)    (ScreenPtr	    pScreen,
++					     GlyphPtr	    glyph);
++
+ typedef struct _PictureScreen {
+     int				totalPictureSize;
+     unsigned int		*PicturePrivateSizes;
+@@ -358,6 +364,14 @@ typedef struct _PictureScreen {
+ 
+     AddTrapsProcPtr		AddTraps;
+ 
++    int			  	totalGlyphPrivateSize;
++    unsigned int	  	*glyphPrivateSizes;
++    int			  	glyphPrivateLen;
++    int			  	glyphPrivateOffset;
++
++    RealizeGlyphProcPtr   	RealizeGlyph;
++    UnrealizeGlyphProcPtr 	UnrealizeGlyph;
++
+ } PictureScreenRec, *PictureScreenPtr;
+ 
+ extern int		PictureScreenPrivateIndex;
+@@ -372,6 +386,9 @@ extern RESTYPE		GlyphSetType;
+ #define GetPictureWindow(w) ((PicturePtr) ((w)->devPrivates[PictureWindowPrivateIndex].ptr))
+ #define SetPictureWindow(w,p) ((w)->devPrivates[PictureWindowPrivateIndex].ptr = (pointer) (p))
+ 
++#define GetGlyphPrivatesForScreen(glyph, s)				\
++    ((glyph)->devPrivates + (GetPictureScreen (s))->glyphPrivateOffset)
++
+ #define VERIFY_PICTURE(pPicture, pid, client, mode, err) {\
+     pPicture = SecurityLookupIDByType(client, pid, PictureType, mode);\
+     if (!pPicture) { \

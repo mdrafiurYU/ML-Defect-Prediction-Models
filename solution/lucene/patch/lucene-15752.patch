@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestOmitTf.java b/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
+index 21968df..be29150 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
++++ b/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
+@@ -416,7 +416,7 @@ public class TestOmitTf extends LuceneTestCase {
+     
+     @Override
+     public void setNextReader(AtomicReaderContext context) {
+-      this.docBase = docBase;
++      docBase = context.docBase;
+     }
+     @Override
+     public boolean acceptsDocsOutOfOrder() {

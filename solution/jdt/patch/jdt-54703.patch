@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java
+index c0f3cb4..eac50b6 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptConfigurationBlock.java
+@@ -280,6 +280,7 @@ public class AptConfigurationBlock extends BaseConfigurationBlock {
+ 	
+ 	@Override
+ 	protected void cacheOriginalValues() {
++		super.cacheOriginalValues();
+ 		fOriginalProcOptions= AptConfig.getRawProcessorOptions(fJProj);
+ 	}

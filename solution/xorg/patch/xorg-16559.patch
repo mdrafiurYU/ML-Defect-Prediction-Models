@@ -1,0 +1,15 @@
+diff --git a/dbe/dbestruct.h b/dbe/dbestruct.h
+index 13d09de..35deae8 100644
+--- a/dbe/dbestruct.h
++++ b/dbe/dbestruct.h
+@@ -33,6 +33,10 @@
+ /* $XFree86$ */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef DBE_STRUCT_H
+ #define DBE_STRUCT_H
+ 

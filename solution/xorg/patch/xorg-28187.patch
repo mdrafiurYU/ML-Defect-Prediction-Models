@@ -1,0 +1,27 @@
+diff --git a/mi/mifillrct.c b/mi/mifillrct.c
+index 78e89d6..ca7e864 100644
+--- a/mi/mifillrct.c
++++ b/mi/mifillrct.c
+@@ -74,16 +74,16 @@ miPolyFillRect(pDrawable, pGC, nrectFill, prectInit)
+     xRectangle	*prectInit;  	/* Pointer to first rectangle to fill */
+ {
+     int i;
+-    register int	height;
+-    register int	width;
+-    register xRectangle *prect; 
++    int	height;
++    int	width;
++    xRectangle *prect; 
+     int			xorg;
+-    register int	yorg;
++    int	yorg;
+     int			maxheight;
+     DDXPointPtr		pptFirst;
+-    register DDXPointPtr ppt;
++    DDXPointPtr ppt;
+     int			*pwFirst;
+-    register int 	*pw;
++    int *pw;
+ 
+     if (pGC->miTranslate)
+     {

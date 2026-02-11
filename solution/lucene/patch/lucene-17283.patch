@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentMerger.java b/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
+index bacfec8..a708c93 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
+@@ -266,7 +266,7 @@ final class SegmentMerger {
+       // details.
+       throw new RuntimeException("mergeFields produced an invalid result: docCount is " + docCount + " but fdx file size is " + fdxFileLength + " file=" + fileName + " file exists?=" + directory.fileExists(fileName) + "; now aborting this merge to prevent index corruption");
+ 
+-    segmentWriteState = new SegmentWriteState(null, directory, segment, fieldInfos, docCount, termIndexInterval, codecInfo);
++    segmentWriteState = new SegmentWriteState(null, directory, segment, fieldInfos, docCount, termIndexInterval, codecInfo, null);
+     
+     return docCount;
+   }

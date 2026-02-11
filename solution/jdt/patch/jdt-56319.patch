@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedQualifiedTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedQualifiedTypeReference.java
+index 9aec8ae..af2156c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedQualifiedTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedQualifiedTypeReference.java
+@@ -179,7 +179,7 @@ public class ParameterizedQualifiedTypeReference extends ArrayQualifiedTypeRefer
+ 				}
+ 
+ 			    TypeVariableBinding[] typeVariables = currentType.typeVariables();
+-				if (typeVariables == NoTypeVariables) { // check generic
++				if (typeVariables == Binding.NO_TYPE_VARIABLES) { // check generic
+ 					scope.problemReporter().nonGenericTypeCannotBeParameterized(this, currentType, argTypes);
+ 					return null;
+ 				} else if (argLength != typeVariables.length) { // check arity

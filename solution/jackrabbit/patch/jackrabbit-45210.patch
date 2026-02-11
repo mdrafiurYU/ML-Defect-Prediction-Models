@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/jcrnodetype/DigesterJcrPropertyTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/jcrnodetype/DigesterJcrPropertyTest.java
+index a21688a..0f789dc 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/jcrnodetype/DigesterJcrPropertyTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/jcrnodetype/DigesterJcrPropertyTest.java
+@@ -137,15 +137,15 @@ public class DigesterJcrPropertyTest extends DigesterTestBase {
+             	fail("Invalid value was accepted for mandatoryWithConstaintsProp");
+             }
+             catch(Exception e)
+-            {                	
+-                e.printStackTrace();
++            {
++                // expected;
+             }
+ 			
+ 			
+ 		}
+ 		catch (Exception e)
+ 		{			
+-			e.printStackTrace();
++			log.error("testRequiredProperty failed", e);
+ 			fail();
+ 		}

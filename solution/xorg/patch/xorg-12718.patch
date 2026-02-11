@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ipaq/ipaq.c b/hw/kdrive/ipaq/ipaq.c
+index 0a2a37c..f94b321 100644
+--- a/hw/kdrive/ipaq/ipaq.c
++++ b/hw/kdrive/ipaq/ipaq.c
+@@ -52,7 +52,7 @@ InitInput (int argc, char **argv)
+ {
+     KdInitInput (&LinuxMouseFuncs, &LinuxKeyboardFuncs);
+ #ifdef TOUCHSCREEN
+-    KdInitTouchScreen (&TsFuncs);
++    KdAddMouseDriver (&TsFuncs);
+ #endif
+ }
+ 

@@ -1,0 +1,15 @@
+diff --git a/include/dix.h b/include/dix.h
+index 0177721..84fc849 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -820,4 +820,10 @@ typedef struct {
+     SelectionCallbackKind   kind;
+ } SelectionInfoRec;
+ 
++/* strcasecmp.c */
++#if NEED_STRCASECMP
++#define strcasecmp xstrcasecmp
++extern int xstrcasecmp(char *s1, char *s2);
++#endif
++
+ #endif /* DIX_H */

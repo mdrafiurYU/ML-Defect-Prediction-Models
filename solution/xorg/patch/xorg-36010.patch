@@ -1,0 +1,14 @@
+diff --git a/Xext/saver.c b/Xext/saver.c
+index 9a6dd77..feab972 100644
+--- a/Xext/saver.c
++++ b/Xext/saver.c
+@@ -1346,8 +1346,7 @@ ProcScreenSaverSetAttributes (ClientPtr client)
+              *((CARD32 *) &stuff[1] + cmap_offset) = cmap->info[i].id;
+ 
+           if (orig_visual != CopyFromParent) 
+-            stuff->visualID = 
+-                     PanoramiXVisualTable[(orig_visual*MAXSCREENS) + i];
++            stuff->visualID = PanoramiXTranslateVisualID(i, orig_visual);
+ 
+           status = ScreenSaverSetAttributes(client);
+        }

@@ -1,0 +1,48 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractOperation.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractOperation.java
+index f7ced8e..981f2e4 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractOperation.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractOperation.java
+@@ -38,6 +38,7 @@ public abstract class AbstractOperation implements Operation {
+      * The collection of affected ItemIds.
+      */
+     private final Collection affectedStates = new ArrayList();
++    protected int status;
+ 
+     /**
+      * Returns the name of the class
+@@ -57,6 +58,18 @@ public abstract class AbstractOperation implements Operation {
+     }
+ 
+     /**
++     * @inheritDoc
++     */
++    public void undo() throws RepositoryException {
++        assert status == STATUS_PENDING;
++        throw new UnsupportedOperationException("Undo not supported.");
++    }
++
++    public int getStatus() {
++        return status;
++    }
++
++    /**
+      * Adds an affected <code>ItemState</code>.
+      *
+      * @param affectedState the <code>ItemState</code>s of the affected item.
+@@ -81,4 +94,15 @@ public abstract class AbstractOperation implements Operation {
+         }
+         return (NodeState) itemState;
+     }
++
++    /**
++     * Asserts that the NodeEntry of the given parent state has it's child node
++     * entries loaded.
++     *
++     * @param parentState
++     * @throws RepositoryException
++     */
++    protected static void assertChildNodeEntries(NodeState parentState) throws RepositoryException {
++        parentState.getNodeEntry().getNodeEntries();
++    }
+ }
+\ No newline at end of file

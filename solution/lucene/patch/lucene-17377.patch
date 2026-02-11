@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/analysis/tokenattributes/TestCharTermAttributeImpl.java b/lucene/src/test/org/apache/lucene/analysis/tokenattributes/TestCharTermAttributeImpl.java
+index bac72b5..1d2ab43 100644
+--- a/lucene/src/test/org/apache/lucene/analysis/tokenattributes/TestCharTermAttributeImpl.java
++++ b/lucene/src/test/org/apache/lucene/analysis/tokenattributes/TestCharTermAttributeImpl.java
+@@ -227,6 +227,7 @@ public class TestCharTermAttributeImpl extends LuceneTestCase {
+       public char charAt(int i) { return longTestString.charAt(i); }
+       public int length() { return longTestString.length(); }
+       public CharSequence subSequence(int start, int end) { return longTestString.subSequence(start, end); }
++      @Override
+       public String toString() { return longTestString; }
+     });
+     assertEquals("4567890123456"+longTestString, t.toString());

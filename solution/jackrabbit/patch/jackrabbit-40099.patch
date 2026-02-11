@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+index 8a36e7f..bcfdd42 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+@@ -264,7 +264,8 @@ public class ClusterNode implements Runnable,
+             synchronized (this) {
+                 try {
+                     wait(syncDelay);
+-                } catch (InterruptedException e) {}
++                } catch (InterruptedException e) {
++                }
+ 
+                 if (status == STOPPED) {
+                     return;

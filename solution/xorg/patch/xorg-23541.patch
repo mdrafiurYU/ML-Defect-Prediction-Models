@@ -1,0 +1,15 @@
+diff --git a/xkb/xkmread.c b/xkb/xkmread.c
+index a69058a..3f38a4f 100644
+--- a/xkb/xkmread.c
++++ b/xkb/xkmread.c
+@@ -26,6 +26,10 @@
+  ********************************************************/
+ /* $XFree86: xc/lib/xkbfile/xkmread.c,v 1.6 2002/02/13 22:09:42 herrb Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif

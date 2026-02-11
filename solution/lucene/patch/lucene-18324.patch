@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/DocumentAnalysisRequestHandler.java b/solr/src/java/org/apache/solr/handler/DocumentAnalysisRequestHandler.java
+index 195c9a3..92e1b09 100644
+--- a/solr/src/java/org/apache/solr/handler/DocumentAnalysisRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/DocumentAnalysisRequestHandler.java
+@@ -105,6 +105,7 @@ public class DocumentAnalysisRequestHandler extends AnalysisRequestHandlerBase {
+   /**
+    * {@inheritDoc}
+    */
++  @Override
+   protected NamedList doAnalysis(SolrQueryRequest req) throws Exception {
+     DocumentAnalysisRequest analysisRequest = resolveAnalysisRequest(req);
+     return handleAnalysisRequest(analysisRequest, req.getSchema());

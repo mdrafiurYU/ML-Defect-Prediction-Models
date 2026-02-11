@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/ImpersonationImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/ImpersonationImplTest.java
+index 211cda3..7f27b25 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/ImpersonationImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/ImpersonationImplTest.java
+@@ -55,7 +55,7 @@ public class ImpersonationImplTest extends AbstractUserTest {
+         creds = buildCredentials(p.getName(), pw);
+         UserImpl u = (UserImpl) userMgr.createUser(p.getName(), pw);
+         uID = u.getID();
+-        uSession = helper.getRepository().login(creds);
++        uSession = getHelper().getRepository().login(creds);
+         uMgr = getUserManager(uSession);
+ 
+         // create a second user 'below' the first user.

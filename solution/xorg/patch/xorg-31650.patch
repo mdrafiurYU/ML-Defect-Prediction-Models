@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglscreen.c b/hw/xgl/xglscreen.c
+index 5ad9091..e468697 100644
+--- a/hw/xgl/xglscreen.c
++++ b/hw/xgl/xglscreen.c
+@@ -253,9 +253,6 @@ xglScreenInit (ScreenPtr pScreen)
+     }
+ #endif
+ 
+-    XGL_SCREEN_WRAP (BackingStoreFuncs.SaveAreas, xglSaveAreas);
+-    XGL_SCREEN_WRAP (BackingStoreFuncs.RestoreAreas, xglRestoreAreas);
+-
+     if (!fbCreateDefColormap (pScreen))
+ 	return FALSE;
+ 

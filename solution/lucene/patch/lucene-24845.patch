@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/search/QueryParsing.java b/solr/src/java/org/apache/solr/search/QueryParsing.java
+index 9644625..7e17003 100644
+--- a/solr/src/java/org/apache/solr/search/QueryParsing.java
++++ b/solr/src/java/org/apache/solr/search/QueryParsing.java
+@@ -321,10 +321,10 @@ public class QueryParsing {
+           if (top) {
+             lst.add(SortField.FIELD_SCORE);
+           } else {
+-            lst.add(new SortField(null, SortField.SCORE, true));
++            lst.add(new SortField(null, SortField.Type.SCORE, true));
+           }
+         } else if (DOCID.equals(field)) {
+-          lst.add(new SortField(null, SortField.DOC, top));
++          lst.add(new SortField(null, SortField.Type.DOC, top));
+         } else {
+           // try to find the field
+           SchemaField sf = req.getSchema().getFieldOrNull(field);

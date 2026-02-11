@@ -1,0 +1,27 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
+index b7be333..1f2e636 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
+@@ -76,6 +76,7 @@ import org.apache.lucene.util.LuceneTestCase;
+ import org.apache.lucene.util.automaton.BasicAutomata;
+ import org.apache.lucene.util.automaton.CharacterRunAutomaton;
+ import org.apache.lucene.util.automaton.RegExp;
++import org.junit.Ignore;
+ 
+ /**
+  * This test case is a copy of the core Lucene query parser test, it was adapted
+@@ -945,6 +946,15 @@ public class TestQPHelper extends LuceneTestCase {
+     assertEscapedQueryEquals("&& abc &&", a, "\\&\\& abc \\&\\&");
+   }
+ 
++  @Ignore("contrib queryparser shouldn't escape wildcard terms")
++  public void testEscapedWildcard() throws Exception {
++    StandardQueryParser qp = new StandardQueryParser();
++    qp.setAnalyzer(new MockAnalyzer(MockTokenizer.WHITESPACE, false));
++
++    WildcardQuery q = new WildcardQuery(new Term("field", "foo\\?ba?r"));
++    assertEquals(q, qp.parse("foo\\?ba?r", "field"));
++  }
++
+   public void testTabNewlineCarriageReturn() throws Exception {
+     assertQueryEqualsDOA("+weltbank +worlbank", null, "+weltbank +worlbank");

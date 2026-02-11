@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntries.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntries.java
+index cf2b4b4..15db998 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntries.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntries.java
+@@ -75,9 +75,9 @@ public interface ChildPropertyEntries {
+     /**
+      * Remove the collection entry with the given <code>Name</code>.
+      *
+-     * @param propertyName
+-     * @return true If this <code>ChildPropertyEntries</code> contained any
+-     * entry with the given <code>Name</code>. False otherwise.
++     * @param propertyEntry
++     * @return true If this <code>ChildPropertyEntries</code> contained the
++     * given entry. False otherwise.
+      */
+-    public boolean remove(Name propertyName);
++    public boolean remove(PropertyEntry propertyEntry);
+ }
+\ No newline at end of file

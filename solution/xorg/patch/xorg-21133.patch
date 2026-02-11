@@ -1,0 +1,15 @@
+diff --git a/include/colormap.h b/include/colormap.h
+index 1f2c330..baf3dcd 100644
+--- a/include/colormap.h
++++ b/include/colormap.h
+@@ -47,6 +47,10 @@ SOFTWARE.
+ */
+ /* $Xorg: colormap.h,v 1.4 2001/02/09 02:05:14 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef CMAP_H
+ #define CMAP_H 1
+ 

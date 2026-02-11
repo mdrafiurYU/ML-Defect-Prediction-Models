@@ -1,0 +1,18 @@
+diff --git a/solr/src/java/org/apache/solr/response/XMLResponseWriter.java b/solr/src/java/org/apache/solr/response/XMLResponseWriter.java
+index 94e2f4c..a883e9d 100644
+--- a/solr/src/java/org/apache/solr/response/XMLResponseWriter.java
++++ b/solr/src/java/org/apache/solr/response/XMLResponseWriter.java
+@@ -32,7 +32,12 @@ public class XMLResponseWriter implements QueryResponseWriter {
+   }
+ 
+   public void write(Writer writer, SolrQueryRequest req, SolrQueryResponse rsp) throws IOException {
+-    XMLWriter.writeResponse(writer,req,rsp);
++    XMLWriter w = new XMLWriter(writer, req, rsp);
++    try {
++      w.writeResponse();
++    } finally {
++      w.close();
++    }
+   }
+ 
+   public String getContentType(SolrQueryRequest request, SolrQueryResponse response) {

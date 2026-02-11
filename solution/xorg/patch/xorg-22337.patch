@@ -1,0 +1,13 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 2a57a89..19ecf03 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -247,7 +247,7 @@ typedef void (*InitExtension)(INITARGS);
+ #include "xace.h"
+ #endif
+ #ifdef XCSECURITY
+-#define _SECURITY_SERVER
++#include "securitysrv.h"
+ #include <X11/extensions/securstr.h>
+ #endif
+ #ifdef PANORAMIX

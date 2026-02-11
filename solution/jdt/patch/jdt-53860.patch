@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java
+index e0ac7cd..614b079 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java
+@@ -625,14 +625,14 @@ public abstract class AbstractCommentParser implements JavadocTagConstants {
+ 	/* 
+ 	 * Parse tag followed by an identifier
+ 	 */
+-	protected boolean parseIdentifierTag() {
++	protected boolean parseIdentifierTag(boolean report) {
+ 		int token = readTokenSafely();
+ 		switch (token) {
+ 			case TerminalTokens.TokenNameIdentifier:
+ 				pushIdentifier(true);
+ 				return true;
+ 		}
+-		if (this.reportProblems) {
++		if (report) {
+ 			this.sourceParser.problemReporter().javadocMissingIdentifier(this.tagSourceStart, this.tagSourceEnd, this.sourceParser.modifiers);
+ 		}
+ 		return false;

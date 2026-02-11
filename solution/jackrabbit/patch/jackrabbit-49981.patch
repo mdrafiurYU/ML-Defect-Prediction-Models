@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+index ba1814d..795d3d8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+@@ -425,9 +425,7 @@ public class LocalItemStateManager
+                 cache.cache(local);
+             }
+         }
+-        if (local != null) {
+-            dispatcher.notifyStateCreated(created);
+-        }
++        dispatcher.notifyStateCreated(created);
+     }
+ 
+     /**

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/lock/LockManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/lock/LockManagerImpl.java
+index 2d0c267..dc6bc9a 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/lock/LockManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/lock/LockManagerImpl.java
+@@ -412,7 +412,7 @@ public class LockManagerImpl implements LockStateManager, SessionListener {
+         // store in the lock map. see below (LockImpl) for the conditions that
+         // must be met in order a lock can be stored.
+         LockImpl l = getLockFromMap(nState);
+-        if (l != null) {
++        if (l != null && l.lockState.appliesToNodeState(nodeState)) {
+             return l;
+         }

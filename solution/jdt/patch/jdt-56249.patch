@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+index b831619..00cacd1 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+@@ -2939,7 +2939,7 @@ protected void consumeTypeParameterHeader() {
+ 	this.assistNode = typeParameter.type;
+ 	this.lastCheckPoint = typeParameter.type.sourceEnd + 1;
+ }
+-protected void consumeTypeParameters1() {
++protected void consumeTypeParameter1() {
+ 	super.consumeTypeParameter1();
+ 	popElement(K_BINARY_OPERATOR);
+ }

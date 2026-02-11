@@ -1,0 +1,14 @@
+diff --git a/include/dix.h b/include/dix.h
+index baff43f..5c2c5b8 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -301,7 +301,8 @@ extern int dixLookupGC(
+ extern int dixLookupClient(
+     ClientPtr *result,
+     XID id,
+-    ClientPtr client);
++    ClientPtr client,
++    Mask access_mode);
+ 
+ /*
+  * These are deprecated compatibility functions and will be removed soon!

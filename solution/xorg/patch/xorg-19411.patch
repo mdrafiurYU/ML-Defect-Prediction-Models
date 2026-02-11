@@ -1,0 +1,24 @@
+diff --git a/Xi/sendexev.c b/Xi/sendexev.c
+index c005aec..50c1c58 100644
+--- a/Xi/sendexev.c
++++ b/Xi/sendexev.c
+@@ -83,8 +83,7 @@ extern int 		lastEvent; 		/* Defined in extension.c */
+  */
+ 
+ int
+-SProcXSendExtensionEvent(client)
+-    register ClientPtr client;
++SProcXSendExtensionEvent(register ClientPtr client)
+     {
+     register char n;
+     register long *p;
+@@ -125,8 +124,7 @@ SProcXSendExtensionEvent(client)
+  */
+ 
+ int
+-ProcXSendExtensionEvent (client)
+-    register ClientPtr client;
++ProcXSendExtensionEvent (register ClientPtr client)
+     {
+     int			ret;
+     DeviceIntPtr	dev;

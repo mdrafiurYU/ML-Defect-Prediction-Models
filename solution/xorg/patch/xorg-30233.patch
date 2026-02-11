@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/Files.c b/hw/xfree86/parser/Files.c
+index 2688bb1..d304737 100644
+--- a/hw/xfree86/parser/Files.c
++++ b/hw/xfree86/parser/Files.c
+@@ -258,7 +258,7 @@ xf86printFileSection (FILE * cf, XF86ConfFilesPtr ptr)
+ 			s++;
+ 			p = index (s, ',');
+ 		}
+-		fprintf (cf, "\tInputdevs   \"%s\"\n", s);
++		fprintf (cf, "\tInputDevices   \"%s\"\n", s);
+ 	}
+ 	if (ptr->file_fontpath)
+ 	{

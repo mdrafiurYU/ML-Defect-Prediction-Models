@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/ShardResponse.java b/solr/src/java/org/apache/solr/handler/component/ShardResponse.java
+index 87f8957..8edf03e 100755
+--- a/solr/src/java/org/apache/solr/handler/component/ShardResponse.java
++++ b/solr/src/java/org/apache/solr/handler/component/ShardResponse.java
+@@ -27,6 +27,7 @@ public final class ShardResponse {
+   private Throwable exception;
+   private SolrResponse rsp;
+ 
++  @Override
+   public String toString() {
+     return "ShardResponse:{shard="+shard+",shardAddress="+shardAddress
+             +"\n\trequest=" + req

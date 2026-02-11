@@ -1,0 +1,12 @@
+diff --git a/dix/dixutils.c b/dix/dixutils.c
+index aaf5106..22935ce 100644
+--- a/dix/dixutils.c
++++ b/dix/dixutils.c
+@@ -270,6 +270,7 @@ dixLookupClient(ClientPtr *pClient, XID rid, ClientPtr client, Mask access)
+     *pClient = clients[clientIndex];
+     return Success;
+ bad:
++    if(client)
+     client->errorValue = rid;
+     *pClient = NULL;
+     return rc;

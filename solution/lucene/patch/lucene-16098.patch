@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java b/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java
+index 65061e2..8b4af7d 100644
+--- a/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java
+@@ -200,7 +200,7 @@ public class QueryElevationComponent extends SearchComponent implements SolrCore
+           RefCounted<SolrIndexSearcher> searchHolder = null;
+           try {
+             searchHolder = core.getNewestSearcher(false);
+-            IndexReader reader = searchHolder.get().getReader();
++            IndexReader reader = searchHolder.get().getIndexReader();
+             getElevationMap( reader, core );
+           } finally {
+             if (searchHolder != null) searchHolder.decref();
+@@ -344,7 +344,7 @@ public class QueryElevationComponent extends SearchComponent implements SolrCore
+     }
+ 
+     qstr = getAnalyzedQuery(qstr);
+-    IndexReader reader = req.getSearcher().getReader();
++    IndexReader reader = req.getSearcher().getIndexReader();
+     ElevationObj booster = null;
+     try {
+       booster = getElevationMap( reader, req.getCore() ).get( qstr );

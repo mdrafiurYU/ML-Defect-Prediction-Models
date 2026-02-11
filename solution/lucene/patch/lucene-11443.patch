@@ -1,0 +1,20 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java
+index 06f3ac7..a98da16 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java
+@@ -21,6 +21,7 @@ import java.io.IOException;
+ import java.util.Arrays;
+ import java.util.Collection;
+ import java.util.LinkedList;
++import java.util.Locale;
+ import java.util.Set;
+ 
+ import org.apache.lucene.analysis.Token;
+@@ -224,7 +225,7 @@ public abstract class CompoundWordTokenFilterBase extends TokenFilter {
+   protected static final void addAllLowerCase(CharArraySet target, Collection<?> col) {
+     for (Object obj : col) {
+       String string = (String) obj;
+-      target.add(string.toLowerCase());
++      target.add(string.toLowerCase(Locale.ENGLISH));
+     }
+   }

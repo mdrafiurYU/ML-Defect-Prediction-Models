@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+index 09ae8a5..cb85fcf 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+@@ -26024,7 +26024,6 @@ public void test842() {
+ 		"Type mismatch: cannot convert from List<Object&Serializable&CharSequence> to List<? extends String>\n" + 
+ 		"----------\n");
+ }
+-//https://bugs.eclipse.org/bugs/show_bug.cgi?id=112500 - variation
+ public void test843() {
+ 	this.runNegativeTest(
+ 		new String[] {
+@@ -26053,6 +26052,11 @@ public void test843() {
+ 		"2. WARNING in X.java (at line 12)\n" + 
+ 		"	Object result4 = (List<? extends String>)merge(list1, list2);\n" + 
+ 		"	                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n" + 
++		"Unnecessary cast from List<Object&Serializable&CharSequence> to List<? extends String>\n" + 
++		"----------\n" + 
++		"3. WARNING in X.java (at line 12)\n" + 
++		"	Object result4 = (List<? extends String>)merge(list1, list2);\n" + 
++		"	                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n" + 
+ 		"Type safety: The cast from List<Object&Serializable&CharSequence> to List<? extends String> is actually checking against the erased type List\n" + 
+ 		"----------\n");
+ }

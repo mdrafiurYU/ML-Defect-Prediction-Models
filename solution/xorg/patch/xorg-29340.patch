@@ -1,0 +1,15 @@
+diff --git a/exa/exa_render.c b/exa/exa_render.c
+index b78d728..d48a142 100644
+--- a/exa/exa_render.c
++++ b/exa/exa_render.c
+@@ -627,8 +627,8 @@ exaComposite(CARD8	op,
+ 	    pMask->repeat = 0;
+ 
+     if (pExaScr->info->PrepareComposite &&
+-	(!pSrc->repeat || pSrc->repeat == RepeatNormal) &&
+-	(!pMask || !pMask->repeat || pMask->repeat == RepeatNormal) &&
++	(!pSrc->repeat || pSrc->repeatType == RepeatNormal) &&
++	(!pMask || !pMask->repeat || pMask->repeatType == RepeatNormal) &&
+ 	!pSrc->alphaMap && (!pMask || !pMask->alphaMap) && !pDst->alphaMap)
+     {
+ 	Bool isSrcSolid;

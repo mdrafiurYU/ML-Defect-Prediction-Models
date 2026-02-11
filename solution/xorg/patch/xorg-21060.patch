@@ -1,0 +1,15 @@
+diff --git a/ilbm/ilbmpushpxl.c b/ilbm/ilbmpushpxl.c
+index 9f1b26e..3371727 100644
+--- a/ilbm/ilbmpushpxl.c
++++ b/ilbm/ilbmpushpxl.c
+@@ -51,6 +51,10 @@ SOFTWARE.
+ /* Modified jun 95 by Geert Uytterhoeven (Geert.Uytterhoeven@cs.kuleuven.ac.be)
+    to use interleaved bitplanes instead of normal bitplanes */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "gcstruct.h"
+ #include "scrnintstr.h"

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java b/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
+index 167d722..874fc7f 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
+@@ -46,7 +46,7 @@ public class TestConstantScoreQuery extends LuceneTestCase {
+     QueryUtils.checkUnequal(q1, new TermQuery(new Term("a", "b")));
+   }
+   
+-  private void checkHits(Searcher searcher, Query q, final float expectedScore, final String scorerClassName, final String innerScorerClassName) throws IOException {
++  private void checkHits(IndexSearcher searcher, Query q, final float expectedScore, final String scorerClassName, final String innerScorerClassName) throws IOException {
+     final int[] count = new int[1];
+     searcher.search(q, new Collector() {
+       private Scorer scorer;

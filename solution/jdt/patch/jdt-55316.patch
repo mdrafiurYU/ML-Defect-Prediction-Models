@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
+index 001c86e..577e878 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
+@@ -39,6 +39,9 @@ public abstract class JarFactoryContainer extends FactoryContainer
+ 	@Override
+ 	public boolean exists() {
+ 		try {
++			final File jarFile = getJarFile();
++			if(jarFile == null)
++				return false;
+ 			return getJarFile().exists();
+ 		} catch (SecurityException e) {
+ 			return false;

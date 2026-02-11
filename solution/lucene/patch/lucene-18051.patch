@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessorFactory.java b/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessorFactory.java
+index 5078f9d..b816757 100644
+--- a/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessorFactory.java
++++ b/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessorFactory.java
+@@ -29,6 +29,7 @@ import org.apache.solr.update.processor.UpdateRequestProcessorFactory;
+  */
+ public class UIMAUpdateRequestProcessorFactory extends UpdateRequestProcessorFactory {
+ 
++  @Override
+   public UpdateRequestProcessor getInstance(SolrQueryRequest req, SolrQueryResponse rsp,
+           UpdateRequestProcessor next) {
+     return new UIMAUpdateRequestProcessor(next, req.getCore());

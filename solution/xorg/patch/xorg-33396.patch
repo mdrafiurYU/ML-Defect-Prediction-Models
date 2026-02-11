@@ -1,0 +1,12 @@
+diff --git a/hw/xgl/xglpixmap.c b/hw/xgl/xglpixmap.c
+index 368c3ea..166c33e 100644
+--- a/hw/xgl/xglpixmap.c
++++ b/hw/xgl/xglpixmap.c
+@@ -310,6 +310,7 @@ xglDestroyPixmap (PixmapPtr pPixmap)
+ 
+     xglFiniPixmap (pPixmap);
+ 
++    dixFreePrivates(*DEVPRIV_PTR(pPixmap));
+     xfree (pPixmap);
+ 
+     return TRUE;

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/vgamodule.c b/hw/xfree86/xf4bpp/vgamodule.c
+index 828989d..932a856 100644
+--- a/hw/xfree86/xf4bpp/vgamodule.c
++++ b/hw/xfree86/xf4bpp/vgamodule.c
+@@ -25,6 +25,10 @@
+  * XFree86 Project.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef XFree86LOADER
+ #include "xf86Module.h"
+ 

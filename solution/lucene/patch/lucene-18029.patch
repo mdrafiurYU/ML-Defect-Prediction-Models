@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestMultiFields.java b/lucene/src/test/org/apache/lucene/index/TestMultiFields.java
+index f1337e9..30cb118 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestMultiFields.java
++++ b/lucene/src/test/org/apache/lucene/index/TestMultiFields.java
+@@ -32,6 +32,7 @@ public class TestMultiFields extends LuceneTestCase {
+       Directory dir = newDirectory();
+ 
+       IndexWriter w = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(NoMergePolicy.COMPOUND_FILES));
++      _TestUtil.keepFullyDeletedSegments(w);
+ 
+       Map<BytesRef,List<Integer>> docs = new HashMap<BytesRef,List<Integer>>();
+       Set<Integer> deleted = new HashSet<Integer>();

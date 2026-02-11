@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/ephyr/ephyrinit.c b/hw/kdrive/ephyr/ephyrinit.c
+index 4a6a11d..5034ba5 100644
+--- a/hw/kdrive/ephyr/ephyrinit.c
++++ b/hw/kdrive/ephyr/ephyrinit.c
+@@ -118,7 +118,6 @@ void
+ processScreenArg (char *screen_size, char *parent_id)
+ {
+   KdCardInfo   *card;
+-  static int card_exists;
+ 
+   InitCard (0);  /*Put each screen on a separate card*/
+   card = KdCardInfoLast ();

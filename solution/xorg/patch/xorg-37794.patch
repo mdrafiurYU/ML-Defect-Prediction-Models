@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/ramdac/xf86Cursor.c b/hw/xfree86/ramdac/xf86Cursor.c
+index 4d64f62..2d69074 100644
+--- a/hw/xfree86/ramdac/xf86Cursor.c
++++ b/hw/xfree86/ramdac/xf86Cursor.c
+@@ -464,11 +464,8 @@ xf86DeviceCursorInitialize(DeviceIntPtr pDev, ScreenPtr pScreen)
+ 
+     if (pDev != inputInfo.pointer)
+     {
+-	if (!ScreenPriv->SWCursor)
+-	{
+ 	    ScreenPriv->spriteFuncs->SetCursor(inputInfo.pointer, pScreen,
+ 		    ScreenPriv->CurrentCursor, ScreenPriv->x, ScreenPriv->y);
+-	}
+         ScreenPriv->SWCursor = TRUE | XF86_FORCE_SW_CURSOR;
+     }
+ 

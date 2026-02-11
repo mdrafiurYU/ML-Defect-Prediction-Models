@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+index 2a68597..fd9428e 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+@@ -439,7 +439,7 @@ public class TestIndexWriterDelete extends LuceneTestCase {
+ 
+     // Iterate w/ ever increasing free disk space:
+     while (!done) {
+-      MockDirectoryWrapper dir = new MockDirectoryWrapper(new RAMDirectory(startDir));
++      MockDirectoryWrapper dir = new MockDirectoryWrapper(random, new RAMDirectory(startDir));
+       dir.setPreventDoubleWrite(false);
+       IndexWriter modifier = new IndexWriter(dir,
+                                              newIndexWriterConfig(
+@@ -488,7 +488,7 @@ public class TestIndexWriterDelete extends LuceneTestCase {
+         }
+ 
+         dir.setMaxSizeInBytes(thisDiskFree);
+-        dir.setRandomIOExceptionRate(rate, diskFree);
++        dir.setRandomIOExceptionRate(rate);
+ 
+         try {
+           if (0 == x) {

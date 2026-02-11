@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/Authentication.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/Authentication.java
+index 90600c6..ef26a2a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/Authentication.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/Authentication.java
+@@ -52,7 +52,7 @@ public interface Authentication {
+      * @param credentials to verify
+      * @return <code>true</code> if <code>Credentials</code> identify the
+      * <code>User</code>.
+-     * @throws RepositoryException
++     * @throws RepositoryException If an error occurs.
+      */
+     boolean authenticate(Credentials credentials) throws RepositoryException;

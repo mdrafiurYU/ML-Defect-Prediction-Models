@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
+index 390f009..99826a2 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
+@@ -169,7 +169,7 @@ class CompilationUnitResolver extends Compiler {
+ 				new CompilationResult(sourceUnit, index++, maxUnits, this.options.maxProblemsPerUnit);
+ 			try {
+ 				if (options.verbose) {
+-					System.out.println(
++					this.out.println(
+ 						Messages.bind(Messages.compilation_request,
+ 						new String[] {
+ 							String.valueOf(index++ + 1),

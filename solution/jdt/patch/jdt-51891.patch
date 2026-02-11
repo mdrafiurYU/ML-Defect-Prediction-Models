@@ -1,0 +1,51 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessorFactory.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessorFactory.java
+index d59c79d..dd80009 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessorFactory.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/extradependency/ExtraDependencyAnnotationProcessorFactory.java
+@@ -12,38 +12,25 @@
+ 
+ package org.eclipse.jdt.apt.tests.annotations.extradependency;
+ 
+-import java.util.ArrayList;
+-import java.util.Collection;
+-import java.util.Collections;
+ import java.util.Set;
+ 
++import org.eclipse.jdt.apt.tests.annotations.BaseFactory;
++
+ import com.sun.mirror.apt.AnnotationProcessor;
+ import com.sun.mirror.apt.AnnotationProcessorEnvironment;
+-import com.sun.mirror.apt.AnnotationProcessorFactory;
+ import com.sun.mirror.declaration.AnnotationTypeDeclaration;
+ 
+-public class ExtraDependencyAnnotationProcessorFactory implements
+-AnnotationProcessorFactory 
+-{
+-
+-	public Collection<String> supportedOptions() {
+-		return Collections.emptyList();
+-	}
++public class ExtraDependencyAnnotationProcessorFactory extends BaseFactory {
+ 
+-	public Collection<String> supportedAnnotationTypes() {
+-		return annotations;
++	public ExtraDependencyAnnotationProcessorFactory() {
++		super(ExtraDependencyAnnotation.class.getName());
+ 	}
+ 
+ 	public AnnotationProcessor getProcessorFor(
+ 			Set<AnnotationTypeDeclaration> atds,
+-			AnnotationProcessorEnvironment env) 
+-	{
++			AnnotationProcessorEnvironment env) {
++		
+ 		return new ExtraDependencyAnnotationProcessor( env );
+ 	}
+ 	
+-	private static ArrayList<String> annotations = new ArrayList<String>();
+-	
+-	{
+-		annotations.add( ExtraDependencyAnnotation.class.getName() );
+-	}
+ }
+\ No newline at end of file

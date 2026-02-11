@@ -1,0 +1,47 @@
+diff --git a/hw/xquartz/mach-startup/bundle-main.c b/hw/xquartz/mach-startup/bundle-main.c
+index 24b67d8..b0ff9df 100644
+--- a/hw/xquartz/mach-startup/bundle-main.c
++++ b/hw/xquartz/mach-startup/bundle-main.c
+@@ -139,6 +139,9 @@ static void startup_trigger_thread(void *arg) {
+ int main(int argc, char **argv, char **envp) {
+     BOOL listenOnly = FALSE;
+     int i;
++    mach_msg_size_t mxmsgsz = sizeof(union MaxMsgSize) + MAX_TRAILER_SIZE;
++    mach_port_t mp;
++    kern_return_t kr;
+ 
+     for(i=1; i < argc; i++) {
+         if(!strcmp(argv[i], "--listenonly")) {
+@@ -147,6 +150,11 @@ int main(int argc, char **argv, char **envp) {
+         }
+     }
+ 
++    /* TODO: This should be unconditional once we figure out fd passing */
++    if((argc > 1 && argv[1][0] == ':') || listenOnly) {
++        mp = checkin_or_register(SERVER_BOOTSTRAP_NAME);
++    }
++
+     /* Check if we need to do something other than listen, and make another
+      * thread handle it.
+      */
+@@ -160,17 +168,14 @@ int main(int argc, char **argv, char **envp) {
+         args->envp = envp;
+ 
+         create_thread(startup_trigger_thread, args);
+-    } else {
++    }
++
+         /* TODO: This should actually fall through rather than be the else
+          *       case once we figure out how to get the stub to pass the
+          *       file descriptor.  For now, we only listen if we are explicitly
+          *       told to.
+          */
+-
+-        mach_msg_size_t mxmsgsz = sizeof(union MaxMsgSize) + MAX_TRAILER_SIZE;
+-        mach_port_t mp = checkin_or_register(SERVER_BOOTSTRAP_NAME);
+-        kern_return_t kr;
+-        
++    if((argc > 1 && argv[1][0] == ':') || listenOnly) {
+         /* Main event loop */
+         kr = mach_msg_server(mach_startup_server, mxmsgsz, mp, 0);
+         if (kr != KERN_SUCCESS) {

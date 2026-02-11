@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelStatus.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelStatus.java
+index 5f2895b..62aca55 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelStatus.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelStatus.java
+@@ -360,6 +360,11 @@ public class JavaModelStatus extends Status implements IJavaModelStatus, IJavaMo
+ 						path.makeRelative().toString(),
+ 						string,
+ 					});
++			case CANNOT_RETRIEVE_ATTACHED_JAVADOC :
++				return Messages.bind(Messages.status_cannot_retrieve_attached_javadoc, ((JavaElement)elements[0]).toStringWithAncestors()); 
++				
++			case UNKNOWN_JAVADOC_FORMAT :
++				return Messages.bind(Messages.status_unknown_javadoc_format, ((JavaElement)elements[0]).toStringWithAncestors()); 
+ 			}
+ 			if (string != null) {
+ 				return string;

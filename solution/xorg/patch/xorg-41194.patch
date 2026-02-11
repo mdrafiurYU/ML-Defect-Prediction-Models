@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Rotate.c b/hw/xfree86/modes/xf86Rotate.c
+index 7d35c34..75f4a55 100644
+--- a/hw/xfree86/modes/xf86Rotate.c
++++ b/hw/xfree86/modes/xf86Rotate.c
+@@ -395,7 +395,7 @@ xf86CrtcRotate (xf86CrtcPtr crtc)
+     if (crtc->transformPresent)
+ 	transform = &crtc->transform;
+ 
+-    if (!RRComputeTransform (crtc->x, crtc->y,
++    if (!RRTransformCompute (crtc->x, crtc->y,
+ 			     crtc->mode.HDisplay, crtc->mode.VDisplay,
+ 			     crtc->rotation,
+ 			     transform,

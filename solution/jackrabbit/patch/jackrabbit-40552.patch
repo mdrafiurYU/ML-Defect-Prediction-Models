@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/UpperCase.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/UpperCase.java
+index 7324a52..ec74972 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/UpperCase.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/UpperCase.java
+@@ -30,12 +30,13 @@ package org.apache.jackrabbit.core.query.jsr283.qom;
+  *
+  * @since JCR 2.0
+  */
+-public interface UpperCase
+-        extends DynamicOperand {
++public interface UpperCase extends DynamicOperand {
++
+     /**
+      * Gets the operand whose value is converted to a upper-case string.
+      *
+      * @return the operand; non-null
+      */
+-    public DynamicOperand getOperand();
++    DynamicOperand getOperand();
++
+ }

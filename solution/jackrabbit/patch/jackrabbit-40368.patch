@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
+index 9325e52..44e3318 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
+@@ -119,7 +119,7 @@ public class NodeTypeDefDiff {
+             type = TRIVIAL;
+ 
+             // check supertypes
+-            int tmpType = supertypesDiff(); 
++            int tmpType = supertypesDiff();
+             if (tmpType > type) {
+                 type = tmpType;
+             }
+@@ -334,11 +334,11 @@ public class NodeTypeDefDiff {
+ 
+         return maxType;
+     }
+-    
++
+     public String toString() {
+         String result = getClass().getName() + "[\n\tnodeTypeName="
+                 + oldDef.getName();
+-        
++
+         result += ",\n\tmixinFlagDiff=" + modificationTypeToString(mixinFlagDiff());
+         result += ",\n\tsupertypesDiff=" + modificationTypeToString(supertypesDiff());

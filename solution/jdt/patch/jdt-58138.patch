@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/MethodVerifyTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/MethodVerifyTest.java
+index 6b8fe83..39eb092 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/MethodVerifyTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/MethodVerifyTest.java
+@@ -22,7 +22,7 @@ public class MethodVerifyTest extends AbstractComparableTest {
+ 	}
+ 
+ 	public static Test suite() {
+-		return buildTestSuite(testClass());
++		return buildComparableTestSuite(testClass());
+ 	}
+ 	
+ 	public static Class testClass() {

@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/RunBuilderTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/RunBuilderTests.java
+index 6af2aed..64ddd2d 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/RunBuilderTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/RunBuilderTests.java
+@@ -10,7 +10,7 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests;
+ 
+-import org.eclipse.jdt.core.tests.builder.Tests;
++import org.eclipse.jdt.core.tests.builder.BuilderTests;
+ 
+ import junit.framework.Test;
+ import junit.framework.TestCase;
+@@ -25,7 +25,7 @@ public RunBuilderTests(String name) {
+ }
+ public static Test suite() {
+ 	TestSuite suite = new TestSuite(RunBuilderTests.class.getName());
+-	suite.addTest(Tests.suite());
++	suite.addTest(BuilderTests.suite());
+ 	return suite;
+ }
+ }

@@ -1,0 +1,17 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/VariableResolverImpl.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/VariableResolverImpl.java
+index b0675cc..8d39dd1 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/VariableResolverImpl.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/VariableResolverImpl.java
+@@ -91,10 +91,12 @@ public class VariableResolverImpl extends VariableResolver {
+       container.remove(name);
+   }
+ 
++  @Override
+   public String replaceTokens(String template) {
+     return templateString.replaceTokens(template, this);
+   }
+ 
++  @Override
+   @SuppressWarnings("unchecked")
+   public Object resolve(String name) {
+     if (name == null)

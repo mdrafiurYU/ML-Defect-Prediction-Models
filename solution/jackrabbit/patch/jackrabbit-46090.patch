@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/OracleFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/OracleFileSystem.java
+index 7032db7..4c1c22e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/OracleFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/OracleFileSystem.java
+@@ -361,8 +361,14 @@ public class OracleFileSystem extends DbFileSystem {
+ 
+             return new FilterOutputStream(new FileOutputStream(tmpFile)) {
+ 
++                public void write(byte[] bytes, int off, int len) throws IOException {
++                    out.write(bytes, off, len);
++                }
++
+                 public void close() throws IOException {
+-                    super.close();
++                    out.flush();
++                    ((FileOutputStream) out).getFD().sync();
++                    out.close();
+ 
+                     InputStream in = null;
+                     Blob blob = null;

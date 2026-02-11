@@ -1,0 +1,13 @@
+diff --git a/Xi/chgdctl.c b/Xi/chgdctl.c
+index 8c97d8f..bbec7cc 100644
+--- a/Xi/chgdctl.c
++++ b/Xi/chgdctl.c
+@@ -276,7 +276,7 @@ out:
+     if (ret == Success) {
+         dpn.type = DevicePresenceNotify;
+         dpn.time = currentTime.milliseconds;
+-        dpn.devchange = 1;
++        dpn.devchange = DeviceControlChanged;
+         dpn.deviceid = dev->id;
+         dpn.control = stuff->control;
+         SendEventToAllWindows(dev, DevicePresenceNotifyMask,

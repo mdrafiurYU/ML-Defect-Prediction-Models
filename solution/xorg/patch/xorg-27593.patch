@@ -1,0 +1,12 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index bd397a9..7202d39 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -1187,6 +1187,7 @@ CALLBACK(SecurityCheckMapAccess)
+     if (STATEPTR(rec->client) &&
+ 	(TRUSTLEVEL(rec->client) != XSecurityClientTrusted) &&
+ 	(pWin->drawable.class == InputOnly) &&
++	pWin->parent && pWin->parent->parent &&
+ 	(TRUSTLEVEL(wClient(pWin->parent)) == XSecurityClientTrusted))
+ 
+ 	rec->rval = FALSE;

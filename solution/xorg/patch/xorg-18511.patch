@@ -1,0 +1,19 @@
+diff --git a/GL/glx/indirect_dispatch_swap.c b/GL/glx/indirect_dispatch_swap.c
+index 16e2b60..a6df352 100644
+--- a/GL/glx/indirect_dispatch_swap.c
++++ b/GL/glx/indirect_dispatch_swap.c
+@@ -28,7 +28,14 @@
+ #include <X11/Xmd.h>
+ #include <GL/gl.h>
+ #include <GL/glxproto.h>
++#ifdef __linux__
+ #include <byteswap.h>
++#else
++#include <sys/endian.h>
++#define bswap_16 bswap16
++#define bswap_32 bswap32
++#define bswap_64 bswap64
++#endif
+ #include <inttypes.h>
+ #include "indirect_size.h"
+ #include "indirect_size_get.h"

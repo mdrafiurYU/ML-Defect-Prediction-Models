@@ -1,0 +1,15 @@
+diff --git a/mi/miscrinit.c b/mi/miscrinit.c
+index ee60746..6cd4df3 100644
+--- a/mi/miscrinit.c
++++ b/mi/miscrinit.c
+@@ -257,8 +257,8 @@ miScreenInit(
+     pScreen->wakeupData = (pointer)0;
+     pScreen->MarkWindow = miMarkWindow;
+     pScreen->MarkOverlappedWindows = miMarkOverlappedWindows;
+-    pScreen->ChangeSaveUnder = miChangeSaveUnder;
+-    pScreen->PostChangeSaveUnder = miPostChangeSaveUnder;
++    pScreen->ChangeSaveUnder = NULL;
++    pScreen->PostChangeSaveUnder = NULL;
+     pScreen->MoveWindow = miMoveWindow;
+     pScreen->ResizeWindow = miSlideAndSizeWindow;
+     pScreen->GetLayerWindow = miGetLayerWindow;

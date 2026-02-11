@@ -1,0 +1,38 @@
+diff --git a/modules/analysis/icu/src/test/org/apache/lucene/analysis/icu/TestICUTransformFilter.java b/modules/analysis/icu/src/test/org/apache/lucene/analysis/icu/TestICUTransformFilter.java
+index 29733ce..a56b22d 100644
+--- a/modules/analysis/icu/src/test/org/apache/lucene/analysis/icu/TestICUTransformFilter.java
++++ b/modules/analysis/icu/src/test/org/apache/lucene/analysis/icu/TestICUTransformFilter.java
+@@ -18,10 +18,15 @@ package org.apache.lucene.analysis.icu;
+  */
+ 
+ import java.io.IOException;
++import java.io.Reader;
+ import java.io.StringReader;
+ 
++import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.analysis.BaseTokenStreamTestCase;
++import org.apache.lucene.analysis.Tokenizer;
+ import org.apache.lucene.analysis.core.KeywordTokenizer;
++import org.apache.lucene.analysis.core.WhitespaceTokenizer;
++import org.apache.lucene.analysis.util.ReusableAnalyzerBase;
+ import org.apache.lucene.analysis.TokenStream;
+ 
+ import com.ibm.icu.text.Transliterator;
+@@ -83,4 +88,17 @@ public class TestICUTransformFilter extends BaseTokenStreamTestCase {
+     TokenStream ts = new ICUTransformFilter(new KeywordTokenizer((new StringReader(input))), transform);
+     assertTokenStreamContents(ts, new String[] { expected });
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    final Transliterator transform = Transliterator.getInstance("Any-Latin");
++    Analyzer a = new ReusableAnalyzerBase() {
++      @Override
++      protected TokenStreamComponents createComponents(String fieldName, Reader reader) {
++        Tokenizer tokenizer = new WhitespaceTokenizer(TEST_VERSION_CURRENT, reader);
++        return new TokenStreamComponents(tokenizer, new ICUTransformFilter(tokenizer, transform));
++      }
++    };
++    checkRandomData(random, a, 1000*RANDOM_MULTIPLIER);
++  }
+ }

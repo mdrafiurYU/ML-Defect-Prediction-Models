@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/drm/xf86drmSL.c b/hw/xfree86/os-support/drm/xf86drmSL.c
+index 41e36a7..5f3c88d 100644
+--- a/hw/xfree86/os-support/drm/xf86drmSL.c
++++ b/hw/xfree86/os-support/drm/xf86drmSL.c
+@@ -40,6 +40,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #define SL_MAIN 0
+ 
+ #if SL_MAIN

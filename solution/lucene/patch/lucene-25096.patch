@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/Bytes.java b/lucene/src/java/org/apache/lucene/index/values/Bytes.java
+index 0944fc9..d566d96 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/Bytes.java
++++ b/lucene/src/java/org/apache/lucene/index/values/Bytes.java
+@@ -387,7 +387,7 @@ public final class Bytes {
+     }
+ 
+     @Override
+-    protected void add(int docID) throws IOException {
++    protected void mergeDoc(int docID) throws IOException {
+       add(docID, bytesRef);
+     }

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/codecs/preflexrw/TermInfosWriter.java b/lucene/src/test/org/apache/lucene/index/codecs/preflexrw/TermInfosWriter.java
+index 782cd3a..97e1963 100644
+--- a/lucene/src/test/org/apache/lucene/index/codecs/preflexrw/TermInfosWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/codecs/preflexrw/TermInfosWriter.java
+@@ -61,7 +61,7 @@ final class TermInfosWriter {
+   int indexInterval = 128;
+ 
+   /** Expert: The fraction of {@link TermDocs} entries stored in skip tables,
+-   * used to accelerate {@link TermDocs#skipTo(int)}.  Larger values result in
++   * used to accelerate {@link TermDocs#advance(int)}.  Larger values result in
+    * smaller indexes, greater acceleration, but fewer accelerable cases, while
+    * smaller values result in bigger indexes, less acceleration and more
+    * accelerable cases. More detailed experiments would be useful here. */

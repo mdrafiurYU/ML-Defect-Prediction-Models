@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrencyTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrencyTest.java
+index 023b280..ce8686b 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrencyTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrencyTest.java
+@@ -28,8 +28,8 @@ import java.util.Iterator;
+ public class ConcurrencyTest extends AbstractJCRTest {
+ 
+     private static final int NUM_ITERATIONS = 2;
+-    private static final int NUM_SESSIONS = getTestScale();
+-    private static final int NUM_NODES = getTestScale();
++    private static final int NUM_SESSIONS = 100;
++    private static final int NUM_NODES = 100;
+ 
+     final ArrayList exceptions = new ArrayList();
+ 
+@@ -154,4 +154,4 @@ public class ConcurrencyTest extends AbstractJCRTest {
+             log.println("ended.");
+         }
+     }
+-}
+\ No newline at end of file
++}

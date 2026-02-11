@@ -1,0 +1,15 @@
+diff --git a/Xprint/ps/ttf2pt1wrap.c b/Xprint/ps/ttf2pt1wrap.c
+index bd5ef52..57bb777 100644
+--- a/Xprint/ps/ttf2pt1wrap.c
++++ b/Xprint/ps/ttf2pt1wrap.c
+@@ -2,6 +2,10 @@
+  * Wrapper to add missing symbol to externally supplied code
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef Lynx
+ extern int optind;
+ extern char *optarg;

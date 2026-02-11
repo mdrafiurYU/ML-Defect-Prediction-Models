@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index a2099ad..263cf57 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -250,7 +250,7 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+         for (int i = 0; i < versions.length; i++) {
+             versionStates[i] = session.getVersionState(versions[i]);
+         }
+-        getVersionManager().restore(versionStates, removeExisting);
++        getVersionStateManager().restore(versionStates, removeExisting);
+     }
+ 
+     /**
+@@ -398,9 +398,9 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+     }
+ 
+     /**
+-     * @see ManagerProvider#getVersionManager()
++     * @see ManagerProvider#getVersionStateManager()
+      */
+-    public VersionManager getVersionManager() {
++    public VersionManager getVersionStateManager() {
+         if (versionManager == null) {
+             versionManager = createVersionManager(wspManager);
+         }

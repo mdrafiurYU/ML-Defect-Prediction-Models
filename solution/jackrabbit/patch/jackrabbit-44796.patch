@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleClusterContext.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleClusterContext.java
+index 34e170c..49010d1 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleClusterContext.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleClusterContext.java
+@@ -58,6 +58,16 @@ public class SimpleClusterContext implements ClusterContext {
+         nsResolver = new RegistryNamespaceResolver(new SimpleNamespaceRegistry());
+     }
+ 
++    /**
++     * Create a new instance of this class. Equivalent to
++     * <blockquote>SimpleClusterContext(cc, <code>null</code>)</blockquote>
++     *
++     * @param cc cluster config
++     */
++    public SimpleClusterContext(ClusterConfig cc) {
++        this(cc, null);
++    }
++
+     //----------------------------------------------------------- ClusterContext
+ 
+     /**

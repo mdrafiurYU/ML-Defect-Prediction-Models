@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/BoolField.java b/solr/src/java/org/apache/solr/schema/BoolField.java
+index 0694e4c..19fb362 100644
+--- a/solr/src/java/org/apache/solr/schema/BoolField.java
++++ b/solr/src/java/org/apache/solr/schema/BoolField.java
+@@ -43,6 +43,7 @@ public class BoolField extends FieldType {
+ 
+   @Override
+   public SortField getSortField(SchemaField field,boolean reverse) {
++    field.checkSortability();
+     return getStringSort(field,reverse);
+   }

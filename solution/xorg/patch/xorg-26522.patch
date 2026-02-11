@@ -1,0 +1,39 @@
+diff --git a/hw/xfree86/ddc/edid_modes.c b/hw/xfree86/ddc/edid_modes.c
+index 5ce86ee..9e824b1 100644
+--- a/hw/xfree86/ddc/edid_modes.c
++++ b/hw/xfree86/ddc/edid_modes.c
+@@ -86,13 +86,14 @@ DDCModesFromStandardTiming(int scrnIndex, struct std_timings *timing)
+     DisplayModePtr Modes = NULL, Mode = NULL;
+     int i;
+     
+-    for (i = 0; i < STD_TIMINGS; i++)
++    for (i = 0; i < STD_TIMINGS; i++) {
+         if (timing[i].hsize && timing[i].vsize && timing[i].refresh) {
+             Mode =  xf86CVTMode(timing[i].hsize, timing[i].vsize,
+                                 timing[i].refresh, FALSE, FALSE);
+ 	    Mode->type = M_T_DRIVER;
+             Modes = xf86ModesAdd(Modes, Mode);
+         }
++    }
+ 
+     return Modes;
+ }
+@@ -108,14 +109,15 @@ DDCModeFromDetailedTiming(int scrnIndex, struct detailed_timings *timing,
+ 
+     /* We don't do stereo */
+     if (timing->stereo) {
+-        xf86DrvMsg(scrnIndex, X_INFO, "%s: Ignoring: We don't handle stereo.\n",
+-                   __func__);
++        xf86DrvMsg(scrnIndex, X_INFO,
++		   "%s: Ignoring: We don't handle stereo.\n", __func__);
+         return NULL;
+     }
+     
+     /* We only do seperate sync currently */
+     if (timing->sync != 0x03) {
+-         xf86DrvMsg(scrnIndex, X_INFO, "%s: %dx%d Warning: We only handle seperate"
++         xf86DrvMsg(scrnIndex, X_INFO,
++		    "%s: %dx%d Warning: We only handle seperate"
+                     " sync.\n", __func__, timing->h_active, timing->v_active);
+     }
+     

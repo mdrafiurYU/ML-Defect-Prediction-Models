@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/exa/exa.c b/hw/xfree86/exa/exa.c
+index 5ba8af3..4d25d5a 100644
+--- a/hw/xfree86/exa/exa.c
++++ b/hw/xfree86/exa/exa.c
+@@ -264,6 +264,10 @@ exaPixmapUseScreen (PixmapPtr pPixmap)
+     ExaPixmapPriv (pPixmap);
+ 
+     STRACE;
++
++    if (pExaPixmap == NULL)
++	return;
++
+     if (pExaPixmap->score == EXA_PIXMAP_SCORE_PINNED)
+ 	return;
+ 
+@@ -287,6 +291,9 @@ exaPixmapUseMemory (PixmapPtr pPixmap)
+ {
+     ExaPixmapPriv (pPixmap);
+ 
++    if (pExaPixmap == NULL)
++	return;
++
+     if (pExaPixmap->score == EXA_PIXMAP_SCORE_PINNED)
+ 	return;
+ 

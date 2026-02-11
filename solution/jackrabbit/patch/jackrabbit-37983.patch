@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java
+index 0dc58d8..0be16ec 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java
+@@ -52,6 +52,8 @@ public class PersistenceManagerIteratorTest extends AbstractJCRTest {
+             return;
+         }
+ 
++        // TODO: make getWorkspaceNames public or create a utility class
++
+         RepositoryImpl r = (RepositoryImpl) rep;
+         Method m = r.getClass().getDeclaredMethod("getWorkspaceNames",
+                 new Class[0]);

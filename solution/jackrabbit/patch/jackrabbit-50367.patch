@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java
+index d1784db..29ecfc7 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java
+@@ -37,7 +37,7 @@ public class WorkspaceInitTest extends AbstractJCRTest {
+             Thread t = new Thread(new Runnable() {
+                 public void run() {
+                     try {
+-                        helper.getSuperuserSession("workspace-init-test").logout();
++                        getHelper().getSuperuserSession("workspace-init-test").logout();
+                     } catch (RepositoryException e) {
+                         throw new RuntimeException(e);
+                     }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java
+index db859ba..4ef1c06 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java
+@@ -494,7 +494,7 @@ public class UserAccessControlProvider extends AbstractAccessControlProvider
+          * Event listener is only interested in changes of group-membership
+          * that effect the permission-evaluation.
+          *
+-         * @param events
++         * @see javax.jcr.observation.EventListener#onEvent(EventIterator)
+          */
+         public void onEvent(EventIterator events) {
+             while (events.hasNext()) {

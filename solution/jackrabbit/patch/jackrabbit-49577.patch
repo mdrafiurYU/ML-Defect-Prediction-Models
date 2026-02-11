@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java
+index 7b9eb88..e86353a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java
+@@ -148,7 +148,7 @@ public final class EventImpl implements JackrabbitEvent, Event {
+             InternalValue value = (InternalValue) entry.getValue();
+             String strValue = null;
+             if (value != null) {
+-                strValue = ValueFormat.getJCRValue(value, session, session.getValueFactory()).getString();
++                strValue = ValueFormat.getJCRString(value, session);
+             }
+             info.put(entry.getKey(), strValue);
+         }

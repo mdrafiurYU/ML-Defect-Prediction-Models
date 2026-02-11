@@ -1,0 +1,13 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/Document.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/Document.java
+index dae37bb..06fe9ff 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/Document.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/interfaces/Document.java
+@@ -16,8 +16,10 @@
+  */
+ package org.apache.jackrabbit.ocm.testmodel.interfaces;
+ 
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
+ import org.apache.jackrabbit.ocm.testmodel.inheritance.impl.DocumentStream;
+ 
++@Node(isInterface=true, extend= Content.class, jcrType="ocm:document", discriminator=false )
+ public interface Document extends Content {

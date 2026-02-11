@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
+index 7e60e6c..f673b4a 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
+@@ -181,7 +181,7 @@ public class ProcessorEnvImpl extends CompilationProcessorEnv
+ 		}
+ 
+ 		// finally go search for it in the universe.
+-		typeBinding = getTypeBinding(typeKey);
++		typeBinding = getTypeDefinitionBindingFromName(name);
+ 		if( typeBinding != null ){			
+ 			return Factory.createReferenceType(typeBinding, this);
+ 		}

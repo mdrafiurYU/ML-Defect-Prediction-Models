@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/Tests.java b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/Tests.java
+index 4d8d8a6..79a4ade 100644
+--- a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/Tests.java
++++ b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/Tests.java
+@@ -407,6 +407,7 @@ public class Tests extends TestCase {
+ 		suite.addTest(AbstractMethodTests.suite());
+ 		suite.addTest(BasicBuildTests.suite());
+ 		suite.addTest(BuildpathTests.suite());
++		suite.addTest(CleanOutputFolderTests.suite());
+ 		suite.addTest(CopyResourceTests.suite());
+ 		suite.addTest(DependencyTests.suite());
+ 		suite.addTest(ErrorsTests.suite());
+@@ -422,6 +423,7 @@ public class Tests extends TestCase {
+ 		if ((AbstractCompilerTest.getPossibleComplianceLevels()  & AbstractCompilerTest.F_1_5) != 0) {
+ 			suite.addTest(Java50Tests.suite());
+             suite.addTest(PackageInfoTest.suite());
++			suite.addTest(ParticipantBuildTests.suite());
+         }
+ 
+ 		return suite;

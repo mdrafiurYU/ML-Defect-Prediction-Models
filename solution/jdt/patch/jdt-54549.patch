@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionNodeDetector.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionNodeDetector.java
+index a7ae738..1e9d67b 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionNodeDetector.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionNodeDetector.java
+@@ -263,6 +263,9 @@ public class CompletionNodeDetector extends ASTVisitor {
+ 	public boolean visit(SingleTypeReference singleTypeReference, ClassScope scope) {
+ 		return this.visit(singleTypeReference);
+ 	}
++	public boolean visit(StringLiteral stringLiteral, BlockScope scope) {
++		return this.visit(stringLiteral);
++	}
+ 	public boolean visit(SuperReference superReference, BlockScope scope) {
+ 		return this.visit(superReference);
+ 	}

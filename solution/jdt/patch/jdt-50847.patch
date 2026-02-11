@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ParameterAnnotation.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ParameterAnnotation.java
+index a0d634e..c99113f 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ParameterAnnotation.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ParameterAnnotation.java
+@@ -46,7 +46,7 @@ public class ParameterAnnotation extends ClassFileStruct implements IParameterAn
+ 			this.annotations = new IAnnotation[length];
+ 			for (int i = 0; i < length; i++) {
+ 				Annotation annotation = new Annotation(classFileBytes, constantPool, offset + readOffset);
+-				this.annotations[i++] = annotation;
++				this.annotations[i] = annotation;
+ 				this.readOffset += annotation.sizeInBytes();
+ 			}
+ 		} else {

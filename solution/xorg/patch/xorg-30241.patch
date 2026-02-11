@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/linux/evdev.c b/hw/kdrive/linux/evdev.c
+index 6c08cfa..deefcf9 100644
+--- a/hw/kdrive/linux/evdev.c
++++ b/hw/kdrive/linux/evdev.c
+@@ -155,8 +155,6 @@ EvdevInit (KdPointerInfo *pi)
+ {
+     int                i;
+     int                fd;
+-    int                n = 0;
+-    char        *prot;
+ 
+     if (!pi->path) {
+         for (i = 0; i < NUM_DEFAULT_EVDEV; i++) {
+@@ -277,6 +275,8 @@ EvdevDisable (KdPointerInfo *pi)
+ {
+     Kevdev              *ke;
+ 
++    ke = pi->driverPrivate;
++
+     if (!pi || !pi->driverPrivate)
+         return;
+ 

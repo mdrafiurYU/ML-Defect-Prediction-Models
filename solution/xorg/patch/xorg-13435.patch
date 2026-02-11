@@ -1,0 +1,20 @@
+diff --git a/mfb/mfbpixmap.c b/mfb/mfbpixmap.c
+index ebf086a..3605564 100644
+--- a/mfb/mfbpixmap.c
++++ b/mfb/mfbpixmap.c
+@@ -62,7 +62,6 @@ SOFTWARE.
+ 
+ #include "servermd.h"
+ 
+-#ifndef LOWMEMFTPT
+ 
+ PixmapPtr
+ mfbCreatePixmap (pScreen, width, height, depth)
+@@ -104,7 +103,6 @@ mfbCreatePixmap (pScreen, width, height, depth)
+     return pPixmap;
+ }
+ 
+-#endif /* ifndef LOWMEMFTPT */
+ 
+ Bool
+ mfbDestroyPixmap(pPixmap)

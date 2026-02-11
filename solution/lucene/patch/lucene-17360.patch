@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/LongField.java b/solr/src/java/org/apache/solr/schema/LongField.java
+index f1189b6..a6a6dd0 100644
+--- a/solr/src/java/org/apache/solr/schema/LongField.java
++++ b/solr/src/java/org/apache/solr/schema/LongField.java
+@@ -41,7 +41,7 @@ public class LongField extends FieldType {
+ 
+   @Override
+   public SortField getSortField(SchemaField field,boolean reverse) {
+-
++    field.checkSortability();
+     return new SortField(field.name,SortField.LONG, reverse);
+   }

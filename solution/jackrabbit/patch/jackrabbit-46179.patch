@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+index c6e6495..12fe959 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+@@ -75,7 +75,8 @@ public class BLOBInTempFile extends BLOBFileValue {
+     /**
+      * Creates a new instance from file.
+      *
+-     * @param in the input stream
++     * @param file
++     * @param temp
+      */
+     private BLOBInTempFile(File file, boolean temp) {
+         this.file = file;
+@@ -87,6 +88,7 @@ public class BLOBInTempFile extends BLOBFileValue {
+      * Creates a new instance from a stream.
+      *
+      * @param in the stream
++     * @param temp
+      */
+     static BLOBInTempFile getInstance(InputStream in, boolean temp) throws RepositoryException {
+         return new BLOBInTempFile(in, temp);

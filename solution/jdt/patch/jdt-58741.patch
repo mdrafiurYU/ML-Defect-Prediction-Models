@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BufferTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BufferTests.java
+index 42d142b..a868ef9 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BufferTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BufferTests.java
+@@ -69,7 +69,7 @@ public void tearDownSuite() throws Exception {
+ 
+ 
+ public static Test suite() {
+-	return new Suite(BufferTests.class);
++	return buildModelTestSuite(BufferTests.class);
+ }
+ /**
+  * Tests appending to a buffer.

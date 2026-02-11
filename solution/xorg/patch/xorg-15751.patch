@@ -1,0 +1,19 @@
+diff --git a/GL/glx/g_render.c b/GL/glx/g_render.c
+index 28d23da..24c6489 100644
+--- a/GL/glx/g_render.c
++++ b/GL/glx/g_render.c
+@@ -2253,14 +2253,8 @@ void __glXDisp_PointParameterfvARB(GLbyte *pc)
+ 	);
+ }
+ 
+-#ifdef __DARWIN__
+-#define __glPointParameterivNV_size __glPointParameteriv_size
+ dispatch_template_enum1_1s(PointParameteriNV,  GLint)
+ dispatch_template_enum1_Vv(PointParameterivNV, GLint)
+-#else
+-dispatch_template_enum1_1s(PointParameteri,  GLint)
+-dispatch_template_enum1_Vv(PointParameteriv, GLint)
+-#endif
+ 
+ void __glXDisp_ActiveStencilFaceEXT(GLbyte *pc)
+ {

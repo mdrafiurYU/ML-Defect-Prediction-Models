@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/os-support/sysv/xqueue.c b/hw/xfree86/os-support/sysv/xqueue.c
+index 6c2132c..e9cab15 100644
+--- a/hw/xfree86/os-support/sysv/xqueue.c
++++ b/hw/xfree86/os-support/sysv/xqueue.c
+@@ -135,12 +135,6 @@ xf86XqueKbdProc(DeviceIntPtr pKeyboard, int what)
+ #ifdef XKB
+     } else {
+ 	XkbComponentNamesRec names;
+-	if (XkbInitialMap) {
+-	    if ((xf86Info.xkbkeymap = strchr(XkbInitialMap, '/')) != NULL)
+-		xf86Info.xkbkeymap++;
+-	    else
+-		xf86Info.xkbkeymap = XkbInitialMap;
+-	}
+ 	if (xf86Info.xkbkeymap) {
+ 	    names.keymap = xf86Info.xkbkeymap;
+ 	    names.keycodes = NULL;

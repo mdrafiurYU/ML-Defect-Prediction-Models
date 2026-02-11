@@ -1,0 +1,15 @@
+diff --git a/include/input.h b/include/input.h
+index 4ba0cad..401fcec 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -186,7 +186,9 @@ extern Bool ActivateDevice(
+ extern Bool DisableDevice(
+     DeviceIntPtr /*device*/);
+ 
+-extern int InitAndStartDevices(void);
++extern int InitAndStartDevices(
++    WindowPtr /*root*/);
++
+ 
+ extern void CloseDownDevices(void);
+ 

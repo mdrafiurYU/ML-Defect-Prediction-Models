@@ -1,0 +1,15 @@
+diff --git a/Xprint/ps/PsLine.c b/Xprint/ps/PsLine.c
+index 23e1058..2524769 100644
+--- a/Xprint/ps/PsLine.c
++++ b/Xprint/ps/PsLine.c
+@@ -74,6 +74,10 @@ in this Software without prior written authorization from The Open Group.
+ ** 
+ ********************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "Ps.h"
+ #include "gcstruct.h"
+ #include "windowstr.h"

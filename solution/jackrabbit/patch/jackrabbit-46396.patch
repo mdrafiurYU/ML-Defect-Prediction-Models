@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+index 233c12e..be96ef2 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+@@ -946,7 +946,7 @@ public class WorkspaceManager
+          * @see OperationVisitor#visit(LockOperation)
+          */
+         public void visit(LockOperation operation) throws AccessDeniedException, InvalidItemStateException, UnsupportedRepositoryOperationException, LockException, RepositoryException {
+-            LockInfo lInfo = service.lock(sessionInfo, operation.getNodeId(), operation.isDeep(), operation.isSessionScoped());
++            LockInfo lInfo = service.lock(sessionInfo, operation.getNodeId(), operation.isDeep(), operation.isSessionScoped(), operation.getTimeoutHint(), operation.getOwnerHint());
+             operation.setLockInfo(lInfo);
+         }

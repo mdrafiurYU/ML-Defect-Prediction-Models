@@ -1,0 +1,26 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DemoHTMLParser.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DemoHTMLParser.java
+index f28d38a..85824f9 100755
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DemoHTMLParser.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DemoHTMLParser.java
+@@ -40,7 +40,7 @@ public class DemoHTMLParser implements org.apache.lucene.benchmark.byTask.feeds.
+     // body
+     Reader r = p.getReader();
+     char c[] = new char[1024];
+-    StringBuffer bodyBuf = new StringBuffer();
++    StringBuilder bodyBuf = new StringBuilder();
+     int n;
+     while ((n = r.read(c)) >= 0) {
+       if (n>0) {
+@@ -67,12 +67,4 @@ public class DemoHTMLParser implements org.apache.lucene.benchmark.byTask.feeds.
+     return docData;
+   }
+ 
+-  /*
+-   *  (non-Javadoc)
+-   * @see org.apache.lucene.benchmark.byTask.feeds.HTMLParser#parse(java.lang.String, java.util.Date, java.lang.StringBuffer, java.text.DateFormat)
+-   */
+-  public DocData parse(DocData docData, String name, Date date, StringBuffer inputText, DateFormat dateFormat) throws IOException, InterruptedException {
+-    return parse(docData, name, date, new StringReader(inputText.toString()), dateFormat);
+-  }
+-
+ }

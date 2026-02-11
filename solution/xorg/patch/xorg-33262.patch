@@ -1,0 +1,26 @@
+diff --git a/include/privates.h b/include/privates.h
+index 898fdd9..9c95350 100644
+--- a/include/privates.h
++++ b/include/privates.h
+@@ -31,6 +31,13 @@ typedef struct _Private {
+ } PrivateRec;
+ 
+ /*
++ * Backwards compatibility macro.  Use to get the proper PrivateRec
++ * reference from any of the structure types that supported the old
++ * devPrivates mechanism.
++ */
++#define DEVPRIV_PTR(foo) ((PrivateRec **)(&(foo)->devPrivates[0].ptr))
++
++/*
+  * Request pre-allocated private space for your driver/module.
+  * A non-null pScreen argument restricts to objects on a given screen.
+  */
+@@ -156,4 +163,7 @@ dixLookupPrivateOffset(RESTYPE type);
+ extern int
+ dixRegisterPrivateOffset(RESTYPE type, unsigned offset);
+ 
++/* Used by the legacy support, don't rely on this being here */
++#define PadToLong(w) ((((w) + sizeof(long)-1) / sizeof(long)) * sizeof(long))
++
+ #endif /* PRIVATES_H */

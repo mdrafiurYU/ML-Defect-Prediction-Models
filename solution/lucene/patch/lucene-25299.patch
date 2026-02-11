@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/LongDocValues.java b/solr/src/java/org/apache/solr/search/function/LongDocValues.java
+index f0e8f6d..7eee432 100644
+--- a/solr/src/java/org/apache/solr/search/function/LongDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/LongDocValues.java
+@@ -1,7 +1,8 @@
+ package org.apache.solr.search.function;
+ 
+-import org.apache.solr.search.MutableValue;
+-import org.apache.solr.search.MutableValueLong;
++import org.apache.lucene.common.mutable.MutableValue;
++import org.apache.lucene.common.mutable.MutableValueLong;
++
+ 
+ public abstract class LongDocValues extends DocValues {
+   protected final ValueSource vs;

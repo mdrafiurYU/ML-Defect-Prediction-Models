@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-servlet/src/main/java/org/apache/jackrabbit/servlet/remote/RMIRemoteBindingServlet.java b/jackrabbit-jcr-servlet/src/main/java/org/apache/jackrabbit/servlet/remote/RMIRemoteBindingServlet.java
+index cf01a8d..11e9c94 100644
+--- a/jackrabbit-jcr-servlet/src/main/java/org/apache/jackrabbit/servlet/remote/RMIRemoteBindingServlet.java
++++ b/jackrabbit-jcr-servlet/src/main/java/org/apache/jackrabbit/servlet/remote/RMIRemoteBindingServlet.java
+@@ -92,7 +92,7 @@ public class RMIRemoteBindingServlet extends RemoteBindingServlet {
+         } catch (NotBoundException e) {
+             // Ignore, perhaps the reference was already manually removed
+         } catch (MalformedURLException e) {
+-            log("Invalid RMI URL: " + url, e);
++            // Ignore, we already logged a warning about this during init()
+         } catch (RemoteException e) {
+             log("Failed to unbind repository from RMI: " + url, e);
+         }

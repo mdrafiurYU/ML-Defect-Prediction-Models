@@ -1,0 +1,39 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NameLookupTests2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NameLookupTests2.java
+index beea97c..30be96d 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NameLookupTests2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NameLookupTests2.java
+@@ -37,7 +37,7 @@ public NameLookupTests2(String name) {
+ 	static {
+ //		org.eclipse.jdt.internal.core.search.matching.MatchLocator.PRINT_BUFFER = false;
+ //		TESTS_PREFIX =  "testArray";
+-//		TESTS_NAMES = new String[] { "testFindBinaryTypeWithDollarName" };
++//		TESTS_NAMES = new String[] { "testFindBinaryTypeWithSameNameAsMember" };
+ //		TESTS_NUMBERS = new int[] { 8 };
+ //		TESTS_RANGE = new int[] { 6, -1 };
+ 	}
+@@ -249,6 +249,25 @@ public void testFindBinaryTypeWithDollarName() throws CoreException, IOException
+ 	}
+ }
+ /*
++ * Ensure that a type with the same simple name as its member type is found
++ * (regression test for bug 102286 Error when trying F4-Type Hierarchy)
++ */
++public void testFindBinaryTypeWithSameNameAsMember() throws CoreException, IOException {
++	try {
++		IJavaProject project = createJavaProject("P", new String[] {}, new String[] {"/P/lib"}, new String[] {}, "bin");
++		createFolder("/P/lib/p");
++		createFile("/P/lib/p/X.class", "");
++		createFile("/P/lib/p/X$X.class", "");
++		IType type = getNameLookup((JavaProject) project).findType("p.X", false, NameLookup.ACCEPT_ALL);
++		assertTypesEqual(
++			"Unexpected type", 
++			"p.X\n",
++			new IType[] {type});
++	} finally {
++		deleteProject("P");
++	}
++}
++/*
+  * Performance test for looking up package fragments
+  * (see bug 72683 Slow code assist in Display view)
+  */

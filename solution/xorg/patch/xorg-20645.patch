@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/sysv/sysv_mouse.c b/hw/xfree86/os-support/sysv/sysv_mouse.c
+index f839362..e3c084e 100644
+--- a/hw/xfree86/os-support/sysv/sysv_mouse.c
++++ b/hw/xfree86/os-support/sysv/sysv_mouse.c
+@@ -45,7 +45,7 @@ CheckProtocol(const char *protocol)
+ }
+ #endif
+ 
+-OSMouseInfoPtr
++_X_EXPORT OSMouseInfoPtr
+ xf86OSMouseInit(int flags)
+ {
+     OSMouseInfoPtr p;

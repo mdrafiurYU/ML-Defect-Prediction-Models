@@ -1,0 +1,48 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index 2ea3479..810da76 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -33,7 +33,6 @@ import javax.jcr.NamespaceException;
+ import javax.jcr.NoSuchWorkspaceException;
+ import javax.jcr.Node;
+ import javax.jcr.PathNotFoundException;
+-import javax.jcr.Property;
+ import javax.jcr.Repository;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
+@@ -872,18 +871,10 @@ public class SessionImpl extends AbstractSession
+         throw new UnsupportedRepositoryOperationException("JCR-1104");
+     }
+ 
+-    public Node getNode(String absPath) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+     public Node getNodeByIdentifier(String id) throws RepositoryException {
+         throw new UnsupportedRepositoryOperationException("JCR-1104");
+     }
+ 
+-    public Property getProperty(String absPath) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+     public RetentionManager getRetentionManager()
+             throws UnsupportedRepositoryOperationException, RepositoryException {
+         throw new UnsupportedRepositoryOperationException("JCR-1104");
+@@ -899,16 +890,4 @@ public class SessionImpl extends AbstractSession
+         throw new UnsupportedRepositoryOperationException("JCR-1104");
+     }
+ 
+-    public boolean nodeExists(String absPath) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+-    public boolean propertyExists(String absPath) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+-    public void removeItem(String absPath) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+ }

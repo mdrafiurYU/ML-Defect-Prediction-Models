@@ -1,0 +1,18 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/PlainTextEntityProcessor.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/PlainTextEntityProcessor.java
+index 79a9818..2d32eee 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/PlainTextEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/PlainTextEntityProcessor.java
+@@ -40,11 +40,13 @@ public class PlainTextEntityProcessor extends EntityProcessorBase {
+   private static final Logger LOG = LoggerFactory.getLogger(PlainTextEntityProcessor.class);
+   private boolean ended = false;
+ 
++  @Override
+   public void init(Context context) {
+     super.init(context);
+     ended = false;
+   }
+ 
++  @Override
+   public Map<String, Object> nextRow() {
+     if (ended) return null;
+     DataSource<Reader> ds = context.getDataSource();

@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java b/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java
+index b883430..4803a58 100644
+--- a/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java
++++ b/lucene/src/test/org/apache/lucene/queryParser/TestQueryParser.java
+@@ -1142,10 +1142,11 @@ public class TestQueryParser extends LuceneTestCase {
+     w.addDocument(doc);
+     IndexReader r = IndexReader.open(w, true);
+     w.close();
+-    IndexSearcher s = new IndexSearcher(r);
++    IndexSearcher s = newSearcher(r);
+     QueryParser qp = new QueryParser(TEST_VERSION_CURRENT, "f", a);
+     Query q = qp.parse("\"wizard of ozzy\"");
+     assertEquals(1, s.search(q, 1).totalHits);
++    s.close();
+     r.close();
+     dir.close();
+   }

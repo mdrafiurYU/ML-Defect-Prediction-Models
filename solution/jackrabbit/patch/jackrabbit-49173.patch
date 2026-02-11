@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
+index efbaf2b..a3bfe8e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
+@@ -133,7 +133,8 @@ public class QueryImpl extends AbstractQueryImpl {
+                 session, session.getAccessManager(),
+                 this, query, new SpellSuggestion(index.getSpellChecker(), root),
+                 getColumns(), orderProperties, ascSpecs,
+-                getRespectDocumentOrder(), offset, limit);
++                orderProperties.length == 0 && getRespectDocumentOrder(),
++                offset, limit);
+     }
+ 
+     /**

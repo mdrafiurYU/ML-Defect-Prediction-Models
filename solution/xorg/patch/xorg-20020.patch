@@ -1,0 +1,13 @@
+diff --git a/Xprint/Oid.h b/Xprint/Oid.h
+index ba9dc77..fc9f12a 100644
+--- a/Xprint/Oid.h
++++ b/Xprint/Oid.h
+@@ -210,7 +210,7 @@ char* XpOidListString(const XpOidList*);
+ /*
+  * XpOidLinkedList public methods
+  */
+-XpOidLinkedList* XpOidLinkedListNew();
++XpOidLinkedList* XpOidLinkedListNew(void);
+ void XpOidLinkedListDelete(XpOidLinkedList*);
+ #define XpOidLinkedListCount(l) ((l) ? (l)->count : 0)
+ XpOid XpOidLinkedListGetOid(XpOidLinkedList* list, int i);

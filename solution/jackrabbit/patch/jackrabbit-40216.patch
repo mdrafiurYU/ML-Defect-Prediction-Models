@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/ExecutablePreparedQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/ExecutablePreparedQuery.java
+index bada5d3..90fc082 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/ExecutablePreparedQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/ExecutablePreparedQuery.java
+@@ -37,6 +37,7 @@ public interface ExecutablePreparedQuery extends ExecutableQuery {
+      *                                       valid variable in this query.
+      * @throws javax.jcr.RepositoryException if an error occurs.
+      */
+-    public void bindValue(Name varName, Value value)
+-            throws IllegalArgumentException, RepositoryException;
++    void bindValue(Name varName, Value value)
++        throws IllegalArgumentException, RepositoryException;
++
+ }

@@ -1,0 +1,43 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+index 3192b62..cd4a076 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueFactoryImpl.java
+@@ -41,6 +41,9 @@ import java.io.Serializable;
+ import java.io.UnsupportedEncodingException;
+ import java.util.Arrays;
+ import java.util.Calendar;
++import java.math.BigDecimal;
++import java.net.URI;
++import java.net.URISyntaxException;
+ 
+ /**
+  * <code>QValueFactoryImpl</code>...
+@@ -583,6 +586,28 @@ public final class QValueFactoryImpl extends AbstractQValueFactory {
+         }
+ 
+         /**
++         * @see QValue#getDecimal()
++         */
++        public BigDecimal getDecimal() throws RepositoryException {
++            try {
++                return new BigDecimal(getString());
++            } catch (NumberFormatException ex) {
++                throw new ValueFormatException(ex);
++            }
++        }
++
++        /**
++         * @see QValue#getURI()
++         */
++        public URI getURI() throws RepositoryException {
++            try {
++                return new URI(getString());
++            } catch (URISyntaxException ex) {
++                throw new ValueFormatException(ex);
++            }
++        }
++
++        /**
+          * Frees temporarily allocated resources such as temporary file, buffer, etc.
+          * If this <code>BinaryQValue</code> is backed by a persistent resource
+          * calling this method will have no effect.

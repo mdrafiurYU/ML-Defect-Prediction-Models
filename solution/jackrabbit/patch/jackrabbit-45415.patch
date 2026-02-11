@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/RTFTextExtractor.java b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/RTFTextExtractor.java
+index 3922fc2..e2f5215 100644
+--- a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/RTFTextExtractor.java
++++ b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/RTFTextExtractor.java
+@@ -61,8 +61,8 @@ public class RTFTextExtractor extends AbstractTextExtractor {
+             rek.read(stream, doc, 0);
+             String text = doc.getText(0, doc.getLength());
+             return new StringReader(text);
+-        } catch (BadLocationException e) {
+-            logger.warn("Failed to extract RTF text content", e);
++        } catch (Throwable t) {
++            logger.warn("Failed to extract RTF text content", t);
+             return new StringReader("");
+         } finally {
+             stream.close();

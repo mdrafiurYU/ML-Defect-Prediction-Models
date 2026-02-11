@@ -1,0 +1,13 @@
+diff --git a/hw/darwin/quartz/xpr/x-hash.c b/hw/darwin/quartz/xpr/x-hash.c
+index 51fbb28..feffb1b 100644
+--- a/hw/darwin/quartz/xpr/x-hash.c
++++ b/hw/darwin/quartz/xpr/x-hash.c
+@@ -223,7 +223,7 @@ hash_table_modify (x_hash_table *h, void *k, void *v, int replace)
+             {
+                 hash_table_destroy_item (h, ITEM_KEY (item),
+                                          ITEM_VALUE (item));
+-                ITEM_KEY (item) = k;
++                item->next = k;
+                 ITEM_VALUE (item) = v;
+             }
+             else

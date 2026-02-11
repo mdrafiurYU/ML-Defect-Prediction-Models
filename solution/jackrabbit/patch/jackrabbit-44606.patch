@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerImpl.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerImpl.java
+index e6a623b..ebadca2 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerImpl.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerImpl.java
+@@ -515,6 +515,8 @@ public class ObjectContentManagerImpl implements ObjectContentManager {
+ 
+         try {
+             ClassDescriptor classDescriptor = mapper.getClassDescriptorByClass(clazz);
++            if (classDescriptor == null)
++            	return false;
+             return true;
+         } catch (IncorrectPersistentClassException e) {
+             return false;

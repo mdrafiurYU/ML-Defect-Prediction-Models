@@ -1,0 +1,15 @@
+diff --git a/hw/xwin/winclipboardthread.c b/hw/xwin/winclipboardthread.c
+index a1f73ed..081abd5 100644
+--- a/hw/xwin/winclipboardthread.c
++++ b/hw/xwin/winclipboardthread.c
+@@ -28,6 +28,10 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
++#include <sys/types.h>
+ #include "winclipboard.h"
+ #ifdef __CYGWIN__
+ #include <errno.h>

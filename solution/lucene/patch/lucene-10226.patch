@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/IDFValueSource.java b/solr/src/java/org/apache/solr/search/function/IDFValueSource.java
+index 2fc2ff0..863ff86 100755
+--- a/solr/src/java/org/apache/solr/search/function/IDFValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/IDFValueSource.java
+@@ -29,7 +29,7 @@ import org.apache.solr.util.ByteUtils;
+ import java.io.IOException;
+ import java.util.Map;
+ 
+-/** @internal */
++/** @lucene.internal */
+ public class IDFValueSource extends DocFreqValueSource {
+   public IDFValueSource(String field, String val, String indexedField, BytesRef indexedBytes) {
+     super(field, val, indexedField, indexedBytes);

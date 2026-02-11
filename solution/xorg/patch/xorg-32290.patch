@@ -1,0 +1,50 @@
+diff --git a/GL/glx/glxcmdsswap.c b/GL/glx/glxcmdsswap.c
+index 12bc030..3f600c1 100644
+--- a/GL/glx/glxcmdsswap.c
++++ b/GL/glx/glxcmdsswap.c
+@@ -343,6 +343,15 @@ int __glXDispSwap_CreatePbuffer(__GLXclientState *cl, GLbyte *pc)
+     return BadRequest;    
+ }
+ 
++int __glXDispSwap_CreateGLXPbufferSGIX(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXCreateGLXPbufferSGIXReq *req = (xGLXCreateGLXPbufferSGIXReq *) pc;    
++
++    (void) req;
++
++    return BadRequest;    
++}
++
+ int __glXDispSwap_DestroyPbuffer(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXDestroyPbufferReq *req = (xGLXDestroyPbufferReq *) req;
+@@ -350,6 +359,13 @@ int __glXDispSwap_DestroyPbuffer(__GLXclientState *cl, GLbyte *pc)
+     return BadRequest;
+ }
+ 
++int __glXDispSwap_DestroyGLXPbufferSGIX(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXDestroyGLXPbufferSGIXReq *req = (xGLXDestroyGLXPbufferSGIXReq *) req;
++
++    return BadRequest;
++}
++
+ int __glXDispSwap_ChangeDrawableAttributes(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXChangeDrawableAttributesReq *req =
+@@ -358,6 +374,15 @@ int __glXDispSwap_ChangeDrawableAttributes(__GLXclientState *cl, GLbyte *pc)
+     return BadRequest;
+ }
+ 
++int __glXDispSwap_ChangeDrawableAttributesSGIX(__GLXclientState *cl,
++					       GLbyte *pc)
++{
++    xGLXChangeDrawableAttributesSGIXReq *req =
++	(xGLXChangeDrawableAttributesSGIXReq *) req;
++
++    return BadRequest;
++}
++
+ int __glXDispSwap_CreateWindow(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXCreateWindowReq *req = (xGLXCreateWindowReq *) pc;

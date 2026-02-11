@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorTests.java
+index 472bafb..d1f3429 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/MirrorTests.java
+@@ -52,12 +52,12 @@ public class MirrorTests extends Tests {
+ 	}
+ 	
+ 	public static String getProjectName() {
+-		return MirrorTests.class.getName() + "Project";
++		return MirrorTests.class.getName() + "Project"; //$NON-NLS-1$
+ 	}
+ 
+ 	public IPath getSourcePath() {
+ 		IProject project = env.getProject( getProjectName() );
+-		IFolder srcFolder = project.getFolder( "src" );
++		IFolder srcFolder = project.getFolder( "src" ); //$NON-NLS-1$
+ 		IPath srcRoot = srcFolder.getFullPath();
+ 		return srcRoot;
+ 	}
+@@ -84,7 +84,7 @@ public class MirrorTests extends Tests {
+ 
+ 		expectingNoProblems();
+ 		
+-		assertTrue("Processor was not run", MirrorTestAnnotationProcessor._processRun);
++		assertTrue("Processor was not run", MirrorTestAnnotationProcessor._processRun); //$NON-NLS-1$
+ 		
+ 		assertEquals(MirrorTestAnnotationProcessor.NO_ERRORS, 
+ 					 MirrorTestAnnotationProcessor.ERROR);

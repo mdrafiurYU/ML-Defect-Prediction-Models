@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java
+index dbea41b..ff0ae1c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java
+@@ -34,7 +34,6 @@ import org.apache.jackrabbit.core.state.NodeState;
+ import org.apache.jackrabbit.core.state.PropertyState;
+ import org.apache.jackrabbit.core.persistence.util.FileSystemBLOBStore;
+ import org.apache.jackrabbit.core.persistence.util.Serializer;
+-import org.apache.jackrabbit.core.value.BLOBFileValue;
+ import org.apache.jackrabbit.core.value.InternalValue;
+ import org.apache.jackrabbit.spi.Name;
+ import org.slf4j.Logger;
+@@ -482,11 +481,7 @@ public class InMemPersistenceManager extends AbstractPersistenceManager {
+         if (values != null) {
+             for (InternalValue val : values) {
+                 if (val != null) {
+-                    if (val.getType() == PropertyType.BINARY) {
+-                        BLOBFileValue blobVal = val.getBLOBFileValue();
+-                        // delete blob file and prune empty parent folders
+-                        blobVal.delete(true);
+-                    }
++                    val.deleteBinaryResource();
+                 }
+             }
+         }

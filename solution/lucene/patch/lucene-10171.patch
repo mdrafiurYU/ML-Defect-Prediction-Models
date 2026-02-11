@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
+index 3a574db..d3cd2ce 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/PrefixCodedTermsReader.java
+@@ -40,6 +40,8 @@ import org.apache.lucene.util.DoubleBarrelLRUCache;
+ import org.apache.lucene.util.BytesRef;
+ import org.apache.lucene.util.CodecUtil;
+ 
++import org.apache.lucene.index.codecs.standard.StandardPostingsReader; // javadocs
++
+ /** Handles a terms dict, but decouples all details of
+  *  doc/freqs/positions reading to an instance of {@link
+  *  StandardPostingsReader}.  This class is reusable for

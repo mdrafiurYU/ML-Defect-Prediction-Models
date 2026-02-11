@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestMultiReader.java b/lucene/src/test/org/apache/lucene/index/TestMultiReader.java
+index c934b4d..6fa94b8 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestMultiReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestMultiReader.java
+@@ -26,8 +26,8 @@ public class TestMultiReader extends TestDirectoryReader {
+     IndexReader reader;
+ 
+     sis.read(dir);
+-    SegmentReader reader1 = SegmentReader.get(false, sis.info(0), IndexReader.DEFAULT_TERMS_INDEX_DIVISOR);
+-    SegmentReader reader2 = SegmentReader.get(false, sis.info(1), IndexReader.DEFAULT_TERMS_INDEX_DIVISOR);
++    SegmentReader reader1 = SegmentReader.get(false, sis.info(0), IndexReader.DEFAULT_TERMS_INDEX_DIVISOR, IOContext.DEFAULT);
++    SegmentReader reader2 = SegmentReader.get(false, sis.info(1), IndexReader.DEFAULT_TERMS_INDEX_DIVISOR, IOContext.DEFAULT);
+     readers[0] = reader1;
+     readers[1] = reader2;
+     assertTrue(reader1 != null);

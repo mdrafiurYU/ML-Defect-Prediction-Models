@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefWriter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefWriter.java
+index ef5008b..4745dbc 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefWriter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefWriter.java
+@@ -305,7 +305,7 @@ public class CompactNodeTypeDefWriter {
+                         out.write(Lexer.QUEROPS_LIKE);
+                     }
+                     if (i < qops.length - 1) {
+-                        out.write("' ");
++                        out.write(", ");
+                     }
+                 }
+                 out.write("'");

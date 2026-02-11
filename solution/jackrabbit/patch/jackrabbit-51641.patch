@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/ActivitiesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/ActivitiesTest.java
+index 891dea8..3dd79be 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/ActivitiesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/ActivitiesTest.java
+@@ -20,6 +20,7 @@ import javax.jcr.Node;
+ import javax.jcr.Property;
+ import javax.jcr.PropertyType;
+ import javax.jcr.Repository;
++import javax.jcr.RepositoryException;
+ import javax.jcr.nodetype.NodeType;
+ import javax.jcr.version.VersionManager;
+ 
+@@ -106,8 +107,13 @@ public class ActivitiesTest extends AbstractVersionTest {
+             assertTrue("path for activity must be below " + PREFIX + ", but was " + an.getPath(), an.getPath().startsWith(PREFIX));
+ 
+             Node activities = superuser.getNode(PREFIX);
+-            
+-            assertFalse(activities.getPrimaryNodeType().canAddChildNode("foobar"));
++
++            try {
++                activities.addNode("foobar");
++                fail("/jcr:system/jcr:activities must be protected.");
++            } catch (RepositoryException e) {
++                // ok
++            }
+         }
+         finally {
+             if (an != null) {

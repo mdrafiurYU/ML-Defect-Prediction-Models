@@ -1,0 +1,22 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index 25f6b6f..b8df5eb 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -470,7 +470,7 @@ miSpriteBlockHandler (int i, pointer blockData, pointer pTimeout,
+         if (DevHasCursor(pDev))
+         {
+             pCursorInfo = MISPRITE(pDev);
+-            if (!pCursorInfo->isUp 
++            if (pCursorInfo && !pCursorInfo->isUp
+                     && pCursorInfo->pScreen == pScreen 
+                     && pCursorInfo->shouldBeUp)
+             {
+@@ -484,7 +484,7 @@ miSpriteBlockHandler (int i, pointer blockData, pointer pTimeout,
+         if (DevHasCursor(pDev))
+         {
+             pCursorInfo = MISPRITE(pDev);
+-            if (!pCursorInfo->isUp && 
++            if (pCursorInfo && !pCursorInfo->isUp &&
+                     pCursorInfo->pScreen == pScreen && 
+                     pCursorInfo->shouldBeUp)
+             {

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewImportHandler.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewImportHandler.java
+index 382d857..f5883da 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewImportHandler.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewImportHandler.java
+@@ -118,7 +118,7 @@ class SysViewImportHandler extends TargetImportHandler {
+ 
+             // node name (value of sv:name attribute)
+             String svName = getAttribute(atts, NameConstants.SV_NAME);
+-            if (name == null) {
++            if (svName == null) {
+                 throw new SAXException(new InvalidSerializedDataException(
+                         "missing mandatory sv:name attribute of element sv:node"));
+             }

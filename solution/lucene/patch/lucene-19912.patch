@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/QueryParsing.java b/solr/src/java/org/apache/solr/search/QueryParsing.java
+index 834b029..7e094dd 100644
+--- a/solr/src/java/org/apache/solr/search/QueryParsing.java
++++ b/solr/src/java/org/apache/solr/search/QueryParsing.java
+@@ -693,7 +693,7 @@ public class QueryParsing {
+         pos++;
+         while (pos < end) {
+           ch = val.charAt(pos);
+-          if (!Character.isJavaIdentifierPart(ch) && ch != '.') {
++          if (!Character.isJavaIdentifierPart(ch) && ch != '.' && ch != ':') {
+             break;
+           }
+           pos++;

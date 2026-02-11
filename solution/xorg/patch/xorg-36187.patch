@@ -1,0 +1,15 @@
+diff --git a/hw/xprint/ps/PsWindow.c b/hw/xprint/ps/PsWindow.c
+index d17cf8c..8bfde4b 100644
+--- a/hw/xprint/ps/PsWindow.c
++++ b/hw/xprint/ps/PsWindow.c
+@@ -154,8 +154,8 @@ PsCreateWindow(WindowPtr pWin)
+ 	    {
+                 propName = MakeAtom(propStrings[i], strlen(propStrings[i]),
+ 				    TRUE);
+-	        ChangeWindowProperty(pWin, propName, XA_STRING, 8, 
+-			             PropModeReplace,  strlen(propVal), 
++	        dixChangeWindowProperty(serverClient, pWin, propName, XA_STRING,
++					8, PropModeReplace, strlen(propVal),
+ 			             (pointer)propVal, FALSE);
+ 	        xfree(propVal);
+ 	    }

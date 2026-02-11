@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java
+index 4fa35f4..43daeed 100644
+--- a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java
++++ b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java
+@@ -44,4 +44,11 @@ public interface User extends Authorizable {
+      */
+     Impersonation getImpersonation() throws RepositoryException;
+ 
++    /**
++     * Change the password of this user.
++     *
++     * @param password The new password.
++     * @throws RepositoryException
++     */
++    void changePassword(String password) throws RepositoryException;
+ }

@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/RussianLightStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/RussianLightStemFilterFactory.java
+index fc9e301..b6677a9 100644
+--- a/solr/src/java/org/apache/solr/analysis/RussianLightStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/RussianLightStemFilterFactory.java
+@@ -20,7 +20,17 @@ package org.apache.solr.analysis;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.ru.RussianLightStemFilter;
+ 
+-/** Factory for {@link RussianLightStemFilter} */
++/** 
++ * Factory for {@link RussianLightStemFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_rulgtstem" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.RussianLightStemFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre>
++ * @version $Id$
++ */
+ public class RussianLightStemFilterFactory extends BaseTokenFilterFactory {
+   public TokenStream create(TokenStream input) {
+     return new RussianLightStemFilter(input);

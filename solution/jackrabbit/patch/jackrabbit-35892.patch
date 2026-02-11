@@ -1,0 +1,35 @@
+diff --git a/contrib/spi/spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/SessionInfoImpl.java b/contrib/spi/spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/SessionInfoImpl.java
+index a89d997..a3d4aef 100644
+--- a/contrib/spi/spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/SessionInfoImpl.java
++++ b/contrib/spi/spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/SessionInfoImpl.java
+@@ -45,11 +45,6 @@ class SessionInfoImpl implements SessionInfo {
+     private final NamespaceResolver resolver;
+ 
+     /**
+-     * The bundle id of the last retrieved events.
+-     */
+-    private String lastEventBundleId;
+-
+-    /**
+      * A copy of the credentials that were used to obtain the JCR session.
+      */
+     private Credentials credentials;
+@@ -153,18 +148,4 @@ class SessionInfoImpl implements SessionInfo {
+     public void removeLockToken(String lockToken) {
+         session.removeLockToken(lockToken);
+     }
+-
+-    /**
+-     * @inheritDoc
+-     */
+-    public String getLastEventBundleId() {
+-        return lastEventBundleId;
+-    }
+-
+-    /**
+-     * @inheritDoc
+-     */
+-    public void setLastEventBundleId(String eventBundleId) {
+-        lastEventBundleId = eventBundleId;
+-    }
+ }

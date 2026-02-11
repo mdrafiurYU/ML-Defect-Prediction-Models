@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/misc/Delay.c b/hw/xfree86/os-support/misc/Delay.c
+index e3e93fa..b18789a 100644
+--- a/hw/xfree86/os-support/misc/Delay.c
++++ b/hw/xfree86/os-support/misc/Delay.c
+@@ -18,7 +18,7 @@ xf86UDelay(long usec)
+     int sigio;
+ 
+     sigio = xf86BlockSIGIO();
+-    xf86usleep(usec);
++    usleep(usec);
+     xf86UnblockSIGIO(sigio);
+ #endif
+ 

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+index 412daae..ec9c914 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+@@ -919,7 +919,7 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+       assertTrue(failure.failOnCommit && failure.failOnDeleteFile);
+       w.rollback();
+       assertFalse(dir.fileExists("1.fnx"));
+-      // FIXME: on windows, this often fails! assertEquals(0, dir.listAll().length);
++      assertEquals(0, dir.listAll().length);
+       dir.close();
+     }
+   }

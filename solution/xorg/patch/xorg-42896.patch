@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_bell.c b/hw/xfree86/os-support/linux/lnx_bell.c
+index 702dfa6..75cdd3e 100644
+--- a/hw/xfree86/os-support/linux/lnx_bell.c
++++ b/hw/xfree86/os-support/linux/lnx_bell.c
+@@ -34,7 +34,7 @@
+ #include "xf86Priv.h"
+ #include "xf86_OSproc.h"
+ 
+-_X_EXPORT void
++void
+ xf86OSRingBell(int loudness, int pitch, int duration)
+ {
+     if (xf86Info.consoleFd == -1 || !pitch || !loudness)

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index aa73e7d..169a957 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -64,7 +64,7 @@ extern ScrnInfoPtr xf86CurrentScreen;
+ extern Bool pciSlotClaimed;
+ extern Bool isaSlotClaimed;
+ extern Bool fbSlotClaimed;
+-#ifdef __sparc__
++#if defined(__sparc__) || defined(__sparc)
+ extern Bool sbusSlotClaimed;
+ #endif
+ extern confDRIRec xf86ConfigDRI;

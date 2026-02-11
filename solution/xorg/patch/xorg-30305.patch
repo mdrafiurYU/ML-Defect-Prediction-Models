@@ -1,0 +1,15 @@
+diff --git a/fb/fballpriv.c b/fb/fballpriv.c
+index 496c2d4..8efb8fa 100644
+--- a/fb/fballpriv.c
++++ b/fb/fballpriv.c
+@@ -47,10 +47,6 @@ int fbGetWinPrivateIndex(void)
+ #endif
+ int fbGeneration;
+ 
+-#ifdef FB_OLD_SCREEN
+-#define miAllocateGCPrivateIndex()  AllocateGCPrivateIndex()
+-#endif
+-
+ Bool
+ fbAllocatePrivates(ScreenPtr pScreen, int *pGCIndex)
+ {

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
+index f1da087..e98f2e8 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
+@@ -111,7 +111,7 @@ public SourceElementParser(
+ 		DefaultErrorHandlingPolicies.exitAfterAllProblems(),
+ 		options, 
+ 		problemFactory) {
+-		public void record(IProblem problem, CompilationResult unitResult, ReferenceContext context) {
++		public void record(CategorizedProblem problem, CompilationResult unitResult, ReferenceContext context) {
+ 			unitResult.record(problem, context); // TODO (jerome) clients are trapping problems either through factory or requestor... is result storing needed?
+ 			requestor.acceptProblem(problem);
+ 		}

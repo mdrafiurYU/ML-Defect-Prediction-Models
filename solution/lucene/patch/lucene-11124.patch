@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/FuzzyLikeThisQueryBuilder.java b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/FuzzyLikeThisQueryBuilder.java
+index 3df1513..fd583b0 100644
+--- a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/FuzzyLikeThisQueryBuilder.java
++++ b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/FuzzyLikeThisQueryBuilder.java
+@@ -2,6 +2,7 @@ package org.apache.lucene.xmlparser.builders;
+ 
+ import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.search.FuzzyLikeThisQuery;
++import org.apache.lucene.search.FuzzyQuery;
+ import org.apache.lucene.search.Query;
+ import org.apache.lucene.xmlparser.DOMUtils;
+ import org.apache.lucene.xmlparser.ParserException;
+@@ -32,7 +33,7 @@ import org.w3c.dom.NodeList;
+ public class FuzzyLikeThisQueryBuilder implements QueryBuilder
+ {
+ 	int defaultMaxNumTerms=50;
+-	float defaultMinSimilarity=0.5f;
++	float defaultMinSimilarity=FuzzyQuery.defaultMinSimilarity;
+ 	int defaultPrefixLength=1;
+ 	boolean defaultIgnoreTF=false;
+ 	private Analyzer analyzer;

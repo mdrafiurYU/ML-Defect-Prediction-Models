@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/Test02Boolean.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/Test02Boolean.java
+index c578fa3..c179d94 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/Test02Boolean.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/surround/query/Test02Boolean.java
+@@ -39,7 +39,7 @@ public class Test02Boolean extends LuceneTestCase {
+     "a c e a b c"
+   };
+ 
+-  SingleFieldTestDb db1 = new SingleFieldTestDb(docs1, fieldName);
++  SingleFieldTestDb db1 = new SingleFieldTestDb(random, docs1, fieldName);
+ 
+   public void normalTest1(String query, int[] expdnrs) throws Exception {
+     BooleanQueryTst bqt = new BooleanQueryTst( query, expdnrs, db1, fieldName, this,

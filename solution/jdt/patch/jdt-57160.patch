@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java
+index 7253ecb..a9f54f4 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java
+@@ -1053,7 +1053,6 @@ public class SourceMapper
+ 			for (int i = 0; i <= lastDollar; i++)
+ 				newClassFileName.append(classFileName.charAt(i));
+ 			newClassFileName.append(Integer.toString(this.anonymousCounter));
+-			newClassFileName.append(SuffixConstants.SUFFIX_class);
+ 			PackageFragment pkg = (PackageFragment) classFile.getParent();
+ 			return new BinaryType(new ClassFile(pkg, newClassFileName.toString()), typeName);
+ 		} else if (this.binaryType.getElementName().equals(typeName))

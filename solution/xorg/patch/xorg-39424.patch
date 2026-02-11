@@ -1,0 +1,16 @@
+diff --git a/os/xdmcp.c b/os/xdmcp.c
+index ba39284..736cd3e 100644
+--- a/os/xdmcp.c
++++ b/os/xdmcp.c
+@@ -42,11 +42,6 @@
+ #include "opaque.h"
+ #include "site.h"
+ 
+-#if defined(DGUX)
+-#include <net/net_ioctl.h>
+-#include <sys/ioctl.h>
+-#endif
+-
+ #ifdef STREAMSCONN
+ #include <tiuser.h>
+ #include <netconfig.h>

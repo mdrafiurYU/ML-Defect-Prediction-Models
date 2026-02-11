@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/AddMixinTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/AddMixinTest.java
+index d68a1a3..124dd23 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/AddMixinTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/nodetype/AddMixinTest.java
+@@ -45,6 +45,7 @@ public class AddMixinTest extends AbstractJCRTest {
+ 
+     protected void tearDown() throws Exception {
+         testRootNode.refresh(false);
++        ntMgr = null;
+         super.tearDown();
+     }

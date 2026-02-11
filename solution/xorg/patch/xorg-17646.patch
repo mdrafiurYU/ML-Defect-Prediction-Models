@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xisb.h b/hw/xfree86/common/xisb.h
+index 39ae2ee..1e917a1 100644
+--- a/hw/xfree86/common/xisb.h
++++ b/hw/xfree86/common/xisb.h
+@@ -26,6 +26,10 @@
+  */
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef	_xisb_H_
+ #define _xisb_H_
+ 

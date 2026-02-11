@@ -1,0 +1,13 @@
+diff --git a/include/dix.h b/include/dix.h
+index 5caa6e2..bec19dd 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -61,7 +61,7 @@ SOFTWARE.
+ 
+ #define NullClient ((ClientPtr) 0)
+ #define REQUEST(type) \
+-	register type *stuff = (type *)client->requestBuffer
++	type *stuff = (type *)client->requestBuffer
+ 
+ 
+ #define REQUEST_SIZE_MATCH(req)\

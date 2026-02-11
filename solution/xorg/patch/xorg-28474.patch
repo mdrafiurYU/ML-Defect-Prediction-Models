@@ -1,0 +1,52 @@
+diff --git a/hw/xfree86/parser/Video.c b/hw/xfree86/parser/Video.c
+index fa0ff78..a8912cf 100644
+--- a/hw/xfree86/parser/Video.c
++++ b/hw/xfree86/parser/Video.c
+@@ -74,7 +74,23 @@ static xf86ConfigSymTabRec VideoPortTab[] =
+ 
+ #define CLEANUP xf86freeVideoPortList
+ 
+-XF86ConfVideoPortPtr
++static void
++xf86freeVideoPortList (XF86ConfVideoPortPtr ptr)
++{
++	XF86ConfVideoPortPtr prev;
++
++	while (ptr)
++	{
++		TestFree (ptr->vp_identifier);
++		TestFree (ptr->vp_comment);
++		xf86optionListFree (ptr->vp_option_lst);
++		prev = ptr;
++		ptr = ptr->list.next;
++		xf86conffree (prev);
++	}
++}
++
++static XF86ConfVideoPortPtr
+ xf86parseVideoPortSubSection (void)
+ {
+ 	int has_ident = FALSE;
+@@ -266,22 +282,6 @@ xf86freeVideoAdaptorList (XF86ConfVideoAdaptorPtr ptr)
+ 	}
+ }
+ 
+-void
+-xf86freeVideoPortList (XF86ConfVideoPortPtr ptr)
+-{
+-	XF86ConfVideoPortPtr prev;
+-
+-	while (ptr)
+-	{
+-		TestFree (ptr->vp_identifier);
+-		TestFree (ptr->vp_comment);
+-		xf86optionListFree (ptr->vp_option_lst);
+-		prev = ptr;
+-		ptr = ptr->list.next;
+-		xf86conffree (prev);
+-	}
+-}
+-
+ XF86ConfVideoAdaptorPtr
+ xf86findVideoAdaptor (const char *ident, XF86ConfVideoAdaptorPtr p)
+ {

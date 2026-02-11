@@ -1,0 +1,26 @@
+diff --git a/hw/xfree86/common/xf86cmap.c b/hw/xfree86/common/xf86cmap.c
+index 8ae193a..e578447 100644
+--- a/hw/xfree86/common/xf86cmap.c
++++ b/hw/xfree86/common/xf86cmap.c
+@@ -101,8 +101,10 @@ typedef struct {
+   int		overscan;
+ } CMapColormapRec, *CMapColormapPtr;
+ 
+-static DevPrivateKey CMapScreenKey = NULL;
+-static DevPrivateKey CMapColormapKey = &CMapColormapKey;
++static int CMapScreenKeyIndex;
++static DevPrivateKey CMapScreenKey;
++static int CMapColormapKeyIndex;
++static DevPrivateKey CMapColormapKey = &CMapColormapKeyIndex;
+ 
+ static void CMapInstallColormap(ColormapPtr);
+ static void CMapStoreColors(ColormapPtr, int, xColorItem *);
+@@ -142,7 +144,7 @@ _X_EXPORT Bool xf86HandleColormaps(
+     if(!maxColors || !sigRGBbits || !loadPalette)
+ 	return FALSE;
+ 
+-    CMapScreenKey = &CMapScreenKey;
++    CMapScreenKey = &CMapScreenKeyIndex;
+ 
+     elements = 1 << sigRGBbits;
+ 

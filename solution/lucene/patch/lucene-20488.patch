@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java b/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java
+index cd6ebb3..6d61cc0 100644
+--- a/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java
++++ b/lucene/src/test/org/apache/lucene/TestMergeSchedulerExternal.java
+@@ -90,7 +90,7 @@ public class TestMergeSchedulerExternal extends LuceneTestCase {
+     doc.add(idField);
+     
+     IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(
+-        TEST_VERSION_CURRENT, new MockAnalyzer()).setMergeScheduler(new MyMergeScheduler())
++        TEST_VERSION_CURRENT, new MockAnalyzer(random)).setMergeScheduler(new MyMergeScheduler())
+         .setMaxBufferedDocs(2).setRAMBufferSizeMB(IndexWriterConfig.DISABLE_AUTO_FLUSH)
+         .setMergePolicy(newLogMergePolicy()));
+     LogMergePolicy logMP = (LogMergePolicy) writer.getConfig().getMergePolicy();

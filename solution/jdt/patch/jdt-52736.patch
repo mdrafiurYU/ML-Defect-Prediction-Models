@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
+index aa75c6e..f73f2c1 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor.java
+@@ -3231,8 +3231,8 @@ public class CodeFormatterVisitor extends ASTVisitor {
+ 				if (action instanceof Expression) {
+ 					this.scribe.printNextToken(TerminalTokens.TokenNameSEMICOLON, this.preferences.insert_space_before_semicolon);
+ 					this.scribe.printTrailingComment();
+-					this.scribe.printNewLine();
+ 				}
++				this.scribe.printNewLine();
+ 				this.scribe.unIndent();
+ 			}
+ 		} else {

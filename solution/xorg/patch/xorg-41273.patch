@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index fe035f4..d7abfc9 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -94,10 +94,6 @@ static Bool doFramebufferMode = FALSE;
+ static StateChangeNotificationPtr StateChangeNotificationList;
+ static void notifyStateChange(xf86NotifyState state);
+ 
+-#undef MIN
+-#define MIN(x,y) ((x<y)?x:y)
+-
+-
+ /*
+  * Call the bus probes relevant to the architecture.
+  *

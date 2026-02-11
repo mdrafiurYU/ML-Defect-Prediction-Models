@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+index e94f9e5..1d25d0a 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+@@ -490,7 +490,7 @@ public class FST<T> {
+     }
+   }
+ 
+-  // Not private beacaus NodeHash needs access:
++  // Not private because NodeHash needs access:
+   Arc<T> readFirstRealArc(int address, Arc<T> arc) throws IOException {
+ 
+     final BytesReader in = getBytesReader(address);

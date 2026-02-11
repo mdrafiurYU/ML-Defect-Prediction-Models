@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index d2309eb..2872bf8 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -1538,7 +1538,7 @@ CheckGrabForSyncs(DeviceIntPtr thisDev, Bool thisMode, Bool otherMode)
+ }
+ 
+ /* Only ever used if a grab is called on an attached slave device. */
+-static DevPrivateKey GrabPrivateKey = -1;
++static DevPrivateKey GrabPrivateKey = &GrabPrivateKey;
+ typedef struct _GrabMemoryRec {
+     DeviceIntPtr oldmaster;
+ } GrabMemoryRec, *GrabMemoryPtr;

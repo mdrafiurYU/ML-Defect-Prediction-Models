@@ -1,0 +1,24 @@
+diff --git a/hw/kdrive/src/kmap.c b/hw/kdrive/src/kmap.c
+index ce1e28a..60e8ae1 100644
+--- a/hw/kdrive/src/kmap.c
++++ b/hw/kdrive/src/kmap.c
+@@ -75,9 +75,6 @@ KdMapDevice (CARD32 addr, CARD32 size)
+ 		    strerror (errno));
+     return a;
+ #endif
+-#ifdef VXWORKS
+-    return (void *) addr;
+-#endif
+ }
+ 
+ void
+@@ -90,9 +87,6 @@ KdUnmapDevice (void *addr, CARD32 size)
+ #ifdef linux
+     munmap (addr, size);
+ #endif
+-#ifdef VXWORKS
+-    ;
+-#endif
+ }
+ 
+ #ifdef HAVE_ASM_MTRR_H

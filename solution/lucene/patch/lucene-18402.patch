@@ -1,0 +1,19 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/RemoveDuplicatesTokenFilterFactory.java b/solr/src/java/org/apache/solr/analysis/RemoveDuplicatesTokenFilterFactory.java
+index 2ee6131..4b14f33 100644
+--- a/solr/src/java/org/apache/solr/analysis/RemoveDuplicatesTokenFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/RemoveDuplicatesTokenFilterFactory.java
+@@ -21,6 +21,14 @@ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.miscellaneous.RemoveDuplicatesTokenFilter;
+ 
+ /**
++ * Factory for {@link RemoveDuplicatesTokenFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_rmdup" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.RemoveDuplicatesTokenFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre>
+  * @version $Id$
+  */
+ public class RemoveDuplicatesTokenFilterFactory extends BaseTokenFilterFactory {

@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingCodec.java b/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingCodec.java
+index cb0dde0..31f3e08 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingCodec.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingCodec.java
+@@ -71,7 +71,7 @@ public class AppendingCodec extends Codec {
+     }
+     success = false;
+     try {
+-      FieldsConsumer ret = new AppendingTermsDictWriter(indexWriter, state, docsWriter, BytesRef.getUTF8SortedAsUnicodeComparator());
++      FieldsConsumer ret = new AppendingTermsDictWriter(indexWriter, state, docsWriter);
+       success = true;
+       return ret;
+     } finally {
+@@ -111,7 +111,6 @@ public class AppendingCodec extends Codec {
+               state.dir, state.fieldInfos, state.segmentInfo.name,
+               docsReader,
+               state.readBufferSize,
+-              BytesRef.getUTF8SortedAsUnicodeComparator(),
+               StandardCodec.TERMS_CACHE_SIZE,
+               state.codecId);
+       success = true;

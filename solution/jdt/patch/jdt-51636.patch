@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
+index bce9fb4..9b7223a 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
+@@ -71,12 +71,12 @@ public class FactoryLoaderTests extends Tests {
+ }
+ 	
+ 	public static String getProjectName() {
+-		return FactoryLoaderTests.class.getName() + "Project";
++		return FactoryLoaderTests.class.getName() + "Project"; //$NON-NLS-1$
+ 	}
+ 
+ 	public IPath getSourcePath() {
+ 		IProject project = env.getProject( getProjectName() );
+-		IFolder srcFolder = project.getFolder( "src" );
++		IFolder srcFolder = project.getFolder( "src" ); //$NON-NLS-1$
+ 		IPath srcRoot = srcFolder.getFullPath();
+ 		return srcRoot;
+ 	}

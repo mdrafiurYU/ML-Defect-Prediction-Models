@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index c2ea108..608fa9b 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -421,6 +421,7 @@ NewInputDeviceRequest (InputOption *options)
+         EnableDevice(dev);
+ 
+     /* send enter/leave event, update sprite window */
++    if (dev->spriteOwner)
+     InitializeSprite(dev, GetCurrentRootWindow());
+     CheckMotion(NULL, dev);
+ 

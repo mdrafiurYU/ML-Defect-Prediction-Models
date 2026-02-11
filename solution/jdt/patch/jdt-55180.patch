@@ -1,0 +1,82 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index f5f0a4b..c29903d 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -25,6 +25,7 @@ import org.eclipse.jdt.internal.compiler.ast.TypeDeclaration;
+ import org.eclipse.jdt.internal.compiler.env.IBinaryType;
+ import org.eclipse.jdt.internal.compiler.lookup.Binding;
+ import org.eclipse.jdt.internal.compiler.util.SuffixConstants;
++import org.eclipse.jdt.internal.core.JavaModelManager.PerProjectInfo;
+ import org.eclipse.jdt.internal.core.hierarchy.TypeHierarchy;
+ import org.eclipse.jdt.internal.core.util.MementoTokenizer;
+ import org.eclipse.jdt.internal.core.util.Messages;
+@@ -985,26 +986,10 @@ protected void toStringName(StringBuffer buffer) {
+ 		buffer.append("<anonymous>"); //$NON-NLS-1$
+ }
+ public String getAttachedJavadoc(IProgressMonitor monitor, String defaultEncoding) throws JavaModelException {
+-	URL baseLocation= getJavadocBaseLocation();
+-	if (baseLocation == null) {
+-		return null;
+-	}
+-	StringBuffer pathBuffer = new StringBuffer(baseLocation.toExternalForm());
+-
+-	if (!(pathBuffer.charAt(pathBuffer.length() - 1) == '/')) {
+-		pathBuffer.append('/');
+-	}
+-	IPackageFragment pack= this.getPackageFragment();
+-	String typeQualifiedName = this.getTypeQualifiedName('.');
+-	typeQualifiedName = typeQualifiedName.replace('$', '.');
+-	pathBuffer.append(pack.getElementName().replace('.', '/')).append('/').append(typeQualifiedName).append(JavadocConstants.HTML_EXTENSION);
+-	
+-	if (monitor != null && monitor.isCanceled()) throw new OperationCanceledException();
+-	final String contents = getURLContents(String.valueOf(pathBuffer), defaultEncoding);
+-	if (monitor != null && monitor.isCanceled()) throw new OperationCanceledException();
++	final String contents = getJavadocContents(monitor, defaultEncoding);
+ 	if (contents == null) throw new JavaModelException(new JavaModelStatus(IJavaModelStatusConstants.CANNOT_RETRIEVE_ATTACHED_JAVADOC, this));
+ 	final int indexOfStartOfClassData = contents.indexOf(JavadocConstants.START_OF_CLASS_DATA);
+-	if (indexOfStartOfClassData == -1) throw new JavaModelException(new JavaModelStatus(IJavaModelStatusConstants.UNRECOGNIZED_JAVADOC_FORMAT, this));
++	if (indexOfStartOfClassData == -1) throw new JavaModelException(new JavaModelStatus(IJavaModelStatusConstants.UNKNOWN_JAVADOC_FORMAT, this));
+ 	int indexOfNextSummary = contents.indexOf(JavadocConstants.NESTED_CLASS_SUMMARY);
+ 	if (indexOfNextSummary == -1) {
+ 		// try to find constructor summary start
+@@ -1019,8 +1004,39 @@ public String getAttachedJavadoc(IProgressMonitor monitor, String defaultEncodin
+ 		indexOfNextSummary = contents.indexOf(JavadocConstants.END_OF_CLASS_DATA);
+ 	}
+ 	if (indexOfNextSummary == -1) {
+-		throw new JavaModelException(new JavaModelStatus(IJavaModelStatusConstants.UNRECOGNIZED_JAVADOC_FORMAT, this));
++		throw new JavaModelException(new JavaModelStatus(IJavaModelStatusConstants.UNKNOWN_JAVADOC_FORMAT, this));
+ 	}
+ 	return contents.substring(indexOfStartOfClassData + JavadocConstants.START_OF_CLASS_DATA_LENGTH, indexOfNextSummary);
+ }
++public String getJavadocContents(IProgressMonitor monitor, String defaultEncoding) throws JavaModelException {
++	PerProjectInfo projectInfo = JavaModelManager.getJavaModelManager().getPerProjectInfoCheckExistence(this.getJavaProject().getProject());
++	if (projectInfo.javadocCache != null) {
++		final String cachedJavadoc = (String) projectInfo.javadocCache.get(this);
++		if (cachedJavadoc != null) {
++			return cachedJavadoc;
++		}
++	} else {
++		projectInfo.javadocCache = new HashMap();
++	}
++		
++		
++	URL baseLocation= getJavadocBaseLocation();
++	if (baseLocation == null) {
++		return null;
++	}
++	StringBuffer pathBuffer = new StringBuffer(baseLocation.toExternalForm());
++
++	if (!(pathBuffer.charAt(pathBuffer.length() - 1) == '/')) {
++		pathBuffer.append('/');
++	}
++	IPackageFragment pack= this.getPackageFragment();
++	String typeQualifiedName = this.getTypeQualifiedName('.');
++	typeQualifiedName = typeQualifiedName.replace('$', '.');
++	pathBuffer.append(pack.getElementName().replace('.', '/')).append('/').append(typeQualifiedName).append(JavadocConstants.HTML_EXTENSION);
++	
++	if (monitor != null && monitor.isCanceled()) throw new OperationCanceledException();
++	final String contents = getURLContents(String.valueOf(pathBuffer), defaultEncoding);
++	projectInfo.javadocCache.put(this, contents);
++	return contents;
++}
+ }

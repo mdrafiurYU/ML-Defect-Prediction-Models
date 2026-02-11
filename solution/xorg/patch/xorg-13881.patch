@@ -1,0 +1,20 @@
+diff --git a/hw/xnest/Events.c b/hw/xnest/Events.c
+index 20bcac5..2b2d4a8 100644
+--- a/hw/xnest/Events.c
++++ b/hw/xnest/Events.c
+@@ -126,6 +126,7 @@ xnestCollectEvents()
+       break;
+       
+     case ButtonPress:
++      xnestUpdateModifierState(X.xkey.state);
+       x.u.u.type = ButtonPress;
+       x.u.u.detail = X.xbutton.button;
+       x.u.keyButtonPointer.time = lastEventTime = GetTimeInMillis();
+@@ -133,6 +134,7 @@ xnestCollectEvents()
+       break;
+       
+     case ButtonRelease:
++      xnestUpdateModifierState(X.xkey.state);
+       x.u.u.type = ButtonRelease;
+       x.u.u.detail = X.xbutton.button;
+       x.u.keyButtonPointer.time = lastEventTime = GetTimeInMillis();

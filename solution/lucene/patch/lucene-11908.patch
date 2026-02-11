@@ -1,0 +1,19 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/FieldComparator.java b/lucene/src/java/org/apache/lucene/search/FieldComparator.java
+index 21e8441..6ff4e3a 100644
+--- a/lucene/src/java/org/apache/lucene/search/FieldComparator.java
++++ b/lucene/src/java/org/apache/lucene/search/FieldComparator.java
+@@ -1129,13 +1129,11 @@ public abstract class FieldComparator {
+             bottomOrd = index;
+             // exact value match
+             bottomSameReader = true;
++            readerGen[bottomSlot] = currentReaderGen;            
+           }
+           ords[bottomSlot] = bottomOrd;
+         }
+       }
+-      if (bottomSameReader) {
+-        readerGen[bottomSlot] = currentReaderGen;
+-      }
+     }
+ 
+     @Override

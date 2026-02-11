@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java
+index 0bc3196..b80ffad 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/ClassDescriptor.java
+@@ -242,7 +242,15 @@ public class ClassDescriptor {
+      * @return the fieldDescriptor ID
+      */
+     public FieldDescriptor getIdFieldDescriptor() {
+-        return idFieldDescriptor;
++        if (null != this.idFieldDescriptor) {
++           return this.idFieldDescriptor;
++       }
++
++       if (null != this.superClassDescriptor) {
++           return this.superClassDescriptor.getIdFieldDescriptor();
++       }
++
++       return null;
+     }
+ 
+     /**

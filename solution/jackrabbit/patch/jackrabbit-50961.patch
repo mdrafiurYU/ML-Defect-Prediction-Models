@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
+index 43bf5ae..bb0ef8d 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
+@@ -97,6 +97,11 @@ public class PredefinedNodeTypeTest extends AbstractJCRTest {
+         }
+     }
+ 
++    /** Test for the predefined mix:lifecycle node type. */
++    public void testLifecycle() throws NotExecutableException {
++        testPredefinedNodeType("mix:lifecycle");
++    }
++
+     /** Test for the predefined mix:lockable node type. */
+     public void testLockable() throws NotExecutableException {
+         testPredefinedNodeType("mix:lockable");

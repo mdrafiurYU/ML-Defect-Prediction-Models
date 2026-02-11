@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86RandR12.c b/hw/xfree86/modes/xf86RandR12.c
+index af950e6..1dca223 100644
+--- a/hw/xfree86/modes/xf86RandR12.c
++++ b/hw/xfree86/modes/xf86RandR12.c
+@@ -355,8 +355,8 @@ xf86RandR12ScreenSetSize (ScreenPtr	pScreen,
+ 
+     pScreen->width = pScrnPix->drawable.width = width;
+     pScreen->height = pScrnPix->drawable.height = height;
+-    pScreen->mmWidth = mmWidth;
+-    pScreen->mmHeight = mmHeight;
++    randrp->mmWidth = pScreen->mmWidth = mmWidth;
++    randrp->mmHeight = pScreen->mmHeight = mmHeight;
+ 
+     xf86SetViewport (pScreen, pScreen->width-1, pScreen->height-1);
+     xf86SetViewport (pScreen, 0, 0);

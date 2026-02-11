@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/PointType.java b/solr/src/java/org/apache/solr/schema/PointType.java
+index 8c7eeee..4a93333 100644
+--- a/solr/src/java/org/apache/solr/schema/PointType.java
++++ b/solr/src/java/org/apache/solr/schema/PointType.java
+@@ -112,7 +112,7 @@ public class PointType extends CoordinateFieldType implements SpatialQueryable {
+    *
+    */
+   @Override
+-  public Field createField(SchemaField field, String externalVal, float boost) {
++  public Fieldable createField(SchemaField field, String externalVal, float boost) {
+     throw new UnsupportedOperationException("PointType uses multiple fields.  field=" + field.getName());
+   }

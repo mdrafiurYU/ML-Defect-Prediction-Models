@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Module.h b/hw/xfree86/common/xf86Module.h
+index 81011e1..f4ce387 100644
+--- a/hw/xfree86/common/xf86Module.h
++++ b/hw/xfree86/common/xf86Module.h
+@@ -189,9 +189,6 @@ extern ExtensionModule *ExtensionModuleList;
+ pointer LoadSubModule(pointer, const char *, const char **,
+ 		      const char **, pointer, const XF86ModReqInfo *,
+ 		      int *, int *);
+-pointer LoadSubModuleLocal(pointer, const char *, const char **,
+-			   const char **, pointer, const XF86ModReqInfo *,
+-			   int *, int *);
+ void UnloadSubModule(pointer);
+ void UnloadModule (pointer);
+ #endif

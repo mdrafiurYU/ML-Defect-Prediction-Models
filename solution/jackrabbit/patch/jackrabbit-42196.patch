@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/TestAll.java
+index d5df74b..c5c29a8 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/TestAll.java
+@@ -32,8 +32,7 @@ public class TestAll extends TestCase {
+      */
+     public static Test suite() {
+         TestSuite suite = new TestSuite("Version tests");
+-        // disabled because JCR-1481 is not yet fixed
+-        //suite.addTestSuite(CheckinRemoveVersionTest.class);
++        suite.addTestSuite(CheckinRemoveVersionTest.class);
+         suite.addTestSuite(RemoveVersionLabelTest.class);
+         suite.addTestSuite(RestoreTest.class);
+         suite.addTestSuite(VersionIteratorImplTest.class);

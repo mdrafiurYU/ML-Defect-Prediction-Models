@@ -1,0 +1,13 @@
+diff --git a/Xprint/ps/PsFonts.c b/Xprint/ps/PsFonts.c
+index 10c0b1a..515a318 100644
+--- a/Xprint/ps/PsFonts.c
++++ b/Xprint/ps/PsFonts.c
+@@ -603,7 +603,7 @@ PsFontTypeInfoRec *PsCreateFontTypeInfoRec(DrawablePtr pDrawable, FontPtr pFont)
+ 
+   rec->next              = NULL;
+ 
+-  if (rec->filename = getFontFilename(pFont))
++  if ((rec->filename = getFontFilename(pFont)))
+   {
+     rec->font_type = getFontFileType(rec->filename);   
+   }

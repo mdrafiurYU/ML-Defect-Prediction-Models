@@ -1,0 +1,15 @@
+diff --git a/Xext/appgroup.h b/Xext/appgroup.h
+index 39087fe..a875068 100644
+--- a/Xext/appgroup.h
++++ b/Xext/appgroup.h
+@@ -51,7 +51,9 @@ extern ClientPtr XagLeader(
+ );
+ 
+ extern void XagCallClientStateChange(
+-    ClientPtr			/* client */
++    CallbackListPtr *		/* pcbl */,
++    pointer 			/* nulldata */,
++    pointer 			/* calldata */
+ );
+ 
+ extern Bool XagIsControlledRoot (

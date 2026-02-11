@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 1374d27..a7c9a44 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -2448,7 +2448,7 @@ public void configure(String[] argv) throws InvalidInputException {
+ 							extdirsClasspaths.add(classpath);
+ 						}
+ 					}
+-				} else {
++				} else if (directoriesToCheck[i].isFile()) {
+ 					this.logger.logIncorrectExtDirsEntry(directoriesToCheck[i].getAbsolutePath());
+ 				}
+ 			}

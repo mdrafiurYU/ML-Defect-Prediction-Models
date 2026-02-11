@@ -1,0 +1,14 @@
+diff --git a/render/picturestr.h b/render/picturestr.h
+index 60be68a..658e221 100644
+--- a/render/picturestr.h
++++ b/render/picturestr.h
+@@ -720,6 +720,9 @@ void
+ PictureTransformBounds (BoxPtr b, PictTransformPtr matrix);
+ 
+ Bool
++PictureTransformInvert (PictTransformPtr dst, const PictTransformPtr src);
++
++Bool
+ PictureTransformIsIdentity(PictTransform *t);
+ 
+ Bool

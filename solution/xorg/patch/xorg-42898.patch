@@ -1,0 +1,17 @@
+diff --git a/hw/dmx/input/dmxinputinit.h b/hw/dmx/input/dmxinputinit.h
+index 6f491ed..2e625cf 100644
+--- a/hw/dmx/input/dmxinputinit.h
++++ b/hw/dmx/input/dmxinputinit.h
+@@ -87,12 +87,10 @@ typedef struct _DMXLocalInitInfo {
+     KeySymsRec           keySyms;  /**< Key symbols */
+     int                  freemap;  /**< If non-zero, free keySyms.map */
+     CARD8                modMap[MAP_LENGTH]; /**< Modifier map */
+-#ifdef XKB
+     XkbDescPtr           xkb;       /**< XKB description */
+     XkbComponentNamesRec names;     /**< XKB component names */
+     int                  freenames; /**< Non-zero if names should be free'd */
+     int                  force;     /**< Do not allow command line override */
+-#endif
+ 
+     int                  buttonClass; /**< Non-zero if buttons are present */
+     int                  numButtons;  /**< Number of buttons */

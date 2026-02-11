@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsExcelTextExtractor.java b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsExcelTextExtractor.java
+index 57bc627..0128fee 100644
+--- a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsExcelTextExtractor.java
++++ b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsExcelTextExtractor.java
+@@ -48,7 +48,11 @@ public class MsExcelTextExtractor extends AbstractTextExtractor {
+      * Creates a new <code>MsExcelTextExtractor</code> instance.
+      */
+     public MsExcelTextExtractor() {
+-        super(new String[]{"application/vnd.ms-excel", "application/msexcel"});
++        super(new String[] {
++                "application/vnd.ms-excel",
++                "application/msexcel",
++                "application/excel"
++        });
+     }
+ 
+     //-------------------------------------------------------< TextExtractor >

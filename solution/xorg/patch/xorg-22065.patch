@@ -1,0 +1,15 @@
+diff --git a/mfb/mfbscrclse.c b/mfb/mfbscrclse.c
+index 12ccf60..5544593 100644
+--- a/mfb/mfbscrclse.c
++++ b/mfb/mfbscrclse.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XFree86: xc/programs/Xserver/mfb/mfbscrclse.c,v 1.3tsi Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "mfb.h"
+ #include "scrnintstr.h"
+ 

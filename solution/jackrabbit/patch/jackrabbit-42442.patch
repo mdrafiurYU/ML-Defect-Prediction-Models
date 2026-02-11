@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/TestAll.java
+index cd9726d..76c1fdb 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/TestAll.java
+@@ -29,8 +29,10 @@ public class TestAll extends TestCase {
+     public static Test suite() {
+         TestSuite suite = new TestSuite("QOM tests");
+ 
++        suite.addTestSuite(BindVariableValueTest.class);
+         suite.addTestSuite(ChildNodeTest.class);
+         suite.addTestSuite(DescendantNodeTest.class);
++        suite.addTestSuite(NodeNameTest.class);
+         suite.addTestSuite(QueryObjectModelFactoryTest.class);
+         suite.addTestSuite(SameNodeTest.class);
+         suite.addTestSuite(SelectorTest.class);

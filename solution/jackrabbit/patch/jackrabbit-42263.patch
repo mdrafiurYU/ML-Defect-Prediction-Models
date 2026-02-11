@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/name/NamespaceAdder.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/name/NamespaceAdder.java
+index 524ff60..078d6c7 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/name/NamespaceAdder.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/name/NamespaceAdder.java
+@@ -39,10 +39,10 @@ public class NamespaceAdder {
+     public void addNamespaces(NamespaceMapping nsm)
+             throws NamespaceException, UnsupportedRepositoryOperationException, RepositoryException {
+         Map m = nsm.getPrefixToURIMapping();
+-        for (Iterator i = m.values().iterator(); i.hasNext();) {
++        for (Iterator i = m.entrySet().iterator(); i.hasNext();) {
+             Map.Entry e = (Map.Entry) i.next();
+             String prefix = (String) e.getKey();
+-            String uri = (String) e.getKey();
++            String uri = (String) e.getValue();
+             registry.registerNamespace(prefix, uri);
+         }
+     }

@@ -1,0 +1,15 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 11e5bae..f5654f6 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -624,6 +624,10 @@ InitExtensions(argc, argv)
+ #endif
+ #endif
+ #ifdef XFIXES
++    /* must be before Render to layer DisplayCursor correctly */
++    if (!noXFixesExtension) XFixesExtensionInit();
++#endif
++#ifdef RENDER
+     if (!noRenderExtension) RenderExtensionInit();
+ #endif
+ #ifdef RANDR

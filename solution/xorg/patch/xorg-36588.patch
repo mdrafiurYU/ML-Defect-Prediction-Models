@@ -1,0 +1,19 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 4b20655..5a726af 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -618,12 +618,12 @@ CloseDownDevices(void)
+     for (dev = inputInfo.devices; dev; dev = next)
+     {
+ 	next = dev->next;
+-	CloseDevice(dev);
++        DeleteInputDeviceRequest(dev);
+     }
+     for (dev = inputInfo.off_devices; dev; dev = next)
+     {
+ 	next = dev->next;
+-	CloseDevice(dev);
++        DeleteInputDeviceRequest(dev);
+     }
+     inputInfo.devices = NULL;
+     inputInfo.off_devices = NULL;

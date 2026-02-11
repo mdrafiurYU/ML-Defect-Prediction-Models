@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java
+index 81678cf..49f72a5 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java
+@@ -42,7 +42,8 @@ public class HierarchyManagerImpl implements HierarchyManager {
+     private final UniqueIdResolver uniqueIdResolver;
+     private final IdFactory idFactory;
+ 
+-    public HierarchyManagerImpl(TransientItemStateFactory isf, IdFactory idFactory, PathFactory pathFactory) {
++    public HierarchyManagerImpl(TransientItemStateFactory isf, IdFactory idFactory,
++                                PathFactory pathFactory) {
+         uniqueIdResolver = new UniqueIdResolver(isf);
+         rootEntry = new EntryFactory(isf, idFactory, uniqueIdResolver, pathFactory).createRootEntry();
+         this.idFactory = idFactory;

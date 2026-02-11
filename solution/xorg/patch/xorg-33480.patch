@@ -1,0 +1,14 @@
+diff --git a/mi/mibstore.c b/mi/mibstore.c
+index 70839ce..e27c681 100644
+--- a/mi/mibstore.c
++++ b/mi/mibstore.c
+@@ -3468,7 +3468,8 @@ miBSValidateGC (pGC, stateChanges, pDrawable)
+ 
+ 	/* We never want ops with the backingGC to generate GraphicsExpose */
+ 	pBackingGC = CreateGC ((DrawablePtr)pWindowPriv->pBackingPixmap,
+-			       GCGraphicsExposures, &noexpose, &status);
++			       GCGraphicsExposures, &noexpose, &status,
++			       (XID)0, serverClient);
+ 	if (status != Success)
+ 	    lift_functions = TRUE;
+ 	else

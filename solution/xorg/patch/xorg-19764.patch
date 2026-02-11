@@ -1,0 +1,12 @@
+diff --git a/xfixes/region.c b/xfixes/region.c
+index d317f73..68c7015 100755
+--- a/xfixes/region.c
++++ b/xfixes/region.c
+@@ -839,6 +839,7 @@ ProcXFixesExpandRegion (ClientPtr client)
+ 	    REGION_INIT (pScreen, &r, &pTmp[i], 0);
+ 	    REGION_UNION (pScreen, pDestination, pDestination, &r);
+ 	}
++	xfree(pTmp);
+     }
+     if (ret == Success) 
+ 	ret = client->noClientException;

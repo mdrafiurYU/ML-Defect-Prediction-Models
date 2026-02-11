@@ -1,0 +1,17 @@
+diff --git a/hw/kdrive/ephyr/hostx.h b/hw/kdrive/ephyr/hostx.h
+index 73e7e04..08ed036 100644
+--- a/hw/kdrive/ephyr/hostx.h
++++ b/hw/kdrive/ephyr/hostx.h
+@@ -69,10 +69,12 @@ struct EphyrHostXEvent
+ 
+     struct key_up {
+       int scancode;
++      int state;
+     } key_up;
+ 
+     struct key_down {
+       int scancode;
++      int state;
+     } key_down;
+ 
+   } data;

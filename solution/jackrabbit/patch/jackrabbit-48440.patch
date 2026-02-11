@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/LRUNodeIdCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/LRUNodeIdCache.java
+index 65d3726..815884e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/LRUNodeIdCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/LRUNodeIdCache.java
+@@ -39,12 +39,12 @@ public class LRUNodeIdCache {
+     /**
+      * the number of cache hits
+      */
+-    private long hits = 0;
++    private long hits;
+ 
+     /**
+      * the number of cache misses
+      */
+-    private long misses = 0;
++    private long misses;
+ 
+     /**
+      * the map of cached ids

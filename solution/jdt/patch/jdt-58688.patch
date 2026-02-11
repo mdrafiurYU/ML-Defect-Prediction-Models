@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java
+index f0d7276..d37e73f 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java
+@@ -42,7 +42,7 @@ public NullReferenceTest(String name) {
+   	}
+ 
+ public static Test suite() {
+-    return buildTestSuite(testClass());
++    return buildAllCompliancesRegressionTestSetupSuite(testClass());
+ }
+   
+ public static Class testClass() {

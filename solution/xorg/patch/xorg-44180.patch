@@ -1,0 +1,13 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 065b202..4a36669 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -1505,6 +1505,8 @@ ProcChangeKeyboardMapping(ClientPtr client)
+     for (tmp = inputInfo.devices; tmp; tmp = tmp->next) {
+         if (tmp->isMaster || tmp->u.master != pDev)
+             continue;
++        if (!tmp->key)
++            continue;
+ 
+         rc = XaceHook(XACE_DEVICE_ACCESS, client, pDev, DixManageAccess);
+         if (rc != Success)

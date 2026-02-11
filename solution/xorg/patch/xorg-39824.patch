@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index 0686946..734e709 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -138,19 +138,16 @@
+ 
+ /* Global data */
+ 
+-pciBusInfo_t  *pciBusInfo[MAX_PCI_BUSES] = { NULL, };
++pciBusInfo_t *pciBusInfo = NULL;
+ _X_EXPORT int            pciNumBuses = 0;     /* Actual number of PCI buses */
+ 
+ _X_EXPORT ADDRESS
+ pciBusAddrToHostAddr(PCITAG tag, PciAddrType type, ADDRESS addr)
+ {
+-  int bus = PCI_BUS_FROM_TAG(tag);
+-
+-  if ((bus >= 0) && (bus < pciNumBuses) && pciBusInfo[bus] &&
+-	pciBusInfo[bus]->funcs->pciAddrBusToHost)
+-	  return (*pciBusInfo[bus]->funcs->pciAddrBusToHost)(tag, type, addr);
++    if (pciBusInfo->funcs->pciAddrBusToHost)
++	return pciBusInfo->funcs->pciAddrBusToHost(tag, type, addr);
+   else
+-	  return(addr);
++	return addr;
+ }
+ 
+ _X_EXPORT PCITAG

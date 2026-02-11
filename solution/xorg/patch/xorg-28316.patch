@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index a9ce211..2c74001 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -174,7 +174,7 @@ xf86ActivateDevice(LocalDevicePtr local)
+         dev->spriteInfo->spriteOwner = !(local->flags & XI86_SHARED_POINTER);
+ 
+ #ifdef XKB
+-        if (!IsPointerDevice(dev))
++        if (!DeviceIsPointerType(dev))
+         {
+         /* FIXME: that's not the nice way to do it. XKB wraps the previously
+          * set procs, so if we don't have them here, our event will disappear

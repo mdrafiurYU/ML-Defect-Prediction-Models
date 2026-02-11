@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/DocSet.java b/solr/src/java/org/apache/solr/search/DocSet.java
+index 2135808..a053e05 100644
+--- a/solr/src/java/org/apache/solr/search/DocSet.java
++++ b/solr/src/java/org/apache/solr/search/DocSet.java
+@@ -89,10 +89,7 @@ public interface DocSet /* extends Collection<Integer> */ {
+    *
+    * @return
+    * An OpenBitSet with the bit number of every docid set in the set.
+-   * 
+-   * @deprecated Use {@link #iterator()} to access all docs instead.
+    */
+-  @Deprecated
+   public OpenBitSet getBits();
+ 
+   /**

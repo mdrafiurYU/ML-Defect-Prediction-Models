@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/int10/xf86x86emu.h b/hw/xfree86/int10/xf86x86emu.h
+index 27ff6fc..a7eb6d3 100644
+--- a/hw/xfree86/int10/xf86x86emu.h
++++ b/hw/xfree86/int10/xf86x86emu.h
+@@ -4,6 +4,10 @@
+  *   execute BIOS int 10h calls in x86 real mode environment
+  *                 Copyright 1999 Egbert Eich
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef XF86X86EMU_H_
+ #define XF86X86EMU_H_
+ #include <x86emu.h>

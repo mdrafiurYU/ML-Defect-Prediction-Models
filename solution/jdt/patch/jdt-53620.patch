@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
+index 76a9062..29330c3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
+@@ -206,7 +206,7 @@ public class UnaryExpression extends OperatorExpression {
+ 	public TypeBinding resolveType(BlockScope scope) {
+ 		
+ 		boolean expressionIsCast;
+-		if ((expressionIsCast = this.expression instanceof CastExpression) == true) this.expression.bits |= IgnoreNeedForCastCheckMASK; // will check later on
++		if ((expressionIsCast = this.expression instanceof CastExpression) == true) this.expression.bits |= DisableUnnecessaryCastCheck; // will check later on
+ 		TypeBinding expressionType = this.expression.resolveType(scope);
+ 		if (expressionType == null) {
+ 			this.constant = NotAConstant;

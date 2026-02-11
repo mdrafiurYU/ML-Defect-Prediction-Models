@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
+index edcee96..d837cfa 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
+@@ -319,7 +319,7 @@ public class AllocationExpression extends Expression implements InvocationSite {
+ 			scope.problemReporter().invalidConstructor(this, binding);
+ 			return this.resolvedType;
+ 		}
+-		if (isMethodUseDeprecated(binding, scope))
++		if (isMethodUseDeprecated(binding, scope, true))
+ 			scope.problemReporter().deprecatedMethod(binding, this);
+ 		checkInvocationArguments(scope, null, allocationType, this.binding, this.arguments, argumentTypes, argsContainCast, this);

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+index febc6e8..e5f4fa3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+@@ -49,7 +49,9 @@ public class CastExpression extends Expression {
+ 		if (scope.compilerOptions().getSeverity(CompilerOptions.UnnecessaryTypeCheck) == ProblemSeverities.Ignore) return;
+ 	
+ 		TypeBinding castedExpressionType = rhs.expression.resolvedType;
+-		if (castedExpressionType == null) return;
++		//	int i = (byte) n; // cast still had side effect
++		// double d = (float) n; // cast to float is unnecessary
++		if (castedExpressionType == null || rhs.resolvedType.isBaseType()) return; 
+ 		//if (castedExpressionType.id == T_null) return; // tolerate null expression cast
+ 		if (castedExpressionType.isCompatibleWith(expectedType)) {
+ 			scope.problemReporter().unnecessaryCast(rhs);

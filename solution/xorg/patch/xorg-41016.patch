@@ -1,0 +1,175 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index f072109..74ffce3 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1820,6 +1820,66 @@ nextEnabledOutput(xf86CrtcConfigPtr config, Bool *enabled, int *index)
+ }
+ 
+ static Bool
++aspectMatch(float a, float b)
++{
++    return fabs(1 - (a / b)) < 0.05;
++}
++
++static DisplayModePtr
++nextAspectMode(xf86OutputPtr o, DisplayModePtr last, float aspect)
++{
++    DisplayModePtr m = NULL;
++
++    if (!o)
++	return NULL;
++
++    if (!last)
++	m = o->probed_modes;
++    else
++	m = last->next;
++
++    for (; m; m = m->next)
++	if (aspectMatch(aspect, (float)m->HDisplay / (float)m->VDisplay))
++	    return m;
++
++    return NULL;
++}
++
++static DisplayModePtr
++bestModeForAspect(xf86CrtcConfigPtr config, Bool *enabled, float aspect)
++{
++    int o = -1, p;
++    DisplayModePtr mode = NULL, test = NULL, match = NULL;
++
++    if (!nextEnabledOutput(config, enabled, &o))
++	return NULL;
++    while ((mode = nextAspectMode(config->output[o], mode, aspect))) {
++	test = mode;
++	for (p = o; nextEnabledOutput(config, enabled, &p); ) {
++	    test = xf86OutputFindClosestMode(config->output[p], mode);
++	    if (!test)
++		break;
++	    if (test->HDisplay != mode->HDisplay ||
++		    test->VDisplay != mode->VDisplay) {
++		test = NULL;
++		break;
++	    }
++	}
++
++	/* if we didn't match it on all outputs, try the next one */
++	if (!test)
++	    continue;
++
++	/* if it's bigger than the last one, save it */
++	if (!match || (test->HDisplay > match->HDisplay))
++	    match = test;
++    }
++
++    /* return the biggest one found */
++    return match;
++}
++
++static Bool
+ xf86TargetPreferred(ScrnInfoPtr scrn, xf86CrtcConfigPtr config,
+ 		    DisplayModePtr *modes, Bool *enabled,
+ 		    int width, int height)
+@@ -1871,75 +1931,43 @@ xf86TargetPreferred(ScrnInfoPtr scrn, xf86CrtcConfigPtr config,
+ 	}
+     }
+ 
+-    if (ret) {
+-	/* oh good, there is a match.  stash the selected modes and return. */
+-	memcpy(modes, preferred_match,
+-		config->num_output * sizeof(DisplayModePtr));
+-    }
+-
+-    xfree(preferred);
+-    xfree(preferred_match);
+-    return ret;
+-}
+-
+-static Bool
+-aspectMatch(float a, float b)
+-{
+-    return fabs(1 - (a / b)) < 0.05;
+-}
++    /*
++     * If there's no preferred mode, but only one monitor, pick the
++     * biggest mode for its aspect ratio, assuming one exists.
++     */
++    if (!ret) do {
++	int i = 0;
++	float aspect = 0.0;
+ 
+-static DisplayModePtr
+-nextAspectMode(xf86OutputPtr o, DisplayModePtr last, float aspect)
+-{
+-    DisplayModePtr m = NULL;
++	/* count the number of enabled outputs */
++	for (i = 0, p = -1; nextEnabledOutput(config, enabled, &p); i++) ;
+ 
+-    if (!o)
+-	return NULL;
+-
+-    if (!last)
+-	m = o->probed_modes;
+-    else
+-	m = last->next;
++	if (i != 1)
++	    break;
+ 
+-    for (; m; m = m->next)
+-	if (aspectMatch(aspect, (float)m->HDisplay / (float)m->VDisplay))
+-	    return m;
++	p = -1;
++	nextEnabledOutput(config, enabled, &p);
++	if (config->output[p]->mm_height)
++	    aspect = (float)config->output[p]->mm_width /
++		     (float)config->output[p]->mm_height;
+ 
+-    return NULL;
+-}
++	if (aspect)
++	    preferred_match[0] = bestModeForAspect(config, enabled, aspect);
+ 
+-static DisplayModePtr
+-bestModeForAspect(xf86CrtcConfigPtr config, Bool *enabled, float aspect)
+-{
+-    int o = -1, p;
+-    DisplayModePtr mode = NULL, test = NULL, match = NULL;
+-
+-    if (!nextEnabledOutput(config, enabled, &o))
+-	return NULL;
+-    while ((mode = nextAspectMode(config->output[o], mode, aspect))) {
+-	test = mode;
+-	for (p = o; nextEnabledOutput(config, enabled, &p); ) {
+-	    test = xf86OutputFindClosestMode(config->output[p], mode);
+-	    if (!test)
+-		break;
+-	    if (test->HDisplay != mode->HDisplay ||
+-		    test->VDisplay != mode->VDisplay) {
+-		test = NULL;
+-		break;
+-	    }
+-	}
++	if (preferred_match[0])
++	    ret = TRUE;
+ 
+-	/* if we didn't match it on all outputs, try the next one */
+-	if (!test)
+-	    continue;
++    } while (0);
+ 
+-	/* if it's bigger than the last one, save it */
+-	if (!match || (test->HDisplay > match->HDisplay))
+-	    match = test;
++    if (ret) {
++	/* oh good, there is a match.  stash the selected modes and return. */
++	memcpy(modes, preferred_match,
++		config->num_output * sizeof(DisplayModePtr));
+     }
+ 
+-    /* return the biggest one found */
+-    return match;
++    xfree(preferred);
++    xfree(preferred_match);
++    return ret;
+ }
+ 
+ static Bool

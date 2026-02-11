@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/AbstractCompilerTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/AbstractCompilerTest.java
+index 87ea28c..ebdce7b 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/AbstractCompilerTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/util/AbstractCompilerTest.java
+@@ -169,6 +169,15 @@ public class AbstractCompilerTest extends TestCase {
+ 		return test;
+ 	}
+ 
++	public static Test buildTestSuiteUniqueCompliance(Class evaluationTestClass, String uniqueCompliance) {
++			String highestLevel = highestComplianceLevels();
++			if (highestLevel.compareTo(uniqueCompliance) < 0) {
++				System.err.println("Cannot run "+evaluationTestClass.getName()+" at compliance "+highestLevel+"!");
++				return new TestSuite();
++			}
++			return buildTestSuite(evaluationTestClass, uniqueCompliance);
++	}
++
+ 	public AbstractCompilerTest(String name) {
+ 		super(name);
+ 	}

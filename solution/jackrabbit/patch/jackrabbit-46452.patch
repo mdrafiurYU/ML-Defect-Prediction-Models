@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java
+index f1a99ea..b27eccf 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java
+@@ -48,14 +48,13 @@ public class JackrabbitAccessControlListTest extends AbstractAccessControlTest {
+         superuser.save();
+ 
+         AccessControlPolicyIterator it = acMgr.getApplicablePolicies(n.getPath());
+-        if (it.hasNext()) {
++        while (it.hasNext() && templ == null) {
+             AccessControlPolicy p = it.nextAccessControlPolicy();
+             if (p instanceof JackrabbitAccessControlList) {
+                 templ = (JackrabbitAccessControlList) p;
+-            } else {
+-                throw new NotExecutableException("No JackrabbitAccessControlList to test.");
+             }
+-        } else {
++        }
++        if (templ == null) {
+             throw new NotExecutableException("No JackrabbitAccessControlList to test.");
+         }
+     }

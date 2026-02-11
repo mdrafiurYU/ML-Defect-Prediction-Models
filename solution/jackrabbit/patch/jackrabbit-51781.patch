@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java
+index ba0c633..de2c92f 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java
+@@ -74,7 +74,7 @@ public class NodeTypeStorageImpl implements NodeTypeStorage {
+             throw new IllegalArgumentException("nodeTypeDefs must not be null");
+         }
+ 
+-        if (allowUpdate) {
++        if (!allowUpdate) {
+             for (QNodeTypeDefinition ntd : nodeTypeDefs) {
+                 Name name = ntd.getName();
+                 if (definitions.containsKey(name)) {

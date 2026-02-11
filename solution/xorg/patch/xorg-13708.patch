@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/i2c/bt829_module.c b/hw/xfree86/i2c/bt829_module.c
+index b0b4dd7..998fdcb 100644
+--- a/hw/xfree86/i2c/bt829_module.c
++++ b/hw/xfree86/i2c/bt829_module.c
+@@ -18,7 +18,7 @@ static XF86ModuleVersionInfo bt829VersRec =
+         {0,0,0,0}
+ };
+  
+-XF86ModuleData bt829ModuleData = { &bt829VersRec, bt829Setup, NULL }; 
++_X_EXPORT XF86ModuleData bt829ModuleData = { &bt829VersRec, bt829Setup, NULL }; 
+ 
+ static pointer
+ bt829Setup(pointer module, pointer opts, int *errmaj, int *errmin) {

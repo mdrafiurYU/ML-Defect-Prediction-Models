@@ -1,0 +1,31 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 0dc392a..888ad42 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -215,7 +215,7 @@ xf86ActivateDevice(LocalDevicePtr local)
+ 
+         dev->coreEvents = local->flags & XI86_ALWAYS_CORE;
+ #ifdef MPX
+-        dev->coreEvents |= local->flags & XI86_MP_DEVICE;
++        dev->isMPDev = local->flags & XI86_MP_DEVICE;
+ #endif
+         RegisterOtherDevice(dev);
+ 
+@@ -464,7 +464,7 @@ xf86PostMotionEvent(DeviceIntPtr	device,
+         flags = POINTER_RELATIVE | POINTER_ACCELERATE;
+ 
+ #ifdef MPX
+-    if (device->coreEvents & XI86_MP_DEVICE)
++    if (device->isMPDev)
+         flags |= POINTER_MULTIPOINTER;
+ #endif
+     
+@@ -541,7 +541,7 @@ xf86PostButtonEvent(DeviceIntPtr	device,
+         flags = POINTER_RELATIVE;
+ 
+ #ifdef MPX
+-    if (device->coreEvents & XI86_MP_DEVICE)
++    if (device->isMPDev)
+         flags |= POINTER_MULTIPOINTER;
+ #endif
+     

@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesCodec.java b/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesCodec.java
+index 9383293..c8ff645 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesCodec.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesCodec.java
+@@ -76,11 +76,7 @@ public class DocValuesCodec extends Codec {
+ 
+   @Override
+   public PerDocValues docsProducer(SegmentReadState state) throws IOException {
+-    try {
+     return new DocValuesProducerBase(state.segmentInfo, state.dir, state.fieldInfos, state.codecId);
+-    }catch (IOException e) {
+-      return new DocValuesProducerBase(state.segmentInfo, state.dir, state.fieldInfos, state.codecId);
+-    }
+   }
+ 
+   @Override

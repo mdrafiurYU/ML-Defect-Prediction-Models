@@ -1,0 +1,14 @@
+diff --git a/os/auth.c b/os/auth.c
+index 19c5534..d170ef8 100644
+--- a/os/auth.c
++++ b/os/auth.c
+@@ -48,8 +48,7 @@ from The Open Group.
+ # include   <sys/types.h>
+ # include   <sys/stat.h>
+ #ifdef XCSECURITY
+-#define _SECURITY_SERVER
+-# include   <X11/extensions/security.h>
++# include   "securitysrv.h"
+ #endif
+ #ifdef WIN32
+ #include    <X11/Xw32defs.h>

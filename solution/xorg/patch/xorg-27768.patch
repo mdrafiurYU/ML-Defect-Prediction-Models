@@ -1,0 +1,17 @@
+diff --git a/hw/darwin/darwin.c b/hw/darwin/darwin.c
+index e33c321..7da8626 100644
+--- a/hw/darwin/darwin.c
++++ b/hw/darwin/darwin.c
+@@ -204,6 +204,12 @@ DarwinPrintBanner()
+ }
+ 
+ 
++void DDXRingBell(int volume, int pitch, int duration)
++{
++  // FIXME -- make some noise, yo
++}
++
++
+ /*
+  * DarwinSaveScreen
+  *  X screensaver support. Not implemented.

@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbEvents.c b/xkb/xkbEvents.c
+index 11dc17a..15b4949 100644
+--- a/xkb/xkbEvents.c
++++ b/xkb/xkbEvents.c
+@@ -806,7 +806,7 @@ Bool
+ XkbFilterEvents(ClientPtr pClient,int nEvents,xEvent *xE)
+ {
+ int	i, button_mask;
+-DeviceIntPtr pXDev = (DeviceIntPtr)LookupKeyboardDevice();
++DeviceIntPtr pXDev = inputInfo.keyboard;
+ XkbSrvInfoPtr	xkbi;
+ 
+     xkbi= pXDev->key->xkbInfo;

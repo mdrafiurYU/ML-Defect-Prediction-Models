@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/BasicCredentialsProvider.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/BasicCredentialsProvider.java
+index 9cdd5e8..e80e812 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/BasicCredentialsProvider.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/BasicCredentialsProvider.java
+@@ -94,8 +94,8 @@ public class BasicCredentialsProvider implements CredentialsProvider {
+                     return null;
+                 } else {
+                     int pos = defaultHeaderValue.indexOf(':');
+-                    if (pos<0) {
+-                        return new SimpleCredentials(defaultHeaderValue, null);
++                    if (pos < 0) {
++                        return new SimpleCredentials(defaultHeaderValue, new char[0]);
+                     } else {
+                         return new SimpleCredentials(
+                                 defaultHeaderValue.substring(0, pos),

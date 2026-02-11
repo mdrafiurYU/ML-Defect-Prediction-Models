@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/RandomSortField.java b/solr/src/java/org/apache/solr/schema/RandomSortField.java
+index 4ace53e..22438e7 100644
+--- a/solr/src/java/org/apache/solr/schema/RandomSortField.java
++++ b/solr/src/java/org/apache/solr/schema/RandomSortField.java
+@@ -167,7 +167,7 @@ public class RandomSortField extends FieldType {
+ 
+           @Override
+           public int intVal(int doc) {
+-            return (int)hash(doc+seed);
++            return hash(doc+seed);
+           }
+ 
+           @Override

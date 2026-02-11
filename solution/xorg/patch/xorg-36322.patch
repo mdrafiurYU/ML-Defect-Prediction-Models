@@ -1,0 +1,21 @@
+diff --git a/hw/xquartz/darwin.h b/hw/xquartz/darwin.h
+index c5e2ed8..325122d 100644
+--- a/hw/xquartz/darwin.h
++++ b/hw/xquartz/darwin.h
+@@ -106,6 +106,7 @@ enum {
+     kXDarwinBringAllToFront,  // bring all X windows to front
+     kXDarwinToggleFullscreen, // Enable/Disable fullscreen mode
+     kXDarwinSetRootless,      // Set rootless mode
++    kXDarwinSpaceChanged,     // Spaces changed
+     /*
+      * AppleWM events
+      */
+@@ -116,7 +117,7 @@ enum {
+      */
+     kXDarwinDisplayChanged,   // display configuration has changed
+     kXDarwinWindowState,      // window visibility state has changed
+-    kXDarwinWindowMoved       // window has moved on screen
++    kXDarwinWindowMoved,      // window has moved on screen
+ };
+ 
+ #define ENABLE_DEBUG_LOG 1

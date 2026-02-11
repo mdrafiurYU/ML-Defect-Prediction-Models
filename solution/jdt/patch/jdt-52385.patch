@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java
+index 704a8f1..5abd51a 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java
+@@ -627,7 +627,7 @@ public class SetClasspathOperation extends JavaModelOperation {
+ 		if (this.newOutputLocation == DO_NOT_SET_OUTPUT){
+ 			buffer.append("<Reuse Existing Output Location>"); //$NON-NLS-1$
+ 		} else {
+-			buffer.append(this.newOutputLocation.toString()); //$NON-NLS-1$
++			buffer.append(this.newOutputLocation.toString());
+ 		}
+ 		return buffer.toString();
+ 	}

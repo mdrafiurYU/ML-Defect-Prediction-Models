@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/directory/FSDirectoryManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/directory/FSDirectoryManager.java
+index 4d3d9f5..1433b00 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/directory/FSDirectoryManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/directory/FSDirectoryManager.java
+@@ -55,7 +55,12 @@ public class FSDirectoryManager implements DirectoryManager {
+      */
+     public Directory getDirectory(String name)
+             throws IOException {
+-        File dir = new File(baseDir, name);
++        File dir;
++        if (name.equals(".")) {
++            dir = baseDir;
++        } else {
++            dir = new File(baseDir, name);
++        }
+         return FSDirectory.getDirectory(dir, new NativeFSLockFactory(dir));
+     }

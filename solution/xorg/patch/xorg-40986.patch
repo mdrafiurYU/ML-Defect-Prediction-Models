@@ -1,0 +1,35 @@
+diff --git a/dix/events.c b/dix/events.c
+index 35c1bfa..dad786d 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2030,13 +2030,6 @@ DeliverEventsToWindow(DeviceIntPtr pDev, WindowPtr pWin, xEvent
+ 		              this mask is the mask of the grab. */
+     int type = pEvents->u.u.type;
+ 
+-    /* if a  is denied, we return 0. This could cause the caller to
+-     * traverse the parent. May be bad! (whot) */
+-    if (!ACDeviceAllowed(pWin, pDev, pEvents))
+-    {
+-        return 0;
+-    }
+-
+     /* CantBeFiltered means only window owner gets the event */
+     if ((filter == CantBeFiltered) ||
+             (!(type & EXTENSION_EVENT_BASE) && type != GenericEvent))
+@@ -3633,8 +3626,6 @@ DeliverGrabbedEvent(xEvent *xE, DeviceIntPtr thisDev,
+     }
+     if (!deliveries)
+     {
+-        if (ACDeviceAllowed(grab->window, thisDev, xE))
+-        {
+             if (xE->u.u.type == GenericEvent)
+             {
+                 /* find evmask for event's extension */
+@@ -3710,7 +3701,6 @@ DeliverGrabbedEvent(xEvent *xE, DeviceIntPtr thisDev,
+                         || xE->u.u.type == DeviceMotionNotify))
+                 thisDev->valuator->motionHintWindow = grab->window;
+         }
+-    }
+     if (deliveries && !deactivateGrab &&
+        (xE->u.u.type != MotionNotify && xE->u.u.type != DeviceMotionNotify))
+     {

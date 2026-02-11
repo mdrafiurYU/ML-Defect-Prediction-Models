@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/AbstractLockInfo.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/AbstractLockInfo.java
+index f1c24e8..a082354 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/AbstractLockInfo.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/AbstractLockInfo.java
+@@ -153,16 +153,6 @@ abstract class AbstractLockInfo implements LockInfo {
+     }
+ 
+     /**
+-     * {@inheritDoc}
+-     */
+-    public String getLockToken(Session session) {
+-        if (isLockHolder(session)) {
+-            return lockToken.toString();
+-        }
+-        return null;
+-    }
+-
+-    /**
+      * Return the lock token.
+      *
+      * @return lock token

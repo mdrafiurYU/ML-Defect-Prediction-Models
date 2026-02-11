@@ -1,0 +1,117 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 376d6de..8a0abfc 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -3121,7 +3121,8 @@ ProcXkbSetNamedIndicator(ClientPtr client)
+ 	if (!stuff->createMap)
+ 	    return client->noClientException;
+ 	for (led=0,map=NULL;(led<XkbNumIndicators)&&(map==NULL);led++) {
+-	    if ((sli->names[led]==None)&&(!XkbIM_InUse(&sli->maps[led]))) {
++	    if ((sli->names)&&(sli->leds)&&(sli->names[led]==None)&&
++                (!XkbIM_InUse(&sli->maps[led]))) {
+ 		map= &sli->maps[led];
+ 		sli->names[led]= stuff->indicator;
+ 		break;
+@@ -3317,11 +3318,11 @@ XkbSendNames(ClientPtr client,XkbDescPtr xkb,xkbGetNamesReply *rep)
+ register unsigned 	i,length,which;
+ char *			start;
+ char *			desc;
++register int            n;
+ 
+     length= rep->length*4;
+     which= rep->which;
+     if (client->swapped) {
+-	register int n;
+ 	swaps(&rep->sequenceNumber,n);
+ 	swapl(&rep->length,n);
+ 	swapl(&rep->which,n);
+@@ -3332,10 +3333,10 @@ char *			desc;
+     start = desc = (char *)ALLOCATE_LOCAL(length);
+     if ( !start )
+ 	return BadAlloc;
++    if (xkb->names) {
+     if (which&XkbKeycodesNameMask) {
+ 	*((CARD32 *)desc)= xkb->names->keycodes;
+ 	if (client->swapped) {
+-	    register int n;
+ 	    swapl(desc,n);
+ 	}
+ 	desc+= 4;
+@@ -3343,7 +3344,6 @@ char *			desc;
+     if (which&XkbGeometryNameMask)  {
+ 	*((CARD32 *)desc)= xkb->names->geometry;
+ 	if (client->swapped) {
+-	    register int n;
+ 	    swapl(desc,n);
+ 	}
+ 	desc+= 4;
+@@ -3351,7 +3351,6 @@ char *			desc;
+     if (which&XkbSymbolsNameMask) {
+ 	*((CARD32 *)desc)= xkb->names->symbols;
+ 	if (client->swapped) {
+-	    register int n;
+ 	    swapl(desc,n);
+ 	}
+ 	desc+= 4;
+@@ -3360,7 +3359,6 @@ char *			desc;
+ 	register CARD32 *atm= (CARD32 *)desc;
+ 	atm[0]= (CARD32)xkb->names->phys_symbols;
+ 	if (client->swapped) {
+-	    register int n;
+ 	    swapl(&atm[0],n);
+ 	}
+ 	desc+= 4;
+@@ -3368,7 +3366,6 @@ char *			desc;
+     if (which&XkbTypesNameMask) {
+ 	*((CARD32 *)desc)= (CARD32)xkb->names->types;
+ 	if (client->swapped) {
+-	    register int n;
+ 	    swapl(desc,n);
+ 	}
+ 	desc+= 4;
+@@ -3376,7 +3373,6 @@ char *			desc;
+     if (which&XkbCompatNameMask) {
+ 	*((CARD32 *)desc)= (CARD32)xkb->names->compat;
+ 	if (client->swapped) {
+-	    register int n;
+ 	    swapl(desc,n);
+ 	}
+ 	desc+= 4;
+@@ -3388,13 +3384,12 @@ char *			desc;
+ 	for (i=0;i<xkb->map->num_types;i++,atm++,type++) {
+ 	    *atm= (CARD32)type->name;
+ 	    if (client->swapped) {
+-		register int n;
+ 		swapl(atm,n);
+ 	    }
+ 	}
+ 	desc= (char *)atm;
+     }
+-    if (which&XkbKTLevelNamesMask) {
++        if (which&XkbKTLevelNamesMask && xkb->map) {
+ 	XkbKeyTypePtr type = xkb->map->types;
+ 	register CARD32 *atm;
+ 	for (i=0;i<rep->nTypes;i++,type++) {
+@@ -3410,7 +3405,6 @@ char *			desc;
+ 		for (l=0;l<type->num_levels;l++,atm++) {
+ 		    *atm= type->level_names[l];
+ 		    if (client->swapped) {
+-			register unsigned n;
+ 			swapl(atm,n);
+ 		    }
+ 		}
+@@ -3447,12 +3441,13 @@ char *			desc;
+ 	for (i=0;i<rep->nRadioGroups;i++,atm++) {
+ 	    *atm= (CARD32)xkb->names->radio_groups[i];
+ 	    if (client->swapped) {
+-		register unsigned n;
+ 		swapl(atm,n);
+ 	    }
+ 	}
+ 	desc+= rep->nRadioGroups*4;
+     }
++    }
++
+     if ((desc-start)!=(length)) {
+ 	ErrorF("BOGUS LENGTH in write names, expected %d, got %ld\n",
+ 					length, (unsigned long)(desc-start));

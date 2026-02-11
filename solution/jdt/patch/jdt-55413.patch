@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
+index 333c850..12862b3 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
+@@ -199,9 +199,9 @@ public class GeneratedFileManager {
+ 					final boolean isEnabling = Boolean.parseBoolean(newValue);
+ 					if( AptPlugin.DEBUG ){
+ 						if( isEnabling )
+-							AptPlugin.trace("enabling APT"); //$NON-NLS-1$
++							AptPlugin.trace("enabling APT for " + _aptProject.getJavaProject().getElementName()); //$NON-NLS-1$
+ 						else
+-							AptPlugin.trace("diabling APT"); //$NON-NLS-1$
++							AptPlugin.trace("diabling APT " + _aptProject.getJavaProject().getElementName()); //$NON-NLS-1$
+ 					}
+ 					if( isEnabling )
+ 						configureGeneratedSourceFolder();

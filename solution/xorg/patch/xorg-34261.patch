@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/parser/scan.c b/hw/xfree86/parser/scan.c
+index e7989d1..36061c8 100644
+--- a/hw/xfree86/parser/scan.c
++++ b/hw/xfree86/parser/scan.c
+@@ -558,7 +558,6 @@ xf86pathIsSafe(const char *path)
+  *    %E    config file environment ($XORGCONFIG) as an absolute path
+  *    %F    config file environment ($XORGCONFIG) as a relative path
+  *    %G    config file environment ($XORGCONFIG) as a safe path
+- *    %D    $HOME
+  *    %P    projroot
+  *    %M    major version number
+  *    %%    %
+@@ -703,14 +702,6 @@ DoSubstitution(const char *template, const char *cmdline, const char *projroot,
+ 				} else
+ 					BAIL_OUT;
+ 				break;
+-			case 'D':
+-				if (!home)
+-					home = getenv("HOME");
+-				if (home && xf86pathIsAbsolute(home))
+-					APPEND_STR(home);
+-				else
+-					BAIL_OUT;
+-				break;
+ 			case 'P':
+ 				if (projroot && xf86pathIsAbsolute(projroot))
+ 					APPEND_STR(projroot);

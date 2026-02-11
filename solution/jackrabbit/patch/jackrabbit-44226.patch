@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/AbstractNamespaceResolver.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/AbstractNamespaceResolver.java
+index 3bcf529..bdcb952 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/AbstractNamespaceResolver.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/AbstractNamespaceResolver.java
+@@ -32,6 +32,8 @@ import java.util.Iterator;
+  * with <code>supportListeners</code> set to <code>true</code>. The default
+  * constructor will not enable listener support and all listener related
+  * methods will throw an {@link UnsupportedOperationException} in that case.
++ *
++ * @deprecated https://issues.apache.org/jira/browse/JCR-1700
+  */
+ public abstract class AbstractNamespaceResolver implements NamespaceResolver {

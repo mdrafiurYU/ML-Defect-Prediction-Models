@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.h b/hw/xfree86/os-support/bus/Pci.h
+index b78d307..1385eee 100644
+--- a/hw/xfree86/os-support/bus/Pci.h
++++ b/hw/xfree86/os-support/bus/Pci.h
+@@ -237,6 +237,12 @@
+ # if defined(linux)
+ #  define ARCH_PCI_INIT linuxPciInit
+ # endif
++#elif defined(__m32r__)
++# if defined(linux)
++#  define ARCH_PCI_INIT linuxPciInit
++#  define INCLUDE_XF86_MAP_PCI_MEM
++#  define INCLUDE_XF86_NO_DOMAIN
++# endif
+ #elif defined(__sparc__) || defined(sparc)
+ # if defined(linux)
+ #  define ARCH_PCI_INIT linuxPciInit

@@ -1,0 +1,23 @@
+diff --git a/hw/kdrive/fbdev/fbinit.c b/hw/kdrive/fbdev/fbinit.c
+index 5e1c88b..de80c79 100644
+--- a/hw/kdrive/fbdev/fbinit.c
++++ b/hw/kdrive/fbdev/fbinit.c
+@@ -42,17 +42,7 @@ InitOutput (ScreenInfo *pScreenInfo, int argc, char **argv)
+ void
+ InitInput (int argc, char **argv)
+ {
+-    KdKeyboardInfo *ki;
+-
+-    KdAddKeyboardDriver (&LinuxKeyboardDriver);
+-    KdAddPointerDriver (&LinuxMouseDriver);
+-#ifdef TSLIB
+-    KdAddPointerDriver (&TsDriver);
+-#endif
+-
+-    ki = KdParseKeyboard ("keybd");
+-    KdAddKeyboard(ki);
+-
++    KdOsAddInputDrivers ();
+     KdInitInput ();
+ }
+ 

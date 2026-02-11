@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SimpleSelectionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SimpleSelectionTest.java
+index da34f2b..43a7cab 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SimpleSelectionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/SimpleSelectionTest.java
+@@ -55,6 +55,7 @@ public class SimpleSelectionTest extends AbstractQueryTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

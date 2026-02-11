@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 0ef19a3..6d5aef3 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -1659,6 +1659,10 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 						this.options.put(
+ 							CompilerOptions.OPTION_ReportUnusedPrivateMember,
+ 							isEnabling ? CompilerOptions.WARNING : CompilerOptions.IGNORE);
++					} else if (token.equals("unusedLabel")) { //$NON-NLS-1$
++						this.options.put(
++							CompilerOptions.OPTION_ReportUnusedLabel,
++							isEnabling ? CompilerOptions.WARNING : CompilerOptions.IGNORE);
+ 					} else if (token.equals("localHiding")) { //$NON-NLS-1$
+ 						this.options.put(
+ 							CompilerOptions.OPTION_ReportLocalVariableHiding,

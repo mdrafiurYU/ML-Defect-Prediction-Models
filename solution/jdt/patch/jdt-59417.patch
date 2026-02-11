@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
+index 1fa6bba..87d5822 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeDeclaration.java
+@@ -962,6 +962,10 @@ public void resolve() {
+ 					break checkEnclosedInGeneric;						
+ 				}
+ 				if (current.isStatic()) break checkEnclosedInGeneric;
++				if (current.isLocalType()) {
++					NestedTypeBinding nestedType = (NestedTypeBinding) current.erasure();
++					if (nestedType.scope.methodScope().isStatic) break checkEnclosedInGeneric;
++				}				
+ 			} while ((current = current.enclosingType()) != null);
+ 		}
+ 		this.maxFieldCount = 0;

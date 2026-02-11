@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/ReaderUtil.java b/lucene/src/java/org/apache/lucene/util/ReaderUtil.java
+index 7d971e9..430fc9b 100644
+--- a/lucene/src/java/org/apache/lucene/util/ReaderUtil.java
++++ b/lucene/src/java/org/apache/lucene/util/ReaderUtil.java
+@@ -28,7 +28,9 @@ import org.apache.lucene.index.IndexReader;
+  *
+  * @lucene.internal
+  */
+-public class ReaderUtil {
++public final class ReaderUtil {
++
++  private ReaderUtil() {} // no instance
+ 
+   public static class Slice {
+     public static final Slice[] EMPTY_ARRAY = new Slice[0];

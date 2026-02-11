@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+index 970935a..e34d15f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+@@ -75,7 +75,7 @@ public class FilerImpl implements Filer {
+ 			return new NoOpOutputStream();
+ 		}
+ 		
+-    	GeneratedFileManager gfm = GeneratedFileManager.getGeneratedFileManager( _env.getProject() );
++    	GeneratedFileManager gfm = _env.getAptProject().getGeneratedFileManager();
+     	IPath path;
+     	try 
+     	{
+@@ -170,7 +170,7 @@ public class FilerImpl implements Filer {
+     private IPath getOutputFileForLocation( Filer.Location loc, String pkg, File relPath )
+     	throws IOException
+     {
+-    	GeneratedFileManager gfm = GeneratedFileManager.getGeneratedFileManager( _env.getProject() );
++    	GeneratedFileManager gfm = _env.getAptProject().getGeneratedFileManager();
+     	IPath path = null;
+     	if ( loc == Filer.Location.CLASS_TREE )
+     	{

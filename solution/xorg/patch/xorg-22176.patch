@@ -1,0 +1,62 @@
+diff --git a/hw/xfree86/os-support/xf86_ansic.h b/hw/xfree86/os-support/xf86_ansic.h
+index 25dabfe..31c0cac 100644
+--- a/hw/xfree86/os-support/xf86_ansic.h
++++ b/hw/xfree86/os-support/xf86_ansic.h
+@@ -28,9 +28,6 @@
+ 
+ /* Handle <stdarg.h> */
+ 
+-#ifndef IN_MODULE
+-# include <stdarg.h>
+-#else /* !IN_MODULE */
+ # ifndef __OS2ELF__
+ #  include <stdarg.h>
+ # else /* __OS2ELF__ */
+@@ -46,15 +43,12 @@
+ #   define va_arg(ap,t) (ap += _VA_ROUND (t), *(t *)(ap - _VA_ROUND (t)))
+ #  endif
+ # endif /* __OS2ELF__ */
+-#endif /* IN_MODULE */
+ 
+ /*
+  * The first set of definitions are required both for modules and
+  * libc_wrapper.c.
+  */
+ 
+-#if defined(XFree86LOADER) || defined(NEED_XF86_TYPES)
+-
+ #if !defined(SYSV) && !defined(SVR4) && !defined(Lynx) || \
+ 	defined(__SCO__) || defined(__UNIXWARE__)
+ #define HAVE_VSSCANF
+@@ -133,9 +127,6 @@
+ #define MAXLONG LONG_MAX
+ #endif
+ 
+-#endif /* XFree86LOADER || NEED_XF86_TYPES */
+-
+-#if defined(XFree86LOADER) || defined(NEED_XF86_PROTOTYPES)
+ /*
+  * ANSI C compilers only.
+  */
+@@ -321,21 +312,6 @@ extern void xf86longjmp(xf86jmp_buf env, int val);
+ 	(xf86getjmptype() == 1 ? xf86setjmp1((env), xf86setjmp1_arg2()) : \
+ 		xf86setjmperror((env))))
+ 
+-#else /* XFree86LOADER || NEED_XF86_PROTOTYPES */
+-#include <unistd.h>
+-#include <stdio.h>
+-#include <sys/ioctl.h>
+-#include <errno.h>
+-#include <fcntl.h>
+-#include <ctype.h>
+-#ifdef HAVE_SYSV_IPC
+-#include <sys/ipc.h>
+-#include <sys/shm.h>
+-#endif
+-#include <sys/stat.h>
+-#define stat_t struct stat
+-#endif /* XFree86LOADER || NEED_XF86_PROTOTYPES */
+-
+ /*
+  * These things are always required by drivers (but not by libc_wrapper.c),
+  * even for a static server because some OSs don't provide them.

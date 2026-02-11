@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxKillSrv.c b/xkb/ddxKillSrv.c
+index a573ecb..3b5fd53 100644
+--- a/xkb/ddxKillSrv.c
++++ b/xkb/ddxKillSrv.c
+@@ -41,6 +41,8 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ int
+ XkbDDXTerminateServer(DeviceIntPtr dev,KeyCode key,XkbAction *act)
+ {
++    if (dev != inputInfo.keyboard)
+     GiveUp(1);
++
+     return 0;
+ }

@@ -1,0 +1,12 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 622e8cc..719e9db 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -1169,6 +1169,7 @@ CheckDeviceGrabAndHintWindow(WindowPtr pWin, int type,
+ 	tempGrab.pointerMode = GrabModeAsync;
+ 	tempGrab.confineTo = NullWindow;
+ 	tempGrab.cursor = NullCursor;
++        tempGrab.genericMasks = NULL;
+ 	(*dev->deviceGrab.ActivateGrab) (dev, &tempGrab, currentTime, TRUE);
+     }
+ }

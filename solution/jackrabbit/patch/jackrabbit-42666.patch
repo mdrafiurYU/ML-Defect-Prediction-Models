@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SystemPrincipal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SystemPrincipal.java
+index f05993b..9e671ee 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SystemPrincipal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SystemPrincipal.java
+@@ -22,7 +22,7 @@ import java.security.Principal;
+ /**
+  * A <code>SystemPrincipal</code> ...
+  */
+-public class SystemPrincipal implements Principal, Serializable {
++public final class SystemPrincipal implements Principal, Serializable {
+ 
+     private static final String SYSTEM_USER = "system";

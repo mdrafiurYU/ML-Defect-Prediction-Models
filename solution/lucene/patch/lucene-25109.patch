@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndPrefixQuery.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndPrefixQuery.java
+index 68e25c6..1c2d139 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndPrefixQuery.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndPrefixQuery.java
+@@ -63,7 +63,7 @@ public class SrndPrefixQuery extends SimpleTerm {
+       TermsEnum termsEnum = terms.iterator();
+ 
+       boolean skip = false;
+-      TermsEnum.SeekStatus status = termsEnum.seek(new BytesRef(getPrefix()));
++      TermsEnum.SeekStatus status = termsEnum.seekCeil(new BytesRef(getPrefix()));
+       if (status == TermsEnum.SeekStatus.FOUND) {
+         mtv.visitMatchingTerm(getLucenePrefixTerm(fieldName));
+       } else if (status == TermsEnum.SeekStatus.NOT_FOUND) {

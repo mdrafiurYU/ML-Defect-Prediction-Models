@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java b/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
+index 5eb3bee..28e50e4 100755
+--- a/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
++++ b/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
+@@ -88,9 +88,6 @@ public class TestIndexingPerformance extends AbstractSolrTestCase {
+     long start = System.currentTimeMillis();
+ 
+     AddUpdateCommand add = new AddUpdateCommand();
+-    add.allowDups = !overwrite;
+-    add.overwriteCommitted = overwrite;
+-    add.overwritePending = overwrite;
+ 
+     Field idField=null;

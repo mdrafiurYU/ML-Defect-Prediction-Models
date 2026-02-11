@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/write.c b/hw/xfree86/parser/write.c
+index 82baa5a..de3bb8a 100644
+--- a/hw/xfree86/parser/write.c
++++ b/hw/xfree86/parser/write.c
+@@ -170,7 +170,7 @@ xf86writeConfigFile (const char *filename, XF86ConfigPtr cptr)
+ 					strerror(errno));
+ 			return 0;
+ 		case 0: /* child */
+-			if (setuid(getuid() == -1) 
++			if (setuid(getuid()) == -1) 
+ 			    FatalError("xf86writeConfigFile(): "
+ 				"setuid failed(%s)\n", 
+ 				strerror(errno));

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/linuxPci.c b/hw/xfree86/os-support/bus/linuxPci.c
+index a60df25..e210fa1 100644
+--- a/hw/xfree86/os-support/bus/linuxPci.c
++++ b/hw/xfree86/os-support/bus/linuxPci.c
+@@ -69,8 +69,6 @@ static pointer DomainMmappedIO[MAX_DOMAINS];
+ void
+ linuxPciInit(void)
+ {
+-    struct stat st;
+-
+     memset(DomainMmappedIO, 0, sizeof(DomainMmappedIO));
+ }
+ 

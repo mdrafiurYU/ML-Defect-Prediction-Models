@@ -1,0 +1,13 @@
+diff --git a/xfixes/select.c b/xfixes/select.c
+index 415257e..12a165f 100755
+--- a/xfixes/select.c
++++ b/xfixes/select.c
+@@ -224,7 +224,7 @@ SProcXFixesSelectSelectionInput (ClientPtr client)
+     swapl(&stuff->window, n);
+     swapl(&stuff->selection, n);
+     swapl(&stuff->eventMask, n);
+-    return ProcXFixesSelectSelectionInput(client);
++    return (*ProcXFixesVector[stuff->xfixesReqType])(client);
+ }
+     
+ void

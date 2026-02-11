@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
+index 67f64a0..cce5926 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java
+@@ -200,6 +200,12 @@ public boolean isInterface() {
+ public boolean isIntersectingWith(TypeBinding otherType) {
+     return this == otherType;
+ }
++/**
++ * Returns true if the current type denotes an intersection type: Number & Comparable<?>
++ */
++public boolean isIntersectionType() {
++	return false;
++}
+ public final boolean isLocalType() {
+ 	return (tagBits & IsLocalType) != 0;
+ }

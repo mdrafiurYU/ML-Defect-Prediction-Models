@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java
+index 1f717e0..74ace64 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java
+@@ -51,6 +51,7 @@ public void decodeIndexKey(char[] key) {
+ 		this.packageIndex = slash - start;
+ 		this.qualification[this.packageIndex] = '.';
+ 	}
++	slash = CharOperation.indexOf(SEPARATOR, key, secondSlash + 1);
+ 	int last = key.length;
+ 	if (slash > 0) { // secondary
+ 		this.secondary = key[slash+1] == 'S';

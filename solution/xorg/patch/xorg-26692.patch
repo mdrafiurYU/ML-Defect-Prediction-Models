@@ -1,0 +1,14 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index b4896ac..adf418c 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -498,6 +498,9 @@ CloseDevice(register DeviceIntPtr dev)
+ 	XkbRemoveResourceClient((DevicePtr)dev,dev->xkb_interest->resource);
+ #endif
+ 
++    if (DevHasCursor(dev))
++        xfree((pointer)dev->pSprite);
++
+     xfree(dev->sync.event);
+     xfree(dev);
+ }

@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextCodec.java b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextCodec.java
+index 8ea2593..97ff04c 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextCodec.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextCodec.java
+@@ -56,13 +56,13 @@ public class SimpleTextCodec extends Codec {
+   /** Extension of freq postings file */
+   static final String POSTINGS_EXTENSION = "pst";
+ 
+-  static String getPostingsFileName(String segment) {
++  static String getPostingsFileName(String segment, String id) {
+     return IndexFileNames.segmentFileName(segment, "", POSTINGS_EXTENSION);
+   }
+ 
+   @Override
+-  public void files(Directory dir, SegmentInfo segmentInfo, Set<String> files) throws IOException {
+-    files.add(getPostingsFileName(segmentInfo.name));
++  public void files(Directory dir, SegmentInfo segmentInfo, String id, Set<String> files) throws IOException {
++    files.add(getPostingsFileName(segmentInfo.name, id));
+   }
+ 
+   @Override

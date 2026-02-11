@@ -1,0 +1,12 @@
+diff --git a/Xi/chpkpair.c b/Xi/chpkpair.c
+index 555c8e1..db8e7f6 100644
+--- a/Xi/chpkpair.c
++++ b/Xi/chpkpair.c
+@@ -131,5 +131,7 @@ SPointerKeyboardPairingChangedNotifyEvent (pairingChangedNotify *from,
+ 
+     *to = *from;
+     swaps(&to->sequenceNumber, n);
++    swapl(&to->length, n);
++    swapl(&to->evtype, n);
+     swapl(&to->time, n);
+ }

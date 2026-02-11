@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index 7c773ae..a73f4b0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -297,7 +297,7 @@ public class SessionImpl extends AbstractSession
+      */
+     protected SessionItemStateManager createSessionItemStateManager(LocalItemStateManager manager) {
+         return new SessionItemStateManager(
+-                rep.getRootNodeId(), manager, this, rep.getNodeTypeRegistry());
++                rep.getRootNodeId(), manager, rep.getNodeTypeRegistry());
+     }
+ 
+     /**

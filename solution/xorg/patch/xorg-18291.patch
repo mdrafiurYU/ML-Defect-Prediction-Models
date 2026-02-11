@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/int10/x86emu.c b/hw/xfree86/int10/x86emu.c
+index 2d0faa6..b9580a1 100644
+--- a/hw/xfree86/int10/x86emu.c
++++ b/hw/xfree86/int10/x86emu.c
+@@ -1,4 +1,8 @@
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef NO_SYS_HEADERS
+ # include "xf86_ansic.h"
+ #endif

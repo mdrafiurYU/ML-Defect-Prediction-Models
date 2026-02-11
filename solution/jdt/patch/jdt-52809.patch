@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
+index 60b00d9..d03b39a 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
+@@ -927,7 +927,11 @@ public class ASTParser {
+ 					if (statements != null) {
+ 						int statementsLength = statements.length;
+ 						for (int i = 0; i < statementsLength; i++) {
+-							block.statements().add(converter.convert(statements[i]));
++							if (statements[i] instanceof org.eclipse.jdt.internal.compiler.ast.LocalDeclaration) {
++								converter.checkAndAddMultipleLocalDeclaration(statements, i, block.statements());
++							} else {
++								block.statements().add(converter.convert(statements[i]));
++							}
+ 						}
+ 					}
+ 					rootNodeToCompilationUnit(ast, compilationUnit, block, recordedParsingInformation);

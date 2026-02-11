@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptPreferencePage.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptPreferencePage.java
+index 5f9c77a..1e49df3 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptPreferencePage.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/AptPreferencePage.java
+@@ -25,10 +25,10 @@ public class AptPreferencePage extends BasePreferencePage {
+ 
+ 	public AptPreferencePage() {
+ 		setPreferenceStore(AptUIPlugin.getDefault().getPreferenceStore());
+-		setDescription("Java annotation processing preferences:"); 
++		setDescription(Messages.getString("AptPreferencePage.0"));  //$NON-NLS-1$
+ 		
+ 		// only used when page is shown programatically
+-		setTitle("AptPreferencePageTitle");		 
++		setTitle(Messages.getString("AptPreferencePage.1"));		  //$NON-NLS-1$
+ 	}
+ 
+ 	/*

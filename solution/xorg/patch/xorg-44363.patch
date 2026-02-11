@@ -1,0 +1,23 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index f1e0bb1..7962fdb 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -74,6 +74,7 @@ static char *SecurityTrustedExtensions[] = {
+ static const Mask SecurityResourceMask =
+     DixGetAttrAccess | DixReceiveAccess | DixListPropAccess |
+     DixGetPropAccess | DixListAccess;
++static const Mask SecurityWindowExtraMask = DixRemoveAccess;
+ static const Mask SecurityRootWindowExtraMask =
+     DixReceiveAccess | DixSendAccess | DixAddAccess | DixRemoveAccess;
+ static const Mask SecurityDeviceMask =
+@@ -817,6 +818,10 @@ SecurityResource(CallbackListPtr *pcbl, pointer unused, pointer calldata)
+ 	if (subj->haveState && subj->trustLevel != XSecurityClientTrusted)
+ 	    ((WindowPtr)rec->res)->forcedBG = TRUE;
+ 
++    /* additional permissions for specific resource types */
++    if (rec->rtype == RT_WINDOW)
++	allowed |= SecurityWindowExtraMask;
++
+     /* special checks for server-owned resources */
+     if (cid == 0) {
+ 	if (rec->rtype & RC_DRAWABLE)

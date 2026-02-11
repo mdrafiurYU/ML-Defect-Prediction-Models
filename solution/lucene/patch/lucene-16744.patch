@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestSearch.java b/lucene/src/test/org/apache/lucene/TestSearch.java
+index 199422a..7878e3a 100644
+--- a/lucene/src/test/org/apache/lucene/TestSearch.java
++++ b/lucene/src/test/org/apache/lucene/TestSearch.java
+@@ -111,6 +111,9 @@ public class TestSearch extends LuceneTestCase {
+       for (int j = 0; j < queries.length; j++) {
+         Query query = parser.parse(queries[j]);
+         out.println("Query: " + query.toString("contents"));
++        if (VERBOSE) {
++          System.out.println("TEST: query=" + query);
++        }
+ 
+         hits = searcher.search(query, null, 1000).scoreDocs;

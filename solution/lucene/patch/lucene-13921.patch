@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/update/RollbackUpdateCommand.java b/solr/src/java/org/apache/solr/update/RollbackUpdateCommand.java
+index 68c2a35..1dd12ae 100644
+--- a/solr/src/java/org/apache/solr/update/RollbackUpdateCommand.java
++++ b/solr/src/java/org/apache/solr/update/RollbackUpdateCommand.java
+@@ -17,14 +17,16 @@
+ 
+ package org.apache.solr.update;
+ 
++import org.apache.solr.request.SolrQueryRequest;
++
+ /**
+  * @version $Id$
+  * @since Solr 1.4
+  */
+ public class RollbackUpdateCommand extends UpdateCommand {
+ 
+-  public RollbackUpdateCommand() {
+-    super("rollback");
++  public RollbackUpdateCommand(SolrQueryRequest req) {
++    super("rollback", req);
+   }
+ 
+ }

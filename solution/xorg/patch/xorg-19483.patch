@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/sysv/xqueue.c b/hw/xfree86/os-support/sysv/xqueue.c
+index 755be3d..a14fc32 100644
+--- a/hw/xfree86/os-support/sysv/xqueue.c
++++ b/hw/xfree86/os-support/sysv/xqueue.c
+@@ -24,6 +24,10 @@
+  */
+ /* $XConsortium: xqueue.c /main/8 1996/10/19 18:08:11 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "compiler.h"
+ 

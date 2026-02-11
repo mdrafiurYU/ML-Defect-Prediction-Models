@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/int10/helper_exec.c b/hw/xfree86/int10/helper_exec.c
+index 15eba49..1c89ce5 100644
+--- a/hw/xfree86/int10/helper_exec.c
++++ b/hw/xfree86/int10/helper_exec.c
+@@ -32,6 +32,8 @@
+ #include "Pci.h"
+ #ifdef _X86EMU
+ #include "x86emu/x86emui.h"
++#else
++#define DEBUG_IO_TRACE() 0
+ #endif
+ #include <pciaccess.h>
+ 

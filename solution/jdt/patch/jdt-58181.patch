@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+index f12560e..b5affab 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+@@ -566,7 +566,7 @@ protected void storeProblemsFor(SourceFile sourceFile, CategorizedProblem[] prob
+ 		}
+ 		
+ 		String markerType = problem.getMarkerType();
+-		if ((id != IProblem.Task && IJavaModelMarker.JAVA_MODEL_PROBLEM_MARKER.equals(markerType)) 
++		if (IJavaModelMarker.JAVA_MODEL_PROBLEM_MARKER.equals(markerType)
+ 				|| managedMarkerTypes.contains(markerType)) {			
+ 			IMarker marker = resource.createMarker(markerType);

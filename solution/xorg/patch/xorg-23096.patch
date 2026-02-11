@@ -1,0 +1,15 @@
+diff --git a/render/glyphstr.h b/render/glyphstr.h
+index f4777a2..f582343 100644
+--- a/render/glyphstr.h
++++ b/render/glyphstr.h
+@@ -23,6 +23,10 @@
+  * Author:  Keith Packard, SuSE, Inc.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _GLYPHSTR_H_
+ #define _GLYPHSTR_H_
+ 

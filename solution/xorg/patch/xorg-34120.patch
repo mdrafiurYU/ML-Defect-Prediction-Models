@@ -1,0 +1,33 @@
+diff --git a/hw/xfree86/exa/examodule.c b/hw/xfree86/exa/examodule.c
+index 4dce58f..ceead82 100644
+--- a/hw/xfree86/exa/examodule.c
++++ b/hw/xfree86/exa/examodule.c
+@@ -50,6 +50,7 @@ typedef enum {
+     EXAOPT_NO_COMPOSITE,
+     EXAOPT_NO_UTS,
+     EXAOPT_NO_DFS,
++    EXAOPT_OPTIMIZE_MIGRATION
+ } EXAOpts;
+ 
+ static const OptionInfoRec EXAOptions[] = {
+@@ -61,6 +62,8 @@ static const OptionInfoRec EXAOptions[] = {
+ 				OPTV_BOOLEAN,	{0}, FALSE },
+     { EXAOPT_NO_DFS,			"EXANoDownloadFromScreen",
+ 				OPTV_BOOLEAN,	{0}, FALSE },
++    { EXAOPT_OPTIMIZE_MIGRATION,	"EXAOptimizeMigration",
++				OPTV_BOOLEAN,	{0}, FALSE },
+     { -1,				NULL,
+ 				OPTV_NONE,	{0}, FALSE }
+ };
+@@ -144,6 +147,11 @@ exaDDXDriverInit(ScreenPtr pScreen)
+ 			    heuristicName);
+ 	    }
+ 	}
++
++	pExaScr->optimize_migration =
++	    xf86ReturnOptValBool(pScreenPriv->options,
++				 EXAOPT_OPTIMIZE_MIGRATION,
++				 FALSE);
+     }
+ 
+     if (xf86IsOptionSet(pScreenPriv->options, EXAOPT_NO_COMPOSITE)) {

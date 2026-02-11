@@ -1,0 +1,18 @@
+diff --git a/include/dix.h b/include/dix.h
+index fcb2488..4b8a96e 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -313,13 +313,11 @@ extern void SetMaskForEvent(
+     Mask /* mask */,
+     int /* event */);
+ 
+-#ifdef SHAPE
+ extern void ConfineToShape(
+     DeviceIntPtr /* pDev */, 
+     RegionPtr /* shape */, 
+     int*      /* px */,
+     int*      /* py */);
+-#endif
+ 
+ extern Bool IsParent(
+     WindowPtr /* maybeparent */,

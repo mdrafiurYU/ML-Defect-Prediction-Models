@@ -1,0 +1,20 @@
+diff --git a/config/config.c b/config/config.c
+index 6c40143..d72b588 100644
+--- a/config/config.c
++++ b/config/config.c
+@@ -410,13 +410,13 @@ configReconnect(OsTimerPtr timer, CARD32 time, pointer arg)
+ }
+ 
+ void
+-configInitialise()
++configInitialise(void)
+ {
+     TimerSet(NULL, 0, 1, configReconnect, NULL);
+ }
+ 
+ void
+-configFini()
++configFini(void)
+ {
+     DBusError error;
+ 

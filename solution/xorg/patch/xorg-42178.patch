@@ -1,0 +1,21 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index f13d292..7c39bcc 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -524,7 +524,7 @@ int			maxNumberOfGroups;
+ 	     */
+ 	    if (nGroups == 1)
+ 	    {
+-		int idx;
++		int idx, j;
+ 
+ 		groupWidth = XkbKeyGroupWidth(xkb, key, XkbGroup1Index);
+ 
+@@ -547,6 +547,7 @@ int			maxNumberOfGroups;
+ 		if (idx < 4)
+ 		    idx = 4;
+ 		/* 3 or more groups: ABABCDECDEABCDEABCDE */
++                for (j = 3; j <= maxNumberOfGroups; j++)
+ 		for (n = 0; n < groupWidth && idx < maxSymsPerKey; n++)
+ 		    pCore[idx++] = pXKB[n];
+ 	    }

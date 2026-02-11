@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java
+index 7eaafb7..3ba65ea 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemValidator.java
+@@ -297,7 +297,7 @@ public class ItemValidator {
+         }
+         if ((options & CHECK_CHECKED_OUT) == CHECK_CHECKED_OUT) {
+             NodeImpl node = (item.isNode()) ? (NodeImpl) item : (NodeImpl) item.getParent();
+-            if (!node.internalIsCheckedOut()) {
++            if (!node.isCheckedOut()) {
+                 String msg = "Unable to perform operation. Node is checked-in.";
+                 log.debug(msg);
+                 throw new VersionException(msg);
+@@ -345,7 +345,7 @@ public class ItemValidator {
+         }
+         if ((options & CHECK_CHECKED_OUT) == CHECK_CHECKED_OUT) {
+             NodeImpl node = (item.isNode()) ? (NodeImpl) item : (NodeImpl) item.getParent();
+-            if (!node.internalIsCheckedOut()) {
++            if (!node.isCheckedOut()) {
+                 return false;
+             }
+         }

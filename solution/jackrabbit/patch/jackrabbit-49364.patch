@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+index 7b843f7..9c7b715 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+@@ -231,7 +231,7 @@ public class GarbageCollector {
+                         PropertyState ps = pm.load(pid);
+                         if (ps.getType() == PropertyType.BINARY) {
+                             for (InternalValue v : ps.getValues()) {
+-                                v.getBLOBFileValue().getLength();
++                                v.getLength();
+                             }
+                         }
+                     }

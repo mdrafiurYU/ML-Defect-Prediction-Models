@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
+index a8ef1b0..11e45ca 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
+@@ -205,6 +205,20 @@ public class AppendRecord extends AbstractRecord {
+     /**
+      * {@inheritDoc}
+      */
++    public void writeLong(long n) throws JournalException {
++        checkOutput();
++
++        try {
++            dataOut.writeLong(n);
++        } catch (IOException e) {
++            String msg = "I/O error while writing long.";
++            throw new JournalException(msg, e);
++        }
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public void writeString(String s) throws JournalException {
+         checkOutput();
+ 
+@@ -386,6 +400,10 @@ public class AppendRecord extends AbstractRecord {
+         throw unsupported();
+     }
+ 
++    public long readLong() throws JournalException {
++        throw unsupported();
++    }
++
+     public String readString() throws JournalException {
+         throw unsupported();
+     }

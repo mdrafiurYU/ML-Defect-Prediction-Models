@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
+index f1bb544..da25a32 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/NameLookup.java
+@@ -769,6 +769,7 @@ public class NameLookup implements SuffixConstants {
+ 					seekTypesInBinaryPackage(matchName, pkg, partialMatch, acceptFlags, requestor);
+ 					break;
+ 				case IPackageFragmentRoot.K_SOURCE :
++					matchName= matchName.replace('$', '.');
+ 					seekTypesInSourcePackage(matchName, pkg, partialMatch, acceptFlags, requestor);
+ 					break;
+ 				default :

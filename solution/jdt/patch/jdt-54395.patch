@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InternalHexFloatTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InternalHexFloatTest.java
+index 9a4843f..d97782b 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InternalHexFloatTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InternalHexFloatTest.java
+@@ -43,7 +43,7 @@ public class InternalHexFloatTest extends AbstractRegressionTest {
+ 		super(name);
+ 	}
+ 	public static Test suite() {
+-		return setupSuite(testClass());
++		return buildTestSuiteUniqueCompliance(testClass(), COMPLIANCE_1_5);
+ 	}
+ 
+ 	public static Class testClass() {

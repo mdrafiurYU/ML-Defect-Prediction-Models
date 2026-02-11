@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/document/Fieldable.java b/lucene/src/java/org/apache/lucene/document/Fieldable.java
+index 6a552fc..60a456a 100755
+--- a/lucene/src/java/org/apache/lucene/document/Fieldable.java
++++ b/lucene/src/java/org/apache/lucene/document/Fieldable.java
+@@ -208,7 +208,7 @@ public interface Fieldable extends Serializable {
+   * required in the index, it also means any query
+   * requiring positional information, such as {@link
+   * PhraseQuery} or {@link SpanQuery} subclasses will
+-  * silently fail to find results.
++  * fail with an exception.
+   */
+   void setOmitTermFreqAndPositions(boolean omitTermFreqAndPositions);

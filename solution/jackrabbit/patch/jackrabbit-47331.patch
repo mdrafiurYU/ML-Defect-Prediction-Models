@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+index 1a95d6a..d03cdb4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+@@ -39,7 +39,7 @@ import org.apache.jackrabbit.core.state.NodeState;
+ import org.apache.jackrabbit.core.state.PropertyState;
+ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.spi.Path;
+-import org.apache.jackrabbit.api.jsr283.observation.Event;
++import javax.jcr.observation.Event;
+ 
+ /**
+  * Cluster record representing a workspace or version update.

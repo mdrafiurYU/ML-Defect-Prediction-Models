@@ -1,0 +1,13 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index 00180b9..7ea032f 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -1708,7 +1708,7 @@ SecurityCheckPropertyAccess(CallbackListPtr *pcbl, pointer unused,
+     XacePropertyAccessRec *rec = (XacePropertyAccessRec*)calldata;
+     ClientPtr client = rec->client;
+     WindowPtr pWin = rec->pWin;
+-    ATOM propertyName = rec->propertyName;
++    ATOM propertyName = rec->pProp->propertyName;
+     Mask access_mode = rec->access_mode;
+     PropertyAccessPtr pacl;
+     char action = SecurityDefaultAction;

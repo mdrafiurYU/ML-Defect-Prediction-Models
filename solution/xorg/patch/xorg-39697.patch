@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 61252c3..718b8ff 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -814,6 +814,8 @@ GetPointerEvents(EventList *events, DeviceIntPtr pDev, int type, int buttons,
+     ms = GetTimeInMillis(); /* before pointer update to help precision */
+ 
+     /* Sanity checks. */
++    if (!scr) /* can happen during server shutdown */
++        return 0;
+     if (type != MotionNotify && type != ButtonPress && type != ButtonRelease)
+         return 0;
+     if (type != MotionNotify && !pDev->button)

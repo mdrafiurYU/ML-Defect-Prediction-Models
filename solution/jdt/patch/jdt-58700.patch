@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ProblemConstructorTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ProblemConstructorTest.java
+index 96d46b5..01fe597 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ProblemConstructorTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ProblemConstructorTest.java
+@@ -18,7 +18,7 @@ public ProblemConstructorTest(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return setupSuite(testClass());
++	return buildAllCompliancesRegressionTestSetupSuite(testClass());
+ }
+ public static Class testClass() {
+ 	return ProblemConstructorTest.class;

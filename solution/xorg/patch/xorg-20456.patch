@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/offscreen.c b/hw/xfree86/xf4bpp/offscreen.c
+index e684bf1..1bf634c 100644
+--- a/hw/xfree86/xf4bpp/offscreen.c
++++ b/hw/xfree86/xf4bpp/offscreen.c
+@@ -43,6 +43,10 @@
+ */
+ /* $XConsortium: offscreen.c /main/4 1996/02/21 17:56:55 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "vgaVideo.h"
+ #include "pixmapstr.h"

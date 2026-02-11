@@ -1,0 +1,15 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/core/KeywordTokenizer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/core/KeywordTokenizer.java
+index a4ac6f0..c9d73ef 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/core/KeywordTokenizer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/core/KeywordTokenizer.java
+@@ -29,8 +29,8 @@ import org.apache.lucene.util.AttributeSource;
+  * Emits the entire input as a single token.
+  */
+ public final class KeywordTokenizer extends Tokenizer {
+-  
+-  private static final int DEFAULT_BUFFER_SIZE = 256;
++  /** Default read buffer size */ 
++  public static final int DEFAULT_BUFFER_SIZE = 256;
+ 
+   private boolean done = false;
+   private int finalOffset;

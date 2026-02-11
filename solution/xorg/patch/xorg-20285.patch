@@ -1,0 +1,16 @@
+diff --git a/hw/kdrive/ati/ati.h b/hw/kdrive/ati/ati.h
+index 5ffd227..188d0b0 100644
+--- a/hw/kdrive/ati/ati.h
++++ b/hw/kdrive/ati/ati.h
+@@ -39,9 +39,10 @@
+ 
+ #include "kxv.h"
+ 
++#undef XF86DRI
+ #ifdef XF86DRI
+ #define USE_DRI
+-#include "libdrm.h"
++#include "xf86drm.h"
+ #include "dri.h"
+ #ifdef GLXEXT
+ #include "GL/glxint.h"

@@ -1,0 +1,20 @@
+diff --git a/Xprint/Init.c b/Xprint/Init.c
+index 70754e9..0f1be67 100644
+--- a/Xprint/Init.c
++++ b/Xprint/Init.c
+@@ -1693,6 +1693,7 @@ GenericScreenInit(
+ 					   (unsigned short)(maxHeight + 0.5);
+ }
+ 
++#if 0   /* No one uses this anymore... */
+ /*
+  * QualifyName - takes an unqualified file name such as X6printers and
+  * a colon-separated list of directory path names such as 
+@@ -1741,6 +1742,7 @@ QualifyName(char *fileName, char *searchPath)
+     }
+     return NULL;
+ }
++#endif
+ 
+ /*
+  * FillPrinterListEntry fills in a single XpDiListEntry element with data

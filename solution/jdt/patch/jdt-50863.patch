@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterJavadocTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterJavadocTest.java
+index b5e183c..ac1b3c9 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterJavadocTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterJavadocTest.java
+@@ -2815,4 +2815,12 @@ public class ASTConverterJavadocTest extends ConverterTestSetup {
+ 		);
+ 		verifyComments(workingCopies[0]);
+ 	}
++	public void testBug99507b() throws JavaModelException {
++        String source = "/**\n@param country*/";
++		ASTParser parser = ASTParser.newParser(AST.JLS3);
++		parser.setKind(ASTParser.K_COMPILATION_UNIT);
++		parser.setSource(source.toCharArray());
++		parser.createAST(null);
++	}
++	
+ }

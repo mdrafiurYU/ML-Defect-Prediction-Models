@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxext.c b/GL/glx/glxext.c
+index 11fb7fc..1f6c7f3 100644
+--- a/GL/glx/glxext.c
++++ b/GL/glx/glxext.c
+@@ -237,7 +237,7 @@ GLboolean __glXFreeContext(__GLXcontext *cx)
+      * __glXDispatch() or as a callback from the resource manager.  In
+      * the latter case we need to lift the DRI lock manually. */
+ 
+-    if (glxBlockClients) {
++    if (!glxBlockClients) {
+ 	__glXleaveServer();
+ 	cx->destroy(cx);
+ 	__glXenterServer();

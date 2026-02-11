@@ -1,0 +1,16 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/auto/Folder.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/auto/Folder.java
+index 1a415dd..b1ad7d5 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/auto/Folder.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/testmodel/auto/Folder.java
+@@ -18,7 +18,11 @@ package org.apache.jackrabbit.ocm.testmodel.auto;
+ 
+ import java.util.List;
+ 
+-public interface Folder  extends CmsObject{
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
++
++@Node(isInterface=true, jcrType="ocm:folder", extend=CmsObject.class)
++public interface Folder  extends CmsObject
++{
+ 
+ 	public List getChildren();

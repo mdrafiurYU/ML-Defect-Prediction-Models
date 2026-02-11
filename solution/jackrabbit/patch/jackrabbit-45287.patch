@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
+index 11b1e67..9f0ef31 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
+@@ -230,16 +230,6 @@ public abstract class AbstractJournal implements Journal {
+     }
+ 
+     /**
+-     * Return an iterator over all records after the specified revision.
+-     * Subclass responsibility.
+-     *
+-     * @param startRevision start point (exlusive)
+-     * @throws JournalException if an error occurs
+-     */
+-    protected abstract RecordIterator getRecords(long startRevision)
+-            throws JournalException;
+-
+-    /**
+      * Lock the journal revision, disallowing changes from other sources until
+      * {@link #unlock has been called, and synchronizes to the latest change.
+      *

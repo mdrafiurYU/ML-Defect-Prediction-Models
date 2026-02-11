@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
+index 5e0e720..27f4b88 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
+@@ -35,6 +35,11 @@ public class ParameterizedTypeBinding extends ReferenceBinding implements Substi
+ 
+ 		this.environment = environment;
+ 		this.enclosingType = enclosingType; // never unresolved, never lazy per construction
++//		if (enclosingType != null && enclosingType.isGenericType()) {
++//			RuntimeException e = new RuntimeException("PARAM TYPE with GENERIC ENCLOSING");
++//			e.printStackTrace();
++//			throw e;
++//		}
+ 		initialize(type, arguments);
+ 		if (type instanceof UnresolvedReferenceBinding)
+ 			((UnresolvedReferenceBinding) type).addWrapper(this);

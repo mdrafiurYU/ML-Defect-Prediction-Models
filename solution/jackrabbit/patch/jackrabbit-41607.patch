@@ -1,0 +1,41 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java
+index 0099821..52a7e54 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java
+@@ -1150,19 +1150,24 @@ public class EffectiveNodeType implements Cloneable {
+     }
+ 
+     protected Object clone() {
+-        EffectiveNodeType clone = new EffectiveNodeType();
++        try {
++            EffectiveNodeType clone = (EffectiveNodeType) super.clone();
+ 
+-        clone.mergedNodeTypes.addAll(mergedNodeTypes);
+-        clone.inheritedNodeTypes.addAll(inheritedNodeTypes);
+-        clone.allNodeTypes.addAll(allNodeTypes);
+-        Iterator iter = namedItemDefs.keySet().iterator();
+-        while (iter.hasNext()) {
+-            Object key = iter.next();
+-            List list = (List) namedItemDefs.get(key);
+-            clone.namedItemDefs.put(key, new ArrayList(list));
+-        }
+-        clone.unnamedItemDefs.addAll(unnamedItemDefs);
++            clone.mergedNodeTypes.addAll(mergedNodeTypes);
++            clone.inheritedNodeTypes.addAll(inheritedNodeTypes);
++            clone.allNodeTypes.addAll(allNodeTypes);
++            Iterator iter = namedItemDefs.keySet().iterator();
++            while (iter.hasNext()) {
++                Object key = iter.next();
++                List list = (List) namedItemDefs.get(key);
++                clone.namedItemDefs.put(key, new ArrayList(list));
++            }
++            clone.unnamedItemDefs.addAll(unnamedItemDefs);
+ 
+-        return clone;
++            return clone;
++        } catch (CloneNotSupportedException e) {
++            // won't happen
++            throw new InternalError("Failed to clone EffectiveNodeType object");
++        }
+     }
+ }

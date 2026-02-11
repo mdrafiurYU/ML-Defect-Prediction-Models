@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ProductFloatFunction.java b/solr/src/java/org/apache/solr/search/function/ProductFloatFunction.java
+index 99f668e..fa74cfc 100755
+--- a/solr/src/java/org/apache/solr/search/function/ProductFloatFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/ProductFloatFunction.java
+@@ -25,10 +25,12 @@ public class ProductFloatFunction extends MultiFloatFunction {
+     super(sources);
+   }
+ 
++  @Override
+   protected String name() {
+     return "product";
+   }
+ 
++  @Override
+   protected float func(int doc, DocValues[] valsArr) {
+     float val = 1.0f;
+     for (DocValues vals : valsArr) {

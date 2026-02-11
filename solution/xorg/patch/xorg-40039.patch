@@ -1,0 +1,14 @@
+diff --git a/render/picturestr.h b/render/picturestr.h
+index acd15c7..1ce16be 100644
+--- a/render/picturestr.h
++++ b/render/picturestr.h
+@@ -403,9 +403,6 @@ extern RESTYPE		GlyphSetType;
+ #define GetPictureWindow(w) ((PicturePtr)dixLookupPrivate(&(w)->devPrivates, PictureWindowPrivateKey))
+ #define SetPictureWindow(w,p) dixSetPrivate(&(w)->devPrivates, PictureWindowPrivateKey, p)
+ 
+-#define GetGlyphPrivatesForScreen(glyph, s) \
+-    ((PrivateRec **)dixLookupPrivateAddr(&(glyph)->devPrivates, s))
+-
+ #define VERIFY_PICTURE(pPicture, pid, client, mode, err) {\
+     pPicture = SecurityLookupIDByType(client, pid, PictureType, mode);\
+     if (!pPicture) { \

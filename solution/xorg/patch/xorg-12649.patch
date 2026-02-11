@@ -1,0 +1,19 @@
+diff --git a/GL/windows/glwindows.h b/GL/windows/glwindows.h
+index aa98409..77581dd 100644
+--- a/GL/windows/glwindows.h
++++ b/GL/windows/glwindows.h
+@@ -1,3 +1,4 @@
++#include <Xwindows.h>
+ #include <GL/gl.h>
+ #include <GL/glext.h>
+ 
+@@ -19,9 +20,6 @@
+ #include <GL/internal/glcore.h>
+ #include <stdlib.h>
+ 
+-#define WINDOWS_LEAN_AND_CLEAN
+-#include <windows.h>
+-
+ 
+ typedef struct {
+     unsigned enableDebug : 1;

@@ -1,0 +1,31 @@
+diff --git a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+index 61728a1..d429d2f 100644
+--- a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
++++ b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+@@ -22,7 +22,7 @@ import org.apache.solr.search.function.ValueSource;
+ 
+ /**
+  * Add values from a ValueSource (function query etc)
+- * 
++ *
+  * NOT really sure how or if this could work...
+  *
+  * @version $Id: JSONResponseWriter.java 1065304 2011-01-30 15:10:15Z rmuir $
+@@ -42,6 +42,17 @@ public class ValueSourceAugmenter extends DocTransformer
+   }
+ 
+   @Override
++  public String getName()
++  {
++    return name;
++  }
++
++  @Override
++  public void setContext( TransformContext context ) {
++    // maybe we do something here?
++  }
++
++  @Override
+   public void transform(SolrDocument doc, int docid) {
+     // TODO, should know what the real type is -- not always string
+     // how do we get to docvalues?

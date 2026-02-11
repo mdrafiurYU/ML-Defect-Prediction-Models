@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/coffloader.c b/hw/xfree86/loader/coffloader.c
+index 366bf6e..32a229d 100644
+--- a/hw/xfree86/loader/coffloader.c
++++ b/hw/xfree86/loader/coffloader.c
+@@ -22,6 +22,10 @@
+  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <stdlib.h>

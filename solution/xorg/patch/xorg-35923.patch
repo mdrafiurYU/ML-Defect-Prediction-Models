@@ -1,0 +1,17 @@
+diff --git a/xkb/ddxLoad.c b/xkb/ddxLoad.c
+index 6312226..60a8d44 100644
+--- a/xkb/ddxLoad.c
++++ b/xkb/ddxLoad.c
+@@ -321,10 +321,10 @@ char tmpname[PATH_MAX];
+ #ifdef DEBUG
+     if (xkbDebugFlags) {
+        ErrorF("XkbDDXCompileKeymapByNames compiling keymap:\n");
+-       XkbWriteXKBKeymapForNames(stderr,names,NULL,xkb,want,need);
++       XkbWriteXKBKeymapForNames(stderr,names,xkb,want,need);
+     }
+ #endif
+-	XkbWriteXKBKeymapForNames(out,names,NULL,xkb,want,need);
++	XkbWriteXKBKeymapForNames(out,names,xkb,want,need);
+ #ifndef WIN32
+ 	if (Pclose(out)==0)
+ #else

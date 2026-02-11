@@ -1,0 +1,15 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java
+index 6b1af4c..26d6c0f 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestNRTManager.java
+@@ -159,9 +159,7 @@ public class TestNRTManager extends LuceneTestCase {
+         System.out.println("TEST: wrap NRTCachingDir");
+       }
+ 
+-      NRTCachingDirectory nrtDir = new NRTCachingDirectory(dir, 5.0, 60.0);
+-      conf.setMergeScheduler(nrtDir.getMergeScheduler());
+-      dir = nrtDir;
++      dir = new NRTCachingDirectory(dir, 5.0, 60.0);
+     }
+     
+     final IndexWriter writer = new IndexWriter(dir, conf);

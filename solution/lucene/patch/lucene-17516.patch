@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestBoolean2.java b/lucene/src/test/org/apache/lucene/search/TestBoolean2.java
+index 090eda2..13184b0 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestBoolean2.java
++++ b/lucene/src/test/org/apache/lucene/search/TestBoolean2.java
+@@ -92,7 +92,7 @@ public class TestBoolean2 extends LuceneTestCase {
+       w.addDocument(doc);
+     }
+     reader = w.getReader();
+-    bigSearcher = new IndexSearcher(reader);
++    bigSearcher = newSearcher(reader);
+     w.close();
+   }

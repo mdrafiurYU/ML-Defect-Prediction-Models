@@ -1,0 +1,10 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 372ffc8..efbf260 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -2382,4 +2382,5 @@ NewInputDeviceRequest(InputOption *options, DeviceIntPtr *pdev)
+ void
+ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+ {
++    RemoveDevice(pDev);
+ }

@@ -1,0 +1,17 @@
+diff --git a/solr/src/test/org/apache/solr/core/IndexReaderFactoryTest.java b/solr/src/test/org/apache/solr/core/IndexReaderFactoryTest.java
+index 870e21d..1fbec3f 100644
+--- a/solr/src/test/org/apache/solr/core/IndexReaderFactoryTest.java
++++ b/solr/src/test/org/apache/solr/core/IndexReaderFactoryTest.java
+@@ -20,10 +20,12 @@ import org.apache.solr.util.AbstractSolrTestCase;
+ 
+ public class IndexReaderFactoryTest extends AbstractSolrTestCase {
+ 
++  @Override
+   public String getSchemaFile() {
+     return "schema.xml";
+   }
+ 
++  @Override
+   public String getSolrConfigFile() {
+     return "solrconfig-termindex.xml";
+   }

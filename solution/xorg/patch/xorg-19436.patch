@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/i2c/fi1236.c b/hw/xfree86/i2c/fi1236.c
+index 299f200..22a0194 100644
+--- a/hw/xfree86/i2c/fi1236.c
++++ b/hw/xfree86/i2c/fi1236.c
+@@ -1,9 +1,14 @@
+-/* $XdotOrg: $ */
++/* $XdotOrg: xserver/xorg/hw/xfree86/i2c/fi1236.c,v 1.8 2005/07/30 18:56:32 alanc Exp $ */
+ 
+ #ifdef HAVE_XORG_CONFIG_H
+ #include <xorg-config.h>
+ #endif
+ 
++#include <unistd.h>
++#include <stdlib.h>
++#include <string.h>
++#include <math.h>
++
+ #include "xf86.h"
+ #include "xf86i2c.h"
+ #include "fi1236.h"

@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestPropInject.java b/solr/src/test/org/apache/solr/core/TestPropInject.java
+index dbe7ab0..c84e13f 100644
+--- a/solr/src/test/org/apache/solr/core/TestPropInject.java
++++ b/solr/src/test/org/apache/solr/core/TestPropInject.java
+@@ -32,7 +32,7 @@ public class TestPropInject extends AbstractSolrTestCase {
+     ExposeWriterHandler uh = new ExposeWriterHandler();
+     IndexWriter writer = uh.getWriter();
+     LogByteSizeMergePolicy mp = (LogByteSizeMergePolicy)writer.getConfig().getMergePolicy();
+-    assertEquals(64.0, mp.getMaxMergeMB());
++    assertEquals(64.0, mp.getMaxMergeMB(), 0);
+     uh.close();
+   }

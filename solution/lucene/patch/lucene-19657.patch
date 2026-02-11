@@ -1,0 +1,23 @@
+diff --git a/solr/src/common/org/apache/solr/common/SolrDocument.java b/solr/src/common/org/apache/solr/common/SolrDocument.java
+index 813326e..1864e09 100644
+--- a/solr/src/common/org/apache/solr/common/SolrDocument.java
++++ b/solr/src/common/org/apache/solr/common/SolrDocument.java
+@@ -26,6 +26,8 @@ import java.util.LinkedHashMap;
+ import java.util.Map;
+ import java.util.Set;
+ 
++import org.apache.solr.common.util.NamedList;
++
+ 
+ /**
+  * A concrete representation of a document within a Solr index.  Unlike a lucene
+@@ -88,6 +90,9 @@ public class SolrDocument implements Map<String,Object>, Iterable<Map.Entry<Stri
+     else if( value instanceof Collection ) {
+       // nothing
+     }
++    else if( value instanceof NamedList ) {
++      // nothing
++    }
+     else if( value instanceof Iterable ) {
+       ArrayList<Object> lst = new ArrayList<Object>();
+       for( Object o : (Iterable)value ) {

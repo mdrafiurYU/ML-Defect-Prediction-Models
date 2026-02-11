@@ -1,0 +1,14 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index b47ae59..a4360e5 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -751,9 +751,6 @@ CloseDownDevices(void)
+ 	CloseDevice(dev);
+     }
+ 
+-    CloseDevice(inputInfo.keyboard);
+-    CloseDevice(inputInfo.pointer);
+-
+     inputInfo.devices = NULL;
+     inputInfo.off_devices = NULL;
+     inputInfo.keyboard = NULL;

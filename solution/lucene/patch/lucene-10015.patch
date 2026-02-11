@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/Directory.java b/lucene/src/java/org/apache/lucene/store/Directory.java
+index 924c3b5..d19d61a 100644
+--- a/lucene/src/java/org/apache/lucene/store/Directory.java
++++ b/lucene/src/java/org/apache/lucene/store/Directory.java
+@@ -252,6 +252,7 @@ public abstract class Directory implements Closeable {
+    * }
+    * </pre>
+    */
++  @Deprecated
+   public static void copy(Directory src, Directory dest, boolean closeDirSrc) throws IOException {
+     for (String file : src.listAll()) {
+       src.copy(dest, file, file);

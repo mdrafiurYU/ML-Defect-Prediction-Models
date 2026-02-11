@@ -1,0 +1,23 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index bd1bef7..b6cb4a5 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -705,18 +705,6 @@ RegisterKeyboardDevice(DeviceIntPtr device)
+     RegisterOtherDevice(device);
+ }
+ 
+-_X_EXPORT DevicePtr
+-LookupKeyboardDevice(void)
+-{
+-    return inputInfo.keyboard ? &inputInfo.keyboard->public : NULL;
+-}
+-
+-_X_EXPORT DevicePtr
+-LookupPointerDevice(void)
+-{
+-    return inputInfo.pointer ? &inputInfo.pointer->public : NULL;
+-}
+-
+ int
+ dixLookupDevice(DeviceIntPtr *pDev, int id, ClientPtr client, Mask access_mode)
+ {

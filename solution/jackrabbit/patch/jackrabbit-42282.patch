@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
+index 168fc95..36dd80a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
+@@ -326,6 +326,8 @@ public class DerbyPersistenceManager extends BundleDbPersistenceManager {
+         // @todo further investigate
+         connectionManager.getConnection().setAutoCommit(true);
+ 
++        super.close();
++
+         // now it's safe to shutdown the embedded Derby database
+         try {
+             DriverManager.getConnection(url);
+@@ -333,8 +335,6 @@ public class DerbyPersistenceManager extends BundleDbPersistenceManager {
+             // a shutdown command always raises a SQLException
+             log.info(e.getMessage());
+         }
+-
+-        super.close();
+     }
+ 
+ }

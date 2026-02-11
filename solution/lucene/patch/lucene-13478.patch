@@ -1,0 +1,11 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+index bf32c25..617a6b8 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+@@ -689,7 +689,6 @@ public class TestIndexWriterDelete extends LuceneTestCase {
+ 
+     LogMergePolicy lmp = (LogMergePolicy) modifier.getConfig().getMergePolicy();
+     lmp.setUseCompoundFile(true);
+-    lmp.setUseCompoundDocStore(true);
+ 
+     dir.failOn(failure.reset());

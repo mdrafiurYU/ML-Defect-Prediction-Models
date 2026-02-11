@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/LuceneQueryOptimizer.java b/solr/src/java/org/apache/solr/search/LuceneQueryOptimizer.java
+index d003f40..65812a5 100644
+--- a/solr/src/java/org/apache/solr/search/LuceneQueryOptimizer.java
++++ b/solr/src/java/org/apache/solr/search/LuceneQueryOptimizer.java
+@@ -54,7 +54,7 @@ class LuceneQueryOptimizer {
+   }
+ 
+   public TopDocs optimize(BooleanQuery original,
+-                          Searcher searcher,
++                          IndexSearcher searcher,
+                           int numHits,
+                           Query[] queryOut,
+                           Filter[] filterOut

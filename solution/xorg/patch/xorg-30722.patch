@@ -1,0 +1,16 @@
+diff --git a/dix/events.c b/dix/events.c
+index ad9ec1c..87cf7b0 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -1173,9 +1173,10 @@ EnqueueEvent(xEvent *xE, DeviceIntPtr device, int count)
+ #endif
+ 	pSprite->hotPhys.x = XE_KBPTR.rootX;
+ 	pSprite->hotPhys.y = XE_KBPTR.rootY;
+-	/* do motion compression */
++	/* do motion compression, but not if from different devices */
+ 	if (tail &&
+ 	    (tail->event->u.u.type == MotionNotify) &&
++            (tail->device == device) &&
+ 	    (tail->pScreen == pSprite->hotPhys.pScreen))
+ 	{
+ 	    tail->event->u.keyButtonPointer.rootX = pSprite->hotPhys.x;

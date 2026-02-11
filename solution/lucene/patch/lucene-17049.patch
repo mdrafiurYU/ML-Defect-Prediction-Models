@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableLongField.java b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+index 3be76b9..d23fff2 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableLongField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+@@ -37,6 +37,8 @@ import java.util.Map;
+ import java.io.IOException;
+ /**
+  * @version $Id$
++ * 
++ * @deprecated use {@link LongField} or {@link TrieLongtField} - will be removed in 5.x
+  */
+ public class SortableLongField extends FieldType {
+   protected void init(IndexSchema schema, Map<String,String> args) {

@@ -1,0 +1,13 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 0774a70..97ae6c0 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -56,7 +56,7 @@ struct _ExaOffscreenArea {
+     int                 base_offset;	/* allocation base */
+     int                 offset;         /* aligned offset */
+     int                 size;           /* total allocation size */
+-    int                 score;
++    unsigned            last_use;
+     pointer             privData;
+ 
+     ExaOffscreenSaveProc save;

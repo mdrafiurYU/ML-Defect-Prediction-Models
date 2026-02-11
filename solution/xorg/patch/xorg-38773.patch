@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 5227c54..b00bc11 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -1030,7 +1030,7 @@ GetPointerEvents(EventList *events, DeviceIntPtr pDev, int type, int buttons,
+             kbp->type = DeviceButtonPress;
+         else if (type == ButtonRelease)
+             kbp->type = DeviceButtonRelease;
+-        kbp->detail = pDev->button->map[buttons];
++        kbp->detail = buttons;
+     }
+ 
+     kbp->root_x = cx; /* root_x/y always in screen coords */

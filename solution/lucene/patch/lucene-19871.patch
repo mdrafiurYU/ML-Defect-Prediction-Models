@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/response/transform/ScoreAugmenter.java b/solr/src/java/org/apache/solr/response/transform/ScoreAugmenter.java
+index 2de825a..ce665f6 100644
+--- a/solr/src/java/org/apache/solr/response/transform/ScoreAugmenter.java
++++ b/solr/src/java/org/apache/solr/response/transform/ScoreAugmenter.java
+@@ -34,6 +34,12 @@ public class ScoreAugmenter extends TransformerWithContext
+   }
+ 
+   @Override
++  public String getName()
++  {
++    return name;
++  }
++
++  @Override
+   public void transform(SolrDocument doc, int docid) {
+     if( context != null && context.wantsScores ) {
+       if( context.iterator != null ) {

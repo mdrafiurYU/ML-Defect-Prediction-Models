@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java b/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java
+index 54a04be..f5588b9 100644
+--- a/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java
++++ b/lucene/src/test/org/apache/lucene/index/values/TestDocValuesIndexing.java
+@@ -271,7 +271,7 @@ public class TestDocValuesIndexing extends LuceneTestCase {
+           }
+           assertEquals("advance failed at index: " + i + " of " + r.numDocs()
+               + " docs", i, intsEnum.advance(i));
+-          assertEquals(val + "" + mod + " " +  i, expected%mod, ints.getInt(i));
++          assertEquals(val + " mod: " + mod + " index: " +  i, expected%mod, ints.getInt(i));
+           assertEquals(expected%mod, enumRef.get());
+ 
+         }

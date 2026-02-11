@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 888ad42..2cb1441 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -215,7 +215,10 @@ xf86ActivateDevice(LocalDevicePtr local)
+ 
+         dev->coreEvents = local->flags & XI86_ALWAYS_CORE;
+ #ifdef MPX
+-        dev->isMPDev = local->flags & XI86_MP_DEVICE;
++        if (local->flags & XI86_MP_DEVICE)
++            dev->isMPDev = TRUE;
++        else
++            dev->isMPDev = FALSE;
+ #endif
+         RegisterOtherDevice(dev);
+ 

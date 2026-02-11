@@ -1,0 +1,55 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+index a846604..b22d009 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+@@ -40,7 +40,6 @@ import javax.jcr.nodetype.ConstraintViolationException;
+ import javax.jcr.observation.Event;
+ import javax.jcr.observation.ObservationManager;
+ import java.security.Principal;
+-import java.util.Map;
+ 
+ /**
+  * <code>AbstractEvaluationTest</code>...
+@@ -86,7 +85,6 @@ public abstract class AbstractWriteTest extends AbstractEvaluationTest {
+ 
+     protected void tearDown() throws Exception {
+         // make sure all ac info is removed
+-        clearACInfo();
+         if (testGroup != null && testUser != null) {
+             testGroup.removeMember(testUser);
+             testGroup.remove();
+@@ -94,34 +92,6 @@ public abstract class AbstractWriteTest extends AbstractEvaluationTest {
+         super.tearDown();
+     }
+ 
+-    protected abstract void clearACInfo();
+-
+-    protected JackrabbitAccessControlList givePrivileges(String nPath, Privilege[] privileges,
+-                                                         Map restrictions) throws NotExecutableException, RepositoryException {
+-        return givePrivileges(nPath, testUser.getPrincipal(), privileges, restrictions);
+-    }
+-
+-    protected JackrabbitAccessControlList givePrivileges(String nPath, Principal principal,
+-                                                         Privilege[] privileges, Map restrictions) throws NotExecutableException, RepositoryException {
+-        JackrabbitAccessControlList tmpl = getPolicy(acMgr, nPath, principal);
+-        tmpl.addEntry(principal, privileges, true, restrictions);
+-        acMgr.setPolicy(tmpl.getPath(), tmpl);
+-        superuser.save();
+-        return tmpl;
+-    }
+-
+-    protected JackrabbitAccessControlList withdrawPrivileges(String nPath, Privilege[] privileges, Map restrictions) throws NotExecutableException, RepositoryException {
+-        return withdrawPrivileges(nPath, testUser.getPrincipal(), privileges, restrictions);
+-    }
+-
+-    protected JackrabbitAccessControlList withdrawPrivileges(String nPath, Principal principal, Privilege[] privileges, Map restrictions) throws NotExecutableException, RepositoryException {
+-        JackrabbitAccessControlList tmpl = getPolicy(acMgr, nPath, principal);
+-        tmpl.addEntry(principal, privileges, false, restrictions);
+-        acMgr.setPolicy(tmpl.getPath(), tmpl);
+-        superuser.save();
+-        return tmpl;
+-    }
+-
+     protected User getTestUser() {
+         return testUser;
+     }

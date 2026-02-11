@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PooledTextExtractor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PooledTextExtractor.java
+index b57efc5..d935ba2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PooledTextExtractor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PooledTextExtractor.java
+@@ -84,8 +84,8 @@ public class PooledTextExtractor implements TextExtractor {
+                 new PooledExecutor.BlockedExecutionHandler() {
+             public boolean blockedAction(Runnable command) {
+                 // execute with current thread and log message
+-                log.info("Extractor pool busy, running command with " +
+-                        "current thread: {}", command.toString());
++                log.info("Extractor pool busy, running command with "
++                        + "current thread: {}", command.toString());
+                 command.run();
+                 return true;
+             }

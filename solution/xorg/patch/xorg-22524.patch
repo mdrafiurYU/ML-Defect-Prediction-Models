@@ -1,0 +1,15 @@
+diff --git a/miext/cw/cw_render.c b/miext/cw/cw_render.c
+index 73d893b..82ca006 100644
+--- a/miext/cw/cw_render.c
++++ b/miext/cw/cw_render.c
+@@ -21,6 +21,10 @@
+  */
+ /* $Header$ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "gcstruct.h"
+ #include "windowstr.h"
+ #include "cw.h"

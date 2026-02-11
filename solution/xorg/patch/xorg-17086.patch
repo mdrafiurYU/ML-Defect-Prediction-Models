@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/os-support/bsd/i386_video.c b/hw/xfree86/os-support/bsd/i386_video.c
+index 1515d0e..3f4cdb0 100644
+--- a/hw/xfree86/os-support/bsd/i386_video.c
++++ b/hw/xfree86/os-support/bsd/i386_video.c
+@@ -34,6 +34,9 @@
+ #include "xf86.h"
+ #include "xf86Priv.h"
+ 
++#include <errno.h>
++#include <sys/mman.h>
++
+ #ifdef HAS_MTRR_SUPPORT
+ #ifndef __NetBSD__
+ #include <sys/types.h>

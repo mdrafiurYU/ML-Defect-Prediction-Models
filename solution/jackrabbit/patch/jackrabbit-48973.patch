@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/JcrLockManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/JcrLockManager.java
+index 8ae6d9c..c387777 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/JcrLockManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/JcrLockManager.java
+@@ -93,7 +93,7 @@ public class JcrLockManager implements LockManager {
+      *
+      * @see javax.jcr.lock.LockManager#getLockTokens()
+      */
+-    public String[] getLockTokens() {
++    public String[] getLockTokens() throws RepositoryException {
+         return lockStateMgr.getLockTokens();
+     }

@@ -1,0 +1,40 @@
+diff --git a/solr/src/java/org/apache/solr/core/CoreContainer.java b/solr/src/java/org/apache/solr/core/CoreContainer.java
+index 22abadf..2ea9b92 100644
+--- a/solr/src/java/org/apache/solr/core/CoreContainer.java
++++ b/solr/src/java/org/apache/solr/core/CoreContainer.java
+@@ -78,8 +78,6 @@ public class CoreContainer
+   protected String adminHandler;
+   protected boolean shareSchema;
+   protected String solrHome;
+-  @Deprecated
+-  protected String solrConfigFilenameOverride;
+   protected String defaultCoreName = "";
+   private ZkController zkController;
+   private SolrZkServer zkServer;
+@@ -219,15 +217,6 @@ public class CoreContainer
+            "Setting abortOnConfigurationError==false is no longer supported");
+     }
+ 
+-    public String getSolrConfigFilename() {
+-      return solrConfigFilename;
+-    }
+-
+-    @Deprecated
+-    public void setSolrConfigFilename(String solrConfigFilename) {
+-      this.solrConfigFilename = solrConfigFilename;
+-    }
+-
+     // core container instantiation
+     public CoreContainer initialize() throws IOException,
+         ParserConfigurationException, SAXException {
+@@ -379,9 +368,7 @@ public class CoreContainer
+           // deal with optional settings
+           String opt = DOMUtil.getAttr(node, "config", null);
+ 
+-          if(solrConfigFilenameOverride != null) {
+-            p.setConfigName(solrConfigFilenameOverride);
+-          } else if (opt != null) {
++          if (opt != null) {
+             p.setConfigName(opt);
+           }
+           opt = DOMUtil.getAttr(node, "schema", null);

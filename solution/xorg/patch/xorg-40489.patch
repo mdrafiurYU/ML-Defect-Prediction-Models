@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/quartz.c b/hw/xquartz/quartz.c
+index b17e561..616c2b0 100644
+--- a/hw/xquartz/quartz.c
++++ b/hw/xquartz/quartz.c
+@@ -186,7 +186,7 @@ void QuartzInitInput(
+ 
+ #ifdef FAKE_RANDR
+ 
+-static int padlength[4] = {0, 3, 2, 1};
++static const int padlength[4] = {0, 3, 2, 1};
+ 
+ static void
+ RREditConnectionInfo (ScreenPtr pScreen)

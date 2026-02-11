@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchMinimalStemFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchMinimalStemFilter.java
+index b45c532..5830788 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchMinimalStemFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchMinimalStemFilter.java
+@@ -59,4 +59,9 @@ public class TestFrenchMinimalStemFilter extends BaseTokenStreamTestCase {
+   public void testVocabulary() throws IOException {
+     assertVocabulary(analyzer, getDataFile("frminimaltestdata.zip"), "frminimal.txt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, analyzer, 10000*RANDOM_MULTIPLIER);
++  }
+ }

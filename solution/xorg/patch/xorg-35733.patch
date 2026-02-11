@@ -1,0 +1,13 @@
+diff --git a/include/input.h b/include/input.h
+index af330a7..9ba12db 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -399,7 +399,7 @@ extern void InitInput(
+ 
+ extern int GetMaximumEventsNum(void);
+ 
+-extern EventListPtr GetEventList();
++extern int GetEventList(EventListPtr* list);
+ extern EventListPtr InitEventList(int num_events);
+ extern void SetMinimumEventSize(EventListPtr list,
+                                 int num_events,

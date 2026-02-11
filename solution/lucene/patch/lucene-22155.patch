@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestSynonymTokenFilter.java b/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestSynonymTokenFilter.java
+index 89faf4b..6959a3e 100644
+--- a/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestSynonymTokenFilter.java
++++ b/lucene/contrib/wordnet/src/test/org/apache/lucene/wordnet/TestSynonymTokenFilter.java
+@@ -111,7 +111,6 @@ public class TestSynonymTokenFilter extends BaseTokenStreamTestCase {
+         setPreviousTokenStream(streams);
+       } else {
+         streams.source.reset(reader);
+-        streams.result.reset(); // reset the SynonymTokenFilter
+       }
+       return streams.result;
+     }

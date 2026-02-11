@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SimpleQueryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SimpleQueryTest.java
+index 2f12dda..da938e1 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SimpleQueryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SimpleQueryTest.java
+@@ -345,7 +345,7 @@ public class SimpleQueryTest extends AbstractQueryTest {
+         bar.setProperty("text", "the quick brown fox jumps over the lazy dog.");
+         // documents which field name is not exactly "mytext" should not match (JCR-1051)
+         bar.setProperty("mytextwhichstartswithmytext", "the quick brown fox jumps over the lazy dog.");
+-        
++
+         testRootNode.save();
+ 
+         String sql = "SELECT * FROM nt:unstructured WHERE mytext is not null";

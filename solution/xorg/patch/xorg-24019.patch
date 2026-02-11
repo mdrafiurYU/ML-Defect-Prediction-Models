@@ -1,0 +1,15 @@
+diff --git a/include/os.h b/include/os.h
+index e16839c..d459e9e 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -149,6 +149,10 @@ extern void CheckConnections(void);
+ 
+ extern void CloseDownConnection(ClientPtr /*client*/);
+ 
++extern void AddGeneralSocket(int /*fd*/);
++
++extern void RemoveGeneralSocket(int /*fd*/);
++
+ extern void AddEnabledDevice(int /*fd*/);
+ 
+ extern void RemoveEnabledDevice(int /*fd*/);

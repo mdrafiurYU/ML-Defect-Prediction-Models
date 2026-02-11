@@ -1,0 +1,16 @@
+diff --git a/dix/swaprep.c b/dix/swaprep.c
+index af82f82..493def5 100644
+--- a/dix/swaprep.c
++++ b/dix/swaprep.c
+@@ -524,10 +524,7 @@ SListInstalledColormapsReply(ClientPtr pClient, int size,
+ }
+ 
+ void
+-SAllocColorReply(pClient, size, pRep)
+-    ClientPtr		pClient;
+-    int			size;
+-    xAllocColorReply	*pRep;
++SAllocColorReply(ClientPtr pClient, int size, xAllocColorReply *pRep)
+ {
+     char n;
+ 

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+index fdbf16e..fd9ed5f 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+@@ -430,7 +430,7 @@ public class TestNRTThreads extends LuceneTestCase {
+                       trigger = totTermCount.get()/10;
+                       //System.out.println("trigger " + trigger);
+                       shift = random.nextInt(trigger);
+-                      termsEnum.seek(new BytesRef(""));
++                      termsEnum.seekCeil(new BytesRef(""));
+                       continue;
+                     }
+                     seenTermCount++;

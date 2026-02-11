@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+index 4dcbc54..fb44a53 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+@@ -906,8 +906,6 @@ public abstract class Scope implements TypeConstants, TypeIds {
+ 		if (visibleField != null)
+ 			return visibleField;
+ 		if (notVisibleField != null) {
+-			if (!notVisibleField.declaringClass.canBeSeenBy(this))
+-				return new ProblemFieldBinding(notVisibleField, notVisibleField.declaringClass, fieldName, ProblemReasons.ReceiverTypeNotVisible);
+ 			return new ProblemFieldBinding(notVisibleField, currentType, fieldName, ProblemReasons.NotVisible);
+ 		}
+ 		return null;

@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/CompletionEngine.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/CompletionEngine.java
+index 92d2a12..198eb10 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/CompletionEngine.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/CompletionEngine.java
+@@ -1202,7 +1202,8 @@ public final class CompletionEngine
+ 				// get the source positions of the completion identifier
+ 				if (qualifiedBinding instanceof ReferenceBinding && !(qualifiedBinding instanceof TypeVariableBinding)) {
+ 					if (!this.requestor.isIgnored(CompletionProposal.JAVADOC_TYPE_REF)) {
+-						setSourceRange((int) (completionPosition >>> 32), (int) completionPosition);
++						int rangeStart = typeRef.completeInText() ? typeRef.sourceStart : (int) (completionPosition >>> 32);
++						setSourceRange(rangeStart, (int) completionPosition);
+ 						findMemberTypes(this.completionToken,
+ 							(ReferenceBinding) qualifiedBinding,
+ 							scope,

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/xf86Pci.h b/hw/xfree86/os-support/bus/xf86Pci.h
+index 6fcb468..1ab0749 100644
+--- a/hw/xfree86/os-support/bus/xf86Pci.h
++++ b/hw/xfree86/os-support/bus/xf86Pci.h
+@@ -263,7 +263,6 @@ int	      xf86GetPciDomain(PCITAG tag);
+ pointer	      xf86MapDomainMemory(int ScreenNum, int Flags, PCITAG Tag,
+ 				  ADDRESS Base, unsigned long Size);
+ IOADDRESS xf86MapLegacyIO(struct pci_device *dev);
+-int	      xf86ReadDomainMemory(PCITAG Tag, ADDRESS Base, int Len,
+-				   unsigned char *Buf);
++int xf86ReadLegacyVideoBIOS(PCITAG Tag, unsigned char *Buf);
+ 
+ #endif /* _XF86PCI_H */

@@ -1,0 +1,28 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+index 201af66..27989d6 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+@@ -361,6 +361,10 @@ public final class SegmentInfo {
+     return docStoreSegment;
+   }
+   
++  public void setDocStoreSegment(String segment) {
++    docStoreSegment = segment;
++  }
++  
+   void setDocStoreOffset(int offset) {
+     docStoreOffset = offset;
+     clearFiles();
+@@ -534,6 +538,12 @@ public final class SegmentInfo {
+     
+     if (docStoreOffset != -1) {
+       s.append("->").append(docStoreSegment);
++      if (docStoreIsCompoundFile) {
++        s.append('c');
++      } else {
++        s.append('C');
++      }
++      s.append('+').append(docStoreOffset);
+     }
+ 
+     return s.toString();

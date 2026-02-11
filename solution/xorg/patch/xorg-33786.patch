@@ -1,0 +1,13 @@
+diff --git a/cfb/cfbpixmap.c b/cfb/cfbpixmap.c
+index ed01316..247331c 100644
+--- a/cfb/cfbpixmap.c
++++ b/cfb/cfbpixmap.c
+@@ -107,7 +107,7 @@ cfbDestroyPixmap(pPixmap)
+ {
+     if(--pPixmap->refcnt)
+ 	return TRUE;
+-    dixFreePrivates(*DEVPRIV_PTR(pPixmap));
++    dixFreePrivates(pPixmap->devPrivates);
+     xfree(pPixmap);
+     return TRUE;
+ }

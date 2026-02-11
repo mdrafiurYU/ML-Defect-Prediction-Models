@@ -1,0 +1,23 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java b/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java
+index adf0535..8205e73 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/preflex/TermInfosReader.java
+@@ -67,15 +67,18 @@ public final class TermInfosReader {
+       this.term = t;
+     }
+ 
++    @Override
+     public boolean equals(Object other) {
+       CloneableTerm t = (CloneableTerm) other;
+       return this.term.equals(t.term);
+     }
+ 
++    @Override
+     public int hashCode() {
+       return term.hashCode();
+     }
+ 
++    @Override
+     public Object clone() {
+       return new CloneableTerm(term);
+     }

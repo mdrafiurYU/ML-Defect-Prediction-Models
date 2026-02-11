@@ -1,0 +1,28 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java
+index 1e12d85..c8c203b 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java
+@@ -222,6 +222,23 @@ public class TestIndexWriterConfig extends LuceneTestCase {
+       // this is expected
+     }
+ 
++    // Test setReaderTermsIndexDivisor
++    try {
++      conf.setReaderTermsIndexDivisor(0);
++      fail("should not have succeeded to set termsIndexDivisor to 0");
++    } catch (IllegalArgumentException e) {
++      // this is expected
++    }
++    
++    // Setting to -1 is ok
++    conf.setReaderTermsIndexDivisor(-1);
++    try {
++      conf.setReaderTermsIndexDivisor(-2);
++      fail("should not have succeeded to set termsIndexDivisor to < -1");
++    } catch (IllegalArgumentException e) {
++      // this is expected
++    }
++    
+     assertEquals(IndexWriterConfig.DEFAULT_MAX_THREAD_STATES, conf.getMaxThreadStates());
+     conf.setMaxThreadStates(5);
+     assertEquals(5, conf.getMaxThreadStates());

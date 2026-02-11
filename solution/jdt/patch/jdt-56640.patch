@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+index a932c33..b6127b5 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+@@ -39,14 +39,14 @@ public static Test suite() {
+ 
+ 	private String getLibraryClasses() {
+ 		if (Util.isMacOS()) {
+-			return JRE_HOME_DIR + "../Classes/classes.jar"; 
++			return JRE_HOME_DIR + "/../Classes/classes.jar"; 
+ 		}
+ 		return JRE_HOME_DIR + "/lib/rt.jar";
+ 	}
+ 	
+ 	private String getJCEJar() {
+ 		if (Util.isMacOS()) {
+-			return JRE_HOME_DIR + "../Classes/jce.jar"; 
++			return JRE_HOME_DIR + "/../Classes/jce.jar"; 
+ 		}
+ 		return JRE_HOME_DIR + "/lib/jce.jar";
+ 	}

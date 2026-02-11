@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/LocalAuthContext.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/LocalAuthContext.java
+index f35d231..27421e8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/LocalAuthContext.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/LocalAuthContext.java
+@@ -72,7 +72,7 @@ public class LocalAuthContext implements AuthContext {
+             throw new LoginException(e.getMessage());
+         }
+ 
+-        Map<String, String> state = new HashMap<String, String>();
++        Map<String, Object> state = new HashMap<String, Object>();
+         Map<String, String> options = new HashMap<String, String>();
+         Properties parameters = config.getParameters();
+         Enumeration< ? > names = parameters.propertyNames();

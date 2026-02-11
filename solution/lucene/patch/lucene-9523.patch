@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/HighlighterTest.java b/lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/HighlighterTest.java
+index 61beab8..51b2d27 100644
+--- a/lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/HighlighterTest.java
++++ b/lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/HighlighterTest.java
+@@ -614,7 +614,7 @@ public class HighlighterTest extends BaseTokenStreamTestCase implements Formatte
+       @Override
+       public void run() throws Exception {
+         numHighlights = 0;
+-        doSearching("Kinnedy~");
++        doSearching("Kinnedy~0.5");
+         doStandardHighlights(analyzer, searcher, hits, query, HighlighterTest.this, true);
+         assertTrue("Failed to find correct number of highlights " + numHighlights + " found",
+             numHighlights == 5);

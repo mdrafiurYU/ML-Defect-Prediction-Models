@@ -1,0 +1,45 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ObservationManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ObservationManagerImpl.java
+index 5a67335..9b7af96 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ObservationManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ObservationManagerImpl.java
+@@ -59,6 +59,11 @@ public class ObservationManagerImpl implements ObservationManager, EventStateCol
+      */
+     private final ObservationDispatcher dispatcher;
+ 
++    /**
++     * The currently set user data.
++     */
++    private String userData;
++
+     static {
+         // preload EventListenerIteratorImpl to prevent classloader issues during shutdown
+         EventListenerIteratorImpl.class.hashCode();
+@@ -131,6 +136,20 @@ public class ObservationManagerImpl implements ObservationManager, EventStateCol
+     }
+ 
+     /**
++     * {@inheritDoc}
++     */
++    public void setUserData(String userData) throws RepositoryException {
++        this.userData = userData;
++    }
++
++    /**
++     * @return the currently set user data.
++     */
++    String getUserData() {
++        return userData;
++    }
++
++    /**
+      * Unregisters all EventListeners.
+      */
+     public void dispose() {
+@@ -210,6 +229,6 @@ public class ObservationManagerImpl implements ObservationManager, EventStateCol
+      * which is attached to this <code>ObservationManager</code> instance.
+      */
+     public EventStateCollection createEventStateCollection() {
+-        return new EventStateCollection(dispatcher, session, null);
++        return new EventStateCollection(dispatcher, session, null, userData);
+     }
+ }

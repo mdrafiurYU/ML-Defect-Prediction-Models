@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/dri/drimodule.c b/hw/xfree86/dri/drimodule.c
+index 1fa7a8e..446ba64 100644
+--- a/hw/xfree86/dri/drimodule.c
++++ b/hw/xfree86/dri/drimodule.c
+@@ -34,6 +34,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "xf86Module.h"
+ 
+ static MODULESETUPPROTO(driSetup);

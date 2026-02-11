@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index 884223b..b94aaf8 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -274,6 +274,12 @@ public IType getDeclaringType() {
+ 		}
+ 	}
+ }
++public Object getElementInfo(IProgressMonitor monitor) throws JavaModelException {
++	JavaModelManager manager = JavaModelManager.getJavaModelManager();
++	Object info = manager.getInfo(this);
++	if (info != null && info != JavaModelCache.NON_EXISTING_JAR_TYPE_INFO) return info;
++	return openWhenClosed(createElementInfo(), monitor);
++}
+ /*
+  * @see IJavaElement
+  */

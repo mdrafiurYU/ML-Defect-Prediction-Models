@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index 6a7a6dc..52960e5 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -44,12 +44,6 @@ typedef enum {
+ } Log;
+ 
+ typedef enum {
+-    SKNever,
+-    SKWhenNeeded,
+-    SKAlways
+-} SpecialKeysInDDX;
+-
+-typedef enum {
+     XF86_GlxVisualsMinimal,
+     XF86_GlxVisualsTypical,
+     XF86_GlxVisualsAll,
+@@ -65,7 +59,6 @@ typedef struct {
+     int			consoleFd;
+     int			vtno;
+     Bool		vtSysreq;
+-    SpecialKeysInDDX	ddxSpecialKeys;
+ 
+     /* event handler part */
+     int			lastEventTime;

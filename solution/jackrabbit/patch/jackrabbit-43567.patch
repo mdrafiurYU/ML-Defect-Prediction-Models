@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/Batch.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/Batch.java
+index 311f1eb..4656c06 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/Batch.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/Batch.java
+@@ -63,7 +63,7 @@ import javax.jcr.version.VersionException;
+  * minimize calls to the persistent layer, which enables client-server
+  * implementations to reduce the number of network roundtrips.<p/>
+  *
+- * Since the batch records the “delta” of pending changes within the scope of
++ * Since the batch records the delta of pending changes within the scope of
+  * an {@link javax.jcr.Item#save()} (or a {@link javax.jcr.Session#save()} it is
+  * intended to be constructed upon save (not before) and then submitted to the
+  * persistent layer as a single logical operation (see above).<p/>

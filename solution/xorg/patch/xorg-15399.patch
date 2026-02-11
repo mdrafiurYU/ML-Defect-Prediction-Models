@@ -1,0 +1,15 @@
+diff --git a/Xprint/Init.c b/Xprint/Init.c
+index 4452050..194e434 100644
+--- a/Xprint/Init.c
++++ b/Xprint/Init.c
+@@ -52,6 +52,10 @@ copyright holders.
+ ** 
+ ********************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <stdio.h>

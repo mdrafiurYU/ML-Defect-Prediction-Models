@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/swing/src/java/org/apache/lucene/swing/models/ListSearcher.java b/lucene/contrib/swing/src/java/org/apache/lucene/swing/models/ListSearcher.java
+index 611b063..e8d2b77 100644
+--- a/lucene/contrib/swing/src/java/org/apache/lucene/swing/models/ListSearcher.java
++++ b/lucene/contrib/swing/src/java/org/apache/lucene/swing/models/ListSearcher.java
+@@ -32,6 +32,7 @@ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.IndexWriter;
+ import org.apache.lucene.index.IndexWriterConfig;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.queryParser.MultiFieldQueryParser;
+ import org.apache.lucene.search.Collector;
+ import org.apache.lucene.search.IndexSearcher;
+@@ -192,7 +193,7 @@ public class ListSearcher extends AbstractListModel {
+       }
+ 
+       @Override
+-      public void setNextReader(IndexReader reader, int docBase) {}
++      public void setNextReader(AtomicReaderContext context) {}
+       @Override
+       public boolean acceptsDocsOutOfOrder() {
+         return true;

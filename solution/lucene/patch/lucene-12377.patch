@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+index 980479b..6e4d71a 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
++++ b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+@@ -39,9 +39,9 @@ final class DocFieldProcessor extends DocConsumer {
+   final StoredFieldsWriter fieldsWriter;
+ 
+   public DocFieldProcessor(DocumentsWriter docWriter, DocFieldConsumer consumer) {
+-    this.fieldInfos = new FieldInfos();
+     this.docWriter = docWriter;
+     this.consumer = consumer;
++    fieldInfos = docWriter.getFieldInfos();
+     consumer.setFieldInfos(fieldInfos);
+     fieldsWriter = new StoredFieldsWriter(docWriter, fieldInfos);
+   }

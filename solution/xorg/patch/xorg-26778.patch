@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 4154262..9c4ed0e 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -540,7 +540,7 @@ GetPointerEvents(xEvent *events, DeviceIntPtr pDev, int type, int buttons,
+         }
+         else {
+             if (pDev->coreEvents)
+-                x = cp->valuator->lasty;
++                y = cp->valuator->lasty;
+             else
+                 y = pDev->valuator->lasty;
+         }

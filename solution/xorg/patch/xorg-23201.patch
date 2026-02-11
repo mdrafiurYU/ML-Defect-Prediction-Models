@@ -1,0 +1,15 @@
+diff --git a/xfixes/cursor.c b/xfixes/cursor.c
+index 882022a..25b0fac 100755
+--- a/xfixes/cursor.c
++++ b/xfixes/cursor.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif

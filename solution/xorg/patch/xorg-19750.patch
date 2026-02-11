@@ -1,0 +1,13 @@
+diff --git a/damageext/damageext.c b/damageext/damageext.c
+index 616d55e..225f9ec 100755
+--- a/damageext/damageext.c
++++ b/damageext/damageext.c
+@@ -298,7 +298,7 @@ ProcDamageDispatch (ClientPtr client)
+     REQUEST(xDamageReq);
+     DamageClientPtr pDamageClient = GetDamageClient (client);
+ 
+-    if (pDamageClient->major_version > NUM_VERSION_REQUESTS)
++    if (pDamageClient->major_version >= NUM_VERSION_REQUESTS)
+ 	return BadRequest;
+     if (stuff->damageReqType > version_requests[pDamageClient->major_version])
+ 	return BadRequest;

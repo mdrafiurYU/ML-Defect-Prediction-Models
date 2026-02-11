@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxwindow.h b/hw/dmx/dmxwindow.h
+index f976c79..79f85ac 100644
+--- a/hw/dmx/dmxwindow.h
++++ b/hw/dmx/dmxwindow.h
+@@ -81,10 +81,6 @@ extern Bool dmxUnrealizeWindow(WindowPtr pWindow);
+ extern void dmxRestackWindow(WindowPtr pWindow, WindowPtr pOldNextSib);
+ extern void dmxWindowExposures(WindowPtr pWindow, RegionPtr prgn,
+ 			       RegionPtr other_exposed);
+-extern void dmxPaintWindowBackground(WindowPtr pWindow, RegionPtr pRegion,
+-				     int what);
+-extern void dmxPaintWindowBorder(WindowPtr pWindow, RegionPtr pRegion,
+-				 int what);
+ extern void dmxCopyWindow(WindowPtr pWindow, DDXPointRec ptOldOrg,
+ 			  RegionPtr prgnSrc);
+ 

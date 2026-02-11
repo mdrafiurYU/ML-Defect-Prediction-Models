@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+index 0c38aa5..fe99e24 100644
+--- a/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
++++ b/lucene/src/java/org/apache/lucene/search/FuzzyTermsEnum.java
+@@ -220,6 +220,11 @@ public final class FuzzyTermsEnum extends TermsEnum {
+   }
+   
+   @Override
++  public void cacheCurrentTerm() throws IOException {
++    actualEnum.cacheCurrentTerm();
++  }
++
++  @Override
+   public DocsEnum docs(Bits skipDocs, DocsEnum reuse) throws IOException {
+     return actualEnum.docs(skipDocs, reuse);
+   }

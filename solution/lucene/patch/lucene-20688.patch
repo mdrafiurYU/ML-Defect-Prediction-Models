@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishAnalyzer.java
+index 379b025..35b67a2 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestFinnishAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "edeltäjiinsä", "edeltäj");
+     checkOneTermReuse(a, "edeltäjistään", "edeltäjistään");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new FinnishAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

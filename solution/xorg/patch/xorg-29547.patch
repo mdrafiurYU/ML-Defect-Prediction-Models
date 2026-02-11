@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/linux/agp.c b/hw/kdrive/linux/agp.c
+index c2ae625..4fb0cb3 100644
+--- a/hw/kdrive/linux/agp.c
++++ b/hw/kdrive/linux/agp.c
+@@ -65,7 +65,7 @@ of the copyright holder.
+ 
+ #include <linux/agpgart.h>
+ 
+-#elif defined(__FreeBSD__)
++#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
+ #include <sys/ioctl.h>
+ #include <sys/agpio.h>
+ #endif

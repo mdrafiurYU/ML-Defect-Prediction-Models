@@ -1,0 +1,35 @@
+diff --git a/hw/xgl/xglpixmap.c b/hw/xgl/xglpixmap.c
+index c7c87f8..8f04308 100644
+--- a/hw/xgl/xglpixmap.c
++++ b/hw/xgl/xglpixmap.c
+@@ -114,6 +114,8 @@ xglPixmapSurfaceInit (PixmapPtr	    pPixmap,
+ 	
+ 	if (width && height)
+ 	{
++	    XGL_SCREEN_PRIV (pPixmap->drawable.pScreen);
++	    
+ 	    if (width == 1 && height == 1)
+ 	    {
+ 		pPixmapPriv->acceleratedTile = TRUE;
+@@ -125,6 +127,11 @@ xglPixmapSurfaceInit (PixmapPtr	    pPixmap,
+ 		    pPixmapPriv->acceleratedTile = TRUE;
+ 	    }
+ 	    
++	    /*
++	     * Accelerated drawing to pixmaps when using FBOs 
++	     */
++	    if (pScreenPriv->fbo)
++	    {
+ 	    pPixmapPriv->target = xglPixmapTargetOut;
+ 	    
+ 	    /*
+@@ -139,6 +146,9 @@ xglPixmapSurfaceInit (PixmapPtr	    pPixmap,
+ 	    if (width < 8 && height < 8)
+ 		pPixmapPriv->target = xglPixmapTargetNo;
+ 	}
++	    else
++		pPixmapPriv->target = xglPixmapTargetNo;
++	}
+     }
+ 
+     return TRUE;

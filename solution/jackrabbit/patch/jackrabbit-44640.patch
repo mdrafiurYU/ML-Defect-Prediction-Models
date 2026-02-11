@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSimpleTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSimpleTest.java
+index 6ad2b60..e86d43a 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSimpleTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/basic/AnnotationSimpleTest.java
+@@ -202,8 +202,12 @@ public class AnnotationSimpleTest extends AnnotationTestBase
+     {
+     	ObjectContentManager ocm = getObjectContentManager();
+     	assertTrue("Class A is not persistent ", ocm.isPersistent(A.class));
+-    	assertFalse("Class String is  persistent - hum ? ", ocm.isPersistent(String.class));
++    	assertFalse("Class SomeRandomUnMappedType is  persistent - hum ? ", ocm.isPersistent(SomeRandomUnMappedType.class));
++    	
+     }
+ 
+ 
++}
++class SomeRandomUnMappedType{
++	
+ }
+\ No newline at end of file

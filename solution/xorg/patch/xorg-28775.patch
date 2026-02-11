@@ -1,0 +1,13 @@
+diff --git a/Xi/grabdev.c b/Xi/grabdev.c
+index e2809ef..143b98c 100644
+--- a/Xi/grabdev.c
++++ b/Xi/grabdev.c
+@@ -141,7 +141,7 @@ ProcXGrabDevice(ClientPtr client)
+     error = GrabDevice(client, dev, stuff->this_device_mode,
+ 		       stuff->other_devices_mode, stuff->grabWindow,
+ 		       stuff->ownerEvents, stuff->time,
+-		       tmp[stuff->deviceid].mask, &rep.status);
++		       tmp[stuff->deviceid].mask, &rep.status, FALSE);
+ 
+     if (error != Success) {
+ 	SendErrorToClient(client, IReqCode, X_GrabDevice, 0, error);

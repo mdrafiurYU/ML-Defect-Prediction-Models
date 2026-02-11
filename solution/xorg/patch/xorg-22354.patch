@@ -1,0 +1,15 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 85474f6..db6f8bc 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -527,6 +527,10 @@ _miRegisterPointerDevice (pScreen, pDevice)
+ }
+ 
+ /* obsolete: for binary compatibility */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef miRegisterPointerDevice
+ #undef miRegisterPointerDevice
+ void

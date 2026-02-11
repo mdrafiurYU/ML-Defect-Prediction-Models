@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestMultiFieldQueryParserWrapper.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestMultiFieldQueryParserWrapper.java
+index 3d0ae08..5a04882 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestMultiFieldQueryParserWrapper.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestMultiFieldQueryParserWrapper.java
+@@ -144,7 +144,7 @@ public class TestMultiFieldQueryParserWrapper extends LuceneTestCase {
+   }
+ 
+   public void testBoostsSimple() throws Exception {
+-    Map<CharSequence,Float> boosts = new HashMap<CharSequence,Float>();
++    Map<String,Float> boosts = new HashMap<String,Float>();
+     boosts.put("b", Float.valueOf(5));
+     boosts.put("t", Float.valueOf(10));
+     String[] fields = { "b", "t" };

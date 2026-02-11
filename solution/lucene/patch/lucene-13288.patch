@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/NoMergePolicy.java b/lucene/src/java/org/apache/lucene/index/NoMergePolicy.java
+index 7ac0dc6..8dff658 100644
+--- a/lucene/src/java/org/apache/lucene/index/NoMergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/NoMergePolicy.java
+@@ -67,9 +67,6 @@ public final class NoMergePolicy extends MergePolicy {
+       throws CorruptIndexException, IOException { return null; }
+ 
+   @Override
+-  public boolean useCompoundDocStore(SegmentInfos segments) { return useCompoundFile; }
+-
+-  @Override
+   public boolean useCompoundFile(SegmentInfos segments, SegmentInfo newSegment) { return useCompoundFile; }
+ 
+   @Override

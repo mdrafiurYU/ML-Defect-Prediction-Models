@@ -1,0 +1,15 @@
+diff --git a/hw/xquartz/quartzKeyboard.c b/hw/xquartz/quartzKeyboard.c
+index 72f94b4..21736d1 100644
+--- a/hw/xquartz/quartzKeyboard.c
++++ b/hw/xquartz/quartzKeyboard.c
+@@ -370,6 +370,10 @@ void DarwinKeyboardReloadHandler(int screenNum, xEventPtr xe, DeviceIntPtr pDev,
+     KeySymsRec keySyms;
+ 
+     DEBUG_LOG("DarwinKeyboardReloadHandler\n");
++    if (pDev->key) {
++        if (pDev->key->curKeySyms.map) xfree(pDev->key->curKeySyms.map);
++        xfree(pDev->key);
++    }
+ 
+     DarwinLoadKeyboardMapping(&keySyms);
+     DarwinKeyboardSetDeviceKeyMap(&keySyms);

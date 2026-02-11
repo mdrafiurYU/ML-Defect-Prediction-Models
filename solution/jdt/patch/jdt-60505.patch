@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+index a34def8..932cfe1 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+@@ -1299,6 +1299,11 @@ private boolean checkLabelStatement() {
+  */
+ private boolean checkMemberAccess() {
+ 	if (this.previousToken == TokenNameDOT && this.qualifier > -1 && this.expressionPtr == this.qualifier) {
++		if (this.identifierLengthPtr > 1 && this.identifierLengthStack[this.identifierLengthPtr - 1] < 0) {
++			// its not a  member access because the receiver is a base type
++			// fix for bug: https://bugs.eclipse.org/bugs/show_bug.cgi?id=137623
++			return false;
++		}
+ 		// the receiver is an expression
+ 		pushCompletionOnMemberAccessOnExpressionStack(false);
+ 		return true;
+@@ -3808,4 +3813,4 @@ protected FieldDeclaration createFieldDeclaration(char[] assistName, int sourceS
+ 		return field;
+ 	}
+ }
+-}
++}
+\ No newline at end of file

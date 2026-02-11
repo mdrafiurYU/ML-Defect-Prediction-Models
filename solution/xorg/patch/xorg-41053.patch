@@ -1,0 +1,15 @@
+diff --git a/exa/exa_accel.c b/exa/exa_accel.c
+index 522224b..ccef744 100644
+--- a/exa/exa_accel.c
++++ b/exa/exa_accel.c
+@@ -401,6 +401,10 @@ exaCopyNtoN (DrawablePtr    pSrcDrawable,
+     RegionPtr srcregion = NULL, dstregion = NULL;
+     xRectangle *rects;
+ 
++    /* avoid doing copy operations if no boxes */
++    if (nbox == 0)
++	return;
++
+     pSrcPixmap = exaGetDrawablePixmap (pSrcDrawable);
+     pDstPixmap = exaGetDrawablePixmap (pDstDrawable);
+ 

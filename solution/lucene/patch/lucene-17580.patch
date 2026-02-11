@@ -1,0 +1,14 @@
+diff --git a/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/LuceneLanguageModelFactory.java b/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/LuceneLanguageModelFactory.java
+index 8efd3ab..857fccf 100644
+--- a/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/LuceneLanguageModelFactory.java
++++ b/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/LuceneLanguageModelFactory.java
+@@ -69,7 +69,8 @@ public class LuceneLanguageModelFactory extends DefaultLanguageModelFactory {
+ 	/**
+ 	 * Provide an {@link IStemmer} implementation for a given language.
+ 	 */
+-	protected IStemmer createStemmer(LanguageCode language) {
++	@Override
++  protected IStemmer createStemmer(LanguageCode language) {
+ 		switch (language) {
+ 		case ARABIC:
+ 			return ArabicStemmerFactory.createStemmer();

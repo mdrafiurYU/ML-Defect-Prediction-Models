@@ -1,0 +1,12 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index f3b72ae..9ec2a56 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -226,6 +226,7 @@ typedef struct {
+      * location.
+      */
+     DamagePtr	    pDamage;
++    Bool	    pendingDamage;
+     /**
+      * The valid regions mark the valid bits (at least, as they're derived from
+      * damage, which may be overreported) of a pixmap's system and FB copies.

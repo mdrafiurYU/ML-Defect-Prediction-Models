@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriterThreadState.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriterThreadState.java
+index f02c2e9..611098a 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriterThreadState.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriterThreadState.java
+@@ -36,7 +36,7 @@ final class DocumentsWriterThreadState {
+     this.docWriter = docWriter;
+     docState = new DocumentsWriter.DocState();
+     docState.infoStream = docWriter.infoStream;
+-    docState.similarity = docWriter.similarity;
++    docState.similarityProvider = docWriter.similarityProvider;
+     docState.docWriter = docWriter;
+     consumer = docWriter.consumer.addThread(this);
+   }

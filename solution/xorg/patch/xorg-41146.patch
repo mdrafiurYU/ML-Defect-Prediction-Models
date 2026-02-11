@@ -1,0 +1,25 @@
+diff --git a/render/picturestr.h b/render/picturestr.h
+index f7a0664..93d86bd 100644
+--- a/render/picturestr.h
++++ b/render/picturestr.h
+@@ -720,12 +720,17 @@ Bool
+ PictureTransformIsScale(PictTransform *t);
+ 
+ Bool
+-PictureTransformIsScale(PictTransform *t);
+-
+-Bool
+ PictureTransformIsTranslate (PictTransform *t);
+ 
+ Bool
+ PictureTransformIsInverse(PictTransform *t, PictTransform *i);
+ 
++void
++PictTransform_from_xRenderTransform (PictTransformPtr pict,
++				     xRenderTransform *render);
++
++void
++xRenderTransform_from_PictTransform (xRenderTransform *render,
++				     PictTransformPtr pict);
++
+ #endif /* _PICTURESTR_H_ */

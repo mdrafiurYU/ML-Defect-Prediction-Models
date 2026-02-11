@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java b/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
+index 635970f..75090b1 100644
+--- a/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
++++ b/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
+@@ -47,7 +47,7 @@ public class TestFileSwitchDirectory extends LuceneTestCase {
+     FileSwitchDirectory fsd = new FileSwitchDirectory(fileExtensions, primaryDir, secondaryDir, true);
+     IndexWriter writer = new IndexWriter(
+         fsd,
+-        new IndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++        new IndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).
+             setMergePolicy(newLogMergePolicy(false))
+     );
+     TestIndexWriterReader.createIndexNoClose(true, "ram", writer);

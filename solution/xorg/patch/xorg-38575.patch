@@ -1,0 +1,26 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 56aa30b..94becd2 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -454,9 +454,7 @@ void EnableDisableExtensionError(char *name, Bool enable)
+ 
+ /*ARGSUSED*/
+ void
+-InitExtensions(argc, argv)
+-    int		argc;
+-    char	*argv[];
++InitExtensions(int argc, char *argv[])
+ {
+     if (!noGEExtension) GEExtensionInit();
+ 
+@@ -633,9 +631,7 @@ static ExtensionModule staticExtensions[] = {
+     
+ /*ARGSUSED*/
+ void
+-InitExtensions(argc, argv)
+-    int		argc;
+-    char	*argv[];
++InitExtensions(int argc, char *argv[])
+ {
+     int i;
+     ExtensionModule *ext;

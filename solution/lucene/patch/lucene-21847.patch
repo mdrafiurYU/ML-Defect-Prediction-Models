@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+index c781c4f..3582d28 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+@@ -78,7 +78,7 @@ class VarSortedBytesImpl {
+     }
+ 
+     @Override
+-    synchronized public void add(int docID, BytesRef bytes) throws IOException {
++    public void add(int docID, BytesRef bytes) throws IOException {
+       if (bytes.length == 0)
+         return;// default
+       if (docID >= docToEntry.length) {
+@@ -97,7 +97,7 @@ class VarSortedBytesImpl {
+     // Important that we get docCount, in case there were
+     // some last docs that we didn't see
+     @Override
+-    synchronized public void finish(int docCount) throws IOException {
++    public void finish(int docCount) throws IOException {
+       final int count = hash.size();
+       try {
+         final int[] sortedEntries = hash.sort(comp);

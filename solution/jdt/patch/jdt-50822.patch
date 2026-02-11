@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+index 651daf2..f882067 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+@@ -2750,7 +2750,6 @@ public abstract class Scope
+ 				case Binding.RAW_TYPE :
+ 					return invocation; // raw type is taking precedence
+ 			}
+-			TypeVariableBinding[] invocationVariables = invocation.typeVariables();
+ 		}
+ 		return environment().createParameterizedType((ReferenceBinding) mec.erasure(), bestArguments, mec.enclosingType());
+ 	}

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+index 0d32cf2..147edbd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+@@ -618,6 +618,10 @@ public class SharedItemStateManager
+                                             return local.deleted(id);
+                                         }
+ 
++                                        public boolean isModified(ItemId id) {
++                                            return local.isModified(id);
++                                        }
++
+                                         public boolean allowsSameNameSiblings(NodeId id) {
+                                             NodeState ns;
+                                             try {

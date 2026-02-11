@@ -1,0 +1,22 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java
+index d40d9ae..4d74a6c 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionHistoryImpl.java
+@@ -342,13 +342,12 @@ public class VersionHistoryImpl extends NodeImpl implements VersionHistory {
+     private QName[] getQLabels() throws RepositoryException {
+         refreshEntry(labelNodeEntry);
+         List labelQNames = new ArrayList();
+-        Iterator it = labelNodeEntry.getPropertyEntries();
+-        while (it.hasNext()) {
++        for (Iterator it = labelNodeEntry.getPropertyEntries(); it.hasNext(); ) {
+             PropertyEntry pe = (PropertyEntry) it.next();
+-            if (QName.JCR_PRIMARYTYPE.equals(pe.getQName())) {
+-                continue;
++            if (! QName.JCR_PRIMARYTYPE.equals(pe.getQName()) &&
++                ! QName.JCR_MIXINTYPES.equals(pe.getQName())) {
++                labelQNames.add(pe.getQName());
+             }
+-            labelQNames.add(pe.getQName());
+         }
+         return (QName[]) labelQNames.toArray(new QName[labelQNames.size()]);
+     }

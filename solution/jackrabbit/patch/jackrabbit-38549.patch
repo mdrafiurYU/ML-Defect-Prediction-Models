@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/xml/NodeTypeReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/xml/NodeTypeReader.java
+index 33d58fd..84aacca 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/xml/NodeTypeReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/xml/NodeTypeReader.java
+@@ -27,10 +27,10 @@ import org.apache.jackrabbit.core.nodetype.PropDefImpl;
+ import org.apache.jackrabbit.core.nodetype.ValueConstraint;
+ import org.apache.jackrabbit.core.util.DOMWalker;
+ import org.apache.jackrabbit.core.value.InternalValue;
+-import org.apache.jackrabbit.conversion.NameException;
+-import org.apache.jackrabbit.conversion.NamePathResolver;
+-import org.apache.jackrabbit.conversion.DefaultNamePathResolver;
+-import org.apache.jackrabbit.namespace.NamespaceResolver;
++import org.apache.jackrabbit.spi.commons.conversion.NameException;
++import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
++import org.apache.jackrabbit.spi.commons.conversion.DefaultNamePathResolver;
++import org.apache.jackrabbit.spi.commons.namespace.NamespaceResolver;
+ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.value.ValueHelper;
+ import org.apache.jackrabbit.value.ValueFactoryImpl;

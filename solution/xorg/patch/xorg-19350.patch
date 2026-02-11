@@ -1,0 +1,51 @@
+diff --git a/Xi/grabdev.c b/Xi/grabdev.c
+index 3b124a0..02071ac 100644
+--- a/Xi/grabdev.c
++++ b/Xi/grabdev.c
+@@ -83,8 +83,7 @@ extern int		ExtEventIndex;
+  */
+ 
+ int
+-SProcXGrabDevice(client)
+-    register ClientPtr client;
++SProcXGrabDevice(register ClientPtr client)
+     {
+     register char n;
+     register long *p;
+@@ -113,8 +112,7 @@ SProcXGrabDevice(client)
+  */
+ 
+ int
+-ProcXGrabDevice(client)
+-    ClientPtr client;
++ProcXGrabDevice(ClientPtr client)
+     {
+     int			error;
+     xGrabDeviceReply 	rep;
+@@ -167,13 +165,7 @@ ProcXGrabDevice(client)
+  */
+ 
+ int
+-CreateMaskFromList (client, list, count, mask, dev, req)
+-    ClientPtr		client;
+-    XEventClass		*list;
+-    int			count;
+-    struct tmask	mask[];
+-    DeviceIntPtr	dev;
+-    int			req;
++CreateMaskFromList (ClientPtr client, XEventClass *list, int count, struct tmask *mask, DeviceIntPtr dev, int req)
+     {
+     int			i,j;
+     int			device;
+@@ -219,10 +211,7 @@ CreateMaskFromList (client, list, count, mask, dev, req)
+  */
+ 
+ void
+-SRepXGrabDevice (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGrabDeviceReply	*rep;
++SRepXGrabDevice (ClientPtr client, int size, xGrabDeviceReply *rep)
+     {
+     register char n;
+ 

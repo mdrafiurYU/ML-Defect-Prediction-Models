@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Visitors.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Visitors.java
+index 19f847c..04374f0 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Visitors.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Visitors.java
+@@ -80,6 +80,8 @@ public class Visitors {
+         public boolean visit(ForStatement forStatement){ return false; }
+         public boolean visit(IfStatement ifStatement){ return false; }
+         public boolean visit(TryStatement tryStatement){ return false; }
++        
++        public void reset(){ _annotations.clear(); }
+     }
+     
+     /**

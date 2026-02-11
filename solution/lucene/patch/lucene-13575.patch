@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java b/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java
+index bea2c6e..3bb807a 100644
+--- a/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java
++++ b/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java
+@@ -97,17 +97,6 @@ public class MockDirectoryWrapper extends Directory {
+     preventDoubleWrite = value;
+   }
+ 
+-  @Deprecated
+-  @Override
+-  public void sync(String name) throws IOException {
+-    maybeYield();
+-    maybeThrowDeterministicException();
+-    if (crashed)
+-      throw new IOException("cannot sync after crash");
+-    unSyncedFiles.remove(name);
+-    delegate.sync(name);
+-  }
+-
+   @Override
+   public synchronized void sync(Collection<String> names) throws IOException {
+     maybeYield();

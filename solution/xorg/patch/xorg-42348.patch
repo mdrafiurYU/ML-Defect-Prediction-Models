@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/common/xf86xvmc.h b/hw/xfree86/common/xf86xvmc.h
+index bc7a98c..902b4f8 100644
+--- a/hw/xfree86/common/xf86xvmc.h
++++ b/hw/xfree86/common/xf86xvmc.h
+@@ -151,13 +151,16 @@ typedef struct {
+    an array of structures.
+ */
+ 
+-Bool xf86XvMCScreenInit(
++extern _X_EXPORT Bool xf86XvMCScreenInit(
+   ScreenPtr pScreen, 
+   int num_adaptors,
+   XF86MCAdaptorPtr *adaptors
+ );
+ 
+-XF86MCAdaptorPtr xf86XvMCCreateAdaptorRec (void);
+-void xf86XvMCDestroyAdaptorRec(XF86MCAdaptorPtr adaptor);
++extern _X_EXPORT XF86MCAdaptorPtr xf86XvMCCreateAdaptorRec (void);
++extern _X_EXPORT void xf86XvMCDestroyAdaptorRec(XF86MCAdaptorPtr adaptor);
++
++typedef int (*XvMCScreenInitProcPtr)(ScreenPtr, int, XvMCAdaptorPtr);
++extern _X_EXPORT XvMCScreenInitProcPtr XvMCScreenInitProc;
+ 
+ #endif /* _XF86XVMC_H */

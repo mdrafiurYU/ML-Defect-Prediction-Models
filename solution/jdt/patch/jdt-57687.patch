@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFormatException.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFormatException.java
+index e8261f8..73f8dff 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFormatException.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFormatException.java
+@@ -52,6 +52,7 @@ public class ClassFormatException extends Exception {
+ 
+ 	public ClassFormatException(RuntimeException e, char[] fileName) {
+ 		this.nestedException = e;
++		this.fileName = fileName;
+ 	}
+ 	public ClassFormatException(int code) {
+ 		errorCode = code;

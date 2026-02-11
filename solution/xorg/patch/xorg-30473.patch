@@ -1,0 +1,30 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 4cc3a46..bd19fe9 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -694,9 +694,6 @@ RROutputSetCrtcs (RROutputPtr	output,
+ 		  RRCrtcPtr	*crtcs,
+ 		  int		numCrtcs);
+ 
+-void
+-RROutputSetCrtc (RROutputPtr output, RRCrtcPtr crtc);
+-    
+ Bool
+ RROutputSetConnection (RROutputPtr  output,
+ 		       CARD8	    connection);
+@@ -802,7 +799,6 @@ Query state:
+ 	    1.2:
+ 		RRScreenSetSizeRange
+ 		RROutputSetCrtcs
+-		RROutputSetCrtc
+ 		RRModeGet
+ 		RROutputSetModes
+ 		RROutputSetConnection
+@@ -822,7 +818,6 @@ Query state:
+ 		RRCrtcCreate
+ 		RROutputCreate
+ 		RROutputSetCrtcs
+-		RROutputSetCrtc
+ 		RROutputSetConnection
+ 		RROutputSetSubpixelOrder
+ 		RROldModeAdd	• This adds modes one-at-a-time

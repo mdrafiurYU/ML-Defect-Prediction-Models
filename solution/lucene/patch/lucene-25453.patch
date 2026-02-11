@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java b/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java
+index b3d0128..2b4e58f 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPhrasePrefixQuery.java
+@@ -79,7 +79,7 @@ public class TestPhrasePrefixQuery extends LuceneTestCase {
+     // this TermEnum gives "piccadilly", "pie" and "pizza".
+     String prefix = "pi";
+     TermsEnum te = MultiFields.getFields(reader).terms("body").iterator();
+-    te.seek(new BytesRef(prefix));
++    te.seekCeil(new BytesRef(prefix));
+     do {
+       String s = te.term().utf8ToString();
+       if (s.startsWith(prefix)) {

@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index 8690086..e7a2317 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -231,13 +231,13 @@ public class AptCompilationParticipant extends CompilationParticipant
+ 		return GENERIC_COMPILATION_RESULT;
+ 	}	
+ 	
++	/**
++	 * Does APT have anything to do for this project?
++	 * Even if there are no processors on the factory path, apt may still
++	 * be involved during a clean.
++	 */
+ 	public boolean doesParticipateInProject(IJavaProject project){
+-		if (!AptConfig.isEnabled(project)) {
+-			return false;
+-		}	
+-		
+-		return AnnotationProcessorFactoryLoader.getLoader().hasFactoriesForProject(project);
+-		// TODO: use config to decide which projects we support
++		return AptConfig.isEnabled(project);
+ 	}
+ 	
+ 	public void aboutToBuild(IJavaProject project) {

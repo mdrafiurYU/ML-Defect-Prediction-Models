@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi2dav/src/test/java/org/apache/jackrabbit/spi2davex/TestAll.java b/jackrabbit-spi2dav/src/test/java/org/apache/jackrabbit/spi2davex/TestAll.java
+index be3c000..c88b102 100644
+--- a/jackrabbit-spi2dav/src/test/java/org/apache/jackrabbit/spi2davex/TestAll.java
++++ b/jackrabbit-spi2dav/src/test/java/org/apache/jackrabbit/spi2davex/TestAll.java
+@@ -20,13 +20,13 @@ import junit.framework.Test;
+ import junit.framework.TestCase;
+ import junit.framework.TestSuite;
+ 
+-/** <code>TestAll</code>... */
+ public class TestAll extends TestCase {
+ 
+     public static Test suite() {
+ 
+-        TestSuite suite = new TestSuite("SPI and SPI-implementation tests");
++        TestSuite suite = new TestSuite("org.apache.jackrabbit.spi2davex tests");
+ 
++        // spi tests
+         suite.addTest(org.apache.jackrabbit.spi.TestAll.suite());
+ 
+         // impl specific spi tests

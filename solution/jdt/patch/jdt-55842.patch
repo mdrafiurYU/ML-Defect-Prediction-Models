@@ -1,0 +1,29 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java
+index 50f5376b..c36b202 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java
+@@ -330,9 +330,12 @@ private static AccessRuleSet readRestriction(DataInputStream in) throws IOExcept
+ 		int problemId = in.readInt();
+ 		accessRules[i] = new ClasspathAccessRule(pattern, problemId);
+ 	}
+-	String messageTemplate = in.readUTF();
++	String[] messageTemplates = new String[AccessRuleSet.MESSAGE_TEMPLATES_LENGTH];
++	for (int i = 0; i < 3; i++) {
++		messageTemplates[i] = in.readUTF();
++	}
+ 	AccessRuleSet accessRuleSet = new AccessRuleSet(accessRules);
+-	accessRuleSet.messageTemplate = messageTemplate;
++	accessRuleSet.messageTemplates = messageTemplates;
+ 	return accessRuleSet;
+ }
+ 
+@@ -601,7 +604,8 @@ private void writeRestriction(AccessRuleSet accessRuleSet, DataOutputStream out)
+ 				writeName(accessRule.pattern, out);
+ 				out.writeInt(accessRule.problemId);
+ 			}
+-			out.writeUTF(accessRuleSet.messageTemplate);
++			for (int i = 0; i < accessRuleSet.messageTemplates.length; i++)
++				out.writeUTF(accessRuleSet.messageTemplates[i]);
+ 		}
+ 	}
+ }

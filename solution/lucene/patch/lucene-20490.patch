@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java b/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java
+index da75d4e..435cbfc 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java
+@@ -62,7 +62,7 @@ public class TestMultiTermConstantScore extends BaseTestRangeFilter {
+     small = newDirectory();
+     RandomIndexWriter writer = new RandomIndexWriter(random, small, 
+         newIndexWriterConfig(TEST_VERSION_CURRENT, 
+-            new MockAnalyzer(MockTokenizer.WHITESPACE, false)).setMergePolicy(newInOrderLogMergePolicy()));
++            new MockAnalyzer(MockTokenizer.WHITESPACE, false)).setMergePolicy(newLogMergePolicy()));
+ 
+     for (int i = 0; i < data.length; i++) {
+       Document doc = new Document();

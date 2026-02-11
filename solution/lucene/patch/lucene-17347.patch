@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java b/solr/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java
+index 96c53ce..cda4b94 100644
+--- a/solr/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java
+@@ -210,7 +210,7 @@ public class ShowFileRequestHandler extends RequestHandlerBase
+     }
+     try {
+       InputStream input = core.getResourceLoader().openResource(path);
+-      return IOUtils.toString( input );
++      return IOUtils.toString( input, "UTF-8" );
+     }
+     catch( Exception ex ) {} // ignore it
+     return "";

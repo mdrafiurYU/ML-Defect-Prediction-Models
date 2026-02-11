@@ -1,0 +1,13 @@
+diff --git a/config/config-backends.h b/config/config-backends.h
+index 8a10a3e..dd87a86 100644
+--- a/config/config-backends.h
++++ b/config/config-backends.h
+@@ -50,3 +50,8 @@ void config_dbus_core_remove_hook(struct config_dbus_core_hook *hook);
+ int config_dbus_init(void);
+ void config_dbus_fini(void);
+ #endif
++
++#ifdef CONFIG_HAL
++int config_hal_init(void);
++void config_hal_fini(void);
++#endif

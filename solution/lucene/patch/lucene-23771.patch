@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/search/ReturnFields.java b/solr/src/java/org/apache/solr/search/ReturnFields.java
+index a6ee34d..741c8d8 100644
+--- a/solr/src/java/org/apache/solr/search/ReturnFields.java
++++ b/solr/src/java/org/apache/solr/search/ReturnFields.java
+@@ -226,7 +226,8 @@ public class ReturnFields
+ 
+           TransformerFactory factory = req.getCore().getTransformerFactory( augmenterName );
+           if( factory != null ) {
+-            augmenters.addTransformer( factory.create(disp, augmenterArgs, req) );
++            MapSolrParams augmenterParams = new MapSolrParams( augmenterArgs );
++            augmenters.addTransformer( factory.create(disp, augmenterParams, req) );
+           }
+           else {
+             // unknown transformer?

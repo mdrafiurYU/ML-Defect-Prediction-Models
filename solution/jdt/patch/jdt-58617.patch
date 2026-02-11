@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index 0c56a18..9b24e4c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -8100,10 +8100,10 @@ public int[] getJavaDocPositions() {
+ 
+ 		//real parse of the method....
+ 		CompilationResult compilationResult = unit.compilationResult;
+-		this.scanner.setSource(compilationResult);
++		char[] contents = compilationResult.compilationUnit.getContents();
++		this.scanner.setSource(contents, compilationResult);
+ 		
+ 		if (this.javadocParser != null && this.javadocParser.checkDocComment) {
+-			char[] contents = compilationResult.compilationUnit.getContents();
+ 			this.javadocParser.scanner.setSource(contents);
+ 		}
+ 		if (unit.types != null) {

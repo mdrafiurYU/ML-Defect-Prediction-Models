@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CaseTermQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CaseTermQuery.java
+index e0c6977..7527345 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CaseTermQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CaseTermQuery.java
+@@ -121,7 +121,8 @@ abstract class CaseTermQuery extends MultiTermQuery implements TransformConstant
+                     rangeScans.add(new RangeScan(reader, term, term));
+                 }
+ 
+-                for (Iterator it = rangeScans.iterator(); it.hasNext(); ) {
++                Iterator it = rangeScans.iterator();
++                while (it.hasNext()) {
+                     TermEnum terms = (TermEnum) it.next();
+                     do {
+                         Term t = terms.term();
+@@ -141,7 +142,8 @@ abstract class CaseTermQuery extends MultiTermQuery implements TransformConstant
+                     } while (terms.next());
+                 }
+             } finally {
+-                for (Iterator it = rangeScans.iterator(); it.hasNext(); ) {
++                Iterator it = rangeScans.iterator();
++                while (it.hasNext()) {
+                     TermEnum terms = (TermEnum) it.next();
+                     try {
+                         terms.close();

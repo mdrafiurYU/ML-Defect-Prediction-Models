@@ -1,0 +1,95 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
+index 34b6f33..5c42d92 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
+@@ -18,11 +18,12 @@ package org.apache.jackrabbit.core.security.user;
+ 
+ import org.apache.jackrabbit.util.ISO9075;
+ import org.apache.jackrabbit.spi.Name;
+-import org.apache.jackrabbit.core.SessionImpl;
++import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
+ 
+ import javax.jcr.Node;
+ import javax.jcr.NodeIterator;
+ import javax.jcr.RepositoryException;
++import javax.jcr.Session;
+ import javax.jcr.query.Query;
+ import javax.jcr.query.QueryManager;
+ import java.util.Iterator;
+@@ -36,9 +37,8 @@ class IndexNodeResolver extends NodeResolver {
+ 
+     private final QueryManager queryManager;
+ 
+-    IndexNodeResolver(SessionImpl session)
+-            throws RepositoryException {
+-        super(session);
++    IndexNodeResolver(Session session, NamePathResolver resolver) throws RepositoryException {
++        super(session, resolver);
+         queryManager = session.getWorkspace().getQueryManager();
+     }
+ 
+@@ -46,6 +46,18 @@ class IndexNodeResolver extends NodeResolver {
+     /**
+      * @inheritDoc
+      */
++    public Node findNode(Name nodeName, Name ntName) throws RepositoryException {
++        Query query = buildQuery(nodeName, ntName);
++        NodeIterator res = query.execute().getNodes();
++        if (res.hasNext()) {
++            return res.nextNode();
++        }
++        return null;
++    }
++    
++    /**
++     * @inheritDoc
++     */
+     public Node findNode(Name propertyName, String value, Name ntName) throws RepositoryException {
+         Query query = buildQuery(value, Collections.singleton(propertyName), ntName, true, 1);
+         NodeIterator res = query.execute().getNodes();
+@@ -84,6 +96,28 @@ class IndexNodeResolver extends NodeResolver {
+      * @return
+      * @throws RepositoryException
+      */
++    private Query buildQuery(Name nodeName, Name ntName)
++            throws RepositoryException {
++        StringBuffer stmt = new StringBuffer("/jcr:root");
++        stmt.append(getSearchRoot(ntName));
++        stmt.append("//element(");
++        stmt.append(getNamePathResolver().getJCRName(nodeName));
++        stmt.append(",");
++        stmt.append(getNamePathResolver().getJCRName(ntName));
++        stmt.append(")");
++        return queryManager.createQuery(stmt.toString(), Query.XPATH);
++    }
++
++    /**
++     *
++     * @param value
++     * @param props
++     * @param ntName
++     * @param exact
++     * @param maxSize Currently ignored!
++     * @return
++     * @throws RepositoryException
++     */
+     private Query buildQuery(String value, Set props, Name ntName,
+                              boolean exact, long maxSize)
+             throws RepositoryException {
+@@ -91,14 +125,14 @@ class IndexNodeResolver extends NodeResolver {
+         StringBuffer stmt = new StringBuffer("/jcr:root");
+         stmt.append(getSearchRoot(ntName));
+         stmt.append("//element(*,");
+-        stmt.append(getSession().getJCRName(ntName));
++        stmt.append(getNamePathResolver().getJCRName(ntName));
+         stmt.append(")[");
+ 
+         int i = 0;
+         Iterator itr = props.iterator();
+         while (itr.hasNext()) {
+             stmt.append((exact) ? "@" : "jcr:like(@");
+-            String pName = getSession().getJCRName((Name) itr.next());
++            String pName = getNamePathResolver().getJCRName((Name) itr.next());
+             stmt.append(ISO9075.encode(pName));
+             stmt.append((exact) ? "='" : ",'%");
+             stmt.append(value);

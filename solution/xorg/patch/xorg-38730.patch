@@ -1,0 +1,15 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 8b673f4..4763e12 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -126,8 +126,10 @@ miPointerInitialize (ScreenPtr                  pScreen,
+ static Bool
+ miPointerCloseScreen (int index, ScreenPtr pScreen)
+ {
++#if 0
+     miPointerPtr pPointer;
+     DeviceIntPtr pDev;
++#endif
+ 
+     SetupScreen(pScreen);
+ 

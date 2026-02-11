@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+index 5564b73..6b8447b 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+@@ -562,8 +562,7 @@ public class NodeImpl extends ItemImpl implements Node {
+      */
+     public String getIdentifier() throws RepositoryException {
+         checkStatus();
+-        // TODO: check again and add SPI method to create Node-Identifier from String
+-        return getNodeEntry().getId().toString();
++        return session.getIdFactory().toJcrIdentifier(getNodeEntry().getId());
+     }
+ 
+     /**

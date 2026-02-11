@@ -1,0 +1,20 @@
+diff --git a/hw/dmx/input/dmxevents.c b/hw/dmx/input/dmxevents.c
+index 1d0e872..4b51ffd 100644
+--- a/hw/dmx/input/dmxevents.c
++++ b/hw/dmx/input/dmxevents.c
+@@ -237,7 +237,6 @@ static void enqueueMotion(DevicePtr pDev, int x, int y)
+                                POINTER_ABSOLUTE, 0, 2, valuators);
+     for (i = 0; i < nevents; i++)
+        mieqEnqueue(p, (events + i)->event);
+-    xfree(events);
+     return;
+ }
+ 
+@@ -709,7 +708,6 @@ void dmxEnqueue(DevicePtr pDev, int type, int detail, KeySym keySym,
+                                    valuators);
+         for (i = 0; i < nevents; i++)
+             mieqEnqueue(p, (events + i)->event);
+-        xfree(events);
+         return;
+ 
+     case MotionNotify:

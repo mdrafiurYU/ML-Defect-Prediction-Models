@@ -1,0 +1,14 @@
+diff --git a/os/utils.c b/os/utils.c
+index 5162ff1..659be30 100644
+--- a/os/utils.c
++++ b/os/utils.c
+@@ -1665,6 +1665,9 @@ OsBlockSignals (void)
+ #ifdef SIGTTOU
+ 	sigaddset (&set, SIGTTOU);
+ #endif
++#ifdef SIGCHLD
++	sigaddset (&set, SIGCHLD);
++#endif
+ 	sigprocmask (SIG_BLOCK, &set, &PreviousSignalMask);
+     }
+ #endif

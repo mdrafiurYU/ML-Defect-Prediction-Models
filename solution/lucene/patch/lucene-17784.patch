@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LogTransformer.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LogTransformer.java
+index d9d2f11..5a603a7 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LogTransformer.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LogTransformer.java
+@@ -35,6 +35,7 @@ import java.util.Map;
+ public class LogTransformer extends Transformer {
+   Logger LOG = LoggerFactory.getLogger(LogTransformer.class);
+ 
++  @Override
+   public Object transformRow(Map<String, Object> row, Context ctx) {
+     String expr = ctx.getEntityAttribute(LOG_TEMPLATE);
+     String level = ctx.replaceTokens(ctx.getEntityAttribute(LOG_LEVEL));

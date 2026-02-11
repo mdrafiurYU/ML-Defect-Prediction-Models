@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java
+index 70ac7f7..a296372 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MemberValuePair.java
+@@ -31,7 +31,7 @@ public class MemberValuePair extends ASTNode {
+ 	/** 
+ 	 *  The representation of this pair in the type system. 
+ 	 */
+-	ElementValuePair compilerElementPair = null;
++	public ElementValuePair compilerElementPair = null;
+ 	
+ 	public MemberValuePair(char[] token, int sourceStart, int sourceEnd, Expression value) {
+ 		this.name = token;

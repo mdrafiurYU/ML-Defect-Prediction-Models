@@ -1,0 +1,40 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestDoubleBarrelLRUCache.java b/lucene/src/test/org/apache/lucene/util/TestDoubleBarrelLRUCache.java
+index 03a935a..952c218 100644
+--- a/lucene/src/test/org/apache/lucene/util/TestDoubleBarrelLRUCache.java
++++ b/lucene/src/test/org/apache/lucene/util/TestDoubleBarrelLRUCache.java
+@@ -145,14 +145,17 @@ public class TestDoubleBarrelLRUCache extends LuceneTestCase {
+       this.value = value;
+     }
+ 
++    @Override
+     public boolean equals(Object other) {
+       return this.value.equals(((CloneableObject) other).value);
+     }
+ 
++    @Override
+     public int hashCode() {
+       return value.hashCode();
+     }
+ 
++    @Override
+     public Object clone() {
+       return new CloneableObject(value);
+     }
+@@ -165,14 +168,17 @@ public class TestDoubleBarrelLRUCache extends LuceneTestCase {
+       this.value = value;
+     }
+ 
++    @Override
+     public boolean equals(Object other) {
+       return this.value.equals(((CloneableInteger) other).value);
+     }
+ 
++    @Override
+     public int hashCode() {
+       return value.hashCode();
+     }
+ 
++    @Override
+     public Object clone() {
+       return new CloneableInteger(value);
+     }

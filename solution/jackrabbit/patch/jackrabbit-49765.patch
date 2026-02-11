@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/DateConstraint.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/DateConstraint.java
+index b56f8be..1390516 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/DateConstraint.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/DateConstraint.java
+@@ -141,7 +141,7 @@ class DateConstraint extends ValueConstraint {
+     }
+ 
+     /**
+-     * @see ValueConstraint#check(QValue)
++     * @see org.apache.jackrabbit.spi.QValueConstraint#check(QValue)
+      */
+     public void check(QValue value) throws ConstraintViolationException, RepositoryException {
+         if (value == null) {

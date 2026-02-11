@@ -1,0 +1,14 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index db5bd02..a8bdbd6 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -384,6 +384,9 @@ exaCopyNtoN (DrawablePtr    pSrcDrawable,
+ 	     void	    *closure);
+ 
+ /* exa_render.c */
++Bool
++exaOpReadsDestination (CARD8 op);
++
+ void
+ exaComposite(CARD8	op,
+ 	     PicturePtr pSrc,

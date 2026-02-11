@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/StringHelper.java b/lucene/src/java/org/apache/lucene/util/StringHelper.java
+index bb2433a..d57bb3a 100644
+--- a/lucene/src/java/org/apache/lucene/util/StringHelper.java
++++ b/lucene/src/java/org/apache/lucene/util/StringHelper.java
+@@ -65,7 +65,7 @@ public abstract class StringHelper {
+         if (bTokens.hasMoreTokens()) {
+           int bToken = Integer.parseInt(bTokens.nextToken());
+           if (aToken != bToken) {
+-            return aToken - bToken;
++            return aToken < bToken ? -1 : 1;
+           }
+         } else {
+           // a has some extra trailing tokens. if these are all zeroes, thats ok.

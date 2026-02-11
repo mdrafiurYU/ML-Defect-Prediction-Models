@@ -1,0 +1,15 @@
+diff --git a/GL/windows/glwrap.c b/GL/windows/glwrap.c
+index 6466757..730b74e 100755
+--- a/GL/windows/glwrap.c
++++ b/GL/windows/glwrap.c
+@@ -5,6 +5,10 @@
+  * Authors: Alexander Gottwald
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/Xwindows.h>
+ #include <GL/gl.h>
+ #include <GL/glext.h>

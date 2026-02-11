@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/coff.h b/hw/xfree86/loader/coff.h
+index 54a8cb5..b3cecdf 100644
+--- a/hw/xfree86/loader/coff.h
++++ b/hw/xfree86/loader/coff.h
+@@ -16,6 +16,10 @@
+    COFF, thein check out the book mentioned above.
+ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _COFF_H
+ #define _COFF_H
+ 

@@ -1,0 +1,16 @@
+diff --git a/solr/src/java/org/apache/solr/request/PerSegmentSingleValuedFaceting.java b/solr/src/java/org/apache/solr/request/PerSegmentSingleValuedFaceting.java
+index 56015fd..0b00355 100755
+--- a/solr/src/java/org/apache/solr/request/PerSegmentSingleValuedFaceting.java
++++ b/solr/src/java/org/apache/solr/request/PerSegmentSingleValuedFaceting.java
+@@ -114,10 +114,7 @@ class PerSegmentSingleValuedFaceting {
+ 
+ 
+     // now merge the per-segment results
+-    PriorityQueue<SegFacet> queue = new PriorityQueue<SegFacet>() {
+-      {
+-        initialize(leaves.length);
+-      }
++    PriorityQueue<SegFacet> queue = new PriorityQueue<SegFacet>(leaves.length) {
+       @Override
+       protected boolean lessThan(SegFacet a, SegFacet b) {
+         return a.tempBR.compareTo(b.tempBR) < 0;

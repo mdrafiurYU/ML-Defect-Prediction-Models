@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/wincreatewnd.c b/hw/xwin/wincreatewnd.c
+index 613111d..7c93e40 100644
+--- a/hw/xwin/wincreatewnd.c
++++ b/hw/xwin/wincreatewnd.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include "shellapi.h"
+ 

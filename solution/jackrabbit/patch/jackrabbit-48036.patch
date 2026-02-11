@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java
+index 61bba5d..0172c7e 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ManagerProvider.java
+@@ -48,13 +48,13 @@ public interface ManagerProvider {
+     public AccessManager getAccessManager();
+ 
+     /**
+-     * Returns the <code>AccessManager</code> associated with this
++     * Returns the <code>LockStateManager</code> associated with this
+      * <code>ManagerProvider</code>.
+      *
+-     * @return the <code>AccessManager</code> associated with this
++     * @return the <code>LockStateManager</code> associated with this
+      * <code>ManagerProvider</code>
+      */
+-    public LockStateManager getLockManager();
++    public LockStateManager getLockStateManager();
+ 
+     /**
+      * Returns the <code>VersionManager</code> associated with this

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/QueryNodeException.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/QueryNodeException.java
+index 9a7223b..22db1d5 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/QueryNodeException.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/QueryNodeException.java
+@@ -42,8 +42,6 @@ import org.apache.lucene.queryParser.core.nodes.QueryNode;
+  */
+ public class QueryNodeException extends Exception implements NLSException {
+ 
+-  private static final long serialVersionUID = -5962648855261624214L;
+-
+   protected Message message = new MessageImpl(QueryParserMessages.EMPTY_MESSAGE);
+ 
+   public QueryNodeException(Message message) {

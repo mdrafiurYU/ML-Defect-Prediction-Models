@@ -1,0 +1,52 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/helloworld/HelloWorldAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/helloworld/HelloWorldAnnotationProcessor.java
+index a8ff976..adf7c11 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/helloworld/HelloWorldAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/helloworld/HelloWorldAnnotationProcessor.java
+@@ -15,23 +15,22 @@ package org.eclipse.jdt.apt.tests.annotations.helloworld;
+ import java.io.IOException;
+ import java.io.PrintWriter;
+ 
+-import com.sun.mirror.apt.AnnotationProcessor;
++import org.eclipse.jdt.apt.tests.annotations.BaseProcessor;
++
+ import com.sun.mirror.apt.AnnotationProcessorEnvironment;
+ import com.sun.mirror.apt.Filer;
+ 
+-public class HelloWorldAnnotationProcessor implements AnnotationProcessor
+-{
++public class HelloWorldAnnotationProcessor extends BaseProcessor {
+ 
+-	public HelloWorldAnnotationProcessor(AnnotationProcessorEnvironment env)
+-	{
+-		_env = env;
++	public HelloWorldAnnotationProcessor(AnnotationProcessorEnvironment env) {
++		super(env);
+ 	}
+ 
+ 	public void process()
+ 	{
+ 		try
+ 		{
+-			Filer f = getEnvironment().getFiler();
++			Filer f = _env.getFiler();
+ 			PrintWriter pw = f
+ 				.createSourceFile( getPackageName() + "." + getTypeName() ); //$NON-NLS-1$
+ 			pw.print( getCode() );
+@@ -43,17 +42,10 @@ public class HelloWorldAnnotationProcessor implements AnnotationProcessor
+ 		}
+ 	}
+ 
+-	public AnnotationProcessorEnvironment getEnvironment()
+-	{
+-		return _env;
+-	}
+-
+ 	public String getCode() { return CODE; }
+ 	public String getPackageName() { return "generatedfilepackage"; } //$NON-NLS-1$
+ 	public String getTypeName() { return "GeneratedFileTest"; } //$NON-NLS-1$
+ 
+-	AnnotationProcessorEnvironment	_env;
+-
+ 	protected final static String	PACKAGE_NAME	= ""; //$NON-NLS-1$
+ 
+ 	protected final static String	TYPE_NAME		= ""; //$NON-NLS-1$

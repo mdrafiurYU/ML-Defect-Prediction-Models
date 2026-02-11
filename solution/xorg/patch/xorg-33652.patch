@@ -1,0 +1,20 @@
+diff --git a/include/windowstr.h b/include/windowstr.h
+index ca212ad..4359481 100644
+--- a/include/windowstr.h
++++ b/include/windowstr.h
+@@ -124,6 +124,7 @@ typedef struct _WindowOpt {
+ 
+ typedef struct _Window {
+     DrawableRec		drawable;
++    PrivateRec		*devPrivates;
+     WindowPtr		parent;		/* ancestor chain */
+     WindowPtr		nextSib;	/* next lower sibling */
+     WindowPtr		prevSib;	/* next higher sibling */
+@@ -160,7 +161,6 @@ typedef struct _Window {
+ #ifdef COMPOSITE
+     unsigned		redirectDraw:2;	/* rendering is redirected from here */
+ #endif
+-    PrivateRec		*devPrivates;
+ } WindowRec;
+ 
+ /*

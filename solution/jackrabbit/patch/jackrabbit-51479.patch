@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java
+index a56055a..bdd167c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInResource.java
+@@ -92,13 +92,12 @@ class BLOBInResource extends BLOBFileValue {
+ 
+     }
+ 
+-    void discard() {
++    public void dispose() {
+         // this instance is not backed by temporarily allocated resource/buffer
+     }
+ 
+-    boolean isImmutable() {
+-        // delete will modify the state.
+-        return false;
++    BLOBFileValue copy() throws RepositoryException {
++        return BLOBInTempFile.getInstance(getStream(), true);
+     }
+ 
+     public long getSize() {

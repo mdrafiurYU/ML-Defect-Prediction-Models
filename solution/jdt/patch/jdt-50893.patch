@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+index 02d9e6e..24ba1b0 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+@@ -90,13 +90,7 @@ public int match(TypeReference node, MatchingNodeSet nodeSet) { // interested in
+ }
+ 
+ protected int matchLevel(ImportReference importRef) {
+-	// Compare prefix also for static import
+-	if (!importRef.onDemand || importRef.isStatic())
+-		return matchLevelForTokens(importRef.tokens);
+-
+-	return matchesName(this.pattern.pkgName, CharOperation.concatWith(importRef.tokens, '.'))
+-		? ACCURATE_MATCH
+-		: IMPOSSIBLE_MATCH;
++	return matchLevelForTokens(importRef.tokens);
+ }
+ protected int matchLevelForTokens(char[][] tokens) {
+ 	if (this.pattern.pkgName == null) return ACCURATE_MATCH;

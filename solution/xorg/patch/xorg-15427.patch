@@ -1,0 +1,15 @@
+diff --git a/Xprint/ValTree.c b/Xprint/ValTree.c
+index 4b5aba2..6fa6316 100644
+--- a/Xprint/ValTree.c
++++ b/Xprint/ValTree.c
+@@ -32,6 +32,10 @@ copyright holders.
+ */
+ /* $XFree86$ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include    <X11/X.h>
+ #include    "scrnintstr.h"
+ #include    "validate.h"

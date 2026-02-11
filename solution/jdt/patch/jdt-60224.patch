@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/ClasspathLocation.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/ClasspathLocation.java
+index 0b71663..f5dfaec 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/ClasspathLocation.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/ClasspathLocation.java
+@@ -23,8 +23,6 @@ public abstract class ClasspathLocation implements FileSystem.Classpath,
+ 	public static final int SOURCE = 1;
+ 	public static final int BINARY = 2;
+ 	
+-	protected int mode; // ability to only consider one kind of files (source vs. binaries), by default use both
+-
+ 	protected AccessRuleSet accessRuleSet;
+ 	protected String encoding; // only useful if referenced in the source path

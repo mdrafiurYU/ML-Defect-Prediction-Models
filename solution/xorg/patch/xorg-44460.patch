@@ -1,0 +1,13 @@
+diff --git a/Xi/xigrabdev.c b/Xi/xigrabdev.c
+index de13256..20f4e51 100644
+--- a/Xi/xigrabdev.c
++++ b/Xi/xigrabdev.c
+@@ -70,7 +70,7 @@ ProcXIGrabDevice(ClientPtr client)
+     REQUEST(xXIGrabDeviceReq);
+     REQUEST_AT_LEAST_SIZE(xXIGrabDeviceReq);
+ 
+-    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixSetFocusAccess);
++    ret = dixLookupDevice(&dev, stuff->deviceid, client, DixGrabAccess);
+     if (ret != Success)
+ 	return ret;
+ 

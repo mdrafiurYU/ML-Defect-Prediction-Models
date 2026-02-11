@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/dri2/dri2.c b/hw/xfree86/dri2/dri2.c
+index 9b4c18c..d2664b1 100644
+--- a/hw/xfree86/dri2/dri2.c
++++ b/hw/xfree86/dri2/dri2.c
+@@ -262,8 +262,8 @@ DRI2CloseScreen(ScreenPtr pScreen)
+ }
+ 
+ Bool
+-DRI2CreateDrawable(ScreenPtr pScreen,
+-		   DrawablePtr pDraw, drm_drawable_t *pDrmDrawable)
++DRI2CreateDrawable(ScreenPtr pScreen, DrawablePtr pDraw,
++		   drm_drawable_t *pDrmDrawable, unsigned int *head)
+ {
+     DRI2ScreenPtr	ds = DRI2GetScreen(pScreen);
+     WindowPtr		pWin;
+@@ -293,6 +293,7 @@ DRI2CreateDrawable(ScreenPtr pScreen,
+ 
+     *pDrmDrawable = pPriv->drawable;
+ 
++    *head = ds->buffer->head;
+     DRI2PostDrawableConfig(pDraw);
+     DRI2PostBufferAttach(pDraw);
+     DRI2ScreenCommitEvents(ds);

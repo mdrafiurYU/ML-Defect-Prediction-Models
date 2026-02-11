@@ -1,0 +1,18 @@
+diff --git a/hw/kdrive/src/kasync.c b/hw/kdrive/src/kasync.c
+index 9da3406..cc75111 100644
+--- a/hw/kdrive/src/kasync.c
++++ b/hw/kdrive/src/kasync.c
+@@ -293,13 +293,8 @@ KdScreenInitAsync (ScreenPtr pScreen)
+     pScreen->PaintWindowBorder = KdCheckPaintWindow;
+     pScreen->CopyWindow = KdCheckCopyWindow;
+     
+-#ifndef FB_OLD_SCREEN
+     pScreen->BackingStoreFuncs.SaveAreas = KdCheckSaveAreas;
+     pScreen->BackingStoreFuncs.RestoreAreas = KdCheckRestoreAreas;
+-#else
+-    pScreenPriv->BackingStoreFuncs.SaveAreas = KdCheckSaveAreas;
+-    pScreenPriv->BackingStoreFuncs.RestoreAreas = KdCheckRestoreAreas;
+-#endif
+ #ifdef RENDER
+     KdPictureInitAsync (pScreen);
+ #endif

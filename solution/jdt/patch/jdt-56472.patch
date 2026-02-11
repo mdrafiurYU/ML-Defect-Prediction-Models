@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
+index 76ac3c7..04a643e 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
+@@ -54,9 +54,6 @@ public class FactoryLoaderTests extends APTTestBase {
+ 		
+ 		_extJar = TestUtil.createAndAddExternalAnnotationJar(
+ 				env.getJavaProject( projectPath ));
+-		// This file will be locked until GC takes care of unloading the
+-		// annotation processor classes, so we can't delete it ourselves.
+-		_extJar.deleteOnExit();
+ 		
+ 		// Create a classpath variable for the same jar file, so we can
+ 		// refer to it that way.

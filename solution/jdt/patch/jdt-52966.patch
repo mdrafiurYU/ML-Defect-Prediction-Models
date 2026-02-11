@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 3fb7140..e42dd10 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1338,6 +1338,7 @@ public static long getIrritant(int problemID) {
+ 		case IProblem.UnsafeReturnTypeOverride:
+ 		case IProblem.UnsafeRawGenericMethodInvocation:
+ 		case IProblem.UnsafeRawGenericConstructorInvocation:
++		case IProblem.RawTypeReference:
+ 			return CompilerOptions.UncheckedTypeOperation;
+ 
+ 		case IProblem.MissingOverrideAnnotation:
+@@ -4679,6 +4680,14 @@ public void rawMemberTypeCannotBeParameterized(ASTNode location, ReferenceBindin
+ 		location.sourceStart,
+ 		location.sourceEnd);
+ }
++public void rawTypeReference(ASTNode location, TypeBinding type) {
++    this.handle(
++		IProblem.RawTypeReference,
++		new String[] {new String(type.readableName()), new String(type.erasure().readableName()), },
++		new String[] {new String(type.shortReadableName()),new String(type.erasure().shortReadableName()),},
++		location.sourceStart,
++		location.sourceEnd);
++}
+ public void recursiveConstructorInvocation(ExplicitConstructorCall constructorCall) {
+ 
+ 	this.handle(

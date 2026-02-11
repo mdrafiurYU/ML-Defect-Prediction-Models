@@ -1,0 +1,20 @@
+diff --git a/dix/selection.c b/dix/selection.c
+index 1fd0d21..d72f381 100644
+--- a/dix/selection.c
++++ b/dix/selection.c
+@@ -243,6 +243,7 @@ ProcGetSelectionOwner(ClientPtr client)
+         return BadAtom;
+     }
+ 
++    memset(&reply, 0, sizeof(xGetSelectionOwnerReply));
+     reply.type = X_Reply;
+     reply.length = 0;
+     reply.sequenceNumber = client->sequence;
+@@ -284,6 +285,7 @@ ProcConvertSelection(ClientPtr client)
+ 
+     rc = dixLookupSelection(&pSel, stuff->selection, client, DixReadAccess);
+ 
++    memset(&event, 0, sizeof(xEvent));
+     if (rc != Success && rc != BadMatch)
+ 	return rc;
+     else if (rc == Success && pSel->window != None) {

@@ -1,0 +1,83 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/StatementRecoveryTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/StatementRecoveryTest.java
+index 7300ac9..f3fc9cf 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/StatementRecoveryTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/StatementRecoveryTest.java
+@@ -3011,6 +3011,12 @@ public void test0036() {
+ 		"        {\n" + 
+ 		"          foo();\n" + 
+ 		"        }\n" + 
++		"    for (; ; ) \n" + 
++		"      ;\n" + 
++		"    if (true)\n" + 
++		"        {\n" + 
++		"          foo();\n" + 
++		"        }\n" + 
+ 		"  }\n" + 
+ 		"}\n";
+ 	
+@@ -3475,4 +3481,65 @@ public void test0041() {
+ 		expectedFullWithStatementRecoveryUnitToString,
+ 		testName);
+ }
++public void test0042() {
++
++	String s = 
++		"package a;											\n"
++			+ "public class X {								\n"
++			+ "  void foo() {								\n"
++			+ "    for(int i								\n"
++			+ "  }											\n"
++			+ "}											\n";
++
++	String expectedDietUnitToString = 
++		"package a;\n" + 
++		"public class X {\n" + 
++		"  public X() {\n" + 
++		"  }\n" + 
++		"  void foo() {\n" + 
++		"  }\n" + 
++		"}\n";
++	
++	String expectedDietWithStatementRecoveryUnitToString =
++		expectedDietUnitToString;
++	
++	String expectedDietPlusBodyUnitToString = 
++		"package a;\n" + 
++		"public class X {\n" + 
++		"  public X() {\n" + 
++		"    super();\n" + 
++		"  }\n" + 
++		"  void foo() {\n" + 
++		"  }\n" + 
++		"}\n";
++
++	String expectedDietPlusBodyWithStatementRecoveryUnitToString = 
++		"package a;\n" + 
++		"public class X {\n" + 
++		"  public X() {\n" + 
++		"    super();\n" + 
++		"  }\n" + 
++		"  void foo() {\n" + 
++		"    for (int i;; ; ) \n" + 
++		"      ;\n" + 
++		"  }\n" + 
++		"}\n";
++	
++	String expectedFullUnitToString =
++		expectedDietUnitToString;
++	
++	String expectedFullWithStatementRecoveryUnitToString =
++		expectedDietUnitToString;
++	
++	String testName = "<test>";
++	checkParse(
++		s.toCharArray(),
++		expectedDietUnitToString,
++		expectedDietWithStatementRecoveryUnitToString,
++		expectedDietPlusBodyUnitToString,
++		expectedDietPlusBodyWithStatementRecoveryUnitToString,
++		expectedFullUnitToString,
++		expectedFullWithStatementRecoveryUnitToString,
++		testName);
++}
+ }

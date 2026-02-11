@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestTermVectorsReader.java b/lucene/src/test/org/apache/lucene/index/TestTermVectorsReader.java
+index c48e571..c3d1afe 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestTermVectorsReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestTermVectorsReader.java
+@@ -390,8 +390,6 @@ public class TestTermVectorsReader extends LuceneTestCase {
+       fail();
+     } catch (IOException e) {
+       // expected exception
+-    } catch (IllegalArgumentException e) {
+-      // mmapdir will give us this from java.nio.Buffer.position()
+     } finally {
+       reader.close();
+     }
+@@ -402,8 +400,6 @@ public class TestTermVectorsReader extends LuceneTestCase {
+       fail();
+     } catch (IOException e) {
+       // expected exception
+-    } catch (IllegalArgumentException e) {
+-      // mmapdir will give us this from java.nio.Buffer.position()
+     } finally {
+       reader.close();
+     }

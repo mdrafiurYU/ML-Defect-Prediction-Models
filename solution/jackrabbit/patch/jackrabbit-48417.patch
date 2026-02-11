@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+index 1d93a0c..5564b73 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+@@ -612,8 +612,7 @@ public class NodeImpl extends ItemImpl implements Node {
+      * @see javax.jcr.Node#getWeakReferences()
+      */
+     public PropertyIterator getWeakReferences() throws RepositoryException {
+-        // TODO: implementation missing
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
++        return getWeakReferences(null);
+     }
+ 
+     /**

@@ -1,0 +1,27 @@
+diff --git a/solr/src/java/org/apache/solr/util/TermFreqIterator.java b/solr/src/java/org/apache/solr/util/TermFreqIterator.java
+index 0abcf83..ac8e8df 100644
+--- a/solr/src/java/org/apache/solr/util/TermFreqIterator.java
++++ b/solr/src/java/org/apache/solr/util/TermFreqIterator.java
+@@ -13,22 +13,18 @@ public interface TermFreqIterator extends Iterator<String> {
+       this.wrapped = wrapped;
+     }
+ 
+-    @Override
+     public float freq() {
+       return 1.0f;
+     }
+ 
+-    @Override
+     public boolean hasNext() {
+       return wrapped.hasNext();
+     }
+ 
+-    @Override
+     public String next() {
+       return wrapped.next().toString();
+     }
+ 
+-    @Override
+     public void remove() {
+       throw new UnsupportedOperationException();
+     }

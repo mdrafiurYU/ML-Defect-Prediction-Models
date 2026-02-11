@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/ramdac/xf86RamDac.c b/hw/xfree86/ramdac/xf86RamDac.c
+index 7821e59..1182a3e 100644
+--- a/hw/xfree86/ramdac/xf86RamDac.c
++++ b/hw/xfree86/ramdac/xf86RamDac.c
+@@ -25,6 +25,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/ramdac/xf86RamDac.c,v 1.6tsi Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86_OSproc.h"
+ #include "xf86_ansic.h"

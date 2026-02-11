@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java
+index be530ec..a00ebbd 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/SelectionEngine.java
+@@ -532,11 +532,6 @@ public final class SelectionEngine extends Engine implements ISearchRequestor {
+ 	public AssistParser getParser() {
+ 		return this.parser;
+ 	}
+-	
+-	protected int getSourceTypeConverterFlag() {
+-		return SourceTypeConverter.FIELD_AND_METHOD // need field and methods
+-				| SourceTypeConverter.MEMBER_TYPE; // need member types
+-	}
+ 
+ 	/*
+ 	 * Returns whether the given binding is a local/anonymous reference binding, or if its declaring class is

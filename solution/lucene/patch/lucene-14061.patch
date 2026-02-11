@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/LatLonType.java b/solr/src/java/org/apache/solr/schema/LatLonType.java
+index a28f42c..b869b72 100644
+--- a/solr/src/java/org/apache/solr/schema/LatLonType.java
++++ b/solr/src/java/org/apache/solr/schema/LatLonType.java
+@@ -281,7 +281,7 @@ public class LatLonType extends AbstractSubTypeFieldType implements SpatialQuery
+   //It never makes sense to create a single field, so make it impossible to happen
+ 
+   @Override
+-  public Field createField(SchemaField field, String externalVal, float boost) {
++  public Fieldable createField(SchemaField field, String externalVal, float boost) {
+     throw new UnsupportedOperationException("LatLonType uses multiple fields.  field=" + field.getName());
+   }

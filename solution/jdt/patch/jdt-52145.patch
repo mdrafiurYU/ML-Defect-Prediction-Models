@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CaptureBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CaptureBinding.java
+index 226704d..0e79ae1 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CaptureBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CaptureBinding.java
+@@ -54,7 +54,7 @@ public class CaptureBinding extends TypeVariableBinding {
+ 
+ 	public String debugName() {
+ 		if (this.wildcard != null) {
+-			return String.valueOf(TypeConstants.WILDCARD_CAPTURE_NAME) + this.wildcard.debugName(); //$NON-NLS-1$
++			return String.valueOf(TypeConstants.WILDCARD_CAPTURE_NAME) + this.wildcard.debugName();
+ 		}
+ 		return super.debugName();
+ 	}

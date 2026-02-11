@@ -1,0 +1,39 @@
+diff --git a/hw/xfree86/utils/cvt/cvt.c b/hw/xfree86/utils/cvt/cvt.c
+index fee4f7c..25a8e32 100644
+--- a/hw/xfree86/utils/cvt/cvt.c
++++ b/hw/xfree86/utils/cvt/cvt.c
+@@ -25,6 +25,34 @@
+ 
+ #include "xf86.h"
+ 
++/* xnfalloc implementation used by the server code we built in */
++pointer
++XNFalloc(unsigned long n)
++{
++    pointer r;
++
++    r = malloc(n);
++    if (!r) {
++        perror("malloc failed");
++        exit(1);
++    }
++    return r;
++}
++
++/* xnfcalloc implementation used by the server code we built in */
++pointer
++XNFcalloc(unsigned long n)
++{
++    pointer r;
++
++    r = calloc(1, n);
++    if (!r) {
++        perror("calloc failed");
++        exit(1);
++    }
++    return r;
++}
++
+ /*
+  * Quickly check wether this is a CVT standard mode.
+  */

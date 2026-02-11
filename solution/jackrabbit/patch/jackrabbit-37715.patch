@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
+index 329de0f..1ed46df 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingMultiIndexReader.java
+@@ -86,8 +86,7 @@ public final class CachingMultiIndexReader
+             maxDoc += subReaders[i].maxDoc();
+             OffsetReader offsetReader = new OffsetReader(subReaders[i], starts[i]);
+             readersByBase.put(subReaders[i].getBase().getBase(), offsetReader);
+-            readersByCreationTick.put(
+-                    Long.valueOf(subReaders[i].getCreationTick()), offsetReader);
++            readersByCreationTick.put(new Long(subReaders[i].getCreationTick()), offsetReader);
+         }
+         starts[subReaders.length] = maxDoc;
+     }

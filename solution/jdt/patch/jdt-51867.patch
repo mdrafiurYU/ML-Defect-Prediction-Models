@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/NaiveASTFlattener.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/NaiveASTFlattener.java
+index dd79067..2dc6658 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/NaiveASTFlattener.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/NaiveASTFlattener.java
+@@ -639,6 +639,7 @@ class NaiveASTFlattener extends ASTVisitor {
+ 		for (Iterator it = node.initializers().iterator(); it.hasNext(); ) {
+ 			Expression e = (Expression) it.next();
+ 			e.accept(this);
++			if (it.hasNext()) buffer.append(", ");//$NON-NLS-1$
+ 		}
+ 		this.buffer.append("; ");//$NON-NLS-1$
+ 		if (node.getExpression() != null) {
+@@ -648,6 +649,7 @@ class NaiveASTFlattener extends ASTVisitor {
+ 		for (Iterator it = node.updaters().iterator(); it.hasNext(); ) {
+ 			Expression e = (Expression) it.next();
+ 			e.accept(this);
++			if (it.hasNext()) buffer.append(", ");//$NON-NLS-1$
+ 		}
+ 		this.buffer.append(") ");//$NON-NLS-1$
+ 		node.getBody().accept(this);

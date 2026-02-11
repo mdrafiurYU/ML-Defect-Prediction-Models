@@ -1,0 +1,13 @@
+diff --git a/composite/compalloc.c b/composite/compalloc.c
+index 5bbf0a2..ce1ef7d 100644
+--- a/composite/compalloc.c
++++ b/composite/compalloc.c
+@@ -48,7 +48,7 @@
+ 
+ #include "compint.h"
+ 
+-void
++static void
+ compReportDamage (DamagePtr pDamage, RegionPtr pRegion, void *closure)
+ {
+     WindowPtr	    pWin = (WindowPtr) closure;

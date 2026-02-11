@@ -1,0 +1,27 @@
+diff --git a/Xext/xf86bigfont.c b/Xext/xf86bigfont.c
+index e2f5890..3362742 100644
+--- a/Xext/xf86bigfont.c
++++ b/Xext/xf86bigfont.c
+@@ -71,7 +71,6 @@
+ #include "gcstruct.h"
+ #include "dixfontstr.h"
+ #include "extnsionst.h"
+-#include "registry.h"
+ 
+ #define _XF86BIGFONT_SERVER_
+ #include <X11/extensions/xf86bigfstr.h>
+@@ -186,13 +185,7 @@ XFree86BigfontExtensionInit()
+ # endif
+ #endif
+ #endif
+-    } else
+-	return;
+-
+-    RegisterRequestName(extEntry->base, X_XF86BigfontQueryVersion,
+-			XF86BIGFONTNAME ":QueryVersion");
+-    RegisterRequestName(extEntry->base, X_XF86BigfontQueryFont,
+-			XF86BIGFONTNAME ":QueryFont");
++    }
+ }
+ 
+ 

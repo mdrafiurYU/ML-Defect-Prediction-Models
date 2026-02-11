@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java b/lucene/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java
+index 5808b37..9c7c3bf 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java
++++ b/lucene/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java
+@@ -184,6 +184,7 @@ public class TestConcurrentMergeScheduler extends LuceneTestCase {
+       writer = new IndexWriter(directory, newIndexWriterConfig(
+           TEST_VERSION_CURRENT, new MockAnalyzer())
+           .setOpenMode(OpenMode.APPEND).setMaxBufferedDocs(2));
++      writer.setInfoStream(VERBOSE ? System.out : null);
+     }
+ 
+     writer.close();

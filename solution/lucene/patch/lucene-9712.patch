@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+index c148bcb..6d0e4b1 100644
+--- a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
++++ b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+@@ -320,6 +320,10 @@ public class TestExternalCodecs extends LuceneTestCase {
+       }
+ 
+       @Override
++      public void cacheCurrentTerm() {
++      }
++
++      @Override
+       public DocsEnum docs(Bits skipDocs, DocsEnum reuse) {
+         return new RAMDocsEnum(ramField.termToDocs.get(current), skipDocs);
+       }

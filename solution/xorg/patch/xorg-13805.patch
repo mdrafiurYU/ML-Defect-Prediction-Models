@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/nvidia/nvidia.h b/hw/kdrive/nvidia/nvidia.h
+index 083ffc0..3a36b43 100644
+--- a/hw/kdrive/nvidia/nvidia.h
++++ b/hw/kdrive/nvidia/nvidia.h
+@@ -160,6 +160,7 @@ typedef struct _nvidiaScreenInfo {
+     CARD8			*off_screen;
+     int				off_screen_size;
+     KdVideoAdaptorPtr		pAdaptor;
++    KaaScreenInfoRec		kaa;
+ } NvidiaScreenInfo;
+ 
+ #define getNvidiaScreenInfo(kd) ((NvidiaScreenInfo *) ((kd)->screen->driver))
+@@ -217,9 +218,6 @@ void
+ nvidiaDrawEnable (ScreenPtr pScreen);
+ 
+ void
+-nvidiaDrawSync (ScreenPtr pScreen);
+-
+-void
+ nvidiaDrawDisable (ScreenPtr pScreen);
+ 
+ void

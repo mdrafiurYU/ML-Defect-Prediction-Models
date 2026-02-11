@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferencePattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferencePattern.java
+index 623b5b3..64f9c40 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferencePattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferencePattern.java
+@@ -31,7 +31,7 @@ public PackageReferencePattern(char[] pkgName, int matchRule) {
+ 		this.segments = new char[][] {CharOperation.NO_CHAR};
+ 		((InternalSearchPattern)this).mustResolve = false;
+ 	} else {
+-		this.pkgName = isCaseSensitive() ? pkgName : CharOperation.toLowerCase(pkgName);
++		this.pkgName = (isCaseSensitive() || isCamelCase())  ? pkgName : CharOperation.toLowerCase(pkgName);
+ 		this.segments = CharOperation.splitOn('.', this.pkgName);
+ 		((InternalSearchPattern)this).mustResolve = true;
+ 	}

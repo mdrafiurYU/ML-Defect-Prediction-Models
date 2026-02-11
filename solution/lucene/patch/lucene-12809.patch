@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+index a10983e..170516e 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+@@ -316,7 +316,7 @@ public class TestNRTThreads extends LuceneTestCase {
+       System.out.println("TEST: done join [" + (System.currentTimeMillis()-t0) + " ms]; addCount=" + addCount + " delCount=" + delCount);
+     }
+     writer.commit();
+-    assertEquals(addCount.get() - delCount.get(), writer.numDocs());
++    assertEquals("index=" + writer.segString(), addCount.get() - delCount.get(), writer.numDocs());
+       
+     writer.close(false);
+     dir.close();

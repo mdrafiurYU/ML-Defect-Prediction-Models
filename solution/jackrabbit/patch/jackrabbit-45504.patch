@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/TransientISFactory.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/TransientISFactory.java
+index 3453ae9..0d3f43c 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/TransientISFactory.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/TransientISFactory.java
+@@ -70,7 +70,7 @@ public final class TransientISFactory extends AbstractItemStateFactory implement
+ 
+     /**
+      * @inheritDoc
+-     * @see TransientItemStateFactory#createNewPropertyState(PropertyEntry, QPropertyDefinition)
++     * @see TransientItemStateFactory#createNewPropertyState(PropertyEntry, QPropertyDefinition, QValue[], int)
+      */
+     public PropertyState createNewPropertyState(PropertyEntry entry, QPropertyDefinition definition, QValue[] values, int propertyType) throws RepositoryException {
+         PropertyState propState = new PropertyState(entry, this, definition, defProvider, values, propertyType);

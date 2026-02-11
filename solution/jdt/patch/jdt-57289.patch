@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java
+index 03e7003..c633fd8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java
+@@ -1402,6 +1402,10 @@ public void ldc2_w(long constant) {
+ 	super.ldc2_w(constant);
+ 	this.currentFrame.addStackItem(TypeBinding.LONG);
+ }
++public void ldcForIndex(int index, char[] constant) {
++	super.ldcForIndex(index, constant);
++	this.currentFrame.addStackItem(new VerificationTypeInfo(TypeIds.T_JavaLangString, ConstantPool.JavaLangStringConstantPoolName));
++}
+ public void ldiv() {
+ 	super.ldiv();
+ 	this.currentFrame.numberOfStackItems--;

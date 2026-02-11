@@ -1,0 +1,13 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 3cdf4d1..fdfd2f3 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -1255,7 +1255,7 @@ XkbSizeVirtualModMap(XkbDescPtr xkb,xkbGetMapReply *rep)
+ 	rep->totalVModMapKeys= 0;
+ 	return 0;
+     }
+-    for (nRtrn=i=0;i<rep->nVModMapKeys;i++) {
++    for (nRtrn=i=0;i<rep->nVModMapKeys-1;i++) {
+ 	if (xkb->server->vmodmap[i+rep->firstVModMapKey]!=0)
+ 	    nRtrn++;
+     }

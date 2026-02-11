@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java b/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
+index 927e859..cd5595b 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
+@@ -214,7 +214,7 @@ public class TestPhraseQuery extends LuceneTestCase {
+     Directory directory = newDirectory();
+     Analyzer stopAnalyzer = new MockAnalyzer(MockTokenizer.SIMPLE, true, MockTokenFilter.ENGLISH_STOPSET, false);
+     RandomIndexWriter writer = new RandomIndexWriter(random, directory, 
+-        newIndexWriterConfig( Version.LUCENE_24, stopAnalyzer));
++        newIndexWriterConfig( Version.LUCENE_40, stopAnalyzer));
+     Document doc = new Document();
+     doc.add(newField("field", "the stop words are here", Field.Store.YES, Field.Index.ANALYZED));
+     writer.addDocument(doc);

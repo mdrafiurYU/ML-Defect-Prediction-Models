@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+index c13eb65..6239685 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/LocalItemStateManager.java
+@@ -126,6 +126,16 @@ public class LocalItemStateManager
+         return state;
+     }
+ 
++    /**
++     * Returns the change log that contains the current changes in this local
++     * item state manager.
++     *
++     * @return the change log with the current changes.
++     */
++    protected ChangeLog getChanges() {
++        return changeLog;
++    }
++
+     //-----------------------------------------------------< ItemStateManager >
+     /**
+      * {@inheritDoc}

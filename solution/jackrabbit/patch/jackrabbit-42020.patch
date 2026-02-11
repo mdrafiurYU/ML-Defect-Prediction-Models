@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java
+index beee264..5aa3074 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/LockTest.java
+@@ -425,6 +425,7 @@ public class LockTest extends AbstractJCRTest {
+             assertTrue("lock must be alive", lock.isLive());
+ 
+             // assert: node must be locked
++            n1.refresh(false);
+             assertTrue("node must be locked", n1.isLocked());
+         } finally {
+             // log out

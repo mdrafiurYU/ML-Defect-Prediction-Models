@@ -1,0 +1,13 @@
+diff --git a/xfixes/xfixes.c b/xfixes/xfixes.c
+index 9364309..a0e656d 100755
+--- a/xfixes/xfixes.c
++++ b/xfixes/xfixes.c
+@@ -143,7 +143,7 @@ ProcXFixesDispatch (ClientPtr client)
+     REQUEST(xXFixesReq);
+     XFixesClientPtr pXFixesClient = GetXFixesClient (client);
+ 
+-    if (pXFixesClient->major_version > NUM_VERSION_REQUESTS)
++    if (pXFixesClient->major_version >= NUM_VERSION_REQUESTS)
+ 	return BadRequest;
+     if (stuff->xfixesReqType > version_requests[pXFixesClient->major_version])
+ 	return BadRequest;

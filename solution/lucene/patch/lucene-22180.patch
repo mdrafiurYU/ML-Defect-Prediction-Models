@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java b/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java
+index e44462c..b769ed0 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java
+@@ -31,7 +31,6 @@ public class SegmentWriteState {
+   public final String segmentName;
+   public final FieldInfos fieldInfos;
+   public final int numDocs;
+-  public boolean hasVectors;
+ 
+   // Deletes to apply while we are flushing the segment.  A
+   // Term is enrolled in here if it was deleted at one

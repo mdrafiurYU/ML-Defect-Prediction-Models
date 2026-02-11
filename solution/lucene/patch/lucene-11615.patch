@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/UnicodeUtil.java b/lucene/src/java/org/apache/lucene/util/UnicodeUtil.java
+index 9a12020..32268ac 100644
+--- a/lucene/src/java/org/apache/lucene/util/UnicodeUtil.java
++++ b/lucene/src/java/org/apache/lucene/util/UnicodeUtil.java
+@@ -93,7 +93,9 @@ package org.apache.lucene.util;
+  * @lucene.internal
+  */
+ 
+-final public class UnicodeUtil {
++public final class UnicodeUtil {
++
++  private UnicodeUtil() {} // no instance
+ 
+   public static final int UNI_SUR_HIGH_START = 0xD800;
+   public static final int UNI_SUR_HIGH_END = 0xDBFF;

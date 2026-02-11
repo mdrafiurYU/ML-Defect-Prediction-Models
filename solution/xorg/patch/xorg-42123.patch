@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessScreen.c b/miext/rootless/rootlessScreen.c
+index f40913a..75dd439 100644
+--- a/miext/rootless/rootlessScreen.c
++++ b/miext/rootless/rootlessScreen.c
+@@ -475,7 +475,7 @@ RootlessMarkOverlappedWindows(WindowPtr pWin, WindowPtr pFirst,
+     return result;
+ }
+ 
+-void expose_1 (WindowPtr pWin) {
++static void expose_1 (WindowPtr pWin) {
+     WindowPtr pChild;
+     
+     if (!pWin->realized)

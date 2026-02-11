@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index d035c76..d6d22c4 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -440,6 +440,9 @@ _X_HIDDEN void *dixLookupTab[] = {
+ #ifdef XIDLE
+     SYMVAR(noXIdleExtension)
+ #endif
++#ifdef XSELINUX
++    SYMVAR(noSELinuxExtension)
++#endif
+ #ifdef XV
+     SYMVAR(noXvExtension)
+ #endif

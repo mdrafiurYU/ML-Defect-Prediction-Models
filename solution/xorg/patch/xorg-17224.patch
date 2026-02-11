@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 269923c..af27d95 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -46,6 +46,10 @@
+  *      ... and others
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef XF86DRI
+ #include <sys/types.h>
+ #include <grp.h>

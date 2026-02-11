@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java
+index aea716a..c422c57 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/GetItemsTest.java
+@@ -99,6 +99,14 @@ public class GetItemsTest extends AbstractJCR2SPITest {
+         session = repository.login("default");
+     }
+ 
++    protected void tearDown() throws Exception {
++        if (session != null) {
++            session.logout();
++            session = null;
++        }
++        super.tearDown();
++    }
++
+     private Iterable itemInfosProvider;
+ 
+     /**

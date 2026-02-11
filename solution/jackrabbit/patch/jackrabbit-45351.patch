@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/MemoryJournal.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/MemoryJournal.java
+index 8d68ce4..f084b7c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/MemoryJournal.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/MemoryJournal.java
+@@ -23,11 +23,6 @@ import java.io.InputStream;
+ import java.util.ArrayList;
+ import java.util.NoSuchElementException;
+ 
+-import org.apache.jackrabbit.core.journal.AbstractJournal;
+-import org.apache.jackrabbit.core.journal.AppendRecord;
+-import org.apache.jackrabbit.core.journal.InstanceRevision;
+-import org.apache.jackrabbit.core.journal.JournalException;
+-import org.apache.jackrabbit.core.journal.RecordIterator;
+ import org.apache.jackrabbit.spi.commons.namespace.NamespaceResolver;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+@@ -149,7 +144,7 @@ public class MemoryJournal extends AbstractJournal {
+     /**
+      * {@inheritDoc}
+      */
+-    protected RecordIterator getRecords(long startRevision)
++    public RecordIterator getRecords(long startRevision)
+             throws JournalException {
+ 
+         checkState();
+@@ -161,6 +156,13 @@ public class MemoryJournal extends AbstractJournal {
+     }
+ 
+     /**
++     * {@inheritDoc}
++     */
++    public RecordIterator getRecords() throws JournalException {
++        return new MemoryRecordIterator(0, records.size());
++    }
++
++    /**
+      * Set records. Used to share records between two journal implementations.
+      *
+      * @param records array list that should back up this memory journal

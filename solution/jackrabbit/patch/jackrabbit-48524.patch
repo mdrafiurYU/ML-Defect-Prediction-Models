@@ -1,0 +1,42 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
+index 2bc3534..a25b4ea 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
+@@ -132,7 +132,14 @@ public class NodeTypeDefDiff {
+                 type = tmpType;
+             }
+ 
++            // check abstract flag (MAJOR modification)
++            tmpType = abstractFlagDiff();
++            if (tmpType > type) {
++                type = tmpType;
++            }
++
+             // no need to check orderableChildNodes flag (TRIVIAL modification)
++            // no need to check queryable flag (TRIVIAL modification)
+ 
+             // check property definitions
+             tmpType = buildPropDefDiffs();
+@@ -219,6 +226,13 @@ public class NodeTypeDefDiff {
+     /**
+      * @return
+      */
++    public int abstractFlagDiff() {
++        return oldDef.isAbstract() && !newDef.isAbstract() ? MAJOR : NONE;
++    }
++
++    /**
++     * @return
++     */
+     public int supertypesDiff() {
+         return !Arrays.equals(oldDef.getSupertypes(), newDef.getSupertypes()) ? MAJOR : NONE;
+     }
+@@ -535,6 +549,8 @@ public class NodeTypeDefDiff {
+                 }
+ 
+                 // no need to check defaultValues (TRIVIAL change)
++                // no need to check availableQueryOperators (TRIVIAL change)
++                // no need to check queryOrderable (TRIVIAL change)
+ 
+                 if (type == TRIVIAL) {
+                     int t1 = getOldDef().getRequiredType();

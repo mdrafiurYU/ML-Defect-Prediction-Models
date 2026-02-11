@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java
+index 5877a60..83267e5 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java
+@@ -615,6 +615,18 @@ public class RepositoryServiceLogger extends AbstractLogger implements Repositor
+         return result;
+     }
+ 
++    public EventBundle getEvents(final SessionInfo sessionInfo,
++                                 final EventFilter filter,
++                                 final long after) throws RepositoryException,
++            UnsupportedRepositoryOperationException {
++        return (EventBundle) execute(new Callable() {
++            public Object call() throws RepositoryException {
++                return service.getEvents(sessionInfo, filter, after);
++            }
++        }, "getEvents(SessionInfo, EventFilter, long)",
++                new Object[]{unwrap(sessionInfo), filter, after});
++    }
++
+     public void updateEventFilters(final Subscription subscription, final EventFilter[] eventFilters)
+             throws RepositoryException {

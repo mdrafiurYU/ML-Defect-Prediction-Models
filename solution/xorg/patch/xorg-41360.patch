@@ -1,0 +1,14 @@
+diff --git a/dix/main.c b/dix/main.c
+index ee2e10d..7bd91e0 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -361,7 +361,8 @@ int main(int argc, char *argv[], char *envp[])
+ 
+         InitCoreDevices();
+ 	InitInput(argc, argv);
+-	InitAndStartDevices();
++	if (InitAndStartDevices() != Success)
++	    FatalError("failed to initialize core devices");
+ 
+ 	dixSaveScreens(serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
+ 

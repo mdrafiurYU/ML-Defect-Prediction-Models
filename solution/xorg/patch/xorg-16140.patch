@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/fbdevhw/fbdevhw.c b/hw/xfree86/fbdevhw/fbdevhw.c
+index 8c4c51d..3e7b1f6 100644
+--- a/hw/xfree86/fbdevhw/fbdevhw.c
++++ b/hw/xfree86/fbdevhw/fbdevhw.c
+@@ -309,7 +309,10 @@ fbdev_open_pci(pciVideoPtr pPci, char **namep)
+ 	}
+ 	if (namep)
+ 	    *namep = NULL;
++	xf86DrvMsg(-1, X_ERROR,
++		   "Unable to find a valid framebuffer device\n");
+ 	return -1;
++
+ }
+ 
+ static int

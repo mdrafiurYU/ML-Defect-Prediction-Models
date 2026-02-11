@@ -1,0 +1,38 @@
+diff --git a/hw/xfree86/dixmods/extmod/xf86vmode.c b/hw/xfree86/dixmods/extmod/xf86vmode.c
+index 718d40f..91d5865 100644
+--- a/hw/xfree86/dixmods/extmod/xf86vmode.c
++++ b/hw/xfree86/dixmods/extmod/xf86vmode.c
+@@ -65,10 +65,6 @@ typedef struct {
+ #define VM_SETPRIV(c,p) \
+     dixSetPrivate(&(c)->devPrivates, VidModeClientPrivateKey, p)
+ 
+-static void XF86VidModeResetProc(
+-    ExtensionEntry* /* extEntry */
+-);
+-
+ static DISPATCH_PROC(ProcXF86VidModeDispatch);
+ static DISPATCH_PROC(ProcXF86VidModeGetAllModeLines);
+ static DISPATCH_PROC(ProcXF86VidModeGetModeLine);
+@@ -199,7 +195,7 @@ XFree86VidModeExtensionInit(void)
+ 				XF86VidModeNumberErrors,
+ 				ProcXF86VidModeDispatch,
+ 				SProcXF86VidModeDispatch,
+-				XF86VidModeResetProc,
++				NULL,
+ 				StandardMinorOpcode))) {
+ #if 0
+ 	XF86VidModeReqCode = (unsigned char)extEntry->base;
+@@ -212,13 +208,6 @@ XFree86VidModeExtensionInit(void)
+     }
+ }
+ 
+-/*ARGSUSED*/
+-static void
+-XF86VidModeResetProc (extEntry)
+-    ExtensionEntry* extEntry;
+-{
+-}
+-
+ static int
+ ClientMajorVersion(ClientPtr client)
+ {

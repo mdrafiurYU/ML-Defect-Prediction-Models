@@ -1,0 +1,34 @@
+diff --git a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+index 05f3df8..51d40db 100644
+--- a/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
++++ b/solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java
+@@ -16,19 +16,18 @@
+  */
+ package org.apache.solr.response.transform;
+ 
++import java.io.IOException;
++import java.util.Map;
++
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.util.ReaderUtil;
+ import org.apache.solr.common.SolrDocument;
+ import org.apache.solr.common.SolrException;
+-import org.apache.solr.core.SolrCore;
+ import org.apache.solr.search.QParser;
+ import org.apache.solr.search.SolrIndexSearcher;
+ import org.apache.solr.search.function.DocValues;
+ import org.apache.solr.search.function.ValueSource;
+ 
+-import java.io.IOException;
+-import java.util.Map;
+-
+ /**
+  * Add values from a ValueSource (function query etc)
+  *
+@@ -65,7 +64,7 @@ public class ValueSourceAugmenter extends DocTransformer
+     docValuesArr = new DocValues[readerContexts.length];
+ 
+     searcher = qparser.getReq().getSearcher();
+-    this.fcontext = valueSource.newContext(searcher);
++    this.fcontext = ValueSource.newContext(searcher);
+   }

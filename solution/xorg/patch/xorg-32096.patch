@@ -1,0 +1,25 @@
+diff --git a/hw/kdrive/ephyr/ephyrdri.c b/hw/kdrive/ephyr/ephyrdri.c
+index c54e876..5201082 100644
+--- a/hw/kdrive/ephyr/ephyrdri.c
++++ b/hw/kdrive/ephyr/ephyrdri.c
+@@ -25,10 +25,12 @@
+  * Authors:
+  *    Dodji Seketeli <dodji@openedhand.com>
+  */
+-#ifdef HAVE_XORG_CONFIG_H
+-#include <xorg-config.h>
++#ifdef HAVE_CONFIG_H
++#include <kdrive-config.h>
+ #endif
+ 
++#ifdef XEPHYR_DRI
++
+ #include <X11/Xutil.h>
+ #include <X11/Xlibint.h>
+ /*#define _XF86DRI_SERVER_*/
+@@ -203,4 +205,5 @@ ephyrDRIGetDeviceInfo (int a_screen,
+     return FALSE ;
+     EPHYR_LOG ("leave\n") ;
+ }
++#endif /*EPHYR_DRI*/
+ 

@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/payloads/PayloadHelper.java b/lucene/src/test/org/apache/lucene/search/payloads/PayloadHelper.java
+index b3692f0..28af7a5 100644
+--- a/lucene/src/test/org/apache/lucene/search/payloads/PayloadHelper.java
++++ b/lucene/src/test/org/apache/lucene/search/payloads/PayloadHelper.java
+@@ -127,10 +127,10 @@ public class PayloadHelper {
+       doc.add(new Field(NO_PAYLOAD_FIELD, English.intToEnglish(i), Field.Store.YES, Field.Index.ANALYZED));
+       writer.addDocument(doc);
+     }
+-    reader = IndexReader.open(writer);
++    reader = new SlowMultiReaderWrapper(IndexReader.open(writer));
+     writer.close();
+ 
+-    IndexSearcher searcher = new IndexSearcher(SlowMultiReaderWrapper.wrap(reader));
++    IndexSearcher searcher = new IndexSearcher(reader);
+     searcher.setSimilarity(similarity);
+     return searcher;
+   }

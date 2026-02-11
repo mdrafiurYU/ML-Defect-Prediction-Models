@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java
+index ae89809..b7bd2f4 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java
+@@ -351,6 +351,10 @@ public int hashCode() {
+  * @see IMethod
+  */
+ public boolean isConstructor() throws JavaModelException {
++	if (!this.getElementName().equals(this.parent.getElementName())) {
++		// faster than reaching the info
++		return false;
++	}	
+ 	IBinaryMethod info = (IBinaryMethod) getElementInfo();
+ 	return info.isConstructor();
+ }

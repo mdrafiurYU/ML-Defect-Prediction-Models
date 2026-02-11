@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/parser/xf86Optrec.h b/hw/xfree86/parser/xf86Optrec.h
+index d7a1e7a..c38f2c2 100644
+--- a/hw/xfree86/parser/xf86Optrec.h
++++ b/hw/xfree86/parser/xf86Optrec.h
+@@ -58,6 +58,10 @@
+  * This file contains the Option Record that is passed between the Parser,
+  * and Module setup procs.
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _xf86Optrec_h_
+ #define _xf86Optrec_h_
+ #include <stdio.h>

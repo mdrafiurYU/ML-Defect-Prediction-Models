@@ -1,0 +1,20 @@
+diff --git a/hw/xgl/xglcmap.c b/hw/xgl/xglcmap.c
+index 9e38322..f0c2ba2 100644
+--- a/hw/xgl/xglcmap.c
++++ b/hw/xgl/xglcmap.c
+@@ -23,6 +23,7 @@
+  * Author: David Reveman <davidr@novell.com>
+  */
+ 
++#include <stdint.h>
+ #include "xgl.h"
+ #include "colormapst.h"
+ #include "micmap.h"
+@@ -147,7 +148,6 @@ xglSetVisualTypesAndMasks (ScreenInfo	           *pScreenInfo,
+ 		nxglVisuals++;
+ 	    }
+ 	}
+-
+     }
+ }
+ 

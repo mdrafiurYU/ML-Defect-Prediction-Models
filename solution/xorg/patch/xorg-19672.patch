@@ -1,0 +1,14 @@
+diff --git a/GL/mesa/X/xf86glx.c b/GL/mesa/X/xf86glx.c
+index b185a95..34b6670 100644
+--- a/GL/mesa/X/xf86glx.c
++++ b/GL/mesa/X/xf86glx.c
+@@ -431,3 +431,9 @@ __GLXprovider __glXMesaProvider = {
+     "MESA",
+     NULL
+ };
++
++__GLXprovider *
++GlxGetMesaProvider (void)
++{
++    return &__glXMesaProvider;
++}

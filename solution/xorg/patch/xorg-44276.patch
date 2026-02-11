@@ -1,0 +1,13 @@
+diff --git a/mi/mipointer.h b/mi/mipointer.h
+index 83277e4..8b13f08 100644
+--- a/mi/mipointer.h
++++ b/mi/mipointer.h
+@@ -82,7 +82,7 @@ typedef struct _miPointerScreenFuncRec {
+                     );
+     void	(*EnqueueEvent)(
+                     DeviceIntPtr /* pDev */,
+-                    xEventPtr /* event */
++                    InternalEvent* /* event */
+                     );
+     void	(*NewEventScreen)(
+ 		    DeviceIntPtr /* pDev */,

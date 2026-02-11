@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceMoveTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceMoveTest.java
+index 83de6b2..62a4870 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceMoveTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceMoveTest.java
+@@ -93,7 +93,7 @@ public class WorkspaceMoveTest extends AbstractWorkspaceCopyTest {
+      * sufficient access permissions to complete the operation.
+      */
+     public void testMoveNodesAccessDenied() throws RepositoryException {
+-        Session readOnlySuperuser = helper.getReadOnlySession();
++        Session readOnlySuperuser = getHelper().getReadOnlySession();
+         try {
+             String dstAbsPath = node2.getPath() + "/" + node1.getName();
+             try {
+@@ -145,7 +145,7 @@ public class WorkspaceMoveTest extends AbstractWorkspaceCopyTest {
+         String dstAbsPath = node2.getPath() + "/" + node1.getName();
+ 
+         // get other session
+-        Session otherSession = helper.getReadWriteSession();
++        Session otherSession = getHelper().getReadWriteSession();
+ 
+         try {
+             // get lock target node in destination wsp through other session

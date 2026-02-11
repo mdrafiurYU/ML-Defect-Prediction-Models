@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxmotion.c b/hw/dmx/input/dmxmotion.c
+index 7148ddb..7b47c45 100644
+--- a/hw/dmx/input/dmxmotion.c
++++ b/hw/dmx/input/dmxmotion.c
+@@ -39,6 +39,10 @@
+  * for motion buffers for extension devices, and are \a not compatible
+  * replacements for the mi routines.  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "inputstr.h"
+ #include "dmxinputinit.h"
+ #include "dmxcommon.h"

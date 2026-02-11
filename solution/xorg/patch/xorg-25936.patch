@@ -1,0 +1,12 @@
+diff --git a/include/dix.h b/include/dix.h
+index 0c66d8d..d59cccc 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -570,6 +570,7 @@ extern void ReleaseActiveGrabs(
+     ClientPtr client);
+ 
+ extern int DeliverEventsToWindow(
++    DeviceIntPtr /* pWin */,
+     WindowPtr /* pWin */,
+     xEventPtr /* pEvents */,
+     int /* count */,

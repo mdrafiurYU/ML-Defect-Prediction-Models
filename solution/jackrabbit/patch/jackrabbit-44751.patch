@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+index bc9fb11..12edd21 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+@@ -211,7 +211,7 @@ public class VersionManagerImpl extends AbstractVersionManager implements ItemSt
+      * This method must not be synchronized since it could cause deadlocks with
+      * item-reading listeners in the observation thread.
+      */
+-    public VersionHistory createVersionHistory(Session session, final NodeState node)
++    protected NodeId createVersionHistory(Session session, final NodeState node)
+             throws RepositoryException {
+         InternalVersionHistory history = (InternalVersionHistory)
+                 escFactory.doSourced((SessionImpl) session, new SourcedTarget() {
+@@ -223,7 +223,7 @@ public class VersionManagerImpl extends AbstractVersionManager implements ItemSt
+         if (history == null) {
+             throw new VersionException("History already exists for node " + node.getNodeId());
+         }
+-        return (VersionHistory) ((SessionImpl) session).getNodeById(history.getId());
++        return history.getId();
+     }
+ 
+     /**

@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglbstore.c b/hw/xgl/xglbstore.c
+index 65b4bbf..91019e0 100644
+--- a/hw/xgl/xglbstore.c
++++ b/hw/xgl/xglbstore.c
+@@ -74,7 +74,7 @@ xglSaveAreas (PixmapPtr	pPixmap,
+ 	FatalError (XGL_SW_FAILURE_STRING);
+     
+     XGL_BSTORE_FALLBACK_PROLOGUE (&pPixmap->drawable,
+-				  BackingStoreFuncs.RestoreAreas);
++				  BackingStoreFuncs.SaveAreas);
+     (*pScreen->BackingStoreFuncs.SaveAreas) (pPixmap, prgnSave,
+ 					     xorg, yorg, pWin);
+     XGL_BSTORE_FALLBACK_EPILOGUE (&pPixmap->drawable,

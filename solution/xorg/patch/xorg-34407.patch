@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/src/kaa.c b/hw/kdrive/src/kaa.c
+index 9cf9bf2..0271630 100644
+--- a/hw/kdrive/src/kaa.c
++++ b/hw/kdrive/src/kaa.c
+@@ -314,7 +314,7 @@ kaaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth, unsigned usage_hint)
+ 	    }
+     }
+ 
+-    pPixmap = fbCreatePixmapBpp (pScreen, w, h, depth, bpp);
++    pPixmap = fbCreatePixmapBpp (pScreen, w, h, depth, bpp, usage_hint);
+     if (!pPixmap)
+ 	return NULL;
+     pKaaPixmap = KaaGetPixmapPriv(pPixmap);

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/ProviderRegistryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/ProviderRegistryImpl.java
+index 8ddce25..585d0ae 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/ProviderRegistryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/ProviderRegistryImpl.java
+@@ -59,7 +59,7 @@ public class ProviderRegistryImpl implements PrincipalProviderRegistry {
+     public PrincipalProvider registerProvider(Properties config) throws RepositoryException {
+         PrincipalProvider provider = createProvider(config);
+         if (provider != null) {
+-            synchronized(providers) {
++            synchronized (providers) {
+                 providers.put(provider.getClass().getName(), provider);
+             }
+         } else {

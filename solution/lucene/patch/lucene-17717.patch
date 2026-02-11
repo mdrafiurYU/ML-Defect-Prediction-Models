@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+index 6114e9f..f55cb57 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+@@ -241,7 +241,7 @@ public class InstantiatedIndexWriter implements Closeable {
+           final FieldInvertState invertState = new FieldInvertState();
+           invertState.setBoost(eFieldTermDocInfoFactoriesByTermText.getKey().boost * document.getDocument().getBoost());
+           invertState.setLength(eFieldTermDocInfoFactoriesByTermText.getKey().fieldLength);
+-          final float norm = similarityProvider.get(fieldName).computeNorm(fieldName, invertState);
++          final float norm = similarityProvider.get(fieldName).computeNorm(invertState);
+           normsByFieldNameAndDocumentNumber.get(fieldName)[document.getDocumentNumber()] = similarityProvider.get(fieldName).encodeNormValue(norm);
+         } else {
+           System.currentTimeMillis();

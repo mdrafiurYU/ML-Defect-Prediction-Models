@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceSameNameSibsTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceSameNameSibsTest.java
+index 0e3920a..733cb3c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceSameNameSibsTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceSameNameSibsTest.java
+@@ -95,4 +95,10 @@ abstract class AbstractWorkspaceSameNameSibsTest extends AbstractWorkspaceCopyBe
+         }
+ 
+     }
++
++    protected void tearDown() throws Exception {
++        sameNameSibsTrueNodeType = null;
++        sameNameSibsFalseNodeType = null;
++        super.tearDown();
++    }
+ }
+\ No newline at end of file

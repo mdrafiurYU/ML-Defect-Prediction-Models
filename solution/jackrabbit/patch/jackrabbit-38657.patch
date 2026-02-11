@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenNode.java
+index 94d34d4..8e9cc8d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFrozenNode.java
+@@ -17,7 +17,7 @@
+ package org.apache.jackrabbit.core.version;
+ 
+ import org.apache.jackrabbit.core.state.PropertyState;
+-import org.apache.jackrabbit.name.QName;
++import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.uuid.UUID;
+ 
+ import javax.jcr.version.VersionException;
+@@ -57,14 +57,14 @@ public interface InternalFrozenNode extends InternalFreeze {
+      *
+      * @return the name of the frozen primary type.
+      */
+-    QName getFrozenPrimaryType();
++    Name getFrozenPrimaryType();
+ 
+     /**
+      * Returns the list of names of the frozen mixin types.
+      *
+      * @return the list of names of the frozen mixin types.
+      */
+-    QName[] getFrozenMixinTypes();
++    Name[] getFrozenMixinTypes();
+ 
+     /**
+      * Checks if this frozen node has the frozen version history

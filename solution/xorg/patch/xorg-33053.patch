@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shadow.c b/miext/shadow/shadow.c
+index f624216..8aa192f 100644
+--- a/miext/shadow/shadow.c
++++ b/miext/shadow/shadow.c
+@@ -240,7 +240,7 @@ shadowInit(ScreenPtr pScreen, ShadowUpdateProc update, ShadowWindowProc window)
+     PixmapPtr pPixmap;
+     
+     pPixmap = pScreen->CreatePixmap(pScreen, pScreen->width, pScreen->height,
+-				    pScreen->rootDepth);
++				    pScreen->rootDepth, 0);
+     if (!pPixmap)
+ 	return FALSE;
+     

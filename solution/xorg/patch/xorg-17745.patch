@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/vbe/vbe.h b/hw/xfree86/vbe/vbe.h
+index 3251546..c7970ab 100644
+--- a/hw/xfree86/vbe/vbe.h
++++ b/hw/xfree86/vbe/vbe.h
+@@ -60,8 +60,7 @@ typedef struct vbeControllerInfoBlock {
+     CARD8  OemData[256];
+ } vbeControllerInfoRec, *vbeControllerInfoPtr;
+ 
+-#if defined(__GNUC__) || defined(SCO) || defined(__USLC__) || \
+-	defined(__SUNPRO_C)
++#if defined(__GNUC__) || defined(__USLC__) || defined(__SUNPRO_C)
+ #pragma pack()	/* All GCC versions recognise this syntax */
+ #else
+ #pragma pack(0)

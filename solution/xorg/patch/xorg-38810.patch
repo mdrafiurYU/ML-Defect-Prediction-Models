@@ -1,0 +1,20 @@
+diff --git a/dix/events.c b/dix/events.c
+index 8191973..a35e9e4 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4077,15 +4077,11 @@ ProcessPointerEvent (xEvent *xE, DeviceIntPtr mouse, int count)
+     if (xE->u.u.type != MotionNotify)
+     {
+ 	int  key;
+-	BYTE *kptr;
+-	int           bit;
+ 
+ 	XE_KBPTR.rootX = pSprite->hot.x;
+ 	XE_KBPTR.rootY = pSprite->hot.y;
+ 
+ 	key = xE->u.u.detail;
+-	kptr = &butc->down[key >> 3];
+-	bit = 1 << (key & 7);
+ 	switch (xE->u.u.type)
+ 	{
+ 	case ButtonPress:

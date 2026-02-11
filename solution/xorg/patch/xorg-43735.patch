@@ -1,0 +1,15 @@
+diff --git a/randr/rrtransform.c b/randr/rrtransform.c
+index e5e9438..8bdff5a 100644
+--- a/randr/rrtransform.c
++++ b/randr/rrtransform.c
+@@ -270,8 +270,8 @@ RRTransformCompute (int			    x,
+     }
+     else
+     {
+-	pixman_f_transform_translate (f_inverse, f_transform, -x, -y);
+-	if (!pixman_transform_translate (&inverse, transform, F(-x), F(-y)))
++	pixman_f_transform_translate (f_transform, f_inverse, x, y);
++	if (!pixman_transform_translate (transform, &inverse, F(x), F(y)))
+ 	    overflow = TRUE;
+ 	if (overflow)
+ 	{

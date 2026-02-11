@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java b/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java
+index 00eeb73..65061e2 100644
+--- a/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/QueryElevationComponent.java
+@@ -43,6 +43,7 @@ import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+ import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.index.Term;
+ import org.apache.lucene.search.*;
+ import org.apache.lucene.util.StringHelper;
+@@ -503,8 +504,8 @@ class ElevationComparatorSource extends FieldComparatorSource {
+         values[slot] = docVal(doc);
+       }
+ 
+-      public FieldComparator setNextReader(IndexReader reader, int docBase) throws IOException {
+-        idIndex = FieldCache.DEFAULT.getTermsIndex(reader, fieldname);
++      public FieldComparator setNextReader(AtomicReaderContext context) throws IOException {
++        idIndex = FieldCache.DEFAULT.getTermsIndex(context.reader, fieldname);
+         return this;
+       }

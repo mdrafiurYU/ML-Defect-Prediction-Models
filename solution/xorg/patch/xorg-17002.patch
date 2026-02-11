@@ -1,0 +1,15 @@
+diff --git a/fb/fbmmx.h b/fb/fbmmx.h
+index 39e8d1e..9ec8aff 100644
+--- a/fb/fbmmx.h
++++ b/fb/fbmmx.h
+@@ -22,6 +22,10 @@
+  * 
+  * Based on work by Owen Taylor
+  */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef USE_MMX
+ 
+ #ifndef __amd64__

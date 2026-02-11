@@ -1,0 +1,22 @@
+diff --git a/Xext/dpms.c b/Xext/dpms.c
+index aced406..97622cb 100644
+--- a/Xext/dpms.c
++++ b/Xext/dpms.c
+@@ -218,7 +218,7 @@ ProcDPMSDisable(client)
+ 
+     REQUEST_SIZE_MATCH(xDPMSDisableReq);
+ 
+-    DPMSSet(DPMSModeOn);
++    DPMSSet(client, DPMSModeOn);
+ 
+     DPMSEnabled = FALSE;
+ 
+@@ -253,7 +253,7 @@ ProcDPMSForceLevel(client)
+ 	return BadValue;
+     }
+ 
+-    DPMSSet(stuff->level);
++    DPMSSet(client, stuff->level);
+ 
+     return(client->noClientException);
+ }

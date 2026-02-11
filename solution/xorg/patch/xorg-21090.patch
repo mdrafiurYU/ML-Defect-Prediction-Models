@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/i2c/fi1236.h b/hw/xfree86/i2c/fi1236.h
+index dbb1546..7c1d070 100644
+--- a/hw/xfree86/i2c/fi1236.h
++++ b/hw/xfree86/i2c/fi1236.h
+@@ -90,6 +90,7 @@ typedef struct {
+ FI1236Ptr Detect_FI1236(I2CBusPtr b, I2CSlaveAddr addr);
+ void FI1236_set_tuner_type(FI1236Ptr f, int type);
+ void TUNER_set_frequency(FI1236Ptr f, CARD32 frequency);
++void FI1236_tune(FI1236Ptr f, CARD32 frequency);
+ int FI1236_AFC(FI1236Ptr f);
+ int TUNER_get_afc_hint(FI1236Ptr f);
+ void fi1236_dump_status(FI1236Ptr f);

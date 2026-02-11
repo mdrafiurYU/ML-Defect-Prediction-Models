@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/MissingStringLastComparatorSource.java b/solr/src/java/org/apache/solr/search/MissingStringLastComparatorSource.java
+index b8da084..4248750 100644
+--- a/solr/src/java/org/apache/solr/search/MissingStringLastComparatorSource.java
++++ b/solr/src/java/org/apache/solr/search/MissingStringLastComparatorSource.java
+@@ -47,6 +47,7 @@ public class MissingStringLastComparatorSource extends FieldComparatorSource {
+     this.missingValueProxy=missingValueProxy;
+   }
+ 
++  @Override
+   public FieldComparator newComparator(String fieldname, int numHits, int sortPos, boolean reversed) throws IOException {
+     return new TermOrdValComparator_SML(numHits, fieldname, sortPos, reversed, missingValueProxy);
+   }

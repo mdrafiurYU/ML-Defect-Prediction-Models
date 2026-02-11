@@ -1,0 +1,20 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/IntsRef.java b/lucene/src/java/org/apache/lucene/util/IntsRef.java
+index ee1bd2e..363e1b7 100644
+--- a/lucene/src/java/org/apache/lucene/util/IntsRef.java
++++ b/lucene/src/java/org/apache/lucene/util/IntsRef.java
+@@ -18,11 +18,14 @@ package org.apache.lucene.util;
+  */
+ 
+ /** Represents int[], as a slice (offset + length) into an
+- *  existing int[].
++ *  existing int[].  The {@link #ints} member should never be null; use
++ *  {@link #EMPTY_INTS} if necessary.
+  *
+  *  @lucene.internal */
+ public final class IntsRef implements Comparable<IntsRef> {
+ 
++  public static final int[] EMPTY_INTS = new int[0];
++
+   public int[] ints;
+   public int offset;
+   public int length;

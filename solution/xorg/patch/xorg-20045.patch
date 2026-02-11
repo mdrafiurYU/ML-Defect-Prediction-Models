@@ -1,0 +1,20 @@
+diff --git a/composite/compinit.c b/composite/compinit.c
+index e74e382..5a13612 100644
+--- a/composite/compinit.c
++++ b/composite/compinit.c
+@@ -88,6 +88,7 @@ compCloseScreen (int index, ScreenPtr pScreen)
+     xfree (cs);
+     pScreen->devPrivates[CompScreenPrivateIndex].ptr = 0;
+     ret = (*pScreen->CloseScreen) (index, pScreen);
++
+     return ret;
+ }
+ 
+@@ -419,5 +420,7 @@ compScreenInit (ScreenPtr pScreen)
+ 
+     pScreen->devPrivates[CompScreenPrivateIndex].ptr = (pointer) cs;
+ 
++    RegisterRealChildHeadProc(CompositeRealChildHead);
++
+     return TRUE;
+ }

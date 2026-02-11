@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/os.c b/hw/xfree86/loader/os.c
+index 49f9c0d..0107305 100644
+--- a/hw/xfree86/loader/os.c
++++ b/hw/xfree86/loader/os.c
+@@ -27,6 +27,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "loaderProcs.h"
+ 
+ /*

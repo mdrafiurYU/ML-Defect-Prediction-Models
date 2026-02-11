@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/TestAll.java
+index 491c339..8360301 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/TestAll.java
+@@ -38,8 +38,12 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(ACLTemplateTest.class);
+         suite.addTestSuite(EntryTest.class);
+ 
+-        suite.addTestSuite(EvaluationTest.class);
++        suite.addTestSuite(WriteTest.class);
++        suite.addTestSuite(LockTest.class);
++        suite.addTestSuite(VersionTest.class);
++        suite.addTestSuite(NodeTypeTest.class);
+ 
+         return suite;
+     }
++
+ }

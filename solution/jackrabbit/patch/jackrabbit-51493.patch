@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AddPropertyTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AddPropertyTest.java
+index ff052c5..425e3e0 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AddPropertyTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AddPropertyTest.java
+@@ -41,6 +41,11 @@ public class AddPropertyTest extends AbstractJCRTest {
+         testRootNode.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        testNode = null;
++        super.tearDown();
++    }
++
+     private static void assertItemStatus(Item item, int status) throws NotExecutableException {
+         if (!(item instanceof ItemImpl)) {
+             throw new NotExecutableException("org.apache.jackrabbit.jcr2spi.ItemImpl expected");

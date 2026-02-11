@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
+index 4c2d2f6..a88c738 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
+@@ -1550,12 +1550,12 @@ public class DatabaseFileSystem implements FileSystem {
+             return super.skip(n);
+         }
+ 
+-        public int read(byte b[]) throws IOException {
++        public int read(byte[] b) throws IOException {
+             consumed = true;
+             return super.read(b);
+         }
+ 
+-        public int read(byte b[], int off, int len) throws IOException {
++        public int read(byte[] b, int off, int len) throws IOException {
+             consumed = true;
+             return super.read(b, off, len);
+         }

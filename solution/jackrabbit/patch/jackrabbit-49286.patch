@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+index 9a999c5..7d168a7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+@@ -1524,6 +1524,7 @@ public class BatchedItemOperations extends ItemValidator {
+         // compute system generated values
+         Name declaringNT = def.getDeclaringNodeType();
+         Name name = def.getName();
++        // TODO JCR-2116: Built-In Node Types; => adapt to JCR 2.0 built-in node types (mix:created, etc)
+         if (NameConstants.MIX_REFERENCEABLE.equals(declaringNT)) {
+             // mix:referenceable node type
+             if (NameConstants.JCR_UUID.equals(name)) {

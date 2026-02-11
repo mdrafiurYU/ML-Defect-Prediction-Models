@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+index c90ae62..363a156 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+@@ -517,7 +517,11 @@ public class PropertyImpl extends ItemImpl implements Property {
+ 
+     public void setValue(Calendar value) throws RepositoryException {
+         if (value != null) {
+-            setValue(session.getValueFactory().createValue(value));
++            try {
++                setValue(session.getValueFactory().createValue(value));
++            } catch (IllegalArgumentException e) {
++                throw new ValueFormatException(e.getMessage());
++            }
+         } else {
+             remove();
+         }

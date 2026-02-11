@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
+index 08be551..49066cb 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
+@@ -606,6 +606,7 @@ public class ASTParser {
+      */
+ 	public ASTNode createAST(IProgressMonitor monitor) {
+ 	   ASTNode result = null;
++	   if (monitor != null) monitor.beginTask("", 1); //$NON-NLS-1$
+ 		try {
+ 			if ((this.rawSource == null)
+ 		   	  && (this.compilationUnitSource == null)
+@@ -616,6 +617,7 @@ public class ASTParser {
+ 		} finally {
+ 	   	   // re-init defaults to allow reuse (and avoid leaking)
+ 	   	   initializeDefaults();
++	   	   if (monitor != null) monitor.done();
+ 		}
+    	   return result;
+ 	}

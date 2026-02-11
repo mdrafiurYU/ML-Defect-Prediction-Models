@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index 4b3e104..065102f 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -71,6 +71,7 @@ extern Bool sbusSlotClaimed;
+ #endif
+ extern confDRIRec xf86ConfigDRI;
+ extern Bool xf86inSuspend;
++extern Bool xf86DRI2Enabled(void);
+ 
+ #define XF86SCRNINFO(p) ((ScrnInfoPtr)dixLookupPrivate(&(p)->devPrivates, \
+ 						       xf86ScreenKey))

@@ -1,0 +1,15 @@
+diff --git a/mi/mifillrct.c b/mi/mifillrct.c
+index a2967da..6e99790 100644
+--- a/mi/mifillrct.c
++++ b/mi/mifillrct.c
+@@ -107,8 +107,8 @@ miPolyFillRect(
+ 	    maxheight = max(maxheight, prect->height);
+     }
+ 
+-    pptFirst = (DDXPointPtr) xalloc(maxheight * sizeof(DDXPointRec));
+-    pwFirst = (int *) xalloc(maxheight * sizeof(int));
++    pptFirst = xalloc(maxheight * sizeof(DDXPointRec));
++    pwFirst = xalloc(maxheight * sizeof(int));
+     if(!pptFirst || !pwFirst)
+     {
+ 	if (pwFirst) xfree(pwFirst);

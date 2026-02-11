@@ -1,0 +1,24 @@
+diff --git a/render/miglyph.c b/render/miglyph.c
+index 237ec13..9880217 100644
+--- a/render/miglyph.c
++++ b/render/miglyph.c
+@@ -35,6 +35,19 @@
+ #include "picturestr.h"
+ #include "mipict.h"
+ 
++Bool
++miRealizeGlyph (ScreenPtr pScreen,
++		GlyphPtr  glyph)
++{
++    return TRUE;
++}
++
++void
++miUnrealizeGlyph (ScreenPtr pScreen,
++		  GlyphPtr  glyph)
++{
++}
++
+ void
+ miGlyphExtents (int		nlist,
+ 		GlyphListPtr	list,

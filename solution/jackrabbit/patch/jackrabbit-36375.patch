@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/EventListenerIteratorAdapter.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/EventListenerIteratorAdapter.java
+index 59146c3..5d11db2 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/EventListenerIteratorAdapter.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/EventListenerIteratorAdapter.java
+@@ -32,6 +32,12 @@ public class EventListenerIteratorAdapter extends RangeIteratorDecorator
+         implements EventListenerIterator {
+ 
+     /**
++     * Static instance of an empty {@link EventListenerIterator}.
++     */
++    public static final EventListenerIterator EMPTY =
++        new EventListenerIteratorAdapter(RangeIteratorAdapter.EMPTY);
++
++    /**
+      * Creates an adapter for the given {@link RangeIterator}.
+      *
+      * @param iterator iterator of {@link EventListener}s

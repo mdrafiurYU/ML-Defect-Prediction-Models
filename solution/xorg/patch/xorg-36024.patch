@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_pci.c b/hw/xfree86/os-support/linux/lnx_pci.c
+index 53818f2..8eedfa4 100644
+--- a/hw/xfree86/os-support/linux/lnx_pci.c
++++ b/hw/xfree86/os-support/linux/lnx_pci.c
+@@ -25,8 +25,6 @@
+ #define PCIADDR_FMT		"%lx"
+ #endif
+ 
+-int lnxPciInit(void);
+-
+ struct pci_dev {
+     unsigned int domain;
+     unsigned int bus;
+@@ -139,14 +137,6 @@ static struct pci_dev *xf86OSLinuxGetPciDevs(void) {
+     return ret;
+ }
+ 
+-/* not to be confused with linuxPciInit (i.e. ARCH_PCI_INIT), found in
+- * os-support/bus/linuxPci.c. */
+-int lnxPciInit(void) {
+-    if (!xf86OSLinuxPCIDevs)
+-        xf86OSLinuxPCIDevs = xf86OSLinuxGetPciDevs();
+-    return xf86OSLinuxNumPciDevs;
+-}
+-
+ /* Query the kvirt address (64bit) of a BAR range from size for a given TAG */
+ unsigned long
+ xf86GetOSOffsetFromPCI(PCITAG tag, int space, unsigned long base)

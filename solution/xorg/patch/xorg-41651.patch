@@ -1,0 +1,30 @@
+diff --git a/hw/xfree86/dummylib/xf86errorfverb.c b/hw/xfree86/dummylib/xf86errorfverb.c
+deleted file mode 100644
+index b894455..0000000
+--- a/hw/xfree86/dummylib/xf86errorfverb.c
++++ /dev/null
+@@ -1,24 +0,0 @@
+-
+-#ifdef HAVE_XORG_CONFIG_H
+-#include <xorg-config.h>
+-#endif
+-
+-#include <X11/X.h>
+-#include "os.h"
+-#include "xf86.h"
+-#include "xf86Priv.h"
+-
+-/*
+- * Utility functions required by libxf86_os. 
+- */
+-
+-void
+-xf86ErrorFVerb(int verb, const char *format, ...)
+-{
+-    va_list ap;
+-
+-    va_start(ap, format);
+-    LogVWrite(verb, format, ap);
+-    va_end(ap);
+-}
+-

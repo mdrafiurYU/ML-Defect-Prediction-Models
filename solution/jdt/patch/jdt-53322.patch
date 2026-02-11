@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java
+index f9c6bcf..eb3ba27 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Argument.java
+@@ -25,7 +25,7 @@ public class Argument extends LocalDeclaration {
+ 		this.declarationSourceEnd = (int) posNom;
+ 		this.modifiers = modifiers;
+ 		type = tr;
+-		this.bits |= IsLocalDeclarationReachableMASK;
++		this.bits |= IsLocalDeclarationReachable;
+ 	}
+ 
+ 	public void bind(MethodScope scope, TypeBinding typeBinding, boolean used) {

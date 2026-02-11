@@ -1,0 +1,26 @@
+diff --git a/hw/xwin/wincreatewnd.c b/hw/xwin/wincreatewnd.c
+index 796a085..85b6cf8 100644
+--- a/hw/xwin/wincreatewnd.c
++++ b/hw/xwin/wincreatewnd.c
+@@ -88,7 +88,9 @@ winCreateBoundingWindowFullScreen (ScreenPtr pScreen)
+     snprintf (szTitle,
+ 	    sizeof (szTitle),
+ 	    WINDOW_TITLE_XDMCP,
+-	    g_pszQueryHost); 
++	    g_pszQueryHost,
++	    display,
++	    (int) pScreenInfo->dwScreen);
+   else    
+     snprintf (szTitle,
+ 	    sizeof (szTitle),
+@@ -331,7 +333,9 @@ winCreateBoundingWindowWindowed (ScreenPtr pScreen)
+     snprintf (szTitle,
+ 	    sizeof (szTitle),
+ 	    WINDOW_TITLE_XDMCP,
+-	    g_pszQueryHost); 
++	    g_pszQueryHost,
++	    display,
++	    (int) pScreenInfo->dwScreen);
+   else    
+     snprintf (szTitle,
+ 	    sizeof (szTitle),

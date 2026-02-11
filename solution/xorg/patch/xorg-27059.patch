@@ -1,0 +1,31 @@
+diff --git a/hw/xwin/winwindowswm.c b/hw/xwin/winwindowswm.c
+index 81a1610..ac92e26 100755
+--- a/hw/xwin/winwindowswm.c
++++ b/hw/xwin/winwindowswm.c
+@@ -203,7 +203,7 @@ ProcWindowsWMSelectInput (register ClientPtr client)
+ 
+   REQUEST_SIZE_MATCH (xWindowsWMSelectInputReq);
+   pHead = (WMEventPtr *)SecurityLookupIDByType(client, eventResource,
+-					       EventType, SecurityWriteAccess);
++					       EventType, DixWriteAccess);
+   if (stuff->mask != 0)
+     {
+       if (pHead)
+@@ -451,7 +451,7 @@ ProcWindowsWMFrameDraw (register ClientPtr client)
+   ErrorF ("ProcWindowsWMFrameDraw\n");
+ #endif
+   if (!(pWin = SecurityLookupWindow((Drawable)stuff->window,
+-				    client, SecurityReadAccess)))
++				    client, DixReadAccess)))
+     {
+       return BadValue;
+     }
+@@ -546,7 +546,7 @@ ProcWindowsWMFrameSetTitle(
+   REQUEST_AT_LEAST_SIZE(xWindowsWMFrameSetTitleReq);
+ 
+   if (!(pWin = SecurityLookupWindow((Drawable)stuff->window,
+-				    client, SecurityReadAccess)))
++				    client, DixReadAccess)))
+     {
+       return BadValue;
+     }

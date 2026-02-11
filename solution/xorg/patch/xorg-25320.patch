@@ -1,0 +1,41 @@
+diff --git a/hw/kdrive/ephyr/os.c b/hw/kdrive/ephyr/os.c
+index ead1586..1a42495 100644
+--- a/hw/kdrive/ephyr/os.c
++++ b/hw/kdrive/ephyr/os.c
+@@ -34,34 +34,8 @@ EphyrInit (void)
+   return hostx_init();
+ }
+ 
+-static void
+-EphyrEnable (void)
+-{
+-  EPHYR_DBG("mark");
+-}
+-
+-static Bool
+-EphyrSpecialKey (KeySym sym)
+-{
+-    return FALSE;
+-}
+-
+-static void
+-EphyrDisable (void)
+-{
+-}
+-
+-static void
+-EphyrFini (void)
+-{
+-}
+-
+ KdOsFuncs   EphyrOsFuncs = {
+-    EphyrInit,
+-    EphyrEnable,
+-    EphyrSpecialKey,
+-    EphyrDisable,
+-    EphyrFini,
+-    ephyrPoll
++    .Init = EphyrInit,
++    .pollEvents = ephyrPoll,
+ };
+ 

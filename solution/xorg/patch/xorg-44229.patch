@@ -1,0 +1,13 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 991beca..6d85b1b 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -1119,6 +1119,8 @@ InitValuatorAxisStruct(DeviceIntPtr dev, int axnum, int minval, int maxval,
+ 
+     if (!dev || !dev->valuator || minval > maxval)
+         return;
++    if (axnum >= dev->valuator->numAxes)
++        return;
+ 
+     ax = dev->valuator->axes + axnum;
+ 

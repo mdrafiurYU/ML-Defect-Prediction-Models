@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Module.h b/hw/xfree86/common/xf86Module.h
+index 7f4179c..7e11e77 100644
+--- a/hw/xfree86/common/xf86Module.h
++++ b/hw/xfree86/common/xf86Module.h
+@@ -40,6 +40,10 @@
+  * XXX This file arguably belongs in xfree86/loader/.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86MODULE_H
+ #define _XF86MODULE_H
+ 

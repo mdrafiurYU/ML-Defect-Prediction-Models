@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java
+index fa2f96f..844c9c9 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java
+@@ -144,7 +144,7 @@ public abstract String getMarkerType();
+  * @return the names of the corresponding marker attributes
+  */
+ public String[] getExtraMarkerAttributeNames() {
+-	return DefaultProblem.EMPTY_NAMES;
++	return CharOperation.NO_STRINGS;
+ }
+ 
+ /**

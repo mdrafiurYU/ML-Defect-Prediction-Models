@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EnumDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EnumDeclarationImpl.java
+index 958c53b..f71c269 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EnumDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/EnumDeclarationImpl.java
+@@ -32,7 +32,7 @@ public class EnumDeclarationImpl extends ClassDeclarationImpl implements EnumDec
+     public EnumDeclarationImpl(final ITypeBinding binding, final ProcessorEnvImpl env)
+     {
+         super(binding, env);
+-        assert binding.isEnum() : "binding is not an enum.";
++        assert binding.isEnum() : "binding is not an enum."; //$NON-NLS-1$
+     }
+ 
+     public void accept(DeclarationVisitor visitor)

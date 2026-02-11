@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 7e0b63f..8eaacf1 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -724,7 +724,7 @@ SwitchCoreKeyboard(DeviceIntPtr pDev)
+         }
+ #endif
+ 
+-        SendMappingNotify(MappingKeyboard, ckeyc->curKeySyms.minKeyCode,
++        SendMappingNotify(pDev, MappingKeyboard, ckeyc->curKeySyms.minKeyCode,
+                           (ckeyc->curKeySyms.maxKeyCode -
+                            ckeyc->curKeySyms.minKeyCode),
+                           serverClient);

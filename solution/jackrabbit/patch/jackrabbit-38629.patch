@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/RestoreTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/RestoreTest.java
+index 27aa5f3..33503a7 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/RestoreTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/RestoreTest.java
+@@ -74,6 +74,10 @@ public class RestoreTest extends AbstractVersionTest {
+             versionableNode2.remove();
+             testRootNode.save();
+         } finally {
++            version = null;
++            version2 = null;
++            rootVersion = null;
++            versionableNode2 = null;
+             super.tearDown();
+         }
+     }

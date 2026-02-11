@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java
+index f16a7b1..fc9065f 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/InternalCompletionProposal.java
+@@ -48,6 +48,8 @@ public class InternalCompletionProposal {
+ 	
+ 	protected int accessibility = IAccessRule.K_ACCESSIBLE;
+ 	
++	protected boolean isConstructor = false;
++	
+ 	protected char[][] findMethodParameterNames(char[] signatureType, char[] selector, char[][] paramTypeNames){
+ 		if(signatureType == null) return null;
+ 		
+@@ -253,4 +255,8 @@ public class InternalCompletionProposal {
+ 	protected void setAccessibility(int kind) {
+ 		this.accessibility = kind;
+ 	}
++	
++	protected void setIsContructor(boolean isConstructor) {
++		this.isConstructor = isConstructor;
++	}
+ }

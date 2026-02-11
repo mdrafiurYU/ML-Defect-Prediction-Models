@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEntryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEntryImpl.java
+index 688db36..9e04074 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEntryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEntryImpl.java
+@@ -184,7 +184,7 @@ public abstract class AccessControlEntryImpl implements JackrabbitAccessControlE
+      */
+     public Value getRestriction(String restrictionName) {
+         if (restrictions.containsKey(restrictionName)) {
+-            return (Value) ValueHelper.copy((Value) restrictions.get(restrictionName), VALUE_FACTORY);
++            return ValueHelper.copy((Value) restrictions.get(restrictionName), VALUE_FACTORY);
+         } else {
+             return null;
+         }

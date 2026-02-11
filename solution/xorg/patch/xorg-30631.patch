@@ -1,0 +1,12 @@
+diff --git a/GL/glx/glxdrawable.h b/GL/glx/glxdrawable.h
+index 6500cc7..b7ecad9 100644
+--- a/GL/glx/glxdrawable.h
++++ b/GL/glx/glxdrawable.h
+@@ -54,6 +54,7 @@ typedef struct {
+     ScreenPtr pScreen;
+     Bool idExists;
+     int refcnt;
++    GLenum target;
+ #ifdef XF86DRI
+     DamagePtr pDamage;
+     __DRIcontext *pDRICtx;

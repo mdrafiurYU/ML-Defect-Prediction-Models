@@ -1,0 +1,29 @@
+diff --git a/hw/xfree86/os-support/bsd/ppc_video.c b/hw/xfree86/os-support/bsd/ppc_video.c
+index 06be654..f1ff64c 100644
+--- a/hw/xfree86/os-support/bsd/ppc_video.c
++++ b/hw/xfree86/os-support/bsd/ppc_video.c
+@@ -123,24 +123,6 @@ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	return rv;
+ }
+ 
+-/***************************************************************************/
+-/* Interrupt Handling section                                              */
+-/***************************************************************************/
+-
+-_X_EXPORT Bool
+-xf86DisableInterrupts()
+-{
+-
+-	return(TRUE);
+-}
+-
+-_X_EXPORT void
+-xf86EnableInterrupts()
+-{
+-
+-	return;
+-}
+-
+ Bool xf86EnableIO()
+ {
+         int fd = xf86Info.screenFd;

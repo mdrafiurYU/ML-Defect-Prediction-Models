@@ -1,0 +1,21 @@
+diff --git a/glx/glxdri2.c b/glx/glxdri2.c
+index b12293a..4df406b 100644
+--- a/glx/glxdri2.c
++++ b/glx/glxdri2.c
+@@ -251,9 +251,16 @@ __glXDRIbindTexImage(__GLXcontext *baseContext,
+     if (texBuffer == NULL)
+         return Success;
+ 
++    if (texBuffer->base.version >= 2 && texBuffer->setTexBuffer2 != NULL) {
++	(*texBuffer->setTexBuffer2)(context->driContext,
++				    glxPixmap->target,
++				    glxPixmap->format,
++				    drawable->driDrawable);
++    } else {
+     texBuffer->setTexBuffer(context->driContext,
+ 			    glxPixmap->target,
+ 			    drawable->driDrawable);
++    }
+ 
+     return Success;
+ }

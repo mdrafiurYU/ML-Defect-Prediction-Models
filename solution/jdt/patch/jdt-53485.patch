@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Initializer.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Initializer.java
+index 529ae65..1e57cc3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Initializer.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Initializer.java
+@@ -49,7 +49,7 @@ public class Initializer extends FieldDeclaration {
+ 	 */
+ 	public void generateCode(BlockScope currentScope, CodeStream codeStream) {
+ 
+-		if ((bits & IsReachableMASK) == 0) {
++		if ((bits & IsReachable) == 0) {
+ 			return;
+ 		}
+ 		int pc = codeStream.position;

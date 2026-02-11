@@ -1,0 +1,28 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/SortField.java b/lucene/src/java/org/apache/lucene/search/SortField.java
+index e2dbe06..b61a1d8 100644
+--- a/lucene/src/java/org/apache/lucene/search/SortField.java
++++ b/lucene/src/java/org/apache/lucene/search/SortField.java
+@@ -140,6 +140,7 @@ implements Serializable {
+    *  
+    *  @deprecated use EntryCreator version
+    */
++  @Deprecated
+   public SortField (String field, FieldCache.Parser parser) {
+     this(field, parser, false);
+   }
+@@ -157,6 +158,7 @@ implements Serializable {
+    *  
+    *  @deprecated use EntryCreator version
+    */
++  @Deprecated
+   public SortField (String field, FieldCache.Parser parser, boolean reverse) {
+     if (field == null) {
+       throw new IllegalArgumentException("field can only be null when type is SCORE or DOC");
+@@ -315,6 +317,7 @@ implements Serializable {
+    * @return An instance of a {@link FieldCache} parser, or <code>null</code>.
+    * @deprecated use getEntryCreator()
+    */
++  @Deprecated
+   public FieldCache.Parser getParser() {
+     return (creator==null) ? null : creator.getParser();
+   }

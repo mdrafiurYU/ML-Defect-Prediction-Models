@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
+index 935ee22..7f7983a 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
+@@ -1471,7 +1471,7 @@ protected void process(PossibleMatch possibleMatch, boolean bindingsWereCreated)
+ 		reportMatching(unit, mustResolve);
+ 	} catch (AbortCompilation e) {
+ 		// could not resolve: report inaccurate matches
+-		reportMatching(unit, true); // was partially resolved
++		reportMatching(unit, false); // do not resolve when cu has errors
+ 		if (!(e instanceof AbortCompilationUnit)) {
+ 			// problem with class path
+ 			throw e;

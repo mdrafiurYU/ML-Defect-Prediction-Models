@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java
+index cdc7707..061c038 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFileWorkingCopy.java
+@@ -20,6 +20,7 @@ import org.eclipse.jdt.core.IJavaModelStatusConstants;
+ import org.eclipse.jdt.core.JavaModelException;
+ import org.eclipse.jdt.core.ToolFactory;
+ import org.eclipse.jdt.core.WorkingCopyOwner;
++import org.eclipse.jdt.core.compiler.CharOperation;
+ import org.eclipse.jdt.core.util.ClassFileBytesDisassembler;
+ import org.eclipse.jdt.core.util.IClassFileReader;
+ import org.eclipse.jdt.internal.core.util.Disassembler;
+@@ -48,6 +49,14 @@ public IBuffer getBuffer() throws JavaModelException {
+ 		return this.classFile.getBuffer();
+ }
+ 
++public char[] getContents() {
++	try {
++		return getBuffer().getCharacters();
++	} catch (JavaModelException e) {
++		return CharOperation.NO_CHAR;
++	}
++}
++
+ public IPath getPath() {
+ 	return this.classFile.getPath();
+ }

@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java
+index 2d9993a..4405232 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java
+@@ -165,7 +165,7 @@ public class JavadocMessageSend extends MessageSend {
+ 				}
+ 			}
+ 		}
+-		if (isMethodUseDeprecated(this.binding, scope)) {
++		if (isMethodUseDeprecated(this.binding, scope, true)) {
+ 			scope.problemReporter().javadocDeprecatedMethod(this.binding, this, scope.getDeclarationModifiers());
+ 		}

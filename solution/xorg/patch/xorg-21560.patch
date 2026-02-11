@@ -1,0 +1,13 @@
+diff --git a/composite/compwindow.c b/composite/compwindow.c
+index 87055b7..2c86cdd 100644
+--- a/composite/compwindow.c
++++ b/composite/compwindow.c
+@@ -301,7 +301,7 @@ compIsAlternateVisual (ScreenPtr    pScreen,
+     CompScreenPtr	cs = GetCompScreen (pScreen);
+     int			i;
+ 
+-    for (i = 0; i < NUM_COMP_ALTERNATE_VISUALS; i++)
++    for (i = 0; i < cs->numAlternateVisuals; i++)
+ 	if (cs->alternateVisuals[i] == visual)
+ 	    return TRUE;
+     return FALSE;

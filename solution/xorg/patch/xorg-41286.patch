@@ -1,0 +1,67 @@
+diff --git a/hw/xfree86/os-support/misc/SlowBcopy.c b/hw/xfree86/os-support/misc/SlowBcopy.c
+index 7c51fcc..be69b9d 100644
+--- a/hw/xfree86/os-support/misc/SlowBcopy.c
++++ b/hw/xfree86/os-support/misc/SlowBcopy.c
+@@ -56,29 +56,13 @@ xf86SlowBcopy(unsigned char *src, unsigned char *dst, int len)
+ }
+ 
+ #ifdef __alpha__
+-/*
+- * The Jensen lacks dense memory, thus we have to address the bus via
+- * the sparse addressing scheme. Time critical code uses routines from
+- * BUSmemcpy.c
+- *
+- * Martin Ostermann (ost@comnets.rwth-aachen.de) - Apr.-Sep. 1996
+- */
+ 
+ #ifdef linux
+ 
+-unsigned long _bus_base(void);
+-
+-#ifdef TEST_JENSEN_CODE /* define to test the Sparse addressing on a non-Jensen */
+-#define SPARSE (5)
+-#else
+ #define SPARSE (7)
+-#endif
+-
+-#define isJensen() (!_bus_base())
+ 
+ #else
+ 
+-#define isJensen() 0
+ #define SPARSE 0
+ 
+ #endif
+@@ -86,8 +70,6 @@ unsigned long _bus_base(void);
+ _X_EXPORT void
+ xf86SlowBCopyFromBus(unsigned char *src, unsigned char *dst, int count)
+ {
+-    if (isJensen())
+-    {
+ 	unsigned long addr;
+ 	long result;
+ 
+@@ -101,15 +83,10 @@ xf86SlowBCopyFromBus(unsigned char *src, unsigned char *dst, int count)
+ 	    outb(0x80, 0x00);
+ 	}
+     }
+-    else
+-	xf86SlowBcopy(src,dst,count);
+-}
+   
+ _X_EXPORT void
+ xf86SlowBCopyToBus(unsigned char *src, unsigned char *dst, int count)
+ {
+-    if (isJensen())
+-    {
+ 	unsigned long addr;
+ 
+ 	addr = (unsigned long) dst;
+@@ -121,7 +98,4 @@ xf86SlowBCopyToBus(unsigned char *src, unsigned char *dst, int count)
+ 	    outb(0x80, 0x00);
+ 	}
+     }
+-    else
+-	xf86SlowBcopy(src,dst,count);    
+-}
+ #endif

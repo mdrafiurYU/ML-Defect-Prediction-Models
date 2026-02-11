@@ -1,0 +1,15 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 1cc464a..486bd7d 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -52,6 +52,10 @@ SOFTWARE.
+ #include <dix-config.h>
+ #endif
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "misc.h"
+ #include "extension.h"
+ #include "micmap.h"

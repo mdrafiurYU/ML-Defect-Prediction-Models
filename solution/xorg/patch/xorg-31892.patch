@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyr.h b/hw/kdrive/ephyr/ephyr.h
+index f49d920..1c9b4f8 100644
+--- a/hw/kdrive/ephyr/ephyr.h
++++ b/hw/kdrive/ephyr/ephyr.h
+@@ -71,6 +71,8 @@ extern KdCardFuncs ephyrFuncs;
+ extern KdKeyboardInfo *ephyrKbd;
+ extern KdPointerInfo *ephyrMouse;
+ 
++extern miPointerScreenFuncRec ephyrPointerScreenFuncs;
++
+ Bool
+ ephyrInitialize (KdCardInfo *card, EphyrPriv *priv);
+ 

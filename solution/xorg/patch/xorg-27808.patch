@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/modes/xf86Modes.h b/hw/xfree86/modes/xf86Modes.h
+index 60e2790..9494333 100644
+--- a/hw/xfree86/modes/xf86Modes.h
++++ b/hw/xfree86/modes/xf86Modes.h
+@@ -36,6 +36,13 @@
+ 
+ double xf86ModeHSync(DisplayModePtr mode);
+ double xf86ModeVRefresh(DisplayModePtr mode);
++
++int
++xf86ModeWidth (DisplayModePtr mode, Rotation rotation);
++    
++int
++xf86ModeHeight (DisplayModePtr mode, Rotation rotation);
++
+ DisplayModePtr xf86DuplicateMode(DisplayModePtr pMode);
+ DisplayModePtr xf86DuplicateModes(ScrnInfoPtr pScrn,
+ 				       DisplayModePtr modeList);

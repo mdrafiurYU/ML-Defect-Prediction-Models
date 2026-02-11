@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+index aec6c68..fdbf16e 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNRTThreads.java
+@@ -579,7 +579,7 @@ public class TestNRTThreads extends LuceneTestCase {
+ 
+   private int runQuery(IndexSearcher s, Query q) throws Exception {
+     s.search(q, 10);
+-    return s.search(q, null, 10, new Sort(new SortField("title", SortField.STRING))).totalHits;
++    return s.search(q, null, 10, new Sort(new SortField("title", SortField.Type.STRING))).totalHits;
+   }
+ 
+   private void smokeTestReader(IndexReader r) throws Exception {

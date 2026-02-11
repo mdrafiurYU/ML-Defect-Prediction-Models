@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
+index 95c9e7f..5c60a93 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PredefinedNodeTypeTest.java
+@@ -289,6 +289,9 @@ public class PredefinedNodeTypeTest extends AbstractJCRTest {
+             String name = supertypes[i].getName();
+             if (name.startsWith("nt:") ||
+                     name.equals("mix:simpleVersionable") ||
++                    name.equals("mix:created") ||
++                    name.equals("mix:mimeType") ||
++                    name.equals("mix:lastModified") ||
+                     (name.equals("mix:referenceable") &&
+                         (typeName.equals("mix:versionable") ||
+                             typeName.equals("mix:shareable") ||

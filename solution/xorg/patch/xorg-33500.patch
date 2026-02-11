@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 4a9064d..8cca44b 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -3346,7 +3346,7 @@ ProcListHosts(ClientPtr client)
+     REQUEST_SIZE_MATCH(xListHostsReq);
+ 
+     /* untrusted clients can't list hosts */
+-    result = XaceHook(XACE_HOSTLIST_ACCESS, client, DixReadAccess);
++    result = XaceHook(XACE_SERVER_ACCESS, client, DixReadAccess);
+     if (result != Success)
+ 	return result;
+ 

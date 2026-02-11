@@ -1,0 +1,14 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index f0af4b0..11439cf 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -336,7 +336,8 @@ mieqProcessInputEvents(void)
+                 e->events->event[0].u.u.type == DeviceKeyRelease ||
+                 e->events->event[0].u.u.type == KeyPress ||
+                 e->events->event[0].u.u.type == KeyRelease) && 
+-                    e->pDev->coreEvents) {
++                    !e->pDev->isMaster)
++            {
+                 SwitchCoreKeyboard(e->pDev);
+             }
+ 

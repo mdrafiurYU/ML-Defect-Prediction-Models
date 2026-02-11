@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/BaseTestRangeFilter.java b/lucene/src/test/org/apache/lucene/search/BaseTestRangeFilter.java
+index 91dca22..5c82159 100644
+--- a/lucene/src/test/org/apache/lucene/search/BaseTestRangeFilter.java
++++ b/lucene/src/test/org/apache/lucene/search/BaseTestRangeFilter.java
+@@ -94,7 +94,6 @@ public class BaseTestRangeFilter extends LuceneTestCase {
+   
+   @BeforeClass
+   public static void beforeClassBaseTestRangeFilter() throws Exception {
+-    Random random = newStaticRandom(BaseTestRangeFilter.class);
+     signedIndexDir = new TestIndex(random, Integer.MAX_VALUE, Integer.MIN_VALUE, true);
+     unsignedIndexDir = new TestIndex(random, Integer.MAX_VALUE, 0, false);
+     signedIndexReader = build(random, signedIndexDir);

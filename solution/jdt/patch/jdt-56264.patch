@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java
+index 4405232..f23c712 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocMessageSend.java
+@@ -51,7 +51,7 @@ public class JavadocMessageSend extends MessageSend {
+ 
+ 		// will check for null after args are resolved
+ 		
+-		TypeBinding[] argumentTypes = NoParameters;
++		TypeBinding[] argumentTypes = Binding.NO_PARAMETERS;
+ 		boolean hasArgsTypeVar = false;
+ 		if (this.arguments != null) {
+ 			boolean argHasError = false; // typeChecks all arguments

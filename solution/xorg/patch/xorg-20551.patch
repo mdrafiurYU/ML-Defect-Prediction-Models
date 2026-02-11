@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.h b/hw/xfree86/os-support/bus/Pci.h
+index 833c07a..32088fe 100644
+--- a/hw/xfree86/os-support/bus/Pci.h
++++ b/hw/xfree86/os-support/bus/Pci.h
+@@ -425,6 +425,7 @@ CARD32        pciByteSwap(CARD32);
+ Bool          pciMfDev(int, int);
+ ADDRESS       pciAddrNOOP(PCITAG tag, PciAddrType type, ADDRESS);
+ 
++extern void pciSetOSBIOSPtr(int (*bios_fn)(PCITAG Tag, int basereg, unsigned char * buf, int len));
+ extern PCITAG (*pciFindFirstFP)(void);
+ extern PCITAG (*pciFindNextFP)(void);
+ 

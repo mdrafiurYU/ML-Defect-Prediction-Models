@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java
+index dce9166..3a7b5b0 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ResolveTests_1_5.java
+@@ -2184,10 +2184,10 @@ public void test0098() throws JavaModelException {
+ 				"/Resolve/src2/test0098/Test.java",
+ 				"public class Test<\n" +
+ 				"	void foo() {\n" +
+-				"		Color.valueof(\"RED\");\n" +
++				"		Color.valueOf(\"RED\");\n" +
+ 				"	}\n" +
+ 				"}\n",
+-				"valueof");
++				"valueOf");
+ 		
+ 		assertElementsEqual(
+ 			"Unexpected elements",

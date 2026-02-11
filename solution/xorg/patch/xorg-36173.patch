@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.c b/hw/xfree86/ddc/xf86DDC.c
+index e47b8b8..28e2ead 100644
+--- a/hw/xfree86/ddc/xf86DDC.c
++++ b/hw/xfree86/ddc/xf86DDC.c
+@@ -13,8 +13,6 @@
+ #include "ddcPriv.h"
+ #include <string.h>
+ 
+-static const OptionInfoRec *DDCAvailableOptions(void *unused);
+-
+ #define RETRIES 4
+ 
+ static unsigned char *EDIDRead_DDC1(
+@@ -58,13 +56,6 @@ static const OptionInfoRec DDCOptions[] = {
+     { -1,		NULL,		OPTV_NONE,	{0},	FALSE },
+ };
+ 
+-/*ARGSUSED*/
+-static const OptionInfoRec *
+-DDCAvailableOptions(void *unused)
+-{
+-    return (DDCOptions);
+-}
+-
+ /**
+  * Attempts to probe the monitor for EDID information, if NoDDC and NoDDC1 are
+  * unset.  EDID information blocks are interpreted and the results returned in

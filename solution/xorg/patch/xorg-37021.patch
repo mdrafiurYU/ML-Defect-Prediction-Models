@@ -1,0 +1,31 @@
+diff --git a/hw/dmx/dmxlog.c b/hw/dmx/dmxlog.c
+index 31a74cd..94b8035 100644
+--- a/hw/dmx/dmxlog.c
++++ b/hw/dmx/dmxlog.c
+@@ -42,10 +42,8 @@
+ #include "dmx.h"
+ #include "dmxlog.h"
+ #include "dmxinput.h"
+-#ifdef XINPUT
+ #include <X11/extensions/XI.h>
+ #include <X11/extensions/XIproto.h>
+-#endif
+ 
+ static dmxLogLevel dmxCurrentLogLevel = dmxDebug;
+ 
+@@ -279,7 +277,6 @@ void dmxLogVisual(DMXScreenInfo *dmxScreen, XVisualInfo *vi, int defaultVisual)
+     }
+ }
+ 
+-#ifdef XINPUT
+ /** Translate a (normalized) XInput event \a type into a human-readable
+  * string. */
+ const char *dmxXInputEventName(int type)
+@@ -305,7 +302,6 @@ const char *dmxXInputEventName(int type)
+ }
+ 
+ #endif
+-#endif
+ 
+ /** Translate an event \a type into a human-readable string. */
+ const char *dmxEventName(int type)

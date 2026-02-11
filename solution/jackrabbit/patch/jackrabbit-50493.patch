@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java
+index 840b3bd..2ed9a9b 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/UserAdministratorTest.java
+@@ -76,7 +76,7 @@ public class UserAdministratorTest extends AbstractUserTest {
+         uAdministrators.addMember(other);
+ 
+         // create a session for the other user.
+-        otherSession = helper.getRepository().login(otherCreds);
++        otherSession = getHelper().getRepository().login(otherCreds);
+     }
+ 
+     protected void tearDown() throws Exception {

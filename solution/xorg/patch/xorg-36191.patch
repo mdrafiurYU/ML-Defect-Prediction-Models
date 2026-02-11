@@ -1,0 +1,41 @@
+diff --git a/include/dix.h b/include/dix.h
+index 52212e7..0790f58 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -166,9 +166,6 @@ extern void SendErrorToClient(
+     XID /*resId*/,
+     int /*errorCode*/);
+ 
+-extern void DeleteWindowFromAnySelections(
+-    WindowPtr /*pWin*/);
+-
+ extern void MarkClientException(
+     ClientPtr /*client*/);
+ 
+@@ -556,26 +553,6 @@ typedef struct {
+     int count;
+ } DeviceEventInfoRec;
+ 
+-/*
+- * SelectionCallback stuff
+- */
+-
+-extern CallbackListPtr SelectionCallback;
+-
+-typedef enum {
+-    SelectionSetOwner,
+-    SelectionGetOwner,
+-    SelectionConvertSelection,
+-    SelectionWindowDestroy,
+-    SelectionClientClose
+-} SelectionCallbackKind;
+-
+-typedef struct {
+-    struct _Selection	    *selection;
+-    ClientPtr		    client;
+-    SelectionCallbackKind   kind;
+-} SelectionInfoRec;
+-
+ /* strcasecmp.c */
+ #if NEED_STRCASECMP
+ #define strcasecmp xstrcasecmp

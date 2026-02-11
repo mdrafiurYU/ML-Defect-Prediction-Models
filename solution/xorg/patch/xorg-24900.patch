@@ -1,0 +1,14 @@
+diff --git a/include/input.h b/include/input.h
+index 66d03d0..72f67c2 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -387,7 +387,8 @@ extern int GetPointerEvents(
+     int type,
+     int buttons,
+     int flags,
+-    int num_axes,
++    int first_valuator,
++    int num_valuators,
+     int *valuators);
+ 
+ extern int GetKeyboardEvents(

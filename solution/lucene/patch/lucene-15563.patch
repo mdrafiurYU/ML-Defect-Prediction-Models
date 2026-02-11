@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/DisjunctionSumScorer.java b/lucene/src/java/org/apache/lucene/search/DisjunctionSumScorer.java
+index 7e5016d..5ec3514 100644
+--- a/lucene/src/java/org/apache/lucene/search/DisjunctionSumScorer.java
++++ b/lucene/src/java/org/apache/lucene/search/DisjunctionSumScorer.java
+@@ -123,7 +123,7 @@ class DisjunctionSumScorer extends Scorer {
+    * @return true if more matching documents may remain.
+    */
+   @Override
+-  protected boolean score(Collector collector, int max, int firstDocID) throws IOException {
++  public boolean score(Collector collector, int max, int firstDocID) throws IOException {
+     // firstDocID is ignored since nextDoc() sets 'currentDoc'
+     collector.setScorer(this);
+     while (currentDoc < max) {

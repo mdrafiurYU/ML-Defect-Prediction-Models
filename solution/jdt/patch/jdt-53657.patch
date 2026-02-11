@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+index 7a9a78f..a4f9da3 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+@@ -129,6 +129,8 @@ public class CompletionParser extends AssistParser {
+ public CompletionParser(ProblemReporter problemReporter) {
+ 	super(problemReporter);
+ 	this.reportSyntaxErrorIsRequired = false;
++	this.javadocParser = new CompletionJavadocParser(this);
++	this.javadocParser.checkDocComment = true;
+ }
+ public char[] assistIdentifier(){
+ 	return ((CompletionScanner)scanner).completionIdentifier;

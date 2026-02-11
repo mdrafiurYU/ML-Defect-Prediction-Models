@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleTypeReference.java
+index 9efed73..48d5262 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocSingleTypeReference.java
+@@ -63,6 +63,13 @@ public class JavadocSingleTypeReference extends SingleTypeReference {
+ 			if (binding instanceof PackageBinding) {
+ 				this.packageBinding = (PackageBinding) binding;
+ 			} else {
++				if (this.resolvedType.problemId() == ProblemReasons.NonStaticReferenceInStaticContext) {
++					ReferenceBinding closestMatch = ((ProblemReferenceBinding)this.resolvedType).closestMatch;
++					if (closestMatch != null && closestMatch.isTypeVariable()) {
++						this.resolvedType = closestMatch; // ignore problem as we want report specific javadoc one instead
++						return resolvedType;
++					}
++				}
+ 				reportInvalidType(scope);
+ 			}
+ 			return null;

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationException.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationException.java
+index d5789df..2e10f7d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationException.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationException.java
+@@ -28,7 +28,7 @@ public class ConfigurationException extends RepositoryException {
+      *
+      * @param message configuration message
+      */
+-    ConfigurationException(String message) {
++    public ConfigurationException(String message) {
+         super(message);
+     }
+ 
+@@ -38,7 +38,7 @@ public class ConfigurationException extends RepositoryException {
+      * @param message configuration error message
+      * @param cause root cause of the configuration error
+      */
+-    ConfigurationException(String message, Exception cause) {
++    public ConfigurationException(String message, Exception cause) {
+         super(message, cause);
+     }

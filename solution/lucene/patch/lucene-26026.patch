@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java b/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java
+index bd838c8..f64cd46 100755
+--- a/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/SumFloatFunction.java
+@@ -17,6 +17,9 @@
+ 
+ package org.apache.solr.search.function;
+ 
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
++
+ /**
+  * <code>SumFloatFunction</code> returns the sum of it's components.
+  */

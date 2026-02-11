@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/i386_video.c b/hw/xfree86/os-support/bsd/i386_video.c
+index 42b9054..0dcff66 100644
+--- a/hw/xfree86/os-support/bsd/i386_video.c
++++ b/hw/xfree86/os-support/bsd/i386_video.c
+@@ -602,7 +602,7 @@ cleanMTRR()
+ #ifdef DEBUG
+ 			ErrorF("Clean for (0x%lx,0x%lx)\n",
+ 				(unsigned long)mrd[i].mr_base,
+-				(unsigned long)rd[i].mr_len);
++				(unsigned long)mrd[i].mr_len);
+ #endif
+ 			if (mrd[i].mr_flags & MDF_FIXACTIVE) {
+ 				mro.mo_arg[0] = MEMRANGE_SET_UPDATE;

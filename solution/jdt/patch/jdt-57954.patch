@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+index 5baf9ca..f12560e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/AbstractImageBuilder.java
+@@ -565,8 +565,9 @@ protected void storeProblemsFor(SourceFile sourceFile, CategorizedProblem[] prob
+ 			missingClassFile = args[0];
+ 		}
+ 		
+-		String markerType;
+-		if (id != IProblem.Task && managedMarkerTypes.contains(markerType = problem.getMarkerType())) {			
++		String markerType = problem.getMarkerType();
++		if ((id != IProblem.Task && IJavaModelMarker.JAVA_MODEL_PROBLEM_MARKER.equals(markerType)) 
++				|| managedMarkerTypes.contains(markerType)) {			
+ 			IMarker marker = resource.createMarker(markerType);
+ 			
+ 			// standard attributes

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/CheckinRemoveVersionTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/CheckinRemoveVersionTest.java
+index 7d21d2a..eec47cf 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/CheckinRemoveVersionTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/CheckinRemoveVersionTest.java
+@@ -36,6 +36,7 @@ public class CheckinRemoveVersionTest extends AbstractJCRTest {
+         tx.begin();
+         try {
+             Version v10 = n.checkin();
++            assertTrue("Version.getReferences() must return base version", v10.getReferences().hasNext());
+             try {
+                 n.getVersionHistory().removeVersion(v10.getName());
+                 fail("VersionHistory.removeVersion() must throw ReferentialIntegrityException when" +

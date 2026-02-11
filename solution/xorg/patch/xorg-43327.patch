@@ -1,0 +1,18 @@
+diff --git a/exa/exa_accel.c b/exa/exa_accel.c
+index 10e7914..02858f1 100644
+--- a/exa/exa_accel.c
++++ b/exa/exa_accel.c
+@@ -1201,12 +1201,7 @@ exaGetImage (DrawablePtr pDrawable, int x, int y, int w, int h,
+     }
+ 
+ fallback:
+-    EXA_FALLBACK(("from %p (%c)\n", pDrawable,
+-		  exaDrawableLocation(pDrawable)));
+-
+-    exaPrepareAccessReg (pDrawable, EXA_PREPARE_SRC, &Reg);
+-    fbGetImage (pDrawable, x, y, w, h, format, planeMask, d);
+-    exaFinishAccess (pDrawable, EXA_PREPARE_SRC);
++    ExaCheckGetImage(pDrawable, x, y, w, h, format, planeMask, d);
+ 
+ out:
+     REGION_UNINIT(pScreen, &Reg);

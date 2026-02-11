@@ -1,0 +1,12 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index e12b641..6476321 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -265,6 +265,7 @@ typedef struct _DeviceIntRec {
+ 					  used to initialize, turn on, or
+ 					  turn off the device */
+     Bool	inited;			/* TRUE if INIT returns Success */
++    Bool        enabled;                /* TRUE if ON returns Success */
+     Bool        coreEvents;             /* TRUE if device also sends core */
+     GrabPtr	grab;			/* the grabber - used by DIX */
+     struct {

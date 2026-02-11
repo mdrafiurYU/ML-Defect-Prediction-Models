@@ -1,0 +1,35 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 23d0c47..faf391f 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -595,10 +595,7 @@ UpdateDeviceState(DeviceIntPtr device, xEvent* xE, int count)
+ /**
+  * Main device event processing function.
+  * Called from when processing the events from the event queue.
+- * Generates core events for XI events as needed.
+  *
+- * Note that these core events are then delivered first. For passive grabs, XI
+- * events have preference over core.
+  */
+ void
+ ProcessOtherEvent(xEventPtr xE, DeviceIntPtr device, int count)
+@@ -612,8 +609,6 @@ ProcessOtherEvent(xEventPtr xE, DeviceIntPtr device, int count)
+     KeyClassPtr k;
+     ValuatorClassPtr v;
+     deviceValuator *xV  = (deviceValuator *) xE;
+-    BOOL sendCore = FALSE;
+-    xEvent core;
+     int coretype = 0;
+     int ret = 0;
+ 
+@@ -625,10 +620,6 @@ ProcessOtherEvent(xEventPtr xE, DeviceIntPtr device, int count)
+     b = device->button;
+     k = device->key;
+ 
+-    coretype = XItoCoreType(xE->u.u.type);
+-    if (device->isMaster && device->coreEvents && coretype)
+-        sendCore = TRUE;
+-
+     if (device->isMaster)
+         CheckMotion(xE, device);
+ 

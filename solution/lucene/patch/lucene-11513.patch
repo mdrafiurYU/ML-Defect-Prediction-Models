@@ -1,0 +1,16 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DocBuilder.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DocBuilder.java
+index a2eff65..0a34df9 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DocBuilder.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DocBuilder.java
+@@ -205,6 +205,11 @@ public class DocBuilder {
+         // Finished operation normally, commit now
+         finish(lastIndexTimeProps);
+       }
++      
++      if (writer != null) {
++        writer.finish();
++      }
++      
+       if (document.onImportEnd != null) {
+         invokeEventListener(document.onImportEnd);
+       }

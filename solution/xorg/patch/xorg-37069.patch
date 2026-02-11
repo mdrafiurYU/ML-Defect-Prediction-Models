@@ -1,0 +1,17 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 8d5d5dd..664e236 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -44,6 +44,12 @@ typedef struct _XIClientRec {
+ extern void RegisterOtherDevice (
+ 	DeviceIntPtr           /* device */);
+ 
++extern int
++UpdateDeviceState (
++	DeviceIntPtr           /* device */,
++	xEventPtr              /*  xE    */,
++        int                    /* count  */);
++
+ extern void ProcessOtherEvent (
+ 	xEventPtr /* FIXME deviceKeyButtonPointer * xE */,
+ 	DeviceIntPtr           /* other */,

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/Device.c b/hw/xfree86/parser/Device.c
+index d1621c9..47ece07 100644
+--- a/hw/xfree86/parser/Device.c
++++ b/hw/xfree86/parser/Device.c
+@@ -353,7 +353,7 @@ xf86freeDeviceList (XF86ConfDevicePtr ptr)
+ 
+ 		prev = ptr;
+ 		ptr = ptr->list.next;
+-		xf86conffree (prev);
++		free (prev);
+ 	}
+ }
+ 

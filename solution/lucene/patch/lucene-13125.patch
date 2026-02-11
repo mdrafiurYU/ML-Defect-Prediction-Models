@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexReader.java b/lucene/src/java/org/apache/lucene/index/IndexReader.java
+index 3b92a53..2e3a93e 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexReader.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexReader.java
+@@ -1420,7 +1420,7 @@ public abstract class IndexReader implements Cloneable,Closeable {
+   }
+ 
+ 
+-  private Fields fields;
++  private volatile Fields fields;
+ 
+   /** @lucene.internal */
+   void storeFields(Fields fields) {

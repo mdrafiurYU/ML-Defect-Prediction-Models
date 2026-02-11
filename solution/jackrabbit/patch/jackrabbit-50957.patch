@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivity.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivity.java
+index a0b564b..c5ab0df 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivity.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalActivity.java
+@@ -33,7 +33,7 @@ public interface InternalActivity extends InternalVersionItem {
+      * @return the version
+      * @throws RepositoryException if an error occurs
+      */
+-    public InternalVersion getLatestVersion(InternalVersionHistory history)
++    InternalVersion getLatestVersion(InternalVersionHistory history)
+             throws RepositoryException;
+ 
+     /**
+@@ -44,6 +44,6 @@ public interface InternalActivity extends InternalVersionItem {
+      * @return the changeset
+      * @throws RepositoryException if an error occurs
+      */
+-    public Map<NodeId, InternalVersion> getChangeSet() throws RepositoryException;
++    Map<NodeId, InternalVersion> getChangeSet() throws RepositoryException;
+ 
+ }
+\ No newline at end of file

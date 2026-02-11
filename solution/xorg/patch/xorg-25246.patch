@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/pcmcia/pcmciastub.c b/hw/kdrive/pcmcia/pcmciastub.c
+index c509553..a56d2cb 100644
+--- a/hw/kdrive/pcmcia/pcmciastub.c
++++ b/hw/kdrive/pcmcia/pcmciastub.c
+@@ -45,7 +45,8 @@ InitOutput (ScreenInfo *pScreenInfo, int argc, char **argv)
+ void
+ InitInput (int argc, char **argv)
+ {
+-    KdInitInput (&LinuxMouseFuncs, &LinuxKeyboardFuncs);
++    KdOsAddInputDrivers ();
++    KdInitInput ();
+ }
+ 
+ extern pcmciaDisplayModeRec pcmciaDefaultModes[];

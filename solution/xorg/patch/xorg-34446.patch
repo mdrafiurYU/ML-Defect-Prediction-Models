@@ -1,0 +1,12 @@
+diff --git a/hw/darwin/quartz/quartz.c b/hw/darwin/quartz/quartz.c
+index ac1c347..8565e34 100644
+--- a/hw/darwin/quartz/quartz.c
++++ b/hw/darwin/quartz/quartz.c
+@@ -189,6 +189,7 @@ void DarwinModeInitInput(
+     int argc,
+     char **argv )
+ {
++    X11ApplicationSetCanQuit(1);
+     X11ApplicationServerReady();
+     // Do final display mode specific initialization before handling events
+     if (quartzProcs->InitInput)

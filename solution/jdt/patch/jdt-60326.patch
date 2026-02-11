@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredBlock.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredBlock.java
+index 73db69e..4f753ba 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredBlock.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredBlock.java
+@@ -276,7 +276,11 @@ public Block updatedBlock(){
+ 	}
+ 
+ 	if (this.blockDeclaration.sourceEnd == 0) {
+-		this.blockDeclaration.sourceEnd = lastEnd;
++		if(lastEnd < bodyEndValue) {
++			this.blockDeclaration.sourceEnd = bodyEndValue;
++		} else {
++			this.blockDeclaration.sourceEnd = lastEnd;
++		}
+ 	}
+ 	
+ 	return this.blockDeclaration;

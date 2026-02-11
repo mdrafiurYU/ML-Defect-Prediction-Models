@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/DoubleConstant.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/DoubleConstant.java
+index ce72b72..a6455e0 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/DoubleConstant.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/DoubleConstant.java
+@@ -12,9 +12,14 @@ package org.eclipse.jdt.internal.compiler.impl;
+ 
+ public class DoubleConstant extends Constant {
+ 	
+-	double value;
+-	
+-	public DoubleConstant(double value) {
++	private double value;
++
++	public static Constant fromValue(double value) {
++
++		return new DoubleConstant(value);
++	}
++
++	private DoubleConstant(double value) {
+ 		this.value = value;
+ 	}

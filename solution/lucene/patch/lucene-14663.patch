@@ -1,0 +1,11 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java b/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java
+index 43f0257..98ba2b4 100644
+--- a/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java
++++ b/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexOutput.java
+@@ -42,6 +42,7 @@ public class MockSingleIntIndexOutput extends IntIndexOutput {
+   /** Write an int to the primary file */
+   @Override
+   public void write(int v) throws IOException {
++    assert v >= 0;
+     out.writeVInt(v);
+   }

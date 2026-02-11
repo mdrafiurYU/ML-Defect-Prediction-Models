@@ -1,0 +1,35 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+index 4cd854d..069320c 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+@@ -525,7 +525,7 @@ public class CompletionJavadocParser extends JavadocParser {
+ 		 * @see org.eclipse.jdt.internal.compiler.parser.AbstractCommentParser#parseReference()
+ 		 */
+ 		protected boolean parseReference() throws InvalidInputException {
+-			boolean completed = this.completionNode == null;
++			boolean completed = this.completionNode != null;
+ 			boolean valid = super.parseReference();
+ 			if (!completed && this.completionNode != null) {
+ 				this.completionNode.addCompletionFlags(CompletionOnJavadoc.FORMAL_REFERENCE);
+@@ -678,6 +678,11 @@ public class CompletionJavadocParser extends JavadocParser {
+ 							try {
+ 								this.scanner.tokenizeWhiteSpace = false;
+ 								typeRef = parseQualifiedName(true);
++								if (this.completionNode == null) {
++									consumeToken();
++									this.scanner.resetTo(this.tokenPreviousPosition, end);
++									this.index = this.tokenPreviousPosition;
++								}
+ 							}
+ 							catch (InvalidInputException e) {
+ 								consumeToken();
+@@ -772,6 +777,9 @@ public class CompletionJavadocParser extends JavadocParser {
+ 
+ 			if (this.completionNode != null) {
+ 				this.completionNode.addCompletionFlags(CompletionOnJavadoc.TEXT);
++				if (this.inlineTagStarted) {
++					this.completionNode.addCompletionFlags(CompletionOnJavadoc.FORMAL_REFERENCE);
++				}
+ 			}
+ 		}
+ 	}

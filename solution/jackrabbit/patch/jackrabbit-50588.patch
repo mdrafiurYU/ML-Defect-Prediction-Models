@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java
+index 622e613..9e68184 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java
+@@ -71,6 +71,13 @@ public class BindVariableValueTest extends AbstractQOMTest {
+         super.tearDown();
+     }
+ 
++    public void testBindVariableNames() throws RepositoryException {
++        String[] names = qomQuery.getBindVariableNames();
++        assertNotNull(names);
++        assertEquals(1, names.length);
++        assertEquals("v", names[0]);
++    }
++
+     public void testIllegalArgumentException() throws RepositoryException {
+         try {
+             bindVariableValue(qomQuery, "x", vf.createValue(STRING_VALUE));

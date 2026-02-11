@@ -1,0 +1,27 @@
+diff --git a/solr/src/java/org/apache/solr/update/processor/TextProfileSignature.java b/solr/src/java/org/apache/solr/update/processor/TextProfileSignature.java
+index c953a2d..e94a733 100755
+--- a/solr/src/java/org/apache/solr/update/processor/TextProfileSignature.java
++++ b/solr/src/java/org/apache/solr/update/processor/TextProfileSignature.java
+@@ -51,12 +51,14 @@ public class TextProfileSignature extends MD5Signature {
+   private float quantRate;
+   private float minTokenLen;
+ 
++  @Override
+   public void init(SolrParams params) {
+     quantRate = params.getFloat("quantRate", 0.01f);
+     minTokenLen = params.getInt("minTokenLen", 2);
+   }
+ 
+   
++  @Override
+   public byte[] getSignature() {
+     return super.getSignature();
+   }
+@@ -144,6 +146,7 @@ public class TextProfileSignature extends MD5Signature {
+       this.val = val;
+     }
+ 
++    @Override
+     public String toString() {
+       return val + " " + cnt;
+     }

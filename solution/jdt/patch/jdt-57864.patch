@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/LongConstant.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/LongConstant.java
+index 5e3e2d6..15cd88a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/LongConstant.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/LongConstant.java
+@@ -11,8 +11,17 @@
+ package org.eclipse.jdt.internal.compiler.impl;
+ 
+ public class LongConstant extends Constant {
+-	long value;
+-public LongConstant(long value) {
++private static final LongConstant ZERO = new LongConstant(0L);
++
++private long value;
++
++public static Constant fromValue(long value) {
++	if (value == 0L) {
++		return ZERO;
++	}
++	return new LongConstant(value);
++}
++private LongConstant(long value) {
+ 	this.value = value;
+ }
+ public byte byteValue() {

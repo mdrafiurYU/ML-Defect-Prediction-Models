@@ -1,0 +1,22 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index c8d4db1..f3aabe3 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -120,7 +120,8 @@ struct dev_type
+ {
+     Atom type;
+     char *name;
+-} dev_type[] = { {
++} dev_type[] = {
++    {
+ 0, XI_KEYBOARD}, {
+ 0, XI_MOUSE}, {
+ 0, XI_TABLET}, {
+@@ -440,7 +441,6 @@ SProcIDispatch(register ClientPtr client)
+ 
+ void
+ SReplyIDispatch(ClientPtr client, int len, xGrabDeviceReply * rep)
+-
+ 					/* All we look at is the type field */
+ {	/* This is common to all replies    */
+     if (rep->RepType == X_GetExtensionVersion)

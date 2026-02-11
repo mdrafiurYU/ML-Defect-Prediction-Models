@@ -1,0 +1,25 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/QueryWrapperFilter.java b/lucene/src/java/org/apache/lucene/search/QueryWrapperFilter.java
+index 7001dd4..3aa6d4d 100644
+--- a/lucene/src/java/org/apache/lucene/search/QueryWrapperFilter.java
++++ b/lucene/src/java/org/apache/lucene/search/QueryWrapperFilter.java
+@@ -33,7 +33,7 @@ import org.apache.lucene.index.IndexReader;
+  * once per day.
+  */
+ public class QueryWrapperFilter extends Filter {
+-  private Query query;
++  private final Query query;
+ 
+   /** Constructs a filter which only matches documents matching
+    * <code>query</code>.
+@@ -41,6 +41,11 @@ public class QueryWrapperFilter extends Filter {
+   public QueryWrapperFilter(Query query) {
+     this.query = query;
+   }
++  
++  /** returns the inner Query */
++  public final Query getQuery() {
++    return query;
++  }
+ 
+   @Override
+   public DocIdSet getDocIdSet(final IndexReader reader) throws IOException {

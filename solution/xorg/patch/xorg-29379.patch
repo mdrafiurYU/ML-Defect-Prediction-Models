@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/glxProxy/glxext.h b/hw/dmx/glxProxy/glxext.h
+index 8572aa4..0113937 100644
+--- a/hw/dmx/glxProxy/glxext.h
++++ b/hw/dmx/glxProxy/glxext.h
+@@ -67,7 +67,7 @@ extern void __glXFreeGLXPixmap( __GLXpixmap *pGlxPixmap );
+ 
+ extern void __glXNoSuchRenderOpcode(GLbyte*);
+ extern int __glXNoSuchSingleOpcode(__GLXclientState*, GLbyte*);
+-extern void __glXErrorCallBack(__GLinterface *gc, GLenum code);
++extern void __glXErrorCallBack(GLenum code);
+ extern void __glXClearErrorOccured(void);
+ extern GLboolean __glXErrorOccured(void);
+ extern void __glXResetLargeCommandStatus(__GLXclientState*);

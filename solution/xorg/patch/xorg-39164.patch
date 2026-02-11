@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index f8440f1..2f81319 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -119,15 +119,6 @@ static ExtensionModule extensionModules[] = {
+ 	NULL
+     },
+ #endif
+-#ifdef XF86MISC
+-    {
+-	XFree86MiscExtensionInit,
+-	XF86MISCNAME,
+-	&noXFree86MiscExtension,
+-	NULL,
+-	NULL
+-    },
+-#endif
+ #ifdef XFreeXDGA
+     {
+ 	XFree86DGAExtensionInit,

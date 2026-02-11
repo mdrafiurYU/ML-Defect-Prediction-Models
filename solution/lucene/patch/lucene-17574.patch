@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java b/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
+index 574d75b..4b9e12b 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestConstantScoreQuery.java
+@@ -94,7 +94,7 @@ public class TestConstantScoreQuery extends LuceneTestCase {
+ 
+       reader = writer.getReader();
+       writer.close();
+-      searcher = new IndexSearcher(reader);
++      searcher = newSearcher(reader);
+       
+       // set a similarity that does not normalize our boost away
+       searcher.setSimilarityProvider(new DefaultSimilarity() {

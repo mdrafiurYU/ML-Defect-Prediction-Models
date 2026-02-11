@@ -1,0 +1,31 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/SourceCache.java b/lucene/src/java/org/apache/lucene/index/values/SourceCache.java
+index 69037b2..e2f4c63 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/SourceCache.java
++++ b/lucene/src/java/org/apache/lucene/index/values/SourceCache.java
+@@ -1,12 +1,5 @@
+ package org.apache.lucene.index.values;
+ 
+-import java.io.IOException;
+-import java.util.Comparator;
+-
+-import org.apache.lucene.index.values.DocValues.SortedSource;
+-import org.apache.lucene.index.values.DocValues.Source;
+-import org.apache.lucene.util.BytesRef;
+-
+ /**
+  * Licensed to the Apache Software Foundation (ASF) under one or more
+  * contributor license agreements.  See the NOTICE file distributed with
+@@ -24,6 +17,13 @@ import org.apache.lucene.util.BytesRef;
+  * limitations under the License.
+  */
+ 
++import java.io.IOException;
++import java.util.Comparator;
++
++import org.apache.lucene.index.values.DocValues.SortedSource;
++import org.apache.lucene.index.values.DocValues.Source;
++import org.apache.lucene.util.BytesRef;
++
+ /**
+  * Per {@link DocValues} {@link Source} cache.
+  */

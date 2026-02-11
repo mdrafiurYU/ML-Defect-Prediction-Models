@@ -1,0 +1,14 @@
+diff --git a/miext/rootless/rootlessScreen.c b/miext/rootless/rootlessScreen.c
+index 5031858..8eaacca 100644
+--- a/miext/rootless/rootlessScreen.c
++++ b/miext/rootless/rootlessScreen.c
+@@ -666,9 +666,7 @@ RootlessWrap(ScreenPtr pScreen)
+     WRAP(UninstallColormap);
+     WRAP(StoreColors);
+ 
+-#ifdef SHAPE
+     WRAP(SetShape);
+-#endif
+ 
+ #ifdef RENDER
+     {

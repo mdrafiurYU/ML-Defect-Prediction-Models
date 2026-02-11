@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/AbstractLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/AbstractLogger.java
+index 79369e6..a2e16b3 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/AbstractLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/AbstractLogger.java
+@@ -77,7 +77,7 @@ public class AbstractLogger {
+      */
+     protected Object execute(SafeCallable thunk, String methodName, Object[] args)  {
+         writer.enter(methodName, args);
+-        Object result = null;
++        Object result;
+         try {
+             result = thunk.call();
+             writer.leave(methodName, args, result);

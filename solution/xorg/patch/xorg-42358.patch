@@ -1,0 +1,37 @@
+diff --git a/dix/events.c b/dix/events.c
+index 7b698a0..37c9220 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2414,13 +2414,11 @@ DeliverDeviceEvents(WindowPtr pWin, xEvent *xE, GrabPtr grab,
+                 if (deliveries > 0)
+                     return deliveries;
+             }
++        }
+ 
+-            if ((deliveries < 0) ||
+-                    (pWin == stopAt) ||
+-                    (inputMasks &&
+-                     (filter & inputMasks->dontPropagateMask[mskidx])))
++        if ((deliveries < 0) || (pWin == stopAt) ||
++            (inputMasks && (filter & inputMasks->dontPropagateMask[mskidx])))
+                 return 0;
+-        }
+ 
+         if (dev->isMaster && dev->coreEvents)
+         {
+@@ -2439,13 +2437,12 @@ DeliverDeviceEvents(WindowPtr pWin, xEvent *xE, GrabPtr grab,
+                     if (deliveries > 0)
+                         return deliveries;
+                 }
++            }
+ 
+-                if ((deliveries < 0) ||
+-                        (pWin == stopAt) ||
++            if ((deliveries < 0) || (pWin == stopAt) ||
+                         (filter & wDontPropagateMask(pWin)))
+                     return 0;
+             }
+-        }
+ 
+         child = pWin->drawable.id;
+         pWin = pWin->parent;

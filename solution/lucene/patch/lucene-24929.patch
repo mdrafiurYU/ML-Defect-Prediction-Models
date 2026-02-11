@@ -1,0 +1,36 @@
+diff --git a/solr/src/java/org/apache/solr/search/Grouping.java b/solr/src/java/org/apache/solr/search/Grouping.java
+index 8649b57..ce33795 100755
+--- a/solr/src/java/org/apache/solr/search/Grouping.java
++++ b/solr/src/java/org/apache/solr/search/Grouping.java
+@@ -628,7 +628,7 @@ public class Grouping {
+       }
+ 
+       sort = sort == null ? Sort.RELEVANCE : sort;
+-      firstPass = new TermFirstPassGroupingCollector(groupBy, sort, actualGroupsToFind);
++      firstPass = new TermFirstPassGroupingCollectorJava6(groupBy, sort, actualGroupsToFind);
+       return firstPass;
+     }
+ 
+@@ -996,6 +996,22 @@ public class Grouping {
+       filler = docValues.getValueFiller();
+       mval = filler.getValue();
+     }
++
++    @Override
++    protected CollectedSearchGroup<MutableValue> pollLast() {
++      return orderedGroups.pollLast();
++    }
++  }
++
++  static class TermFirstPassGroupingCollectorJava6 extends TermFirstPassGroupingCollector {
++    public TermFirstPassGroupingCollectorJava6(String groupField, Sort groupSort, int topNGroups) throws IOException {
++      super(groupField, groupSort, topNGroups);
++    }
++
++    @Override
++    protected CollectedSearchGroup<BytesRef> pollLast() {
++      return orderedGroups.pollLast();
++    }
+   }
+ 
+   static class FunctionSecondPassGroupingCollector extends AbstractSecondPassGroupingCollector<MutableValue> {

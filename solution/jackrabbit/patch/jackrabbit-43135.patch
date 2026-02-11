@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjectsUtil.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjectsUtil.java
+index 45983d1..ab08c0f 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjectsUtil.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjectsUtil.java
+@@ -64,7 +64,7 @@ public class ManageableObjectsUtil {
+         	{
+ 
+         		Class defaultImplementation  = ReflectionUtils.getDefaultImplementation(manageableObjectsClass);
+-        		if (manageableObjectsClass == null)
++        		if (defaultImplementation == null)
+         		{
+         			new JcrMappingException("No default implementation for the interface " + manageableObjectsClass);
+         		}

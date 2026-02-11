@@ -1,0 +1,21 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+index 478b23e..9f69536 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+@@ -375,6 +375,16 @@ public class NodeState extends ItemState {
+     }
+ 
+     /**
++     * Returns true if the definition of this state has already been
++     * calculated. False otherwise.
++     *
++     * @return true if definition has already been calculated.
++     */
++    public boolean hasDefinition() throws RepositoryException {
++        return definition != null;
++    }
++
++    /**
+      * Returns the {@link QNodeDefinition definition} defined for this
+      * node state. Note, that the definition has been set upon creation or
+      * upon move.

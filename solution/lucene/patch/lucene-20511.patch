@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/th/ThaiWordFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/th/ThaiWordFilter.java
+index 8f0935c..5f3b7c7 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/th/ThaiWordFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/th/ThaiWordFilter.java
+@@ -131,5 +131,8 @@ public final class ThaiWordFilter extends TokenFilter {
+   public void reset() throws IOException {
+     super.reset();
+     hasMoreTokensInClone = false;
++    clonedToken = null;
++    clonedTermAtt = null;
++    clonedOffsetAtt = null;
+   }
+ }

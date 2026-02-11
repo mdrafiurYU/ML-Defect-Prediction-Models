@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+index 1d25d0a..0b366b4 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+@@ -467,9 +467,13 @@ public class FST<T> {
+     return arc;
+   }
+ 
+-  /** Follow the follow arc and read the first arc of its
+-   *  target; this changes the provide arc (2nd arg) in-place
+-   *  and returns it. */
++  /**
++   * Follow the <code>follow</code> arc and read the first arc of its target;
++   * this changes the provided <code>arc</code> (2nd arg) in-place and returns
++   * it.
++   * 
++   * @returns Returns the second argument (<code>arc</code>).
++   */
+   public Arc<T> readFirstTargetArc(Arc<T> follow, Arc<T> arc) throws IOException {
+     //int pos = address;
+     //System.out.println("    readFirstTarget follow.target=" + follow.target + " isFinal=" + follow.isFinal());

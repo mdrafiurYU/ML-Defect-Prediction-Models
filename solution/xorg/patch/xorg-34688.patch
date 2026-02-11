@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_bios.c b/hw/xfree86/os-support/solaris/sun_bios.c
+index 1fae975..a27a5a5 100644
+--- a/hw/xfree86/os-support/solaris/sun_bios.c
++++ b/hw/xfree86/os-support/solaris/sun_bios.c
+@@ -62,7 +62,7 @@ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	 *
+ 	 *	Use /dev/xsvc for everything.
+ 	 */
+-	psize = xf86getpagesize();
++	psize = getpagesize();
+ 	Offset += Base & (psize - 1);
+ 	Base &= ~(psize - 1);
+ 	mlen = (Offset + Len + psize - 1) & ~(psize - 1);

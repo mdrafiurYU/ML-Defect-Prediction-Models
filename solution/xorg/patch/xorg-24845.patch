@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/egl/module/xeglmodule.c b/hw/xgl/egl/module/xeglmodule.c
+index ff695f6..abd0d0d 100644
+--- a/hw/xgl/egl/module/xeglmodule.c
++++ b/hw/xgl/egl/module/xeglmodule.c
+@@ -52,7 +52,7 @@ InitOutput (ScreenInfo *pScreenInfo,
+ 
+ Bool
+ LegalModifier (unsigned int key,
+-	       DevicePtr    pDev)
++	       DeviceIntPtr    pDev)
+ {
+     return xeglLegalModifier (key, pDev);
+ }

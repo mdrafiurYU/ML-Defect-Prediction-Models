@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Copy.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Copy.java
+index 7c58d4d..2d4652d 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Copy.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/Copy.java
+@@ -44,6 +44,7 @@ public class Copy extends AbstractCopy  {
+      * @param visitor
+      */
+     public void accept(OperationVisitor visitor) throws NoSuchWorkspaceException, LockException, ConstraintViolationException, AccessDeniedException, ItemExistsException, UnsupportedRepositoryOperationException, VersionException, RepositoryException {
++        assert status == STATUS_PENDING;
+         visitor.visit(this);
+     }

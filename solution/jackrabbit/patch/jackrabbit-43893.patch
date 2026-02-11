@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/PathValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/PathValue.java
+index 3c9b197..84ef2ef 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/PathValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/PathValue.java
+@@ -57,7 +57,7 @@ public class PathValue extends BaseValue {
+             }
+             return new PathValue(s);
+         } else {
+-            throw new ValueFormatException("not a valid path format");
++            throw new ValueFormatException("not a valid path format: " + s);
+         }
+     }

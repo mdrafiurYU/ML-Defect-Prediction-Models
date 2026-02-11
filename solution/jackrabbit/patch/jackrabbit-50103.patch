@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceVersionableTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceVersionableTest.java
+index 46701d3..5befb7b 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceVersionableTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceVersionableTest.java
+@@ -52,11 +52,9 @@ abstract class AbstractWorkspaceVersionableTest extends AbstractWorkspaceCopyBet
+     /**
+      * add the mix:versionable mixin type to a node.
+      */
+-    protected Node addMixinVersionableToNode(Node parent, Node node) throws RepositoryException {
+-        NodeType nodetype = node.getPrimaryNodeType();
+-        if (!nodetype.isNodeType(mixVersionable)) {
+-            node.addMixin(mixVersionable);
+-        }
++    protected Node addMixinVersionableToNode(Node parent, Node node) throws RepositoryException,
++            NotExecutableException {
++        ensureMixinType(node, mixVersionable);
+         parent.save();
+ 
+         return node;

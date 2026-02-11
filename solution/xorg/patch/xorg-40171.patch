@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/dri/dri.c b/hw/xfree86/dri/dri.c
+index ac40e0f..d2599a9 100644
+--- a/hw/xfree86/dri/dri.c
++++ b/hw/xfree86/dri/dri.c
+@@ -79,8 +79,10 @@ extern Bool noPanoramiXExtension;
+ #endif
+ 
+ static int DRIEntPrivIndex = -1;
+-static DevPrivateKey DRIScreenPrivKey = &DRIScreenPrivKey;
+-static DevPrivateKey DRIWindowPrivKey = &DRIWindowPrivKey;
++static int DRIScreenPrivKeyIndex;
++static DevPrivateKey DRIScreenPrivKey = &DRIScreenPrivKeyIndex;
++static int DRIWindowPrivKeyIndex;
++static DevPrivateKey DRIWindowPrivKey = &DRIWindowPrivKeyIndex;
+ static unsigned long DRIGeneration = 0;
+ static unsigned int DRIDrawableValidationStamp = 0;
+ 
+@@ -343,7 +345,6 @@ DRIScreenInit(ScreenPtr pScreen, DRIInfoPtr pDRIInfo, int *pDRMFD)
+ 
+     pDRIEntPriv = DRI_ENT_PRIV(pScrn);
+ 
+-    DRIScreenPrivKey = &DRIScreenPrivKey;
+     if (DRIGeneration != serverGeneration)
+ 	DRIGeneration = serverGeneration;
+ 

@@ -1,0 +1,31 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+index 536a774..ecceb81 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+@@ -73,6 +73,7 @@ import org.apache.lucene.util.LuceneTestCase;
+ import org.apache.lucene.util.ThreadInterruptedException;
+ import org.apache.lucene.util.UnicodeUtil;
+ import org.apache.lucene.util._TestUtil;
++import org.apache.lucene.index.codecs.preflexrw.PreFlexRWCodec;
+ 
+ public class TestIndexWriter extends LuceneTestCase {
+ 
+@@ -1763,4 +1764,18 @@ public class TestIndexWriter extends LuceneTestCase {
+     reader.close();
+     dir.close();
+   }
++
++  // LUCENE-3183
++  public void testEmptyFieldNameTIIOne() throws IOException {
++    Directory dir = newDirectory();
++    IndexWriterConfig iwc = newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random));
++    iwc.setTermIndexInterval(1);
++    iwc.setReaderTermsIndexDivisor(1);
++    IndexWriter writer = new IndexWriter(dir, iwc);
++    Document doc = new Document();
++    doc.add(newField("", "a b c", Field.Store.NO, Field.Index.ANALYZED));
++    writer.addDocument(doc);
++    writer.close();
++    dir.close();
++  }
+ }

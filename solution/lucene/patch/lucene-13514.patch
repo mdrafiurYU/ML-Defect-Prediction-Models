@@ -1,0 +1,27 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ExternalFileField.java b/solr/src/java/org/apache/solr/schema/ExternalFileField.java
+index e577b13..f468202 100755
+--- a/solr/src/java/org/apache/solr/schema/ExternalFileField.java
++++ b/solr/src/java/org/apache/solr/schema/ExternalFileField.java
+@@ -19,11 +19,9 @@ package org.apache.solr.schema;
+ import org.apache.lucene.search.SortField;
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.solr.search.function.ValueSource;
+-import org.apache.solr.search.function.FloatFieldSource;
+ import org.apache.solr.search.function.FileFloatSource;
+ import org.apache.solr.search.QParser;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.solr.common.SolrException;
+ 
+ import java.util.Map;
+@@ -76,10 +74,6 @@ public class ExternalFileField extends FieldType {
+     this.schema = schema;
+   }
+ 
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    throw new UnsupportedOperationException();
+-  }
+-
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     throw new UnsupportedOperationException();
+   }

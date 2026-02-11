@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingPostingsReaderImpl.java b/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingPostingsReaderImpl.java
+index 6adab4d..f5d6aba 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingPostingsReaderImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingPostingsReaderImpl.java
+@@ -144,7 +144,7 @@ public class PulsingPostingsReaderImpl extends PostingsReaderBase {
+     //System.out.println("  count=" + count + " threshold=" + maxPositions);
+ 
+     if (count <= maxPositions) {
+-      //System.out.println("  inlined");
++      //System.out.println("  inlined pos=" + termState.inlinedBytesReader.getPosition());
+ 
+       // Inlined into terms dict -- just read the byte[] blob in,
+       // but don't decode it now (we only decode when a DocsEnum

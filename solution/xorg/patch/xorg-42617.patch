@@ -1,0 +1,23 @@
+diff --git a/include/os.h b/include/os.h
+index 417263a..df5c73a 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -352,14 +352,16 @@ extern _X_EXPORT void AccessUsingXdmcp(void);
+ 
+ extern _X_EXPORT void DefineSelf(int /*fd*/);
+ 
++#if XDMCP
+ extern _X_EXPORT void AugmentSelf(pointer /*from*/, int /*len*/);
+ 
++extern _X_EXPORT void RegisterAuthorizations(void);
++#endif
++
+ extern _X_EXPORT void InitAuthorization(char * /*filename*/);
+ 
+ /* extern int LoadAuthorization(void); */
+ 
+-extern _X_EXPORT void RegisterAuthorizations(void);
+-
+ extern _X_EXPORT int AuthorizationFromID (
+ 	XID 		id,
+ 	unsigned short	*name_lenp,

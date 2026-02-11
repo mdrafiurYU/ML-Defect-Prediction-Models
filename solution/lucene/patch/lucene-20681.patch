@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/core/nodes/TestQueryNode.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/core/nodes/TestQueryNode.java
+index 23d4fb4..b805a43 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/core/nodes/TestQueryNode.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/core/nodes/TestQueryNode.java
+@@ -32,4 +32,16 @@ public class TestQueryNode extends LuceneTestCase {
+     bq.add(Arrays.asList(nodeB));
+     assertEquals(2, bq.getChildren().size());
+   }
++  
++  /* LUCENE-3045 bug in QueryNodeImpl.containsTag(String key)*/
++  public void testTags() throws Exception {
++    QueryNode node = new FieldQueryNode("foo", "A", 0, 1);
++    
++    node.setTag("TaG", new Object());
++    assertTrue(node.getTagMap().size() > 0);
++    assertTrue(node.containsTag("tAg"));
++    assertTrue(node.getTag("tAg") != null);
++    
++  }
++  
+ }

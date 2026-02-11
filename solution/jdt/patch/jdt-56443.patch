@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
+index 6b45034..a5b2343 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
+@@ -132,9 +132,14 @@ public abstract class ConverterTestSetup extends AbstractASTTests {
+ 	}
+ 	
+ 	public ASTNode runConversion(int astLevel, ICompilationUnit unit, boolean resolveBindings) {
++		return runConversion(astLevel, unit, resolveBindings, false);
++	}
++	
++	public ASTNode runConversion(int astLevel, ICompilationUnit unit, boolean resolveBindings, boolean statementsRecovery) {
+ 		ASTParser parser = ASTParser.newParser(astLevel);
+ 		parser.setSource(unit);
+ 		parser.setResolveBindings(resolveBindings);
++		parser.setStatementsRecovery(statementsRecovery);
+ 		return parser.createAST(null);
+ 	}

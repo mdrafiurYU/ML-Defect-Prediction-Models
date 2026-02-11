@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java
+index 7445513..2e6ad40 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java
+@@ -95,7 +95,13 @@ public class SetValueVersionExceptionTest extends AbstractJCRTest {
+         } finally {
+             if (session != null) {
+                 session.logout();
++                session = null;
+             }
++            node = null;
++            property = null;
++            multiProperty = null;
++            value = null;
++            values = null;
+             super.tearDown();
+         }
+     }

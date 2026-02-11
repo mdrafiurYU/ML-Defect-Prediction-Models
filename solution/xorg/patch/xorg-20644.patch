@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index e99c343..32fe012 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -619,6 +619,7 @@ LOOKUP xfree86LookupTab[] = {
+ #endif
+ 
+     /* xf86xv.c */
++#ifdef XV
+     SYMFUNC(xf86XVScreenInit)
+     SYMFUNC(xf86XVRegisterGenericAdaptorDriver)
+     SYMFUNC(xf86XVListGenericAdaptors)
+@@ -635,6 +636,7 @@ LOOKUP xfree86LookupTab[] = {
+     SYMFUNC(xf86XvMCScreenInit)
+     SYMFUNC(xf86XvMCCreateAdaptorRec)
+     SYMFUNC(xf86XvMCDestroyAdaptorRec)
++#endif
+ 
+     /* xf86VidMode.c */
+     SYMFUNC(VidModeExtensionInit)

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java b/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java
+index 77d2982..cc9ce26 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java
+@@ -255,7 +255,7 @@ final class TotalTermFreqComparatorSortDescending implements Comparator<TermStat
+  **/
+ final class TermStatsQueue extends PriorityQueue<TermStats> {
+   TermStatsQueue(int size) {
+-    initialize(size);
++    super(size);
+   }
+   
+   @Override

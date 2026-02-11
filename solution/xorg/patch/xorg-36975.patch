@@ -1,0 +1,12 @@
+diff --git a/dix/window.c b/dix/window.c
+index 33e9752..08d738e 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -367,7 +367,6 @@ CreateRootWindow(ScreenPtr pScreen)
+     WindowPtr	pWin;
+     BoxRec	box;
+     PixmapFormatRec *format;
+-    FocusSemaphoresPtr sem;
+ 
+     pWin = (WindowPtr)xalloc(sizeof(WindowRec));
+     if (!pWin)

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86xv.c b/hw/xfree86/common/xf86xv.c
+index 3e908b8..2b097d2 100644
+--- a/hw/xfree86/common/xf86xv.c
++++ b/hw/xfree86/common/xf86xv.c
+@@ -110,7 +110,7 @@ static void xf86XVAdjustFrame(int index, int x, int y, int flags);
+ static Bool xf86XVInitAdaptors(ScreenPtr, XF86VideoAdaptorPtr*, int);
+ 
+ 
+-int XF86XVWindowIndex = -1;
++static int XF86XVWindowIndex = -1;
+ int XF86XvScreenIndex = -1;
+ static unsigned long XF86XVGeneration = 0;
+ static unsigned long PortResource = 0;

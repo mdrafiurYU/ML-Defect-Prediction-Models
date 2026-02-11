@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyTemplate.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyTemplate.java
+index d3d247f..137a682 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyTemplate.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/PolicyTemplate.java
+@@ -31,6 +31,13 @@ import javax.jcr.RepositoryException;
+ public interface PolicyTemplate extends AccessControlPolicy {
+ 
+     /**
++     * Returns the path of the node this template has been created for.
++     *  
++     * @return the path of the node this template has been created for.
++     */
++    String getPath();
++
++    /**
+      * Returns <code>true</code> if this template does not yet define any
+      * entries.
+      *

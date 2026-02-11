@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_io.c b/hw/xfree86/os-support/linux/lnx_io.c
+index 47df0df..32f6601 100644
+--- a/hw/xfree86/os-support/linux/lnx_io.c
++++ b/hw/xfree86/os-support/linux/lnx_io.c
+@@ -40,7 +40,7 @@
+ 
+ #define KBC_TIMEOUT 250        /* Timeout in ms for sending to keyboard controller */
+ 
+-void
++_X_EXPORT void
+ xf86SoundKbdBell(int loudness, int pitch, int duration)
+ {
+ 	if (loudness && pitch)

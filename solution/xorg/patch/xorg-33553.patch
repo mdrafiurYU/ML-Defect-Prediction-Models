@@ -1,0 +1,13 @@
+diff --git a/Xext/xacestr.h b/Xext/xacestr.h
+index 10c625b..c98be3d 100644
+--- a/Xext/xacestr.h
++++ b/Xext/xacestr.h
+@@ -50,7 +50,7 @@ typedef struct {
+ typedef struct {
+     ClientPtr client;
+     DeviceIntPtr dev;
+-    Bool fromRequest;
++    Mask access_mode;
+     int status;
+ } XaceDeviceAccessRec;
+ 

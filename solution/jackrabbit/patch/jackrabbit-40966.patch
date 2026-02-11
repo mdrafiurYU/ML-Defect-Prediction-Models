@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
+index 6c9cced..3a1b968 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
+@@ -65,7 +65,7 @@ public class SimpleJBossAccessManager implements AccessManager {
+         } finally {
+             rolefs.close();
+         }
+-        
++
+         Iterator iterator = context.getSubject().getPrincipals().iterator();
+         while (iterator.hasNext()) {
+             Principal principal = (Principal) iterator.next();

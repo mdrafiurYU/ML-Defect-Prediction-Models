@@ -1,0 +1,19 @@
+diff --git a/fb/fbcmap_mi.c b/fb/fbcmap_mi.c
+index 58bcae3..188decd 100644
+--- a/fb/fbcmap_mi.c
++++ b/fb/fbcmap_mi.c
+@@ -103,6 +103,14 @@ fbSetVisualTypes (int depth, int visuals, int bitsPerRGB)
+     return miSetVisualTypes(depth, visuals, bitsPerRGB, -1);
+ }
+ 
++Bool
++fbSetVisualTypesAndMasks (int depth, int visuals, int bitsPerRGB,
++                          Pixel redMask, Pixel greenMask, Pixel blueMask)
++{
++    return miSetVisualTypesAndMasks(depth, visuals, bitsPerRGB, -1,
++                                    redMask, greenMask, blueMask);
++}
++
+ /*
+  * Given a list of formats for a screen, create a list
+  * of visuals and depths for the screen which coorespond to

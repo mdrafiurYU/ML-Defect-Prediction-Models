@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
+index 51ab864..024c78f 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
+@@ -159,7 +159,7 @@ HashtableOfObject addQueryResults(char[][] categories, char[] key, int matchRule
+ 		}
+ 		if (results != null && this.cachedChunks == null)
+ 			cacheDocumentNames();
+-	} else if (matchRule == SearchPattern.R_EXACT_MATCH + SearchPattern.R_CASE_SENSITIVE) {
++	} else if (matchRule == (SearchPattern.R_EXACT_MATCH | SearchPattern.R_CASE_SENSITIVE)) {
+ 		for (int i = 0, l = categories.length; i < l; i++) {
+ 			HashtableOfObject wordsToDocNumbers = readCategoryTable(categories[i], false);
+ 			if (wordsToDocNumbers != null && wordsToDocNumbers.containsKey(key))

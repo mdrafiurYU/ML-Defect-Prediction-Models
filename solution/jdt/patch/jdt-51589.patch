@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java
+index 12a346c..10fcb96 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImplNoBinding.java
+@@ -71,7 +71,7 @@ public class PackageDeclarationImplNoBinding implements PackageDeclaration {
+ 
+ 	public String getSimpleName() {
+ 		String components = getQualifiedName();
+-		int dotIndex = components.indexOf(".");
++		int dotIndex = components.indexOf("."); //$NON-NLS-1$
+ 		if (dotIndex < 0)
+ 			return components;
+ 		return components.substring(dotIndex + 1);

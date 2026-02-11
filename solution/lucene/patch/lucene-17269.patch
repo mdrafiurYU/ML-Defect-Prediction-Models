@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/spans/SpanPayloadCheckQuery.java b/lucene/src/java/org/apache/lucene/search/spans/SpanPayloadCheckQuery.java
+index 69dbc30..086dad2 100644
+--- a/lucene/src/java/org/apache/lucene/search/spans/SpanPayloadCheckQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/spans/SpanPayloadCheckQuery.java
+@@ -74,6 +74,7 @@ public class SpanPayloadCheckQuery extends SpanPositionCheckQuery{
+     return AcceptStatus.YES;
+   } 
+ 
++  @Override
+   public String toString(String field) {
+     StringBuilder buffer = new StringBuilder();
+     buffer.append("spanPayCheck(");

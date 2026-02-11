@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 5469426..a552491 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -246,7 +246,10 @@ ProcessInputEvents ()
+   xf86Info.inputPending = FALSE;
+ 
+   mieqProcessInputEvents();
++#ifndef MPX
++  /* For MPX, this is done inside the mieqProcessInputEvents() */
+   miPointerUpdateSprite(inputInfo.pointer);
++#endif
+ 
+   miPointerGetPosition(inputInfo.pointer, &x, &y);
+   xf86SetViewport(xf86Info.currentScreen, x, y);

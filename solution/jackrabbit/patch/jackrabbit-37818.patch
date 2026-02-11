@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshTrueTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshTrueTest.java
+index f875dd8..1d175c0 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshTrueTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshTrueTest.java
+@@ -47,6 +47,11 @@ public class RefreshTrueTest extends AbstractJCRTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        testValue = null;
++        super.tearDown();
++    }
++
+     public void testNewProperty() throws RepositoryException {
+         Property p = testRootNode.setProperty(propertyName1, testValue);
+         testRootNode.refresh(true);

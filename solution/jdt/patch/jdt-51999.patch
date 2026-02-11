@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+index a683fc2..1874ec6 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+@@ -98,7 +98,7 @@ public class FilerImpl implements Filer {
+     	{
+     		try 
+     		{
+-    			f = gfm.getGeneratedOutputFile( _env.getJavaProject() );
++    			f = gfm.getGeneratedSourceFolderOutputLocation();
+     		}
+     		catch ( Exception e )
+     		{

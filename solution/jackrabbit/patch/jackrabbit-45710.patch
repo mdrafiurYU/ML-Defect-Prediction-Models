@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java
+index 5a3aced..7a34c57 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/RepositoryStub.java
+@@ -79,6 +79,16 @@ public abstract class RepositoryStub {
+ 
+     public static final String PROP_NAMESPACES = "namespaces";
+ 
++    /**
++     * @since JCR 2.0
++     */
++    public static final String PROP_LOCK_TIMEOUT = "lock.timeout";
++
++    /**
++     * @since JCR 2.0
++     */
++    public static final String PROP_LOCK_OWNER = "lock.owner";
++
+     protected final Properties environment;
+ 
+     protected SimpleCredentials superuser;

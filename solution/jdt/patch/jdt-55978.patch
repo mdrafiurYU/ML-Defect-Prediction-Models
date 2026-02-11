@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/Compiler.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/Compiler.java
+index bad3e2d..878aa1e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/Compiler.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/Compiler.java
+@@ -154,11 +154,13 @@ public class Compiler implements ITypeRequestor, ProblemSeverities {
+ 		Map settings,
+ 		final ICompilerRequestor requestor,
+ 		IProblemFactory problemFactory,
+-		boolean parseLiteralExpressionsAsConstants) {
++		boolean parseLiteralExpressionsAsConstants,
++		boolean storeAnnotations) {
+ 
+ 		// create a problem handler given a handling policy
+ 		this.options = new CompilerOptions(settings);
+ 		this.options.parseLiteralExpressionsAsConstants = parseLiteralExpressionsAsConstants;
++		this.options.storeAnnotations = storeAnnotations;
+ 		
+ 		// wrap requestor in DebugRequestor if one is specified
+ 		if(DebugRequestor == null) {

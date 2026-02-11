@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index b2bf8db..01acb8e 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1322,7 +1322,9 @@ InitInput(argc, argv)
+             strcpy((*pDev)->driver, "kbd");
+         }
+ 
+-        xf86NewInputDevice(*pDev, &dev, TRUE);
++        /* If one fails, the others will too */
++        if (xf86NewInputDevice(*pDev, &dev, TRUE) == BadAlloc)
++            break;
+     }
+ 
+     mieqInit();

@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index fe499fe..f8440f1 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -155,15 +155,6 @@ static ExtensionModule extensionModules[] = {
+ 	NULL
+     },
+ #endif
+-#ifdef TOGCUP
+-    {
+-	XcupExtensionInit,
+-	XCUPNAME,
+-	&noXcupExtension,
+-	NULL,
+-	NULL
+-    },
+-#endif
+ #ifdef XV
+     {
+ 	XvExtensionInit,

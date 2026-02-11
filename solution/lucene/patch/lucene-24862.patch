@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsWriter.java
+index d1d5f33..f822ec6 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsWriter.java
+@@ -46,7 +46,7 @@ class SimpleTextFieldsWriter extends FieldsConsumer {
+ 
+   public SimpleTextFieldsWriter(SegmentWriteState state) throws IOException {
+     final String fileName = SimpleTextCodec.getPostingsFileName(state.segmentName, state.codecId);
+-    out = state.directory.createOutput(fileName);
++    out = state.directory.createOutput(fileName, state.context);
+   }
+ 
+   private void write(String s) throws IOException {

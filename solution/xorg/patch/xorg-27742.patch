@@ -1,0 +1,15 @@
+diff --git a/hw/darwin/quartz/pseudoramiX.c b/hw/darwin/quartz/pseudoramiX.c
+index a003daf..7ba6d5a 100644
+--- a/hw/darwin/quartz/pseudoramiX.c
++++ b/hw/darwin/quartz/pseudoramiX.c
+@@ -34,7 +34,9 @@ Equipment Corporation.
+ ******************************************************************/
+ 
+ #include "pseudoramiX.h"
+-
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
+ #include "extnsionst.h"
+ #include "dixstruct.h"
+ #include "window.h"

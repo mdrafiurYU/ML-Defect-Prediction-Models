@@ -1,0 +1,13 @@
+diff --git a/render/picture.c b/render/picture.c
+index e7901e8..c30649c 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -43,7 +43,7 @@
+ 
+ _X_EXPORT int	PictureScreenPrivateIndex = -1;
+ int		PictureWindowPrivateIndex;
+-int		PictureGeneration;
++static int	PictureGeneration;
+ RESTYPE		PictureType;
+ RESTYPE		PictFormatType;
+ RESTYPE		GlyphSetType;

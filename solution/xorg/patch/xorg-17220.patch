@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index 2a1246b..d8a60fa 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -209,6 +209,7 @@ Bool xf86DPMSInit(ScreenPtr pScreen, DPMSSetProcPtr set, int flags);
+ 
+ Bool DGAInit(ScreenPtr pScreen, DGAFunctionPtr funcs, DGAModePtr modes, 
+ 			int num);
++Bool DGAReInitModes(ScreenPtr pScreen, DGAModePtr modes, int num);
+ xf86SetDGAModeProc xf86SetDGAMode;
+ 
+ /* xf86Events.c */

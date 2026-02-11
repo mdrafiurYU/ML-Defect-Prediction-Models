@@ -1,0 +1,29 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 9629df5..9c54bf4 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -1813,11 +1813,6 @@ configImpliedLayout(serverLayoutPtr servlayoutp, XF86ConfScreenPtr conf_screen)
+     if (!servlayoutp)
+ 	return FALSE;
+ 
+-    if (conf_screen == NULL) {
+-	xf86ConfigError("No Screen sections present\n");
+-	return FALSE;
+-    }
+-
+     /*
+      * which screen section is the active one?
+      *
+@@ -1905,6 +1900,12 @@ configScreen(confScreenPtr screenp, XF86ConfScreenPtr conf_screen, int scrnum,
+     XF86ConfAdaptorLinkPtr conf_adaptor;
+     Bool defaultMonitor = FALSE;
+ 
++    if (!conf_screen) {
++        conf_screen = xnfcalloc(1, sizeof(XF86ConfScreenRec));
++        conf_screen->scrn_identifier = "Default Screen Section";
++        xf86Msg(X_DEFAULT, "No screen section available. Using defaults.\n");
++    }
++
+     xf86Msg(from, "|-->Screen \"%s\" (%d)\n", conf_screen->scrn_identifier,
+ 	    scrnum);
+     /*

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultCommentMapper.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultCommentMapper.java
+index 0b01282..6e938a4 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultCommentMapper.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultCommentMapper.java
+@@ -519,7 +519,7 @@ class DefaultCommentMapper {
+ 			// Look for children unresolved extended end
+ 			ASTNode previousNode = node;
+ 			int ptr = this.trailingPtr - 1; // children extended end were stored before
+-			unresolved: while (ptr >= 0) {
++			while (ptr >= 0) {
+ 				int[] range = this.trailingIndexes[ptr];
+ 				if (range[0] != -1 || range[1] != -1) break; // there's no more unresolved nodes
+ 				ASTNode unresolved = this.trailingNodes[ptr];

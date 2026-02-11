@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+index 432bb5a..3b597ab 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+@@ -111,4 +111,12 @@ public abstract class BLOBFileValue {
+      */
+     public abstract int hashCode();
+ 
++    /**
++     * Check if the value is small (contains a low number of bytes) and should
++     * be stored inline.
++     *
++     * @return true if the value is small
++     */
++    public abstract boolean isSmall();
++
+ }

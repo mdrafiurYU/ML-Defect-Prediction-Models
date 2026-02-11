@@ -1,0 +1,20 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.java
+index 0ccbb85..77f5c95 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.java
+@@ -113,6 +113,7 @@ public class PatternReplaceCharFilter extends BaseCharFilter {
+     }
+   }
+ 
++  @Override
+   public int read() throws IOException {
+     while( prepareReplaceBlock() ){
+       return replaceBlockBuffer.charAt( replaceBlockBufferOffset++ );
+@@ -120,6 +121,7 @@ public class PatternReplaceCharFilter extends BaseCharFilter {
+     return -1;
+   }
+ 
++  @Override
+   public int read(char[] cbuf, int off, int len) throws IOException {
+     char[] tmp = new char[len];
+     int l = input.read(tmp, 0, len);

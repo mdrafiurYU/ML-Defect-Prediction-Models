@@ -1,0 +1,15 @@
+diff --git a/render/mipict.c b/render/mipict.c
+index a16e88c..81c7758 100644
+--- a/render/mipict.c
++++ b/render/mipict.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "scrnintstr.h"
+ #include "gcstruct.h"
+ #include "pixmapstr.h"

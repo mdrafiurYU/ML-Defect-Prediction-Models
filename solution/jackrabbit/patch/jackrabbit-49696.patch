@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java
+index 412847b..bf6279a 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java
+@@ -184,7 +184,7 @@ public class DavPropertyName implements DavConstants, XmlSerializable {
+      * @return a human readable string representation
+      */
+     public String toString() {
+-        return DomUtil.getQualifiedName(name, namespace);
++        return DomUtil.getExpandedName(name, namespace);
+     }
+ 
+     /**

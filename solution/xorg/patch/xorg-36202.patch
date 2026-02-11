@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/vbe/vbeModes.c b/hw/xfree86/vbe/vbeModes.c
+index 061d7b6..fb730a7 100644
+--- a/hw/xfree86/vbe/vbeModes.c
++++ b/hw/xfree86/vbe/vbeModes.c
+@@ -127,10 +127,9 @@ CheckMode(ScrnInfoPtr pScrn, vbeInfoPtr pVbe, VbeInfoBlock *vbe, int id,
+ {
+     CARD16 major;
+     VbeModeInfoBlock *mode;
+-    DisplayModePtr pMode, p;
++    DisplayModePtr pMode;
+     VbeModeInfoData *data;
+     Bool modeOK = FALSE;
+-    ModeStatus status = MODE_OK;
+ 
+     major = (unsigned)(vbe->VESAVersion >> 8);
+ 

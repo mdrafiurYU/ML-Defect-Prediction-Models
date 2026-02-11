@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractCompiledPermissions.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractCompiledPermissions.java
+index b17534d..3237f04 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractCompiledPermissions.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractCompiledPermissions.java
+@@ -60,7 +60,7 @@ public abstract class AbstractCompiledPermissions implements CompiledPermissions
+     protected abstract Result buildResult(Path absPath) throws RepositoryException;
+ 
+     /**
+-     *
++     * Removes all entries from the cache.
+      */
+     protected void clearCache() {
+         synchronized (cache) {

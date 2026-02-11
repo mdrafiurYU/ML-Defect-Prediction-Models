@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java b/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java
+index f389366..c94e53b 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java
+@@ -44,7 +44,10 @@ import org.apache.lucene.util.BytesRef;
+ import org.apache.lucene.util.UnicodeUtil;
+ 
+ /** Exposes flex API on a pre-flex index, as a codec. 
+- * @lucene.experimental */
++ * @lucene.experimental
++ * @deprecated (4.0)
++ */
++@Deprecated
+ public class PreFlexFields extends FieldsProducer {
+   
+   private static final boolean DEBUG_SURROGATES = false;

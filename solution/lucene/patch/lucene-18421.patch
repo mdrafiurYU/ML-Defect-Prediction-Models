@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/HighlightComponent.java b/solr/src/java/org/apache/solr/handler/component/HighlightComponent.java
+index 10070d7..137f30b 100644
+--- a/solr/src/java/org/apache/solr/handler/component/HighlightComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/HighlightComponent.java
+@@ -131,6 +131,7 @@ public class HighlightComponent extends SearchComponent implements PluginInfoIni
+     }
+   }
+ 
++  @Override
+   public void modifyRequest(ResponseBuilder rb, SearchComponent who, ShardRequest sreq) {
+     if (!rb.doHighlights) return;

@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java b/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java
+index 0878157..7e2982c 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java
++++ b/lucene/src/test/org/apache/lucene/search/TestCustomSearcherSort.java
+@@ -17,7 +17,6 @@ package org.apache.lucene.search;
+  */
+ 
+ import java.io.IOException;
+-import java.io.Serializable;
+ import java.util.Calendar;
+ import java.util.GregorianCalendar;
+ import java.util.Map;
+@@ -34,7 +33,7 @@ import org.apache.lucene.store.Directory;
+ import org.apache.lucene.util.LuceneTestCase;
+ 
+ /** Unit test for sorting code. */
+-public class TestCustomSearcherSort extends LuceneTestCase implements Serializable {
++public class TestCustomSearcherSort extends LuceneTestCase {
+   
+   private Directory index = null;
+   private IndexReader reader;

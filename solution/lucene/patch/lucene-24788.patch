@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ByteField.java b/solr/src/java/org/apache/solr/schema/ByteField.java
+index ce59010..cc1cbb2 100644
+--- a/solr/src/java/org/apache/solr/schema/ByteField.java
++++ b/solr/src/java/org/apache/solr/schema/ByteField.java
+@@ -42,7 +42,7 @@ public class ByteField extends FieldType {
+   @Override
+   public SortField getSortField(SchemaField field, boolean reverse) {
+     field.checkSortability();
+-    return new SortField(field.name, SortField.BYTE, reverse);
++    return new SortField(field.name, SortField.Type.BYTE, reverse);
+   }
+ 
+   @Override

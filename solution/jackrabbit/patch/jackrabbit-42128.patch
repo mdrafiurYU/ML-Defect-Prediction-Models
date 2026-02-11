@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RestoreTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RestoreTest.java
+index ce5af6f..8679ab2 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RestoreTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/version/RestoreTest.java
+@@ -34,7 +34,9 @@ public class RestoreTest extends AbstractJCRTest {
+         UserTransactionImpl tx = new UserTransactionImpl(superuser);
+         tx.begin();
+         Version v10 = n.checkin();
++        String versionName = v10.getName();
+         n.restore(v10, true);
++        assertEquals("Wrong version restored", versionName, n.getBaseVersion().getName());
+         tx.commit();
+     }
+ }

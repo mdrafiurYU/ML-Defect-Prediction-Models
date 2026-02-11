@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
+index c92c7cf..58ac0ea 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
+@@ -150,7 +150,7 @@ class XAEnvironment {
+         info.setLockHolder(session);
+         info.setLive(true);
+ 
+-        session.addLockToken(info.lockToken.toString(), false);
++        LockManagerImpl.getSessionLockManager(session).lockTokenAdded(info.lockToken.toString());
+         lockedNodesMap.put(id, info);
+         operations.add(info);

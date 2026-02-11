@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/AbstractVersionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/AbstractVersionTest.java
+index c1c56e0..883bb5e 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/AbstractVersionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/simple/AbstractVersionTest.java
+@@ -24,6 +24,7 @@ import javax.jcr.nodetype.NodeTypeManager;
+ import javax.jcr.version.VersionHistory;
+ 
+ import org.apache.jackrabbit.test.AbstractJCRTest;
++import org.apache.jackrabbit.test.NotExecutableException;
+ 
+ /**
+  * <code>AbstractVersionTest</code> is the abstract base class for all
+@@ -132,11 +133,10 @@ public class AbstractVersionTest extends AbstractJCRTest {
+      * @return versionable node.
+      * @throws RepositoryException
+      */
+-    protected Node createVersionableNode(Node parent, String name, NodeType nodetype) throws RepositoryException {
++    protected Node createVersionableNode(Node parent, String name, NodeType nodetype)
++            throws RepositoryException, NotExecutableException {
+         Node versionableNode = parent.addNode(name, nodetype.getName());
+-        if (!nodetype.isNodeType(mixSimpleVersionable)) {
+-            versionableNode.addMixin(mixSimpleVersionable);
+-        }
++        ensureMixinType(versionableNode, mixSimpleVersionable);
+         parent.getSession().save();
+ 
+         return versionableNode;

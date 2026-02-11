@@ -1,0 +1,11 @@
+diff --git a/fb/fbgetsp.c b/fb/fbgetsp.c
+index f77ea8c..ffd8a1d 100644
+--- a/fb/fbgetsp.c
++++ b/fb/fbgetsp.c
+@@ -84,4 +84,6 @@ fbGetSpans(DrawablePtr	pDrawable,
+ 	ppt++;
+ 	pwidth++;
+     }
++
++    fbFinishAccess (pDrawable);
+ }

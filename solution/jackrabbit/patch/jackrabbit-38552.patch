@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java
+index c4b9fbd..23f4c24 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java
+@@ -57,6 +57,12 @@ public class GetReferencesNodeTest extends AbstractJCRTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        testRoot = null;
++        nodeToBeReferenced = null;
++        super.tearDown();
++    }
++
+     /**
+      * Node.getReferences() never returns a reference that is stored in a
+      * version. 1. Create some test nodes 2. Create a version 1.0 with reference

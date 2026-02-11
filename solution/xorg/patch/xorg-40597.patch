@@ -1,0 +1,16 @@
+diff --git a/render/glyph.c b/render/glyph.c
+index 849e65f..ae04f60 100644
+--- a/render/glyph.c
++++ b/render/glyph.c
+@@ -513,10 +513,9 @@ AllocateGlyphSet (int fdepth, PictFormatPtr format)
+     }
+ 
+     size = sizeof (GlyphSetRec);
+-    glyphSet = xalloc (size);
++    glyphSet = xcalloc (1, size);
+     if (!glyphSet)
+ 	return FALSE;
+-    bzero((char *)glyphSet, size);
+ 
+     if (!AllocateGlyphHash (&glyphSet->hash, &glyphHashSets[0]))
+     {

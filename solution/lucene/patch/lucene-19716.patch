@@ -1,0 +1,18 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java b/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java
+index 905685a..fbe8d74 100644
+--- a/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java
++++ b/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java
+@@ -33,11 +33,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
+ public class TestXIncludeConfig extends AbstractSolrTestCase {
+   protected boolean supports;
+ 
++  @Override
+   public String getSchemaFile() {
+     return "schema.xml";
+   }
+ 
+   //public String getSolrConfigFile() { return "solrconfig.xml"; }
++  @Override
+   public String getSolrConfigFile() {
+     return "solrconfig-xinclude.xml";
+   }

@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/appledri.c b/hw/darwin/quartz/xpr/appledri.c
+index dd688ca..ef68c86 100644
+--- a/hw/darwin/quartz/xpr/appledri.c
++++ b/hw/darwin/quartz/xpr/appledri.c
+@@ -35,6 +35,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
+ #define NEED_REPLIES
+ #define NEED_EVENTS
+ #include <X11/X.h>

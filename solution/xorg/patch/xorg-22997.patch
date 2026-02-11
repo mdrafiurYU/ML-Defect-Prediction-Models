@@ -1,0 +1,15 @@
+diff --git a/os/strlcpy.c b/os/strlcpy.c
+index 71657da..42442cc 100644
+--- a/os/strlcpy.c
++++ b/os/strlcpy.c
+@@ -17,6 +17,10 @@
+  */
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <sys/types.h>
+ #include <string.h>
+ 

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/DeprecatedTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/DeprecatedTest.java
+index 90fcc68..dd57e7c 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/DeprecatedTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/DeprecatedTest.java
+@@ -21,7 +21,7 @@ public DeprecatedTest(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return buildAllCompliancesRegressionTestSetupSuite(testClass());
++	return buildAllCompliancesTestSuite(testClass());
+ }
+ public void test001() {
+ 	this.runNegativeTest(new String[] {

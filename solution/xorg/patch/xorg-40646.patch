@@ -1,0 +1,16 @@
+diff --git a/hw/kdrive/fbdev/fbdev.c b/hw/kdrive/fbdev/fbdev.c
+index 35ca4de..04f697b 100644
+--- a/hw/kdrive/fbdev/fbdev.c
++++ b/hw/kdrive/fbdev/fbdev.c
+@@ -297,10 +297,9 @@ fbdevScreenInit (KdScreenInfo *screen)
+ {
+     FbdevScrPriv *scrpriv;
+ 
+-    scrpriv = xalloc (sizeof (FbdevScrPriv));
++    scrpriv = xcalloc (1, sizeof (FbdevScrPriv));
+     if (!scrpriv)
+ 	return FALSE;
+-    memset (scrpriv, '\0', sizeof (FbdevScrPriv));
+     screen->driver = scrpriv;
+     if (!fbdevScreenInitialize (screen, scrpriv))
+     {

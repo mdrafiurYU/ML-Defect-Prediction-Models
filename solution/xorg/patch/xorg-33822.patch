@@ -1,0 +1,16 @@
+diff --git a/include/resource.h b/include/resource.h
+index 087d62c..4a33804 100644
+--- a/include/resource.h
++++ b/include/resource.h
+@@ -239,11 +239,6 @@ extern unsigned int GetXIDList(
+ extern RESTYPE lastResourceType;
+ extern RESTYPE TypeMask;
+ 
+-#ifdef XResExtension
+-extern Atom *ResourceNames;
+-void RegisterResourceName(RESTYPE type, char* name);
+-#endif
+-
+ /*
+  * These are deprecated compatibility functions and will be removed soon!
+  * Please use the noted replacements instead.

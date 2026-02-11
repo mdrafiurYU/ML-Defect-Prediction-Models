@@ -1,0 +1,14 @@
+diff --git a/dix/main.c b/dix/main.c
+index b5954af..ed5e358 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -357,7 +357,8 @@ main(int argc, char *argv[], char *envp[])
+ 	InitAtoms();
+ 	InitEvents();
+ 	InitGlyphCaching();
+-	dixResetPrivates();
++	if (!dixResetPrivates())
++	    FatalError("couldn't init private data storage");
+ 	ResetExtensionPrivates();
+ 	ResetClientPrivates();
+ 	ResetScreenPrivates();

@@ -1,0 +1,15 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 4b2d709..7ed3601 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -1918,8 +1918,8 @@ KdEnqueuePointerEvent(KdPointerInfo *pi, unsigned long flags, int rx, int ry,
+     }
+     else {
+ 	if (pi->transformCoordinates) {
+-	    x = matrix[0][0] * rx + matrix[0][1] * ry;
+-	    y = matrix[1][0] * rx + matrix[1][1] * ry;
++	    x = matrix[0][0] * rx + matrix[0][1] * ry + matrix[0][2];
++	    y = matrix[1][0] * rx + matrix[1][1] * ry + matrix[1][2];
+ 	}
+ 	else {
+ 	    x = rx;

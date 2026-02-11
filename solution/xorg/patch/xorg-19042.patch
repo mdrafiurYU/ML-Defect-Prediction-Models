@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_kbd.c b/hw/xfree86/os-support/linux/lnx_kbd.c
+index aa959b9..dd6773f 100644
+--- a/hw/xfree86/os-support/linux/lnx_kbd.c
++++ b/hw/xfree86/os-support/linux/lnx_kbd.c
+@@ -10,6 +10,10 @@
+  */
+ 
+ #define NEED_EVENTS
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "compiler.h"

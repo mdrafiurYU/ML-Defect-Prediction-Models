@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java
+index a3ec4b6..21de154 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FileSystemUtil.java
+@@ -84,8 +84,13 @@ public final class FileSystemUtil
+     public static void writeStringToIFile(IFile file, String contents) throws IOException, CoreException {
+     	byte[] data = contents.getBytes("UTF8");
+     	ByteArrayInputStream input = new ByteArrayInputStream(data);
+-    	// create with FORCE will overwrite if the file already exists
+-    	file.create(input, IResource.FORCE, null);
++    	if (file.exists()) {
++    		file.setContents(input, true, false, null);
++    	}
++    	else {
++    		// Even with FORCE, create() will still throw if the file already exists.
++    		file.create(input, IResource.FORCE, null);
++    	}
+     }
+     
+     /**

@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SchemaField.java b/solr/src/java/org/apache/solr/schema/SchemaField.java
+index 5f45992..0b46ded 100644
+--- a/solr/src/java/org/apache/solr/schema/SchemaField.java
++++ b/solr/src/java/org/apache/solr/schema/SchemaField.java
+@@ -21,7 +21,6 @@ import org.apache.lucene.document.Field;
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.search.SortField;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ 
+ import java.util.Map;
+ import java.io.IOException;
+@@ -116,11 +115,6 @@ public final class SchemaField extends FieldProperties {
+       + "}";
+   }
+ 
+-  public void write(XMLWriter writer, String name, Fieldable val) throws IOException {
+-    // name is passed in because it may be null if name should not be used.
+-    type.write(writer,name,val);
+-  }
+-
+   public void write(TextResponseWriter writer, String name, Fieldable val) throws IOException {
+     // name is passed in because it may be null if name should not be used.
+     type.write(writer,name,val);

@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java
+index 23f4c24..03e1921 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/GetReferencesNodeTest.java
+@@ -99,12 +99,11 @@ public class GetReferencesNodeTest extends AbstractJCRTest {
+         assertFalse(nodeToBeReferencedIsReference);
+     }
+ 
+-    private void initTestNodes() throws RepositoryException {
++    private void initTestNodes() throws RepositoryException,
++            NotExecutableException {
+         // create a versionable node with reference property
+         testNode = testRootNode.addNode(nodeName1, versionableNodeType);
+-        if (needsMixin(testNode, mixVersionable)) {
+-          testNode.addMixin(mixVersionable);
+-        }
++        ensureMixinType(testNode, mixVersionable);
+ 
+         // node to be referenced, does not have to be versionable
+         nodeToBeReferenced = testRootNode.addNode(nodeName2, versionableNodeType);

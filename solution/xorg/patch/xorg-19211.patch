@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/sco/sco_video.c b/hw/xfree86/os-support/sco/sco_video.c
+index 76d70fb..dd81786 100644
+--- a/hw/xfree86/os-support/sco/sco_video.c
++++ b/hw/xfree86/os-support/sco/sco_video.c
+@@ -37,6 +37,10 @@
+  * that and adjust accordingly.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "input.h"
+ #include "scrnintstr.h"

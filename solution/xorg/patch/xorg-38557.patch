@@ -1,0 +1,14 @@
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index 47ad553..0aaa037 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -292,6 +292,9 @@ XkbDeleteRulesDflts()
+     XkbVariantDflt = NULL;
+     _XkbFree(XkbOptionsDflt);
+     XkbOptionsDflt = NULL;
++
++    XkbFreeKeyboard(xkb_cached_map, XkbAllComponentsMask, True);
++    xkb_cached_map = NULL;
+ }
+ 
+ /***====================================================================***/

@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+index 6315afa..e49c4e8 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+@@ -135,6 +135,12 @@ public class TestAll extends TestCase {
+ 
+         suite.addTestSuite(ValueFactoryTest.class);
+ 
++        // JCR 2.0
++        
++        //// shareable nodes
++        
++        suite.addTestSuite(ShareableNodeTest.class);
++        
+         return suite;
+     }
+ }
+\ No newline at end of file

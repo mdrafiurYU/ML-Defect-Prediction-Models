@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java b/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
+index b3df52b..2076e74 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
++++ b/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
+@@ -154,7 +154,6 @@ public class TestStressIndexing2 extends LuceneTestCase {
+     w.commit();
+     LogMergePolicy lmp = (LogMergePolicy) w.getConfig().getMergePolicy();
+     lmp.setUseCompoundFile(false);
+-    lmp.setUseCompoundDocStore(false);
+     lmp.setMergeFactor(mergeFactor);
+     /***
+         w.setMaxMergeDocs(Integer.MAX_VALUE);
+@@ -211,7 +210,6 @@ public class TestStressIndexing2 extends LuceneTestCase {
+       w.setInfoStream(VERBOSE ? System.out : null);
+       LogMergePolicy lmp = (LogMergePolicy) w.getConfig().getMergePolicy();
+       lmp.setUseCompoundFile(false);
+-      lmp.setUseCompoundDocStore(false);
+       lmp.setMergeFactor(mergeFactor);
+ 
+       threads = new IndexingThread[nThreads];

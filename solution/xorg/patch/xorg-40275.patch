@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/pbproxy/pbproxy.h b/hw/xquartz/pbproxy/pbproxy.h
+index ad8f2e4..098e309 100644
+--- a/hw/xquartz/pbproxy/pbproxy.h
++++ b/hw/xquartz/pbproxy/pbproxy.h
+@@ -25,7 +25,8 @@ extern int x_apple_wm_event_base, x_apple_wm_error_base;
+ 
+ struct atom_list {
+     Atom primary, clipboard, text, utf8_string, string, targets, multiple,
+-	cstring, image_png, image_jpeg, incr, atom, clipboard_manager;
++	cstring, image_png, image_jpeg, incr, atom, clipboard_manager,
++	compound_text, atom_pair;
+ };
+ 
+ extern struct atom_list *atoms;

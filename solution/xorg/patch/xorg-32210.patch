@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyrinit.c b/hw/kdrive/ephyr/ephyrinit.c
+index 5034ba5..6196996 100644
+--- a/hw/kdrive/ephyr/ephyrinit.c
++++ b/hw/kdrive/ephyr/ephyrinit.c
+@@ -148,8 +148,6 @@ ddxProcessArgument (int argc, char **argv, int i)
+ {
+   EPHYR_DBG("mark argv[%d]='%s'", i, argv[i] );
+ 
+-  noGlxVisualInit = TRUE ;
+-
+   if (!strcmp (argv[i], "-parent"))
+     {
+       if(i+1 < argc)

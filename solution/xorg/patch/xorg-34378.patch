@@ -1,0 +1,13 @@
+diff --git a/Xext/dpms.c b/Xext/dpms.c
+index d518a16..6f01fa3 100644
+--- a/Xext/dpms.c
++++ b/Xext/dpms.c
+@@ -75,7 +75,7 @@ DPMSExtensionInit(INITARGS)
+ {
+     AddExtension(DPMSExtensionName, 0, 0,
+ 		 ProcDPMSDispatch, SProcDPMSDispatch,
+-		 DPMSResetProc, StandardMinorOpcode)))
++		 DPMSResetProc, StandardMinorOpcode);
+ }
+ 
+ /*ARGSUSED*/

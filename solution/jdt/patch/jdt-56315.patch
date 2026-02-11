@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java
+index a095917..9a77c62 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/VariableBinding.java
+@@ -32,7 +32,9 @@ public abstract class VariableBinding extends Binding {
+ 	public Constant constant() {
+ 		return this.constant;
+ 	}
+-	
++
++	public abstract AnnotationBinding[] getAnnotations();
++
+ 	public final boolean isBlankFinal(){
+ 		return (modifiers & ExtraCompilerModifiers.AccBlankFinal) != 0;
+ 	}

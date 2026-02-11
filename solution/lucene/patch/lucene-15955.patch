@@ -1,0 +1,23 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java b/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java
+index 7fc8ea6..f62d296 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMultiTermConstantScore.java
+@@ -22,6 +22,7 @@ import org.apache.lucene.analysis.MockTokenizer;
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.Field;
+ import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.index.RandomIndexWriter;
+ import org.apache.lucene.index.Term;
+ import org.apache.lucene.store.Directory;
+@@ -197,8 +198,8 @@ public class TestMultiTermConstantScore extends BaseTestRangeFilter {
+         assertEquals("score for doc " + (doc + base) + " was not correct", 1.0f, scorer.score());
+       }
+       @Override
+-      public void setNextReader(IndexReader reader, int docBase) {
+-        base = docBase;
++      public void setNextReader(AtomicReaderContext context) {
++        base = context.docBase;
+       }
+       @Override
+       public boolean acceptsDocsOutOfOrder() {

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcImg.c b/hw/xfree86/xf4bpp/ppcImg.c
+index 948359a..71fcf38 100644
+--- a/hw/xfree86/xf4bpp/ppcImg.c
++++ b/hw/xfree86/xf4bpp/ppcImg.c
+@@ -24,6 +24,10 @@
+ 
+ /* $XConsortium: ppcImg.c /main/4 1996/02/21 17:57:53 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "mi.h"

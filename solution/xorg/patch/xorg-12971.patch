@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglfill.c b/hw/xgl/xglfill.c
+index 7832df2..5734847 100644
+--- a/hw/xgl/xglfill.c
++++ b/hw/xgl/xglfill.c
+@@ -178,6 +178,9 @@ xglFillRect (DrawablePtr pDrawable,
+ 	}
+     }
+ 
++    if (!nBox)
++	return;
++    
+     pBox = (heapBox) ? heapBox : stackBox;
+ 
+     if (!xglFill (pDrawable, pGC, NULL,

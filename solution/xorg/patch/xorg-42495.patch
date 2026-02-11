@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Events.c b/hw/xnest/Events.c
+index b3ae972..c2c09aa 100644
+--- a/hw/xnest/Events.c
++++ b/hw/xnest/Events.c
+@@ -45,7 +45,7 @@ CARD32 lastEventTime = 0;
+ extern EventList *xnestEvents;
+ 
+ void
+-ProcessInputEvents()
++ProcessInputEvents(void)
+ {
+   mieqProcessInputEvents();
+ }

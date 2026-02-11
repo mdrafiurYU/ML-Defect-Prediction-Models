@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/common/xf86str.h b/hw/xfree86/common/xf86str.h
+index a90b548..82faaaa 100644
+--- a/hw/xfree86/common/xf86str.h
++++ b/hw/xfree86/common/xf86str.h
+@@ -247,6 +247,7 @@ typedef struct _ScrnInfoRec *ScrnInfoPtr;
+ typedef enum {
+     RR_GET_INFO,
+     RR_SET_CONFIG,
++    RR_GET_MODE_MM,
+     GET_REQUIRED_HW_INTERFACES = 10
+ } xorgDriverFuncOp;
+ 
+@@ -266,6 +267,15 @@ typedef union {
+     xorgRRConfig RRConfig;
+ } xorgRRRotation, *xorgRRRotationPtr;
+ 
++/* RR_GET_MODE_MM */
++typedef struct {
++    DisplayModePtr mode;
++    int virtX;
++    int virtY;
++    int mmWidth;
++    int mmHeight;
++} xorgRRModeMM, *xorgRRModeMMPtr;
++
+ /* GET_REQUIRED_HW_INTERFACES */
+ #define HW_IO 1
+ #define HW_MMIO 2

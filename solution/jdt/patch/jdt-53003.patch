@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeSnippetParsingUtil.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeSnippetParsingUtil.java
+index 656ef07..1346bde 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeSnippetParsingUtil.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeSnippetParsingUtil.java
+@@ -44,7 +44,7 @@ public class CodeSnippetParsingUtil {
+ 				System.arraycopy(compilationResultProblems, 0, (problems = new IProblem[problemsCount]), 0, problemsCount);
+ 			}
+ 		}
+-		return new RecordedParsingInformation(problems, compilationResult.lineSeparatorPositions, parser.getCommentsPositions());
++		return new RecordedParsingInformation(problems, compilationResult.getLineSeparatorPositions(), parser.getCommentsPositions());
+ 	}
+ 
+ 	public ASTNode[] parseClassBodyDeclarations(char[] source, Map settings, boolean recordParsingInformation) {

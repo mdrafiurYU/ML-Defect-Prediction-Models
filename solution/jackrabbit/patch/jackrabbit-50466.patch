@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TransientRepositoryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TransientRepositoryTest.java
+index cbd9de3..f5f0ce8 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TransientRepositoryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/TransientRepositoryTest.java
+@@ -44,7 +44,7 @@ public class TransientRepositoryTest extends TestCase {
+                 public RepositoryImpl getRepository() throws RepositoryException {
+                     throw new UnsupportedRepositoryOperationException();
+                 }
+-            });
++            }, null);
+     }
+ 
+     /**

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProvider.java
+index d5bd1e5..d6ed77b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProvider.java
+@@ -75,7 +75,7 @@ public class DefaultPrincipalProvider extends AbstractPrincipalProvider implemen
+      * @throws RepositoryException if an error accessing the repository occurs.
+      */
+     public DefaultPrincipalProvider(Session securitySession,
+-                             UserManagerImpl userManager) throws RepositoryException {
++                                    UserManagerImpl userManager) throws RepositoryException {
+ 
+         this.userManager = userManager;
+         everyonePrincipal = EveryonePrincipal.getInstance();

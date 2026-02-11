@@ -1,0 +1,34 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 0ffc798..38466f8 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -206,6 +206,10 @@ EnableDevice(DeviceIntPtr dev)
+     DeviceIntRec dummyDev;
+     DeviceIntPtr other;
+     devicePresenceNotify ev;
++    int namelen = 0; /* dummy */
++    int evsize  = sizeof(xEvent);
++    int listlen;
++    EventListPtr evlist;
+ 
+     for (prev = &inputInfo.off_devices;
+ 	 *prev && (*prev != dev);
+@@ -238,6 +242,18 @@ EnableDevice(DeviceIntPtr dev)
+         }
+     }
+ 
++    /* Before actually enabling the device, we need to make sure the event
++     * list's events have enough memory for a ClassesChangedEvent from the
++     * device
++     */
++
++    SizeDeviceInfo(dev, &namelen, &evsize);
++
++    listlen = GetEventList(&evlist);
++    OsBlockSignals();
++    SetMinimumEventSize(evlist, listlen, evsize);
++    OsReleaseSignals();
++
+     if ((*prev != dev) || !dev->inited ||
+ 	((ret = (*dev->deviceProc)(dev, DEVICE_ON)) != Success)) {
+         ErrorF("[dix] couldn't enable device %d\n", dev->id);

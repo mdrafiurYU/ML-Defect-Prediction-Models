@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionItemStateProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionItemStateProvider.java
+index daffe8e..bd38fbb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionItemStateProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionItemStateProvider.java
+@@ -87,7 +87,7 @@ class VersionItemStateProvider implements VirtualItemStateProvider, ItemStateLis
+                                                     Name name, int type,
+                                                     boolean multiValued)
+             throws RepositoryException {
+-        throw new IllegalStateException("VersionManager should never create a VirtualPropertyState");
++        throw new IllegalStateException("InternalVersionManager should never create a VirtualPropertyState");
+     }
+ 
+     /**
+@@ -96,7 +96,7 @@ class VersionItemStateProvider implements VirtualItemStateProvider, ItemStateLis
+     public VirtualNodeState createNodeState(VirtualNodeState parent, Name name,
+                                             NodeId id, Name nodeTypeName)
+             throws RepositoryException {
+-        throw new IllegalStateException("VersionManager should never create a VirtualNodeState");
++        throw new IllegalStateException("InternalVersionManager should never create a VirtualNodeState");
+     }
+ 
+     /**

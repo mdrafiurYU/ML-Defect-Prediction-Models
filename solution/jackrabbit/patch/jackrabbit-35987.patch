@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/LockingTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/LockingTest.java
+index cee55b7..bacb10f 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/LockingTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/LockingTest.java
+@@ -112,7 +112,7 @@ public class LockingTest extends AbstractObservationTest {
+     private Node createLockable(String nodeName, String nodeType)
+             throws RepositoryException {
+         Node n = testRootNode.addNode(nodeName, nodeType);
+-        if (!n.isNodeType(mixLockable)) {
++        if (needsMixin(n, mixLockable)) {
+             n.addMixin(mixLockable);
+         }
+         return n;

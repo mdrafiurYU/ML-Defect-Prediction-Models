@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/handler/MoreLikeThisHandlerTest.java b/solr/src/test/org/apache/solr/handler/MoreLikeThisHandlerTest.java
+index 6dbae21..c7d8a39 100644
+--- a/solr/src/test/org/apache/solr/handler/MoreLikeThisHandlerTest.java
++++ b/solr/src/test/org/apache/solr/handler/MoreLikeThisHandlerTest.java
+@@ -79,7 +79,7 @@ public class MoreLikeThisHandlerTest extends SolrTestCaseJ4 {
+ 
+     params.set(CommonParams.Q, "id:42");
+     params.set(MoreLikeThisParams.MLT, "true");
+-    params.set(MoreLikeThisParams.SIMILARITY_FIELDS, "name,subword,foo_ti");
++    params.set(MoreLikeThisParams.SIMILARITY_FIELDS, "name,subword");
+     params.set(MoreLikeThisParams.INTERESTING_TERMS, "details");
+     params.set(MoreLikeThisParams.MIN_TERM_FREQ,"1");
+     params.set(MoreLikeThisParams.MIN_DOC_FREQ,"1");

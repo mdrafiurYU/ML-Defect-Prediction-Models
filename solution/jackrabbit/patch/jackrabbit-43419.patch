@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EvaluationTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EvaluationTest.java
+index 3d87d56..373d02e 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EvaluationTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EvaluationTest.java
+@@ -131,6 +131,7 @@ public class EvaluationTest extends AbstractEvaluationTest {
+                 testUser.getPrincipal(),
+                 new Privilege[] {PrivilegeRegistry.WRITE_PRIVILEGE});
+         testSession.save();
++
+         assertTrue(testAcMgr.hasPrivileges(path,
+                 new Privilege[] {PrivilegeRegistry.REMOVE_CHILD_NODES_PRIVILEGE}));

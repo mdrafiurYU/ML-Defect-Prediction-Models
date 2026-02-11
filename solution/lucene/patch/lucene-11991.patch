@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java b/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java
+index a338f06..b911247 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java
++++ b/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java
+@@ -50,7 +50,7 @@ public class TestLazyProxSkipping extends LuceneTestCase {
+ 
+     private class SeekCountingDirectory extends MockDirectoryWrapper {
+       public SeekCountingDirectory(Directory delegate) {
+-        super(delegate);
++        super(random, delegate);
+       }
+ 
+       @Override

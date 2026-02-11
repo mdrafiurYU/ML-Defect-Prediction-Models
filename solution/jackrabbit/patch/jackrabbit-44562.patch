@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/BundleBinding.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/BundleBinding.java
+index 4b69789..64042fb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/BundleBinding.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/BundleBinding.java
+@@ -116,14 +116,15 @@ public class BundleBinding extends ItemStateBinding {
+         // properties
+         name = readIndexedQName(in);
+         while (name != null) {
++            PropertyId pId = new PropertyId(bundle.getId(), name);
+             // skip redundant primaryType, mixinTypes and uuid properties
+             if (name.equals(NameConstants.JCR_PRIMARYTYPE)
+                 || name.equals(NameConstants.JCR_MIXINTYPES)
+                 || name.equals(NameConstants.JCR_UUID)) {
++                readPropertyEntry(in, pId);
+                 name = readIndexedQName(in);
+                 continue;
+             }
+-            PropertyId pId = new PropertyId(bundle.getId(), name);
+             NodePropBundle.PropertyEntry pState = readPropertyEntry(in, pId);
+             bundle.addProperty(pState);
+             name = readIndexedQName(in);

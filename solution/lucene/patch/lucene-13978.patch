@@ -1,0 +1,22 @@
+diff --git a/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java b/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
+index 28e50e4..d2ea03a 100755
+--- a/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
++++ b/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
+@@ -87,7 +87,7 @@ public class TestIndexingPerformance extends AbstractSolrTestCase {
+ 
+     long start = System.currentTimeMillis();
+ 
+-    AddUpdateCommand add = new AddUpdateCommand();
++    AddUpdateCommand add = new AddUpdateCommand(req);
+ 
+     Field idField=null;
+ 
+@@ -111,7 +111,7 @@ public class TestIndexingPerformance extends AbstractSolrTestCase {
+     log.info("iter="+iter +" time=" + (end-start) + " throughput=" + ((long)iter*1000)/(end-start));
+ 
+     //discard all the changes
+-    updateHandler.rollback(new RollbackUpdateCommand());
++    updateHandler.rollback(new RollbackUpdateCommand(req));
+ 
+     req.close();
+   }

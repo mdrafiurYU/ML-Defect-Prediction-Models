@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java
+index 6708514..e59cfc5 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/NodeImplTest.java
+@@ -41,6 +41,7 @@ public class NodeImplTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         node.remove();
+         testRootNode.save();
++        super.tearDown();
+     }
+ 
+     /**

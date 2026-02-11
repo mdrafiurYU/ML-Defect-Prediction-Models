@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java
+index 0bd7936..fbc350e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java
+@@ -533,6 +533,9 @@ public abstract class JavaElement extends PlatformObject implements IJavaElement
+ 	public JavaElement resolved(Binding binding) {
+ 		return this;
+ 	}
++	public JavaElement unresolved() {
++		return this;
++	}
+ 	protected String tabString(int tab) {
+ 		StringBuffer buffer = new StringBuffer();
+ 		for (int i = tab; i > 0; i--)

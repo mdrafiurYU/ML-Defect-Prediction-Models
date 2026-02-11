@@ -1,0 +1,15 @@
+diff --git a/xkb/xkbAccessX.c b/xkb/xkbAccessX.c
+index b98b0d8..4a0f561 100644
+--- a/xkb/xkbAccessX.c
++++ b/xkb/xkbAccessX.c
+@@ -132,9 +132,7 @@ xEvent		xE;
+ 	DebugF("[xkb] AXKE: Key %d %s\n",keyCode,(xE.u.u.type==KeyPress?"down":"up"));
+     }
+ 
+-    if (_XkbIsPressEvent(type))
+-	XkbDDXKeyClick(keybd,keyCode,TRUE);
+-    else if (isRepeat)
++    if (!_XkbIsPressEvent(type) && isRepeat)
+ 	XkbLastRepeatEvent=	(pointer)&xE;
+     XkbProcessKeyboardEvent(&xE,keybd,1L);
+     XkbLastRepeatEvent= NULL;

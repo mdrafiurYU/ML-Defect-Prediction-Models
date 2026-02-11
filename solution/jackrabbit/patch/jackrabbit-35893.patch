@@ -1,0 +1,23 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Bean.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Bean.java
+index 3330e3a..6f7e4f0 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Bean.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Bean.java
+@@ -16,8 +16,10 @@
+  */
+ package org.apache.jackrabbit.ocm.mapper.impl.annotation;
+ 
++import java.lang.annotation.ElementType;
+ import java.lang.annotation.Retention;
+ import java.lang.annotation.RetentionPolicy;
++import java.lang.annotation.Target;
+ 
+ import org.apache.jackrabbit.ocm.manager.beanconverter.impl.DefaultBeanConverterImpl;
+ 
+@@ -27,6 +29,7 @@ import org.apache.jackrabbit.ocm.manager.beanconverter.impl.DefaultBeanConverter
+  * 
+  */
+ @Retention(RetentionPolicy.RUNTIME)
++@Target({ElementType.FIELD, ElementType.METHOD })
+ public @interface Bean {
+ 
+ 	String jcrName() default "";

@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 608fa9b..41118c0 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -187,7 +187,11 @@ xf86ActivateDevice(LocalDevicePtr local)
+ #endif
+ 
+         /* Only create a new sprite if it's a non-shared pointer */
+-        InitSprite(dev, IsPointerDevice(dev) && dev->isMPDev);
++        if (IsPointerDevice(dev) && dev->isMPDev)
++            InitializeSprite(pDev, NullWindow);
++        else 
++            PairDevices(pairingClient, inputInfo.pointer, pDev);
++
+         RegisterOtherDevice(dev);
+ 
+         if (serverGeneration == 1) 

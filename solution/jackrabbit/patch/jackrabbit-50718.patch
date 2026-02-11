@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java
+index dadf215..3d0fd0a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java
+@@ -65,7 +65,7 @@ public class RepositoryDescriptorTest extends AbstractJCRTest {
+     protected void setUp() throws Exception {
+         isReadOnly = true;
+         super.setUp();
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+     }
+ 
+     /**

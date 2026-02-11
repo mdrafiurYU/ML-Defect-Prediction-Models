@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java b/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
+index 214a1fb..d72ad6e 100644
+--- a/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
++++ b/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
+@@ -67,7 +67,7 @@ public class TestEntryCreators extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     directory = newDirectory();
+-    RandomIndexWriter writer= new RandomIndexWriter(random, directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
++    RandomIndexWriter writer= new RandomIndexWriter(random, directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).setMergePolicy(newLogMergePolicy()));
+ 
+     typeTests = new NumberTypeTester[] {
+         new NumberTypeTester( "theRandomByte",   "getBytes",   ByteValuesCreator.class,   ByteParser.class ),

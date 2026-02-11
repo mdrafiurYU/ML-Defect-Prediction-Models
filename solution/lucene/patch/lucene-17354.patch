@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/packed/PackedWriter.java b/lucene/src/java/org/apache/lucene/util/packed/PackedWriter.java
+index 0cf0549..b2c86dd 100644
+--- a/lucene/src/java/org/apache/lucene/util/packed/PackedWriter.java
++++ b/lucene/src/java/org/apache/lucene/util/packed/PackedWriter.java
+@@ -106,6 +106,7 @@ class PackedWriter extends PackedInts.Writer {
+     }
+   }
+ 
++  @Override
+   public String toString() {
+     return "PackedWriter(written " + written + "/" + valueCount + " with "
+             + bitsPerValue + " bits/value)";

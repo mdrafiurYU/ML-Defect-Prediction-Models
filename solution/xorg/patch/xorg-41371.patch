@@ -1,0 +1,13 @@
+diff --git a/dix/dixutils.c b/dix/dixutils.c
+index 340564e..1dfb346 100644
+--- a/dix/dixutils.c
++++ b/dix/dixutils.c
+@@ -614,7 +614,7 @@ ClientSleep (ClientPtr client, ClientSleepProcPtr function, pointer closure)
+     return TRUE;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ ClientSignal (ClientPtr client)
+ {
+     SleepQueuePtr   q;

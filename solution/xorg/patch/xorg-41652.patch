@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/ddc/edid.h b/hw/xfree86/ddc/edid.h
+index aeda6b3..31bc7c1 100644
+--- a/hw/xfree86/ddc/edid.h
++++ b/hw/xfree86/ddc/edid.h
+@@ -12,6 +12,10 @@
+ #ifndef _EDID_H_
+ #define _EDID_H_ 
+ 
++#ifndef _X_EXPORT
++# include <X11/Xfuncproto.h>
++#endif
++
+ /* read complete EDID record */
+ #define EDID1_LEN 128
+ #define BITS_PER_BYTE 9

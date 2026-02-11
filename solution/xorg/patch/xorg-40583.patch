@@ -1,0 +1,23 @@
+diff --git a/hw/dmx/dmx.h b/hw/dmx/dmx.h
+index 00200a8..05e5fab 100644
+--- a/hw/dmx/dmx.h
++++ b/hw/dmx/dmx.h
+@@ -341,16 +341,14 @@ do {									\
+ #define _MAXSCREENSALLOCF(o,size,fatal)                                 \
+     do {                                                                \
+         if (!o) {                                                       \
+-            o = xalloc((size) * sizeof(*(o)));                          \
+-            if (o) memset(o, 0, (size) * sizeof(*(o)));                 \
++            o = xcalloc((size), sizeof(*(o)));                          \
+             if (!o && fatal) FatalError(MAXSCREEN_FAILED_TXT #o);       \
+         }                                                               \
+     } while (0)
+ #define _MAXSCREENSALLOCR(o,size,retval)                                \
+     do {                                                                \
+         if (!o) {                                                       \
+-            o = xalloc((size) * sizeof(*(o)));                          \
+-            if (o) memset(o, 0, (size) * sizeof(*(o)));                 \
++            o = xcalloc((size), sizeof(*(o)));                          \
+             if (!o) return retval;                                      \
+         }                                                               \
+     } while (0)

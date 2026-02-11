@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index 385a8fa..d70273a 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -724,7 +724,7 @@ __glXDRIscreenProbe(ScreenPtr pScreen)
+     char filename[128];
+     Bool isCapable;
+ 
+-    if (dlsym (NULL, "DRIQueryDirectRenderingCapable") == NULL) {
++    if (dlsym (RTLD_DEFAULT, "DRIQueryDirectRenderingCapable") == NULL) {
+ 	LogMessage(X_ERROR, "AIGLX: DRI module not loaded\n");
+ 	return NULL;
+     }

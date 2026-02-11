@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNode.java
+index 315fbff..8b46d25 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ScoreNode.java
+@@ -37,7 +37,7 @@ public final class ScoreNode {
+     /**
+      * The score of the node.
+      */
+-    private final float score;
++    private float score;
+ 
+     /**
+      * The lucene document number for this score node. Set to <code>-1</code> if
+@@ -83,6 +83,15 @@ public final class ScoreNode {
+     }
+ 
+     /**
++     * Sets a new score value.
++     *
++     * @param score the score value.
++     */
++    public void setScore(float score) {
++        this.score = score;
++    }
++
++    /**
+      * Returns the document number for this score node.
+      *
+      * @param reader the current index reader to look up the document if

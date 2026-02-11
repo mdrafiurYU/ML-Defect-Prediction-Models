@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DynamicPooledExecutor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DynamicPooledExecutor.java
+index c7f4649..21887a1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DynamicPooledExecutor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DynamicPooledExecutor.java
+@@ -50,7 +50,6 @@ public class DynamicPooledExecutor {
+     public DynamicPooledExecutor() {
+         executor = new PooledExecutor();
+         executor.setKeepAliveTime(500);
+-        executor.waitWhenBlocked();
+         adjustPoolSize();
+     }

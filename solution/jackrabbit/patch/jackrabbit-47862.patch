@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java
+index 62ccbee..43055a3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/JackrabbitRepositoryStub.java
+@@ -200,8 +200,10 @@ public class JackrabbitRepositoryStub extends RepositoryStub {
+         addQueryTestData(getOrAddNode(data, "query"));
+         addNodeTestData(getOrAddNode(data, "node"));
+         addExportTestData(getOrAddNode(data, "docViewTest"));
+-        addRetentionTestData(getOrAddNode(data, "retentionTest"));
+-        
++
++        Node conf = getOrAddNode(session.getRootNode(), "testconf");
++        addRetentionTestData(getOrAddNode(conf, "retentionTest"));
++
+         session.save();
+     }

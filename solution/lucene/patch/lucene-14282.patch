@@ -1,0 +1,24 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java b/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java
+index 8a3d85a..95b03bf 100644
+--- a/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java
++++ b/solr/src/test/org/apache/solr/core/TestXIncludeConfig.java
+@@ -1,5 +1,8 @@
+ package org.apache.solr.core;
+ 
++import java.io.File;
++
++import org.apache.commons.io.FileUtils;
+ import org.apache.solr.util.AbstractSolrTestCase;
+ import org.apache.solr.request.SolrRequestHandler;
+ 
+@@ -24,7 +27,9 @@ public class TestXIncludeConfig extends AbstractSolrTestCase {
+ 
+   @Override
+   public void setUp() throws Exception {
+-
++    File dest = new File("solrconfig-reqHandler.incl");
++    dest.deleteOnExit();
++    FileUtils.copyFile(getFile("solr/conf/solrconfig-reqHandler.incl"), dest);
+     supports = true;
+     javax.xml.parsers.DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+     try {

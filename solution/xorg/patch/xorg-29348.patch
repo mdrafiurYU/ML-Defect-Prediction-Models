@@ -1,0 +1,13 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index 0a08aff..2c10398 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -1495,7 +1495,7 @@ fbComposite (CARD8      op,
+     {
+ 	xMask += pMask->pDrawable->x;
+ 	yMask += pMask->pDrawable->y;
+-	maskRepeat = pMask->repeat == RepeatNormal;
++	maskRepeat = pMask->repeatType == RepeatNormal;
+ 
+ 	if (pMask->filter == PictFilterConvolution)
+ 	    maskTransform = TRUE;

@@ -1,0 +1,34 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index aaceeb8..0d5d0f5 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -243,6 +243,15 @@ typedef struct _ExaMigrationRec {
+     RegionPtr pReg;
+ } ExaMigrationRec, *ExaMigrationPtr;
+ 
++typedef struct {
++    INT16 xSrc;
++    INT16 ySrc;
++    INT16 xDst;
++    INT16 yDst;
++    INT16 width;
++    INT16 height;
++} ExaCompositeRectRec, *ExaCompositeRectPtr;
++
+ /**
+  * exaDDXDriverInit must be implemented by the DDX using EXA, and is the place
+  * to set EXA options or hook in screen functions to handle using EXA as the AA.
+@@ -457,6 +466,13 @@ exaComposite(CARD8	op,
+ 	     CARD16	height);
+ 
+ void
++exaCompositeRects(CARD8	              op,
++		  PicturePtr	      Src,
++		  PicturePtr	      pDst,
++		  int                 nrect,
++		  ExaCompositeRectPtr rects);
++
++void
+ exaTrapezoids (CARD8 op, PicturePtr pSrc, PicturePtr pDst,
+                PictFormatPtr maskFormat, INT16 xSrc, INT16 ySrc,
+                int ntrap, xTrapezoid *traps);

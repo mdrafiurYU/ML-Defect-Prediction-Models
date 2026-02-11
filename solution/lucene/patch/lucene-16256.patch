@@ -1,0 +1,53 @@
+diff --git a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+index cd1df94..8804965 100644
+--- a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
++++ b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+@@ -610,6 +610,8 @@ public class MemoryIndex implements Serializable {
+     /** Term for this field's fieldName, lazily computed on demand */
+     public transient Term template;
+ 
++    private final long sumTotalTermFreq;
++
+     private static final long serialVersionUID = 2882195016849084649L;  
+ 
+     public Info(HashMap<BytesRef,ArrayIntList> terms, int numTokens, int numOverlapTokens, float boost) {
+@@ -617,6 +619,15 @@ public class MemoryIndex implements Serializable {
+       this.numTokens = numTokens;
+       this.numOverlapTokens = numOverlapTokens;
+       this.boost = boost;
++      long sum = 0;
++      for(Map.Entry<BytesRef,ArrayIntList> ent : terms.entrySet()) {
++        sum += ent.getValue().size();
++      }
++      sumTotalTermFreq = sum;
++    }
++
++    public long getSumTotalTermFreq() {
++      return sumTotalTermFreq;
+     }
+     
+     /**
+@@ -826,6 +837,11 @@ public class MemoryIndex implements Serializable {
+               public long getUniqueTermCount() {
+                 return info.sortedTerms.length;
+               }
++
++              @Override
++              public long getSumTotalTermFreq() {
++                return info.getSumTotalTermFreq();
++              }
+             };
+           }
+         }
+@@ -896,6 +912,11 @@ public class MemoryIndex implements Serializable {
+       }
+ 
+       @Override
++      public long totalTermFreq() {
++        return info.sortedTerms[termUpto].getValue().size();
++      }
++
++      @Override
+       public DocsEnum docs(Bits skipDocs, DocsEnum reuse) {
+         if (reuse == null || !(reuse instanceof MemoryDocsEnum)) {
+           reuse = new MemoryDocsEnum();

@@ -1,0 +1,16 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/LongDocValues.java b/solr/src/java/org/apache/solr/search/function/LongDocValues.java
+index f5117bd..f0e8f6d 100644
+--- a/solr/src/java/org/apache/solr/search/function/LongDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/LongDocValues.java
+@@ -39,6 +39,11 @@ public abstract class LongDocValues extends DocValues {
+   }
+ 
+   @Override
++  public boolean boolVal(int doc) {
++    return longVal(doc) != 0;
++  }
++
++  @Override
+   public String strVal(int doc) {
+     return Long.toString(longVal(doc));
+   }

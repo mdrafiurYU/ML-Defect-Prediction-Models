@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java
+index 0aedd01..c7b04bb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java
+@@ -278,8 +278,8 @@ public class DefaultHighlighter {
+                 for (; skippedChars >= 0; skippedChars--) {
+                     if (Character.isWhitespace(cbuf[skippedChars])) {
+                         firstWhitespace = skippedChars;
+-                        if (skippedChars - 1 >= 0 &&
+-                                cbuf[skippedChars - 1] == '.') {
++                        if (skippedChars - 1 >= 0
++                                && cbuf[skippedChars - 1] == '.') {
+                             skippedChars++;
+                             break;
+                         }

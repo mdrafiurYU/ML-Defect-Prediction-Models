@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CommitIndexTask.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CommitIndexTask.java
+index 63a52ff..2b026d8 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CommitIndexTask.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/CommitIndexTask.java
+@@ -41,6 +41,7 @@ public class CommitIndexTask extends PerfTask {
+   
+   @Override
+   public void setParams(String params) {
++    super.setParams(params);
+     commitUserData = new HashMap<String,String>();
+     commitUserData.put(OpenReaderTask.USER_DATA, params);
+   }

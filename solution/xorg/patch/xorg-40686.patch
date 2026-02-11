@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/Sbus.c b/hw/xfree86/os-support/bus/Sbus.c
+index ff257a8..8763d0e 100644
+--- a/hw/xfree86/os-support/bus/Sbus.c
++++ b/hw/xfree86/os-support/bus/Sbus.c
+@@ -321,7 +321,7 @@ sparcPromAssignNodes(void)
+     FILE *f;
+     sbusDevicePtr devicePtrs[32];
+ 
+-    (void)memset(devicePtrs, 0, sizeof(devicePtrs));
++    memset(devicePtrs, 0, sizeof(devicePtrs));
+     for (psdpp = xf86SbusInfo, n = 0; (psdp = *psdpp); psdpp++, n++) {
+ 	if (psdp->fbNum != n)
+ 	    holes = 1;

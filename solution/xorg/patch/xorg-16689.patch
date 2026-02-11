@@ -1,0 +1,32 @@
+diff --git a/hw/xfree86/utils/xorgcfg/interface.c b/hw/xfree86/utils/xorgcfg/interface.c
+index f3be793..0bc6a5d 100644
+--- a/hw/xfree86/utils/xorgcfg/interface.c
++++ b/hw/xfree86/utils/xorgcfg/interface.c
+@@ -1,3 +1,4 @@
++/* $XdotOrg: $ */
+ /*
+  * Copyright (c) 2000 by Conectiva S.A. (http://www.conectiva.com)
+  * 
+@@ -528,19 +529,14 @@ main(int argc, char *argv[])
+ 
+     if (!config_set && startedx) {
+ 	XtFree(XF86Config_path);
+-#ifdef XF86CONFIG
++#ifndef XF86CONFIG
++# define XF86CONFIG __XCONFIGFILE__
++#endif
+ # ifdef XF86CONFIGDIR
+ 	XF86Config_path = XtNewString(XF86CONFIGDIR "/" XF86CONFIG);
+ # else
+ 	XF86Config_path = XtNewString("/etc/X11/" XF86CONFIG);
+ # endif
+-#else
+-# ifdef XF86CONFIGDIR
+-	XF86Config_path = XtNewString(XF86CONFIGDIR "/"__XCONFIGFILE__);
+-# else
+-	XF86Config_path = XtNewString("/etc/X11/"__XCONFIGFILE__);
+-# endif
+-#endif
+     }
+     XtAppMainLoop(appcon);
+     if (startedx)

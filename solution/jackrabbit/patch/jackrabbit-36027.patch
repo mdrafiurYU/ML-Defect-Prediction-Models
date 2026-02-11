@@ -1,0 +1,13 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/atomictypeconverter/impl/AtomicTypeConverterProviderImpl.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/atomictypeconverter/impl/AtomicTypeConverterProviderImpl.java
+index 37377cb..befb009 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/atomictypeconverter/impl/AtomicTypeConverterProviderImpl.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/main/java/org/apache/jackrabbit/ocm/manager/atomictypeconverter/impl/AtomicTypeConverterProviderImpl.java
+@@ -70,7 +70,7 @@ public class AtomicTypeConverterProviderImpl implements AtomicTypeConverterProvi
+         }
+         Class converterClass= (Class) m_converters.get(clazz);
+         if(null == converterClass) {
+-            throw new IncorrectAtomicTypeException("No registered converter for class '" + clazz + "'");
++            throw new IncorrectAtomicTypeException("No registered converter for a field based on the class :'" + clazz + "'");
+         }
+         
+         try {

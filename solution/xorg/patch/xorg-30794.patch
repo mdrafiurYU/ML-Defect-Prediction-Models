@@ -1,0 +1,21 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 9e0f5be..f5e119e 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -267,10 +267,12 @@ mieqProcessInputEvents(void)
+                 return;
+             }
+ 
+-            /* If this is a core event, make sure our keymap, et al, is
+-             * changed to suit. */
+-            if (e->events->event[0].u.u.type == KeyPress ||
+-                e->events->event[0].u.u.type == KeyRelease) {
++            /* Make sure our keymap, et al, is changed to suit. */
++            if ((e->events->event[0].u.u.type == DeviceKeyPress ||
++                e->events->event[0].u.u.type == DeviceKeyRelease ||
++                e->events->event[0].u.u.type == KeyPress ||
++                e->events->event[0].u.u.type == KeyRelease) && 
++                    e->pDev->coreEvents) {
+                 SwitchCoreKeyboard(e->pDev);
+             }
+ 

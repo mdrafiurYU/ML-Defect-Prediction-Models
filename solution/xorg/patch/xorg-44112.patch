@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_apm.c b/hw/xfree86/os-support/linux/lnx_apm.c
+index 16ac80d..8cf318f 100644
+--- a/hw/xfree86/os-support/linux/lnx_apm.c
++++ b/hw/xfree86/os-support/linux/lnx_apm.c
+@@ -180,7 +180,7 @@ lnxAPMOpen(void)
+ 	    close(pfd);
+ 	xf86PMGetEventFromOs = lnxPMGetEventFromOs;
+ 	xf86PMConfirmEventToOs = lnxPMConfirmEventToOs;
+-	APMihPtr = xf86AddInputHandler(fd,xf86HandlePMEvents,NULL);
++	APMihPtr = xf86AddGeneralHandler(fd, xf86HandlePMEvents, NULL);
+ 	xf86MsgVerb(X_INFO,3,"Open APM successful\n");
+ 	return lnxCloseAPM;
+     }
+@@ -197,7 +197,7 @@ lnxCloseAPM(void)
+    ErrorF("APM: Closing device\n");
+ #endif
+     if (APMihPtr) {
+-	fd = xf86RemoveInputHandler(APMihPtr);
++	fd = xf86RemoveGeneralHandler(APMihPtr);
+ 	close(fd);
+ 	APMihPtr = NULL;
+     }

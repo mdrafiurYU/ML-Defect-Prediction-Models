@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/BatchLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/BatchLogger.java
+index 6eba2dc..0430137 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/BatchLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/BatchLogger.java
+@@ -123,6 +123,14 @@ public class BatchLogger extends AbstractLogger implements Batch {
+             }}, "setMixins(NodeId, Name[])", new Object[]{nodeId, mixinNodeTypeNames});
+     }
+ 
++    public void setPrimaryType(final NodeId nodeId, final Name primaryNodeTypeName) throws RepositoryException {
++        execute(new Callable() {
++            public Object call() throws RepositoryException {
++                batch.setPrimaryType(nodeId, primaryNodeTypeName);
++                return null;
++            }}, "setPrimaryType(NodeId, Name)", new Object[]{nodeId, primaryNodeTypeName});
++    }
++
+     public void move(final NodeId srcNodeId, final NodeId destParentNodeId, final Name destName)
+             throws RepositoryException {

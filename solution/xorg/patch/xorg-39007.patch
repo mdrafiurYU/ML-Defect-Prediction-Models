@@ -1,0 +1,18 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index df53613..6151421 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -175,10 +175,9 @@ AddInputDevice(ClientPtr client, DeviceProc deviceProc, Bool autoStart)
+     dev->last.numValuators = 0;
+ 
+     /* device properties */
+-    dev->properties  = NULL;
+-    dev->SetProperty = NULL;
+-    dev->GetProperty = NULL;
+-    dev->pendingProperties = FALSE;
++    dev->properties.properties = NULL;
++    dev->properties.pendingProperties = FALSE;
++    dev->properties.handlers = NULL;
+ 
+     /*  security creation/labeling check
+      */

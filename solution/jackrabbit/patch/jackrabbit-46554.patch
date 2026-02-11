@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java
+index df12036..7ee4bbd 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java
+@@ -250,4 +250,11 @@ public class AbstractQueryTest extends AbstractJCRTest {
+             return qm.createQuery(statement, Query.XPATH).execute();
+         }
+     }
++
++    /**
++     * @return the query handler inside the {@link #qm query manager}.
++     */
++    protected QueryHandler getQueryHandler() {
++        return ((QueryManagerImpl) qm).getQueryHandler();
++    }
+ }

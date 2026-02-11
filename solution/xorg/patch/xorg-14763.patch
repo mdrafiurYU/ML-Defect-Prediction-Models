@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winrandr.c b/hw/xwin/winrandr.c
+index 590b3f4..7b5b135 100755
+--- a/hw/xwin/winrandr.c
++++ b/hw/xwin/winrandr.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ 

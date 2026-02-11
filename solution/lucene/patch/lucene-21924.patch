@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+index b8ede7f..722a437 100644
+--- a/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
++++ b/lucene/src/test/org/apache/lucene/TestExternalCodecs.java
+@@ -490,6 +490,16 @@ public class TestExternalCodecs extends LuceneTestCase {
+     }
+ 
+     @Override
++    public PerDocConsumer docsConsumer(PerDocWriteState state) throws IOException {
++      return null;
++    }
++
++    @Override
++    public PerDocValues docsProducer(SegmentReadState state) throws IOException {
++      return null;
++    }
++
++    @Override
+     public void getExtensions(Set<String> extensions) {
+     }

@@ -1,0 +1,34 @@
+diff --git a/Xext/xevie.c b/Xext/xevie.c
+index a5b1837..bbbf045 100644
+--- a/Xext/xevie.c
++++ b/Xext/xevie.c
+@@ -67,8 +67,6 @@ extern int    xeviegrabState;
+ static DISPATCH_PROC(ProcXevieDispatch);
+ static DISPATCH_PROC(SProcXevieDispatch);
+ 
+-static void		XevieResetProc (ExtensionEntry *extEntry);
+-
+ static unsigned char	XevieReqCode = 0;
+ static int		XevieErrorBase;
+ 
+@@ -140,19 +138,13 @@ XevieExtensionInit (void)
+ 				XevieNumberErrors,
+ 				ProcXevieDispatch,
+ 				SProcXevieDispatch,
+-				XevieResetProc,
++				NULL,
+ 				StandardMinorOpcode))) {
+ 	XevieReqCode = (unsigned char)extEntry->base;
+ 	XevieErrorBase = extEntry->errorBase;
+     }
+ }
+ 
+-/*ARGSUSED*/
+-static 
+-void XevieResetProc (ExtensionEntry *extEntry)
+-{
+-}
+-
+ static 
+ int ProcXevieQueryVersion (ClientPtr client)
+ {

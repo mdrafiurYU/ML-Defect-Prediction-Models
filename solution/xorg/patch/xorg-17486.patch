@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_mouse.c b/hw/xfree86/os-support/bsd/bsd_mouse.c
+index e4a1a4e..6ef3001 100644
+--- a/hw/xfree86/os-support/bsd/bsd_mouse.c
++++ b/hw/xfree86/os-support/bsd/bsd_mouse.c
+@@ -551,6 +551,7 @@ usbMouseProc(DeviceIntPtr pPointer, int what)
+ 	    }
+ 	}
+ 	pMse->lastButtons = 0;
++	pMse->lastMappedButtons = 0;
+ 	pMse->emulateState = 0;
+ 	pPointer->public.on = TRUE;
+ 	break;

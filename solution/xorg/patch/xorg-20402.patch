@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/glxProxy/glxsingle.c b/hw/dmx/glxProxy/glxsingle.c
+index 5a8f727..e353263 100644
+--- a/hw/dmx/glxProxy/glxsingle.c
++++ b/hw/dmx/glxProxy/glxsingle.c
+@@ -801,7 +801,7 @@ int __glXDisp_ReadPixels(__GLXclientState *cl, GLbyte *pc)
+     }
+ 
+     buf_size = __glReadPixels_size(format,type,width,height, &ebits, &rowsize);
+-    if (buf_size >= 0) {
++    if (buf_size > 0) {
+        buf = (char *) Xalloc( buf_size );
+        if ( !buf ) {
+ 	  return( BadAlloc );

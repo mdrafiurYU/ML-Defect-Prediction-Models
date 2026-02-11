@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/MergePolicy.java b/lucene/src/java/org/apache/lucene/index/MergePolicy.java
+index d4bd1c3..3ad7298 100644
+--- a/lucene/src/java/org/apache/lucene/index/MergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/MergePolicy.java
+@@ -165,7 +165,7 @@ public abstract class MergePolicy implements java.io.Closeable {
+     public long totalBytesSize() throws IOException {
+       long total = 0;
+       for (SegmentInfo info : segments) {
+-        total += info.sizeInBytes();
++        total += info.sizeInBytes(true);
+       }
+       return total;
+     }

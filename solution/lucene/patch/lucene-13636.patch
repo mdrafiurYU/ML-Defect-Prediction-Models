@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/common/util/TestFastInputStream.java b/solr/src/test/org/apache/solr/common/util/TestFastInputStream.java
+index 30c1d78..a5983e7 100644
+--- a/solr/src/test/org/apache/solr/common/util/TestFastInputStream.java
++++ b/solr/src/test/org/apache/solr/common/util/TestFastInputStream.java
+@@ -40,7 +40,7 @@ public class TestFastInputStream extends LuceneTestCase {
+     String ss = "Helloooooooooooooooooooo";
+     writeChars(gzos, ss, 0, ss.length());
+     gzos.close();
+-    NamedListCodec.writeVInt(10, fos);
++    JavaBinCodec.writeVInt(10, fos);
+     fos.flushBuffer();
+     GZIPInputStream gzis = new GZIPInputStream(new ByteArrayInputStream(b.toByteArray(), 0, b.size()));
+     char[] cbuf = new char[ss.length()];

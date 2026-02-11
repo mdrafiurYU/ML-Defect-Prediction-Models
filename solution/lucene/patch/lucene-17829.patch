@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ScriptTransformer.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ScriptTransformer.java
+index ba06f49..547fc66 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ScriptTransformer.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ScriptTransformer.java
+@@ -47,6 +47,7 @@ public class ScriptTransformer extends Transformer {
+ 
+   private String functionName;
+ 
++  @Override
+   public Object transformRow(Map<String, Object> row, Context context) {
+     try {
+       if (engine == null)

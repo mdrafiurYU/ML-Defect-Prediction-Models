@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+index 27ec3ca..b942827 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+@@ -436,7 +436,7 @@ public final class SegmentInfo implements Cloneable {
+    */
+   public String getNormFileName(int number) {
+     if (hasSeparateNorms(number)) {
+-      return IndexFileNames.fileNameFromGeneration(name, "s" + number, normGen.get(number));
++      return IndexFileNames.fileNameFromGeneration(name, IndexFileNames.SEPARATE_NORMS_EXTENSION + number, normGen.get(number));
+     } else {
+       // single file for all norms
+       return IndexFileNames.fileNameFromGeneration(name, IndexFileNames.NORMS_EXTENSION, WITHOUT_GEN);

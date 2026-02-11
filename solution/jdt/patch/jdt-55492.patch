@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java
+index 2550591..8bc54f0 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java
+@@ -366,7 +366,8 @@ public final class FactoryPathUtil {
+ 
+ 	public static void setFactoryPath(IJavaProject jproj, FactoryPath path) 
+ 			throws CoreException {
+-		Map<FactoryContainer, FactoryPath.Attributes> map = path.getAllContainers();
++		Map<FactoryContainer, FactoryPath.Attributes> map = (path != null) ?
++				path.getAllContainers() : null;
+ 		saveFactoryPathFile(jproj, map);
+ 	}

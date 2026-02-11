@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-jca/src/test/java/org/apache/jackrabbit/jca/test/ConnectionFactoryTest.java b/jackrabbit-jca/src/test/java/org/apache/jackrabbit/jca/test/ConnectionFactoryTest.java
+index fdabc90..4d4fb2b 100644
+--- a/jackrabbit-jca/src/test/java/org/apache/jackrabbit/jca/test/ConnectionFactoryTest.java
++++ b/jackrabbit-jca/src/test/java/org/apache/jackrabbit/jca/test/ConnectionFactoryTest.java
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.jackrabbit.jca.test;
+ 
++import org.apache.jackrabbit.api.XASession;
+ import org.apache.jackrabbit.jca.JCAConnectionRequestInfo;
+ import org.apache.jackrabbit.jca.JCARepositoryHandle;
+ import org.apache.jackrabbit.jca.JCASessionHandle;
+@@ -103,4 +104,19 @@ public final class ConnectionFactoryTest
+         assertTrue(cf instanceof Referenceable);
+     }
+ 
++    /**
++     * Test if the session supports transactions
++     */
++    public void testTransactionSupport() throws Exception {
++        // Create the connection factory
++        Object cf = mcf.createConnectionFactory();
++        assertTrue(cf instanceof JCARepositoryHandle);
++        Repository repository = (Repository) cf;
++
++        // Open a session
++        Session session = repository.login(JCR_SUPERUSER);
++        assertTrue(session instanceof XASession);
++        session.logout();
++    }
++
+ }

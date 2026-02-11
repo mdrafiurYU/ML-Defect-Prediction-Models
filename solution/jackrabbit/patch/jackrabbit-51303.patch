@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java
+index 969dfaa..ec877b3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java
+@@ -74,7 +74,7 @@ public abstract class ProtectedItemModifier {
+ 
+         // check for name collisions
+         // TODO: improve. copied from NodeImpl
+-        NodeState thisState = (NodeState) parentImpl.getItemState();
++        NodeState thisState = parentImpl.getNodeState();
+         ChildNodeEntry cne = thisState.getChildNodeEntry(name, 1);
+         if (cne != null) {
+             // there's already a child node entry with that name;

@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/NodeNameTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/NodeNameTest.java
+index e106b7e..9cba89d 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/NodeNameTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/qom/NodeNameTest.java
+@@ -177,26 +177,6 @@ public class NodeNameTest extends AbstractQOMTest {
+         checkOperator(OPERATOR_EQUAL_TO, false, true, false);
+     }
+ 
+-    public void testGreaterThan() throws RepositoryException {
+-        checkOperator(OPERATOR_GREATER_THAN, true, false, false);
+-    }
+-
+-    public void testGreaterThanOrEqualTo() throws RepositoryException {
+-        checkOperator(OPERATOR_GREATER_THAN_OR_EQUAL_TO, true, true, false);
+-    }
+-
+-    public void testLessThan() throws RepositoryException {
+-        checkOperator(OPERATOR_LESS_THAN, false, false, true);
+-    }
+-
+-    public void testLessThanOrEqualTo() throws RepositoryException {
+-        checkOperator(OPERATOR_LESS_THAN_OR_EQUAL_TO, false, true, true);
+-    }
+-
+-    public void testLike() throws RepositoryException {
+-        checkOperator(OPERATOR_LIKE, false, true, false);
+-    }
+-
+     public void testNotEqualTo() throws RepositoryException {
+         checkOperator(OPERATOR_NOT_EQUAL_TO, true, false, true);
+     }

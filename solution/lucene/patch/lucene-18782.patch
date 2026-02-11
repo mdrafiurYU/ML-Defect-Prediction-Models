@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TextField.java b/solr/src/java/org/apache/solr/schema/TextField.java
+index a30bbfe..2140973 100644
+--- a/solr/src/java/org/apache/solr/schema/TextField.java
++++ b/solr/src/java/org/apache/solr/schema/TextField.java
+@@ -84,6 +84,15 @@ public class TextField extends FieldType {
+     return ByteUtils.UTF8toUTF16(term);
+   }
+ 
++  @Override
++  public void setAnalyzer(Analyzer analyzer) {
++    this.analyzer = analyzer;
++  }
++
++  @Override
++  public void setQueryAnalyzer(Analyzer analyzer) {
++    this.queryAnalyzer = analyzer;
++  }
+ 
+   static Query parseFieldQuery(QParser parser, Analyzer analyzer, String field, String queryText) {
+     int phraseSlop = 0;

@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorDeclarationTestAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorDeclarationTestAnnotationProcessor.java
+index bc31443..82bd87e 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorDeclarationTestAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorDeclarationTestAnnotationProcessor.java
+@@ -165,10 +165,10 @@ public class MirrorDeclarationTestAnnotationProcessor implements AnnotationProce
+ 
+         AnnotationValue valueString = elementString.getDefaultValue();
+         AnnotationValue valueInt = elementInt.getDefaultValue();
+-        assertEquals("", new String("bob"), valueString.getValue());
++        assertEquals("", "bob", valueString.getValue());
+         assertEquals("", new Integer(3), valueInt.getValue());
+-        //assertEquals("", new String("bob"), valueString.toString());
+-        //assertEquals("", new Integer(3), valueInt.toString());
++        assertEquals("", "bob", valueString.toString());
++        assertEquals("", "3", valueInt.toString());
+ 	}
+ 	
+ 	/**

@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FieldNames.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FieldNames.java
+index 7c1a9a3..0239cd7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FieldNames.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FieldNames.java
+@@ -71,6 +71,12 @@ public class FieldNames {
+     public static final String PROPERTIES = "_:PROPERTIES".intern();
+ 
+     /**
++     * Name of the field that contains the names of all properties that are set 
++     * on an indexed node. 
++     */
++    public static final String PROPERTIES_SET = "_:PROPERTIES_SET".intern(); 
++
++    /**
+      * Name of the field that contains the UUIDs of the aggregated nodes. The
+      * terms are not tokenized and not stored, only indexed.
+      */

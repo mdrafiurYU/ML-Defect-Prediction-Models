@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/NullLiteral.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/NullLiteral.java
+index 35aeea5..35f8577 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/NullLiteral.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/NullLiteral.java
+@@ -52,10 +52,11 @@ public class NullLiteral extends MagicLiteral {
+ 	public int nullStatus(FlowInfo flowInfo) {
+ 		return FlowInfo.NULL;
+ 	}
++
++	public Object reusableJSRTarget() {
++		return TypeBinding.NULL;
++	}
+ 	
+-	/**
+-	 * 
+-	 */
+ 	public char[] source() {
+ 		return source;
+ 	}

@@ -1,0 +1,23 @@
+diff --git a/hw/xprint/DiPrint.h b/hw/xprint/DiPrint.h
+index a264779..6801ce0 100644
+--- a/hw/xprint/DiPrint.h
++++ b/hw/xprint/DiPrint.h
+@@ -41,6 +41,7 @@ copyright holders.
+ #ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
+ #endif
++#include <X11/fonts/fontstruct.h>
+ 
+ #ifndef _XpDiPrint_H_
+ #define _XpDiPrint_H_ 1
+@@ -74,6 +75,10 @@ extern void PrinterInitGlobals(void);
+ 
+ extern void PrinterInitOutput(ScreenInfo *pScreenInfo, int argc, char **argv);
+ 
++extern Bool XpClientIsPrintClient(ClientPtr client, FontPathElementPtr fpe);
++
++extern Bool XpClientIsBitmapClient(ClientPtr client);
++
+ extern void _XpVoidNoop(void);
+ 
+ extern Bool _XpBoolNoop(void);

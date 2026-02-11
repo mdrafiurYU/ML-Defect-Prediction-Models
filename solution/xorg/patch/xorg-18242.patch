@@ -1,0 +1,21 @@
+diff --git a/os/oscolor.c b/os/oscolor.c
+index 0365056..d7b1f7b 100644
+--- a/os/oscolor.c
++++ b/os/oscolor.c
+@@ -181,16 +181,6 @@ OsInitColors(void)
+ 
+       was_here = TRUE;
+     }
+-
+-  {
+-      int i = 0, n = 0;
+-      for (i = 0; i < HASHSIZE; i++)
+-          if (!hashTab[i])
+-              n++;
+-
+-      ErrorF("RGB: %d wasted hash slots\n", n);
+-  }
+-
+   return TRUE;
+ }
+ 

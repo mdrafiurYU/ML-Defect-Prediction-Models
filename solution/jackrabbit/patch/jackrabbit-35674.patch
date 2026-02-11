@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java
+index cf353fd..d5f2d8d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/xpath/XPathQueryBuilder.java
+@@ -529,9 +529,6 @@ public class XPathQueryBuilder implements XPathVisitor, XPathTreeConstants {
+             case JJTDOTDOT:
+                 exceptions.add(new InvalidQueryException("Parent axis is not supported"));
+                 break;
+-            case JJTUNIONEXPR:
+-                exceptions.add(new InvalidQueryException("Union expression is not supported"));
+-                break;
+             default:
+                 // per default traverse
+                 node.childrenAccept(this, queryNode);

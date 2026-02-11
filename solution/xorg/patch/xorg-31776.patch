@@ -1,0 +1,12 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 69d4abc..cf7d71a 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -129,6 +129,7 @@ extern int SetModifierMapping(
+ 	KeyClassPtr *          /* k */);
+ 
+ extern void SendDeviceMappingNotify(
++        ClientPtr              /* client, */,
+ 	CARD8                  /* request, */,
+ 	KeyCode                /* firstKeyCode */,
+ 	CARD8                  /* count */,

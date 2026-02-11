@@ -1,0 +1,17 @@
+diff --git a/include/extension.h b/include/extension.h
+index c3d7c21..fb7d741 100644
+--- a/include/extension.h
++++ b/include/extension.h
+@@ -62,6 +62,12 @@ extern void EnableDisableExtensionError(char *name, Bool enable);
+ 
+ extern void ResetExtensionPrivates(void);
+ 
++extern int AllocateExtensionPrivateIndex(void);
++
++extern Bool AllocateExtensionPrivate(
++    int /*index*/,
++    unsigned /*amount*/);
++
+ extern void InitExtensions(int argc, char **argv);
+ 
+ extern void InitVisualWrap(void);

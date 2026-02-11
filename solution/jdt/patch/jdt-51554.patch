@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableDeclarationImpl.java
+index 5153a33..17c59ac 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableDeclarationImpl.java
+@@ -68,7 +68,6 @@ public abstract class ExecutableDeclarationImpl extends MemberDeclarationImpl im
+         if( paramTypes == null || paramTypes.length == 0 )
+             return Collections.emptyList();
+ 
+-        final ITypeBinding declaringClass = methodBinding.getDeclaringClass();
+         final List<ParameterDeclaration> result = new ArrayList<ParameterDeclaration>(paramTypes.length);
+ 
+         if( isFromSource() ){

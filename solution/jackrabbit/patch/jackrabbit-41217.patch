@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java
+index 1ac5241..c43bd9f 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/DateValue.java
+@@ -134,7 +134,7 @@ public class DateValue extends BaseValue {
+         setValueConsumed();
+ 
+         if (date != null) {
+-            return date;
++            return (Calendar) date.clone();
+         } else {
+             throw new ValueFormatException("empty value");
+         }

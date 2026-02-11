@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/FloatConstant.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/FloatConstant.java
+index efa77d3..d7cb42d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/FloatConstant.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/FloatConstant.java
+@@ -14,7 +14,11 @@ public class FloatConstant extends Constant {
+ 	
+ 	float value;
+ 	
+-	public FloatConstant(float value) {
++	public static Constant fromValue(float value) {
++		return new FloatConstant(value);
++	}
++
++	private FloatConstant(float value) {
+ 		this.value = value;
+ 	}

@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java
+index 953af87..47ef3b0 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java
+@@ -41,5 +41,19 @@ public abstract class FactoryContainer
+ 		return _factoryNames;
+ 	}
+ 	
++	@Override
++	public int hashCode() {
++		return getType().hashCode() ^ getId().hashCode();
++	}
++
++	@Override
++	public boolean equals(Object o) {
++		if (!(o instanceof FactoryContainer)) {
++			return false;
++		}
++
++		FactoryContainer other = (FactoryContainer) o;
++		return other.getType() == getType() && other.getId().equals(getId());
++	}
+ }

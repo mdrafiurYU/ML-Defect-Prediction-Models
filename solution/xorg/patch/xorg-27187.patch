@@ -1,0 +1,17 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 96465a7..b043c12 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -716,6 +716,12 @@ exaGetPixmapSize(PixmapPtr pPix);
+ void
+ exaEnableDisableFBAccess (int index, Bool enable);
+ 
++void
++exaMoveInPixmap (PixmapPtr pPixmap);
++
++void
++exaMoveOutPixmap (PixmapPtr pPixmap);
++
+ /**
+  * Returns TRUE if the given planemask covers all the significant bits in the
+  * pixel values for pDrawable.

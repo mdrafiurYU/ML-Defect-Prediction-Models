@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentVersioningTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentVersioningTest.java
+index d76dfbd..242d3c3 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentVersioningTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentVersioningTest.java
+@@ -39,7 +39,7 @@ public class ConcurrentVersioningTest extends AbstractConcurrencyTest {
+      * The total number of operations to execute. E.g. number of checkins
+      * performed by the threads.
+      */
+-    private static final int NUM_OPERATIONS = 200;
++    private static final int NUM_OPERATIONS = 10 * getTestScale();
+ 
+     public void testConcurrentAddVersionable() throws RepositoryException {
+         runTask(new Task() {

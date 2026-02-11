@@ -1,0 +1,15 @@
+diff --git a/Xext/xf86bigfont.c b/Xext/xf86bigfont.c
+index 7614834..1455967 100644
+--- a/Xext/xf86bigfont.c
++++ b/Xext/xf86bigfont.c
+@@ -35,6 +35,10 @@
+  * XLoadQueryFont).
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <sys/types.h>
+ #ifdef HAS_SHM
+ #if defined(linux) && (!defined(__GNU_LIBRARY__) || __GNU_LIBRARY__ < 2)

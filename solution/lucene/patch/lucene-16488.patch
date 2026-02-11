@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/LatLonType.java b/solr/src/java/org/apache/solr/schema/LatLonType.java
+index 7ffdbf6..9045d9e 100644
+--- a/solr/src/java/org/apache/solr/schema/LatLonType.java
++++ b/solr/src/java/org/apache/solr/schema/LatLonType.java
+@@ -371,7 +371,7 @@ class SpatialDistanceQuery extends Query {
+ 
+     @Override
+     public Scorer scorer(AtomicReaderContext context, ScorerContext scorerContext) throws IOException {
+-      return new SpatialScorer(getSimilarity(searcher), context, this);
++      return new SpatialScorer(searcher.getSimilarity(), context, this);
+     }
+ 
+     @Override

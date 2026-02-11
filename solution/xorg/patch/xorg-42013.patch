@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/loadext.c b/hw/xfree86/loader/loadext.c
+index b752328..d8e615f 100644
+--- a/hw/xfree86/loader/loadext.c
++++ b/hw/xfree86/loader/loadext.c
+@@ -40,7 +40,7 @@
+  * This should be static, but miinitext wants it.  FIXME: make extension
+  * initialization not completely terrible.
+  */
+-ExtensionModule *ExtensionModuleList = NULL;
++_X_EXPORT ExtensionModule *ExtensionModuleList = NULL;
+ static int numExtensionModules = 0;
+ 
+ static ExtensionModule *

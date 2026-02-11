@@ -1,0 +1,35 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_apm.c b/hw/xfree86/os-support/linux/lnx_apm.c
+index ebc4534..1c2dc0c 100644
+--- a/hw/xfree86/os-support/linux/lnx_apm.c
++++ b/hw/xfree86/os-support/linux/lnx_apm.c
+@@ -29,6 +29,8 @@
+ # define APM_SUSPEND_FAILED 0xf001
+ #endif
+ 
++static PMClose lnxAPMOpen(void);
++extern PMClose lnxACPIOpen(void);
+ static void lnxCloseAPM(void);
+ static pointer APMihPtr = NULL;
+ 
+@@ -127,6 +129,21 @@ lnxPMConfirmEventToOs(int fd, pmEvent event)
+ PMClose
+ xf86OSPMOpen(void)
+ {
++	PMClose ret = NULL;
++
++	/* Favour ACPI over APM */
++
++	ret = lnxACPIOpen();
++
++	if (!ret)
++		ret = lnxAPMOpen();
++
++	return ret;
++}
++
++static PMClose
++lnxAPMOpen(void)
++{
+     int fd, pfd;    
+ 
+ #ifdef DEBUG

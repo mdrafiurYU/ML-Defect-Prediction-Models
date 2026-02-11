@@ -1,0 +1,16 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 0a211e5..0ae7873 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -588,11 +588,6 @@ ProcRRSetOutputPrimary(ClientPtr client)
+ 	    return RRErrorBase + BadRROutput;
+ 	}
+ 
+-	if (output->crtc) {
+-	    client->errorValue = stuff->output;
+-	    return BadMatch;
+-	}
+-
+ 	if (output->pScreen != pWin->drawable.pScreen) {
+ 	    client->errorValue = stuff->window;
+ 	    return BadMatch;

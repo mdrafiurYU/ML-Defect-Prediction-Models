@@ -1,0 +1,13 @@
+diff --git a/mi/miscrinit.c b/mi/miscrinit.c
+index a1fb2e2..7ca5f5d 100644
+--- a/mi/miscrinit.c
++++ b/mi/miscrinit.c
+@@ -301,7 +301,7 @@ miAllocateGCPrivateIndex()
+     return privateKey;
+ }
+ 
+-_X_EXPORT DevPrivateKey miZeroLineScreenKey;
++_X_EXPORT DevPrivateKey miZeroLineScreenKey = &miZeroLineScreenKey;
+ 
+ _X_EXPORT void
+ miSetZeroLineBias(pScreen, bias)

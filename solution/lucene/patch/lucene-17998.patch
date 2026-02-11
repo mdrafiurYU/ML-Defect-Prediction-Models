@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestVariableResolver.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestVariableResolver.java
+index 2befb0b..55c4b91 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestVariableResolver.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestVariableResolver.java
+@@ -169,6 +169,7 @@ public class TestVariableResolver extends AbstractDataImportHandlerTestCase {
+   }
+ 
+   public static class E extends Evaluator{
++      @Override
+       public String evaluate(String expression, Context context) {
+         return "Hello World";
+       }

@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/SerializingContentHandlerTest.java b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/SerializingContentHandlerTest.java
+index 3d61611..2c3bc16 100644
+--- a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/SerializingContentHandlerTest.java
++++ b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/SerializingContentHandlerTest.java
+@@ -18,20 +18,18 @@ package org.apache.jackrabbit.commons.xml;
+ 
+ import java.io.StringWriter;
+ 
+-import javax.xml.transform.stream.StreamResult;
++import junit.framework.TestCase;
+ 
+ import org.xml.sax.ContentHandler;
+ import org.xml.sax.helpers.AttributesImpl;
+ 
+-import junit.framework.TestCase;
+-
+ public class SerializingContentHandlerTest extends TestCase {
+ 
+     public void testSerializingContentHandler() throws Exception {
+         StringWriter writer = new StringWriter();
+ 
+         ContentHandler handler =
+-            SerializingContentHandler.getSerializer(new StreamResult(writer));
++            SerializingContentHandler.getSerializer(writer);
+         handler.startDocument();
+         handler.startPrefixMapping("p", "uri");
+         handler.startElement("uri", "a", "p:a", new AttributesImpl());

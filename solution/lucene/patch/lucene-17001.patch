@@ -1,0 +1,24 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java b/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java
+index e730335..ea514a8 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexFileDeleter.java
+@@ -18,6 +18,7 @@ package org.apache.lucene.index;
+  */
+ 
+ import org.apache.lucene.util.LuceneTestCase;
++import org.apache.lucene.search.DefaultSimilarity;
+ import org.apache.lucene.search.Similarity;
+ import org.apache.lucene.store.Directory;
+ import org.apache.lucene.store.IndexInput;
+@@ -67,9 +68,9 @@ public class TestIndexFileDeleter extends LuceneTestCase {
+     Term searchTerm = new Term("id", "7");
+     int delCount = reader.deleteDocuments(searchTerm);
+     assertEquals("didn't delete the right number of documents", 1, delCount);
+-
++    Similarity sim = new DefaultSimilarity().get("content");
+     // Set one norm so we get a .s0 file:
+-    reader.setNorm(21, "content", Similarity.getDefault().encodeNormValue(1.5f));
++    reader.setNorm(21, "content", sim.encodeNormValue(1.5f));
+     reader.close();
+ 
+     // Now, artificially create an extra .del file & extra

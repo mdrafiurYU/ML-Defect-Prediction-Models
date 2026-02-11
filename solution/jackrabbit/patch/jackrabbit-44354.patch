@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/BufferedStringValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/BufferedStringValue.java
+index 3503b7a..b14abda 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/BufferedStringValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/BufferedStringValue.java
+@@ -262,7 +262,7 @@ class BufferedStringValue implements TextValue {
+                 }
+             } else {
+                 // all other types
+-                return ValueHelper.deserialize(retrieve(), targetType, true, ValueFactoryImpl.getInstance());
++                return ValueHelper.deserialize(retrieve(), targetType, false, ValueFactoryImpl.getInstance());
+             }
+         } catch (IOException e) {
+             String msg = "failed to retrieve serialized value";

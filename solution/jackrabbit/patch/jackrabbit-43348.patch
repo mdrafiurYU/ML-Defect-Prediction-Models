@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
+index 0ab1d41..fe0a370 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
+@@ -194,4 +194,8 @@ public class BLOBInMemory extends BLOBFileValue {
+         return 0;
+     }
+ 
++    public boolean isSmall() {
++        return true;
++    }
++
+ }

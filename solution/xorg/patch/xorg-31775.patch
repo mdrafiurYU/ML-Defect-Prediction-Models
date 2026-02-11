@@ -1,0 +1,35 @@
+diff --git a/composite/compwindow.c b/composite/compwindow.c
+index bfd2946..5792367 100644
+--- a/composite/compwindow.c
++++ b/composite/compwindow.c
+@@ -99,7 +99,7 @@ compRepaintBorder (ClientPtr pClient, pointer closure)
+ 
+ 	REGION_NULL(pScreen, &exposed);
+ 	REGION_SUBTRACT(pScreen, &exposed, &pWindow->borderClip, &pWindow->winSize);
+-	(*pWindow->drawable.pScreen->PaintWindowBorder)(pWindow, &exposed, PW_BORDER);
++	miPaintWindow(pWindow, &exposed, PW_BORDER);
+ 	REGION_UNINIT(pScreen, &exposed);
+     }
+     return TRUE;
+@@ -240,21 +240,6 @@ compUnrealizeWindow (WindowPtr pWin)
+     return ret;
+ }
+ 
+-void
+-compPaintWindowBackground (WindowPtr pWin, RegionPtr pRegion, int what)
+-{
+-    ScreenPtr		pScreen = pWin->drawable.pScreen;
+-    CompSubwindowsPtr	csw = GetCompSubwindows (pWin);
+-    CompScreenPtr	cs = GetCompScreen (pScreen);
+-    
+-    if (csw && csw->update == CompositeRedirectManual)
+-	return;
+-    pScreen->PaintWindowBackground = cs->PaintWindowBackground;
+-    (*pScreen->PaintWindowBackground) (pWin, pRegion, what);
+-    cs->PaintWindowBackground = pScreen->PaintWindowBackground;
+-    pScreen->PaintWindowBackground = compPaintWindowBackground;
+-}
+-
+ /*
+  * Called after the borderClip for the window has settled down
+  * We use this to make sure our extra borderClip has the right origin

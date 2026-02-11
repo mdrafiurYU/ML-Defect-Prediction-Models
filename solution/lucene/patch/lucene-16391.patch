@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+index 8804965..205cc60 100644
+--- a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
++++ b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+@@ -938,9 +938,9 @@ public class MemoryIndex implements Serializable {
+       }
+ 
+       @Override
+-      public SeekStatus seek(BytesRef term, TermState state) throws IOException {
++      public void seek(BytesRef term, TermState state) throws IOException {
+         assert state != null;
+-        return this.seek(((OrdTermState)state).ord);
++        this.seek(((OrdTermState)state).ord);
+       }
+ 
+       @Override

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
+index 8944a3c..5998489 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
+@@ -208,9 +208,8 @@ public class LuceneQueryBuilder implements QueryNodeVisitor {
+                                     SynonymProvider synonymProvider,
+                                     IndexFormatVersion indexFormatVersion)
+             throws RepositoryException {
+-
+         HierarchyManager hmgr = new HierarchyManagerImpl(
+-                RepositoryImpl.ROOT_NODE_ID, sharedItemMgr, session);
++                RepositoryImpl.ROOT_NODE_ID, sharedItemMgr);
+         LuceneQueryBuilder builder = new LuceneQueryBuilder(
+                 root, session, sharedItemMgr, hmgr, nsMappings,
+                 analyzer, propReg, synonymProvider, indexFormatVersion);

@@ -1,0 +1,19 @@
+diff --git a/GL/glx/glxserver.h b/GL/glx/glxserver.h
+index a79520e..8389737 100644
+--- a/GL/glx/glxserver.h
++++ b/GL/glx/glxserver.h
+@@ -191,7 +191,6 @@ typedef int (*__GLXdispatchVendorPrivProcPtr)(__GLXclientState *, GLbyte *);
+  * Dispatch for GLX commands.
+  */
+ typedef int (*__GLXprocPtr)(__GLXclientState *, char *pc);
+-extern __GLXprocPtr __glXProcTable[];
+ 
+ /*
+  * Tables for computing the size of each rendering command.
+@@ -252,6 +251,4 @@ extern int __glXImageSize(GLenum format, GLenum type,
+     GLint imageHeight, GLint rowLength, GLint skipImages, GLint skipRows,
+     GLint alignment);
+ 
+-extern int __glXDrawArraysReqSize(const GLbyte *pc, Bool swap);
+-
+ #endif /* !__GLX_server_h__ */

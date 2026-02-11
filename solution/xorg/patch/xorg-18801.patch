@@ -1,0 +1,66 @@
+diff --git a/hw/xgl/xglsolid.c b/hw/xgl/xglsolid.c
+index e0cbfc4..8657a9a 100644
+--- a/hw/xgl/xglsolid.c
++++ b/hw/xgl/xglsolid.c
+@@ -31,7 +31,7 @@
+ Bool
+ xglSolid (DrawablePtr	   pDrawable,
+ 	  glitz_operator_t op,
+-	  glitz_color_t	   *color,
++	  glitz_surface_t  *solid,
+ 	  xglGeometryPtr   pGeometry,
+ 	  int		   x,
+ 	  int		   y,
+@@ -43,8 +43,6 @@ xglSolid (DrawablePtr	   pDrawable,
+     glitz_surface_t *surface;
+     int		    xOff, yOff;
+     
+-    XGL_SCREEN_PRIV (pDrawable->pScreen);
+-
+     if (nBox < 1)
+ 	return TRUE;
+ 
+@@ -53,8 +51,6 @@ xglSolid (DrawablePtr	   pDrawable,
+     
+     XGL_GET_DRAWABLE (pDrawable, surface, xOff, yOff);
+ 
+-    glitz_set_rectangle (pScreenPriv->solid, color, 0, 0, 1, 1);
+-
+     if (pGeometry)
+     {
+ 	glitz_surface_set_clip_region (surface, xOff, yOff,
+@@ -72,7 +68,7 @@ xglSolid (DrawablePtr	   pDrawable,
+ 	return FALSE;
+ 
+     glitz_composite (op,
+-		     pScreenPriv->solid, NULL, surface,
++		     solid, NULL, surface,
+ 		     0, 0,
+ 		     0, 0,
+ 		     x + xOff,
+@@ -132,7 +128,7 @@ xglSolidGlyph (DrawablePtr  pDrawable,
+ 	
+     if (xglSolid (pDrawable,
+ 		  pGCPriv->op,
+-		  &pGCPriv->bg,
++		  pGCPriv->bg,
+ 		  NULL,
+ 		  xBack,
+ 		  yBack,
+@@ -143,7 +139,7 @@ xglSolidGlyph (DrawablePtr  pDrawable,
+     {
+ 	if (xglSolid (pDrawable,
+ 		      pGCPriv->op,
+-		      &pGCPriv->fg,
++		      pGCPriv->fg,
+ 		      &geometry,
+ 		      xBack,
+ 		      yBack,
+@@ -153,6 +149,7 @@ xglSolidGlyph (DrawablePtr  pDrawable,
+ 		      REGION_NUM_RECTS (pGC->pCompositeClip)))
+ 	{
+ 	    GEOMETRY_UNINIT (&geometry);
++	    xglAddCurrentBitDamage (pDrawable);
+ 	    return TRUE;
+ 	}
+     }

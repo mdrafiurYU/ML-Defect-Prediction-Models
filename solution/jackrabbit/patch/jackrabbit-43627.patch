@@ -1,0 +1,42 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/ProxyRepository.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/ProxyRepository.java
+index 1096b51..6369bdc 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/ProxyRepository.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/repository/ProxyRepository.java
+@@ -21,8 +21,6 @@ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
+ 
+ import org.apache.jackrabbit.commons.AbstractRepository;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+ 
+ /**
+  * Repository that proxies all method calls to another repository.
+@@ -34,12 +32,6 @@ import org.slf4j.LoggerFactory;
+ public class ProxyRepository extends AbstractRepository {
+ 
+     /**
+-     * Logger instance.
+-     */
+-    private static final Logger logger =
+-        LoggerFactory.getLogger(ProxyRepository.class);
+-
+-    /**
+      * Factory for accessing the proxied repository.
+      */
+     private final RepositoryFactory factory;
+@@ -64,7 +56,6 @@ public class ProxyRepository extends AbstractRepository {
+         try {
+             return factory.getRepository().getDescriptorKeys();
+         } catch (RepositoryException e) {
+-            logger.warn("Unable to access proxied repository", e);
+             return new String[0];
+         }
+     }
+@@ -80,7 +71,6 @@ public class ProxyRepository extends AbstractRepository {
+         try {
+             return factory.getRepository().getDescriptor(key);
+         } catch (RepositoryException e) {
+-            logger.warn("Unable to access proxied repository", e);
+             return null;
+         }
+     }

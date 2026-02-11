@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ResolvedMemberValuePair.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ResolvedMemberValuePair.java
+index 08c2ccb..9319130 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ResolvedMemberValuePair.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ResolvedMemberValuePair.java
+@@ -98,6 +98,10 @@ private void init() {
+ 		this.value = NoValue;
+ }
+ 
++char[] internalName() {
++	return this.internalPair == null ? null : this.internalPair.getName();
++}
++
+ public boolean isDefault() {
+ 	return false;
+ }

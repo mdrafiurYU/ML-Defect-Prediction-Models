@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MemberTypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MemberTypeBinding.java
+index 96130ec..41a349b 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MemberTypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MemberTypeBinding.java
+@@ -15,7 +15,7 @@ import org.eclipse.jdt.core.compiler.CharOperation;
+ public final class MemberTypeBinding extends NestedTypeBinding {
+ public MemberTypeBinding(char[][] compoundName, ClassScope scope, SourceTypeBinding enclosingType) {
+ 	super(compoundName, scope, enclosingType);
+-	this.tagBits |= MemberTypeMask;
++	this.tagBits |= TagBits.MemberTypeMask;
+ }
+ void checkSyntheticArgsAndFields() {
+ 	if (this.isStatic()) return;

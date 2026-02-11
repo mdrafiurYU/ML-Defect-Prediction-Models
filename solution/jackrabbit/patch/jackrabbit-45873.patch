@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java
+index 5eac797..b319c69 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/AuthorizableImpl.java
+@@ -305,7 +305,7 @@ abstract class AuthorizableImpl implements Authorizable, UserConstants {
+             return true;
+         } catch (RepositoryException e) {
+             // revert all pending changes and rethrow.
+-            log.error("Error while editing group membership:", e.getMessage());
++            log.warn("Error while editing group membership:", e.getMessage());
+             getSession().refresh(false);
+             throw e;
+         }

@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+index 8830909..dd79e71 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+@@ -89,11 +89,10 @@ public FlowInfo analyseCode(
+ 
+ 		if (!checkedType.isReifiable()) {
+ 			scope.problemReporter().illegalInstanceOfGenericType(checkedType, this);
+-		} else {
+-			boolean isLegal = checkCastTypesCompatibility(scope, checkedType, expressionType, null);
+-			if (!isLegal) {
+-				scope.problemReporter().notCompatibleTypesError(this, expressionType, checkedType);
+-			}
++		}
++		if ((expressionType != TypeBinding.NULL && expressionType.isBaseType()) // disallow autoboxing
++				|| !checkCastTypesCompatibility(scope, checkedType, expressionType, null)) {
++			scope.problemReporter().notCompatibleTypesError(this, expressionType, checkedType);
+ 		}
+ 		return this.resolvedType = TypeBinding.BOOLEAN;
+ 	}

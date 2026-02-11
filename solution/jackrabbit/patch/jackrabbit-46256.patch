@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 6482751..6d3e60c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -1306,7 +1306,6 @@ public class SearchIndex extends AbstractQueryHandler {
+                     NodeState root = aggregateRules[i].getAggregateRoot(state);
+                     if (root != null) {
+                         map.put(root.getNodeId().getUUID(), root);
+-                        break;
+                     }
+                 }
+             } catch (Exception e) {

@@ -1,0 +1,20 @@
+diff --git a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+index 11dd692..1d4a06c 100644
+--- a/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
++++ b/lucene/contrib/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+@@ -55,6 +55,7 @@ import org.apache.lucene.search.Searcher;
+ import org.apache.lucene.search.Scorer;
+ import org.apache.lucene.search.Similarity;
+ import org.apache.lucene.store.RAMDirectory; // for javadocs
++import org.apache.lucene.util.ArrayUtil;
+ import org.apache.lucene.util.BytesRef;
+ import org.apache.lucene.util.Bits;
+ import org.apache.lucene.util.Constants; // for javadocs
+@@ -522,7 +523,7 @@ public class MemoryIndex implements Serializable {
+       entries[i] = iter.next();
+     }
+     
+-    if (size > 1) Arrays.sort(entries, termComparator);
++    if (size > 1) ArrayUtil.quickSort(entries, termComparator);
+     return entries;
+   }

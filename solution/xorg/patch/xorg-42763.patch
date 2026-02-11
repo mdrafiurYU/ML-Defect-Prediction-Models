@@ -1,0 +1,32 @@
+diff --git a/hw/xwin/winmultiwindowwndproc.c b/hw/xwin/winmultiwindowwndproc.c
+index 1ea6959..8b2a145 100644
+--- a/hw/xwin/winmultiwindowwndproc.c
++++ b/hw/xwin/winmultiwindowwndproc.c
+@@ -1,5 +1,6 @@
+ /*
+  *Copyright (C) 1994-2000 The XFree86 Project, Inc. All Rights Reserved.
++ *Copyright (C) Colin Harrison 2005-2008
+  *
+  *Permission is hereby granted, free of charge, to any person obtaining
+  * a copy of this software and associated documentation files (the
+@@ -28,6 +29,7 @@
+  * Authors:	Kensuke Matsuzaki
+  *		Earle F. Philhower, III
+  *		Harold L Hunt II
++ *              Colin Harrison
+  */
+ 
+ #ifdef HAVE_XWIN_CONFIG_H
+@@ -654,6 +656,12 @@ winTopLevelWindowProc (HWND hwnd, UINT message,
+       if (s_pScreenPriv == NULL || s_pScreenInfo->fIgnoreInput)
+ 	break;
+ 
++      {
++	/* Get the parent window for transient handling */
++	HWND hParent = GetParent(hwnd);
++	if (hParent && IsIconic(hParent)) ShowWindow (hParent, SW_RESTORE);
++      }
++
+       winRestoreModeKeyStates ();
+ 
+       /* Add the keyboard hook if possible */

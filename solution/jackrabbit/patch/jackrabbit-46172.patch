@@ -1,0 +1,48 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java
+index 2303fb6..8c3a527 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplate.java
+@@ -37,6 +37,7 @@ import org.slf4j.LoggerFactory;
+ import javax.jcr.NodeIterator;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
++import javax.jcr.PropertyType;
+ import java.security.Principal;
+ import java.security.acl.Group;
+ import java.util.ArrayList;
+@@ -96,8 +97,7 @@ class ACLTemplate implements JackrabbitAccessControlList {
+      */
+     ACLTemplate(NodeImpl aclNode, PrivilegeRegistry privilegeRegistry) throws RepositoryException {
+         if (aclNode == null || !aclNode.isNodeType(AccessControlConstants.NT_REP_ACL)) {
+-            throw new IllegalArgumentException("Node must be of type: " +
+-                    AccessControlConstants.NT_REP_ACL);
++            throw new IllegalArgumentException("Node must be of type 'rep:ACL'");
+         }
+         SessionImpl sImpl = (SessionImpl) aclNode.getSession();
+         path = aclNode.getParent().getPath();
+@@ -333,6 +333,25 @@ class ACLTemplate implements JackrabbitAccessControlList {
+     }
+ 
+     /**
++     * Returns an empty String array.
++     *
++     * @see JackrabbitAccessControlList#getRestrictionType(String)
++     */
++    public String[] getRestrictionNames() {
++        return new String[0];
++    }
++
++    /**
++     * Always returns {@link PropertyType#UNDEFINED} as no restrictions are
++     * supported.
++     *
++     * @see JackrabbitAccessControlList#getRestrictionType(String)
++     */
++    public int getRestrictionType(String restrictionName) {
++        return PropertyType.UNDEFINED;
++    }
++
++    /**
+      * @see JackrabbitAccessControlList#isEmpty()
+      */
+     public boolean isEmpty() {

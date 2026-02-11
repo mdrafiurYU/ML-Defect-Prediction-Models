@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 2872bf8..0ce07d5 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -1481,6 +1481,8 @@ ScreenRestructured (ScreenPtr pScreen)
+ 
+     for (pDev = inputInfo.devices; pDev; pDev = pDev->next)
+     {
++        if (!DevHasCursor(pDev))
++            continue;
+ 
+         /* GrabDevice doesn't have a confineTo field, so we don't need to
+          * worry about it. */

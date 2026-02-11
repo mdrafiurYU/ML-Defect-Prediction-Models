@@ -1,0 +1,43 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/querymanager/DigesterQueryManagerTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/querymanager/DigesterQueryManagerTest.java
+index 0e2e320..0cac6c8 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/querymanager/DigesterQueryManagerTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/querymanager/DigesterQueryManagerTest.java
+@@ -63,7 +63,7 @@ public class DigesterQueryManagerTest extends DigesterTestBase
+     	      filter.addEqualTo("name", "a test value")
+                     .addEqualTo("id", new Integer(1));
+     	      filter.setScope("/test//");
+-    	      
++    	
+     	      Query query = queryManager.createQuery(filter);
+     	      String jcrExpression = queryManager.buildJCRExpression(query);
+     	      assertNotNull("jcrExpression is null", jcrExpression);
+@@ -74,7 +74,7 @@ public class DigesterQueryManagerTest extends DigesterTestBase
+             e.printStackTrace();
+             fail("Exception occurs during the unit test : " + e);
+         }
+-        
++
+     }
+ 
+     public void testBuildExpression2()
+@@ -86,7 +86,7 @@ public class DigesterQueryManagerTest extends DigesterTestBase
+     	      Filter filter = queryManager.createFilter(C.class);
+     	      filter.addEqualTo("name", "a test value")
+     	            .addEqualTo("id", new Integer(1));
+-    	      
++    	
+     	      Query query = queryManager.createQuery(filter);
+     	      String jcrExpression = queryManager.buildJCRExpression(query);
+     	      assertNotNull("jcrExpression is null", jcrExpression);
+@@ -97,8 +97,8 @@ public class DigesterQueryManagerTest extends DigesterTestBase
+             e.printStackTrace();
+             fail("Exception occurs during the unit test : " + e);
+         }
+-        
++
+     }
+-    
++
+ 
+ }
+\ No newline at end of file

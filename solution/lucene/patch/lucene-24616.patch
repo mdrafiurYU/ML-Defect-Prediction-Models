@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/IntValuesCreator.java b/lucene/src/java/org/apache/lucene/search/cache/IntValuesCreator.java
+index 7c41f4f..1699b11 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/IntValuesCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/IntValuesCreator.java
+@@ -61,8 +61,8 @@ public class IntValuesCreator extends CachedArrayCreator<IntValues>
+   }
+   
+   @Override
+-  public int getSortTypeID() {
+-    return SortField.INT;
++  public SortField.Type getSortType() {
++    return SortField.Type.INT;
+   }
+ 
+ 
+@@ -162,4 +162,4 @@ public class IntValuesCreator extends CachedArrayCreator<IntValues>
+       vals.valid = new Bits.MatchNoBits( maxDoc );
+     }
+   }
+-}
+\ No newline at end of file
++}

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java
+index 6a704ea..fde14ea 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java
+@@ -330,7 +330,7 @@ class AggregateRuleImpl implements AggregateRule {
+                 for (Iterator it = cne.iterator(); it.hasNext(); ) {
+                     NodeId id = ((NodeState.ChildNodeEntry) it.next()).getId();
+                     NodeState ns = (NodeState) ism.getItemState(id);
+-                    if (ns.getNodeTypeName().equals(nodeTypeName)) {
++                    if (nodeTypeName != null || ns.getNodeTypeName().equals(nodeTypeName)) {
+                         collector.add(ns);
+                     }
+                 }

@@ -1,0 +1,20 @@
+diff --git a/hw/kdrive/src/kdrive.c b/hw/kdrive/src/kdrive.c
+index dabce54..bb8f79f 100644
+--- a/hw/kdrive/src/kdrive.c
++++ b/hw/kdrive/src/kdrive.c
+@@ -38,7 +38,6 @@
+ #ifdef XV
+ #include "kxv.h"
+ #endif
+-#include "kaa.h"
+ 
+ #ifdef DPMSExtension
+ #include "dpmsproc.h"
+@@ -225,7 +224,6 @@ KdDisableScreen (ScreenPtr pScreen)
+     
+     if (!pScreenPriv->enabled)
+ 	return;
+-    kaaWaitSync (pScreen);
+     if (!pScreenPriv->closed)
+ 	KdSetRootClip (pScreen, FALSE);
+     KdDisableColormap (pScreen);

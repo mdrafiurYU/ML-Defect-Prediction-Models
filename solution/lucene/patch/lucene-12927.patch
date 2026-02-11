@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestStressIndexing.java b/lucene/src/test/org/apache/lucene/index/TestStressIndexing.java
+index 71e4fb8..fd7d3ca 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestStressIndexing.java
++++ b/lucene/src/test/org/apache/lucene/index/TestStressIndexing.java
+@@ -163,17 +163,8 @@ public class TestStressIndexing extends LuceneTestCase {
+     FSDirectory.
+   */
+   public void testStressIndexAndSearching() throws Exception {
+-    // With ConcurrentMergeScheduler, in RAMDir
+     Directory directory = newDirectory();
+     runStressTest(directory, new ConcurrentMergeScheduler());
+     directory.close();
+-
+-    // With ConcurrentMergeScheduler, in FSDir
+-    File dirPath = _TestUtil.getTempDir("lucene.test.stress");
+-    directory = FSDirectory.open(dirPath);
+-    runStressTest(directory, new ConcurrentMergeScheduler());
+-    directory.close();
+-
+-    _TestUtil.rmDir(dirPath);
+   }
+ }

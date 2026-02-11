@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/OR_OR_Expression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/OR_OR_Expression.java
+index 570a672..0f6c5ac 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/OR_OR_Expression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/OR_OR_Expression.java
+@@ -148,7 +148,7 @@ public class OR_OR_Expression extends BinaryExpression {
+ 				} else {
+ 					codeStream.iconst_0();
+ 				}
+-				if (trueLabel.hasForwardReferences()) {
++				if (trueLabel.forwardReferenceCount > 0) {
+ 					if ((bits & IsReturnedValue) != 0) {
+ 						codeStream.generateImplicitConversion(this.implicitConversion);
+ 						codeStream.generateReturnBytecode(this);

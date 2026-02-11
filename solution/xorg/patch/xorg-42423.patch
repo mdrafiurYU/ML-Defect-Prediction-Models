@@ -1,0 +1,13 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index d0e7f95..d529bec 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -448,7 +448,7 @@ SyncSendCounterNotifyEvents(ClientPtr client, SyncAwait **ppAwait,
+ /* This function is called when an alarm's counter is destroyed.
+  * It is plugged into pTrigger->CounterDestroyed (for alarm triggers).
+  */
+-void
++static void
+ SyncAlarmCounterDestroyed(SyncTrigger *pTrigger)
+ {
+     SyncAlarm *pAlarm = (SyncAlarm *)pTrigger;

@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java
+index d6fdaa9..001fa6c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/ChangeLogBasedHierarchyMgr.java
+@@ -60,11 +60,8 @@ class ChangeLogBasedHierarchyMgr extends HierarchyManagerImpl {
+      */
+     ChangeLogBasedHierarchyMgr(NodeId rootNodeId,
+                                ItemStateManager manager,
+-                               ChangeLog changes,
+-                               PathResolver resolver) {
+-        super(rootNodeId,
+-                new ChangeLogItemStateManager(manager, changes),
+-                resolver);
++                               ChangeLog changes) {
++        super(rootNodeId, new ChangeLogItemStateManager(manager, changes));
+         zombieHierMgr = new ZombieHierarchyManager(
+                 this, provider, new AtticItemStateManager(changes));
+     }

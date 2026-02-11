@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/TestAll.java
+index 544d79c..d27c780 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/TestAll.java
+@@ -59,6 +59,10 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(CanAddChildNodeCallWithoutNodeTypeTest.class);
+ 
+         suite.addTestSuite(CanRemoveItemTest.class);
++        
++        // JCR 2.0
++
++        suite.addTestSuite(NodeTypeCreationTest.class);
+ 
+         return suite;
+     }

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java
+index 1b1645f..a61c1b4 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java
+@@ -37,7 +37,7 @@ public class JavadocFieldReference extends FieldReference {
+ 	/*
+ 	 * Resolves type on a Block or Class scope.
+ 	 */
+-	private TypeBinding internalResolveType(Scope scope) {
++	protected TypeBinding internalResolveType(Scope scope) {
+ 
+ 		this.constant = NotAConstant;
+ 		if (this.receiver == null) {

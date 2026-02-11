@@ -1,0 +1,12 @@
+diff --git a/xfixes/xfixes.c b/xfixes/xfixes.c
+index d1225c6..3b8ed5a 100644
+--- a/xfixes/xfixes.c
++++ b/xfixes/xfixes.c
+@@ -69,6 +69,7 @@ ProcXFixesQueryVersion(ClientPtr client)
+     REQUEST(xXFixesQueryVersionReq);
+ 
+     REQUEST_SIZE_MATCH(xXFixesQueryVersionReq);
++    memset(&rep, 0, sizeof(xXFixesQueryVersionReply));
+     rep.type = X_Reply;
+     rep.length = 0;
+     rep.sequenceNumber = client->sequence;

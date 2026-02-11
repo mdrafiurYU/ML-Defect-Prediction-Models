@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/exception/NestableRuntimeException.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/exception/NestableRuntimeException.java
+index 7193a31..c0d87fa 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/exception/NestableRuntimeException.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/exception/NestableRuntimeException.java
+@@ -87,8 +87,8 @@ public class NestableRuntimeException extends RuntimeException {
+         if (getCause() == null) {
+             return super.getMessage();
+         } else {
+-            return super.getMessage() 
+-                + "; nested exception is " 
++            return super.getMessage()
++                + "; nested exception is "
+                 + getCause().getClass().getName()
+                 + ": " + getCause().getMessage();
+         }

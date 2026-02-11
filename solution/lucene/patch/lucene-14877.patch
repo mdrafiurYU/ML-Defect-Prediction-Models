@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java b/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
+index a3a1fe7..a108360 100644
+--- a/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
+@@ -33,7 +33,7 @@ import org.apache.lucene.util.AttributeSource;
+  * FilteredTermsEnum} enumeration.
+  *
+  * <p>This query cannot be used directly; you must subclass
+- * it and define {@link #getTermsEnum(IndexReader,AttributeSource)} to provide a {@link
++ * it and define {@link #getTermsEnum(Terms,AttributeSource)} to provide a {@link
+  * FilteredTermsEnum} that iterates through the terms to be
+  * matched.
+  *

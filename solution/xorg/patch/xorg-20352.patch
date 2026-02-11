@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf1bpp/mfbmodule.c b/hw/xfree86/xf1bpp/mfbmodule.c
+index 81baf5d..50715cc 100644
+--- a/hw/xfree86/xf1bpp/mfbmodule.c
++++ b/hw/xfree86/xf1bpp/mfbmodule.c
+@@ -25,6 +25,10 @@
+  * XFree86 Project.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef XFree86LOADER
+ #include "xf86Module.h"
+ 

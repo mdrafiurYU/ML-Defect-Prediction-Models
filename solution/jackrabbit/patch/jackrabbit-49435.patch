@@ -1,0 +1,46 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+index 96d969f..f81a332 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+@@ -53,15 +53,15 @@ class BLOBInDataStore extends BLOBFileValue {
+         this.identifier = identifier;
+     }
+ 
+-    public void delete(boolean pruneEmptyParentDirs) {
++    void delete(boolean pruneEmptyParentDirs) {
+         // do nothing
+     }
+ 
+-    public void discard() {
++    void discard() {
+         // do nothing
+     }
+ 
+-    public DataIdentifier getDataIdentifier() {
++    DataIdentifier getDataIdentifier() {
+         return identifier;
+     }
+ 
+@@ -88,11 +88,11 @@ class BLOBInDataStore extends BLOBFileValue {
+         return 0;
+     }
+ 
+-    public long getLength() {
++    public long getSize() {
+         try {
+             return getDataRecord().getLength();
+         } catch (DataStoreException e) {
+-            log.warn("getLength for " + identifier + " failed", e);
++            log.warn("getSize for " + identifier + " failed", e);
+             return -1;
+         }
+     }
+@@ -135,8 +135,4 @@ class BLOBInDataStore extends BLOBFileValue {
+         return store.getRecord(identifier);
+     }
+ 
+-    public boolean isSmall() {
+-        return false;
+-    }
+-
+ }

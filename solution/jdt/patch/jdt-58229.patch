@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java
+index fcba46d..f0a2892 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java
+@@ -418,12 +418,16 @@ public abstract class AbstractJavadocCompletionModelTest extends AbstractJavaMod
+ 	 * @see org.eclipse.jdt.core.tests.model.AbstractJavaModelTests#tearDown()
+ 	 */
+ 	protected void tearDown() throws Exception {
++		this.requestor = null;
+ 		super.tearDown();
+ 	}
+ 
+ 	public void tearDownSuite() throws Exception {
+ 		deleteFolder(new Path("/Completion/src/javadoc/tags"));
+ 		super.tearDownSuite();
++		if (COMPLETION_SUITES == null) {
++			COMPLETION_PROJECT = null;
++		}
+ 	}
+ 
+ 	/*

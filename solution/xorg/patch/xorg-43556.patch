@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index 6ca0254..69afaa5 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -357,6 +357,10 @@ struct _xf86Crtc {
+      * Added in ABI version 3
+      */
+     Bool	    active;
++    /**
++     * Clear the shadow
++     */
++    Bool	    shadowClear;
+ };
+ 
+ typedef struct _xf86OutputFuncs {

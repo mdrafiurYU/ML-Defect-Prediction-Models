@@ -1,0 +1,16 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 08444e1..4b3d700 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -370,8 +370,11 @@ mieqProcessDeviceEvent(DeviceIntPtr dev,
+         {
+             handler(DequeueScreen(dev)->myNum, event, dev);
+             if (master)
++            {
++                master->u.lastSlave = dev;
+                 handler(DequeueScreen(master)->myNum,
+                         (InternalEvent*)masterEvents->event, master);
++            }
+         } else
+         {
+             /* process slave first, then master */

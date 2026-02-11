@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java
+index 516acf7..7c78703 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AbstractCopy.java
+@@ -80,6 +80,8 @@ public abstract class AbstractCopy extends AbstractOperation {
+      * @see Operation#persisted()
+      */
+     public void persisted() {
++        assert status == STATUS_PENDING;
++        status = STATUS_PERSISTED;
+         destParentState.getHierarchyEntry().invalidate(false);
+     }
+ 
+@@ -88,11 +90,11 @@ public abstract class AbstractCopy extends AbstractOperation {
+         return srcWorkspaceName;
+     }
+ 
+-    public NodeId getNodeId() {
++    public NodeId getNodeId() throws RepositoryException {
+         return srcState.getNodeId();
+     }
+ 
+-    public NodeId getDestinationParentId() {
++    public NodeId getDestinationParentId() throws RepositoryException {
+         return destParentState.getNodeId();
+     }

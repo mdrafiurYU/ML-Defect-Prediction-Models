@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winmultiwindowclass.c b/hw/xwin/winmultiwindowclass.c
+index 96dc26f..d8909f0 100755
+--- a/hw/xwin/winmultiwindowclass.c
++++ b/hw/xwin/winmultiwindowclass.c
+@@ -29,6 +29,9 @@
+  */
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include <X11/Xatom.h>
+ #include "propertyst.h"
+ #include "windowstr.h"

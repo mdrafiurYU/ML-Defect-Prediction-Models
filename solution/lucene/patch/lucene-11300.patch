@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java b/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
+index 5bc0b48..0f90dee 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
+@@ -22,10 +22,9 @@ import org.apache.lucene.index.Fields;
+ import org.apache.lucene.index.FieldsEnum;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.TermsEnum;
++import org.apache.lucene.index.codecs.docvalues.DocValuesConsumer;
+ import org.apache.lucene.index.values.DocValues;
+ import org.apache.lucene.index.values.Writer;
+-import org.apache.lucene.index.values.Values;
+-import org.apache.lucene.index.values.codec.DocValuesConsumer;
+ 
+ import java.io.IOException;
+ import java.io.Closeable;

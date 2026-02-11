@@ -1,0 +1,26 @@
+diff --git a/hw/dmx/dmxcursor.c b/hw/dmx/dmxcursor.c
+index 3dcbc33..2a596a1 100644
+--- a/hw/dmx/dmxcursor.c
++++ b/hw/dmx/dmxcursor.c
+@@ -969,10 +969,21 @@ void dmxCheckCursor(void)
+     DMXDBG2("   leave dmxCheckCursor %d %d\n", x, y);
+ }
+ 
++static Bool dmxDeviceCursorInitialize(DeviceIntPtr pDev, ScreenPtr pScr)
++{
++    return TRUE;
++}
++
++static void dmxDeviceCursorCleanup(DeviceIntPtr pDev, ScreenPtr pScr)
++{
++}
++
+ miPointerSpriteFuncRec dmxPointerSpriteFuncs =
+ {
+     dmxRealizeCursor,
+     dmxUnrealizeCursor,
+     dmxSetCursor,
+     dmxMoveCursor,
++    dmxDeviceCursorInitialize,
++    dmxDeviceCursorCleanup
+ };

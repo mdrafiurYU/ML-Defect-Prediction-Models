@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+index ad466ad..e9b9ddb 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+@@ -54,6 +54,9 @@ public interface TagBits {
+ 	// test bit to identify if the type's hierarchy is inconsistent
+ 	long HierarchyHasProblems = ASTNode.Bit18;
+ 
++	// test bit to identify if the type's type variables have been connected
++	long TypeVariablesAreConnected = ASTNode.Bit19;
++
+ 	// set for parameterized type with successfull bound check
+ 	long PassedBoundCheck = ASTNode.Bit23;

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithNodeTypeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithNodeTypeTest.java
+index a7181f4..f2921d3 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithNodeTypeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithNodeTypeTest.java
+@@ -63,7 +63,9 @@ public class CanAddChildNodeCallWithNodeTypeTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        manager = null;
+         super.tearDown();
+     }

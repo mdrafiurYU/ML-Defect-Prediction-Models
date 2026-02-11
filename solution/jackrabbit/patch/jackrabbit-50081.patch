@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java
+index c1e1284..06a8887 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ProtectedItemModifier.java
+@@ -130,6 +130,10 @@ public abstract class ProtectedItemModifier {
+         itemImpl.internalRemove(true);
+     }
+ 
++    protected void markModified(NodeImpl parentImpl) throws RepositoryException {
++        parentImpl.getOrCreateTransientItemState();
++    }
++
+     private void checkPermission(ItemImpl item, int perm) throws RepositoryException {
+         if (perm > Permission.NONE) {
+             SessionImpl sImpl = (SessionImpl) item.getSession();

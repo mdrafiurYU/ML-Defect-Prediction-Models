@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/CompiledPermissions.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/CompiledPermissions.java
+index d550746..3f9e955 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/CompiledPermissions.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/CompiledPermissions.java
+@@ -50,10 +50,11 @@ public interface CompiledPermissions {
+     boolean grants(Path absPath, int permissions) throws RepositoryException;
+ 
+     /**
+-     * Returns the <code>Privilege</code>s granted by the underlying policy
++     * Returns the <code>Privilege</code> bits granted by the underlying policy
+      * if the given <code>absPath</code> denotes an existing <code>Node</code>,
+      * otherwise it returns zero.
+      *
++     * @param absPath Absolute path to a <code>Node</code>.
+      * @return the granted privileges at <code>absPath</code> or zero if
+      * the path does not denote an existing <code>Node</code>.
+      * @throws RepositoryException if an error occurs

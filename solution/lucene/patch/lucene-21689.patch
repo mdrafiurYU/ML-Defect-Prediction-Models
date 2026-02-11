@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java
+index 00be816..0a03ea3 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java
+@@ -207,10 +207,6 @@ public abstract class DocumentsWriterPerThreadPool {
+   
+   public abstract ThreadState getAndLock(Thread requestingThread, DocumentsWriter documentsWriter, Document doc);
+ 
+-  //public abstract void clearThreadBindings(ThreadState perThread);
+-
+-  //public abstract void clearAllThreadBindings();
+-
+   /**
+    * Returns an iterator providing access to all {@link ThreadState}
+    * instances.

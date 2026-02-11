@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestContentStreamDataSource.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestContentStreamDataSource.java
+index c49be00..692272d 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestContentStreamDataSource.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestContentStreamDataSource.java
+@@ -43,6 +43,7 @@ public class TestContentStreamDataSource extends AbstractDataImportHandlerTestCa
+   SolrInstance instance = null;
+   JettySolrRunner jetty;
+ 
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();
+@@ -51,6 +52,7 @@ public class TestContentStreamDataSource extends AbstractDataImportHandlerTestCa
+     jetty = createJetty(instance);
+   }
+   
++  @Override
+   @After
+   public void tearDown() throws Exception {
+     jetty.stop();

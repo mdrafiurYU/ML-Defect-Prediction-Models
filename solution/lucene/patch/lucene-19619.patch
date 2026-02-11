@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java b/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java
+index c8a0bce..7aece95 100644
+--- a/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java
++++ b/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java
+@@ -232,6 +232,7 @@ public class ZkSolrClientTest extends AbstractSolrTestCase {
+     return null;
+   }
+   
++  @Override
+   public void tearDown() throws Exception {
+     SolrConfig.severeErrors.clear();
+     super.tearDown();

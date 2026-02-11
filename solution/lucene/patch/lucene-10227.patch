@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/core/CoreContainer.java b/solr/src/java/org/apache/solr/core/CoreContainer.java
+index 1ba89b1..ef72123 100644
+--- a/solr/src/java/org/apache/solr/core/CoreContainer.java
++++ b/solr/src/java/org/apache/solr/core/CoreContainer.java
+@@ -86,6 +86,7 @@ public class CoreContainer
+     /**
+      * @deprecated all cores now abort on configuration error regardless of configuration
+      */
++    @Deprecated
+     public boolean isAbortOnConfigurationError() {
+       return true;
+     }
+@@ -94,6 +95,7 @@ public class CoreContainer
+      * @exception generates an error if you attempt to set this value to false
+      * @deprecated all cores now abort on configuration error regardless of configuration
+      */
++    @Deprecated
+     public void setAbortOnConfigurationError(boolean abortOnConfigurationError) {
+       if (false == abortOnConfigurationError)
+         throw new SolrException

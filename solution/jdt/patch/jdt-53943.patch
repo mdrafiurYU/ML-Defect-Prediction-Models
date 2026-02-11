@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.tests/srcext/org/eclipse/jdt/apt/tests/external/annotations/batch/BatchProcessor.java b/org.eclipse.jdt.apt.tests/srcext/org/eclipse/jdt/apt/tests/external/annotations/batch/BatchProcessor.java
+index f6463f5..d314349 100644
+--- a/org.eclipse.jdt.apt.tests/srcext/org/eclipse/jdt/apt/tests/external/annotations/batch/BatchProcessor.java
++++ b/org.eclipse.jdt.apt.tests/srcext/org/eclipse/jdt/apt/tests/external/annotations/batch/BatchProcessor.java
+@@ -55,6 +55,6 @@ public class BatchProcessor implements AnnotationProcessor {
+ 			msger.printError("failed to find annotated type " + expectedAnnotated );			
+ 		}
+ 		
+-		msger.printNotice("CompletedSuccessfully");
++		msger.printWarning("CompletedSuccessfully");
+ 	}
+ }

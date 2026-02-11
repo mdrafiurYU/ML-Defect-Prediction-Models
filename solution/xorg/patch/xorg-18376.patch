@@ -1,0 +1,15 @@
+diff --git a/xkb/ddxCtrls.c b/xkb/ddxCtrls.c
+index 16c9f15..278cd1d 100644
+--- a/xkb/ddxCtrls.c
++++ b/xkb/ddxCtrls.c
+@@ -34,8 +34,8 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "inputstr.h"
+ #include "scrnintstr.h"
+ #include "windowstr.h"
+-#include "XKBsrv.h"
+-#include "XI.h"
++#include <X11/extensions/XKBsrv.h>
++#include <X11/extensions/XI.h>
+ 
+ void
+ XkbDDXKeybdCtrlProc(DeviceIntPtr dev,KeybdCtrl *ctrl)

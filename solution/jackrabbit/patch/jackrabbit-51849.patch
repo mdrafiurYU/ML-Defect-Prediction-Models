@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+index 964936f..77a762c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+@@ -321,7 +321,7 @@ public class GarbageCollector {
+                         } else {
+                             rememberNode(n.getPath());
+                         }
+-                        if (p.getDefinition().isMultiple()) {
++                        if (p.isMultiple()) {
+                             p.getLengths();
+                         } else {
+                             p.getLength();

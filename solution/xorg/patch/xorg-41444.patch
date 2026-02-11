@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index 79d3017..2d1ec5d 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -74,7 +74,7 @@ xf86RandRGetInfo (ScreenPtr pScreen, Rotation *rotations)
+ 
+     *rotations = RR_Rotate_0;
+ 
+-    for (mode = scrp->modes; ; mode = mode->next)
++    for (mode = scrp->modes; mode != NULL ; mode = mode->next)
+     {
+ 	int refresh = xf86RandRModeRefresh (mode);
+ 

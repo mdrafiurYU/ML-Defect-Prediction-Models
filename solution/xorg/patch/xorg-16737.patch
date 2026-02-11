@@ -1,0 +1,13 @@
+diff --git a/GL/glx/rensize.c b/GL/glx/rensize.c
+index 29d545e..b49520a 100644
+--- a/GL/glx/rensize.c
++++ b/GL/glx/rensize.c
+@@ -57,7 +57,7 @@ int __glXCallListsReqSize(GLbyte *pc, Bool swap )
+ 	n = SWAPL( n );
+ 	type = SWAPL( type );
+     }
+-    return __glCallLists_size( n, type );	/* defined in samplegl lib */
++    return n * __glCallLists_size( type );
+ }
+ 
+ int __glXFogivReqSize(GLbyte *pc, Bool swap )

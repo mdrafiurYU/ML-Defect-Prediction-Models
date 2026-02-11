@@ -1,0 +1,36 @@
+diff --git a/Xi/getkmap.c b/Xi/getkmap.c
+index 4e67d9c..5de0446 100644
+--- a/Xi/getkmap.c
++++ b/Xi/getkmap.c
+@@ -79,8 +79,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGetDeviceKeyMapping(client)
+-    register ClientPtr client;
++SProcXGetDeviceKeyMapping(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -96,8 +95,7 @@ SProcXGetDeviceKeyMapping(client)
+  */
+ 
+ int
+-ProcXGetDeviceKeyMapping(client)
+-    register ClientPtr client;
++ProcXGetDeviceKeyMapping(register ClientPtr client)
+     {
+     xGetDeviceKeyMappingReply rep;
+     DeviceIntPtr dev;
+@@ -164,10 +162,7 @@ ProcXGetDeviceKeyMapping(client)
+  */
+ 
+ void
+-SRepXGetDeviceKeyMapping (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGetDeviceKeyMappingReply	*rep;
++SRepXGetDeviceKeyMapping (ClientPtr client, int size, xGetDeviceKeyMappingReply *rep)
+     {
+     register char n;
+ 

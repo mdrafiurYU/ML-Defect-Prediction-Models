@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 7617bf7..e1cbdbb 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -2847,7 +2847,7 @@ xf86IsListSubsetOf(resPtr list, resPtr BaseList)
+     return TRUE;
+ }
+ 
+-resPtr
++static resPtr
+ findIntersect(resRange Range, resPtr list)
+ {
+     resRange range;

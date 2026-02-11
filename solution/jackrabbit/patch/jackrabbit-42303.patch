@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
+index b59013a..660de89 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/RepositoryConfigurationParser.java
+@@ -206,7 +206,7 @@ public class RepositoryConfigurationParser extends ConfigurationParser {
+      */
+     public RepositoryConfig parseRepositoryConfig(InputSource xml)
+             throws ConfigurationException {
+-        Element root = parseXML(xml);
++        Element root = parseXML(xml, true);
+ 
+         // Repository home directory
+         String home = getVariables().getProperty(REPOSITORY_HOME_VARIABLE);

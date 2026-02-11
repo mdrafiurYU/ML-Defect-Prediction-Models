@@ -1,0 +1,14 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 3346157..a7f91b7 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -482,6 +482,9 @@ RROutputSetCrtcs (RROutputPtr	output,
+ 		  RRCrtcPtr	*crtcs,
+ 		  int		numCrtcs);
+ 
++void
++RROutputSetCrtc (RROutputPtr output, RRCrtcPtr crtc);
++    
+ Bool
+ RROutputSetConnection (RROutputPtr  output,
+ 		       CARD8	    connection);

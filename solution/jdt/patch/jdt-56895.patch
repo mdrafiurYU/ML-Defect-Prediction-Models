@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java
+index fd5b058..834ef45 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java
+@@ -220,7 +220,7 @@ public class MethodScope extends BlockScope {
+ 		int ilocal = 0, maxLocals = this.localIndex;	
+ 		while (ilocal < maxLocals) {
+ 			LocalVariableBinding local = locals[ilocal];
+-			if (local == null || !local.isArgument) break; // done with arguments
++			if (local == null || ((local.tagBits & TagBits.IsArgument) == 0)) break; // done with arguments
+ 
+ 			// do not report fake used variable
+ 			if (isReportingUnusedArgument

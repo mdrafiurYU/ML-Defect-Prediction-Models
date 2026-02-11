@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index a71f5c7..a7e7af6 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -351,6 +351,10 @@ xf86CrtcSetMode (xf86CrtcPtr crtc, DisplayModePtr mode, Rotation rotation,
+ #endif
+ 	}
+     }
++#ifdef RANDR_12_INTERFACE
++    if (crtc->randr_crtc)
++	RRCrtcPostPendingTransform (crtc->randr_crtc);
++#endif
+ 
+     /* XXX free adjustedmode */
+     ret = TRUE;

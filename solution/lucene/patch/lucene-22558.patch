@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java b/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java
+index c7b0d03..14ee65d 100644
+--- a/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java
++++ b/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java
+@@ -560,12 +560,6 @@ public class MockDirectoryWrapper extends Directory {
+   }
+ 
+   @Override
+-  public synchronized void touchFile(String name) throws IOException {
+-    maybeYield();
+-    delegate.touchFile(name);
+-  }
+-
+-  @Override
+   public synchronized long fileLength(String name) throws IOException {
+     maybeYield();
+     return delegate.fileLength(name);

@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winmultiwindowclass.c b/hw/xwin/winmultiwindowclass.c
+index 5b47c39..a5cf212 100755
+--- a/hw/xwin/winmultiwindowclass.c
++++ b/hw/xwin/winmultiwindowclass.c
+@@ -263,7 +263,7 @@ winMultiWindowGetTransientFor (WindowPtr pWin, WindowPtr *ppDaddy)
+       if (prop->propertyName == XA_WM_TRANSIENT_FOR)
+         {
+           if (ppDaddy)
+-            memcpy (*ppDaddy, prop->data, sizeof (WindowPtr));
++            memcpy (ppDaddy, prop->data, sizeof (WindowPtr));
+           return 1;
+         }
+       else

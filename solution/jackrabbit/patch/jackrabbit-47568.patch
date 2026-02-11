@@ -1,0 +1,41 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java
+index dac1354..a6892a8 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/EventImpl.java
+@@ -16,11 +16,14 @@
+  */
+ package org.apache.jackrabbit.jcr2spi.observation;
+ 
++import java.util.Map;
++
+ import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
+ import org.slf4j.LoggerFactory;
+ import org.slf4j.Logger;
+ 
+ import javax.jcr.RepositoryException;
++import javax.jcr.UnsupportedRepositoryOperationException;
+ import javax.jcr.observation.Event;
+ 
+ /**
+@@ -127,4 +130,21 @@ final class EventImpl implements Event {
+             return "UnknownEventType";
+         }
+     }
++
++    public long getDate() throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1839");
++    }
++
++    public String getIdentifier() throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-2075");
++    }
++
++    public Map getInfo() throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1904");
++    }
++
++    public String getUserData() throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-1904");
++    }
++
+ }

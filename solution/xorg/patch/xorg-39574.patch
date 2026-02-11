@@ -1,0 +1,33 @@
+diff --git a/render/render.c b/render/render.c
+index 638aa46..538697b 100644
+--- a/render/render.c
++++ b/render/render.c
+@@ -210,9 +210,6 @@ int	(*SProcRenderVector[RenderNumberRequests])(ClientPtr) = {
+     SProcRenderCreateConicalGradient
+ };
+ 
+-static void
+-RenderResetProc (ExtensionEntry *extEntry);
+-    
+ int	RenderErrBase;
+ DevPrivateKey RenderClientPrivateKey;
+ 
+@@ -252,17 +249,12 @@ RenderExtensionInit (void)
+ 
+     extEntry = AddExtension (RENDER_NAME, 0, RenderNumberErrors,
+ 			     ProcRenderDispatch, SProcRenderDispatch,
+-			     RenderResetProc, StandardMinorOpcode);
++			     NULL, StandardMinorOpcode);
+     if (!extEntry)
+ 	return;
+     RenderErrBase = extEntry->errorBase;
+ }
+ 
+-static void
+-RenderResetProc (ExtensionEntry *extEntry)
+-{
+-}
+-
+ static int
+ ProcRenderQueryVersion (ClientPtr client)
+ {

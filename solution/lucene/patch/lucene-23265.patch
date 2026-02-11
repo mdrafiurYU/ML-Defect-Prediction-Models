@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+index a5cbbfb..2b05adf 100644
+--- a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
++++ b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+@@ -1026,6 +1026,6 @@ class DirectoryReader extends IndexReader implements Cloneable {
+ 
+   @Override
+   public PerDocValues perDocValues() throws IOException {
+-    throw new UnsupportedOperationException("please use MultiPerDoc#getPerDocs, or wrap your IndexReader with SlowMultiReaderWrapper, if you really need a top level Fields");
++    throw new UnsupportedOperationException("please use MultiPerDocValues#getPerDocs, or wrap your IndexReader with SlowMultiReaderWrapper, if you really need a top level Fields");
+   }
+ }

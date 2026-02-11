@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
+index cc5638f..e3d68a7 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java
+@@ -41,7 +41,7 @@ public class TestIndexWriterOnJRECrash extends TestNRTThreads {
+   @Override
+   public void setUp() throws Exception {
+     super.setUp();
+-    tempDir = File.createTempFile("jrecrash", "tmp", TEMP_DIR);
++    tempDir = _TestUtil.getTempDir("jrecrash");
+     tempDir.delete();
+     tempDir.mkdir();
+   }

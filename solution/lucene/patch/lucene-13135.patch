@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexWriter.java b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+index 2452155..61d9e9a 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+@@ -2719,8 +2719,6 @@ public class IndexWriter implements Closeable {
+     // format as well:
+     setMergeDocStoreIsCompoundFile(merge);
+ 
+-    merge.info.setHasProx(merger.fieldInfos().hasProx());
+-
+     segmentInfos.subList(start, start + merge.segments.size()).clear();
+     assert !segmentInfos.contains(merge.info);
+     segmentInfos.add(start, merge.info);

@@ -1,0 +1,20 @@
+diff --git a/mi/miwindow.c b/mi/miwindow.c
+index 9f24c7e..1a8b194 100644
+--- a/mi/miwindow.c
++++ b/mi/miwindow.c
+@@ -909,7 +909,6 @@ miGetLayerWindow(WindowPtr pWin)
+     return pWin->firstChild;
+ }
+ 
+-#ifdef SHAPE
+ /******
+  *
+  * miSetShape
+@@ -983,7 +982,6 @@ miSetShape(WindowPtr pWin)
+ 	WindowsRestructured ();
+     CheckCursorConfinement(pWin);
+ }
+-#endif
+ 
+ /* Keeps the same inside(!) origin */
+ 

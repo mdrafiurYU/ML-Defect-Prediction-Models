@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadoc.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadoc.java
+index f23a87d..6f0da93 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadoc.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadoc.java
+@@ -125,16 +125,6 @@ public class SelectionJavadoc extends Javadoc {
+ 	 * 
+ 	 * @throws SelectionNodeFound
+ 	 */
+-	public void resolve(CompilationUnitScope scope) {
+-		internalResolve(scope);
+-	}
+-
+-	/**
+-	 * Resolve selected node if not null and throw exception to let clients know
+-	 * that it has been found.
+-	 * 
+-	 * @throws SelectionNodeFound
+-	 */
+ 	public void resolve(MethodScope scope) {
+ 		internalResolve(scope);
+ 	}

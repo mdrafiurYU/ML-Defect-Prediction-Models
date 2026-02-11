@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/TestAll.java
+index a593fb6..7e6e81f 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/TestAll.java
+@@ -37,6 +37,7 @@ public class TestAll extends TestCase {
+     public static Test suite() {
+         TestSuite suite = new TestSuite();
+ 
++        suite.addTestSuite(ClusterRecordTest.class);
+         suite.addTestSuite(ClusterTest.class);
+ 
+         return suite;

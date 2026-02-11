@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 722b62b..ecdf620 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -2031,7 +2031,7 @@ xf86DisableUnusedFunctions(ScrnInfoPtr pScrn)
+ static void
+ xf86OutputSetEDIDProperty (xf86OutputPtr output, void *data, int data_len)
+ {
+-    Atom edid_atom = MakeAtom(EDID_ATOM_NAME, sizeof(EDID_ATOM_NAME), TRUE);
++    Atom edid_atom = MakeAtom(EDID_ATOM_NAME, sizeof(EDID_ATOM_NAME) - 1, TRUE);
+ 
+     /* This may get called before the RandR resources have been created */
+     if (output->randr_output == NULL)

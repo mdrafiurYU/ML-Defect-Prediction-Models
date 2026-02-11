@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java b/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java
+index 35356f3..da91ef5 100644
+--- a/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java
+@@ -192,7 +192,7 @@ public class PayloadNearQuery extends SpanNearQuery {
+     protected void processPayloads(Collection<byte[]> payLoads, int start, int end) {
+       for (final byte[] thePayload : payLoads) {
+         payloadScore = function.currentScore(doc, fieldName, start, end,
+-            payloadsSeen, payloadScore, similarity.scorePayload(doc, fieldName,
++            payloadsSeen, payloadScore, similarity.scorePayload(doc,
+                 spans.start(), spans.end(), thePayload, 0, thePayload.length));
+         ++payloadsSeen;
+       }

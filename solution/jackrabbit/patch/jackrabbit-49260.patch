@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
+index 7c97148..6923fb0 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
+@@ -204,7 +204,7 @@ public abstract class NodeResolverTest extends AbstractJCRTest {
+ 
+     public void testFindNodesWithNonExistingSearchRoot() throws NotExecutableException, RepositoryException {
+         String searchRoot = nodeResolver.getSearchRoot(UserConstants.NT_REP_AUTHORIZABLE);
+-        if (((SessionImpl) superuser).nodeExists(searchRoot)) {
++        if (superuser.nodeExists(searchRoot)) {
+             throw new NotExecutableException();
+         }

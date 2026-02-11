@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/UnmodifiableAccessControlList.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/UnmodifiableAccessControlList.java
+index 37ae239..d687269 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/UnmodifiableAccessControlList.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/UnmodifiableAccessControlList.java
+@@ -53,8 +53,8 @@ public class UnmodifiableAccessControlList implements AccessControlList {
+      *
+      * @param accessControlEntries A list of {@link AccessControlEntry access control entries}.
+      */
+-    public UnmodifiableAccessControlList(List accessControlEntries) {
+-        this.accessControlEntries = (AccessControlEntry[]) accessControlEntries.toArray(new AccessControlEntry[accessControlEntries.size()]);
++    public UnmodifiableAccessControlList(List<AccessControlEntry> accessControlEntries) {
++        this.accessControlEntries = accessControlEntries.toArray(new AccessControlEntry[accessControlEntries.size()]);
+     }
+ 
+     //--------------------------------------------------< AccessControlList >---

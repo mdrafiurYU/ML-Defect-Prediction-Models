@@ -1,0 +1,20 @@
+diff --git a/hw/xprint/ps/ttf2pt1wrap.c b/hw/xprint/ps/ttf2pt1wrap.c
+deleted file mode 100644
+index 57bb777..0000000
+--- a/hw/xprint/ps/ttf2pt1wrap.c
++++ /dev/null
+@@ -1,14 +0,0 @@
+-/*
+- * Wrapper to add missing symbol to externally supplied code
+- */
+-
+-#ifdef HAVE_DIX_CONFIG_H
+-#include <dix-config.h>
+-#endif
+-
+-#ifdef Lynx
+-extern int optind;
+-extern char *optarg;
+-#endif
+-
+-#include "ttf2pt1.c"

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+index bc8604e..36d199b 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+@@ -313,7 +313,7 @@ public abstract class AbstractWriteTest extends AbstractEvaluationTest {
+         // test if login as testuser -> item at path must not exist.
+         Session s = null;
+         try {
+-            s = helper.getRepository().login(creds);
++            s = getHelper().getRepository().login(creds);
+             assertFalse(s.itemExists(path));
+         } finally {
+             if (s != null) {
+@@ -915,7 +915,7 @@ public abstract class AbstractWriteTest extends AbstractEvaluationTest {
+         testUser = null;
+ 
+         // try to retrieve the acl again
+-        Session s = helper.getSuperuserSession();
++        Session s = getHelper().getSuperuserSession();
+         try {
+             AccessControlManager acMgr = getAccessControlManager(s);
+             acMgr.getPolicies(acPath);

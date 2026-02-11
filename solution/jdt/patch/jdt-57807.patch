@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/NestedTypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/NestedTypeBinding.java
+index 1610134..be3f899 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/NestedTypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/NestedTypeBinding.java
+@@ -209,7 +209,7 @@ public class NestedTypeBinding extends SourceTypeBinding {
+ 		if (!onlyExactMatch){
+ 			for (int i = enclosingInstances.length; --i >= 0;)
+ 				if (enclosingInstances[i].actualOuterLocalVariable == null)
+-					if (((ReferenceBinding)enclosingInstances[i].type).findSuperTypeWithSameErasure(targetEnclosingType) != null)
++					if (enclosingInstances[i].type.findSuperTypeWithSameErasure(targetEnclosingType) != null)
+ 						return enclosingInstances[i];
+ 		}
+ 		return null;

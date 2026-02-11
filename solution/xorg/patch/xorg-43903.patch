@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index abe2c9e..3388dac 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -1495,7 +1495,6 @@ ProcChangeKeyboardMapping(ClientPtr client)
+     keysyms.mapWidth = stuff->keySymsPerKeyCode;
+     keysyms.map = (KeySym *) &stuff[1];
+ 
+-    pDev = PickKeyboard(client);
+     rc = XaceHook(XACE_DEVICE_ACCESS, client, pDev, DixManageAccess);
+     if (rc != Success)
+         return rc;

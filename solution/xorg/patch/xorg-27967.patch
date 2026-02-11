@@ -1,0 +1,16 @@
+diff --git a/include/dix.h b/include/dix.h
+index f22f489..56d2f17 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -609,6 +609,11 @@ extern DeviceIntPtr PickPointer(
+ extern DeviceIntPtr PickKeyboard(
+     ClientPtr /* client */);
+ 
++extern Bool IsInterferingGrab(
++    ClientPtr /* client */,
++    DeviceIntPtr /* dev */,
++    xEvent* /* events */);
++
+ #ifdef PANORAMIX
+ extern void ReinitializeRootWindow(WindowPtr win, int xoff, int yoff);
+ #endif

@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.h b/hw/xfree86/dixmods/extmod/modinit.h
+index 116cb2e..3c2e202 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.h
++++ b/hw/xfree86/dixmods/extmod/modinit.h
+@@ -127,6 +127,7 @@ extern void ShmRegisterFuncs(
+ 
+ #ifdef XSELINUX
+ extern void SELinuxExtensionInit(INITARGS);
++#include "xselinux.h"
+ #endif
+ 
+ #if 1

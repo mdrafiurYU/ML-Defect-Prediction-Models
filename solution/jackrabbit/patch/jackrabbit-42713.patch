@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableCollection.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableCollection.java
+index 316b3b9..fb78161 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableCollection.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableCollection.java
+@@ -16,16 +16,15 @@
+  */
+ package org.apache.jackrabbit.ocm.manager.collectionconverter;
+ 
+-import java.util.Iterator;
+ 
+ /**
+- * Common interface used to persist any kind of Collection or Map.
++ * Common interface used to persist any kind of Collection.
+  *
+  *
+  * @author <a href="mailto:christophe.lombart@gmail.com">Christophe Lombart</a>
+  *
+  */
+-public interface ManageableCollection
++public interface ManageableCollection extends ManageableObjects
+ {
+     /**
+      * Add an object into this ManageableCollection
+@@ -33,15 +32,5 @@ public interface ManageableCollection
+      */
+ 	public void addObject(Object object);
+ 
+-	/**
+-	 * @return The ManageableCollection iterator
+-	 */
+-    public Iterator getIterator();
+-
+-    /**
+-     * @return The ManageableCollection size
+-     */
+-    public int getSize();
+-
+ 
+ }

@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishLightStemFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishLightStemFilter.java
+index b6b825e..db71d1b 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishLightStemFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishLightStemFilter.java
+@@ -45,4 +45,9 @@ public class TestSwedishLightStemFilter extends BaseTokenStreamTestCase {
+   public void testVocabulary() throws IOException {
+     assertVocabulary(analyzer, getDataFile("svlighttestdata.zip"), "svlight.txt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, analyzer, 10000*RANDOM_MULTIPLIER);
++  }
+ }

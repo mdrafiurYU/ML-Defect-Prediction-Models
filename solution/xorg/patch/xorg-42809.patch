@@ -1,0 +1,13 @@
+diff --git a/Xext/mbuf.c b/Xext/mbuf.c
+index 8276032..336ef19 100644
+--- a/Xext/mbuf.c
++++ b/Xext/mbuf.c
+@@ -1106,6 +1106,8 @@ SClobberNotifyEvent (from, to)
+     to->state = from->state;
+ }
+ 
++RegionPtr CreateUnclippedWinSize(WindowPtr pWin);
++
+ RegionPtr
+ CreateUnclippedWinSize (WindowPtr pWin)
+ {

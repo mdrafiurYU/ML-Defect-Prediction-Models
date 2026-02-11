@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractPropertyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractPropertyTest.java
+index 11b8c2d..962dc70 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractPropertyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractPropertyTest.java
+@@ -91,6 +91,8 @@ abstract class AbstractPropertyTest extends AbstractJCRTest {
+      */
+     protected void tearDown() throws Exception {
+         cleanUp();
++        session = null;
++        prop = null;
+         super.tearDown();
+     }
+ }

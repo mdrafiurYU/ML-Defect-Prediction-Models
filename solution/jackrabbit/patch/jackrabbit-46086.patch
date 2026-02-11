@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
+index 4ad8414..c6f3650 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/AbstractBundlePersistenceManager.java
+@@ -524,6 +524,26 @@ public abstract class AbstractBundlePersistenceManager implements
+      */
+     public synchronized void store(ChangeLog changeLog)
+             throws ItemStateException {
++        boolean success = false;
++        try {
++            storeInternal(changeLog);
++            success = true;
++        } finally {
++            if (!success) {
++                bundles.clear();
++                missing.clear();
++            }
++        }
++    }
++
++    /**
++     * Stores the given changelog and updates the bundle cache.
++     * 
++     * @param changeLog the changelog to store
++     * @throws ItemStateException on failure
++     */
++    private void storeInternal(ChangeLog changeLog)
++            throws ItemStateException {
+         // delete bundles
+         HashSet deleted = new HashSet();
+         Iterator iter = changeLog.deletedStates();

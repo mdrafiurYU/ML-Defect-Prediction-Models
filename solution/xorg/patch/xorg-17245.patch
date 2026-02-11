@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Cursor.c b/hw/xfree86/common/xf86Cursor.c
+index f5f9690..0e2d774 100644
+--- a/hw/xfree86/common/xf86Cursor.c
++++ b/hw/xfree86/common/xf86Cursor.c
+@@ -29,6 +29,10 @@
+ /* $XConsortium: xf86Cursor.c /main/10 1996/10/19 17:58:23 kaleb $ */
+ 
+ #define NEED_EVENTS
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xmd.h>
+ #include "input.h"

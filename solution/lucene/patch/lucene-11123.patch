@@ -1,0 +1,28 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java b/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java
+index dce4aa9..95fc711 100644
+--- a/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java
++++ b/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java
+@@ -129,20 +129,10 @@ public class Suggester extends SolrSpellChecker {
+       if (lookup.load(storeDir)) {
+         return;  // loaded ok
+       }
++      LOG.debug("load failed, need to build Lookup again");
+     }
+-    // dictionary based on the current index may need refreshing
+-    if (dictionary instanceof HighFrequencyDictionary) {
+-      reader = reader.reopen();
+-      dictionary = new HighFrequencyDictionary(reader, field, threshold);
+-      try {
+-        lookup.build(dictionary);
+-        if (storeDir != null) {
+-          lookup.store(storeDir);
+-        }
+-      } catch (Exception e) {
+-        throw new IOException(e);
+-      }
+-    }
++    // loading was unsuccessful - build it again
++    build(core, searcher);
+   }
+ 
+   public void add(String query, int numHits) {

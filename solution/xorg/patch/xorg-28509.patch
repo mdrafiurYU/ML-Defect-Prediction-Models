@@ -1,0 +1,13 @@
+diff --git a/dix/gc.c b/dix/gc.c
+index 89b246d..7b7953d 100644
+--- a/dix/gc.c
++++ b/dix/gc.c
+@@ -69,7 +69,7 @@ extern FontPtr defaultFont;
+ 
+ static Bool CreateDefaultTile(GCPtr pGC);
+ 
+-unsigned char DefaultDash[2] = {4, 4};
++static unsigned char DefaultDash[2] = {4, 4};
+ 
+ _X_EXPORT void
+ ValidateGC(DrawablePtr pDraw, GC *pGC)

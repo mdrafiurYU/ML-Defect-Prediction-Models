@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxFakeMtn.c b/xkb/ddxFakeMtn.c
+index 3dd733b..7e75c15 100644
+--- a/xkb/ddxFakeMtn.c
++++ b/xkb/ddxFakeMtn.c
+@@ -54,7 +54,7 @@ int 		   oldX,oldY;
+ ScreenPtr	   pScreen, oldScreen;
+ 
+     GetSpritePosition(inputInfo.pointer, &oldX, &oldY);
+-    pScreen = oldScreen = GetSpriteWindow()->drawable.pScreen;
++    pScreen = oldScreen = GetSpriteWindow(inputInfo.pointer)->drawable.pScreen;
+ 
+ #ifdef PANORAMIX
+     if (!noPanoramiXExtension) {

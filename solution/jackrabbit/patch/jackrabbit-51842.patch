@@ -1,0 +1,49 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
+index 974c2b9..627c20c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalManagerImpl.java
+@@ -16,13 +16,6 @@
+  */
+ package org.apache.jackrabbit.core.security.principal;
+ 
+-import org.apache.jackrabbit.api.security.principal.NoSuchPrincipalException;
+-import org.apache.jackrabbit.api.security.principal.PrincipalIterator;
+-import org.apache.jackrabbit.api.security.principal.PrincipalManager;
+-import org.apache.jackrabbit.api.security.principal.ItemBasedPrincipal;
+-
+-import javax.jcr.RepositoryException;
+-import javax.jcr.Session;
+ import java.security.Principal;
+ import java.security.acl.Group;
+ import java.util.ArrayList;
+@@ -31,6 +24,13 @@ import java.util.Enumeration;
+ import java.util.Iterator;
+ import java.util.List;
+ 
++import javax.jcr.RepositoryException;
++import javax.jcr.Session;
++
++import org.apache.jackrabbit.api.security.principal.ItemBasedPrincipal;
++import org.apache.jackrabbit.api.security.principal.PrincipalIterator;
++import org.apache.jackrabbit.api.security.principal.PrincipalManager;
++
+ /**
+  * This principal manager implementation uses the {@link DefaultPrincipalProvider}
+  * in order to dispatch the respective requests and assemble the required
+@@ -69,14 +69,8 @@ public class PrincipalManagerImpl implements PrincipalManager {
+     /**
+      * {@inheritDoc}
+      */
+-    public Principal getPrincipal(String principalName) throws NoSuchPrincipalException {
+-        Principal p = internalGetPrincipal(principalName);
+-        if (p == null) {
+-            // not found (or access denied)
+-            throw new NoSuchPrincipalException("Unknown principal " + principalName);
+-        } else {
+-            return p;
+-        }
++    public Principal getPrincipal(String principalName) {
++        return internalGetPrincipal(principalName);
+     }
+ 
+     /**

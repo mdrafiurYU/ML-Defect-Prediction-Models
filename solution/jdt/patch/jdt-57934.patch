@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
+index 34da56d..9f4fcc7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
+@@ -102,11 +102,11 @@ public class ParameterizedSingleTypeReference extends ArrayTypeReference {
+ 				return null;
+ 			}
+ 			enclosingType = this.resolvedType.enclosingType(); // if member type
+-			if (enclosingType != null && enclosingType.isGenericType()) {
++			if (enclosingType != null && (enclosingType.isGenericType() || enclosingType.isParameterizedType())) {
+ 				ReferenceBinding currentType = (ReferenceBinding) this.resolvedType;
+ 				enclosingType = currentType.isStatic()
+-				? (ReferenceBinding) scope.environment().convertToRawType(enclosingType)
+-				: scope.environment().convertToParameterizedType(enclosingType);
++					? (ReferenceBinding) scope.environment().convertToRawType(enclosingType)
++					: scope.environment().convertToParameterizedType(enclosingType);
+ 			}
+ 		} else { // resolving member type (relatively to enclosingType)
+ 			this.resolvedType = scope.getMemberType(token, (ReferenceBinding)enclosingType.erasure());

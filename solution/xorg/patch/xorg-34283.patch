@@ -1,0 +1,12 @@
+diff --git a/mfb/mfbpixmap.c b/mfb/mfbpixmap.c
+index 438e9ab..3773985 100644
+--- a/mfb/mfbpixmap.c
++++ b/mfb/mfbpixmap.c
+@@ -104,6 +104,7 @@ mfbCreatePixmap (pScreen, width, height, depth, usage_hint)
+     pPixmap->refcnt = 1;
+     pPixmap->devPrivate.ptr =  datasize ?
+ 		(pointer)((char *)pPixmap + pScreen->totalPixmapSize) : NULL;
++    pPixmap->usage_hint = usage_hint;
+     return pPixmap;
+ }
+ 

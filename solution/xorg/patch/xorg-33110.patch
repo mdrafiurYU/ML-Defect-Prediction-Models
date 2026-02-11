@@ -1,0 +1,12 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 5e43902..34b0de1 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -3572,7 +3572,6 @@ CloseDownClient(ClientPtr client)
+ 	ReleaseActiveGrabs(client);
+ 	DeleteClientFontStuff(client);
+         ACUnregisterClient(client);
+-        UnregisterPairingClient(client); /* other clients can pair devices */
+ 	if (!really_close_down)
+ 	{
+ 	    /*  This frees resources that should never be retained

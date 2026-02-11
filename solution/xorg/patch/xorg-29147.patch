@@ -1,0 +1,13 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index bc737d8..072f8d8 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -1085,7 +1085,7 @@ fbComposite (CARD8      op,
+ #endif
+ 	    if (pMask == 0)
+ 	    {
+-		if (pSrc->format_code == pDst->format_code)
++		if (pSrc->format == pDst->format)
+ 		    func = fbCompositeSrcSrc_nxn;
+ 	    }
+ 	break;

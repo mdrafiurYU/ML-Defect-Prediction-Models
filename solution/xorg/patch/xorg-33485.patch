@@ -1,0 +1,15 @@
+diff --git a/Xext/dpmsproc.h b/Xext/dpmsproc.h
+index f5485ea..d57f573 100644
+--- a/Xext/dpmsproc.h
++++ b/Xext/dpmsproc.h
+@@ -8,7 +8,9 @@
+ #ifndef _DPMSPROC_H_
+ #define _DPMSPROC_H_
+ 
+-void DPMSSet(int level);
++#include "dixstruct.h"
++
++int  DPMSSet(ClientPtr client, int level);
+ int  DPMSGet(int *plevel);
+ Bool DPMSSupported(void);
+ 

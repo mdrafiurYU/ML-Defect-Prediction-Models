@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestPropInjectDefaults.java b/solr/src/test/org/apache/solr/core/TestPropInjectDefaults.java
+index 28848ea..a5c41a2 100644
+--- a/solr/src/test/org/apache/solr/core/TestPropInjectDefaults.java
++++ b/solr/src/test/org/apache/solr/core/TestPropInjectDefaults.java
+@@ -49,7 +49,7 @@ public class TestPropInjectDefaults extends SolrTestCaseJ4 {
+     ExposeWriterHandler uh = new ExposeWriterHandler();
+     IndexWriter writer = uh.getWriter();
+     LogByteSizeMergePolicy mp = (LogByteSizeMergePolicy)writer.getConfig().getMergePolicy();
+-    assertEquals(32.0, mp.getMaxMergeMB());
++    assertEquals(32.0, mp.getMaxMergeMB(), 0);
+     uh.close();
+   }

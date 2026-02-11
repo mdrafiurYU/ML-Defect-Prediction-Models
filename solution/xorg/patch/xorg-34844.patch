@@ -1,0 +1,13 @@
+diff --git a/hw/xprint/pcl/PclArc.c b/hw/xprint/pcl/PclArc.c
+index 0d8289e..20d3f72 100644
+--- a/hw/xprint/pcl/PclArc.c
++++ b/hw/xprint/pcl/PclArc.c
+@@ -85,7 +85,7 @@ PclDoArc(
+ 
+     pCon = PclGetContextFromWindow( (WindowPtr) pDrawable );
+     pConPriv = (PclContextPrivPtr)
+-			pCon->devPrivates[PclContextPrivateIndex].ptr;
++	dixLookupPrivate(&pCon->devPrivates, PclContextPrivateKey);
+     XpGetReproductionArea( pCon, &repro );
+     
+     /* 

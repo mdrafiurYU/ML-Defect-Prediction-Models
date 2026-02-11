@@ -1,0 +1,24 @@
+diff --git a/afb/afbline.c b/afb/afbline.c
+index 9e2e4b9..d056758 100644
+--- a/afb/afbline.c
++++ b/afb/afbline.c
+@@ -147,7 +147,8 @@ afbLineSS(pDrawable, pGC, mode, npt, pptInit)
+ 	RegionPtr cclip;
+ 
+ 	cclip = pGC->pCompositeClip;
+-	rrops = ((afbPrivGC *)(pGC->devPrivates[afbGCPrivateIndex].ptr))->rrops;
++	rrops = ((afbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++					       afbGCPrivateKey))->rrops;
+ 	pboxInit = REGION_RECTS(cclip);
+ 	nboxInit = REGION_NUM_RECTS(cclip);
+ 
+@@ -487,7 +488,8 @@ afbLineSD(pDrawable, pGC, mode, npt, pptInit)
+ #endif
+ 
+ 	cclip = pGC->pCompositeClip;
+-	rrops = ((afbPrivGC *)(pGC->devPrivates[afbGCPrivateIndex].ptr))->rrops;
++	rrops = ((afbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++					       afbGCPrivateKey))->rrops;
+ 	pboxInit = REGION_RECTS(cclip);
+ 	nboxInit = REGION_NUM_RECTS(cclip);
+ 

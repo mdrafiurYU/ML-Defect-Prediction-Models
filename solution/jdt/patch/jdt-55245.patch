@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
+index 147693a..dac15fc 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
+@@ -582,7 +582,9 @@ public int resolveLevel(Binding binding) {
+ }
+ protected int resolveLevel(MessageSend messageSend) {
+ 	MethodBinding method = messageSend.binding;
+-	if (method == null) return INACCURATE_MATCH;
++	if (method == null) {
++		return INACCURATE_MATCH;
++	}
+ 	if (messageSend.resolvedType == null) {
+ 		// Closest match may have different argument numbers when ProblemReason is NotFound
+ 		// see MessageSend#resolveType(BlockScope)

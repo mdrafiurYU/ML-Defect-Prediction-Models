@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplBase.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplBase.java
+index e3cea4e..65001da 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplBase.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplBase.java
+@@ -282,7 +282,7 @@ abstract public class VersionManagerImplBase {
+         } else {
+             String msg = "Unable to perform a versioning operation on a " +
+                          "non versionable node: " + safeGetJCRPath(state);
+-            log.error(msg);
++            log.debug(msg);
+             throw new UnsupportedRepositoryOperationException(msg);
+         }
+     }

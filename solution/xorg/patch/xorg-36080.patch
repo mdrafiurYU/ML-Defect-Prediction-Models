@@ -1,0 +1,17 @@
+diff --git a/composite/compext.c b/composite/compext.c
+index 2918556..97ea6d6 100644
+--- a/composite/compext.c
++++ b/composite/compext.c
+@@ -291,6 +291,12 @@ ProcCompositeNameWindowPixmap (ClientPtr client)
+ 
+     ++pPixmap->refcnt;
+     
++    /* security creation/labeling check */
++    rc = XaceHook(XACE_RESOURCE_ACCESS, client, stuff->pixmap, RT_PIXMAP,
++		  pPixmap, RT_WINDOW, pWin, DixCreateAccess);
++    if (rc != Success)
++	return rc;
++
+     if (!AddResource (stuff->pixmap, RT_PIXMAP, (pointer) pPixmap))
+ 	return BadAlloc;
+ 

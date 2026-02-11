@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
+index 12c763c..1d3dedd 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
+@@ -138,7 +138,7 @@ public class TestQPHelper extends LuceneTestCase {
+   public static class QPTestParser extends StandardQueryParser {
+     public QPTestParser(Analyzer a) {
+       ((QueryNodeProcessorPipeline)getQueryNodeProcessor())
+-          .addProcessor(new QPTestParserQueryNodeProcessor());
++          .add(new QPTestParserQueryNodeProcessor());
+       this.setAnalyzer(a);
+ 
+     }

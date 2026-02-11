@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+index 5aeebba..ce02bd7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+@@ -182,7 +182,8 @@ public abstract class AbstractExcerpt implements HighlightingExcerptProvider {
+         Set relevantTerms = new HashSet();
+         query.extractTerms(extractedTerms);
+         // only keep terms for fulltext fields
+-        for (Iterator it = extractedTerms.iterator(); it.hasNext(); ) {
++        Iterator it = extractedTerms.iterator();
++        while (it.hasNext()) {
+             Term t = (Term) it.next();
+             if (t.field().equals(FieldNames.FULLTEXT)) {
+                 relevantTerms.add(t);

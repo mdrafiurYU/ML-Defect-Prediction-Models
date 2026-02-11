@@ -1,0 +1,15 @@
+diff --git a/modules/suggest/src/java/org/apache/lucene/search/spell/DirectSpellChecker.java b/modules/suggest/src/java/org/apache/lucene/search/spell/DirectSpellChecker.java
+index e94d81a..8dd9fc1 100644
+--- a/modules/suggest/src/java/org/apache/lucene/search/spell/DirectSpellChecker.java
++++ b/modules/suggest/src/java/org/apache/lucene/search/spell/DirectSpellChecker.java
+@@ -328,8 +328,9 @@ public class DirectSpellChecker {
+     if (minQueryLength > 0 && text.codePointCount(0, text.length()) < minQueryLength)
+       return new SuggestWord[0];
+     
+-    if (lowerCaseTerms)
+-      term = term.createTerm(text.toLowerCase(Locale.ENGLISH));
++    if (lowerCaseTerms) {
++      term = new Term(term.field(), text.toLowerCase(Locale.ENGLISH));
++    }
+     
+     int docfreq = ir.docFreq(term);

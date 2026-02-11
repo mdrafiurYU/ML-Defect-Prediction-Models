@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+index f129d71..f0c05af 100644
+--- a/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/PhraseQuery.java
+@@ -267,7 +267,7 @@ public class PhraseQuery extends Query {
+       fieldExpl.setDescription("fieldWeight("+field+":"+query+" in "+doc+
+                                "), product of:");
+ 
+-      Scorer scorer = (Scorer) scorer(reader, true, false);
++      Scorer scorer = scorer(reader, true, false);
+       if (scorer == null) {
+         return new Explanation(0.0f, "no matching docs");
+       }

@@ -1,0 +1,26 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 382f059..b976082 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -288,6 +288,10 @@ exaGetPixmapFirstPixel (PixmapPtr pPixmap);
+ void
+ exaCopyWindow(WindowPtr pWin, DDXPointRec ptOldOrg, RegionPtr prgnSrc);
+ 
++Bool
++exaFillRegionTiled (DrawablePtr	pDrawable, RegionPtr pRegion, PixmapPtr pTile,
++		    DDXPointPtr pPatOrg, CARD32 planemask, CARD32 alu);
++
+ void
+ exaPaintWindow(WindowPtr pWin, RegionPtr pRegion, int what);
+ 
+@@ -344,6 +348,10 @@ void
+ exaPixmapDirty(PixmapPtr pPix, int x1, int y1, int x2, int y2);
+ 
+ void
++exaGetDrawableDeltas (DrawablePtr pDrawable, PixmapPtr pPixmap,
++		      int *xp, int *yp);
++
++void
+ exaDrawableDirty(DrawablePtr pDrawable, int x1, int y1, int x2, int y2);
+ 
+ Bool

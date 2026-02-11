@@ -1,0 +1,15 @@
+diff --git a/include/windowstr.h b/include/windowstr.h
+index 89e3ee1..8e4b4e0 100644
+--- a/include/windowstr.h
++++ b/include/windowstr.h
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XFree86: xc/programs/Xserver/include/windowstr.h,v 1.6 2001/12/14 19:59:57 dawes Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef WINDOWSTRUCT_H
+ #define WINDOWSTRUCT_H
+ 

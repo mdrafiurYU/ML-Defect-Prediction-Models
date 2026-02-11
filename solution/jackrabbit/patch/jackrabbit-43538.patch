@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+index 00dc0b8..a317021 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+@@ -216,18 +216,6 @@ public class SharedItemStateManager
+     }
+ 
+     /**
+-     * enables or disables the write-lock hack. this should only be called by
+-     * the {@link XAVersionManager}.
+-     *
+-     * @param noLockHack
+-     */
+-    public void setNoLockHack(boolean noLockHack) {
+-        if (ismLocking instanceof DefaultISMLocking) {
+-            ((DefaultISMLocking) ismLocking).setNoLockHack(noLockHack);
+-        }
+-    }
+-
+-    /**
+      * Set an update event channel
+      *
+      * @param eventChannel update event channel

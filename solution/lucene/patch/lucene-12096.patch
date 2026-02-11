@@ -1,0 +1,32 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/index/MultiPassIndexSplitter.java b/lucene/contrib/misc/src/java/org/apache/lucene/index/MultiPassIndexSplitter.java
+index 79fa963..99f5ba4 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/index/MultiPassIndexSplitter.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/index/MultiPassIndexSplitter.java
+@@ -174,13 +174,11 @@ public class MultiPassIndexSplitter {
+    * list of deletions.
+    */
+   public static class FakeDeleteIndexReader extends FilterIndexReader {
+-    // TODO: switch to flex api, here
+-
+     OpenBitSet dels;
+     OpenBitSet oldDels = null;
+ 
+-    public FakeDeleteIndexReader(IndexReader in) {
+-      super(in);
++    public FakeDeleteIndexReader(IndexReader in) throws IOException {
++      super(SlowMultiReaderWrapper.wrap(in));
+       dels = new OpenBitSet(in.maxDoc());
+       if (in.hasDeletions()) {
+         oldDels = new OpenBitSet(in.maxDoc());
+@@ -221,11 +219,6 @@ public class MultiPassIndexSplitter {
+     }
+ 
+     @Override
+-    public IndexReader[] getSequentialSubReaders() {
+-      return null;
+-    }
+-
+-    @Override
+     public Bits getDeletedDocs() {
+       return dels;
+     }

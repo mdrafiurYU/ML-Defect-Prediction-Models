@@ -1,0 +1,44 @@
+diff --git a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java
+index b54f331..49505ef 100644
+--- a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java
++++ b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java
+@@ -21,6 +21,8 @@ import org.apache.poi.poifs.eventfilesystem.POIFSReaderListener;
+ import org.apache.poi.poifs.eventfilesystem.POIFSReaderEvent;
+ import org.apache.poi.poifs.filesystem.DocumentInputStream;
+ import org.apache.poi.util.LittleEndian;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ import java.io.Reader;
+ import java.io.InputStream;
+@@ -29,6 +31,7 @@ import java.io.OutputStream;
+ import java.io.ByteArrayOutputStream;
+ import java.io.InputStreamReader;
+ import java.io.ByteArrayInputStream;
++import java.io.StringReader;
+ 
+ /**
+  * Text extractor for Microsoft PowerPoint presentations.
+@@ -36,6 +39,12 @@ import java.io.ByteArrayInputStream;
+ public class MsPowerPointTextExtractor extends AbstractTextExtractor {
+ 
+     /**
++     * Logger instance.
++     */
++    private static final Logger logger =
++        LoggerFactory.getLogger(MsPowerPointTextExtractor.class);
++
++    /**
+      * Force loading of dependent class.
+      */
+     static {
+@@ -66,6 +75,9 @@ public class MsPowerPointTextExtractor extends AbstractTextExtractor {
+             reader.read(stream);
+             return new InputStreamReader(
+                     new ByteArrayInputStream(baos.toByteArray()));
++        } catch (RuntimeException e) {
++            logger.warn("Failed to extract PowerPoint text content", e);
++            return new StringReader("");
+         } finally {
+             stream.close();
+         }

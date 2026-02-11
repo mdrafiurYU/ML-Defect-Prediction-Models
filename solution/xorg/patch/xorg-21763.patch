@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index a01b07f..67d4304 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -166,6 +166,7 @@ typedef struct {
+     MessageType		randRFrom;
+     Bool		aiglx;
+     MessageType		aiglxFrom;
++    Bool        ignoreABI;
+     struct {
+ 	Bool		disabled;		/* enable/disable deactivating
+ 						 * grabs or closing the

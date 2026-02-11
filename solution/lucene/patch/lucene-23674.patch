@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java b/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java
+index 559bbd8..fea75df 100644
+--- a/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java
+@@ -435,7 +435,7 @@ public class SpellCheckComponent extends SearchComponent implements SolrCoreAwar
+ 
+       if (extendedResults) {
+         Integer o = origVsFreq.get(original);
+-        if (o != null) result.add(token, o);
++        if (o != null) result.addFrequency(token, o);
+         for (SuggestWord word : suggestions)
+           result.add(token, word.string, word.freq);
+       } else {

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
+index aea0b82..9e12651 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
+@@ -144,7 +144,7 @@ public class SetValueLockExceptionTest extends AbstractJCRTest {
+         }
+ 
+         // another session
+-        Session session = helper.getReadWriteSession();
++        Session session = getHelper().getReadWriteSession();
+         try {
+             Node node = (Node) session.getItem(testNode.getPath());
+             Property prop = null;

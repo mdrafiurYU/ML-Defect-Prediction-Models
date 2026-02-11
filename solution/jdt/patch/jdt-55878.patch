@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+index c424d0b..8cbb0f3 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+@@ -892,8 +892,8 @@ public class CompletionJavadocParser extends JavadocParser {
+ 	 */
+ 	protected void updateDocComment() {
+ 		super.updateDocComment();
+-		getCompletionParser().assistNodeParent = this.docComment;
+ 		if (completionNode instanceof Expression) {
++			getCompletionParser().assistNodeParent = this.docComment;
+ 			getCompletionParser().assistNode = (ASTNode) this.completionNode;
+ 			getCompletionJavadoc().completionNode = (Expression) completionNode;
+ 		}

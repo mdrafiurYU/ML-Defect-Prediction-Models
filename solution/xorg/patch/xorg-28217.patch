@@ -1,0 +1,14 @@
+diff --git a/include/pixmapstr.h b/include/pixmapstr.h
+index 628465b..93bd45d 100644
+--- a/include/pixmapstr.h
++++ b/include/pixmapstr.h
+@@ -86,9 +86,7 @@ typedef struct _Pixmap {
+     int			refcnt;
+     int			devKind;
+     DevUnion		devPrivate;
+-#ifdef PIXPRIV
+     DevUnion		*devPrivates; /* real devPrivates like gcs & windows */
+-#endif
+ #ifdef COMPOSITE
+     short		screen_x;
+     short		screen_y;

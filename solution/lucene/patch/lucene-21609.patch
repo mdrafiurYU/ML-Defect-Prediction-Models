@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestLimitTokenCountAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestLimitTokenCountAnalyzer.java
+index 3f6c3ea..98f687e 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestLimitTokenCountAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestLimitTokenCountAnalyzer.java
+@@ -51,7 +51,7 @@ public class TestLimitTokenCountAnalyzer extends BaseTokenStreamTestCase {
+     Directory dir = newDirectory();
+ 
+     IndexWriter writer = new IndexWriter(dir, new IndexWriterConfig(
+-        TEST_VERSION_CURRENT, new LimitTokenCountAnalyzer(new MockAnalyzer(), 100000)));
++        TEST_VERSION_CURRENT, new LimitTokenCountAnalyzer(new MockAnalyzer(random), 100000)));
+ 
+     Document doc = new Document();
+     StringBuilder b = new StringBuilder();

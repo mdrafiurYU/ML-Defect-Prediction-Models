@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyReadMethodsTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyReadMethodsTest.java
+index d372080..9d3e568 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyReadMethodsTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyReadMethodsTest.java
+@@ -75,7 +75,9 @@ public class PropertyReadMethodsTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        property = null;
+         super.tearDown();
+     }

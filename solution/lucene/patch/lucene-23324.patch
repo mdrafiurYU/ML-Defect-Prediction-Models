@@ -1,0 +1,27 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+index 5513e4e..20f2e32 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+@@ -184,11 +184,11 @@ class FixedDerefBytesImpl {
+     }
+ 
+     @Override
+-    public DocValuesEnum getEnum(AttributeSource source) throws IOException {
++    public ValuesEnum getEnum(AttributeSource source) throws IOException {
+       return new DerefBytesEnum(source, cloneData(), cloneIndex(), size);
+     }
+ 
+-    static class DerefBytesEnum extends DocValuesEnum {
++    static class DerefBytesEnum extends ValuesEnum {
+       protected final IndexInput datIn;
+       private final PackedInts.ReaderIterator idx;
+       protected final long fp;
+@@ -215,7 +215,7 @@ class FixedDerefBytesImpl {
+         valueCount = idx.size();
+       }
+ 
+-      protected void copyFrom(DocValuesEnum valuesEnum) {
++      protected void copyFrom(ValuesEnum valuesEnum) {
+         bytesRef = valuesEnum.bytesRef;
+         if (bytesRef.bytes.length < size) {
+           bytesRef.grow(size);

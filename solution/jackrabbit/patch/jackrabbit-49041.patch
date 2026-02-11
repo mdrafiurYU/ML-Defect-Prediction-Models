@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java
+index f2fda1a..e171d1f 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java
+@@ -322,9 +322,14 @@ public class CompactNodeTypeDefWriter {
+     }
+ 
+     private String convertConstraint(String vc, int type) {
+-        if (type == PropertyType.REFERENCE || type == PropertyType.NAME || type == PropertyType.PATH) {
+-            if (type == PropertyType.REFERENCE)
++        if (type == PropertyType.REFERENCE
++                || type == PropertyType.WEAKREFERENCE
++                || type == PropertyType.NAME
++                || type == PropertyType.PATH) {
++            if (type == PropertyType.REFERENCE
++                    || type == PropertyType.WEAKREFERENCE) {
+                 type = PropertyType.NAME;
++            }
+ 
+             try {
+                 QValue qv = QValueFactoryImpl.getInstance().create(vc, type);

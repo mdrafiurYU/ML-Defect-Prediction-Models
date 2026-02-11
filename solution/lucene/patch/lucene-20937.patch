@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerField.java b/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerField.java
+index 2413d03..36b1908 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerField.java
++++ b/lucene/src/java/org/apache/lucene/index/DocFieldProcessorPerField.java
+@@ -43,7 +43,7 @@ final class DocFieldProcessorPerField {
+ 
+   public void addField(Fieldable field) {
+     if (fieldCount == fields.length) {
+-      int newSize = ArrayUtil.oversize(fieldCount + 1, RamUsageEstimator.NUM_BYTES_OBJ_REF);
++      int newSize = ArrayUtil.oversize(fieldCount + 1, RamUsageEstimator.NUM_BYTES_OBJECT_REF);
+       Fieldable[] newArray = new Fieldable[newSize];
+       System.arraycopy(fields, 0, newArray, 0, fieldCount);
+       fields = newArray;
+@@ -51,7 +51,7 @@ final class DocFieldProcessorPerField {
+ 
+     fields[fieldCount++] = field;
+   }
+-  
++
+   public void abort() {
+     consumer.abort();
+   }

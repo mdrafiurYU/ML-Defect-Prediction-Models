@@ -1,0 +1,15 @@
+diff --git a/randr/randr.c b/randr/randr.c
+index 4dd0ee5..958f9c1 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -358,8 +358,9 @@ RRExtensionInit (void)
+ 	SRRScreenChangeNotifyEvent;
+     EventSwapVector[RREventBase + RRNotify] = (EventSwapPtr)
+ 	SRRNotifyEvent;
+-
++#ifdef PANORAMIX
+     RRXineramaExtensionInit();
++#endif
+ }
+ 
+ static int

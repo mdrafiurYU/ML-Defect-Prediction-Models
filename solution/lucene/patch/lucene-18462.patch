@@ -1,0 +1,20 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/RunAutomaton.java b/lucene/src/java/org/apache/lucene/util/automaton/RunAutomaton.java
+index eb20f9b..2d9c0d0 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/RunAutomaton.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/RunAutomaton.java
+@@ -29,14 +29,12 @@
+ 
+ package org.apache.lucene.util.automaton;
+ 
+-import java.io.Serializable;
+-
+ /**
+  * Finite-state automaton with fast run operation.
+  * 
+  * @lucene.experimental
+  */
+-public abstract class RunAutomaton implements Serializable {
++public abstract class RunAutomaton {
+   final int maxInterval;
+   final int size;
+   final boolean[] accept;

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/x86emu/ops2.c b/hw/xfree86/x86emu/ops2.c
+index d9e5de9..d99bb41 100644
+--- a/hw/xfree86/x86emu/ops2.c
++++ b/hw/xfree86/x86emu/ops2.c
+@@ -130,7 +130,7 @@ static void x86emuOp2_long_jump(u8 op2)
+         break;
+       case 0x8d:
+         name = "JNL\t";
+-        cond = xorl(ACCESS_FLAG(F_SF), ACCESS_FLAG(F_OF));
++        cond = !(xorl(ACCESS_FLAG(F_SF), ACCESS_FLAG(F_OF)));
+         break;
+       case 0x8e:
+         name = "JLE\t";

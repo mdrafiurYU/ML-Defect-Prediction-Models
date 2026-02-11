@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index d37875c..ec524e6 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -2957,3 +2957,17 @@ xf86GetMotionEvents(DeviceIntPtr pDev, xTimecoord *buff, unsigned long start,
+ {
+     return GetMotionHistory(pDev, buff, start, stop, pScreen);
+ }
++
++_X_EXPORT void
++xf86getsecs(long * secs, long * usecs)
++{
++    struct timeval tv;
++
++    X_GETTIMEOFDAY(&tv);
++    if (secs)
++	*secs = tv.tv_sec;
++    if (usecs)
++	*usecs= tv.tv_usec;
++
++    return;
++}

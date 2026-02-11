@@ -1,0 +1,16 @@
+diff --git a/hw/kdrive/src/kdrive.c b/hw/kdrive/src/kdrive.c
+index 8c4342e..5376f19 100644
+--- a/hw/kdrive/src/kdrive.c
++++ b/hw/kdrive/src/kdrive.c
+@@ -632,11 +632,6 @@ KdProcessArgument (int argc, char **argv, int i)
+ 	kdDontZap = TRUE;
+ 	return 1;
+     }
+-    if (!strcmp (argv[i], "-nozap"))
+-    {
+-	kdDontZap = TRUE;
+-	return 1;
+-    }
+     if (!strcmp (argv[i], "-3button"))
+     {
+ 	kdEmulateMiddleButton = FALSE;

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaWrapper.h b/hw/xfree86/xaa/xaaWrapper.h
+index a141d84..f554741 100644
+--- a/hw/xfree86/xaa/xaaWrapper.h
++++ b/hw/xfree86/xaa/xaaWrapper.h
+@@ -4,7 +4,7 @@
+ 
+ typedef void (*SyncFunc)(ScreenPtr);
+ 
+-Bool xaaSetupWrapper(ScreenPtr pScreen,
++extern _X_EXPORT Bool xaaSetupWrapper(ScreenPtr pScreen,
+ 		     XAAInfoRecPtr infoPtr, int depth, SyncFunc *func);
+ 
+ #endif

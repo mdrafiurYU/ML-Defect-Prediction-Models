@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dummylib/xalloc.c b/hw/xfree86/dummylib/xalloc.c
+index b671d4d..52183ea 100644
+--- a/hw/xfree86/dummylib/xalloc.c
++++ b/hw/xfree86/dummylib/xalloc.c
+@@ -94,7 +94,7 @@ Xstrdup(const char *s)
+     return sd;
+ }
+ 
+-char *
++_X_EXPORT char *
+ XNFstrdup(const char *s)
+ {
+     char *sd;

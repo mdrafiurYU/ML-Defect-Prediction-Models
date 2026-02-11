@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java
+index 3ce8d77..7e49e86 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/ReorderTest.java
+@@ -134,7 +134,7 @@ public class ReorderTest extends AbstractJCRTest {
+         testRootNode.orderBefore(getRelPath(child3), getRelPath(child1));
+         testRootNode.save();
+ 
+-        Session otherSession = helper.getReadOnlySession();
++        Session otherSession = getHelper().getReadOnlySession();
+         try {
+             testOrder((Node) otherSession.getItem(testRootNode.getPath()), new Node[] {child3, child1, child2, child4});
+         } finally {

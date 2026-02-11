@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/XMLTextExtractorTest.java b/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/XMLTextExtractorTest.java
+index 2eaf9e5..48dd2df 100644
+--- a/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/XMLTextExtractorTest.java
++++ b/jackrabbit-text-extractors/src/test/java/org/apache/jackrabbit/extractor/XMLTextExtractorTest.java
+@@ -110,7 +110,7 @@ public class XMLTextExtractorTest extends TestCase {
+             Reader reader = extractor.extractText(
+                     new ByteArrayInputStream(xml.getBytes()),
+                     "text/xml", "unsupported");
+-            assertEquals("", ExtractorHelper.read(reader));
++            assertEquals("attribute value text content", ExtractorHelper.read(reader));
+         } catch (UnsupportedEncodingException e) {
+             fail("XMLTextExtractor does not handle unsupported encodings");
+         } catch (IOException e) {

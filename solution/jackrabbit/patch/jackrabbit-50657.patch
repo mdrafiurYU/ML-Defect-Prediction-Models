@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
+index 5eced1d..cded69c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
+@@ -19,7 +19,6 @@ package org.apache.jackrabbit.core.query.lucene;
+ import java.io.IOException;
+ 
+ import org.apache.jackrabbit.core.id.NodeId;
+-import org.apache.jackrabbit.uuid.UUID;
+ 
+ /**
+  * <code>SlowQueryHandler</code> implements a dummy query handler for testing
+@@ -37,8 +36,7 @@ public class SlowQueryHandler extends SearchIndex {
+         } catch (InterruptedException e) {
+             // ignore
+         }
+-        NodeId id = new NodeId(UUID.randomUUID());
+-        getContext().getItemStateManager().hasItemState(id);
++        getContext().getItemStateManager().hasItemState(new NodeId());
+         super.doInit();
+     }

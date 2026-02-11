@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RootNodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RootNodeTest.java
+index 34abae4..794a620 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RootNodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RootNodeTest.java
+@@ -55,7 +55,9 @@ public class RootNodeTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        rootNode = null;
+         super.tearDown();
+     }

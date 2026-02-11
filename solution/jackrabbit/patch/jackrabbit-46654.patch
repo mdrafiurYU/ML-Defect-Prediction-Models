@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
+index 255d2d6..0b0ab5f 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
+@@ -55,7 +55,7 @@ public class GarbageCollectorTest extends AbstractJCRTest implements ScanEventLi
+             public void run() {
+                 try {
+                     node.setProperty("slowBlob", new InputStream() {
+-                        int pos = 0;
++                        int pos;
+                         public int read() throws IOException {
+                             pos++;
+                             if (pos < 10000) {

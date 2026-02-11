@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
+index 4df9f01..8bfebeb 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
+@@ -723,7 +723,7 @@ protected IType resolveType(char[] packageName, char[] typeName, int acceptFlags
+ 			false);
+ 		// iterate type lookup in each package fragment
+ 		for (int i = 0, length = pkgs == null ? 0 : pkgs.length; i < length; i++) {
+-			type= this.nameLookup.findType(new String(typeName), pkgs[i], false, acceptFlags);
++			type= this.nameLookup.findType(new String(typeName), pkgs[i], false, acceptFlags, true/*consider secondary types*/);
+ 			if (type != null) break;	
+ 		}
+ 		if (type == null) {
+@@ -803,7 +803,7 @@ protected IType resolveTypeByLocation(char[] packageName, char[] typeName, int a
+ 			false);
+ 		// iterate type lookup in each package fragment
+ 		for (int i = 0, length = pkgs == null ? 0 : pkgs.length; i < length; i++) {
+-			type= this.nameLookup.findType(new String(typeName), pkgs[i], false, acceptFlags);
++			type= this.nameLookup.findType(new String(typeName), pkgs[i], false, acceptFlags, true/*consider secondary types*/);
+ 			if (type != null) break;	
+ 		}
+ 		if (type == null) {

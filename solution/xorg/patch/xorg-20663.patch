@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/vgaVideo.h b/hw/xfree86/xf4bpp/vgaVideo.h
+index f9642c0..1e613bb 100644
+--- a/hw/xfree86/xf4bpp/vgaVideo.h
++++ b/hw/xfree86/xf4bpp/vgaVideo.h
+@@ -24,6 +24,10 @@
+ 
+ /* $XConsortium: vgaVideo.h /main/4 1996/02/21 17:59:14 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>	/* GJA -- for pointer data type */
+ #ifdef lint
+ #if defined(volatile)

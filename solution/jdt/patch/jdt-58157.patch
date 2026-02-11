@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/VarargsTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/VarargsTest.java
+index fefd831..ae760c9 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/VarargsTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/VarargsTest.java
+@@ -26,7 +26,7 @@ public class VarargsTest extends AbstractComparableTest {
+ //		TESTS_RANGE = new int[] { 11, -1 };
+ 	}
+ 	public static Test suite() {
+-		return buildTestSuite(testClass());
++		return buildComparableTestSuite(testClass());
+ 	}
+ 	
+ 	public static Class testClass() {

@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/ReferenceContext.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/ReferenceContext.java
+index 53374fe..7b6f4bb 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/ReferenceContext.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/ReferenceContext.java
+@@ -15,11 +15,11 @@ package org.eclipse.jdt.internal.compiler.impl;
+  *	For example: method, type or compilation unit.
+  */
+ 
+-import org.eclipse.jdt.core.compiler.IProblem;
++import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ import org.eclipse.jdt.internal.compiler.CompilationResult;
+ 
+ public interface ReferenceContext {
+-	void abort(int abortLevel, IProblem problem);
++	void abort(int abortLevel, CategorizedProblem problem);
+ 	CompilationResult compilationResult();
+ 	boolean hasErrors();
+ 	void tagAsHavingErrors();

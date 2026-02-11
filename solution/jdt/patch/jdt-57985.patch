@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java
+index dedef44..1c5d122 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java
+@@ -47,6 +47,7 @@ import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
+ import org.eclipse.jdt.internal.compiler.impl.Constant;
+ import org.eclipse.jdt.internal.compiler.impl.StringConstant;
+ import org.eclipse.jdt.internal.compiler.lookup.Binding;
++import org.eclipse.jdt.internal.compiler.lookup.ExtraCompilerModifiers;
+ import org.eclipse.jdt.internal.compiler.lookup.FieldBinding;
+ import org.eclipse.jdt.internal.compiler.lookup.LocalTypeBinding;
+ import org.eclipse.jdt.internal.compiler.lookup.LocalVariableBinding;
+@@ -5433,7 +5434,7 @@ public class ClassFile
+ 		    // pre 1.5, synthetic was an attribute, not a modifier
+ 		    accessFlags &= ~ClassFileConstants.AccSynthetic;
+ 		}
+-		if (methodBinding.isRequiredToClearPrivateModifier()) {
++		if ((methodBinding.modifiers & ExtraCompilerModifiers.AccClearPrivateModifier) != 0) {
+ 			accessFlags &= ~ClassFileConstants.AccPrivate;
+ 		}
+ 		contents[contentsOffset++] = (byte) (accessFlags >> 8);

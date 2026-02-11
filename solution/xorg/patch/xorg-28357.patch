@@ -1,0 +1,13 @@
+diff --git a/xkb/XKBMAlloc.c b/xkb/XKBMAlloc.c
+index 4b7428b..9feaf8e 100644
+--- a/xkb/XKBMAlloc.c
++++ b/xkb/XKBMAlloc.c
+@@ -399,7 +399,7 @@ KeyCode		matchingKeys[XkbMaxKeyCount],nMatchingKeys;
+ 	}
+ 	if (nResize>0) {
+ 	    int nextMatch;
+-	    xkb->map->size_syms= (nTotal*12)/10;
++	    xkb->map->size_syms= (nTotal*15)/10;
+ 	    newSyms = _XkbTypedCalloc(xkb->map->size_syms,KeySym);
+ 	    if (newSyms==NULL)
+ 		return BadAlloc;

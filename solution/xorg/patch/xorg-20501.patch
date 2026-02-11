@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/sco/sco_kbd.c b/hw/xfree86/os-support/sco/sco_kbd.c
+index a26b7e9..8b1d5b7 100644
+--- a/hw/xfree86/os-support/sco/sco_kbd.c
++++ b/hw/xfree86/os-support/sco/sco_kbd.c
+@@ -501,7 +501,7 @@ OpenKeyboard(InputInfoPtr pInfo)
+   return TRUE;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86OSKbdPreInit(InputInfoPtr pInfo)
+ {
+   KbdDevPtr pKbd = pInfo->private;

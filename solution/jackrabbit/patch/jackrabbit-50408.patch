@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
+index cf2aeb1..3229e86 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
+@@ -846,7 +846,7 @@ public class LuceneQueryBuilder implements QueryNodeVisitor {
+                     try {
+                         NodeId id = hmgr.resolveNodePath(session.getQPath(node.getStringValue()));
+                         if (id != null) {
+-                            query = new SimilarityQuery(id.getUUID().toString(), analyzer);
++                            query = new SimilarityQuery(id.toString(), analyzer);
+                         } else {
+                             query = new BooleanQuery();
+                         }

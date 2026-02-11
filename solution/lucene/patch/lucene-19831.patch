@@ -1,0 +1,42 @@
+diff --git a/solr/src/java/org/apache/solr/search/QueryParsing.java b/solr/src/java/org/apache/solr/search/QueryParsing.java
+index 52388cd..834b029 100644
+--- a/solr/src/java/org/apache/solr/search/QueryParsing.java
++++ b/solr/src/java/org/apache/solr/search/QueryParsing.java
+@@ -582,7 +582,7 @@ public class QueryParsing {
+ 
+     boolean opt(char ch) {
+       eatws();
+-      if (val.charAt(pos) == ch) {
++      if (pos < end && val.charAt(pos) == ch) {
+         pos++;
+         return true;
+       }
+@@ -707,6 +707,28 @@ public class QueryParsing {
+       return null;
+     }
+ 
++    public String getGlobbedId(String errMessage) throws ParseException {
++      eatws();
++      int id_start = pos;
++      char ch;
++      if (pos < end && (ch = val.charAt(pos)) != '$' && (Character.isJavaIdentifierStart(ch) || ch=='?' || ch=='*')) {
++        pos++;
++        while (pos < end) {
++          ch = val.charAt(pos);
++          if (!(Character.isJavaIdentifierPart(ch) || ch=='?' || ch=='*') && ch != '.') {
++            break;
++          }
++          pos++;
++        }
++        return val.substring(id_start, pos);
++      }
++
++      if (errMessage != null) {
++        throw new ParseException(errMessage + " at pos " + pos + " str='" + val + "'");
++      }
++      return null;
++    }
++
+     /**
+      * Skips leading whitespace and returns whatever sequence of non 
+      * whitespace it can find (or hte empty string)

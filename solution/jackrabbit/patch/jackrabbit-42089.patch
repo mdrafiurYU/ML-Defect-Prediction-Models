@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyReferenceableTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyReferenceableTest.java
+index 53dc2a9..13decdc 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyReferenceableTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyReferenceableTest.java
+@@ -47,7 +47,7 @@ public class WorkspaceCopyReferenceableTest extends AbstractWorkspaceReferenceab
+     public void testCopyNodesNewUUID() throws RepositoryException {
+         // add mixin referenceable to node1
+         addMixinReferenceableToNode(node1);
+-        
++
+         // copy referenceable node below non-referenceable node
+         String dstAbsPath = node2.getPath() + "/" + node1.getName();
+         workspace.copy(node1.getPath(), dstAbsPath);

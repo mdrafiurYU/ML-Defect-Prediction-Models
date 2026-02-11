@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplRestore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplRestore.java
+index acbb754..0d29a8e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplRestore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImplRestore.java
+@@ -291,7 +291,7 @@ abstract public class VersionManagerImplRestore extends VersionManagerImplBase {
+         } else {
+             // with simple versioning, the node is checked in automatically,
+             // thus not allowing any branches
+-            vMgr.checkin(session, state);
++            vMgr.checkin(session, state, null);
+         }
+         // 3. N's jcr:isCheckedOut property is set to false.
+         state.setPropertyValue(NameConstants.JCR_ISCHECKEDOUT, InternalValue.create(false));

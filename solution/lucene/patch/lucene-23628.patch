@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+index 95d7d0c..71db0ab 100755
+--- a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+@@ -78,6 +78,10 @@ public abstract class StringIndexDocValues extends DocValues {
+     return spareChars.toString();
+   }
+ 
++  @Override
++  public boolean boolVal(int doc) {
++    return exists(doc);
++  }
+ 
+   @Override
+   public abstract Object objectVal(int doc);  // force subclasses to override

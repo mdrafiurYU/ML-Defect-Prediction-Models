@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+index d54a6c3..b32ae06 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+@@ -1846,7 +1846,8 @@ public class BatchedItemOperations extends ItemValidator {
+             iter = srcState.getPropertyNames().iterator();
+             while (iter.hasNext()) {
+                 Name propName = (Name) iter.next();
+-                if (!srcAccessMgr.isGranted(srcPath, propName, Permission.READ)) {
++                Path propPath = PathFactoryImpl.getInstance().create(srcPath, propName, true);
++                if (!srcAccessMgr.canRead(propPath)) {
+                     continue;
+                 }
+                 PropertyId propId = new PropertyId(srcState.getNodeId(), propName);

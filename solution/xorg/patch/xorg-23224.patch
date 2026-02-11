@@ -1,0 +1,15 @@
+diff --git a/xfixes/select.c b/xfixes/select.c
+index a40ef17..71addd4 100755
+--- a/xfixes/select.c
++++ b/xfixes/select.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif

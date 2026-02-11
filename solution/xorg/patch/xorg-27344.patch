@@ -1,0 +1,13 @@
+diff --git a/exa/exa_migration.c b/exa/exa_migration.c
+index d24a1bf..eedc5fd 100644
+--- a/exa/exa_migration.c
++++ b/exa/exa_migration.c
+@@ -249,7 +249,7 @@ exaCopyDirtyToFb (PixmapPtr pPixmap)
+  * Called when the memory manager decides it's time to kick the pixmap out of
+  * framebuffer entirely.
+  */
+-static void
++void
+ exaPixmapSave (ScreenPtr pScreen, ExaOffscreenArea *area)
+ {
+     PixmapPtr pPixmap = area->privData;

@@ -1,0 +1,13 @@
+diff --git a/glx/glxscreens.c b/glx/glxscreens.c
+index 87119fb..6f68b06 100644
+--- a/glx/glxscreens.c
++++ b/glx/glxscreens.c
+@@ -354,7 +354,7 @@ static __GLXconfig *
+ pickFBConfig(__GLXscreen *pGlxScreen, VisualPtr visual)
+ {
+     __GLXconfig *best = NULL, *config;
+-    int best_score;
++    int best_score = 0;
+ 
+     for (config = pGlxScreen->fbconfigs; config != NULL; config = config->next) {
+ 	int score = 0;

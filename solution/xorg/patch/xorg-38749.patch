@@ -1,0 +1,13 @@
+diff --git a/Xi/chdevhier.c b/Xi/chdevhier.c
+index 99957fe..07bd729 100644
+--- a/Xi/chdevhier.c
++++ b/Xi/chdevhier.c
+@@ -80,7 +80,7 @@ ProcXChangeDeviceHierarchy(ClientPtr client)
+     xAnyHierarchyChangeInfo *any;
+     int required_len = sizeof(xChangeDeviceHierarchyReq);
+     char n;
+-    int rc;
++    int rc = Success;
+     int nchanges = 0;
+     deviceHierarchyChangedEvent ev;
+ 

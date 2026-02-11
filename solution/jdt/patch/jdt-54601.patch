@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java
+index 3df206b..0aee474 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessingState.java
+@@ -222,7 +222,9 @@ public class DeltaProcessingState implements IResourceChangeListener {
+ 	    info.newResolvedPath = newResolvedPath;
+ 	    info.newRawPath = newRawPath;
+ 	    if (canChangeResources) {
+-            this.projectUpdates.remove(project); // remove possibly awaiting one
++	    	synchronized (this) {
++	            this.projectUpdates.remove(project); // remove possibly awaiting one
++			}
+ 	        info.updateProjectReferencesIfNecessary();
+ 	        return;
+ 	    }

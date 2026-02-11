@@ -1,0 +1,33 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index e6c37fe..d035c76 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -92,9 +92,6 @@
+ extern int XkbDfltRepeatDelay, XkbDfltRepeatInterval;
+ #endif
+ 
+-extern Selection *CurrentSelections;
+-extern int NumCurrentSelections;
+-
+ /* DIX things */
+ 
+ _X_HIDDEN void *dixLookupTab[] = {
+@@ -150,8 +147,6 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMVAR(isItTimeToYield)
+     SYMVAR(ClientStateCallback)
+     SYMVAR(ServerGrabCallback)
+-    SYMVAR(CurrentSelections)
+-    SYMVAR(NumCurrentSelections)
+     /* dixfonts.c */
+     SYMFUNC(CloseFont)
+     SYMFUNC(FontToXError)
+@@ -196,6 +191,9 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMFUNC(dixLookupProperty)
+     SYMFUNC(ChangeWindowProperty)
+     SYMFUNC(dixChangeWindowProperty)
++    /* selection.c */
++    SYMFUNC(dixLookupSelection)
++    SYMVAR(CurrentSelections)
+     /* extension.c */
+     SYMFUNC(AddExtension)
+     SYMFUNC(AddExtensionAlias)

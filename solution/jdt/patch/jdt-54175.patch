@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BinaryFileOutputStream.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BinaryFileOutputStream.java
+index d9e077e..4620565 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BinaryFileOutputStream.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BinaryFileOutputStream.java
+@@ -66,6 +66,7 @@ public class BinaryFileOutputStream extends ByteArrayOutputStream {
+ 			FileSystemUtil.makeDerivedParentFolders(_file.getParent());
+ 			if (create) {
+ 				_file.create(toSave, true, null);
++				_file.setDerived(true);
+ 			}
+ 			else {
+ 				_file.setContents(toSave, true, false, null);

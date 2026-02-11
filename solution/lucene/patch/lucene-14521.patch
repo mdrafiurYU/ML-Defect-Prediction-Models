@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java b/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
+index 306a466..1dcfcb2 100644
+--- a/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
++++ b/solr/src/java/org/apache/solr/spelling/AbstractLuceneSpellChecker.java
+@@ -149,7 +149,7 @@ public abstract class AbstractLuceneSpellChecker extends SolrSpellChecker {
+     }
+     if (analyzer == null)   {
+       log.info("Using WhitespaceAnalzyer for dictionary: " + name);
+-      analyzer = new WhitespaceAnalyzer();
++      analyzer = new WhitespaceAnalyzer(core.getSolrConfig().luceneMatchVersion);
+     }
+     return name;
+   }

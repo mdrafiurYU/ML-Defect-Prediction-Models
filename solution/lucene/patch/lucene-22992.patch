@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocInverter.java b/lucene/src/java/org/apache/lucene/index/DocInverter.java
+index 95c0976..a563878 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocInverter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocInverter.java
+@@ -87,6 +87,7 @@ final class DocInverter extends DocFieldConsumer {
+     endConsumer.startDocument();
+   }
+ 
++  @Override
+   public void finishDocument() throws IOException {
+     // TODO: allow endConsumer.finishDocument to also return
+     // a DocWriter

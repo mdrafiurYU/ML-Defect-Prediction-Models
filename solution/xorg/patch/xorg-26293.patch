@@ -1,0 +1,21 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index ebb2540..77cba29 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -564,6 +564,8 @@ ProcRRSetCrtcConfig (ClientPtr client)
+ 	goto sendReply;
+     }
+     
++    if (mode)
++    {
+     /*
+      * Validate requested rotation
+      */
+@@ -622,6 +624,7 @@ ProcRRSetCrtcConfig (ClientPtr client)
+ 	}
+     }
+ #endif
++    }
+     
+     /*
+      * Make sure the requested set-time is not older than

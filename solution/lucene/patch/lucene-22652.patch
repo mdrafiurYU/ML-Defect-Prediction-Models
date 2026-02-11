@@ -1,0 +1,32 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestHyphenatedWordsFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestHyphenatedWordsFilter.java
+index a51fa22..1dc7242 100755
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestHyphenatedWordsFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestHyphenatedWordsFilter.java
+@@ -20,8 +20,8 @@ package org.apache.lucene.analysis.miscellaneous;
+ import java.io.StringReader;
+ 
+ import org.apache.lucene.analysis.BaseTokenStreamTestCase;
++import org.apache.lucene.analysis.MockTokenizer;
+ import org.apache.lucene.analysis.TokenStream;
+-import org.apache.lucene.analysis.core.WhitespaceTokenizer;
+ 
+ /**
+  * HyphenatedWordsFilter test
+@@ -30,7 +30,7 @@ public class TestHyphenatedWordsFilter extends BaseTokenStreamTestCase {
+ 	public void testHyphenatedWords() throws Exception {
+ 		String input = "ecologi-\r\ncal devel-\r\n\r\nop compre-\u0009hensive-hands-on and ecologi-\ncal";
+ 		// first test
+-		TokenStream ts = new WhitespaceTokenizer(TEST_VERSION_CURRENT, new StringReader(input));
++		TokenStream ts = new MockTokenizer(new StringReader(input), MockTokenizer.WHITESPACE, false);
+ 		ts = new HyphenatedWordsFilter(ts);
+ 		assertTokenStreamContents(ts, 
+ 		    new String[] { "ecological", "develop", "comprehensive-hands-on", "and", "ecological" });
+@@ -42,7 +42,7 @@ public class TestHyphenatedWordsFilter extends BaseTokenStreamTestCase {
+ 	public void testHyphenAtEnd() throws Exception {
+ 	    String input = "ecologi-\r\ncal devel-\r\n\r\nop compre-\u0009hensive-hands-on and ecology-";
+ 	    // first test
+-	    TokenStream ts = new WhitespaceTokenizer(TEST_VERSION_CURRENT, new StringReader(input));
++	    TokenStream ts = new MockTokenizer(new StringReader(input), MockTokenizer.WHITESPACE, false);
+ 	    ts = new HyphenatedWordsFilter(ts);
+ 	    assertTokenStreamContents(ts, 
+ 	        new String[] { "ecological", "develop", "comprehensive-hands-on", "and", "ecology-" });

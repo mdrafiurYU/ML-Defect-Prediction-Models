@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaModelTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaModelTests.java
+index e84e560..c66a7fd 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaModelTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaModelTests.java
+@@ -437,8 +437,9 @@ public void testInitializeAfterLoad() throws CoreException {
+ 	JavaCore.initializeAfterLoad(null);
+ }
+ 
+-/*
++/**
+  * Ensures that a registered pre-processing resource changed listener is correctly called.
++ * @deprecated since using deprecated API
+  */
+ public void testPreProcessingResourceChangedListener01() throws CoreException {
+ 	final int[] eventType = new int[] {0};

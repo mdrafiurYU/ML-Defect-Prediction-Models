@@ -1,0 +1,60 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 31f9945..fc1ac64 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -66,7 +66,6 @@ SOFTWARE.
+ #ifdef HAVE_KDRIVE_CONFIG_H
+ #include <kdrive-config.h>
+ /* there must be a better way... */
+-#undef XF86MISC
+ #undef XFreeXDGA
+ #undef XF86DRI
+ #undef XF86VIDMODE
+@@ -74,7 +73,6 @@ SOFTWARE.
+ 
+ #ifdef HAVE_XGL_CONFIG_H
+ #include <xgl-config.h>
+-#undef XF86MISC
+ #undef XFreeXDGA
+ #undef XF86DRI
+ #undef XF86VIDMODE
+@@ -151,9 +149,6 @@ extern Bool noXFree86DGAExtension;
+ #ifdef XF86DRI
+ extern Bool noXFree86DRIExtension;
+ #endif
+-#ifdef XF86MISC
+-extern Bool noXFree86MiscExtension;
+-#endif
+ #ifdef XF86VIDMODE
+ extern Bool noXFree86VidModeExtension;
+ #endif
+@@ -274,9 +269,6 @@ extern void XFree86BigfontExtensionInit(INITARGS);
+ #ifdef XF86VIDMODE
+ extern void XFree86VidModeExtensionInit(INITARGS);
+ #endif
+-#ifdef XF86MISC
+-extern void XFree86MiscExtensionInit(INITARGS);
+-#endif
+ #ifdef XFreeXDGA
+ extern void XFree86DGAExtensionInit(INITARGS);
+ #endif
+@@ -396,9 +388,6 @@ static ExtensionToggle ExtensionToggleList[] =
+ #ifdef XF86DRI
+     { "XFree86-DRI", &noXFree86DRIExtension },
+ #endif
+-#ifdef XF86MISC
+-    { "XFree86-Misc", &noXFree86MiscExtension },
+-#endif
+ #ifdef XF86VIDMODE
+     { "XFree86-VidModeExtension", &noXFree86VidModeExtension },
+ #endif
+@@ -525,9 +514,6 @@ InitExtensions(int argc, char *argv[])
+ #if defined(XF86VIDMODE)
+     if (!noXFree86VidModeExtension) XFree86VidModeExtensionInit();
+ #endif
+-#if defined(XF86MISC)
+-    if (!noXFree86MiscExtension) XFree86MiscExtensionInit();
+-#endif
+ #if defined(XFreeXDGA)
+     if (!noXFree86DGAExtension) XFree86DGAExtensionInit();
+ #endif

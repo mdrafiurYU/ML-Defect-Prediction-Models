@@ -1,0 +1,13 @@
+diff --git a/Xi/setbmap.c b/Xi/setbmap.c
+index bdfa513..1f5970d 100644
+--- a/Xi/setbmap.c
++++ b/Xi/setbmap.c
+@@ -134,7 +134,7 @@ ProcXSetDeviceButtonMapping(ClientPtr client)
+     }
+ 
+     if (ret != MappingBusy)
+-	SendDeviceMappingNotify(MappingPointer, 0, 0, dev);
++	SendDeviceMappingNotify(client, MappingPointer, 0, 0, dev);
+     return Success;
+ }
+ 

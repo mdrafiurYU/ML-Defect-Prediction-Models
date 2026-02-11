@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86AutoConfig.c b/hw/xfree86/common/xf86AutoConfig.c
+index e3e0bb3..268b50c 100644
+--- a/hw/xfree86/common/xf86AutoConfig.c
++++ b/hw/xfree86/common/xf86AutoConfig.c
+@@ -140,12 +140,13 @@ videoPtrToDriverName(struct pci_device *dev)
+ {
+     /*
+      * things not handled yet:
+-     * amd/cyrix/nsc
+-     * xgi
++     * cyrix/nsc.  should be merged into geode anyway.
++     * xgi.
+      */
+ 
+     switch (dev->vendor_id)
+     {
++	case 0x1022:		    return "amd";
+ 	case 0x1142:		    return "apm";
+ 	case 0xedd8:		    return "ark";
+ 	case 0x1a03:		    return "ast";

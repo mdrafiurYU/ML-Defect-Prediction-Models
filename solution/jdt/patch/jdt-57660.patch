@@ -1,0 +1,29 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodVerifier.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodVerifier.java
+index d544a14..cb65683 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodVerifier.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodVerifier.java
+@@ -127,10 +127,9 @@ void checkAgainstInheritedMethods(MethodBinding currentMethod, MethodBinding[] m
+ 			currentMethod.modifiers |= ExtraCompilerModifiers.AccOverriding;
+ 		}
+ 
+-		if (!areReturnTypesEqual(currentMethod, inheritedMethod)) {
+-			problemReporter(currentMethod).incompatibleReturnType(currentMethod, inheritedMethod);
+-			continue nextMethod;
+-		}
++		if (!areReturnTypesEqual(currentMethod, inheritedMethod))
++			if (reportIncompatibleReturnTypeError(currentMethod, inheritedMethod))
++				continue nextMethod;
+ 
+ 		if (currentMethod.thrownExceptions != Binding.NO_EXCEPTIONS)
+ 			checkExceptions(currentMethod, inheritedMethod);
+@@ -571,6 +570,10 @@ ProblemReporter problemReporter(MethodBinding currentMethod) {
+ 		reporter.referenceContext = currentMethod.sourceMethod();
+ 	return reporter;
+ }
++boolean reportIncompatibleReturnTypeError(MethodBinding currentMethod, MethodBinding inheritedMethod) {
++	problemReporter(currentMethod).incompatibleReturnType(currentMethod, inheritedMethod);
++	return true;
++}
+ ReferenceBinding[] resolvedExceptionTypesFor(MethodBinding method) {
+ 	ReferenceBinding[] exceptions = method.thrownExceptions;
+ 	if ((method.modifiers & ExtraCompilerModifiers.AccUnresolved) == 0)

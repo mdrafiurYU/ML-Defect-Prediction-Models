@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 7adfe02..507854e 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -1558,7 +1558,7 @@ CreatePmap:
+ 	pMap->drawable.id = stuff->pid;
+ 	/* security creation/labeling check */
+ 	rc = XaceHook(XACE_RESOURCE_ACCESS, client, stuff->pid, RT_PIXMAP,
+-		      DixCreateAccess, pMap);
++		      pMap, RT_NONE, NULL, DixCreateAccess);
+ 	if (rc != Success) {
+ 	    (*pDraw->pScreen->DestroyPixmap)(pMap);
+ 	    return rc;

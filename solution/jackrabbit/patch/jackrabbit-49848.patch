@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QPropertyDefinitionImpl.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QPropertyDefinitionImpl.java
+index 4f8c203..6addb7f 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QPropertyDefinitionImpl.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QPropertyDefinitionImpl.java
+@@ -137,7 +137,7 @@ public class QPropertyDefinitionImpl extends QItemDefinitionImpl implements QPro
+                 // in case of name and path constraint, the value must be
+                 // converted to SPI values
+                 // TODO: tobefixed. path-constraint may contain trailing *
+-                vc.add(ValueConstraint.create(requiredType, qValue));
++                vc.add(ValueConstraint.create(requiredType, qValue, resolver));
+             }
+             valueConstraints = vc.toArray(new QValueConstraint[vc.size()]);
+         }

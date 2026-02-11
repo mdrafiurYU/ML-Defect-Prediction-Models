@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_apm.c b/hw/xfree86/os-support/bsd/bsd_apm.c
+index 43eda74..feaed21 100644
+--- a/hw/xfree86/os-support/bsd/bsd_apm.c
++++ b/hw/xfree86/os-support/bsd/bsd_apm.c
+@@ -108,7 +108,7 @@ bsdPMConfirmEventToOs(int fd, pmEvent event)
+     }
+ }
+ 
+-PMClose
++_X_EXPORT PMClose
+ xf86OSPMOpen(void)
+ {
+     int fd;

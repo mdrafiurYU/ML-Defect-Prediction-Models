@@ -1,0 +1,10 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemSeverities.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemSeverities.java
+index 5f4a5d7..fbb89b1 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemSeverities.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemSeverities.java
+@@ -23,4 +23,5 @@ public interface ProblemSeverities {
+ 	final int Abort = 30; // 2r11110
+ 	final int Optional = 32; // when bit is set: problem was configurable
+ 	final int SecondaryError = 64;
++	final int Fatal = 128; // when bit is set: problem was either a mandatory error, or an optional+treatOptionalErrorAsFatal	
+ }

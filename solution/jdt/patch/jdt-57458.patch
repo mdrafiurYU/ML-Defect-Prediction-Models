@@ -1,0 +1,39 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
+index 5aeaaf7..624d2a6 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
+@@ -59,6 +59,8 @@
+  *     IBM Corporation - added the following constants:
+  *                                 COMPILER_PB_PARAMETER_ASSIGNMENT
+  *                                 COMPILER_PB_NULL_REFERENCE
++ *     IBM Corporation - added the following constants:
++ *                                 CODEASSIST_DEPRECATION_CHECK
+  *******************************************************************************/
+ package org.eclipse.jdt.core;
+ 
+@@ -837,6 +839,12 @@ public final class JavaCore extends Plugin {
+ 	 * @see #getDefaultOptions()
+ 	 * @since 3.2
+ 	 */
++	public static final String CODEASSIST_DEPRECATION_CHECK = PLUGIN_ID + ".codeComplete.deprecationCheck"; //$NON-NLS-1$
++	/**
++	 * Possible  configurable option ID.
++	 * @see #getDefaultOptions()
++	 * @since 3.2
++	 */
+ 	public static final String CODEASSIST_CAMEL_CASE_MATCH = PLUGIN_ID + ".codeComplete.camelCaseMatch"; //$NON-NLS-1$
+ 	/**
+ 	 * Possible  configurable option ID.
+@@ -2421,6 +2429,12 @@ public final class JavaCore extends Plugin {
+ 	 *     - possible values:   { "enabled", "disabled" }
+ 	 *     - default:           "disabled"
+ 	 * 
++	 *  CODEASSIST / Activate Deprecation Sensitive Completion
++	 *    When active, completion doesn't show deprecated members and types.
++	 *     - option id:         "org.eclipse.jdt.core.codeComplete.deprecationCheck"
++	 *     - possible values:   { "enabled", "disabled" }
++	 *     - default:           "disable"
++	 * 
+ 	 *	CODEASSIST / Automatic Qualification of Implicit Members
+ 	 *    When active, completion automatically qualifies completion on implicit
+ 	 *    field references and message expressions.

@@ -1,0 +1,11 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+index 19c3f38..15ad137 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentInfo.java
+@@ -659,7 +659,6 @@ public final class SegmentInfo {
+ 
+     StringBuilder s = new StringBuilder();
+     s.append(name).append('(').append(version == null ? "?" : version).append(')').append(':');
+-
+     char cfs = getUseCompoundFile() ? 'c' : 'C';
+     s.append(cfs);

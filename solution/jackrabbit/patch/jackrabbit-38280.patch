@@ -1,0 +1,37 @@
+diff --git a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/HTMLTextExtractor.java b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/HTMLTextExtractor.java
+index aaef7b4..453cee3 100644
+--- a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/HTMLTextExtractor.java
++++ b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/HTMLTextExtractor.java
+@@ -16,6 +16,8 @@
+  */
+ package org.apache.jackrabbit.extractor;
+ 
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ import org.xml.sax.InputSource;
+ import org.xml.sax.helpers.DefaultHandler;
+ 
+@@ -36,6 +38,12 @@ import java.io.StringReader;
+ public class HTMLTextExtractor extends AbstractTextExtractor {
+ 
+     /**
++     * Logger instance.
++     */
++    private static final Logger logger =
++        LoggerFactory.getLogger(HTMLTextExtractor.class);
++
++    /**
+      * Creates a new <code>HTMLTextExtractor</code> instance.
+      */
+     public HTMLTextExtractor() {
+@@ -61,8 +69,10 @@ public class HTMLTextExtractor extends AbstractTextExtractor {
+ 
+             return new StringReader(parser.getContents());
+         } catch (TransformerConfigurationException e) {
++            logger.warn("Failed to extract HTML text content", e);
+             return new StringReader("");
+         } catch (TransformerException e) {
++            logger.warn("Failed to extract HTML text content", e);
+             return new StringReader("");
+         } finally {
+             stream.close();

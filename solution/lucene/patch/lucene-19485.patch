@@ -1,0 +1,13 @@
+diff --git a/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/ae/AEProviderFactory.java b/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/ae/AEProviderFactory.java
+index 2104e75..bc5ad81 100644
+--- a/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/ae/AEProviderFactory.java
++++ b/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/ae/AEProviderFactory.java
+@@ -43,7 +43,7 @@ public class AEProviderFactory {
+   }
+ 
+   public synchronized AEProvider getAEProvider(String core, String aePath,
+-          Map<String, String> runtimeParameters) {
++          Map<String, Object> runtimeParameters) {
+     String key = new StringBuilder(core).append(aePath).toString();
+     if (providerCache.get(key) == null) {
+       providerCache.put(key, new OverridingParamsAEProvider(aePath, runtimeParameters));

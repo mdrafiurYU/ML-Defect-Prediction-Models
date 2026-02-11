@@ -1,0 +1,18 @@
+diff --git a/os/utils.c b/os/utils.c
+index e41c366..de3e7c9 100644
+--- a/os/utils.c
++++ b/os/utils.c
+@@ -139,13 +139,9 @@ _X_EXPORT Bool noTestExtensions;
+ _X_EXPORT Bool noBigReqExtension = FALSE;
+ #endif
+ #ifdef COMPOSITE
+- #ifdef XFree86Server
+   /* COMPOSITE is disabled by default for now until the
+    * interface is stable */
+   #define COMPOSITE_DEFAULT FALSE
+- #else
+-  #define COMPOSITE_DEFAULT TRUE
+- #endif
+ _X_EXPORT Bool noCompositeExtension = !COMPOSITE_DEFAULT;
+ #endif
+ 

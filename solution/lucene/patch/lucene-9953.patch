@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java
+index c7e6d72..60901ee 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchAnalyzer.java
+@@ -111,7 +111,7 @@ public class TestFrenchAnalyzer extends BaseTokenStreamTestCase {
+ 		assertAnalyzesTo(
+ 			fa,
+ 			"33Bis 1940-1945 1940:1945 (---i+++)*",
+-			new String[] { "33bis", "1940-1945", "1940", "1945", "i" });
++			new String[] { "33bis", "1940", "1945", "1940", "1945", "i" });
+ 
+ 	}

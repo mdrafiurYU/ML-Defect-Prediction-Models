@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/parser/scan.c b/hw/xfree86/parser/scan.c
+index d97954d..ce3cda1 100644
+--- a/hw/xfree86/parser/scan.c
++++ b/hw/xfree86/parser/scan.c
+@@ -56,6 +56,10 @@
+ 
+ /* View/edit this file with tab stops set to 4 */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>

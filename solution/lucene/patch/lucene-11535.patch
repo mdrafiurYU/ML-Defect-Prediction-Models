@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+index 3cac5b2..7e30711 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+@@ -257,6 +257,11 @@ class FixedDerefBytesImpl {
+       }
+ 
+     }
++
++    @Override
++    public Values type() {
++      return Values.BYTES_FIXED_DEREF;
++    }
+   }
+ 
+ }

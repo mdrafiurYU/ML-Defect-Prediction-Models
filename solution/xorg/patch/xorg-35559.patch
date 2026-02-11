@@ -1,0 +1,15 @@
+diff --git a/hw/vfb/InitInput.c b/hw/vfb/InitInput.c
+index 99cf56c..393698f 100644
+--- a/hw/vfb/InitInput.c
++++ b/hw/vfb/InitInput.c
+@@ -318,8 +318,8 @@ void
+ InitInput(int argc, char *argv[])
+ {
+     DeviceIntPtr p, k;
+-    p = AddInputDevice(vfbMouseProc, TRUE);
+-    k = AddInputDevice(vfbKeybdProc, TRUE);
++    p = AddInputDevice(serverClient, vfbMouseProc, TRUE);
++    k = AddInputDevice(serverClient, vfbKeybdProc, TRUE);
+     RegisterPointerDevice(p);
+     RegisterKeyboardDevice(k);
+     (void)mieqInit();

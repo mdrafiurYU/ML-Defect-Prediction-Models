@@ -1,0 +1,328 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index f2ac2d9..f414aa5 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -1,6 +1,6 @@
+ /*
+  * Xephyr - A kdrive X server thats runs in a host X window.
+- *          Authored by Matthew Allum <mallum@o-hand.com>
++ *          Authored by Matthew Allum <mallum@openedhand.com>
+  * 
+  * Copyright © 2004 Nokia 
+  *
+@@ -25,12 +25,7 @@
+ 
+ /*  TODO:
+  *
+- *  POSSIBLES
+- *    - much improve keyboard handling *kind of done*
+- *    - '-fullscreen' switch ?
+- *    - full keyboard grab option somehow ? - use for testing WM key shortcuts 
+- *      with out host WM getting them instead.   
+- *    - Make cursor 'accel' better. 
++ *  o Support multiple screens, shouldn't be hard just alot of rejigging.
+  */
+ 
+ #ifdef HAVE_CONFIG_H
+@@ -115,7 +110,6 @@ ephyrScreenInitialize (KdScreenInfo *screen, EphyrScrPriv *scrpriv)
+       screen->fb[0].blueMask  = 0x00;
+       screen->fb[0].depth        = 8;
+       screen->fb[0].bitsPerPixel = 8;
+-
+     }
+   else 
+     {
+@@ -162,16 +156,20 @@ ephyrScreenInit (KdScreenInfo *screen)
+     EphyrScrPriv *scrpriv;
+ 
+     scrpriv = xalloc (sizeof (EphyrScrPriv));
++
+     if (!scrpriv)
+ 	return FALSE;
++
+     memset (scrpriv, 0, sizeof (EphyrScrPriv));
+     screen->driver = scrpriv;
++
+     if (!ephyrScreenInitialize (screen, scrpriv))
+     {
+ 	screen->driver = 0;
+ 	xfree (scrpriv);
+ 	return FALSE;
+     }
++
+     return TRUE;
+ }
+     
+@@ -205,9 +203,6 @@ ephyrMapFramebuffer (KdScreenInfo *screen)
+     EPHYR_DBG(" screen->width: %d, screen->height: %d",
+ 	      screen->width, screen->height);
+ 
+-    /* Always use shadow so we get damage notifications */
+-    scrpriv->shadow = TRUE;
+-    
+     KdComputeMouseMatrix (&m, scrpriv->randr, screen->width, screen->height);
+     
+     KdSetMouseMatrix (&m);
+@@ -221,8 +216,26 @@ ephyrMapFramebuffer (KdScreenInfo *screen)
+     screen->memory_size  = 0;
+     screen->off_screen_base = 0;
+ 
++  if ((scrpriv->randr & RR_Rotate_0) && !(scrpriv->randr & RR_Reflect_All))
++    {
++      scrpriv->shadow = FALSE;
++      
++      screen->fb[0].byteStride = priv->bytes_per_line;
++      screen->fb[0].pixelStride = screen->width;
++      screen->fb[0].frameBuffer = (CARD8 *) (priv->base);
++      screen->off_screen_base = priv->bytes_per_line * screen->height;
++    }
++  else
++    {
++      /* Rotated/Reflected so we need to use shadow fb */
++      scrpriv->shadow = TRUE;
++      
++      EPHYR_DBG("allocing shadow");
++      
+     KdShadowFbAlloc (screen, 0, 
+ 		     scrpriv->randr & (RR_Rotate_90|RR_Rotate_270));
++    }
++  
+     return TRUE;
+ }
+ 
+@@ -252,6 +265,9 @@ ephyrSetScreenSizes (ScreenPtr pScreen)
+ Bool
+ ephyrUnmapFramebuffer (KdScreenInfo *screen)
+ {
++  EphyrScrPriv  *scrpriv = screen->driver;
++  
++  if (scrpriv->shadow)
+     KdShadowFbFree (screen, 0);
+ 
+     /* Note, priv->base will get freed when XImage recreated */
+@@ -264,39 +280,37 @@ ephyrShadowUpdate (ScreenPtr pScreen, shadowBufPtr pBuf)
+ {
+   KdScreenPriv(pScreen);
+   KdScreenInfo *screen = pScreenPriv->screen;
+-  EphyrScrPriv *scrpriv = screen->driver;
+-  int           nbox;
+-  BoxPtr        pbox;
+ 
+-  RegionPtr damage;
++  EPHYR_DBG("slow paint");
+ 
+-  if (!(scrpriv->randr & RR_Rotate_0) || (scrpriv->randr & RR_Reflect_All))
+-    {
+-      /*  Rotated. 
+-       *  TODO: Fix this to use damage as well so much faster. 
+-       *        Sledgehammer approach atm. 
+-       *
+-       *        Catch reflects here too - though thats wrong ... 
++  /* FIXME: Slow Rotated/Reflected updates could be much
++   * much faster efficiently updating via tranforming 
++   * pBuf->pDamage  regions     
+        */
+-      EPHYR_DBG("slow paint");
+       shadowUpdateRotatePacked(pScreen, pBuf);
+       hostx_paint_rect(0,0,0,0, screen->width, screen->height);
+-      return;
+     } 
+-  else shadowUpdatePacked(pScreen, pBuf);
+ 
+-  /* Figure out what rects have changed and update em. */
++static void
++ephyrInternalDamageRedisplay (ScreenPtr pScreen)
++{
++  KdScreenPriv(pScreen);
++  KdScreenInfo	*screen = pScreenPriv->screen;
++  EphyrScrPriv	*scrpriv = screen->driver;
++  RegionPtr	 pRegion;
+ 
+-  if (!pBuf || !pBuf->pDamage)
++  if (!scrpriv || !scrpriv->pDamage)
+     return;
+   
+-  damage = DamageRegion (pBuf->pDamage);
++  pRegion = DamageRegion (scrpriv->pDamage);
+   
+-  if (!REGION_NOTEMPTY (pScreen, damage))
+-    return;
++  if (REGION_NOTEMPTY (pScreen, pRegion))
++    {
++      int           nbox;
++      BoxPtr        pbox;
+   
+-  nbox = REGION_NUM_RECTS (damage);
+-  pbox = REGION_RECTS (damage);
++      nbox = REGION_NUM_RECTS (pRegion);
++      pbox = REGION_RECTS (pRegion);
+   
+   while (nbox--)
+     {
+@@ -306,21 +320,68 @@ ephyrShadowUpdate (ScreenPtr pScreen, shadowBufPtr pBuf)
+ 		       pbox->y2 - pbox->y1);
+       pbox++;
+     }
++      
++      DamageEmpty (scrpriv->pDamage);
++    }
++}
++
++static void
++ephyrInternalDamageBlockHandler (pointer   data,
++				 OSTimePtr pTimeout,
++				 pointer   pRead)
++{
++  ScreenPtr pScreen = (ScreenPtr) data;
++  
++  ephyrInternalDamageRedisplay (pScreen);
++}
++
++static void
++ephyrInternalDamageWakeupHandler (pointer data, int i, pointer LastSelectMask)
++{
++  /* FIXME: Not needed ? */
+ }
+ 
+ Bool
+-ephyrSetShadow (ScreenPtr pScreen)
++ephyrSetInternalDamage (ScreenPtr pScreen)
++{
++  KdScreenPriv(pScreen);
++  KdScreenInfo	*screen = pScreenPriv->screen;
++  EphyrScrPriv	*scrpriv = screen->driver;
++  PixmapPtr      pPixmap = NULL;
++  
++  scrpriv->pDamage = DamageCreate ((DamageReportFunc) 0,
++				   (DamageDestroyFunc) 0,
++				   DamageReportNone,
++				   TRUE,
++				   pScreen,
++				   pScreen);
++  
++  if (!RegisterBlockAndWakeupHandlers (ephyrInternalDamageBlockHandler,
++				       ephyrInternalDamageWakeupHandler,
++				       (pointer) pScreen))
++    return FALSE;
++  
++  pPixmap = (*pScreen->GetScreenPixmap) (pScreen);
++  
++  DamageRegister (&pPixmap->drawable, scrpriv->pDamage);
++      
++  return TRUE;
++}
++
++void
++ephyrUnsetInternalDamage (ScreenPtr pScreen)
+ {
+     KdScreenPriv(pScreen);
+     KdScreenInfo	*screen = pScreenPriv->screen;
+     EphyrScrPriv	*scrpriv = screen->driver;
+-    ShadowUpdateProc	update;
+-    ShadowWindowProc	window;
++  PixmapPtr      pPixmap = NULL;
+ 
+-    window = ephyrWindowLinear;
+-    update = ephyrShadowUpdate; 
++  pPixmap = (*pScreen->GetScreenPixmap) (pScreen);
++  DamageUnregister (&pPixmap->drawable, scrpriv->pDamage);
+ 
+-    return KdShadowSet (pScreen, scrpriv->randr, update, window);
++  RemoveBlockAndWakeupHandlers (ephyrInternalDamageBlockHandler,
++				ephyrInternalDamageWakeupHandler,
++				(pointer) pScreen);
+ }
+ 
+ #ifdef RANDR
+@@ -397,10 +458,8 @@ ephyrRandRSetConfig (ScreenPtr		pScreen,
+     EphyrScrPriv	*scrpriv   = screen->driver;
+     Bool		wasEnabled = pScreenPriv->enabled;
+     EphyrScrPriv	oldscr;
+-    int			oldwidth;
+-    int			oldheight;
+-    int			oldmmwidth;
+-    int			oldmmheight;
++  int		oldwidth, oldheight, oldmmwidth, oldmmheight;
++  Bool          oldshadow;
+     int			newwidth, newheight;
+ 
+     if (screen->randr & (RR_Rotate_0|RR_Rotate_180))
+@@ -423,6 +482,7 @@ ephyrRandRSetConfig (ScreenPtr		pScreen,
+     oldheight = screen->height;
+     oldmmwidth = pScreen->mmWidth;
+     oldmmheight = pScreen->mmHeight;
++  oldshadow   = scrpriv->shadow;
+     
+     /*
+      * Set new configuration
+@@ -440,10 +500,30 @@ ephyrRandRSetConfig (ScreenPtr		pScreen,
+     if (!ephyrMapFramebuffer (screen))
+ 	goto bail4;
+ 
++  /* FIXME below should go in own call */
++  
++  if (oldshadow)
+     KdShadowUnset (screen->pScreen);
++  else
++    ephyrUnsetInternalDamage(screen->pScreen);
+ 
+-    if (!ephyrSetShadow (screen->pScreen))
++  if (scrpriv->shadow)
++    {
++      if (!KdShadowSet (screen->pScreen, 
++			scrpriv->randr, 
++			ephyrShadowUpdate, 
++			ephyrWindowLinear))
++	goto bail4;
++    }
++  else
++    {
++      /* Without shadow fb ( non rotated ) we need 
++       * to use damage to efficiently update display
++       * via signal regions what to copy from 'fb'.
++       */
++      if (!ephyrSetInternalDamage(screen->pScreen))
+ 	goto bail4;
++    }
+ 
+     ephyrSetScreenSizes (screen->pScreen);
+ 
+@@ -462,7 +542,6 @@ ephyrRandRSetConfig (ScreenPtr		pScreen,
+ 
+     KdSetSubpixelOrder (pScreen, scrpriv->randr);
+ 
+-
+     if (wasEnabled)
+ 	KdEnableScreen (pScreen);
+ 
+@@ -518,6 +597,9 @@ ephyrInitScreen (ScreenPtr pScreen)
+ Bool
+ ephyrFinishInitScreen (ScreenPtr pScreen)
+ {
++  /* FIXME: Calling this even if not using shadow.  
++   * Seems harmless enough. But may be safer elsewhere.
++   */
+   if (!shadowSetup (pScreen))
+     return FALSE;
+   
+@@ -532,7 +614,19 @@ ephyrFinishInitScreen (ScreenPtr pScreen)
+ Bool
+ ephyrCreateResources (ScreenPtr pScreen)
+ {
+-    return ephyrSetShadow (pScreen);
++  KdScreenPriv(pScreen);
++  KdScreenInfo	*screen    = pScreenPriv->screen;
++  EphyrScrPriv	*scrpriv   = screen->driver;
++
++  EPHYR_DBG("mark");
++
++  if (scrpriv->shadow) 
++    return KdShadowSet (pScreen, 
++			scrpriv->randr, 
++			ephyrShadowUpdate, 
++			ephyrWindowLinear);
++  else
++    return ephyrSetInternalDamage(pScreen); 
+ }
+ 
+ void

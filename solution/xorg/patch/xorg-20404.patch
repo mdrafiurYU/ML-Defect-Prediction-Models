@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/mfbbres.c b/hw/xfree86/xf4bpp/mfbbres.c
+index ae9df6e..b54e239 100644
+--- a/hw/xfree86/xf4bpp/mfbbres.c
++++ b/hw/xfree86/xf4bpp/mfbbres.c
+@@ -50,6 +50,10 @@ SOFTWARE.
+ /* GJA -- modified this file for vga16 */
+ /* $XConsortium: mfbbres.c /main/5 1996/02/21 17:56:30 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "mfbmap.h"

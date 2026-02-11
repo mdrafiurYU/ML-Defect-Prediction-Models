@@ -1,0 +1,36 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index e537306..5f0a683 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -76,7 +76,6 @@
+ #include "dpmsproc.h"
+ #endif
+ #include "vidmodeproc.h"
+-#include "xf86miscproc.h"
+ #include "loader.h"
+ #include "xisb.h"
+ #include "vbe.h"
+@@ -642,23 +641,6 @@ _X_HIDDEN void *xfree86LookupTab[] = {
+     SYMFUNC(VidModeGetGammaRampSize)
+ #endif
+ 
+-    /* xf86MiscExt.c */
+-#ifdef XF86MISC
+-    SYMFUNC(MiscExtGetMouseSettings)
+-    SYMFUNC(MiscExtGetMouseValue)
+-    SYMFUNC(MiscExtSetMouseValue)
+-    SYMFUNC(MiscExtSetMouseDevice)
+-    SYMFUNC(MiscExtGetKbdSettings)
+-    SYMFUNC(MiscExtGetKbdValue)
+-    SYMFUNC(MiscExtSetKbdValue)
+-    SYMFUNC(MiscExtSetGrabKeysState)
+-    SYMFUNC(MiscExtCreateStruct)
+-    SYMFUNC(MiscExtDestroyStruct)
+-    SYMFUNC(MiscExtApply)
+-    SYMFUNC(MiscExtGetFilePaths)
+-    SYMFUNC(MiscExtPassMessage)
+-#endif
+-
+     /* Misc */
+     SYMFUNC(GetTimeInMillis)
+ 

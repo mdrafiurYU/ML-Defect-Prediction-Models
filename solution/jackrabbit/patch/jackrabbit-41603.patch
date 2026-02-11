@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewSAXEventGenerator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewSAXEventGenerator.java
+index da6779f..2c67bef 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewSAXEventGenerator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SysViewSAXEventGenerator.java
+@@ -211,7 +211,9 @@ public class SysViewSAXEventGenerator extends AbstractSAXEventGenerator {
+                         try {
+                             contentHandler.characters(cbuf, off, len);
+                         } catch (SAXException se) {
+-                            throw new IOException(se.toString());
++                            IOException ioe = new IOException(se.toString());
++                            ioe.initCause(se);
++                            throw ioe;
+                         }
+                     }
+                 };

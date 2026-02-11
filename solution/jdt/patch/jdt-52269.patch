@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
+index 37b2ce7..9a8b1bc 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
+@@ -230,11 +230,11 @@ public class FieldDeclaration extends AbstractVariableDeclaration {
+ 							if (initializationType.needsUncheckedConversion(fieldType)) {
+ 								    initializationScope.problemReporter().unsafeTypeConversion(this.initialization, initializationType, fieldType);
+ 							}									
+-						} else if (initializationScope.compilerOptions().sourceLevel >= JDK1_5 // autoboxing
+-										&& (initializationScope.isBoxingCompatibleWith(initializationType, fieldType) 
+-												|| (initializationType.isBaseType()  // narrowing then boxing ?
+-														&& !fieldType.isBaseType()
+-														&& initialization.isConstantValueOfTypeAssignableToType(initializationType, initializationScope.environment().computeBoxingType(fieldType))))) {
++						} else if (initializationScope.isBoxingCompatibleWith(initializationType, fieldType) 
++											|| (initializationType.isBaseType()  // narrowing then boxing ?
++													&& initializationScope.compilerOptions().sourceLevel >= JDK1_5 // autoboxing
++													&& !fieldType.isBaseType()
++													&& initialization.isConstantValueOfTypeAssignableToType(initializationType, initializationScope.environment().computeBoxingType(fieldType)))) {
+ 							this.initialization.computeConversion(initializationScope, fieldType, initializationType);
+ 						} else {
+ 							initializationScope.problemReporter().typeMismatchError(initializationType, fieldType, this);

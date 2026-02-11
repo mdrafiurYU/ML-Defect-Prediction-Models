@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/ByteValuesCreator.java b/lucene/src/java/org/apache/lucene/search/cache/ByteValuesCreator.java
+index 11bde67..05555de 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/ByteValuesCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/ByteValuesCreator.java
+@@ -61,8 +61,8 @@ public class ByteValuesCreator extends CachedArrayCreator<ByteValues>
+   }
+   
+   @Override
+-  public int getSortTypeID() {
+-    return SortField.BYTE;
++  public SortField.Type getSortType() {
++    return SortField.Type.BYTE;
+   }
+ 
+   //--------------------------------------------------------------------------------
+@@ -143,4 +143,4 @@ public class ByteValuesCreator extends CachedArrayCreator<ByteValues>
+       vals.valid = new Bits.MatchNoBits( maxDoc );
+     }
+   }
+-}
+\ No newline at end of file
++}

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+index 815b14d..d9fee69 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SearchManager.java
+@@ -233,8 +233,8 @@ public class SearchManager implements SynchronousEventListener {
+         }
+ 
+         if (excludedNodeId != null) {
+-            HierarchyManagerImpl hmgr = new HierarchyManagerImpl(
+-                    rootNodeId, itemMgr, nsReg.getPathResolver());
++            HierarchyManagerImpl hmgr =
++                new HierarchyManagerImpl(rootNodeId, itemMgr);
+             excludePath = hmgr.getPath(excludedNodeId);
+         }

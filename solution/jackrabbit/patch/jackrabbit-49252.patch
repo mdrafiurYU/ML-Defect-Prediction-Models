@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ShareableNodesTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ShareableNodesTest.java
+index b729b47..a73944a 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ShareableNodesTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/ShareableNodesTest.java
+@@ -87,6 +87,6 @@ public class ShareableNodesTest extends AbstractObservationTest {
+     }
+ 
+     protected void removeFromSharedSet(Node node) throws RepositoryException {
+-        ((NodeImpl) node).removeShare();
++        node.removeShare();
+     }
+ }

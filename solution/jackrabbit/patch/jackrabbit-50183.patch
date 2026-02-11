@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
+index abc9de7..19f9d5d 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
+@@ -27,11 +27,13 @@ import org.apache.jackrabbit.uuid.UUID;
+  */
+ public class SlowQueryHandler extends SearchIndex {
+ 
++    private static long INITIALIZATION_DELAY = 0;
++
+     protected void doInit() throws IOException {
+         // sleep for 10 seconds then try to read from the item state manager
+         // the repository.xml is configured with a 5 second maxIdleTime
+         try {
+-            Thread.sleep(10 * 1000);
++            Thread.sleep(INITIALIZATION_DELAY);
+         } catch (InterruptedException e) {
+             // ignore
+         }
+@@ -39,4 +41,8 @@ public class SlowQueryHandler extends SearchIndex {
+         getContext().getItemStateManager().hasItemState(id);
+         super.doInit();
+     }
++
++    public static void setInitializationDelay(long delay) {
++        INITIALIZATION_DELAY = delay;
++    }
+ }

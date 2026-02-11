@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProvider.java
+index 198b0ea..19a23f8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlProvider.java
+@@ -72,6 +72,15 @@ public interface AccessControlProvider {
+     void close();
+ 
+     /**
++     * Returns <code>true</code>, if this provider is still alive and able to
++     * evaluate permissions; <code>false</code> otherwise.
++     *
++     * @return <code>true</code>, if this provider is still alive and able to
++     * evaluate permissions; <code>false</code> otherwise.
++     */
++    boolean isLive();
++
++    /**
+      * Returns the effective policies for the node at the given absPath.
+      *
+      * @param absPath an absolute path.

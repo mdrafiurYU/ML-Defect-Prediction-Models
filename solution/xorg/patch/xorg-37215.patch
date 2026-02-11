@@ -1,0 +1,21 @@
+diff --git a/hw/xwin/winpriv.h b/hw/xwin/winpriv.h
+deleted file mode 100644
+index d4505c8..0000000
+--- a/hw/xwin/winpriv.h
++++ /dev/null
+@@ -1,15 +0,0 @@
+-/*
+- * Export window information for the Windows-OpenGL GLX implementation.
+- *
+- * Authors: Alexander Gottwald
+- */
+-#include <windows.h>
+-
+-typedef struct
+-{
+-    HWND    hwnd;
+-    HRGN    hrgn;
+-    RECT    rect;
+-} winWindowInfoRec, *winWindowInfoPtr;
+-
+-extern void winGetWindowInfo(WindowPtr pWin, winWindowInfoPtr pWinInfo);

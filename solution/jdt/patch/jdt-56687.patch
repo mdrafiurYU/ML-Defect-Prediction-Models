@@ -1,0 +1,35 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+index 66f259b..00cbf49 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+@@ -178,7 +178,7 @@ public class ExplicitConstructorCall extends Statement implements InvocationSite
+ 	void manageEnclosingInstanceAccessIfNecessary(BlockScope currentScope, FlowInfo flowInfo) {
+ 		ReferenceBinding superTypeErasure = (ReferenceBinding) binding.declaringClass.erasure();
+ 
+-		if (!flowInfo.isReachable()) return;
++		if ((flowInfo.tagBits & FlowInfo.UNREACHABLE) == 0)	{
+ 		// perform some emulation work in case there is some and we are inside a local type only
+ 		if (superTypeErasure.isNestedType()
+ 			&& currentScope.enclosingSourceType().isLocalType()) {
+@@ -190,11 +190,12 @@ public class ExplicitConstructorCall extends Statement implements InvocationSite
+ 				currentScope.propagateInnerEmulation(superTypeErasure, qualification != null);
+ 			}
+ 		}
++		}
+ 	}
+ 
+ 	public void manageSyntheticAccessIfNecessary(BlockScope currentScope, FlowInfo flowInfo) {
+ 
+-		if (!flowInfo.isReachable()) return;
++		if ((flowInfo.tagBits & FlowInfo.UNREACHABLE) == 0)	{
+ 		// if constructor from parameterized type got found, use the original constructor at codegen time
+ 		this.codegenBinding = this.binding.original();
+ 		
+@@ -210,6 +211,7 @@ public class ExplicitConstructorCall extends Statement implements InvocationSite
+ 				currentScope.problemReporter().needToEmulateMethodAccess(this.codegenBinding, this);
+ 			}
+ 		}
++		}
+ 	}
+ 
+ 	public StringBuffer printStatement(int indent, StringBuffer output) {

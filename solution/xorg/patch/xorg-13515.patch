@@ -1,0 +1,24 @@
+diff --git a/hw/dmx/glxProxy/glxext.c b/hw/dmx/glxProxy/glxext.c
+index e500351..554739e 100644
+--- a/hw/dmx/glxProxy/glxext.c
++++ b/hw/dmx/glxProxy/glxext.c
+@@ -273,19 +273,11 @@ void GlxExtensionInit(void)
+        return;
+     }
+     
+-#ifdef X11R5
+-    __glXContextRes = CreateNewResourceType(ContextGone);
+-    __glXClientRes = CreateNewResourceType(ClientGone);
+-    __glXPixmapRes = CreateNewResourceType(PixmapGone);
+-    __glXWindowRes = CreateNewResourceType(WindowGone);
+-    __glXPbufferRes = CreateNewResourceType(PbufferGone);
+-#else
+     __glXContextRes = CreateNewResourceType((DeleteType)ContextGone);
+     __glXClientRes = CreateNewResourceType((DeleteType)ClientGone);
+     __glXPixmapRes = CreateNewResourceType((DeleteType)PixmapGone);
+     __glXWindowRes = CreateNewResourceType((DeleteType)WindowGone);
+     __glXPbufferRes = CreateNewResourceType((DeleteType)PbufferGone);
+-#endif 
+ 
+     /*
+     ** Add extension to server extensions.

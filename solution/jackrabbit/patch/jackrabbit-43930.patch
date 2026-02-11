@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index 0ad892a..165bf90 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -260,9 +260,8 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+     public QueryManager getQueryManager() throws RepositoryException {
+         session.checkIsAlive();
+         if (qManager == null) {
+-            qManager = new QueryManagerImpl(session,
+-                    session.getNamePathResolver(), session.getItemManager(),
+-                    session.getHierarchyManager(), wspManager);
++            qManager = new QueryManagerImpl(session, session,
++                    session.getItemManager(), wspManager);
+         }
+         return qManager;
+     }

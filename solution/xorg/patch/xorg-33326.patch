@@ -1,0 +1,13 @@
+diff --git a/dix/privates.c b/dix/privates.c
+index cc4b016..8a39437 100644
+--- a/dix/privates.c
++++ b/dix/privates.c
+@@ -107,7 +107,7 @@ dixAllocatePrivate(PrivateRec **privates, devprivate_key_t *const key)
+     if (item)
+ 	size += item->size;
+ 
+-    ptr = (PrivateRec *)xalloc(size);
++    ptr = (PrivateRec *)xcalloc(size, 1);
+     if (!ptr)
+ 	return NULL;
+     ptr->key = key;

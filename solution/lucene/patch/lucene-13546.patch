@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/schema/GeoHashField.java b/solr/src/java/org/apache/solr/schema/GeoHashField.java
+index 9be6130..4051cab 100644
+--- a/solr/src/java/org/apache/solr/schema/GeoHashField.java
++++ b/solr/src/java/org/apache/solr/schema/GeoHashField.java
+@@ -25,7 +25,6 @@ import org.apache.lucene.spatial.DistanceUtils;
+ import org.apache.lucene.spatial.tier.InvalidGeoException;
+ import org.apache.solr.common.SolrException;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.solr.search.QParser;
+ import org.apache.solr.search.SolrConstantScoreQuery;
+ import org.apache.solr.search.SpatialOptions;
+@@ -69,12 +68,6 @@ public class GeoHashField extends FieldType implements SpatialQueryable {
+   }
+ 
+   @Override
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f)
+-          throws IOException {
+-    xmlWriter.writeStr(name, toExternal(f));
+-  }
+-
+-  @Override
+   public void write(TextResponseWriter writer, String name, Fieldable f)
+           throws IOException {
+     writer.writeStr(name, toExternal(f), false);

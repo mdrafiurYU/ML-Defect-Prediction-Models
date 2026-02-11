@@ -1,0 +1,39 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index 15cd8f4..007c07a 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -236,6 +236,8 @@ static pciConfigPtr pci_devp[MAX_PCI_DEVICES + 1] = {NULL, };
+ static int readPciBios( PCITAG Tag, CARD8* tmp, ADDRESS hostbase,
+ 			unsigned char * buf, int len, PciBiosType BiosType );
+ 
++static int (*pciOSHandleBIOS)(PCITAG Tag, int basereg, unsigned char *buf, int len);
++
+ /*
+  * Platform specific PCI function pointers.
+  *
+@@ -269,6 +271,11 @@ pciInit()
+ #endif
+ }
+ 
++void pciSetOSBIOSPtr(int (*bios_fn)(PCITAG Tag, int basereg, unsigned char * buf, int len))
++{
++	pciOSHandleBIOS = bios_fn;
++}
++
+ _X_EXPORT PCITAG
+ pciFindFirst(CARD32 id, CARD32 mask)
+ {
+@@ -1279,6 +1286,13 @@ HandlePciBios(PCITAG Tag, int basereg, unsigned char * buf, int len)
+   PCITAG *pTag;
+   int i;
+ 
++  /* fall back to the old code if the OS code fails */
++  if (pciOSHandleBIOS) {
++  	n = pciOSHandleBIOS(Tag, basereg, buf, len);
++  	if (n)
++      		return n;
++  }
++
+   n = handlePciBIOS( Tag, basereg, buf, len );
+   if (n)
+       return n;

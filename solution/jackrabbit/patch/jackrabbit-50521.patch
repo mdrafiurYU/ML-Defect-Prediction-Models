@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java
+index 9029ba0..750c6b0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/SessionImporter.java
+@@ -90,8 +90,7 @@ public class SessionImporter implements Importer {
+         NodeImpl node;
+ 
+         // add node
+-        UUID uuid = (id == null) ? null : id.getUUID();
+-        node = parent.addNode(nodeName, nodeTypeName, uuid);
++        node = parent.addNode(nodeName, nodeTypeName, id);
+         // add mixins
+         if (mixinNames != null) {
+             for (int i = 0; i < mixinNames.length; i++) {
+@@ -294,7 +293,7 @@ public class SessionImporter implements Importer {
+                     NodeId adjusted = refTracker.getMappedId(original);
+                     if (adjusted != null) {
+                         newVals[i] = session.getValueFactory().createValue(
+-                                session.getNodeByUUID(adjusted.getUUID()),
++                                session.getNodeById(adjusted),
+                                 prop.getType() != PropertyType.REFERENCE);
+                     } else {
+                         // reference doesn't need adjusting, just copy old value

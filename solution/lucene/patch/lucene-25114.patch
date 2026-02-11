@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/IntsImpl.java b/lucene/src/java/org/apache/lucene/index/values/IntsImpl.java
+index dc626e6..4921f4b 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/IntsImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/IntsImpl.java
+@@ -157,7 +157,7 @@ class IntsImpl {
+     }
+ 
+     @Override
+-    protected void add(int docID) throws IOException {
++    protected void mergeDoc(int docID) throws IOException {
+       add(docID, intsRef.get());
+     }

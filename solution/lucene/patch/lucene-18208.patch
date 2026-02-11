@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java
+index 26ca406..6d96441 100644
+--- a/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java
+@@ -21,7 +21,17 @@ package org.apache.solr.analysis;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.br.BrazilianStemFilter;
+ 
+-/** Factory for {@link BrazilianStemFilter} */
++/** 
++ * Factory for {@link BrazilianStemFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_brstem" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.BrazilianStemFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre>
++ * @version $Id$
++ */
+ public class BrazilianStemFilterFactory extends BaseTokenFilterFactory {
+   public BrazilianStemFilter create(TokenStream in) {
+     return new BrazilianStemFilter(in);

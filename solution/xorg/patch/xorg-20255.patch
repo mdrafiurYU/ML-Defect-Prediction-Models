@@ -1,0 +1,12 @@
+diff --git a/exa/exa_accel.c b/exa/exa_accel.c
+index 1978852..b51cd87 100644
+--- a/exa/exa_accel.c
++++ b/exa/exa_accel.c
+@@ -822,7 +822,6 @@ const GCOps exaOps = {
+ void
+ exaCopyWindow(WindowPtr pWin, DDXPointRec ptOldOrg, RegionPtr prgnSrc)
+ {
+-    ExaScreenPriv (pWin->drawable.pScreen);
+     RegionRec	rgnDst;
+     int		dx, dy;
+     PixmapPtr	pPixmap = (*pWin->drawable.pScreen->GetWindowPixmap) (pWin);

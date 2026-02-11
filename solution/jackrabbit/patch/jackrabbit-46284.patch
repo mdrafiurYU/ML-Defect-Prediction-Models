@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/ActiveLock.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/ActiveLock.java
+index d9c0848..7c8dcd8 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/ActiveLock.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/ActiveLock.java
+@@ -67,7 +67,7 @@ public interface ActiveLock extends XmlSerializable {
+      * or -1 if the timeout is not available (or the client is not allowed
+      * to retrieve it).
+      *
+-     * @return
++     * @return numer of milliseconds.
+      */
+     public long getTimeout();
+ 
+@@ -93,6 +93,22 @@ public interface ActiveLock extends XmlSerializable {
+     public void setIsDeep(boolean isDeep);
+ 
+     /**
++     * Returns the lockroot.
++     *
++     * @return lockroot
++     * @see <a href="http://www.webdav.org/specs/rfc4918.html#ELEMENT_lockroot">RFC 4818</a>
++     */
++    public String getLockroot();
++
++    /**
++     * Set the lockroot.
++     *
++     * @param lockroot
++     * @see <a href="http://www.webdav.org/specs/rfc4918.html#ELEMENT_lockroot">RFC 4818</a>
++     */
++    public void setLockroot(String lockroot);
++
++    /**
+      * Return the type of this lock.
+      *
+      * @return type

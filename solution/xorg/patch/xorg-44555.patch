@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/linux/int10/vm86/linux_vm86.c b/hw/xfree86/os-support/linux/int10/vm86/linux_vm86.c
+index 9412b07..34afd95 100644
+--- a/hw/xfree86/os-support/linux/int10/vm86/linux_vm86.c
++++ b/hw/xfree86/os-support/linux/int10/vm86/linux_vm86.c
+@@ -172,9 +172,7 @@ vm86_GP_fault(xf86Int10InfoPtr pInt)
+ 	break;
+ 
+     case 0xf4:
+-#ifdef DEBUG
+-	ErrorF("hlt at %p\n", lina);
+-#endif
++	DebugF("hlt at %p\n", lina);
+ 	return FALSE;
+ 
+     case 0x0f:

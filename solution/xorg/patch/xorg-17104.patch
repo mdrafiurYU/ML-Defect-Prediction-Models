@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/config/xdmxconfig.c b/hw/dmx/config/xdmxconfig.c
+index 1ba59b6..9a350a8 100644
+--- a/hw/dmx/config/xdmxconfig.c
++++ b/hw/dmx/config/xdmxconfig.c
+@@ -32,6 +32,10 @@
+  *
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++                                                                                
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <X11/Intrinsic.h>

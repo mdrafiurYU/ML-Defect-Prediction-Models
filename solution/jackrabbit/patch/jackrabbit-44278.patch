@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java
+index 4397128..2d7eff2 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java
+@@ -19,8 +19,6 @@ package org.apache.jackrabbit.ocm.mapper;
+ import junit.framework.Test;
+ import junit.framework.TestSuite;
+ 
+-import org.apache.jackrabbit.ocm.RepositoryLifecycleTestSetup;
+-
+ 
+ /**
+  * Package level tests.
+@@ -30,7 +28,7 @@ import org.apache.jackrabbit.ocm.RepositoryLifecycleTestSetup;
+ public class AllTests {
+ 
+     public static Test suite() {
+-        return new RepositoryLifecycleTestSetup(buildSuite());
++        return buildSuite();
+     }
+ 
+     public static Test buildSuite() {

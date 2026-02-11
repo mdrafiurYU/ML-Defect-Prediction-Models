@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/sco/sco_mouse.c b/hw/xfree86/os-support/sco/sco_mouse.c
+index d60107f..f29fcd7 100644
+--- a/hw/xfree86/os-support/sco/sco_mouse.c
++++ b/hw/xfree86/os-support/sco/sco_mouse.c
+@@ -152,6 +152,7 @@ OsMouseProc (DeviceIntPtr pPointer, int what)
+ 
+   case DEVICE_ON:
+     pMse->lastButtons = 0;
++    pMse->lastMappedButtons = 0;
+     pMse->emulateState = 0;
+     pPointer->public.on = TRUE;
+     ev_resume();

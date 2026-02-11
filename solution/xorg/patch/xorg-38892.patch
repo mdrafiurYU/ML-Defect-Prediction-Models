@@ -1,0 +1,12 @@
+diff --git a/dix/main.c b/dix/main.c
+index e0bb180..3bc45fb 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -437,6 +437,7 @@ int main(int argc, char *argv[], char *envp[])
+ 
+         memset(WindowTable, 0, MAXSCREENS * sizeof(WindowPtr));
+ 	CloseDownDevices();
++	CloseDownEvents();
+ 
+ 	for (i = screenInfo.numScreens - 1; i >= 0; i--)
+ 	{

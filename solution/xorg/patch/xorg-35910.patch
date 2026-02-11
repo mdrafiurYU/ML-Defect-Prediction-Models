@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index 1368d04..0d2471a 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -1353,7 +1353,7 @@ xf86ErrorF(const char *format, ...)
+ void
+ xf86LogInit()
+ {
+-    char *lf;
++    char *lf = NULL;
+ 
+ #define LOGSUFFIX ".log"
+ #define LOGOLDSUFFIX ".old"
+@@ -1377,6 +1377,8 @@ xf86LogInit()
+ 
+ #undef LOGSUFFIX
+ #undef LOGOLDSUFFIX
++
++    free(lf);
+ }
+ 
+ void

@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ComparisonImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ComparisonImpl.java
+index 418d18b..556210f 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ComparisonImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ComparisonImpl.java
+@@ -53,6 +53,12 @@ public class ComparisonImpl extends ConstraintImpl implements Comparison {
+         this.operand2 = operand2;
+     }
+ 
++    public Operator getOperatorInstance() {
++        return operator;
++    }
++
++    //----------------------------------------------------------< Comparison >
++
+     /**
+      * Gets the first operand.
+      *

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SourceImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SourceImpl.java
+index 09b072e..07359ff 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SourceImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SourceImpl.java
+@@ -28,4 +28,9 @@ public abstract class SourceImpl extends AbstractQOMNode implements Source {
+     public SourceImpl(NamePathResolver resolver) {
+         super(resolver);
+     }
++
++    /**
++     * @return the selectors that are contained in this source.
++     */
++    public abstract SelectorImpl[] getSelectors();
+ }

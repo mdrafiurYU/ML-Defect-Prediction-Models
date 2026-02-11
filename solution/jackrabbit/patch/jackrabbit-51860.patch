@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CallbackHandlerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CallbackHandlerImpl.java
+index d0e40c2..d0d836d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CallbackHandlerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CallbackHandlerImpl.java
+@@ -82,9 +82,7 @@ public class CallbackHandlerImpl implements CallbackHandler {
+      */
+     public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
+ 
+-        for (int i = 0; i < callbacks.length; i++) {
+-            Callback callback = callbacks[i];
+-
++        for (Callback callback : callbacks) {
+             if (callback instanceof CredentialsCallback) {
+                 ((CredentialsCallback) callback).setCredentials(credentials);
+             } else if (callback instanceof RepositoryCallback) {

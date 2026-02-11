@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableLongField.java b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+index e1b03a1..627d3fa 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableLongField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+@@ -31,7 +31,6 @@ import org.apache.lucene.index.IndexReader;
+ import org.apache.solr.util.ByteUtils;
+ import org.apache.solr.util.NumberUtils;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ 
+ import java.util.Map;
+ import java.io.IOException;
+@@ -72,11 +71,6 @@ public class SortableLongField extends FieldType {
+   public Long toObject(Fieldable f) {
+     return NumberUtils.SortableStr2long(f.stringValue(),0,5);
+   }
+-  
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    String sval = f.stringValue();
+-    xmlWriter.writeLong(name, NumberUtils.SortableStr2long(sval,0,sval.length()));
+-  }
+ 
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     String sval = f.stringValue();

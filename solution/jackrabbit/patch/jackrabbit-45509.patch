@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
+index 9e25b5a..f2df4c2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
+@@ -93,7 +93,7 @@ abstract class AbstractIndex {
+     private int maxFieldLength = SearchIndex.DEFAULT_MAX_FIELD_LENGTH;
+ 
+     /** termInfosIndexDivisor config parameter */
+-    private int termInfosIndexDivisor = SearchIndex.DEFAULT_MIN_MERGE_DOCS;
++    private int termInfosIndexDivisor = SearchIndex.DEFAULT_TERM_INFOS_INDEX_DIVISOR;
+ 
+     /**
+      * The document number cache if this index may use one.

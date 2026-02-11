@@ -1,0 +1,13 @@
+diff --git a/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java b/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java
+index 7eb26fd..64b9c27 100644
+--- a/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java
++++ b/modules/grouping/src/java/org/apache/lucene/search/grouping/BlockGroupingCollector.java
+@@ -348,7 +348,7 @@ public class BlockGroupingCollector extends Collector {
+       }
+       totalGroupedHitCount += og.count;
+ 
+-      final Comparable[] groupSortValues;
++      final Object[] groupSortValues;
+ 
+       if (fillSortFields) {
+         groupSortValues = new Comparable[comparators.length];

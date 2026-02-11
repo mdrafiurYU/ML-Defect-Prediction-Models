@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/TargetInterface.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/TargetInterface.java
+index 2d03cae..68e6cc5 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/TargetInterface.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/TargetInterface.java
+@@ -150,7 +150,7 @@ public void sendClasses(boolean mustRun, ClassFile[] classes) throws TargetExcep
+ 			if ((i == 0) && (className.indexOf("CodeSnippet") != -1)) {
+ 				codeSnippetClassName = className;
+ 				try {
+-					ClassFile.writeToDisk(true, "d:\\eval\\snippets", className, classes[0].getBytes());
++					ClassFile.writeToDisk(true, "d:\\eval\\snippets", className, classes[0]);
+ 				} catch(IOException e) {
+ 				}
+ 			} else {
+@@ -161,7 +161,7 @@ public void sendClasses(boolean mustRun, ClassFile[] classes) throws TargetExcep
+ 					dirName = "d:\\eval\\" + LocalVMLauncher.REGULAR_CLASSPATH_DIRECTORY;
+ 				}
+ 				try {
+-					ClassFile.writeToDisk(true, dirName, className, classes[i].getBytes());
++					ClassFile.writeToDisk(true, dirName, className, classes[i]);
+ 				} catch(IOException e) {
+ 				}
+ 			}

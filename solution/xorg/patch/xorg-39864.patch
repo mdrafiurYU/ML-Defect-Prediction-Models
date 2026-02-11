@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Priv.h b/hw/xfree86/common/xf86Priv.h
+index cb4bae7..10350be 100644
+--- a/hw/xfree86/common/xf86Priv.h
++++ b/hw/xfree86/common/xf86Priv.h
+@@ -164,7 +164,6 @@ void xf86SigHandler(int signo);
+ void xf86HandlePMEvents(int fd, pointer data);
+ extern int (*xf86PMGetEventFromOs)(int fd,pmEvent *events,int num);
+ extern pmWait (*xf86PMConfirmEventToOs)(int fd,pmEvent event);
+-void xf86GrabServerCallback(CallbackListPtr *, pointer, pointer);
+ 
+ /* xf86Helper.c */
+ void xf86LogInit(void);

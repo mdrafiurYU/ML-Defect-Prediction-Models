@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86InPriv.h b/hw/xfree86/common/xf86InPriv.h
+index a14e9e7..940e8ba 100644
+--- a/hw/xfree86/common/xf86InPriv.h
++++ b/hw/xfree86/common/xf86InPriv.h
+@@ -41,4 +41,7 @@ extern int xf86NumInputDrivers;
+ /* xf86Xinput.c */
+ void xf86ActivateDevice(InputInfoPtr pInfo);
+ 
++/* xf86Helper.c */
++InputDriverPtr xf86LookupInputDriver(const char *name);
++
+ #endif /* _xf86InPriv_h */

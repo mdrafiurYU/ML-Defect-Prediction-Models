@@ -1,0 +1,21 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 11439cf..5dcc404 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -331,16 +331,6 @@ mieqProcessInputEvents(void)
+                 return;
+             }
+ 
+-            /* Make sure our keymap, et al, is changed to suit. */
+-            if ((e->events->event[0].u.u.type == DeviceKeyPress ||
+-                e->events->event[0].u.u.type == DeviceKeyRelease ||
+-                e->events->event[0].u.u.type == KeyPress ||
+-                e->events->event[0].u.u.type == KeyRelease) &&
+-                    !e->pDev->isMaster)
+-            {
+-                SwitchCoreKeyboard(e->pDev);
+-            }
+-
+             /* FIXME: Bad hack. The only event where we actually get multiple
+              * events at once is a DeviceMotionNotify followed by
+              * DeviceValuators. For now it's save enough to just take the

@@ -1,0 +1,13 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index 3895a00..effa3b9 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -459,7 +459,7 @@ ProcXTestFakeInput(client)
+ 	break;
+     }
+     if (screenIsSaved == SCREEN_SAVER_ON)
+-	SaveScreens(serverClient, SCREEN_SAVER_OFF, ScreenSaverReset);
++	dixSaveScreens(serverClient, SCREEN_SAVER_OFF, ScreenSaverReset);
+     ev->u.keyButtonPointer.time = currentTime.milliseconds;
+     (*dev->public.processInputProc)(ev, dev, nev);
+     return client->noClientException;

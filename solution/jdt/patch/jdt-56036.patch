@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AssertionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AssertionTest.java
+index 400e7d8..c593d08 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AssertionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AssertionTest.java
+@@ -46,6 +46,9 @@ public class AssertionTest extends AbstractRegressionTest {
+ 		if ((complianceLevels & AbstractCompilerTest.F_1_5) != 0) {
+ 			suite.addTest(buildTestSuite(testClass(), COMPLIANCE_1_5));
+ 		}
++		if ((complianceLevels & AbstractCompilerTest.F_1_6) != 0) {
++			suite.addTest(buildTestSuite(testClass(), COMPLIANCE_1_6));
++		}
+ 		return suite;
+ 	}

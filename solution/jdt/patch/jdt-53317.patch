@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index f320481..8d0a573 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1339,9 +1339,11 @@ public static long getIrritant(int problemID) {
+ 		case IProblem.UnsafeReturnTypeOverride:
+ 		case IProblem.UnsafeRawGenericMethodInvocation:
+ 		case IProblem.UnsafeRawGenericConstructorInvocation:
+-		case IProblem.RawTypeReference:
+ 			return CompilerOptions.UncheckedTypeOperation;
+ 
++		case IProblem.RawTypeReference:
++			return CompilerOptions.RawTypeReference;
++
+ 		case IProblem.MissingOverrideAnnotation:
+ 			return CompilerOptions.MissingOverrideAnnotation;
+ 			
+@@ -1544,6 +1546,9 @@ public static int getProblemCategory(int problemID) {
+ 				case (int)(CompilerOptions.DiscouragedReference >>> 32):
+ 					return CategorizedProblem.CAT_BUILDPATH;
+ 	
++				case (int)(CompilerOptions.RawTypeReference >>> 32):
++					return CategorizedProblem.CAT_UNCHECKED_RAW;
++
+ 				default:
+ 					break categorizeOnIrritant;
+ 			}

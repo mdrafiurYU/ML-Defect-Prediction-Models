@@ -1,0 +1,22 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index 3394e58..2ded6aa 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -615,6 +615,7 @@ __glXDRIscreenCreateContext(__GLXscreen *baseScreen,
+ static __GLXdrawable *
+ __glXDRIscreenCreateDrawable(__GLXscreen *screen,
+ 			     DrawablePtr pDraw,
++			     int type,
+ 			     XID drawId,
+ 			     __GLcontextModes *modes)
+ {
+@@ -629,7 +630,8 @@ __glXDRIscreenCreateDrawable(__GLXscreen *screen,
+ 
+     memset(private, 0, sizeof *private);
+ 
+-    if (!__glXDrawableInit(&private->base, screen, pDraw, drawId, modes)) {
++    if (!__glXDrawableInit(&private->base, screen,
++			   pDraw, type, drawId, modes)) {
+         xfree(private);
+ 	return NULL;
+     }

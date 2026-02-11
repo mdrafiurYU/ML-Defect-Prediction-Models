@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockImpl.java
+index 44d2ffa..caf5807 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockImpl.java
+@@ -31,9 +31,9 @@ class XALockImpl extends LockImpl {
+     private final XALockManager lockMgr;
+     
+     /**
+-     * Abstract lock info.
++     * The underlying lock info.
+      */
+-    private final AbstractLockInfo info;
++    private final LockInfo info;
+ 
+     /**
+      * Create a new instance of this class.
+@@ -41,7 +41,7 @@ class XALockImpl extends LockImpl {
+      * @param node node holding lock
+      */
+     public XALockImpl(
+-            XALockManager lockMgr, AbstractLockInfo info, NodeImpl node) {
++            XALockManager lockMgr, LockInfo info, NodeImpl node) {
+         super(info, node);
+ 
+         this.info = info;

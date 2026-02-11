@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java b/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
+index e2e004a..44cde31 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
+@@ -35,7 +35,7 @@ import org.apache.lucene.util.LuceneTestCase;
+  *
+  */
+ public class TestMatchAllDocsQuery extends LuceneTestCase {
+-  private Analyzer analyzer = new MockAnalyzer();
++  private Analyzer analyzer = new MockAnalyzer(random);
+   
+   public void testQuery() throws Exception {
+     Directory dir = newDirectory();

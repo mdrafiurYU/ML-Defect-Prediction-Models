@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/int10/generic.c b/hw/xfree86/int10/generic.c
+index 4808108..9d39e99 100644
+--- a/hw/xfree86/int10/generic.c
++++ b/hw/xfree86/int10/generic.c
+@@ -75,6 +75,7 @@ static void *sysMem = NULL;
+  * etc.).  How do we know that \c pci_device_read_rom will return the
+  * legacy VGA BIOS image?
+  */
++#ifndef _PC
+ static int
+ read_legacy_video_BIOS(struct pci_device *dev, unsigned char *Buf)
+ {
+@@ -114,6 +115,7 @@ read_legacy_video_BIOS(struct pci_device *dev, unsigned char *Buf)
+ 
+     return Len;
+ }
++#endif /* _PC */
+ 
+ 
+ xf86Int10InfoPtr

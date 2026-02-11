@@ -1,0 +1,14 @@
+diff --git a/dix/privates.c b/dix/privates.c
+index c4ecf6a..a12c8bf 100644
+--- a/dix/privates.c
++++ b/dix/privates.c
+@@ -215,9 +215,6 @@ dixFreePrivates(PrivateRec *privates)
+ 	    ptr = next;
+ 	}
+     }
+-
+-    /* no more use of privates permitted */
+-    *privates = NULL;
+ }
+ 
+ /*

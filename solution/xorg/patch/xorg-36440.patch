@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index 8f2511d..002ea41 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -880,7 +880,7 @@ void AbortDDX( void )
+  */
+ 
+ void
+-xf86SetRootClip (ScreenPtr pScreen, BOOL enable)
++xf86SetRootClip (ScreenPtr pScreen, int enable)
+ {
+     WindowPtr	pWin = WindowTable[pScreen->myNum];
+     WindowPtr	pChild;

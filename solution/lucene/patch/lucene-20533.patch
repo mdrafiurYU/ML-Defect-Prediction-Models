@@ -1,0 +1,34 @@
+diff --git a/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessor.java b/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessor.java
+index 4f7e004..8b3cb54 100644
+--- a/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessor.java
++++ b/solr/contrib/uima/src/main/java/org/apache/solr/uima/processor/UIMAUpdateRequestProcessor.java
+@@ -34,7 +34,7 @@ import org.apache.uima.resource.ResourceInitializationException;
+ 
+ /**
+  * Update document(s) to be indexed with UIMA extracted information
+- * 
++ *
+  * @version $Id$
+  */
+ public class UIMAUpdateRequestProcessor extends UpdateRequestProcessor {
+@@ -43,15 +43,14 @@ public class UIMAUpdateRequestProcessor extends UpdateRequestProcessor {
+ 
+   private AEProvider aeProvider;
+ 
+-  public UIMAUpdateRequestProcessor(UpdateRequestProcessor next, SolrCore solrCore) {
++  public UIMAUpdateRequestProcessor(UpdateRequestProcessor next, SolrCore solrCore,
++      SolrUIMAConfiguration config) {
+     super(next);
+-    initialize(solrCore);
++    initialize(solrCore, config);
+   }
+ 
+-  private void initialize(SolrCore solrCore) {
+-    SolrUIMAConfigurationReader uimaConfigurationReader = new SolrUIMAConfigurationReader(solrCore
+-            .getSolrConfig());
+-    solrUIMAConfiguration = uimaConfigurationReader.readSolrUIMAConfiguration();
++  private void initialize(SolrCore solrCore, SolrUIMAConfiguration config) {
++    solrUIMAConfiguration = config;
+     aeProvider = AEProviderFactory.getInstance().getAEProvider(solrCore.getName(),
+             solrUIMAConfiguration.getAePath(), solrUIMAConfiguration.getRuntimeParameters());
+   }

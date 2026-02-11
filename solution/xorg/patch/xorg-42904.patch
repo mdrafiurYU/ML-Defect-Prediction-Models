@@ -1,0 +1,28 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 2504baf..8ddfbf9 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -31,6 +31,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #define EXEVENTS_H
+ 
+ #include <X11/extensions/XIproto.h>
++#include "inputstr.h"
+ 
+ /**
+  * Attached to the devPrivates of each client. Specifies the version number as
+@@ -136,15 +137,6 @@ extern _X_EXPORT int SetButtonMapping (
+ 	int                    /* nElts */,
+ 	BYTE *                 /* map */);
+ 
+-extern _X_EXPORT int SetModifierMapping(
+-	ClientPtr              /* client */,
+-	DeviceIntPtr           /* dev */,
+-	int                    /* len */,
+-	int                    /* rlen */,
+-	int                    /* numKeyPerModifier */,
+-	KeyCode *              /* inputMap */,
+-	KeyClassPtr *          /* k */);
+-
+ extern _X_EXPORT void SendDeviceMappingNotify(
+         ClientPtr              /* client, */,
+ 	CARD8                  /* request, */,

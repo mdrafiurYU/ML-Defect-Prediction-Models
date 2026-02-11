@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestQueryTemplateManager.java b/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestQueryTemplateManager.java
+index 9d87f8a..f5cb65d 100644
+--- a/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestQueryTemplateManager.java
++++ b/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestQueryTemplateManager.java
+@@ -44,7 +44,7 @@ import org.xml.sax.SAXException;
+ public class TestQueryTemplateManager extends LuceneTestCase {
+ 
+ 	CoreParser builder;
+-	Analyzer analyzer=new MockAnalyzer();
++	Analyzer analyzer=new MockAnalyzer(random);
+ 	private IndexSearcher searcher;
+ 	private Directory dir;

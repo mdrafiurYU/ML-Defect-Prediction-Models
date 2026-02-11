@@ -1,0 +1,19 @@
+diff --git a/hw/xnest/Events.c b/hw/xnest/Events.c
+index a580c4c..482c5fd 100644
+--- a/hw/xnest/Events.c
++++ b/hw/xnest/Events.c
+@@ -197,6 +197,14 @@ xnestCollectEvents()
+ 	exit (0);
+       break;
+       
++    case CirculateNotify:
++    case ConfigureNotify:
++    case GravityNotify:
++    case MapNotify:
++    case ReparentNotify:
++    case UnmapNotify:
++      break;
++      
+     default:
+       ErrorF("xnest warning: unhandled event\n");
+       break;

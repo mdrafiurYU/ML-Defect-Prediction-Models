@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/BinaryParameterDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/BinaryParameterDeclarationImpl.java
+index 44b7c16..f499f60 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/BinaryParameterDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/BinaryParameterDeclarationImpl.java
+@@ -52,7 +52,7 @@ public class BinaryParameterDeclarationImpl extends DeclarationImpl implements P
+     {
+         super(typeBinding, env);
+         assert( typeBinding != null ) : "missing type binding"; //$NON-NLS-1$
+-        assert( index > 0 ) : "invalid index " + index; //$NON-NLS-1$
++        assert( index >= 0 ) : "invalid index " + index; //$NON-NLS-1$
+         assert executable != null : "missing executable"; //$NON-NLS-1$
+         _type = typeBinding;
+         _paramIndex = index;

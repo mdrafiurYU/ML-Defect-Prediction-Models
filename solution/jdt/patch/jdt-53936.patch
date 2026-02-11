@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ConstructorPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ConstructorPattern.java
+index b10bb22..1d77a1e 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ConstructorPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ConstructorPattern.java
+@@ -251,8 +251,10 @@ EntryResult[] queryIn(Index index) throws IOException {
+ 			if (this.isCamelCase) break;
+ 			if (shouldCountParameter() && this.declaringSimpleName != null && this.parameterCount >= 0)
+ 				key = createIndexKey(this.declaringSimpleName, this.parameterCount);
+-			else // do a prefix query with the declaringSimpleName
+-				matchRule = matchRule - R_EXACT_MATCH + R_PREFIX_MATCH;
++			else { // do a prefix query with the declaringSimpleName
++				matchRule &= ~R_EXACT_MATCH;
++				matchRule |= R_PREFIX_MATCH;
++			}
+ 			break;
+ 		case R_PREFIX_MATCH :
+ 			// do a prefix query with the declaringSimpleName

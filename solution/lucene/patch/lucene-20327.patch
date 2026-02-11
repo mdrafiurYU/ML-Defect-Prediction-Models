@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/ext/TestExtendableQueryParser.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/ext/TestExtendableQueryParser.java
+index c60a0eb..366168f 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/ext/TestExtendableQueryParser.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/ext/TestExtendableQueryParser.java
+@@ -43,7 +43,7 @@ public class TestExtendableQueryParser extends TestQueryParser {
+   public QueryParser getParser(Analyzer a, Extensions extensions)
+       throws Exception {
+     if (a == null)
+-      a = new MockAnalyzer(MockTokenizer.SIMPLE, true);
++      a = new MockAnalyzer(random, MockTokenizer.SIMPLE, true);
+     QueryParser qp = extensions == null ? new ExtendableQueryParser(
+         TEST_VERSION_CURRENT, "field", a) : new ExtendableQueryParser(
+         TEST_VERSION_CURRENT, "field", a, extensions);

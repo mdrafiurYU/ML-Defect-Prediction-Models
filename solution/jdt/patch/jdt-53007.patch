@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/WeakHashSetOfCharArray.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/WeakHashSetOfCharArray.java
+index 6aa60cf..32ef1a5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/WeakHashSetOfCharArray.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/util/WeakHashSetOfCharArray.java
+@@ -19,7 +19,7 @@ import org.eclipse.jdt.core.compiler.CharOperation;
+  */
+ public class WeakHashSetOfCharArray {
+ 	
+-	public class HashableWeakReference extends WeakReference {
++	public static class HashableWeakReference extends WeakReference {
+ 		public int hashCode;
+ 		public HashableWeakReference(char[] referent, ReferenceQueue queue) {
+ 			super(referent, queue);

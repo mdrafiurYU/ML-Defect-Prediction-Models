@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xf4bpp/ppcPntWin.c b/hw/xfree86/xf4bpp/ppcPntWin.c
+index 5d7a07e..482b34b 100644
+--- a/hw/xfree86/xf4bpp/ppcPntWin.c
++++ b/hw/xfree86/xf4bpp/ppcPntWin.c
+@@ -100,7 +100,7 @@ xf4bppPaintWindow(pWin, pRegion, what)
+ {
+ 
+     register mfbPrivWin	*pPrivWin;
+-    pPrivWin = (mfbPrivWin *)(pWin->devPrivates[mfbGetWindowPrivateIndex()].ptr);
++    pPrivWin = (mfbPrivWin *)dixLookupPrivate(&pWin->devPrivates, mfbGetWindowPrivateKey());
+ 
+     TRACE(("xf4bppPaintWindow( pWin= 0x%x, pRegion= 0x%x, what= %d )\n",
+ 							pWin,pRegion,what));

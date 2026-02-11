@@ -1,0 +1,40 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FieldInfo.java b/lucene/src/java/org/apache/lucene/index/FieldInfo.java
+index e15b568..d0bdd1c 100644
+--- a/lucene/src/java/org/apache/lucene/index/FieldInfo.java
++++ b/lucene/src/java/org/apache/lucene/index/FieldInfo.java
+@@ -1,5 +1,7 @@
+ package org.apache.lucene.index;
+ 
++import org.apache.lucene.index.values.Values;
++
+ /**
+  * Licensed to the Apache Software Foundation (ASF) under one or more
+  * contributor license agreements.  See the NOTICE file distributed with
+@@ -22,6 +24,8 @@ public final class FieldInfo {
+   public String name;
+   public boolean isIndexed;
+   public int number;
++  Values indexValues;
++
+ 
+   // true if term vector for this field should be stored
+   boolean storeTermVector;
+@@ -88,4 +92,18 @@ public final class FieldInfo {
+       }
+     }
+   }
++
++  void setIndexValues(Values v) {
++    if (indexValues != null) {
++      if (indexValues != v) {
++        throw new IllegalArgumentException("indexValues is already set to " + indexValues + "; cannot change to " + v);
++      }
++    } else{
++	   indexValues = v;
++    }
++  }
++
++  Values getIndexValues() {
++    return indexValues;
++  }
+ }

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
+index 55aa8e0..5df9134 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
+@@ -322,7 +322,7 @@ class XAEnvironment {
+     }
+ 
+     static SessionLockManager getSessionLockManager(SessionImpl session) throws RepositoryException {
+-        Workspace wsp = (Workspace) session.getWorkspace();
++        Workspace wsp = session.getWorkspace();
+         return (SessionLockManager) wsp.getLockManager();
+     }

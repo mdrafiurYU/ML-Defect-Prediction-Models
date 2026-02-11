@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
+index 934f3c3..581792c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractRecord.java
+@@ -129,7 +129,7 @@ public abstract class AbstractRecord implements Record {
+                 writeInt(index);
+             } else {
+                 writeByte(UUID_LITERAL);
+-                write(nodeId.getUUID().getRawBytes());
++                write(nodeId.getRawBytes());
+             }
+         }
+     }

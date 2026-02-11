@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
+index e7470d0..f5c77ef 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
+@@ -12,6 +12,7 @@ package org.eclipse.jdt.internal.compiler.ast;
+ 
+ import org.eclipse.jdt.core.compiler.CharOperation;
+ import org.eclipse.jdt.internal.compiler.ASTVisitor;
++import org.eclipse.jdt.internal.compiler.impl.Constant;
+ import org.eclipse.jdt.internal.compiler.lookup.*;
+ 
+ /**
+@@ -87,7 +88,7 @@ public class ParameterizedSingleTypeReference extends ArrayTypeReference {
+ 	private TypeBinding internalResolveType(Scope scope, ReferenceBinding enclosingType, boolean checkBounds) {
+ 
+ 		// handle the error here
+-		this.constant = NotAConstant;
++		this.constant = Constant.NotAConstant;
+ 		if (this.didResolve) { // is a shared type reference which was already resolved
+ 			if (this.resolvedType != null && !this.resolvedType.isValidBinding())
+ 				return null; // already reported error

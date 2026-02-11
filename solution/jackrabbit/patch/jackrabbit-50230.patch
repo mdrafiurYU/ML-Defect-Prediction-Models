@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentSaveTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentSaveTest.java
+index 3bcf125..4f57ef5 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentSaveTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentSaveTest.java
+@@ -42,8 +42,8 @@ public class ConcurrentSaveTest extends AbstractJCRTest {
+ 
+     protected void setUp() throws Exception {
+         super.setUp();
+-        addNodeSession = helper.getSuperuserSession();
+-        removePropertySession = helper.getSuperuserSession();
++        addNodeSession = getHelper().getSuperuserSession();
++        removePropertySession = getHelper().getSuperuserSession();
+     }
+ 
+     protected void tearDown() throws Exception {

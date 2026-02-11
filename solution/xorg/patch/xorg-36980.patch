@@ -1,0 +1,13 @@
+diff --git a/dix/main.c b/dix/main.c
+index f7824ee..d99cb2d 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -377,8 +377,6 @@ main(int argc, char *argv[], char *envp[])
+ 		FatalError("failed to create scratch GCs");
+ 	    if (!CreateDefaultStipple(i))
+ 		FatalError("failed to create default stipple");
+-            if (!InitWindowPrivates(pScreen))
+-                FatalError("Failed to init window privates.");
+ 	    if (!CreateRootWindow(pScreen))
+ 		FatalError("failed to create root window");
+ 	}

@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index e5b16c9..65d55af 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -526,8 +526,6 @@ ephyrRandRSetConfig (ScreenPtr		pScreen,
+   
+   scrpriv->randr = KdAddRotation (screen->randr, randr);
+   
+-  KdOffscreenSwapOut (screen->pScreen);
+-  
+   ephyrUnmapFramebuffer (screen); 
+   
+   screen->width  = newwidth;

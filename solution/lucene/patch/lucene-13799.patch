@@ -1,0 +1,28 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/core/WhitespaceAnalyzer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/core/WhitespaceAnalyzer.java
+index 300a021..85ce28e 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/core/WhitespaceAnalyzer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/core/WhitespaceAnalyzer.java
+@@ -21,7 +21,6 @@ import java.io.Reader;
+ 
+ import org.apache.lucene.analysis.CharTokenizer;
+ import org.apache.lucene.analysis.util.ReusableAnalyzerBase;
+-import org.apache.lucene.analysis.util.ReusableAnalyzerBase.TokenStreamComponents;
+ import org.apache.lucene.util.Version;
+ 
+ /**
+@@ -48,15 +47,6 @@ public final class WhitespaceAnalyzer extends ReusableAnalyzerBase {
+     this.matchVersion = matchVersion;
+   }
+   
+-  /**
+-   * Creates a new {@link WhitespaceAnalyzer}
+-   * @deprecated use {@link #WhitespaceAnalyzer(Version)} instead 
+-   */
+-  @Deprecated
+-  public WhitespaceAnalyzer() {
+-    this(Version.LUCENE_30);
+-  }
+-  
+   @Override
+   protected TokenStreamComponents createComponents(final String fieldName,
+       final Reader reader) {

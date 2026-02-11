@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/IntFieldSource.java b/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
+index 8f7a580..80bfc95 100644
+--- a/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
+@@ -17,11 +17,11 @@
+ 
+ package org.apache.solr.search.function;
+ 
++import org.apache.lucene.common.mutable.MutableValue;
++import org.apache.lucene.common.mutable.MutableValueInt;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.util.Bits;
+-import org.apache.solr.search.MutableValueInt;
+-import org.apache.solr.search.MutableValue;
+ import org.apache.lucene.search.cache.IntValuesCreator;
+ import org.apache.lucene.search.cache.CachedArray.IntValues;

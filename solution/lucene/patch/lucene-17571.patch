@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java b/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java
+index d46aa74..d8e16cc 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestFieldMaskingSpanQuery.java
+@@ -20,6 +20,7 @@ package org.apache.lucene.search.spans;
+ import java.util.HashSet;
+ import java.util.Set;
+ 
++import org.apache.lucene.analysis.MockAnalyzer;
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.Field;
+ import org.apache.lucene.index.IndexReader;
+@@ -54,7 +55,7 @@ public class TestFieldMaskingSpanQuery extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     directory = newDirectory();
+-    RandomIndexWriter writer= new RandomIndexWriter(random, directory);
++    RandomIndexWriter writer= new RandomIndexWriter(random, directory, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newInOrderLogMergePolicy()));
+     
+     writer.addDocument(doc(new Field[] { field("id", "0")
+                                          ,

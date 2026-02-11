@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableFloatField.java b/solr/src/java/org/apache/solr/schema/SortableFloatField.java
+index e56ffd7..b495227 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableFloatField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableFloatField.java
+@@ -37,6 +37,8 @@ import java.util.Map;
+ import java.io.IOException;
+ /**
+  * @version $Id$
++ * 
++ * @deprecated use {@link FloatField} or {@link TrieFloatField} - will be removed in 5.x
+  */
+ public class SortableFloatField extends FieldType {
+   protected void init(IndexSchema schema, Map<String,String> args) {

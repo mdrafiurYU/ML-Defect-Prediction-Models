@@ -1,0 +1,13 @@
+diff --git a/mi/miscrinit.c b/mi/miscrinit.c
+index 157a17f..93a6c4b 100644
+--- a/mi/miscrinit.c
++++ b/mi/miscrinit.c
+@@ -180,7 +180,7 @@ miScreenDevPrivateInit(ScreenPtr pScreen, int width, pointer pbits)
+      * to the screen, until CreateScreenResources can put them in the
+      * screen pixmap.
+      */
+-    pScrInitParms = (miScreenInitParmsPtr)xalloc(sizeof(miScreenInitParmsRec));
++    pScrInitParms = xalloc(sizeof(miScreenInitParmsRec));
+     if (!pScrInitParms)
+ 	return FALSE;
+     pScrInitParms->pbits = pbits;

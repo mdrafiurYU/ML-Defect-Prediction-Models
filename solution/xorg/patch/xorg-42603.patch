@@ -1,0 +1,15 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 485347b..2504baf 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -257,4 +257,10 @@ extern _X_EXPORT int XIPropToInt(
+         int **buf_return
+ );
+ 
++extern _X_EXPORT int XIPropToFloat(
++        XIPropertyValuePtr val,
++        int *nelem_return,
++        float **buf_return
++);
++
+ #endif /* EXEVENTS_H */

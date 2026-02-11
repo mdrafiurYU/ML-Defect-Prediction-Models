@@ -1,0 +1,30 @@
+diff --git a/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java b/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java
+index 2f3f965..cc229f0 100644
+--- a/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java
+@@ -93,25 +93,9 @@ public class BinaryUpdateRequestHandler extends ContentStreamHandlerBase {
+ 
+   private AddUpdateCommand getAddCommand(SolrParams params) {
+     AddUpdateCommand addCmd = new AddUpdateCommand();
+-    boolean overwrite = true;  // the default
+ 
+-    Boolean overwritePending = null;
+-    Boolean overwriteCommitted = null;
+-
+-
+-    overwrite = params.getBool(UpdateParams.OVERWRITE, overwrite);
++    addCmd.overwrite = params.getBool(UpdateParams.OVERWRITE, true);
+     addCmd.commitWithin = params.getInt(COMMIT_WITHIN, -1);
+-    // check if these flags are set
+-    if (overwritePending != null && overwriteCommitted != null) {
+-      if (overwritePending != overwriteCommitted) {
+-        throw new SolrException(SolrException.ErrorCode.BAD_REQUEST,
+-                "can't have different values for 'overwritePending' and 'overwriteCommitted'");
+-      }
+-      overwrite = overwritePending;
+-    }
+-    addCmd.overwriteCommitted = overwrite;
+-    addCmd.overwritePending = overwrite;
+-    addCmd.allowDups = !overwrite;
+     return addCmd;
+   }

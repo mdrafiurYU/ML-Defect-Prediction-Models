@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/jdom/SimpleDOMBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/jdom/SimpleDOMBuilder.java
+index 4782527..6d726ce 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/jdom/SimpleDOMBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/jdom/SimpleDOMBuilder.java
+@@ -37,9 +37,9 @@ public void acceptProblem(CategorizedProblem problem) {
+ 	// nothing to do
+ }
+ 
+-public void acceptImport(int declarationStart, int declarationEnd, char[] name, boolean onDemand, int modifiers) {
++public void acceptImport(int declarationStart, int declarationEnd, char[][] tokens, boolean onDemand, int modifiers) {
+ 	int[] sourceRange = {declarationStart, declarationEnd};
+-	String importName = new String(name);
++	String importName = new String(CharOperation.concatWith(tokens, '.'));
+ 	/** name is set to contain the '*' */
+ 	if (onDemand) {
+ 		importName+=".*"; //$NON-NLS-1$

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+index aaff558..26e1d8a 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+@@ -449,7 +449,7 @@ public class NodeState extends ItemState {
+              */
+             NodeState parent = getParent();
+             NodeId wspId = (NodeId) getWorkspaceId();
+-            def = definitionProvider.getQNodeDefinition(getParent().getNodeTypeNames(), getName(), getNodeTypeName(), wspId);
++            def = definitionProvider.getQNodeDefinition(parent.getNodeTypeNames(), getName(), getNodeTypeName(), wspId);
+         }
+         return def;
+     }

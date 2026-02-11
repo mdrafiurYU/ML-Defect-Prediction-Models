@@ -1,0 +1,22 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanLightStemFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanLightStemFilter.java
+index 63dfdb6..c575569 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanLightStemFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanLightStemFilter.java
+@@ -24,6 +24,7 @@ import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.analysis.BaseTokenStreamTestCase;
+ import org.apache.lucene.analysis.Tokenizer;
+ import org.apache.lucene.analysis.core.WhitespaceTokenizer;
++import org.apache.lucene.analysis.hu.HungarianAnalyzer;
+ import org.apache.lucene.analysis.util.ReusableAnalyzerBase;
+ 
+ import static org.apache.lucene.analysis.util.VocabularyAssert.*;
+@@ -45,4 +46,9 @@ public class TestGermanLightStemFilter extends BaseTokenStreamTestCase {
+   public void testVocabulary() throws IOException {
+     assertVocabulary(analyzer, getDataFile("delighttestdata.zip"), "delight.txt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, analyzer, 10000*RANDOM_MULTIPLIER);
++  }
+ }

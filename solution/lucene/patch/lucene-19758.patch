@@ -1,0 +1,50 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java b/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java
+index ef860f9..6359ce6 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMultiPhraseQuery.java
+@@ -296,25 +296,30 @@ public class TestMultiPhraseQuery extends LuceneTestCase {
+     
+     IndexReader reader = writer.getReader();
+     IndexSearcher searcher = newSearcher(reader);
+-    searcher.setSimilarityProvider(new DefaultSimilarity() {
+-      
++    searcher.setSimilarityProvider(new DefaultSimilarityProvider() {
+       @Override
+-      public IDFExplanation idfExplain(Collection<Term> terms,
+-          IndexSearcher searcher) throws IOException {
+-        return new IDFExplanation() {
+-
++      public Similarity get(String field) {
++        return new DefaultSimilarity() {
++          
+           @Override
+-          public float getIdf() {
+-            return 10f;
+-          }
++          public IDFExplanation idfExplain(Collection<Term> terms,
++              IndexSearcher searcher) throws IOException {
++            return new IDFExplanation() {
+ 
+-          @Override
+-          public String explain() {
+-            return "just a test";
+-          }
+-          
++              @Override
++              public float getIdf() {
++                return 10f;
++              }
++
++              @Override
++              public String explain() {
++                return "just a test";
++              }
++              
++            };
++          } 
+         };
+-      }   
++      }
+     });
+     
+     MultiPhraseQuery query = new MultiPhraseQuery();

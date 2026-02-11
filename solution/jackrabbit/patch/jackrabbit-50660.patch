@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java
+index bb849ce..434faee 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java
+@@ -164,7 +164,7 @@ public class NodeRemoveMixinTest extends AbstractJCRTest {
+         String pathRelToRoot = node.getPath().substring(1);
+ 
+         // access node through another session to lock it
+-        Session session2 = helper.getSuperuserSession();
++        Session session2 = getHelper().getSuperuserSession();
+         try {
+             Node node2 = session2.getRootNode().getNode(pathRelToRoot);
+             node2.lock(true, true);

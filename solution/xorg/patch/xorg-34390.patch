@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 79cc6e7..49c7d27 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -289,6 +289,11 @@ _X_HIDDEN void *dixLookupTab[] = {
+     /* registry.c */
+ #ifdef XREGISTRY
+     SYMFUNC(RegisterResourceName)
++    SYMFUNC(LookupMajorName)
++    SYMFUNC(LookupRequestName)
++    SYMFUNC(LookupEventName)
++    SYMFUNC(LookupErrorName)
++    SYMFUNC(LookupResourceName)
+ #endif
+     /* swaprep.c */
+     SYMFUNC(CopySwap32Write)

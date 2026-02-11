@@ -1,0 +1,29 @@
+diff --git a/GL/glx/glxvisuals.c b/GL/glx/glxvisuals.c
+index 0e9bded..46b380b 100644
+--- a/GL/glx/glxvisuals.c
++++ b/GL/glx/glxvisuals.c
+@@ -55,6 +55,7 @@
+ 
+ void GlxWrapInitVisuals(miInitVisualsProcPtr *);
+ 
++extern Bool noGlxVisualInit;
+ #include "glcontextmodes.h"
+ 
+ struct ScreenVisualsRec {
+@@ -452,14 +453,15 @@ Bool GlxInitVisuals(VisualPtr *visualp, DepthPtr *depthp,
+     /*
+      * Setup the visuals supported by this particular screen.
+      */
++    if (!noGlxVisualInit) {
+     init_visuals(nvisualp, visualp, defaultVisp,
+ 		 *ndepthp, *depthp, *rootDepthp);
++    }
+ 
+ 
+     return True;
+ }
+ 
+-
+ /************************************************************************/
+ 
+ 

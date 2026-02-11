@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Option.c b/hw/xfree86/common/xf86Option.c
+index ae131aa..695d977 100644
+--- a/hw/xfree86/common/xf86Option.c
++++ b/hw/xfree86/common/xf86Option.c
+@@ -32,6 +32,10 @@
+  * This file includes public option handling functions.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <X11/X.h>

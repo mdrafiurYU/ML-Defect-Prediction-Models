@@ -1,0 +1,35 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index 6a337bc..86a072d 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -907,16 +907,6 @@ EphyrKeyboardInit (KdKeyboardInfo *ki)
+ {
+   ki->driverPrivate = (EphyrKbdPrivate *)
+                        xcalloc(sizeof(EphyrKbdPrivate), 1);
+-  /* FIXME blah blah overrunning memory blah blah */
+-  ki->minScanCode = ki->keySyms.minKeyCode = 0;
+-  ki->maxScanCode = ki->keySyms.maxKeyCode = 255;
+-  ephyrKbd = ki;
+-  return Success;
+-}
+-
+-static Status
+-EphyrKeyboardEnable (KdKeyboardInfo *ki)
+-{
+     hostx_load_keymap();
+     if (!ephyrKeySyms.map) {
+         ErrorF("Couldn't load keymap from host\n");
+@@ -928,6 +918,13 @@ EphyrKeyboardEnable (KdKeyboardInfo *ki)
+     ki->maxScanCode = ki->keySyms.maxKeyCode;
+     ki->keySyms.mapWidth = ephyrKeySyms.mapWidth;
+     ki->keySyms.map = ephyrKeySyms.map;
++  ephyrKbd = ki;
++  return Success;
++}
++
++static Status
++EphyrKeyboardEnable (KdKeyboardInfo *ki)
++{
+     ((EphyrKbdPrivate *)ki->driverPrivate)->enabled = TRUE;
+ 
+     return Success;

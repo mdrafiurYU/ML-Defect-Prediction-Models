@@ -1,0 +1,22 @@
+diff --git a/randr/rrpointer.c b/randr/rrpointer.c
+index fec5d45..722b22c 100644
+--- a/randr/rrpointer.c
++++ b/randr/rrpointer.c
+@@ -135,10 +135,16 @@ RRPointerMoved (ScreenPtr pScreen, int x, int y)
+ void
+ RRPointerScreenConfigured (ScreenPtr pScreen)
+ {
+-    WindowPtr	pRoot = GetCurrentRootWindow ();
++    WindowPtr	pRoot = GetCurrentRootWindow (inputInfo.pointer);
+     ScreenPtr	pCurrentScreen = pRoot ? pRoot->drawable.pScreen : NULL;
+     int		x, y;
+ 
++    /* XXX: GetCurrentRootWindow revices an argument, It is inputInfo.pointer,
++     * but I really think this is wrong...  What do we do here? This was made so
++     * that it can compile, but I don't think randr should assume there is just
++     * one pointer. There might be more than one pointer on the screen! So, what
++     * to do? What happens? */
++
+     if (pScreen != pCurrentScreen)
+ 	return;
+     GetSpritePosition(inputInfo.pointer, &x, &y);

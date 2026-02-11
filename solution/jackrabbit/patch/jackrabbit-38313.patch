@@ -1,0 +1,34 @@
+diff --git a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsWordTextExtractor.java b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsWordTextExtractor.java
+index 78c88fe..ff580bf 100644
+--- a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsWordTextExtractor.java
++++ b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsWordTextExtractor.java
+@@ -16,6 +16,8 @@
+  */
+ package org.apache.jackrabbit.extractor;
+ 
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ import org.textmining.text.extraction.WordExtractor;
+ 
+ import java.io.Reader;
+@@ -29,6 +31,12 @@ import java.io.StringReader;
+ public class MsWordTextExtractor extends AbstractTextExtractor {
+ 
+     /**
++     * Logger instance.
++     */
++    private static final Logger logger =
++        LoggerFactory.getLogger(MsWordTextExtractor.class);
++
++    /**
+      * Force loading of dependent class.
+      */
+     static {
+@@ -60,6 +68,7 @@ public class MsWordTextExtractor extends AbstractTextExtractor {
+ 
+             return new StringReader(text);
+         } catch (Exception e) {
++            logger.warn("Failed to extract Word text content", e);
+             return new StringReader("");
+         } finally {
+             stream.close();

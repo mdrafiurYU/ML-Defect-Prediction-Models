@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/utils/xorgcfg/cards.c b/hw/xfree86/utils/xorgcfg/cards.c
+index a1ec65c..62bcfbb 100644
+--- a/hw/xfree86/utils/xorgcfg/cards.c
++++ b/hw/xfree86/utils/xorgcfg/cards.c
+@@ -489,6 +489,9 @@ LookupCard(char *name)
+ {
+     CardsEntry **ptr;
+ 
++    if (NumCardsEntry == 0 || CardsDB == 0)
++	return NULL;
++
+     ptr = (CardsEntry**)bsearch(name, CardsDB, NumCardsEntry,
+ 				sizeof(CardsEntry*), BCompareCards);
+ 

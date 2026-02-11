@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/vidmem.c b/hw/xfree86/os-support/shared/vidmem.c
+index 29c8a21..237d47a 100644
+--- a/hw/xfree86/os-support/shared/vidmem.c
++++ b/hw/xfree86/os-support/shared/vidmem.c
+@@ -27,6 +27,10 @@
+  */
+ 
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ # define I_NEED_OS2_H
+ #endif

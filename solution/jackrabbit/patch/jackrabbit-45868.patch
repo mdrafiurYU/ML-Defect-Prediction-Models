@@ -1,0 +1,56 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java
+index 7cd28b0..cb4aa72 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/XAItemStateManager.java
+@@ -27,6 +27,8 @@ import org.apache.jackrabbit.core.virtual.VirtualItemStateProvider;
+ import org.apache.jackrabbit.uuid.UUID;
+ import org.apache.commons.collections.iterators.FilterIterator;
+ import org.apache.commons.collections.Predicate;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ import javax.jcr.ReferentialIntegrityException;
+ import javax.jcr.PropertyType;
+@@ -44,6 +46,11 @@ import java.util.Collections;
+ public class XAItemStateManager extends LocalItemStateManager implements InternalXAResource {
+ 
+     /**
++     * The logger instance.
++     */
++    private static Logger log = LoggerFactory.getLogger(XAItemStateManager.class);
++
++    /**
+      * Default change log attribute name.
+      */
+     private static final String DEFAULT_ATTRIBUTE_NAME = "ChangeLog";
+@@ -559,4 +566,30 @@ public class XAItemStateManager extends LocalItemStateManager implements Interna
+             references.modified(refs);
+         }
+     }
++
++    /**
++     * {@inheritDoc}
++     *
++     * Check whether the shared state modified is contained in our transactional
++     * log: in that case, update its state as well, as it might get reused
++     * in a subsequent transaction (see JCR-1554).
++     */
++    public void stateModified(ItemState modified) {
++        ChangeLog changeLog = (ChangeLog) commitLogs.get(Thread.currentThread());
++        if (changeLog != null) {
++            ItemState local;
++            if (modified.getContainer() != this) {
++                // shared state was modified
++                try {
++                    local = changeLog.get(modified.getId());
++                    if (local != null && local.isConnected()) {
++                        local.pull();
++                    }
++                } catch (NoSuchItemStateException e) {
++                    log.warn("Modified state marked for deletion: " + modified.getId());
++                }
++            }
++        }
++        super.stateModified(modified);
++    }
+ }

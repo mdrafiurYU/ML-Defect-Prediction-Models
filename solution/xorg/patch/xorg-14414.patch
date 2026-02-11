@@ -1,0 +1,15 @@
+diff --git a/GL/mesa/X/xf86glx_util.h b/GL/mesa/X/xf86glx_util.h
+index 0716d6c..809c155 100644
+--- a/GL/mesa/X/xf86glx_util.h
++++ b/GL/mesa/X/xf86glx_util.h
+@@ -32,6 +32,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *   Brian Paul <brian@precisioninsight.com>
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _XF86GLX_UTIL_H_
+ #define _XF86GLX_UTIL_H_
+ 

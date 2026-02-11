@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java
+index 2c19b3e..b11cbc5 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorTestAnnotationProcessor.java
+@@ -54,7 +54,7 @@ public class MirrorTestAnnotationProcessor implements AnnotationProcessor {
+ 			testPackageImpl();
+ 		}
+ 		catch (Throwable t) {
+-			if (ERROR == null) {
++			if (ERROR == NO_ERRORS) {
+ 				ERROR = t.toString();
+ 			}
+ 			t.printStackTrace();

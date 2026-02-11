@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/MemUsage.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/MemUsage.java
+index 6697289..2ebb015 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/MemUsage.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/stats/MemUsage.java
+@@ -31,7 +31,7 @@ public class MemUsage {
+ 
+   /** Scale down the values by divisor, append the unit string. */
+   public String toScaledString(int div, String unit) {
+-    StringBuffer sb = new StringBuffer();
++    StringBuilder sb = new StringBuilder();
+       sb.append("free=").append(minFree / div);
+       sb.append("/").append(avgFree / div);
+       sb.append("/").append(maxFree / div).append(" ").append(unit);

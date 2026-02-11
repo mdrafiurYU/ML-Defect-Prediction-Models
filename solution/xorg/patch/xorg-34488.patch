@@ -1,0 +1,12 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index 3074a3f..14bc674 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -198,6 +198,7 @@ RootlessCreateWindow(WindowPtr pWin)
+     RegionRec saveRoot;
+ 
+     WINREC(pWin) = NULL;
++    pWin->devPrivates[rootlessWindowOldPixmapPrivateIndex].ptr = NULL;
+ 
+     SCREEN_UNWRAP(pWin->drawable.pScreen, CreateWindow);
+ 

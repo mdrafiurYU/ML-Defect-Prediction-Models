@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/CheckIndex.java b/lucene/src/java/org/apache/lucene/index/CheckIndex.java
+index 4d417de..ee7793e 100644
+--- a/lucene/src/java/org/apache/lucene/index/CheckIndex.java
++++ b/lucene/src/java/org/apache/lucene/index/CheckIndex.java
+@@ -408,7 +408,7 @@ public class CheckIndex {
+       SegmentReader reader = null;
+ 
+       try {
+-        final SegmentCodecs codec = info.getCodecInfo();
++        final SegmentCodecs codec = info.getSegmentCodecs();
+         msg("    codec=" + codec);
+         segInfoStat.codec = codec;
+         msg("    compound=" + info.getUseCompoundFile());

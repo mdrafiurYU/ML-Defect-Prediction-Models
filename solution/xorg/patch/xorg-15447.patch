@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/i2c/fi1236.c b/hw/xfree86/i2c/fi1236.c
+index 3a02335..299f200 100644
+--- a/hw/xfree86/i2c/fi1236.c
++++ b/hw/xfree86/i2c/fi1236.c
+@@ -1,3 +1,5 @@
++/* $XdotOrg: $ */
++
+ #ifdef HAVE_XORG_CONFIG_H
+ #include <xorg-config.h>
+ #endif
+@@ -366,6 +368,7 @@ static int FI1236_get_afc_hint(FI1236Ptr f)
+ 		if(AFC==1)return TUNER_JUST_ABOVE;
+ 		return TUNER_OFF;
+ 	}
++	return TUNER_OFF;
+ }
+ 
+ static int MT2032_get_afc_hint(FI1236Ptr f)

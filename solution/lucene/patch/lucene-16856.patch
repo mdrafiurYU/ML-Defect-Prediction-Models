@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapFCListener.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapFCListener.java
+index 5e8399e..ab93ee9 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapFCListener.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldBoostMapFCListener.java
+@@ -47,7 +47,7 @@ public class FieldBoostMapFCListener implements FieldConfigListener {
+       FieldBoostMapAttribute fieldBoostMapAttr = this.config.getAttribute(FieldBoostMapAttribute.class);
+       BoostAttribute boostAttr = fieldConfig.addAttribute(BoostAttribute.class);
+       
+-      Float boost = fieldBoostMapAttr.getFieldBoostMap().get(fieldConfig.getFieldName());
++      Float boost = fieldBoostMapAttr.getFieldBoostMap().get(fieldConfig.getField());
+ 
+       if (boost != null) {
+         boostAttr.setBoost(boost.floatValue());

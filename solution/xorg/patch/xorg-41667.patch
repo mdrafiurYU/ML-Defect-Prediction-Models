@@ -1,0 +1,31 @@
+diff --git a/fb/fbblt.c b/fb/fbblt.c
+index 38271c0..6c9d50c 100644
+--- a/fb/fbblt.c
++++ b/fb/fbblt.c
+@@ -39,7 +39,7 @@
+     } \
+ }
+ 
+-void
++_X_EXPORT void
+ fbBlt (FbBits   *srcLine,
+        FbStride	srcStride,
+        int	srcX,
+@@ -568,7 +568,7 @@ fbBlt24Line (FbBits	    *src,
+ #endif
+ }
+ 
+-void
++_X_EXPORT void
+ fbBlt24 (FbBits	    *srcLine,
+ 	 FbStride   srcStride,
+ 	 int	    srcX,
+@@ -873,7 +873,7 @@ fbSetBltOdd (FbStip	*stip,
+ }
+ #endif
+ 
+-void
++_X_EXPORT void
+ fbBltStip (FbStip   *src,
+ 	   FbStride srcStride,	    /* in FbStip units, not FbBits units */
+ 	   int	    srcX,

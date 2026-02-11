@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcArea.c b/hw/xfree86/xf4bpp/ppcArea.c
+index 6636728..56cab0d 100644
+--- a/hw/xfree86/xf4bpp/ppcArea.c
++++ b/hw/xfree86/xf4bpp/ppcArea.c
+@@ -29,6 +29,10 @@
+  * Tom Paquin 8/87 
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "mfbmap.h"
+ #include "mfb.h"

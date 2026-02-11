@@ -1,0 +1,12 @@
+diff --git a/hw/xnest/XNCursor.h b/hw/xnest/XNCursor.h
+index 8684a5e..6cbccfd 100644
+--- a/hw/xnest/XNCursor.h
++++ b/hw/xnest/XNCursor.h
+@@ -29,6 +29,7 @@ typedef struct {
+ 
+ Bool xnestRealizeCursor(ScreenPtr pScreen, CursorPtr pCursor);
+ Bool xnestUnrealizeCursor(ScreenPtr pScreen, CursorPtr pCursor);
++void xnestRecolorCursor(ScreenPtr pScreen, CursorPtr pCursor, Bool displayed);
+ void xnestSetCursor (ScreenPtr pScreen, CursorPtr pCursor, int x, int y);
+ void xnestMoveCursor (ScreenPtr pScreen, int x, int y);
+ 

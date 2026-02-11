@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java
+index 6d96441..a6af3db 100644
+--- a/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/BrazilianStemFilterFactory.java
+@@ -26,7 +26,8 @@ import org.apache.lucene.analysis.br.BrazilianStemFilter;
+  * <pre class="prettyprint" >
+  * &lt;fieldType name="text_brstem" class="solr.TextField" positionIncrementGap="100"&gt;
+  *   &lt;analyzer&gt;
+- *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+  *     &lt;filter class="solr.BrazilianStemFilterFactory"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>

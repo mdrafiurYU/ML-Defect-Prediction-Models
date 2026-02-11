@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java
+index 4f75940..da70ab0 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaCorePreferenceInitializer.java
+@@ -91,7 +91,7 @@ public class JavaCorePreferenceInitializer extends AbstractPreferenceInitializer
+ 		defaultOptionsMap.put(JavaCore.TIMEOUT_FOR_PARAMETER_NAME_FROM_ATTACHED_JAVADOC, "50"); //$NON-NLS-1$
+ 		
+ 		// enable external javadoc attachment
+-		defaultOptionsMap.put(JavaCore.ENABLE_JAVADOC_ATTACHMENTS, JavaCore.ENABLED);
++		defaultOptionsMap.put(JavaCore.ENABLE_JAVADOC_ATTACHMENTS_ACCESSES, JavaCore.ENABLED);
+ 
+ 		// Store default values to default preferences
+ 	 	IEclipsePreferences defaultPreferences = ((IScopeContext) new DefaultScope()).getNode(JavaCore.PLUGIN_ID);

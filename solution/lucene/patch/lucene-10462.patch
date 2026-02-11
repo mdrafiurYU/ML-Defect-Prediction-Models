@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestSort.java b/lucene/src/test/org/apache/lucene/search/TestSort.java
+index 7af71ee..77b7859 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestSort.java
++++ b/lucene/src/test/org/apache/lucene/search/TestSort.java
+@@ -1160,7 +1160,7 @@ public class TestSort extends LuceneTestCase implements Serializable {
+     doc.add(newField("t", "1", Field.Store.NO, Field.Index.NOT_ANALYZED));
+     w.addDocument(doc);
+ 
+-    IndexReader r = w.getReader();
++    IndexReader r = IndexReader.open(w);
+     w.close();
+     IndexSearcher s = new IndexSearcher(r);
+     TopDocs hits = s.search(new TermQuery(new Term("t", "1")), null, 10, new Sort(new SortField("f", SortField.STRING)));

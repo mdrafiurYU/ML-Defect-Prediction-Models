@@ -1,0 +1,36 @@
+diff --git a/Xi/getbmap.c b/Xi/getbmap.c
+index a944d4c..c4a411b 100644
+--- a/Xi/getbmap.c
++++ b/Xi/getbmap.c
+@@ -77,8 +77,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGetDeviceButtonMapping(client)
+-    register ClientPtr client;
++SProcXGetDeviceButtonMapping(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -94,8 +93,7 @@ SProcXGetDeviceButtonMapping(client)
+  */
+ 
+ int
+-ProcXGetDeviceButtonMapping (client)
+-    register ClientPtr client;
++ProcXGetDeviceButtonMapping (register ClientPtr client)
+     {
+     DeviceIntPtr	dev;
+     xGetDeviceButtonMappingReply	rep;
+@@ -141,10 +139,7 @@ ProcXGetDeviceButtonMapping (client)
+  */
+ 
+ void
+-SRepXGetDeviceButtonMapping (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGetDeviceButtonMappingReply	*rep;
++SRepXGetDeviceButtonMapping (ClientPtr client, int size, xGetDeviceButtonMappingReply *rep)
+     {
+     register char n;
+ 

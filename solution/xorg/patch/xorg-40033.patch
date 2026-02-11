@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Screen.c b/hw/xnest/Screen.c
+index 0229455..4e8616d 100644
+--- a/hw/xnest/Screen.c
++++ b/hw/xnest/Screen.c
+@@ -149,8 +149,6 @@ xnestOpenScreen(int index, ScreenPtr pScreen, int argc, char *argv[])
+       return False;
+   if (!dixRequestPrivate(xnestGCPrivateKey, sizeof(xnestPrivGC)))
+     return False;
+-  if (!dixRequestPrivate(xnestPixmapPrivateKey, sizeof (xnestPrivPixmap)))
+-      return False;
+ 
+   visuals = (VisualPtr)xalloc(xnestNumVisuals * sizeof(VisualRec));
+   numVisuals = 0;

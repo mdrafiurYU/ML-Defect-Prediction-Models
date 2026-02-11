@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 8b13e2b..2ffa956 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1738,3 +1738,12 @@ xf86OutputGetEDID (xf86OutputPtr output, I2CBusPtr pDDCBus)
+ 
+     return xf86DoEDID_DDC2 (scrn->scrnIndex, pDDCBus);
+ }
++
++static char *_xf86ConnectorNames[] = { "None", "VGA", "DVI-I", "DVI-D",
++				      "DVI-A", "Composite", "S-Video",
++				      "Component", "LFP", "Proprietary" };
++char *
++xf86ConnectorGetName(xf86ConnectorType connector)
++{
++    return _xf86ConnectorNames[connector];
++}

@@ -1,0 +1,66 @@
+diff --git a/solr/src/test/org/apache/solr/TestGroupingSearch.java b/solr/src/test/org/apache/solr/TestGroupingSearch.java
+index 6564771..f11c14f 100644
+--- a/solr/src/test/org/apache/solr/TestGroupingSearch.java
++++ b/solr/src/test/org/apache/solr/TestGroupingSearch.java
+@@ -201,6 +201,19 @@ public class TestGroupingSearch extends SolrTestCaseJ4 {
+             "]}}"
+     );
+ 
++    // test offset into group list
++    assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.field",f, "fl","id", "rows","1", "start","1")
++      ,"/grouped=={'"+f+"':{'matches':10,'groups':[" +
++              "{'groupValue':3,'doclist':{'numFound':2,'start':0,'docs':[{'id':'3'}]}}" +
++            "]}}"
++    );
++
++    // test big offset into group list
++     assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.field",f, "fl","id", "rows","1", "start","100")
++      ,"/grouped=={'"+f+"':{'matches':10,'groups':[" +
++            "]}}"
++    );
++
+     // test increasing the docs per group returned
+     assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.field",f, "fl","id", "rows","2", "group.limit","3")
+       ,"/grouped=={'"+f+"':{'matches':10,'groups':[" +
+@@ -209,6 +222,22 @@ public class TestGroupingSearch extends SolrTestCaseJ4 {
+           "]}}"
+     );
+ 
++    // test offset into each group
++    assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.field",f, "fl","id", "rows","2", "group.limit","3", "group.offset","1")
++      ,"/grouped=={'"+f+"':{'matches':10,'groups':[" +
++            "{'groupValue':1,'doclist':{'numFound':3,'start':1,'docs':[{'id':'10'},{'id':'5'}]}}," +
++            "{'groupValue':3,'doclist':{'numFound':2,'start':1,'docs':[{'id':'6'}]}}" +
++          "]}}"
++    );
++
++    // test big offset into each group
++     assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.field",f, "fl","id", "rows","2", "group.limit","3", "group.offset","10")
++      ,"/grouped=={'"+f+"':{'matches':10,'groups':[" +
++            "{'groupValue':1,'doclist':{'numFound':3,'start':10,'docs':[]}}," +
++            "{'groupValue':3,'doclist':{'numFound':2,'start':10,'docs':[]}}" +
++          "]}}"
++    );
++
+     // test adding in scores
+     assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.field",f, "fl","id,score", "rows","2", "group.limit","2", "indent","off")
+       ,"/grouped/"+f+"/groups==" +
+@@ -257,6 +286,18 @@ public class TestGroupingSearch extends SolrTestCaseJ4 {
+            "'doclist':{'numFound':4,'start':0,'docs':[{'id':'3'},{'id':'4'},{'id':'2'}]}}}"
+     );
+ 
++    // group.query and offset
++    assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.query","id:[2 TO 5]", "fl","id", "group.limit","3", "group.offset","2")
++       ,"/grouped=={'id:[2 TO 5]':{'matches':10," +
++           "'doclist':{'numFound':4,'start':2,'docs':[{'id':'2'},{'id':'5'}]}}}"
++    );
++
++    // group.query and big offset
++    assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true", "group.query","id:[2 TO 5]", "fl","id", "group.limit","3", "group.offset","10")
++       ,"/grouped=={'id:[2 TO 5]':{'matches':10," +
++           "'doclist':{'numFound':4,'start':10,'docs':[]}}}"
++    );
++
+     // multiple at once
+     assertJQ(req("fq",filt,  "q","{!func}"+f2, "group","true",
+         "group.query","id:[2 TO 5]",

@@ -1,0 +1,12 @@
+diff --git a/include/input.h b/include/input.h
+index 2d72f83..765d71d 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -451,6 +451,7 @@ extern int PairDevices(ClientPtr client,
+                        DeviceIntPtr keyboard);
+ 
+ extern DeviceIntPtr GetPairedPointer(DeviceIntPtr kbd);
++extern DeviceIntPtr GetPairedKeyboard(DeviceIntPtr ptr);
+ 
+ extern Bool RegisterPairingClient(ClientPtr client);
+ extern Bool UnregisterPairingClient(ClientPtr client);

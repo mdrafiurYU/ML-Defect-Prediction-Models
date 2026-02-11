@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xisb.c b/hw/xfree86/common/xisb.c
+index 33fedeb..4ffc3ed 100644
+--- a/hw/xfree86/common/xisb.c
++++ b/hw/xfree86/common/xisb.c
+@@ -36,6 +36,10 @@
+  *	Standard Headers
+  ****************************************************************************/
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ #define I_NEED_OS2_H
+ #endif

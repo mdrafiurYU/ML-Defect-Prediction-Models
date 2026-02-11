@@ -1,0 +1,15 @@
+diff --git a/xkb/ddxKeyClick.c b/xkb/ddxKeyClick.c
+index 19a2ec9..c940e53 100644
+--- a/xkb/ddxKeyClick.c
++++ b/xkb/ddxKeyClick.c
+@@ -26,6 +26,10 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ ********************************************************/
+ /* $XFree86$ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ #define	NEED_EVENTS 1
+ #include <X11/X.h>

@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index c9405b1..7e8712c 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -258,7 +258,7 @@ struct _KdPointerInfo {
+     InputOption           *options;
+     int                   inputClass;
+ 
+-    CARD8                 map[KD_MAX_BUTTON];
++    CARD8                 map[KD_MAX_BUTTON + 1];
+     int                   nButtons;
+     int                   nAxes;
+ 

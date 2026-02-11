@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+index 611e01f..ab9044b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+@@ -237,7 +237,7 @@ public class BLOBValue extends BLOBFileValue {
+      * @see #delete(boolean)
+      */
+     public void discard() {
+-        if (!temp){
++        if (!temp) {
+             // do nothing if this instance is not backed by temporarily
+             // allocated resource/buffer
+             return;
+@@ -367,4 +367,11 @@ public class BLOBValue extends BLOBFileValue {
+         }
+     }
+ 
++    /**
++     * {@inheritDoc}
++     */
++    public boolean isSmall() {
++        return false;
++    }
++
+ }

@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/search/QueryResultKey.java b/solr/src/java/org/apache/solr/search/QueryResultKey.java
+index 2f19143..7c1e080 100644
+--- a/solr/src/java/org/apache/solr/search/QueryResultKey.java
++++ b/solr/src/java/org/apache/solr/search/QueryResultKey.java
+@@ -56,10 +56,12 @@ public final class QueryResultKey {
+     hc = h;
+   }
+ 
++  @Override
+   public int hashCode() {
+     return hc;
+   }
+ 
++  @Override
+   public boolean equals(Object o) {
+     if (o==this) return true;
+     if (!(o instanceof QueryResultKey)) return false;

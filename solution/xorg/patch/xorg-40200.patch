@@ -1,0 +1,18 @@
+diff --git a/randr/randr.c b/randr/randr.c
+index 9bfed05..230d816 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -56,9 +56,11 @@ static int SProcRRDispatch (ClientPtr pClient);
+ int	RREventBase;
+ int	RRErrorBase;
+ RESTYPE RRClientType, RREventType; /* resource types for event masks */
+-DevPrivateKey RRClientPrivateKey = &RRClientPrivateKey;
++static int RRClientPrivateKeyIndex;
++DevPrivateKey RRClientPrivateKey = &RRClientPrivateKeyIndex;
+ 
+-DevPrivateKey rrPrivKey = &rrPrivKey;
++static int rrPrivKeyIndex;
++DevPrivateKey rrPrivKey = &rrPrivKeyIndex;
+ 
+ static void
+ RRClientCallback (CallbackListPtr	*list,

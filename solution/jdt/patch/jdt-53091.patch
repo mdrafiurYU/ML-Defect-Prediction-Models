@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+index 727cfe8..112a7ca 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+@@ -20,12 +20,11 @@ public class InstanceOfExpression extends OperatorExpression {
+ 	public Expression expression;
+ 	public TypeReference type;
+ 
+-	public InstanceOfExpression(
+-		Expression expression,
+-		TypeReference type) {
++	public InstanceOfExpression(Expression expression, TypeReference type) {
+ 
+ 		this.expression = expression;
+ 		this.type = type;
++		type.bits |= IgnoreRawTypeCheck; // no need to worry about raw type usage
+ 		this.bits |= INSTANCEOF << OperatorSHIFT;
+ 		this.sourceStart = expression.sourceStart;
+ 		this.sourceEnd = type.sourceEnd;

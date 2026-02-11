@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java
+index 319f18a..c8b7a3d 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java
+@@ -812,5 +812,9 @@ public void testWarningTokens() {
+ 	assertEquals("wrong token", "unchecked", CorrectionEngine.getWarningToken(IProblem.UnsafeRawGenericMethodInvocation));
+ 	assertEquals("wrong token", "unchecked", CorrectionEngine.getWarningToken(IProblem.UnsafeRawGenericConstructorInvocation));
+ 	assertEquals("wrong token", "serial", CorrectionEngine.getWarningToken(IProblem.MissingSerialVersion));
++	assertEquals("wrong token", "deprecation", CorrectionEngine.getWarningToken(IProblem.JavadocUsingDeprecatedField));
++	assertEquals("wrong token", "deprecation", CorrectionEngine.getWarningToken(IProblem.JavadocUsingDeprecatedConstructor));
++	assertEquals("wrong token", "deprecation", CorrectionEngine.getWarningToken(IProblem.JavadocUsingDeprecatedMethod));
++	assertEquals("wrong token", "deprecation", CorrectionEngine.getWarningToken(IProblem.JavadocUsingDeprecatedType));
+ }
+ }

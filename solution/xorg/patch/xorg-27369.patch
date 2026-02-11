@@ -1,0 +1,57 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index f9e6962..ccaa232 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -482,8 +482,6 @@ GetKeyboardValuatorEvents(xEvent *events, DeviceIntPtr pDev, int type,
+  * The DDX is responsible for allocating the event structure in the first
+  * place via GetMaximumEventsNum(), and for freeing it.
+  *
+- * If flag has POINTER_CORE_ONLY set, no XI or valuator event will be
+- * generated.
+  */
+ _X_EXPORT int
+ GetPointerEvents(xEvent *events, DeviceIntPtr pDev, int type, int buttons,
+@@ -497,7 +495,8 @@ GetPointerEvents(xEvent *events, DeviceIntPtr pDev, int type, int buttons,
+     Bool sendValuators = (type == MotionNotify || flags & POINTER_ABSOLUTE);
+     DeviceIntPtr pointer = NULL;
+     int x = 0, y = 0;
+-    Bool coreOnly = (flags & POINTER_CORE_ONLY);
++    /* The core pointer must not send Xi events. */
++    Bool coreOnly = (pDev == inputInfo.pointer);
+ 
+     /* Sanity checks. */
+     if (type != MotionNotify && type != ButtonPress && type != ButtonRelease)
+@@ -530,10 +529,6 @@ GetPointerEvents(xEvent *events, DeviceIntPtr pDev, int type, int buttons,
+ 
+     ms = GetTimeInMillis();
+ 
+-    kbp = (deviceKeyButtonPointer *) events;
+-    kbp->time = ms;
+-    kbp->deviceid = pDev->id;
+-
+     if (!pDev->coreEvents || pDev->isMPDev)
+         pointer = pDev;
+     else 
+@@ -598,6 +593,13 @@ GetPointerEvents(xEvent *events, DeviceIntPtr pDev, int type, int buttons,
+     pDev->valuator->lastx = x;
+     pDev->valuator->lasty = y;
+ 
++    /* create Xi event */
++    if (!coreOnly)
++    {
++        kbp = (deviceKeyButtonPointer *) events;
++        kbp->time = ms;
++        kbp->deviceid = pDev->id;
++
+     if (type == MotionNotify) {
+         kbp->type = DeviceMotionNotify;
+     }
+@@ -612,8 +614,6 @@ GetPointerEvents(xEvent *events, DeviceIntPtr pDev, int type, int buttons,
+     kbp->root_x = x;
+     kbp->root_y = y;
+ 
+-    if (!coreOnly)
+-    {
+         events++;
+         if (sendValuators) {
+             kbp->deviceid |= MORE_EVENTS;

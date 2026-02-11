@@ -1,0 +1,11 @@
+diff --git a/xfixes/saveset.c b/xfixes/saveset.c
+index e6e2976..31664ab 100755
+--- a/xfixes/saveset.c
++++ b/xfixes/saveset.c
+@@ -72,5 +72,5 @@ SProcXFixesChangeSaveSet(ClientPtr client)
+ 
+     swaps(&stuff->length, n);
+     swapl(&stuff->window, n);
+-    return ProcXFixesChangeSaveSet(client);
++    return (*ProcXFixesVector[stuff->xfixesReqType])(client);
+ }

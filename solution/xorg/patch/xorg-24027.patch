@@ -1,0 +1,44 @@
+diff --git a/os/connection.c b/os/connection.c
+index ce76566..7648a52 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1014,16 +1014,22 @@ CloseDownConnection(ClientPtr client)
+ }
+ 
+ _X_EXPORT void
+-AddEnabledDevice(int fd)
++AddGeneralSocket(int fd)
+ {
+-    FD_SET(fd, &EnabledDevices);
+     FD_SET(fd, &AllSockets);
+     if (GrabInProgress)
+ 	FD_SET(fd, &SavedAllSockets);
+ }
+ 
+ _X_EXPORT void
+-RemoveEnabledDevice(int fd)
++AddEnabledDevice(int fd)
++{
++    FD_SET(fd, &EnabledDevices);
++    AddGeneralSocket(fd);
++}
++
++_X_EXPORT void
++RemoveGeneralSocket(int fd)
+ {
+     FD_CLR(fd, &EnabledDevices);
+     FD_CLR(fd, &AllSockets);
+@@ -1031,6 +1037,13 @@ RemoveEnabledDevice(int fd)
+ 	FD_CLR(fd, &SavedAllSockets);
+ }
+ 
++_X_EXPORT void
++RemoveEnabledDevice(int fd)
++{
++    FD_CLR(fd, &EnabledDevices);
++    RemoveGeneralSocket(fd);
++}
++
+ /*****************
+  * OnlyListenToOneClient:
+  *    Only accept requests from  one client.  Continue to handle new

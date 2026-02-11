@@ -1,0 +1,18 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeRegistryImpl.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeRegistryImpl.java
+index eaf4c8b..818b99c 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeRegistryImpl.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeRegistryImpl.java
+@@ -518,10 +518,10 @@ public class NodeTypeRegistryImpl implements Dumpable, NodeTypeRegistry, Effecti
+     }
+ 
+     private void internalRegister(Map defMap) {
+-        Iterator it = defMap.keySet().iterator();
+-        while (it.hasNext()) {
+-            QNodeTypeDefinition ntd = (QNodeTypeDefinition)it.next();
+-            internalRegister(ntd, (EffectiveNodeTypeImpl)defMap.get(ntd));
++        for (Iterator it = defMap.entrySet().iterator(); it.hasNext(); ) {
++            Map.Entry entry = (Map.Entry)it.next();
++            QNodeTypeDefinition ntd = (QNodeTypeDefinition)entry.getKey();
++            internalRegister(ntd, (EffectiveNodeTypeImpl)entry.getValue());
+         }
+     }

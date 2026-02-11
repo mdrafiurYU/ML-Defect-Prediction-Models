@@ -1,0 +1,20 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/embedded/TestSolrProperties.java b/solr/src/test/org/apache/solr/client/solrj/embedded/TestSolrProperties.java
+index 997f1cd..937f877 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/embedded/TestSolrProperties.java
++++ b/solr/src/test/org/apache/solr/client/solrj/embedded/TestSolrProperties.java
+@@ -66,6 +66,7 @@ public class TestSolrProperties extends LuceneTestCase {
+     return "solr.xml";
+   }
+ 
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();
+@@ -77,6 +78,7 @@ public class TestSolrProperties extends LuceneTestCase {
+     cores = new CoreContainer(home.getAbsolutePath(), solrXml);
+   }
+ 
++  @Override
+   @After
+   public void tearDown() throws Exception {
+     if (cores != null)

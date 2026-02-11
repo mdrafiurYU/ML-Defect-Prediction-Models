@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winwin32rootlesswindow.c b/hw/xwin/winwin32rootlesswindow.c
+index 693d5cd..dedcd7a 100755
+--- a/hw/xwin/winwin32rootlesswindow.c
++++ b/hw/xwin/winwin32rootlesswindow.c
+@@ -164,7 +164,7 @@ winMWExtWMUpdateIcon (Window id)
+   WindowPtr		pWin;
+   HICON			hIcon, hiconOld;
+ 
+-  pWin = LookupIDByType (id, RT_WINDOW);
++  pWin = (WindowPtr) LookupIDByType (id, RT_WINDOW);
+   hIcon = (HICON)winOverrideIcon ((unsigned long)pWin);
+ 
+   if (!hIcon)

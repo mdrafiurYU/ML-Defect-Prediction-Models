@@ -1,0 +1,16 @@
+diff --git a/hw/xnest/Keyboard.c b/hw/xnest/Keyboard.c
+index bb3cb13..17d3e5e 100644
+--- a/hw/xnest/Keyboard.c
++++ b/hw/xnest/Keyboard.c
+@@ -236,11 +236,7 @@ XkbError:
+ 	XkbFreeKeyboard(xkb, 0, False);
+       }
+ #endif
+-#ifdef _XSERVER64
+       xfree(keymap);
+-#else
+-      XFree(keymap);
+-#endif
+       break;
+     case DEVICE_ON: 
+       xnestEventMask |= XNEST_KEYBOARD_EVENT_MASK;

@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/xpr/xprScreen.c b/hw/xquartz/xpr/xprScreen.c
+index f685d4a..6f7598f 100644
+--- a/hw/xquartz/xpr/xprScreen.c
++++ b/hw/xquartz/xpr/xprScreen.c
+@@ -150,7 +150,7 @@ displayScreenBounds(CGDirectDisplayID id)
+ 
+     /* Remove menubar to help standard X11 window managers. */
+ 
+-    if (frame.origin.x == 0 && frame.origin.y == 0)
++    if (frame.origin.y == 0)
+     {
+         frame.origin.y += aquaMenuBarHeight;
+         frame.size.height -= aquaMenuBarHeight;

@@ -1,0 +1,13 @@
+diff --git a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java
+index e00583f..04236c2 100644
+--- a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java
++++ b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTask.java
+@@ -57,7 +57,7 @@ public class SearchWithSortTask extends ReadTask {
+       SortField sortField0;
+       if (field.equals("doc")) {
+         sortField0 = SortField.FIELD_DOC;
+-      } if (field.equals("score")) {
++      } else if (field.equals("score")) {
+         sortField0 = SortField.FIELD_SCORE;
+       } else if (field.equals("noscore")) {
+         doScore = false;

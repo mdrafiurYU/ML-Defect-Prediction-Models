@@ -1,0 +1,28 @@
+diff --git a/dbe/midbestr.h b/dbe/midbestr.h
+index 1ad0104..ae9f206 100644
+--- a/dbe/midbestr.h
++++ b/dbe/midbestr.h
+@@ -42,19 +42,15 @@
+ /* DEFINES */
+ 
+ #define MI_DBE_WINDOW_PRIV_PRIV(pDbeWindowPriv) \
+-    (((miDbeWindowPrivPrivIndex < 0) || (!pDbeWindowPriv)) ? \
+-    NULL : \
+-    ((MiDbeWindowPrivPrivPtr) \
+-     ((pDbeWindowPriv)->devPrivates[miDbeWindowPrivPrivIndex].ptr)))
++    (!(pDbeWindowPriv) ? NULL : (MiDbeWindowPrivPrivPtr) \
++     dixLookupPrivate(&(pDbeWindowPriv)->devPrivates, miDbeWindowPrivPrivKey))
+ 
+ #define MI_DBE_WINDOW_PRIV_PRIV_FROM_WINDOW(pWin)\
+     MI_DBE_WINDOW_PRIV_PRIV(DBE_WINDOW_PRIV(pWin))
+ 
+ #define MI_DBE_SCREEN_PRIV_PRIV(pDbeScreenPriv) \
+-    (((miDbeScreenPrivPrivIndex < 0) || (!pDbeScreenPriv)) ? \
+-    NULL : \
+-    ((MiDbeScreenPrivPrivPtr) \
+-     ((pDbeScreenPriv)->devPrivates[miDbeScreenPrivPrivIndex].ptr)))
++    (!(pDbeScreenPriv) ? NULL : (MiDbeScreenPrivPrivPtr) \
++     dixLookupPrivate(&(pDbeScreenPriv)->devPrivates, miDbeScreenPrivPrivKey))
+ 
+ 
+ /* TYPEDEFS */

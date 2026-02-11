@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/QNodeTypeDefinitionImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/QNodeTypeDefinitionImpl.java
+index 3fba1ea..050e3bb 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/QNodeTypeDefinitionImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/QNodeTypeDefinitionImpl.java
+@@ -326,8 +326,9 @@ public class QNodeTypeDefinitionImpl implements QNodeTypeDefinition, Serializabl
+             }
+             // property definitions
+             for (int i = 0; i < propertyDefs.length; i++) {
+-                // REFERENCE value constraints
+-                if (propertyDefs[i].getRequiredType() == PropertyType.REFERENCE) {
++                // [WEAK]REFERENCE value constraints
++                if (propertyDefs[i].getRequiredType() == PropertyType.REFERENCE
++                        || propertyDefs[i].getRequiredType() == PropertyType.WEAKREFERENCE) {
+                     String[] ca = propertyDefs[i].getValueConstraints();
+                     if (ca != null) {
+                         for (int j = 0; j < ca.length; j++) {

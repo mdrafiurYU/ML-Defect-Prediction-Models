@@ -1,0 +1,15 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index bd203b1..371be4e 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -444,8 +444,8 @@ ProcXTestFakeInput(client)
+ 	    (dev, root->drawable.pScreen,
+ 	     ev->u.keyButtonPointer.rootX,
+ 	     ev->u.keyButtonPointer.rootY, FALSE);
+-        dev->valuator->lastx = ev->u.keyButtonPointer.rootX;
+-        dev->valuator->lasty = ev->u.keyButtonPointer.rootY;
++        dev->lastx = ev->u.keyButtonPointer.rootX;
++        dev->lasty = ev->u.keyButtonPointer.rootY;
+ 	break;
+     case ButtonPress:
+     case ButtonRelease:

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index 206f3c9..f4f00de 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -471,7 +471,7 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+     UpdatableItemStateManager getUpdatableItemStateManager() {
+         return wspManager;
+     }
+-    
++
+     ItemStateFactory getItemStateFactory() {
+         return wspManager.getItemStateFactory();
+     }
+@@ -484,7 +484,7 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+     private ItemStateValidator getValidator() {
+         return session.getValidator();
+     }
+-    
++
+     //-----------------------------------------------------< initialization >---
+     /**
+      * Create the workspace state manager. May be overridden by subclasses.

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java b/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java
+index 6a059d8..5afce68 100644
+--- a/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java
++++ b/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java
+@@ -130,7 +130,7 @@ public class MockSepCodec extends Codec {
+   }
+ 
+   @Override
+-  public void files(Directory dir, SegmentInfo segmentInfo, String codecId, Set<String> files) {
++  public void files(Directory dir, SegmentInfo segmentInfo, String codecId, Set<String> files) throws IOException {
+     SepPostingsReaderImpl.files(segmentInfo, codecId, files);
+     BlockTermsReader.files(dir, segmentInfo, codecId, files);
+     FixedGapTermsIndexReader.files(dir, segmentInfo, codecId, files);

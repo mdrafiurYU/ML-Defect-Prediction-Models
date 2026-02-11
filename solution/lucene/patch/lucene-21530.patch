@@ -1,0 +1,20 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+index dfd53f6..d40543d 100644
+--- a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+@@ -74,8 +74,13 @@ final class FreqProxTermsWriter extends TermsHashConsumer {
+     for (int fieldNumber = 0; fieldNumber < numAllFields; fieldNumber++) {
+       final FieldInfo fieldInfo = allFields.get(fieldNumber).fieldInfo;
+ 
+-      FreqProxTermsWriterPerField fieldWriter = allFields.get(fieldNumber);
+-      fieldInfo.storePayloads |= fieldWriter.hasPayloads;
++      final FreqProxTermsWriterPerField fieldWriter = allFields.get(fieldNumber);
++
++      // Aggregate the storePayload as seen by the same
++      // field across multiple threads
++      if (!fieldInfo.omitTermFreqAndPositions) {
++        fieldInfo.storePayloads |= fieldWriter.hasPayloads;
++      }
+ 
+       // If this field has postings then add them to the
+       // segment

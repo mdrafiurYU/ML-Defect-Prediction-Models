@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestSloppyPhraseQuery.java b/lucene/src/test/org/apache/lucene/search/TestSloppyPhraseQuery.java
+index f10c5d4..2280cf0 100755
+--- a/lucene/src/test/org/apache/lucene/search/TestSloppyPhraseQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestSloppyPhraseQuery.java
+@@ -116,7 +116,7 @@ public class TestSloppyPhraseQuery extends LuceneTestCase {
+     query.setSlop(slop);
+ 
+     Directory ramDir = newDirectory();
+-    RandomIndexWriter writer = new RandomIndexWriter(random, ramDir, new MockAnalyzer(MockTokenizer.WHITESPACE, false));
++    RandomIndexWriter writer = new RandomIndexWriter(random, ramDir, new MockAnalyzer(random, MockTokenizer.WHITESPACE, false));
+     writer.addDocument(doc);
+ 
+     IndexReader reader = writer.getReader();

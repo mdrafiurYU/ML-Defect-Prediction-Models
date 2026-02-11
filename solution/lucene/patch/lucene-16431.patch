@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/TermQuery.java b/lucene/src/java/org/apache/lucene/search/TermQuery.java
+index 798fcb082..5dc9514 100644
+--- a/lucene/src/java/org/apache/lucene/search/TermQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/TermQuery.java
+@@ -54,7 +54,7 @@ public class TermQuery extends Query {
+       throws IOException {
+       assert termStates != null : "PerReaderTermState must not be null";
+       this.termStates = termStates;
+-      this.similarity = getSimilarity(searcher);
++      this.similarity = searcher.getSimilarity();
+       if (docFreq != -1) {
+         idfExp = similarity.idfExplain(term, searcher, docFreq);
+       } else {

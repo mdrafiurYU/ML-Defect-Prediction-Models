@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/os-support/shared/sigiostubs.c b/hw/xfree86/os-support/shared/sigiostubs.c
+index 7113968..12fcab1 100644
+--- a/hw/xfree86/os-support/shared/sigiostubs.c
++++ b/hw/xfree86/os-support/shared/sigiostubs.c
+@@ -57,13 +57,13 @@ xf86UnblockSIGIO (int wasset)
+ {
+ }
+ 
+-void
++_X_EXPORT void
+ xf86AssertBlockedSIGIO (char *where)
+ {
+ }
+ 
+ /* XXX This is a quick hack for the benefit of xf86SetSilkenMouse() */
+-Bool
++_X_EXPORT Bool
+ xf86SIGIOSupported ()
+ {
+     return FALSE;

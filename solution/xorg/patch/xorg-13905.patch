@@ -1,0 +1,26 @@
+diff --git a/hw/kdrive/src/kaa.h b/hw/kdrive/src/kaa.h
+index 27f9917..15f2faa 100644
+--- a/hw/kdrive/src/kaa.h
++++ b/hw/kdrive/src/kaa.h
+@@ -27,6 +27,8 @@
+ #ifndef _KAA_H_
+ #define _KAA_H_
+ 
++#include "picturestr.h"
++
+ #define KaaGetScreenPriv(s)	((KaaScreenPrivPtr)(s)->devPrivates[kaaScreenPrivateIndex].ptr)
+ #define KaaScreenPriv(s)	KaaScreenPrivPtr    pKaaScr = KaaGetScreenPriv(s)
+ 
+@@ -72,6 +74,12 @@ void
+ kaaMoveInPixmap (PixmapPtr pPixmap);
+ 
+ void
++kaaMarkSync (ScreenPtr pScreen);
++
++void
++kaaWaitSync (ScreenPtr pScreen);
++
++void
+ kaaCopyNtoN (DrawablePtr    pSrcDrawable,
+ 	     DrawablePtr    pDstDrawable,
+ 	     GCPtr	    pGC,

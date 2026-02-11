@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/spatial/src/java/org/apache/lucene/spatial/tier/Shape.java b/lucene/contrib/spatial/src/java/org/apache/lucene/spatial/tier/Shape.java
+index 2a5bdbb..5b95b3f 100644
+--- a/lucene/contrib/spatial/src/java/org/apache/lucene/spatial/tier/Shape.java
++++ b/lucene/contrib/spatial/src/java/org/apache/lucene/spatial/tier/Shape.java
+@@ -17,7 +17,6 @@
+ 
+ package org.apache.lucene.spatial.tier;
+ 
+-import java.io.Serializable;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+@@ -26,7 +25,7 @@ import java.util.List;
+  * flux and might change in incompatible ways in the next
+  * release.</font>
+  */
+-public class Shape implements Serializable{
++public class Shape {
+ 
+   private List<Double> area = new ArrayList<Double>();
+   private String tierId;

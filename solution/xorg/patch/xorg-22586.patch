@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/accel/rlAccel.c b/miext/rootless/accel/rlAccel.c
+index 0b81528..188fd48 100644
+--- a/miext/rootless/accel/rlAccel.c
++++ b/miext/rootless/accel/rlAccel.c
+@@ -35,6 +35,10 @@
+  * underneath this layer besides fb will get called.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "rootless.h"
+ #include "rlAccel.h"
+ 

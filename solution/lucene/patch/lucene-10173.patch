@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/fr/FrenchStemFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/fr/FrenchStemFilter.java
+index 6e5d1eb..d048cc1 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/fr/FrenchStemFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/fr/FrenchStemFilter.java
+@@ -107,7 +107,7 @@ public final class FrenchStemFilter extends TokenFilter {
+ 	 */
+ 	@Deprecated // TODO remove in 3.2
+ 	public void setExclusionTable( Map<?,?> exclusiontable ) {
+-		exclusions = new HashSet(exclusiontable.keySet());
++		exclusions = exclusiontable.keySet();
+ 	}
+ }

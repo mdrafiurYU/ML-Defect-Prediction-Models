@@ -1,0 +1,18 @@
+diff --git a/mi/mi.h b/mi/mi.h
+index 076cea7..182cea5 100644
+--- a/mi/mi.h
++++ b/mi/mi.h
+@@ -221,6 +221,13 @@ extern _X_EXPORT void mieqProcessInputEvents(
+     void
+ );
+ 
++extern void CopyGetMasterEvent(
++    DeviceIntPtr /* mdev */,
++    DeviceIntPtr /* sdev */,
++    InternalEvent* /* original */,
++    EventListPtr /* master */
++);
++
+ /**
+  * Custom input event handler. If you need to process input events in some
+  * other way than the default path, register an input event handler for the

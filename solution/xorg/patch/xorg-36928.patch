@@ -1,0 +1,41 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index fa395a8..df1d3a8 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -131,13 +131,12 @@ RootlessNativeWindowStateChanged (WindowPtr pWin, unsigned int state)
+   pWin->rootlessUnhittable = winRec->is_offscreen;
+ }
+ 
+-void
+-RootlessNativeWindowMoved (WindowPtr pWin)
+-{
++void RootlessNativeWindowMoved (WindowPtr pWin) {
+   xp_box bounds;
+-  int sx, sy;
++    int sx, sy, err;
+   XID vlist[2];
+   Mask mask;
++    ClientPtr client, pClient;
+   RootlessWindowRec *winRec = WINREC(pWin);
+ 
+   if (xp_get_window_bounds ((xp_window_id)winRec->wid, &bounds) != Success) return;
+@@ -151,11 +150,18 @@ RootlessNativeWindowMoved (WindowPtr pWin)
+   vlist[1] = (INT16) bounds.y1 - sy;
+   mask = CWX | CWY;
+ 
++    /* pretend we're the owner of the window! */
++    err = dixLookupClient(&pClient, pWin->drawable.id, NullClient, DixUnknownAccess);
++    if(err != Success) {
++        ErrorF("RootlessNativeWindowMoved(): Failed to lookup window: 0x%x\n", pWin->drawable.id);
++        return;
++    }
++    
+   /* Don't want to do anything to the physical window (avoids 
+      notification-response feedback loops) */
+ 
+   no_configure_window = TRUE;
+-  ConfigureWindow (pWin, mask, vlist, serverClient);
++    ConfigureWindow (pWin, mask, vlist, client);
+   no_configure_window = FALSE;
+ }
+ 

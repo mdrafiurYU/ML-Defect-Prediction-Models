@@ -1,0 +1,15 @@
+diff --git a/cfb/cfbpntwin.c b/cfb/cfbpntwin.c
+index 9cb1c7b..9bfdfe6 100644
+--- a/cfb/cfbpntwin.c
++++ b/cfb/cfbpntwin.c
+@@ -48,6 +48,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XFree86: xc/programs/Xserver/cfb/cfbpntwin.c,v 3.7tsi Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "windowstr.h"

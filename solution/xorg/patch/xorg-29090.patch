@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dri/dri.c b/hw/xfree86/dri/dri.c
+index 35da8a6..355d281 100644
+--- a/hw/xfree86/dri/dri.c
++++ b/hw/xfree86/dri/dri.c
+@@ -473,6 +473,9 @@ DRIScreenInit(ScreenPtr pScreen, DRIInfoPtr pDRIInfo, int *pDRMFD)
+     pDRIPriv->pLockRefCount = &pDRIEntPriv->lockRefCount;
+     pDRIPriv->pLockingContext = &pDRIEntPriv->lockingContext;
+ 
++    if (!pDRIEntPriv->keepFDOpen)
++	pDRIEntPriv->keepFDOpen = pDRIInfo->keepFDOpen;
++
+     pDRIEntPriv->refCount++;
+ 
+     return TRUE;

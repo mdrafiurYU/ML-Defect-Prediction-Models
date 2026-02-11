@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index d8e3ae7..26cb544 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -2520,7 +2520,7 @@ ProcCreateColormap(register ClientPtr client)
+ 	    return(result);
+     }
+     client->errorValue = stuff->visual;
+-    return(BadValue);
++    return(BadMatch);
+ }
+ 
+ int

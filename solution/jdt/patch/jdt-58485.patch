@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/CompilerInvocationTests.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/CompilerInvocationTests.java
+index 0eff269..566a433 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/CompilerInvocationTests.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/CompilerInvocationTests.java
+@@ -46,7 +46,7 @@ public CompilerInvocationTests(String name) {
+   	}
+ 
+ public static Test suite() {
+-    return buildTestSuite(testClass());
++    return buildAllCompliancesRegressionTestSetupSuite(testClass());
+ }
+   
+ public static Class testClass() {

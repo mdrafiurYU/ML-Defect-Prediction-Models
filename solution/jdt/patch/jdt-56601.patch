@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverter15Test.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverter15Test.java
+index 5cce66f..fe377bd 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverter15Test.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverter15Test.java
+@@ -5911,7 +5911,7 @@ public class ASTConverter15Test extends ConverterTestSetup {
+ 		assertNotNull("No binding", binding);
+ 		
+ 		String key = binding.getKey();
+-		String signature = new BindingKey(key).internalToSignature();
++		String signature = new BindingKey(key).toSignature();
+ 		String simpleName = Signature.getSimpleName(Signature.toString(signature));
+ 		assertEquals("Unexpected simple name", "Y", simpleName);
+ 	}

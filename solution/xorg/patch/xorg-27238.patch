@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/dlloader.c b/hw/xfree86/loader/dlloader.c
+index a0e8670..2afdef7 100644
+--- a/hw/xfree86/loader/dlloader.c
++++ b/hw/xfree86/loader/dlloader.c
+@@ -113,6 +113,10 @@ DLFindSymbol(const char *name)
+     DLModuleList *l;
+     void *p;
+ 
++    p = dlsym(RTLD_DEFAULT, name);
++    if (p != NULL)
++	return p;
++
+     for (l = dlModuleList; l != NULL; l = l->next) {
+         p = DLFindSymbolLocal(l->module, name);
+ 	if (p)

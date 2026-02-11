@@ -1,0 +1,13 @@
+diff --git a/render/animcur.c b/render/animcur.c
+index d80094d..e7bc4e5 100644
+--- a/render/animcur.c
++++ b/render/animcur.c
+@@ -157,7 +157,7 @@ AnimCurCursorLimits (DeviceIntPtr pDev,
+     }
+     else
+     {
+-        (*pScreen->CursorLimits) (inputInfo.pointer, pScreen, pCursor,
++        (*pScreen->CursorLimits) (pDev, pScreen, pCursor,
+                                   pHotBox, pTopLeftBox); 
+     }
+     Wrap (as, pScreen, CursorLimits, AnimCurCursorLimits);

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 21e7dd2..ed2ae7a 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1746,7 +1746,7 @@ xf86SetScrnInfoModes (ScrnInfoPtr scrn)
+     xf86CrtcConfigPtr	config = XF86_CRTC_CONFIG_PTR(scrn);
+     xf86OutputPtr	output;
+     xf86CrtcPtr		crtc;
+-    DisplayModePtr	last, mode;
++    DisplayModePtr	last, mode = NULL;
+ 
+     output = SetCompatOutput(config);
+ 

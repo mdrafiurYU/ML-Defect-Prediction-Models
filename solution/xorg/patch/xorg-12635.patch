@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_kbd.c b/hw/xfree86/os-support/linux/lnx_kbd.c
+index 48a62e2..18eff7f 100644
+--- a/hw/xfree86/os-support/linux/lnx_kbd.c
++++ b/hw/xfree86/os-support/linux/lnx_kbd.c
+@@ -145,6 +145,8 @@ KDKBDREP_ioctl_ok(int rate, int delay) {
+ #endif /* KDKBDREP */
+ }
+ 
++#undef rate
++
+ static int
+ KIOCSRATE_ioctl_ok(int rate, int delay) {
+ #ifdef KIOCSRATE
+@@ -172,8 +174,6 @@ KIOCSRATE_ioctl_ok(int rate, int delay) {
+ #endif /* KIOCSRATE */
+ }
+ 
+-#undef rate
+-
+ static void
+ SetKbdRepeat(InputInfoPtr pInfo, char rad)
+ {

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/remoting/davex/JsonWriter.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/remoting/davex/JsonWriter.java
+index 56547de..6e67505 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/remoting/davex/JsonWriter.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/remoting/davex/JsonWriter.java
+@@ -88,7 +88,7 @@ class JsonWriter {
+         final NodeIterator children = node.getNodes();
+         if (!children.hasNext()) {
+             // no child present at all -> add special property.
+-            writeKeyValue(writer, "::NodeIteratorSize", "0", false);
++            writeKeyValue(writer, "::NodeIteratorSize", 0);
+         } else {
+             // the child nodes
+             while (children.hasNext()) {

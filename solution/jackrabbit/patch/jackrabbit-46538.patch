@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/daily/DailyIntegrationTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/daily/DailyIntegrationTest.java
+index 8b7cfcc..e368cc6 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/daily/DailyIntegrationTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/daily/DailyIntegrationTest.java
+@@ -29,6 +29,7 @@ import org.apache.jackrabbit.core.ConcurrentVersioningTest;
+ import org.apache.jackrabbit.core.ConcurrentVersioningWithTransactionsTest;
+ import org.apache.jackrabbit.core.LockTest;
+ import org.apache.jackrabbit.core.ReadVersionsWhileModified;
++import org.apache.jackrabbit.core.query.LargeResultSetTest;
+ import org.apache.jackrabbit.core.lock.ConcurrentLockingTest;
+ import org.apache.jackrabbit.core.lock.ConcurrentLockingWithTransactionsTest;
+ 
+@@ -56,6 +57,7 @@ public class DailyIntegrationTest extends TestCase {
+         suite.addTestSuite(ReadVersionsWhileModified.class);
+         suite.addTestSuite(ConcurrentLockingTest.class);
+         suite.addTestSuite(ConcurrentLockingWithTransactionsTest.class);
++        suite.addTestSuite(LargeResultSetTest.class);
+ 
+         return suite;
+     }

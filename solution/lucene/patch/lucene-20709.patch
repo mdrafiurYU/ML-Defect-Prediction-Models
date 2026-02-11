@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchLightStemFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchLightStemFilter.java
+index ffe8d6c..4cd9f79 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchLightStemFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/fr/TestFrenchLightStemFilter.java
+@@ -159,4 +159,9 @@ public class TestFrenchLightStemFilter extends BaseTokenStreamTestCase {
+   public void testVocabulary() throws IOException {
+     assertVocabulary(analyzer, getDataFile("frlighttestdata.zip"), "frlight.txt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, analyzer, 10000*RANDOM_MULTIPLIER);
++  }
+ }

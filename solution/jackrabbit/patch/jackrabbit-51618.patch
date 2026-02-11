@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/virtual/AbstractVISProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/virtual/AbstractVISProvider.java
+index ce4aef5..a8bde7e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/virtual/AbstractVISProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/virtual/AbstractVISProvider.java
+@@ -169,6 +169,13 @@ public abstract class AbstractVISProvider implements VirtualItemStateProvider, I
+     }
+ 
+     /**
++     * {@inheritDoc}
++     */
++    public NodeId[] getVirtualRootIds() {
++        return new NodeId[]{rootNodeId};
++    }
++
++    /**
+      * Returns the root state
+      *
+      * @return the root state

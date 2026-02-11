@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 855d6c6..ee05cc4 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -481,13 +481,14 @@ fixup_video_driver_list(char **drivers)
+     for (drv = drivers; drv != end; drv++) {
+         if (!strcmp(*drv, "atimisc")) {
+             atimisc = drv;
+-            for (drv = drivers; drv != end; drv++) {
++            for (drv = atimisc; drv != end; drv++) {
+                 if (!strcmp(*drv, "ati")) {
+                     ati = drv;
+                     x = *ati; *ati = *atimisc; *atimisc = x;
+                     return;
+                 }
+             }
++            /* if we get here, ati was already ahead of atimisc */
+         }
+     }
+ }

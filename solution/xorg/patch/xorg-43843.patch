@@ -1,0 +1,22 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index b5f3542..7145e12 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -332,12 +332,14 @@ exaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth,
+ 	    return NULL;
+         }
+ 
+-        (*pScreen->ModifyPixmapHeader)(pPixmap, w, h, 0, 0,
+-                                       paddedWidth, NULL);
++	/* Allow ModifyPixmapHeader to set sys_ptr appropriately. */
+         pExaPixmap->score = EXA_PIXMAP_SCORE_PINNED;
+         pExaPixmap->fb_ptr = NULL;
+         pExaPixmap->pDamage = NULL;
+-        pExaPixmap->sys_ptr = pPixmap->devPrivate.ptr;
++	pExaPixmap->sys_ptr = NULL;
++
++	(*pScreen->ModifyPixmapHeader)(pPixmap, w, h, 0, 0,
++					paddedWidth, NULL);
+ 
+     } else {
+         pExaPixmap->driverPriv = NULL;

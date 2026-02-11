@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java
+index ac3b454..dadf215 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/RepositoryDescriptorTest.java
+@@ -74,6 +74,7 @@ public class RepositoryDescriptorTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

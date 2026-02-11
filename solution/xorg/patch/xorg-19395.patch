@@ -1,0 +1,36 @@
+diff --git a/Xi/queryst.c b/Xi/queryst.c
+index 34b140c..d125e2d 100644
+--- a/Xi/queryst.c
++++ b/Xi/queryst.c
+@@ -60,8 +60,7 @@ from The Open Group.
+  */
+ 
+ int
+-SProcXQueryDeviceState(client)
+-    register ClientPtr client;
++SProcXQueryDeviceState(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -77,8 +76,7 @@ SProcXQueryDeviceState(client)
+  */
+ 
+ int
+-ProcXQueryDeviceState(client)
+-    register ClientPtr client;
++ProcXQueryDeviceState(register ClientPtr client)
+     {
+     register char 		n;
+     int 			i;
+@@ -202,10 +200,7 @@ ProcXQueryDeviceState(client)
+  */
+ 
+ void
+-SRepXQueryDeviceState (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xQueryDeviceStateReply	*rep;
++SRepXQueryDeviceState (ClientPtr client, int size, xQueryDeviceStateReply *rep)
+     {
+     register char n;
+ 

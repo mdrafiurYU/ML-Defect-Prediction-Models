@@ -1,0 +1,22 @@
+diff --git a/exa/exa_unaccel.c b/exa/exa_unaccel.c
+index 5a25764..ee6b98e 100644
+--- a/exa/exa_unaccel.c
++++ b/exa/exa_unaccel.c
+@@ -362,6 +362,7 @@ ExaCheckComposite (CARD8      op,
+ CARD32
+ exaGetPixmapFirstPixel (PixmapPtr pPixmap)
+ {
++    ExaScreenPriv(pPixmap->drawable.pScreen);
+     CARD32 pixel;
+     void *fb;
+     Bool need_finish = FALSE;
+@@ -376,7 +377,8 @@ exaGetPixmapFirstPixel (PixmapPtr pPixmap)
+     fb = pExaPixmap->sys_ptr;
+ 
+     /* Try to avoid framebuffer readbacks */
+-    if ((!offscreen && !sys_valid && !damaged) ||
++    if (pExaScr->info->CreatePixmap ||
++	(!offscreen && !sys_valid && !damaged) ||
+ 	(offscreen && (!sys_valid || damaged)))
+     {
+ 	box.x1 = 0;

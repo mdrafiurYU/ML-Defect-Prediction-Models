@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java
+index 2140f19..45eed81 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeDiscoveringNodeTypesTest.java
+@@ -71,7 +71,9 @@ public class NodeDiscoveringNodeTypesTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        childNode = null;
+         super.tearDown();
+     }

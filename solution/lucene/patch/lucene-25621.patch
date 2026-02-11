@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/StemmerOverrideFilterFactory.java b/solr/src/java/org/apache/solr/analysis/StemmerOverrideFilterFactory.java
+index 0ac0db2..976113f 100644
+--- a/solr/src/java/org/apache/solr/analysis/StemmerOverrideFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/StemmerOverrideFilterFactory.java
+@@ -36,7 +36,7 @@ import org.apache.solr.util.plugin.ResourceLoaderAware;
+  *     &lt;filter class="solr.StemmerOverrideFilterFactory" dictionary="dictionary.txt" ignoreCase="false"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>
+- * @version $Id
++ *
+  */
+ public class StemmerOverrideFilterFactory extends BaseTokenFilterFactory implements ResourceLoaderAware {
+   private CharArrayMap<String> dictionary = null;

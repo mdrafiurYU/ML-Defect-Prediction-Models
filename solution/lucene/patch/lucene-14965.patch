@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/SortField.java b/lucene/src/java/org/apache/lucene/search/SortField.java
+index 316b097..a5bfc76 100644
+--- a/lucene/src/java/org/apache/lucene/search/SortField.java
++++ b/lucene/src/java/org/apache/lucene/search/SortField.java
+@@ -493,14 +493,14 @@ implements Serializable {
+ 
+     case SortField.INT:
+       if (useIndexValues) {
+-        return new FieldComparator.IntIndexValuesComparator(numHits, field);
++        return new FieldComparator.IntDocValuesComparator(numHits, field);
+       } else {
+         return new FieldComparator.IntComparator(numHits, (IntValuesCreator)creator, (Integer) missingValue);
+       }
+ 
+     case SortField.FLOAT:
+       if (useIndexValues) {
+-        return new FieldComparator.FloatIndexValuesComparator(numHits, field);
++        return new FieldComparator.FloatDocValuesComparator(numHits, field);
+       } else {
+         return new FieldComparator.FloatComparator(numHits, (FloatValuesCreator) creator, (Float) missingValue);
+       }

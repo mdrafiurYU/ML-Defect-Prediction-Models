@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveSNSTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveSNSTest.java
+index 4050fa4..047ce6c 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveSNSTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveSNSTest.java
+@@ -37,6 +37,11 @@ public class RemoveSNSTest extends RemoveNodeTest {
+     private Node firstSiblingNode;
+     private String firstSiblingPath;
+ 
++    protected void tearDown() throws Exception {
++        firstSiblingNode = null;
++        super.tearDown();
++    }
++
+     protected Item createRemoveItem() throws NotExecutableException, RepositoryException {
+         if (testRootNode.hasNode(nodeName1)) {
+             fail("Setup: Parent node must not yet contain a child node '" + nodeName1 + "'.");

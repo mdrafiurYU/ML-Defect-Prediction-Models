@@ -1,0 +1,54 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+index 40ca5c5..7e372e5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+@@ -206,6 +206,11 @@ public class MultiIndex {
+     private boolean reindexing = false;
+ 
+     /**
++     * The index format version of this multi index.
++     */
++    private final IndexFormatVersion version;
++
++    /**
+      * Creates a new MultiIndex.
+      *
+      * @param indexDir the base file system
+@@ -285,6 +290,14 @@ public class MultiIndex {
+         // init volatile index
+         resetVolatileIndex();
+ 
++        // set index format version
++        IndexReader reader = getIndexReader();
++        try {
++            version = IndexFormatVersion.getVersion(reader);
++        } finally {
++            reader.close();
++        }
++
+         redoLogApplied = redoLog.hasEntries();
+ 
+         // run recovery
+@@ -337,6 +350,13 @@ public class MultiIndex {
+     }
+ 
+     /**
++     * @return the index format version for this multi index.
++     */
++    IndexFormatVersion getIndexFormatVersion() {
++        return version;
++    }
++
++    /**
+      * Creates an initial index by traversing the node hierarchy starting at the
+      * node with <code>rootId</code>.
+      *
+@@ -780,7 +800,7 @@ public class MultiIndex {
+      *                             workspace.
+      */
+     Document createDocument(NodeState node) throws RepositoryException {
+-        return handler.createDocument(node, nsMappings);
++        return handler.createDocument(node, nsMappings, version);
+     }
+ 
+     /**

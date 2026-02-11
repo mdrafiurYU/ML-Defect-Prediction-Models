@@ -1,0 +1,16 @@
+diff --git a/xkb/xkbPrKeyEv.c b/xkb/xkbPrKeyEv.c
+index b2a7ab2..9944c88 100644
+--- a/xkb/xkbPrKeyEv.c
++++ b/xkb/xkbPrKeyEv.c
+@@ -150,11 +150,7 @@ unsigned        ndx;
+ 		break;
+ 	    default:
+ 		ErrorF("unknown key behavior 0x%04x\n",behavior.type);
+-#if defined(MetroLink)
+-		return;
+-#else
+ 		break;
+-#endif
+ 	}
+     }
+     XkbHandleActions(keybd,keybd,xE,count);

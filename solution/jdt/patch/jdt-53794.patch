@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryTypeConverter.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryTypeConverter.java
+index 5182406..afa140d 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryTypeConverter.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryTypeConverter.java
+@@ -138,7 +138,7 @@ public class BinaryTypeConverter {
+ 		TypeDeclaration typeDeclaration = new TypeDeclaration(compilationResult);
+ 
+ 		if (type.getDeclaringType() != null) {
+-			typeDeclaration.bits |= ASTNode.IsMemberTypeMASK;
++			typeDeclaration.bits |= ASTNode.IsMemberType;
+ 		}
+ 		typeDeclaration.name = type.getElementName().toCharArray();
+ 		typeDeclaration.modifiers = type.getFlags();

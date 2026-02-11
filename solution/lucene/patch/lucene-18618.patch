@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocConsumerPerThread.java b/lucene/src/java/org/apache/lucene/index/DocConsumerPerThread.java
+index 098e688..23a0305 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocConsumerPerThread.java
++++ b/lucene/src/java/org/apache/lucene/index/DocConsumerPerThread.java
+@@ -27,8 +27,7 @@ abstract class DocConsumerPerThread {
+    *  DocumentsWriter.DocWriter and return it.
+    *  DocumentsWriter then calls finish() on this object
+    *  when it's its turn. */
+-  abstract DocumentsWriter.DocWriter processDocument(FieldInfos fieldInfos) throws IOException;
++  abstract DocumentsWriter.DocWriter processDocument() throws IOException;
+ 
+-  abstract void doAfterFlush();
+   abstract void abort();
+ }

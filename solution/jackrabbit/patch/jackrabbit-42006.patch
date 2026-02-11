@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java
+index 211fc6f..6816aef 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java
+@@ -152,6 +152,14 @@ public abstract class AbstractFileSystemTest extends TestCase {
+         assertEquals(1, list.length);
+         assertEquals("subfolder", list[0]);
+ 
++        // Try to create a file coliding with an exisiting folder
++        try {
++            createFile("/folder2/subfolder", sampleBytes);
++            fail("FileSystemException expected");
++        } catch (FileSystemException e) {
++            // ok
++        }
++
+         // Delete the subfolder
+         fs.deleteFolder("/folder2/subfolder");
+         assertFalse(fs.exists("/folder2/subfolder"));

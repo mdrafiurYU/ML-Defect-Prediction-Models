@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+index 9d3c83a..ca83e3a 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+@@ -419,7 +419,7 @@ public class TestSpans extends LuceneTestCase {
+       public Similarity getSimilarity(IndexSearcher s) {
+         return sim;
+       }
+-    };
++      };
+ 
+     Scorer spanScorer = snq.weight(searcher).scorer(new AtomicReaderContext(new SlowMultiReaderWrapper(searcher.getIndexReader())), true, false);

@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Factory.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Factory.java
+index a437041..0079222 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Factory.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/Factory.java
+@@ -559,7 +559,12 @@ public class Factory
+ 
+     public static AnnotationType createErrorAnnotationType(final ITypeBinding binding)
+     {
+-        return new ErrorType.ErrorAnnotation(binding.getName());
++        return createErrorAnnotationType(binding.getName());
++    }
++    
++    public static AnnotationType createErrorAnnotationType(String name)
++    {	
++        return new ErrorType.ErrorAnnotation(name);
+     }
+     
+     public static ArrayType createErrorArrayType(final String name, final int dimension)

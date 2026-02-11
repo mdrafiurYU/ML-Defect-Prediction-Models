@@ -1,0 +1,13 @@
+diff --git a/include/os.h b/include/os.h
+index 7823b79..0b3354e 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -93,7 +93,7 @@ typedef struct _NewClientRec *NewClientPtr;
+ #endif
+ 
+ #ifndef IN_MODULE
+-#ifdef SCO
++#ifdef __SCO__
+ #include <stdio.h>
+ #endif
+ #include <string.h>

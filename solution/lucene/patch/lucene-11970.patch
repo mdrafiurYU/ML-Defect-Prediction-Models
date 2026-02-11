@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java
+index e42b684..eb88c1c 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java
+@@ -49,7 +49,7 @@ public class FixedGapTermsIndexWriter extends TermsIndexWriterBase {
+   private IndexOutput termsOut;
+ 
+   public FixedGapTermsIndexWriter(SegmentWriteState state) throws IOException {
+-    final String indexFileName = IndexFileNames.segmentFileName(state.segmentName, "", TERMS_INDEX_EXTENSION);
++    final String indexFileName = IndexFileNames.segmentFileName(state.segmentName, state.codecId, TERMS_INDEX_EXTENSION);
+     state.flushedFiles.add(indexFileName);
+     termIndexInterval = state.termIndexInterval;
+     out = state.directory.createOutput(indexFileName);

@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java b/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java
+index a0eb91c..e67436e 100644
+--- a/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java
++++ b/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java
+@@ -94,7 +94,7 @@ public abstract class AbstractZkTestCase extends SolrTestCaseJ4 {
+ 
+   private static void putConfig(SolrZkClient zkConnection, String name)
+       throws Exception {
+-    zkConnection.setData("/configs/conf1/" + name, new File("solr"
++    zkConnection.setData("/configs/conf1/" + name, getFile("solr"
+         + File.separator + "conf" + File.separator + name));
+   }

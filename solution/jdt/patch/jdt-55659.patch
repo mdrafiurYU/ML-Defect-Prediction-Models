@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryField.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryField.java
+index eafb15d..8b40bab 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryField.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryField.java
+@@ -107,8 +107,8 @@ protected void toStringInfo(int tab, StringBuffer buffer, Object info, boolean s
+ 		}
+ 	}
+ }
+-public String getAttachedJavadoc(IProgressMonitor monitor, String defaultEncoding) throws JavaModelException {
+-	String contents = ((BinaryType) this.getDeclaringType()).getJavadocContents(monitor, defaultEncoding);
++public String getAttachedJavadoc(IProgressMonitor monitor) throws JavaModelException {
++	String contents = ((BinaryType) this.getDeclaringType()).getJavadocContents(monitor);
+ 	if (contents == null) return null;
+ 	int indexAnchor = contents.indexOf(
+ 			JavadocConstants.ANCHOR_PREFIX_START + this.getElementName() + JavadocConstants.ANCHOR_PREFIX_END);

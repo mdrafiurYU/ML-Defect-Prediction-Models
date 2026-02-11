@@ -1,0 +1,22 @@
+diff --git a/mi/migc.c b/mi/migc.c
+index 8590d91..c846659 100644
+--- a/mi/migc.c
++++ b/mi/migc.c
+@@ -58,7 +58,7 @@ miDestroyGC(GCPtr pGC)
+  * create a private op array for a gc
+  */
+ 
+-_X_EXPORT GCOpsPtr
++GCOpsPtr
+ miCreateGCOps(GCOpsPtr prototype)
+ {
+     GCOpsPtr        ret;
+@@ -71,7 +71,7 @@ miCreateGCOps(GCOpsPtr prototype)
+     return ret;
+ }
+ 
+-_X_EXPORT void
++void
+ miDestroyGCOps(GCOpsPtr ops)
+ {
+     if (ops->devPrivate.val)

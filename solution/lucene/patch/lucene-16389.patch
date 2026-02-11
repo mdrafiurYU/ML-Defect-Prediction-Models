@@ -1,0 +1,37 @@
+diff --git a/solr/src/java/org/apache/solr/update/SolrIndexConfig.java b/solr/src/java/org/apache/solr/update/SolrIndexConfig.java
+index 85d0f74..467b274 100644
+--- a/solr/src/java/org/apache/solr/update/SolrIndexConfig.java
++++ b/solr/src/java/org/apache/solr/update/SolrIndexConfig.java
+@@ -53,7 +53,6 @@ public class SolrIndexConfig {
+     maxMergeDocs = -1;
+     mergeFactor = -1;
+     ramBufferSizeMB = 16;
+-    maxFieldLength = -1;
+     writeLockTimeout = -1;
+     commitLockTimeout = -1;
+     lockType = null;
+@@ -71,7 +70,6 @@ public class SolrIndexConfig {
+ 
+   public final double ramBufferSizeMB;
+ 
+-  public final int maxFieldLength;
+   public final int writeLockTimeout;
+   public final int commitLockTimeout;
+   public final String lockType;
+@@ -95,7 +93,6 @@ public class SolrIndexConfig {
+     mergeFactor=solrConfig.getInt(prefix+"/mergeFactor",def.mergeFactor);
+     ramBufferSizeMB = solrConfig.getDouble(prefix+"/ramBufferSizeMB", def.ramBufferSizeMB);
+ 
+-    maxFieldLength=solrConfig.getInt(prefix+"/maxFieldLength",def.maxFieldLength);
+     writeLockTimeout=solrConfig.getInt(prefix+"/writeLockTimeout", def.writeLockTimeout);
+     commitLockTimeout=solrConfig.getInt(prefix+"/commitLockTimeout", def.commitLockTimeout);
+     lockType=solrConfig.get(prefix+"/lockType", def.lockType);
+@@ -153,9 +150,6 @@ public class SolrIndexConfig {
+     if (termIndexInterval != -1)
+       iwc.setTermIndexInterval(termIndexInterval);
+ 
+-    if (maxFieldLength != -1)
+-      iwc.setMaxFieldLength(maxFieldLength);
+-
+     if (writeLockTimeout != -1)
+       iwc.setWriteLockTimeout(writeLockTimeout);

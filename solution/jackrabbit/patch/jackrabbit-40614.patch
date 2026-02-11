@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java
+index 49321b3..ddf9253 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/XAVersionManager.java
+@@ -383,11 +383,11 @@ public class XAVersionManager extends AbstractVersionManager
+             // also put 'successor' and 'predecessor' version items to xaItem sets
+             InternalVersion v = history.getVersion(name);
+             InternalVersion[] vs = v.getSuccessors();
+-            for (int i=0; i<vs.length; i++) {
++            for (int i = 0; i < vs.length; i++) {
+                 xaItems.put(vs[i].getId(), vs[i]);
+             }
+             vs = v.getPredecessors();
+-            for (int i=0; i<vs.length; i++) {
++            for (int i = 0; i < vs.length; i++) {
+                 xaItems.put(vs[i].getId(), vs[i]);
+             }
+         }

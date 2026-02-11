@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AND_AND_Expression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AND_AND_Expression.java
+index 205ee1d..75251d5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AND_AND_Expression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AND_AND_Expression.java
+@@ -145,7 +145,7 @@ public class AND_AND_Expression extends BinaryExpression {
+ 				} else {
+ 					codeStream.iconst_1();
+ 				}
+-				if (falseLabel.hasForwardReferences()) {
++				if (falseLabel.forwardReferenceCount > 0) {
+ 					if ((bits & IsReturnedValue) != 0) {
+ 						codeStream.generateImplicitConversion(this.implicitConversion);
+ 						codeStream.generateReturnBytecode(this);

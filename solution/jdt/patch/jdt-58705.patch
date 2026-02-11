@@ -1,0 +1,33 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java
+index 1029149..4789c8a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/StackMapFrameCodeStream.java
+@@ -1,5 +1,5 @@
+ /*******************************************************************************
+- * Copyright (c) 2000, 2005 IBM Corporation and others.
++ * Copyright (c) 2000, 2006 IBM Corporation and others.
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+@@ -32,8 +32,8 @@ public class StackMapFrameCodeStream extends CodeStream {
+ 
+ 	public int framesCounter;
+ 	
+-public StackMapFrameCodeStream(ClassFile classFile) {
+-	super(classFile);
++public StackMapFrameCodeStream(ClassFile givenClassFile) {
++	super(givenClassFile);
+ }
+ public void aaload() {
+ 	super.aaload();
+@@ -1775,4 +1775,10 @@ public void removeStackFrameFor(int pos) {
+ 		frame = frame.prevFrame;
+ 	}
+ }
++public void reset(ClassFile givenClassFile) {
++	super.reset(givenClassFile);
++	this.framesCounter = 0;
++	this.frames = null;
++	this.currentFrame = null;
++}
+ }

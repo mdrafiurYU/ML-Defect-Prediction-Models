@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/RegressionTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/RegressionTests.java
+index 0e4c7e2..c036524 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/RegressionTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/RegressionTests.java
+@@ -128,7 +128,7 @@ public class RegressionTests extends APTTestBase {
+     }
+     
+     // doesn't work because of a jdt.core type system universe problem.
+-    public void DISABLED_testBugzilla120255() throws Exception{
++    public void testBugzilla120255() throws Exception{
+     	final String projName = RegressionTests.class.getName() + "120255.Project"; //$NON-NLS-1$
+ 		IPath projectPath = env.addProject( projName, "1.5" ); //$NON-NLS-1$
+ 		env.addExternalJars( projectPath, Util.getJavaClassLibs() );

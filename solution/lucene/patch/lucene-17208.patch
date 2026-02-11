@@ -1,0 +1,13 @@
+diff --git a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/NearRealtimeReaderTask.java b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/NearRealtimeReaderTask.java
+index 398c72f..47ea3f4 100644
+--- a/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/NearRealtimeReaderTask.java
++++ b/modules/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/NearRealtimeReaderTask.java
+@@ -59,7 +59,7 @@ public class NearRealtimeReaderTask extends PerfTask {
+     }
+     
+     long t = System.currentTimeMillis();
+-    IndexReader r = IndexReader.open(w);
++    IndexReader r = IndexReader.open(w, true);
+     runData.setIndexReader(r);
+     // Transfer our reference to runData
+     r.decRef();

@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptProject.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptProject.java
+index 8a67474..018e210 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptProject.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptProject.java
+@@ -26,5 +26,13 @@ public class AptProject {
+ 	public GeneratedFileManager getGeneratedFileManager() {
+ 		return _gfm;
+ 	}
+-
++	
++	/**
++	 * Guarantees that the generated file manager is initialized 
++	 * and any project based listeners are registered. 
++	 */
++	public void ensureLoaded(){
++	    // the constructor creates generated file manager which will
++		// register PreferenceChangeListener.
++	}
+ }

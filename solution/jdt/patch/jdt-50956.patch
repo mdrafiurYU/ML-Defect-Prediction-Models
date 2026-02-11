@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java
+index 10cb261..b3d6ae4 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/Engine.java
+@@ -335,6 +335,7 @@ public abstract class Engine implements ITypeRequestor {
+ 				if(localTypeBinding.isAnonymousType()) {
+ 					typeBinding = localTypeBinding.superclass();
+ 				} else {
++					// TODO (david) this code is not necessary any longer (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=99686)
+ 					localTypeBinding.setConstantPoolName(typeBinding.sourceName());
+ 				}
+ 			}

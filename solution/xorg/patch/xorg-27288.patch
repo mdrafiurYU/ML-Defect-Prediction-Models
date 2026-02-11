@@ -1,0 +1,17 @@
+diff --git a/randr/rrproperty.c b/randr/rrproperty.c
+index 56bb39a..4b77d39 100644
+--- a/randr/rrproperty.c
++++ b/randr/rrproperty.c
+@@ -298,6 +298,12 @@ RRConfigureOutputProperty (RROutputPtr output, Atom property,
+     if (prop->valid_values)
+ 	xfree (prop->valid_values);
+     prop->valid_values = new_values;
++
++    if (add) {
++	prop->next = output->properties;
++	output->properties = prop;
++    }
++
+     return Success;
+ }
+ 

@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winmultiwindowwndproc.c b/hw/xwin/winmultiwindowwndproc.c
+index 7ebe42f..b5e789c 100644
+--- a/hw/xwin/winmultiwindowwndproc.c
++++ b/hw/xwin/winmultiwindowwndproc.c
+@@ -678,6 +678,9 @@ winTopLevelWindowProc (HWND hwnd, UINT message,
+ 
+       /* Remove our keyboard hook if it is installed */
+       winRemoveKeyboardHookLL ();
++      if (!wParam)
++	/* Revert the X focus as well, but only if the Windows focus is going to another window */
++	DeleteWindowFromAnyEvents(pWin, FALSE);
+       return 0;
+ 
+     case WM_SYSDEADCHAR:      

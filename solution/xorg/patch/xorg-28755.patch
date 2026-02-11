@@ -1,0 +1,17 @@
+diff --git a/os/osdep.h b/os/osdep.h
+index 5fa1e39..3d303f9 100644
+--- a/os/osdep.h
++++ b/os/osdep.h
+@@ -234,12 +234,6 @@ extern void ClearConnectionTranslation();
+  
+ extern Bool NewOutputPending;
+ extern Bool AnyClientsWriteBlocked;
+-extern Bool CriticalOutputPending;
+-
+-extern int timesThisConnection;
+-extern ConnectionInputPtr FreeInputs;
+-extern ConnectionOutputPtr FreeOutputs;
+-extern OsCommPtr AvailableInput;
+ 
+ extern WorkQueuePtr workQueue;
+ 

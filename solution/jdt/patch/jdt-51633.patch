@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
+index 671bb35..ccaa21c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Statement.java
+@@ -57,7 +57,7 @@ public abstract class Statement extends ASTNode {
+ 			}
+ 
+ 			ArrayBinding varArgsType = (ArrayBinding) params[varArgIndex]; // parameterType has to be an array type
+-			ArrayBinding codeGenVarArgsType = (ArrayBinding) binding.original().parameters[varArgIndex].erasure();
++			ArrayBinding codeGenVarArgsType = (ArrayBinding) binding.parameters[varArgIndex].erasure();
+ 			int elementsTypeID = varArgsType.elementsType().id;
+ 			int argLength = arguments == null ? 0 : arguments.length;

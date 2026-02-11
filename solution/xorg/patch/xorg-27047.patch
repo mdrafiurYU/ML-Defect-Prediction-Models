@@ -1,0 +1,14 @@
+diff --git a/dix/cursor.c b/dix/cursor.c
+index f4e332f..b58a7bf 100644
+--- a/dix/cursor.c
++++ b/dix/cursor.c
+@@ -117,9 +117,6 @@ FreeCursor(pointer value, XID cid)
+     ScreenPtr	pscr;
+     DeviceIntPtr pDev; 
+ 
+-    /* FIXME: MPX: When FreeClientRessources is called, it calls FreeCursor
+-     * too often. Refcnt gots < 0 and FreeCursorBits segfaults because the
+-     * memory is already freed. */
+     MPXDBG("freecursor refcount %d\n", pCurs->refcnt);
+     if ( --pCurs->refcnt != 0)
+ 	return(Success);

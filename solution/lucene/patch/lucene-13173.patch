@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/MockIndexOutputWrapper.java b/lucene/src/test/org/apache/lucene/store/MockIndexOutputWrapper.java
+index b0690df..7e6e17d 100644
+--- a/lucene/src/test/org/apache/lucene/store/MockIndexOutputWrapper.java
++++ b/lucene/src/test/org/apache/lucene/store/MockIndexOutputWrapper.java
+@@ -106,6 +106,7 @@ public class MockIndexOutputWrapper extends IndexOutput {
+       message += ")";
+       if (LuceneTestCase.VERBOSE) {
+         System.out.println(Thread.currentThread().getName() + ": MDW: now throw fake disk full");
++        new Throwable().printStackTrace(System.out);
+       }
+       throw new IOException(message);
+     } else {

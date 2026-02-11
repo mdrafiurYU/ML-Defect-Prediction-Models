@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/DefaultBytecodeVisitor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/DefaultBytecodeVisitor.java
+index 1e22dc3..1b4a7c3 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/DefaultBytecodeVisitor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/DefaultBytecodeVisitor.java
+@@ -1776,7 +1776,7 @@ public class DefaultBytecodeVisitor implements IBytecodeVisitor {
+ 				buffer.append(Messages.bind(Messages.classformat_ldc_w_string, new String[] {
+ 					OpcodeStringValues.BYTECODE_NAMES[IOpcodeMnemonics.LDC_W],
+ 					Integer.toString(index),
+-					constantPoolEntry.getStringValue()
++					Disassembler.escapeString(constantPoolEntry.getStringValue())
+ 				}));
+ 				break;
+ 			case IConstantPoolConstant.CONSTANT_Class :
+@@ -1813,7 +1813,7 @@ public class DefaultBytecodeVisitor implements IBytecodeVisitor {
+ 				buffer.append(Messages.bind(Messages.classformat_ldc_w_string, new String[] {
+ 					OpcodeStringValues.BYTECODE_NAMES[IOpcodeMnemonics.LDC],
+ 					Integer.toString(index),
+-					constantPoolEntry.getStringValue()
++					Disassembler.escapeString(constantPoolEntry.getStringValue())
+ 				}));
+ 				break;
+ 			case IConstantPoolConstant.CONSTANT_Class :

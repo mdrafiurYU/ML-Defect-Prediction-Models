@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java b/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java
+index 7dbfc45..aa26f6c 100644
+--- a/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/XmlUpdateRequestHandler.java
+@@ -80,6 +80,7 @@ public class XmlUpdateRequestHandler extends ContentStreamHandlerBase {
+     }
+   }
+ 
++  @Override
+   protected ContentStreamLoader newLoader(SolrQueryRequest req, UpdateRequestProcessor processor) {
+     return new XMLLoader(processor, inputFactory);
+   }

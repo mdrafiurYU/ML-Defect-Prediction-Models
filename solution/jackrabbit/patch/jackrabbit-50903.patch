@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithoutNodeTypeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithoutNodeTypeTest.java
+index 58a2e71..753ae79 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithoutNodeTypeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/CanAddChildNodeCallWithoutNodeTypeTest.java
+@@ -48,7 +48,7 @@ public class CanAddChildNodeCallWithoutNodeTypeTest extends AbstractJCRTest {
+         isReadOnly = true;
+         super.setUp();
+ 
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+     }
+ 
+     /**

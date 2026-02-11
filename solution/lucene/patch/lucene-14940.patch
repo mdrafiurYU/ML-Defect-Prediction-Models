@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestBooleanMinShouldMatch.java b/lucene/src/test/org/apache/lucene/search/TestBooleanMinShouldMatch.java
+index 1f7abcc..55b067b 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestBooleanMinShouldMatch.java
++++ b/lucene/src/test/org/apache/lucene/search/TestBooleanMinShouldMatch.java
+@@ -372,7 +372,7 @@ public class TestBooleanMinShouldMatch extends LuceneTestCase {
+ 
+ 
+ 
+-    protected void printHits(String test, ScoreDoc[] h, Searcher searcher) throws Exception {
++    protected void printHits(String test, ScoreDoc[] h, IndexSearcher searcher) throws Exception {
+ 
+         System.err.println("------- " + test + " -------");

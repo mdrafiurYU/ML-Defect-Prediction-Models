@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java b/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java
+index 3481b38..f3babbe 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java
+@@ -137,7 +137,7 @@ public class TestSpansAdvanced extends LuceneTestCase {
+   protected static void assertHits(Searcher s, Query query,
+       final String description, final String[] expectedIds,
+       final float[] expectedScores) throws IOException {
+-    QueryUtils.check(query, s);
++    QueryUtils.check(random, query, s);
+     
+     final float tolerance = 1e-5f;

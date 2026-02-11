@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index 18e42dd..46cb6c4 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -87,6 +87,11 @@ static Bool quirk_prefer_large_60 (int scrnIndex, xf86MonPtr DDC)
+ 	DDC->vendor.prod_id == 44358)
+ 	return TRUE;
+     
++    /* Samsung SyncMaster 226BW */
++    if (memcmp (DDC->vendor.name, "SAM", 4) == 0 &&
++	DDC->vendor.prod_id == 638)
++	return TRUE;
++    
+     return FALSE;
+ }
+ 

@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/valueconversion/RefAnnotationWithArray.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/valueconversion/RefAnnotationWithArray.java
+new file mode 100644
+index 0000000..11af6989
+--- /dev/null
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/valueconversion/RefAnnotationWithArray.java
+@@ -0,0 +1,13 @@
++package org.eclipse.jdt.apt.tests.annotations.valueconversion;
++
++public @interface RefAnnotationWithArray {
++	boolean[] booleans(); 
++	byte[] bytes();
++	short[] shorts(); 
++	int[] ints();
++	long[] longs();
++	float[] floats();
++	double[] doubles();
++	char[] chars();
++	String str() default "string";
++}

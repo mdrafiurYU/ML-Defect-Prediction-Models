@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index 47de97f..c3357a2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -794,6 +794,10 @@ public class SessionImpl extends AbstractSession
+      * {@inheritDoc}
+      */
+     public Workspace getWorkspace() {
++        return getWorkspaceImpl();
++    }
++
++    WorkspaceImpl getWorkspaceImpl() {
+         return wsp;
+     }
+ 
+@@ -1111,7 +1115,7 @@ public class SessionImpl extends AbstractSession
+             destParentNode.renameChildNode(srcName.getName(), index, targetId, destName.getName());
+         } else {
+             // check shareable case
+-            if (((NodeState) targetNode.getItemState()).isShareable()) {
++            if (targetNode.getNodeState().isShareable()) {
+                 String msg = "Moving a shareable node is not supported.";
+                 log.debug(msg);
+                 throw new UnsupportedRepositoryOperationException(msg);

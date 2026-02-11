@@ -1,0 +1,22 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index 5e683a8..c30f372 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -829,12 +829,16 @@ static Bool
+ glxDRIEnterVT (int index, int flags)
+ {
+     __GLXDRIscreen *screen = (__GLXDRIscreen *) __glXgetActiveScreen(index);
++    Bool ret;
+ 
+     LogMessage(X_INFO, "AIGLX: Resuming AIGLX clients after VT switch\n");
+ 
++    if (!(*screen->enterVT) (index, flags))
++	return FALSE;
++    
+     glxResumeClients();
+ 
+-    return (*screen->enterVT) (index, flags);
++    return TRUE;
+ }
+ 
+ static void

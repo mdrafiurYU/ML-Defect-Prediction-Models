@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
+index da12109..50e4bb8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryImpl.java
+@@ -92,7 +92,7 @@ public class QueryImpl extends AbstractQueryImpl {
+                 session.getNamePathResolver(), factory);
+         allNodesQueryNode = createMatchAllNodesQuery(factory);
+     }
+-    
++
+     /**
+      * Executes this query and returns a <code>{@link QueryResult}</code>.
+      *
+@@ -190,11 +190,11 @@ public class QueryImpl extends AbstractQueryImpl {
+ 
+         return (Name[]) selectProps.toArray(new Name[selectProps.size()]);
+     }
+-    
++
+     /**
+      * Returns <code>true</code> if this query node needs items under
+      * /jcr:system to be queried.
+-     * 
++     *
+      * @return <code>true</code> if this query node needs content under
+      *         /jcr:system to be queried; <code>false</code> otherwise.
+      */

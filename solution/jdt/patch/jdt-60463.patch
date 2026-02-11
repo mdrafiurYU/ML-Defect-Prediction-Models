@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EclipseRoundCompleteEvent.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EclipseRoundCompleteEvent.java
+index 451bff1..731316b 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EclipseRoundCompleteEvent.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EclipseRoundCompleteEvent.java
+@@ -18,15 +18,15 @@ public class EclipseRoundCompleteEvent extends RoundCompleteEvent
+ {
+ 	static final long serialVersionUID = 0;
+ 	
+-	public EclipseRoundCompleteEvent(final ProcessorEnvImpl env)
++	public EclipseRoundCompleteEvent(final BuildEnv env)
+ 	{
+ 		super( env, new State(env) );	
+ 	}
+ 	
+ 	private static class State implements RoundState 
+ 	{	
+-		private final ProcessorEnvImpl _env;
+-		State(ProcessorEnvImpl env){ _env = env; }
++		private final BuildEnv _env;
++		State(BuildEnv env){ _env = env; }
+ 		public boolean classFilesCreated() { return _env.hasGeneratedClassFiles(); }		
+ 		public boolean errorRaised() {  return _env.hasRaisedErrors(); }			
+ 		public boolean sourceFilesCreated() {  return _env.hasGeneratedSourceFiles(); }

@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/CachingSpanFilter.java b/lucene/src/java/org/apache/lucene/search/CachingSpanFilter.java
+index 0b8a269..d19c872 100644
+--- a/lucene/src/java/org/apache/lucene/search/CachingSpanFilter.java
++++ b/lucene/src/java/org/apache/lucene/search/CachingSpanFilter.java
+@@ -17,7 +17,6 @@ package org.apache.lucene.search;
+ 
+ 
+ import org.apache.lucene.index.IndexReader;
+-import org.apache.lucene.index.MultiFields;
+ import org.apache.lucene.util.Bits;
+ 
+ import java.io.IOException;
+@@ -72,7 +71,7 @@ public class CachingSpanFilter extends SpanFilter {
+   private SpanFilterResult getCachedResult(IndexReader reader) throws IOException {
+ 
+     final Object coreKey = reader.getCoreCacheKey();
+-    final Object delCoreKey = reader.hasDeletions() ? MultiFields.getDeletedDocs(reader) : coreKey;
++    final Object delCoreKey = reader.hasDeletions() ? reader.getDeletedDocs() : coreKey;
+ 
+     SpanFilterResult result = cache.get(reader, coreKey, delCoreKey);
+     if (result != null) {

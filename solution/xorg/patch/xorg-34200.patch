@@ -1,0 +1,14 @@
+diff --git a/hw/dmx/dmxwindow.c b/hw/dmx/dmxwindow.c
+index b66f2a3..fa6b9a2 100644
+--- a/hw/dmx/dmxwindow.c
++++ b/hw/dmx/dmxwindow.c
+@@ -64,8 +64,7 @@ static void dmxDoSetShape(WindowPtr pWindow);
+ /** Initialize the private area for the window functions. */
+ Bool dmxInitWindow(ScreenPtr pScreen)
+ {
+-    if (!AllocateWindowPrivate(pScreen, dmxWinPrivateIndex,
+-			       sizeof(dmxWinPrivRec)))
++    if (!dixRequestPrivate(dmxWinPrivateKey, sizeof(dmxWinPrivRec)))
+ 	return FALSE;
+ 
+     return TRUE;

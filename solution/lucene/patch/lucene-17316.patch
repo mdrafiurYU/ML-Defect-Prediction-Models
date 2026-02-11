@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java b/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java
+index cdb958e..a476bd2 100644
+--- a/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java
++++ b/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java
+@@ -74,7 +74,7 @@ final public class DoubleBarrelLRUCache<K extends DoubleBarrelLRUCache.Cloneable
+       secondary = cache2;
+     }
+ 
+-    // Try primary frist
++    // Try primary first
+     V result = primary.get(key);
+     if (result == null) {
+       // Not found -- try secondary

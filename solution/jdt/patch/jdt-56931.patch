@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+index 80a335e..732daf4 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+@@ -113,9 +113,6 @@ public class CompilerOptions {
+ 	/* should surface ??? */
+ 	public static final String OPTION_PrivateConstructorAccess = "org.eclipse.jdt.core.compiler.codegen.constructorAccessEmulation"; //$NON-NLS-1$
+ 
+-	//TODO temporary option
+-	public static final String OPTION_StatementsRecovery = "org.eclipse.jdt.core.compiler.statementsRecovery"; //$NON-NLS-1$
+-
+ 	/**
+ 	 * Possible values for configurable options
+ 	 */
+@@ -727,13 +724,6 @@ public class CompilerOptions {
+ 				this.reportMissingJavadocCommentsOverriding = false;
+ 			}
+ 		}
+-		if ((optionValue = optionsMap.get(OPTION_StatementsRecovery)) != null) {
+-			if (ENABLED.equals(optionValue)) {
+-				this.performStatementsRecovery = true;
+-			} else if (DISABLED.equals(optionValue)) {
+-				this.performStatementsRecovery = false;
+-			}
+-		}
+ 	}
+ 
+ 	public String toString() {

@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/LazyItemIterator.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/LazyItemIterator.java
+index 5d5f4c7..09fcc6d 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/LazyItemIterator.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/LazyItemIterator.java
+@@ -127,12 +127,8 @@ public class LazyItemIterator implements NodeIterator, PropertyIterator, Version
+             HierarchyEntry entry = (HierarchyEntry) iter.next();
+             try {
+                 nextItem = itemMgr.getItem(entry);
+-            } catch (ItemNotFoundException e) {
+-                log.debug("Ignoring nonexistent item " + entry);
+-                // reduce the size ... and try the next one
+-                size--;
+             } catch (RepositoryException e) {
+-                log.error("failed to fetch item " + entry + ", skipping...", e);
++                log.warn("Failed to fetch item " + entry + ", skipping.", e.getMessage());
+                 // reduce the size... and try the next one
+                 size--;
+             }

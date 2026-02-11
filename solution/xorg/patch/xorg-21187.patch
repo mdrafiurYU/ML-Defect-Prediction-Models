@@ -1,0 +1,16 @@
+diff --git a/hw/xwin/winauth.c b/hw/xwin/winauth.c
+index 3d24ef4..b57a35a 100644
+--- a/hw/xwin/winauth.c
++++ b/hw/xwin/winauth.c
+@@ -35,9 +35,8 @@
+ #include "win.h"
+ 
+ /* Includes for authorization */
+-#include "X11/Xauth.h"
+-#define _SECURITY_SERVER
+-#include <X11/extensions/security.h>
++#include <X11/Xauth.h>
++#include "securitysrv.h"
+ #include <X11/extensions/securstr.h>
+ 
+ 

@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java
+index 355bf04..50970af 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ClassFile.java
+@@ -603,7 +603,8 @@ public class ClassFile
+ 			attributeNumber++;
+ 		}
+ 		if (targetJDK >= ClassFileConstants.JDK1_5
+-				&& (this.referenceBinding.isAnonymousType() || this.referenceBinding.isLocalType())) {
++				&& this.referenceBinding.isNestedType()
++				&& !this.referenceBinding.isMemberType()) {
+ 			// add enclosing method attribute (1.5 mode only)
+ 			if (contentsOffset + 10 >= contents.length) {
+ 				resizeContents(10);

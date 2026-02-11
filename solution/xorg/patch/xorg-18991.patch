@@ -1,0 +1,22 @@
+diff --git a/mi/mibank.c b/mi/mibank.c
+index b09f9fd..2ca8f47 100644
+--- a/mi/mibank.c
++++ b/mi/mibank.c
+@@ -2166,7 +2166,7 @@ miBankRestoreAreas(
+     SCREEN_RESTORE;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ miInitializeBanking(
+     ScreenPtr     pScreen,
+     unsigned int  xsize,
+@@ -2413,7 +2413,7 @@ miBankNewSerialNumber(
+ }
+ 
+ /* This entry modifies the banking interface */
+-Bool
++_X_EXPORT Bool
+ miModifyBanking(
+     ScreenPtr     pScreen,
+     miBankInfoPtr pBankInfo

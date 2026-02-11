@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index 030f6bf..0c019e0 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -479,6 +479,9 @@ struct _xf86Output {
+     /** driver private information */
+     void		*driver_private;
+     
++    /** Whether to use the old per-screen Monitor config section */
++    Bool		use_screen_monitor;
++
+ #ifdef RANDR_12_INTERFACE
+     /**
+      * RandR 1.2 output structure.
+@@ -622,6 +625,9 @@ xf86OutputCreate (ScrnInfoPtr		scrn,
+ 		      const xf86OutputFuncsRec *funcs,
+ 		      const char	*name);
+ 
++void
++xf86OutputUseScreenMonitor (xf86OutputPtr output, Bool use_screen_monitor);
++
+ Bool
+ xf86OutputRename (xf86OutputPtr output, const char *name);
+ 

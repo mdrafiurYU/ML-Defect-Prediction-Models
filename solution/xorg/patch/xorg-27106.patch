@@ -1,0 +1,13 @@
+diff --git a/Xi/querydp.c b/Xi/querydp.c
+index 04323e4..c1ba2ee 100644
+--- a/Xi/querydp.c
++++ b/Xi/querydp.c
+@@ -84,7 +84,7 @@ ProcXQueryDevicePointer(register ClientPtr client)
+     REQUEST_SIZE_MATCH(xQueryDevicePointerReq);
+ 
+     pDev = LookupDeviceIntRec(stuff->deviceid);
+-    if (pDev == NULL) {
++    if (pDev == NULL || pDev->valuator == NULL) {
+         SendErrorToClient(client, IReqCode, X_QueryDevicePointer,
+                 stuff->deviceid, BadDevice); 
+         return Success;

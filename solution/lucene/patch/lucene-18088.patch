@@ -1,0 +1,12 @@
+diff --git a/solr/src/common/org/apache/solr/common/cloud/ZkNodeProps.java b/solr/src/common/org/apache/solr/common/cloud/ZkNodeProps.java
+index 1819ee4..973571d 100644
+--- a/solr/src/common/org/apache/solr/common/cloud/ZkNodeProps.java
++++ b/solr/src/common/org/apache/solr/common/cloud/ZkNodeProps.java
+@@ -46,6 +46,7 @@ public class ZkNodeProps extends HashMap<String,String> {
+     return sb.toString().getBytes("UTF-8");
+   }
+   
++  @Override
+   public String toString() {
+     StringBuilder sb = new StringBuilder();
+     Set<Entry<String,String>> entries = entrySet();

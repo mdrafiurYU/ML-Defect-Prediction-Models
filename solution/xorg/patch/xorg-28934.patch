@@ -1,0 +1,16 @@
+diff --git a/Xi/ungrdevk.c b/Xi/ungrdevk.c
+index ebb83bc..d316990 100644
+--- a/Xi/ungrdevk.c
++++ b/Xi/ungrdevk.c
+@@ -80,9 +80,9 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXUngrabDeviceKey(register ClientPtr client)
++SProcXUngrabDeviceKey(ClientPtr client)
+ {
+-    register char n;
++    char n;
+ 
+     REQUEST(xUngrabDeviceKeyReq);
+     swaps(&stuff->length, n);

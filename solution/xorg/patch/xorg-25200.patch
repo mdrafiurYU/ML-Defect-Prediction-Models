@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index 7f752e9..15d7031 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -816,6 +816,9 @@ void
+ KdUnregisterFds (void *closure, Bool do_close);
+ 
+ void
++KdUnregisterFd (void *closure, int fd, Bool do_close);
++
++void
+ KdEnqueueKeyboardEvent(KdKeyboardInfo *ki, unsigned char scan_code,
+                     unsigned char is_up);
+ 

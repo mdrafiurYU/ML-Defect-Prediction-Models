@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java
+index 7fbaf9e..7343469 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java
+@@ -251,7 +251,7 @@ public class JcrVersionManagerImpl implements javax.jcr.version.VersionManager {
+         }
+         NodeId actId = actNode.getNodeId();
+         session.getVersionManager().removeActivity(session, actId);
+-        if (currentActivity.equals(actId)) {
++        if (actId.equals(currentActivity)) {
+             currentActivity = null;
+         }
+     }

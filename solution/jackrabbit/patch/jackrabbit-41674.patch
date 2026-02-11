@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java
+index bab759a..eb2740a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/AbstractQueryHandler.java
+@@ -83,17 +83,4 @@ public abstract class AbstractQueryHandler implements QueryHandler {
+             addNode(add.nextNodeState());
+         }
+     }
+-
+-    /**
+-     * {@inheritDoc}
+-     * <p/>
+-     * Throws {@link UnsupportedOperationException}.
+-     */
+-    public ExecutablePreparedQuery createExecutablePreparedQuery(
+-            SessionImpl session,
+-            ItemManager itemMgr,
+-            QueryObjectModelTree qomTree) throws InvalidQueryException {
+-        throw new UnsupportedOperationException(
+-                "This query handler does not support prepared queries");
+-    }
+ }

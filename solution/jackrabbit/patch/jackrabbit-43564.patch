@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
+index bfa0704..b38f391 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
+@@ -122,8 +122,8 @@ public final class EventStateCollection {
+         // create a hierarchy manager, that is based on the ChangeLog and
+         // the ItemStateProvider
+         // todo use CachingHierarchyManager ?
+-        ChangeLogBasedHierarchyMgr hmgr = new ChangeLogBasedHierarchyMgr(
+-                rootNodeId, stateMgr, changes, session);
++        ChangeLogBasedHierarchyMgr hmgr =
++            new ChangeLogBasedHierarchyMgr(rootNodeId, stateMgr, changes);
+ 
+         /**
+          * Important:

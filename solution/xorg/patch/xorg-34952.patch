@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/bundle/bundle-main.c b/hw/xquartz/bundle/bundle-main.c
+index c436d51..6f9744c 100644
+--- a/hw/xquartz/bundle/bundle-main.c
++++ b/hw/xquartz/bundle/bundle-main.c
+@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
+     }
+     
+     /* First check if launchd started us */
+-    if(argc == 2 && !strncmp(argv[1], "--launchd", 9)) {
++    if(argc == 2 && !strncmp(argv[1], "-launchd", 8)) {
+         argc--;
+         argv[1] = argv[0];
+         argv++;

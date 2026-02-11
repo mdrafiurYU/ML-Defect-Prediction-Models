@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java
+index 57faa9a..b791c02 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java
+@@ -64,4 +64,10 @@ public interface Update {
+      */
+     long getTimestamp();
+ 
++    /**
++     * Returns the user data associated with this update.
++     *
++     * @return the user data associated with this update.
++     */
++    String getUserData();
+ }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+index 8d2a814..5f803b2 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+@@ -1064,7 +1064,7 @@ public class RepositoryServiceImpl implements RepositoryService {
+     public Subscription createSubscription(SessionInfo sessionInfo,
+                                            EventFilter[] filters)
+             throws UnsupportedRepositoryOperationException, RepositoryException {
+-        return getSessionInfoImpl(sessionInfo).createSubscription(idFactory, filters);
++        return getSessionInfoImpl(sessionInfo).createSubscription(idFactory, qValueFactory, filters);
+     }
+ 
+     /**

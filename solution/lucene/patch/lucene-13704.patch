@@ -1,0 +1,16 @@
+diff --git a/solr/src/test/org/apache/solr/SampleTest.java b/solr/src/test/org/apache/solr/SampleTest.java
+index 5d86951..a749400 100644
+--- a/solr/src/test/org/apache/solr/SampleTest.java
++++ b/solr/src/test/org/apache/solr/SampleTest.java
+@@ -76,10 +76,10 @@ public class SampleTest extends SolrTestCaseJ4 {
+     assertU("less common case, a complex addition with options",
+             add(doc("id", "4059",
+                     "subject", "Who Me?"),
+-                "allowDups", "true"));
++                "overwrite", "false"));
+ 
+     assertU("or just make the raw XML yourself",
+-            "<add allowDups=\"true\">" +
++            "<add overwrite=\"false\">" +
+             doc("id", "4059",
+                 "subject", "Who Me Again?") + "</add>");

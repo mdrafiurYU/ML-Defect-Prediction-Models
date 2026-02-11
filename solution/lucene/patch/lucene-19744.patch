@@ -1,0 +1,20 @@
+diff --git a/solr/src/test/org/apache/solr/handler/TestReplicationHandler.java b/solr/src/test/org/apache/solr/handler/TestReplicationHandler.java
+index b3f68ed..da6013b 100644
+--- a/solr/src/test/org/apache/solr/handler/TestReplicationHandler.java
++++ b/solr/src/test/org/apache/solr/handler/TestReplicationHandler.java
+@@ -622,6 +622,7 @@ public class TestReplicationHandler extends SolrTestCaseJ4 {
+    
+     class BackupThread extends Thread {
+       volatile String fail = null;
++      @Override
+       public void run() {
+         String masterUrl = "http://localhost:" + masterJetty.getLocalPort() + "/solr/replication?command=" + ReplicationHandler.CMD_BACKUP;
+         URL url;
+@@ -646,6 +647,7 @@ public class TestReplicationHandler extends SolrTestCaseJ4 {
+       volatile String fail = null;
+       volatile String response = null;
+       volatile boolean success = false;
++      @Override
+       public void run() {
+         String masterUrl = "http://localhost:" + masterJetty.getLocalPort() + "/solr/replication?command=" + ReplicationHandler.CMD_DETAILS;
+         URL url;

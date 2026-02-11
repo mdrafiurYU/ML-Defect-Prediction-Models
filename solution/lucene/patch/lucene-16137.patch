@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java b/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
+index f3bad0c..5fa771e 100644
+--- a/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
+@@ -127,7 +127,7 @@ public class MatchAllDocsQuery extends Query {
+     }
+ 
+     @Override
+-    public Scorer scorer(AtomicReaderContext context, boolean scoreDocsInOrder, boolean topScorer) throws IOException {
++    public Scorer scorer(AtomicReaderContext context, ScorerContext scorerContext) throws IOException {
+       return new MatchAllScorer(context.reader, similarity, this,
+           normsField != null ? context.reader.norms(normsField) : null);
+     }

@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+index 8f96221..9be3f31 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+@@ -439,8 +439,10 @@ public class AptConfig {
+ 	 */
+ 	private static Map<String, String> getOldStyleRawProcessorOptions(IJavaProject jproj) {
+ 		Map<String, String> options;
+-		String allOptions = getString(jproj, AptPreferenceConstants.APT_PROCESSOROPTIONS);
+-    	if (null == allOptions) {
++//		String allOptions = getString(jproj, AptPreferenceConstants.APT_PROCESSOROPTIONS);
++//	temp workaround for codegen bug - WHarley 4/7/06
++		String allOptions = null;
++		if (null == allOptions) {
+     		options = new HashMap<String, String>();
+     	}
+     	else {

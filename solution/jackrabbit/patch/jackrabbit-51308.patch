@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LargeResultSetTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LargeResultSetTest.java
+index 680a0c3..e4ff025 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LargeResultSetTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/LargeResultSetTest.java
+@@ -34,7 +34,7 @@ public class LargeResultSetTest extends AbstractQueryTest {
+         createNodes(testRootNode, 10, 5, 0);
+         superuser.save();
+ 
+-        SearchIndex index = (SearchIndex) getQueryHandler();
++        SearchIndex index = getSearchIndex();
+         int resultFetchSize = index.getResultFetchSize();
+         try {
+             String stmt = testPath + "//*[@" + jcrPrimaryType + "] order by @jcr:score descending";

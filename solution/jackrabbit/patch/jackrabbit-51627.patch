@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
+index 055eb63..30fbc3c 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
+@@ -558,6 +558,14 @@ public abstract class AbstractReadableRepositoryService extends AbstractReposito
+     /**
+      * @throws UnsupportedRepositoryOperationException always.
+      */
++    public void checkout(SessionInfo sessionInfo, NodeId nodeId, NodeId activityId)
++            throws UnsupportedRepositoryOperationException, LockException, RepositoryException {
++        throw new UnsupportedRepositoryOperationException();
++    }
++
++    /**
++     * @throws UnsupportedRepositoryOperationException always.
++     */
+     public NodeId checkpoint(SessionInfo sessionInfo, NodeId nodeId)
+             throws UnsupportedRepositoryOperationException, LockException, RepositoryException {
+         throw new UnsupportedRepositoryOperationException();

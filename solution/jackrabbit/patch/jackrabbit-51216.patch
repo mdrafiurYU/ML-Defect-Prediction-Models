@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlPolicyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlPolicyTest.java
+index d12a25a..875e66f 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlPolicyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlPolicyTest.java
+@@ -45,7 +45,7 @@ public class RSessionAccessControlPolicyTest extends AbstractAccessControlTest {
+         superuser.save();
+         path = n.getPath();
+ 
+-        readOnlySession = helper.getReadOnlySession();
++        readOnlySession = getHelper().getReadOnlySession();
+         testAcMgr = getAccessControlManager(readOnlySession);
+     }

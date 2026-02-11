@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
+index 1345700..f6b46be 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnit.java
+@@ -902,7 +902,7 @@ public boolean isBasedOn(IResource resource) {
+  * @see IOpenable#isConsistent()
+  */
+ public boolean isConsistent() {
+-	return JavaModelManager.getJavaModelManager().getElementsOutOfSynchWithBuffers().get(this) == null;
++	return !JavaModelManager.getJavaModelManager().getElementsOutOfSynchWithBuffers().contains(this);
+ }
+ public boolean isPrimary() {
+ 	return this.owner == DefaultWorkingCopyOwner.PRIMARY;

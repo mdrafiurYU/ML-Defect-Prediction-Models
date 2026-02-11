@@ -1,0 +1,26 @@
+diff --git a/randr/rrinfo.c b/randr/rrinfo.c
+index 38314de..12b9a4a 100644
+--- a/randr/rrinfo.c
++++ b/randr/rrinfo.c
+@@ -178,12 +178,20 @@ RRScanOldConfig (ScreenPtr pScreen, Rotation rotations)
+  * Poll the driver for changed information
+  */
+ Bool
+-RRGetInfo (ScreenPtr pScreen)
++RRGetInfo (ScreenPtr pScreen, Bool force_query)
+ {
+     rrScrPriv (pScreen);
+     Rotation	    rotations;
+     int		    i;
+ 
++    /* Return immediately if we don't need to re-query and we already have the
++     * information.
++     */
++    if (!force_query) {
++	if (pScrPriv->numCrtcs != 0 || pScrPriv->numOutputs != 0)
++	    return TRUE;
++    }
++
+     for (i = 0; i < pScrPriv->numOutputs; i++)
+ 	pScrPriv->outputs[i]->changed = FALSE;
+     for (i = 0; i < pScrPriv->numCrtcs; i++)

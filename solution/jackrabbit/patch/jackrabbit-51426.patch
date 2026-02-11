@@ -1,0 +1,43 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 78b89f0..3e7ee37 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -251,6 +251,13 @@ public class SearchIndex extends AbstractQueryHandler {
+     private int volatileIdleTime = 3;
+ 
+     /**
++     * The maximum age (in seconds) of the index history. The default value is
++     * zero. Which means, index commits are deleted as soon as they are not used
++     * anymore.
++     */
++    private long maxHistoryAge = 0;
++
++    /**
+      * maxMergeDocs config parameter
+      */
+     private int maxMergeDocs = DEFAULT_MAX_MERGE_DOCS;
+@@ -2215,6 +2222,24 @@ public class SearchIndex extends AbstractQueryHandler {
+         this.indexMergerPoolSize = indexMergerPoolSize;
+     }
+ 
++    /**
++     * @return the maximum age in seconds for outdated generations of
++     * {@link IndexInfos}.
++     */
++    public long getMaxHistoryAge() {
++        return maxHistoryAge;
++    }
++
++    /**
++     * Sets a new value for the maximum age in seconds for outdated generations
++     * of {@link IndexInfos}.
++     *
++     * @param maxHistoryAge age in seconds.
++     */
++    public void setMaxHistoryAge(long maxHistoryAge) {
++        this.maxHistoryAge = maxHistoryAge;
++    }
++
+     //----------------------------< internal >----------------------------------
+ 
+     /**

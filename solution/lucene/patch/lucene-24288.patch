@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+index 04a54a4..393eb0e 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestSpans.java
+@@ -434,7 +434,7 @@ public class TestSpans extends LuceneTestCase {
+                                 slop,
+                                 ordered);
+   
+-        spanScorer = snq.weight(searcher).scorer(leaves[i], ScorerContext.def());
++        spanScorer = searcher.createNormalizedWeight(snq).scorer(leaves[i], ScorerContext.def());
+       } finally {
+         searcher.setSimilarityProvider(oldSim);
+       }

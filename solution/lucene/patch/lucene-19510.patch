@@ -1,0 +1,22 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/collation/tokenattributes/CollatedTermAttributeImpl.java b/modules/analysis/common/src/java/org/apache/lucene/collation/tokenattributes/CollatedTermAttributeImpl.java
+index 4e4d5d6..68bb57b 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/collation/tokenattributes/CollatedTermAttributeImpl.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/collation/tokenattributes/CollatedTermAttributeImpl.java
+@@ -40,11 +40,12 @@ public class CollatedTermAttributeImpl extends CharTermAttributeImpl {
+   }
+   
+   @Override
+-  public int toBytesRef(BytesRef target) {
+-    target.bytes = collator.getCollationKey(toString()).toByteArray();
+-    target.offset = 0;
+-    target.length = target.bytes.length;
+-    return target.hashCode();
++  public int fillBytesRef() {
++    BytesRef bytes = getBytesRef();
++    bytes.bytes = collator.getCollationKey(toString()).toByteArray();
++    bytes.offset = 0;
++    bytes.length = bytes.bytes.length;
++    return bytes.hashCode();
+   }
+ 
+ }

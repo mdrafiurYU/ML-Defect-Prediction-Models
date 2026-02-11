@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/loader.c b/hw/xfree86/loader/loader.c
+index 231daf8..dad44d8 100644
+--- a/hw/xfree86/loader/loader.c
++++ b/hw/xfree86/loader/loader.c
+@@ -153,7 +153,7 @@ LoaderInit(void)
+ static loaderPtr listHead = (loaderPtr) 0;
+ 
+ static loaderPtr
+-_LoaderListPush()
++_LoaderListPush(void)
+ {
+     loaderPtr item = calloc(1, sizeof(struct _loader));
+ 

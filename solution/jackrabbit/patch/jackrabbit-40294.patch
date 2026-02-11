@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+index f682e9f..10df08b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+@@ -178,8 +178,9 @@ public class MemoryFileSystem implements FileSystem {
+     }
+ 
+     private void assertExistence(String path) throws FileSystemException {
+-        if (!exists(path))
++        if (!exists(path)) {
+             throw new FileSystemException("no such file " + path);
++        }
+     }
+ 
+     public boolean isFolder(String path) throws FileSystemException {

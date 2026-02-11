@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
+index 42cd662..81da2ed 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
+@@ -459,7 +459,7 @@ public class LockManagerImpl implements LockManager, SynchronousEventListener,
+ 
+         acquire();
+ 
+-        AbstractLockInfo infos[] = getLockInfos(session);
++        AbstractLockInfo[] infos = getLockInfos(session);
+ 
+         try {
+             Lock[] locks = new Lock[infos.length];

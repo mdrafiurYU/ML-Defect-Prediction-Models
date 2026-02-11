@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+index e762474..aa10662 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+@@ -60,6 +60,7 @@ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.spi.QNodeTypeDefinition;
+ import org.apache.jackrabbit.spi.QValueConstraint;
+ import org.apache.jackrabbit.spi.commons.conversion.NameException;
++import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
+ import org.apache.jackrabbit.spi.commons.namespace.NamespaceMapping;
+ import org.apache.jackrabbit.spi.commons.nodetype.AbstractNodeTypeManager;
+ import org.apache.jackrabbit.spi.commons.nodetype.InvalidConstraintException;
+@@ -207,6 +208,13 @@ public class NodeTypeManagerImpl extends AbstractNodeTypeManager implements Jack
+     }
+ 
+     /**
++     * @see org.apache.jackrabbit.spi.commons.nodetype.AbstractNodeTypeManager#getNamePathResolver() 
++     */
++    public NamePathResolver getNamePathResolver() {
++        return session;
++    }
++
++    /**
+      * @return the node type registry
+      */
+     public NodeTypeRegistry getNodeTypeRegistry() {

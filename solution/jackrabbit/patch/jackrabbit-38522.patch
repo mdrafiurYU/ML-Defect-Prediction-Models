@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java
+index b33df6e..840489f 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java
+@@ -53,6 +53,7 @@ public class XPathJcrPathTest extends AbstractQueryTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

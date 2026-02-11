@@ -1,0 +1,21 @@
+diff --git a/include/windowstr.h b/include/windowstr.h
+index 4683abe..87158b2 100644
+--- a/include/windowstr.h
++++ b/include/windowstr.h
+@@ -216,7 +216,15 @@ typedef struct _ScreenSaverStuff {
+ 
+ extern int screenIsSaved;
+ extern ScreenSaverStuffRec savedScreenInfo[MAXSCREENS];
+-extern int EnterLeavePrivatesIndex;
++extern int FocusPrivatesIndex;
++
++/* Used to maintain semantics of core protocol for Enter/LeaveNotifies and
++ * FocusIn/Out events for multiple pointers/keyboards. 
++ */ 
++typedef struct _FocusSemaphores {
++    int                 enterleave;
++    int                 focusinout;
++} FocusSemaphoresRec, *FocusSemaphoresPtr;
+ 
+ /*
+  * this is the configuration parameter "NO_BACK_SAVE"

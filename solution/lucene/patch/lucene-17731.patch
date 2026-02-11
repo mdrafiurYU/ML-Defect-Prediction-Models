@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery64.java b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery64.java
+index d3873fc..321f698 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery64.java
++++ b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery64.java
+@@ -89,7 +89,7 @@ public class TestNumericRangeQuery64 extends LuceneTestCase {
+       writer.addDocument(doc);
+     }
+     reader = writer.getReader();
+-    searcher=new IndexSearcher(reader);
++    searcher=newSearcher(reader);
+     writer.close();
+   }

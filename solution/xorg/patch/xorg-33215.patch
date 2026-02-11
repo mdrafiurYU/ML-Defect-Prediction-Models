@@ -1,0 +1,20 @@
+diff --git a/dix/main.c b/dix/main.c
+index 3a77533..b5954af 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -89,6 +89,7 @@ Equipment Corporation.
+ #include "os.h"
+ #include "windowstr.h"
+ #include "resource.h"
++#include "privates.h"
+ #include "dixstruct.h"
+ #include "gcstruct.h"
+ #include "extension.h"
+@@ -356,6 +357,7 @@ main(int argc, char *argv[], char *envp[])
+ 	InitAtoms();
+ 	InitEvents();
+ 	InitGlyphCaching();
++	dixResetPrivates();
+ 	ResetExtensionPrivates();
+ 	ResetClientPrivates();
+ 	ResetScreenPrivates();

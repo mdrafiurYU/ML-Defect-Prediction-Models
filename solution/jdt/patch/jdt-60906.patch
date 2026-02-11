@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
+index 317755f..d558d3a 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
+@@ -1009,7 +1009,12 @@ public class JavaProject
+ 	}
+ 
+ 	public boolean exists() {
+-		return hasJavaNature(this.project);
++		try {
++			return this.project.hasNature(JavaCore.NATURE_ID);
++		} catch (CoreException e) {
++			// project does not exist or is not open
++		}
++		return false;
+ 	}	
+ 
+ 	/**

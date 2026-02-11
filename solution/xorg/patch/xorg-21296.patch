@@ -1,0 +1,13 @@
+diff --git a/GL/glx/xfont.c b/GL/glx/xfont.c
+index 7956715..89ff95b 100644
+--- a/GL/glx/xfont.c
++++ b/GL/glx/xfont.c
+@@ -179,7 +179,7 @@ int __glXUseXFont(__GLXclientState *cl, GLbyte *pc)
+ 	** to try to make a font during another lists construction.
+ 	*/
+ 	client->errorValue = cx->id;
+-	return __glXBadContextState;
++	return __glXError(GLXBadContextState);
+     }
+ 
+     /*

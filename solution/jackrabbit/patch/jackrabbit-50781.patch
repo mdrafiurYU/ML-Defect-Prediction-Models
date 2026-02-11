@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java
+index 80924fe..395cda1 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueVersionExceptionTest.java
+@@ -58,7 +58,7 @@ public class SetValueVersionExceptionTest extends AbstractJCRTest {
+      */
+     protected void setUp() throws Exception {
+         super.setUp();
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+ 
+         value = session.getValueFactory().createValue("abc");
+         values = new Value[] {value};

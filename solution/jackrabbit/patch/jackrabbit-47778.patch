@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeImpl.java
+index 20a44cc..d5ac0e8 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeImpl.java
+@@ -68,7 +68,7 @@ public class DescendantNodeImpl
+      *
+      * @return the path; non-null
+      */
+-    public String getPath() {
++    public String getAncestorPath() {
+         return getJCRPath(path);
+     }
+ 
+@@ -90,11 +90,6 @@ public class DescendantNodeImpl
+         return path;
+     }
+ 
+-    public String getAncestorPath() {
+-        // TODO
+-        throw new RuntimeException("Not implemented yet - see JCR-2092");
+-    }
+-
+     //------------------------< AbstractQOMNode >-------------------------------
+ 
+     /**

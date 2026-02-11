@@ -1,0 +1,14 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestLegacyMergeSchedulerPolicyConfig.java b/solr/src/test/org/apache/solr/core/TestLegacyMergeSchedulerPolicyConfig.java
+index 59447c8..f0bd861 100644
+--- a/solr/src/test/org/apache/solr/core/TestLegacyMergeSchedulerPolicyConfig.java
++++ b/solr/src/test/org/apache/solr/core/TestLegacyMergeSchedulerPolicyConfig.java
+@@ -20,8 +20,8 @@ public class TestLegacyMergeSchedulerPolicyConfig extends SolrTestCaseJ4 {
+   public void testLegacy() throws Exception {
+     ExposeWriterHandler duh = new ExposeWriterHandler();
+     IndexWriter writer = duh.getWriter();
+-    assertTrue(writer.getMergePolicy().getClass().getName().equals(LogDocMergePolicy.class.getName()));
+-    assertTrue(writer.getMergeScheduler().getClass().getName().equals(SerialMergeScheduler.class.getName()));
++    assertTrue(writer.getConfig().getMergePolicy().getClass().getName().equals(LogDocMergePolicy.class.getName()));
++    assertTrue(writer.getConfig().getMergeScheduler().getClass().getName().equals(SerialMergeScheduler.class.getName()));
+     duh.close();
+   }

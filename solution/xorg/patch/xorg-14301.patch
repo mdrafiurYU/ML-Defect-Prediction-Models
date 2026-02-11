@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Globals.c b/hw/xfree86/common/xf86Globals.c
+index a295fb9..1a513e0 100644
+--- a/hw/xfree86/common/xf86Globals.c
++++ b/hw/xfree86/common/xf86Globals.c
+@@ -243,6 +243,7 @@ Bool xf86MiscModInDevAllowNonLocal = FALSE;
+ RootWinPropPtr *xf86RegisteredPropertiesTable = NULL;
+ Bool xf86inSuspend = FALSE;
+ Bool xorgHWAccess = FALSE;
++PciBusId xf86IsolateDevice;
+ 
+ #ifdef DLOPEN_HACK
+ /*

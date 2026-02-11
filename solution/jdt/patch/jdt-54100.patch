@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java
+index a0db255..4666743 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java
+@@ -33,6 +33,15 @@ public class CompletionOnJavadocTypeParamReference extends JavadocSingleTypeRefe
+ 		this.completionFlags |= flags;
+ 	}
+ 
++	/**
++	 * Get completion node flags.
++	 * 
++	 * @return int Flags of the javadoc completion node.
++	 */
++	public int getCompletionFlags() {
++		return this.completionFlags;
++	}
++
+ 	/* (non-Javadoc)
+ 	 * @see org.eclipse.jdt.internal.compiler.ast.AllocationExpression#printExpression(int, java.lang.StringBuffer)
+ 	 */

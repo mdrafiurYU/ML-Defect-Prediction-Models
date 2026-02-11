@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/jsr283/nodetype/NodeDefinitionTemplate.java b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/jsr283/nodetype/NodeDefinitionTemplate.java
+index 2a51bac..711ffc4 100644
+--- a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/jsr283/nodetype/NodeDefinitionTemplate.java
++++ b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/jsr283/nodetype/NodeDefinitionTemplate.java
+@@ -73,14 +73,14 @@ public interface NodeDefinitionTemplate extends NodeDefinition {
+      *
+      * @param requiredPrimaryTypes a <code>String</code> array.
+      */
+-    void setRequiredPrimaryTypes(String[] requiredPrimaryTypes);
++    void setRequiredPrimaryTypeNames(String[] requiredPrimaryTypes);
+ 
+     /**
+      * Sets the default primary type of this node.
+      *
+      * @param defaultPrimaryType a <code>String</code>.
+      */
+-    void setDefaultPrimaryType(String defaultPrimaryType);
++    void setDefaultPrimaryTypeName(String defaultPrimaryType);
+ 
+ 
+     /**

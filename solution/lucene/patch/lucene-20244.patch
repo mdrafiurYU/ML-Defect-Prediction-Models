@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/sep/SepSkipListReader.java b/lucene/src/java/org/apache/lucene/index/codecs/sep/SepSkipListReader.java
+index 1803401..8c8e2a5 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/sep/SepSkipListReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/sep/SepSkipListReader.java
+@@ -177,6 +177,7 @@ class SepSkipListReader extends MultiLevelSkipListReader {
+   @Override
+   protected int readSkipData(int level, IndexInput skipStream) throws IOException {
+     int delta;
++    assert !omitTF || !currentFieldStoresPayloads;
+     if (currentFieldStoresPayloads) {
+       // the current field stores payloads.
+       // if the doc delta is odd then we have

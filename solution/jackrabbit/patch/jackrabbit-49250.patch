@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/SessionLockManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/SessionLockManager.java
+index f8f0ad0..7fb91dd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/SessionLockManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/SessionLockManager.java
+@@ -120,14 +120,14 @@ public class SessionLockManager implements javax.jcr.lock.LockManager {
+             while (node.isNew()) {
+                 node = (NodeImpl) node.getParent();
+             }
+-            Lock l = (Lock) systemLockMgr.getLock(node);
++            Lock l = systemLockMgr.getLock(node);
+             if (l.isDeep()) {
+                 return l;
+             } else {
+                 throw new LockException("Node not locked: " + node);
+             }
+         } else {
+-            return (Lock) systemLockMgr.getLock(node);
++            return systemLockMgr.getLock(node);
+         }
+     }
+ 
+@@ -157,7 +157,7 @@ public class SessionLockManager implements javax.jcr.lock.LockManager {
+         checkLockable(node);
+ 
+         synchronized (systemLockMgr) {
+-            return (Lock) systemLockMgr.lock(node, isDeep, isSessionScoped, timeoutHint, ownerInfo);
++            return systemLockMgr.lock(node, isDeep, isSessionScoped, timeoutHint, ownerInfo);
+         }
+     }

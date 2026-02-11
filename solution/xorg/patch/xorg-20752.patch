@@ -1,0 +1,15 @@
+diff --git a/include/gcstruct.h b/include/gcstruct.h
+index c2226ba..1d00726 100644
+--- a/include/gcstruct.h
++++ b/include/gcstruct.h
+@@ -264,10 +264,6 @@ typedef struct _GCOps {
+ 		int /*x*/,
+ 		int /*y*/);
+ 
+-#ifdef NEED_LINEHELPER
+-    void	(* LineHelper)();
+-#endif
+-
+     DevUnion	devPrivate;
+ } GCOps;
+ 

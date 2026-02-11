@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/loadfont.c b/hw/xfree86/loader/loadfont.c
+index 6758284..ba5b6fb 100644
+--- a/hw/xfree86/loader/loadfont.c
++++ b/hw/xfree86/loader/loadfont.c
+@@ -62,7 +62,7 @@ NewFontModule(void)
+     }
+ }
+ 
+-void
++_X_EXPORT void
+ LoadFont(FontModule * f)
+ {
+     FontModule *newfont;

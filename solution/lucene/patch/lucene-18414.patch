@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/FacetComponent.java b/solr/src/java/org/apache/solr/handler/component/FacetComponent.java
+index 5b00986..0bbeaff 100644
+--- a/solr/src/java/org/apache/solr/handler/component/FacetComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/FacetComponent.java
+@@ -726,6 +726,7 @@ public class FacetComponent extends SearchComponent
+     public long count;
+     public int termNum;  // term number starting at 0 (used in bit arrays)
+ 
++    @Override
+     public String toString() {
+       return "{term="+name+",termNum="+termNum+",count="+count+"}";
+     }

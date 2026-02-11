@@ -1,0 +1,52 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+index 73354d0..2e9c0dc 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+@@ -27,6 +27,7 @@ import org.apache.jackrabbit.spi.ItemId;
+ import org.apache.jackrabbit.spi.PropertyId;
+ import org.apache.jackrabbit.spi.QNodeDefinition;
+ import org.apache.jackrabbit.spi.NodeInfo;
++import org.apache.jackrabbit.spi.QValue;
+ import org.apache.jackrabbit.spi.commons.name.NameConstants;
+ import org.slf4j.LoggerFactory;
+ import org.slf4j.Logger;
+@@ -376,6 +377,39 @@ public class NodeState extends ItemState {
+     }
+ 
+     /**
++     * TODO: clarify usage
++     * In case the status of the given node state is not {@link Status#EXISTING}
++     * the transiently added mixin types are taken into account as well.
++     * 
++     * @return
++     */
++    public synchronized Name[] getAllNodeTypeNames() {
++        Name[] allNtNames;
++        if (getStatus() == Status.EXISTING) {
++            allNtNames = getNodeTypeNames();
++        } else {
++            // TODO: check if correct (and only used for creating new)
++            Name primaryType = getNodeTypeName();
++            allNtNames = new Name[] { primaryType }; // default
++            try {
++                PropertyEntry pe = getNodeEntry().getPropertyEntry(NameConstants.JCR_MIXINTYPES, true);
++                if (pe != null) {
++                    PropertyState mixins = pe.getPropertyState();
++                    QValue[] values = mixins.getValues();
++                    allNtNames = new Name[values.length + 1];
++                    for (int i = 0; i < values.length; i++) {
++                        allNtNames[i] = values[i].getName();
++                    }
++                    allNtNames[values.length] = primaryType;
++                } // else: no jcr:mixinTypes property exists -> ignore
++            } catch (RepositoryException e) {
++                // unexpected error: ignore
++            }
++        }
++        return allNtNames;
++    }
++
++    /**
+      * Returns true if the definition of this state has already been
+      * calculated. False otherwise.
+      *

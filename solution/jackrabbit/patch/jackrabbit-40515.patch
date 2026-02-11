@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/WildcardQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/WildcardQuery.java
+index 58dad7b..d4d9d0f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/WildcardQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/WildcardQuery.java
+@@ -276,7 +276,7 @@ public class WildcardQuery extends Query implements Transformable {
+         WildcardQueryScorer(Similarity similarity, IndexReader reader) {
+             super(similarity);
+             this.reader = reader;
+-            this.cacheKey = field + '\uFFFF' + propName + '\uFFFF' + transform +'\uFFFF' + pattern;
++            this.cacheKey = field + '\uFFFF' + propName + '\uFFFF' + transform + '\uFFFF' + pattern;
+             // check cache
+             PerQueryCache cache = PerQueryCache.getInstance();
+             Map m = (Map) cache.get(WildcardQueryScorer.class, reader);

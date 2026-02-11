@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/int10/generic.c b/hw/xfree86/int10/generic.c
+index 69596d4..03fc89c 100644
+--- a/hw/xfree86/int10/generic.c
++++ b/hw/xfree86/int10/generic.c
+@@ -63,12 +63,6 @@ static void UnmapVRam(xf86Int10InfoPtr pInt);
+ static void *sysMem = NULL;
+ 
+ xf86Int10InfoPtr
+-xf86InitInt10(int entityIndex)
+-{
+-    return xf86ExtendedInitInt10(entityIndex, 0);
+-}
+-
+-xf86Int10InfoPtr
+ xf86ExtendedInitInt10(int entityIndex, int Flags)
+ {
+     xf86Int10InfoPtr pInt;

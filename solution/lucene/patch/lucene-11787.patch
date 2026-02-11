@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/Directory.java b/lucene/src/java/org/apache/lucene/store/Directory.java
+index d19d61a..348aa96 100644
+--- a/lucene/src/java/org/apache/lucene/store/Directory.java
++++ b/lucene/src/java/org/apache/lucene/store/Directory.java
+@@ -197,6 +197,11 @@ public abstract class Directory implements Closeable {
+       return this.toString();
+   }
+ 
++  @Override
++  public String toString() {
++    return super.toString() + " lockFactory=" + getLockFactory();
++  }
++
+   /**
+    * Copies the file <i>src</i> to {@link Directory} <i>to</i> under the new
+    * file name <i>dest</i>.

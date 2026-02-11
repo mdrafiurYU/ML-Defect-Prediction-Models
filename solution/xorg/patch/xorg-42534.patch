@@ -1,0 +1,13 @@
+diff --git a/os/backtrace.c b/os/backtrace.c
+index b52dcde..19ff58d 100644
+--- a/os/backtrace.c
++++ b/os/backtrace.c
+@@ -33,7 +33,7 @@
+ void xorg_backtrace(void)
+ {
+     void *array[32]; /* deeper nesting than this means something's wrong */
+-    size_t size, i;
++    int size, i;
+     char **strings;
+     ErrorF("\nBacktrace:\n");
+     size = backtrace(array, 32);

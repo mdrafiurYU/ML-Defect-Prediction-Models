@@ -1,0 +1,15 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/misc/TermStats.java b/lucene/contrib/misc/src/java/org/apache/lucene/misc/TermStats.java
+index b28fbdd..08c4a80 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/misc/TermStats.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/misc/TermStats.java
+@@ -41,4 +41,9 @@ public final class TermStats {
+   String getTermText() {
+     return termtext.utf8ToString();
+   }
++
++  @Override
++  public String toString() {
++    return("TermStats: term=" + termtext.utf8ToString() + " docFreq=" + docFreq + " totalTermFreq=" + totalTermFreq);
++  }
+ }
+\ No newline at end of file

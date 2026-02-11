@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ReconcileProcessorEnv.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ReconcileProcessorEnv.java
+index eab766d..2be6b37 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ReconcileProcessorEnv.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ReconcileProcessorEnv.java
+@@ -40,7 +40,7 @@ public class ReconcileProcessorEnv extends CompilationProcessorEnv implements Ec
+     {	
+ 		CompilationUnit compilationUnit = null;
+ 		try{
+-			compilationUnit = reconcileContext.getAST(AST.JLS3, true);
++			compilationUnit = reconcileContext.getAST3();
+ 		}catch( JavaModelException e){
+ 			// TODO: log error
+ 			compilationUnit = EMPTY_AST_UNIT;

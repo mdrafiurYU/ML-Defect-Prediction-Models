@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryManager.java b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryManager.java
+index 6371082..aecaf25 100644
+--- a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryManager.java
++++ b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryManager.java
+@@ -21,6 +21,7 @@ import org.apache.jackrabbit.core.config.RepositoryConfig;
+ 
+ import javax.jcr.RepositoryException;
+ 
++import java.io.IOException;
+ import java.io.InputStream;
+ import java.util.Collection;
+ import java.util.HashMap;
+@@ -160,7 +161,17 @@ public final class JCARepositoryManager {
+ 
+                     InputStream configInputStream = cl.getResourceAsStream(
+                         configFile.substring(CLASSPATH_CONFIG_PREFIX.length()));
+-                    config = RepositoryConfig.create(configInputStream, homeDir);
++                    try {
++                        config = RepositoryConfig.create(configInputStream, homeDir);
++                    } finally {
++                        if (configInputStream != null) {
++                            try {
++                                configInputStream.close();
++                            } catch (IOException e) {
++                                // ignore
++                            }
++                        }
++                    }
+                 } else {
+                     config = RepositoryConfig.create(configFile, homeDir);
+                 }
+@@ -247,3 +258,4 @@ public final class JCARepositoryManager {
+ 
+ }
+ 
++

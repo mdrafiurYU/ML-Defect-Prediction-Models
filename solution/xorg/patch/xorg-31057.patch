@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Bus.h b/hw/xfree86/common/xf86Bus.h
+index 96da6e6..42030c8 100644
+--- a/hw/xfree86/common/xf86Bus.h
++++ b/hw/xfree86/common/xf86Bus.h
+@@ -124,7 +124,7 @@ typedef struct x_BusAccRec {
+ 	struct {
+ 	    int bus;
+ 	    int primary_bus;
+-	    PCITAG acc;
++	    struct pci_device * dev;
+ 	    pciBridgesSave save;
+ 	} pci;
+     } busdep;

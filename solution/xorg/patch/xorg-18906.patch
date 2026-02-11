@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/zx1PCI.c b/hw/xfree86/os-support/bus/zx1PCI.c
+index 16f1b40..3d219c8 100644
+--- a/hw/xfree86/os-support/bus/zx1PCI.c
++++ b/hw/xfree86/os-support/bus/zx1PCI.c
+@@ -31,6 +31,10 @@
+  * architectures.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "zx1PCI.h"
+ #include "xf86.h"
+ #include "xf86_OSlib.h"

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeDoneMergeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeDoneMergeTest.java
+index 5c11071..296a5c4 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeDoneMergeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeDoneMergeTest.java
+@@ -46,6 +46,11 @@ public class MergeDoneMergeTest extends AbstractMergeTest {
+ 
+     }
+ 
++    protected void tearDown() throws Exception {
++        nodeToMerge = null;
++        super.tearDown();
++    }
++
+     /**
+      * Node.doneMerge(V) throws VersionException if V is not among the Vs in the
+      * jcr:mergeFailed prop. <br> with adding it to jcr:predecessors.<br>

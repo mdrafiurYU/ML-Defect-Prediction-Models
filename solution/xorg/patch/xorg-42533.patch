@@ -1,0 +1,15 @@
+diff --git a/os/utils.c b/os/utils.c
+index a41b0cf..e8d11f8 100644
+--- a/os/utils.c
++++ b/os/utils.c
+@@ -213,9 +213,7 @@ int auditTrailLevel = 1;
+ static char *dev_tty_from_init = NULL;	/* since we need to parse it anyway */
+ 
+ OsSigHandlerPtr
+-OsSignal(sig, handler)
+-    int sig;
+-    OsSigHandlerPtr handler;
++OsSignal(int sig, OsSigHandlerPtr handler)
+ {
+     struct sigaction act, oact;
+ 

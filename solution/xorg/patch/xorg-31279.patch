@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.h b/hw/xfree86/os-support/bus/Pci.h
+index 165439d..bc322ac 100644
+--- a/hw/xfree86/os-support/bus/Pci.h
++++ b/hw/xfree86/os-support/bus/Pci.h
+@@ -283,6 +283,8 @@
+ #error No PCI support available for this architecture/OS combination
+ #endif
+ 
++#undef INCLUDE_XF86_NO_DOMAIN
++
+ extern void ARCH_PCI_INIT(void);
+ #if defined(ARCH_PCI_OS_INIT)
+ extern void ARCH_PCI_OS_INIT(void);

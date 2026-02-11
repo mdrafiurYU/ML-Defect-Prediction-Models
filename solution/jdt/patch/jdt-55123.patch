@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java
+index 0f704b9..d555633 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryMethod.java
+@@ -199,7 +199,12 @@ public String[] getParameterNames() throws JavaModelException {
+ 	IBinaryMethod info = (IBinaryMethod) getElementInfo();
+ 	final int paramCount = Signature.getParameterCount(new String(info.getMethodDescriptor()));
+ 	if (paramCount != 0) {
+-		String javadoc = this.getAttachedJavadoc(null, "UTF-8"); //$NON-NLS-1$
++		String javadoc = null;
++		try {
++			javadoc = this.getAttachedJavadoc(null, "UTF-8"); //$NON-NLS-1$
++		} catch (JavaModelException e) {
++			// ignore
++		}
+ 		if (javadoc != null) {
+ 			final int indexOfOpenParen = javadoc.indexOf('(');
+ 			if (indexOfOpenParen != -1) {

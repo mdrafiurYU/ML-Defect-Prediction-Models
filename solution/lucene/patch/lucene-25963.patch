@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java b/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java
+index 701339c..51934ef 100644
+--- a/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/ShortFieldSource.java
+@@ -16,6 +16,7 @@ package org.apache.solr.search.function;
+  * limitations under the License.
+  */
+ 
++import org.apache.lucene.queries.function.DocValues;
+ import org.apache.lucene.search.cache.ShortValuesCreator;
+ import org.apache.lucene.search.cache.CachedArray.ShortValues;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;

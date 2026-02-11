@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
+index c7a0ce8..6644433 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
+@@ -564,7 +564,7 @@ public class BundleDbPersistenceManager extends AbstractBundlePersistenceManager
+                 connectionManager.setAutoReconnect(true);
+             }
+         } while(blockOnConnectionLoss || trials > 0);
+-        throw new ItemStateException(lastException.getMessage());
++        throw new ItemStateException(lastException.getMessage(), lastException);
+     }
+ 
+     /**

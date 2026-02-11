@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/glxext/xglglxext.c b/hw/xgl/glxext/xglglxext.c
+index df36571..3a9c4cc 100644
+--- a/hw/xgl/glxext/xglglxext.c
++++ b/hw/xgl/glxext/xglglxext.c
+@@ -4729,7 +4729,7 @@ xglCreateBuffer (__GLXdrawablePrivate *glxPriv)
+     pBufferPriv->private       = NULL;
+     pBufferPriv->freeBuffers   = NULL;
+ 
+-    REGION_INIT (pScreen, &pBufferPriv->damage, NullBox, 0);
++    REGION_NULL (pScreen, &pBufferPriv->damage);
+ 
+     if (pScreenPriv->fbo ||
+ 	((pDrawable->type == DRAWABLE_WINDOW)

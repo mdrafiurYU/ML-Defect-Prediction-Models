@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeDefinitionImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeDefinitionImpl.java
+index 73d1f0d..2569a40 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeDefinitionImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeDefinitionImpl.java
+@@ -74,6 +74,14 @@ public final class NodeDefinitionImpl extends ItemDefinitionImpl implements Node
+         return allowsSameNameSiblings;
+     }
+ 
++    public String getDefaultPrimaryTypeName() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public String[] getRequiredPrimaryTypeNames() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
+     //-------------------------------------< implementation specific method >---
+     /**
+      * Returns xml representation
+@@ -110,4 +118,5 @@ public final class NodeDefinitionImpl extends ItemDefinitionImpl implements Node
+     String getElementName() {
+ 	return CHILDNODEDEFINITION_ELEMENT;
+     }
++
+ }
+\ No newline at end of file

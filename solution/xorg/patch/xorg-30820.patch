@@ -1,0 +1,12 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index cbbc4e2..146fbc8 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -398,6 +398,7 @@ typedef struct _DeviceIntRec {
+     int			nPrivates;
+     DeviceUnwrapProc    unwrapProc;
+     SpriteInfoPtr       spriteInfo;
++    DeviceIntPtr        master;       /* master device */
+ } DeviceIntRec;
+ 
+ typedef struct {

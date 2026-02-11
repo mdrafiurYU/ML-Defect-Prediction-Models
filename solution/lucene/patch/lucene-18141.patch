@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/DictionaryCompoundWordTokenFilterFactory.java b/solr/src/java/org/apache/solr/analysis/DictionaryCompoundWordTokenFilterFactory.java
+index 1cbe411..63e650e 100644
+--- a/solr/src/java/org/apache/solr/analysis/DictionaryCompoundWordTokenFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/DictionaryCompoundWordTokenFilterFactory.java
+@@ -36,6 +36,7 @@ public class DictionaryCompoundWordTokenFilterFactory extends BaseTokenFilterFac
+   private int minSubwordSize;
+   private int maxSubwordSize;
+   private boolean onlyLongestMatch;
++  @Override
+   public void init(Map<String, String> args) {
+     super.init(args);
+     assureMatchVersion();

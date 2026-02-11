@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index 777bb70..f15c396 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -153,6 +153,11 @@ static Bool quirk_first_detailed_preferred (int scrnIndex, xf86MonPtr DDC)
+ 	DDC->vendor.prod_id == 57364)
+ 	return TRUE;
+ 
++    /* Proview AY765C 17" LCD. See bug #15160*/
++    if (memcmp (DDC->vendor.name, "PTS", 4) == 0 &&
++	DDC->vendor.prod_id == 765)
++	return TRUE;
++
+     return FALSE;
+ }
+ 

@@ -1,0 +1,12 @@
+diff --git a/solr/src/solrj/org/apache/solr/client/solrj/SolrQuery.java b/solr/src/solrj/org/apache/solr/client/solrj/SolrQuery.java
+index 930cdbd..20739fe 100644
+--- a/solr/src/solrj/org/apache/solr/client/solrj/SolrQuery.java
++++ b/solr/src/solrj/org/apache/solr/client/solrj/SolrQuery.java
+@@ -364,6 +364,7 @@ public class SolrQuery extends ModifiableSolrParams
+   /**
+    * @deprecated use {@link #setFacetMissing(Boolean)}
+    */
++  @Deprecated
+   public SolrQuery setMissing(String fld) {
+     return setFacetMissing(Boolean.valueOf(fld));
+   }

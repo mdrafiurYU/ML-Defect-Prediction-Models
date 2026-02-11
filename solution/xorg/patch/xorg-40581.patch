@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/int10/helper_exec.c b/hw/xfree86/int10/helper_exec.c
+index 4e5f6d3..15eba49 100644
+--- a/hw/xfree86/int10/helper_exec.c
++++ b/hw/xfree86/int10/helper_exec.c
+@@ -482,6 +482,8 @@ pci_device_for_cfg_address (CARD32 addr)
+ 	if (iter)
+ 		dev = pci_device_next(iter);
+ 
++	pci_iterator_destroy(iter);
++
+ 	return dev;
+ }
+ 

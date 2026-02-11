@@ -1,0 +1,14 @@
+diff --git a/miext/shadow/shadow.c b/miext/shadow/shadow.c
+index ef0df40..21f1de2 100644
+--- a/miext/shadow/shadow.c
++++ b/miext/shadow/shadow.c
+@@ -36,7 +36,8 @@
+ #include    "gcstruct.h"
+ #include    "shadow.h"
+ 
+-DevPrivateKey shadowScrPrivateKey = &shadowScrPrivateKey;
++static int shadowScrPrivateKeyIndex;
++DevPrivateKey shadowScrPrivateKey = &shadowScrPrivateKeyIndex;
+ 
+ #define wrap(priv, real, mem) {\
+     priv->mem = real->mem; \

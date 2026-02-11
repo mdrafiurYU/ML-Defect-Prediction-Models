@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestSourceElementRequestor.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestSourceElementRequestor.java
+index 9dc89a7..f27e192 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestSourceElementRequestor.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/TestSourceElementRequestor.java
+@@ -10,7 +10,7 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
+-import org.eclipse.jdt.core.compiler.IProblem;
++import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ import org.eclipse.jdt.internal.compiler.ISourceElementRequestor;
+ 
+ public class TestSourceElementRequestor implements ISourceElementRequestor {
+@@ -47,7 +47,7 @@ public void acceptPackage(int declarationStart, int declarationEnd, char[] name)
+ /**
+  * acceptProblem method comment.
+  */
+-public void acceptProblem(IProblem problem) {}
++public void acceptProblem(CategorizedProblem problem) {}
+ /**
+  * acceptTypeReference method comment.
+  */

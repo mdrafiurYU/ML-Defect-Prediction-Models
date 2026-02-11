@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExistenceTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExistenceTests.java
+index 664d8a2..d6819b4 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExistenceTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExistenceTests.java
+@@ -27,7 +27,7 @@ public ExistenceTests(String name) {
+ }
+ 
+ public static Test suite() {
+-	return new Suite(ExistenceTests.class);
++	return buildModelTestSuite(ExistenceTests.class);
+ }
+ protected void assertCorrespondingResourceFails(IJavaElement element) {
+ 	boolean gotException = false;

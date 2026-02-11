@@ -1,0 +1,31 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java b/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java
+index f1c99b6..d2f4b41 100644
+--- a/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java
++++ b/lucene/src/test-framework/org/apache/lucene/index/codecs/mocksep/MockSepCodec.java
+@@ -93,7 +93,7 @@ public class MockSepCodec extends Codec {
+   public FieldsProducer fieldsProducer(SegmentReadState state) throws IOException {
+ 
+     PostingsReaderBase postingsReader = new SepPostingsReaderImpl(state.dir, state.segmentInfo,
+-        state.readBufferSize, new MockSingleIntFactory(), state.codecId);
++        state.context, new MockSingleIntFactory(), state.codecId);
+ 
+     TermsIndexReaderBase indexReader;
+     boolean success = false;
+@@ -103,7 +103,7 @@ public class MockSepCodec extends Codec {
+                                                        state.segmentInfo.name,
+                                                        state.termsIndexDivisor,
+                                                        BytesRef.getUTF8SortedAsUnicodeComparator(),
+-                                                       state.codecId);
++                                                       state.codecId, state.context);
+       success = true;
+     } finally {
+       if (!success) {
+@@ -118,7 +118,7 @@ public class MockSepCodec extends Codec {
+                                                 state.fieldInfos,
+                                                 state.segmentInfo.name,
+                                                 postingsReader,
+-                                                state.readBufferSize,
++                                                state.context,
+                                                 StandardCodec.TERMS_CACHE_SIZE,
+                                                 state.codecId);
+       success = true;

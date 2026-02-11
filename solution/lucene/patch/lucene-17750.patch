@@ -1,0 +1,28 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/FileDataSource.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/FileDataSource.java
+index 64353ef..2f5a5aa 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/FileDataSource.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/FileDataSource.java
+@@ -59,6 +59,7 @@ public class FileDataSource extends DataSource<Reader> {
+ 
+   private static final Logger LOG = LoggerFactory.getLogger(FileDataSource.class);
+ 
++  @Override
+   public void init(Context context, Properties initProps) {
+     basePath = initProps.getProperty(BASE_PATH);
+     if (initProps.get(URLDataSource.ENCODING) != null)
+@@ -79,6 +80,7 @@ public class FileDataSource extends DataSource<Reader> {
+    * returned Reader</b>
+    * </p>
+    */
++  @Override
+   public Reader getData(String query) {
+     File f = getFile(basePath,query);
+     try {
+@@ -130,6 +132,7 @@ public class FileDataSource extends DataSource<Reader> {
+     }
+   }
+ 
++  @Override
+   public void close() {
+ 
+   }

@@ -1,0 +1,20 @@
+diff --git a/hw/darwin/darwinEvents.c b/hw/darwin/darwinEvents.c
+index 2a27ac4..1eb2336 100644
+--- a/hw/darwin/darwinEvents.c
++++ b/hw/darwin/darwinEvents.c
+@@ -74,6 +74,7 @@ typedef struct _EventQueue {
+ } EventQueueRec, *EventQueuePtr;
+ 
+ static EventQueueRec darwinEventQueue;
++xEvent *darwinEvents;
+ 
+ /*
+  * DarwinPressModifierMask
+@@ -179,6 +180,7 @@ static void DarwinSimulateMouseClick(
+ 
+ 
+ Bool DarwinEQInit(DevicePtr pKbd, DevicePtr pPtr) { 
++    darwinEvents = (xEvent *)malloc(sizeof(xEvent) * GetMaximumEventsNum());
+     mieqInit();
+     darwinEventQueue.head = darwinEventQueue.tail = 0;
+     darwinEventQueue.lastEventTime = GetTimeInMillis ();

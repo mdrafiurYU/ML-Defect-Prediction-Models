@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/conversion/ParsingPathResolverTest.java b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/conversion/ParsingPathResolverTest.java
+index da0a385..b4da873 100644
+--- a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/conversion/ParsingPathResolverTest.java
++++ b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/conversion/ParsingPathResolverTest.java
+@@ -95,10 +95,6 @@ public class ParsingPathResolverTest extends TestCase {
+         assertValidPath("../a/b/../../../../f");
+         assertValidPath("a/../..");
+         assertValidPath("../../a/.");
+-
+-        // TODO: Should these paths be detected as invalid by the parser?
+-        assertValidPath("/..");
+-        assertValidPath("/a/b/../../..");
+     }
+ 
+     /**

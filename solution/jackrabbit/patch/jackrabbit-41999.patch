@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+index 1b4fae3..37def93 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+@@ -133,6 +133,10 @@ public class MemoryFileSystem implements FileSystem {
+ 
+     public OutputStream getOutputStream(String filePath)
+             throws FileSystemException {
++        if (isFolder(filePath)) {
++            throw new FileSystemException("path denotes folder: " + filePath);
++        }
++
+         String folderPath = filePath;
+         if (filePath.lastIndexOf(FileSystem.SEPARATOR) > 0) {
+             folderPath = filePath.substring(0, filePath.lastIndexOf("/"));

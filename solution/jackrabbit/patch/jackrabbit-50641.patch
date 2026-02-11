@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
+index 7563610..14d7e47 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
+@@ -128,7 +128,7 @@ public class UpdateEventFactory {
+     protected NodeState createNodeState() {
+         Name ntName = nameFactory.create("{}testnt");
+         NodeState n = new NodeState(
+-                new NodeId(UUID.randomUUID()), ntName,
++                new NodeId(), ntName,
+                 ROOT_NODE_ID, NodeState.STATUS_EXISTING, false);
+         n.setMixinTypeNames(Collections.EMPTY_SET);
+         return n;

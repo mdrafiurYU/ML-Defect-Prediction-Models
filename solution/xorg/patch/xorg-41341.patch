@@ -1,0 +1,60 @@
+diff --git a/hw/xfree86/os-support/sysv/sysv_video.c b/hw/xfree86/os-support/sysv/sysv_video.c
+index 9972bca..a9bbd65 100644
+--- a/hw/xfree86/os-support/sysv/sysv_video.c
++++ b/hw/xfree86/os-support/sysv/sysv_video.c
+@@ -313,55 +313,3 @@ xf86DisableIO()
+ 
+ 	return;
+ }
+-
+-/***************************************************************************/
+-/* Interrupt Handling section                                              */
+-/***************************************************************************/
+-
+-_X_EXPORT Bool
+-xf86DisableInterrupts()
+-{
+-	if (!ExtendedEnabled)
+-	{
+-		if (SET_IOPL() < 0)
+-		{
+-			return(FALSE);
+-		}
+-	}
+-
+-#ifdef __GNUC__
+-	__asm__ __volatile__("cli");
+-#else 
+-	asm("cli");
+-#endif /* __GNUC__ */
+-
+-	if (!ExtendedEnabled)
+-	{
+-		RESET_IOPL();
+-	}
+-	return(TRUE);
+-}
+-
+-_X_EXPORT void
+-xf86EnableInterrupts()
+-{
+-	if (!ExtendedEnabled)
+-	{
+-		if (SET_IOPL() < 0)
+-		{
+-			return;
+-		}
+-	}
+-
+-#ifdef __GNUC__
+-	__asm__ __volatile__("sti");
+-#else 
+-	asm("sti");
+-#endif /* __GNUC__ */
+-
+-	if (!ExtendedEnabled)
+-	{
+-		RESET_IOPL();
+-	}
+-	return;
+-}

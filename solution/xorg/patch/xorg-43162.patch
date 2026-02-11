@@ -1,0 +1,15 @@
+diff --git a/hw/xwin/winwndproc.c b/hw/xwin/winwndproc.c
+index 36cde35..a942fb3 100644
+--- a/hw/xwin/winwndproc.c
++++ b/hw/xwin/winwndproc.c
+@@ -1031,9 +1031,8 @@ winWindowProc (HWND hwnd, UINT message,
+ 
+       /* 
+        * Discard presses generated from Windows auto-repeat
+-       * ago: Only discard them if XKB is not disabled 
+        */
+-      if (!g_winInfo.xkb.disable && (lParam & (1<<30)))
++      if (lParam & (1<<30))
+       {
+         switch (wParam)
+         {

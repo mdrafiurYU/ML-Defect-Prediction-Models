@@ -1,0 +1,15 @@
+diff --git a/fb/fboverlay.h b/fb/fboverlay.h
+index e6a4e03..a0eb8c7 100644
+--- a/fb/fboverlay.h
++++ b/fb/fboverlay.h
+@@ -23,6 +23,10 @@
+  * Author:  Keith Packard, SuSE, Inc.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _FBOVERLAY_H_
+ #define _FBOVERLAY_H_
+ 

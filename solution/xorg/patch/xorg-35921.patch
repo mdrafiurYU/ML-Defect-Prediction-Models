@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/loader/loadmod.c b/hw/xfree86/loader/loadmod.c
+index 650dcf3..7f3bbe4 100644
+--- a/hw/xfree86/loader/loadmod.c
++++ b/hw/xfree86/loader/loadmod.c
+@@ -177,6 +177,7 @@ InitPathList(const char *path)
+     }
+     if (list)
+ 	list[n] = NULL;
++    xfree(fullpath);
+     return list;
+ }
+ 

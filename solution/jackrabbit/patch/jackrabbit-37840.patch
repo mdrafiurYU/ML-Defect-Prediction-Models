@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNewNodeTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNewNodeTest.java
+index bce4982..36d39c9 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNewNodeTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNewNodeTest.java
+@@ -44,6 +44,11 @@ public class RemoveNewNodeTest extends AbstractJCRTest {
+         removeNode = testRootNode.addNode(nodeName1, testNodeType);
+     }
+ 
++    protected void tearDown() throws Exception {
++        removeNode = null;
++        super.tearDown();
++    }
++
+     /**
+      * Removes a transient node using {@link javax.jcr.Node#remove()}.
+      */

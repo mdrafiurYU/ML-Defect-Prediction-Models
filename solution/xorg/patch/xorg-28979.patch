@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index f662c17..6ebb087 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -315,7 +315,7 @@ AddOtherInputDevices()
+ #endif
+ 
+ int
+-NewInputDeviceRequest (InputOption *options)
++NewInputDeviceRequest (InputOption *options, DeviceIntPtr *pdev)
+ {
+     IDevRec *idev = NULL;
+     InputDriverPtr drv = NULL;
+@@ -409,6 +409,7 @@ NewInputDeviceRequest (InputOption *options)
+     if (dev->inited && dev->startup)
+         EnableDevice(dev);
+ 
++    *pdev = dev;
+     return Success;
+ 
+ unwind:

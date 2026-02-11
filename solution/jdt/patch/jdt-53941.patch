@@ -1,0 +1,31 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java
+index dc1f2be..b0dd1b7 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/SuperTypeReferencePattern.java
+@@ -148,7 +148,7 @@ public SuperTypeReferencePattern(
+ 	this(matchRule);
+ 
+ 	this.superQualification = isCaseSensitive() ? superQualification : CharOperation.toLowerCase(superQualification);
+-	this.superSimpleName = isCaseSensitive() ? superSimpleName : CharOperation.toLowerCase(superSimpleName);
++	this.superSimpleName = (isCaseSensitive() || isCamelCase())  ? superSimpleName : CharOperation.toLowerCase(superSimpleName);
+ 	((InternalSearchPattern)this).mustResolve = superQualification != null;
+ 	this.superRefKind = superRefKind;
+ }
+@@ -226,6 +226,7 @@ EntryResult[] queryIn(Index index) throws IOException {
+ 	// cannot include the superQualification since it may not exist in the index
+ 	switch(getMatchMode()) {
+ 		case R_EXACT_MATCH :
++			if (this.isCamelCase) break;
+ 			// do a prefix query with the superSimpleName
+ 			matchRule = matchRule - R_EXACT_MATCH + R_PREFIX_MATCH;
+ 			if (this.superSimpleName != null)
+@@ -237,6 +238,9 @@ EntryResult[] queryIn(Index index) throws IOException {
+ 		case R_PATTERN_MATCH :
+ 			// do a pattern query with the superSimpleName
+ 			break;
++		case R_REGEXP_MATCH :
++			// TODO (frederic) implement regular expression match
++			break;
+ 	}
+ 
+ 	return index.query(getIndexCategories(), key, matchRule); // match rule is irrelevant when the key is null

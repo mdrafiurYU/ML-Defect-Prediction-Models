@@ -1,0 +1,11 @@
+diff --git a/hw/xquartz/darwin.h b/hw/xquartz/darwin.h
+index 3231077..6d2fbd0 100644
+--- a/hw/xquartz/darwin.h
++++ b/hw/xquartz/darwin.h
+@@ -130,4 +130,6 @@ extern FILE *debug_log_fp;
+ #define DEBUG_LOG(msg, args...) 
+ #endif
+ 
++#define TRACE() DEBUG_LOG("\n")
++
+ #endif  /* _DARWIN_H */

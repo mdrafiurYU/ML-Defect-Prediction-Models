@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java
+index d747e05..c380fe9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java
+@@ -16,7 +16,6 @@
+  */
+ package org.apache.jackrabbit.core.data;
+ 
+-import java.io.IOException;
+ import java.io.InputStream;
+ 
+ /**
+@@ -35,16 +34,16 @@ public interface DataRecord {
+      * Returns the length of the binary stream in this record.
+      *
+      * @return length of the binary stream
+-     * @throws IOException if the record could not be accessed
++     * @throws DataStoreException if the record could not be accessed
+      */
+-    long getLength() throws IOException;
++    long getLength() throws DataStoreException;
+ 
+     /**
+      * Returns the the binary stream in this record.
+      *
+      * @return binary stream
+-     * @throws IOException if the record could not be accessed
++     * @throws DataStoreException if the record could not be accessed
+      */
+-    InputStream getStream() throws IOException;
++    InputStream getStream() throws DataStoreException;
+ 
+ }

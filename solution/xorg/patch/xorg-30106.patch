@@ -1,0 +1,34 @@
+diff --git a/fb/fbmmx.c b/fb/fbmmx.c
+index 2e240c1..b2fe94b 100644
+--- a/fb/fbmmx.c
++++ b/fb/fbmmx.c
+@@ -356,29 +356,5 @@ fbCopyAreammx (DrawablePtr	pSrc,
+     return TRUE;
+ }
+ 
+-void
+-fbCompositeCopyAreammx (CARD8		op,
+-			PicturePtr	pSrc,
+-			PicturePtr	pMask,
+-			PicturePtr	pDst,
+-			INT16		xSrc,
+-			INT16		ySrc,
+-			INT16		xMask,
+-			INT16		yMask,
+-			INT16		xDst,
+-			INT16		yDst,
+-			CARD16		width,
+-			CARD16		height)
+-{
+-    fbCopyAreammx (pSrc->pDrawable,
+-		   pDst->pDrawable,
+-		   xSrc, ySrc,
+-		   xDst, yDst,
+-		   width, height);
+-}
+-
+-
+-
+-
+ #endif /* RENDER */
+ #endif /* USE_MMX */

@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 89da5f8..dd76a63 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -91,6 +91,7 @@
+ #include "selection.h"
+ #ifdef XKB
+ #include <X11/extensions/XKBsrv.h>
++extern int XkbDfltRepeatDelay, XkbDfltRepeatInterval;
+ #endif
+ 
+ extern Selection *CurrentSelections;
+@@ -498,6 +499,8 @@ LOOKUP dixLookupTab[] = {
+     /* xkb/xkbInit.c */
+     SYMFUNC(XkbInitKeyboardDeviceStruct)
+     SYMFUNC(XkbSetRulesDflts)
++    SYMVAR(XkbDfltRepeatDelay)
++    SYMVAR(XkbDfltRepeatInterval)
+ #endif
+ 
+ #ifdef XINPUT

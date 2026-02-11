@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 9752195..78b89f0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -746,6 +746,21 @@ public class SearchIndex extends AbstractQueryHandler {
+     }
+ 
+     /**
++     * Waits until all pending text extraction tasks have been processed
++     * and the updated index has been flushed to disk.
++     *
++     * @throws RepositoryException if the index update can not be written
++     */
++    public void flush() throws RepositoryException {
++        try {
++            index.getIndexingQueue().waitUntilEmpty();
++            index.flush();
++        } catch (IOException e) {
++            throw new RepositoryException("Failed to flush the index", e);
++        }
++    }
++
++    /**
+      * Closes this <code>QueryHandler</code> and frees resources attached
+      * to this handler.
+      */

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java
+index 1d28315..cdfc433 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java
+@@ -315,7 +315,7 @@ public class WorkspaceImporter implements Importer {
+              * otherwise create a new version history
+              */
+             VersionHistoryInfo history =
+-                versionManager.getVersionHistory(session, node);
++                versionManager.getVersionHistory(session, node, null);
+             InternalValue historyId = InternalValue.create(
+                     history.getVersionHistoryId().getUUID());
+             InternalValue versionId = InternalValue.create(

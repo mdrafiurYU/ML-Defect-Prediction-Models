@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 7a21af1..2032b42 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -6206,6 +6206,8 @@ IsInterferingGrab(ClientPtr client, DeviceIntPtr dev, xEvent* event)
+             if (it->deviceGrab.grab && SameClient(it->deviceGrab.grab, client)
+                         && !it->deviceGrab.fromPassiveGrab)
+             {
++                if ((IsPointerDevice(it) && IsPointerDevice(dev)) ||
++                        (IsKeyboardDevice(it) && IsKeyboardDevice(dev)))
+                 return TRUE;
+             }
+         }

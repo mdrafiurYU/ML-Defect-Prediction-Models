@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/FileSwitchDirectory.java b/lucene/src/java/org/apache/lucene/store/FileSwitchDirectory.java
+index fe00c61..2e473be 100644
+--- a/lucene/src/java/org/apache/lucene/store/FileSwitchDirectory.java
++++ b/lucene/src/java/org/apache/lucene/store/FileSwitchDirectory.java
+@@ -135,12 +135,6 @@ public class FileSwitchDirectory extends Directory {
+     return getDirectory(name).createOutput(name);
+   }
+ 
+-  @Deprecated
+-  @Override
+-  public void sync(String name) throws IOException {
+-    sync(Collections.singleton(name));
+-  }
+-
+   @Override
+   public void sync(Collection<String> names) throws IOException {
+     List<String> primaryNames = new ArrayList<String>();

@@ -1,0 +1,17 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 986232c..d9128cc 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -333,9 +333,11 @@ typedef struct {
+ #define FROZEN_NO_EVENT		5
+ #define FROZEN_WITH_EVENT	6
+ #define THAW_OTHERS		7
++
+ typedef struct _GrabInfoRec {
+     TimeStamp	    grabTime;
+-    Bool            fromPassiveGrab;
++    Bool            fromPassiveGrab;    /* true if from passive grab */
++    Bool            implicitGrab;       /* implicit from ButtonPress */
+     GrabRec         activeGrab;
+     GrabPtr         grab;
+     CARD8           activatingKey;

@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/analysis/MockFixedLengthPayloadFilter.java b/lucene/src/test-framework/org/apache/lucene/analysis/MockFixedLengthPayloadFilter.java
+index 595a7b6..af0c364 100644
+--- a/lucene/src/test-framework/org/apache/lucene/analysis/MockFixedLengthPayloadFilter.java
++++ b/lucene/src/test-framework/org/apache/lucene/analysis/MockFixedLengthPayloadFilter.java
+@@ -23,13 +23,13 @@ import java.util.Random;
+ import org.apache.lucene.analysis.tokenattributes.PayloadAttribute;
+ import org.apache.lucene.index.Payload;
+ 
+-final class MockFixedLengthPayloadFilter extends TokenFilter {
++public final class MockFixedLengthPayloadFilter extends TokenFilter {
+   private final PayloadAttribute payloadAtt = addAttribute(PayloadAttribute.class);
+   private final Random random;
+   private final byte[] bytes;
+   private final Payload payload;
+ 
+-  MockFixedLengthPayloadFilter(Random random, TokenStream in, int length) {
++  public MockFixedLengthPayloadFilter(Random random, TokenStream in, int length) {
+     super(in);
+     this.random = random;
+     this.bytes = new byte[length];

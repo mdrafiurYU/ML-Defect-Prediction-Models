@@ -1,0 +1,29 @@
+diff --git a/hw/xfree86/common/xf86DGA.c b/hw/xfree86/common/xf86DGA.c
+index 0db4ecd..d121936 100644
+--- a/hw/xfree86/common/xf86DGA.c
++++ b/hw/xfree86/common/xf86DGA.c
+@@ -1029,7 +1029,11 @@ DGAProcessKeyboardEvent (ScreenPtr pScreen, dgaEvent *de, DeviceIntPtr keybd)
+ 	inputInfo.pointer->valuator->motionHintWindow = NullWindow;
+ 	*kptr |= bit;
+ 	keyc->prev_state = keyc->state;
+-	if (noXkbExtension) {
++#ifdef XKB
++	if (noXkbExtension)
++#endif
++	{
++	    
+ 	    for (i = 0, mask = 1; modifiers; i++, mask <<= 1)
+ 	    {
+ 		if (mask & modifiers)
+@@ -1046,7 +1050,10 @@ DGAProcessKeyboardEvent (ScreenPtr pScreen, dgaEvent *de, DeviceIntPtr keybd)
+ 	inputInfo.pointer->valuator->motionHintWindow = NullWindow;
+ 	*kptr &= ~bit;
+ 	keyc->prev_state = keyc->state;
+-	if (noXkbExtension) {
++#ifdef XKB
++	if (noXkbExtension)
++#endif
++	{
+ 	    for (i = 0, mask = 1; modifiers; i++, mask <<= 1)
+ 	    {
+ 		if (mask & modifiers) {

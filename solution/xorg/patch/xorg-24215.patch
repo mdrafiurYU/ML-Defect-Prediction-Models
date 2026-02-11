@@ -1,0 +1,102 @@
+diff --git a/hw/kdrive/linux/bus.c b/hw/kdrive/linux/bus.c
+index be61f89..8cf5f90 100644
+--- a/hw/kdrive/linux/bus.c
++++ b/hw/kdrive/linux/bus.c
+@@ -55,7 +55,7 @@ BusRead (int adbPort, void *closure)
+ 	    flags |= KD_BUTTON_2;
+ 	if ((buf[0] & 1) == 0)
+ 	    flags |= KD_BUTTON_3;
+-        KdEnqueueMouseEvent (kdMouseInfo, flags, dx, dy);
++        KdEnqueuePointerEvent (closure, flags, dx, dy, 0);
+     }
+ }
+ 
+@@ -66,36 +66,71 @@ char	*BusNames[] = {
+ 
+ #define NUM_BUS_NAMES	(sizeof (BusNames) / sizeof (BusNames[0]))
+ 
+-int	BusInputType;
+-
+ static int
+-BusInit (void)
++BusInit (KdPointerInfo *pi)
+ {
+-    int	    i;
+-    int	    busPort;
+-    int	    n = 0;
+-
+-    if (!BusInputType)
+-	BusInputType = KdAllocInputType ();
++    int	    i, fd = 0;
+     
++    if (!pi->path || (strcmp(pi->path, "auto") == 0))
++    {
+     for (i = 0; i < NUM_BUS_NAMES; i++)
+     {
+-	busPort = open (BusNames[i], 0);
++            if ((fd = open (BusNames[i], 0)) > 0)
++            {
++                close(fd);
++                if (pi->path)
++                    xfree(pi->path);
++                pi->path = KdSaveString(BusNames[i]);
++                return Success;
++            }
++        }
++    }
++    else
++    {
++        if ((fd = open(pi->path, 0)) > 0)
++        {
++            close(fd);
++            return Success;
++        }
++    }
++
++    return !Success;
++}
++
++static int
++BusEnable (KdPointerInfo *pi)
++{
++    int fd = open(pi->path, 0);
++
++    if (fd > 0)
+ 	{
+-	    KdRegisterFd (BusInputType, busPort, BusRead, 0);
+-	    n++;
++        KdRegisterFd(fd, BusRead, pi);
++        pi->driverPrivate = (void *)fd;
++        return Success;
++    }
++    else
++    {
++        return !Success;
+ 	}
+     }
+-    return n;
++
++static void
++BusDisable (KdPointerInfo *pi)
++{
++    KdUnregisterFd(pi, (int)pi->driverPrivate, TRUE);
+ }
+ 
+ static void
+-BusFini (void)
++BusFini (KdPointerInfo *pi)
+ {
+-    KdUnregisterFds (BusInputType, TRUE);
++    return;
+ }
+ 
+-KdMouseFuncs BusMouseFuncs = {
++KdPointerDriver BusMouseDriver = {
++    "bus",
+     BusInit,
+-    BusFini
++    BusEnable,
++    BusDisable,
++    BusFini,
++    NULL
+ };

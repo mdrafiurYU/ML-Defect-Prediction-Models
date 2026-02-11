@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/util/SolrPluginUtilsTest.java b/solr/src/test/org/apache/solr/util/SolrPluginUtilsTest.java
+index eae5f2f..0fd5e94 100644
+--- a/solr/src/test/org/apache/solr/util/SolrPluginUtilsTest.java
++++ b/solr/src/test/org/apache/solr/util/SolrPluginUtilsTest.java
+@@ -82,7 +82,7 @@ public class SolrPluginUtilsTest extends SolrTestCaseJ4 {
+     for (SolrDocument document : list) {
+       assertNotNull(document.get("val_t"));
+     }
+-
++    srchr.close();
+   }
+ 
+   @Test

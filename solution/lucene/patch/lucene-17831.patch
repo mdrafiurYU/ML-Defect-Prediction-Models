@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java b/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java
+index a662752..143d977 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java
++++ b/lucene/src/test/org/apache/lucene/search/TestRegexpRandom2.java
+@@ -82,7 +82,7 @@ public class TestRegexpRandom2 extends LuceneTestCase {
+     }
+     
+     reader = writer.getReader();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     writer.close();
+   }

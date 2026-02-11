@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwin.h b/hw/xquartz/darwin.h
+index 9384b9d..8c3cabb 100644
+--- a/hw/xquartz/darwin.h
++++ b/hw/xquartz/darwin.h
+@@ -54,7 +54,7 @@ typedef struct {
+ void DarwinPrintBanner(void);
+ int DarwinParseModifierList(const char *constmodifiers);
+ void DarwinAdjustScreenOrigins(ScreenInfo *pScreenInfo);
+-void xf86SetRootClip (ScreenPtr pScreen, BOOL enable);
++void xf86SetRootClip (ScreenPtr pScreen, int enable);
+ 
+ #define SCREEN_PRIV(pScreen) ((DarwinFramebufferPtr) \
+     dixLookupPrivate(&pScreen->devPrivates, darwinScreenKey))

@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/quartzKeyboard.h b/hw/xquartz/quartzKeyboard.h
+index 964ea01..3a892ba 100644
+--- a/hw/xquartz/quartzKeyboard.h
++++ b/hw/xquartz/quartzKeyboard.h
+@@ -57,7 +57,7 @@ int DarwinModifierNXKeycodeToNXKey(unsigned char keycode, int *outSide);
+ int DarwinModifierNXKeyToNXKeycode(int key, int side);
+ int DarwinModifierNXKeyToNXMask(int key);
+ int DarwinModifierNXMaskToNXKey(int mask);
+-int DarwinModifierStringToNXKey(const char *string);
++int DarwinModifierStringToNXMask(const char *string);
+ 
+ /* Provided for darwin.c */
+ void DarwinKeyboardInit(DeviceIntPtr pDev);

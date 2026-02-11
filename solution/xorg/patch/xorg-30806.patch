@@ -1,0 +1,14 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 78e57ad..9e0f5be 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -300,7 +300,8 @@ mieqProcessInputEvents(void)
+         }
+ 
+         /* Update the sprite now. Next event may be from different device. */
+-        if (e->events->event[0].u.u.type == MotionNotify && e->pDev->coreEvents)
++        if (e->events->event[0].u.u.type == DeviceMotionNotify 
++                && e->pDev->coreEvents)
+         {
+             miPointerUpdateSprite(e->pDev);
+         }

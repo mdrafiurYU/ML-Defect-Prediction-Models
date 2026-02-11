@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/DefinitionValidator.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/DefinitionValidator.java
+index 62d3c75..2c03efd 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/DefinitionValidator.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/DefinitionValidator.java
+@@ -23,6 +23,7 @@ import org.apache.jackrabbit.spi.QPropertyDefinition;
+ import org.apache.jackrabbit.spi.QValue;
+ import org.apache.jackrabbit.spi.commons.nodetype.InvalidNodeTypeDefException;
+ import org.apache.jackrabbit.spi.commons.nodetype.NodeTypeConflictException;
++import org.apache.jackrabbit.spi.commons.nodetype.ValueConstraint;
+ import org.apache.jackrabbit.spi.commons.name.NameConstants;
+ import org.apache.jackrabbit.spi.commons.name.NameFactoryImpl;
+ import org.slf4j.LoggerFactory;
+@@ -568,4 +569,4 @@ class DefinitionValidator {
+             nsRegistry.getPrefix(name.getNamespaceURI());
+         }
+     }
+-}
+\ No newline at end of file
++}

@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
+index f3fcef0..fe58a18 100644
+--- a/xkb/xkbActions.c
++++ b/xkb/xkbActions.c
+@@ -812,7 +812,7 @@ ProcessInputProc backupproc;
+     if ((filter->keycode!=0)&&(filter->keycode!=keycode))
+ 	return 1;
+ 
+-    GetSpritePosition(inputInfo.pointer, &x,&y);
++    GetSpritePosition(xkbi->device, &x,&y);
+     ev.header = ET_Internal;
+     ev.length = sizeof(DeviceEvent);
+     ev.time = GetTimeInMillis();

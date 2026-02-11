@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordIterator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordIterator.java
+index 40c650e..622a396 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordIterator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordIterator.java
+@@ -29,7 +29,7 @@ public interface RecordIterator {
+      * @return <code>true</code> if there are more records;
+      *         <code>false</code> otherwise
+      */
+-    public boolean hasNext();
++    boolean hasNext();
+ 
+     /**
+      * Return the next record. If there are no more recors, throws
+@@ -40,10 +40,11 @@ public interface RecordIterator {
+      * @throws NoSuchElementException if there are no more records
+      * @throws JournalException if another error occurs
+      */
+-    public Record nextRecord() throws NoSuchElementException, JournalException;
++    Record nextRecord() throws NoSuchElementException, JournalException;
+ 
+     /**
+      * Close this iterator. Releases all associated resources.
+      */
+-    public void close();
+-}
+\ No newline at end of file
++    void close();
++
++}

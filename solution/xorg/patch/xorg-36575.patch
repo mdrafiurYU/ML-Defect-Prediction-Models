@@ -1,0 +1,18 @@
+diff --git a/dix/events.c b/dix/events.c
+index 4a8e480..aef333e 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2171,6 +2171,13 @@ XYToWindow(int x, int y)
+ 				x - pWin->drawable.x,
+ 				y - pWin->drawable.y, &box))
+ #endif
++#ifdef ROOTLESS
++    /* In rootless mode windows may be offscreen, even when
++     * they're in X's stack. (E.g. if the native window system
++     * implements some form of virtual desktop system).
++     */
++		&& !pWin->rootlessUnhittable
++#endif
+ 	    )
+ 	{
+ 	    if (spriteTraceGood >= spriteTraceSize)

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java
+index d6764b3..56f8638 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryTest.java
+@@ -75,6 +75,7 @@ public class NamespaceRegistryTest extends AbstractJCRTest {
+         } catch (NamespaceException e) {
+             log.println("Unable to unregister name space with prefix " + namespacePrefix + ": " + e.toString());
+         } finally {
++            nsp = null;
+             super.tearDown();
+         }
+     }

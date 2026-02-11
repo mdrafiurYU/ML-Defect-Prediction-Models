@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
+index 9be777f..391edf1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
+@@ -16,7 +16,6 @@
+  */
+ package org.apache.jackrabbit.core.observation;
+ 
+-import org.apache.jackrabbit.api.observation.LocalEventListener;
+ import org.apache.jackrabbit.core.ItemId;
+ import org.apache.jackrabbit.core.SessionImpl;
+ import org.apache.jackrabbit.core.state.ItemState;
+@@ -239,7 +238,7 @@ class EventConsumer {
+             return;
+         }
+         // check if filtered iterator has at least one event
+-        EventIterator it = new FilteredEventIterator(events, filter, denied, listener instanceof LocalEventListener);
++        EventIterator it = new FilteredEventIterator(events, filter, denied);
+         if (it.hasNext()) {
+             listener.onEvent(it);
+         } else {

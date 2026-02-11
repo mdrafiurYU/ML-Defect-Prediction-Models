@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestIndexSplitter.java b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestIndexSplitter.java
+index 24efd03..9e4d20f 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestIndexSplitter.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestIndexSplitter.java
+@@ -34,7 +34,15 @@ public class TestIndexSplitter extends LuceneTestCase {
+     _TestUtil.rmDir(destDir);
+     destDir.mkdirs();
+     FSDirectory fsDir = FSDirectory.open(dir);
+-    IndexWriter iw = new IndexWriter(fsDir, new IndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setOpenMode(OpenMode.CREATE));
++
++    LogMergePolicy mergePolicy = new LogByteSizeMergePolicy();
++    mergePolicy.setNoCFSRatio(1);
++    IndexWriter iw = new IndexWriter(
++        fsDir,
++        new IndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++            setOpenMode(OpenMode.CREATE).
++            setMergePolicy(mergePolicy)
++    );
+     for (int x=0; x < 100; x++) {
+       Document doc = TestIndexWriterReader.createDocument(x, "index", 5);
+       iw.addDocument(doc);

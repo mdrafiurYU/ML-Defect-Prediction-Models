@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java b/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java
+index 9adc363..6122b8a 100644
+--- a/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java
++++ b/lucene/contrib/xml-query-parser/src/test/org/apache/lucene/xmlparser/TestParser.java
+@@ -73,7 +73,7 @@ public class TestParser extends LuceneTestCase {
+ 			d.close();
+       writer.close();
+ 		reader=IndexReader.open(dir, true);
+-		searcher=new IndexSearcher(reader);
++		searcher=newSearcher(reader);
+ 		
+ 	}

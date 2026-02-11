@@ -1,0 +1,33 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java
+index 0d15bce..68b59b5 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NullReferenceTest.java
+@@ -4472,6 +4472,28 @@ public void test0560_try_catch() {
+ 		"----------\n");
+ }
+ 
++// null analysis - try/catch
++// https://bugs.eclipse.org/bugs/show_bug.cgi?id=130359
++public void _test0561_try_catch_unchecked_exception() {
++	this.runNegativeTest(
++		new String[] {
++			"X.java",
++			"public class X {\n" + 
++			"  void foo() {\n" + 
++			"    Object o = null;\n" + 
++			"    try {\n" + 
++			"      o = bar();\n" + 
++			"    } catch (RuntimeException e) {\n" + 
++			"      o.toString();\n" + // may be null
++			"    }\n" + 
++			"  }\n" + 
++			"  private Object bar() {\n" + 
++			"    return new Object();\n" + 
++			"  }\n" + 
++			"}\n"},
++		"ERR may be null only");
++}
++
+ // null analysis -- do while
+ public void test0601_do_while() {
+ 	this.runNegativeTest(

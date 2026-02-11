@@ -1,0 +1,17 @@
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index bcee26c..151d9a5 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -510,12 +510,8 @@ InitKeyboardDeviceStruct(DeviceIntPtr dev, XkbRMLVOSet *rmlvo,
+ 
+     XkbDDXInitDevice(dev);
+ 
+-    XkbUpdateCoreDescription(dev, True);
+-
+     XkbUpdateActions(dev, xkb->min_key_code, XkbNumKeys(xkb), &changes,
+                      &check, &cause);
+-    dev->key->curKeySyms.minKeyCode = xkb->min_key_code;
+-    dev->key->curKeySyms.maxKeyCode = xkb->max_key_code;
+ 
+     InitFocusClassDeviceStruct(dev);
+ 

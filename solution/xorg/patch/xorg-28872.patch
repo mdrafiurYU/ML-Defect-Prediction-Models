@@ -1,0 +1,23 @@
+diff --git a/mi/mipointer.h b/mi/mipointer.h
+index c483413..666a6eb 100644
+--- a/mi/mipointer.h
++++ b/mi/mipointer.h
+@@ -53,6 +53,18 @@ typedef struct _miPointerSpriteFuncRec {
+                     int  /* x */,
+                     int  /* y */
+                     );
++    Bool        (*DeviceCursorInitialize)(
++                    DeviceIntPtr /* pDev */,
++                    ScreenPtr /* pScr */
++                    );
++    void        (*DeviceCursorCleanup)(
++                    DeviceIntPtr /* pDev */,
++                    ScreenPtr /* pScr */
++                    );
++    void        (*UndisplayCursor)(
++                    DeviceIntPtr /* pDev */,
++                    ScreenPtr /* pScr */
++                    );
+ } miPointerSpriteFuncRec, *miPointerSpriteFuncPtr;
+ 
+ typedef struct _miPointerScreenFuncRec {

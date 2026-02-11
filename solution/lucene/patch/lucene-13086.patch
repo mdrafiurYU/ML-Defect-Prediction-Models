@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java b/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java
+index 427e6ba..6936e3d 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentWriteState.java
+@@ -34,6 +34,7 @@ public class SegmentWriteState {
+   public final String docStoreSegmentName;
+   public final int numDocs;
+   public int numDocsInStore;
++  public boolean hasVectors;
+   public final Collection<String> flushedFiles;
+ 
+   final SegmentCodecs segmentCodecs;

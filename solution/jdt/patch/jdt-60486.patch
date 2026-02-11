@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
+index f810f25..d232ae4 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
+@@ -24,9 +24,9 @@ public class JavaSourceFilePrintWriter extends PrintWriter {
+ 
+ 	private final StringWriter _sw;
+     private final String _typeName;
+-    private final ProcessorEnvImpl _env;
++    private final BuildEnv _env;
+ 	
+-    public JavaSourceFilePrintWriter( String typeName, StringWriter sw, ProcessorEnvImpl env )
++    public JavaSourceFilePrintWriter( String typeName, StringWriter sw, BuildEnv env )
+     {
+         super( sw );
+         _sw = sw;

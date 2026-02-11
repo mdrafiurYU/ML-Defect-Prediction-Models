@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitVisitor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitVisitor.java
+index f61263f..7cf5cde 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitVisitor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitVisitor.java
+@@ -74,7 +74,7 @@ public class CompilationUnitVisitor extends Compiler {
+ 		ICompilerRequestor requestor,
+ 		IProblemFactory problemFactory) {
+ 
+-		super(environment, policy, settings, requestor, problemFactory);
++		super(environment, policy, settings, requestor, problemFactory, true);
+ 	}
+ 
+ 	/**

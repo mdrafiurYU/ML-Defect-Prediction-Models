@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+index 4dfb2de..95f0094 100644
+--- a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
++++ b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+@@ -301,6 +301,7 @@ public abstract class LuceneTestCase extends Assert {
+   }
+ 
+   /** @deprecated: until we fix no-fork problems in solr tests */
++  @Deprecated
+   private static List<String> testClassesRun = new ArrayList<String>();
+   
+   @BeforeClass

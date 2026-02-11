@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe2.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe2.java
+index 4ad5e29..44fc6cb 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe2.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/Scribe2.java
+@@ -995,7 +995,7 @@ public class Scribe2 {
+ 		addInsertEdit(insertPosition, buffer);
+ 	}
+ 
+-	private void printIndentationIfNecessary() {
++	void printIndentationIfNecessary() {
+ 		StringBuffer buffer = new StringBuffer();
+ 		printIndentationIfNecessary(buffer);
+ 		if (buffer.length() > 0) {

@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+index b1466af..8a468f9 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+@@ -11,6 +11,7 @@
+ package org.eclipse.jdt.apt.core.env;
+ 
+ import org.eclipse.jdt.apt.core.util.EclipseMessager;
++import org.eclipse.jdt.core.IJavaProject;
+ import org.eclipse.jdt.core.dom.CompilationUnit;
+ 
+ import com.sun.mirror.apt.AnnotationProcessorEnvironment;
+@@ -47,6 +48,11 @@ public interface EclipseAnnotationProcessorEnvironment extends
+ 	Phase getPhase();
+ 	
+ 	/**
++	 * @return the java project associated with the current processing phase
++	 */
++	IJavaProject getJavaProject();
++	
++	/**
+ 	 * Add a type dependency on the type named <code>fullyQualifiedTypeName</code>
+ 	 * @param fullyQualifiedTypeName the fully qualified (dot-separated) name of a type.
+ 	 * @throws IllegalArgumentException if <code>fullyQualifiedTypeName</code> cannot be resolved to a type.

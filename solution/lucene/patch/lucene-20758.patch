@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/it/TestItalianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/it/TestItalianAnalyzer.java
+index 3348721..ae4bf2f 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/it/TestItalianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/it/TestItalianAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestItalianAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "abbandonata", "abbandonata");
+     checkOneTermReuse(a, "abbandonati", "abbandon");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new ItalianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

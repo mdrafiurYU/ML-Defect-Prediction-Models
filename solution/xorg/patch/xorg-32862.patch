@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglglyph.c b/hw/xgl/xglglyph.c
+index 7a60188..c1a484a 100644
+--- a/hw/xgl/xglglyph.c
++++ b/hw/xgl/xglglyph.c
+@@ -1075,7 +1075,8 @@ xglGlyphs (CARD8	 op,
+ 
+ 	pPixmap = (*pScreen->CreatePixmap) (pScreen,
+ 					    rect.width, rect.height,
+-					    maskFormat->depth);
++					    maskFormat->depth,
++					    CREATE_PIXMAP_USAGE_SCRATCH);
+ 	if (!pPixmap)
+ 	    return;
+ 

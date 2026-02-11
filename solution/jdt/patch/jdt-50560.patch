@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+index 462f436..832590e 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/APTDispatch.java
+@@ -58,11 +58,11 @@ public class APTDispatch
+ 			ICompilationUnit compilationUnit )
+ 	{
+ 		
+-		AptDispatchRunnable runnable;
++		APTDispatchRunnable runnable;
+ 		if ( file != null )
+-			 runnable = new AptDispatchRunnable( file, javaProj, factories );
++			 runnable = new APTDispatchRunnable( file, javaProj, factories );
+ 		else
+-			runnable = new AptDispatchRunnable( compilationUnit, javaProj, factories );
++			runnable = new APTDispatchRunnable( compilationUnit, javaProj, factories );
+ 		
+ 		IWorkspace w = ResourcesPlugin.getWorkspace();
+ 		try

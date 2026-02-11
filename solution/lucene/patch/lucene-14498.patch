@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/standard/StandardPostingsWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/standard/StandardPostingsWriter.java
+index 87aa5fb..7d0abfc 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/standard/StandardPostingsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/standard/StandardPostingsWriter.java
+@@ -157,7 +157,7 @@ public final class StandardPostingsWriter extends PostingsWriterBase {
+ 
+     final int delta = position - lastPosition;
+     
+-    assert delta > 0 || position == 0 || position == -1: "position=" + position + " lastPosition=" + lastPosition;            // not quite right (if pos=0 is repeated twice we don't catch it)
++    assert delta > 0 || position == 0: "position=" + position + " lastPosition=" + lastPosition;            // not quite right (if pos=0 is repeated twice we don't catch it)
+ 
+     lastPosition = position;

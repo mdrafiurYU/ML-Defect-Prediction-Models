@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java
+index 192e457..b3b4716 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java
+@@ -187,7 +187,7 @@ public class SharedFieldSortComparator extends SortComparator {
+                 IndexReader reader = readers.get(idx);
+                 Document doc = reader.document(i.doc - starts[idx], FieldSelectors.UUID);
+                 String uuid = doc.get(FieldNames.UUID);
+-                Path path = hmgr.getPath(new NodeId(UUID.fromString(uuid)));
++                Path path = hmgr.getPath(new NodeId(uuid));
+                 PathBuilder builder = new PathBuilder(path);
+                 builder.addAll(relPath.getElements());
+                 PropertyId id = hmgr.resolvePropertyPath(builder.getPath());

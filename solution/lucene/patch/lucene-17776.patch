@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LineEntityProcessor.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LineEntityProcessor.java
+index 0a8b201..30e3663 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LineEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/LineEntityProcessor.java
+@@ -64,6 +64,7 @@ public class LineEntityProcessor extends EntityProcessorBase {
+   /**
+    * Parses each of the entity attributes.
+    */
++  @Override
+   public void init(Context context) {
+     super.init(context);
+     String s;
+@@ -97,6 +98,7 @@ public class LineEntityProcessor extends EntityProcessorBase {
+    * from the url. However transformers can be used to create as 
+    * many other fields as required.
+    */
++  @Override
+   public Map<String, Object> nextRow() {
+     if (reader == null) {
+       reader = new BufferedReader((Reader) context.getDataSource().getData(url));

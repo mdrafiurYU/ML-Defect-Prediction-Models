@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/IProblemFactory.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/IProblemFactory.java
+index 046e2cb..c0e7bcf 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/IProblemFactory.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/IProblemFactory.java
+@@ -25,7 +25,7 @@ import org.eclipse.jdt.core.compiler.*;
+ 
+ public interface IProblemFactory {
+ 
+-	IProblem createProblem(
++	CategorizedProblem createProblem(
+ 		char[] originatingFileName,
+ 		int problemId,
+ 		String[] problemArguments,

@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglget.c b/hw/xgl/xglget.c
+index a88e0fe..87bcb05 100644
+--- a/hw/xgl/xglget.c
++++ b/hw/xgl/xglget.c
+@@ -42,7 +42,7 @@ xglGetImage (DrawablePtr   pDrawable,
+     
+     XGL_SCREEN_PRIV (pScreen);
+ 
+-    /* Many apps use GetImage to sync with the visable frame buffer */
++    /* Many apps use GetImage to sync with the visible frame buffer */
+     if (pDrawable->type == DRAWABLE_WINDOW)
+     {
+ 	if (!xglSyncSurface (&pScreenPriv->pScreenPixmap->drawable))

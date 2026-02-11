@@ -1,0 +1,22 @@
+diff --git a/dix/dixfonts.c b/dix/dixfonts.c
+index c7fa839..79489e8 100644
+--- a/dix/dixfonts.c
++++ b/dix/dixfonts.c
+@@ -1906,7 +1906,7 @@ InitFonts (void)
+ }
+ 
+ int
+-GetDefaultPointSize ()
++GetDefaultPointSize (void)
+ {
+     return 120;
+ }
+@@ -2018,7 +2018,7 @@ find_old_font(XID id)
+ }
+ 
+ Font
+-GetNewFontClientID()
++GetNewFontClientID(void)
+ {
+     return FakeClientID(0);
+ }

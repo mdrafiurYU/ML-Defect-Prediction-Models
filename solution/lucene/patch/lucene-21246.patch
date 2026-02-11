@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+index 0bc314f..dfd53f6 100644
+--- a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriter.java
+@@ -79,7 +79,7 @@ final class FreqProxTermsWriter extends TermsHashConsumer {
+ 
+       // If this field has postings then add them to the
+       // segment
+-      fieldWriter.flush(consumer, state);
++      fieldWriter.flush(fieldInfo.name, consumer, state);
+ 
+       TermsHashPerField perField = fieldWriter.termsHashPerField;
+       assert termsHash == null || termsHash == perField.termsHash;

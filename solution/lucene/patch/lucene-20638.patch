@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java b/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java
+index e3e2e67..ed98631 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestSpansAdvanced.java
+@@ -59,7 +59,7 @@ public class TestSpansAdvanced extends LuceneTestCase {
+     final RandomIndexWriter writer = new RandomIndexWriter(random,
+                                                            mDirectory, newIndexWriterConfig(TEST_VERSION_CURRENT,
+                                                                                             new MockAnalyzer(MockTokenizer.SIMPLE, true,
+-                                                                                                             MockTokenFilter.ENGLISH_STOPSET, true)).setMergePolicy(newInOrderLogMergePolicy()));
++                                                                                                             MockTokenFilter.ENGLISH_STOPSET, true)).setMergePolicy(newLogMergePolicy()));
+     addDocument(writer, "1", "I think it should work.");
+     addDocument(writer, "2", "I think it should work.");
+     addDocument(writer, "3", "I think it should work.");

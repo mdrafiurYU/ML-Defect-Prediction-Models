@@ -1,0 +1,31 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index df5eb14..fb28111 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -1617,6 +1617,9 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 						this.options.put(
+ 							CompilerOptions.OPTION_ReportDeprecationInDeprecatedCode, 
+ 							CompilerOptions.DISABLED);
++						this.options.put(
++							CompilerOptions.OPTION_ReportDeprecationWhenOverridingDeprecatedMethod, 
++							CompilerOptions.DISABLED);						
+ 					} else if (token.equals("allDeprecation")) { //$NON-NLS-1$
+ 						this.options.put(
+ 							CompilerOptions.OPTION_ReportDeprecation, 
+@@ -1708,6 +1711,16 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 						this.options.put(
+ 							CompilerOptions.OPTION_ReportUncheckedTypeOperation,
+ 							isEnabling ? CompilerOptions.WARNING : CompilerOptions.IGNORE);
++						this.options.put(
++							CompilerOptions.OPTION_ReportRawTypeReference,
++							CompilerOptions.DISABLED);						
++					} else if (token.equals("allUnchecked")) {//$NON-NLS-1$ //$NON-NLS-2$ 
++						this.options.put(
++							CompilerOptions.OPTION_ReportUncheckedTypeOperation,
++							isEnabling ? CompilerOptions.WARNING : CompilerOptions.IGNORE);
++						this.options.put(
++							CompilerOptions.OPTION_ReportRawTypeReference,
++							isEnabling ? CompilerOptions.ENABLED : CompilerOptions.DISABLED);						
+ 					} else if (token.equals("finalBound")) {//$NON-NLS-1$ 
+ 						this.options.put(
+ 							CompilerOptions.OPTION_ReportFinalParameterBound,

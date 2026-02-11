@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 5a71bcf..733106c 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1714,9 +1714,11 @@ xf86SetScrnInfoModes (ScrnInfoPtr scrn)
+     /* Set scrn->modes to the mode list for the 'compat' output */
+     scrn->modes = xf86DuplicateModes(scrn, output->probed_modes);
+ 
++    if (crtc) {
+     for (mode = scrn->modes; mode; mode = mode->next)
+ 	if (xf86ModesEqual (mode, &crtc->desiredMode))
+ 	    break;
++    }
+ 
+     if (scrn->modes != NULL) {
+ 	/* For some reason, scrn->modes is circular, unlike the other mode

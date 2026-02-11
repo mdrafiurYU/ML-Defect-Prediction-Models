@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/os.c b/hw/xfree86/loader/os.c
+index fdddce8..12cf3d8 100644
+--- a/hw/xfree86/loader/os.c
++++ b/hw/xfree86/loader/os.c
+@@ -42,6 +42,8 @@
+ #define OSNAME "linux"
+ #elif defined(__FreeBSD__)
+ #define OSNAME "freebsd"
++#elif defined(__DragonFly__)
++#define OSNAME "dragonfly"
+ #elif defined(__NetBSD__)
+ #define OSNAME "netbsd"
+ #elif defined(__OpenBSD__)

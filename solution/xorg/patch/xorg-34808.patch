@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/x-hook.c b/hw/darwin/quartz/xpr/x-hook.c
+index e38d0ed..bb873bb 100644
+--- a/hw/darwin/quartz/xpr/x-hook.c
++++ b/hw/darwin/quartz/xpr/x-hook.c
+@@ -27,7 +27,9 @@
+    promote the sale, use or other dealings in this Software without
+    prior written authorization. */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #include "x-hook.h"
+ #include <stdlib.h>

@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessCommon.h b/miext/rootless/rootlessCommon.h
+index 56f81f5..3d33891 100644
+--- a/miext/rootless/rootlessCommon.h
++++ b/miext/rootless/rootlessCommon.h
+@@ -273,6 +273,8 @@ Bool RootlessResolveColormap (ScreenPtr pScreen, int first_color,
+ void RootlessFlushWindowColormap (WindowPtr pWin);
+ void RootlessFlushScreenColormaps (ScreenPtr pScreen);
+ 
++RootlessColormapCallback(void *data, int first_color, int n_colors, uint32_t *colors);
++
+ // Move a window to its proper location on the screen.
+ void RootlessRepositionWindow(WindowPtr pWin);
+ 

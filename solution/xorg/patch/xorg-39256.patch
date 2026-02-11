@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/vesa/vesa.c b/hw/kdrive/vesa/vesa.c
+index d6fa5eb..316b873 100644
+--- a/hw/kdrive/vesa/vesa.c
++++ b/hw/kdrive/vesa/vesa.c
+@@ -1226,8 +1226,6 @@ vesaRandRSetConfig (ScreenPtr		pScreen,
+ 	break;
+     }
+ 
+-    KdOffscreenSwapOut (screen->pScreen);
+-    
+     vesaUnmapFramebuffer (screen);
+     
+     if (!vesaComputeFramebufferMapping (screen))

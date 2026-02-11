@@ -1,0 +1,21 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestQueryUtils.java b/solr/src/test/org/apache/solr/search/TestQueryUtils.java
+index e31cf4a..3143431 100755
+--- a/solr/src/test/org/apache/solr/search/TestQueryUtils.java
++++ b/solr/src/test/org/apache/solr/search/TestQueryUtils.java
+@@ -31,12 +31,16 @@ import java.util.List;
+  */
+ public class TestQueryUtils extends AbstractSolrTestCase {
+ 
++  @Override
+   public String getSchemaFile() { return "schema.xml"; }
++  @Override
+   public String getSolrConfigFile() { return "solrconfig.xml"; }
+ 
++  @Override
+   public void setUp() throws Exception {
+     super.setUp();
+   }
++  @Override
+   public void tearDown() throws Exception {
+     super.tearDown();
+   }

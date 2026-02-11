@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxsync.c b/hw/dmx/dmxsync.c
+index f304b5a..02e2446 100644
+--- a/hw/dmx/dmxsync.c
++++ b/hw/dmx/dmxsync.c
+@@ -47,6 +47,10 @@
+  * times faster, with 68 more than 50X faster, 114 more than 10X faster,
+  * and 181 more than 2X faster. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxsync.h"
+ #include "dmxstat.h"

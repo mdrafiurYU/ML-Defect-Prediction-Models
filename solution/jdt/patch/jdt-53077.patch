@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index 688fe90..c44d9b5 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -243,6 +243,9 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 	
+ 	
+ 	public boolean doesParticipateInProject(IJavaProject project) {
++		if (!AptConfig.isEnabled(project)) {
++			return false;
++		}
+ 		List<AnnotationProcessorFactory> factories = _factoryLoader.getFactoriesForProject( project );
+ 		if (factories.size() == 0)
+ 			return false;

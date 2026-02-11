@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+index 0083445..6702612 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+@@ -51,7 +51,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+         System.out.println("TEST: pass=" + pass);
+       }
+       boolean doAbort = pass == 1;
+-      long diskFree = 200;
++      long diskFree = _TestUtil.nextInt(random, 100, 300);
+       while(true) {
+         if (VERBOSE) {
+           System.out.println("TEST: cycle: diskFree=" + diskFree);
+@@ -120,7 +120,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+           dir.close();
+           // Now try again w/ more space:
+ 
+-          diskFree += 500;
++          diskFree += _TestUtil.nextInt(random, 400, 600);
+         } else {
+           //_TestUtil.syncConcurrentMerges(writer);
+           dir.setMaxSizeInBytes(0);

@@ -1,0 +1,15 @@
+diff --git a/fb/fb24_32.c b/fb/fb24_32.c
+index 2bdad1f..214e2e6 100644
+--- a/fb/fb24_32.c
++++ b/fb/fb24_32.c
+@@ -23,6 +23,10 @@
+  * Author:  Keith Packard, SuSE, Inc.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef XFree86LOADER
+ #include "xf86.h"
+ #include "xf86_ansic.h"

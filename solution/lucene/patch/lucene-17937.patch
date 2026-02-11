@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTopDocsCollector.java b/lucene/src/test/org/apache/lucene/search/TestTopDocsCollector.java
+index 2116468..417d9c0 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTopDocsCollector.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTopDocsCollector.java
+@@ -95,7 +95,7 @@ public class TestTopDocsCollector extends LuceneTestCase {
+ 
+   private TopDocsCollector<ScoreDoc> doSearch(int numResults) throws IOException {
+     Query q = new MatchAllDocsQuery();
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     TopDocsCollector<ScoreDoc> tdc = new MyTopsDocCollector(numResults);
+     searcher.search(q, tdc);
+     searcher.close();

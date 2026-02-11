@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AptReconcileTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AptReconcileTests.java
+index bcda7a5..aeabd18 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AptReconcileTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/AptReconcileTests.java
+@@ -357,9 +357,7 @@ public class AptReconcileTests extends ModifyingResourceTests
+ 			
+ 			// make sure generated source folder exists in the project.  This is necessary
+ 			// for reconcile-time type-generation to work
+-			GeneratedFileManager gfm = GeneratedFileManager.getGeneratedFileManager( project.getProject() );
+-			gfm.ensureGeneratedSourceFolder( null /* progress monitor */ );
+-			
++			GeneratedFileManager.getGeneratedFileManager( project.getProject() );
+ 			
+ 			_classesJarFile = TestUtil.createAndAddAnnotationJar( project );

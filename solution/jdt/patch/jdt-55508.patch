@@ -1,0 +1,31 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+index 70ada2f..2e2fd5a 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/APTTestBase.java
+@@ -47,6 +47,7 @@ public abstract class APTTestBase extends Tests{
+ 	 */
+ 	public void setUp() throws Exception
+ 	{	
++		runFinalizers();
+ 		ProcessorTestStatus.reset();
+ 		
+ 		super.setUp();
+@@ -89,9 +90,18 @@ public abstract class APTTestBase extends Tests{
+ 		throws Exception
+ 	{
+ 		AptPlugin.trace("Tearing down " + getProjectName() );
++		runFinalizers();
+ 		super.tearDown();
+ 	}
+ 	
++	private static void runFinalizers() {
++        // GC in an attempt to release file lock on Classes.jar
++		System.gc();
++		System.runFinalization();
++		System.gc();
++		System.runFinalization();
++	}
++	
+ 	public String getProjectName()
+ 	{
+ 		return this.getClass().getName() + "Project"; //$NON-NLS-1$

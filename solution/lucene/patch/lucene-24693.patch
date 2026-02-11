@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java b/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java
+index 3062720..b901d2f 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFilteredQuery.java
+@@ -115,7 +115,7 @@ public class TestFilteredQuery extends LuceneTestCase {
+     assertEquals (1, hits[0].doc);
+     QueryUtils.check(random, filteredquery,searcher);
+ 
+-    hits = searcher.search (filteredquery, null, 1000, new Sort(new SortField("sorter", SortField.STRING))).scoreDocs;
++    hits = searcher.search (filteredquery, null, 1000, new Sort(new SortField("sorter", SortField.Type.STRING))).scoreDocs;
+     assertEquals (1, hits.length);
+     assertEquals (1, hits[0].doc);

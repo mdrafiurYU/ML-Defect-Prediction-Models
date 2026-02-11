@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index dc15b0f..1e17911 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -704,7 +704,7 @@ __glXDRIscreenCreateDrawable(__GLXscreen *screen,
+ 	(driScreen->driScreen.createNewDrawable)(&driScreen->driScreen,
+ 						 modes,
+ 						 &private->driDrawable,
+-						 hwDrawable, 0, NULL);
++						 hwDrawable, 0, 0, NULL);
+ 
+     if (private->driDrawable.private == NULL) {
+ 	__glXenterServer(GL_FALSE);

@@ -1,0 +1,15 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java b/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java
+index 68d3e60..39ac699 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/collation/CollationKeyFilter.java
+@@ -85,7 +85,9 @@ public final class CollationKeyFilter extends TokenFilter {
+    */
+   public CollationKeyFilter(TokenStream input, Collator collator) {
+     super(input);
+-    this.collator = collator;
++    // clone in case JRE doesnt properly sync,
++    // or to reduce contention in case they do
++    this.collator = (Collator) collator.clone();
+   }
+ 
+   @Override

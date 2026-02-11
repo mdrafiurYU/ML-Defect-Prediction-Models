@@ -1,0 +1,36 @@
+diff --git a/Xi/getselev.c b/Xi/getselev.c
+index c2ec2b9..41d3213 100644
+--- a/Xi/getselev.c
++++ b/Xi/getselev.c
+@@ -80,8 +80,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGetSelectedExtensionEvents(client)
+-    register ClientPtr client;
++SProcXGetSelectedExtensionEvents(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -100,8 +99,7 @@ SProcXGetSelectedExtensionEvents(client)
+  */
+ 
+ int
+-ProcXGetSelectedExtensionEvents(client)
+-    register ClientPtr client;
++ProcXGetSelectedExtensionEvents(register ClientPtr client)
+     {
+     int					i;
+     int					total_length = 0;
+@@ -181,10 +179,7 @@ ProcXGetSelectedExtensionEvents(client)
+  */
+ 
+ void
+-SRepXGetSelectedExtensionEvents (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGetSelectedExtensionEventsReply	*rep;
++SRepXGetSelectedExtensionEvents (ClientPtr client, int size, xGetSelectedExtensionEventsReply *rep)
+     {
+     register char n;
+ 

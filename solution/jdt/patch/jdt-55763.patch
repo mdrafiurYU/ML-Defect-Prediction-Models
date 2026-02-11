@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
+index 20c5c7c..0e6df33 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
+@@ -119,6 +119,9 @@ public class SingleNameReference extends NameReference implements OperatorIds {
+ 						currentScope.problemReporter().cannotAssignToFinalOuterLocal(localBinding, this);
+ 					}
+ 				}
++				else /* avoid double diagnostic */ if (localBinding.isArgument) {
++					currentScope.problemReporter().parameterAssignment(localBinding, this);
++				}
+ 				flowInfo.markAsDefinitelyAssigned(localBinding);
+ 		}
+ 		manageEnclosingInstanceAccessIfNecessary(currentScope, flowInfo);

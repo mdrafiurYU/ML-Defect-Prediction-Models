@@ -1,0 +1,50 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java b/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
+index 17e4235..b2345d0 100644
+--- a/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
+@@ -70,7 +70,6 @@ public abstract class LogMergePolicy extends MergePolicy {
+   protected boolean calibrateSizeByDeletes = true;
+   
+   protected boolean useCompoundFile = true;
+-  protected boolean useCompoundDocStore = true;
+ 
+   public LogMergePolicy() {
+     super();
+@@ -157,27 +156,6 @@ public abstract class LogMergePolicy extends MergePolicy {
+     return useCompoundFile;
+   }
+ 
+-  // Javadoc inherited
+-  @Override
+-  public boolean useCompoundDocStore(SegmentInfos infos) {
+-    return useCompoundDocStore;
+-  }
+-
+-  /** Sets whether compound file format should be used for
+-   *  newly flushed and newly merged doc store
+-   *  segment files (term vectors and stored fields). */
+-  public void setUseCompoundDocStore(boolean useCompoundDocStore) {
+-    this.useCompoundDocStore = useCompoundDocStore;
+-  }
+-
+-  /** Returns true if newly flushed and newly merge doc
+-   *  store segment files (term vectors and stored fields)
+-   *  are written in compound file format. @see
+-   *  #setUseCompoundDocStore */
+-  public boolean getUseCompoundDocStore() {
+-    return useCompoundDocStore;
+-  }
+-
+   /** Sets whether the segment size should be calibrated by
+    *  the number of deletes when choosing segments for merge. */
+   public void setCalibrateSizeByDeletes(boolean calibrateSizeByDeletes) {
+@@ -591,8 +569,7 @@ public abstract class LogMergePolicy extends MergePolicy {
+     sb.append("maxMergeSize=").append(maxMergeSize).append(", ");
+     sb.append("calibrateSizeByDeletes=").append(calibrateSizeByDeletes).append(", ");
+     sb.append("maxMergeDocs=").append(maxMergeDocs).append(", ");
+-    sb.append("useCompoundFile=").append(useCompoundFile).append(", ");
+-    sb.append("useCompoundDocStore=").append(useCompoundDocStore);
++    sb.append("useCompoundFile=").append(useCompoundFile);
+     sb.append("]");
+     return sb.toString();
+   }

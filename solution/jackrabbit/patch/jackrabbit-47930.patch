@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/TestAll.java
+index f3f855b..54fc06e 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/TestAll.java
+@@ -49,6 +49,10 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(AddEventListenerTest.class);
+         suite.addTestSuite(WorkspaceOperationTest.class);
+ 
++        // JCR 2.0
++        
++        suite.addTestSuite(GetDateTest.class);
++        
+         return suite;
+     }
+ }

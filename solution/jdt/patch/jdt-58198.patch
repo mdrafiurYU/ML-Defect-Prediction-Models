@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/ScannerHelper.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/ScannerHelper.java
+index 9e25757..0e8bb8f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/ScannerHelper.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/ScannerHelper.java
+@@ -211,7 +211,4 @@ public static boolean isDigit(char c) throws InvalidInputException {
+ 		return false;
+ 	}
+ }
+-public static boolean isWhitespace(char c) {
+-	return c < ScannerHelper.MAX_OBVIOUS && C_SPACE == ScannerHelper.OBVIOUS_IDENT_CHAR_NATURES[c];
+-}
+ }

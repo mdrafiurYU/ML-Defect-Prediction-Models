@@ -1,0 +1,42 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+index c269d61..2069311 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+@@ -426,8 +426,8 @@ public class JavaModelManager implements ISaveParticipant, IContentTypeChangeLis
+ 		} else {
+ 			containerRemoveInitializationInProgress(project, containerPath);
+ 
+-			Map projectContainers = (Map)this.containers.get(project);
+-			if (projectContainers == null){
++			Map projectContainers = (Map)this.containers.get(project);	
++ 			if (projectContainers == null){
+ 				projectContainers = new HashMap(1);
+ 				this.containers.put(project, projectContainers);
+ 			}
+@@ -435,7 +435,7 @@ public class JavaModelManager implements ISaveParticipant, IContentTypeChangeLis
+ 			if (container == null) {
+ 				projectContainers.remove(containerPath);
+ 			} else {
+-   				projectContainers.put(containerPath, container);
++  				projectContainers.put(containerPath, container);
+ 			}
+ 			// discard obsoleted information about previous session
+ 			Map previousContainers = (Map)this.previousSessionContainers.get(project);
+@@ -447,6 +447,17 @@ public class JavaModelManager implements ISaveParticipant, IContentTypeChangeLis
+ 	}
+ 	
+ 	/*
++	 * The given project is being removed. Remove all containers for this project from the cache.
++	 */
++	public synchronized void containerRemove(IJavaProject project) {
++		Map initializations = (Map) this.containerInitializationInProgress.get();
++		if (initializations != null) {
++			initializations.remove(project);
++		}
++		this.containers.remove(project);
++	}
++	
++	/*
+ 	 * Optimize startup case where a container for 1 project is initialized at a time with the same entries as on shutdown.
+ 	 */
+ 	public boolean containerPutIfInitializingWithSameEntries(IPath containerPath, IJavaProject[] projects, IClasspathContainer[] respectiveContainers) {

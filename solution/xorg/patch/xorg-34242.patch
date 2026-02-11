@@ -1,0 +1,38 @@
+diff --git a/include/dix.h b/include/dix.h
+index 6a67d14..c987548 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -158,8 +158,6 @@ extern void UpdateCurrentTime(void);
+ 
+ extern void UpdateCurrentTimeIf(void);
+ 
+-extern void InitSelections(void);
+-
+ extern void FlushClientCaches(XID /*id*/);
+ 
+ extern int dixDestroyPixmap(
+@@ -187,10 +185,6 @@ extern void DeleteWindowFromAnySelections(
+ extern void MarkClientException(
+     ClientPtr /*client*/);
+ 
+-extern int SendConnSetup(
+-    ClientPtr /*client*/,
+-    char* /*reason*/);
+-
+ #if defined(DDXBEFORERESET)
+ extern void ddxBeforeReset (void);
+ #endif
+@@ -362,13 +356,6 @@ extern void EnqueueEvent(
+     DeviceIntPtr /* device */,
+     int	/* count */);
+ 
+-extern void ComputeFreezes(void);
+-
+-extern void CheckGrabForSyncs(
+-    DeviceIntPtr /* dev */,
+-    Bool /* thisMode */,
+-    Bool /* otherMode */);
+-
+ extern void ActivatePointerGrab(
+     DeviceIntPtr /* mouse */,
+     GrabPtr /* grab */,

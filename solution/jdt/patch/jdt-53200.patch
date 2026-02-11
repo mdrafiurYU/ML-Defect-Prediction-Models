@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/IClassFile.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/IClassFile.java
+index c96ecbc..523f663 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/IClassFile.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/IClassFile.java
+@@ -149,7 +149,8 @@ ICompilationUnit getWorkingCopy(WorkingCopyOwner owner, IProgressMonitor monitor
+  * @since 2.0
+  * @deprecated Use getWorkingCopy(WorkingCopyOwner, IProgressMonitor) instead
+  */
+-IJavaElement getWorkingCopy(IProgressMonitor monitor, IBufferFactory factory) throws JavaModelException;/**
++IJavaElement getWorkingCopy(IProgressMonitor monitor, IBufferFactory factory) throws JavaModelException;
++/**
+  * Returns whether this type represents a class. This is not guaranteed to be
+  * instantaneous, as it may require parsing the underlying file.
+  *

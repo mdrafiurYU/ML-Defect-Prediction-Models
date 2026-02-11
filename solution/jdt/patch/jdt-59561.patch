@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 680023a..f16e74c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1828,6 +1828,15 @@ public void illegalAbstractModifierCombinationForMethod(ReferenceBinding type, A
+ 		methodDecl.sourceStart,
+ 		methodDecl.sourceEnd);
+ }
++public void illegalAccessFromTypeVariable(TypeVariableBinding variable, ASTNode location) {
++	String[] arguments = new String[] { new String(variable.sourceName) };
++	this.handle(
++		IProblem.IllegalAccessFromTypeVariable,
++		arguments, 
++		arguments,
++		location.sourceStart,
++		location.sourceEnd);
++}
+ public void illegalClassLiteralForTypeVariable(TypeVariableBinding variable, ASTNode location) {
+ 	String[] arguments = new String[] { new String(variable.sourceName) };
+ 	this.handle(

@@ -1,0 +1,14 @@
+diff --git a/mi/mipointer.h b/mi/mipointer.h
+index 8e66ae6..832aa5a 100644
+--- a/mi/mipointer.h
++++ b/mi/mipointer.h
+@@ -187,4 +187,9 @@ extern void miPointerMoved(
+ 
+ extern int miPointerScreenIndex;
+ 
++#ifdef MPX
++_X_EXPORT Bool IsMPDev(DeviceIntPtr pDev);
++#endif;
++
++
+ #endif /* MIPOINTER_H */

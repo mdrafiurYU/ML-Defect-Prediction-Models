@@ -1,0 +1,16 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java b/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
+index 02e2b5c..47541e5 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/LuceneTestCase.java
+@@ -1383,6 +1383,11 @@ public abstract class LuceneTestCase extends Assert {
+     }
+ 
+     @Override
++    public synchronized boolean hasFieldCodec(String name) {
++      return true; // we have a codec for every field
++    }
++
++    @Override
+     public synchronized String toString() {
+       return "RandomCodecProvider: " + previousMappings.toString();
+     }

@@ -1,0 +1,18 @@
+diff --git a/Xprint/ddxInit.c b/Xprint/ddxInit.c
+index 0de38cd..844cba1 100644
+--- a/Xprint/ddxInit.c
++++ b/Xprint/ddxInit.c
+@@ -237,11 +237,13 @@ OsVendorFatalError(void)
+ }
+ #endif
+ 
++#ifdef DDXBEFORERESET
+ void
+ ddxBeforeReset(void)
+ {
+     return;
+ }
++#endif
+ 
+ #ifdef DDXTIME
+ CARD32

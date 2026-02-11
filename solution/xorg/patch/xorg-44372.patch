@@ -1,0 +1,36 @@
+diff --git a/Xi/xiallowev.c b/Xi/xiallowev.c
+index 5712557..a8cf1b6 100644
+--- a/Xi/xiallowev.c
++++ b/Xi/xiallowev.c
+@@ -72,22 +72,25 @@ ProcXIAllowEvents(ClientPtr client)
+     time = ClientTimeToServerTime(stuff->time);
+ 
+     switch (stuff->mode) {
+-    case ReplayThisDevice:
++    case ReplayDevice:
+ 	AllowSome(client, time, dev, NOT_GRABBED);
+ 	break;
+-    case SyncThisDevice:
++    case SyncDevice:
+ 	AllowSome(client, time, dev, FREEZE_NEXT_EVENT);
+ 	break;
+-    case AsyncThisDevice:
++    case AsyncDevice:
+ 	AllowSome(client, time, dev, THAWED);
+ 	break;
+-    case AsyncOtherDevices:
++    case AsyncPairedDevice:
++        if (dev->isMaster)
+ 	AllowSome(client, time, dev, THAW_OTHERS);
+ 	break;
+-    case SyncAll:
++    case SyncPair:
++        if (dev->isMaster)
+ 	AllowSome(client, time, dev, FREEZE_BOTH_NEXT_EVENT);
+ 	break;
+-    case AsyncAll:
++    case AsyncPair:
++        if (dev->isMaster)
+ 	AllowSome(client, time, dev, THAWED_BOTH);
+ 	break;
+     default:

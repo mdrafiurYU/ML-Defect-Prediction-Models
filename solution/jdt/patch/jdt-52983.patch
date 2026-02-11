@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/AST.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/AST.java
+index a610380..6cb32f2 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/AST.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/AST.java
+@@ -268,7 +268,7 @@ public final class AST {
+ 		converter.setAST(ast);
+ 	
+ 		CompilationUnit unit = converter.convert(compilationUnitDeclaration, source);
+-		unit.setLineEndTable(compilationUnitDeclaration.compilationResult.lineSeparatorPositions);
++		unit.setLineEndTable(compilationUnitDeclaration.compilationResult.getLineSeparatorPositions());
+ 		unit.setJavaElement(workingCopy);
+ 		ast.setDefaultNodeFlag(savedDefaultNodeFlag);
+ 		return unit;

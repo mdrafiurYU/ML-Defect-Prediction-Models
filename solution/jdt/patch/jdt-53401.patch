@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java
+index 0fec730..b482155 100644
+--- a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java
++++ b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java
+@@ -36,7 +36,7 @@ public class FullSourceWorkspaceCompletionTests extends FullSourceWorkspaceTests
+ 	public static Test suite() {
+ 		Test suite = buildSuite(testClass());
+ 		TESTS_COUNT = suite.countTestCases();
+-		createPrintStream(testClass().getName(), LOG_STREAMS, TESTS_COUNT, "Complete");
++		createPrintStream(testClass(), LOG_STREAMS, TESTS_COUNT, "Complete");
+ 		return suite;
+ 	}

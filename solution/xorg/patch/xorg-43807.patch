@@ -1,0 +1,16 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 8339a3e..d7219f0 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -695,6 +695,11 @@ typedef struct _ExaDriver {
+     /* Hooks to allow driver to its own pixmap memory management */
+     void *(*CreatePixmap)(ScreenPtr pScreen, int size, int align);
+     void (*DestroyPixmap)(ScreenPtr pScreen, void *driverPriv);
++    /**
++     * Returning a pixmap with non-NULL devPrivate.ptr implies a pixmap which is
++     * not offscreen, which will never be accelerated and Prepare/FinishAccess won't
++     * be called.
++     */
+     Bool (*ModifyPixmapHeader)(PixmapPtr pPixmap, int width, int height,
+                               int depth, int bitsPerPixel, int devKind,
+                               pointer pPixData);

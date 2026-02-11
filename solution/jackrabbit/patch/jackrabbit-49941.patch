@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
+index 9293203..d28a609 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/lucene/SlowQueryHandler.java
+@@ -70,4 +70,9 @@ public class SlowQueryHandler extends AbstractQueryHandler {
+             throws InvalidQueryException {
+         return null;
+     }
++
++    public Iterable<NodeId> getWeaklyReferringNodes(NodeId id)
++            throws RepositoryException {
++        return null;
++    }
+ }

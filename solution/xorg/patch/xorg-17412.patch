@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/exa/exa.c b/hw/xfree86/exa/exa.c
+index c8e57e4..4d2014d 100644
+--- a/hw/xfree86/exa/exa.c
++++ b/hw/xfree86/exa/exa.c
+@@ -1237,7 +1237,7 @@ exaFillRegionTiled (DrawablePtr	pDrawable,
+     /* If we're filling with a solid color, grab it out and go to
+      * FillRegionSolid, saving numerous copies.
+      */
+-    if (pDrawable->width == 1 && pDrawable->height == 1) {
++    if (tileWidth == 1 && tileHeight == 1) {
+ 	CARD32 pixel;
+ 
+ 	exaDrawableUseMemory(&pTile->drawable);

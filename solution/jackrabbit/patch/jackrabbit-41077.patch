@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/MixinTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/MixinTest.java
+index c3009d4..6211b68 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/MixinTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/MixinTest.java
+@@ -107,7 +107,7 @@ public class MixinTest extends AbstractObservationTest {
+      * Checks if an event listener registered for a mixin type T also gets
+      * notifications for an event on a node with a mixin type which is derived
+      * from T.
+-     */ 
++     */
+     public void testDerivedMixin() throws RepositoryException {
+         Node node1 = testRootNode.addNode(nodeName1, testNodeType);
+         node1.addMixin(mixVersionable);

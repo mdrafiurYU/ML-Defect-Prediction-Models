@@ -1,0 +1,22 @@
+diff --git a/solr/src/webapp/src/org/apache/solr/servlet/cache/HttpCacheHeaderUtil.java b/solr/src/webapp/src/org/apache/solr/servlet/cache/HttpCacheHeaderUtil.java
+index 6169a5c..3a905cc 100644
+--- a/solr/src/webapp/src/org/apache/solr/servlet/cache/HttpCacheHeaderUtil.java
++++ b/solr/src/webapp/src/org/apache/solr/servlet/cache/HttpCacheHeaderUtil.java
+@@ -95,7 +95,7 @@ public final class HttpCacheHeaderUtil {
+   public static String calcEtag(final SolrQueryRequest solrReq) {
+     final SolrCore core = solrReq.getCore();
+     final long currentIndexVersion
+-      = solrReq.getSearcher().getReader().getVersion();
++      = solrReq.getSearcher().getIndexReader().getVersion();
+ 
+     EtagCacheVal etagCache = etagCoreCache.get(core);
+     if (null == etagCache) {
+@@ -152,7 +152,7 @@ public final class HttpCacheHeaderUtil {
+       // assume default, change if needed (getOpenTime() should be fast)
+       lastMod =
+         LastModFrom.DIRLASTMOD == lastModFrom
+-        ? IndexReader.lastModified(searcher.getReader().directory())
++        ? IndexReader.lastModified(searcher.getIndexReader().directory())
+         : searcher.getOpenTime();
+     } catch (IOException e) {
+       // we're pretty freaking screwed if this happens

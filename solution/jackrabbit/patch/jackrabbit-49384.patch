@@ -1,0 +1,46 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/QueryObjectModelFactoryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/QueryObjectModelFactoryTest.java
+index fec5a16..0da55da 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/QueryObjectModelFactoryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/QueryObjectModelFactoryTest.java
+@@ -21,6 +21,7 @@ import java.util.Iterator;
+ import java.util.Set;
+ 
+ import javax.jcr.RepositoryException;
++import javax.jcr.Value;
+ import javax.jcr.query.qom.And;
+ import javax.jcr.query.qom.BindVariableValue;
+ import javax.jcr.query.qom.ChildNode;
+@@ -54,6 +55,7 @@ import javax.jcr.query.qom.Selector;
+ import javax.jcr.query.qom.Source;
+ import javax.jcr.query.qom.StaticOperand;
+ import javax.jcr.query.qom.UpperCase;
++import javax.jcr.query.qom.Literal;
+ 
+ /**
+  * <code>QueryObjectModelFactoryTest</code> tests all methods on the
+@@ -425,7 +427,7 @@ public class QueryObjectModelFactoryTest extends AbstractQOMTest {
+             Join join = qf.join(s1, s2, joinType, cond);
+             assertTrue("Not a selector source", join.getLeft() instanceof Selector);
+             assertTrue("Not a selector source", join.getRight() instanceof Selector);
+-            assertEquals("Wrong join type", joinType.toString(), join.getJoinType());
++            assertEquals("Wrong join type", joinType, join.getJoinType());
+             assertTrue("Not an EquiJoinCondition", join.getJoinCondition() instanceof EquiJoinCondition);
+         }
+     }
+@@ -440,6 +442,16 @@ public class QueryObjectModelFactoryTest extends AbstractQOMTest {
+     }
+ 
+     /**
++     * Test case for {@link QueryObjectModelFactory#literal(Value)}
++     */
++    public void testLiteral() throws RepositoryException {
++        Value v = superuser.getValueFactory().createValue("test");
++        Literal literal = qf.literal(v);
++        assertEquals("Wrong literal value", v.getString(),
++                literal.getLiteralValue().getString());
++    }
++
++    /**
+      * Test case for {@link QueryObjectModelFactory#lowerCase(DynamicOperand)}
+      */
+     public void testLowerCase() throws RepositoryException {

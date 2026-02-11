@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+index 674c808..64f7345 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+@@ -1886,6 +1886,9 @@ public class JavaModelManager implements ISaveParticipant {
+ 		} catch (IOException e) {
+ 			if (file.exists())
+ 				Util.log(e, "Unable to read variable and containers file"); //$NON-NLS-1$
++		} catch (RuntimeException e) {
++			if (file.exists())
++				Util.log(e, "Unable to read variable and containers file (file is corrupt)"); //$NON-NLS-1$
+ 		} finally {
+ 			if (in != null) {
+ 				try {

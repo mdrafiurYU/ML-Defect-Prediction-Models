@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheAccessListener.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheAccessListener.java
+index 0acc805..5cd08ce 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheAccessListener.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/CacheAccessListener.java
+@@ -25,7 +25,7 @@ public interface CacheAccessListener {
+     /**
+      * The access listener is only called each x accesses.
+      */
+-    static final int ACCESS_INTERVAL = 127;
++    int ACCESS_INTERVAL = 127;
+ 
+     /**
+      * The cache calls this method after a number of accessed.

@@ -1,0 +1,50 @@
+diff --git a/jackrabbit-ocm-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java b/jackrabbit-ocm-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java
+index 1ad5566..f7201a8 100644
+--- a/jackrabbit-ocm-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java
++++ b/jackrabbit-ocm-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java
+@@ -24,21 +24,21 @@ import javax.jcr.Session;
+  * @author <a href="mailto:okiessler@apache.org">Oliver Kiessler</a>
+  */
+ public class RepositorySessionFactory {
+-    
+-    public static final String JACKRABBIT = "jackrabbit";   
++
++    public static final String JACKRABBIT = "jackrabbit";
+ 
+     private static Session session;
+-    
+-    /**  
++
++    /**
+      * Private constructor.
+      */
+     private RepositorySessionFactory()
+     {
+     }
+-    
++
+     /** Returns a session to a JCR repository.
+-     * 
+-     * @param jcrRepository 
++     *
++     * @param jcrRepository
+      * @param username Username to logon
+      * @param password Password
+      * @return session JCR repository session
+@@ -47,7 +47,7 @@ public class RepositorySessionFactory {
+             String username, String password,
+             RepositoryConfiguration configuration)
+     {
+-        
++
+         if (session == null)
+         {
+             if (jcrRepository != null)
+@@ -56,7 +56,7 @@ public class RepositorySessionFactory {
+                 {
+                     session = new JackrabbitRepositorySession().getSession(username, password, configuration);
+                 }
+-                
++
+             }
+         }

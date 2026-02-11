@@ -1,0 +1,13 @@
+diff --git a/Xext/dpms.c b/Xext/dpms.c
+index 3e79602..ea0a1cc 100644
+--- a/Xext/dpms.c
++++ b/Xext/dpms.c
+@@ -193,7 +193,7 @@ ProcDPMSSetTimeouts(client)
+     DPMSStandbyTime = stuff->standby * MILLI_PER_SECOND;
+     DPMSSuspendTime = stuff->suspend * MILLI_PER_SECOND;
+     DPMSOffTime = stuff->off * MILLI_PER_SECOND;
+-    SetDPMSTimers();
++    SetScreenSaverTimer();
+     
+     return(client->noClientException);
+ }

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java
+index b90a20c..02d2d39 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/MessagerImpl.java
+@@ -28,9 +28,9 @@ public class MessagerImpl implements Messager, EclipseMessager
+ 		WARNING, 
+ 		INFO
+ 	}
+-    private final CompilationProcessorEnv _env;
++    private final AbstractCompilationEnv _env;
+ 
+-    MessagerImpl(CompilationProcessorEnv env){
++    MessagerImpl(AbstractCompilationEnv env){
+         _env = env;
+     }

@@ -1,0 +1,12 @@
+diff --git a/include/pixmapstr.h b/include/pixmapstr.h
+index 4594882..dc03cf2 100644
+--- a/include/pixmapstr.h
++++ b/include/pixmapstr.h
+@@ -90,6 +90,7 @@ typedef struct _Pixmap {
+     short		screen_x;
+     short		screen_y;
+ #endif
++    unsigned		usage_hint; /* see CREATE_PIXMAP_USAGE_* */
+ } PixmapRec;
+ 
+ #endif /* PIXMAPSTRUCT_H */

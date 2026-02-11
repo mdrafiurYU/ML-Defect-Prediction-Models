@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java b/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java
+index 366d32c..08229ca 100644
+--- a/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java
++++ b/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java
+@@ -108,6 +108,9 @@ public class TestSearchForDuplicates extends LuceneTestCase {
+ 
+       Query query = parser.parse(HIGH_PRIORITY);
+       out.println("Query: " + query.toString(PRIORITY_FIELD));
++      if (VERBOSE) {
++        System.out.println("TEST: search query=" + query);
++      }
+ 
+       ScoreDoc[] hits = searcher.search(query, null, MAX_DOCS).scoreDocs;
+       printHits(out, hits, searcher);

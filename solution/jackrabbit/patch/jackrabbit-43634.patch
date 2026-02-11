@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/JackrabbitSecurityManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/JackrabbitSecurityManager.java
+index 00d82ad..9131013 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/JackrabbitSecurityManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/JackrabbitSecurityManager.java
+@@ -100,4 +100,13 @@ public interface JackrabbitSecurityManager {
+      */
+     public UserManager getUserManager(Session session) throws RepositoryException;
+ 
++    /**
++     * Retrieve the id to be displayed upon {@link Session#getUserID()} for
++     * the specified subject.
++     *
++     * @param subject
++     * @return userID to be displayed upon {@link Session#getUserID()}.
++     * @throws RepositoryException
++     */
++    public String getUserID(Subject subject) throws RepositoryException;
+ }

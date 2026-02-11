@@ -1,0 +1,40 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemResource.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemResource.java
+index b0cf644..77c8546 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemResource.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemResource.java
+@@ -175,14 +175,6 @@ public class FileSystemResource {
+     }
+ 
+     /**
+-     * @see FileSystem#getRandomAccessOutputStream
+-     */
+-    public RandomAccessOutputStream getRandomAccessOutputStream()
+-            throws FileSystemException {
+-        return fs.getRandomAccessOutputStream(path);
+-    }
+-
+-    /**
+      * @see FileSystem#lastModified
+      */
+     public long lastModified() throws FileSystemException {
+@@ -196,20 +188,6 @@ public class FileSystemResource {
+         return fs.length(path);
+     }
+ 
+-    /**
+-     * @see FileSystem#touch
+-     */
+-    public void touch() throws FileSystemException {
+-        fs.touch(path);
+-    }
+-
+-    /**
+-     * @see FileSystem#move
+-     */
+-    public void move(String destPath) throws FileSystemException {
+-        fs.move(path, destPath);
+-    }
+-
+     //-------------------------------------------< java.lang.Object overrides >
+     /**
+      * Returns the path string of this resource. This is just the

@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 8308752..e200c54 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -2404,6 +2404,7 @@ ChangeDeviceControl(register ClientPtr client, DeviceIntPtr pDev,
+         return Success;
+ 
+     case DEVICE_CORE:
++        return BadMatch;
+     case DEVICE_ENABLE:
+         return Success;
+ 

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ClassFileReaderTest_1_5.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ClassFileReaderTest_1_5.java
+index fd774c0..e6a28ed 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ClassFileReaderTest_1_5.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ClassFileReaderTest_1_5.java
+@@ -31,7 +31,7 @@ public class ClassFileReaderTest_1_5 extends AbstractRegressionTest {
+ 	}
+ 
+ 	public static Test suite() {
+-		return buildTestSuiteWithMinimalCompliance(testClass(), F_1_5);
++		return buildComplianceRegressionTestSetupSuite(testClass(), F_1_5);
+ 	}
+ 	public static Class testClass() {
+ 		return ClassFileReaderTest_1_5.class;

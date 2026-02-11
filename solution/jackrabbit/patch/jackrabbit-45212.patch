@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-spi/src/test/java/org/apache/jackrabbit/spi/Helper.java b/jackrabbit-spi/src/test/java/org/apache/jackrabbit/spi/Helper.java
+index a2e4681..5c9403b 100644
+--- a/jackrabbit-spi/src/test/java/org/apache/jackrabbit/spi/Helper.java
++++ b/jackrabbit-spi/src/test/java/org/apache/jackrabbit/spi/Helper.java
+@@ -101,14 +101,16 @@ public class Helper {
+     public SessionInfo getAdminSessionInfo() throws RepositoryException {
+         // force assignment of repoStub
+         getRepositoryService();
+-        String wspName = repoServiceStub.getProperty(RepositoryServiceStub.PROP_WORKSPACE);
++        String propName = RepositoryServiceStub.PROP_PREFIX + "." + RepositoryServiceStub.PROP_WORKSPACE;
++        String wspName = repoServiceStub.getProperty(propName);
+         return getRepositoryService().obtain(getAdminCredentials(), wspName);
+     }
+ 
+     public SessionInfo getReadOnlySessionInfo() throws RepositoryException {
+         // force assignment of repoStub
+         getRepositoryService();
+-        String wspName = repoServiceStub.getProperty(RepositoryServiceStub.PROP_WORKSPACE);
++        String propName = RepositoryServiceStub.PROP_PREFIX + "." + RepositoryServiceStub.PROP_WORKSPACE;
++        String wspName = repoServiceStub.getProperty(propName);
+         return getRepositoryService().obtain(getReadOnlyCredentials(), wspName);
+     }
+ }
+\ No newline at end of file

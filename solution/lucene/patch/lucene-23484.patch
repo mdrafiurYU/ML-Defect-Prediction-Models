@@ -1,0 +1,25 @@
+diff --git a/modules/grouping/src/java/org/apache/lucene/search/grouping/SearchGroup.java b/modules/grouping/src/java/org/apache/lucene/search/grouping/SearchGroup.java
+index ebee113..11820da 100644
+--- a/modules/grouping/src/java/org/apache/lucene/search/grouping/SearchGroup.java
++++ b/modules/grouping/src/java/org/apache/lucene/search/grouping/SearchGroup.java
+@@ -17,10 +17,16 @@ package org.apache.lucene.search.grouping;
+  * limitations under the License.
+  */
+ 
+-import org.apache.lucene.util.BytesRef;
++/**
++ * Represents a group that is found during the first pass search.
++ *
++ * @lucene.experimental
++ */
++public class SearchGroup<GROUP_VALUE_TYPE> {
++
++  /** The value that defines this group  */
++  public GROUP_VALUE_TYPE groupValue;
+ 
+-/** @lucene.experimental */
+-public class SearchGroup {
+-  public BytesRef groupValue;
++  /** The sort values used during sorting. Can be <code>null</code>. */
+   public Comparable[] sortValues;
+ }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DavResourceImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DavResourceImpl.java
+index f789262..1e9056c 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DavResourceImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DavResourceImpl.java
+@@ -454,7 +454,7 @@ public class DavResourceImpl implements DavResource, JcrConstants {
+                 if (failures.containsKey(o)) {
+                     Object error = failures.get(o);
+                     statusCode = (error instanceof RepositoryException)
+-                        ? new JcrDavException((RepositoryException)o).getErrorCode()
++                        ? new JcrDavException((RepositoryException) error).getErrorCode()
+                         : DavServletResponse.SC_INTERNAL_SERVER_ERROR;
+                 } else {
+                     statusCode = (failures.isEmpty()) ? DavServletResponse.SC_OK : DavServletResponse.SC_FAILED_DEPENDENCY;

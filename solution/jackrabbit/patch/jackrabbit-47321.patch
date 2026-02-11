@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeJoinConditionImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeJoinConditionImpl.java
+index bc3818f..240c151 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeJoinConditionImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeJoinConditionImpl.java
+@@ -99,6 +99,15 @@ public class SameNodeJoinConditionImpl
+         return selector2Name;
+     }
+ 
++    /**
++     * Gets the path relative to the second selector.
++     *
++     * @return the relative path, or null for none
++     */
++    public Path getSelector2QPath() {
++        return selector2Path;
++    }
++
+     //------------------------< AbstractQOMNode >-------------------------------
+ 
+     /**

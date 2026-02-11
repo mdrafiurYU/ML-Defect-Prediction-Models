@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
+index 721349f..5e0e720 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
+@@ -161,6 +161,9 @@ public class ParameterizedTypeBinding extends ReferenceBinding implements Substi
+         		break;
+         	case Binding.RAW_TYPE :
+         		substitutes.clear(); // clear all variables to indicate raw generic method in the end
++        		if (constraint == CONSTRAINT_EQUAL) {
++        			substitutes.put(VoidBinding, NoTypes); // marker for impossible inference
++        		}
+         		return;
+         	default :
+         		return;

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java
+index 4ea790b..fb36968 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java
+@@ -254,7 +254,7 @@ private IType[] findSuperInterfaces(IGenericType type, ReferenceBinding typeBind
+ 		TypeDeclaration typeDeclaration = scope.referenceContext;
+ 		TypeReference[] superInterfaces = typeDeclaration == null ? null : typeDeclaration.superInterfaces;
+ 		int length;
+-		if (superInterfaces != null && (length = superInterfaces.length) > interfaceBindings.length) {
++		if (superInterfaces != null && (length = superInterfaces.length) > (interfaceBindings == null ? 0 : interfaceBindings.length)) { // check for interfaceBindings being null (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=139689)
+ 			
+ 			interfaceBindings = new ReferenceBinding[length];
+ 			int index = 0;

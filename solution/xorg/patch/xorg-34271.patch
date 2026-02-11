@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/modes/xf86RandR12.c b/hw/xfree86/modes/xf86RandR12.c
+index fe21717..c1a06b2 100644
+--- a/hw/xfree86/modes/xf86RandR12.c
++++ b/hw/xfree86/modes/xf86RandR12.c
+@@ -450,10 +450,10 @@ xf86RandR12CreateScreenResources (ScreenPtr pScreen)
+ 	    else
+ 	    {
+ 		/*
+-		 * Otherwise, just set the screen to 96dpi
++		 * Otherwise, just set the screen to DEFAULT_DPI
+ 		 */
+-		mmWidth = width * 25.4 / 96;
+-		mmHeight = height * 25.4 / 96;
++		mmWidth = width * 25.4 / DEFAULT_DPI;
++		mmHeight = height * 25.4 / DEFAULT_DPI;
+ 	    }
+ 	}
+ 	xf86DrvMsg(pScrn->scrnIndex, X_INFO,

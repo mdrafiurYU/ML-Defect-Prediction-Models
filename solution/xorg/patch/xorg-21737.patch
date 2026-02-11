@@ -1,0 +1,18 @@
+diff --git a/hw/xnest/Args.c b/hw/xnest/Args.c
+index 0aa0ca4..5d0a0c0 100644
+--- a/hw/xnest/Args.c
++++ b/hw/xnest/Args.c
+@@ -58,6 +58,13 @@ void ddxInitGlobals(void)
+ int
+ ddxProcessArgument (int argc, char *argv[], int i)
+ {
++
++#ifdef COMPOSITE
++    /* XXX terrible hack */
++    extern Bool noCompositeExtension;
++    noCompositeExtension = TRUE;
++#endif
++
+   if (!strcmp(argv[i], "-display")) {
+     if (++i < argc) {
+       xnestDisplayName = argv[i];

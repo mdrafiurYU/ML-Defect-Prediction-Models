@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java b/solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java
+index 1c2e07f..3b93933 100644
+--- a/solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java
+@@ -17,6 +17,8 @@ package org.apache.solr.search.function;
+  */
+ 
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.search.IndexSearcher;
+ 
+ import java.util.Map;

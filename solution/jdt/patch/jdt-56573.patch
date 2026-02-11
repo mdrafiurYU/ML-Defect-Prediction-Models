@@ -1,0 +1,44 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
+index 7c27256..5d1a780 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
+@@ -95,7 +95,7 @@ static {
+ //	JavaModelManager.VERBOSE = true;
+ //	org.eclipse.jdt.internal.core.search.BasicSearchEngine.VERBOSE = true;
+ //	TESTS_PREFIX = "testIgnoreIfBetterNonAccessibleRule";
+-//	TESTS_NAMES = new String[] { "testIgnoreIfBetterNonAccessibleRule1" };
++//	TESTS_NAMES = new String[] { "testExternal" };
+ //	TESTS_NUMBERS = new int[] { 118823 };
+ //	TESTS_RANGE = new int[] { 16, -1 };
+ }
+@@ -1009,6 +1009,30 @@ public void testExcludePartOfAnotherProject2() throws CoreException {
+ 	}
+ }
+ /*
++ * Ensures that an external working copy can be reconciled with no error.
++ */
++public void testExternal() throws CoreException {
++	this.workingCopy.discardWorkingCopy(); // don't use the one created in setUp()
++	this.workingCopy = null;
++	this.problemRequestor =  new ProblemRequestor();
++	IClasspathEntry[] classpath = new IClasspathEntry[] {JavaCore.newLibraryEntry(getExternalJCLPath(), null, null)};
++	this.workingCopy = newExternalWorkingCopy("External.java", classpath, this.problemRequestor,
++		"public class External {\n"+
++		"	String foo(){\n"+
++		"		return \"\";\n" +
++		"	}\n"+
++		"}\n"
++	);
++	this.workingCopy.reconcile(ICompilationUnit.NO_AST, false, null/*no owner*/, null);
++
++	assertProblems(
++		"Unexpected problems",
++		"----------\n" + 
++		"----------\n"
++	);
++}
++
++/*
+  * Ensures that included part of prereq project are visible
+  */
+ public void testIncludePartOfAnotherProject1() throws CoreException {

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index d40347c..172b0ac 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -845,9 +845,7 @@ public Parser(ProblemReporter problemReporter, boolean optimizeStringLiterals) {
+ 	this.variablesCounter = new int[30];
+ 	
+ 	// javadoc support
+-	this.javadocParser = new JavadocParser(this);	
+-	
+-//	this.statementRecoveryEnabled = this.options.performStatementsRecovery;
++	this.javadocParser = new JavadocParser(this);
+ }
+ protected void annotationRecoveryCheckPoint(int start, int end) {
+ 	if(this.lastCheckPoint > start && this.lastCheckPoint < end) {

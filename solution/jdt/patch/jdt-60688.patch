@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java
+index 15cd8f6..66ed271 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/EqualExpression.java
+@@ -113,7 +113,8 @@ public class EqualExpression extends BinaryExpression {
+ 		}
+ 		if (result instanceof UnconditionalFlowInfo && 
+ 				(result.tagBits & FlowInfo.UNREACHABLE) == 0) { // the flow info is flat
+-			result = FlowInfo.conditional(result, result.copy());
++			result = FlowInfo.conditional(result.copy(), result.copy());
++			// TODO (maxime) check, reintroduced copy
+ 		}
+ 	  checkNullComparison(currentScope, flowContext, result, result.initsWhenTrue(), result.initsWhenFalse());
+ 	  return result;

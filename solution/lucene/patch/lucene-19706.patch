@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/DefaultSegmentInfosWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/DefaultSegmentInfosWriter.java
+index f034a41..30248f1 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/DefaultSegmentInfosWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/DefaultSegmentInfosWriter.java
+@@ -59,6 +59,7 @@ public class DefaultSegmentInfosWriter extends SegmentInfosWriter {
+     out.writeInt(FORMAT_CURRENT); // write FORMAT
+     out.writeLong(infos.version);
+     out.writeInt(infos.counter); // write counter
++    out.writeLong(infos.getGlobalFieldMapVersion());
+     out.writeInt(infos.size()); // write infos
+     for (SegmentInfo si : infos) {
+       si.write(out);

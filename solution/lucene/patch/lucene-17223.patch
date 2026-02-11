@@ -1,0 +1,25 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+index 1018123..6d05837 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterExceptions.java
+@@ -983,7 +983,8 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+   // latest segments file and make sure we get an
+   // IOException trying to open the index:
+   public void testSimulatedCorruptIndex1() throws IOException {
+-      Directory dir = newDirectory();
++      MockDirectoryWrapper dir = newDirectory();
++      dir.setCheckIndexOnClose(false); // we are corrupting it!
+ 
+       IndexWriter writer = null;
+ 
+@@ -1030,8 +1031,8 @@ public class TestIndexWriterExceptions extends LuceneTestCase {
+   // files and make sure we get an IOException trying to
+   // open the index:
+   public void testSimulatedCorruptIndex2() throws IOException {
+-      Directory dir = newDirectory();
+-
++      MockDirectoryWrapper dir = newDirectory();
++      dir.setCheckIndexOnClose(false); // we are corrupting it!
+       IndexWriter writer = null;
+ 
+       writer  = new IndexWriter(

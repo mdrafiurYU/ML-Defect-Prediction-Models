@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitProblemFinder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitProblemFinder.java
+index 07b4754..f2c777b 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitProblemFinder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CompilationUnitProblemFinder.java
+@@ -77,9 +77,16 @@ public class CompilationUnitProblemFinder extends Compiler {
+ 		Map settings,
+ 		ICompilerRequestor requestor,
+ 		IProblemFactory problemFactory,
+-		boolean parseLiteralExpressionsAsConstants ) {
+-
+-		super(environment, policy, settings, requestor, problemFactory, parseLiteralExpressionsAsConstants );
++		boolean creatingAST) {
++
++		super(environment,
++			policy,
++			settings,
++			requestor,
++			problemFactory,
++			creatingAST/*parse literal expressions as constants if creating ast*/,
++			creatingAST/*store annotations in the bindings if creating ast*/
++		);
+ 	}
+ 
+ 	/**

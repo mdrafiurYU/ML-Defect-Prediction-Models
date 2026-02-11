@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xaa/xaaOffscreen.c b/hw/xfree86/xaa/xaaOffscreen.c
+index 53d0eb8..fbe029f 100644
+--- a/hw/xfree86/xaa/xaaOffscreen.c
++++ b/hw/xfree86/xaa/xaaOffscreen.c
+@@ -7,6 +7,10 @@
+ 
+ */ 
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "xf86.h"
+ #include "xf86_ansic.h"

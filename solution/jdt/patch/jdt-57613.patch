@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java
+index 8bc54f0..6355003 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/FactoryPathUtil.java
+@@ -527,7 +527,7 @@ public final class FactoryPathUtil {
+ 				}
+ 				
+ 				// Create and cache a PluginFactoryContainer for this plugin.
+-				String pluginId = extension.getNamespace();
++				String pluginId = extension.getNamespaceIdentifier();
+ 				PluginFactoryContainer pfc = new PluginFactoryContainer(pluginId, enableDefault);
+ 				PLUGIN_CONTAINER_MAP.put(pluginId, pfc);

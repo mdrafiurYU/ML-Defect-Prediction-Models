@@ -1,0 +1,16 @@
+diff --git a/fb/fbscreen.c b/fb/fbscreen.c
+index 12b19e4..ea24912 100644
+--- a/fb/fbscreen.c
++++ b/fb/fbscreen.c
+@@ -90,11 +90,7 @@ _fbGetWindowPixmap (WindowPtr pWindow)
+ void
+ _fbSetWindowPixmap (WindowPtr pWindow, PixmapPtr pPixmap)
+ {
+-#ifdef FB_NO_WINDOW_PIXMAPS
+-    FatalError ("Attempted to set window pixmap without fb support\n");
+-#else
+     dixSetPrivate(&pWindow->devPrivates, fbGetWinPrivateKey(), pPixmap);
+-#endif
+ }
+ 
+ Bool

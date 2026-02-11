@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
+index 244e643..635fcfe 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryManagerImpl.java
+@@ -92,7 +92,7 @@ public class QueryManagerImpl implements QueryManager {
+             protected QueryObjectModel createQuery(QueryObjectModelTree qomTree)
+                     throws InvalidQueryException, RepositoryException {
+                 return searchMgr.createQueryObjectModel(
+-                        session, qomTree, QueryImpl.JCR_SQL2);
++                        session, qomTree, Query.JCR_SQL2);
+             }
+         };
+     }

@@ -1,0 +1,33 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/IntFieldSource.java b/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
+index 7da8ffb..e2c94f9 100644
+--- a/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
+@@ -51,9 +51,9 @@ public class IntFieldSource extends NumericFieldCacheSource<IntValues> {
+   public DocValues getValues(Map context, AtomicReaderContext readerContext) throws IOException {
+     final IntValues vals = cache.getInts(readerContext.reader, field, creator);
+     final int[] arr = vals.values;
+-	final Bits valid = vals.valid;
++    final Bits valid = vals.valid;
+     
+-    return new DocValues() {
++    return new IntDocValues(this) {
+       final MutableValueInt val = new MutableValueInt();
+       
+       @Override
+@@ -82,6 +82,16 @@ public class IntFieldSource extends NumericFieldCacheSource<IntValues> {
+       }
+ 
+       @Override
++      public Object objectVal(int doc) {
++        return valid.get(doc) ? arr[doc] : null;
++      }
++
++      @Override
++      public boolean exists(int doc) {
++        return valid.get(doc);
++      }
++
++      @Override
+       public String toString(int doc) {
+         return description() + '=' + intVal(doc);
+       }

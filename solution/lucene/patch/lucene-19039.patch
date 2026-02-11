@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/PhraseQueue.java b/lucene/src/java/org/apache/lucene/search/PhraseQueue.java
+index 4b3496a..5b19567 100644
+--- a/lucene/src/java/org/apache/lucene/search/PhraseQueue.java
++++ b/lucene/src/java/org/apache/lucene/search/PhraseQueue.java
+@@ -21,7 +21,7 @@ import org.apache.lucene.util.PriorityQueue;
+ 
+ final class PhraseQueue extends PriorityQueue<PhrasePositions> {
+   PhraseQueue(int size) {
+-    initialize(size);
++    super(size);
+   }
+ 
+   @Override

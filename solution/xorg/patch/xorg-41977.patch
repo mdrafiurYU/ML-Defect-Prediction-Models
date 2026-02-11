@@ -1,0 +1,26 @@
+diff --git a/hw/xwin/winwndproc.c b/hw/xwin/winwndproc.c
+index 66f439f..460efe6 100644
+--- a/hw/xwin/winwndproc.c
++++ b/hw/xwin/winwndproc.c
+@@ -764,9 +764,8 @@ winWindowProc (HWND hwnd, UINT message,
+ 	}
+       
+       /* Deliver absolute cursor position to X Server */
+-      miPointerAbsoluteCursor (GET_X_LPARAM(lParam)-s_pScreenInfo->dwXOffset,
+-			       GET_Y_LPARAM(lParam)-s_pScreenInfo->dwYOffset,
+-			       g_c32LastInputEventTime = GetTickCount ());
++      winEnqueueMotion(GET_X_LPARAM(lParam)-s_pScreenInfo->dwXOffset,
++		       GET_Y_LPARAM(lParam)-s_pScreenInfo->dwYOffset);
+       return 0;
+ 
+     case WM_NCMOUSEMOVE:
+@@ -929,8 +928,7 @@ winWindowProc (HWND hwnd, UINT message,
+ 	    point.y -= GetSystemMetrics (SM_YVIRTUALSCREEN);
+ 	    
+ 	    /* Deliver absolute cursor position to X Server */
+-	    miPointerAbsoluteCursor (point.x, point.y,
+-				     g_c32LastInputEventTime = GetTickCount());
++	    winEnqueueMotion(point.x , point.y);
+ 
+ 	    /* Check if a button was released but we didn't see it */
+ 	    GetCursorPos (&point);

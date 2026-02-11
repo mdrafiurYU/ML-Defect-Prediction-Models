@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NGKDbNameIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NGKDbNameIndex.java
+index 207979d..a749d9c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NGKDbNameIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NGKDbNameIndex.java
+@@ -63,7 +63,9 @@ public class NGKDbNameIndex extends DbNameIndex {
+             connectionManager.executeStmt(nameInsertSQL, new Object[]{string});
+             return getIndex(string);
+         } catch (Exception e) {
+-            throw new IllegalStateException("Unable to insert index: " + e);
++            IllegalStateException ise = new IllegalStateException("Unable to insert index for string: " + string);
++            ise.initCause(e);
++            throw ise;
+         } finally {
+             closeResultSet(rs);
+         }

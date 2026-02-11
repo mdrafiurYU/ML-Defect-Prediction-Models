@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java b/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java
+index a9a6766..b9a8dfa 100644
+--- a/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java
++++ b/lucene/contrib/queries/src/test/org/apache/lucene/search/BooleanFilterTest.java
+@@ -24,6 +24,7 @@ import org.apache.lucene.analysis.MockTokenizer;
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.Field;
+ import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.index.RandomIndexWriter;
+ import org.apache.lucene.index.SlowMultiReaderWrapper;
+ import org.apache.lucene.index.Term;
+@@ -83,7 +84,7 @@ public class BooleanFilterTest extends LuceneTestCase {
+         private void tstFilterCard(String mes, int expected, Filter filt)
+         throws Throwable
+         {
+-          DocIdSetIterator disi = filt.getDocIdSet(reader).iterator();
++          DocIdSetIterator disi = filt.getDocIdSet(new AtomicReaderContext(reader)).iterator();
+           int actual = 0;
+           while (disi.nextDoc() != DocIdSetIterator.NO_MORE_DOCS) {
+             actual++;

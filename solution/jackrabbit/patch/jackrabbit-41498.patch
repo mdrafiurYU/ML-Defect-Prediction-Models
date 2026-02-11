@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemPathUtil.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemPathUtil.java
+index be3c9bf..b0f980f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemPathUtil.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/FileSystemPathUtil.java
+@@ -140,7 +140,9 @@ public final class FileSystemPathUtil {
+                 try {
+                     out.write(Integer.parseInt(pathOrName.substring(i + 1, i + 3), 16));
+                 } catch (NumberFormatException e) {
+-                    throw new IllegalArgumentException();
++                    IllegalArgumentException iae = new IllegalArgumentException("Failed to unescape escape sequence");
++                    iae.initCause(e);
++                    throw iae;
+                 }
+                 i += 2;
+             } else {

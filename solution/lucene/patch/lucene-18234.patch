@@ -1,0 +1,30 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/CapitalizationFilterFactory.java b/solr/src/java/org/apache/solr/analysis/CapitalizationFilterFactory.java
+index 07ab89b..8174784 100644
+--- a/solr/src/java/org/apache/solr/analysis/CapitalizationFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/CapitalizationFilterFactory.java
+@@ -33,7 +33,7 @@ import java.util.StringTokenizer;
+  * The factory takes parameters:<br/>
+  * "onlyFirstWord" - should each word be capitalized or all of the words?<br/>
+  * "keep" - a keep word list.  Each word that should be kept separated by whitespace.<br/>
+- * "keepIgnoreCase - true or false.  If true, the keep list will be considered case-insensitive.
++ * "keepIgnoreCase - true or false.  If true, the keep list will be considered case-insensitive.<br/>
+  * "forceFirstLetter" - Force the first letter to be capitalized even if it is in the keep list<br/>
+  * "okPrefix" - do not change word capitalization if a word begins with something in this list.
+  * for example if "McK" is on the okPrefix list, the word "McKinley" should not be changed to
+@@ -43,6 +43,16 @@ import java.util.StringTokenizer;
+  * "maxWordCount" - if the token contains more then maxWordCount words, the capitalization is
+  * assumed to be correct.<br/>
+  *
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_cptlztn" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.CapitalizationFilterFactory" onlyFirstWord="true"
++ *     	     keep="java solr lucene" keepIgnoreCase="false"
++ *     	     okPrefix="McK McD McA"/&gt;   
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre>
++ *
+  * @version $Id$
+  * @since solr 1.3
+  */

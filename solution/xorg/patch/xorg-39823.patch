@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/os-support/bus/linuxPci.c b/hw/xfree86/os-support/bus/linuxPci.c
+index 11eb4f9..634d22f 100644
+--- a/hw/xfree86/os-support/bus/linuxPci.c
++++ b/hw/xfree86/os-support/bus/linuxPci.c
+@@ -109,8 +109,7 @@ linuxPciInit(void)
+     (void) memset(DomainMmappedIO, 0, sizeof(DomainMmappedIO));
+ #endif
+ 
+-	if ((xf86Info.pciFlags == PCIForceNone) ||
+-	    (-1 == stat("/proc/bus/pci", &st))) {
++    if (-1 == stat("/proc/bus/pci", &st)) {
+ 		/* when using this as default for all linux architectures,
+ 		   we'll need a fallback for 2.0 kernels here */
+ 		return;

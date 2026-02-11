@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/BranchLabel.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/BranchLabel.java
+index 83e2128..d4fcd72 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/BranchLabel.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/BranchLabel.java
+@@ -135,7 +135,7 @@ void branchWide() {
+ 		codeStream.position += 4;
+ 		codeStream.classFileOffset += 4;
+ 	} else { //Position is set. Write it!
+-		codeStream.writeWidePosition(position - codeStream.position + 1);
++		codeStream.writeWidePosition(this);
+ 	}
+ }

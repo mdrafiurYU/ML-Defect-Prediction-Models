@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/analysis/TestReversedWildcardFilterFactory.java b/solr/src/test/org/apache/solr/analysis/TestReversedWildcardFilterFactory.java
+index 5673ea8..184f241 100644
+--- a/solr/src/test/org/apache/solr/analysis/TestReversedWildcardFilterFactory.java
++++ b/solr/src/test/org/apache/solr/analysis/TestReversedWildcardFilterFactory.java
+@@ -52,6 +52,7 @@ public class TestReversedWildcardFilterFactory extends SolrTestCaseJ4 {
+     initCore("solrconfig.xml","schema-reversed.xml");
+   }
+   
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();

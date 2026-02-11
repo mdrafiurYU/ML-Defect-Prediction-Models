@@ -1,0 +1,156 @@
+diff --git a/hw/kdrive/linux/keyboard.c b/hw/kdrive/linux/keyboard.c
+index ae981b7..d36c31d 100644
+--- a/hw/kdrive/linux/keyboard.c
++++ b/hw/kdrive/linux/keyboard.c
+@@ -112,7 +112,6 @@ static const KeySym linux_to_x[256] = {
+ 	XK_udiaeresis,	XK_yacute,	XK_thorn,	XK_ydiaeresis
+ };
+ 
+-#ifdef XKB
+ /*
+  * Getting a keycode from scancode
+  *
+@@ -209,10 +208,6 @@ static unsigned char at2lnx[] =
+ #define NUM_AT_KEYS (sizeof(at2lnx)/sizeof(at2lnx[0]))
+ #define LNX_KEY_INDEX(n) n < NUM_AT_KEYS ? at2lnx[n] : 0
+ 
+-#else /* not XKB */
+-#define LNX_KEY_INDEX(n) n
+-#endif
+-
+ static unsigned char tbl[KD_MAX_WIDTH] =
+ {
+     0,
+@@ -491,8 +486,6 @@ readKernelMapping(KdKeyboardInfo *ki)
+     ki->maxScanCode = maxKeyCode;
+ }
+ 
+-#ifdef XKB
+-
+ /*
+  * We need these to handle extended scancodes correctly (I could just use the
+  * numbers below, but this makes the code more readable
+@@ -555,9 +548,6 @@ readKernelMapping(KdKeyboardInfo *ki)
+ #define KEY_F17          /* F17                   0x72  */  114
+ #define KEY_KP_DEC       /* KP_DEC                0x73  */  115
+ 
+-#endif /* XKB */
+-
+-
+ static void
+ LinuxKeyboardRead (int fd, void *closure)
+ {
+@@ -568,8 +558,6 @@ LinuxKeyboardRead (int fd, void *closure)
+     while ((n = read (fd, buf, sizeof (buf))) > 0) {
+ 	b = buf;
+ 	while (n--) {
+-#ifdef XKB
+-            if (!noXkbExtension) {
+                 /*
+                  * With xkb we use RAW mode for reading the console, which allows us
+                  * process extended scancodes.
+@@ -579,9 +567,6 @@ LinuxKeyboardRead (int fd, void *closure)
+                 if (!prefix && ((b[0] & 0x7f) == KEY_Prefix0))
+                 {
+                         prefix = KEY_Prefix0;
+-#ifdef DEBUG
+-                        ErrorF("Prefix0");
+-#endif
+                         /* swallow this up */
+                         b++;
+                         continue;
+@@ -589,7 +574,6 @@ LinuxKeyboardRead (int fd, void *closure)
+                 else if (!prefix && ((b[0] & 0x7f) == KEY_Prefix1))
+                 {
+                         prefix = KEY_Prefix1;
+-                        ErrorF("Prefix1");
+                         /* swallow this up */
+                         b++;
+                         continue;
+@@ -600,9 +584,6 @@ LinuxKeyboardRead (int fd, void *closure)
+                         /* from xf86Events.c */
+                         case KEY_Prefix0:
+                         {
+-#ifdef DEBUG
+-                            ErrorF("Prefix0 scancode: 0x%02x\n", scancode);
+-#endif
+                             switch (scancode) {
+                                 case KEY_KP_7:
+                                     scancode = KEY_Home;      break;  /* curs home */
+@@ -663,10 +644,6 @@ LinuxKeyboardRead (int fd, void *closure)
+                                     prefix = 0;
+                                     continue;
+                                 default:
+-#ifdef DEBUG
+-                                    ErrorF("Unreported Prefix0 scancode: 0x%02x\n",
+-                                           scancode);
+-#endif
+                                      /*
+                                       * "Internet" keyboards are generating lots of new
+                                       * codes.  Let them pass.  There is little consistency
+@@ -681,9 +658,6 @@ LinuxKeyboardRead (int fd, void *closure)
+                         case KEY_Prefix1:
+                         {
+                             /* we do no handle these */
+-#ifdef DEBUG
+-                            ErrorF("Prefix1 scancode: 0x%02x\n", scancode);
+-#endif
+                             b++;
+                             prefix = 0;
+                             continue;
+@@ -691,41 +665,11 @@ LinuxKeyboardRead (int fd, void *closure)
+ 
+                         default: /* should not happen*/
+                         case 0: /* do nothing */
+-#ifdef DEBUG
+-                            ErrorF("Plain scancode: 0x%02x\n", scancode);
+-#endif
+                             ;
+                 }
+ 
+                 prefix = 0;
+-            }
+-            /* without xkb we use mediumraw mode -- enqueue the scancode as is */
+-            else
+-#endif
+-                scancode = b[0] & 0x7f;
+-	    /* This is extended medium raw mode interpreter
+-	       see linux/drivers/keyboard.c (kbd->kbdmode == VC_MEDIUMRAW) */
+-	    switch (mediumraw_state)
+-	    {
+-	    case DEFAULT:
+-		if (scancode == 0)
+-		{
+-		    mediumraw_state = EXTBYTE1;
+-		    mediumraw_up = b[0] & 0x80;
+-		}
+-		else
+ 		    KdEnqueueKeyboardEvent (closure, scancode, b[0] & 0x80);
+-		break;
+-	    case EXTBYTE1:
+-		mediumraw_data = scancode;
+-		mediumraw_state = EXTBYTE2;
+-		break;
+-	    case EXTBYTE2:
+-		/* Note: Only codes < 256 will pass correctly through KdEnqueueKeyboardEvent() */
+-	      KdEnqueueKeyboardEvent (closure, (int)mediumraw_data << 7 | scancode, mediumraw_up);
+-		mediumraw_state = DEFAULT;
+-		break;
+-	    }
+ 	    b++;
+ 	}
+     }
+@@ -750,13 +694,7 @@ LinuxKeyboardEnable (KdKeyboardInfo *ki)
+ 
+     ioctl (fd, KDGKBMODE, &LinuxKbdTrans);
+     tcgetattr (fd, &LinuxTermios);
+-#ifdef XKB
+-    if (!noXkbExtension)
+         ioctl(fd, KDSKBMODE, K_RAW);
+-    else
+-#else
+-        ioctl(fd, KDSKBMODE, K_MEDIUMRAW);
+-#endif
+     nTty = LinuxTermios;
+     nTty.c_iflag = (IGNPAR | IGNBRK) & (~PARMRK) & (~ISTRIP);
+     nTty.c_oflag = 0;

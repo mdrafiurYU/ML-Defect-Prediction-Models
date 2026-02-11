@@ -1,0 +1,18 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+index 7541daf..0f1cb4d 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+@@ -73,7 +73,12 @@ public class TestDisjunctionMaxQuery extends LuceneTestCase {
+     }
+   }
+   
+-  public SimilarityProvider sim = new TestSimilarity();
++  public SimilarityProvider sim = new DefaultSimilarityProvider() {
++    @Override
++    public Similarity get(String field) {
++      return new TestSimilarity();
++    }
++  };
+   public Directory index;
+   public IndexReader r;
+   public IndexSearcher s;

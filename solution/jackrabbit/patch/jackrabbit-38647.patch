@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java
+index b044772..a509792 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java
+@@ -81,6 +81,8 @@ public class VersionLabelTest extends AbstractVersionTest {
+         } catch (RepositoryException e) {
+             // ignore
+         }
++        vHistory = null;
++        rootVersion = null;
+         super.tearDown();
+     }

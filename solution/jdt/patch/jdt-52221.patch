@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/readAnnotationType/SimpleAnnotation.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/readAnnotationType/SimpleAnnotation.java
+new file mode 100644
+index 0000000..d977341
+--- /dev/null
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/readAnnotationType/SimpleAnnotation.java
+@@ -0,0 +1,11 @@
++package org.eclipse.jdt.apt.tests.annotations.readAnnotationType;
++
++public @interface SimpleAnnotation {
++    
++    enum Name
++    {
++        HELLO, GOOD_BYE
++    }
++    
++    public Name value();
++}

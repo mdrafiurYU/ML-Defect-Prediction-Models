@@ -1,0 +1,95 @@
+diff --git a/Xext/appgroup.c b/Xext/appgroup.c
+index bb7a73c..7bd2055 100644
+--- a/Xext/appgroup.c
++++ b/Xext/appgroup.c
+@@ -116,8 +116,7 @@ int XagAppGroupFree(
+     return Success;
+ }
+ 
+-/* static */
+-void XagClientStateChange(
++static void XagClientStateChange(
+     CallbackListPtr* pcbl,
+     pointer nulldata,
+     pointer calldata)
+@@ -172,21 +171,6 @@ void XagClientStateChange(
+     }
+ }
+ 
+-void
+-XagExtensionInit(INITARGS)
+-{
+-    if (AddExtension (XAGNAME,
+-		      0,
+-		      XagNumberErrors,
+-		      ProcXagDispatch,
+-		      SProcXagDispatch,
+-		      XagResetProc,
+-		      StandardMinorOpcode)) {
+-	RT_APPGROUP = CreateNewResourceType (XagAppGroupFree);
+-	XaceRegisterCallback(XACE_AUTH_AVAIL, XagCallClientStateChange, NULL);
+-    }
+-}
+-
+ /*ARGSUSED*/
+ static 
+ void XagResetProc(
+@@ -393,8 +377,7 @@ int AttrValidate(
+     return client->noClientException;
+ }
+ 
+-/* static */
+-int ProcXagCreate (
++static int ProcXagCreate (
+     register ClientPtr client)
+ {
+     REQUEST (xXagCreateReq);
+@@ -425,8 +408,7 @@ int ProcXagCreate (
+     return client->noClientException;
+ }
+ 
+-/* static */
+-int ProcXagDestroy(
++static int ProcXagDestroy(
+     register ClientPtr client)
+ {
+     AppGroupPtr pAppGrp;
+@@ -743,18 +725,7 @@ XID XagId(
+     return (client->appgroup ? client->appgroup->appgroupId : 0);
+ }
+ 
+-void XagGetDeltaInfo(
+-    ClientPtr client,
+-    CARD32* buf)
+-{
+-    *buf++ = (CARD32) client->appgroup->default_root;
+-    *buf++ = (CARD32) client->appgroup->root_visual;
+-    *buf++ = (CARD32) client->appgroup->default_colormap;
+-    *buf++ = (CARD32) client->appgroup->black_pixel;
+-    *buf = (CARD32) client->appgroup->white_pixel;
+-}
+-
+-void XagCallClientStateChange(
++static void XagCallClientStateChange(
+     CallbackListPtr *pcbl,
+     pointer nulldata,
+     pointer calldata)
+@@ -785,3 +756,18 @@ void XagCallClientStateChange(
+ 	XagClientStateChange (NULL, NULL, (pointer)&clientinfo);
+     }
+ }
++
++void
++XagExtensionInit(INITARGS)
++{
++    if (AddExtension (XAGNAME,
++		      0,
++		      XagNumberErrors,
++		      ProcXagDispatch,
++		      SProcXagDispatch,
++		      XagResetProc,
++		      StandardMinorOpcode)) {
++	RT_APPGROUP = CreateNewResourceType (XagAppGroupFree);
++	XaceRegisterCallback(XACE_AUTH_AVAIL, XagCallClientStateChange, NULL);
++    }
++}

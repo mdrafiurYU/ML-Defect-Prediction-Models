@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/BufferedTokenStream.java b/solr/src/java/org/apache/solr/analysis/BufferedTokenStream.java
+index 5ad44b3..0633aa9 100644
+--- a/solr/src/java/org/apache/solr/analysis/BufferedTokenStream.java
++++ b/solr/src/java/org/apache/solr/analysis/BufferedTokenStream.java
+@@ -64,7 +64,7 @@ import java.util.LinkedList;
+  * example above, the subclass must clone the additional "A" it creates.
+  * 
+  * @deprecated This class does not support custom attributes. Extend TokenFilter instead,
+- * using {@link AttributeSource#captureState()} and {@link AttributeSource#restoreState()}
++ * using {@link AttributeSource#captureState()} and {@link AttributeSource#restoreState(State)}
+  * which support all attributes.
+  */
+ @Deprecated

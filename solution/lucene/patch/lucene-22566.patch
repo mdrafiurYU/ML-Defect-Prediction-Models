@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java b/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
+index 75a9be9..4214263 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
+@@ -411,10 +411,6 @@ public class TestFieldsReader extends LuceneTestCase {
+       return fsDir.fileModified(name);
+     }
+     @Override
+-    public void touchFile(String name) throws IOException {
+-      fsDir.touchFile(name);
+-    }
+-    @Override
+     public void deleteFile(String name) throws IOException {
+       fsDir.deleteFile(name);
+     }

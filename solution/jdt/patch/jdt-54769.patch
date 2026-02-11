@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
+index 024c78f..a823b7d 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/index/DiskIndex.java
+@@ -488,7 +488,7 @@ DiskIndex mergeWith(MemoryIndex memoryIndex) throws IOException {
+ 
+ 		// rename file by deleting previous index file & renaming temp one
+ 		File old = getIndexFile();
+-		if (!old.delete()) {
++		if (old.exists() && !old.delete()) {
+ 			if (DEBUG)
+ 				System.out.println("mergeWith - Failed to delete " + this.fileName); //$NON-NLS-1$
+ 			throw new IOException("Failed to delete index file " + this.fileName); //$NON-NLS-1$

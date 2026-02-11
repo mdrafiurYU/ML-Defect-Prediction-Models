@@ -1,0 +1,13 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 83285b4..dc5de05 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -226,6 +226,8 @@ AddInputDevice(ClientPtr client, DeviceProc deviceProc, Bool autoStart)
+ 
+     /* device grab defaults */
+     dev->deviceGrab.grabTime = currentTime;
++    dev->deviceGrab.ActivateGrab = ActivateKeyboardGrab;
++    dev->deviceGrab.DeactivateGrab = DeactivateKeyboardGrab;
+ 
+     dev->coreEvents = TRUE;
+ 

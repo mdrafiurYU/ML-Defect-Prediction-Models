@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
+index 0f74f25..d97c30b 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/QValueFactoryImpl.java
+@@ -69,7 +69,6 @@ import java.net.URISyntaxException;
+  */
+ class QValueFactoryImpl extends AbstractQValueFactory {
+ 
+-    private final NamePathResolver resolver;
+     private final ValueLoader loader;
+     private final ValueFactory vf;
+ 
+@@ -78,7 +77,6 @@ class QValueFactoryImpl extends AbstractQValueFactory {
+     }
+ 
+     QValueFactoryImpl(NamePathResolver resolver, ValueLoader loader) {
+-        this.resolver = resolver;
+         this.loader = loader;
+         vf = new ValueFactoryQImpl(this, resolver);
+     }

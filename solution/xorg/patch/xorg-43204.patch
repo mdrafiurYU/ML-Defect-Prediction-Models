@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/xaa/xaaCpyPlane.c b/hw/xfree86/xaa/xaaCpyPlane.c
+index d8ad144..aa4c040 100644
+--- a/hw/xfree86/xaa/xaaCpyPlane.c
++++ b/hw/xfree86/xaa/xaaCpyPlane.c
+@@ -39,7 +39,7 @@ static void XAACopyPlaneNtoNColorExpand(DrawablePtr pSrc, DrawablePtr pDst,
+ 
+ static unsigned long TmpBitPlane; 
+ 
+-_X_EXPORT RegionPtr
++RegionPtr
+ XAACopyPlaneColorExpansion(
+     DrawablePtr	pSrc,
+     DrawablePtr	pDst,
+@@ -159,7 +159,7 @@ ALLOC_FAILED:
+     }
+ }
+ 
+-_X_EXPORT void
++void
+ XAAPushPixelsSolidColorExpansion(
+     GCPtr	pGC,
+     PixmapPtr	pBitMap,

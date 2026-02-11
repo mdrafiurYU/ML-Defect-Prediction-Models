@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winkeyhook.c b/hw/xwin/winkeyhook.c
+index cd54af2..53d91e6 100755
+--- a/hw/xwin/winkeyhook.c
++++ b/hw/xwin/winkeyhook.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ 

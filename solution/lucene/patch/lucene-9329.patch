@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java b/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java
+index 03deb2a..bcfa426 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java
+@@ -287,12 +287,10 @@ public class TestPositionIncrement extends LuceneTestCase {
+       }
+       Collection<byte[]> payloads = pspans.getPayload();
+       sawZero |= pspans.start() == 0;
+-      for (@SuppressWarnings("unused") byte[] bytes : payloads) {
++      for (byte[] bytes : payloads) {
+         count++;
+-        if (!VERBOSE) {
+-          // do nothing
+-        } else {
+-          System.out.println("  payload: " + new String((byte[]) bytes));
++        if (VERBOSE) {
++          System.out.println("  payload: " + new String(bytes));
+         }
+       }
+     }

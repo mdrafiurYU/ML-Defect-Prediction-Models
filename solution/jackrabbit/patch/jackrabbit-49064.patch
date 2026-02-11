@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFormat.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFormat.java
+index d6bde40..16bf91d 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFormat.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/ValueFormat.java
+@@ -52,6 +52,7 @@ public class ValueFormat {
+         } else if (jcrValue.getType() == PropertyType.BINARY) {
+             // TODO: jsr 283 binary property conversion
+             try {
++                //return factory.create(jcrValue.getBinary());
+                 return factory.create(jcrValue.getStream());
+             } catch (IOException e) {
+                 throw new RepositoryException(e);
+@@ -168,8 +169,7 @@ public class ValueFormat {
+                     jcrValue = factory.createValue(qualifiedValue.getBoolean());
+                     break;
+                 case PropertyType.BINARY:
+-                    // TODO: jsr 283 binary handling
+-                    jcrValue = factory.createValue(qualifiedValue.getStream());
++                    jcrValue = factory.createValue(qualifiedValue.getBinary());
+                     break;
+                 case PropertyType.DATE:
+                     jcrValue = factory.createValue(qualifiedValue.getCalendar());

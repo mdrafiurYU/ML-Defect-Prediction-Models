@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java b/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java
+index a1fe8e6..b5ff4f3 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java
+@@ -47,9 +47,9 @@ public class TestMultiTermQueryRewrites extends LuceneTestCase {
+     dir = newDirectory();
+     sdir1 = newDirectory();
+     sdir2 = newDirectory();
+-    final RandomIndexWriter writer = new RandomIndexWriter(random, dir, new MockAnalyzer());
+-    final RandomIndexWriter swriter1 = new RandomIndexWriter(random, sdir1, new MockAnalyzer());
+-    final RandomIndexWriter swriter2 = new RandomIndexWriter(random, sdir2, new MockAnalyzer());
++    final RandomIndexWriter writer = new RandomIndexWriter(random, dir, new MockAnalyzer(random));
++    final RandomIndexWriter swriter1 = new RandomIndexWriter(random, sdir1, new MockAnalyzer(random));
++    final RandomIndexWriter swriter2 = new RandomIndexWriter(random, sdir2, new MockAnalyzer(random));
+ 
+     for (int i = 0; i < 10; i++) {
+       Document doc = new Document();

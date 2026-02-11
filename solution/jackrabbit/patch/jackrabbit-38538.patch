@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractOnParentVersionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractOnParentVersionTest.java
+index 6871997..d02627a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractOnParentVersionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractOnParentVersionTest.java
+@@ -53,6 +53,11 @@ public abstract class AbstractOnParentVersionTest extends AbstractVersionTest {
+         testRootNode.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        p = null;
++        super.tearDown();
++    }
++
+     /**
+      * Add a child node to the versionable node created in the setup with the
+      * name and nodetype name defined in the corresponding configuration. After

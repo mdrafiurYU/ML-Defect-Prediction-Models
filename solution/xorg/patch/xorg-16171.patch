@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_init.c b/hw/xfree86/os-support/linux/lnx_init.c
+index a52073d..9933c6f 100644
+--- a/hw/xfree86/os-support/linux/lnx_init.c
++++ b/hw/xfree86/os-support/linux/lnx_init.c
+@@ -289,6 +289,7 @@ xf86OpenConsole(void)
+         } else { /* ShareVTs */
+             close(xf86Info.consoleFd);
+         }
++	signal(SIGUSR2, xf86ReloadInputDevs);
+     } else { 	/* serverGeneration != 1 */
+         if (!ShareVTs && VTSwitch)
+         {

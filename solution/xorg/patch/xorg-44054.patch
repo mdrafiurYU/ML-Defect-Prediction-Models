@@ -1,0 +1,13 @@
+diff --git a/dix/grabs.c b/dix/grabs.c
+index 156574e..2d3327c 100644
+--- a/dix/grabs.c
++++ b/dix/grabs.c
+@@ -97,8 +97,6 @@ CreateGrab(
+     grab->modifiersDetail.exact = modifiers;
+     grab->modifiersDetail.pMask = NULL;
+     grab->modifierDevice = modDevice;
+-    grab->coreMods = ((modDevice == inputInfo.keyboard) ||
+-		      (modDevice == inputInfo.pointer));
+     grab->type = type;
+     grab->detail.exact = keybut;
+     grab->detail.pMask = NULL;

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java
+index eb329e1..57faa9a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/Update.java
+@@ -57,4 +57,11 @@ public interface Update {
+      */
+     List getEvents();
+ 
++    /**
++     * Returns the timestamp whe this update occured.
++     *
++     * @return the timestamp whe this update occured.
++     */
++    long getTimestamp();
++
+ }

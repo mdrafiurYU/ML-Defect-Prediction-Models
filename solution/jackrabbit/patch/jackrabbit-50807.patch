@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NodeTypeEventChannel.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NodeTypeEventChannel.java
+index a843558..ee5da77 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NodeTypeEventChannel.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NodeTypeEventChannel.java
+@@ -17,6 +17,7 @@
+ package org.apache.jackrabbit.core.cluster;
+ 
+ import org.apache.jackrabbit.core.nodetype.NodeTypeDef;
++import org.apache.jackrabbit.spi.Name;
+ 
+ import java.util.Collection;
+ 
+@@ -30,7 +31,7 @@ public interface NodeTypeEventChannel {
+      *
+      * @param ntDefs collection of node type definitions
+      */
+-    void registered(Collection ntDefs);
++    void registered(Collection<NodeTypeDef> ntDefs);
+ 
+     /**
+      * Called when a node types has been re-registered.
+@@ -44,7 +45,7 @@ public interface NodeTypeEventChannel {
+      *
+      * @param ntNames collection of node type qnames
+      */
+-    void unregistered(Collection ntNames);
++    void unregistered(Collection<Name> ntNames);
+ 
+     /**
+      * Set listener that will receive information about incoming, external node type events.

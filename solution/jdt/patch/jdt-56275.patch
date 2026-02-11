@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+index 4f300ec..4b93802 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+@@ -410,7 +410,7 @@ public char[] getCurrentIdentifierSource() {
+ public int getCurrentTokenEndPosition(){
+ 	return this.currentPosition - 1;
+ }
+-public final char[] getCurrentTokenSource() {
++public char[] getCurrentTokenSource() {
+ 	// Return the token REAL source (aka unicodes are precomputed)
+ 
+ 	char[] result;

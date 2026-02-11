@@ -1,0 +1,15 @@
+diff --git a/Xext/saver.c b/Xext/saver.c
+index 6905fc6..43dd3e2 100644
+--- a/Xext/saver.c
++++ b/Xext/saver.c
+@@ -468,8 +468,8 @@ ScreenSaverFreeAttr (value, id)
+     pPriv->attr = NULL;
+     if (pPriv->hasWindow)
+     {
+-	SaveScreens (serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
+-	SaveScreens (serverClient, SCREEN_SAVER_FORCER, ScreenSaverActive);
++	dixSaveScreens (serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
++	dixSaveScreens (serverClient, SCREEN_SAVER_FORCER, ScreenSaverActive);
+     }
+     CheckScreenPrivate (pScreen);
+     return TRUE;

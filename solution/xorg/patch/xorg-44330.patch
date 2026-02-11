@@ -1,0 +1,13 @@
+diff --git a/glx/glxdriswrast.c b/glx/glxdriswrast.c
+index de89d38..328aa7e 100644
+--- a/glx/glxdriswrast.c
++++ b/glx/glxdriswrast.c
+@@ -102,6 +102,8 @@ __glXDRIdrawableDestroy(__GLXdrawable *drawable)
+     FreeScratchGC(private->gc);
+     FreeScratchGC(private->swapgc);
+ 
++    __glXDrawableRelease(drawable);
++
+     xfree(private);
+ }
+ 

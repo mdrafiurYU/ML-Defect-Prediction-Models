@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryTreeDump.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryTreeDump.java
+index fe519a6..f083bc2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryTreeDump.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryTreeDump.java
+@@ -236,6 +236,8 @@ public class QueryTreeDump implements QueryNodeVisitor {
+             buffer.append("IS NULL");
+         } else if (node.getOperation() == QueryConstants.OPERATION_SIMILAR) {
+             buffer.append("similarity");
++        } else if (node.getOperation() == QueryConstants.OPERATION_SPELLCHECK) {
++            buffer.append("spellcheck");
+         } else {
+             buffer.append("!!UNKNOWN OPERATION!!");
+         }

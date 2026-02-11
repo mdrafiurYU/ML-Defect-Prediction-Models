@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermVectorsReader.java b/lucene/src/java/org/apache/lucene/index/TermVectorsReader.java
+index bc98c48..b9a9c6a 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermVectorsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/TermVectorsReader.java
+@@ -90,7 +90,6 @@ class TermVectorsReader implements Cloneable {
+         assert format == tvdFormat;
+         assert format == tvfFormat;
+ 
+-        assert (tvx.length()-FORMAT_SIZE) % 16 == 0;
+         numTotalDocs = (int) (tvx.length() >> 4);
+ 
+         if (-1 == docStoreOffset) {

@@ -1,0 +1,48 @@
+diff --git a/Xi/closedev.c b/Xi/closedev.c
+index 8a57aee..dfd7800 100644
+--- a/Xi/closedev.c
++++ b/Xi/closedev.c
+@@ -80,8 +80,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXCloseDevice(client)
+-    register ClientPtr client;
++SProcXCloseDevice(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -98,8 +97,7 @@ SProcXCloseDevice(client)
+  */
+ 
+ int
+-ProcXCloseDevice(client)
+-    register ClientPtr client;
++ProcXCloseDevice(register ClientPtr client)
+     {
+     int			i;
+     WindowPtr 		pWin, p1;
+@@ -142,10 +140,7 @@ ProcXCloseDevice(client)
+  */
+ 
+ void
+-DeleteEventsFromChildren(dev, p1, client)
+-    DeviceIntPtr	dev;
+-    WindowPtr 		p1;
+-    ClientPtr		client;
++DeleteEventsFromChildren(DeviceIntPtr dev, WindowPtr p1, ClientPtr client)
+     {
+     WindowPtr p2;
+ 
+@@ -166,10 +161,7 @@ DeleteEventsFromChildren(dev, p1, client)
+  */
+ 
+ void
+-DeleteDeviceEvents (dev, pWin, client)
+-    DeviceIntPtr	dev;
+-    WindowPtr		pWin;
+-    ClientPtr		client;
++DeleteDeviceEvents (DeviceIntPtr dev, WindowPtr pWin, ClientPtr client)
+     {
+     InputClientsPtr	others;
+     OtherInputMasks	*pOthers;

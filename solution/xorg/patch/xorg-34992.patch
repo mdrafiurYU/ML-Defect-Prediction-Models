@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index ae82f5b..1d09e09 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -424,7 +424,7 @@ void DarwinSendKeyboardEvents(int ev_type, int keycode) {
+     static unsigned int last_seed;
+     unsigned int this_seed;
+ 
+-    this_seed = DarwinModeSystemKeymapSeed();
++    this_seed = QuartzSystemKeymapSeed();
+     if (this_seed != last_seed) {
+       last_seed = this_seed;
+       DarwinKeyboardReload(darwinKeyboard);

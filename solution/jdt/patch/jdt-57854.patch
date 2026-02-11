@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.model/workspace/Formatter/test337/A_out.java b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test337/A_out.java
+index 5bfcc0c..9b81e77 100644
+--- a/org.eclipse.jdt.core.tests.model/workspace/Formatter/test337/A_out.java
++++ b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test337/A_out.java
+@@ -124,7 +124,7 @@ public class ConfigurationActivator implements BundleActivator {
+ 		}
+ 		return result;
+ 	}
+-private void installBundles() {
++	private void installBundles() {
+ 		IPlatform platform = acquirePlatform();
+ 
+ 		String metaPath = platform.getLocation().append(".metadata").toOSString();
+@@ -172,7 +172,8 @@ private void installBundles() {
+ 		} finally {
+ 			releasePlatform();
+ 		}
+-	}	private BundleListener reconcilerListener() {
++	}
++	private BundleListener reconcilerListener() {
+ 		return new BundleListener() {
+ 			public void bundleChanged(BundleEvent event) {
+ 				String buid = event.getBundle().getUniqueId();

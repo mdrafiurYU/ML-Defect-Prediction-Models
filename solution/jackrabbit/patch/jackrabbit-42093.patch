@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java
+index c7b04bb..4f2f2e7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DefaultHighlighter.java
+@@ -155,7 +155,7 @@ public class DefaultHighlighter {
+             }
+         }
+ 
+-        TermVectorOffsetInfo[] offsets = (TermVectorOffsetInfo[]) list.toArray(new TermVectorOffsetInfo[0]);
++        TermVectorOffsetInfo[] offsets = (TermVectorOffsetInfo[]) list.toArray(new TermVectorOffsetInfo[list.size()]);
+         // sort offsets
+         if (terms.length > 1) {
+             java.util.Arrays.sort(offsets, new TermVectorOffsetInfoSorter());

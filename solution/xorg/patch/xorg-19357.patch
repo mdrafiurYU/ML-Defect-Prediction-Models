@@ -1,0 +1,24 @@
+diff --git a/Xi/grabdevb.c b/Xi/grabdevb.c
+index 84f0610..b976244 100644
+--- a/Xi/grabdevb.c
++++ b/Xi/grabdevb.c
+@@ -80,8 +80,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGrabDeviceButton(client)
+-    register ClientPtr client;
++SProcXGrabDeviceButton(register ClientPtr client)
+     {
+     register char n;
+     register long *p;
+@@ -110,8 +109,7 @@ SProcXGrabDeviceButton(client)
+  */
+ 
+ int
+-ProcXGrabDeviceButton(client)
+-    ClientPtr client;
++ProcXGrabDeviceButton(ClientPtr client)
+     {
+     int			ret;
+     DeviceIntPtr	dev;

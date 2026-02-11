@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingMethodDeclTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingMethodDeclTest.java
+index e9798d6..5442d60 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingMethodDeclTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/describing/ASTRewritingMethodDeclTest.java
+@@ -235,6 +235,7 @@ public class ASTRewritingMethodDeclTest extends ASTRewritingTest {
+ 		buf.append("    <X> void gee(int p1) {}\n");
+ 		buf.append("    <X> void hee(int p1, int p2) {}\n");
+ 		buf.append("    public <X> void hee(int p1, byte p2) {}\n");
++		buf.append("    public<X>void hee(int p1, byte p2) {}\n");
+ 		buf.append("}\n");	
+ 		ICompilationUnit cu= pack1.createCompilationUnit("E.java", buf.toString(), false, null);	
+ 		
+@@ -267,6 +268,7 @@ public class ASTRewritingMethodDeclTest extends ASTRewritingTest {
+ 		buf.append("    void gee(int p1) {}\n");
+ 		buf.append("    void hee(int p1, int p2) {}\n");
+ 		buf.append("    public void hee(int p1, byte p2) {}\n");
++		buf.append("    public void hee(int p1, byte p2) {}\n");
+ 		buf.append("}\n");	
+ 		assertEqualString(preview, buf.toString());
+ 	}

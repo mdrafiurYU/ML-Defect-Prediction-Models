@@ -1,0 +1,47 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ColumnImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ColumnImpl.java
+index 65fbf54..735d845 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ColumnImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/ColumnImpl.java
+@@ -44,12 +44,12 @@ public class ColumnImpl extends AbstractQOMNode implements Column {
+     /**
+      * The name of the column.
+      */
+-    private final Name columnName;
++    private final String columnName;
+ 
+     ColumnImpl(NamePathResolver resolver,
+                Name selectorName,
+                Name propertyName,
+-               Name columnName) {
++               String columnName) {
+         super(resolver);
+         this.selectorName = selectorName;
+         this.propertyName = propertyName;
+@@ -75,18 +75,6 @@ public class ColumnImpl extends AbstractQOMNode implements Column {
+         return propertyName;
+     }
+ 
+-    /**
+-     * Gets the column name.
+-     * <p/>
+-     *
+-     * @return the column name; must be null if <code>getPropertyName</code> is
+-     *         null and non-null otherwise
+-     */
+-    public Name getColumnQName() {
+-        return columnName;
+-    }
+-
+-
+     //---------------------------< Column >-------------------------------------
+ 
+     /**
+@@ -116,7 +104,7 @@ public class ColumnImpl extends AbstractQOMNode implements Column {
+      *         null and non-null otherwise
+      */
+     public String getColumnName() {
+-        return getJCRName(columnName);
++        return columnName;
+     }
+ 
+     //------------------------< AbstractQOMNode >-------------------------------

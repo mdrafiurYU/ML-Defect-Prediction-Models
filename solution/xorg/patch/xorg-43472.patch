@@ -1,0 +1,13 @@
+diff --git a/randr/rrscreen.c b/randr/rrscreen.c
+index 590a388..94bf3ce 100644
+--- a/randr/rrscreen.c
++++ b/randr/rrscreen.c
+@@ -615,7 +615,7 @@ ProcRRGetScreenInfo (ClientPtr client)
+     rep.pad = 0;
+     
+     if (pScrPriv)
+-	if (!RRGetInfo (pScreen, FALSE))
++	if (!RRGetInfo (pScreen, TRUE))
+ 	    return BadAlloc;
+ 
+     output = RRFirstOutput (pScreen);

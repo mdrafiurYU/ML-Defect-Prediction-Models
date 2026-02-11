@@ -1,0 +1,35 @@
+diff --git a/hw/xgl/xglshm.c b/hw/xgl/xglshm.c
+index 3ac0c94..52a8aab 100644
+--- a/hw/xgl/xglshm.c
++++ b/hw/xgl/xglshm.c
+@@ -57,8 +57,10 @@ xglShmPutImage (DrawablePtr  pDrawable,
+ 				    BitsPerPixel (depth),
+ 				    PixmapBytePad (w, depth),
+ 				    (pointer) data);	
++
++	/* disable any possible acceleration of this pixmap */
+ 	if (pPixmap)
+-	    XGL_GET_PIXMAP_PRIV (pPixmap)->format = NULL;
++	    xglSetPixmapVisual (pPixmap, 0);
+     }
+     else
+     {
+@@ -67,16 +69,14 @@ xglShmPutImage (DrawablePtr  pDrawable,
+ 	{
+ 	    GCPtr pScratchGC;
+ 
+-	    XGL_PIXMAP_PRIV (pPixmap);
+-
+ 	    if (!xglAllocatePixmapBits (pPixmap,
+ 					XGL_PIXMAP_USAGE_HINT_DEFAULT))
+ 	    {
+ 		(*pScreen->DestroyPixmap) (pPixmap);
+ 		return;
+ 	    }
+-	    pPixmapPriv->format = NULL;
+-	    pPixmapPriv->target = xglPixmapTargetNo;
++
++	    xglSetPixmapVisual (pPixmap, 0);
+ 	    
+ 	    pScratchGC = GetScratchGC (depth, pScreen);
+ 	    if (!pScratchGC)

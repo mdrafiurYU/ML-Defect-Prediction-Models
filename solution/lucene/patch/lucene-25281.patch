@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/fst/FST.java b/lucene/src/java/org/apache/lucene/util/fst/FST.java
+index a52b26e..44cd44a 100644
+--- a/lucene/src/java/org/apache/lucene/util/fst/FST.java
++++ b/lucene/src/java/org/apache/lucene/util/fst/FST.java
+@@ -704,6 +704,12 @@ public class FST<T> {
+ 
+     if (labelToMatch == END_LABEL) {
+       if (follow.isFinal()) {
++        if (follow.target <= 0) {
++          arc.flags = BIT_LAST_ARC;
++        } else {
++          arc.flags = 0;
++          arc.nextArc = follow.target;
++        }
+         arc.output = follow.nextFinalOutput;
+         arc.label = END_LABEL;
+         return arc;

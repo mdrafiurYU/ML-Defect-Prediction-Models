@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbtext.c b/xkb/xkbtext.c
+index debc2f9..e91ab2e 100644
+--- a/xkb/xkbtext.c
++++ b/xkb/xkbtext.c
+@@ -890,7 +890,7 @@ unsigned		tmp;
+ char			tbuf[32];
+ 
+     act= &action->ctrls;
+-    tmp= XkbActionCtrls(act);
++    tmp= act->ctrls;
+     TryCopyStr(buf,"controls=",sz);
+     if (tmp==0)
+ 	TryCopyStr(buf,"none",sz);

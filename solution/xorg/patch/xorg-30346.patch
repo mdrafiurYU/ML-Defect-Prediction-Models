@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86Mode.c b/hw/xfree86/common/xf86Mode.c
+index 0c25c96..7fcce10 100644
+--- a/hw/xfree86/common/xf86Mode.c
++++ b/hw/xfree86/common/xf86Mode.c
+@@ -1472,6 +1472,12 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
+ 			 scrp->monitor->vrefresh[i].lo,
+ 			 scrp->monitor->vrefresh[i].hi);
+ 	}
++	if (scrp->monitor->maxPixClock) {
++	    xf86DrvMsg(scrp->scrnIndex, X_INFO,
++		       "%s: Using maximum pixel clock of %.2f MHz\n",
++		       scrp->monitor->id,
++		       (float)scrp->monitor->maxPixClock / 1000.0);
++	}
+     }
+ 
+     /*

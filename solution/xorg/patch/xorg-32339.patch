@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxutil.h b/GL/glx/glxutil.h
+index 1937ef2..6534c3f 100644
+--- a/GL/glx/glxutil.h
++++ b/GL/glx/glxutil.h
+@@ -50,7 +50,7 @@ extern void __glXUnrefDrawable(__GLXdrawable *glxPriv);
+ 
+ extern GLboolean __glXDrawableInit(__GLXdrawable *drawable,
+ 				   __GLXscreen *screen,
+-				   DrawablePtr pDraw, XID drawID,
++				   DrawablePtr pDraw, int type, XID drawID,
+ 				   __GLcontextModes *modes);
+ 
+ /* context helper routines */

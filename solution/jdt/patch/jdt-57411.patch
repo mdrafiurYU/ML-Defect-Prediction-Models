@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/Annotation.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/Annotation.java
+index 0dd8c13..eadd659 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/Annotation.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/Annotation.java
+@@ -175,7 +175,7 @@ public abstract class Annotation extends Expression implements IExtendedModifier
+ 	 * @return the resolved annotation, or <code>null</code> if the annotation cannot be resolved
+ 	 * @since 3.2
+ 	 */	
+-	public IResolvedAnnotation resolveAnnotation() {
++	public IAnnotationBinding resolveAnnotationBinding() {
+ 	    return this.ast.getBindingResolver().resolveAnnotation(this);
+ 	}
+ }

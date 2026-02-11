@@ -1,0 +1,14 @@
+diff --git a/dix/pixmap.c b/dix/pixmap.c
+index f76c557..78ce2a8 100644
+--- a/dix/pixmap.c
++++ b/dix/pixmap.c
+@@ -118,6 +118,9 @@ AllocatePixmap(ScreenPtr pScreen, int pixDataSize)
+     unsigned size;
+     int i;
+ 
++    if (pScreen->totalPixmapSize > ((size_t)-1) - pixDataSize)
++	return NullPixmap;
++    
+     pPixmap = (PixmapPtr)xalloc(pScreen->totalPixmapSize + pixDataSize);
+     if (!pPixmap)
+ 	return NullPixmap;

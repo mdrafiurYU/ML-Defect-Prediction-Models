@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/rootlessWindow.h b/miext/rootless/rootlessWindow.h
+index 6c26bac..9cceed3 100644
+--- a/miext/rootless/rootlessWindow.h
++++ b/miext/rootless/rootlessWindow.h
+@@ -28,6 +28,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/miext/rootless/rootlessWindow.h,v 1.1 2003/04/15 01:05:44 torrey Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _ROOTLESSWINDOW_H
+ #define _ROOTLESSWINDOW_H
+ 

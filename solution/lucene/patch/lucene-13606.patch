@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java b/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java
+index dfa4bb1..2f3f965 100644
+--- a/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/BinaryUpdateRequestHandler.java
+@@ -123,8 +123,6 @@ public class BinaryUpdateRequestHandler extends ContentStreamHandlerBase {
+       } else {
+         delcmd.query = s;
+       }
+-      delcmd.fromCommitted = true;
+-      delcmd.fromPending = true;
+       processor.processDelete(delcmd);
+     }
+   }

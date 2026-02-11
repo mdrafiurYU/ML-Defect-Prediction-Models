@@ -1,0 +1,30 @@
+diff --git a/hw/xfree86/vgahw/vgaCmap.c b/hw/xfree86/vgahw/vgaCmap.c
+index 609376a..44043c6 100644
+--- a/hw/xfree86/vgahw/vgaCmap.c
++++ b/hw/xfree86/vgahw/vgaCmap.c
+@@ -236,9 +236,9 @@ vgaInstallColormap(pmap)
+   else
+     entries = pmap->pVisual->ColormapEntries;
+ 
+-  ppix = (Pixel *)ALLOCATE_LOCAL( entries * sizeof(Pixel));
+-  prgb = (xrgb *)ALLOCATE_LOCAL( entries * sizeof(xrgb));
+-  defs = (xColorItem *)ALLOCATE_LOCAL(entries * sizeof(xColorItem));
++  ppix = (Pixel *)xalloc( entries * sizeof(Pixel));
++  prgb = (xrgb *)xalloc( entries * sizeof(xrgb));
++  defs = (xColorItem *)xalloc(entries * sizeof(xColorItem));
+ 
+   if ( oldmap != NOMAPYET)
+     WalkTree( pmap->pScreen, TellLostMap, &oldmap->mid);
+@@ -261,9 +261,9 @@ vgaInstallColormap(pmap)
+ 
+   WalkTree(pmap->pScreen, TellGainedMap, &pmap->mid);
+   
+-  DEALLOCATE_LOCAL(ppix);
+-  DEALLOCATE_LOCAL(prgb);
+-  DEALLOCATE_LOCAL(defs);
++  xfree(ppix);
++  xfree(prgb);
++  xfree(defs);
+ }
+ 
+ 

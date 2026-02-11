@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/PerReaderTermState.java b/lucene/src/java/org/apache/lucene/util/PerReaderTermState.java
+index bff514d..81ad4ce 100644
+--- a/lucene/src/java/org/apache/lucene/util/PerReaderTermState.java
++++ b/lucene/src/java/org/apache/lucene/util/PerReaderTermState.java
+@@ -138,9 +138,9 @@ public final class PerReaderTermState {
+ 
+   /**
+    *  Returns the accumulated document frequency of all {@link TermState}
+-   *         instances passed to {@link #register(TermState, int)}.
++   *         instances passed to {@link #register(TermState, int, int)}.
+    * @return the accumulated document frequency of all {@link TermState}
+-   *         instances passed to {@link #register(TermState, int)}.
++   *         instances passed to {@link #register(TermState, int, int)}.
+    */
+   public int docFreq() {
+     return docFreq;

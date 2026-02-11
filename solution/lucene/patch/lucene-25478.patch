@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/schema/FloatField.java b/solr/src/java/org/apache/solr/schema/FloatField.java
+index 7a4b538..0921b47 100644
+--- a/solr/src/java/org/apache/solr/schema/FloatField.java
++++ b/solr/src/java/org/apache/solr/schema/FloatField.java
+@@ -17,11 +17,11 @@
+ 
+ package org.apache.solr.schema;
+ 
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.search.SortField;
+ import org.apache.lucene.search.cache.CachedArrayCreator;
+ import org.apache.lucene.search.cache.FloatValuesCreator;
+ import org.apache.solr.search.QParser;
+-import org.apache.solr.search.function.ValueSource;
+ import org.apache.solr.search.function.FloatFieldSource;
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.solr.response.TextResponseWriter;

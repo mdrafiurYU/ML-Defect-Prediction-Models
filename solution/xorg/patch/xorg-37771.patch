@@ -1,0 +1,13 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index 85b5171..1355e90 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -292,7 +292,7 @@ create_bits_picture (PicturePtr pict,
+     
+     fbGetDrawable (pict->pDrawable, bits, stride, bpp, xoff, yoff);
+ 
+-    bits = (CARD8*)bits + yoff * stride * sizeof(FbBits) + xoff * (bpp / 8);
++    bits = (FbBits*)((CARD8*)bits + yoff * stride * sizeof(FbBits) + xoff * (bpp / 8));
+ 
+     image = pixman_image_create_bits (
+ 	pict->format,

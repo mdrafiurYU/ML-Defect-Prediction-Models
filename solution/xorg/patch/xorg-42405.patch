@@ -1,0 +1,13 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index c775b7b..c6980f0 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -395,7 +395,7 @@ ProcXTestFakeInput(client)
+ 
+     OsBlockSignals();
+     for (i = 0; i < nevents; i++)
+-        mieqEnqueue(dev, events->event);
++        mieqEnqueue(dev, (events+i)->event);
+     OsReleaseSignals();
+ 
+     return client->noClientException;

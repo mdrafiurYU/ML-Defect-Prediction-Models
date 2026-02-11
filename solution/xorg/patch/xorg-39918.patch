@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index 2c8cafe..9e322d9 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -112,6 +112,9 @@ int                     darwinFakeMouse2Mask = NX_ALTERNATEMASK;
+ int                     darwinFakeMouse3Mask = NX_COMMANDMASK;
+ #endif
+ 
++// Modifier mask for overriding event delivery to appkit (might be useful to set this to rcommand for input menu
++int                     darwinAppKitModMask = 0;
++
+ // devices
+ DeviceIntPtr            darwinPointer = NULL;
+ DeviceIntPtr            darwinTablet = NULL;

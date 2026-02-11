@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/xf4bpp/ppcPixmap.c b/hw/xfree86/xf4bpp/ppcPixmap.c
+index ec181cf..2079e2e 100644
+--- a/hw/xfree86/xf4bpp/ppcPixmap.c
++++ b/hw/xfree86/xf4bpp/ppcPixmap.c
+@@ -137,6 +137,7 @@ xf4bppCopyPixmap(pSrc)
+     pDst = xalloc(sizeof(PixmapRec) + size);
+     if (!pDst)
+ 	return NullPixmap;
++    pDst->devPrivates = NULL;
+     pDst->drawable = pSrc->drawable;
+     pDst->drawable.id = 0;
+     pDst->drawable.serialNumber = NEXT_SERIAL_NUMBER;

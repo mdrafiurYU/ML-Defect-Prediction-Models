@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Collection.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Collection.java
+index ad765f6..3db0ef0 100755
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Collection.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/annotation/Collection.java
+@@ -47,6 +47,8 @@ public @interface Collection {
+     // because it is not possible to have a default null value in annotation field
+     Class elementClassName() default Object.class;
+ 
++    String jcrElementName() default "collection-element";
++
+ 	Class collectionConverter() default DefaultCollectionConverterImpl.class;
+ 
+ 	// Use Object.class as default value

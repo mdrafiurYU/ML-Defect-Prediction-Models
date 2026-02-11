@@ -1,0 +1,33 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 27749d7..b1023a6 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -154,6 +154,10 @@ extern DevPrivateKey exaPixmapPrivateKey;
+ #define ExaSetPixmapPriv(p,a) dixSetPrivate(&(p)->devPrivates, exaPixmapPrivateKey, a)
+ #define ExaPixmapPriv(p)	ExaPixmapPrivPtr pExaPixmap = ExaGetPixmapPriv(p)
+ 
++#define EXA_RANGE_PITCH (1 << 0)
++#define EXA_RANGE_WIDTH (1 << 1)
++#define EXA_RANGE_HEIGHT (1 << 2)
++
+ typedef struct {
+     ExaOffscreenArea *area;
+     int		    score;	/**< score for the move-in vs move-out heuristic */
+@@ -167,6 +171,17 @@ typedef struct {
+     unsigned int    fb_size;	/**< size of pixmap in framebuffer memory */
+ 
+     /**
++     * Holds information about whether this pixmap can be used for
++     * acceleration (== 0) or not (> 0).
++     *
++     * Contains a OR'ed combination of the following values:
++     * EXA_RANGE_PITCH - set if the pixmap's pitch is out of range
++     * EXA_RANGE_WIDTH - set if the pixmap's width is out of range
++     * EXA_RANGE_HEIGHT - set if the pixmap's height is out of range
++     */
++    unsigned int    accel_blocked;
++
++    /**
+      * The damage record contains the areas of the pixmap's current location
+      * (framebuffer or system) that have been damaged compared to the other
+      * location.

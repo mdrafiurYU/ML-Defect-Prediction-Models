@@ -1,0 +1,35 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistOptions.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistOptions.java
+index c569469..34191e3 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistOptions.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/impl/AssistOptions.java
+@@ -20,6 +20,8 @@ public class AssistOptions {
+ 	 */
+ 	public static final String OPTION_PerformVisibilityCheck =
+ 		"org.eclipse.jdt.core.codeComplete.visibilityCheck"; 	//$NON-NLS-1$
++	public static final String OPTION_PerformDeprecationCheck =
++		"org.eclipse.jdt.core.codeComplete.deprecationCheck"; 	//$NON-NLS-1$
+ 	public static final String OPTION_ForceImplicitQualification =
+ 		"org.eclipse.jdt.core.codeComplete.forceImplicitQualification"; 	//$NON-NLS-1$
+ 	public static final String OPTION_FieldPrefixes =
+@@ -49,6 +51,7 @@ public class AssistOptions {
+ 	public static final String DISABLED = "disabled"; //$NON-NLS-1$
+ 	
+ 	public boolean checkVisibility = false;
++	public boolean checkDeprecation = false;
+ 	public boolean checkForbiddenReference = false;
+ 	public boolean checkDiscouragedReference = false;
+ 	public boolean forceImplicitQualification = false;
+@@ -196,6 +199,13 @@ public class AssistOptions {
+ 				this.camelCaseMatch = false;
+ 			}
+ 		}
++		if ((optionValue = optionsMap.get(OPTION_PerformDeprecationCheck)) != null) {
++			if (ENABLED.equals(optionValue)) {
++				this.checkDeprecation = true;
++			} else if (DISABLED.equals(optionValue)) {
++				this.checkDeprecation = false;
++			}
++		}
+ 	}
+ 	
+ 	private char[][] splitAndTrimOn(char divider, char[] arrayToSplit) {

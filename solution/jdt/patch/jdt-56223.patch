@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java
+index 8fcc47b..c3505f8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IfStatement.java
+@@ -219,7 +219,7 @@ public class IfStatement extends Statement {
+ 
+ 	public void resolve(BlockScope scope) {
+ 
+-		TypeBinding type = condition.resolveTypeExpecting(scope, BooleanBinding);
++		TypeBinding type = condition.resolveTypeExpecting(scope, TypeBinding.BOOLEAN);
+ 		condition.computeConversion(scope, type, type);
+ 		if (thenStatement != null)
+ 			thenStatement.resolve(scope);

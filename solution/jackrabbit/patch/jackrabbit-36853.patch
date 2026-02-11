@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractRepositoryConfig.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractRepositoryConfig.java
+index 59be739..4b465b3 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractRepositoryConfig.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/AbstractRepositoryConfig.java
+@@ -18,13 +18,8 @@ package org.apache.jackrabbit.jcr2spi;
+ 
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.apache.jackrabbit.conversion.NamePathResolver;
+ import org.apache.jackrabbit.jcr2spi.config.RepositoryConfig;
+ import org.apache.jackrabbit.jcr2spi.config.CacheBehaviour;
+-import org.apache.jackrabbit.value.ValueFactoryImplEx;
+-
+-import javax.jcr.ValueFactory;
+-import javax.jcr.RepositoryException;
+ 
+ /**
+  * <code>AbstractRepositoryConfig</code>...
+@@ -33,10 +28,6 @@ public abstract class AbstractRepositoryConfig implements RepositoryConfig {
+ 
+     private static Logger log = LoggerFactory.getLogger(AbstractRepositoryConfig.class);
+ 
+-    public ValueFactory getValueFactory(NamePathResolver resolver) throws RepositoryException {
+-        return ValueFactoryImplEx.getInstance();
+-    }
+-
+     public String getDefaultWorkspaceName() {
+         return null;
+     }

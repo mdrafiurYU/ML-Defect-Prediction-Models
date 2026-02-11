@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/WildcardTypeImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/WildcardTypeImpl.java
+index c62f106..7335396 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/WildcardTypeImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/type/WildcardTypeImpl.java
+@@ -31,7 +31,7 @@ public class WildcardTypeImpl implements WildcardType
+         _binding = binding;
+ 		_env = env;
+         assert _binding != null && _binding.isWildcardType();
+-        assert env != null : "missing environment";
++        assert env != null : "missing environment"; //$NON-NLS-1$
+     }
+     
+     public void accept(TypeVisitor visitor)

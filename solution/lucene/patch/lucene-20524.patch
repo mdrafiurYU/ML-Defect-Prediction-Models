@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java b/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
+index 2bb66ba..cab6a66 100755
+--- a/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
++++ b/lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java
+@@ -240,7 +240,7 @@ public class TestBufferedIndexInput extends LuceneTestCase {
+     }
+ 
+     public void testSetBufferSize() throws IOException {
+-      File indexDir = new File(TEMP_DIR, "testSetBufferSize");
++      File indexDir = _TestUtil.getTempDir("testSetBufferSize");
+       MockFSDirectory dir = new MockFSDirectory(indexDir, random);
+       try {
+         IndexWriter writer = new IndexWriter(

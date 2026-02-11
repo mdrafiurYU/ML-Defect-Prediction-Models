@@ -1,0 +1,12 @@
+diff --git a/Xext/xvdisp.c b/Xext/xvdisp.c
+index 237ad51..de0128e 100644
+--- a/Xext/xvdisp.c
++++ b/Xext/xvdisp.c
+@@ -1588,6 +1588,7 @@ SProcXvSetPortAttribute(ClientPtr client)
+   swaps(&stuff->length, n);
+   swapl(&stuff->port, n);
+   swapl(&stuff->attribute, n);
++  swapl(&stuff->value, n);
+   return XvProcVector[xv_SetPortAttribute](client);
+ }
+ 

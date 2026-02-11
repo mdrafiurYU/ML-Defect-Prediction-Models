@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java
+index 90897b4..8ea8561 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java
+@@ -79,13 +79,16 @@ public class NodeImplTest extends AbstractJCRTest {
+ 
+     private static Principal getReadOnlyPrincipal() throws RepositoryException, NotExecutableException {
+         SessionImpl s = (SessionImpl) helper.getReadOnlySession();
+-        for (Iterator it = s.getSubject().getPrincipals().iterator(); it.hasNext();) {
+-            Principal p = (Principal) it.next();
+-            if (!(p instanceof Group)) {
+-                return p;
++        try {
++            for (Iterator it = s.getSubject().getPrincipals().iterator(); it.hasNext();) {
++                Principal p = (Principal) it.next();
++                if (!(p instanceof Group)) {
++                    return p;
++                }
+             }
++        } finally {
++            s.logout();
+         }
+-        s.logout();
+         throw new NotExecutableException();
+     }

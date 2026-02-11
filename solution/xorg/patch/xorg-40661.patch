@@ -1,0 +1,15 @@
+diff --git a/hw/kdrive/vesa/vesa.c b/hw/kdrive/vesa/vesa.c
+index 316b873..b7cc8f1 100644
+--- a/hw/kdrive/vesa/vesa.c
++++ b/hw/kdrive/vesa/vesa.c
+@@ -175,9 +175,7 @@ vesaGetModes (Vm86InfoPtr vi, int *ret_nmode)
+     if (nmode <= 0)
+ 	return 0;
+     
+-    modes = xalloc (nmode * sizeof (VesaModeRec));
+-    
+-    memset (modes, '\0', nmode * sizeof (VesaModeRec));
++    modes = xcalloc (nmode, sizeof (VesaModeRec));
+     
+     if (nmodeVga)
+     {

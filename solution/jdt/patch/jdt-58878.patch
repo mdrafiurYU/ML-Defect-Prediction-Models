@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RootManipulationsTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RootManipulationsTests.java
+index 148568d..e0b28cb 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RootManipulationsTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RootManipulationsTests.java
+@@ -123,7 +123,7 @@ protected void populate(StringBuffer buffer, Object nonJavaResource, int indent)
+ 	}*/
+ }
+ public static Test suite() {
+-	return new Suite(RootManipulationsTests.class);
++	return buildModelTestSuite(RootManipulationsTests.class);
+ }
+ /*
+  * Ensure that a simple copy of a source root to another project triggers the right delta

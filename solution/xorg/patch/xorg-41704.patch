@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 38fd1ec..6b92acb 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -650,8 +650,8 @@ void
+ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+ {
+     LocalDevicePtr pInfo = (LocalDevicePtr) pDev->public.devicePrivate;
+-    InputDriverPtr drv;
+-    IDevRec *idev;
++    InputDriverPtr drv = NULL;
++    IDevRec *idev = NULL;
+     IDevPtr *it;
+     Bool isMaster = pDev->isMaster;
+ 

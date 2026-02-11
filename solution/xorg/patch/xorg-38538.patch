@@ -1,0 +1,15 @@
+diff --git a/dix/events.c b/dix/events.c
+index cec12f0..79d9373 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -782,8 +782,8 @@ XineramaChangeToCursor(DeviceIntPtr pDev, CursorPtr cursor)
+ }
+ 
+ #else
+-#define SyntheticMotion(x, y) \
+-     PostSyntheticMotion(x, y, \
++#define SyntheticMotion(dev, x, y) \
++     PostSyntheticMotion(dev, x, y, \
+                          0, \
+                          syncEvents.playingEvents ? \
+                            syncEvents.time.milliseconds : \

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FloatLiteral.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FloatLiteral.java
+index 6a5a39e..88770bc 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FloatLiteral.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FloatLiteral.java
+@@ -106,7 +106,7 @@ public class FloatLiteral extends NumberLiteral {
+ 		codeStream.recordPositionsFrom(pc, this.sourceStart);
+ 	}
+ 	public TypeBinding literalType(BlockScope scope) {
+-		return FloatBinding;
++		return TypeBinding.FLOAT;
+ 	}
+ 	public void traverse(ASTVisitor visitor, BlockScope blockScope) {
+ 		visitor.visit(this, blockScope);

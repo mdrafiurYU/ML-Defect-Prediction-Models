@@ -1,0 +1,40 @@
+diff --git a/Xext/saver.c b/Xext/saver.c
+index cd67749..357c215 100644
+--- a/Xext/saver.c
++++ b/Xext/saver.c
+@@ -1026,7 +1026,7 @@ ScreenSaverSetAttributes (ClientPtr client)
+ 	    }
+             else
+ 	    {	
+-		ret = dixLookupResource((pointer *)&pPixmap, pixID, RT_PIXMAP,
++		ret = dixLookupResourceByType((pointer *)&pPixmap, pixID, RT_PIXMAP,
+ 					client, DixReadAccess);
+ 		if (ret == Success)
+ 		{
+@@ -1064,7 +1064,7 @@ ScreenSaverSetAttributes (ClientPtr client)
+ 	    }
+ 	    else
+ 	    {	
+-		ret = dixLookupResource((pointer *)&pPixmap, pixID, RT_PIXMAP,
++		ret = dixLookupResourceByType((pointer *)&pPixmap, pixID, RT_PIXMAP,
+ 					client, DixReadAccess);
+ 		if (ret == Success)
+ 		{
+@@ -1158,7 +1158,7 @@ ScreenSaverSetAttributes (ClientPtr client)
+ 	    break;
+ 	case CWColormap:
+ 	    cmap = (Colormap) *pVlist;
+-	    ret = dixLookupResource((pointer *)&pCmap, cmap, RT_COLORMAP,
++	    ret = dixLookupResourceByType((pointer *)&pCmap, cmap, RT_COLORMAP,
+ 				    client, DixUseAccess);
+ 	    if (ret != Success)
+ 	    {
+@@ -1182,7 +1182,7 @@ ScreenSaverSetAttributes (ClientPtr client)
+ 	    }
+ 	    else
+ 	    {
+-		ret = dixLookupResource((pointer *)&pCursor, cursorID,
++		ret = dixLookupResourceByType((pointer *)&pCursor, cursorID,
+ 					RT_CURSOR, client, DixUseAccess);
+ 	    	if (ret != Success)
+ 	    	{

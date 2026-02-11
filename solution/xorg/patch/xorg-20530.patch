@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/bios_mmap.c b/hw/xfree86/os-support/shared/bios_mmap.c
+index b4ff8c3..5f300a9 100644
+--- a/hw/xfree86/os-support/shared/bios_mmap.c
++++ b/hw/xfree86/os-support/shared/bios_mmap.c
+@@ -42,7 +42,7 @@
+  */
+ 
+ #ifndef __alpha__
+-int
++_X_EXPORT int
+ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	     int Len)
+ {

@@ -1,0 +1,14 @@
+diff --git a/mi/miscrinit.c b/mi/miscrinit.c
+index 9757113..ee60746 100644
+--- a/mi/miscrinit.c
++++ b/mi/miscrinit.c
+@@ -265,9 +265,7 @@ miScreenInit(
+     pScreen->HandleExposures = miHandleValidateExposures;
+     pScreen->ReparentWindow = (ReparentWindowProcPtr) 0;
+     pScreen->ChangeBorderWidth = miChangeBorderWidth;
+-#ifdef SHAPE
+     pScreen->SetShape = miSetShape;
+-#endif
+     pScreen->MarkUnrealizedWindow = miMarkUnrealizedWindow;
+ 
+     pScreen->SaveDoomedAreas = 0;

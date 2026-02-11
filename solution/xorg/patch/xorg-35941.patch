@@ -1,0 +1,38 @@
+diff --git a/xkb/xkbgeom.h b/xkb/xkbgeom.h
+index a6918b4..173affe 100644
+--- a/xkb/xkbgeom.h
++++ b/xkb/xkbgeom.h
+@@ -599,13 +599,6 @@ XkbAllocGeometry(
+ 	XkbGeometrySizesPtr	/* sizes */
+ );
+ 
+-extern	Status
+-XkbSetGeometry(
+-	Display *		/* dpy */,
+-	unsigned		/* deviceSpec */,
+-	XkbGeometryPtr		/* geom */
+-);
+-
+ extern	Bool
+ XkbComputeShapeTop(
+ 	XkbShapePtr		/* shape */,
+@@ -637,19 +630,6 @@ XkbFindOverlayForKey(
+ 	char *			/* under */
+ );
+ 
+-extern	Status
+-XkbGetGeometry(
+-    Display *			/* dpy */,
+-    XkbDescPtr			/* xkb */
+-);
+-
+-extern	Status
+-XkbGetNamedGeometry(
+-    Display *			/* dpy */,
+-    XkbDescPtr			/* xkb */,
+-    Atom			/* name */
+-);
+-
+ _XFUNCPROTOEND
+ 
+ #endif /* _XKBGEOM_H_ */

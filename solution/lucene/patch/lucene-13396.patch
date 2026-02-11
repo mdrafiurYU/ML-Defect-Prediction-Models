@@ -1,0 +1,30 @@
+diff --git a/solr/src/java/org/apache/solr/response/CSVResponseWriter.java b/solr/src/java/org/apache/solr/response/CSVResponseWriter.java
+index c6dda92..2d14c80 100755
+--- a/solr/src/java/org/apache/solr/response/CSVResponseWriter.java
++++ b/solr/src/java/org/apache/solr/response/CSVResponseWriter.java
+@@ -475,10 +475,6 @@ class CSVWriter extends TextResponseWriter {
+   }
+ 
+   @Override
+-  public void writeArray(String name, Object[] val) throws IOException {
+-  }
+-
+-  @Override
+   public void writeArray(String name, Iterator val) throws IOException {
+   }
+ 
+@@ -523,14 +519,4 @@ class CSVWriter extends TextResponseWriter {
+   public void writeDate(String name, String val) throws IOException {
+     printer.print(val, false);
+   }
+-
+-  @Override
+-  public void writeShort(String name, String val) throws IOException {
+-    printer.print(val, false);
+-  }
+-
+-  @Override
+-  public void writeByte(String name, String val) throws IOException {
+-    printer.print(val, false);
+-  }
+ }

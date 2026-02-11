@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueValueFormatExceptionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueValueFormatExceptionTest.java
+index 35e2377..fdd6ca6 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueValueFormatExceptionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueValueFormatExceptionTest.java
+@@ -213,7 +213,7 @@ public class SetValueValueFormatExceptionTest extends AbstractJCRTest {
+         try {
+             Node referenceableNode = testRootNode.addNode(nodeName3, testNodeType);
+             if (needsMixin(referenceableNode, mixReferenceable)) {
+-                referenceableNode.addMixin(mixReferenceable);
++                ensureMixinType(referenceableNode, mixReferenceable);
+             }
+ 
+             // some implementations may require a save after addMixin()

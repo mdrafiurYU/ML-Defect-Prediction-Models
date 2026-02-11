@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86PciInfo.h b/hw/xfree86/common/xf86PciInfo.h
+index ab8836b..12cf3dd 100644
+--- a/hw/xfree86/common/xf86PciInfo.h
++++ b/hw/xfree86/common/xf86PciInfo.h
+@@ -47,6 +47,10 @@
+  */
+ 
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86_PCIINFO_H
+ #define _XF86_PCIINFO_H
+ 

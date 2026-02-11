@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/elf.h b/hw/xfree86/loader/elf.h
+index 51322a9..c53796c 100644
+--- a/hw/xfree86/loader/elf.h
++++ b/hw/xfree86/loader/elf.h
+@@ -115,6 +115,10 @@ typedef struct dynamic64 {
+     } d_un;
+ } Elf64_Dyn;
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef QNX4
+ extern Elf32_Dyn _DYNAMIC[];
+ #endif

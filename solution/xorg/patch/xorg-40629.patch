@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dixmods/extmod/xf86dga.c b/hw/xfree86/dixmods/extmod/xf86dga.c
+index 0736167..c66bca2 100644
+--- a/hw/xfree86/dixmods/extmod/xf86dga.c
++++ b/hw/xfree86/dixmods/extmod/xf86dga.c
+@@ -153,6 +153,9 @@ ProcXF86DGASetViewPort(ClientPtr client)
+ 
+     REQUEST_SIZE_MATCH(xXF86DGASetViewPortReq);
+ 
++    if (!DGAAvailable(stuff->screen))
++	return (DGAErrorBase + XF86DGANoDirectVideoMode);
++
+     if (!DGAActive(stuff->screen))
+     {
+ 	int num;

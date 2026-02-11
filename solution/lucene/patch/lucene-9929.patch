@@ -1,0 +1,18 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestFastLRUCache.java b/solr/src/test/org/apache/solr/search/TestFastLRUCache.java
+index 5733bf2..6c42eac 100644
+--- a/solr/src/test/org/apache/solr/search/TestFastLRUCache.java
++++ b/solr/src/test/org/apache/solr/search/TestFastLRUCache.java
+@@ -243,6 +243,14 @@ public class TestFastLRUCache extends LuceneTestCase {
+     assertNotNull(m.get(5));
+     assertNotNull(m.get(4));
+     assertNotNull(m.get(2));
++
++    m = cache.getOldestAccessedItems(0);
++    assertTrue(m.isEmpty());
++
++    //test this too
++    m = cache.getLatestAccessedItems(0);
++    assertTrue(m.isEmpty());
++
+     cache.destroy();
+   }

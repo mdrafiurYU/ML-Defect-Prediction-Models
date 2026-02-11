@@ -1,0 +1,44 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java
+index 774f048..f9728ee 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavaModelTests.java
+@@ -401,17 +401,28 @@ public abstract class AbstractJavaModelTests extends SuiteOfTestCases {
+ 			assertTrue("Element should not be present after deletion: " + elementToDelete, !elementToDelete.exists());
+ 		}
+ 	}
+-protected void assertDeltas(String message, String expected) {
+-	String actual = this.deltaListener.toString();
+-	if (!expected.equals(actual)) {
+-		System.out.println(displayString(actual, 2));
+-		System.err.println(this.deltaListener.stackTraces.toString());
+-	}
+-	assertEquals(
+-		message,
+-		expected,
+-		actual);
+-}
++	protected void assertDeltas(String message, String expected) {
++		String actual = this.deltaListener.toString();
++		if (!expected.equals(actual)) {
++			System.out.println(displayString(actual, 2));
++			System.err.println(this.deltaListener.stackTraces.toString());
++		}
++		assertEquals(
++			message,
++			expected,
++			actual);
++	}
++	protected void assertDeltas(String message, String expected, IJavaElementDelta delta) {
++		String actual = delta == null ? "<null>" : delta.toString();
++		if (!expected.equals(actual)) {
++			System.out.println(displayString(actual, 2));
++			System.err.println(this.deltaListener.stackTraces.toString());
++		}
++		assertEquals(
++			message,
++			expected,
++			actual);
++	}
+ 	protected void assertTypesEqual(String message, String expected, IType[] types) {
+ 		assertTypesEqual(message, expected, types, true);
+ 	}

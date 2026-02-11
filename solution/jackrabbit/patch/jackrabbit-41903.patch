@@ -1,0 +1,55 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/PropertyValueImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/PropertyValueImpl.java
+index 7f6d54c..e5c7982 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/PropertyValueImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/PropertyValueImpl.java
+@@ -29,11 +29,6 @@ public class PropertyValueImpl
+         implements PropertyValue {
+ 
+     /**
+-     * The name of the selector against which to apply this constraint.
+-     */
+-    private final Name selectorName;
+-
+-    /**
+      * The name of the property.
+      */
+     private final Name propertyName;
+@@ -41,21 +36,11 @@ public class PropertyValueImpl
+     PropertyValueImpl(NamePathResolver resolver,
+                       Name selectorName,
+                       Name propertyName) {
+-        super(resolver);
+-        this.selectorName = selectorName;
++        super(resolver, selectorName);
+         this.propertyName = propertyName;
+     }
+ 
+     /**
+-     * Gets the name of the selector against which to evaluate this operand.
+-     *
+-     * @return the selector name; non-null
+-     */
+-    public Name getSelectorQName() {
+-        return selectorName;
+-    }
+-
+-    /**
+      * Gets the name of the property.
+      *
+      * @return the property name; non-null
+@@ -67,15 +52,6 @@ public class PropertyValueImpl
+     //------------------------------< PropertyValue >---------------------------
+ 
+     /**
+-     * Gets the name of the selector against which to evaluate this operand.
+-     *
+-     * @return the selector name; non-null
+-     */
+-    public String getSelectorName() {
+-        return getJCRName(selectorName);
+-    }
+-
+-    /**
+      * Gets the name of the property.
+      *
+      * @return the property name; non-null

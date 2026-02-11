@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java
+index c0b6804..cfa7644 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java
+@@ -376,7 +376,7 @@ class MethodBinding implements IMethodBinding {
+ 		org.eclipse.jdt.internal.compiler.lookup.MethodBinding other = ((MethodBinding) otherMethod).binding;
+ 		if (!CharOperation.equals(this.binding.selector, other.selector))
+ 			return false;
+-		return this.binding.areParameterErasuresEqual(other);
++		return this.binding.areParameterErasuresEqual(other) && this.binding.areTypeVariableErasuresEqual(other);
+ 	}
+ 
+ 	/**

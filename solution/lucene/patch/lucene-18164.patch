@@ -1,0 +1,20 @@
+diff --git a/lucene/src/java/org/apache/lucene/analysis/tokenattributes/TypeAttributeImpl.java b/lucene/src/java/org/apache/lucene/analysis/tokenattributes/TypeAttributeImpl.java
+index 3c3b7ab..045b30d 100644
+--- a/lucene/src/java/org/apache/lucene/analysis/tokenattributes/TypeAttributeImpl.java
++++ b/lucene/src/java/org/apache/lucene/analysis/tokenattributes/TypeAttributeImpl.java
+@@ -17,14 +17,12 @@ package org.apache.lucene.analysis.tokenattributes;
+  * limitations under the License.
+  */
+ 
+-import java.io.Serializable;
+-
+ import org.apache.lucene.util.AttributeImpl;
+ 
+ /**
+  * A Token's lexical type. The Default value is "word". 
+  */
+-public class TypeAttributeImpl extends AttributeImpl implements TypeAttribute, Cloneable, Serializable {
++public class TypeAttributeImpl extends AttributeImpl implements TypeAttribute, Cloneable {
+   private String type;
+   
+   public TypeAttributeImpl() {

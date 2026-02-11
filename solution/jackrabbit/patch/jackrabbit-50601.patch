@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/AccessManagerTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/AccessManagerTest.java
+index b1f2012..6d1714d 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/AccessManagerTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/AccessManagerTest.java
+@@ -115,7 +115,7 @@ public class AccessManagerTest extends AbstractJCRTest {
+ 
+     public void testCheckPermissionWithUnknowId() throws RepositoryException, NotExecutableException {
+         Session s = getHelper().getReadOnlySession();
+-        NodeId id = new NodeId(UUID.randomUUID());
++        NodeId id = new NodeId();
+         try {
+             AccessManager acMgr = getAccessManager(s);
+             acMgr.checkPermission(id, AccessManager.READ);

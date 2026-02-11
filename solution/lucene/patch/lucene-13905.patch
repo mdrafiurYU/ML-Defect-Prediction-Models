@@ -1,0 +1,12 @@
+diff --git a/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java b/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java
+index 52cf4d3..93bdddc 100644
+--- a/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java
++++ b/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java
+@@ -81,7 +81,6 @@ public class SolrDispatchFilter implements Filter
+     try {
+       // web.xml configuration
+       this.pathPrefix = config.getInitParameter( "path-prefix" );
+-      init.setSolrConfigFilename(config.getInitParameter("solrconfig-filename"));
+ 
+       this.cores = init.initialize();
+       abortOnConfigurationError = init.isAbortOnConfigurationError();

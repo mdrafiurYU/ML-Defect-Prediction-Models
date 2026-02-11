@@ -1,0 +1,14 @@
+diff --git a/hw/dmx/dmxinit.c b/hw/dmx/dmxinit.c
+index 366bd14..6d466c4 100644
+--- a/hw/dmx/dmxinit.c
++++ b/hw/dmx/dmxinit.c
+@@ -746,8 +746,7 @@ void InitOutput(ScreenInfo *pScreenInfo, int argc, char *argv[])
+ 		nconfigs = dmxScreen->numGlxVisuals;
+ 	    }
+ 
+-	    configprivs = xalloc(dmxScreen->beNumVisuals *
+-				 sizeof(dmxGlxVisualPrivate*));
++	    configprivs = xalloc(nconfigs * sizeof(dmxGlxVisualPrivate*));
+ 
+ 	    if (configs != NULL && configprivs != NULL) {
+ 

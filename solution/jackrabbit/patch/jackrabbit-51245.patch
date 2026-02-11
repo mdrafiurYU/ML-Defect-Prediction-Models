@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionStorageTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionStorageTest.java
+index 9d93f94..cf029f5 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionStorageTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionStorageTest.java
+@@ -63,7 +63,7 @@ public class VersionStorageTest extends AbstractVersionTest {
+      */
+     public void testVersionStorageIdenticalAcrossAllWorkspaces() throws RepositoryException {
+         // The superuser session for the second workspace
+-        Session superuserW2 = helper.getSuperuserSession(workspaceName);
++        Session superuserW2 = getHelper().getSuperuserSession(workspaceName);
+ 
+         try {
+             // check path to version storage

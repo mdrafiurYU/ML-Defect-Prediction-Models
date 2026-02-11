@@ -1,0 +1,18 @@
+diff --git a/dix/events.c b/dix/events.c
+index bc6b6ae..887cbcd 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -695,6 +695,13 @@ XineramaChangeToCursor(CursorPtr cursor)
+     }
+ }
+ 
++#else
++#define SyntheticMotion(x, y) \
++     PostSyntheticMotion(x, y, \
++                         0, \
++                         syncEvents.playingEvents ? \
++                           syncEvents.time.milliseconds : \
++                           currentTime.milliseconds);
+ 
+ #endif  /* PANORAMIX */
+ 

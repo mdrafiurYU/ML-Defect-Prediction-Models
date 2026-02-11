@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FilterMultiColumnQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FilterMultiColumnQuery.java
+index 707fc7a..c0a7098 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FilterMultiColumnQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/FilterMultiColumnQuery.java
+@@ -94,9 +94,7 @@ public class FilterMultiColumnQuery implements MultiColumnQuery {
+                 }
+             }
+         };
+-        if (orderings.length > 0 && hits.getSelectorNames().length > 1) {
+-            // subsequent ordering is only needed
+-            // when there is more than one column
++        if (orderings.length > 0) {
+             hits = new SortedMultiColumnQueryHits(hits, orderings, searcher.getIndexReader());
+         }
+         return hits;

@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/EventSubscription.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/EventSubscription.java
+index 666f369..063f476 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/EventSubscription.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/EventSubscription.java
+@@ -317,12 +317,12 @@ class EventSubscription implements Subscription, EventListener {
+     }
+ 
+     /**
+-     * Returns the qualified names of the passed node types using the namespace
++     * Returns the names of the passed node types using the namespace
+      * resolver to parse the names.
+      *
+      * @param nt         the node types
+      * @param resolver
+-     * @return the qualified names of the node types.
++     * @return the names of the node types.
+      * @throws NameException if a node type returns an illegal name.
+      * @throws NamespaceException if the name of a node type contains a
+      * prefix that is not known to <code>resolver</code>.

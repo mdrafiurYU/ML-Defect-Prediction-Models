@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/VersionEventsTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/VersionEventsTest.java
+index e3adbab..b0194a1 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/VersionEventsTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/observation/VersionEventsTest.java
+@@ -178,7 +178,7 @@ public class VersionEventsTest extends AbstractObservationTest {
+         n1.addMixin(mixVersionable);
+         testRootNode.save();
+ 
+-        Session s = helper.getReadOnlySession(workspaceName);
++        Session s = getHelper().getReadOnlySession(workspaceName);
+         try {
+             EventResult listener = new EventResult(log);
+             ObservationManager obsMgr = s.getWorkspace().getObservationManager();

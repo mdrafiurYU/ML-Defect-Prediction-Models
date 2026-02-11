@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/quartzAudio.c b/hw/xquartz/quartzAudio.c
+index 2e8f3a4..603ca4a 100644
+--- a/hw/xquartz/quartzAudio.c
++++ b/hw/xquartz/quartzAudio.c
+@@ -337,7 +337,8 @@ void QuartzAudioInit(void)
+     // fixme assert fadeLength<framesPerBuffer
+ 
+     // Prepare for playback
+-    status = AudioDeviceAddIOProc(outputDevice, QuartzAudioIOProc, &data);
++    AudioDeviceIOProcID sInputIOProcID = NULL;
++    status = AudioDeviceCreateIOProcID( outputDevice, QuartzAudioIOProc, NULL, &sInputIOProcID );
+     if (status) {
+         ErrorF("QuartzAudioInit: AddIOProc returned %ld\n", (long)status);
+         return;

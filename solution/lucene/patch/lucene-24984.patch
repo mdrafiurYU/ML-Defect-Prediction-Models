@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+index 17e251e..1185343 100644
+--- a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
++++ b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+@@ -715,7 +715,7 @@ public class SolrIndexSearcher extends IndexSearcher implements SolrInfoMBean {
+     TermQuery key = null;
+ 
+     if (useCache) {
+-      key = new TermQuery(new Term(deState.fieldName, new BytesRef(deState.termsEnum.term()), false));
++      key = new TermQuery(new Term(deState.fieldName, new BytesRef(deState.termsEnum.term())));
+       DocSet result = filterCache.get(key);
+       if (result != null) return result;
+     }

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java
+index 1d1d3ae..3eea7f8 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java
+@@ -31,7 +31,7 @@ public interface EventBundle {
+      *
+      * @return the {@link Event events} of this bundle.
+      */
+-    public Iterator getEvents();
++    public Iterator<Event> getEvents();
+ 
+     /**
+      * Returns <code>true</code> if this event bundle is associated with a

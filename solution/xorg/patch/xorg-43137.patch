@@ -1,0 +1,17 @@
+diff --git a/randr/rrxinerama.c b/randr/rrxinerama.c
+index 5af6fb0..0a14b79 100644
+--- a/randr/rrxinerama.c
++++ b/randr/rrxinerama.c
+@@ -307,11 +307,7 @@ ProcRRXineramaQueryScreens(ClientPtr client)
+     REQUEST_SIZE_MATCH(xXineramaQueryScreensReq);
+ 
+     if (RRXineramaScreenActive (pScreen))
+-    {
+-	rrScrPriv(pScreen);
+-	if (pScrPriv->numCrtcs == 0 || pScrPriv->numOutputs == 0)
+-	    RRGetInfo (pScreen);
+-    }
++	RRGetInfo (pScreen, FALSE);
+     
+     rep.type = X_Reply;
+     rep.sequenceNumber = client->sequence;

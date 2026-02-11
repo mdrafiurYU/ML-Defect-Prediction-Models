@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/emulOpStip.c b/hw/xfree86/xf4bpp/emulOpStip.c
+index 4a347b5..2f63b14 100644
+--- a/hw/xfree86/xf4bpp/emulOpStip.c
++++ b/hw/xfree86/xf4bpp/emulOpStip.c
+@@ -30,6 +30,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "mfbmap.h"

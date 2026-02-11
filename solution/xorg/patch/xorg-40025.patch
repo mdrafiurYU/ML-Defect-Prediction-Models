@@ -1,0 +1,14 @@
+diff --git a/hw/xquartz/quartzKeyboard.c b/hw/xquartz/quartzKeyboard.c
+index aebc941..d26fbd3 100644
+--- a/hw/xquartz/quartzKeyboard.c
++++ b/hw/xquartz/quartzKeyboard.c
+@@ -1103,7 +1103,8 @@ Bool LegalModifier(unsigned int key, DeviceIntPtr pDev)
+ /* TODO: Not thread safe */
+ unsigned int QuartzSystemKeymapSeed(void) {
+     static unsigned int seed = 0;
+-#if defined(__x86_64__) || defined(__ppc64__)
++//#if defined(__x86_64__) || defined(__ppc64__)
++#if 1
+     static TISInputSourceRef last_key_layout = NULL;
+     TISInputSourceRef key_layout;
+ 

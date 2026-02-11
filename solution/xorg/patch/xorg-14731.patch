@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/i2c/bt829.c b/hw/xfree86/i2c/bt829.c
+index 2cb5e53..b4d5587 100644
+--- a/hw/xfree86/i2c/bt829.c
++++ b/hw/xfree86/i2c/bt829.c
+@@ -1,5 +1,9 @@
+ /* TODO: clean up/fix CC code */
+ 
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
+ #include "xf86.h"
+ #include "xf86i2c.h"
+ #include "bt829.h"

@@ -1,0 +1,12 @@
+diff --git a/randr/rrsdispatch.c b/randr/rrsdispatch.c
+index bf81f8b..67af753 100644
+--- a/randr/rrsdispatch.c
++++ b/randr/rrsdispatch.c
+@@ -77,6 +77,7 @@ SProcRRSelectInput (ClientPtr client)
+ 
+     swaps(&stuff->length, n);
+     swapl(&stuff->window, n);
++    swaps(&stuff->enable, n);
+     return (*ProcRandrVector[stuff->randrReqType]) (client);
+ }
+ 

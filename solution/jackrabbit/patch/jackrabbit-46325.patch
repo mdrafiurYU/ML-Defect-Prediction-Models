@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java
+index a6c2f6e..4f831b1 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java
+@@ -226,7 +226,7 @@ public class NodeIteratorImpl implements ScoreNodeIterator {
+                     pos++;
+                 }
+             } catch (Exception e) {
+-                log.error("Exception retrieving Node with Id: " + nextId);
++                log.warn("Exception retrieving Node with Id: " + nextId);
+                 // try next
+                 invalid++;
+                 pos++;

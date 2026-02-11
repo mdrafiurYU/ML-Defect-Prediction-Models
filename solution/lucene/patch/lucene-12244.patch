@@ -1,0 +1,12 @@
+diff --git a/solr/src/common/org/apache/solr/common/params/GroupParams.java b/solr/src/common/org/apache/solr/common/params/GroupParams.java
+index 7764379..6f2f2ff 100755
+--- a/solr/src/common/org/apache/solr/common/params/GroupParams.java
++++ b/solr/src/common/org/apache/solr/common/params/GroupParams.java
+@@ -32,5 +32,8 @@ public interface GroupParams {
+   public static final String GROUP_LIMIT = GROUP + ".limit";
+   /** the offset for the doclist of each group */
+   public static final String GROUP_OFFSET = GROUP + ".offset";
++
++  /** treat the first group result as the main result.  true/false */
++  public static final String GROUP_MAIN = GROUP + ".main";
+ }

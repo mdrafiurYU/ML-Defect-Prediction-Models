@@ -1,0 +1,17 @@
+diff --git a/Xext/panoramiX.c b/Xext/panoramiX.c
+index 17f587b..22b51aa 100644
+--- a/Xext/panoramiX.c
++++ b/Xext/panoramiX.c
+@@ -107,8 +107,10 @@ static void PanoramiXResetProc(ExtensionEntry*);
+ 
+ int (* SavedProcVector[256]) (ClientPtr client) = { NULL, };
+ 
+-static DevPrivateKey PanoramiXGCKey = &PanoramiXGCKey;
+-static DevPrivateKey PanoramiXScreenKey = &PanoramiXScreenKey;
++static int PanoramiXGCKeyIndex;
++static DevPrivateKey PanoramiXGCKey = &PanoramiXGCKeyIndex;
++static int PanoramiXScreenKeyIndex;
++static DevPrivateKey PanoramiXScreenKey = &PanoramiXScreenKeyIndex;
+ 
+ typedef struct {
+   DDXPointRec clipOrg;

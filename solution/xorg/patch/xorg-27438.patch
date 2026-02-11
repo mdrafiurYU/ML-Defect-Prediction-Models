@@ -1,0 +1,16 @@
+diff --git a/include/input.h b/include/input.h
+index 96a28a5..d2e26ef 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -454,4 +454,11 @@ extern void DDXRingBell(
+     int pitch,
+     int duration);
+ 
++extern int PairDevices(ClientPtr client, 
++                       DeviceIntPtr pointer, 
++                       DeviceIntPtr keyboard);
++
++extern Bool RegisterPairingClient(ClientPtr client);
++extern Bool UnregisterPairingClient(ClientPtr client);
++
+ #endif /* INPUT_H */

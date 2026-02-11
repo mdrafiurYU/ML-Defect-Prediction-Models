@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java
+index 02064af..2c70a3d 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionParser.java
+@@ -90,7 +90,7 @@ private void buildMoreCompletionContext(Expression expression) {
+ 	int kind = topKnownElementKind(SELECTION_OR_ASSIST_PARSER);
+ 	if(kind != 0) {
+ //		int info = topKnownElementInfo(SELECTION_OR_ASSIST_PARSER);
+-		nextElement : switch (kind) {
++		switch (kind) {
+ 			case K_BETWEEN_CASE_AND_COLON :
+ 				if(this.expressionPtr > 0) {
+ 					SwitchStatement switchStatement = new SwitchStatement();

@@ -1,0 +1,27 @@
+diff --git a/hw/xquartz/bundle/Sparkle.framework/Versions/A/Headers/SUAutomaticUpdateAlert.h b/hw/xquartz/bundle/Sparkle.framework/Versions/A/Headers/SUAutomaticUpdateAlert.h
+new file mode 100644
+index 0000000..fc0ac9f
+--- /dev/null
++++ b/hw/xquartz/bundle/Sparkle.framework/Versions/A/Headers/SUAutomaticUpdateAlert.h
+@@ -0,0 +1,21 @@
++//
++//  SUAutomaticUpdateAlert.h
++//  Sparkle
++//
++//  Created by Andy Matuschak on 3/18/06.
++//  Copyright 2006 Andy Matuschak. All rights reserved.
++//
++
++#import <Cocoa/Cocoa.h>
++
++@class SUAppcastItem;
++@interface SUAutomaticUpdateAlert : NSWindowController {
++	SUAppcastItem *updateItem;
++}
++
++- initWithAppcastItem:(SUAppcastItem *)item;
++
++- (IBAction)relaunchNow:sender;
++- (IBAction)relaunchLater:sender;
++
++@end

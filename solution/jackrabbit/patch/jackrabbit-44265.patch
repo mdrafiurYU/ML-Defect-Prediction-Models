@@ -1,0 +1,40 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/OracleDatabaseJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/OracleDatabaseJournal.java
+index 426b300..27c3ead 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/OracleDatabaseJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/OracleDatabaseJournal.java
+@@ -16,6 +16,10 @@
+  */
+ package org.apache.jackrabbit.core.journal;
+ 
++import java.sql.DatabaseMetaData;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++
+ import org.apache.jackrabbit.util.Text;
+ 
+ /**
+@@ -68,4 +72,24 @@ public class OracleDatabaseJournal extends DatabaseJournal {
+         }
+         return Text.replace(sql, TABLE_SPACE_VARIABLE, tspace).trim();
+     }
++
++    /**
++     * {@inheritDoc}
++     */
++    protected boolean tableExists(DatabaseMetaData metaData, String tableName) throws SQLException {
++        if (metaData.storesLowerCaseIdentifiers()) {
++            tableName = tableName.toLowerCase();
++        } else if (metaData.storesUpperCaseIdentifiers()) {
++            tableName = tableName.toUpperCase();
++        }
++
++        String userName = metaData.getUserName();
++        ResultSet rs = metaData.getTables(null, userName, tableName, null);
++
++        try {
++            return rs.next();
++        } finally {
++            rs.close();
++        }
++    }
+ }

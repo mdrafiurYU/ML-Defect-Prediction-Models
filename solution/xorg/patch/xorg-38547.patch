@@ -1,0 +1,32 @@
+diff --git a/mi/mifpolycon.c b/mi/mifpolycon.c
+index d19f031..4a3acfd 100644
+--- a/mi/mifpolycon.c
++++ b/mi/mifpolycon.c
+@@ -71,18 +71,20 @@ static int GetFPolyYBounds(SppPointPtr pts, int n, double yFtrans,
+  *	interpolation involved because of the subpixel postioning.
+  */
+ void
+-miFillSppPoly(dst, pgc, count, ptsIn, xTrans, yTrans, xFtrans, yFtrans)
+-    DrawablePtr 	dst;
+-    GCPtr		pgc;
+-    int			count;          /* number of points */
+-    SppPointPtr 	ptsIn;          /* the points */
+-    int			xTrans, yTrans;	/* Translate each point by this */
+-    double		xFtrans, yFtrans;	/* translate before conversion
++miFillSppPoly(
++    DrawablePtr		dst,
++    GCPtr		pgc,
++    int			count,          /* number of points */
++    SppPointPtr		ptsIn,          /* the points */
++    int			xTrans, int yTrans,	/* Translate each point by this */
++    double		xFtrans,
++    double		yFtrans                 /* translate before conversion
+     						   by this amount.  This provides
+ 						   a mechanism to match rounding
+ 						   errors with any shape that must
+ 						   meet the polygon exactly.
+ 						 */
++    )
+ {
+     double		xl = 0.0, xr = 0.0,	/* x vals of left and right edges */
+           		ml = 0.0,      	/* left edge slope */

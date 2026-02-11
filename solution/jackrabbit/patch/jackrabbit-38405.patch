@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java
+index 06108a8..ee36ad6 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XALockManager.java
+@@ -188,7 +188,7 @@ public class XALockManager implements LockManager, InternalXAResource {
+             throws LockException, RepositoryException {
+ 
+         SessionImpl sessionImpl = (SessionImpl) session;
+-        checkLock((NodeImpl) sessionImpl.getItemManager().getItem(path));
++        checkLock(sessionImpl.getItemManager().getNode(path));
+     }
+ 
+     /**

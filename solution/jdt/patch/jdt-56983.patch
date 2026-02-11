@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Block.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Block.java
+index 3039da8..eeded30 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Block.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Block.java
+@@ -133,7 +133,7 @@ public class Block extends Statement {
+ 	/**
+ 	 * Dispatch the call on its last statement.
+ 	 */
+-	public void branchChainTo(Label label) {
++	public void branchChainTo(BranchLabel label) {
+ 		 if (this.statements != null) {
+ 		 	this.statements[statements.length - 1].branchChainTo(label);
+ 		 }

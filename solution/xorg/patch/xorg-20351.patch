@@ -1,0 +1,21 @@
+diff --git a/fb/fbwindow.c b/fb/fbwindow.c
+index 4c1c546..8f5355d 100644
+--- a/fb/fbwindow.c
++++ b/fb/fbwindow.c
+@@ -1,4 +1,4 @@
+-/* $XdotOrg: xserver/xorg/fb/fbwindow.c,v 1.10 2006/02/10 22:00:21 anholt Exp $ */
++/* $XdotOrg: xserver/xorg/fb/fbwindow.c,v 1.11 2006/04/03 21:16:30 ajax Exp $ */
+ /*
+  * Id: fbwindow.c,v 1.1 1999/11/02 03:54:45 keithp Exp $
+  *
+@@ -32,6 +32,10 @@
+ 
+ #include "fb.h"
+ 
++#ifdef USE_MMX
++#include "fbmmx.h"
++#endif
++
+ Bool
+ fbCreateWindow(WindowPtr pWin)
+ {

@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableLongField.java b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+index 7c62da7..7ddbdbc 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableLongField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableLongField.java
+@@ -150,6 +150,12 @@ class SortableLongFieldSource extends FieldCacheSource {
+       }
+ 
+       @Override
++      public Object objectVal(int doc) {
++        int ord=termsIndex.getOrd(doc);
++        return ord==0 ? null  : NumberUtils.SortableStr2long(termsIndex.lookup(ord, spare));
++      }
++
++      @Override
+       public String toString(int doc) {
+         return description() + '=' + longVal(doc);
+       }

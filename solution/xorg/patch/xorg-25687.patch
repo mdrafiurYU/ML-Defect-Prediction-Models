@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_acpi.c b/hw/xfree86/os-support/linux/lnx_acpi.c
+index aa30e72..024e6ef 100644
+--- a/hw/xfree86/os-support/linux/lnx_acpi.c
++++ b/hw/xfree86/os-support/linux/lnx_acpi.c
+@@ -78,7 +78,7 @@ lnxACPIGetEventFromOs(int fd, pmEvent *events, int num)
+ 	char *data = NULL; /* doesn't appear to be used in the kernel */
+ 	unsigned long int notify_l, data_l;
+ 
+-	video = strtok(ev, "video");
++	video = strtok(ev, " ");
+ 
+ 	GFX = strtok(NULL, " ");
+ #if 0

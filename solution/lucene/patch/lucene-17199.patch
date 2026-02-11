@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java b/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
+index f7d5475..39dc27b 100644
+--- a/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
++++ b/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
+@@ -960,7 +960,7 @@ public class TestFSTs extends LuceneTestCase {
+       writer.addDocument(doc);
+       docCount++;
+     }
+-    IndexReader r = IndexReader.open(writer);
++    IndexReader r = IndexReader.open(writer, true);
+     writer.close();
+     final PositiveIntOutputs outputs = PositiveIntOutputs.getSingleton(random.nextBoolean());
+     Builder<Long> builder = new Builder<Long>(FST.INPUT_TYPE.BYTE1, 0, 0, true, outputs);

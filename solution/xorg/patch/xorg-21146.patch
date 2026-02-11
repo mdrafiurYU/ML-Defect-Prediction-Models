@@ -1,0 +1,15 @@
+diff --git a/os/xdmcp.c b/os/xdmcp.c
+index 3aad4ee..4f87097 100644
+--- a/os/xdmcp.c
++++ b/os/xdmcp.c
+@@ -1603,6 +1603,10 @@ get_fromaddr_by_name(
+       , &ai, &aifirst
+ #endif
+ 	);
++#if defined(IPv6) && defined(AF_INET6)
++    if (aifirst != NULL)
++	freeaddrinfo(aifirst);
++#endif
+     xdm_from = argv[i];
+ }
+ 

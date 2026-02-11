@@ -1,0 +1,43 @@
+diff --git a/hw/xfree86/os-support/bsd/i386_video.c b/hw/xfree86/os-support/bsd/i386_video.c
+index 9a28611..83dabc9 100644
+--- a/hw/xfree86/os-support/bsd/i386_video.c
++++ b/hw/xfree86/os-support/bsd/i386_video.c
+@@ -444,38 +444,6 @@ xf86DisableIO()
+ 
+ #endif
+ 
+-
+-/***************************************************************************/
+-/* Interrupt Handling section                                              */
+-/***************************************************************************/
+-
+-_X_EXPORT Bool
+-xf86DisableInterrupts()
+-{
+-
+-#ifdef __GNUC__
+-	__asm__ __volatile__("cli");
+-#else 
+-	asm("cli");
+-#endif /* __GNUC__ */
+-
+-	return(TRUE);
+-}
+-
+-_X_EXPORT void
+-xf86EnableInterrupts()
+-{
+-
+-#ifdef __GNUC__
+-	__asm__ __volatile__("sti");
+-#else 
+-	asm("sti");
+-#endif /* __GNUC__ */
+-
+-	return;
+-}
+-
+-
+ #ifdef __NetBSD__
+ /***************************************************************************/
+ /* Set TV output mode                                                      */

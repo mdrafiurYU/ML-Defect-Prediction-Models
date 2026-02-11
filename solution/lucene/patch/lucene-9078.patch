@@ -1,0 +1,28 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/QueryComponent.java b/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
+index 18d9629..36bc89e 100644
+--- a/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
+@@ -224,7 +224,22 @@ public class QueryComponent extends SearchComponent
+               gc.groupBy = new QueryValueSource(q, 0.0f);
+             }
+             gc.key = groupByStr;
+-            gc.groupLimit = limitDefault;
++            gc.numGroups = limitDefault;
++            gc.docsPerGroup = docsPerGroupDefault;
++
++            cmd.groupCommands.add(gc);
++          }
++        }
++
++        if (queries != null) {
++          for (String groupByStr : queries) {
++            QParser parser = QParser.getParser(groupByStr, null, rb.req);
++            Query gq = parser.getQuery();
++            Grouping.CommandQuery gc = new Grouping.CommandQuery();
++            gc.query = gq;
++            gc.groupSort = groupSort;
++            gc.key = groupByStr;
++            gc.numGroups = limitDefault;
+             gc.docsPerGroup = docsPerGroupDefault;
+ 
+             cmd.groupCommands.add(gc);

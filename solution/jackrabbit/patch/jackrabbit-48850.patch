@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/OperationVisitor.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/OperationVisitor.java
+index 3b37729..d9d2683 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/OperationVisitor.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/OperationVisitor.java
+@@ -79,4 +79,10 @@ public interface OperationVisitor {
+     public void visit(RemoveVersion operation) throws VersionException, AccessDeniedException, ReferentialIntegrityException, RepositoryException;
+ 
+     public void visit(WorkspaceImport operation) throws RepositoryException;
++
++    public void visit(CreateActivity operation) throws RepositoryException;
++
++    public void visit(RemoveActivity operation) throws RepositoryException;
++
++    public void visit(CreateConfiguration operation) throws RepositoryException;
+ }
+\ No newline at end of file

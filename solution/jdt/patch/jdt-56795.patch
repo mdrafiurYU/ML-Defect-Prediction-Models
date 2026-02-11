@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFileReader.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFileReader.java
+index 738d16f..9f2570c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFileReader.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/ClassFileReader.java
+@@ -283,6 +283,8 @@ public ClassFileReader(byte[] classFileBytes, char[] fileName, boolean fullyInit
+ 								}
+ 							}
+ 						}
++					} else if (CharOperation.equals(attributeName, AttributeNamesConstants.InconsistentHierarchy)) {
++						this.accessFlags |= ClassFileConstants.AccHierarchyInconsistent;
+ 					}
+ 					break;
+ 				case 'S' :

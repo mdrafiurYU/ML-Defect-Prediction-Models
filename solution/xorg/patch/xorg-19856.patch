@@ -1,0 +1,40 @@
+diff --git a/GL/mesa/X/xf86glx.c b/GL/mesa/X/xf86glx.c
+index 34b6670..0444acc 100644
+--- a/GL/mesa/X/xf86glx.c
++++ b/GL/mesa/X/xf86glx.c
+@@ -196,6 +196,7 @@ __glXMesaContextDestroy(__GLXcontext *baseContext)
+     __GLXMESAcontext *context = (__GLXMESAcontext *) baseContext;
+ 
+     XMesaDestroyContext(context->xmesa);
++    __glXContextDestroy(context);
+     xfree(context);
+ }
+ 
+@@ -237,6 +238,8 @@ __glXMesaContextForceCurrent(__GLXcontext *baseContext)
+ {
+     __GLXMESAcontext *context = (__GLXMESAcontext *) baseContext;
+ 
++    GlxSetRenderTables (context->xmesa->mesa.CurrentDispatch);
++
+     return XMesaForceCurrent(context->xmesa);
+ }
+ 
+@@ -359,7 +362,7 @@ static void init_screen_visuals(__GLXMESAscreen *screen)
+ 		/* Create the XMesa visual */
+ 		pXMesaVisual[i] =
+ 		    XMesaCreateVisual(pScreen,
+-				      pVis,
++				      &pVis[j],
+ 				      modes->rgbMode,
+ 				      (modes->alphaBits > 0),
+ 				      modes->doubleBufferMode,
+@@ -437,3 +440,9 @@ GlxGetMesaProvider (void)
+ {
+     return &__glXMesaProvider;
+ }
++
++__GLXprovider *
++GlxGetMesaProvider (void)
++{
++    return &__glXMesaProvider;
++}

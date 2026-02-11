@@ -1,0 +1,39 @@
+diff --git a/os/connection.c b/os/connection.c
+index 571ba58..60f3b9f 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -549,6 +549,8 @@ AuthAudit (ClientPtr client, Bool letin,
+ {
+     char addr[128];
+     char *out = addr;
++    int client_uid;
++    char client_uid_string[32];
+ 
+     if (!len)
+         strcpy(out, "local host");
+@@ -586,13 +588,21 @@ AuthAudit (ClientPtr client, Bool letin,
+ 	    strcpy(out, "unknown address");
+ 	}
+     
++    if (LocalClientCred(client, &client_uid, NULL) != -1) {
++	snprintf(client_uid_string, sizeof(client_uid_string),
++		 " (uid %d)", client_uid);
++    } else {
++	client_uid_string[0] = '\0';
++    }
++    
+     if (proto_n)
+-	AuditF("client %d %s from %s\n  Auth name: %.*s ID: %d\n", 
++	AuditF("client %d %s from %s%s\n  Auth name: %.*s ID: %d\n", 
+ 	       client->index, letin ? "connected" : "rejected", addr,
+-	       (int)proto_n, auth_proto, auth_id);
++	       client_uid_string, (int)proto_n, auth_proto, auth_id);
+     else 
+-	AuditF("client %d %s from %s\n", 
+-	       client->index, letin ? "connected" : "rejected", addr);
++	AuditF("client %d %s from %s%s\n", 
++	       client->index, letin ? "connected" : "rejected", addr,
++	       client_uid_string);
+ }
+ 
+ XID

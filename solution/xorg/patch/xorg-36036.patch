@@ -1,0 +1,13 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index 27ef382..cd67120 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -1105,6 +1105,8 @@ SecurityExtensionInit(INITARGS)
+ 	return;
+ 
+     RTEventClient |= RC_NEVERRETAIN;
++    RegisterResourceName(SecurityAuthorizationResType, "SecurityAuthorization");
++    RegisterResourceName(RTEventClient, "SecurityEventClient");
+ 
+     /* Allocate the private storage */
+     if (!dixRequestPrivate(stateKey, sizeof(SecurityStateRec)))

@@ -1,0 +1,31 @@
+diff --git a/hw/darwin/quartz/quartzKeyboard.c b/hw/darwin/quartz/quartzKeyboard.c
+index f81ef0a..b580a8e 100644
+--- a/hw/darwin/quartz/quartzKeyboard.c
++++ b/hw/darwin/quartz/quartzKeyboard.c
+@@ -217,7 +217,7 @@ DarwinModeReadSystemKeymap (darwinKeyboardInfo *info)
+     const void *chr_data = NULL;
+     int num_keycodes = NUM_KEYCODES;
+     UInt32 keyboard_type = 0;
+-    int is_uchr, i, j;
++    int is_uchr = 1, i, j;
+     OSStatus err;
+     KeySym *k;
+ 
+@@ -229,8 +229,7 @@ DarwinModeReadSystemKeymap (darwinKeyboardInfo *info)
+ 	  chr_data = CFDataGetBytePtr(currentKeyLayoutDataRef);
+       }
+     
+-    if (chr_data != NULL)
+-    {
++	if(chr_data == NULL) {
+       KLGetCurrentKeyboardLayout (&key_layout);
+       KLGetKeyboardLayoutProperty (key_layout, kKLuchrData, &chr_data);
+ 
+@@ -376,7 +375,6 @@ DarwinModeReadSystemKeymap (darwinKeyboardInfo *info)
+             }
+         }
+     }
+-
+     if(currentKeyLayoutRef) CFRelease(currentKeyLayoutRef);
+ 
+     return TRUE;

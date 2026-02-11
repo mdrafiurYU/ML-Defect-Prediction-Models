@@ -1,0 +1,12 @@
+diff --git a/include/dix.h b/include/dix.h
+index 97dc9cc..7811982 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -170,6 +170,7 @@ extern _X_EXPORT void SendErrorToClient(
+ extern _X_EXPORT void MarkClientException(
+     ClientPtr /*client*/);
+ 
++extern _X_HIDDEN Bool CreateConnectionBlock(void);
+ /* dixutils.c */
+ 
+ extern _X_EXPORT void CopyISOLatin1Lowered(

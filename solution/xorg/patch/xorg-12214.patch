@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/src/kaapict.c b/hw/kdrive/src/kaapict.c
+index 1918b78..1e4d2ef 100644
+--- a/hw/kdrive/src/kaapict.c
++++ b/hw/kdrive/src/kaapict.c
+@@ -445,6 +445,7 @@ kaaTryDriverComposite(CARD8		op,
+     if (pKaaScr->info->CheckComposite &&
+ 	!(*pKaaScr->info->CheckComposite) (op, pSrc, pMask, pDst))
+     {
++	REGION_UNINIT(pDst->pDrawable->pScreen, &region);
+ 	return -1;
+     }
+ 

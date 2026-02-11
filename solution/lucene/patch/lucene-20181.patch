@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexWriterConfig.java b/lucene/src/java/org/apache/lucene/index/IndexWriterConfig.java
+index 1674068..d7aec02 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexWriterConfig.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexWriterConfig.java
+@@ -156,7 +156,7 @@ public final class IndexWriterConfig implements Cloneable {
+     indexingChain = DocumentsWriter.defaultIndexingChain;
+     mergedSegmentWarmer = null;
+     codecProvider = CodecProvider.getDefault();
+-    mergePolicy = new LogByteSizeMergePolicy();
++    mergePolicy = new TieredMergePolicy();
+     maxThreadStates = DEFAULT_MAX_THREAD_STATES;
+     readerPooling = DEFAULT_READER_POOLING;
+     readerTermsIndexDivisor = DEFAULT_READER_TERMS_INDEX_DIVISOR;

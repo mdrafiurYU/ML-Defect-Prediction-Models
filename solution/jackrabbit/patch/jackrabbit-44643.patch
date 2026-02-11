@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/SimpleAnnotedClass.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/SimpleAnnotedClass.java
+new file mode 100644
+index 0000000..6c458d3
+--- /dev/null
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/SimpleAnnotedClass.java
+@@ -0,0 +1,27 @@
++package org.apache.jackrabbit.ocm.testmodel;
++
++import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
++
++
++
++@Node
++public class SimpleAnnotedClass 
++       extends SimpleAnnotedAbstractClass // The ancestor is also a mapped class
++       implements 
++       			  // The following interface is also mapped
++       			  SimpleInterface, 
++       			  // The following interface is not mapped.So, the ObjectContentManager will not manage it 
++                  UnmappedInterface { 
++
++	private int testInt;
++
++	public int getTestInt() {
++		return testInt;
++	}
++
++	public void setTestInt(int testInt) {
++		this.testInt = testInt;
++	} 
++	
++	
++}

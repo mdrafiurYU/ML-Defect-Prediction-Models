@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/ParsingContentHandler.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/ParsingContentHandler.java
+index 7e3c451..e7da202 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/ParsingContentHandler.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/ParsingContentHandler.java
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.jackrabbit.commons.xml;
+ 
++import java.io.ByteArrayInputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+ 
+@@ -47,7 +48,8 @@ public class ParsingContentHandler extends DefaultContentHandler {
+ 
+     /**
+      * Utility method that parses the given input stream using this handler.
+-     * The parser is namespace-aware.
++     * The parser is namespace-aware and will not resolve external entity
++     * references.
+      *
+      * @param in XML input stream
+      * @throws IOException if an I/O error occurs
+@@ -63,4 +65,13 @@ public class ParsingContentHandler extends DefaultContentHandler {
+         }
+     }
+ 
++    /**
++     * Returns an empty stream to prevent the XML parser from attempting
++     * to resolve external entity references.
++     */
++    public InputSource resolveEntity(String publicId, String systemId)
++            throws SAXException {
++        return new InputSource(new ByteArrayInputStream(new byte[0]));
++    }
++
+ }

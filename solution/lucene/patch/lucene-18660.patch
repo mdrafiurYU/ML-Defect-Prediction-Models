@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/schema/FloatField.java b/solr/src/java/org/apache/solr/schema/FloatField.java
+index 9cd2cad..2df5ec9 100644
+--- a/solr/src/java/org/apache/solr/schema/FloatField.java
++++ b/solr/src/java/org/apache/solr/schema/FloatField.java
+@@ -32,10 +32,12 @@ import java.io.IOException;
+  * @version $Id$
+  */
+ public class FloatField extends FieldType {
++  @Override
+   protected void init(IndexSchema schema, Map<String,String> args) {
+     restrictProps(SORT_MISSING_FIRST | SORT_MISSING_LAST);
+   }
+ 
++  @Override
+   public SortField getSortField(SchemaField field,boolean reverse) {
+     return new SortField(field.name,SortField.FLOAT, reverse);
+   }
+@@ -45,6 +47,7 @@ public class FloatField extends FieldType {
+     return new FloatFieldSource( new FloatValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }
+ 
++  @Override
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     String s = f.stringValue();

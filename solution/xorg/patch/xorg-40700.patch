@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_init.c b/hw/xfree86/os-support/solaris/sun_init.c
+index 829963a..b79814d 100644
+--- a/hw/xfree86/os-support/solaris/sun_init.c
++++ b/hw/xfree86/os-support/solaris/sun_init.c
+@@ -244,8 +244,8 @@ xf86CloseConsole(void)
+ 			    "xf86CloseConsole():  unable to mmap framebuffer"
+ 			    " (%s)\n", strerror(errno));
+ 		} else {
+-		    (void)memset(fbdata, 0, fbattr.fbtype.fb_size);
+-		    (void)munmap(fbdata, fbattr.fbtype.fb_size);
++		    memset(fbdata, 0, fbattr.fbtype.fb_size);
++		    munmap(fbdata, fbattr.fbtype.fb_size);
+ 		}
+ 	    }
+ 

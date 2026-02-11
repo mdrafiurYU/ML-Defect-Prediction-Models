@@ -1,0 +1,12 @@
+diff --git a/Xext/panoramiX.c b/Xext/panoramiX.c
+index d1e7268..5d533a4 100644
+--- a/Xext/panoramiX.c
++++ b/Xext/panoramiX.c
+@@ -1049,7 +1049,6 @@ ProcXineramaIsActive(ClientPtr client)
+     {
+ 	/* The following hack fools clients into thinking that Xinerama
+ 	 * is disabled even though it is not. */
+-	extern Bool PanoramiXExtensionDisabledHack;
+ 	rep.state = !noPanoramiXExtension && !PanoramiXExtensionDisabledHack;
+     }
+ #else

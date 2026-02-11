@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java
+index 8e0b44a..da6fc1a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CategorizedProblem.java
+@@ -123,7 +123,6 @@ public abstract String getMarkerType();
+  * <li>	{@link IJavaModelMarker#ARGUMENTS}  -&gt; some <code>String[]</code> used to compute quickfixes </li>
+  * <li>	{@link IJavaModelMarker#CATEGORY_ID}  -&gt; {@link CategorizedProblem#getCategoryID()}</li>
+  * </ul>
+- * </ul>
+  * The names must be eligible for marker creation, as defined by {@link IMarker#setAttributes(String[], Object[])}, 
+  * and there must be as many names as values according to {@link #getExtraMarkerAttributeValues()}.
+  * Note that extra marker attributes will be inserted after default ones (as described in {@link CategorizedProblem#getMarkerType()},

@@ -1,0 +1,19 @@
+diff --git a/xkb/xkmread.c b/xkb/xkmread.c
+index 9ba14c4..e4d3d4d 100644
+--- a/xkb/xkmread.c
++++ b/xkb/xkmread.c
+@@ -503,10 +503,10 @@ XkbAction               *act;
+         case XkbSA_SetControls:
+         case XkbSA_LockControls:
+             act->ctrls.flags = wire.actionData[0];
+-            act->ctrls.ctrls3 = wire.actionData[1];
+-            act->ctrls.ctrls2 = wire.actionData[2];
+-            act->ctrls.ctrls1 = wire.actionData[3];
+-            act->ctrls.ctrls0 = wire.actionData[4];
++            act->ctrls.ctrls = (wire.actionData[1] << 24) | \
++                               (wire.actionData[2] << 16) | \
++                               (wire.actionData[3] << 8) | \
++                               wire.actionData[4];
+             break;
+         case XkbSA_RedirectKey:
+             act->redirect.new_key = wire.actionData[0];

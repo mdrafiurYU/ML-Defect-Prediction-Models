@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/document/DateTools.java b/lucene/src/java/org/apache/lucene/document/DateTools.java
+index ddac753..0e5199c 100644
+--- a/lucene/src/java/org/apache/lucene/document/DateTools.java
++++ b/lucene/src/java/org/apache/lucene/document/DateTools.java
+@@ -69,7 +69,7 @@ public class DateTools {
+       MILLISECOND_FORMAT.setTimeZone(GMT);
+     }
+     
+-    final Calendar calInstance = Calendar.getInstance(GMT);
++    final Calendar calInstance = Calendar.getInstance(GMT, Locale.US);
+   }
+   
+   private static final ThreadLocal<DateFormats> FORMATS = new ThreadLocal<DateFormats>() {

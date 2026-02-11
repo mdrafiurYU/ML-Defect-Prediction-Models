@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
+index 17828bb..240329a 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnitResolver.java
+@@ -249,7 +249,7 @@ class CompilationUnitResolver extends Compiler {
+ 		ast.setBindingResolver(resolver);
+ 		converter.setAST(ast);
+ 		compilationUnit = converter.convert(compilationUnitDeclaration, source);
+-		compilationUnit.setLineEndTable(compilationUnitDeclaration.compilationResult.lineSeparatorPositions);
++		compilationUnit.setLineEndTable(compilationUnitDeclaration.compilationResult.getLineSeparatorPositions());
+ 		ast.setDefaultNodeFlag(0);
+ 		ast.setOriginalModificationCount(ast.modificationCount());
+ 		return compilationUnit;
+@@ -683,7 +683,7 @@ class CompilationUnitResolver extends Compiler {
+ 							converter.setAST(ast);
+ 							CompilationUnit compilationUnit = converter.convert(unit, contents);
+ 							compilationUnit.setJavaElement(source);
+-							compilationUnit.setLineEndTable(compilationResult.lineSeparatorPositions);
++							compilationUnit.setLineEndTable(compilationResult.getLineSeparatorPositions());
+ 							ast.setDefaultNodeFlag(0);
+ 							ast.setOriginalModificationCount(ast.modificationCount());

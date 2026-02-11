@@ -1,0 +1,13 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 7b56579..b2f31c1 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -529,7 +529,7 @@ miPointerCurrentScreen ()
+ _X_EXPORT ScreenPtr
+ miPointerGetScreen(DeviceIntPtr pDev)
+ {
+-    if (!pDev->isMaster && !pDev->u.master)
++    if (!pDev || (!pDev->isMaster && !pDev->u.master))
+         return NULL;
+ 
+     return MIPOINTER(pDev)->pScreen;

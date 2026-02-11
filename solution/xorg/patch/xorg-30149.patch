@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 9740b07..cd309a5 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -3004,7 +3004,7 @@ xf86FindPrimaryDevice()
+     
+ }
+ 
+-#if !defined(__sparc) && !defined(__sparc__) && !defined(__powerpc__) && !defined(__mips__)
++#if !defined(__sparc) && !defined(__sparc__) && !defined(__powerpc__) && !defined(__mips__) && !defined(__arm__)
+ #include "vgaHW.h"
+ #include "compiler.h"
+ #endif

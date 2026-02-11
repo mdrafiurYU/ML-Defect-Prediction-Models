@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/shadowfb/shadow.c b/hw/xfree86/shadowfb/shadow.c
+index 74beefb..ff775ef 100644
+--- a/hw/xfree86/shadowfb/shadow.c
++++ b/hw/xfree86/shadowfb/shadow.c
+@@ -94,8 +94,10 @@ typedef struct {
+ } ShadowGCRec, *ShadowGCPtr;
+ 
+ 
+-static DevPrivateKey ShadowScreenKey = &ShadowScreenKey;
+-static DevPrivateKey ShadowGCKey = &ShadowGCKey;
++static int ShadowScreenKeyIndex;
++static DevPrivateKey ShadowScreenKey = &ShadowScreenKeyIndex;
++static int ShadowGCKeyIndex;
++static DevPrivateKey ShadowGCKey = &ShadowGCKeyIndex;
+ 
+ #define GET_SCREEN_PRIVATE(pScreen) \
+     (ShadowScreenPtr)dixLookupPrivate(&(pScreen)->devPrivates, ShadowScreenKey)

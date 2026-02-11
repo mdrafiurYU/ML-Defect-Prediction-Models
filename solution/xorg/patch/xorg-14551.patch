@@ -1,0 +1,22 @@
+diff --git a/hw/xwin/wingc.c b/hw/xwin/wingc.c
+index e664da1..3f661d5 100644
+--- a/hw/xwin/wingc.c
++++ b/hw/xwin/wingc.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ void
+@@ -230,7 +233,6 @@ winDestroyGCNativeGDI (GCPtr pGC)
+   winSetGCPriv (pGC, NULL);
+ }
+ 
+-
+ #if 0
+ /* See Porting Layer Definition - p. 46 */
+ static void

@@ -1,0 +1,15 @@
+diff --git a/Xext/xace.c b/Xext/xace.c
+index 44aaa42..14a5e79 100644
+--- a/Xext/xace.c
++++ b/Xext/xace.c
+@@ -17,6 +17,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ ********************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdarg.h>
+ #include "windowstr.h"
+ #include "scrnintstr.h"

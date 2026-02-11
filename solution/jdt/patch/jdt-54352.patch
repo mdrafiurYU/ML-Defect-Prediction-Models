@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java
+index 6c706f7..ad3ad79 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java
+@@ -22,9 +22,10 @@ public class ClassLiteralAccess extends Expression {
+ 	public TypeBinding targetType;
+ 	FieldBinding syntheticField;
+ 
+-	public ClassLiteralAccess(int sourceEnd, TypeReference t) {
+-		type = t;
+-		this.sourceStart = t.sourceStart;
++	public ClassLiteralAccess(int sourceEnd, TypeReference type) {
++		this.type = type;
++		type.bits |= IgnoreRawTypeCheck; // no need to worry about raw type usage
++		this.sourceStart = type.sourceStart;
+ 		this.sourceEnd = sourceEnd;
+ 	}

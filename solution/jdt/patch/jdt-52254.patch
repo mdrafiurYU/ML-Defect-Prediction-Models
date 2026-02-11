@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/NodeInfoStore.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/NodeInfoStore.java
+index badb11e..756d489 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/NodeInfoStore.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/NodeInfoStore.java
+@@ -91,7 +91,7 @@ public final class NodeInfoStore {
+ 				    ((VariableDeclarationStatement) node).fragments().add(this.ast.newVariableDeclarationFragment());
+ 		    		break;
+ 				case ASTNode.PARAMETERIZED_TYPE :
+-				    ((ParameterizedType) node).typeArguments().add(this.ast.newWildcardType()); //$NON-NLS-1$
++				    ((ParameterizedType) node).typeArguments().add(this.ast.newWildcardType());
+ 		    		break;
+ 			}
+ 		    return node;

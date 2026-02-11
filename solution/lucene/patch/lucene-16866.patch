@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldDateResolutionFCListener.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldDateResolutionFCListener.java
+index 7d6b66c..0bdb9ab 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldDateResolutionFCListener.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/config/FieldDateResolutionFCListener.java
+@@ -53,7 +53,7 @@ public class FieldDateResolutionFCListener implements FieldConfigListener {
+       FieldDateResolutionMapAttribute dateResMapAttr = this.config
+           .addAttribute(FieldDateResolutionMapAttribute.class);
+       dateRes = dateResMapAttr.getFieldDateResolutionMap().get(
+-          fieldConfig.getFieldName().toString());
++          fieldConfig.getField());
+     }
+ 
+     if (dateRes == null) {

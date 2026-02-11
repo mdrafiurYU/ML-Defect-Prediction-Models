@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/ResourceChangedListener.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/ResourceChangedListener.java
+index ee9df60..3736f52 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/ResourceChangedListener.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/ResourceChangedListener.java
+@@ -66,6 +66,10 @@ public class ResourceChangedListener implements IResourceChangeListener
+ 		{
+ 			IResource r = delta.getResource();
+ 			IProject project = r.getProject();
++			
++			if ( project == null ) 
++				return true;
++			
+ 			GeneratedFileManager gfm = GeneratedFileManager.getGeneratedFileManager( project );
+ 			
+ 			if ( delta.getKind() == IResourceDelta.REMOVED && r instanceof IFile)

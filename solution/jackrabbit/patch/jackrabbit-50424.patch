@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryHitsQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryHitsQuery.java
+index 46e4429..83785df 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryHitsQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryHitsQuery.java
+@@ -193,7 +193,7 @@ public class QueryHitsQuery extends Query implements JackrabbitQuery{
+             Set sortedDocs = new TreeSet();
+             try {
+                 while ((node = hits.nextScoreNode()) != null) {
+-                    String uuid = node.getNodeId().getUUID().toString();
++                    String uuid = node.getNodeId().toString();
+                     Term id = new Term(FieldNames.UUID, uuid);
+                     TermDocs tDocs = reader.termDocs(id);
+                     try {

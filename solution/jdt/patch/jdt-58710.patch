@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTVisitorTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTVisitorTest.java
+index 3f8c023..51df24d 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTVisitorTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTVisitorTest.java
+@@ -20,6 +20,7 @@ public class ASTVisitorTest extends org.eclipse.jdt.core.tests.junit.extension.T
+ 
+ 	/** @deprecated using deprecated code */
+ 	public static Test suite() {
++		// TODO (frederic) use buildList + setAstLevel(init) instead...
+ 		junit.framework.TestSuite suite = new junit.framework.TestSuite(ASTVisitorTest.class.getName());
+ 		
+ 		Class c = ASTVisitorTest.class;

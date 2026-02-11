@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+index 103f12e..70e7d25 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterReader.java
+@@ -821,7 +821,6 @@ public class TestIndexWriterReader extends LuceneTestCase {
+ 
+     writer.close();
+ 
+-    _TestUtil.checkIndex(dir1);
+     dir1.close();
+   }
+ 
+@@ -908,7 +907,6 @@ public class TestIndexWriterReader extends LuceneTestCase {
+     assertEquals(0, excs.size());
+     writer.close();
+ 
+-    _TestUtil.checkIndex(dir1);
+     r.close();
+     dir1.close();
+   }

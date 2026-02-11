@@ -1,0 +1,16 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index e091f25..299d983 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -707,6 +707,11 @@ void ddxInitGlobals(void)
+  */
+ int ddxProcessArgument( int argc, char *argv[], int i )
+ {
++    if( !strcmp( argv[i], "-launchd" ) ) {
++        ErrorF( "Launchd command line argument noticed.\n" );
++        return 1;
++    }
++
+     if ( !strcmp( argv[i], "-fullscreen" ) ) {
+         ErrorF( "Running full screen in parallel with Mac OS X Quartz window server.\n" );
+         return 1;

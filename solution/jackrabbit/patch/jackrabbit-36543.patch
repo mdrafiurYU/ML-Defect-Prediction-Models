@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java
+index 1b59cf5..65361fb 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AddEventListenerTest.java
+@@ -55,7 +55,7 @@ public class AddEventListenerTest extends AbstractObservationTest {
+         testRootNode.save();
+         Event[] events = listener.getEvents(DEFAULT_WAIT_TIMEOUT);
+         obsMgr.removeEventListener(listener);
+-        checkNodeAdded(events, new String[]{nodeName1, nodeName1 + "/" + nodeName2}, null);
++        checkNodeAdded(events, new String[]{nodeName1 + "/" + nodeName2}, null);
+     }
+ 
+     /**
+@@ -70,7 +70,7 @@ public class AddEventListenerTest extends AbstractObservationTest {
+         testRootNode.save();
+         Event[] events = listener.getEvents(DEFAULT_WAIT_TIMEOUT);
+         obsMgr.removeEventListener(listener);
+-        checkNodeAdded(events, new String[]{nodeName1}, null);
++        checkNodeAdded(events, new String[]{nodeName1 + "/" + nodeName2}, null);
+     }
+ 
+     /**

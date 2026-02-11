@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TextField.java b/solr/src/java/org/apache/solr/schema/TextField.java
+index 7751346..47f6cbd 100644
+--- a/solr/src/java/org/apache/solr/schema/TextField.java
++++ b/solr/src/java/org/apache/solr/schema/TextField.java
+@@ -33,7 +33,6 @@ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.util.BytesRef;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.solr.search.QParser;
+ import org.apache.solr.util.ByteUtils;
+ 
+@@ -67,10 +66,6 @@ public class TextField extends FieldType {
+     return getStringSort(field, reverse);
+   }
+ 
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    xmlWriter.writeStr(name, f.stringValue());
+-  }
+-
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     writer.writeStr(name, f.stringValue(), true);
+   }

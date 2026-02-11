@@ -1,0 +1,12 @@
+diff --git a/include/input.h b/include/input.h
+index a1c21f8..96a28a5 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -323,6 +323,7 @@ extern Bool InitKeyboardDeviceStruct(
+     KbdCtrlProcPtr /*controlProc*/);
+ 
+ extern void SendMappingNotify(
++    DeviceIntPtr /* pDev */,
+     unsigned int /*request*/,
+     unsigned int /*firstKeyCode*/,
+     unsigned int /*count*/,

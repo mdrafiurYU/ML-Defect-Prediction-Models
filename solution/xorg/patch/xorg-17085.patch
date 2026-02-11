@@ -1,0 +1,15 @@
+diff --git a/fb/fbscreen.c b/fb/fbscreen.c
+index 750b9e5..804503e 100644
+--- a/fb/fbscreen.c
++++ b/fb/fbscreen.c
+@@ -23,6 +23,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/fb/fbscreen.c,v 1.13 2001/05/29 04:54:09 keithp Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ 
+ Bool

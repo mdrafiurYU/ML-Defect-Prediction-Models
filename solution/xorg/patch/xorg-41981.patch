@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/int10/generic.c b/hw/xfree86/int10/generic.c
+index a9006e2..2cda753 100644
+--- a/hw/xfree86/int10/generic.c
++++ b/hw/xfree86/int10/generic.c
+@@ -321,7 +321,7 @@ UnmapVRam(xf86Int10InfoPtr pInt)
+     xf86UnMapVidMem(screen, INTPriv(pInt)->vRam, size);
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ MapCurrentInt10(xf86Int10InfoPtr pInt)
+ {
+     /* nothing to do here */

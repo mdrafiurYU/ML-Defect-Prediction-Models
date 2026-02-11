@@ -1,0 +1,250 @@
+diff --git a/hw/xgl/xglglyph.c b/hw/xgl/xglglyph.c
+index 477a13f..7a60188 100644
+--- a/hw/xgl/xglglyph.c
++++ b/hw/xgl/xglglyph.c
+@@ -228,9 +228,14 @@ xglInitGlyphCache (xglGlyphCachePtr pCache,
+     {
+ 
+ 	xglGlyphTexturePtr	   pTexture = &pCache->u.texture;
++	glitz_surface_t		   *mask;
+ 	glitz_surface_attributes_t attr;
+-	xglPixmapFormatPtr	   pFormat;
+ 	glitz_vertex_format_t	   *vertex;
++	xglVisualPtr		   pVisual;
++
++	pVisual = xglFindVisualWithDepth (pScreen, format->depth);
++	if (!pVisual)
++	    return FALSE;
+ 
+ 	if (!xglRootAreaInit (&pCache->rootArea,
+ 			      TEXTURE_CACHE_MAX_LEVEL,
+@@ -240,33 +245,40 @@ xglInitGlyphCache (xglGlyphCachePtr pCache,
+ 			      (pointer) pCache))
+ 	    return FALSE;
+ 
+-	pFormat = &pScreenPriv->pixmapFormats[format->depth];
+-
+ 	if (pScreenPriv->geometryDataType == GEOMETRY_DATA_TYPE_SHORT)
+ 	{
+ 	    attr.unnormalized = 1;
+-	    pTexture->mask =
+-		glitz_surface_create (pScreenPriv->drawable, pFormat->format,
+-				      TEXTURE_CACHE_SIZE, TEXTURE_CACHE_SIZE,
+-				      GLITZ_SURFACE_UNNORMALIZED_MASK, &attr);
+-	} else
+-	    pTexture->mask = NULL;
++	    mask = glitz_surface_create (pScreenPriv->drawable,
++					 pVisual->format.surface,
++					 TEXTURE_CACHE_SIZE,
++					 TEXTURE_CACHE_SIZE,
++					 GLITZ_SURFACE_UNNORMALIZED_MASK,
++					 &attr);
++	}
++	else
++	    mask = NULL;
+ 	
+-	if (!pTexture->mask)
++	if (!mask)
+ 	{
+-	    pTexture->mask =
+-		glitz_surface_create (pScreenPriv->drawable, pFormat->format,
+-				      TEXTURE_CACHE_SIZE, TEXTURE_CACHE_SIZE,
++	    mask = glitz_surface_create (pScreenPriv->drawable,
++					 pVisual->format.surface,
++					 TEXTURE_CACHE_SIZE,
++					 TEXTURE_CACHE_SIZE,
+ 				      0, NULL);
+-	    if (!pTexture->mask)
++	    if (!mask)
+ 		return FALSE;
+ 
+ 	    pTexture->geometryDataType = GEOMETRY_DATA_TYPE_FLOAT;
+-	} else
++	}
++	else
+ 	    pTexture->geometryDataType = GEOMETRY_DATA_TYPE_SHORT;
+ 	
+ 	if (NEEDS_COMPONENT (format->format))
+-	    glitz_surface_set_component_alpha (pTexture->mask, 1);
++	    glitz_surface_set_component_alpha (mask, 1);
++
++	pTexture->pMask = xglCreateDevicePicture (mask);
++	if (!pTexture->pMask)
++	    return FALSE;
+ 
+ 	vertex = &pCache->u.texture.format.vertex;
+ 	vertex->primitive  = GLITZ_PRIMITIVE_QUADS;
+@@ -288,7 +300,8 @@ xglInitGlyphCache (xglGlyphCachePtr pCache,
+ 	    vertex->mask.type	     = GLITZ_DATA_TYPE_SHORT;
+ 	}
+ 
+-	pTexture->pixel.masks	       = pFormat->pPixel->masks;
++	pTexture->pixel.fourcc	       = GLITZ_FOURCC_RGB;
++	pTexture->pixel.masks	       = pVisual->pPixel->masks;
+ 	pTexture->pixel.scanline_order = GLITZ_PIXEL_SCANLINE_ORDER_BOTTOM_UP;
+ 	pTexture->pixel.bytes_per_line = 0;
+ 	pTexture->pixel.xoffset	       = 0;
+@@ -313,8 +326,8 @@ xglFiniGlyphCache (xglGlyphCachePtr pCache)
+ 	}
+ 	else
+ 	{
+-	    if (pCache->u.texture.mask)
+-		glitz_surface_destroy (pCache->u.texture.mask);
++	    if (pCache->u.texture.pMask)
++		FreePicture ((pointer) pCache->u.texture.pMask, 0);
+ 	}
+ 	
+ 	pCache->pScreen = NULL;
+@@ -420,6 +433,7 @@ xglCacheGlyph (xglGlyphCachePtr pCache,
+ 	    
+ 	    if (pGlyphPriv->pArea)
+ 	    {
++		glitz_surface_t	     *surface;
+ 		glitz_point_fixed_t  p1, p2;
+ 		glitz_pixel_format_t pixel;
+ 		
+@@ -429,7 +443,9 @@ xglCacheGlyph (xglGlyphCachePtr pCache,
+ 		pixel.bytes_per_line =
+ 		    PixmapBytePad (pGlyph->info.width, pCache->depth);
+ 		
+-		glitz_set_pixels (pTexture->mask,
++		surface = pTexture->pMask->pSourcePict->source.devPrivate.ptr;
++
++		glitz_set_pixels (surface,
+ 				  pGlyphPriv->pArea->x,
+ 				  pGlyphPriv->pArea->y,
+ 				  pGlyph->info.width,
+@@ -442,8 +458,8 @@ xglCacheGlyph (xglGlyphCachePtr pCache,
+ 		p2.x = (pGlyphPriv->pArea->x + pGlyph->info.width)  << 16;
+ 		p2.y = (pGlyphPriv->pArea->y + pGlyph->info.height) << 16;
+ 		
+-		glitz_surface_translate_point (pTexture->mask, &p1, &p1);
+-		glitz_surface_translate_point (pTexture->mask, &p2, &p2);
++		glitz_surface_translate_point (surface, &p1, &p1);
++		glitz_surface_translate_point (surface, &p2, &p2);
+ 		
+ 		pAreaPriv->serial = glyphSerialNumber;
+ 		if (pTexture->geometryDataType)
+@@ -542,7 +558,7 @@ xglUncachedGlyphs (CARD8	 op,
+ 	
+ 	if (!pPicture)
+ 	{
+-	    CARD32 componentAlpha;
++	    XID componentAlpha;
+ 	    int	   error;
+ 	    
+ 	    pPixmap = GetScratchPixmapHeader (pScreen,
+@@ -624,7 +640,7 @@ xglCachedGlyphs (CARD8	       op,
+     int			  depth = pOp->pLists->format->depth;
+     int			  i, remaining = pOp->nGlyphs;
+     int			  nGlyph = 0;
+-    glitz_surface_t	  *mask = NULL;
++    PicturePtr		  pMaskPicture = NULL;
+ 
+     XGL_SCREEN_PRIV (pScreen);
+     
+@@ -690,7 +706,7 @@ xglCachedGlyphs (CARD8	       op,
+ 	    
+ 	    pGeometry->f = pCache->u.texture.format;
+ 	    pGeometry->type = GLITZ_GEOMETRY_TYPE_VERTEX;
+-	    mask = pCache->u.texture.mask;
++	    pMaskPicture = pCache->u.texture.pMask;
+ 	    
+ 	    vData.list.s = glitz_buffer_map (pGeometry->buffer,
+ 					     GLITZ_BUFFER_ACCESS_WRITE_ONLY);
+@@ -803,18 +819,17 @@ xglCachedGlyphs (CARD8	       op,
+ 			    pDst->pDrawable->x,
+ 			    pDst->pDrawable->y);
+ 	
+-	if (xglComp (op,
++	if (xglCompositeGeneral (op,
+ 		     pSrc,
+-		     NULL,
++				 pMaskPicture,
+ 		     pDst,
++				 pGeometry,
+ 		     xSrc, ySrc,
+ 		     0, 0,
+ 		     pDst->pDrawable->x + extents.x1,
+ 		     pDst->pDrawable->y + extents.y1,
+ 		     extents.x2 - extents.x1,
+-		     extents.y2 - extents.y1,
+-		     pGeometry,
+-		     mask))
++				 extents.y2 - extents.y1))
+ 	{
+ 	    xglAddCurrentBitDamage (pDst->pDrawable);
+ 	    return remaining;
+@@ -1037,8 +1052,6 @@ xglGlyphs (CARD8	 op,
+     int		  overlap;
+     int		  target;
+ 
+-    XGL_DRAWABLE_PIXMAP_PRIV (pDst->pDrawable);
+-
+     overlap = xglGlyphExtents (pDst, nlist, list, glyphs, &extents);
+     if (extents.x2 <= extents.x1 || extents.y2 <= extents.y1)
+ 	return;
+@@ -1046,11 +1059,11 @@ xglGlyphs (CARD8	 op,
+     target = xglPrepareTarget (pDst->pDrawable);
+ 
+     if (op != PictOpAdd && maskFormat &&
+-	(overlap || op != PictOpOver ||
++	(!target || overlap || op != PictOpOver ||
+ 	 xglGlyphListFormatId (list, nlist) != maskFormat->id))
+     {
+ 	PixmapPtr  pPixmap;
+-	CARD32	   componentAlpha;
++	XID	   componentAlpha;
+ 	GCPtr	   pGC;
+ 	xRectangle rect;
+ 	int	   error;
+@@ -1076,12 +1089,11 @@ xglGlyphs (CARD8	 op,
+ 	    return;
+ 	}
+ 
+-	/* make sure destination drawable is locked */
+-	pPixmapPriv->lock++;
+-
+-	/* lock mask if we are not doing accelerated drawing to destination */
+ 	if (!target)
+-	    XGL_GET_PIXMAP_PRIV (pPixmap)->lock = 1;
++	{
++	    /* make sure we don't do accelerated drawing to mask */
++	    xglSetPixmapVisual (pPixmap, NULL);
++	}
+ 
+ 	ValidatePicture (pMask);
+ 	pGC = GetScratchGC (pPixmap->drawable.depth, pScreen);
+@@ -1100,9 +1112,6 @@ xglGlyphs (CARD8	 op,
+     }
+     else
+     {
+-	/* make sure destination drawable is locked */
+-	pPixmapPriv->lock++;
+-
+ 	glyphOp.xOff = 0;
+ 	glyphOp.yOff = 0;
+ 	pSrcPicture = pSrc;
+@@ -1145,10 +1154,7 @@ xglGlyphs (CARD8	 op,
+     
+     if (pMask)
+     {
+-	CompositePicture (op,
+-			  pSrc,
+-			  pMask,
+-			  pDst,
++	CompositePicture (op, pSrc, pMask, pDst,
+ 			  xSrc + extents.x1 - xDst,
+ 			  ySrc + extents.y1 - yDst,
+ 			  0, 0,
+@@ -1158,10 +1164,6 @@ xglGlyphs (CARD8	 op,
+ 	
+ 	FreePicture ((pointer) pMask, (XID) 0);
+     }
+-
+-    /* release destination drawable lock */
+-    pPixmapPriv->lock--;
+-
+ }
+ 
+ #endif

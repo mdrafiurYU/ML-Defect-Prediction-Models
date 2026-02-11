@@ -1,0 +1,15 @@
+diff --git a/xfixes/xfixes.c b/xfixes/xfixes.c
+index 0db4989..d1225c6 100755
+--- a/xfixes/xfixes.c
++++ b/xfixes/xfixes.c
+@@ -56,7 +56,9 @@
+ static unsigned char	XFixesReqCode;
+ int		XFixesEventBase;
+ int		XFixesErrorBase;
+-static DevPrivateKey XFixesClientPrivateKey = &XFixesClientPrivateKey;
++
++static int XFixesClientPrivateKeyIndex;
++static DevPrivateKey XFixesClientPrivateKey = &XFixesClientPrivateKeyIndex;
+ 
+ static int
+ ProcXFixesQueryVersion(ClientPtr client)

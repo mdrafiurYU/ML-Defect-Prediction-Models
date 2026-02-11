@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java
+index b8ef8ab..7df02b7 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyResolver.java
+@@ -309,7 +309,7 @@ private void remember(IType type, ReferenceBinding typeBinding) {
+ 		// simple super class name
+ 		char[] superclassName = null;
+ 		TypeReference superclass;
+-		if ((typeDeclaration.bits & ASTNode.IsAnonymousTypeMASK) != 0) {
++		if ((typeDeclaration.bits & ASTNode.IsAnonymousType) != 0) {
+ 			superclass = typeDeclaration.allocation.type;
+ 		} else {
+ 			superclass = typeDeclaration.superclass;

@@ -1,0 +1,94 @@
+diff --git a/hw/xquartz/bundle/bundle-main.c b/hw/xquartz/bundle/bundle-main.c
+index cd74cea..a7b00d6 100644
+--- a/hw/xquartz/bundle/bundle-main.c
++++ b/hw/xquartz/bundle/bundle-main.c
+@@ -39,8 +39,8 @@
+ #define DEFAULT_CLIENT "/usr/X11/bin/xterm"
+ #define DEFAULT_STARTX "/usr/X11/bin/startx"
+ 
+-static int launcher_main(int argc, char **argv);
+-static int server_main(int argc, char **argv);
++static int execute(const char *command);
++static char *command_from_prefs(const char *key, const char *default_value);
+ 
+ int main(int argc, char **argv) {
+     Display *display;
+@@ -66,16 +66,16 @@ int main(int argc, char **argv) {
+              * TODO: *Really* fix this race condition
+              */
+             usleep(2000);
+-            return launcher_main(argc, argv);
++            return execute(command_from_prefs("app_to_run", DEFAULT_CLIENT));
+         }
+     }
+     
+     /* Start the server */
+     fprintf(stderr, "X11.app: Could not connect to server.  Starting X server.");
+-    return server_main(argc, argv);
++    return execute(command_from_prefs("startx_script", DEFAULT_STARTX));
+ }
+ 
+-static int myexecvp(const char *command) {
++static int execute(const char *command) {
+     const char *newargv[7];
+     const char **s;
+ 
+@@ -97,42 +97,33 @@ static int myexecvp(const char *command) {
+     return(1);
+ }
+ 
+-int launcher_main (int argc, char **argv) {
+-    char *command = DEFAULT_CLIENT;
++static char *command_from_prefs(const char *key, const char *default_value) {
++    char *command = NULL;
+     
+-	CFPropertyListRef PlistRef = CFPreferencesCopyAppValue(CFSTR("app_to_run"), kCFPreferencesCurrentApplication);
++    CFStringRef cfKey = CFStringCreateWithPascalString(NULL, key, kCFStringEncodingASCII);
++    CFPropertyListRef PlistRef = CFPreferencesCopyAppValue(cfKey, kCFPreferencesCurrentApplication);
+ 	
+ 	if ((PlistRef == NULL) || (CFGetTypeID(PlistRef) != CFStringGetTypeID())) {
+-		CFPreferencesSetAppValue(CFSTR("app_to_run"), CFSTR(DEFAULT_CLIENT), kCFPreferencesCurrentApplication);
+-		CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
+-	} else {
+-        int len = CFStringGetLength((CFStringRef)PlistRef)+1;
+-		command = (char *)malloc(len);
+-		CFStringGetCString((CFStringRef)PlistRef, command, len,  kCFStringEncodingASCII);
+-	}
+-
+-	if (PlistRef)
+-        CFRelease(PlistRef);
+-
+-    return myexecvp(command);
+-}
+-
+-int server_main (int argc, char **argv) {
+-    char *command = DEFAULT_STARTX;
++        CFStringRef cfDefaultValue = CFStringCreateWithPascalString(NULL, default_value, kCFStringEncodingASCII);
+ 
+-	CFPropertyListRef PlistRef = CFPreferencesCopyAppValue(CFSTR("startx_script"), kCFPreferencesCurrentApplication);
+-	
+-	if ((PlistRef == NULL) || (CFGetTypeID(PlistRef) != CFStringGetTypeID())) {
+-		CFPreferencesSetAppValue(CFSTR("startx_script"), CFSTR(DEFAULT_STARTX), kCFPreferencesCurrentApplication);
++        CFPreferencesSetAppValue(cfKey, cfDefaultValue, kCFPreferencesCurrentApplication);
+ 		CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
++        
++        int len = strlen(default_value) + 1;
++        command = (char *)malloc(len * sizeof(char));
++        if(!command)
++            return NULL;
++        strcpy(command, default_value);
+ 	} else {
+         int len = CFStringGetLength((CFStringRef)PlistRef)+1;
+-		command = (char *)malloc(len);
++        command = (char *)malloc(len * sizeof(char));
++        if(!command)
++            return NULL;
+ 		CFStringGetCString((CFStringRef)PlistRef, command, len,  kCFStringEncodingASCII);
+ 	}
+     
+ 	if (PlistRef)
+         CFRelease(PlistRef);
+     
+-    return myexecvp(command);
++    return command;
+ }

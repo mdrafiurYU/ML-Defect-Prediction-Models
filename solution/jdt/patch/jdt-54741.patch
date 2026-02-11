@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CommentRecorderParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CommentRecorderParser.java
+index d314730..0baf85e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CommentRecorderParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CommentRecorderParser.java
+@@ -11,6 +11,7 @@
+ package org.eclipse.jdt.internal.core.util;
+ 
+ import org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration;
++import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
+ import org.eclipse.jdt.internal.compiler.parser.Parser;
+ import org.eclipse.jdt.internal.compiler.problem.ProblemReporter;
+@@ -70,7 +71,7 @@ public class CommentRecorderParser extends Parser {
+ 			break nextComment;
+ 		}
+ 		if (deprecated) {
+-			checkAndSetModifiers(AccDeprecated);
++			checkAndSetModifiers(ClassFileConstants.AccDeprecated);
+ 		}
+ 		// modify the modifier source start to point at the first comment
+ 		if (lastCommentIndex >= 0 && checkDeprecated) {

@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/utils/xorgcfg/mouse-cfg.c b/hw/xfree86/utils/xorgcfg/mouse-cfg.c
+index 6c29c1f..5bae6d3 100644
+--- a/hw/xfree86/utils/xorgcfg/mouse-cfg.c
++++ b/hw/xfree86/utils/xorgcfg/mouse-cfg.c
+@@ -60,9 +60,6 @@ static struct MouseProtocol {
+ #ifdef __SCO__
+     {"OsMouse",			MTYPE_AUTOMOUSE},
+ #endif
+-#if defined(__UNIXWARE__)
+-    {"Xqueue",			MTYPE_XQUEUE},
+-#endif
+ #ifdef WSCONS_SUPPORT
+     {"wsmouse",			MTYPE_AUTOMOUSE},
+ #endif

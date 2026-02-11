@@ -1,0 +1,29 @@
+diff --git a/include/input.h b/include/input.h
+index e32182d..3e00be6 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -163,6 +163,12 @@ extern void ResetDevicePrivateIndex(void);
+ extern KeybdCtrl	defaultKeyboardControl;
+ extern PtrCtrl		defaultPointerControl;
+ 
++typedef struct _InputOption {
++    char                *key;
++    char                *value;
++    struct _InputOption *next;
++} InputOption;
++
+ extern DeviceIntPtr AddInputDevice(
+     DeviceProc /*deviceProc*/,
+     Bool /*autoStart*/);
+@@ -366,4 +372,11 @@ extern void InitInput(
+     int  /*argc*/,
+     char ** /*argv*/);
+ 
++/* Implemented by the DDX. */
++extern int NewInputDeviceRequest(
++    InputOption *options);
++
++extern DeviceIntPtr LookupDeviceIntRec(
++    CARD8 deviceid);
++
+ #endif /* INPUT_H */

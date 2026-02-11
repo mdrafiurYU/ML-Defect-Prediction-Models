@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMethod.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMethod.java
+index 16623b7..c85242a 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMethod.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMethod.java
+@@ -196,6 +196,10 @@ public int hashCode() {
+  * @see IMethod
+  */
+ public boolean isConstructor() throws JavaModelException {
++	if (!this.getElementName().equals(this.parent.getElementName())) {
++		// faster than reaching the info
++		return false;
++	}
+ 	SourceMethodElementInfo info = (SourceMethodElementInfo) getElementInfo();
+ 	return info.isConstructor();
+ }

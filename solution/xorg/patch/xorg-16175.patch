@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/dixmods/ftmodule.c b/hw/xfree86/dixmods/ftmodule.c
+index a895d4d..c2fe790 100644
+--- a/hw/xfree86/dixmods/ftmodule.c
++++ b/hw/xfree86/dixmods/ftmodule.c
+@@ -30,8 +30,8 @@
+ #include <X11/fonts/fontmod.h>
+ #include "xf86Module.h"
+ 
+-#ifdef HAVE_DIX_CONFIG_H
+-#include <dix-config.h>
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
+ #endif
+ 
+ static MODULESETUPPROTO(freetypeSetup);

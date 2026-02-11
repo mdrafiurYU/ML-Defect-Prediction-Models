@@ -1,0 +1,14 @@
+diff --git a/os/secauth.c b/os/secauth.c
+index 1000b4e..8c87008 100644
+--- a/os/secauth.c
++++ b/os/secauth.c
+@@ -37,8 +37,7 @@ from The Open Group.
+ #include "swaprep.h"
+ 
+ #ifdef XCSECURITY
+-#define _SECURITY_SERVER
+-#include <X11/extensions/security.h>
++#include "securitysrv.h"
+ #endif
+ 
+ static char InvalidPolicyReason[] = "invalid policy specification";

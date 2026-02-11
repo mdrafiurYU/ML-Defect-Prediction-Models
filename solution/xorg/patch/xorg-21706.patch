@@ -1,0 +1,15 @@
+diff --git a/lbx/lbxgfx.c b/lbx/lbxgfx.c
+index f1c1623..877ce8e 100644
+--- a/lbx/lbxgfx.c
++++ b/lbx/lbxgfx.c
+@@ -25,6 +25,10 @@
+ 
+ /* various bits of DIX-level mangling */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <sys/types.h>
+ #include <stdio.h>
+ #define NEED_REPLIES

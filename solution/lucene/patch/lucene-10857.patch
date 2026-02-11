@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/SolrTestCaseJ4.java b/solr/src/test/org/apache/solr/SolrTestCaseJ4.java
+index bdfd4e7..05d9047 100755
+--- a/solr/src/test/org/apache/solr/SolrTestCaseJ4.java
++++ b/solr/src/test/org/apache/solr/SolrTestCaseJ4.java
+@@ -339,7 +339,7 @@ public abstract class SolrTestCaseJ4 extends LuceneTestCase {
+     } catch (XPathExpressionException e1) {
+       throw new RuntimeException("XPath is invalid", e1);
+     } catch (Exception e2) {
+-      log.error("REQUEST FAILED: " + req.getParamString());
++      SolrException.log(log,"REQUEST FAILED: " + req.getParamString(), e2);
+       throw new RuntimeException("Exception during query", e2);
+     }
+   }

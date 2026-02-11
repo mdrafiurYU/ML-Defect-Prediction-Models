@@ -1,0 +1,114 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+index b9556eb..3f97ac8 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+@@ -274,11 +274,9 @@ final class DocumentsWriter {
+     flushControl.setClosed();
+   }
+ 
+-  boolean updateDocument(final Document doc, final Analyzer analyzer,
+-      final Term delTerm) throws CorruptIndexException, IOException {
++  private boolean preUpdate() throws CorruptIndexException, IOException {
+     ensureOpen();
+     boolean maybeMerge = false;
+-    final boolean isUpdate = delTerm != null;
+     if (flushControl.anyStalledThreads() || flushControl.numQueuedFlushes() > 0) {
+       // Help out flushing any queued DWPTs so we can un-stall:
+       if (infoStream != null) {
+@@ -303,13 +301,30 @@ final class DocumentsWriter {
+         message("continue indexing after helpling out flushing DocumentsWriter is healthy");
+       }
+     }
++    return maybeMerge;
++  }
++
++  private boolean postUpdate(DocumentsWriterPerThread flushingDWPT, boolean maybeMerge) throws IOException {
++    if (flushingDWPT != null) {
++      maybeMerge |= doFlush(flushingDWPT);
++    } else {
++      final DocumentsWriterPerThread nextPendingFlush = flushControl.nextPendingFlush();
++      if (nextPendingFlush != null) {
++        maybeMerge |= doFlush(nextPendingFlush);
++      }
++    }
+ 
+-    final ThreadState perThread = perThreadPool.getAndLock(Thread.currentThread(),
+-        this, doc);
++    return maybeMerge;
++  }
++
++  boolean updateDocuments(final Iterable<Document> docs, final Analyzer analyzer,
++                          final Term delTerm) throws CorruptIndexException, IOException {
++    boolean maybeMerge = preUpdate();
++
++    final ThreadState perThread = perThreadPool.getAndLock(Thread.currentThread(), this);
+     final DocumentsWriterPerThread flushingDWPT;
+     
+     try {
+-
+       if (!perThread.isActive()) {
+         ensureOpen();
+         assert false: "perThread is not active but we are still open";
+@@ -317,27 +332,53 @@ final class DocumentsWriter {
+        
+       final DocumentsWriterPerThread dwpt = perThread.perThread;
+       try {
+-        dwpt.updateDocument(doc, analyzer, delTerm); 
+-        numDocsInRAM.incrementAndGet();
++        final int docCount = dwpt.updateDocuments(docs, analyzer, delTerm);
++        numDocsInRAM.addAndGet(docCount);
+       } finally {
+         if (dwpt.checkAndResetHasAborted()) {
+           flushControl.doOnAbort(perThread);
+         }
+       }
++      final boolean isUpdate = delTerm != null;
+       flushingDWPT = flushControl.doAfterDocument(perThread, isUpdate);
+     } finally {
+       perThread.unlock();
+     }
++
++    return postUpdate(flushingDWPT, maybeMerge);
++  }
++
++  boolean updateDocument(final Document doc, final Analyzer analyzer,
++      final Term delTerm) throws CorruptIndexException, IOException {
++
++    boolean maybeMerge = preUpdate();
++
++    final ThreadState perThread = perThreadPool.getAndLock(Thread.currentThread(), this);
++    final DocumentsWriterPerThread flushingDWPT;
+     
+-    if (flushingDWPT != null) {
+-      maybeMerge |= doFlush(flushingDWPT);
+-    } else {
+-      final DocumentsWriterPerThread nextPendingFlush = flushControl.nextPendingFlush();
+-      if (nextPendingFlush != null) {
+-        maybeMerge |= doFlush(nextPendingFlush);
++    try {
++
++      if (!perThread.isActive()) {
++        ensureOpen();
++        assert false: "perThread is not active but we are still open";
+       }
++       
++      final DocumentsWriterPerThread dwpt = perThread.perThread;
++      try {
++        dwpt.updateDocument(doc, analyzer, delTerm); 
++        numDocsInRAM.incrementAndGet();
++      } finally {
++        if (dwpt.checkAndResetHasAborted()) {
++          flushControl.doOnAbort(perThread);
++        }
++      }
++      final boolean isUpdate = delTerm != null;
++      flushingDWPT = flushControl.doAfterDocument(perThread, isUpdate);
++    } finally {
++      perThread.unlock();
+     }
+-    return maybeMerge;
++
++    return postUpdate(flushingDWPT, maybeMerge);
+   }
+ 
+   private  boolean doFlush(DocumentsWriterPerThread flushingDWPT) throws IOException {

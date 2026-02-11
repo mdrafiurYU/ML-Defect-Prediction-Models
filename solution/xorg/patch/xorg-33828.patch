@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxDevBtn.c b/xkb/ddxDevBtn.c
+index 7e27c51..5313a1e 100644
+--- a/xkb/ddxDevBtn.c
++++ b/xkb/ddxDevBtn.c
+@@ -53,7 +53,7 @@ deviceValuator *	val;
+ int			x,y;
+ int			nAxes, i, count;
+ 
+-    if ((dev==(DeviceIntPtr)LookupPointerDevice())||(!dev->public.on))
++    if (dev == inputInfo.pointer || !dev->public.on)
+ 	return;
+ 
+     nAxes = (dev->valuator?dev->valuator->numAxes:0);

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/ScoreOrderFragmentsBuilderTest.java b/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/ScoreOrderFragmentsBuilderTest.java
+index 47ca7ed..31bc37d 100644
+--- a/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/ScoreOrderFragmentsBuilderTest.java
++++ b/lucene/contrib/highlighter/src/test/org/apache/lucene/search/vectorhighlight/ScoreOrderFragmentsBuilderTest.java
+@@ -27,7 +27,7 @@ public class ScoreOrderFragmentsBuilderTest extends AbstractTestCase {
+     String[] f = sofb.createFragments( reader, 0, F, ffl, 3 );
+     assertEquals( 3, f.length );
+     // check score order
+-    assertEquals( "<b>c</b> <b>a</b> <b>a</b> b b", f[0] );
++    assertEquals( "<b>c</b> <b>a</b> <b>a</b> b b ", f[0] );
+     assertEquals( "b b <b>a</b> b <b>a</b> b b b b b ", f[1] );
+     assertEquals( "<b>a</b> b b b b b b b b b ", f[2] );
+   }

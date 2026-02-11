@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index 7a8ec19..18e42dd 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -82,6 +82,11 @@ static Bool quirk_prefer_large_60 (int scrnIndex, xf86MonPtr DDC)
+ 	DDC->vendor.prod_id == 1516)
+ 	return TRUE;
+     
++    /* Acer AL1706 */
++    if (memcmp (DDC->vendor.name, "ACR", 4) == 0 &&
++	DDC->vendor.prod_id == 44358)
++	return TRUE;
++    
+     return FALSE;
+ }
+ 

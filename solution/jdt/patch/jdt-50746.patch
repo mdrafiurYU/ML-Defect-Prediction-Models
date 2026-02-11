@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/workspace/Formatter/test582/A_out.java b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test582/A_out.java
+new file mode 100644
+index 0000000..e2e112b
+--- /dev/null
++++ b/org.eclipse.jdt.core.tests.model/workspace/Formatter/test582/A_out.java
+@@ -0,0 +1,15 @@
++import java.lang.reflect.Constructor;
++
++public class X {
++	public <T extends X> Constructor<T> ctor() {
++		return null;
++	}
++
++	static <T extends X> T f1() throws Exception {
++		return new X().<T>ctor().newInstance(new Object[0]);
++	}
++
++	static <T extends X> T f2() throws Exception {
++		return f1();
++	}
++}

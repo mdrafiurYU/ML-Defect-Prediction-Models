@@ -1,0 +1,34 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index bf542a4..5289ae0 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -708,6 +708,9 @@ KdScreenInfoDispose (KdScreenInfo *si);
+ void
+ KdInitInput(KdMouseFuncs *, KdKeyboardFuncs *);
+ 
++void
++KdAddMouseDriver(KdMouseFuncs *);
++
+ int
+ KdAllocInputType (void);
+ 
+@@ -722,11 +725,6 @@ KdRegisterFdEnableDisable (int fd,
+ void
+ KdUnregisterFds (int type, Bool do_close);
+ 
+-#ifdef TOUCHSCREEN
+-void
+-KdInitTouchScreen(KdMouseFuncs *pTsFuncs);
+-#endif
+-
+ void
+ KdEnqueueKeyboardEvent(unsigned char	scan_code,
+ 		       unsigned char	is_up);
+@@ -778,6 +776,7 @@ void
+ ProcessInputEvents (void);
+ 
+ extern KdMouseFuncs	LinuxMouseFuncs;
++extern KdMouseFuncs	LinuxEvdevFuncs;
+ extern KdMouseFuncs	Ps2MouseFuncs;
+ extern KdMouseFuncs	BusMouseFuncs;
+ extern KdMouseFuncs	MsMouseFuncs;

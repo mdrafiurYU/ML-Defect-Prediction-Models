@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+index f5573bc..eeda6a4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+@@ -182,4 +182,9 @@ public abstract class BLOBFileValue implements Binary {
+     public long getSize() throws RepositoryException {
+         return getLength();
+     }
++
++    public void dispose() {
++        discard();
++    }
++
+ }

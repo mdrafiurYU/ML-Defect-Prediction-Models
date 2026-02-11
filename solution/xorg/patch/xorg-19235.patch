@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/agp_noop.c b/hw/xfree86/os-support/shared/agp_noop.c
+index 8c2da51..dc176fe 100644
+--- a/hw/xfree86/os-support/shared/agp_noop.c
++++ b/hw/xfree86/os-support/shared/agp_noop.c
+@@ -31,6 +31,10 @@
+  * AGP GART support.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ # define I_NEED_OS2_H
+ #endif

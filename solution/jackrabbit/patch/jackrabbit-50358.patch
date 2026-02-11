@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/DefaultLoginModule.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/DefaultLoginModule.java
+index bf839de..3df0956 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/DefaultLoginModule.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/DefaultLoginModule.java
+@@ -48,7 +48,7 @@ public class DefaultLoginModule extends AbstractLoginModule {
+ 
+     private static final Logger log = LoggerFactory.getLogger(AbstractLoginModule.class);
+ 
+-    private User user;
++    protected User user;
+     private UserManager userManager;
+ 
+     /**

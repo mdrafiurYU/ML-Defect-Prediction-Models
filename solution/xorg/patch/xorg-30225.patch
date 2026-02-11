@@ -1,0 +1,27 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 7edcc51..7b22d17 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -740,6 +740,9 @@ KdKeyboardProc(DeviceIntPtr pDevice, int onoff)
+     DevicePtr   pDev = (DevicePtr)pDevice;
+     KdKeyboardInfo *ki;
+     Atom xiclass;
++#ifdef XKB
++    XkbComponentNamesRec names;
++#endif
+ 
+     if (!pDev)
+ 	return BadImplementation;
+@@ -788,11 +791,9 @@ KdKeyboardProc(DeviceIntPtr pDevice, int onoff)
+         KdInitModMap(ki);
+         KdInitAutoRepeats(ki);
+ 
+-#ifndef XKB
++#ifdef XKB
+         if (!noXkbExtension) {
+             memset(&names, 0, sizeof(XkbComponentNamesRec));
+-            if (XkbInitialMap) 
+-                names.keymap = XkbInitialMap;
+ 
+             XkbSetRulesDflts ("base", "pc105", "us", NULL, NULL);
+             ret = XkbInitKeyboardDeviceStruct (pDevice,

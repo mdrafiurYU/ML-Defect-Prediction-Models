@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java
+index 528bbfb..4e03a5a 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/retention/AbstractRetentionTest.java
+@@ -58,7 +58,7 @@ public abstract class AbstractRetentionTest extends AbstractJCRTest {
+ 
+     protected RetentionPolicy getApplicableRetentionPolicy(String jcrName) throws NotExecutableException, RepositoryException {
+         // TODO: move to repositoryStub/helper and adjust accordingly
+-        return new RetentionPolicyImpl(jcrName, (SessionImpl)superuser);
++        return RetentionPolicyImpl.createRetentionPolicy(jcrName, superuser);
+     }
+ 
+     protected static RetentionManager getRetentionManager(Session s) throws RepositoryException, NotExecutableException {
+@@ -83,4 +83,4 @@ public abstract class AbstractRetentionTest extends AbstractJCRTest {
+             throw new NotExecutableException();
+         }
+     }
+-}
++}
+\ No newline at end of file

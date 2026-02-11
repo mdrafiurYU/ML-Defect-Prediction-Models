@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/query/QueryTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/query/QueryTest.java
+index 370d605..c7a740a 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/query/QueryTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/query/QueryTest.java
+@@ -55,14 +55,10 @@ public class QueryTest extends AbstractQueryTest {
+         Node n = testRootNode.addNode("spiTest:node");
+         testRootNode.save();
+ 
+-        long time = System.currentTimeMillis();
+         for (int i = 0; i < 10; i++) {
+             String prefix = defaultPrefix + i;
+             superuser.setNamespacePrefix(prefix, namespaceURI);
+             executeXPathQuery(superuser, testPath + "/" + prefix + ":node", new Node[]{n});
+         }
+-        time = System.currentTimeMillis() - time;
+-        System.out.println("Executed 10 queries in " + time + " ms");
+-        System.out.println("Time per query: " + (time / 10) + " ms");
+     }
+ }

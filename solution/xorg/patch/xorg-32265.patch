@@ -1,0 +1,31 @@
+diff --git a/hw/xwin/win.h b/hw/xwin/win.h
+index 09a9fb2..d3be39b 100644
+--- a/hw/xwin/win.h
++++ b/hw/xwin/win.h
+@@ -579,8 +579,6 @@ typedef struct _winPrivScreenRec
+   ValidateTreeProcPtr			ValidateTree;
+   PostValidateTreeProcPtr		PostValidateTree;
+   WindowExposuresProcPtr		WindowExposures;
+-  PaintWindowBackgroundProcPtr		PaintWindowBackground;
+-  PaintWindowBorderProcPtr		PaintWindowBorder;
+   CopyWindowProcPtr			CopyWindow;
+   ClearToBackgroundProcPtr		ClearToBackground;
+   ClipNotifyProcPtr			ClipNotify;
+@@ -1052,17 +1050,6 @@ winModifyPixmapHeaderNativeGDI (PixmapPtr pPixmap,
+ 				pointer pPixData);
+ #endif
+ 
+-
+-#ifdef XWIN_NATIVEGDI
+-/*
+- * winpntwin.c
+- */
+-
+-void
+-winPaintWindowNativeGDI (WindowPtr pWin, RegionPtr pRegion, int what);
+-#endif
+-
+-
+ #ifdef XWIN_NATIVEGDI
+ /*
+  * winpolyline.c

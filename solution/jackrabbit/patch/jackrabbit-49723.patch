@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
+index 98fe9d9..e911118 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
+@@ -45,7 +45,7 @@ class GroupImpl extends AuthorizableImpl implements Group {
+ 
+     private static final Logger log = LoggerFactory.getLogger(GroupImpl.class);
+ 
+-    private Principal principal = null;
++    private Principal principal;
+ 
+     private GroupImpl(NodeImpl node, UserManagerImpl userManager) throws RepositoryException {
+         super(node, userManager);
+@@ -55,7 +55,7 @@ class GroupImpl extends AuthorizableImpl implements Group {
+         if (node == null || !node.isNodeType(NT_REP_GROUP)) {
+             throw new IllegalArgumentException();
+         }
+-        if(!Text.isDescendant(GROUPS_PATH, node.getPath())) {
++        if (!Text.isDescendant(GROUPS_PATH, node.getPath())) {
+             throw new IllegalArgumentException("Group has to be within the Group Path");
+         }
+         return new GroupImpl(node, userManager);

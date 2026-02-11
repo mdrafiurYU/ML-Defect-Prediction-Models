@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglwindow.c b/hw/xgl/xglwindow.c
+index ce92138..9e4245c 100644
+--- a/hw/xgl/xglwindow.c
++++ b/hw/xgl/xglwindow.c
+@@ -116,7 +116,7 @@ xglCopyWindow (WindowPtr   pWin,
+     dy = ptOldOrg.y - pWin->drawable.y;
+     
+     REGION_TRANSLATE (pWin->drawable.pScreen, prgnSrc, -dx, -dy);
+-    REGION_INIT (pWin->drawable.pScreen, &rgnDst, NullBox, 0);
++    REGION_NULL (pWin->drawable.pScreen, &rgnDst);
+     REGION_INTERSECT (pWin->drawable.pScreen,
+ 		      &rgnDst, &pWin->borderClip, prgnSrc);
+ 

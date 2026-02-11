@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java b/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java
+index 70ff39d..f331b43 100644
+--- a/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java
+@@ -1,7 +1,7 @@
+ package org.apache.solr.search.function;
+ 
+-import org.apache.solr.search.MutableValue;
+-import org.apache.solr.search.MutableValueDouble;
++import org.apache.lucene.common.mutable.MutableValue;
++import org.apache.lucene.common.mutable.MutableValueDouble;
+ 
+ public abstract class DoubleDocValues extends DocValues {
+   protected final ValueSource vs;

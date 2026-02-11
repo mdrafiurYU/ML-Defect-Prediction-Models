@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java
+index 8b71c14..7005e49 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java
+@@ -82,6 +82,7 @@ public class XATest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (otherSuperuser != null) {
+             otherSuperuser.logout();
++            otherSuperuser = null;
+         }
+         super.tearDown();
+     }

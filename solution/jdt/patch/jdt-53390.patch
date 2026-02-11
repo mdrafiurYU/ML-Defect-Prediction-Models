@@ -1,0 +1,38 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+index a4c2e53..57b5cb1 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/GenericTypeTest.java
+@@ -25959,8 +25959,7 @@ public void test840() {
+ 			"        rawQualified= raw;\n" + 
+ 			"    }\n" + 
+ 			"    Zork z;\n" +
+-			"}"
+-
++			"}",
+ 		},
+ 		"----------\n" + 
+ 		"1. WARNING in generics\\user\\User.java (at line 5)\n" + 
+@@ -25989,4 +25988,23 @@ public void test840() {
+ 		"Zork cannot be resolved to a type\n" + 
+ 		"----------\n");
+ }
++//https://bugs.eclipse.org/bugs/show_bug.cgi?id=112268
++public void test841() {
++	this.runConformTest(
++		new String[] {
++			"X.java ", // =================
++			"import java.util.*;\n" + 
++			"\n" + 
++			"public class X {\n" + 
++			"  List<? extends Comparator> bar() {\n" + 
++			"	  List<? extends Comparator> l = foo();\n" + 
++			"	  return foo();\n" + 
++			"  }\n" + 
++			"  <T> List<T> foo() {\n" + 
++			"	  return null;\n" + 
++			"  }\n" + 
++			"}\n",
++		},
++		"");
++}
+ }

@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shadow.c b/miext/shadow/shadow.c
+index 5eea16b..608ccd2 100644
+--- a/miext/shadow/shadow.c
++++ b/miext/shadow/shadow.c
+@@ -204,7 +204,7 @@ shadowAdd(ScreenPtr pScreen, PixmapPtr pPixmap, ShadowUpdateProc update,
+     pBuf->update = update;
+     pBuf->window = window;
+     pBuf->randr = randr;
+-    pBuf->closure = 0;
++    pBuf->closure = closure;
+     pBuf->pPixmap = pPixmap;
+     DamageRegister(&pPixmap->drawable, pBuf->pDamage);
+     return TRUE;

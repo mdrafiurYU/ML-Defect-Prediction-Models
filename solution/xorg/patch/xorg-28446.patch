@@ -1,0 +1,33 @@
+diff --git a/composite/compint.h b/composite/compint.h
+index 3958b3b..0bd55a9 100644
+--- a/composite/compint.h
++++ b/composite/compint.h
+@@ -171,9 +171,6 @@ extern RESTYPE		CompositeClientSubwindowsType;
+  * compalloc.c
+  */
+ 
+-void
+-compReportDamage (DamagePtr pDamage, RegionPtr pRegion, void *closure);
+-
+ Bool
+ compRedirectWindow (ClientPtr pClient, WindowPtr pWin, int update);
+ 
+@@ -292,18 +289,6 @@ compWindowUpdate (WindowPtr pWin);
+ void
+ deleteCompOverlayClientsForScreen (ScreenPtr pScreen);
+ 
+-int
+-ProcCompositeGetOverlayWindow (ClientPtr client);
+-
+-int
+-ProcCompositeReleaseOverlayWindow (ClientPtr client);
+-
+-int
+-SProcCompositeGetOverlayWindow (ClientPtr client);
+-
+-int
+-SProcCompositeReleaseOverlayWindow (ClientPtr client);
+-
+ WindowPtr
+ CompositeRealChildHead (WindowPtr pWin);
+ 

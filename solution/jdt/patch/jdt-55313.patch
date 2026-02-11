@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
+index d2a7064..2afcf6a 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
+@@ -5326,8 +5326,8 @@ public class ASTConverterTest2 extends ConverterTestSetup {
+     		workingCopy = getWorkingCopy("/Converter/src/X.java", true/*resolve*/);
+ 	    	String contents =
+ 				"public class X {\n" + 
+-				"	/*start1*/String foo(String o) {}/*end1*/\n" + 
+-				"	/*start2*/String foo(Object o) {}/*end2*/\n" + 
++				"	/*start1*/String foo(String o) {return null;}/*end1*/\n" + 
++				"	/*start2*/String foo(Object o) {return null;}/*end2*/\n" + 
+ 				"}";
+ 		   	IBinding[] firstBatch = resolveBindings(contents, workingCopy);
+ 		   	IBinding[] secondBatch = resolveBindings(contents, workingCopy);

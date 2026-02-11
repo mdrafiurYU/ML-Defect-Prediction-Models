@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index f87e850..002b47d 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -5044,7 +5044,7 @@ GetPointerEvents(xEvent **xE, DeviceIntPtr pDev, int type, int buttons,
+ #ifdef DEBUG
+         ErrorF("GPE: detail is %d\n", buttons);
+ #endif
+-        kbp->detail = buttons;
++        kbp->detail = pDev->button->map[buttons];
+     }
+ 
+     if (num_valuators > 2 && (type == MotionNotify ||

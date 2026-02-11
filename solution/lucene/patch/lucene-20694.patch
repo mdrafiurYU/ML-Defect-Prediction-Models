@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java b/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java
+index 9ff5847..34064dd 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexReaderCloneNorms.java
+@@ -75,7 +75,7 @@ public class TestIndexReaderCloneNorms extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     similarityProviderOne = new SimilarityProviderOne();
+-    anlzr = new MockAnalyzer();
++    anlzr = new MockAnalyzer(random);
+   }
+   
+   /**

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+index e4e0fd3..c6e6495 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInTempFile.java
+@@ -177,4 +177,11 @@ public class BLOBInTempFile extends BLOBFileValue {
+         return 0;
+     }
+ 
++    /**
++     * {@inheritDoc}
++     */
++    public boolean isSmall() {
++        return false;
++    }
++
+ }

@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+index 9b9e081..1d9f73b 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+@@ -147,6 +147,11 @@ public class AptConfig {
+ 		return FactoryPathUtil.decodeFactoryPath(data);
+ 	}
+ 	
++	/**
++	 * Stores a map of factory containers to the factorypath file
++	 * for a given project. If null is passed in, the factorypath file
++	 * is deleted.
++	 */
+ 	private void saveFactoryPathFile(IJavaProject jproj, Map<FactoryContainer, Boolean> containerMap) 
+ 		throws CoreException, IOException 
+ 	{

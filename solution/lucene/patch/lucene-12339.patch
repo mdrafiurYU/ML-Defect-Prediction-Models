@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java b/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java
+index 94ee2ee..e56a689 100644
+--- a/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java
++++ b/lucene/contrib/spellchecker/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java
+@@ -39,7 +39,7 @@ public class TestPlainTextDictionary extends LuceneTestCase {
+     String[] similar = spellChecker.suggestSimilar("treeword", 2);
+     assertEquals(2, similar.length);
+     assertEquals(similar[0], "threeword");
+-    assertEquals(similar[1], "twoword");
++    assertEquals(similar[1], "oneword");
+     spellChecker.close();
+     ramDir.close();
+   }

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index fc80f52..a237a4c 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -2186,7 +2186,7 @@ xf86OutputGetEDID (xf86OutputPtr output, I2CBusPtr pDDCBus)
+     xf86MonPtr mon;
+ 
+     mon = xf86DoEDID_DDC2 (scrn->scrnIndex, pDDCBus);
+-    xf86DDCApplyQuirks (scrn->scrnIndex, pDDCBus);
++    xf86DDCApplyQuirks (scrn->scrnIndex, mon);
+ 
+     return mon;
+ }

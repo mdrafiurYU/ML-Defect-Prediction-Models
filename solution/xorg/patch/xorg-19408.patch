@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_init.c b/hw/xfree86/os-support/solaris/sun_init.c
+index 97c6dba..40c264c 100644
+--- a/hw/xfree86/os-support/solaris/sun_init.c
++++ b/hw/xfree86/os-support/solaris/sun_init.c
+@@ -24,6 +24,10 @@
+  */
+ /* $XdotOrg: xc/programs/Xserver/hw/xfree86/os-support/sunos/sun_init.c,v 1.3 2005/05/21 07:46:37 alanc Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86Priv.h"
+ #include "xf86_OSlib.h"

@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexReader.java b/lucene/src/test/org/apache/lucene/index/TestIndexReader.java
+index b086d58..39208d1 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexReader.java
+@@ -1850,5 +1850,16 @@ public class TestIndexReader extends LuceneTestCase
+     }
+     dir.close();
+   }
+-  
++
++  // LUCENE-2812
++  public void testIndexExists() throws Exception {
++    Directory dir = newDirectory();
++    IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()));
++    writer.addDocument(new Document());
++    writer.prepareCommit();
++    assertFalse(IndexReader.indexExists(dir));
++    writer.close();
++    assertTrue(IndexReader.indexExists(dir));
++    dir.close();
++  }
+ }

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+index 0666d90..2f3bc06 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/GarbageCollector.java
+@@ -147,6 +147,9 @@ public class GarbageCollector {
+      */
+     public void scan() throws RepositoryException,
+             IllegalStateException, IOException, ItemStateException {
++        if (store == null) {
++            throw new RepositoryException("No DataStore configured.");
++        }
+         long now = System.currentTimeMillis();
+         if (startScanTimestamp == 0) {
+             startScanTimestamp = now;

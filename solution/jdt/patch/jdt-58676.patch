@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterBindingsTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterBindingsTest.java
+index ff34803..fdfb866 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterBindingsTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterBindingsTest.java
+@@ -14,7 +14,6 @@ import java.util.ArrayList;
+ import java.util.List;
+ 
+ import junit.framework.Test;
+-import junit.framework.TestSuite;
+ 
+ import org.eclipse.jdt.core.ICompilationUnit;
+ import org.eclipse.jdt.core.IJavaProject;
+@@ -482,11 +481,7 @@ public class ASTConverterBindingsTest extends ConverterTestSetup {
+ 	}
+ 
+ 	public static Test suite() {
+-		if (true) {
+-			return new Suite(ASTConverterBindingsTest.class);		
+-		}
+-		TestSuite suite = new Suite(ASTConverterBindingsTest.class.getName());
+-		return suite;
++		return buildModelTestSuite(ASTConverterBindingsTest.class);		
+ 	}
+ 
+ 	public void test0001() throws JavaModelException {

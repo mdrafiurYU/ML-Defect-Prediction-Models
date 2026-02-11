@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTermScorer.java b/lucene/src/test/org/apache/lucene/search/TestTermScorer.java
+index 139df50..05c3475 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTermScorer.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTermScorer.java
+@@ -98,8 +98,8 @@ public class TestTermScorer extends LuceneTestCase {
+       }
+       
+       @Override
+-      public void setNextReader(IndexReader reader, int docBase) {
+-        base = docBase;
++      public void setNextReader(AtomicReaderContext context) {
++        base = context.docBase;
+       }
+       
+       @Override

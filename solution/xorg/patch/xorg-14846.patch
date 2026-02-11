@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxcursor.c b/hw/dmx/dmxcursor.c
+index 77ec995..a49fc9f 100644
+--- a/hw/dmx/dmxcursor.c
++++ b/hw/dmx/dmxcursor.c
+@@ -73,6 +73,10 @@
+  * maintainability for efficiency does not seem justified in this case.
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #define DMX_CURSOR_DEBUG 0
+ 
+ #include "dmx.h"

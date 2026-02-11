@@ -1,0 +1,15 @@
+diff --git a/Xi/getfctl.c b/Xi/getfctl.c
+index 2f41bcf..5652ad3 100644
+--- a/Xi/getfctl.c
++++ b/Xi/getfctl.c
+@@ -55,6 +55,10 @@ SOFTWARE.
+ 
+ #define	 NEED_EVENTS			/* for inputstr.h    */
+ #define	 NEED_REPLIES
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>				/* for inputstr.h    */
+ #include <X11/Xproto.h>			/* Request macro     */
+ #include "inputstr.h"			/* DeviceIntPtr	     */

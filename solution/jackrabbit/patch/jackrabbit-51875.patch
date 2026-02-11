@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/xml/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/xml/TestAll.java
+index e30c325..bbf1b4f 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/xml/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/xml/TestAll.java
+@@ -34,6 +34,7 @@ public class TestAll extends TestCase {
+     public static Test suite() {
+         TestSuite suite = new TestSuite("XML format test cases");
+         suite.addTestSuite(DocumentViewTest.class);
++        suite.addTestSuite(AccessControlImporterTest.class);
+         return suite;
+     }

@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
+index 63e1952..f53e64d 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
+@@ -10,7 +10,7 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.internal.compiler;
+ 
+-import org.eclipse.jdt.core.compiler.IProblem;
++import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ 
+ /*
+  * Part of the source element parser responsible for building the output. It
+@@ -124,7 +124,7 @@ public interface ISourceElementRequestor {
+ 	
+ 	void acceptPackage(int declarationStart, int declarationEnd, char[] name);
+ 
+-	void acceptProblem(IProblem problem);
++	void acceptProblem(CategorizedProblem problem);
+ 
+ 	void acceptTypeReference(char[][] typeName, int sourceStart, int sourceEnd);

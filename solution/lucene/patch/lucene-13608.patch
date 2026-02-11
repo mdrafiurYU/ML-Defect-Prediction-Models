@@ -1,0 +1,14 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java
+index 6c5df6c..f31c6f2 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java
+@@ -69,9 +69,6 @@ public class SolrWriter {
+     try {
+       AddUpdateCommand command = new AddUpdateCommand();
+       command.solrDoc = d;
+-      command.allowDups = false;
+-      command.overwritePending = true;
+-      command.overwriteCommitted = true;
+       processor.processAdd(command);
+     } catch (Exception e) {
+       log.warn("Error creating document : " + d, e);

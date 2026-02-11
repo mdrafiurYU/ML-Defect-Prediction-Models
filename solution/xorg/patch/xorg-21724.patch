@@ -1,0 +1,21 @@
+diff --git a/GL/glx/xfont.c b/GL/glx/xfont.c
+index 89ff95b..b24c77d 100644
+--- a/GL/glx/xfont.c
++++ b/GL/glx/xfont.c
+@@ -47,6 +47,7 @@
+ #include "glapi.h"
+ #include "glthread.h"
+ #include "dispatch.h"
++#include "indirect_dispatch.h"
+ #include <GL/gl.h>
+ #include <pixmapstr.h>
+ #include <windowstr.h>
+@@ -156,7 +157,7 @@ MakeBitmapsFromFont(FontPtr pFont, int first, int count, int list_base)
+ 
+ /************************************************************************/
+ 
+-int __glXUseXFont(__GLXclientState *cl, GLbyte *pc)
++int __glXDisp_UseXFont(__GLXclientState *cl, GLbyte *pc)
+ {
+     ClientPtr client = cl->client;
+     xGLXUseXFontReq *req;

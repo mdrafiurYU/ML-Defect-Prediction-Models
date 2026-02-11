@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 2274004..4b07955 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -1431,6 +1431,7 @@ xf86VTSwitch()
+ 	    xf86Screens[i]->access = NULL;
+ 	    xf86Screens[i]->busAccess = NULL;
+ 	}
++	if (xorgHWAccess)
+       xf86DisableIO();
+     }
+   } else {
+@@ -1443,6 +1444,7 @@ xf86VTSwitch()
+     prevSIGIO = xf86BlockSIGIO();
+     xf86OSPMClose = xf86OSPMOpen();
+ 
++    if (xorgHWAccess)
+     xf86EnableIO();
+     xf86AccessEnter();
+     xf86EnterServerState(SETUP);

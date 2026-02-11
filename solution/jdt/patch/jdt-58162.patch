@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java
+index 7334672..837ec3a 100644
+--- a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java
++++ b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceCompletionTests.java
+@@ -85,7 +85,7 @@ public class FullSourceWorkspaceCompletionTests extends FullSourceWorkspaceTests
+ 		super.tearDown();
+ 	}
+ 	
+-	private class TestCompletionRequestor extends CompletionRequestor {
++	class TestCompletionRequestor extends CompletionRequestor {
+ 		public void accept(CompletionProposal proposal) {
+ 			PROPOSAL_COUNTS[TESTS_LENGTH-TESTS_COUNT]++;
+ 		}

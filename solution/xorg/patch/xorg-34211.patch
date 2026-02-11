@@ -1,0 +1,12 @@
+diff --git a/cfb/cfbpixmap.c b/cfb/cfbpixmap.c
+index a7be7cc..f5a9a41 100644
+--- a/cfb/cfbpixmap.c
++++ b/cfb/cfbpixmap.c
+@@ -99,6 +99,7 @@ cfbCreatePixmap (pScreen, width, height, depth, usage_hint)
+     pPixmap->refcnt = 1;
+     pPixmap->devPrivate.ptr = datasize ?
+ 		(pointer)((char *)pPixmap + pScreen->totalPixmapSize) : NULL;
++    pPixmap->usage_hint = usage_hint;
+     return pPixmap;
+ }
+ 

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/os.c b/hw/xfree86/loader/os.c
+index 9715af0..4274200 100644
+--- a/hw/xfree86/loader/os.c
++++ b/hw/xfree86/loader/os.c
+@@ -70,7 +70,7 @@
+ 
+ /* Return the OS name, and run-time OS version */
+ 
+-void
++_X_EXPORT void
+ LoaderGetOS(const char **name, int *major, int *minor, int *teeny)
+ {
+     if (name)

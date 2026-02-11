@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java
+index 071e0f0..a732614 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java
+@@ -335,7 +335,7 @@ class ClusterSession implements Session {
+         throw new UnsupportedRepositoryOperationException();
+     }
+ 
+-    public boolean hasCapability(String arg0, Object arg1, Map arg2)
++    public boolean hasCapability(String arg0, Object arg1, Object[] arg2)
+             throws RepositoryException {
+         throw new UnsupportedRepositoryOperationException();
+     }

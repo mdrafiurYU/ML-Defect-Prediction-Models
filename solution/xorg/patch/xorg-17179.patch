@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index f9ea4e6..b5c19c9 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -261,9 +261,13 @@ xf86RandRSetConfig (ScreenPtr		pScreen,
+      */
+     if (pScreen == miPointerCurrentScreen ())
+     {
+-	if (px < pSize->width && py < pSize->height)
++	if (px < pSize->width && py < pSize->height) {
++	    (*pScreen->SetCursorPosition) (pScreen, px, py, FALSE);	    
++
++	    /* Ensure AdjustFrame is called */
+ 	    (*scrp->PointerMoved) (pScreen->myNum, px, py);
+     }
++    }
+ 
+     return TRUE;
+ }

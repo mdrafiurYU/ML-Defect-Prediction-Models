@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java b/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java
+index 7a4a18d..8c15b89 100644
+--- a/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java
++++ b/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java
+@@ -360,7 +360,7 @@ public class FuzzyLikeThisQuery extends Query
+         	  this.ignoreTF=ignoreTF;
+           }
+           @Override
+-          public Similarity getSimilarity(Searcher searcher)
++          public Similarity getSimilarity(IndexSearcher searcher)
+           {            
+               Similarity result = super.getSimilarity(searcher);
+               result = new SimilarityDelegator(result) {

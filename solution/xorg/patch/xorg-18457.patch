@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/hash.h b/hw/xfree86/loader/hash.h
+index 88b5256..45617bd 100644
+--- a/hw/xfree86/loader/hash.h
++++ b/hw/xfree86/loader/hash.h
+@@ -23,6 +23,10 @@
+ 
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/loader/hash.h,v 1.2.2.2 1998/07/04 13:32:45 dawes Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _HASH_H
+ #define _HASH_H
+ 

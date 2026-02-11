@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java
+index ac63105..3eeea28 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java
+@@ -72,7 +72,7 @@ public class NamespaceRegistryTest extends AbstractJCRTest {
+      * @throws RepositoryException
+      */
+     public void testRegisteredNamespaceVisibility() throws RepositoryException {
+-        Session otherSession = helper.getReadOnlySession();
++        Session otherSession = getHelper().getReadOnlySession();
+         try {
+             NamespaceRegistry other = otherSession.getWorkspace().getNamespaceRegistry();
+ 
+@@ -111,7 +111,7 @@ public class NamespaceRegistryTest extends AbstractJCRTest {
+      * @throws RepositoryException
+      */
+     public void testReRegisteredNamespace2() throws RepositoryException {
+-        Session otherSession = helper.getReadOnlySession();
++        Session otherSession = getHelper().getReadOnlySession();
+         try {
+             NamespaceRegistry other = otherSession.getWorkspace().getNamespaceRegistry();
+ 
+@@ -135,7 +135,7 @@ public class NamespaceRegistryTest extends AbstractJCRTest {
+      * @throws RepositoryException
+      */
+     public void testReRegisteredNamespaceVisibility() throws RepositoryException {
+-        Session otherSession = helper.getReadOnlySession();
++        Session otherSession = getHelper().getReadOnlySession();
+         try {
+             NamespaceRegistry other = otherSession.getWorkspace().getNamespaceRegistry();
+ 
+@@ -169,7 +169,7 @@ public class NamespaceRegistryTest extends AbstractJCRTest {
+         String prefix = getUnusedPrefix();
+         String uri = getUnusedURI();
+ 
+-        Session otherSession = helper.getReadOnlySession();
++        Session otherSession = getHelper().getReadOnlySession();
+         try {
+             NamespaceRegistry other = otherSession.getWorkspace().getNamespaceRegistry();

@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/response/JSONResponseWriter.java b/solr/src/java/org/apache/solr/response/JSONResponseWriter.java
+index d2f1d87..3cd624e 100644
+--- a/solr/src/java/org/apache/solr/response/JSONResponseWriter.java
++++ b/solr/src/java/org/apache/solr/response/JSONResponseWriter.java
+@@ -34,6 +34,7 @@ import org.apache.solr.common.util.NamedList;
+ import org.apache.solr.common.util.SimpleOrderedMap;
+ import org.apache.solr.request.SolrQueryRequest;
+ import org.apache.solr.schema.SchemaField;
++import org.apache.solr.search.ReturnFields;
+ 
+ /**
+  * @version $Id$
+@@ -321,7 +322,7 @@ class JSONWriter extends TextResponseWriter {
+ 
+     boolean first=true;
+     for (String fname : doc.getFieldNames()) {
+-      if (!returnFields.contains(fname)) {
++      if (!returnFields.wantsField(fname)) {
+         continue;
+       }

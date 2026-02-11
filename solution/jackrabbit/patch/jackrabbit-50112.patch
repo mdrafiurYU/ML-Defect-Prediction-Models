@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java b/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java
+index a30c164..2a23fcb 100644
+--- a/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java
++++ b/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java
+@@ -337,6 +337,10 @@ public class RepositoryFactoryImplTest extends TestCase {
+             return new EventBundle[0];
+         }
+ 
++        public EventBundle getEvents(SessionInfo sessionInfo, EventFilter filter, long after) throws RepositoryException, UnsupportedRepositoryOperationException {
++            return null;
++        }
++
+         public void dispose(Subscription subscription) throws RepositoryException {
+         }

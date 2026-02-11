@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
+index 9c4f7fa..c3627df 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/JavaSourceFilePrintWriter.java
+@@ -53,7 +53,7 @@ public class JavaSourceFilePrintWriter extends PrintWriter {
+             }
+             else if ( phase == Phase.BUILD)	
+             {
+-				FileGenerationResult result = gfm.generateFileDuringBuild( _env.getFile(), _env.getJavaProject(), _typeName, contents, null /* progress monitor */, _charsetName );
++				FileGenerationResult result = gfm.generateFileDuringBuild( _env.getFile(),  _typeName, contents, null /* progress monitor */, _charsetName );
+ 				_env.addGeneratedFile( result.getFile(), result.isModified());
+ 				
+ 				// don't set to false, we don't want to overwrite a previous iteration setting it to true

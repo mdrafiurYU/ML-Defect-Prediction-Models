@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+index df40656..c859253 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+@@ -390,6 +390,14 @@ public class WorkspaceManager
+         return service.createEventFilter(sessionInfo, eventTypes, path, isDeep, uuids, nodeTypes, noLocal);
+     }
+ 
++    /**
++     *
++     * @param userData
++     * @throws RepositoryException
++     */
++    public void setUserData(String userData) throws RepositoryException {
++        sessionInfo.setUserData(userData);
++    }
+     //--------------------------------------------------------------------------
+ 
+     /**

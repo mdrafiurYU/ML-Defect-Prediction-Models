@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestLongPostings.java b/lucene/src/test/org/apache/lucene/index/TestLongPostings.java
+index fbe6fa1..1d745d7 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestLongPostings.java
++++ b/lucene/src/test/org/apache/lucene/index/TestLongPostings.java
+@@ -49,6 +49,7 @@ public class TestLongPostings extends LuceneTestCase {
+       final TermToBytesRefAttribute termAtt = ts.getAttribute(TermToBytesRefAttribute.class);
+       final BytesRef termBytes = termAtt.getBytesRef();
+       int count = 0;
++      ts.reset();
+       while(ts.incrementToken()) {
+         termAtt.fillBytesRef();
+         if (count == 0 && !termBytes.utf8ToString().equals(s)) {

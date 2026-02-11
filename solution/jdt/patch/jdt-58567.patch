@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocImplicitTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocImplicitTypeReference.java
+index e12b29e..1b79b09 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocImplicitTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocImplicitTypeReference.java
+@@ -39,6 +39,10 @@ public class JavadocImplicitTypeReference extends TypeReference {
+ 		return this.resolvedType = scope.enclosingSourceType();
+ 	}
+ 
++	public char[] getLastToken() {
++		return this.token;
++	}
++	
+ 	/* (non-Javadoc)
+ 	 * @see org.eclipse.jdt.internal.compiler.ast.TypeReference#getTypeName()
+ 	 */

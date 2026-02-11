@@ -1,0 +1,15 @@
+diff --git a/render/picture.c b/render/picture.c
+index 48faa9b..e83b1d0 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -23,6 +23,10 @@
+  * Author:  Keith Packard, SuSE, Inc.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif

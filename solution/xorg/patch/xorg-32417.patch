@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/rootlessWindow.h b/miext/rootless/rootlessWindow.h
+index 093a2b3..9573068 100644
+--- a/miext/rootless/rootlessWindow.h
++++ b/miext/rootless/rootlessWindow.h
+@@ -54,10 +54,6 @@ void RootlessMoveWindow(WindowPtr pWin,int x,int y,WindowPtr pSib,VTKind kind);
+ void RootlessResizeWindow(WindowPtr pWin, int x, int y,
+ 			  unsigned int w, unsigned int h, WindowPtr pSib);
+ void RootlessReparentWindow(WindowPtr pWin, WindowPtr pPriorParent);
+-void RootlessPaintWindowBackground(WindowPtr pWin, RegionPtr pRegion,
+-                                   int what);
+-void RootlessPaintWindowBorder(WindowPtr pWin, RegionPtr pRegion,
+-                               int what);
+ void RootlessChangeBorderWidth(WindowPtr pWin, unsigned int width);
+ 
+ #endif

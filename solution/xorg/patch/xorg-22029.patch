@@ -1,0 +1,23 @@
+diff --git a/GL/glx/glxserver.h b/GL/glx/glxserver.h
+index 8389737..49cad73 100644
+--- a/GL/glx/glxserver.h
++++ b/GL/glx/glxserver.h
+@@ -136,6 +136,9 @@ void __glXsetEnterLeaveServerFuncs(void (*enter)(void),
+ void __glXenterServer(void);
+ void __glXleaveServer(void);
+ 
++void glxSuspendClients(void);
++void glxResumeClients(void);
++
+ /*
+ ** State kept per client.
+ */
+@@ -176,8 +179,6 @@ struct __GLXclientStateRec {
+     char *GLClientextensions;
+ };
+ 
+-extern __GLXclientState *__glXClients[];
+-
+ /************************************************************************/
+ 
+ /*

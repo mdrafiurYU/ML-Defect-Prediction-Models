@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/ParametricRangeQueryNodeProcessor.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/ParametricRangeQueryNodeProcessor.java
+index 0947475..fc2e5fa 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/ParametricRangeQueryNodeProcessor.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/processors/ParametricRangeQueryNodeProcessor.java
+@@ -97,8 +97,15 @@ public class ParametricRangeQueryNodeProcessor extends QueryNodeProcessorImpl {
+ 
+       }
+ 
+-      FieldConfig fieldConfig = getQueryConfigHandler().getFieldConfig(
+-          parametricRangeNode.getField());
++      CharSequence field = parametricRangeNode.getField();
++      String fieldStr = null;
++
++      if (field != null) {
++        fieldStr = field.toString();
++      }
++
++      FieldConfig fieldConfig = getQueryConfigHandler()
++          .getFieldConfig(fieldStr);
+ 
+       if (fieldConfig != null) {

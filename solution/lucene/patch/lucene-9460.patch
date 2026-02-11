@@ -1,0 +1,35 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java b/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java
+index e7c9480..c0ac082 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/misc/HighFreqTerms.java
+@@ -231,30 +231,6 @@ final class TotalTermFreqComparatorSortDescending implements Comparator<TermStat
+   }
+ }
+ 
+-final class TermStats {
+-  BytesRef termtext;
+-  String field;
+-  int docFreq;
+-  long totalTermFreq;
+-  
+-  TermStats(String field, BytesRef termtext, int df) {
+-    this.termtext = new BytesRef(termtext);
+-    this.field = field;
+-    this.docFreq = df;
+-  }
+-  
+-  TermStats(String field, BytesRef termtext, int df, long tf) {
+-    this.termtext = new BytesRef(termtext);
+-    this.field = field;
+-    this.docFreq = df;
+-    this.totalTermFreq = tf;
+-  }
+-  
+-  String getTermText() {
+-    return termtext.utf8ToString();
+-  }
+-}
+-
+ /**
+  * Priority queue for TermStats objects ordered by docFreq
+  **/

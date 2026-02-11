@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java b/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java
+index 2929785..4ed85a9 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java
++++ b/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java
+@@ -227,7 +227,7 @@ public class TestPerFieldCodecSupport extends LuceneTestCase {
+     }
+     IndexReader reader = IndexReader.open(dir, null, true,
+         IndexReader.DEFAULT_TERMS_INDEX_DIVISOR, codecs);
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     TopDocs search = searcher.search(new TermQuery(t), num + 10);
+     assertEquals(num, search.totalHits);
+     searcher.close();

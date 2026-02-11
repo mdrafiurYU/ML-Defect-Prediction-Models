@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java
+index 9753083..ade572b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/PreparedQueryImpl.java
+@@ -120,7 +120,7 @@ public class PreparedQueryImpl
+             orderSpecs[i] = orderings[i].getOrder() == QueryObjectModelConstants.ORDER_ASCENDING;
+         }
+         return new QueryResultImpl(index, itemMgr,
+-                session.getNamePathResolver(), session.getAccessManager(),
++                session, session.getAccessManager(),
+                 // TODO: spell suggestion missing
+                 this, query, null, selectProps, orderProps, orderSpecs,
+                 getRespectDocumentOrder(), offset, limit);

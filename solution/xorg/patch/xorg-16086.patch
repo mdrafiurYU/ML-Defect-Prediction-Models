@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/utils/xorgcfg/text-mode.c b/hw/xfree86/utils/xorgcfg/text-mode.c
+index 38e87e7..1c7f69f 100644
+--- a/hw/xfree86/utils/xorgcfg/text-mode.c
++++ b/hw/xfree86/utils/xorgcfg/text-mode.c
+@@ -1,3 +1,4 @@
++/* $XdotOrg: $ */
+ /*
+  * Copyright (c) 2000 by Conectiva S.A. (http://www.conectiva.com)
+  * 
+@@ -32,7 +33,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#ifdef _SCO_DS
++#if defined(_SCO_DS) || (defined(sun) && defined(__SVR4))
+ #include <curses.h>
+ #else
+ #include <ncurses.h>

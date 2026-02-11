@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/linuxPci.c b/hw/xfree86/os-support/bus/linuxPci.c
+index 2a21aa3..1ae8e87 100644
+--- a/hw/xfree86/os-support/bus/linuxPci.c
++++ b/hw/xfree86/os-support/bus/linuxPci.c
+@@ -427,7 +427,7 @@ xf86GetPciDomain(PCITAG Tag)
+     if (pPCI && (result = PCI_DOM_FROM_BUS(pPCI->busnum)))
+ 	return result;
+ 
+-    if (pPCI->fakeDevice)
++    if (!pPCI || pPCI->fakeDevice)
+ 	return 1;		/* Domain 0 is reserved */
+ 
+     if ((fd = linuxPciOpenFile(pPCI ? pPCI->tag : 0,FALSE)) < 0)

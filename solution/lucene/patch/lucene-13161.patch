@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java b/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
+index 14a5a92..b017d97 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
++++ b/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
+@@ -344,6 +344,10 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
+           f = d.getField("fie\u2C77ld");
+           assertEquals("field with non-ascii name", f.stringValue());
+         }
++
++        TermFreqVector tfv = reader.getTermFreqVector(i, "utf8");
++        assertNotNull("docID=" + i + " index=" + dirName, tfv);
++        assertTrue(tfv instanceof TermPositionVector);
+       } else
+         // Only ID 7 is deleted
+         assertEquals(7, i);

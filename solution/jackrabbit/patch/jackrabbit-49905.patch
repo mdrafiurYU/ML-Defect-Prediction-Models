@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
+index 6923fb0..7b3c21c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NodeResolverTest.java
+@@ -186,11 +186,12 @@ public abstract class NodeResolverTest extends AbstractJCRTest {
+             NodeResolver nr = createNodeResolver(currentUser.getNode().getSession());
+ 
+             NodeIterator result = nr.findNodes(propName, "blub", UserConstants.NT_REP_USER, false);
+-            assertTrue(result.getSize() == 1);
+-            assertTrue(result.nextNode().isSame(currentUser.getNode()));
++            assertTrue("expected result", result.hasNext());
++            assertEquals(currentUser.getNode().getPath(), result.nextNode().getPath());
++            assertFalse("expected no more results", result.hasNext());
+ 
+             result = nr.findNodes(propName, "blub", UserConstants.NT_REP_AUTHORIZABLE, false);
+-            assertTrue(result.getSize() > 1);
++            assertTrue(getSize(result) > 1);
+ 
+         } finally {
+             currentUser.removeProperty(propertyName1);

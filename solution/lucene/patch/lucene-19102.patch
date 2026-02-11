@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentMerger.java b/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
+index a708c93..279e91e 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentMerger.java
+@@ -571,6 +571,11 @@ final class SegmentMerger {
+     return mergeState.delCounts;
+   }
+   
++  public boolean getAnyNonBulkMerges() {
++    assert matchedCount <= readers.size();
++    return matchedCount != readers.size();
++  }
++
+   private void mergeNorms() throws IOException {
+     IndexOutput output = null;
+     try {

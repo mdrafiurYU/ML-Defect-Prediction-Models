@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestHighFreqTerms.java b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestHighFreqTerms.java
+index cb33cfa..5d6eb8a 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestHighFreqTerms.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/misc/TestHighFreqTerms.java
+@@ -40,7 +40,7 @@ public class TestHighFreqTerms extends LuceneTestCase {
+   public static void setUpClass() throws Exception {
+     dir = newDirectory();
+     writer = new IndexWriter(dir, newIndexWriterConfig(random,
+-       TEST_VERSION_CURRENT, new MockAnalyzer(MockTokenizer.WHITESPACE, false))
++       TEST_VERSION_CURRENT, new MockAnalyzer(random, MockTokenizer.WHITESPACE, false))
+        .setMaxBufferedDocs(2));
+     writer.setInfoStream(VERBOSE ? System.out : null);
+     indexDocs(writer);

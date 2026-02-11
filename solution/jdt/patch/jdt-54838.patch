@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
+index 7d19275..70cb465 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
+@@ -4893,7 +4893,7 @@ public class ASTConverterTestAST3_2 extends ConverterTestSetup {
+ 		assertEquals("Wrong size", 1, fields.length);
+ 		IVariableBinding variableBinding = fields[0];
+ 		Object constantValue = variableBinding.getConstantValue();
+-		assertNull("Got a constant value", constantValue);
++		assertNotNull("Missing constant", constantValue);
+ 	}
+ 	
+ 	/**

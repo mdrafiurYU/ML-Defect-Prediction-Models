@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFreezeImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFreezeImpl.java
+index 03b48e9..3895f43 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFreezeImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalFreezeImpl.java
+@@ -33,7 +33,7 @@ abstract class InternalFreezeImpl extends InternalVersionItemImpl
+      * @param vMgr
+      * @param parent
+      */
+-    protected InternalFreezeImpl(AbstractVersionManager vMgr, NodeStateEx node, InternalVersionItem parent) {
++    protected InternalFreezeImpl(InternalVersionManagerBase vMgr, NodeStateEx node, InternalVersionItem parent) {
+         super(vMgr, node);
+         this.parent = parent;
+     }

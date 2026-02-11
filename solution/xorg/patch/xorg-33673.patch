@@ -1,0 +1,13 @@
+diff --git a/dix/resource.c b/dix/resource.c
+index 844d12e..a557ba4 100644
+--- a/dix/resource.c
++++ b/dix/resource.c
+@@ -901,7 +901,7 @@ dixLookupResource(pointer *result, XID id, RESTYPE rtype,
+     if (client) {
+ 	client->errorValue = id;
+ 	cid = XaceHook(XACE_RESOURCE_ACCESS, client, id, res->type,
+-		       mode, res->value);
++		       res->value, RT_NONE, NULL, mode);
+ 	if (cid != Success)
+ 	    return cid;
+     }

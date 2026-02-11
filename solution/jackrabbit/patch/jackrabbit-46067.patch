@@ -1,0 +1,47 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java
+index ff061de..ba74e8e 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEntryImpl.java
+@@ -16,20 +16,22 @@
+  */
+ package org.apache.jackrabbit.jcr2spi.hierarchy;
+ 
++import java.lang.ref.Reference;
++import java.lang.ref.SoftReference;
++
++import javax.jcr.InvalidItemStateException;
++import javax.jcr.ItemNotFoundException;
++import javax.jcr.RepositoryException;
++
+ import org.apache.jackrabbit.jcr2spi.state.ItemState;
+-import org.apache.jackrabbit.jcr2spi.state.Status;
+ import org.apache.jackrabbit.jcr2spi.state.ItemStateFactory;
++import org.apache.jackrabbit.jcr2spi.state.Status;
++import org.apache.jackrabbit.jcr2spi.state.ItemState.MergeResult;
+ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.spi.Path;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import javax.jcr.InvalidItemStateException;
+-import javax.jcr.ItemNotFoundException;
+-import javax.jcr.RepositoryException;
+-import java.lang.ref.SoftReference;
+-import java.lang.ref.Reference;
+-
+ /**
+  * <code>HierarchyEntryImpl</code> implements base functionality for child node
+  * and property references.
+@@ -222,10 +224,10 @@ abstract class HierarchyEntryImpl implements HierarchyEntry {
+             // with the passed state.
+             int currentStatus = currentState.getStatus();
+             boolean keepChanges = Status.isTransient(currentStatus) || Status.isStale(currentStatus);
+-            boolean modified = currentState.merge(state, keepChanges);
++            MergeResult mergeResult = currentState.merge(state, keepChanges);
+             if (currentStatus == Status.INVALIDATED) {
+                 currentState.setStatus(Status.EXISTING);
+-            } else if (modified) {
++            } else if (mergeResult.modified()) {
+                 currentState.setStatus(Status.MODIFIED);
+             } // else: not modified. just leave status as it is.
+         }

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/WorkspaceMoveTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/WorkspaceMoveTest.java
+index 9187308..1c4d10a 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/WorkspaceMoveTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/WorkspaceMoveTest.java
+@@ -58,7 +58,7 @@ public class WorkspaceMoveTest extends MoveTest {
+         }
+ 
+         // TODO: fix 2.0 behaviour according to the OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED descriptor
+-        if ("1.0".equals(helper.getRepository().getDescriptor(Repository.SPEC_VERSION_DESC))) {
++        if ("1.0".equals(getHelper().getRepository().getDescriptor(Repository.SPEC_VERSION_DESC))) {
+             try {
+                 // move the node
+                 doMove(moveNode.getPath(), destProperty.getPath());
+@@ -85,7 +85,7 @@ public class WorkspaceMoveTest extends MoveTest {
+         // TODO: fix 2.0 behaviour according to the OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED descriptor        
+         // workspace-move the node (must succeed)
+         doMove(moveNode.getPath(), destProperty.getPath());
+-         if ("1.0".equals(helper.getRepository().getDescriptor(Repository.SPEC_VERSION_DESC))) {
++         if ("1.0".equals(getHelper().getRepository().getDescriptor(Repository.SPEC_VERSION_DESC))) {
+              try {
+                  // saving transient new property must fail
+                  destParentNode.save();

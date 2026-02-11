@@ -1,0 +1,20 @@
+diff --git a/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java b/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java
+index 7358e19..c329e9a 100644
+--- a/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java
++++ b/solr/src/test/org/apache/solr/cloud/ZkSolrClientTest.java
+@@ -28,6 +28,7 @@ import org.apache.solr.util.AbstractSolrTestCase;
+ import org.apache.zookeeper.KeeperException;
+ import org.apache.zookeeper.WatchedEvent;
+ import org.apache.zookeeper.Watcher;
++import org.junit.Ignore;
+ 
+ public class ZkSolrClientTest extends AbstractSolrTestCase {
+   private static final boolean DEBUG = false;
+@@ -159,6 +160,7 @@ public class ZkSolrClientTest extends AbstractSolrTestCase {
+     }
+   }
+ 
++  @Ignore("test case crashes modern jres")
+   public void testWatchChildren() throws Exception {
+     String zkDir = dataDir.getAbsolutePath() + File.separator
+         + "zookeeper/server1/data";

@@ -1,0 +1,14 @@
+diff --git a/xfixes/select.c b/xfixes/select.c
+index 2321212..415257e 100755
+--- a/xfixes/select.c
++++ b/xfixes/select.c
+@@ -135,8 +135,7 @@ XFixesSelectSelectionInput (ClientPtr	pClient,
+     int rc;
+     SelectionEventPtr	*prev, e;
+ 
+-    rc = XaceHook(XACE_SELECTION_ACCESS, pClient, selection, NULL,
+-		  DixGetAttrAccess);
++    rc = XaceHook(XACE_SELECTION_ACCESS, pClient, selection, DixGetAttrAccess);
+     if (rc != Success)
+ 	return rc;
+ 

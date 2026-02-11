@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/operation/OperationFactory.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/operation/OperationFactory.java
+index a5ddd01..73178b5 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/operation/OperationFactory.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/random/operation/OperationFactory.java
+@@ -175,8 +175,10 @@ public class OperationFactory {
+     public Operation createNodes(String path,
+                                  int numLevels,
+                                  int nodesPerLevel,
+-                                 String[] mixins) {
+-        return new CreateNodes(session, path, numLevels, nodesPerLevel, mixins);
++                                 String[] mixins,
++                                 int saveInterval) {
++        return new CreateNodes(session, path, numLevels,
++                nodesPerLevel, mixins, saveInterval);
+     }
+ 
+     /**

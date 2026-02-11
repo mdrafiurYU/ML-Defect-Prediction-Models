@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/schema/PointType.java b/solr/src/java/org/apache/solr/schema/PointType.java
+index 0c0aa33..8c7eeee 100644
+--- a/solr/src/java/org/apache/solr/schema/PointType.java
++++ b/solr/src/java/org/apache/solr/schema/PointType.java
+@@ -29,7 +29,6 @@ import org.apache.solr.common.SolrException;
+ import org.apache.solr.common.params.MapSolrParams;
+ import org.apache.solr.common.params.SolrParams;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.solr.search.QParser;
+ import org.apache.solr.search.SpatialOptions;
+ import org.apache.solr.search.function.VectorValueSource;
+@@ -118,11 +117,6 @@ public class PointType extends CoordinateFieldType implements SpatialQueryable {
+   }
+ 
+   @Override
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    xmlWriter.writeStr(name, f.stringValue());
+-  }
+-
+-  @Override
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     writer.writeStr(name, f.stringValue(), false);
+   }

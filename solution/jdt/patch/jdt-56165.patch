@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/env/AccessRuleSet.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/env/AccessRuleSet.java
+index 27b50c5..fd470d3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/env/AccessRuleSet.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/env/AccessRuleSet.java
+@@ -83,7 +83,7 @@ public AccessRestriction getViolatedRestriction(char[] targetTypeFilePath) {
+ 		AccessRule accessRule = this.accessRules[i];
+ 		if (CharOperation.pathMatch(accessRule.pattern, targetTypeFilePath, 
+ 				true/*case sensitive*/, '/')) {
+-			switch (accessRule.problemId) {
++			switch (accessRule.getProblemId()) {
+ 				case IProblem.ForbiddenReference:
+ 				case IProblem.DiscouragedReference:
+ 					return new AccessRestriction(accessRule, this.messageTemplates);

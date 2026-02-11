@@ -1,0 +1,14 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 1671a24..88299b0 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -486,6 +486,9 @@ GetMaximumEventsNum(void) {
+ #endif
+         ret *= 2;
+ 
++    /* One possible DeviceClassesChangedEvent */
++    ret++;
++
+     return ret;
+ }
+ 

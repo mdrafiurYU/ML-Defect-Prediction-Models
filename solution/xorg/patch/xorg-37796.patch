@@ -1,0 +1,61 @@
+diff --git a/hw/xfree86/ramdac/xf86Cursor.c b/hw/xfree86/ramdac/xf86Cursor.c
+index 2d69074..50f8fb7 100644
+--- a/hw/xfree86/ramdac/xf86Cursor.c
++++ b/hw/xfree86/ramdac/xf86Cursor.c
+@@ -299,43 +299,36 @@ xf86CursorSetCursor(DeviceIntPtr pDev, ScreenPtr pScreen, CursorPtr pCurs,
+     xf86CursorScreenPtr ScreenPriv = (xf86CursorScreenPtr)dixLookupPrivate(
+ 	&pScreen->devPrivates, xf86CursorScreenKey);
+     xf86CursorInfoPtr infoPtr = ScreenPriv->CursorInfoPtr;
+-    miPointerScreenPtr PointPriv;
++    miPointerScreenPtr PointPriv = (miPointerScreenPtr)dixLookupPrivate(
++    &pScreen->devPrivates, miPointerScreenKey);
+ 
+-    /* only update for VCP, otherwise we get cursor jumps when removing a
+-       sprite. The second cursor is never HW rendered anyway. */
+-    if (pDev == inputInfo.pointer ||
+-	    (!pDev->isMaster && pDev->u.master == inputInfo.pointer))
+-    {
+-	ScreenPriv->CurrentCursor = pCurs;
+-	ScreenPriv->x = x;
+-	ScreenPriv->y = y;
+-	ScreenPriv->CursorToRestore = NULL;
+-    }
+-
+-    if (!infoPtr->pScrn->vtSema)
+-	 ScreenPriv->SavedCursor = pCurs;
+ 
+     if (pCurs == NullCursor) {	/* means we're supposed to remove the cursor */
+ 	if (ScreenPriv->SWCursor)
+             (*ScreenPriv->spriteFuncs->SetCursor)(pDev, pScreen, NullCursor,
+                                                   x, y); 
+-        else if
+-                (ScreenPriv->isUp) {
++        else if (ScreenPriv->isUp) {
+ 	    xf86SetCursor(pScreen, NullCursor, x, y);
+ 	    ScreenPriv->isUp = FALSE;
+ 	}
+ 	return;
+     }
+ 
+-    if (pDev == inputInfo.pointer ||
+-	    (!pDev->isMaster && pDev->u.master == inputInfo.pointer))
++    /* only update for VCP, otherwise we get cursor jumps when removing a
++       sprite. The second cursor is never HW rendered anyway. */
++    if (pDev == inputInfo.pointer)
+     {
++	ScreenPriv->CurrentCursor = pCurs;
++	ScreenPriv->x = x;
++	ScreenPriv->y = y;
++	ScreenPriv->CursorToRestore = NULL;
+ 	ScreenPriv->HotX = pCurs->bits->xhot;
+ 	ScreenPriv->HotY = pCurs->bits->yhot;
+     }
+ 
+-    PointPriv = (miPointerScreenPtr)dixLookupPrivate(&pScreen->devPrivates,
+-						     miPointerScreenKey);
++    if (!infoPtr->pScrn->vtSema)
++	 ScreenPriv->SavedCursor = pCurs;
++
+     if (!(ScreenPriv->SWCursor & XF86_FORCE_SW_CURSOR))
+     {
+ 	if (infoPtr->pScrn->vtSema && (ScreenPriv->ForceHWCursorCount || ((

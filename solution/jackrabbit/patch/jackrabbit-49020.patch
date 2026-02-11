@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java
+index 15a4b8a..f8c4321 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeRemoveMixinTest.java
+@@ -112,7 +112,8 @@ public class NodeRemoveMixinTest extends AbstractJCRTest {
+         node.addMixin(mixinName);
+         testRootNode.save();
+ 
+-        String notAssignedMixin = NodeMixinUtil.getAddableMixinName(session, node);
++
++        String notAssignedMixin = NodeMixinUtil.getNotAssignedMixinName(session, node);
+         if (notAssignedMixin == null) {
+             throw new NotExecutableException("No testable mixin node type found");
+         }

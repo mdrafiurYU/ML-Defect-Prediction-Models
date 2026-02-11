@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/CompoundFileWriter.java b/lucene/src/java/org/apache/lucene/store/CompoundFileWriter.java
+index 29f9b09..748a178 100644
+--- a/lucene/src/java/org/apache/lucene/store/CompoundFileWriter.java
++++ b/lucene/src/java/org/apache/lucene/store/CompoundFileWriter.java
+@@ -226,6 +226,9 @@ final class CompoundFileWriter {
+         out = new DirectCFSIndexOutput(dataOut, entry, false);
+       } else {
+         entry.dir = this.directory;
++        if (directory.fileExists(name)) {
++          throw new IOException("File already exists");
++        }
+         out = new DirectCFSIndexOutput(directory.createOutput(name), entry,
+             true);
+       }

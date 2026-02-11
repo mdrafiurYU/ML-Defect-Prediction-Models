@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/xf86Pci.h b/hw/xfree86/os-support/bus/xf86Pci.h
+index d1284dc..f0ab430 100644
+--- a/hw/xfree86/os-support/bus/xf86Pci.h
++++ b/hw/xfree86/os-support/bus/xf86Pci.h
+@@ -102,6 +102,10 @@
+  * Drivers should use this file rather than Pci.h.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86PCI_H
+ #define _XF86PCI_H 1
+ #include <X11/Xarch.h>

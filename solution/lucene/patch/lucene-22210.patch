@@ -1,0 +1,17 @@
+diff --git a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java
+index 536c7e2..f1392b4 100644
+--- a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java
++++ b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java
+@@ -286,7 +286,11 @@ public class TokenSources {
+   // convenience method
+   public static TokenStream getTokenStream(String field, String contents,
+       Analyzer analyzer) {
+-    return analyzer.tokenStream(field, new StringReader(contents));
++    try {
++      return analyzer.reusableTokenStream(field, new StringReader(contents));
++    } catch (IOException ex) {
++      throw new RuntimeException(ex);
++    }
+   }
+ 
+ }

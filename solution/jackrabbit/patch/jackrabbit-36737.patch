@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/value/QValueFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/value/QValueFactoryImpl.java
+index b1f307b..d001ecf 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/value/QValueFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/value/QValueFactoryImpl.java
+@@ -109,14 +109,14 @@ public final class QValueFactoryImpl implements QValueFactory {
+      * @see QValueFactory#create(double)
+      */
+     public QValue create(double value) {
+-        return new QValueImpl(Double.valueOf(value));
++        return new QValueImpl(new Double(value));
+     }
+ 
+     /**
+      * @see QValueFactory#create(long)
+      */
+     public QValue create(long value) {
+-        return new QValueImpl(Long.valueOf(value));
++        return new QValueImpl(new Long(value));
+     }
+ 
+     /**

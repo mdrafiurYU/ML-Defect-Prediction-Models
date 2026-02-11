@@ -1,0 +1,21 @@
+diff --git a/mi/mi.h b/mi/mi.h
+index c44ff06..570aa60 100644
+--- a/mi/mi.h
++++ b/mi/mi.h
+@@ -57,6 +57,7 @@ SOFTWARE.
+ #include "cursor.h"
+ #include "privates.h"
+ #include "colormap.h"
++#include "events.h"
+ 
+ #define MiBits	CARD32
+ 
+@@ -201,7 +202,7 @@ extern _X_EXPORT void mieqResizeEvents(
+ 
+ extern _X_EXPORT void mieqEnqueue(
+     DeviceIntPtr /*pDev*/,
+-    xEventPtr /*e*/
++    InternalEvent* /*e*/
+ );
+ 
+ extern _X_EXPORT void mieqSwitchScreen(

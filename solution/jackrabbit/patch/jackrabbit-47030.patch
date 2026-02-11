@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java
+index 61c32ad..b57c625 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueFactoryImpl.java
+@@ -17,6 +17,7 @@
+ package org.apache.jackrabbit.value;
+ 
+ import java.io.InputStream;
++import java.math.BigDecimal;
+ import java.util.Calendar;
+ 
+ import javax.jcr.Binary;
+@@ -149,4 +150,8 @@ public class ValueFactoryImpl implements ValueFactory {
+         throw new UnsupportedOperationException("JCR-2056");
+     }
+ 
++    public Value createValue(BigDecimal arg0) {
++        throw new UnsupportedOperationException("JCR-1609");
++    }
++
+ }

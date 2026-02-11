@@ -1,0 +1,14 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 1022b2e..b490653 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -606,7 +606,9 @@ exaDriverInit (ScreenPtr		pScreen,
+     }
+ #endif
+ 
++#ifdef COMPOSITE
+     miDisableCompositeWrapper(pScreen);
++#endif
+ 
+     /*
+      * Hookup offscreen pixmaps

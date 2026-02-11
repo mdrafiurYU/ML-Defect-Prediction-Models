@@ -1,0 +1,13 @@
+diff --git a/Xi/querydp.c b/Xi/querydp.c
+index d2ed0b8..6224f13 100644
+--- a/Xi/querydp.c
++++ b/Xi/querydp.c
+@@ -107,7 +107,7 @@ ProcXQueryDevicePointer(ClientPtr client)
+     rep.length = 0;
+     rep.sequenceNumber = client->sequence;
+     rep.mask = pDev->button->state | inputInfo.keyboard->key->state;
+-    rep.root = (GetCurrentRootWindow())->drawable.id;
++    rep.root = (GetCurrentRootWindow(pDev))->drawable.id;
+     rep.rootX = pSprite->hot.x;
+     rep.rootY = pSprite->hot.y;
+     rep.child = None;

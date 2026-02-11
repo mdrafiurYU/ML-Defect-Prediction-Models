@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntriesImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntriesImpl.java
+index 4d78c35..3ae08cc 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntriesImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/ChildPropertyEntriesImpl.java
+@@ -115,9 +115,16 @@ public class ChildPropertyEntriesImpl implements ChildPropertyEntries {
+     }
+ 
+     /**
+-     * @see ChildPropertyEntries#remove(Name)
++     * @see ChildPropertyEntries#remove(PropertyEntry)
+      */
+-    public boolean remove(Name propertyName) {
+-        return properties.remove(propertyName) != null;
++    public boolean remove(PropertyEntry propertyEntry) {
++        Name pName = propertyEntry.getName();
++        PropertyEntry pe = get(pName);
++        if (pe == propertyEntry) {
++            properties.remove(pName);
++            return true;
++        } else {
++            return false;
++        }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/os/xstrans.c b/os/xstrans.c
+new file mode 100644
+index 0000000..6ef8434
+--- /dev/null
++++ b/os/xstrans.c
+@@ -0,0 +1,8 @@
++#ifdef HAVE_CONFIG_H
++#include <dix-config.h>
++#endif
++
++#define TRANS_REOPEN
++#define TRANS_SERVER
++#define XSERV_t
++#include <X11/Xtrans/transport.c>

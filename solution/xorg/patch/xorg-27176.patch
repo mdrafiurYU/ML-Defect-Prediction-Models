@@ -1,0 +1,13 @@
+diff --git a/xfixes/select.c b/xfixes/select.c
+index 4c7a49d..a718715 100755
+--- a/xfixes/select.c
++++ b/xfixes/select.c
+@@ -196,7 +196,7 @@ ProcXFixesSelectSelectionInput (ClientPtr client)
+ 
+     REQUEST_SIZE_MATCH (xXFixesSelectSelectionInputReq);
+     pWin = (WindowPtr)SecurityLookupWindow(stuff->window, client,
+-					   SecurityReadAccess);
++					   DixReadAccess);
+     if (!pWin)
+         return(BadWindow);
+     if (stuff->eventMask & ~SelectionAllEvents)

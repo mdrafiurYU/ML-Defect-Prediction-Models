@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
+index 03eac95..20dffc7 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceElementParser.java
+@@ -394,6 +394,10 @@ protected void consumeFieldAccess(boolean isSuperAccess) {
+ 		requestor.acceptFieldReference(fr.token, fr.sourceStart);
+ 	}
+ }
++protected void consumeFormalParameter(boolean isVarArgs) {
++	super.consumeFormalParameter(isVarArgs);
++	flushCommentsDefinedPriorTo(this.scanner.currentPosition);
++}
+ protected void consumeInterfaceHeaderName1() {
+ 	int currentAstPtr = this.astPtr;
+ 	super.consumeInterfaceHeaderName1();

@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/rootlessCommon.h b/miext/rootless/rootlessCommon.h
+index b5fcae7..beb1fd6 100644
+--- a/miext/rootless/rootlessCommon.h
++++ b/miext/rootless/rootlessCommon.h
+@@ -29,6 +29,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/miext/rootless/rootlessCommon.h,v 1.5 2004/07/02 01:30:33 torrey Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _ROOTLESSCOMMON_H
+ #define _ROOTLESSCOMMON_H
+ 

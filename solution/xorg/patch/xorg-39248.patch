@@ -1,0 +1,55 @@
+diff --git a/hw/kdrive/src/kxv.h b/hw/kdrive/src/kxv.h
+index 5d14416..900baef 100644
+--- a/hw/kdrive/src/kxv.h
++++ b/hw/kdrive/src/kxv.h
+@@ -186,30 +186,6 @@ typedef struct {
+   QueryImageAttributesFuncPtr QueryImageAttributes;
+ } KdVideoAdaptorRec, *KdVideoAdaptorPtr;
+ 
+-typedef struct {
+-  KdImagePtr image;
+-  int flags;
+-  int (*alloc_surface)(KdScreenInfo * screen,
+-		  int id,
+-		  unsigned short width, 	
+-		  unsigned short height,
+-		  KdSurfacePtr surface);
+-  int (*free_surface)(KdSurfacePtr surface);
+-  int (*display) (KdSurfacePtr surface,
+-		  short vid_x, short vid_y, 
+-		  short drw_x, short drw_y,
+-		  short vid_w, short vid_h, 
+-		  short drw_w, short drw_h,
+-		  RegionPtr clipBoxes);
+-  int (*stop)    (KdSurfacePtr surface);
+-  int (*getAttribute) (KdScreenInfo * screen, Atom attr, INT32 *value);
+-  int (*setAttribute) (KdScreenInfo * screen, Atom attr, INT32 value);
+-  int max_width;
+-  int max_height;
+-  int num_attributes;
+-  KdAttributePtr attributes;
+-} KdOffscreenImageRec, *KdOffscreenImagePtr;
+-
+ Bool
+ KdXVScreenInit(
+    ScreenPtr pScreen, 
+@@ -231,19 +207,6 @@ KdXVListGenericAdaptors(
+     KdVideoAdaptorPtr  **Adaptors
+ );
+ 
+-Bool 
+-KdXVRegisterOffscreenImages(
+-   ScreenPtr pScreen,
+-   KdOffscreenImagePtr images,
+-   int num
+-);
+-
+-KdOffscreenImagePtr
+-KdXVQueryOffscreenImages(
+-   ScreenPtr pScreen,
+-   int *num
+-);
+-
+ void
+ KdXVCopyPackedData(KdScreenInfo *screen, CARD8 *src, CARD8 *dst, int randr,
+    int srcPitch, int dstPitch, int srcW, int srcH, int top, int left,

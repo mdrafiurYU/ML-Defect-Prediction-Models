@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ByteFieldSource.java b/solr/src/java/org/apache/solr/search/function/ByteFieldSource.java
+index 7729cc5..c3c97d2 100644
+--- a/solr/src/java/org/apache/solr/search/function/ByteFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/ByteFieldSource.java
+@@ -52,7 +52,7 @@ public class ByteFieldSource extends NumericFieldCacheSource<ByteValues> {
+     return new DocValues() {
+       @Override
+       public byte byteVal(int doc) {
+-        return (byte) arr[doc];
++        return arr[doc];
+       }
+ 
+       @Override

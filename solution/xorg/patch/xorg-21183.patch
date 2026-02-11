@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 397f75d..831c68a 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -1255,12 +1255,8 @@ xf86InterceptSigIll(void (*sigillhandler)(void))
+     xf86SigIllHandler = sigillhandler;
+ }
+ 
+-#ifdef HAVE_EXECINFO_H
+-#define HAVE_BACKTRACE
+-#include <execinfo.h>
+-#endif
+-
+ #ifdef HAVE_BACKTRACE
++#include <execinfo.h>
+ 
+ static __inline__ void xorg_backtrace(void)
+ {

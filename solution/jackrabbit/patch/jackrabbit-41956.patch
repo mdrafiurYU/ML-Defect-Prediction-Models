@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java
+index db9bd54..25d9b99 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexSearcher.java
+@@ -60,7 +60,20 @@ public class JackrabbitIndexSearcher extends IndexSearcher {
+      * @return the query hits.
+      * @throws IOException if an error occurs while executing the query.
+      */
+-    public QueryHits execute(Query query, Sort sort) throws IOException {
++    public MultiColumnQueryHits execute(Query query, Sort sort) throws IOException {
++        return new QueryHitsAdapter(evaluate(query, sort),
++                QueryImpl.DEFAULT_SELECTOR_NAME);
++    }
++
++    /**
++     * Evaluates the query and returns the hits that match the query.
++     *
++     * @param query the query to execute.
++     * @param sort  the sort criteria.
++     * @return the query hits.
++     * @throws IOException if an error occurs while executing the query.
++     */
++    public QueryHits evaluate(Query query, Sort sort) throws IOException {
+         query = query.rewrite(reader);
+         QueryHits hits = null;
+         if (query instanceof JackrabbitQuery) {

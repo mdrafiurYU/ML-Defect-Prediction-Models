@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
+index eaa66f0..f1a3117 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/IProblem.java
+@@ -983,6 +983,8 @@ void setSourceStart(int sourceStart);
+ 	int RawTypeReference = TypeRelated + 572;
+ 	/** @since 3.2 */
+ 	int NoAdditionalBoundAfterTypeVariable = TypeRelated + 573;
++	/** @since 3.2 */
++	int UnsafeGenericArrayForVarargs = MethodRelated + 574;
+ 	
+ 	/**
+ 	 * Foreach

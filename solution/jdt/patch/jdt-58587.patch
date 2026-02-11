@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java
+index ca1b627..f2bd7e3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java
+@@ -87,6 +87,9 @@ public abstract TypeReference copyDims(int dim);
+ public int dimensions() {
+ 	return 0;
+ }
++
++public abstract char[] getLastToken();
++
+ /**
+  * @return char[][]
+  * TODO (jerome) should merge back into #getTypeName()

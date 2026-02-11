@@ -1,0 +1,15 @@
+diff --git a/xkb/xkbPrOtherEv.c b/xkb/xkbPrOtherEv.c
+index 1e2773f..f69ff00 100644
+--- a/xkb/xkbPrOtherEv.c
++++ b/xkb/xkbPrOtherEv.c
+@@ -26,6 +26,10 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ ********************************************************/
+ /* $XFree86$ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ #include <math.h>
+ #define NEED_EVENTS 1

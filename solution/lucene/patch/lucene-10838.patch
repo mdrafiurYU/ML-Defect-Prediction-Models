@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java
+index db77cb8..07098d4 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterConfig.java
+@@ -47,7 +47,7 @@ public class TestIndexWriterConfig extends LuceneTestCase {
+     // Does not implement anything - used only for type checking on IndexWriterConfig.
+ 
+     @Override
+-    DocConsumer getChain(DocumentsWriter documentsWriter) {
++    public DocConsumer getChain(DocumentsWriter documentsWriter) {
+       return null;
+     }

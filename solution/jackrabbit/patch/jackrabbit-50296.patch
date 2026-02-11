@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/NotQueryNode.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/NotQueryNode.java
+index 2ae493e..9ebaa5f 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/NotQueryNode.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/NotQueryNode.java
+@@ -21,7 +21,7 @@ import javax.jcr.RepositoryException;
+ /**
+  * Implements a query node that defines a not operation on the child query.
+  */
+-public class NotQueryNode extends NAryQueryNode {
++public class NotQueryNode extends NAryQueryNode<QueryNode> {
+ 
+     /**
+      * Creates a new <code>NotQueryNode</code> instance.

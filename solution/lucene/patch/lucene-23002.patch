@@ -1,0 +1,18 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocInverterPerField.java b/lucene/src/java/org/apache/lucene/index/DocInverterPerField.java
+index 2463326..3ac444d 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocInverterPerField.java
++++ b/lucene/src/java/org/apache/lucene/index/DocInverterPerField.java
+@@ -53,8 +53,11 @@ final class DocInverterPerField extends DocFieldConsumerPerField {
+ 
+   @Override
+   void abort() {
+-    consumer.abort();
+-    endConsumer.abort();
++    try {
++      consumer.abort();
++    } finally {
++      endConsumer.abort();
++    }
+   }
+ 
+   @Override

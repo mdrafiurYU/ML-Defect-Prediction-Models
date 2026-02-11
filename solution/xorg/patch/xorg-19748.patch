@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/loader/loadmod.c b/hw/xfree86/loader/loadmod.c
+index a887e25..b14914e 100644
+--- a/hw/xfree86/loader/loadmod.c
++++ b/hw/xfree86/loader/loadmod.c
+@@ -419,10 +419,6 @@ FindModule(const char *module, const char *dir, const char **subdirlist,
+     const char suffix[3][3] = { "a", "o", "so" };
+ #endif
+     
+-    subdirs = InitSubdirs(subdirlist);
+-    if (!subdirs)
+-	return NULL;
+-
+ #ifndef __EMX__
+     dirpath = (char *)dir;
+ #else
+@@ -431,7 +427,10 @@ FindModule(const char *module, const char *dir, const char **subdirlist,
+ #endif
+     if (strlen(dirpath) > PATH_MAX)
+ 	return NULL;
+-    /*xf86Msg(X_INFO,"OS2DIAG: FindModule: dirpath=%s\n",dirpath); */
++    
++    subdirs = InitSubdirs(subdirlist);
++    if (!subdirs)
++	return NULL;
+ 
+     for (s = subdirs; *s; s++) {
+ 	if ((dirlen = strlen(dirpath) + strlen(*s)) > PATH_MAX)

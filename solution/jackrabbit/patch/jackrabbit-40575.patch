@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/DateVersionSelector.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/DateVersionSelector.java
+index 444d2fd..852fd96 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/DateVersionSelector.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/DateVersionSelector.java
+@@ -149,7 +149,7 @@ public class DateVersionSelector implements VersionSelector {
+         VersionIterator iter = history.getAllVersions();
+         while (iter.hasNext()) {
+             Version v = iter.nextVersion();
+-            if (v.getPredecessors().length==0) {
++            if (v.getPredecessors().length == 0) {
+                 // ignore root version
+                 continue;
+             }

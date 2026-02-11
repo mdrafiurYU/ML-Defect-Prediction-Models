@@ -1,0 +1,13 @@
+diff --git a/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java b/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java
+index 0dcc837..4250dd4 100644
+--- a/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java
++++ b/solr/src/webapp/src/org/apache/solr/servlet/SolrDispatchFilter.java
+@@ -65,7 +65,7 @@ public class SolrDispatchFilter implements Filter
+ 
+   public SolrDispatchFilter() {
+     try {
+-      adminRequestParser = new SolrRequestParsers(new Config(null,"solr",new ByteArrayInputStream("<root/>".getBytes()),"") );
++      adminRequestParser = new SolrRequestParsers(new Config(null,"solr",new ByteArrayInputStream("<root/>".getBytes("UTF-8")),"") );
+     } catch (Exception e) {
+       //unlikely
+       throw new SolrException(SolrException.ErrorCode.SERVER_ERROR,e);

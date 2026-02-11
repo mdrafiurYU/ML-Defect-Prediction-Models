@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+index ca89f60..faf4441 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+@@ -225,7 +225,7 @@ public abstract class QueryResultImpl implements QueryResult {
+         }
+         return new RowIteratorImpl(getScoreNodes(), selectProps,
+                 selectorNames, itemMgr,
+-                index.getContext().getHierarchyManager(), session,
++                index.getContext().getHierarchyManager(), session, session.getValueFactory(),
+                 excerptProvider, spellSuggestion);
+     }

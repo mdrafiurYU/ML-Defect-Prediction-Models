@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
+index 7497d7d..b1e60b6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
+@@ -108,6 +108,10 @@ public class CaseStatement extends Statement {
+ 				|| caseType.isCompatibleWith(switchExpressionType)) {
+ 			if (caseType.isEnum()) {
+ 				this.isEnumConstant = true;
++				if (((this.constantExpression.bits & ASTNode.ParenthesizedMASK) >> ASTNode.ParenthesizedSHIFT) != 0) {
++					scope.problemReporter().enumConstantsCannotBeSurroundedByParenthesis(this.constantExpression);
++				}
++
+ 				if (constantExpression instanceof NameReference
+ 						&& (constantExpression.bits & RestrictiveFlagMASK) == Binding.FIELD) {
+ 					NameReference reference = (NameReference) constantExpression;

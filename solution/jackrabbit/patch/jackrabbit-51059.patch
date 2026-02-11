@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/EventJournalTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/EventJournalTest.java
+index bc7b12c..190f03c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/EventJournalTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/EventJournalTest.java
+@@ -81,7 +81,7 @@ public class EventJournalTest extends AbstractObservationTest {
+         journal.skipTo(System.currentTimeMillis());
+         assertFalse(journal.hasNext());
+ 
+-        Session session = helper.getSuperuserSession(workspaceName);
++        Session session = getHelper().getSuperuserSession(workspaceName);
+         try {
+             Node rootNode = session.getRootNode();
+             if (rootNode.hasNode(nodeName1)) {

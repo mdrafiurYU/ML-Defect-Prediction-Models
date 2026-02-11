@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index 93c89fd..913735b 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -2981,3 +2981,16 @@ xf86IsUnblank(int mode)
+ 	return TRUE;
+     }
+ }
++
++_X_EXPORT void
++xf86MotionHistoryAllocate(LocalDevicePtr local)
++{
++    AllocateMotionHistory(local->dev);
++}
++
++_X_EXPORT int
++xf86GetMotionEvents(DeviceIntPtr pDev, xTimecoord *buff, unsigned long start,
++                    unsigned long stop, ScreenPtr pScreen)
++{
++    return GetMotionHistory(pDev, buff, start, stop, pScreen);
++}

@@ -1,0 +1,23 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 7d72954..ffb80dd 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -230,8 +230,6 @@ exaPrepareAccess(DrawablePtr pDrawable, int index)
+ 
+     pPixmap = exaGetDrawablePixmap (pDrawable);
+ 
+-    if (index == EXA_PREPARE_DEST)
+-	exaDrawableDirty (pDrawable);
+     if (exaPixmapIsOffscreen (pPixmap))
+ 	exaWaitSync (pDrawable->pScreen);
+     else
+@@ -255,6 +253,9 @@ exaFinishAccess(DrawablePtr pDrawable, int index)
+     ExaScreenPriv  (pScreen);
+     PixmapPtr	    pPixmap;
+ 
++    if (index == EXA_PREPARE_DEST)
++	exaDrawableDirty (pDrawable);
++
+     if (pExaScr->info->FinishAccess == NULL)
+ 	return;
+ 

@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+index 70cff46..58e3abd 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+@@ -562,6 +562,7 @@ protected IBuffer openBuffer(IProgressMonitor pm, Object info) throws JavaModelE
+ 						entryName.append('/');
+ 					}
+ 					entryName.append(sourceFileWithoutExtension);
++					entryName.append('.');
+ 					entryName.append(javaLikeExtensions[i]);
+ 					ZipEntry zipEntry = jar.getEntry(entryName.toString());
+ 					if (zipEntry != null) {

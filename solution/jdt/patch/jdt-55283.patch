@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
+index c24e2f1..eeff2b2 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaProject.java
+@@ -21,7 +21,6 @@ import javax.xml.parsers.DocumentBuilder;
+ import javax.xml.parsers.DocumentBuilderFactory;
+ import javax.xml.parsers.ParserConfigurationException;
+ import org.eclipse.core.resources.ICommand;
+-import org.eclipse.core.resources.IContainer;
+ import org.eclipse.core.resources.IFile;
+ import org.eclipse.core.resources.IFolder;
+ import org.eclipse.core.resources.IMarker;
+@@ -382,10 +381,6 @@ public class JavaProject
+ 			computePackageFragmentRoots(classpath, false, null /*no reverse map*/));		
+ 	}
+ 
+-	public IContainer[][] computeCleanedFolders() {
+-		return org.eclipse.jdt.internal.core.builder.JavaBuilder.computeCleanedFolders(this);
+-	}
+-
+ 	/**
+ 	 * Internal computation of an expanded classpath. It will eliminate duplicates, and produce copies
+ 	 * of exported or restricted classpath entries to avoid possible side-effects ever after.

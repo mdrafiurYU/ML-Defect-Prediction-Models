@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java
+index 3d0cf47..18d3e05 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java
+@@ -272,10 +272,7 @@ public class ItemStateBinding {
+     public UUID readUUID(DataInputStream in) throws IOException {
+         if (in.readBoolean()) {
+             byte[] bytes = new byte[16];
+-            int pos = 0;
+-            while (pos < 16) {
+-                pos += in.read(bytes, pos, 16 - pos);
+-            }
++            in.readFully(bytes);
+             return new UUID(bytes);
+         } else {
+             return null;

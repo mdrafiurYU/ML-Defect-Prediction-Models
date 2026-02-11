@@ -1,0 +1,36 @@
+diff --git a/Xi/setmode.c b/Xi/setmode.c
+index f95ef55..a6ea6f8 100644
+--- a/Xi/setmode.c
++++ b/Xi/setmode.c
+@@ -78,8 +78,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXSetDeviceMode(client)
+-    register ClientPtr client;
++SProcXSetDeviceMode(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -95,8 +94,7 @@ SProcXSetDeviceMode(client)
+  */
+ 
+ int
+-ProcXSetDeviceMode(client)
+-    register ClientPtr client;
++ProcXSetDeviceMode(register ClientPtr client)
+     {
+     DeviceIntPtr dev;
+     xSetDeviceModeReply	rep;
+@@ -145,10 +143,7 @@ ProcXSetDeviceMode(client)
+  */
+ 
+ void
+-SRepXSetDeviceMode (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xSetDeviceModeReply	*rep;
++SRepXSetDeviceMode (ClientPtr client, int size, xSetDeviceModeReply *rep)
+     {
+     register char n;
+ 

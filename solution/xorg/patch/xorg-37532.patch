@@ -1,0 +1,28 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index d69e148..3989d0d 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -150,11 +150,22 @@ ephyrScreenInitialize (KdScreenInfo *screen, EphyrScrPriv *scrpriv)
+ 	  screen->fb[0].depth = 16;
+ 	  screen->fb[0].bitsPerPixel = 16;
+ 	}
+-      else
++      else if (screen->fb[0].depth <= 24)
+ 	{
+ 	  screen->fb[0].depth = 24;
+ 	  screen->fb[0].bitsPerPixel = 32;
+ 	}
++      else if (screen->fb[0].depth <= 30)
++	{
++	  screen->fb[0].depth = 30;
++	  screen->fb[0].bitsPerPixel = 32;
++	}
++      else
++	{
++	  ErrorF("\nXephyr: Unsupported screen depth %d\n",
++	         screen->fb[0].depth);
++	  return FALSE;
++	}
+ 
+       hostx_get_visual_masks (screen, &redMask, &greenMask, &blueMask);
+ 

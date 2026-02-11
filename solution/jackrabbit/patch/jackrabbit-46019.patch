@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/Exporter.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/Exporter.java
+index 409a45f..8544b9f 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/Exporter.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/xml/Exporter.java
+@@ -428,6 +428,9 @@ public abstract class Exporter {
+             String namespace = (String) entry.getKey();
+             String prefix = (String) entry.getValue();
+             handler.startPrefixMapping(prefix, namespace);
++            attributes.addAttribute(
++                    "http://www.w3.org/2000/xmlns/", prefix, "xmlns:" + prefix,
++                    "CDATA", namespace);
+         }
+ 
+         // Emit the start element event, and clear things for the next element

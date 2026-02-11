@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86noBus.c b/hw/xfree86/common/xf86noBus.c
+index 09f2f44..52e8a19 100644
+--- a/hw/xfree86/common/xf86noBus.c
++++ b/hw/xfree86/common/xf86noBus.c
+@@ -52,7 +52,7 @@
+ 
+ #include "xf86RAC.h"
+ 
+-int
++_X_EXPORT int
+ xf86ClaimNoSlot(DriverPtr drvp, int chipset, GDevPtr dev, Bool active)
+ {
+     EntityPtr p;

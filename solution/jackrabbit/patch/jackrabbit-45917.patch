@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-server/src/test/java/org/apache/jackrabbit/server/remoting/davex/TestAll.java b/jackrabbit-jcr-server/src/test/java/org/apache/jackrabbit/server/remoting/davex/TestAll.java
+index 831d716..bb6bc32 100644
+--- a/jackrabbit-jcr-server/src/test/java/org/apache/jackrabbit/server/remoting/davex/TestAll.java
++++ b/jackrabbit-jcr-server/src/test/java/org/apache/jackrabbit/server/remoting/davex/TestAll.java
+@@ -33,6 +33,7 @@ public class TestAll extends TestCase {
+         TestSuite suite = new TestSuite("org.apache.jackrabbit.server.remoting.davex tests");
+ 
+         suite.addTestSuite(DiffParserTest.class);
++        suite.addTestSuite(JsonDiffHandlerTest.class);
+         suite.addTestSuite(BatchReadConfigTest.class);
+ 
+         return suite;

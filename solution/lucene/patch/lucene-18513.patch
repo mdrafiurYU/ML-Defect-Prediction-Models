@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/request/SolrQueryRequestBase.java b/solr/src/java/org/apache/solr/request/SolrQueryRequestBase.java
+index d598966..699cbe7 100644
+--- a/solr/src/java/org/apache/solr/request/SolrQueryRequestBase.java
++++ b/solr/src/java/org/apache/solr/request/SolrQueryRequestBase.java
+@@ -127,6 +127,7 @@ public abstract class SolrQueryRequestBase implements SolrQueryRequest {
+     return origParams.toString();
+   }
+ 
++  @Override
+   public String toString() {
+     return this.getClass().getSimpleName() + '{' + params + '}';
+   }

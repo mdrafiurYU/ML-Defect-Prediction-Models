@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/i810/i810stub.c b/hw/kdrive/i810/i810stub.c
+index c195947..364d16b 100644
+--- a/hw/kdrive/i810/i810stub.c
++++ b/hw/kdrive/i810/i810stub.c
+@@ -73,7 +73,8 @@ InitOutput (ScreenInfo *pScreenInfo, int argc, char **argv)
+ void
+ InitInput (int argc, char **argv)
+ {
+-    KdInitInput (&LinuxMouseFuncs, &LinuxKeyboardFuncs);
++    KdOsAddInputDrivers ();
++    KdInitInput ();
+ }
+ 
+ void

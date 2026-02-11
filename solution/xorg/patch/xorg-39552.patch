@@ -1,0 +1,35 @@
+diff --git a/hw/xwin/winwindowswm.c b/hw/xwin/winwindowswm.c
+index e1994de..28bcb64 100755
+--- a/hw/xwin/winwindowswm.c
++++ b/hw/xwin/winwindowswm.c
+@@ -49,8 +49,6 @@ static int WMErrorBase;
+ static DISPATCH_PROC(ProcWindowsWMDispatch);
+ static DISPATCH_PROC(SProcWindowsWMDispatch);
+ 
+-static void WindowsWMResetProc(ExtensionEntry* extEntry);
+-
+ static unsigned char WMReqCode = 0;
+ static int WMEventBase = 0;
+ 
+@@ -98,7 +96,7 @@ winWindowsWMExtensionInit ()
+ 			       WindowsWMNumberErrors,
+ 			       ProcWindowsWMDispatch,
+ 			       SProcWindowsWMDispatch,
+-			       WindowsWMResetProc,
++			       NULL,
+ 			       StandardMinorOpcode)))
+     {
+       WMReqCode = (unsigned char)extEntry->base;
+@@ -108,12 +106,6 @@ winWindowsWMExtensionInit ()
+     }
+ }
+ 
+-/*ARGSUSED*/
+-static void
+-WindowsWMResetProc (ExtensionEntry* extEntry)
+-{
+-}
+-
+ static int
+ ProcWindowsWMQueryVersion(register ClientPtr client)
+ {

@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java
+index 708c192..ed44c9b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLEditor.java
+@@ -380,11 +380,7 @@ public class ACLEditor extends ProtectedItemModifier implements AccessControlEdi
+     private Principal getPrincipal(String pathToACNode) throws RepositoryException {
+         String name = getPrincipalName(pathToACNode);
+         PrincipalManager pMgr = session.getPrincipalManager();
+-        if (pMgr.hasPrincipal(name)) {
+-            return pMgr.getPrincipal(name);
+-        } else {
+-            return null;
+-        }
++        return pMgr.getPrincipal(name);
+     }
+ 
+     private static String getPrincipalName(String pathToACNode) {

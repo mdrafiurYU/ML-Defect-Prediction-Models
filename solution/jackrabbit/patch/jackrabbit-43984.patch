@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/LocatorFactoryImplEx.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/LocatorFactoryImplEx.java
+index 90fe3a1..a9b129d 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/LocatorFactoryImplEx.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/LocatorFactoryImplEx.java
+@@ -62,7 +62,7 @@ public class LocatorFactoryImplEx extends AbstractLocatorFactory {
+         if (repositoryPath == null) {
+             throw new IllegalArgumentException("Cannot build resource path from 'null' repository path");
+         }
+-        return (startsWithWorkspace(repositoryPath, wspPath)) ? repositoryPath : wspPath + repositoryPath;
++        return wspPath + repositoryPath;
+     }
+ 
+     private boolean startsWithWorkspace(String repositoryPath, String wspPath) {

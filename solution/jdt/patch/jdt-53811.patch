@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+index 610ba57..458be60 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+@@ -2203,7 +2203,7 @@ private void parseTags() {
+ 				try {
+ 					currentTag = new NLSTag(pos + sourceDelta, end + sourceDelta, currentLine, extractInt(s, start, end));
+ 				} catch (NumberFormatException e) {
+-					currentTag = new NLSTag(pos + currentStartPosition, currentStartPosition + end, currentLine, -1);
++					currentTag = new NLSTag(pos + sourceDelta, end + sourceDelta, currentLine, -1);
+ 				}
+ 				if (this.nlsTagsPtr == this.nlsTags.length) {
+ 					// resize

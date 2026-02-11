@@ -1,0 +1,15 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index b4d04b4..7a9932a 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -107,10 +107,6 @@ AddInputDevice(DeviceProc deviceProc, Bool autoStart)
+ 
+     /* Find next available id */
+     memset(devind, 0, sizeof(char)*MAX_DEVICES);
+-    if (inputInfo.keyboard)
+-        devind[inputInfo.keyboard->id]++;
+-    if (inputInfo.pointer)
+-        devind[inputInfo.pointer->id]++;
+     for (devtmp = inputInfo.devices; devtmp; devtmp = devtmp->next)
+ 	devind[devtmp->id]++;
+     for (devtmp = inputInfo.off_devices; devtmp; devtmp = devtmp->next)

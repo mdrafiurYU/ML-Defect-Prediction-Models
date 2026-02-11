@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/parser/configProcs.h b/hw/xfree86/parser/configProcs.h
+index cc69466..bb5f4e9 100644
+--- a/hw/xfree86/parser/configProcs.h
++++ b/hw/xfree86/parser/configProcs.h
+@@ -121,6 +121,10 @@ XF86ConfExtensionsPtr xf86parseExtensionsSection (void);
+ void xf86printExtensionsSection (FILE * cf, XF86ConfExtensionsPtr ptr);
+ void xf86freeExtensions (XF86ConfExtensionsPtr ptr);
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef IN_XSERVER
+ /* Externally provided functions */
+ void ErrorF(const char *f, ...);

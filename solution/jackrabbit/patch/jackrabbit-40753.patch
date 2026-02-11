@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+index 9a7e377..4f928f5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+@@ -69,6 +69,14 @@ public abstract class BLOBFileValue {
+     public abstract void delete(boolean pruneEmptyParentDirs);
+ 
+     /**
++     * Checks if this object is immutable.
++     * Immutable objects can not change and can safely copied.
++     *
++     * @return true if the object is immutable
++     */
++    public abstract boolean isImmutable();
++
++    /**
+      * {@inheritDoc}
+      */
+     public abstract boolean equals(Object obj);

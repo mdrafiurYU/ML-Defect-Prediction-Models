@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProviderTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProviderTest.java
+index 4af17b9..3ff94e6 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProviderTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/principal/DefaultPrincipalProviderTest.java
+@@ -75,7 +75,7 @@ public class DefaultPrincipalProviderTest extends AbstractUserTest {
+         Group gr1 = null;
+         Group gr2 = null;
+         try {
+-            u = userMgr.createUser(up.getName(), buildCredentials(up), up);
++            u = userMgr.createUser(up.getName(), buildPassword(up));
+             gr1 = userMgr.createGroup(getTestPrincipal());
+             gr2 = userMgr.createGroup(getTestPrincipal());

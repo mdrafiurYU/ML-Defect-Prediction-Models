@@ -1,0 +1,31 @@
+diff --git a/solr/src/test-framework/org/apache/solr/util/AbstractSolrTestCase.java b/solr/src/test-framework/org/apache/solr/util/AbstractSolrTestCase.java
+index e26cfda..8f0382e 100644
+--- a/solr/src/test-framework/org/apache/solr/util/AbstractSolrTestCase.java
++++ b/solr/src/test-framework/org/apache/solr/util/AbstractSolrTestCase.java
+@@ -28,7 +28,8 @@ import org.apache.solr.common.SolrInputField;
+ import org.apache.solr.common.params.CommonParams;
+ import org.apache.solr.common.util.XML;
+ import org.apache.solr.request.*;
+-import org.apache.solr.util.TestHarness;
++import org.junit.AfterClass;
++import org.junit.BeforeClass;
+ 
+ import org.xml.sax.SAXException;
+ import org.slf4j.LoggerFactory;
+@@ -93,6 +94,16 @@ public abstract class AbstractSolrTestCase extends LuceneTestCase {
+     return SolrTestCaseJ4.TEST_HOME();
+   }
+   
++  @BeforeClass
++  public static void beforeClassAbstractSolrTestCase() throws Exception {
++    SolrTestCaseJ4.startTrackingSearchers();
++  }
++  
++  @AfterClass
++  public static void afterClassAbstractSolrTestCase() throws Exception {
++    SolrTestCaseJ4.endTrackingSearchers();
++  }
++  
+   /**
+    * The directory used to story the index managed by the TestHarness h
+    */

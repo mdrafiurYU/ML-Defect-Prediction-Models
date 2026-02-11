@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/NumericFieldCacheSource.java b/solr/src/java/org/apache/solr/search/function/NumericFieldCacheSource.java
+index 8552662..710a009 100644
+--- a/solr/src/java/org/apache/solr/search/function/NumericFieldCacheSource.java
++++ b/solr/src/java/org/apache/solr/search/function/NumericFieldCacheSource.java
+@@ -32,6 +32,7 @@ public abstract class NumericFieldCacheSource<T extends CachedArray> extends Fie
+     this.creator = creator;
+   }
+ 
++  @Override
+   public final boolean equals(Object o) {
+     if (o.getClass() != this.getClass()) return false;
+     NumericFieldCacheSource other = (NumericFieldCacheSource) o;
+@@ -40,6 +41,7 @@ public abstract class NumericFieldCacheSource<T extends CachedArray> extends Fie
+             this.creator.getClass() == other.creator.getClass();
+   }
+ 
++  @Override
+   public final int hashCode() {
+     int h = creator == null ? this.getClass().hashCode() : creator.getClass().hashCode();
+     h += super.hashCode();

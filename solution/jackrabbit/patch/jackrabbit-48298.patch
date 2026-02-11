@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java
+index 4c3baa3..7b9eb88 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventImpl.java
+@@ -28,6 +28,7 @@ import org.apache.jackrabbit.core.value.InternalValue;
+ import org.apache.jackrabbit.spi.commons.conversion.MalformedPathException;
+ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.commons.name.PathFactoryImpl;
++import org.apache.jackrabbit.spi.commons.value.ValueFormat;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+@@ -147,7 +148,7 @@ public final class EventImpl implements JackrabbitEvent, Event {
+             InternalValue value = (InternalValue) entry.getValue();
+             String strValue = null;
+             if (value != null) {
+-                strValue = value.toJCRValue(session).getString();
++                strValue = ValueFormat.getJCRValue(value, session, session.getValueFactory()).getString();
+             }
+             info.put(entry.getKey(), strValue);
+         }

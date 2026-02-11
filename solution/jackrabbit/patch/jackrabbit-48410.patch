@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/FilteredEventIterator.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/FilteredEventIterator.java
+index d882d0a..7388e0f 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/FilteredEventIterator.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/FilteredEventIterator.java
+@@ -109,6 +109,14 @@ class FilteredEventIterator implements EventIterator {
+     }
+ 
+     /**
++     * @see javax.jcr.observation.EventIterator#getDate()
++     */
++    public Calendar getDate() {
++        // TODO
++        throw new UnsupportedOperationException("JCR-2108. Implementation Missing");
++    }
++
++    /**
+      * {@inheritDoc}
+      */
+     public void skip(long skipNum) {
+@@ -165,10 +173,4 @@ class FilteredEventIterator implements EventIterator {
+             next = filter.accept(event, isLocal) ? new EventImpl(resolver, event) : null;
+         }
+     }
+-
+-    public Calendar getDate() {
+-        // TODO JCR-1839
+-        return null;
+-    }
+-
+ }

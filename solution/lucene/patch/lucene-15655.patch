@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/sep/SepPostingsReaderImpl.java b/lucene/src/java/org/apache/lucene/index/codecs/sep/SepPostingsReaderImpl.java
+index 342d2fa..d3a35c5 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/sep/SepPostingsReaderImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/sep/SepPostingsReaderImpl.java
+@@ -141,8 +141,8 @@ public class SepPostingsReaderImpl extends PostingsReaderBase {
+       return other;
+     }
+ 
+-    public void copy(TermState _other) {
+-      super.copy(_other);
++    public void copyFrom(TermState _other) {
++      super.copyFrom(_other);
+       SepTermState other = (SepTermState) _other;
+       docIndex.set(other.docIndex);
+     }

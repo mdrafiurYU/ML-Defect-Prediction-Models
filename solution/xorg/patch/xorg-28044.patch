@@ -1,0 +1,12 @@
+diff --git a/include/dix.h b/include/dix.h
+index 57cdce3..44862ad 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -757,4 +757,7 @@ extern int ffs(int i);
+ 
+ extern Bool DevHasCursor(DeviceIntPtr pDev);
+ 
++extern Bool IsPointerDevice( DeviceIntPtr dev);
++extern Bool IsKeyboardDevice(DeviceIntPtr dev);
++
+ #endif /* DIX_H */

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/int10/linux.c b/hw/xfree86/os-support/linux/int10/linux.c
+index d34bf6d..b83be1f 100644
+--- a/hw/xfree86/os-support/linux/int10/linux.c
++++ b/hw/xfree86/os-support/linux/int10/linux.c
+@@ -282,7 +282,7 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
+ 	    int err;
+ 	    struct pci_device *rom_device = (bios.bus == BUS_PCI)
+ 	      ? pci_device_find_by_slot(PCI_DOM_FROM_BUS(bios.location.pci.bus),
+-					PCI_BUS_NO_DOM(bios.location.pci.bus),
++					PCI_BUS_NO_DOMAIN(bios.location.pci.bus),
+ 					bios.location.pci.dev,
+ 					bios.location.pci.func)
+ 	      : xf86GetPciInfoForEntity(pInt->entityIndex);

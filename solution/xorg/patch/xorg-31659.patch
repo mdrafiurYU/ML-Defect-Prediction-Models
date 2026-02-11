@@ -1,0 +1,12 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index a67e493..c1e971d 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -95,6 +95,7 @@ RROutputCreate (ScreenPtr   pScreen,
+     output->numUserModes = 0;
+     output->userModes = NULL;
+     output->properties = NULL;
++    output->pendingProperties = FALSE;
+     output->changed = FALSE;
+     output->devPrivate = devPrivate;
+     

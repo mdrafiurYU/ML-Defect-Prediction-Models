@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/BindVariableValueTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/BindVariableValueTest.java
+index 4d082ec..ea7061f 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/BindVariableValueTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/BindVariableValueTest.java
+@@ -21,6 +21,9 @@ import javax.jcr.Node;
+ import javax.jcr.ValueFactory;
+ import javax.jcr.Value;
+ import javax.jcr.query.Query;
++
++import org.apache.jackrabbit.spi.commons.query.qom.Operator;
++
+ import java.util.Calendar;
+ 
+ /**
+@@ -49,9 +52,9 @@ public class BindVariableValueTest extends AbstractQOMTest {
+                 qomFactory.selector(testNodeType, "s"),
+                 qomFactory.and(
+                         qomFactory.childNode("s", testRoot),
+-                        qomFactory.comparison(
++                        Operator.EQ.comparison(
++                                qomFactory,
+                                 qomFactory.propertyValue("s", propertyName1),
+-                                JCR_OPERATOR_EQUAL_TO,
+                                 qomFactory.bindVariable("v")
+                         )
+                 ), null, null);

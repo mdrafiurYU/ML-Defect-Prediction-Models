@@ -1,0 +1,37 @@
+diff --git a/hw/xquartz/applewm.c b/hw/xquartz/applewm.c
+index ba86f10..c5ca8e2 100644
+--- a/hw/xquartz/applewm.c
++++ b/hw/xquartz/applewm.c
+@@ -74,8 +74,6 @@ static int WMErrorBase;
+ static DISPATCH_PROC(ProcAppleWMDispatch);
+ static DISPATCH_PROC(SProcAppleWMDispatch);
+ 
+-static void AppleWMResetProc(ExtensionEntry* extEntry);
+-
+ static unsigned char WMReqCode = 0;
+ static int WMEventBase = 0;
+ 
+@@ -124,7 +122,7 @@ AppleWMExtensionInit(
+                                  AppleWMNumberErrors,
+                                  ProcAppleWMDispatch,
+                                  SProcAppleWMDispatch,
+-                                 AppleWMResetProc,
++                                 NULL,
+                                  StandardMinorOpcode)))
+     {
+         WMReqCode = (unsigned char)extEntry->base;
+@@ -135,14 +133,6 @@ AppleWMExtensionInit(
+     }
+ }
+ 
+-/*ARGSUSED*/
+-static void
+-AppleWMResetProc (
+-    ExtensionEntry* extEntry
+-)
+-{
+-}
+-
+ /* Updates the _NATIVE_SCREEN_ORIGIN property on the given root window. */
+ void
+ AppleWMSetScreenOrigin(

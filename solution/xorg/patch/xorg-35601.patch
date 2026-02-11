@@ -1,0 +1,12 @@
+diff --git a/dix/window.c b/dix/window.c
+index 33cf76b..1ccf126 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -2993,6 +2993,7 @@ UnrealizeTree(
+ 	    } 
+ #endif
+ 	    (* Unrealize)(pChild);
++	    if (MapUnmapEventsEnabled(pWin))
+ 	    DeleteWindowFromAnyEvents(pChild, FALSE);
+ 	    if (pChild->viewable)
+ 	    {

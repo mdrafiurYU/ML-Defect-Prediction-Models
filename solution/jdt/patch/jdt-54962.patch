@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java
+index 9309ce0..532a393 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java
+@@ -469,12 +469,7 @@ public void save(IProgressMonitor pm, boolean force) throws JavaModelException {
+  * Find enclosing package fragment root if any
+  */
+ public PackageFragmentRoot getPackageFragmentRoot() {
+-	IJavaElement current = this;
+-	do {
+-		if (current instanceof PackageFragmentRoot) return (PackageFragmentRoot)current;
+-		current = current.getParent();
+-	} while(current != null);
+-	return null;
++	return (PackageFragmentRoot) getAncestor(IJavaElement.PACKAGE_FRAGMENT_ROOT);
+ }
+ 
+ }

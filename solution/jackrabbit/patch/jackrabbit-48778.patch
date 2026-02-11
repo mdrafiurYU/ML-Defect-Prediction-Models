@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/PropertyDefinitionImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/PropertyDefinitionImpl.java
+index e5bd2df..c97628c 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/PropertyDefinitionImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/PropertyDefinitionImpl.java
+@@ -109,7 +109,7 @@ public class PropertyDefinitionImpl extends ItemDefinitionImpl implements Proper
+      * {@inheritDoc}
+      */
+     public String[] getValueConstraints() {
+-        QPropertyDefinition pd = (QPropertyDefinition)itemDef;
++        QPropertyDefinition pd = (QPropertyDefinition) itemDef;
+         String[] constraints = pd.getValueConstraints();
+         if (constraints == null || constraints.length == 0) {
+             return new String[0];

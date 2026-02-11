@@ -1,0 +1,17 @@
+diff --git a/glx/glxcmds.c b/glx/glxcmds.c
+index f4fc031..19d8674 100644
+--- a/glx/glxcmds.c
++++ b/glx/glxcmds.c
+@@ -620,9 +620,9 @@ DoMakeCurrent(__GLXclientState *cl,
+ 	    return __glXError(GLXBadContext);
+ 	}
+ 	__glXFlushContextCache();
+-	if (!glxc->isDirect) {
+-	    __glXUnrefDrawable(glxc->drawPriv);
+-	    __glXUnrefDrawable(glxc->readPriv);
++	if (!prevglxc->isDirect) {
++	    __glXUnrefDrawable(prevglxc->drawPriv);
++	    __glXUnrefDrawable(prevglxc->readPriv);
+ 	}
+     }
+ 	

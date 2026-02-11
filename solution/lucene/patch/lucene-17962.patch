@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestLineEntityProcessor.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestLineEntityProcessor.java
+index c24fced..91f8d03 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestLineEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestLineEntityProcessor.java
+@@ -207,12 +207,15 @@ public class TestLineEntityProcessor extends AbstractDataImportHandlerTestCase {
+ 
+   private DataSource<Reader> getDataSource(final String xml) {
+     return new DataSource<Reader>() {
++      @Override
+       public void init(Context context, Properties initProps) {
+       }
+ 
++      @Override
+       public void close() {
+       }
+ 
++      @Override
+       public Reader getData(String query) {
+         return new StringReader(xml);
+       }

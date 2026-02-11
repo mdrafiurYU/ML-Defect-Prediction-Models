@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
+index f9fcf64..a4a4d6a 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SelectionRequestor.java
+@@ -174,7 +174,7 @@ public void acceptType(char[] packageName, char[] typeName, int modifiers, boole
+ /**
+  * @see ISelectionRequestor#acceptError
+  */
+-public void acceptError(IProblem error) {
++public void acceptError(CategorizedProblem error) {
+ 	// do nothing
+ }
+ /**

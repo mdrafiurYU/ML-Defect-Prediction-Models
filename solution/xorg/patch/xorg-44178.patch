@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/parser/Device.c b/hw/xfree86/parser/Device.c
+index 216789f..d1621c9 100644
+--- a/hw/xfree86/parser/Device.c
++++ b/hw/xfree86/parser/Device.c
+@@ -369,14 +369,3 @@ xf86findDevice (const char *ident, XF86ConfDevicePtr p)
+ 	}
+ 	return (NULL);
+ }
+-
+-char *
+-xf86configStrdup (const char *s)
+-{
+-	char *tmp;
+-	if (!s) return NULL;
+-	tmp = xf86confmalloc (sizeof (char) * (strlen (s) + 1));
+-	if (tmp)
+-		strcpy (tmp, s);
+-	return (tmp);
+-}

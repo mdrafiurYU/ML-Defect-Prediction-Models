@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaInitAccel.c b/hw/xfree86/xaa/xaaInitAccel.c
+index 4087142..d8b2e95 100644
+--- a/hw/xfree86/xaa/xaaInitAccel.c
++++ b/hw/xfree86/xaa/xaaInitAccel.c
+@@ -109,7 +109,7 @@ static XF86ModuleVersionInfo xaaVersRec =
+ 
+ _X_EXPORT XF86ModuleData xaaModuleData = { &xaaVersRec, NULL, NULL };
+ 
+-Bool
++_X_EXPORT Bool
+ XAAInitAccel(ScreenPtr pScreen, XAAInfoRecPtr infoRec)
+ {
+     int index = pScreen->myNum;

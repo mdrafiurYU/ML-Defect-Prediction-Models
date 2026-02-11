@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPropertyNamesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPropertyNamesTest.java
+index 8d7187a..c8c4cde 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPropertyNamesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetPropertyNamesTest.java
+@@ -55,6 +55,7 @@ public class GetPropertyNamesTest extends AbstractQueryTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
+         super.tearDown();
+     }

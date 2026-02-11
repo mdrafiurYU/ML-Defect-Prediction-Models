@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java
+index 4a97210..3fc4204 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/MethodScope.java
+@@ -230,7 +230,7 @@ public class MethodScope extends BlockScope {
+ 			// do not report fake used variable
+ 			if (isReportingUnusedArgument
+ 					&& local.useFlag == LocalVariableBinding.UNUSED
+-					&& ((local.declaration.bits & ASTNode.IsLocalDeclarationReachableMASK) != 0)) { // declaration is reachable
++					&& ((local.declaration.bits & ASTNode.IsLocalDeclarationReachable) != 0)) { // declaration is reachable
+ 				this.problemReporter().unusedArgument(local.declaration);
+ 			}

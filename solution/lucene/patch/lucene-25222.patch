@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/function/NumericIndexDocValueSource.java b/lucene/src/java/org/apache/lucene/search/function/NumericIndexDocValueSource.java
+index 8b85a6a..3e03e69 100644
+--- a/lucene/src/java/org/apache/lucene/search/function/NumericIndexDocValueSource.java
++++ b/lucene/src/java/org/apache/lucene/search/function/NumericIndexDocValueSource.java
+@@ -59,7 +59,7 @@ public class NumericIndexDocValueSource extends ValueSource {
+         }
+       };
+ 
+-    case INTS:
++    case VAR_INTS:
+       return new DocValues() {
+         @Override
+         public String toString(int doc) {

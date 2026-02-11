@@ -1,0 +1,21 @@
+diff --git a/hw/xgl/xglscreen.c b/hw/xgl/xglscreen.c
+index 7ce02c1..0ccd772 100644
+--- a/hw/xgl/xglscreen.c
++++ b/hw/xgl/xglscreen.c
+@@ -30,6 +30,7 @@
+ #include "fb.h"
+ #ifdef MITSHM
+ #include "shmint.h"
++static ShmFuncs shmFuncs = { NULL, xglShmPutImage };
+ #endif
+ #ifdef RENDER
+ #include "glyphstr.h"
+@@ -201,7 +202,7 @@ xglScreenInit (ScreenPtr        pScreen,
+ 	return FALSE;
+ 
+ #ifdef MITSHM
+-    ShmRegisterFuncs (pScreen, NULL);
++    ShmRegisterFuncs (pScreen, &shmFuncs);
+ #endif
+ 
+ #ifdef RENDER

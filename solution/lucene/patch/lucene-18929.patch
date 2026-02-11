@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/SpatialBoxQParserPlugin.java b/solr/src/java/org/apache/solr/search/SpatialBoxQParserPlugin.java
+index 3dd099f..37065c5 100755
+--- a/solr/src/java/org/apache/solr/search/SpatialBoxQParserPlugin.java
++++ b/solr/src/java/org/apache/solr/search/SpatialBoxQParserPlugin.java
+@@ -31,6 +31,7 @@ public class SpatialBoxQParserPlugin extends SpatialFilterQParserPlugin {
+     return new SpatialFilterQParser(qstr, localParams, params, req, true);
+   }
+ 
++  @Override
+   public void init(NamedList args) {
+ 
+   }

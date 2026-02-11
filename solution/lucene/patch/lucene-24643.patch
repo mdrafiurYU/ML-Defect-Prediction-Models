@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FieldsEnum.java b/lucene/src/java/org/apache/lucene/index/FieldsEnum.java
+index 68e8993..62317fe 100644
+--- a/lucene/src/java/org/apache/lucene/index/FieldsEnum.java
++++ b/lucene/src/java/org/apache/lucene/index/FieldsEnum.java
+@@ -43,10 +43,8 @@ public abstract class FieldsEnum {
+     return atts;
+   }
+   
+-  /** Increments the enumeration to the next field.  The
+-   *  returned field is always interned, so simple ==
+-   *  comparison is allowed.  Returns null when there are no
+-   *  more fields.*/
++  /** Increments the enumeration to the next field. Returns
++   * null when there are no more fields.*/
+   public abstract String next() throws IOException;
+ 
+   /** Get {@link TermsEnum} for the current field.  You

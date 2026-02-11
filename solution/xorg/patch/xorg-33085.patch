@@ -1,0 +1,18 @@
+diff --git a/Xext/bigreq.c b/Xext/bigreq.c
+index fcd848a..f1f85f9 100644
+--- a/Xext/bigreq.c
++++ b/Xext/bigreq.c
+@@ -79,11 +79,11 @@ BigReqResetProc (extEntry)
+ 
+ static int
+ ProcBigReqDispatch (client)
+-    register ClientPtr	client;
++     ClientPtr	client;
+ {
+     REQUEST(xBigReqEnableReq);
+     xBigReqEnableReply rep;
+-    register int n;
++     int n;
+ 
+     if (client->swapped) {
+ 	swaps(&stuff->length, n);

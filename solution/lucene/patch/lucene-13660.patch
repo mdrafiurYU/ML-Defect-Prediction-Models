@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TrieField.java b/solr/src/java/org/apache/solr/schema/TrieField.java
+index bcbc2f6..2e57c90 100644
+--- a/solr/src/java/org/apache/solr/schema/TrieField.java
++++ b/solr/src/java/org/apache/solr/schema/TrieField.java
+@@ -174,7 +174,8 @@ public class TrieField extends FieldType {
+     }
+   }
+ 
+-  public ValueSource getValueSource(SchemaField field) {
++  @Override
++  public ValueSource getValueSource(SchemaField field, QParser qparser) {
+     int flags = CachedArrayCreator.CACHE_VALUES_AND_BITS;
+     switch (type) {
+       case INTEGER:

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java
+index 95b9757..9e0f5b3 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/NumericConstraint.java
+@@ -145,6 +145,10 @@ class NumericConstraint extends ValueConstraint {
+                 check(value.getDouble());
+                 return;
+ 
++            case PropertyType.DECIMAL:
++                check(value.getDouble());
++                return;
++
+             case PropertyType.BINARY:
+                 long length = value.getLength();
+                 if (length != -1) {

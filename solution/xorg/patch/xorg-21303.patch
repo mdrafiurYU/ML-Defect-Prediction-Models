@@ -1,0 +1,33 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index a9ea0eb..fbb16a4 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -40,6 +40,8 @@ extern DeviceIntPtr pKdKeyboard;
+ 
+ static int mouseState = 0;
+ 
++Bool   EphyrWantGrayScale = 0;
++
+ Bool
+ ephyrInitialize (KdCardInfo *card, EphyrPriv *priv)
+ {
+@@ -81,6 +83,9 @@ ephyrScreenInitialize (KdScreenInfo *screen, EphyrScrPriv *scrpriv)
+       screen->height = height;
+     }
+   
++  if (EphyrWantGrayScale)
++    screen->fb[0].depth = 8;
++
+   if (screen->fb[0].depth && screen->fb[0].depth != hostx_get_depth())
+     {
+       if (screen->fb[0].depth < hostx_get_depth()
+@@ -98,6 +103,9 @@ ephyrScreenInitialize (KdScreenInfo *screen, EphyrScrPriv *scrpriv)
+   
+   if (screen->fb[0].depth <= 8)
+     {
++      if (EphyrWantGrayScale)
++	screen->fb[0].visuals = ((1 << StaticGray) | (1 << GrayScale));
++      else
+       screen->fb[0].visuals = ((1 << StaticGray) |
+ 			       (1 << GrayScale) |
+ 			       (1 << StaticColor) |

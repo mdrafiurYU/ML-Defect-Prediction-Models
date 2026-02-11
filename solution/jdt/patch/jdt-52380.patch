@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java
+index 3cec2ff..8faa1d0 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ReconcileWorkingCopyOperation.java
+@@ -69,9 +69,10 @@ public class ReconcileWorkingCopyOperation extends JavaModelOperation {
+ 				}
+ 			} else {
+ 				// force problem detection? - if structure was consistent
+-				if (forceProblemDetection) {
++				if (this.forceProblemDetection) {
+ 					IProblemRequestor problemRequestor = workingCopy.getPerWorkingCopyInfo();
+-					if (problemRequestor != null && problemRequestor.isActive()) {
++					boolean computeProblems = JavaProject.hasJavaNature(workingCopy.getJavaProject().getProject()) && problemRequestor != null && problemRequestor.isActive();
++					if (computeProblems) {
+ 					    CompilationUnitDeclaration unit = null;
+ 					    try {
+ 							problemRequestor.beginReporting();

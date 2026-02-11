@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java
+index b55e5ae..a9299de 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/fs/AbstractFileSystemTest.java
+@@ -31,14 +31,14 @@ public abstract class AbstractFileSystemTest extends TestCase {
+     private FileSystem fs;
+     private byte[] sampleBytes = new byte[]{(byte)0x12, (byte)0x0F, (byte)0xF0};
+ 
+-    protected abstract FileSystem getFileSystem() throws Exception;
++    protected abstract FileSystem getFileSystem();
+ 
+     protected void setUp() throws Exception {
+         fs = getFileSystem();
+         fs.init();
+     }
+ 
+-    protected void tearDown() throws FileSystemException {
++    protected void tearDown() throws Exception {
+         fs.close();
+     }

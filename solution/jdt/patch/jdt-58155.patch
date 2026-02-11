@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/ExecutionTests.java b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/ExecutionTests.java
+index 5021f38..24d3163 100644
+--- a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/ExecutionTests.java
++++ b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/ExecutionTests.java
+@@ -18,13 +18,13 @@ import org.eclipse.jdt.core.tests.util.Util;
+ /**
+  * Basic execution tests of the image builder.
+  */
+-public class ExecutionTests extends Tests {
++public class ExecutionTests extends BuilderTests {
+ 	public ExecutionTests(String name) {
+ 		super(name);
+ 	}
+ 	
+ 	public static Test suite() {
+-		return new TestSuite(ExecutionTests.class);
++		return buildTestSuite(ExecutionTests.class);
+ 	}
+ 	
+ 	public void testSuccess() throws JavaModelException {

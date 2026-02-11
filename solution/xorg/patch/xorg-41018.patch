@@ -1,0 +1,13 @@
+diff --git a/mi/mifillarc.c b/mi/mifillarc.c
+index 2ca6a4d..f2ab5ce 100644
+--- a/mi/mifillarc.c
++++ b/mi/mifillarc.c
+@@ -779,7 +779,7 @@ miPolyFillArc(DrawablePtr pDraw, GCPtr pGC, int narcs, xArc *parcs)
+     for(i = narcs, arc = parcs; --i >= 0; arc++)
+     {
+ 	if (miFillArcEmpty(arc))
+-	    continue;;
++	    continue;
+ 	if ((arc->angle2 >= FULLCIRCLE) || (arc->angle2 <= -FULLCIRCLE))
+ 	{
+ 	    if (miCanFillArc(arc))

@@ -1,0 +1,36 @@
+diff --git a/GL/glx/glxcontext.h b/GL/glx/glxcontext.h
+index cf944a1..4c36801 100644
+--- a/GL/glx/glxcontext.h
++++ b/GL/glx/glxcontext.h
+@@ -85,7 +85,6 @@ struct __GLXcontext {
+     ** Pointer to screen info data for this context.  This is set
+     ** when the context is created.
+     */
+-    ScreenPtr pScreen;
+     __GLXscreen *pGlxScreen;
+ 
+     /*
+@@ -99,11 +98,6 @@ struct __GLXcontext {
+     XID share_id;
+ 
+     /*
+-    ** Visual id.
+-    */
+-    VisualID vid;
+-
+-    /*
+     ** screen number.
+     */
+     GLint screen;
+@@ -124,11 +118,6 @@ struct __GLXcontext {
+     GLboolean isDirect;
+ 
+     /*
+-    ** Window pending state
+-    */
+-    GLuint pendingState;
+-
+-    /*
+     ** This flag keeps track of whether there are unflushed GL commands.
+     */
+     GLboolean hasUnflushedCommands;

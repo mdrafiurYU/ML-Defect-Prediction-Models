@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Configure.c b/hw/xfree86/common/xf86Configure.c
+index f896c29..0cf445c 100644
+--- a/hw/xfree86/common/xf86Configure.c
++++ b/hw/xfree86/common/xf86Configure.c
+@@ -605,8 +605,6 @@ configureFilesSection (void)
+        ptr->file_modulepath = strdup(xf86ModulePath);
+    if (defaultFontPath)
+        ptr->file_fontpath = strdup(defaultFontPath);
+-   if (rgbPath)
+-       ptr->file_rgbpath = strdup(rgbPath);
+    
+     return ptr;
+ }

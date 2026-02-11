@@ -1,0 +1,16 @@
+diff --git a/composite/compint.h b/composite/compint.h
+index 2c4d5c0..38b1777 100644
+--- a/composite/compint.h
++++ b/composite/compint.h
+@@ -143,6 +143,11 @@ typedef struct _CompScreen {
+      */
+     InstallColormapProcPtr	InstallColormap;
+ 
++    /*
++     * Fake backing store via automatic redirection
++     */
++    ChangeWindowAttributesProcPtr ChangeWindowAttributes;
++
+     ScreenBlockHandlerProcPtr	BlockHandler;
+     CloseScreenProcPtr		CloseScreen;
+     Bool			damaged;

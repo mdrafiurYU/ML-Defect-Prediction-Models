@@ -1,0 +1,47 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java b/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java
+index a4e5b56..2aaafb6 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java
+@@ -24,6 +24,7 @@ import java.io.PrintStream;
+ import java.util.ArrayList;
+ import java.util.Collection;
+ import java.util.Collections;
++import java.util.Date;
+ import java.util.HashMap;
+ 
+ import java.util.List;
+@@ -116,7 +117,7 @@ final class IndexFileDeleter {
+   }
+   
+   private void message(String message) {
+-    infoStream.println("IFD [" + Thread.currentThread().getName() + "]: " + message);
++    infoStream.println("IFD [" + new Date() + "; " + Thread.currentThread().getName() + "]: " + message);
+   }
+ 
+   private final FilenameFilter indexFilenameFilter;
+@@ -546,8 +547,12 @@ final class IndexFileDeleter {
+    *  (have not yet been incref'd). */
+   void deleteNewFiles(Collection<String> files) throws IOException {
+     for (final String fileName: files) {
+-      if (!refCounts.containsKey(fileName))
++      if (!refCounts.containsKey(fileName)) {
++        if (infoStream != null) {
++          message("delete new file \"" + fileName + "\"");
++        }
+         deleteFile(fileName);
++      }
+     }
+   }
+ 
+@@ -641,6 +646,11 @@ final class IndexFileDeleter {
+     }
+ 
+     @Override
++    public String toString() {
++      return "IndexFileDeleter.CommitPoint(" + segmentsFileName + ")";
++    }
++
++    @Override
+     public boolean isOptimized() {
+       return isOptimized;
+     }

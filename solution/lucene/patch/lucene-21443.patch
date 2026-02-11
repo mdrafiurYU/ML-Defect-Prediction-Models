@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java b/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
+index 2fd1374..5be8753 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
+@@ -89,7 +89,7 @@ public class TestTimeLimitingCollector extends LuceneTestCase {
+     for (int i = 1; i < docText.length; i++) {
+       qtxt += ' ' + docText[i]; // large query so that search will be longer
+     }
+-    QueryParser queryParser = new QueryParser(TEST_VERSION_CURRENT, FIELD_NAME, new MockAnalyzer());
++    QueryParser queryParser = new QueryParser(TEST_VERSION_CURRENT, FIELD_NAME, new MockAnalyzer(random));
+     query = queryParser.parse(qtxt);
+     
+     // warm the searcher

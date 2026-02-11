@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 935112d..77d1e21 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -470,7 +470,7 @@ GetKeyboardValuatorEvents(xEvent *events, DeviceIntPtr pDev, int type,
+ 
+ 
+ /**
+- * Generate a series of xEvents (returned in xE) representing pointer
++ * Generate a series of xEvents (returned in events) representing pointer
+  * motion, or button presses.  Xi and XKB-aware.
+  *
+  * events is not NULL-terminated; the return value is the number of events.

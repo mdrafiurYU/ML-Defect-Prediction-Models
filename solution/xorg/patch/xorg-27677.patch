@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/dri.c b/hw/darwin/quartz/xpr/dri.c
+index 9aeaaa5..08ee382 100644
+--- a/hw/darwin/quartz/xpr/dri.c
++++ b/hw/darwin/quartz/xpr/dri.c
+@@ -33,6 +33,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *   Rickard E. (Rik) Faith <faith@valinux.com>
+  *
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
+ 
+ #include <sys/time.h>
+ #include <unistd.h>

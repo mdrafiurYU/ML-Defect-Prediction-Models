@@ -1,0 +1,16 @@
+diff --git a/dix/events.c b/dix/events.c
+index dc9c4e5..c9b5a4f 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4290,6 +4290,11 @@ InitEvents()
+     {
+ 	spriteTraceSize = 32;
+ 	spriteTrace = (WindowPtr *)xalloc(32*sizeof(WindowPtr));
++        /* FIXME: spriteTrace[0] needs to be NULL, otherwise
++         * GetCurrentRootWindow() in EnableDevice() may return a invalid
++         * value. (whot)
++         */
++        memset(spriteTrace, 0, 32 * sizeof(WindowPtr));
+ 	if (!spriteTrace)
+ 	    FatalError("failed to allocate spriteTrace");
+     }

@@ -1,0 +1,14 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 80cf609..926e02a 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -340,6 +340,9 @@ void
+ exaFinishAccess(DrawablePtr pDrawable, int index);
+ 
+ void
++exaPixmapDirty(PixmapPtr pPix, int x1, int y1, int x2, int y2);
++
++void
+ exaDrawableDirty(DrawablePtr pDrawable, int x1, int y1, int x2, int y2);
+ 
+ Bool

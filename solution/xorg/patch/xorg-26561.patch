@@ -1,0 +1,13 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 8b760ec..f38f582 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -51,6 +51,8 @@ RROutputCreate (const char  *name,
+ {
+     RROutputPtr	output;
+ 
++    if (!RRInit())
++	return NULL;
+     output = xalloc (sizeof (RROutputRec) + nameLength + 1);
+     if (!output)
+ 	return NULL;

@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/ddc/edid.h b/hw/xfree86/ddc/edid.h
+index 45caf6e..aeda6b3 100644
+--- a/hw/xfree86/ddc/edid.h
++++ b/hw/xfree86/ddc/edid.h
+@@ -547,6 +547,6 @@ typedef struct {
+   Uchar *rawData;
+ } xf86Monitor, *xf86MonPtr;
+ 
+-extern xf86MonPtr ConfiguredMonitor;
++extern _X_EXPORT xf86MonPtr ConfiguredMonitor;
+ 
+ #endif /* _EDID_H_ */

@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java b/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
+index de57c65..e4e29b7 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
+@@ -67,7 +67,11 @@ public abstract class FieldsConsumer implements Closeable {
+       }
+       if (mergeState.fieldInfo.hasDocValues()) {
+         final DocValues docValues = fieldsEnum.docValues();
+-        assert docValues != null : "DocValues are null for " + mergeState.fieldInfo.getDocValues();
++        // TODO: is this assert values and if so when?
++//        assert docValues != null : "DocValues are null for " + mergeState.fieldInfo.getDocValues();
++        if(docValues == null) { // for now just continue
++          continue; 
++        }
+         final DocValuesConsumer docValuesConsumer = addValuesField(mergeState.fieldInfo);
+         assert docValuesConsumer != null;
+         docValuesConsumer.merge(mergeState, docValues);

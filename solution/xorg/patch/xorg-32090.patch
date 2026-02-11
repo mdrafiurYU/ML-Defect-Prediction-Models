@@ -1,0 +1,80 @@
+diff --git a/hw/kdrive/ephyr/XF86dri.c b/hw/kdrive/ephyr/XF86dri.c
+index bed65e5..fc35ce2 100644
+--- a/hw/kdrive/ephyr/XF86dri.c
++++ b/hw/kdrive/ephyr/XF86dri.c
+@@ -158,10 +158,8 @@ Bool XF86DRIQueryVersion(dpy, majorVersion, minorVersion, patchVersion)
+     return True;
+ }
+ 
+-Bool XF86DRIQueryDirectRenderingCapable(dpy, screen, isCapable)
+-    Display* dpy;
+-    int screen;
+-    Bool* isCapable;
++Bool
++XF86DRIQueryDirectRenderingCapable (Display *dpy, int screen, Bool *isCapable)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86DRIQueryDirectRenderingCapableReply rep;
+@@ -188,11 +186,10 @@ Bool XF86DRIQueryDirectRenderingCapable(dpy, screen, isCapable)
+     return True;
+ }
+ 
+-Bool XF86DRIOpenConnection(dpy, screen, hSAREA, busIdString)
+-    Display* dpy;
+-    int screen;
+-    drm_handle_t * hSAREA;
+-    char **busIdString;
++Bool
++XF86DRIOpenConnection (Display *dpy, int screen,
++                       drm_handle_t *hSAREA,
++                       char **busIdString)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86DRIOpenConnectionReply rep;
+@@ -546,16 +543,10 @@ Bool XF86DRIGetDrawableInfo(Display* dpy, int screen, Drawable drawable,
+     return True;
+ }
+ 
+-Bool XF86DRIGetDeviceInfo(dpy, screen, hFrameBuffer, 
+-	fbOrigin, fbSize, fbStride, devPrivateSize, pDevPrivate)
+-    Display* dpy;
+-    int screen;
+-    drm_handle_t * hFrameBuffer;
+-    int* fbOrigin;
+-    int* fbSize;
+-    int* fbStride;
+-    int* devPrivateSize;
+-    void** pDevPrivate;
++Bool
++XF86DRIGetDeviceInfo (Display *dpy, int screen, drm_handle_t *hFrameBuffer,
++                      int *fbOrigin, int *fbSize, int *fbStride,
++                      int *devPrivateSize, void **pDevPrivate)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86DRIGetDeviceInfoReply rep;
+@@ -606,10 +597,8 @@ Bool XF86DRIGetDeviceInfo(dpy, screen, hFrameBuffer,
+     return True;
+ }
+ 
+-Bool XF86DRIOpenFullScreen(dpy, screen, drawable)
+-    Display* dpy;
+-    int screen;
+-    Drawable drawable;
++Bool
++XF86DRIOpenFullScreen(Display *dpy, int screen, Drawable drawable)
+ {
+     /* This function and the underlying X protocol are deprecated.
+      */
+@@ -619,10 +608,8 @@ Bool XF86DRIOpenFullScreen(dpy, screen, drawable)
+     return False;
+ }
+ 
+-Bool XF86DRICloseFullScreen(dpy, screen, drawable)
+-    Display* dpy;
+-    int screen;
+-    Drawable drawable;
++Bool
++XF86DRICloseFullScreen(Display *dpy, int screen, Drawable drawable)
+ {
+     /* This function and the underlying X protocol are deprecated.
+      */

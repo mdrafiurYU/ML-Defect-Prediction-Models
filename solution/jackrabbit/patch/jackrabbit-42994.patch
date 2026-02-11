@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
+index 4f4ea6d..d4028b3 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
+@@ -562,11 +562,13 @@ public class SessionImporter implements Importer, SessionListener {
+      * @param propertyInfo
+      * @param targetType
+      * @param isMultiple
+-     * @param nsResolver
++     * @param resolver The name/path resolver used to build <code>QValue</code>s.
+      * @return
+      * @throws RepositoryException
+      */
+-    private QValue[] getPropertyValues(PropInfo propertyInfo, int targetType, boolean isMultiple, NamePathResolver resolver) throws RepositoryException {
++    private QValue[] getPropertyValues(PropInfo propertyInfo, int targetType,
++                                       boolean isMultiple, NamePathResolver resolver)
++            throws RepositoryException {
+         TextValue[] tva = propertyInfo.getValues();
+         // check multi-valued characteristic
+         if ((tva.length == 0 || tva.length > 1) && !isMultiple) {
+@@ -584,7 +586,7 @@ public class SessionImporter implements Importer, SessionListener {
+      *
+      * @param tv
+      * @param targetType
+-     * @param nsResolver
++     * @param resolver The name/path resolver used to build a <code>QValue</code>.
+      * @return
+      * @throws RepositoryException
+      */

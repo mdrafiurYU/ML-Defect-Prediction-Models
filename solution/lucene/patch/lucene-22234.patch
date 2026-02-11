@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java b/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java
+index e5ec6fa..4df9f1f 100644
+--- a/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java
++++ b/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java
+@@ -107,6 +107,7 @@ public class TestMockAnalyzer extends BaseTokenStreamTestCase {
+       // consume
+     }
+     stream.end();
++    stream.close();
+     
+     assertAnalyzesToReuse(analyzer, testString, new String[] { "t" });
+   }

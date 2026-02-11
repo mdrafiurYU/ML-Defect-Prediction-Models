@@ -1,0 +1,81 @@
+diff --git a/fb/fbmmx.c b/fb/fbmmx.c
+index 7fb4b15..6a593ff 100644
+--- a/fb/fbmmx.c
++++ b/fb/fbmmx.c
+@@ -74,29 +74,23 @@ typedef __m64 mmxdatafield;
+ #endif
+ 
+ Bool
+-fbSolidFillmmx (DrawablePtr	pDraw,
++fbFillmmx (FbBits *bits,
++	   FbStride stride,
++	   int bpp,
+ 		int		x,
+ 		int		y,
+ 		int		width,
+ 		int		height,
+ 		FbBits		xor)
+ { 
+-    FbStride	stride;
+-    int		bpp;
+     ullong	fill;
+     __m64	vfill;
+     CARD32	byte_width;
+     CARD8	*byte_line;
+-    FbBits      *bits;
+-    int		xoff, yoff;
+ #ifdef __GNUC__
+     __m64	v1, v2, v3, v4, v5, v6, v7;
+ #endif
+     
+-    CHECKPOINT();
+-    
+-    fbGetDrawable(pDraw, bits, stride, bpp, xoff, yoff);
+-    
+     if (bpp == 16 && (xor >> 16 != (xor & 0xffff)))
+ 	return FALSE;
+     
+@@ -106,14 +100,14 @@ fbSolidFillmmx (DrawablePtr	pDraw,
+     if (bpp == 16)
+     {
+ 	stride = stride * sizeof (FbBits) / 2;
+-	byte_line = (CARD8 *)(((CARD16 *)bits) + stride * (y + yoff) + (x + xoff));
++	byte_line = (CARD8 *)(((CARD16 *)bits) + stride * y + x);
+ 	byte_width = 2 * width;
+ 	stride *= 2;
+     }
+     else
+     {
+ 	stride = stride * sizeof (FbBits) / 4;
+-	byte_line = (CARD8 *)(((CARD32 *)bits) + stride * (y + yoff) + (x + xoff));
++	byte_line = (CARD8 *)(((CARD32 *)bits) + stride * y + x);
+ 	byte_width = 4 * width;
+ 	stride *= 4;
+     }
+@@ -208,6 +202,26 @@ fbSolidFillmmx (DrawablePtr	pDraw,
+ }
+ 
+ Bool
++fbSolidFillmmx (DrawablePtr	pDraw,
++		int		x,
++		int		y,
++		int		width,
++		int		height,
++		FbBits		xor)
++{ 
++    FbStride	stride;
++    int		bpp;
++    FbBits      *bits;
++    int		xoff, yoff;
++    
++    CHECKPOINT();
++    
++    fbGetDrawable(pDraw, bits, stride, bpp, xoff, yoff);
++
++    return fbFillmmx (bits, stride, bpp, x + xoff, y + yoff, width, height, xor);
++}
++
++Bool
+ fbBltmmx (FbBits *src_bits,
+ 	  FbBits *dst_bits,
+ 	  FbStride src_stride,

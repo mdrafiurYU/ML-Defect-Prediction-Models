@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index a68524f..2a9035b 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -6454,12 +6454,12 @@ protected void consumeStatementLabel() {
+ 	// LabeledStatementNoShortIf ::= 'Identifier' ':' StatementNoShortIf
+ 
+ 	//optimize push/pop
+-	Statement stmt = (Statement) this.astStack[this.astPtr];
++	Statement statement = (Statement) this.astStack[this.astPtr];
+ 	this.astStack[this.astPtr] = 
+ 		new LabeledStatement(
+ 			this.identifierStack[this.identifierPtr], 
+-			stmt, 
+-			(int) (this.identifierPositionStack[this.identifierPtr--] >>> 32), 
++			statement, 
++			this.identifierPositionStack[this.identifierPtr--], 
+ 			this.endStatementPosition); 
+ 	this.identifierLengthPtr--;
+ }

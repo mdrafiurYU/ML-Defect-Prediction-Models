@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/response/XMLWriter.java b/solr/src/java/org/apache/solr/response/XMLWriter.java
+index 7c77fde..6a4fc0e 100644
+--- a/solr/src/java/org/apache/solr/response/XMLWriter.java
++++ b/solr/src/java/org/apache/solr/response/XMLWriter.java
+@@ -635,7 +635,7 @@ final public class XMLWriter {
+    * @param name
+    * @param map
+    * @throws IOException
+-   * @see http://lucene.apache.org/solr/api/org/apache/solr/response/SolrQueryResponse.html#returnable_data
++   * @see SolrQueryResponse Note on Returnable Data
+    */
+   public void writeMap(String name, Map<Object,Object> map) throws IOException {
+     int sz = map.size();

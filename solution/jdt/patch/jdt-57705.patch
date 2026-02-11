@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
+index fcaf373..33c59d5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CaseStatement.java
+@@ -118,7 +118,7 @@ public class CaseStatement extends Statement {
+ 					} else 	if (reference instanceof QualifiedNameReference) {
+ 						 scope.problemReporter().cannotUseQualifiedEnumConstantInCaseLabel(reference, field);
+ 					}
+-					return Constant.fromValue(field.original().id); // ordinal value
++					return IntConstant.fromValue(field.original().id); // ordinal value
+ 				}
+ 			} else {
+ 				return constantExpression.constant;

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/TaskSequence.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/TaskSequence.java
+index 2d12003..6e3b687 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/TaskSequence.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/TaskSequence.java
+@@ -418,7 +418,7 @@ public class TaskSequence extends PerfTask {
+   @Override
+   public String toString() {
+     String padd = getPadding();
+-    StringBuffer sb = new StringBuffer(super.toString());
++    StringBuilder sb = new StringBuilder(super.toString());
+     sb.append(parallel ? " [" : " {");
+     sb.append(NEW_LINE);
+     for (final PerfTask task : tasks) {

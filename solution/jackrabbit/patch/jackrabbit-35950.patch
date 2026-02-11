@@ -1,0 +1,15 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/auto/AllTests.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/auto/AllTests.java
+index e4cc0fc..da6e8e1 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/auto/AllTests.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/auto/AllTests.java
+@@ -36,8 +36,8 @@ public class AllTests {
+     public static Test buildSuite() {
+         TestSuite suite= new TestSuite("Test for org.apache.jackrabbit.ocm.manager.auto");
+         //$JUnit-BEGIN$
+-        suite.addTestSuite(ObjectContentManagerAutoTest.class);
+-
++        suite.addTestSuite(DigesterAutoTest.class);
++        suite.addTestSuite(AnnotationAutoTest.class);
+         //$JUnit-END$
+ 
+         return suite;

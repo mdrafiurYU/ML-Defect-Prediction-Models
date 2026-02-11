@@ -1,0 +1,13 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index aa191a8..75d5c0d 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -557,7 +557,7 @@ exaDriverInit (ScreenPtr		pScreen,
+ 
+     pScreen->devPrivates[exaScreenPrivateIndex].ptr = (pointer) pExaScr;
+ 
+-    pExaScr->migration = ExaMigrationGreedy;
++    pExaScr->migration = ExaMigrationSmart;
+ 
+     exaDDXDriverInit(pScreen);
+ 

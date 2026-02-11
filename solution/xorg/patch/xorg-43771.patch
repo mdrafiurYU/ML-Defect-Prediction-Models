@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.c b/hw/xfree86/ddc/xf86DDC.c
+index e3f40ec..dba14d5 100644
+--- a/hw/xfree86/ddc/xf86DDC.c
++++ b/hw/xfree86/ddc/xf86DDC.c
+@@ -138,8 +138,13 @@ DDC2Init(int scrnIndex, I2CBusPtr pBus)
+      */
+     pBus->RiseFallTime = 20;
+  
+-    DDC2MakeDevice(pBus, 0x0060, "E-EDID segment register");
+     dev = DDC2MakeDevice(pBus, 0x00A0, "ddc2");
++    if (xf86I2CProbeAddress(pBus, 0x0060))
++	DDC2MakeDevice(pBus, 0x0060, "E-EDID segment register");
++    if (xf86I2CProbeAddress(pBus, 0x0062))
++	DDC2MakeDevice(pBus, 0x0062, "EDID EEPROM interface");
++    if (xf86I2CProbeAddress(pBus, 0x006E))
++	DDC2MakeDevice(pBus, 0x006E, "DDC control interface");
+ 
+     return dev;
+ }

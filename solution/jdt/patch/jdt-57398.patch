@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/core/formatter/CodeFormatterApplication.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/core/formatter/CodeFormatterApplication.java
+index 10909f7..51dd985 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/core/formatter/CodeFormatterApplication.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/core/formatter/CodeFormatterApplication.java
+@@ -305,7 +305,7 @@ public class CodeFormatterApplication implements IPlatformRunnable {
+ 			}			
+ 		}
+ 
+-		if (mode == CONFIG_MODE) {
++		if (mode == CONFIG_MODE || this.options == null) {
+ 			displayHelp(Messages.bind(Messages.CommandLineErrorNoConfigFile));
+ 			return null;			
+ 		}

@@ -1,0 +1,17 @@
+diff --git a/render/picture.c b/render/picture.c
+index b7874bb..9def47b 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -43,8 +43,10 @@
+ #include "xace.h"
+ #include "registry.h"
+ 
+-_X_EXPORT DevPrivateKey PictureScreenPrivateKey = &PictureScreenPrivateKey;
+-DevPrivateKey	PictureWindowPrivateKey = &PictureWindowPrivateKey;
++static int PictureScreenPrivateKeyIndex;
++_X_EXPORT DevPrivateKey PictureScreenPrivateKey = &PictureScreenPrivateKeyIndex;
++static int PictureWindowPrivateKeyIndex;
++DevPrivateKey	PictureWindowPrivateKey = &PictureWindowPrivateKeyIndex;
+ static int	PictureGeneration;
+ RESTYPE		PictureType;
+ RESTYPE		PictFormatType;

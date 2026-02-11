@@ -1,0 +1,38 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocBugsCompletionModelTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocBugsCompletionModelTest.java
+index f26d94a..c4719b7 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocBugsCompletionModelTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocBugsCompletionModelTest.java
+@@ -27,7 +27,7 @@ public JavadocBugsCompletionModelTest(String name) {
+ 
+ static {
+ //	TESTS_NAMES = new String[] { "testBug22043a" };
+-//	TESTS_NUMBERS = new int[] { 118397 };
++//	TESTS_NUMBERS = new int[] { 118092 };
+ }
+ public static Test suite() {
+ 	return buildTestSuite(JavadocBugsCompletionModelTest.class);
+@@ -678,6 +678,24 @@ public void testBug118105() throws JavaModelException {
+ }
+ 
+ /**
++ * Bug 118092: [javadoc][assist] Eclipse hangs on code assist when writing ¸<c
++ * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=118092"
++ */
++public void testBug118092() throws JavaModelException {
++	String source =
++		"package bugs.b118092;\n" + 
++		"public class BasicTestBugs {\n" + 
++		"   /**\n" + 
++		"    * ¸<c\n" + 
++		"    */\n" + 
++		"   public void method() {}\n" + 
++		"}\n";
++	completeInJavadoc("/Completion/src/bugs/b118092/BasicTestBugs.java", source, true, "<c");
++	// expect no result, just not hang...
++	assertSortedResults("");
++}
++
++/**
+  * Bug 118311: [javadoc][assist] type \@ in javadoc comment and code assist == hang
+  * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=118311"
+  */

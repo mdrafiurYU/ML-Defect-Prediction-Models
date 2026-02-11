@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/GroupAdministratorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/GroupAdministratorTest.java
+index 4bbd1c1..e317e06 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/GroupAdministratorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/GroupAdministratorTest.java
+@@ -75,7 +75,7 @@ public class GroupAdministratorTest extends AbstractUserTest {
+         grID = groupAdmin.getID();
+ 
+         // create a session for the grou-admin user.
+-        uSession = helper.getRepository().login(creds);
++        uSession = getHelper().getRepository().login(creds);
+     }
+ 
+     protected void tearDown() throws Exception {

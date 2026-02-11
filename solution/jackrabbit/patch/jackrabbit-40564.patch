@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/PathQueryNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/PathQueryNode.java
+index cc654e0..55884da 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/PathQueryNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/PathQueryNode.java
+@@ -172,8 +172,9 @@ public class PathQueryNode extends NAryQueryNode {
+         }
+ 
+         // First path step starts with "//"
+-        if (firstWorkspaceRelativeStep.getIncludeDescendants())
++        if (firstWorkspaceRelativeStep.getIncludeDescendants()) {
+             return true;
++        }
+ 
+         // If the first workspace relative location step is jcr:system we need
+         // to include the system tree

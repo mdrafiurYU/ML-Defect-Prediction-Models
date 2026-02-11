@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java
+index e3d6377..6ca9875 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/MethodBinding.java
+@@ -283,7 +283,14 @@ class MethodBinding implements IMethodBinding {
+ 		return this.binding.isDeprecated();
+ 	}
+ 
+-	/**
++	/*
++	 * @see IMethodBinding#isOverriding()
++	 */
++	public boolean isOverriding() {
++		return this.binding.isOverriding() || this.binding.isImplementing();
++	}
++	
++	/*
+ 	 * @see IBinding#isSynthetic()
+ 	 */
+ 	public boolean isSynthetic() {

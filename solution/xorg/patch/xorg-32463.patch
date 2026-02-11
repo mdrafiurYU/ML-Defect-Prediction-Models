@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 0a48d5b..bb416fd 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1417,9 +1417,8 @@ xf86ProbeOutputModes (ScrnInfoPtr scrn, int maxX, int maxY)
+ 			output->probed_modes = mode;
+ 		    }
+ 		    mode->type |= (M_T_PREFERRED|M_T_USERPREF);
++		    break;
+ 		}
+-		else
+-		    mode->type &= ~M_T_PREFERRED;
+ 	    }
+ 	}
+ 	

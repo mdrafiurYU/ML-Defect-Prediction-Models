@@ -1,0 +1,14 @@
+diff --git a/dix/window.c b/dix/window.c
+index 1a598fa..b6bbdd4 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -2744,7 +2744,8 @@ MapWindow(WindowPtr pWin, ClientPtr client)
+ 	return(Success);
+ 
+     /*  general check for permission to map window */
+-    if (XaceHook(XACE_MAP_ACCESS, client, pWin) != Success)
++    if (XaceHook(XACE_RESOURCE_ACCESS, client, pWin->drawable.id, RT_WINDOW,
++		 DixShowAccess, pWin) != Success)
+ 	 return Success;
+ 
+     pScreen = pWin->drawable.pScreen;

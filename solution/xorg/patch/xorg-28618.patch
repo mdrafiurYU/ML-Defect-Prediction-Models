@@ -1,0 +1,17 @@
+diff --git a/xkb/ddxLEDs.c b/xkb/ddxLEDs.c
+index fd01958..22899d7 100644
+--- a/xkb/ddxLEDs.c
++++ b/xkb/ddxLEDs.c
+@@ -37,10 +37,10 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "inputstr.h"
+ #include "scrnintstr.h"
+ #include "windowstr.h"
+-#include <X11/extensions/XKBsrv.h>
++#include <xkbsrv.h>
+ #include <X11/extensions/XI.h>
+ 
+-void
++static void
+ XkbDDXUpdateIndicators(DeviceIntPtr dev,CARD32 new)
+ {
+     dev->kbdfeed->ctrl.leds= new;

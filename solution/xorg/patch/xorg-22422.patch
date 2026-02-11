@@ -1,0 +1,14 @@
+diff --git a/include/extnsionst.h b/include/extnsionst.h
+index 35aa97e..e28732f 100644
+--- a/include/extnsionst.h
++++ b/include/extnsionst.h
+@@ -72,9 +72,6 @@ typedef struct _ExtensionEntry {
+     unsigned short (* MinorOpcode)(	/* called for errors */
+ 	ClientPtr /* client */);
+     DevUnion *devPrivates;
+-#ifdef XACE
+-    pointer securityState[4];		/* 4 slots for use */
+-#endif
+ } ExtensionEntry;
+ 
+ /* 

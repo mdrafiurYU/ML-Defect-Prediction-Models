@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_bell.c b/hw/xfree86/os-support/bsd/bsd_bell.c
+index 0d24201..55eb752 100644
+--- a/hw/xfree86/os-support/bsd/bsd_bell.c
++++ b/hw/xfree86/os-support/bsd/bsd_bell.c
+@@ -41,7 +41,7 @@
+ #define KBD_FD(i) ((i).kbdFd != -1 ? (i).kbdFd : (i).consoleFd)
+ #endif
+ 
+-_X_EXPORT void
++void
+ xf86OSRingBell(int loudness, int pitch, int duration)
+ {
+ #ifdef WSCONS_SUPPORT

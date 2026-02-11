@@ -1,0 +1,13 @@
+diff --git a/include/cursor.h b/include/cursor.h
+index 93e264d..f86d94c 100644
+--- a/include/cursor.h
++++ b/include/cursor.h
+@@ -65,8 +65,6 @@ typedef struct _Cursor *CursorPtr;
+ typedef struct _CursorMetric *CursorMetricPtr;
+ 
+ extern CursorPtr rootCursor;
+-extern int cursorScreenDevPriv[MAXSCREENS];
+-#define CursorScreenKey(pScreen) (cursorScreenDevPriv + (pScreen)->myNum)
+ 
+ extern int FreeCursor(
+     pointer /*pCurs*/,

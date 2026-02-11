@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/ASTRewriteAnalyzer.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/ASTRewriteAnalyzer.java
+index f2a9cd6..2c7d1d8 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/ASTRewriteAnalyzer.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/ASTRewriteAnalyzer.java
+@@ -3009,7 +3009,7 @@ public final class ASTRewriteAnalyzer extends ASTVisitor {
+ 				handleException(e);
+ 			}
+ 		} else {
+-			pos= doVisit(node, EnumConstantDeclaration.ARGUMENTS_PROPERTY, 0);
++			pos= doVisit(node, EnumConstantDeclaration.ARGUMENTS_PROPERTY, pos);
+ 		}
+ 		
+ 		if (isChanged(node, EnumConstantDeclaration.ANONYMOUS_CLASS_DECLARATION_PROPERTY)) {

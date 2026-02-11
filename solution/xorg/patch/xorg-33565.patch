@@ -1,0 +1,31 @@
+diff --git a/Xext/xacestr.h b/Xext/xacestr.h
+index c98be3d..15d39b7 100644
+--- a/Xext/xacestr.h
++++ b/Xext/xacestr.h
+@@ -70,12 +70,24 @@ typedef struct {
+     int status;
+ } XaceDrawableAccessRec;
+ 
+-/* XACE_MAP_ACCESS */
++/* XACE_SEND_ACCESS */
++typedef struct {
++    ClientPtr client;
++    DeviceIntPtr dev;
++    WindowPtr pWin;
++    xEventPtr events;
++    int count;
++    int status;
++} XaceSendAccessRec;
++
++/* XACE_RECEIVE_ACCESS */
+ typedef struct {
+     ClientPtr client;
+     WindowPtr pWin;
++    xEventPtr events;
++    int count;
+     int status;
+-} XaceMapAccessRec;
++} XaceReceiveAccessRec;
+ 
+ /* XACE_CLIENT_ACCESS */
+ typedef struct {

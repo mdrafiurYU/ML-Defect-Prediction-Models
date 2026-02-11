@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+index 77f9dc4..d50d8fe 100644
+--- a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
++++ b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+@@ -82,4 +82,9 @@ public final class SlowMultiReaderWrapper extends FilterIndexReader {
+   public void doClose() throws IOException {
+     throw new UnsupportedOperationException("please call close on the original reader instead");
+   }
++
++  @Override
++  public IndexReader[] getSequentialSubReaders() {
++    return null;
++  } 
+ }

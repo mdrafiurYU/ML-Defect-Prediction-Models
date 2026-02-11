@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/servlet/NoCacheHeaderTest.java b/solr/src/test/org/apache/solr/servlet/NoCacheHeaderTest.java
+index e1d5bc6..ee360bf 100644
+--- a/solr/src/test/org/apache/solr/servlet/NoCacheHeaderTest.java
++++ b/solr/src/test/org/apache/solr/servlet/NoCacheHeaderTest.java
+@@ -31,7 +31,7 @@ import org.junit.Test;
+ public class NoCacheHeaderTest extends CacheHeaderTestBase {
+   @BeforeClass
+   public static void beforeTest() throws Exception {
+-    createJetty(TEST_HOME, "solr/conf/solrconfig-nocache.xml", null);
++    createJetty(TEST_HOME(), "solr/conf/solrconfig-nocache.xml", null);
+   }
+ 
+   // The tests

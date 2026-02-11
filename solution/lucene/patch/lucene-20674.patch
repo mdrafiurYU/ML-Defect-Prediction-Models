@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/nodes/QueryNodeImpl.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/nodes/QueryNodeImpl.java
+index 745d8f1..dcc4811 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/nodes/QueryNodeImpl.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/nodes/QueryNodeImpl.java
+@@ -160,7 +160,7 @@ public abstract class QueryNodeImpl implements QueryNode, Cloneable {
+ 
+   /** verify if a node contains a tag */
+   public boolean containsTag(String tagName) {
+-    return this.tags.containsKey(tagName);
++    return this.tags.containsKey(tagName.toLowerCase());
+   }
+ 
+   public Object getTag(String tagName) {

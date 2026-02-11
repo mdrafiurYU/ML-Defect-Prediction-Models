@@ -1,0 +1,15 @@
+diff --git a/mfb/mfbfillsp.c b/mfb/mfbfillsp.c
+index 6c3a2b5..f75ccb1 100644
+--- a/mfb/mfbfillsp.c
++++ b/mfb/mfbfillsp.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ 
+ ******************************************************************/
+ /* $Xorg: mfbfillsp.c,v 1.4 2001/02/09 02:05:18 xorgcvs Exp $ */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xmd.h>
+ #include "gcstruct.h"

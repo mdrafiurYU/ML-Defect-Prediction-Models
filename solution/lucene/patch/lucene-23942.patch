@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/automaton/TestSpecialOperations.java b/lucene/src/test/org/apache/lucene/util/automaton/TestSpecialOperations.java
+index a7d4e66..056e172 100644
+--- a/lucene/src/test/org/apache/lucene/util/automaton/TestSpecialOperations.java
++++ b/lucene/src/test/org/apache/lucene/util/automaton/TestSpecialOperations.java
+@@ -24,7 +24,7 @@ public class TestSpecialOperations extends LuceneTestCase {
+    * tests against the original brics implementation.
+    */
+   public void testIsFinite() {
+-    int num = 2000 * RANDOM_MULTIPLIER;
++    int num = atLeast(200);
+     for (int i = 0; i < num; i++) {
+       Automaton a = AutomatonTestUtil.randomAutomaton(random);
+       Automaton b = a.clone();

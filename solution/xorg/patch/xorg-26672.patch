@@ -1,0 +1,21 @@
+diff --git a/dix/events.c b/dix/events.c
+index f438b07..5ab0764 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4589,6 +4589,8 @@ CheckCursorConfinement(WindowPtr pWin)
+ 
+     for (pDev = inputInfo.devices; pDev; pDev = pDev->next)
+     {
++        if (MPHasCursor(pDev))
++        {
+         grab = pDev->grab;
+         if (grab && (confineTo = grab->confineTo))
+         {
+@@ -4599,6 +4601,7 @@ CheckCursorConfinement(WindowPtr pWin)
+         }
+     }
+ }
++}
+ 
+ Mask
+ EventMaskForClient(WindowPtr pWin, ClientPtr client)

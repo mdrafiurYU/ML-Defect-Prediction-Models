@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java
+index ab5d1c6..aad0177 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java
+@@ -338,7 +338,7 @@ public class BaseProcessorEnv implements AnnotationProcessorEnvironment
+     // does not generated dependencies
+     public TypeDeclaration getTypeDeclaration(String name)
+     {	
+-    	if( name == null ) return null;
++    	if( name == null || name.length() == 0 ) return null;
+ 		// get rid of the generics parts.
+ 		final int index = name.indexOf('<');
+ 		if( index != -1 )

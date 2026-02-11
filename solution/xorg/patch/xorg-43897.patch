@@ -1,0 +1,14 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 0a81165..a3e11f7 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -1085,7 +1085,8 @@ PostSyntheticMotion(DeviceIntPtr pDev,
+     init_event(pDev, &ev, time);
+     ev.root_x = x;
+     ev.root_y = y;
+-    ev.type = time;
++    ev.type = ET_Motion;
++    ev.time = time;
+ 
+     /* FIXME: MD/SD considerations? */
+     (*pDev->public.processInputProc)((InternalEvent*)&ev, pDev);

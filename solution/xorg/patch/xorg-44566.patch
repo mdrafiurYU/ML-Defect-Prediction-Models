@@ -1,0 +1,26 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index b828010..1f77729 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -1069,21 +1069,6 @@ IResetProc(ExtensionEntry * unused)
+     RestoreExtensionEvents();
+ }
+ 
+-/*****************************************************************
+- *
+- * Returns TRUE if the device has some sort of pointer type.
+- *
+- */
+-
+-Bool
+-DeviceIsPointerType(DeviceIntPtr dev)
+-{
+-    if (dev_type[1].type == dev->type)
+-        return TRUE;
+-
+-    return FALSE;
+-}
+-
+ 
+ /***********************************************************************
+  *

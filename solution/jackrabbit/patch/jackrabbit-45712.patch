@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
+index 73e4657..46a8b4d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
+@@ -42,6 +42,8 @@ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
+ import javax.jcr.Value;
+ import javax.jcr.ValueFactory;
++import javax.jcr.PropertyType;
++import javax.jcr.ValueFormatException;
+ import java.security.Principal;
+ 
+ /**
+@@ -301,11 +303,12 @@ public class ACLEditor extends SecurityItemModifier implements AccessControlEdit
+      * @param privileges
+      * @param valueFactory
+      * @return an array of Value.
++     * @throws javax.jcr.ValueFormatException
+      */
+-    private static Value[] getPrivilegeNames(Privilege[] privileges, ValueFactory valueFactory) {
++    private static Value[] getPrivilegeNames(Privilege[] privileges, ValueFactory valueFactory) throws ValueFormatException {
+         Value[] names = new Value[privileges.length];
+         for (int i = 0; i < privileges.length; i++) {
+-            names[i] = valueFactory.createValue(privileges[i].getName());
++            names[i] = valueFactory.createValue(privileges[i].getName(), PropertyType.NAME);
+         }
+         return names;
+     }

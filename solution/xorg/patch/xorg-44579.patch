@@ -1,0 +1,13 @@
+diff --git a/Xi/listdev.c b/Xi/listdev.c
+index e7d0a9d..294fec9 100644
+--- a/Xi/listdev.c
++++ b/Xi/listdev.c
+@@ -175,7 +175,7 @@ CopySwapDevice(ClientPtr client, DeviceIntPtr d, int num_classes,
+     dev = (xDeviceInfoPtr) * buf;
+ 
+     dev->id = d->id;
+-    dev->type = d->type;
++    dev->type = d->xinput_type;
+     dev->num_classes = num_classes;
+     if (d->isMaster && IsKeyboardDevice(d))
+ 	dev->use = IsXKeyboard;

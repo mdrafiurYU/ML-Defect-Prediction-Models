@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
+index e737379..451bd81 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/ProcessorEnvImpl.java
+@@ -990,6 +990,11 @@ public class ProcessorEnvImpl extends BaseProcessorEnv implements EclipseAnnotat
+         CompilationUnit resultUnit = (CompilationUnit)parser.createAST(null);
+         return resultUnit;
+ 	}
++	
++	// Implementation for EclipseAnnotationProcessorEnvironment
++	public CompilationUnit getAbridgedASTWithBindings() {
++		return _astRoot;
++	}
+ 
+ 	public void addTypeDependency(final String fullyQualifiedTypeName )
+ 	{

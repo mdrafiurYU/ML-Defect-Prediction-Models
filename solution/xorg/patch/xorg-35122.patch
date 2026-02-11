@@ -1,0 +1,28 @@
+diff --git a/include/registry.h b/include/registry.h
+index edd6ef9..29e5fdf 100644
+--- a/include/registry.h
++++ b/include/registry.h
+@@ -12,6 +12,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #ifndef DIX_REGISTRY_H
+ #define DIX_REGISTRY_H
+ 
++/*
++ * Result returned from any unsuccessful lookup
++ */
++#define XREGISTRY_UNKNOWN "<unknown>"
++
+ #ifdef XREGISTRY
+ 
+ #include "resource.h"
+@@ -36,11 +41,6 @@ const char *LookupErrorName(int error);
+ const char *LookupResourceName(RESTYPE rtype);
+ 
+ /*
+- * Result returned from any unsuccessful lookup
+- */
+-#define XREGISTRY_UNKNOWN "<unknown>"
+-
+-/*
+  * Setup and teardown
+  */
+ void dixResetRegistry(void);

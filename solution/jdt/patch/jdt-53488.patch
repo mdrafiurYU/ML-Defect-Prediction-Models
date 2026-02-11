@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
+index 4bc41f1..e1b36e3 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/ISourceElementRequestor.java
+@@ -48,6 +48,7 @@ public interface ISourceElementRequestor {
+ 		public char[][] superinterfaces;
+ 		public TypeParameterInfo[] typeParameters;
+ 		public long[] annotationPositions;
++		public char[][] categories;
+ 	}
+ 	
+ 	public static class TypeParameterInfo {
+@@ -74,6 +75,7 @@ public interface ISourceElementRequestor {
+ 		public char[][] exceptionTypes;
+ 		public TypeParameterInfo[] typeParameters;
+ 		public long[] annotationPositions;
++		public char[][] categories;
+ 	}
+ 	
+ 	public static class FieldInfo {
+@@ -84,6 +86,7 @@ public interface ISourceElementRequestor {
+ 		public int nameSourceStart; 
+ 		public int nameSourceEnd;
+ 		public long[] annotationPositions;
++		public char[][] categories;
+ 	}
+ 	
+ 	void acceptConstructorReference(char[] typeName, int argCount, int sourcePosition);

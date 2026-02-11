@@ -1,0 +1,13 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 3581cde..91a43f3 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -1153,7 +1153,7 @@ InitButtonClassDeviceStruct(DeviceIntPtr dev, int numButtons,
+     butc->buttonsDown = 0;
+     butc->state = 0;
+     butc->motionMask = 0;
+-    bzero((char *)butc->down, MAP_LENGTH);
++    bzero((char *)butc->down, sizeof(butc->down));
+ #ifdef XKB
+     butc->xkb_acts=	NULL;
+ #endif

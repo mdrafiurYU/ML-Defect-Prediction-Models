@@ -1,0 +1,28 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TextField.java b/solr/src/java/org/apache/solr/schema/TextField.java
+index ce4876e..7751346 100644
+--- a/solr/src/java/org/apache/solr/schema/TextField.java
++++ b/solr/src/java/org/apache/solr/schema/TextField.java
+@@ -31,9 +31,11 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+ import org.apache.lucene.analysis.CachingTokenFilter;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.Analyzer;
++import org.apache.lucene.util.BytesRef;
+ import org.apache.solr.response.TextResponseWriter;
+ import org.apache.solr.response.XMLWriter;
+ import org.apache.solr.search.QParser;
++import org.apache.solr.util.ByteUtils;
+ 
+ import java.util.Map;
+ import java.util.List;
+@@ -78,6 +80,11 @@ public class TextField extends FieldType {
+     return parseFieldQuery(parser, getQueryAnalyzer(), field.getName(), externalVal);
+   }
+ 
++  @Override
++  public Object toObject(SchemaField sf, BytesRef term) {
++    return ByteUtils.UTF8toUTF16(term);
++  }
++
+ 
+   static Query parseFieldQuery(QParser parser, Analyzer analyzer, String field, String queryText) {
+     int phraseSlop = 0;

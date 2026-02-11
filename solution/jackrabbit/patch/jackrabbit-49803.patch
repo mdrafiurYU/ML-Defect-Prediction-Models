@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/StringConstraint.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/StringConstraint.java
+index 3e3a51e..204bdd2 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/StringConstraint.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/constraint/StringConstraint.java
+@@ -48,7 +48,7 @@ class StringConstraint extends ValueConstraint {
+     }
+ 
+     /**
+-     * @see ValueConstraint#check(QValue)
++     * @see org.apache.jackrabbit.spi.QValueConstraint#check(QValue)
+      */
+     public void check(QValue value) throws ConstraintViolationException, RepositoryException {
+         if (value == null) {

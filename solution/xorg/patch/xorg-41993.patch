@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winshadgdi.c b/hw/xwin/winshadgdi.c
+index 04cc2f7..d38e4f7 100644
+--- a/hw/xwin/winshadgdi.c
++++ b/hw/xwin/winshadgdi.c
+@@ -498,7 +498,7 @@ winShadowUpdateGDI (ScreenPtr pScreen,
+ {
+   winScreenPriv(pScreen);
+   winScreenInfo		*pScreenInfo = pScreenPriv->pScreenInfo;
+-  RegionPtr		damage = &pBuf->damage;
++  RegionPtr		damage = shadowDamage(pBuf);
+   DWORD			dwBox = REGION_NUM_RECTS (damage);
+   BoxPtr		pBox = REGION_RECTS (damage);
+   int			x, y, w, h;

@@ -1,0 +1,19 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+index 5ecf258..58c8288 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+@@ -114,7 +114,6 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+             
+             // Make sure reader can open the index:
+             IndexReader.open(dir, true).close();
+-            _TestUtil.checkIndex(dir);
+           }
+             
+           dir.close();
+@@ -491,7 +490,6 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+     w.addDocument(doc);
+     w.close();
+ 
+-    _TestUtil.checkIndex(dir);
+     dir.close();
+   }

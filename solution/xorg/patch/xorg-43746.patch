@@ -1,0 +1,24 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index ea8c3da..8f83701 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -287,8 +287,11 @@ typedef struct _ExaMigrationRec {
+ } ExaMigrationRec, *ExaMigrationPtr;
+ 
+ typedef struct {
++    PicturePtr pDst;
+     INT16 xSrc;
+     INT16 ySrc;
++    INT16 xMask;
++    INT16 yMask;
+     INT16 xDst;
+     INT16 yDst;
+     INT16 width;
+@@ -519,6 +522,7 @@ exaComposite(CARD8	op,
+ void
+ exaCompositeRects(CARD8	              op,
+ 		  PicturePtr	      Src,
++		  PicturePtr	      pMask,
+ 		  PicturePtr	      pDst,
+ 		  int                 nrect,
+ 		  ExaCompositeRectPtr rects);

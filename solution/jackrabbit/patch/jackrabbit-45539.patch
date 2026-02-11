@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+index e8895c8..972bc04 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+@@ -615,7 +615,8 @@ public class ClusterNode implements Runnable,
+ 
+             try {
+                 ChangeLogRecord clr = new ChangeLogRecord(changes, events,
+-                        record, workspace, update.getTimestamp());
++                        record, workspace, update.getTimestamp(),
++                        update.getUserData());
+                 clr.write();
+                 succeeded = true;
+             } catch (JournalException e) {
+@@ -849,8 +850,8 @@ public class ClusterNode implements Runnable,
+             }
+         }
+         try {
+-            listener.externalUpdate(record.getChanges(),
+-                    record.getEvents(), record.getTimestamp());
++            listener.externalUpdate(record.getChanges(), record.getEvents(),
++                    record.getTimestamp(), record.getUserData());
+         } catch (RepositoryException e) {
+             String msg = "Unable to deliver update events: " + e.getMessage();
+             log.error(msg);

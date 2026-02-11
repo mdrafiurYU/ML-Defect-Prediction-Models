@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+index 7c1b38e..9640580 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+@@ -1137,7 +1137,7 @@ public abstract class Scope
+ 				}
+ 			}
+ 			// when receiverType is abstract then need to find possible matches in interfaces
+-			if (receiverType.isAbstract())
++			if (receiverType.isAbstract() || receiverType.isTypeVariable())
+ 				matchingMethod =
+ 					findDefaultAbstractMethod(receiverType, selector, argumentTypes, invocationSite, classHierarchyStart, matchingMethod, found);
+ 			if (matchingMethod != null) return matchingMethod;

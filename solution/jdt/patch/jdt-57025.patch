@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
+index 435cf17..d23f34f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Expression.java
+@@ -626,8 +626,8 @@ public boolean checkUnsafeCast(Scope scope, TypeBinding castType, TypeBinding ex
+ 	public void generateOptimizedBoolean(
+ 		BlockScope currentScope,
+ 		CodeStream codeStream,
+-		Label trueLabel,
+-		Label falseLabel,
++		BranchLabel trueLabel,
++		BranchLabel falseLabel,
+ 		boolean valueRequired) {
+ 
+ 		// a label valued to nil means: by default we fall through the case...

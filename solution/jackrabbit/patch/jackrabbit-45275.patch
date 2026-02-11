@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 5fb4006..60277d6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -147,7 +147,7 @@ public class SearchIndex extends AbstractQueryHandler {
+     /**
+      * The default value for property {@link #extractorBackLog}.
+      */
+-    public static final int DEFAULT_EXTRACTOR_BACK_LOG = 100;
++    public static final int DEFAULT_EXTRACTOR_BACK_LOG = Integer.MAX_VALUE;
+ 
+     /**
+      * The default timeout in milliseconds which is granted to the text

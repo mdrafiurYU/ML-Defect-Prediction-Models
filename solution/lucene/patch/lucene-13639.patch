@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableFloatField.java b/solr/src/java/org/apache/solr/schema/SortableFloatField.java
+index dda2197..0737aa6 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableFloatField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableFloatField.java
+@@ -31,7 +31,6 @@ import org.apache.lucene.index.IndexReader;
+ import org.apache.solr.util.ByteUtils;
+ import org.apache.solr.util.NumberUtils;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ 
+ import java.util.Map;
+ import java.io.IOException;
+@@ -72,11 +71,6 @@ public class SortableFloatField extends FieldType {
+     // TODO: this could be more efficient, but the sortable types should be deprecated instead
+     out.write( indexedToReadable(ByteUtils.UTF8toUTF16(input)) );
+   }
+-  
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    String sval = f.stringValue();
+-    xmlWriter.writeFloat(name, NumberUtils.SortableStr2float(sval));
+-  }
+ 
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     String sval = f.stringValue();

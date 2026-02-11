@@ -1,0 +1,13 @@
+diff --git a/Xi/grabdevb.c b/Xi/grabdevb.c
+index 4333550..d79a36c 100644
+--- a/Xi/grabdevb.c
++++ b/Xi/grabdevb.c
+@@ -140,7 +140,7 @@ ProcXGrabDeviceButton(ClientPtr client)
+ 	    return Success;
+ 	}
+     } else
+-	mdev = (DeviceIntPtr) LookupKeyboardDevice();
++	mdev = PickKeyboard(client);
+ 
+     class = (XEventClass *) (&stuff[1]);	/* first word of values */
+ 

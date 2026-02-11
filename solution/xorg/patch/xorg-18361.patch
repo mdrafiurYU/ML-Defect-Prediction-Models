@@ -1,0 +1,15 @@
+diff --git a/xkb/ddxBeep.c b/xkb/ddxBeep.c
+index 6eee7e0..665f0e5 100644
+--- a/xkb/ddxBeep.c
++++ b/xkb/ddxBeep.c
+@@ -34,8 +34,8 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "inputstr.h"
+ #include "scrnintstr.h"
+ #include "windowstr.h"
+-#include "XKBsrv.h"
+-#include "XI.h"
++#include <X11/extensions/XKBsrv.h>
++#include <X11/extensions/XI.h>
+ 
+ #if (defined(__osf__) && defined(__alpha))
+ #include <sys/sysinfo.h>

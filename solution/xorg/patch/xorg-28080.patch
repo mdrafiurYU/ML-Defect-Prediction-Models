@@ -1,0 +1,13 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index 1f7462f..db506f4 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -490,7 +490,7 @@ RRCrtcInit (void)
+ int
+ ProcRRGetCrtcInfo (ClientPtr client)
+ {
+-    REQUEST(xRRGetCrtcInfoReq);;
++    REQUEST(xRRGetCrtcInfoReq);
+     xRRGetCrtcInfoReply	rep;
+     RRCrtcPtr			crtc;
+     CARD8			*extra;

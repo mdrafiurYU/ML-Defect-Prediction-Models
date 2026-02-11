@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/core/StandardDirectoryFactory.java b/solr/src/java/org/apache/solr/core/StandardDirectoryFactory.java
+index 69996b7..0dfd144 100644
+--- a/solr/src/java/org/apache/solr/core/StandardDirectoryFactory.java
++++ b/solr/src/java/org/apache/solr/core/StandardDirectoryFactory.java
+@@ -28,6 +28,7 @@ import org.apache.lucene.store.FSDirectory;
+  */
+ public class StandardDirectoryFactory extends DirectoryFactory {
+ 
++  @Override
+   public Directory open(String path) throws IOException {
+     return FSDirectory.open(new File(path));
+   }

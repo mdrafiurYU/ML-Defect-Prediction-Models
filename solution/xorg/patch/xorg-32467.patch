@@ -1,0 +1,13 @@
+diff --git a/include/os.h b/include/os.h
+index d915267..597ecd7 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -517,7 +517,7 @@ __attribute((noreturn))
+ #ifdef DEBUG
+ #define DebugF ErrorF
+ #else
+-#define DebugF(x, ...) /* */
++#define DebugF(...) /* */
+ #endif
+ 
+ extern void VErrorF(const char *f, va_list args);

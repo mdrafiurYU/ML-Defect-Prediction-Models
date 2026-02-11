@@ -1,0 +1,57 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 792c3d6..5ac983d 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -107,7 +107,8 @@ struct _rrProperty {
+ 
+ struct _rrTransform {
+     PictTransform   transform;
+-    PictTransform   inverse;
++    struct pict_f_transform f_transform;
++    struct pict_f_transform f_inverse;
+     PictFilterPtr   filter;
+     xFixed	    *params;
+     int		    nparams;
+@@ -134,7 +135,8 @@ struct _rrCrtc {
+     RRTransformRec  client_pending_transform;
+     RRTransformRec  client_current_transform;
+     PictTransform   transform;
+-    PictTransform   inverse;
++    struct pict_f_transform f_transform;
++    struct pict_f_transform f_inverse;
+ };
+ 
+ struct _rrOutput {
+@@ -616,14 +618,16 @@ RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
+  * Return TRUE if the resulting transform is not a simple translation.
+  */
+ Bool
+-RRComputeTransform (RRModePtr		mode,
+-		    Rotation		rotation,
+-		    int			x,
++RRComputeTransform (int			    x,
+ 		    int			y,
+-		    PictTransformPtr	client_transform,
+-		    PictTransformPtr	client_inverse,
++		    int			    width,
++		    int			    height,
++		    Rotation		    rotation,
++		    RRTransformPtr	    rr_transform,
++
+ 		    PictTransformPtr    transform,
+-		    PictTransformPtr    inverse);
++		    struct pict_f_transform *f_transform,
++		    struct pict_f_transform *f_inverse);
+ 
+ /*
+  * Return crtc transform
+@@ -657,7 +661,8 @@ RRCrtcDestroy (RRCrtcPtr crtc);
+ int
+ RRCrtcTransformSet (RRCrtcPtr		crtc,
+ 		    PictTransformPtr	transform,
+-		    PictTransformPtr	inverse,
++		    struct pict_f_transform *f_transform,
++		    struct pict_f_transform *f_inverse,
+ 		    char		*filter,
+ 		    int			filter_len,
+ 		    xFixed		*params,

@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java
+index b119838..86521ff 100644
+--- a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java
++++ b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java
+@@ -64,6 +64,7 @@ public class TermsFilterBuilder implements FilterBuilder
+ 		{
+ 			Term term = null;
+       BytesRef bytes = termAtt.getBytesRef();
++      ts.reset();
+ 	      while (ts.incrementToken()) {
+ 	        termAtt.fillBytesRef();
+ 				if (term == null)
+@@ -76,6 +77,8 @@ public class TermsFilterBuilder implements FilterBuilder
+ 				}
+ 				tf.addTerm(term);
+ 			}
++	    ts.end();
++	    ts.close();
+ 		} 
+ 		catch (IOException ioe)
+ 		{

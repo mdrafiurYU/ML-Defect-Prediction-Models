@@ -1,0 +1,17 @@
+diff --git a/mi/mibitblt.c b/mi/mibitblt.c
+index 99375b6..3e82a55 100644
+--- a/mi/mibitblt.c
++++ b/mi/mibitblt.c
+@@ -317,11 +317,10 @@ miGetPlane(
+     sy += pDraw->y;
+     widthInBytes = BitmapBytePad(w);
+     if(!result)
+-        result = (MiBits *)xalloc(h * widthInBytes);
++        result = xcalloc(h, widthInBytes);
+     if (!result)
+ 	return (MiBits *)NULL;
+     bitsPerPixel = pDraw->bitsPerPixel;
+-    bzero((char *)result, h * widthInBytes);
+     pOut = (OUT_TYPE *) result;
+     if(bitsPerPixel == 1)
+     {

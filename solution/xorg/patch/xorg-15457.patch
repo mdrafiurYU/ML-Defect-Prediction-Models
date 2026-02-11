@@ -1,0 +1,14 @@
+diff --git a/fb/fbmmx.c b/fb/fbmmx.c
+index 849ea43..21eb5f3 100644
+--- a/fb/fbmmx.c
++++ b/fb/fbmmx.c
+@@ -695,7 +695,8 @@ pix_multiply (__m64 a, __m64 b)
+     __m64 res;
+     
+     res = _mm_mullo_pi16 (a, b);
+-    res = _mm_add_pi16 (res, MC(4x0080));
++    res = _mm_adds_pu16 (res, _mm_srli_pi16 (res, 8));
++    res = _mm_adds_pu16 (res, MC(4x0080));
+     res = _mm_srli_pi16 (res, 8);
+     
+     return res;

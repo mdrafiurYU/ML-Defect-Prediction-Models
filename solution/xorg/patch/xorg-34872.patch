@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/xprCursor.c b/hw/darwin/quartz/xpr/xprCursor.c
+index 10d3264..9892bcd 100644
+--- a/hw/darwin/quartz/xpr/xprCursor.c
++++ b/hw/darwin/quartz/xpr/xprCursor.c
+@@ -380,7 +380,8 @@ QuartzInitCursor(ScreenPtr pScreen)
+     if (ScreenPriv == NULL)
+         return FALSE;
+ 
+-    CURSOR_PRIV(pScreen) = ScreenPriv;
++    /* CURSOR_PRIV(pScreen) = ScreenPriv; */
++    pScreen->devPrivates[darwinCursorScreenIndex].ptr = ScreenPriv;
+ 
+     /* override some screen procedures */
+     ScreenPriv->QueryBestSize = pScreen->QueryBestSize;

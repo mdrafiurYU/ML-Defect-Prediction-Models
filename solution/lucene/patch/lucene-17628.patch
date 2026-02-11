@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/NumericRangeQuery.java b/lucene/src/java/org/apache/lucene/search/NumericRangeQuery.java
+index 1daa453..1d0b662 100644
+--- a/lucene/src/java/org/apache/lucene/search/NumericRangeQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/NumericRangeQuery.java
+@@ -319,6 +319,9 @@ public final class NumericRangeQuery<T extends Number> extends MultiTermQuery {
+   /** Returns the upper value of this range query */
+   public T getMax() { return max; }
+   
++  /** Returns the precision step. */
++  public int getPrecisionStep() { return precisionStep; }
++  
+   @Override
+   public String toString(final String field) {
+     final StringBuilder sb = new StringBuilder();

@@ -1,0 +1,16 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 4377354..8fe605e 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -1105,6 +1105,11 @@ KdRemovePointer (KdPointerInfo *pi)
+     KdFreePointer(pi);
+ }
+ 
++/* 
++ * You can call your kdriver server with something like:
++ * $ ./hw/kdrive/yourserver/X :1 -mouse evdev,,device=/dev/input/event4 -keybd
++ * evdev,,device=/dev/input/event1,xkbmodel=abnt2,xkblayout=br 
++ */
+ static Bool 
+ KdGetOptions (InputOption **options, char *string)
+ {

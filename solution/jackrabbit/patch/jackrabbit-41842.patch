@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/EquiJoinConditionImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/EquiJoinConditionImpl.java
+index c72775e..bb14b13 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/EquiJoinConditionImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/EquiJoinConditionImpl.java
+@@ -96,6 +96,24 @@ public class EquiJoinConditionImpl
+         return getJCRName(property2Name);
+     }
+ 
++    /**
++     * Gets the name of the first selector.
++     *
++     * @return the selector name; non-null
++     */
++    public Name getSelector1QName() {
++        return selector1Name;
++    }
++
++    /**
++     * Gets the name of the second selector.
++     *
++     * @return the selector name; non-null
++     */
++    public Name getSelector2QName() {
++        return selector2Name;
++    }
++
+     //------------------------< AbstractQOMNode >-------------------------------
+ 
+     /**

@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index b9e0220..5227c54 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -277,7 +277,7 @@ GetMotionHistory(DeviceIntPtr pDev, xTimecoord **buff, unsigned long start,
+     int size;
+     int dflt;
+     AxisInfo from, *to; /* for scaling */
+-    CARD32 *ocbuf, *icbuf; /* pointer to coordinates for copying */
++    INT32 *ocbuf, *icbuf; /* pointer to coordinates for copying */
+     INT16 *corebuf;
+     AxisInfo core_axis = {0};
+ 

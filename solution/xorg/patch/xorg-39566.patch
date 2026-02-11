@@ -1,0 +1,24 @@
+diff --git a/randr/rrxinerama.c b/randr/rrxinerama.c
+index 240fca2..e994590 100644
+--- a/randr/rrxinerama.c
++++ b/randr/rrxinerama.c
+@@ -415,11 +415,6 @@ SProcRRXineramaDispatch(ClientPtr client)
+     return BadRequest;
+ }
+ 
+-static void
+-RRXineramaResetProc(ExtensionEntry* extEntry)
+-{
+-}
+-
+ void
+ RRXineramaExtensionInit(void)
+ {
+@@ -439,6 +434,6 @@ RRXineramaExtensionInit(void)
+     (void) AddExtension(PANORAMIX_PROTOCOL_NAME, 0,0,
+ 			ProcRRXineramaDispatch,
+ 			SProcRRXineramaDispatch,
+-			RRXineramaResetProc,
++			NULL,
+ 			StandardMinorOpcode);
+ }

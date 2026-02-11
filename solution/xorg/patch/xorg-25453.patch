@@ -1,0 +1,16 @@
+diff --git a/hw/xprint/ddxInit.c b/hw/xprint/ddxInit.c
+index 77b532f..8e7ec2e 100644
+--- a/hw/xprint/ddxInit.c
++++ b/hw/xprint/ddxInit.c
+@@ -156,9 +156,9 @@ PointerProc(
+ 	  {
+ 	      map[0] = 0;
+ 	      InitPointerDeviceStruct(pPtr, map, NUM_BUTTONS, 
+-				      miPointerGetMotionEvents, 
++				      GetMotionHistory,
+ 				      (PtrCtrlProcPtr)_XpVoidNoop,
+-				      miPointerGetMotionBufferSize());
++				      GetMotionHistorySize(), 2);
+ 	      break;
+ 	  }
+         case DEVICE_ON:

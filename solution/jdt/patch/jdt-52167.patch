@@ -1,0 +1,50 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSLine.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSLine.java
+index 99db505..3c8d640 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSLine.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/NLSLine.java
+@@ -17,7 +17,7 @@ import org.eclipse.jdt.internal.compiler.ast.StringLiteral;
+ 
+ public class NLSLine {
+ 
+-	private List elements;
++	public List elements;
+ 
+ 	public NLSLine() {
+ 		this.elements = new ArrayList();
+@@ -30,13 +30,6 @@ public class NLSLine {
+ 		this.elements.add(element);
+ 	}
+ 	
+-	/**
+-	 * returns an Iterator over NLSElements
+-	 */
+-	public Iterator iterator() {
+-		return this.elements.iterator();
+-	}
+-	
+ 	public StringLiteral get(int index) {
+ 		return (StringLiteral) this.elements.get(index);
+ 	}
+@@ -53,6 +46,10 @@ public class NLSLine {
+ 		return this.elements.size();
+ 	}
+ 	
++	public void clear() {
++		this.elements.clear();
++	}
++	
+ 	public String toString() {
+ 		StringBuffer result= new StringBuffer();
+ 		for (Iterator iter= iterator(); iter.hasNext(); ) {
+@@ -62,4 +59,11 @@ public class NLSLine {
+ 		}
+ 		return result.toString();
+ 	}
++
++	/**
++	 * returns an Iterator over NLSElements
++	 */
++	public Iterator iterator() {
++		return this.elements.iterator();
++	}
+ }

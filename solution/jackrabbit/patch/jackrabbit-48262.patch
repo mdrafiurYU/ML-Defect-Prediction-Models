@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+index cd1688e..80684c7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+@@ -104,14 +104,8 @@ public class BLOBInDataStore extends BLOBFileValue {
+         return getDataRecord().getStream();
+     }
+ 
+-    /**
+-     * {@inheritDoc}
+-     */
+     public String toString() {
+-        StringBuffer buff = new StringBuffer(20);
+-        buff.append(PREFIX);
+-        buff.append(identifier.toString());
+-        return buff.toString();
++        return PREFIX + identifier;
+     }
+ 
+     static BLOBInDataStore getInstance(DataStore store, String s) {

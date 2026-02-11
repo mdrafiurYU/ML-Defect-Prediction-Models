@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjects.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjects.java
+index 95204d0..b207e5c 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjects.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/collectionconverter/ManageableObjects.java
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.jackrabbit.ocm.manager.collectionconverter;
+ 
++import java.util.Collection;
+ import java.util.Iterator;
+ 
+ /**
+@@ -37,5 +38,10 @@ public interface ManageableObjects
+      */
+     public int getSize();
+ 
++    /**
++     * @return The objects managed by the underlying Collection or Map
++     */
++    public Object getObjects();
++
+ 
+ }

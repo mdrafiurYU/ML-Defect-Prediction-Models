@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
+index 7912dd0..b057717 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AllocationExpression.java
+@@ -284,7 +284,7 @@ public class AllocationExpression extends Expression implements InvocationSite {
+ 			for (int i = 0; i < length; i++) {
+ 				Expression argument = this.arguments[i];
+ 				if (argument instanceof CastExpression) {
+-					argument.bits |= IgnoreNeedForCastCheckMASK; // will check later on
++					argument.bits |= DisableUnnecessaryCastCheck; // will check later on
+ 					argsContainCast = true;
+ 				}
+ 				if ((argumentTypes[i] = argument.resolveType(scope)) == null) {

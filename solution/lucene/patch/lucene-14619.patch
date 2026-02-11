@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java b/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java
+index bcb372e..fe76121 100644
+--- a/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java
+@@ -100,7 +100,7 @@ public class ConstantScoreQuery extends Query {
+     private float queryNorm;
+     private float queryWeight;
+     
+-    public ConstantWeight(Searcher searcher) throws IOException {
++    public ConstantWeight(IndexSearcher searcher) throws IOException {
+       this.similarity = getSimilarity(searcher);
+       this.innerWeight = (query == null) ? null : query.createWeight(searcher);
+     }
+@@ -256,7 +256,7 @@ public class ConstantScoreQuery extends Query {
+   }
+ 
+   @Override
+-  public Weight createWeight(Searcher searcher) throws IOException {
++  public Weight createWeight(IndexSearcher searcher) throws IOException {
+     return new ConstantScoreQuery.ConstantWeight(searcher);
+   }

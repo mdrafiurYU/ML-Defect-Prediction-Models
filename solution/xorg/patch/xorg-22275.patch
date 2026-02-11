@@ -1,0 +1,15 @@
+diff --git a/mi/mifillrct.c b/mi/mifillrct.c
+index efaadae..06d448f 100644
+--- a/mi/mifillrct.c
++++ b/mi/mifillrct.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $Xorg: mifillrct.c,v 1.4 2001/02/09 02:05:20 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xprotostr.h>
+ #include "gcstruct.h"

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java
+index 75565fb..35f8486 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SystemSession.java
+@@ -166,6 +166,16 @@ class SystemSession extends SessionImpl {
+         }
+ 
+         /**
++         * Always returns true.
++         *
++         * @see AccessManager#canRead(Path)
++         * @param itemPath
++         */
++        public boolean canRead(Path itemPath) throws ItemNotFoundException, RepositoryException {
++            return true;
++        }
++
++        /**
+          * {@inheritDoc}
+          *
+          * @return always <code>true</code>

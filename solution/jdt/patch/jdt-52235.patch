@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultBindingResolver.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultBindingResolver.java
+index fd3e24b..3855a16 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultBindingResolver.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/DefaultBindingResolver.java
+@@ -29,6 +29,7 @@ import org.eclipse.jdt.internal.compiler.ast.JavadocAllocationExpression;
+ import org.eclipse.jdt.internal.compiler.ast.JavadocFieldReference;
+ import org.eclipse.jdt.internal.compiler.ast.JavadocMessageSend;
+ import org.eclipse.jdt.internal.compiler.ast.JavadocQualifiedTypeReference;
++import org.eclipse.jdt.internal.compiler.ast.JavadocSingleNameReference;
+ import org.eclipse.jdt.internal.compiler.ast.JavadocSingleTypeReference;
+ import org.eclipse.jdt.internal.compiler.ast.Literal;
+ import org.eclipse.jdt.internal.compiler.ast.LocalDeclaration;
+@@ -858,6 +859,12 @@ class DefaultBindingResolver extends BindingResolver {
+ 			if (typeBinding != null) {
+ 				return typeBinding;
+ 			}
++		} if (node instanceof JavadocSingleNameReference) {
++			JavadocSingleNameReference singleNameReference = (JavadocSingleNameReference) node;
++			LocalVariableBinding localVariable = (LocalVariableBinding)singleNameReference.binding;
++			if (localVariable != null) {
++				return this.getTypeBinding(localVariable.type);
++			}
+ 		} if (node instanceof SingleNameReference) {
+ 			SingleNameReference singleNameReference = (SingleNameReference) node;
+ 			return this.getTypeBinding(singleNameReference.resolvedType);

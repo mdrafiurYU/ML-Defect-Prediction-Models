@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java b/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java
+index 52f704e..40bfbd7 100644
+--- a/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java
++++ b/lucene/src/test/org/apache/lucene/util/TestPriorityQueue.java
+@@ -23,8 +23,7 @@ public class TestPriorityQueue extends LuceneTestCase {
+ 
+     private static class IntegerQueue extends PriorityQueue<Integer> {
+         public IntegerQueue(int count) {
+-            super();
+-            initialize(count);
++            super(count);
+         }
+ 
+         @Override

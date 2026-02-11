@@ -1,0 +1,13 @@
+diff --git a/include/input.h b/include/input.h
+index 6572db5..6573a1f 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -167,6 +167,8 @@ typedef struct _InputOption {
+     struct _InputOption *next;
+ } InputOption;
+ 
++extern void InitCoreDevices(void);
++
+ extern DeviceIntPtr AddInputDevice(
+     DeviceProc /*deviceProc*/,
+     Bool /*autoStart*/);

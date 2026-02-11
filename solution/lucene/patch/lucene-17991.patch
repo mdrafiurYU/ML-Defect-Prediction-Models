@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java b/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
+index 0769a85..b04f96a 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestBasics.java
+@@ -77,7 +77,7 @@ public class TestBasics extends LuceneTestCase {
+       writer.addDocument(doc);
+     }
+     reader = writer.getReader();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     writer.close();
+   }

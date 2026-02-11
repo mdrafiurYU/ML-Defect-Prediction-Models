@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+index 512d07f..dbce4c0 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/FST.java
+@@ -231,10 +231,13 @@ public class FST<T> {
+   }
+ 
+   void setEmptyOutput(T v) throws IOException {
+-    if (emptyOutput != null && !emptyOutput.equals(v)) {
+-      throw new IllegalStateException("empty output is already set: " + outputs.outputToString(emptyOutput) + " vs " + outputs.outputToString(v));
++    if (emptyOutput != null) {
++      if (!emptyOutput.equals(v)) {
++        emptyOutput = outputs.merge(emptyOutput, v);
++      }
++    } else {
++      emptyOutput = v;
+     }
+-    emptyOutput = v;
+ 
+     // TODO: this is messy -- replace with sillyBytesWriter; maybe make
+     // bytes private

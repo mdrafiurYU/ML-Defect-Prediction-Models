@@ -1,0 +1,20 @@
+diff --git a/Xi/stubs.c b/Xi/stubs.c
+index 40cd02f..80ddd73 100644
+--- a/Xi/stubs.c
++++ b/Xi/stubs.c
+@@ -65,6 +65,7 @@ SOFTWARE.
+ #include <X11/extensions/XI.h>
+ #include <X11/extensions/XIproto.h>
+ #include "XIstubs.h"
++#include "xace.h"
+ 
+ /***********************************************************************
+  *
+@@ -153,6 +154,7 @@ AddOtherInputDevices(void)
+ void
+ OpenInputDevice(DeviceIntPtr dev, ClientPtr client, int *status)
+ {
++    *status = XaceHook(XACE_DEVICE_ACCESS, client, dev, DixReadAccess);
+ }
+ 
+ /****************************************************************************

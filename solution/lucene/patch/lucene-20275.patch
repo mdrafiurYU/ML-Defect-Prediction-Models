@@ -1,0 +1,18 @@
+diff --git a/solr/src/java/org/apache/solr/handler/ReplicationHandler.java b/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
+index 3082296..7178056 100644
+--- a/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
++++ b/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
+@@ -843,9 +843,13 @@ public class ReplicationHandler extends RequestHandlerBase implements SolrCoreAw
+                 indexCommitPoint = reader.getIndexCommit();
+               }
+             } finally {
++              // We don't need to save commit points for replication, the SolrDeletionPolicy
++              // always saves the last commit point (and the last optimized commit point, if needed)
++              /***
+               if(indexCommitPoint != null){
+                 core.getDeletionPolicy().saveCommitPoint(indexCommitPoint.getVersion());
+               }
++              ***/
+             }
+           }
+           if (core.getUpdateHandler() instanceof DirectUpdateHandler2) {

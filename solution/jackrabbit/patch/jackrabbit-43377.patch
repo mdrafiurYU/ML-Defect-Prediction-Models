@@ -1,0 +1,52 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserImpl.java
+index 2939250..c618a88 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserImpl.java
+@@ -26,6 +26,7 @@ import org.apache.jackrabbit.util.Text;
+ 
+ import javax.jcr.Credentials;
+ import javax.jcr.RepositoryException;
++import javax.jcr.Value;
+ import java.io.UnsupportedEncodingException;
+ import java.security.NoSuchAlgorithmException;
+ import java.security.Principal;
+@@ -63,6 +64,23 @@ class UserImpl extends AuthorizableImpl implements User {
+         return new UserImpl(node, userManager);
+     }
+ 
++    /**
++     * 
++     * @param password
++     * @return
++     * @throws RepositoryException
++     */
++    static String buildPasswordValue(String password) throws RepositoryException {
++        try {
++            CryptedSimpleCredentials creds = new CryptedSimpleCredentials("_", password);
++            return creds.getPassword();
++        } catch (NoSuchAlgorithmException e) {
++            throw new RepositoryException(e);
++        } catch (UnsupportedEncodingException e) {
++            throw new RepositoryException(e);
++        }
++    }
++
+     //-------------------------------------------------------< Authorizable >---
+     /**
+      * @see Authorizable#getID()
+@@ -123,4 +141,15 @@ class UserImpl extends AuthorizableImpl implements User {
+         }
+         return impersonation;
+     }
++
++    /**
++     * @see User#changePassword(String)
++     */
++    public void changePassword(String password) throws RepositoryException {
++        if (password == null) {
++            throw new IllegalArgumentException("The password may never be null.");
++        }
++        Value v = getSession().getValueFactory().createValue(buildPasswordValue(password));
++        userManager.setProtectedProperty(getNode(), P_PASSWORD, v);
++    }
+ }

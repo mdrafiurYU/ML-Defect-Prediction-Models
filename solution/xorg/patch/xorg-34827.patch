@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/xprAppleWM.c b/hw/darwin/quartz/xpr/xprAppleWM.c
+index f639b55..5539c51 100644
+--- a/hw/darwin/quartz/xpr/xprAppleWM.c
++++ b/hw/darwin/quartz/xpr/xprAppleWM.c
+@@ -27,7 +27,9 @@
+  * use or other dealings in this Software without prior written authorization.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #include "xpr.h"
+ #include "quartz/applewmExt.h"

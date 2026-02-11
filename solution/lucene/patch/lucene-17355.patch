@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/admin/SystemInfoHandler.java b/solr/src/java/org/apache/solr/handler/admin/SystemInfoHandler.java
+index dfdd41c..4a12394 100644
+--- a/solr/src/java/org/apache/solr/handler/admin/SystemInfoHandler.java
++++ b/solr/src/java/org/apache/solr/handler/admin/SystemInfoHandler.java
+@@ -185,6 +185,7 @@ public class SystemInfoHandler extends RequestHandlerBase
+     try {
+       Process process = Runtime.getRuntime().exec(cmd);
+       in = new DataInputStream( process.getInputStream() );
++      // use default charset from locale here, because the command invoked also uses the default locale:
+       return IOUtils.toString( in );
+     }
+     catch( Exception ex ) {

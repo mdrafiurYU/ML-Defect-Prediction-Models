@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/document/NumericField.java b/lucene/src/java/org/apache/lucene/document/NumericField.java
+index 4d008e0..6cae722 100644
+--- a/lucene/src/java/org/apache/lucene/document/NumericField.java
++++ b/lucene/src/java/org/apache/lucene/document/NumericField.java
+@@ -222,6 +222,11 @@ public final class NumericField extends AbstractField {
+     return (Number) fieldsData;
+   }
+   
++  /** Returns the precision step. */
++  public int getPrecisionStep() {
++    return numericTS.getPrecisionStep();
++  }
++  
+   /**
+    * Initializes the field with the supplied <code>long</code> value.
+    * @param value the numeric value

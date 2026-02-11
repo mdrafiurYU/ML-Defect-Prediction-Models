@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/QueryUtils.java b/lucene/src/test/org/apache/lucene/search/QueryUtils.java
+index e41cb98..8a4266b8 100644
+--- a/lucene/src/test/org/apache/lucene/search/QueryUtils.java
++++ b/lucene/src/test/org/apache/lucene/search/QueryUtils.java
+@@ -64,6 +64,9 @@ public class QueryUtils {
+     };
+     whacky.setBoost(q.getBoost());
+     checkUnequal(q, whacky);
++    
++    // null test
++    Assert.assertFalse(q.equals(null));
+   }
+ 
+   public static void checkEqual(Query q1, Query q2) {

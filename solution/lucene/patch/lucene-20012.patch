@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/BlockTermsWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/BlockTermsWriter.java
+index 2734f56..e24c2c4 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/BlockTermsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/BlockTermsWriter.java
+@@ -72,7 +72,7 @@ public class BlockTermsWriter extends FieldsConsumer {
+       PostingsWriterBase postingsWriter)
+     throws IOException
+   {
+-    final String termsFileName = IndexFileNames.segmentFileName(state.segmentName, state.codecId, TERMS_EXTENSION);
++    final String termsFileName = IndexFileNames.segmentFileName(state.segmentName, state.codecIdAsString(), TERMS_EXTENSION);
+     this.termsIndexWriter = termsIndexWriter;
+     out = state.directory.createOutput(termsFileName);
+     fieldInfos = state.fieldInfos;

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
+index 3236727..42d3946 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
+@@ -180,7 +180,7 @@ public class XASessionImpl extends SessionImpl
+      */
+     public LockManager getLockManager() throws RepositoryException {
+         if (lockMgr == null) {
+-            LockManagerImpl lockMgr = (LockManagerImpl) wsp.getLockManager();
++            LockManagerImpl lockMgr = (LockManagerImpl) wsp.getInternalLockManager();
+             this.lockMgr = new XALockManager(lockMgr);
+         }
+         return lockMgr;

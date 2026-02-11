@@ -1,0 +1,54 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/collectionconverter/AnnotationNTCollectionConverterImplTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/collectionconverter/AnnotationNTCollectionConverterImplTest.java
+index 22e4a0a..a8ea431 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/collectionconverter/AnnotationNTCollectionConverterImplTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/collectionconverter/AnnotationNTCollectionConverterImplTest.java
+@@ -17,6 +17,8 @@
+ package org.apache.jackrabbit.ocm.manager.collectionconverter;
+ 
+ import java.util.ArrayList;
++import java.util.Collection;
++import java.util.Iterator;
+ 
+ import junit.framework.Test;
+ import junit.framework.TestSuite;
+@@ -99,7 +101,8 @@ public class AnnotationNTCollectionConverterImplTest extends AnnotationTestBase
+             assertNotNull("page.getParagraphs is null", page.getParagraphs());
+             assertTrue("Incorrect page title", page.getTitle().equals("Page Title"));
+             assertTrue("Incorrect page.getParagraphs size", page.getParagraphs().size() == 3);
+-            assertTrue("Incorrect para element", ((Paragraph) page.getParagraphs().iterator().next()).getText().equals("Para 1"));
++            assertTrue("Incorrect para element", this.containsText(page.getParagraphs(), "Para 1"));
++            
+ 
+             // --------------------------------------------------------------------------------
+             // Update the object
+@@ -123,7 +126,7 @@ public class AnnotationNTCollectionConverterImplTest extends AnnotationTestBase
+             assertNotNull("page.getParagraphs is null", page.getParagraphs());
+             assertTrue("Incorrect page title", page.getTitle().equals("Page Title"));
+             assertTrue("Incorrect page.getParagraphs size", page.getParagraphs().size() == 4);
+-            assertTrue("Incorrect para element", ((Paragraph) page.getParagraphs().iterator().next()).getText().equals("Para 1"));
++            assertTrue("Incorrect para element", this.containsText(page.getParagraphs(), "Para 1"));
+ 
+             // --------------------------------------------------------------------------------
+             // Export to check the content
+@@ -138,5 +141,20 @@ public class AnnotationNTCollectionConverterImplTest extends AnnotationTestBase
+         }
+ 
+     }
++    
++    private boolean containsText(Collection paragraphs, String text)
++    {
++    	Iterator iterator = paragraphs.iterator();
++    	while (iterator.hasNext()) {
++			Paragraph paragraph = (Paragraph) iterator.next();
++			if (paragraph.getText().equals(text))
++			{
++				return true;
++			}
++			
++		}
++    	return false; 
++    	
++    }
+ 
+ }
+\ No newline at end of file

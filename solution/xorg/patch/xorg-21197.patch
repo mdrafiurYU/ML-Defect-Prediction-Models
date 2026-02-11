@@ -1,0 +1,14 @@
+diff --git a/os/access.c b/os/access.c
+index 62af2f9..db52aa0 100644
+--- a/os/access.c
++++ b/os/access.c
+@@ -203,8 +203,7 @@ SOFTWARE.
+ #include "osdep.h"
+ 
+ #ifdef XCSECURITY
+-#define _SECURITY_SERVER
+-#include <X11/extensions/security.h>
++#include "securitysrv.h"
+ #endif
+ 
+ #ifndef PATH_MAX

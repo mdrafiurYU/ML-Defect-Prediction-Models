@@ -1,0 +1,23 @@
+diff --git a/hw/kdrive/r128/r128.h b/hw/kdrive/r128/r128.h
+index 8cf2bd4..02e3c10 100644
+--- a/hw/kdrive/r128/r128.h
++++ b/hw/kdrive/r128/r128.h
+@@ -83,6 +83,8 @@ typedef struct _r128ScreenInfo {
+     CARD8 *off_screen;
+     int off_screen_size;
+ 
++    KaaScreenInfoRec kaa;
++
+     int pitch;
+     int datatype;
+ 
+@@ -114,9 +116,6 @@ void
+ r128DrawEnable (ScreenPtr pScreen);
+ 
+ void
+-r128DrawSync (ScreenPtr pScreen);
+-
+-void
+ r128DrawDisable (ScreenPtr pScreen);
+ 
+ void

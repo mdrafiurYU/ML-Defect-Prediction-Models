@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java
+index 4a7d07d..fff42a3 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java
+@@ -39,7 +39,7 @@ import java.io.ByteArrayInputStream;
+  * <code>TreeComparator</code> compares two trees. This allows re-use for
+  * different tests, and it allows to test a function on any tree, not just a
+  * simple example node.
+- * <p/>
++ * <p>
+  * TreeComparator also creates an example tree that contains as many features as
+  * possible.
+  */
+@@ -120,7 +120,7 @@ class TreeComparator extends AbstractJCRTest {
+     /**
+      * Creates a simple example tree. Use this tree for general repository
+      * functions, such as serialization, namespaces and versioning.
+-     * <p/>
++     * <p>
+      * The beauty of this is that the tree contains exactly the features that
+      * are supported by the repository. Any repository exceptions that occur are
+      * displayed on "out", but are otherwise ignored.

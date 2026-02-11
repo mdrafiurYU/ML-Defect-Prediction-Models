@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index b756a62..2023ed3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -5221,8 +5221,6 @@ public void unnecessaryInstanceof(InstanceOfExpression instanceofExpression, Typ
+ 		instanceofExpression.sourceEnd);
+ }
+ public void unnecessaryNLSTags(int sourceStart, int sourceEnd) {
+-	// TODO (olivier) enable again after 3.2M1
+-	if (true) return;
+ 	this.handle(
+ 		IProblem.UnnecessaryNLSTag,
+ 		NoArgument,

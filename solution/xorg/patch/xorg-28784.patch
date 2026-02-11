@@ -1,0 +1,59 @@
+diff --git a/dix/events.c b/dix/events.c
+index 03d82e9..94e60dc 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4637,7 +4637,7 @@ DeleteWindowFromAnyEvents(WindowPtr pWin, Bool freeResources)
+     WindowPtr		parent;
+     DeviceIntPtr	mouse = inputInfo.pointer;
+     DeviceIntPtr	keybd = inputInfo.keyboard;
+-    FocusClassPtr	focus = keybd->focus;
++    FocusClassPtr	focus;
+     OtherClientsPtr	oc;
+     GrabPtr		passive;
+     GrabPtr             grab; 
+@@ -4650,12 +4650,27 @@ DeleteWindowFromAnyEvents(WindowPtr pWin, Bool freeResources)
+ 	((grab->window == pWin) || (grab->confineTo == pWin)))
+ 	(*mouse->coreGrab.DeactivateGrab)(mouse);
+ 
+-    /* Deactivating a keyboard grab should cause focus events. */
+ 
++    /* Deactivating a keyboard grab should cause focus events. */
+     grab = keybd->coreGrab.grab;
+     if (grab && (grab->window == pWin))
+ 	(*keybd->coreGrab.DeactivateGrab)(keybd);
+ 
++    /* And now the real devices */
++    for (mouse = inputInfo.devices; mouse; mouse = mouse->next)
++    {
++        grab = mouse->coreGrab.grab;
++        if (grab && ((grab->window == pWin) || (grab->confineTo == pWin)))
++            (*mouse->coreGrab.DeactivateGrab)(mouse);
++    }
++
++
++    for (keybd = inputInfo.devices; keybd; keybd = keybd->next)
++    {
++        if (IsKeyboardDevice(keybd))
++        {
++            focus = keybd->focus;
++
+     /* If the focus window is a root window (ie. has no parent) then don't 
+ 	delete the focus from it. */
+     
+@@ -4703,9 +4718,14 @@ DeleteWindowFromAnyEvents(WindowPtr pWin, Bool freeResources)
+ 	    break;
+ 	}
+     }
++        }
+ 
+-    if (mouse->valuator->motionHintWindow == pWin)
+-	mouse->valuator->motionHintWindow = NullWindow;
++        if (IsPointerDevice(keybd))
++        {
++            if (keybd->valuator->motionHintWindow == pWin)
++                keybd->valuator->motionHintWindow = NullWindow;
++        }
++    }
+ 
+     if (freeResources)
+     {

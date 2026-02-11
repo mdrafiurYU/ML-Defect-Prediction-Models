@@ -1,0 +1,14 @@
+diff --git a/mi/mioverlay.c b/mi/mioverlay.c
+index dfdfdec..545927b 100644
+--- a/mi/mioverlay.c
++++ b/mi/mioverlay.c
+@@ -1,5 +1,9 @@
+ /* $XFree86: xc/programs/Xserver/mi/mioverlay.c,v 3.15tsi Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "scrnintstr.h"
+ #include "validate.h"

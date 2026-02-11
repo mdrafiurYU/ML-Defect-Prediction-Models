@@ -1,0 +1,25 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index 92fd831..6a337bc 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -863,10 +863,10 @@ MouseInit (KdPointerInfo *pi)
+     pi->driverPrivate = (EphyrPointerPrivate *)
+                          xcalloc(sizeof(EphyrPointerPrivate), 1);
+     ((EphyrPointerPrivate *)pi->driverPrivate)->enabled = FALSE;
++    pi->nAxes = 3;
++    pi->nButtons = 32;
+     ephyrMouse = pi;
+-    /* FIXME DO NOT COMMIT */
+     KdAddPointerDriver(&EphyrMouseDriver);
+-    ErrorF("SUCCESS!\n");
+     return Success;
+ }
+ 
+@@ -874,7 +874,6 @@ static Status
+ MouseEnable (KdPointerInfo *pi)
+ {
+     ((EphyrPointerPrivate *)pi->driverPrivate)->enabled = TRUE;
+-    ErrorF("SUCCESS ENABLE!\n");
+     return Success;
+ }
+ 

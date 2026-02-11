@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/NameEnvironment.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/NameEnvironment.java
+index a66a729..47e95a9 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/NameEnvironment.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/NameEnvironment.java
+@@ -136,11 +136,7 @@ private void computeClasspathLocations(
+ 							: (IContainer) root.getFolder(prereqOutputPath);
+ 						if (binaryFolder.exists() && !seen.contains(binaryFolder)) {
+ 							seen.add(binaryFolder);
+-							ClasspathLocation bLocation = 
+-								ClasspathLocation.forBinaryFolder(
+-										binaryFolder, 
+-										true, 
+-										entry.getAccessRuleSet());
++							ClasspathLocation bLocation = ClasspathLocation.forBinaryFolder(binaryFolder, true, entry.getAccessRuleSet());
+ 							bLocations.add(bLocation);
+ 							if (binaryLocationsPerProject != null) { // normal builder mode
+ 								ClasspathLocation[] existingLocations = (ClasspathLocation[]) binaryLocationsPerProject.get(prereqProject);

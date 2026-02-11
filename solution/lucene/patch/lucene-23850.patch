@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestPayloads.java b/lucene/src/test/org/apache/lucene/index/TestPayloads.java
+index 6c1aea2..b7e63f6 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestPayloads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestPayloads.java
+@@ -474,7 +474,7 @@ public class TestPayloads extends LuceneTestCase {
+     
+     public void testThreadSafety() throws Exception {
+         final int numThreads = 5;
+-        final int numDocs = 50 * RANDOM_MULTIPLIER;
++        final int numDocs = atLeast(50);
+         final ByteArrayPool pool = new ByteArrayPool(numThreads, 5);
+         
+         Directory dir = newDirectory();

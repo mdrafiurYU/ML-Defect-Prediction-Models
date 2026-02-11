@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableDoubleField.java b/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
+index 411e9b5..b12858b 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
+@@ -37,6 +37,8 @@ import java.util.Map;
+ import java.io.IOException;
+ /**
+  * @version $Id$
++ * 
++ * @deprecated use {@link DoubleField} or {@link TrieDoubleField} - will be removed in 5.x
+  */
+ public class SortableDoubleField extends FieldType {
+   protected void init(IndexSchema schema, Map<String,String> args) {

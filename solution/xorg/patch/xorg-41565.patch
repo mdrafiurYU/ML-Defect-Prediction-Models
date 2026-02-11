@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaPict.c b/hw/xfree86/xaa/xaaPict.c
+index 784c649..e7d62a6 100644
+--- a/hw/xfree86/xaa/xaaPict.c
++++ b/hw/xfree86/xaa/xaaPict.c
+@@ -154,7 +154,7 @@ XAAGetRGBAFromPixel(
+ 
+ /* 8:8:8 + PICT_a8 -> 8:8:8:8 texture */
+ 
+-void
++_X_EXPORT void
+ XAA_888_plus_PICT_a8_to_8888 (
+     CARD32 color,
+     CARD8  *alphaPtr,   /* in bytes */

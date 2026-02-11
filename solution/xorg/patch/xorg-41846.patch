@@ -1,0 +1,18 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index d8cc156..d1043db 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -2571,11 +2571,11 @@ AttachDevice(ClientPtr client, DeviceIntPtr dev, DeviceIntPtr master)
+             /* XXX: reset to defaults */
+             EventList event = { NULL, 0};
+             char* classbuf;
++            deviceClassesChangedEvent *dcce;
+ 
+             /* Send event to clients */
+             CreateClassesChangedEvent(&event, oldmaster, oldmaster);
+-            deviceClassesChangedEvent *dcce =
+-                (deviceClassesChangedEvent*)event.event;
++            dcce = (deviceClassesChangedEvent*)event.event;
+             dcce->deviceid = oldmaster->id;
+             dcce->num_classes = 0;
+             classbuf = (char*)&event.event[1];

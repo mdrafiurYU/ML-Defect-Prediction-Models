@@ -1,0 +1,48 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
+index c701ceb..e3d4f35 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
+@@ -33,7 +33,7 @@ class LockImpl implements javax.jcr.lock.Lock {
+     /**
+      * Lock info containing latest information
+      */
+-    protected final AbstractLockInfo info;
++    protected final LockInfo info;
+ 
+     /**
+      * Node holding lock
+@@ -46,7 +46,7 @@ class LockImpl implements javax.jcr.lock.Lock {
+      * @param info lock information
+      * @param node node holding lock
+      */
+-    public LockImpl(AbstractLockInfo info, Node node) {
++    public LockImpl(LockInfo info, Node node) {
+         this.info = info;
+         this.node = node;
+     }
+@@ -57,14 +57,14 @@ class LockImpl implements javax.jcr.lock.Lock {
+      * {@inheritDoc}
+      */
+     public String getLockOwner() {
+-        return info.lockOwner;
++        return info.getLockOwner();
+     }
+ 
+     /**
+      * {@inheritDoc}
+      */
+     public boolean isDeep() {
+-        return info.deep;
++        return info.isDeep();
+     }
+ 
+     /**
+@@ -138,7 +138,7 @@ class LockImpl implements javax.jcr.lock.Lock {
+      */
+     public boolean isLockOwningSession() {
+         try {
+-            return node.getSession().equals(info.getLockHolder());
++        	return info.isLockHolder(node.getSession());
+         } catch (RepositoryException e) {
+             return false;
+         }

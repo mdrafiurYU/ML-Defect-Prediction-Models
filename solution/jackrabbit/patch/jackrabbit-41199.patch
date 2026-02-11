@@ -1,0 +1,76 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+index eae583d..58b53d1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildAxisQuery.java
+@@ -17,6 +17,7 @@
+ package org.apache.jackrabbit.core.query.lucene;
+ 
+ import org.apache.jackrabbit.core.NodeId;
++import org.apache.jackrabbit.core.SessionImpl;
+ import org.apache.jackrabbit.core.query.lucene.hits.AdaptingHits;
+ import org.apache.jackrabbit.core.query.lucene.hits.Hits;
+ import org.apache.jackrabbit.core.query.lucene.hits.ScorerHits;
+@@ -38,7 +39,7 @@ import org.apache.lucene.search.Searcher;
+ import org.apache.lucene.search.Similarity;
+ import org.apache.lucene.search.TermQuery;
+ import org.apache.lucene.search.Weight;
+-import org.apache.lucene.search.MatchAllDocsQuery;
++import org.apache.lucene.search.Sort;
+ 
+ import java.io.IOException;
+ import java.util.Iterator;
+@@ -51,7 +52,7 @@ import java.util.Map;
+  * Implements a lucene <code>Query</code> which returns the child nodes of the
+  * nodes selected by another <code>Query</code>.
+  */
+-class ChildAxisQuery extends Query {
++class ChildAxisQuery extends Query implements JackrabbitQuery {
+ 
+     /**
+      * The item state manager containing persistent item states.
+@@ -118,6 +119,21 @@ class ChildAxisQuery extends Query {
+     }
+ 
+     /**
++     * @return the context query of this child axis query.
++     */
++    Query getContextQuery() {
++        return contextQuery;
++    }
++
++    /**
++     * @return <code>true</code> if this child axis query matches any child
++     *         node; <code>false</code> otherwise.
++     */
++    boolean matchesAnyChildNode() {
++        return nameTest == null && position == LocationStepQueryNode.NONE;
++    }
++
++    /**
+      * @return the name test or <code>null</code> if none was specified.
+      */
+     String getNameTest() {
+@@ -189,6 +205,23 @@ class ChildAxisQuery extends Query {
+         return "ChildAxisQuery";
+     }
+ 
++    //-------------------< JackrabbitQuery >------------------------------------
++
++    /**
++     * {@inheritDoc}
++     */
++    public QueryHits execute(JackrabbitIndexSearcher searcher,
++                             SessionImpl session,
++                             Sort sort)
++            throws IOException {
++        if (sort.getSort().length == 0 && matchesAnyChildNode()) {
++            Query context = getContextQuery();
++            return new ChildNodesQueryHits(searcher.execute(context, sort), session);
++        } else {
++            return null;
++        }
++    }
++
+     //-------------------< ChildAxisWeight >------------------------------------
+ 
+     /**

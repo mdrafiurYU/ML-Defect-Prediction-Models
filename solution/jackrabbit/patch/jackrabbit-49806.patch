@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropDef.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropDef.java
+index 9ee2db2..07be113 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropDef.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropDef.java
+@@ -17,6 +17,7 @@
+ package org.apache.jackrabbit.core.nodetype;
+ 
+ import org.apache.jackrabbit.core.value.InternalValue;
++import org.apache.jackrabbit.spi.QValueConstraint;
+ 
+ /**
+  * <code>PropDef</code> is the internal representation of
+@@ -48,7 +49,7 @@ public interface PropDef extends ItemDef {
+      *
+      * @return the array of value constraints.
+      */
+-    ValueConstraint[] getValueConstraints();
++    QValueConstraint[] getValueConstraints();
+ 
+     /**
+      * Returns the array of default values.

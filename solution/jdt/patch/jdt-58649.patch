@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/ASTBasedMirrorDeclarationProcessorFactory.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/ASTBasedMirrorDeclarationProcessorFactory.java
+index db8e4c1..9c385bf 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/ASTBasedMirrorDeclarationProcessorFactory.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/ASTBasedMirrorDeclarationProcessorFactory.java
+@@ -60,8 +60,7 @@ public class ASTBasedMirrorDeclarationProcessorFactory
+ 			if( typeDecl != null ){				
+ 				final String typename = typeDecl.getSimpleName();
+ 				if(typename.equals("Foo")){
+-					final Collection<? extends MethodDeclaration> methods = 
+-						typeDecl.getMethods();
++					final Collection<? extends MethodDeclaration> methods = typeDecl.getMethods();
+ 					assertEqual(2, methods.size(), "number of methods do not match ");
+ 					for(MethodDeclaration method : methods ){
+ 						final String name = method.getSimpleName();

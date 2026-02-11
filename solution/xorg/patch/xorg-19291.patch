@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/kbd.c b/hw/xfree86/os-support/shared/kbd.c
+index 213e8bd..822c8fe 100644
+--- a/hw/xfree86/os-support/shared/kbd.c
++++ b/hw/xfree86/os-support/shared/kbd.c
+@@ -26,6 +26,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86OSKbd.h"
+ 
+ Bool

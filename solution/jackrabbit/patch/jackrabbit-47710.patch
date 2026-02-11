@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/Operator.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/Operator.java
+index 1327529..16b8289 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/Operator.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/Operator.java
+@@ -143,4 +143,21 @@ public enum Operator {
+         };
+     }
+ 
++    /**
++     * Returns the operator with the given JCR name.
++     *
++     * @param name JCR name of an a operator
++     * @return operator with the given name
++     * @throws RepositoryException if the given name is unknown
++     */
++    public static Operator getOperatorByName(String name)
++            throws RepositoryException {
++        for (Operator operator : Operator.values()) {
++            if (operator.name.equals(name)) {
++                return operator;
++            }
++        }
++        throw new RepositoryException("Unknown query name: " + name);
++    }
++
+ }

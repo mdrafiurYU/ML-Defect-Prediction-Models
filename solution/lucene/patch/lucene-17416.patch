@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestPerSegmentDeletes.java b/lucene/src/test/org/apache/lucene/index/TestPerSegmentDeletes.java
+index a18e2ea..c7312b4 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestPerSegmentDeletes.java
++++ b/lucene/src/test/org/apache/lucene/index/TestPerSegmentDeletes.java
+@@ -257,6 +257,7 @@ public class TestPerSegmentDeletes extends LuceneTestCase {
+     @Override
+     public void close() {}
+     
++    @Override
+     public MergeSpecification findMerges(SegmentInfos segmentInfos)
+         throws CorruptIndexException, IOException {
+       MergeSpecification ms = new MergeSpecification();

@@ -1,0 +1,20 @@
+diff --git a/hw/xquartz/xpr/xpr.h b/hw/xquartz/xpr/xpr.h
+index b8c69df..7b7923c 100644
+--- a/hw/xquartz/xpr/xpr.h
++++ b/hw/xquartz/xpr/xpr.h
+@@ -30,6 +30,7 @@
+ #define XPR_H
+ 
+ #include "screenint.h"
++#include <Xplugin.h>
+ 
+ Bool QuartzModeBundleInit(void);
+ 
+@@ -37,6 +38,7 @@ void AppleDRIExtensionInit(void);
+ void xprAppleWMInit(void);
+ Bool xprInit(ScreenPtr pScreen);
+ Bool xprIsX11Window(void *nsWindow, int windowNumber);
++WindowPtr xprGetXWindow(xp_window_id wid);
+ 
+ void xprHideWindows(Bool hide);
+ 

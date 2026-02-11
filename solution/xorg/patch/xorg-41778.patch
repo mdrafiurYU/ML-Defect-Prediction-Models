@@ -1,0 +1,31 @@
+diff --git a/hw/xquartz/mach-startup/bundle-main.c b/hw/xquartz/mach-startup/bundle-main.c
+index 8b6d458..6b48c13 100644
+--- a/hw/xquartz/mach-startup/bundle-main.c
++++ b/hw/xquartz/mach-startup/bundle-main.c
+@@ -278,9 +278,13 @@ static int create_socket(char *filename_out) {
+     return 0;
+ }
+ 
++static int launchd_socket_handed_off = 0;
++
+ kern_return_t do_request_fd_handoff_socket(mach_port_t port, string_t filename) {
+     socket_handoff_t *handoff_data;
+ 
++    launchd_socket_handed_off = 1;
++
+     handoff_data = (socket_handoff_t *)calloc(1,sizeof(socket_handoff_t));
+     if(!handoff_data) {
+         fprintf(stderr, "X11.app: Error allocating memory for handoff_data\n");
+@@ -318,6 +322,12 @@ kern_return_t do_start_x11_server(mach_port_t port, string_array_t argv,
+     char **_envp = alloca((envpCnt + 1) * sizeof(char *));
+     size_t i;
+     
++    /* If we didn't get handed a launchd DISPLAY socket, we shoul
++     * unset DISPLAY or we can run into problems with pbproxy
++     */
++    if(!launchd_socket_handed_off)
++        unsetenv("DISPLAY");
++    
+     if(!_argv || !_envp) {
+         return KERN_FAILURE;
+     }

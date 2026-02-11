@@ -1,0 +1,16 @@
+diff --git a/Xi/getdctl.h b/Xi/getdctl.h
+index 1417d1b..1331a32 100644
+--- a/Xi/getdctl.h
++++ b/Xi/getdctl.h
+@@ -52,6 +52,11 @@ void CopySwapDeviceCore(ClientPtr /* client */ ,
+                         char * /* buf */
+     );
+ 
++void CopySwapDeviceEnable(ClientPtr /* client */ ,
++                          DeviceIntPtr /* dev */ ,
++                          char * /* buf */
++    );
++
+ void SRepXGetDeviceControl(ClientPtr /* client */ ,
+ 			   int /* size */ ,
+ 			   xGetDeviceControlReply *	/* rep */

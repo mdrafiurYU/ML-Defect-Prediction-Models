@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/ItemResourceConstants.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/ItemResourceConstants.java
+index 3362c27..81119fc 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/ItemResourceConstants.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/ItemResourceConstants.java
+@@ -111,6 +111,9 @@ public interface ItemResourceConstants {
+      */
+     public static final String XML_RELPATH = "relpath";
+ 
++    // name of the workspace for which the repository session has been created.
++    public static final DavPropertyName JCR_WORKSPACE_NAME = DavPropertyName.create("workspaceName", NAMESPACE);
++
+     // general property names
+     public static final DavPropertyName JCR_NAME = DavPropertyName.create("name", NAMESPACE);
+     public static final DavPropertyName JCR_PATH = DavPropertyName.create("path", NAMESPACE);
+@@ -120,7 +123,6 @@ public interface ItemResourceConstants {
+     public static final DavPropertyName JCR_ISMODIFIED = DavPropertyName.create("ismodified", NAMESPACE);
+     public static final DavPropertyName JCR_DEFINITION = DavPropertyName.create("definition", NAMESPACE);
+ 
+-
+     // property names used for resources representing jcr-nodes
+     public static final DavPropertyName JCR_PRIMARYNODETYPE = DavPropertyName.create(XML_PRIMARYNODETYPE, NAMESPACE);
+     public static final DavPropertyName JCR_MIXINNODETYPES = DavPropertyName.create("mixinnodetypes", NAMESPACE);

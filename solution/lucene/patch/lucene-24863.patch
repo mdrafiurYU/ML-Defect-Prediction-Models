@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/SortSpec.java b/solr/src/java/org/apache/solr/search/SortSpec.java
+index 039de0a..f2c8004 100644
+--- a/solr/src/java/org/apache/solr/search/SortSpec.java
++++ b/solr/src/java/org/apache/solr/search/SortSpec.java
+@@ -48,7 +48,7 @@ public class SortSpec
+   public static boolean includesScore(Sort sort) {
+     if (sort==null) return true;
+     for (SortField sf : sort.getSort()) {
+-      if (sf.getType() == SortField.SCORE) return true;
++      if (sf.getType() == SortField.Type.SCORE) return true;
+     }
+     return false;
+   }

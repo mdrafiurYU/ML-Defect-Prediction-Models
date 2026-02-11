@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaConventionTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaConventionTests.java
+index 6bd32db..429ec12 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaConventionTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaConventionTests.java
+@@ -106,6 +106,10 @@ public class JavaConventionTests extends AbstractJavaModelTests {
+ 	public void testPackageFragmentRootOverlap() throws Exception {
+ 		try {
+ 			IJavaProject project = this.createJavaProject("P1", new String[] {"src"}, new String[] {"/P1/jclMin.jar"}, "bin");
++			
++			// ensure the external JCL is copied
++			setupExternalJCL("jclMin");
++			
+ 			this.copy(new java.io.File(getExternalJCLPathString()), new java.io.File(getWorkspaceRoot().getLocation().toOSString() + java.io.File.separator + "P1" + java.io.File.separator + "jclMin.jar"));
+ 			project.getProject().refreshLocal(IResource.DEPTH_INFINITE, null);

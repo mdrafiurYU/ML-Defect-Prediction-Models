@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+index 0eac327..ec0e7c0 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+@@ -3265,9 +3265,9 @@ class ASTConverter {
+ 				simpleType.setName(qualifiedName);
+ 				type = simpleType;
+ 				type.setSourceRange(sourceStart, length);
+-				length = typeReference.sourceEnd - sourceStart + 1;
+ 			}
+ 
++			length = typeReference.sourceEnd - sourceStart + 1;
+ 			if (dimensions != 0) {
+ 				type = this.ast.newArrayType(type, dimensions);
+ 				if (this.resolveBindings) {

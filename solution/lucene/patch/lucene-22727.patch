@@ -1,0 +1,38 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java b/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
+index 7e6e17d..3ae5b1d 100644
+--- a/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
++++ b/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
+@@ -45,19 +45,22 @@ public class MockIndexOutputWrapper extends IndexOutput {
+ 
+   @Override
+   public void close() throws IOException {
+-    dir.maybeThrowDeterministicException();
+-    delegate.close();
+-    if (dir.trackDiskUsage) {
+-      // Now compute actual disk usage & track the maxUsedSize
+-      // in the MockDirectoryWrapper:
+-      long size = dir.getRecomputedActualSizeInBytes();
+-      if (size > dir.maxUsedSize) {
+-        dir.maxUsedSize = size;
++    try {
++      dir.maybeThrowDeterministicException();
++    } finally {
++      delegate.close();
++      if (dir.trackDiskUsage) {
++        // Now compute actual disk usage & track the maxUsedSize
++        // in the MockDirectoryWrapper:
++        long size = dir.getRecomputedActualSizeInBytes();
++        if (size > dir.maxUsedSize) {
++          dir.maxUsedSize = size;
++        }
++      }
++      synchronized(dir) {
++        dir.openFileHandles.remove(this);
++        dir.openFilesForWrite.remove(name);
+       }
+-    }
+-    synchronized(dir) {
+-      dir.openFileHandles.remove(this);
+-      dir.openFilesForWrite.remove(name);
+     }
+   }

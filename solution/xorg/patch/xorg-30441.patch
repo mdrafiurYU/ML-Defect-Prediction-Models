@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Priv.h b/hw/xfree86/common/xf86Priv.h
+index 59ce8da..b6fbd3a 100644
+--- a/hw/xfree86/common/xf86Priv.h
++++ b/hw/xfree86/common/xf86Priv.h
+@@ -174,9 +174,6 @@ void xf86PostKbdEvent(unsigned key);
+ void xf86PostMseEvent(DeviceIntPtr device, int buttons, int dx, int dy);
+ void xf86Wakeup(pointer blockData, int err, pointer pReadmask);
+ void xf86SigHandler(int signo);
+-#ifdef MEMDEBUG
+-void xf86SigMemDebug(int signo);
+-#endif
+ void xf86HandlePMEvents(int fd, pointer data);
+ extern int (*xf86PMGetEventFromOs)(int fd,pmEvent *events,int num);
+ extern pmWait (*xf86PMConfirmEventToOs)(int fd,pmEvent event);

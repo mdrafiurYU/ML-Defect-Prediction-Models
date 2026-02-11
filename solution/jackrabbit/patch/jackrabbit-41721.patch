@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/AbstractPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/AbstractPersistenceManager.java
+index 27c2e93..04a4c1d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/AbstractPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/AbstractPersistenceManager.java
+@@ -98,6 +98,14 @@ public abstract class AbstractPersistenceManager implements PersistenceManager {
+     }
+ 
+     /**
++     * This implementation does nothing.
++     *
++     * {@inheritDoc}
++     */
++    public void checkConsistency(String[] uuids, boolean recursive, boolean fix) {
++    }
++
++    /**
+      * Store a node state. Subclass responsibility.
+      *
+      * @param state node state to store

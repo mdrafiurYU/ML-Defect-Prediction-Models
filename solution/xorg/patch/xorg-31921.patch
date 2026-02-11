@@ -1,0 +1,19 @@
+diff --git a/hw/kdrive/ephyr/os.c b/hw/kdrive/ephyr/os.c
+index 1a42495..b58daae 100644
+--- a/hw/kdrive/ephyr/os.c
++++ b/hw/kdrive/ephyr/os.c
+@@ -31,6 +31,14 @@
+ static int
+ EphyrInit (void)
+ {
++  /*
++   * make sure at least one screen
++   * has been added to the system.
++   */
++  if (!KdCardInfoLast ())
++    {
++        processScreenArg ("640x480", NULL) ;
++    }
+   return hostx_init();
+ }
+ 

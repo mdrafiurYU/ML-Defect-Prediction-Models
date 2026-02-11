@@ -1,0 +1,12 @@
+diff --git a/os/connection.c b/os/connection.c
+index 3b5742c..8b6541c 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -353,6 +353,7 @@ InitConnectionLimits(void)
+ #endif
+ 
+ #if !defined(WIN32)
++    if (!ConnectionTranslation)
+     ConnectionTranslation = (int *)xnfalloc(sizeof(int)*(lastfdesc + 1));
+ #else
+     InitConnectionTranslation();

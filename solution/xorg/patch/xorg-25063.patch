@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86xvpriv.h b/hw/xfree86/common/xf86xvpriv.h
+index ced0536..e716c9c 100644
+--- a/hw/xfree86/common/xf86xvpriv.h
++++ b/hw/xfree86/common/xf86xvpriv.h
+@@ -80,6 +80,7 @@ typedef struct {
+ typedef struct _XF86XVWindowRec{
+    XvPortRecPrivatePtr PortRec;
+    struct _XF86XVWindowRec *next;
++   GCPtr pGC;
+ } XF86XVWindowRec, *XF86XVWindowPtr;
+ 
+ #endif  /* _XF86XVPRIV_H_ */

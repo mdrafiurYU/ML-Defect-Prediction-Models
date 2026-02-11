@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index b94aaf8..af42fc3 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -48,7 +48,6 @@ public class BinaryType extends BinaryMember implements IType, SuffixConstants {
+ 	
+ protected BinaryType(JavaElement parent, String name) {
+ 	super(parent, name);
+-	Assert.isTrue(name.indexOf('.') == -1);
+ }
+ /*
+  * Remove my cached children from the Java Model

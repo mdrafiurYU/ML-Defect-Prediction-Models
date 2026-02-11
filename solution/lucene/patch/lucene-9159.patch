@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/WildcardQuery.java b/lucene/src/java/org/apache/lucene/search/WildcardQuery.java
+index 81ac8f0..e844597 100644
+--- a/lucene/src/java/org/apache/lucene/search/WildcardQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/WildcardQuery.java
+@@ -54,8 +54,9 @@ public class WildcardQuery extends AutomatonQuery {
+   
+   /**
+    * Convert Lucene wildcard syntax into an automaton.
++   * @lucene.internal
+    */
+-  static Automaton toAutomaton(Term wildcardquery) {
++  public static Automaton toAutomaton(Term wildcardquery) {
+     List<Automaton> automata = new ArrayList<Automaton>();
+     
+     String wildcardText = wildcardquery.text();

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryReadMethodsTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryReadMethodsTest.java
+index d0fa2a9..be0f614 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryReadMethodsTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NamespaceRegistryReadMethodsTest.java
+@@ -66,7 +66,9 @@ public class NamespaceRegistryReadMethodsTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        nsr = null;
+         super.tearDown();
+     }

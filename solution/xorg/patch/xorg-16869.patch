@@ -1,0 +1,15 @@
+diff --git a/fb/fbblt.c b/fb/fbblt.c
+index b5daf10..131707d 100644
+--- a/fb/fbblt.c
++++ b/fb/fbblt.c
+@@ -23,6 +23,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/fb/fbblt.c,v 1.7 2000/09/22 05:58:01 keithp Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ 
+ #define InitializeShifts(sx,dx,ls,rs) { \

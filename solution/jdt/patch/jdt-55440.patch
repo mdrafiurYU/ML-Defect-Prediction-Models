@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
+index 8e13fd3..ad65e33 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
+@@ -1278,7 +1278,7 @@ protected IType lookupType(ReferenceBinding typeBinding) {
+ 		acceptFlag = NameLookup.ACCEPT_CLASSES;
+ 	}
+ 	for (int i = 0, length = pkgs == null ? 0 : pkgs.length; i < length; i++) {
+-		IType type = this.nameLookup.findType(typeName, pkgs[i],  false,  acceptFlag);
++		IType type = this.nameLookup.findType(typeName, pkgs[i],  false,  acceptFlag, true/*consider secondary types*/);
+ 		if (type != null) return type;
+ 	}

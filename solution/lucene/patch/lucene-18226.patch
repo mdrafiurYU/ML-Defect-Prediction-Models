@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/core/AbstractSolrEventListener.java b/solr/src/java/org/apache/solr/core/AbstractSolrEventListener.java
+index 8f0680e..bf593b3 100644
+--- a/solr/src/java/org/apache/solr/core/AbstractSolrEventListener.java
++++ b/solr/src/java/org/apache/solr/core/AbstractSolrEventListener.java
+@@ -42,6 +42,7 @@ class AbstractSolrEventListener implements SolrEventListener {
+     throw new UnsupportedOperationException();
+   }
+ 
++  @Override
+   public String toString() {
+     return getClass().getName() + args;
+   }

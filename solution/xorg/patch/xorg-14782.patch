@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/config/dmxparse.c b/hw/dmx/config/dmxparse.c
+index eed59cf..1acb6d1 100644
+--- a/hw/dmx/config/dmxparse.c
++++ b/hw/dmx/config/dmxparse.c
+@@ -41,6 +41,10 @@
+  * used in a stand-alone fashion (i.e., independent from the DMX server
+  * source tree), no dependencies on other DMX routines are made. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

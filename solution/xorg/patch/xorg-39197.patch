@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/fbdev/fbdev.c b/hw/kdrive/fbdev/fbdev.c
+index 7721e60..fcc3267 100644
+--- a/hw/kdrive/fbdev/fbdev.c
++++ b/hw/kdrive/fbdev/fbdev.c
+@@ -529,8 +529,6 @@ fbdevRandRSetConfig (ScreenPtr		pScreen,
+     
+     scrpriv->randr = KdAddRotation (screen->randr, randr);
+ 
+-    KdOffscreenSwapOut (screen->pScreen);
+-
+     fbdevUnmapFramebuffer (screen);
+     
+     if (!fbdevMapFramebuffer (screen))

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestFieldCacheSanityChecker.java b/lucene/src/test/org/apache/lucene/util/TestFieldCacheSanityChecker.java
+index 0018139..672edc3 100644
+--- a/lucene/src/test/org/apache/lucene/util/TestFieldCacheSanityChecker.java
++++ b/lucene/src/test/org/apache/lucene/util/TestFieldCacheSanityChecker.java
+@@ -70,7 +70,7 @@ public class TestFieldCacheSanityChecker extends LuceneTestCase {
+     wB.close();
+     readerA = IndexReader.open(dirA, true);
+     readerB = IndexReader.open(dirB, true);
+-    readerX = new MultiReader(new IndexReader[] { readerA, readerB });
++    readerX = new MultiReader(readerA, readerB);
+   }
+ 
+   @Override

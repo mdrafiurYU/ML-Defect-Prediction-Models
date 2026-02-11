@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SchemaField.java b/solr/src/java/org/apache/solr/schema/SchemaField.java
+index 3af985a..5f45992 100644
+--- a/solr/src/java/org/apache/solr/schema/SchemaField.java
++++ b/solr/src/java/org/apache/solr/schema/SchemaField.java
+@@ -135,7 +135,7 @@ public final class SchemaField extends FieldProperties {
+ 
+     String defaultValue = null;
+     if( props.containsKey( "default" ) ) {
+-    	defaultValue = (String)props.get( "default" );
++    	defaultValue = props.get( "default" );
+     }
+     return new SchemaField(name, ft, calcProps(name, ft, props), defaultValue );
+   }

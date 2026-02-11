@@ -1,0 +1,31 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index 70f01f2..7e8334f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -6871,14 +6871,14 @@ protected void consumeToken(int type) {
+ 		case TokenNameStringLiteral :
+ 			StringLiteral stringLiteral;
+ 			if (this.recordStringLiterals && this.checkExternalizeStrings) {
+-				stringLiteral = new StringLiteral(
++				stringLiteral = this.createStringLiteral(
+ 					this.scanner.getCurrentTokenSourceString(), 
+ 					this.scanner.startPosition, 
+ 					this.scanner.currentPosition - 1,
+ 					this.scanner.getLineNumber(this.scanner.startPosition));
+ 				this.compilationUnit.recordStringLiteral(stringLiteral);
+ 			} else {
+-				stringLiteral = new StringLiteral(
++				stringLiteral = this.createStringLiteral(
+ 					this.scanner.getCurrentTokenSourceString(), 
+ 					this.scanner.startPosition, 
+ 					this.scanner.currentPosition - 1,
+@@ -7429,6 +7429,9 @@ protected FieldDeclaration createFieldDeclaration(char[] fieldDeclarationName, i
+ protected LocalDeclaration createLocalDeclaration(char[] localDeclarationName, int sourceStart, int sourceEnd) {
+ 	return new LocalDeclaration(localDeclarationName, sourceStart, sourceEnd);
+ }
++protected StringLiteral createStringLiteral(char[] token, int start, int end, int lineNumber) {
++	return new StringLiteral(token, start, end, lineNumber);
++}
+ protected RecoveredType currentRecoveryType() {
+ 	if(this.currentElement != null) {
+ 		if(this.currentElement instanceof RecoveredType) {

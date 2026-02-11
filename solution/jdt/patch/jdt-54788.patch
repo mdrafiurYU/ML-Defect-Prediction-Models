@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+index adf41be..b617360 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+@@ -66,7 +66,7 @@ public void computeConversion(Scope scope, TypeBinding runtimeTimeType, TypeBind
+ 	// set the generic cast after the fact, once the type expectation is fully known (no need for strict cast)
+ 	if (this.binding != null && this.binding.isValidBinding()) {
+ 		MethodBinding originalBinding = this.binding.original();
+-		if (originalBinding != this.binding) {
++		if (originalBinding != this.binding && originalBinding.returnType != this.binding.returnType) {
+ 		    // extra cast needed if method return type has type variable
+ 		    if ((originalBinding.returnType.tagBits & TagBits.HasTypeVariable) != 0 && runtimeTimeType.id != T_JavaLangObject) {
+ 		    	TypeBinding targetType = (!compileTimeType.isBaseType() && runtimeTimeType.isBaseType())

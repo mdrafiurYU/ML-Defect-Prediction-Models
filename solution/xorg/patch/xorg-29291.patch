@@ -1,0 +1,12 @@
+diff --git a/Xext/geext.h b/Xext/geext.h
+index 53aa21c..7a73e81 100644
+--- a/Xext/geext.h
++++ b/Xext/geext.h
+@@ -51,7 +51,6 @@ from the author.
+     (((pWin)->optional) ? (pWin)->optional->geMasks->geClients : NULL)
+ 
+ /* Interface for other extensions */
+-Mask GENextMask(int extension);
+ void GEWindowSetMask(ClientPtr pClient, WindowPtr pWin, int extension, Mask mask);
+ void GERegisterExtension(
+         int extension,

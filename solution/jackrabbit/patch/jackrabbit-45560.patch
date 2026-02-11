@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/SearchConfig.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/SearchConfig.java
+index 802b17d..c372c0a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/SearchConfig.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/SearchConfig.java
+@@ -50,6 +50,7 @@ public class SearchConfig extends BeanConfig implements FileSystemFactory {
+     public SearchConfig(
+             String className, Properties properties, FileSystemFactory fsf) {
+         super(className, properties);
++        setValidate(false); // JCR-1920: SearchManager uses getParameters()
+         this.fsf = fsf;
+     }

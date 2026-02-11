@@ -1,0 +1,33 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/LookupTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/LookupTest.java
+index ff48ad4..54ebdea 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/LookupTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/LookupTest.java
+@@ -1860,6 +1860,28 @@ public void test056() {
+         },
+         "SUCCESS");
+ }
++// unresolved type does not fool methods signature comparison
++public void test057() {
++    this.runNegativeTest(
++        new String[] {
++            "X.java",
++			"import java.awt.*;\n" + 
++			"public class X {\n" + 
++			"    public void foo(Window w) {\n" + 
++			"        // empty\n" + 
++			"    }\n" + 
++			"    public void foo(Applet a) {\n" + 
++			"        // empty\n" + 
++			"    }\n" + 
++			"}"},
++		"----------\n" + 
++		"1. ERROR in X.java (at line 6)\n" + 
++		"	public void foo(Applet a) {\n" + 
++		"	                ^^^^^^\n" + 
++		"Applet cannot be resolved to a type\n" + 
++		"----------\n"
++		);
++}
+ public static Class testClass() {
+ 	return LookupTest.class;
+ }

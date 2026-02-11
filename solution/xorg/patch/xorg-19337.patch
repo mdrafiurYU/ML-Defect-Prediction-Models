@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/ddc/interpret_edid.c b/hw/xfree86/ddc/interpret_edid.c
+index 59dae6c..718cbf7 100644
+--- a/hw/xfree86/ddc/interpret_edid.c
++++ b/hw/xfree86/ddc/interpret_edid.c
+@@ -10,10 +10,10 @@
+ 
+ #include "misc.h"
+ #include "xf86.h"
+-#include "xf86_ansic.h"
+ #include "xf86_OSproc.h"
+ #define _PARSE_EDID_
+ #include "xf86DDC.h"
++#include <string.h>
+ 
+ static void get_vendor_section(Uchar*, struct vendor *);
+ static void get_version_section(Uchar*, struct edid_version *);

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/misc/xf86_Util.c b/hw/xfree86/os-support/misc/xf86_Util.c
+index 9f25144..afcdd5b 100644
+--- a/hw/xfree86/os-support/misc/xf86_Util.c
++++ b/hw/xfree86/os-support/misc/xf86_Util.c
+@@ -42,7 +42,7 @@ int _xf86misc;
+ /* For use only with gcc */
+ #ifdef __GNUC__
+ 
+-#include <X11/os.h>
++#include "os.h"
+ 
+ char *
+ debug_alloca(char *file, int line, int size)

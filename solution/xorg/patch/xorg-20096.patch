@@ -1,0 +1,13 @@
+diff --git a/include/pixmapstr.h b/include/pixmapstr.h
+index 22a1f10..272ce68 100644
+--- a/include/pixmapstr.h
++++ b/include/pixmapstr.h
+@@ -58,7 +58,7 @@ typedef struct _Drawable {
+     unsigned char	class;	/* specific to type */
+     unsigned char	depth;
+     unsigned char	bitsPerPixel;
+-    unsigned long	id;	/* resource id */
++    XID			id;	/* resource id */
+     short		x;	/* window: screen absolute, pixmap: 0 */
+     short		y;	/* window: screen absolute, pixmap: 0 */
+     unsigned short	width;

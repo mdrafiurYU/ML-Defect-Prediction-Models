@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/os-support/usl/usl_xqueue.c b/hw/xfree86/os-support/usl/usl_xqueue.c
+index ccdbe8d..c00d374 100644
+--- a/hw/xfree86/os-support/usl/usl_xqueue.c
++++ b/hw/xfree86/os-support/usl/usl_xqueue.c
+@@ -287,15 +287,12 @@ XqSignalHandler (int signo)
+ 
+       case XQ_WHEEL:
+ 	if (pMse) {
+-	  int wbut = pMse->lastButtons;
++	  int wbut = pMse->lastButtons, dz;
+ 	  if (xqEvents[xqHead].xq_code == 1)
+-	    wbut |= 0x80;
++	    dz = 1;
+ 	  else
+-	    wbut |= 0x40;
+-	  pMse->PostEvent(xqMouse, wbut, 0, 0, 0, 0);
+-	  /* Simulate button release */
+-	  wbut &= ~0xc0;
+-	  pMse->PostEvent(xqMouse, wbut, 0, 0, 0, 0);
++	    dz = -1;
++	  pMse->PostEvent(xqMouse, wbut, 0, 0, dz, 0);
+ 	}
+ 	break;
+ 

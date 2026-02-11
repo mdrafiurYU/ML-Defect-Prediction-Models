@@ -1,0 +1,14 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 65eb8cc..50384db 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -2273,8 +2273,7 @@ DoGetImage(ClientPtr client, int format, Drawable drawable,
+ 	WriteReplyToClient(client, sizeof (xGetImageReply), &xgi);
+     }
+ 
+-    if (pDraw->type == DRAWABLE_WINDOW &&
+-	XaceHook(XACE_DRAWABLE_ACCESS, client, pDraw) != Success)
++    if (pDraw->type == DRAWABLE_WINDOW)
+     {
+ 	pVisibleRegion = NotClippedByChildren((WindowPtr)pDraw);
+ 	if (pVisibleRegion)

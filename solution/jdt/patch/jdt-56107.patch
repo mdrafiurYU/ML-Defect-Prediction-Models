@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java
+index 3ab237f..29aa64e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ClassLiteralAccess.java
+@@ -80,7 +80,7 @@ public class ClassLiteralAccess extends Expression {
+ 			return null;
+ 
+ 		if (targetType.isArrayType()
+-			&& ((ArrayBinding) targetType).leafComponentType == VoidBinding) {
++			&& ((ArrayBinding) targetType).leafComponentType == TypeBinding.VOID) {
+ 			scope.problemReporter().cannotAllocateVoidArray(this);
+ 			return null;
+ 		} else if (targetType.isTypeVariable()) {

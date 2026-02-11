@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+index 777139f..ce77d1f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/AptPlugin.java
+@@ -12,6 +12,7 @@
+ package org.eclipse.jdt.apt.core;
+ 
+ import org.eclipse.core.runtime.Plugin;
++import org.eclipse.jdt.apt.core.util.AptConfig;
+ import org.osgi.framework.BundleContext;
+ 
+ public class AptPlugin extends Plugin {
+@@ -19,6 +20,7 @@ public class AptPlugin extends Plugin {
+ 	
+ 	public void start(BundleContext context) throws Exception {
+ 		super.start(context);
++		AptConfig.initialize();
+ 	}
+ 
+ 	public void stop(BundleContext context) throws Exception {

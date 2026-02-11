@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
+index 4883f6b..ff8a467 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/standard/TestQPHelper.java
+@@ -1277,7 +1277,7 @@ public class TestQPHelper extends LuceneTestCase {
+     Document doc = new Document();
+     doc.add(newField("field", "", Field.Store.NO, Field.Index.ANALYZED));
+     w.addDocument(doc);
+-    IndexReader r = IndexReader.open(w);
++    IndexReader r = IndexReader.open(w, true);
+     IndexSearcher s = new IndexSearcher(r);
+     
+     Query q = new StandardQueryParser(new CannedAnalyzer()).parse("\"a\"", "field");

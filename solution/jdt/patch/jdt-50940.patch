@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
+index d4b9773..f800536 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/BasicSearchEngine.java
+@@ -385,6 +385,9 @@ public class BasicSearchEngine {
+ 		
+ 		if (patternTypeName != null) {
+ 			int matchMode = matchRule - (isCaseSensitive ? SearchPattern.R_CASE_SENSITIVE : 0);
++			if (!isCaseSensitive) {
++				patternTypeName = CharOperation.toLowerCase(patternTypeName);
++			}
+ 			switch(matchMode) {
+ 				case SearchPattern.R_EXACT_MATCH :
+ 					return CharOperation.equals(patternTypeName, typeName, isCaseSensitive);

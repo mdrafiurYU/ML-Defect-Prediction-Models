@@ -1,0 +1,16 @@
+diff --git a/GL/glx/glxdrawable.h b/GL/glx/glxdrawable.h
+index 247e7a2..858bbb3 100644
+--- a/GL/glx/glxdrawable.h
++++ b/GL/glx/glxdrawable.h
+@@ -95,6 +95,11 @@ struct __GLXdrawable {
+     int refCount;
+ 
+     GLenum target;
++
++    /*
++    ** Event mask
++    */
++    unsigned long eventMask;
+ };
+ 
+ #endif /* !__GLX_drawable_h__ */

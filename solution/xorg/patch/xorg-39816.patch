@@ -1,0 +1,105 @@
+diff --git a/hw/xfree86/os-support/bus/ix86Pci.c b/hw/xfree86/os-support/bus/ix86Pci.c
+index e542463..c6a8471 100644
+--- a/hw/xfree86/os-support/bus/ix86Pci.c
++++ b/hw/xfree86/os-support/bus/ix86Pci.c
+@@ -277,8 +277,8 @@ ix86PciBusCheck(void)
+     return FALSE;
+ }
+ 
+-static
+-void ix86PciSelectCfgmech(void)
++static void
++ix86PciSelectCfgmech(void)
+ {
+     static Bool beenhere = FALSE;
+     CARD32 mode1Res1 = 0, mode1Res2 = 0, oldVal1 = 0;
+@@ -290,13 +290,8 @@ void ix86PciSelectCfgmech(void)
+ 
+     beenhere = TRUE;
+ 
+-    /*
+-     * Determine if motherboard chipset supports PCI Config Mech 1 or 2
+-     * We rely on xf86Info.pciFlags to tell which mechanisms to try....
+-     */
+-    switch (xf86Info.pciFlags) {
+-	case PCIOsConfig:
+-	case PCIProbe1:
++    /* Determine if motherboard chipset supports PCI Config Mech 1 or 2 */
++    do {
+ 	    if (!xf86EnableIO())
+ 		return;
+ 
+@@ -467,71 +462,12 @@ void ix86PciSelectCfgmech(void)
+ 	    }
+ 	}
+       }
+-      break; /* } */
+-
+-    case PCIProbe2: /* { */
+-	if (!xf86EnableIO())
+-	    return;
+-
+-      /* The scanpci-style detection method */
+-
+-      xf86MsgVerb(X_INFO, 2, "PCI: Probing config type using method 2\n");
+-
+-      outb(PCI_CFGMECH2_ENABLE_REG, 0x00);
+-      outb(PCI_CFGMECH2_FORWARD_REG, 0x00);
+-      mode2Res1 = inb(PCI_CFGMECH2_ENABLE_REG);
+-      mode2Res2 = inb(PCI_CFGMECH2_FORWARD_REG);
+-
+-      if (mode2Res1 == 0 && mode2Res2 == 0) {
+-	xf86MsgVerb(X_INFO, 2, "PCI: Config type is 2\n");
+-	ix86Pci0.configMech = PCI_CFG_MECH_2;
+-	ix86Pci0.numDevices = PCI_CFGMECH2_MAXDEV;
+-	ix86Pci0.funcs = &ix86Funcs2;
+-	return;
+-      }
+-
+-      oldVal1 = inl(PCI_CFGMECH1_ADDRESS_REG);
+-      outl(PCI_CFGMECH1_ADDRESS_REG, PCI_EN);
+-      mode1Res1 = inl(PCI_CFGMECH1_ADDRESS_REG);
+-      outl(PCI_CFGMECH1_ADDRESS_REG, oldVal1);
+-      if (mode1Res1 == PCI_EN) {
+-	xf86MsgVerb(X_INFO, 2, "PCI: Config type is 1\n");
+-	ix86Pci0.configMech = PCI_CFG_MECH_1;
+-	ix86Pci0.numDevices = PCI_CFGMECH1_MAXDEV;
+-	ix86Pci0.funcs = &ix86Funcs1;
+-	return;
+-      }
+-      break; /* } */
+-
+-    case PCIForceConfig1:
+-	if (!xf86EnableIO())
+-	    return;
+-
+-      xf86MsgVerb(X_INFO, 2, "PCI: Forcing config type 1\n");
+-
+-      ix86Pci0.configMech = PCI_CFG_MECH_1;
+-      ix86Pci0.numDevices = PCI_CFGMECH1_MAXDEV;
+-      ix86Pci0.funcs = &ix86Funcs1;
+-      return;
+-
+-    case PCIForceConfig2:
+-	if (!xf86EnableIO())
+-	    return;
+-
+-      xf86MsgVerb(X_INFO, 2, "PCI: Forcing config type 2\n");
+-
+-      ix86Pci0.configMech = PCI_CFG_MECH_2;
+-      ix86Pci0.numDevices = PCI_CFGMECH2_MAXDEV;
+-      ix86Pci0.funcs = &ix86Funcs2;
+-      return;
+-
+-    case PCIForceNone:
+ 	break;
+-    }
++    } while (0);
+ 
+     /* No PCI found */
+     ix86Pci0.configMech = PCI_CFG_MECH_UNKNOWN;
+-    xf86MsgVerb(X_INFO, 2, "PCI: No PCI bus found or probed for\n");
++    xf86MsgVerb(X_INFO, 2, "PCI: No PCI bus found\n");
+ }
+ 
+ #if 0

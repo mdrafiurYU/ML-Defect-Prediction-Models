@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java b/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java
+index b3c4d84..9edadc4 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java
+@@ -58,6 +58,7 @@ public class DefaultDocValuesConsumer extends PerDocConsumer {
+         directory, comparator, bytesUsed);
+   }
+   
++  @SuppressWarnings("fallthrough")
+   public static void files(Directory dir, SegmentInfo segmentInfo, int codecId,
+       Set<String> files) throws IOException {
+     FieldInfos fieldInfos = segmentInfo.getFieldInfos();

@@ -1,0 +1,13 @@
+diff --git a/dix/resource.c b/dix/resource.c
+index 7092b2f..a5a7eed 100644
+--- a/dix/resource.c
++++ b/dix/resource.c
+@@ -246,7 +246,7 @@ CreateNewResourceClass()
+     return next;
+ }
+ 
+-ClientResourceRec clientTable[MAXCLIENTS];
++static ClientResourceRec clientTable[MAXCLIENTS];
+ 
+ /*****************
+  * InitClientResources

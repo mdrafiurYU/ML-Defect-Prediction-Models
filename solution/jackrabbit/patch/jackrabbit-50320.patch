@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
+index 3a6e52f..869e3a2 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GarbageCollectorTest.java
+@@ -188,8 +188,8 @@ public class GarbageCollectorTest extends AbstractJCRTest implements ScanEventLi
+ 
+         deleteMyNodes();
+ 
+-        Credentials cred = helper.getSuperuserCredentials();
+-        Session s2 = helper.getRepository().login(cred);
++        Credentials cred = getHelper().getSuperuserCredentials();
++        Session s2 = getHelper().getRepository().login(cred);
+         root = s2.getRootNode();
+         Node node2 = root.addNode("node3");
+         Node n = node2.addNode("nodeWithBlob");

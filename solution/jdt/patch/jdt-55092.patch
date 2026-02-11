@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceJavadocParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceJavadocParser.java
+index 211417c..f17d917 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceJavadocParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/SourceJavadocParser.java
+@@ -22,7 +22,7 @@ public class SourceJavadocParser extends JavadocParser {
+ 
+ public SourceJavadocParser(Parser sourceParser) {
+ 	super(sourceParser);
+-	this.kind = SOURCE_PARSER | TEXT_PARSE | TEXT_VERIF;
++	this.kind = SOURCE_PARSER | TEXT_VERIF;
+ }
+ 
+ public boolean checkDeprecation(int commentPtr) {

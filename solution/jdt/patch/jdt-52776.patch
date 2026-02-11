@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/InfixExpressionWrappingBuilder.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/InfixExpressionWrappingBuilder.java
+index ddb00d3..2b84d2a 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/InfixExpressionWrappingBuilder.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/InfixExpressionWrappingBuilder.java
+@@ -33,7 +33,7 @@ public class InfixExpressionWrappingBuilder extends ASTVisitor {
+ 		}
+ 		return false;
+ 	}
+-	public boolean visit(InfixExpression node) { 
++	public boolean visit(InfixExpression node) {
+ 		final Expression leftOperand = node.getLeftOperand();
+ 		final Expression rightOperand = node.getRightOperand();
+ 		if (leftOperand.getNodeType() == ASTNode.INFIX_EXPRESSION && isSplittable(leftOperand)) {

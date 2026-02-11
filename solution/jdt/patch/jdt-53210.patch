@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/SourceModifier.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/SourceModifier.java
+index ba4b001..e0eb2f7 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/SourceModifier.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/internal/core/dom/rewrite/SourceModifier.java
+@@ -38,7 +38,7 @@ public class SourceModifier implements ISourceModifier {
+ 	
+ 	public ReplaceEdit[] getModifications(String source) {
+ 		List result= new ArrayList();
+-		int destIndentLevel= Indents.computeIndentUnits(this.destinationIndent, this.tabWidth, this.indentWidth);
++		int destIndentLevel= Indents.measureIndentUnits(this.destinationIndent, this.tabWidth, this.indentWidth);
+ 		if (destIndentLevel == this.sourceIndentLevel) {
+ 			return (ReplaceEdit[])result.toArray(new ReplaceEdit[result.size()]);
+ 		}

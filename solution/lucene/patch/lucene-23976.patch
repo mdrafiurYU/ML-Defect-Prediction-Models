@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestSort.java b/lucene/src/test/org/apache/lucene/search/TestSort.java
+index 0f5b5b1..b663b02 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestSort.java
++++ b/lucene/src/test/org/apache/lucene/search/TestSort.java
+@@ -62,7 +62,7 @@ import org.apache.lucene.util._TestUtil;
+ 
+ public class TestSort extends LuceneTestCase {
+ 
+-  private static final int NUM_STRINGS = 6000 * RANDOM_MULTIPLIER;
++  private static final int NUM_STRINGS = atLeast(6000);
+   private IndexSearcher full;
+   private IndexSearcher searchX;
+   private IndexSearcher searchY;

@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocQualifiedTypeReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocQualifiedTypeReference.java
+index fbbf0b7..d34026a 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocQualifiedTypeReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocQualifiedTypeReference.java
+@@ -46,6 +46,15 @@ public class CompletionOnJavadocQualifiedTypeReference extends JavadocQualifiedT
+ 		return (this.completionFlags & BASE_TYPES) != 0;
+ 	}
+ 
++	/**
++	 * Get completion node flags.
++	 * 
++	 * @return int Flags of the javadoc completion node.
++	 */
++	public int getCompletionFlags() {
++		return this.completionFlags;
++	}
++
+ 	/* (non-Javadoc)
+ 	 * @see org.eclipse.jdt.internal.compiler.ast.AllocationExpression#printExpression(int, java.lang.StringBuffer)
+ 	 */

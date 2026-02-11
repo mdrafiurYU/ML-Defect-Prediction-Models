@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/search/JoinQParserPlugin.java b/solr/src/java/org/apache/solr/search/JoinQParserPlugin.java
+index 5e0c658..a38b1a8 100644
+--- a/solr/src/java/org/apache/solr/search/JoinQParserPlugin.java
++++ b/solr/src/java/org/apache/solr/search/JoinQParserPlugin.java
+@@ -280,7 +280,7 @@ class JoinQuery extends Query {
+       if (prefix == null) {
+         term = termsEnum.next();
+       } else {
+-        if (termsEnum.seek(prefix, true) != TermsEnum.SeekStatus.END) {
++        if (termsEnum.seekCeil(prefix, true) != TermsEnum.SeekStatus.END) {
+           term = termsEnum.term();
+         }
+       }
+@@ -365,7 +365,7 @@ class JoinQuery extends Query {
+         if (intersects) {
+           fromTermHits++;
+           fromTermHitsTotalDf++;
+-          TermsEnum.SeekStatus status = toTermsEnum.seek(term);
++          TermsEnum.SeekStatus status = toTermsEnum.seekCeil(term);
+           if (status == TermsEnum.SeekStatus.END) break;
+           if (status == TermsEnum.SeekStatus.FOUND) {
+             toTermHits++;

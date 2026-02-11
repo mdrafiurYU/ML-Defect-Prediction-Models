@@ -1,0 +1,32 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 5dcc404..1515512 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -142,7 +142,7 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+         lastkbp = (deviceKeyButtonPointer *) laste->events->event;
+ 
+         if (laste->nevents > 6) {
+-            ErrorF("mieqEnqueue: more than six valuator events; dropping.\n");
++            ErrorF("[mi] mieqEnqueue: more than six valuator events; dropping.\n");
+             return;
+         }
+         if (oldtail == miEventQueue.head ||
+@@ -151,7 +151,7 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+               lastkbp->type == DeviceButtonRelease) ||
+             ((lastkbp->deviceid & DEVICE_BITS) !=
+              (v->deviceid & DEVICE_BITS))) {
+-            ErrorF("mieqEnequeue: out-of-order valuator event; dropping.\n");
++            ErrorF("[mi] mieqEnequeue: out-of-order valuator event; dropping.\n");
+             return;
+         }
+ 
+@@ -169,7 +169,8 @@ mieqEnqueue(DeviceIntPtr pDev, xEvent *e)
+          * stuck in an infinite loop somewhere, but SIGIO is still getting
+          * handled. */
+     	if (newtail == miEventQueue.head) {
+-            ErrorF("tossed event which came in late\n");
++            ErrorF("[mi] EQ overflowing. The server is probably stuck "
++                   "in an infinite loop.\n");
+ 	    return;
+         }
+ 	miEventQueue.tail = newtail;

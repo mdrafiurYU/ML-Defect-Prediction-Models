@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 3f5e818..73e9ced 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -2049,6 +2049,8 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 					token = tokenizer.nextToken();
+ 					if (token.equals(File.pathSeparator)) {
+ 						switch (state) {
++						case start:
++							break;
+ 						case readyToClose:
+ 						case readyToCloseEndingWithRules:
+ 						case readyToCloseOrOtherEntry:

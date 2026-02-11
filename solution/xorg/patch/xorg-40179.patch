@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xaa/xaaStateChange.c b/hw/xfree86/xaa/xaaStateChange.c
+index 443bda6..57d8aa3 100644
+--- a/hw/xfree86/xaa/xaaStateChange.c
++++ b/hw/xfree86/xaa/xaaStateChange.c
+@@ -274,7 +274,8 @@ typedef struct _XAAStateWrapRec {
+ #endif
+ } XAAStateWrapRec, *XAAStateWrapPtr;
+ 
+-static DevPrivateKey XAAStateKey = &XAAStateKey;
++static int XAAStateKeyIndex;
++static DevPrivateKey XAAStateKey = &XAAStateKeyIndex;
+ 
+ /* Wrap functions start here */
+ #define GET_STATEPRIV_GC(pGC)   XAAStateWrapPtr pStatePriv =\

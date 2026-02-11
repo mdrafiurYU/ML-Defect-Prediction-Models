@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java b/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
+index 2a4529d..a3a1fe7 100644
+--- a/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
+@@ -201,7 +201,7 @@ public abstract class MultiTermQuery extends Query {
+     
+     @Override
+     protected void addClause(BooleanQuery topLevel, Term term, int docFreq, float boost) {
+-      final Query q = new ConstantScoreQuery(new QueryWrapperFilter(new TermQuery(term, docFreq)));
++      final Query q = new ConstantScoreQuery(new TermQuery(term, docFreq));
+       q.setBoost(boost);
+       topLevel.add(q, BooleanClause.Occur.SHOULD);
+     }

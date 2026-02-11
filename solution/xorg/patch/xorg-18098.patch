@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dummylib/xf86getpagesize.c b/hw/xfree86/dummylib/xf86getpagesize.c
+index b417d30..f9454cb 100644
+--- a/hw/xfree86/dummylib/xf86getpagesize.c
++++ b/hw/xfree86/dummylib/xf86getpagesize.c
+@@ -1,5 +1,9 @@
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/os.h>
+ #include "xf86.h"

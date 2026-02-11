@@ -1,0 +1,13 @@
+diff --git a/render/mipict.c b/render/mipict.c
+index 5aad676..87dccbb 100644
+--- a/render/mipict.c
++++ b/render/mipict.c
+@@ -636,7 +636,7 @@ miPictureInit (ScreenPtr pScreen, PictFormatPtr formats, int nformats)
+ 
+     /* MI rendering routines */
+     ps->Composite	= 0;			/* requires DDX support */
+-    ps->Glyphs		= NULL;
++    ps->Glyphs		= miGlyphs;
+     ps->CompositeRects	= miCompositeRects;
+     ps->Trapezoids	= miTrapezoids;
+     ps->Triangles	= miTriangles;

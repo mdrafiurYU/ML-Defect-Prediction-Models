@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java
+index 673e385..10d1229 100644
+--- a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java
++++ b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java
+@@ -87,7 +87,7 @@ public class FullSourceWorkspaceTypeHierarchyTests extends FullSourceWorkspaceTe
+ 	protected JavaSearchResultCollector resultCollector;
+ 
+ 	public void testPerfAllTypes() throws CoreException {
+-		tagAsSummary("Type Hierarchy>All Types", true); // put in fingerprint
++		tagAsSummary("Type hierarchy", true); // put in fingerprint
+ 		ICompilationUnit unit = getCompilationUnit("org.eclipse.jdt.core", "org.eclipse.jdt.internal.compiler.ast", "ASTNode.java");
+ 		assertNotNull("ASTNode not found!", unit);

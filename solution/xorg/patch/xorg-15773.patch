@@ -1,0 +1,13 @@
+diff --git a/GL/glx/rensize.c b/GL/glx/rensize.c
+index 9cedecf..29d545e 100644
+--- a/GL/glx/rensize.c
++++ b/GL/glx/rensize.c
+@@ -922,7 +922,7 @@ int __glXPointParameterfvARBReqSize(GLbyte *pc, Bool swap )
+     if (swap) {
+ 	pname = SWAPL( pname );
+     }
+-    return 4 * __glPointParameterfvARB_size( pname );
++    return 4 * __glPointParameterfvEXT_size( pname );
+ }
+ 
+ int __glXPointParameterivReqSize(GLbyte *pc, Bool swap )

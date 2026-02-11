@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/br/BrazilianAnalyzer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/br/BrazilianAnalyzer.java
+index 1b144b4..5e35643 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/br/BrazilianAnalyzer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/br/BrazilianAnalyzer.java
+@@ -82,7 +82,7 @@ public final class BrazilianAnalyzer extends StopwordAnalyzerBase {
+ 	private Set<?> excltable = Collections.emptySet();
+ 	
+ 	/**
+-	 * Builds an analyzer with the default stop words ({@link #BRAZILIAN_STOP_WORDS}).
++	 * Builds an analyzer with the default stop words ({@link #getDefaultStopSet()}).
+ 	 */
+ 	public BrazilianAnalyzer(Version matchVersion) {
+     this(matchVersion, DefaultSetHolder.DEFAULT_STOP_SET);

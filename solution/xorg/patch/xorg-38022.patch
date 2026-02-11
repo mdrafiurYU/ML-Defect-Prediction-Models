@@ -1,0 +1,26 @@
+diff --git a/Xext/panoramiX.c b/Xext/panoramiX.c
+index eb70689..2792dc7 100644
+--- a/Xext/panoramiX.c
++++ b/Xext/panoramiX.c
+@@ -850,10 +850,6 @@ PanoramiXTranslateVisualID(int screen, VisualID orig)
+     VisualPtr pVisual = NULL;
+     int i;
+ 
+-    /* if screen is 0, orig is already the correct visual ID */
+-    if (screen == 0)
+-	return orig;
+-
+     for (i = 0; i < PanoramiXNumVisuals; i++) {
+ 	if (orig == PanoramiXVisuals[i].vid) {
+ 	    pVisual = &PanoramiXVisuals[i];
+@@ -864,6 +860,10 @@ PanoramiXTranslateVisualID(int screen, VisualID orig)
+     if (!pVisual)
+ 	return 0;
+ 
++    /* if screen is 0, orig is already the correct visual ID */
++    if (screen == 0)
++	return orig;
++
+     /* found the original, now translate it relative to the backend screen */
+     for (i = 0; i < pOtherScreen->numVisuals; i++) {
+ 	VisualPtr pOtherVisual = &pOtherScreen->visuals[i];

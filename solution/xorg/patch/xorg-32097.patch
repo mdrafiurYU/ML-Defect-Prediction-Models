@@ -1,0 +1,33 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index 330158a..b460b96 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -31,6 +31,8 @@
+ #include "inputstr.h"
+ #include "scrnintstr.h"
+ #include "ephyrlog.h"
++#include "ephyrdri.h"
++#include "ephyrglxext.h"
+ 
+ extern int KdTsPhyScreen;
+ KdKeyboardInfo *ephyrKbd;
+@@ -45,6 +47,11 @@ typedef struct _EphyrInputPrivate {
+ 
+ Bool   EphyrWantGrayScale = 0;
+ 
++
++#ifdef XEPHYR_DRI
++extern void ephyrDRIExtensionInit(void) ;
++#endif
++
+ Bool
+ ephyrInitialize (KdCardInfo *card, EphyrPriv *priv)
+ {
+@@ -617,6 +624,7 @@ ephyrInitScreen (ScreenPtr pScreen)
+ 
+ #ifdef XEPHYR_DRI
+     ephyrDRIExtensionInit () ;
++    ephyrHijackGLXExtension () ;
+ #endif
+   return TRUE;
+ }

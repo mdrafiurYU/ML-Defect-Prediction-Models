@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+index fb22cfd..66e8841 100755
+--- a/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java
+@@ -104,7 +104,9 @@ public abstract class StringIndexDocValues extends DocValues {
+ 
+       @Override
+       public void fillValue(int doc) {
+-        mval.value = termsIndex.getTerm(doc, val.value);
++        int ord = termsIndex.getOrd(doc);
++        mval.exists = ord != 0;
++        mval.value = termsIndex.lookup(ord, mval.value);
+       }
+     };
+   }

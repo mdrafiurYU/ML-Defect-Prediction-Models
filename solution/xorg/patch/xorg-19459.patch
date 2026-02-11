@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/int10/generic.c b/hw/xfree86/int10/generic.c
+index e9ddd33..a9ceebc 100644
+--- a/hw/xfree86/int10/generic.c
++++ b/hw/xfree86/int10/generic.c
+@@ -8,9 +8,11 @@
+ #include <xorg-config.h>
+ #endif
+ 
++#include <string.h>
++#include <unistd.h>
++
+ #include "xf86.h"
+ #include "xf86_OSproc.h"
+-#include "xf86_ansic.h"
+ #include "compiler.h"
+ #define _INT10_PRIVATE
+ #include "xf86int10.h"

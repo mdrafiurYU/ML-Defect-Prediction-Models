@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/th/TestThaiAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/th/TestThaiAnalyzer.java
+index af45f0d..01864f5 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/th/TestThaiAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/th/TestThaiAnalyzer.java
+@@ -123,7 +123,7 @@ public class TestThaiAnalyzer extends BaseTokenStreamTestCase {
+       assertAnalyzesToReuse(
+           analyzer,
+           "บริษัทชื่อ XY&Z - คุยกับ xyz@demo.com",
+-          new String[] { "บริษัท", "ชื่อ", "xy", "z", "คุย", "กับ", "xyz@demo.com" });
++          new String[] { "บริษัท", "ชื่อ", "xy", "z", "คุย", "กับ", "xyz", "demo.com" });
+ 	}
+ 	
+ 	/** @deprecated (3.1) for version back compat */

@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/i2c/tda8425_module.c b/hw/xfree86/i2c/tda8425_module.c
+index ecc8c9b..7d35273 100644
+--- a/hw/xfree86/i2c/tda8425_module.c
++++ b/hw/xfree86/i2c/tda8425_module.c
+@@ -18,7 +18,11 @@ static XF86ModuleVersionInfo tda8425VersRec =
+         {0,0,0,0}
+ };
+  
+-XF86ModuleData tda8425ModuleData = { &tda8425VersRec, tda8425Setup, NULL }; 
++_X_EXPORT XF86ModuleData tda8425ModuleData = {
++        &tda8425VersRec,
++        tda8425Setup,
++        NULL
++}; 
+ 
+ static pointer
+ tda8425Setup(pointer module, pointer opts, int *errmaj, int *errmin) {

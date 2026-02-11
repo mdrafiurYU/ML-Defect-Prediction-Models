@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Util.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Util.java
+index 5706d40..fdf6329 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Util.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Util.java
+@@ -96,4 +96,15 @@ public class Util {
+             return new MatchAllQuery(name);
+         }
+     }
++
++    /**
++     * Creates an {@link IOException} with <code>t</code> as its cause.
++     *
++     * @param t the cause.
++     */
++    public static IOException createIOException(Throwable t) {
++        IOException ex = new IOException(t.getMessage());
++        ex.initCause(t);
++        return ex;
++    }
+ }

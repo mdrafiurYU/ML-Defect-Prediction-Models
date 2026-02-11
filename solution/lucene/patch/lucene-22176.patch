@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java b/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java
+index b95dc74..0c1d1a1 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesConsumer.java
+@@ -77,6 +77,7 @@ public class DefaultDocValuesConsumer extends PerDocConsumer {
+                 Writer.INDEX_EXTENSION));
+             assert dir.fileExists(IndexFileNames.segmentFileName(filename, "",
+                 Writer.INDEX_EXTENSION));
++            // until here all types use an index
+           case BYTES_FIXED_STRAIGHT:
+           case FLOAT_32:
+           case FLOAT_64:

@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/ephyr/ephyr.h b/hw/kdrive/ephyr/ephyr.h
+index 3d468af..707cb01 100644
+--- a/hw/kdrive/ephyr/ephyr.h
++++ b/hw/kdrive/ephyr/ephyr.h
+@@ -55,7 +55,8 @@ typedef struct _ephyrFakexaPriv {
+      */
+     int op;
+     PicturePtr pSrcPicture, pMaskPicture, pDstPicture;
+-    PixmapPtr pSrc, pDst;
++    void *saved_ptrs[3];
++    PixmapPtr pDst, pSrc, pMask;
+     GCPtr pGC;
+ } EphyrFakexaPriv;
+ 

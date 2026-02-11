@@ -1,0 +1,15 @@
+diff --git a/ilbm/ilbmpntwin.c b/ilbm/ilbmpntwin.c
+index 4d4c458..b12a121 100644
+--- a/ilbm/ilbmpntwin.c
++++ b/ilbm/ilbmpntwin.c
+@@ -52,6 +52,10 @@ SOFTWARE.
+ /* Modified jun 95 by Geert Uytterhoeven (Geert.Uytterhoeven@cs.kuleuven.ac.be)
+    to use interleaved bitplanes instead of normal bitplanes */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "windowstr.h"

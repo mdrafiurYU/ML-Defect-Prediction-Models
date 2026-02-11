@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xaa/xaaPict.c b/hw/xfree86/xaa/xaaPict.c
+index a80388e..b127504 100644
+--- a/hw/xfree86/xaa/xaaPict.c
++++ b/hw/xfree86/xaa/xaaPict.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "xf86.h"
+ #include "xf86_ansic.h"

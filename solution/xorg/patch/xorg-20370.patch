@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf1bpp/xf1bpp.h b/hw/xfree86/xf1bpp/xf1bpp.h
+index 18104a7..885358b 100644
+--- a/hw/xfree86/xf1bpp/xf1bpp.h
++++ b/hw/xfree86/xf1bpp/xf1bpp.h
+@@ -25,6 +25,10 @@
+  * XFree86 Project.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef __XF1BPP_H__
+ #define __XF1BPP_H__
+ 

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/ia64Pci.h b/hw/xfree86/os-support/shared/ia64Pci.h
+index bc4777d..978c9ff 100644
+--- a/hw/xfree86/os-support/shared/ia64Pci.h
++++ b/hw/xfree86/os-support/shared/ia64Pci.h
+@@ -23,6 +23,10 @@
+  *ings in this Software without prior written authorization from Egbert Eich.
+  *
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _IA64_PCI_H
+ # define _IA64_PCI_H
+ 

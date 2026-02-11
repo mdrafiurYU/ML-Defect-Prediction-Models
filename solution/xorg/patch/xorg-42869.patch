@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 1babf12..a1beea0 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -398,7 +398,6 @@ xf86PrintBacktrace(void)
+ }
+ 
+ #define KeyPressed(k) (keyc->postdown[k >> 3] & (1 << (k & 7)))
+-#define ModifierDown(k) ((keyc->state & (k)) == (k))
+ 
+ static void
+ xf86ReleaseKeys(DeviceIntPtr pDev)

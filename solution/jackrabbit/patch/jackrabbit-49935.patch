@@ -1,0 +1,66 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java
+index 8f3327e..3dd28d7 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/XATest.java
+@@ -1009,35 +1009,39 @@ public class XATest extends AbstractJCRTest {
+         assertNull("session must get a null lock token", lock.getLockToken());
+ 
+         Session other = helper.getSuperuserSession();
+-        // start new Transaction and try to add lock token
+-        utx = new UserTransactionImpl(other);
+-        utx.begin();
+-
+-        Node otherNode = other.getNodeByUUID(uuid);
+-        assertTrue("Node not locked", otherNode.isLocked());
+         try {
+-            otherNode.setProperty(propertyName1, "foo");
+-            fail("Lock exception should be thrown");
+-        } catch (LockException e) {
+-            // expected
+-        }
++            // start new Transaction and try to add lock token
++            utx = new UserTransactionImpl(other);
++            utx.begin();
+ 
+-        // add lock token
+-        other.addLockToken(lockToken);
++            Node otherNode = other.getNodeByUUID(uuid);
++            assertTrue("Node not locked", otherNode.isLocked());
++            try {
++                otherNode.setProperty(propertyName1, "foo");
++                fail("Lock exception should be thrown");
++            } catch (LockException e) {
++                // expected
++            }
+ 
+-        // refresh Lock Info
+-        lock = otherNode.getLock();
++            // add lock token
++            other.addLockToken(lockToken);
+ 
+-        // assert: session must hold lock token
+-        assertTrue("session must hold lock token", containsLockToken(other, lock.getLockToken()));
++            // refresh Lock Info
++            lock = otherNode.getLock();
+ 
+-        otherNode.unlock();
++            // assert: session must hold lock token
++            assertTrue("session must hold lock token", containsLockToken(other, lock.getLockToken()));
+ 
+-        assertFalse("Node is locked", otherNode.isLocked());
++            otherNode.unlock();
+ 
+-        otherNode.setProperty(propertyName1, "foo");
+-        other.save();
+-        utx.commit();
++            assertFalse("Node is locked", otherNode.isLocked());
++
++            otherNode.setProperty(propertyName1, "foo");
++            other.save();
++            utx.commit();
++        } finally {
++            other.logout();
++        }
+     }
+ 
+     /**

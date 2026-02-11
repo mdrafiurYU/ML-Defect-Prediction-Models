@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
+index febf4ff..3017e4d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
+@@ -714,8 +714,7 @@ public int nullStatus(FlowInfo flowInfo) {
+ 				return FlowInfo.UNKNOWN;
+ 			}
+ 	}
+-	return FlowInfo.NON_NULL; 
+-// REVIEW should never get here?
++	return FlowInfo.NON_NULL; // never get there 
+ }
+ 
+ 	/**

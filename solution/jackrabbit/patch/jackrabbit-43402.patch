@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java
+index cb85b9b..3c370ac 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/AbstractUserTest.java
+@@ -86,9 +86,9 @@ public abstract class AbstractUserTest extends AbstractJCRTest {
+                 password.append(Text.digest(SecurityConstants.DEFAULT_DIGEST, uid.getBytes("UTF-8")));
+                 return password.toString();
+             } catch (NoSuchAlgorithmException e) {
+-                throw new IllegalArgumentException(e);
++                throw new IllegalArgumentException(e.toString());
+             } catch (UnsupportedEncodingException e) {
+-                throw new IllegalArgumentException(e);
++                throw new IllegalArgumentException(e.toString());
+             }
+         } else {
+             return uid;

@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNorms.java b/lucene/src/test/org/apache/lucene/index/TestNorms.java
+index af6e724..2951ef8 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestNorms.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNorms.java
+@@ -42,7 +42,7 @@ public class TestNorms extends LuceneTestCase {
+ 
+   private class SimilarityOne extends DefaultSimilarity {
+     @Override
+-    public float computeNorm(String fieldName, FieldInvertState state) {
++    public float computeNorm(FieldInvertState state) {
+       // Disable length norm
+       return state.getBoost();
+     }
+@@ -252,7 +252,7 @@ public class TestNorms extends LuceneTestCase {
+     }
+ 
+     @Override
+-    public float computeNorm(String field, FieldInvertState state) {
++    public float computeNorm(FieldInvertState state) {
+       return (float) state.getLength();
+     }
+   }

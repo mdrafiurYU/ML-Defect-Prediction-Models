@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
+index f0ae90d..a77b25a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
+@@ -25,14 +25,11 @@ public class TryStatement extends SubRoutineStatement {
+ 	public Block finallyBlock;
+ 	BlockScope scope;
+ 
+-//	private boolean isSubRoutineEscaping = false;
+ 	public UnconditionalFlowInfo subRoutineInits;
+-//	private boolean generatingTryBlock;
+ 	
+ 	// should rename into subRoutineComplete to be set to false by default
+ 
+ 	ReferenceBinding[] caughtExceptionTypes;
+-//	boolean tryBlockExit;
+ 	boolean[] catchExits;
+ 
+ 	ExceptionLabel[] enclosingExceptionLabels;	// only set while generating try block

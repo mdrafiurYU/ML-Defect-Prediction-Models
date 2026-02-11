@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeImpl.java
+index 1ce395f..1cffde3 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeImpl.java
+@@ -675,8 +675,8 @@ public class EffectiveNodeTypeImpl implements Cloneable, EffectiveNodeType {
+                                 QPropertyDefinition pd = (QPropertyDefinition) qDef;
+                                 QPropertyDefinition epd = (QPropertyDefinition) qItemDef;
+                                 // compare type & multiValued flag
+-                                if (pd.getRequiredType() == epd.getRequiredType()
+-                                        && pd.isMultiple() == epd.isMultiple()) {
++                                if (pd.getRequiredType() != epd.getRequiredType()
++                                        || pd.isMultiple() != epd.isMultiple()) {
+                                     // conflict
+                                     String msg = "The property definition for '"
+                                             + name + "' in node type '"

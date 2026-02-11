@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+index b01fad0..98ec7b0 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PackageReferenceLocator.java
+@@ -104,7 +104,6 @@ protected int matchLevelForTokens(char[][] tokens) {
+ 	}
+ 	switch (this.matchMode) {
+ 		case SearchPattern.R_EXACT_MATCH:
+-			if (this.isCamelCase) break;
+ 		case SearchPattern.R_PREFIX_MATCH:
+ 			if (packageName==null) packageName = CharOperation.concatWith(tokens, '.');
+ 			if (CharOperation.prefixEquals(this.pattern.pkgName, packageName, this.isCaseSensitive)) {

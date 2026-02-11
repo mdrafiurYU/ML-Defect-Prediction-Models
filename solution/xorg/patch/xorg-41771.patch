@@ -1,0 +1,14 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 48b5700..82c2530 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -381,6 +381,9 @@ RROutputDestroyResource (pointer value, XID pid)
+ 	rrScrPriv(pScreen);
+ 	int		i;
+     
++	if (pScrPriv->primaryOutput == output)
++	    pScrPriv->primaryOutput = NULL;
++    
+ 	for (i = 0; i < pScrPriv->numOutputs; i++)
+ 	{
+ 	    if (pScrPriv->outputs[i] == output)

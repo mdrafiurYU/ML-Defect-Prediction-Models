@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/int10/generic.c b/hw/xfree86/int10/generic.c
+index 0c3f287..5122771 100644
+--- a/hw/xfree86/int10/generic.c
++++ b/hw/xfree86/int10/generic.c
+@@ -105,6 +105,9 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
+     pInt->scrnIndex = screen;
+     base = INTPriv(pInt)->base = xnfalloc(SYS_BIOS);
+ 
++    /* FIXME: Shouldn't this be a failure case?  Leaving Tag as 0 seems like
++     * FIXME: an error
++     */
+     pvp = xf86GetPciInfoForEntity(entityIndex);
+     if (pvp != NULL) {
+ 	pInt->Tag = PCI_MAKE_TAG(PCI_MAKE_BUS(pvp->domain, pvp->bus),

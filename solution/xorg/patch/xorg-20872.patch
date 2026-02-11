@@ -1,0 +1,31 @@
+diff --git a/dix/dixfonts.c b/dix/dixfonts.c
+index a3ccf6c..cb0df3c 100644
+--- a/dix/dixfonts.c
++++ b/dix/dixfonts.c
+@@ -1,4 +1,4 @@
+-/* $XdotOrg: xserver/xorg/dix/dixfonts.c,v 1.8 2005/07/03 08:53:38 daniels Exp $ */
++/* $XdotOrg: xserver/xorg/dix/dixfonts.c,v 1.9 2006/02/15 20:44:12 ajax Exp $ */
+ /* $XFree86: xc/programs/Xserver/dix/dixfonts.c,v 3.28 2003/11/08 02:02:03 dawes Exp $ */
+ /************************************************************************
+ Copyright 1987 by Digital Equipment Corporation, Maynard, Massachusetts.
+@@ -76,10 +76,6 @@ Equipment Corporation.
+ #include "panoramiX.h"
+ #endif
+ 
+-#ifdef LBX
+-#include "lbxserve.h"
+-#endif
+-
+ #ifdef XF86BIGFONT
+ #define _XF86BIGFONT_SERVER_
+ #include <X11/extensions/xf86bigfont.h>
+@@ -491,9 +487,6 @@ CloseFont(pointer value, XID fid)
+ 	}
+ 	if (pfont == defaultFont)
+ 	    defaultFont = NULL;
+-#ifdef LBX
+-	LbxFreeFontTag(pfont);
+-#endif
+ #ifdef XF86BIGFONT
+ 	XF86BigfontFreeFontShm(pfont);
+ #endif

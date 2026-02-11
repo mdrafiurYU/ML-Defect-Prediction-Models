@@ -1,0 +1,15 @@
+diff --git a/GL/mesa/X/xf86glxint.h b/GL/mesa/X/xf86glxint.h
+index 3d7dcec..8b893af 100644
+--- a/GL/mesa/X/xf86glxint.h
++++ b/GL/mesa/X/xf86glxint.h
+@@ -32,6 +32,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _XF86GLXINT_H_
+ #define _XF86GLXINT_H_
+ 

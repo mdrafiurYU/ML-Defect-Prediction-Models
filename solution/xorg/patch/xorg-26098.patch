@@ -1,0 +1,14 @@
+diff --git a/xkb/ddxFakeMtn.c b/xkb/ddxFakeMtn.c
+index 7e75c15..d15c5c1 100644
+--- a/xkb/ddxFakeMtn.c
++++ b/xkb/ddxFakeMtn.c
+@@ -113,7 +113,7 @@ ScreenPtr	   pScreen, oldScreen;
+     }
+ 
+     if (pScreen != oldScreen)
+-	NewCurrentScreen(pScreen, oldX, oldY);
++	NewCurrentScreen(inputInfo.pointer, pScreen, oldX, oldY);
+     if (pScreen->SetCursorPosition)
+-	(*pScreen->SetCursorPosition)(pScreen, oldX, oldY, TRUE);
++	(*pScreen->SetCursorPosition)(inputInfo.pointer, pScreen, oldX, oldY, TRUE);
+ }

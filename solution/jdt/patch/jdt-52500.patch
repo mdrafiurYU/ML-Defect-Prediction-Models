@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/FieldDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/FieldDeclarationImpl.java
+index fbd8fac..3c9bb5d 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/FieldDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/FieldDeclarationImpl.java
+@@ -68,7 +68,17 @@ public class FieldDeclarationImpl extends MemberDeclarationImpl implements Field
+     
+     public String toString()
+     {
+-        return getSimpleName();
++    /*
++    	final StringBuilder buffer = new StringBuilder();
++    	final IVariableBinding field = getDeclarationBinding();
++    	if( field.getType() != null ){
++    		buffer.append( field.getType() );
++    		buffer.append(' ');
++    	}
++    	buffer.append(field.getName());
++    	return buffer.toString();
++    */
++    	return getSimpleName();
+     }
+ 
+     public MirrorKind kind(){ return MirrorKind.FIELD; }

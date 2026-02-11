@@ -1,0 +1,12 @@
+diff --git a/hw/xnest/Pointer.c b/hw/xnest/Pointer.c
+index b0de13b..8f764a6 100644
+--- a/hw/xnest/Pointer.c
++++ b/hw/xnest/Pointer.c
+@@ -56,7 +56,6 @@ xnestPointerProc(DeviceIntPtr pDev, int onoff)
+       for (i = 0; i <= nmap; i++)
+ 	map[i] = i; /* buttons are already mapped */
+       InitPointerDeviceStruct(&pDev->public, map, nmap,
+-			      GetMotionHistory,
+ 			      xnestChangePointerControl,
+ 			      GetMotionHistorySize(), 2);
+       break;

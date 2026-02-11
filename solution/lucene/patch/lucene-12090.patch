@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestExplanations.java b/lucene/src/test/org/apache/lucene/search/TestExplanations.java
+index 76e4441..8fa6e3c 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestExplanations.java
++++ b/lucene/src/test/org/apache/lucene/search/TestExplanations.java
+@@ -98,7 +98,7 @@ public class TestExplanations extends LuceneTestCase {
+   
+   /** check the expDocNrs first, then check the query (and the explanations) */
+   public void qtest(Query q, int[] expDocNrs) throws Exception {
+-    CheckHits.checkHitCollector(q, FIELD, searcher, expDocNrs);
++    CheckHits.checkHitCollector(random, q, FIELD, searcher, expDocNrs);
+   }
+ 
+   /**

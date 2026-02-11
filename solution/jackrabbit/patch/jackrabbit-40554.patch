@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/NAryQueryNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/NAryQueryNode.java
+index 215060b..a071a33 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/NAryQueryNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/NAryQueryNode.java
+@@ -157,8 +157,9 @@ public abstract class NAryQueryNode extends QueryNode {
+         }
+         for (Iterator iter = operands.iterator(); iter.hasNext();) {
+             QueryNode queryNode = (QueryNode) iter.next();
+-            if (queryNode.needsSystemTree())
++            if (queryNode.needsSystemTree()) {
+                 return true;
++            }
+         }
+         return false;
+     }

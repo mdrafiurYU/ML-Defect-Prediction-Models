@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/glxProxy/glxvendor.c b/hw/dmx/glxProxy/glxvendor.c
+index b5b61a5..4259974 100644
+--- a/hw/dmx/glxProxy/glxvendor.c
++++ b/hw/dmx/glxProxy/glxvendor.c
+@@ -29,6 +29,10 @@
+ ** version 1.2.1 Specification.
+ */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxwindow.h"
+ #include "dmxpixmap.h"

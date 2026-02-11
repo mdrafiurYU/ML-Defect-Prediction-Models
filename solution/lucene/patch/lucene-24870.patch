@@ -1,0 +1,19 @@
+diff --git a/solr/src/test/org/apache/solr/core/SolrCoreTest.java b/solr/src/test/org/apache/solr/core/SolrCoreTest.java
+index b979ede..3731dc6 100755
+--- a/solr/src/test/org/apache/solr/core/SolrCoreTest.java
++++ b/solr/src/test/org/apache/solr/core/SolrCoreTest.java
+@@ -207,9 +207,13 @@ class ClosingRequestHandler extends EmptyRequestHandler implements SolrCoreAware
+ 
+   public void inform(SolrCore core) {
+     core.addCloseHook( new CloseHook() {
+-      public void close(SolrCore core) {
++      @Override
++      public void preClose(SolrCore core) {
+         closed = true;
+       }
++
++      @Override
++      public void postClose(SolrCore core) {}
+     });
+   }
+ }

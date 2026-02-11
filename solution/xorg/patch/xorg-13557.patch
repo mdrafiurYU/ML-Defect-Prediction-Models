@@ -1,0 +1,16 @@
+diff --git a/hw/xwin/winmultiwindowwindow.c b/hw/xwin/winmultiwindowwindow.c
+index e9757a3..b6df0f8 100644
+--- a/hw/xwin/winmultiwindowwindow.c
++++ b/hw/xwin/winmultiwindowwindow.c
+@@ -855,6 +855,11 @@ winMinimizeWindow (Window id)
+ #endif
+ 
+   pWin = LookupIDByType (id, RT_WINDOW);
++  if (!pWin) 
++  { 
++      ErrorF("%s: NULL pWin. Leaving\n", __FUNCTION__); 
++      return; 
++  }
+ 
+   pScreen = pWin->drawable.pScreen;
+   if (pScreen) pScreenPriv = winGetScreenPriv(pScreen);

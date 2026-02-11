@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java
+index a6b2840..616d9e2 100644
+--- a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java
++++ b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java
+@@ -233,7 +233,10 @@ public class TokenSources {
+           .size()]);
+       ArrayUtil.quickSort(tokensInOriginalOrder, new Comparator<Token>() {
+         public int compare(Token t1, Token t2) {
+-          return t1.startOffset() - t2.endOffset();
++          if (t1.startOffset() == t2.startOffset())
++            return t1.endOffset() - t2.endOffset();
++          else
++            return t1.startOffset() - t2.startOffset();
+         }
+       });
+     }

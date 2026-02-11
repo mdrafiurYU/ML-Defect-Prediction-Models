@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 3909dc8..c4a6a9c 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -3483,6 +3483,8 @@ void InitClient(ClientPtr client, int i, pointer ospriv)
+     if (!noXkbExtension) {
+ 	client->xkbClientFlags = 0;
+ 	client->mapNotifyMask = 0;
++	client->newKeyboardNotifyMask = 0;
++	client->vMinor = client->vMajor = 0;
+ 	QueryMinMaxKeyCodes(&client->minKC,&client->maxKC);
+     }
+ #endif

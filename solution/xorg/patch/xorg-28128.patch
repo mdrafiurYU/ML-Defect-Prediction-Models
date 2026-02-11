@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 2794496..1a42920 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1158,7 +1158,10 @@ xf86ProbeOutputModes (ScrnInfoPtr scrn, int maxX, int maxY)
+ 	output->status = (*output->funcs->detect)(output);
+ 
+ 	if (output->status == XF86OutputStatusDisconnected)
++	{
++	    xf86OutputSetEDID (output, NULL);
+ 	    continue;
++	}
+ 
+ 	memset (&mon_rec, '\0', sizeof (mon_rec));
+ 	

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java
+index be1c13b..0d2ef95 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/BlockScope.java
+@@ -145,7 +145,7 @@ public class BlockScope extends Scope {
+ 	 */
+ 	public final boolean allowBlankFinalFieldAssignment(FieldBinding binding) {
+ 
+-		if (enclosingSourceType() != binding.declaringClass)
++		if (enclosingReceiverType() != binding.declaringClass)
+ 			return false;
+ 
+ 		MethodScope methodScope = methodScope();

@@ -1,0 +1,13 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index ac37206..51d113e 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -254,7 +254,7 @@ SyncCheckTriggerNegativeTransition(SyncTrigger *pTrigger, CARD64 oldval)
+ }
+ 
+ static int
+-SyncInitTrigger(ClientPtr client, SyncTrigger pTrigger, XSyncCounter counter,
++SyncInitTrigger(ClientPtr client, SyncTrigger *pTrigger, XSyncCounter counter,
+ 		Mask changes)
+ {
+     SyncCounter *pCounter = pTrigger->pCounter;

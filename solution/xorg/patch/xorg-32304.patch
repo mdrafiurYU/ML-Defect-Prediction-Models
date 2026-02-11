@@ -1,0 +1,16 @@
+diff --git a/GL/glx/glxserver.h b/GL/glx/glxserver.h
+index b6b5592..45de8e7 100644
+--- a/GL/glx/glxserver.h
++++ b/GL/glx/glxserver.h
+@@ -90,9 +90,8 @@ typedef XID GLXDrawable;
+ 
+ typedef struct __GLXclientStateRec __GLXclientState;
+ 
+-extern __GLXscreen **__glXActiveScreens;
+-extern GLint __glXNumActiveScreens;
+-extern __GLXscreen *__glXgetActiveScreen(int num);
++extern __GLXscreen *glxGetScreen(ScreenPtr pScreen);
++extern __GLXclientState *glxGetClient(ClientPtr pClient);
+ 
+ /************************************************************************/
+ 

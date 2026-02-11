@@ -1,0 +1,25 @@
+diff --git a/hw/kdrive/ephyr/hostx.h b/hw/kdrive/ephyr/hostx.h
+index 3caa466..f72cfe7 100644
+--- a/hw/kdrive/ephyr/hostx.h
++++ b/hw/kdrive/ephyr/hostx.h
+@@ -47,7 +47,8 @@ typedef enum EphyrHostXEventType
+   EPHYR_EV_MOUSE_PRESS,
+   EPHYR_EV_MOUSE_RELEASE,
+   EPHYR_EV_KEY_PRESS,
+-  EPHYR_EV_KEY_RELEASE
++  EPHYR_EV_KEY_RELEASE,
++  EPHYR_EV_EXPOSE
+ } 
+ EphyrHostXEventType;
+ 
+@@ -87,6 +88,10 @@ struct EphyrHostXEvent
+       int scancode;
+     } key_down;
+ 
++    struct expose {
++      int window;
++    } expose;
++
+   } data;
+ 
+   int key_state;

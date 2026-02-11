@@ -1,0 +1,42 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java b/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java
+index 0e81c25..dfd7478 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java
++++ b/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java
+@@ -23,6 +23,9 @@ import org.apache.lucene.util.AttributeSource;
+ import org.apache.lucene.util.BytesRef;
+ import org.apache.lucene.util.ReaderUtil;
+ 
++/**
++ * @lucene.experimental
++ */
+ public class MultiDocValues extends DocValues {
+ 
+   public static class DocValuesIndex {
+@@ -121,6 +124,8 @@ public class MultiDocValues extends DocValues {
+       maxDoc = last.start + last.length;
+       final DocValuesIndex idx = docValuesIdx[0];
+       currentEnum = idx.docValues.getEnum(this.attributes());
++      currentEnum.copyReferences(this);
++      intsRef = currentEnum.intsRef;
+       currentMax = idx.length;
+       currentStart = 0;
+       this.starts = starts;
+@@ -143,6 +148,7 @@ public class MultiDocValues extends DocValues {
+           final int idx = ReaderUtil.subIndex(target, starts);
+           currentEnum.close();
+           currentEnum = docValuesIdx[idx].docValues.getEnum(this.attributes());
++          currentEnum.copyReferences(this);
+           currentStart = docValuesIdx[idx].start;
+           currentMax = currentStart + docValuesIdx[idx].length;
+           relativeDoc = target - currentStart;
+@@ -250,10 +256,6 @@ public class MultiDocValues extends DocValues {
+       return missingValue.longValue;
+     }
+ 
+-    public long ramBytesUsed() {
+-      return 0;
+-    }
+-
+     @Override
+     public ValuesEnum getEnum(AttributeSource attrSource) throws IOException {
+       return ValuesEnum.emptyEnum(type);

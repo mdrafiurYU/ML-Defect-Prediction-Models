@@ -1,0 +1,15 @@
+diff --git a/fb/fbpict.h b/fb/fbpict.h
+index 3e751e9..35f8ec3 100644
+--- a/fb/fbpict.h
++++ b/fb/fbpict.h
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _FBPICT_H_
+ #define _FBPICT_H_
+ 

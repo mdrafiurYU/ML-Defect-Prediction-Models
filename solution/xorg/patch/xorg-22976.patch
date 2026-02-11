@@ -1,0 +1,15 @@
+diff --git a/os/rpcauth.c b/os/rpcauth.c
+index 037a4fa..71f87e9 100644
+--- a/os/rpcauth.c
++++ b/os/rpcauth.c
+@@ -34,6 +34,10 @@ from The Open Group.
+  */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef SECURE_RPC
+ 
+ #include <X11/X.h>

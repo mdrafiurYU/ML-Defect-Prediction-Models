@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 0f43d12..75dfa69 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -2264,6 +2264,7 @@ AttachDevice(ClientPtr client, DeviceIntPtr dev, DeviceIntPtr master)
+         return BadAccess;
+ 
+     dev->master = master;
++    dev->spriteInfo->sprite = master->spriteInfo->sprite;
+ 
+     return Success;
+ }

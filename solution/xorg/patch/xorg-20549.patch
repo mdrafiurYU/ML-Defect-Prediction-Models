@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcPixFS.c b/hw/xfree86/xf4bpp/ppcPixFS.c
+index 957a881..dd1bb31 100644
+--- a/hw/xfree86/xf4bpp/ppcPixFS.c
++++ b/hw/xfree86/xf4bpp/ppcPixFS.c
+@@ -46,6 +46,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XConsortium: ppcPixFS.c /main/3 1996/02/21 17:57:57 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "mfbmap.h"
+ #include "mfb.h"

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/db/OraclePersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/db/OraclePersistenceManager.java
+index 34473b8..c206ef8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/db/OraclePersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/db/OraclePersistenceManager.java
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.jackrabbit.core.persistence.db;
+ 
++import org.apache.commons.io.IOUtils;
+ import org.apache.jackrabbit.core.persistence.PMContext;
+ import org.apache.jackrabbit.core.persistence.util.Serializer;
+ import org.apache.jackrabbit.core.state.NodeReferences;
+@@ -345,7 +346,7 @@ public class OraclePersistenceManager extends SimpleDbPersistenceManager {
+                 // commit the changes
+                 con.commit();
+             } finally {
+-                closeStream(in);
++                IOUtils.closeQuietly(in);
+                 closeStatement(stmt);
+             }
+         }

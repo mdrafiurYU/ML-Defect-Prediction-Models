@@ -1,0 +1,27 @@
+diff --git a/Xext/dpms.c b/Xext/dpms.c
+index 54871c5..bad7aa6 100644
+--- a/Xext/dpms.c
++++ b/Xext/dpms.c
+@@ -68,21 +68,13 @@ static DISPATCH_PROC(ProcDPMSInfo);
+ static DISPATCH_PROC(SProcDPMSInfo);
+ static DISPATCH_PROC(ProcDPMSCapable);
+ static DISPATCH_PROC(SProcDPMSCapable);
+-static void DPMSResetProc(ExtensionEntry* extEntry);
+ 
+ void
+ DPMSExtensionInit(INITARGS)
+ {
+     AddExtension(DPMSExtensionName, 0, 0,
+ 		 ProcDPMSDispatch, SProcDPMSDispatch,
+-		 DPMSResetProc, StandardMinorOpcode);
+-}
+-
+-/*ARGSUSED*/
+-static void
+-DPMSResetProc (extEntry)
+-    ExtensionEntry	*extEntry;
+-{
++		 NULL, StandardMinorOpcode);
+ }
+ 
+ static int

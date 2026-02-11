@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java
+index b8dab55..7724743 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexFormatVersion.java
+@@ -117,13 +117,13 @@ public class IndexFormatVersion {
+             TermEnum terms = reader.terms(
+                     new Term(FieldNames.PROPERTIES, ""));
+             try {
+-                if (terms.next() && terms.term().field() == FieldNames.PROPERTIES) {
++                do {
+                     tp.seek(terms);
+                     if (tp.next()) {
+                         tp.nextPosition();
+                         return tp.isPayloadAvailable();
+                     }
+-                }
++                } while (terms.next() && terms.term().field() == FieldNames.PROPERTIES);
+             } finally {
+                 terms.close();
+             }

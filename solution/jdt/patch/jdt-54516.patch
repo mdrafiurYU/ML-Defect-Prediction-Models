@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java
+index c863d82..8ecb597 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java
+@@ -230,7 +230,7 @@ public class AttachedJavadocTests extends ModifyingResourceTests {
+ 	}
+ 	
+ 	// test archive doc
+-	public void _test010() throws JavaModelException {
++	public void test010() throws JavaModelException {
+ 		IClasspathEntry[] savedEntries = null;
+ 		try {
+ 			IClasspathEntry[] entries = this.project.getRawClasspath();
+@@ -247,7 +247,6 @@ public class AttachedJavadocTests extends ModifyingResourceTests {
+ 			} catch(IllegalArgumentException e) {
+ 				assertTrue("Should not happen", false); //$NON-NLS-1$
+ 			}
+-			// jar:file:/D:/eclipse/workspaces/head/TestAPI/doc.zip!/
+ 			final String path = "jar:" + docUrl.toExternalForm() + "!/doc"; //$NON-NLS-1$ //$NON-NLS-2$
+ 			//final String path = "jar:" + "platform:/resource/AttachedJavadocProject/doc.zip" + "!/doc";
+ 			IClasspathAttribute attribute = JavaCore.newClasspathAttribute(IClasspathAttribute.JAVADOC_LOCATION_ATTRIBUTE_NAME, path);

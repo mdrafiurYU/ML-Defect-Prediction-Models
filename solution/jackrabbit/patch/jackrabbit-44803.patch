@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/FileJournalTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/FileJournalTest.java
+index 7a5a473..6317762 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/FileJournalTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/journal/FileJournalTest.java
+@@ -89,7 +89,11 @@ public class FileJournalTest extends JUnitTest {
+         ClusterNode clusterNode = new ClusterNode();
+         clusterNode.init(context);
+ 
+-        File revisionFile = new File(repositoryHome, FileJournal.DEFAULT_INSTANCE_FILE_NAME);
+-        assertTrue(revisionFile.exists());
++        try {
++            File revisionFile = new File(repositoryHome, FileJournal.DEFAULT_INSTANCE_FILE_NAME);
++            assertTrue(revisionFile.exists());
++        } finally {
++            clusterNode.stop();
++        }
+     }
+ }

@@ -1,0 +1,25 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+index 0bfa8bd..f5cd26d 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+@@ -201,9 +201,9 @@ public class InstantiatedIndexWriter implements Closeable {
+       byte[] oldNorms = index.getNormsByFieldNameAndDocumentNumber().get(field);
+       if (oldNorms != null) {
+         System.arraycopy(oldNorms, 0, norms, 0, oldNorms.length);
+-        Arrays.fill(norms, oldNorms.length, norms.length, similarity.encodeNormValue(1.0f));
++        Arrays.fill(norms, oldNorms.length, norms.length, (byte) 0);
+       } else {
+-        Arrays.fill(norms, 0, norms.length, similarity.encodeNormValue(1.0f));
++        Arrays.fill(norms, 0, norms.length, (byte) 0);
+       }
+       normsByFieldNameAndDocumentNumber.put(field, norms);
+       fieldNames.remove(field);
+@@ -211,7 +211,7 @@ public class InstantiatedIndexWriter implements Closeable {
+     for (String field : fieldNames) {
+       //System.out.println(field);
+       byte[] norms = new byte[index.getDocumentsByNumber().length + termDocumentInformationFactoryByDocument.size()];
+-      Arrays.fill(norms, 0, norms.length, similarity.encodeNormValue(1.0f));
++      Arrays.fill(norms, 0, norms.length, (byte) 0);
+       normsByFieldNameAndDocumentNumber.put(field, norms);
+     }
+     fieldNames.clear();

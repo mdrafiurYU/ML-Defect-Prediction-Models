@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestFlushByRamOrCountsPolicy.java b/lucene/src/test/org/apache/lucene/index/TestFlushByRamOrCountsPolicy.java
+index 2d6861b..7560b00 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestFlushByRamOrCountsPolicy.java
++++ b/lucene/src/test/org/apache/lucene/index/TestFlushByRamOrCountsPolicy.java
+@@ -199,7 +199,6 @@ public class TestFlushByRamOrCountsPolicy extends LuceneTestCase {
+     for (int x = 0; x < threads.length; x++) {
+       threads[x].join();
+     }
+-
+     assertEquals(" all flushes must be due", 0, flushControl.flushBytes());
+     assertEquals(numDocumentsToIndex, writer.numDocs());
+     assertEquals(numDocumentsToIndex, writer.maxDoc());
+@@ -334,6 +333,7 @@ public class TestFlushByRamOrCountsPolicy extends LuceneTestCase {
+             }
+           }
+         }
++        writer.commit();
+       } catch (Throwable ex) {
+         throw new RuntimeException(ex);
+       }

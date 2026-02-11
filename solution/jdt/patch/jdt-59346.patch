@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AutoBoxingTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AutoBoxingTest.java
+index 6c783ef..8b7b299 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AutoBoxingTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AutoBoxingTest.java
+@@ -1044,8 +1044,10 @@ public class AutoBoxingTest extends AbstractComparableTest {
+ 					"\n",
+ 					ClassFileBytesDisassembler.DETAILED); 
+ 		} catch (org.eclipse.jdt.core.util.ClassFormatException e) {
++			e.printStackTrace();
+ 			assertTrue("ClassFormatException", false);
+ 		} catch (IOException e) {
++			e.printStackTrace();
+ 			assertTrue("IOException", false);
+ 		}

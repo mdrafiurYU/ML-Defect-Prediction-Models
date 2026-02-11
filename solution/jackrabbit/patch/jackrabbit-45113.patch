@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/DBDataStoreTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/DBDataStoreTest.java
+index 831b17c..5b54754 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/DBDataStoreTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/DBDataStoreTest.java
+@@ -52,7 +52,7 @@ public class DBDataStoreTest extends TestCase {
+             store.addRecord(new ByteArrayInputStream(data)).getIdentifier();
+     }
+ 
+-    protected void tearDow() {
++    protected void tearDown() {
+         store.close();
+ 
+         try {

@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Globals.c b/hw/xfree86/common/xf86Globals.c
+index dfc2bd7..db3b684 100644
+--- a/hw/xfree86/common/xf86Globals.c
++++ b/hw/xfree86/common/xf86Globals.c
+@@ -129,9 +129,15 @@ xf86InfoRec xf86Info = {
+     .kbdCustomKeycodes          = FALSE,
+     .disableRandR               = FALSE,
+     .randRFrom                  = X_DEFAULT,
++#ifdef CONFIG_HAL
+     .allowEmptyInput            = TRUE,
+     .autoAddDevices             = TRUE,
+     .autoEnableDevices          = TRUE
++#else
++    .allowEmptyInput            = FALSE,
++    .autoAddDevices             = FALSE,
++    .autoEnableDevices          = FALSE
++#endif
+ };
+ const char *xf86ConfigFile = NULL;
+ const char *xf86InputDeviceList = NULL;

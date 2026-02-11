@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java
+index 1da97cf..f913bc3 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocTypeParamReference.java
+@@ -46,7 +46,7 @@ public class CompletionOnJavadocTypeParamReference extends JavadocSingleTypeRefe
+ 	 * @see org.eclipse.jdt.internal.compiler.ast.AllocationExpression#printExpression(int, java.lang.StringBuffer)
+ 	 */
+ 	public StringBuffer printExpression(int indent, StringBuffer output) {
+-		output.append("<CompleteOnJavadocSingleTypeReference:"); //$NON-NLS-1$
++		output.append("<CompletionOnJavadocTypeParamReference:"); //$NON-NLS-1$
+ 		if (this.token != null) super.printExpression(indent, output);
+ 		return output.append('>');
+ 	}

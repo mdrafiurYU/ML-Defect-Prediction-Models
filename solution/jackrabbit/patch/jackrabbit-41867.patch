@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LengthImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LengthImpl.java
+index 3efc9e2..825407c 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LengthImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LengthImpl.java
+@@ -32,7 +32,7 @@ public class LengthImpl extends DynamicOperandImpl implements Length {
+     private final PropertyValueImpl propertyValue;
+ 
+     LengthImpl(NamePathResolver resolver, PropertyValueImpl propertyValue) {
+-        super(resolver);
++        super(resolver, propertyValue.getSelectorQName());
+         this.propertyValue = propertyValue;
+     }

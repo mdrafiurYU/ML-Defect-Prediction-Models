@@ -1,0 +1,14 @@
+diff --git a/include/input.h b/include/input.h
+index 3e3d16d..a9eeb3f 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -406,6 +406,9 @@ extern int GetKeyboardValuatorEvents(
+     int num_valuator,
+     int *valuators);
+ 
++extern void SwitchCoreKeyboard(DeviceIntPtr pDev);
++extern void SwitchCorePointer(DeviceIntPtr pDev);
++
+ extern DeviceIntPtr LookupDeviceIntRec(
+     CARD8 deviceid);
+ 

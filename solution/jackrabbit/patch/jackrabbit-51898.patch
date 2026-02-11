@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentReadWriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentReadWriteTest.java
+index b021d5e..17db6ef 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentReadWriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ConcurrentReadWriteTest.java
+@@ -64,7 +64,7 @@ public class ConcurrentReadWriteTest extends AbstractConcurrencyTest {
+                                 try {
+                                     for (PropertyIterator it = n.getProperties(); it.hasNext(); ) {
+                                         Property p = it.nextProperty();
+-                                        if (p.getDefinition().isMultiple()) {
++                                        if (p.isMultiple()) {
+                                             p.getValues();
+                                         } else {
+                                             p.getValue();

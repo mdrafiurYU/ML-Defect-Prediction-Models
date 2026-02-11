@@ -1,0 +1,16 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java b/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java
+index 536fc77..70ff39d 100644
+--- a/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/DoubleDocValues.java
+@@ -36,6 +36,11 @@ public abstract class DoubleDocValues extends DocValues {
+   }
+ 
+   @Override
++  public boolean boolVal(int doc) {
++    return doubleVal(doc) != 0;
++  }
++
++  @Override
+   public abstract double doubleVal(int doc);
+ 
+   @Override

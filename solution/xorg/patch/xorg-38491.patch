@@ -1,0 +1,14 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 94becd2..3740daa 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -475,9 +475,7 @@ InitExtensions(int argc, char *argv[])
+ #ifdef MULTIBUFFER
+     if (!noMultibufferExtension) MultibufferExtensionInit();
+ #endif
+-#if defined(XINPUT)
+     if (!noXInputExtension) XInputExtensionInit();
+-#endif
+ #ifdef XTEST
+     if (!noTestExtensions) XTestExtensionInit();
+ #endif

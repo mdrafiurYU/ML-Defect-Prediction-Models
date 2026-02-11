@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java
+index 840489f..d19fe67 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/XPathJcrPathTest.java
+@@ -43,7 +43,7 @@ public class XPathJcrPathTest extends AbstractQueryTest {
+     protected void setUp() throws Exception {
+         isReadOnly = true;
+         super.setUp();
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+         testRootNode = session.getRootNode().getNode(testPath);
+     }

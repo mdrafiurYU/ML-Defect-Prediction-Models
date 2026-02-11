@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/principal/PrincipalManager.java b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/principal/PrincipalManager.java
+index 2c0f25a..3b6c46f 100644
+--- a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/principal/PrincipalManager.java
++++ b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/principal/PrincipalManager.java
+@@ -80,10 +80,9 @@ public interface PrincipalManager {
+      * <code>PrincipalManager</code> has been built for.
+      *
+      * @param principalName the name of the principal to retrieve
+-     * @return return the requested principal.
+-     * @throws NoSuchPrincipalException If no principal with the given name exists.
++     * @return return the requested principal or <code>null</code> if not exists
+      */
+-    Principal getPrincipal(String principalName) throws NoSuchPrincipalException;
++    Principal getPrincipal(String principalName);
+ 
+     /**
+      * Gets the principals matching a simple filter expression applied against

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java
+index d4efef6..50c768d 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/AnnotationCompletionParserTest.java
+@@ -24,7 +24,7 @@ public AnnotationCompletionParserTest(String testName) {
+ 	super(testName);
+ }
+ public static Test suite() {
+-	return buildTestSuite(AnnotationCompletionParserTest.class);
++	return buildAllCompliancesRegressionTestSetupSuite(AnnotationCompletionParserTest.class);
+ }
+ 
+ protected Map getCompilerOptions() {

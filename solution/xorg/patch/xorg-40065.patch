@@ -1,0 +1,19 @@
+diff --git a/hw/xnest/XNCursor.h b/hw/xnest/XNCursor.h
+index d993555..ab2c3b1 100644
+--- a/hw/xnest/XNCursor.h
++++ b/hw/xnest/XNCursor.h
+@@ -28,11 +28,11 @@ typedef struct {
+   Cursor cursor;
+ } xnestPrivCursor;
+ 
+-#define xnestGetCursorPriv(pCursor, pScreen) \
+-    ((xnestPrivCursor *)dixLookupPrivate(&(pCursor)->devPrivates, pScreen))
++#define xnestGetCursorPriv(pCursor, pScreen) ((xnestPrivCursor *) \
++    dixLookupPrivate(&(pCursor)->devPrivates, CursorScreenKey(pScreen)))
+ 
+ #define xnestSetCursorPriv(pCursor, pScreen, v) \
+-    dixSetPrivate(&(pCursor)->devPrivates, pScreen, v)
++    dixSetPrivate(&(pCursor)->devPrivates, CursorScreenKey(pScreen), v)
+ 
+ #define xnestCursor(pCursor, pScreen) \
+   (xnestGetCursorPriv(pCursor, pScreen)->cursor)

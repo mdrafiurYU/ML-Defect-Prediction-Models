@@ -1,0 +1,18 @@
+diff --git a/Xext/xvmain.c b/Xext/xvmain.c
+index f5c80f3..6184e4e 100644
+--- a/Xext/xvmain.c
++++ b/Xext/xvmain.c
+@@ -520,12 +520,7 @@ XvdiDestroyEncoding(pointer value, XID id)
+ }
+ 
+ static int
+-XvdiSendVideoNotify(pPort, pDraw, reason)
+-
+-XvPortPtr pPort;
+-DrawablePtr pDraw;
+-int reason;
+-
++XvdiSendVideoNotify(XvPortPtr pPort, DrawablePtr pDraw, int reason)
+ {
+   xvEvent event;
+   XvVideoNotifyPtr pn;

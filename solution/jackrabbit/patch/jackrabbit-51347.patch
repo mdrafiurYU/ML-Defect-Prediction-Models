@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshMovedTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshMovedTest.java
+index 0cd7984..91baa8f 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshMovedTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RefreshMovedTest.java
+@@ -79,7 +79,7 @@ public class RefreshMovedTest extends AbstractJCRTest {
+      * @throws RepositoryException
+      */
+     public void testRefreshOtherSession() throws RepositoryException {
+-        Session readSession = helper.getReadOnlySession();
++        Session readSession = getHelper().getReadOnlySession();
+         try {
+             Node anotherNode = (Node) readSession.getItem(srcPath);
+             // workspace move

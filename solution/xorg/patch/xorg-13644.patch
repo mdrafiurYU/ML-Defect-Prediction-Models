@@ -1,0 +1,17 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index f2b4fe8..8b28408 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -858,8 +858,10 @@ fbComposite (CARD8      op,
+ 	maskAlphaMap = pMask->alphaMap != 0;
+     }
+     
+-    if (!pSrc->transform && !(pMask && pMask->transform))
+-    if (!maskAlphaMap && !srcAlphaMap && !dstAlphaMap)
++    if (!pSrc->transform && !(pMask && pMask->transform)
++         && !maskAlphaMap && !srcAlphaMap && !dstAlphaMap
++         && (pSrc->filter != PictFilterConvolution)
++         && (!pMask || pMask->filter != PictFilterConvolution))
+     switch (op) {
+     case PictOpSrc:
+ #ifdef USE_MMX

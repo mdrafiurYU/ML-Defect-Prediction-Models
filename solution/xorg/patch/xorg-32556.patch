@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/Flags.c b/hw/xfree86/parser/Flags.c
+index 5b60a51..730ea0c 100644
+--- a/hw/xfree86/parser/Flags.c
++++ b/hw/xfree86/parser/Flags.c
+@@ -330,7 +330,7 @@ xf86findOption (XF86OptionPtr list, const char *name)
+  * returned.  If the option is not found, a NULL is returned.
+  */
+ 
+-char *
++__attribute__((visibility("default"))) char *
+ xf86findOptionValue (XF86OptionPtr list, const char *name)
+ {
+ 	XF86OptionPtr p = xf86findOption (list, name);

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-spi2jcr/src/test/java/org/apache/jackrabbit/spi2jcr/RepositoryStubImpl.java b/jackrabbit-spi2jcr/src/test/java/org/apache/jackrabbit/spi2jcr/RepositoryStubImpl.java
+index 21a733f..96bb6f6 100644
+--- a/jackrabbit-spi2jcr/src/test/java/org/apache/jackrabbit/spi2jcr/RepositoryStubImpl.java
++++ b/jackrabbit-spi2jcr/src/test/java/org/apache/jackrabbit/spi2jcr/RepositoryStubImpl.java
+@@ -80,8 +80,7 @@ public class RepositoryStubImpl extends DefaultRepositoryStub {
+ 
+         // TODO: make configurable
+         BatchReadConfig brconfig = new BatchReadConfig();
+-        brconfig.setDepth(NameConstants.NT_FILE, BatchReadConfig.DEPTH_INFINITE);
+-        brconfig.setDepth(NameConstants.NT_RESOURCE, BatchReadConfig.DEPTH_INFINITE);
++        brconfig.setDepth(NameConstants.NT_UNSTRUCTURED, BatchReadConfig.DEPTH_INFINITE);
+ 
+         return new RepositoryServiceImpl(jackrabbitRepo, brconfig);
+     }

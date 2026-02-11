@@ -1,0 +1,13 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java
+index e4ba7fb..83e546d 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/DataImportHandler.java
+@@ -194,7 +194,7 @@ public class DataImportHandler extends RequestHandlerBase implements
+               IMPORT_CMD.equals(command)) {
+ 
+         UpdateRequestProcessorChain processorChain =
+-                req.getCore().getUpdateProcessingChain(params.get(UpdateParams.UPDATE_PROCESSOR));
++                req.getCore().getUpdateProcessingChain(params.get(UpdateParams.UPDATE_CHAIN));
+         UpdateRequestProcessor processor = processorChain.createProcessor(req, rsp);
+         SolrResourceLoader loader = req.getCore().getResourceLoader();
+         SolrWriter sw = getSolrWriter(processor, loader, requestParams, req);

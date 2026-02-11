@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/pseudoramiX.c b/hw/xquartz/pseudoramiX.c
+index b19c605..4a9d8e1 100644
+--- a/hw/xquartz/pseudoramiX.c
++++ b/hw/xquartz/pseudoramiX.c
+@@ -44,7 +44,7 @@ Equipment Corporation.
+ #include <X11/extensions/panoramiXproto.h>
+ #include "globals.h"
+ 
+-extern int noPseudoramiXExtension;
++Bool noPseudoramiXExtension = FALSE;
+ extern int noPanoramiXExtension;
+ 
+ extern int ProcPanoramiXQueryVersion (ClientPtr client);

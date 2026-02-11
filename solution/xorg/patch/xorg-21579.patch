@@ -1,0 +1,13 @@
+diff --git a/GL/glx/rensize.c b/GL/glx/rensize.c
+index 47d6989..c69619a 100644
+--- a/GL/glx/rensize.c
++++ b/GL/glx/rensize.c
+@@ -323,7 +323,7 @@ int __glXTypeSize(GLenum enm)
+   }
+ }
+ 
+-int __glXDrawArraysSize( const GLbyte *pc, Bool swap )
++int __glXDrawArraysReqSize( const GLbyte *pc, Bool swap )
+ {
+     __GLXdispatchDrawArraysHeader *hdr = (__GLXdispatchDrawArraysHeader *) pc;
+     __GLXdispatchDrawArraysComponentHeader *compHeader;

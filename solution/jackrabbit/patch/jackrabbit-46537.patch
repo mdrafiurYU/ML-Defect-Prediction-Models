@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/nodetype/NumericConstraintTest.java b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/nodetype/NumericConstraintTest.java
+index d0eeff9..419da51 100644
+--- a/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/nodetype/NumericConstraintTest.java
++++ b/jackrabbit-spi-commons/src/test/java/org/apache/jackrabbit/spi/commons/nodetype/NumericConstraintTest.java
+@@ -49,7 +49,7 @@ public class NumericConstraintTest extends ValueConstraintTest {
+         return PropertyType.DOUBLE;
+     }
+ 
+-    protected String[] getInvalidQualifiedDefinitions() throws NamespaceException, IllegalNameException, MalformedPathException {
++    protected String[] getInvalidQualifiedDefinitions() throws RepositoryException {
+         return new String[] {"test", resolver.getQPath("/a/b/jcr:c").getString(), "true"};
+     }

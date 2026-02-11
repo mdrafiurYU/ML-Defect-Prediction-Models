@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/WildcardBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/WildcardBinding.java
+index 6d3546f..3e60bd7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/WildcardBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/WildcardBinding.java
+@@ -350,6 +350,13 @@ public class WildcardBinding extends ReferenceBinding {
+     }
+     
+     /**
++     * Returns true if the current type denotes an intersection type: Number & Comparable<?>
++     */
++    public boolean isIntersectionType() {
++    	return this.otherBounds != null;
++    }
++    
++    /**
+ 	 * Returns true if the type is a wildcard
+ 	 */
+ 	public boolean isUnboundWildcard() {

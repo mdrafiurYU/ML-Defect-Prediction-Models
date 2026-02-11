@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 88c5a87..01f2395 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -878,15 +878,6 @@ InitOutput(ScreenInfo *pScreenInfo, int argc, char **argv)
+       }
+     }
+ 
+-    /*
+-     * If no screens left, return now.
+-     */
+-
+-    if (xf86NumScreens == 0) {
+-      xf86Msg(X_ERROR, "Screen(s) found, but drivers were unusable.\n");
+-      return;
+-    }
+-
+     /* XXX Should this be before or after loading dependent modules? */
+     if (xf86ProbeOnly)
+     {

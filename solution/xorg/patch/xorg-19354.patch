@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/stdResource.c b/hw/xfree86/os-support/shared/stdResource.c
+index 72ab998..4704d81 100644
+--- a/hw/xfree86/os-support/shared/stdResource.c
++++ b/hw/xfree86/os-support/shared/stdResource.c
+@@ -28,6 +28,10 @@
+ 
+ /* Standard resource information code */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ # define I_NEED_OS2_H
+ #endif

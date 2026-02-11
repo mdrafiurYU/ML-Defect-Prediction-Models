@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadoc.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadoc.java
+index 298b14d..f1692f2 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadoc.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadoc.java
+@@ -63,7 +63,7 @@ public class CompletionJavadoc extends Javadoc {
+ 					if (scope.kind == Scope.METHOD_SCOPE) {
+ 						paramNameReference.missingParams = missingParamTags(paramNameReference.binding, (MethodScope)scope);
+ 					}
+-					if (paramNameReference.token == null) {
++					if (paramNameReference.token == null || paramNameReference.token.length == 0) {
+ 						paramNameReference.missingTypeParams = missingTypeParameterTags(paramNameReference.binding, scope);
+ 					}
+ 				} else if (this.completionNode instanceof CompletionOnJavadocTypeParamReference) {

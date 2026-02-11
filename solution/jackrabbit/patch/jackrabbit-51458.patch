@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java
+index f58d845..3d1621a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java
+@@ -87,7 +87,8 @@ public class ChildNodesQueryHits extends AbstractQueryHits {
+ 
+     /**
+      * Fetches the next {@link #childHits}
+-     * @throws IOException
++     *
++     * @throws IOException if an error occurs while reading from the index.
+      */
+     private void fetchNextChildHits() throws IOException {
+         if (childHits != null) {

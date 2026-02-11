@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EncodedFileOutputStream.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EncodedFileOutputStream.java
+index b6826a3..fb74ad4 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EncodedFileOutputStream.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/EncodedFileOutputStream.java
+@@ -23,7 +23,7 @@ public class EncodedFileOutputStream extends BinaryFileOutputStream {
+ 
+ 	private final String _charsetName;
+ 	
+-	public EncodedFileOutputStream(IFile file, ProcessorEnvImpl env, String charsetName) {
++	public EncodedFileOutputStream(IFile file, BuildEnv env, String charsetName) {
+ 		super(file, env);
+ 		_charsetName = charsetName;
+ 	}

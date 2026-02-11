@@ -1,0 +1,14 @@
+diff --git a/Xext/geext.c b/Xext/geext.c
+index 7c4573e..fed74dc 100644
+--- a/Xext/geext.c
++++ b/Xext/geext.c
+@@ -235,8 +235,7 @@ GEExtensionInit(void)
+ 
+         memset(GEExtensions, 0, sizeof(GEExtensions));
+ 
+-        EventSwapVector[GEEventBase + X_GenericEvent] = 
+-            (EventSwapPtr) SGEGenericEvent;
++        EventSwapVector[X_GenericEvent] = (EventSwapPtr) SGEGenericEvent;
+     } else {
+         FatalError("GEInit: AddExtensions failed.\n");
+     }

@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
+index 95e1780..c7a0ce8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/BundleDbPersistenceManager.java
+@@ -714,6 +714,12 @@ public class BundleDbPersistenceManager extends AbstractBundlePersistenceManager
+                                           boolean fix, Collection<NodePropBundle> modifications) {
+         //log.info(name + ": checking bundle '" + id + "'");
+ 
++        // skip all system nodes except root node
++        if (id.toString().endsWith("babecafebabe")
++                && !id.toString().equals("cafebabe-cafe-babe-cafe-babecafebabe")) {
++            return;
++        }
++
+         // look at the node's children
+         Collection<NodePropBundle.ChildNodeEntry> missingChildren = new ArrayList<NodePropBundle.ChildNodeEntry>();
+         for (NodePropBundle.ChildNodeEntry entry : bundle.getChildNodeEntries()) {
+@@ -722,9 +728,6 @@ public class BundleDbPersistenceManager extends AbstractBundlePersistenceManager
+             if (entry.getId().toString().endsWith("babecafebabe")) {
+                 continue;
+             }
+-            if (id.toString().endsWith("babecafebabe")) {
+-                continue;
+-            }
+ 
+             try {
+                 // analyze child node bundles

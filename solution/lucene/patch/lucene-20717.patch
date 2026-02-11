@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/search/QueryUtils.java b/lucene/src/test-framework/org/apache/lucene/search/QueryUtils.java
+index b993bac..64f8ce8 100644
+--- a/lucene/src/test-framework/org/apache/lucene/search/QueryUtils.java
++++ b/lucene/src/test-framework/org/apache/lucene/search/QueryUtils.java
+@@ -309,7 +309,7 @@ public class QueryUtils {
+           // confirm that skipping beyond the last doc, on the
+           // previous reader, hits NO_MORE_DOCS
+           final IndexReader previousReader = lastReader[0];
+-          IndexSearcher indexSearcher = LuceneTestCase.newSearcher(previousReader);
++          IndexSearcher indexSearcher = LuceneTestCase.newSearcher(previousReader, false);
+           Weight w = q.weight(indexSearcher);
+           Scorer scorer = w.scorer((AtomicReaderContext)previousReader.getTopReaderContext(), ScorerContext.def());
+           if (scorer != null) {

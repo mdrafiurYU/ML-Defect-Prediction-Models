@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeTest.java
+index fcf481e..3bce369 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/NodeTest.java
+@@ -69,6 +69,7 @@ public class NodeTest extends AbstractJCRTest {
+         } finally {
+             // log out
+             superuserW2.logout();
++            superuserW2 = null;
+         }
+ 
+         super.tearDown();

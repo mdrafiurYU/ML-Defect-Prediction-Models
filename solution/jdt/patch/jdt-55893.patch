@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
+index 54c9a9f..fbeade8 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ReconcilerTests.java
+@@ -2709,7 +2709,11 @@ public void testBug118823() throws CoreException, InterruptedException, IOExcept
+ 		source1 = 
+ 			"public class Test {}\n" + 
+ 			"class Secondary{}\n";
+-		Util.createFile(ioFile.getCanonicalPath(), source1);
++		String sourceFilePath = ioFile.getCanonicalPath();
++		Util.createFile(sourceFilePath, source1);
++		// Debug
++		System.out.println("File "+sourceFilePath+":");
++		System.out.println(Util.fileContent(sourceFilePath));
+ 		project.getProject().refreshLocal(IResource.DEPTH_INFINITE, null);
+ 		sourceChars = source1.toCharArray();
+ 		this.problemRequestor.initialize(sourceChars);

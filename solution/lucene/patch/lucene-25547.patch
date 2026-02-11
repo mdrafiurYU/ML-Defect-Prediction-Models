@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/ByteArrayDataInput.java b/lucene/src/java/org/apache/lucene/store/ByteArrayDataInput.java
+index 9caed4a..2ebdf89 100644
+--- a/lucene/src/java/org/apache/lucene/store/ByteArrayDataInput.java
++++ b/lucene/src/java/org/apache/lucene/store/ByteArrayDataInput.java
+@@ -59,6 +59,7 @@ public final class ByteArrayDataInput extends DataInput {
+ 
+   public void skipBytes(int count) {
+     pos += count;
++    assert pos <= limit;
+   }
+ 
+   @Override

@@ -1,0 +1,18 @@
+diff --git a/xfixes/cursor.c b/xfixes/cursor.c
+index ca17397..c4069d9 100755
+--- a/xfixes/cursor.c
++++ b/xfixes/cursor.c
+@@ -56,10 +56,12 @@
+ static RESTYPE		CursorClientType;
+ static RESTYPE		CursorHideCountType;
+ static RESTYPE		CursorWindowType;
+-static DevPrivateKey	CursorScreenPrivateKey = &CursorScreenPrivateKey;
+ static CursorPtr	CursorCurrent;
+ static CursorPtr        pInvisibleCursor = NULL;
+ 
++static int CursorScreenPrivateKeyIndex;
++static DevPrivateKey CursorScreenPrivateKey = &CursorScreenPrivateKeyIndex;
++
+ static void deleteCursorHideCountsForScreen (ScreenPtr pScreen);
+ 
+ #define VERIFY_CURSOR(pCursor, cursor, client, access) { \

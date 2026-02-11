@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/TryStatementTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/TryStatementTest.java
+index 7828d65..1f3f6da 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/TryStatementTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/TryStatementTest.java
+@@ -31,7 +31,7 @@ public TryStatementTest(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return buildAllCompliancesRegressionTestSetupSuite(testClass());
++	return buildAllCompliancesTestSuite(testClass());
+ }
+ public void test001() {
+ 	this.runConformTest(new String[] {

@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DeltaVResourceImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DeltaVResourceImpl.java
+index cdfe7d2..72a6a54 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DeltaVResourceImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/DeltaVResourceImpl.java
+@@ -32,6 +32,7 @@ import org.apache.jackrabbit.webdav.DavResourceLocator;
+ import org.apache.jackrabbit.webdav.DavServletResponse;
+ import org.apache.jackrabbit.webdav.DavSession;
+ import org.apache.jackrabbit.webdav.DavCompliance;
++import org.apache.jackrabbit.webdav.bind.BindConstants;
+ import org.apache.jackrabbit.webdav.property.DavProperty;
+ import org.apache.jackrabbit.webdav.property.DavPropertyName;
+ import org.apache.jackrabbit.webdav.property.HrefProperty;
+@@ -77,7 +78,8 @@ public class DeltaVResourceImpl extends DavResourceImpl implements DeltaVResourc
+                 DavCompliance._2_,
+                 DavCompliance.VERSION_CONTROL,
+                 DavCompliance.VERSION_HISTORY,
+-                DavCompliance.LABEL
++                DavCompliance.LABEL,
++                BindConstants.COMPLIANCE_CLASS,
+         });
+     }

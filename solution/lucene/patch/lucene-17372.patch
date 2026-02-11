@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java b/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
+index 83bbc0b..729c64f 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
++++ b/lucene/src/test/org/apache/lucene/index/TestBackwardsCompatibility.java
+@@ -409,7 +409,7 @@ public class TestBackwardsCompatibility extends LuceneTestCase {
+ 
+     // make sure we can do delete & setNorm against this segment:
+     IndexReader reader = IndexReader.open(dir, false);
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     Term searchTerm = new Term("id", "6");
+     int delCount = reader.deleteDocuments(searchTerm);
+     assertEquals("wrong delete count", 1, delCount);

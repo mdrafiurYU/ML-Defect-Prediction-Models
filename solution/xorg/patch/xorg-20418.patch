@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/common/xisb.c b/hw/xfree86/common/xisb.c
+index 8ec6f4c..9160660 100644
+--- a/hw/xfree86/common/xisb.c
++++ b/hw/xfree86/common/xisb.c
+@@ -69,7 +69,7 @@
+  ****************************************************************************/
+ 
+ _X_EXPORT XISBuffer *
+-XisbNew (int fd, xf86ssize_t size)
++XisbNew (int fd, ssize_t size)
+ {
+ 	XISBuffer *b;
+ 
+@@ -142,8 +142,8 @@ XisbRead (XISBuffer *b)
+ }
+ 
+ /* the only purpose of this function is to provide output tracing */
+-_X_EXPORT xf86ssize_t
+-XisbWrite (XISBuffer *b, unsigned char *msg, xf86ssize_t len)
++_X_EXPORT ssize_t
++XisbWrite (XISBuffer *b, unsigned char *msg, ssize_t len)
+ {
+     if (b->trace)
+     {

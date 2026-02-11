@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86xvpriv.h b/hw/xfree86/common/xf86xvpriv.h
+index 4200dac..761fc3a 100644
+--- a/hw/xfree86/common/xf86xvpriv.h
++++ b/hw/xfree86/common/xf86xvpriv.h
+@@ -34,7 +34,7 @@
+ 
+ /*** These are DDX layer privates ***/
+ 
+-extern DevPrivateKey XF86XvScreenKey;
++extern _X_EXPORT DevPrivateKey XF86XvScreenKey;
+ 
+ typedef struct {
+    DestroyWindowProcPtr		DestroyWindow;

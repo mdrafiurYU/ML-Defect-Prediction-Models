@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/PathQueryNodeTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/PathQueryNodeTest.java
+index a587335..c6ac90e 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/PathQueryNodeTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/PathQueryNodeTest.java
+@@ -21,11 +21,11 @@ import java.util.Arrays;
+ import junit.framework.TestCase;
+ 
+ import org.apache.jackrabbit.core.query.xpath.XPathQueryBuilder;
+-import org.apache.jackrabbit.namespace.NamespaceResolver;
+-import org.apache.jackrabbit.name.NameConstants;
++import org.apache.jackrabbit.spi.commons.namespace.NamespaceResolver;
++import org.apache.jackrabbit.spi.commons.name.NameConstants;
+ import org.apache.jackrabbit.spi.Name;
+-import org.apache.jackrabbit.conversion.NameResolver;
+-import org.apache.jackrabbit.conversion.DefaultNamePathResolver;
++import org.apache.jackrabbit.spi.commons.conversion.NameResolver;
++import org.apache.jackrabbit.spi.commons.conversion.DefaultNamePathResolver;
+ 
+ public class PathQueryNodeTest extends TestCase {

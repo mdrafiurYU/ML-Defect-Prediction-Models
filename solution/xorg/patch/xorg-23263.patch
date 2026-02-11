@@ -1,0 +1,15 @@
+diff --git a/xkb/XKBGAlloc.c b/xkb/XKBGAlloc.c
+index a1c0d1b..d5b9a1c 100644
+--- a/xkb/XKBGAlloc.c
++++ b/xkb/XKBGAlloc.c
+@@ -29,6 +29,10 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #define	NEED_EVENTS
+ #define	NEED_REPLIES
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef XKB_IN_SERVER
+ 
+ #ifdef HAVE_CONFIG_H

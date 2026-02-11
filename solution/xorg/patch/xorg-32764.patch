@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/xaa/xaaBitBlt.c b/hw/xfree86/xaa/xaaBitBlt.c
+index 6c81f64..ebba74e 100644
+--- a/hw/xfree86/xaa/xaaBitBlt.c
++++ b/hw/xfree86/xaa/xaaBitBlt.c
+@@ -186,7 +186,7 @@ XAABitBlt(
+     /* Do bit blitting */
+     numRects = REGION_NUM_RECTS(&rgnDst);
+     if (numRects && width && height) {
+-	if(!(pptSrc = (DDXPointPtr)ALLOCATE_LOCAL(numRects *
++	if(!(pptSrc = (DDXPointPtr)xalloc(numRects *
+ 						  sizeof(DDXPointRec)))) {
+ 	    REGION_UNINIT(pGC->pScreen, &rgnDst);
+ 	    if (freeSrcClip)
+@@ -201,7 +201,7 @@ XAABitBlt(
+ 	}
+ 
+ 	(*doBitBlt) (pSrcDrawable, pDstDrawable, pGC, &rgnDst, pptSrc);
+-	DEALLOCATE_LOCAL(pptSrc);
++	xfree(pptSrc);
+     }
+ 
+     prgnExposed = NULL;

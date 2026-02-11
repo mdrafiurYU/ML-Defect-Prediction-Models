@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 123f21f..43f4e37 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4326,7 +4326,7 @@ EnterLeaveEvent(
+ #endif
+     {
+         event.u.enterLeave.state = (keybd) ? keybd->key->state : 0;
+-        event.u.enterLeave.state |+ mouse->button->state;
++        event.u.enterLeave.state |= mouse->button->state;
+     }
+     event.u.enterLeave.mode = mode;
+     focus = (keybd) ? keybd->focus->win : None;

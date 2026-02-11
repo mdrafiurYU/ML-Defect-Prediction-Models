@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+index fd63bb9..6e231f8 100755
+--- a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
++++ b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+@@ -90,7 +90,7 @@ public class SolrConstantScoreQuery extends ConstantScoreQuery {
+     }
+ 
+     @Override
+-    public Scorer scorer(AtomicReaderContext context, boolean scoreDocsInOrder, boolean topScorer) throws IOException {
++    public Scorer scorer(AtomicReaderContext context, ScorerContext scorerContext) throws IOException {
+       return new ConstantScorer(similarity, context, this);
+     }

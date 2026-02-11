@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemImpl.java
+index 021b449..c0ff264 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/ItemImpl.java
+@@ -529,7 +529,7 @@ public abstract class ItemImpl implements Item, ItemStateLifeCycleListener {
+      * @return the primary path to this <code>Item</code>
+      */
+     Path getQPath() throws RepositoryException {
+-        return state.getQPath();
++        return state.getPath();
+     }
+ 
+     /**

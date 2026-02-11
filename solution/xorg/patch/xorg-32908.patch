@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglxv.c b/hw/xgl/xglxv.c
+index aaa66c7..8138a0c 100644
+--- a/hw/xgl/xglxv.c
++++ b/hw/xgl/xglxv.c
+@@ -290,7 +290,7 @@ xglXvPutImage (ClientPtr     client,
+ 
+     if (!pPortPriv->pPixmap)
+     {
+-	pPortPriv->pPixmap = (*pScreen->CreatePixmap) (pScreen, 0, 0, depth);
++	pPortPriv->pPixmap = (*pScreen->CreatePixmap) (pScreen, 0, 0, depth, 0);
+ 	if (!pPortPriv->pPixmap)
+ 	    return BadAlloc;
+     }

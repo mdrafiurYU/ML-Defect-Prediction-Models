@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java
+index a08967d..e7d03b9 100644
+--- a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java
++++ b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java
+@@ -120,6 +120,7 @@ public class ExtractingDocumentLoader extends ContentStreamLoader {
+    * @param stream
+    * @throws java.io.IOException
+    */
++  @Override
+   public void load(SolrQueryRequest req, SolrQueryResponse rsp, ContentStream stream) throws IOException {
+     errHeader = "ExtractingDocumentLoader: " + stream.getSourceInfo();
+     Parser parser = null;

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPositiveScoresOnlyCollector.java b/lucene/src/test/org/apache/lucene/search/TestPositiveScoresOnlyCollector.java
+index 42c5fff..4ef962c 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPositiveScoresOnlyCollector.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPositiveScoresOnlyCollector.java
+@@ -74,7 +74,7 @@ public class TestPositiveScoresOnlyCollector extends LuceneTestCase {
+     writer.commit();
+     IndexReader ir = writer.getReader();
+     writer.close();
+-    IndexSearcher searcher = new IndexSearcher(ir);
++    IndexSearcher searcher = newSearcher(ir);
+     Weight fake = new TermQuery(new Term("fake", "weight")).createWeight(searcher);
+     Scorer s = new SimpleScorer(fake);
+     TopDocsCollector<ScoreDoc> tdc = TopScoreDocCollector.create(scores.length, true);

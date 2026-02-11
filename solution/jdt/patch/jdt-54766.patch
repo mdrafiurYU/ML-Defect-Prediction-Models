@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+index 8051f76..3cc1103 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+@@ -256,7 +256,7 @@ public class ExplicitConstructorCall extends Statement implements InvocationSite
+ 				return;
+ 			}
+ 			methodScope.isConstructorCall = true;
+-			ReferenceBinding receiverType = scope.enclosingSourceType();
++			ReferenceBinding receiverType = scope.enclosingReceiverType();
+ 			if (accessMode != This)
+ 				receiverType = receiverType.superclass();

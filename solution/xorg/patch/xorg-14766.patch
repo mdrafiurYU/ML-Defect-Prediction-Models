@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/config/dmxcompat.c b/hw/dmx/config/dmxcompat.c
+index 3e6e6da..3681e8a 100644
+--- a/hw/dmx/config/dmxcompat.c
++++ b/hw/dmx/config/dmxcompat.c
+@@ -39,6 +39,10 @@
+  * This file is not used by the DMX server.
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmxconfig.h"
+ #include "dmxparse.h"
+ #include "dmxcompat.h"

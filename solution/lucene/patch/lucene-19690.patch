@@ -1,0 +1,20 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java b/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java
+index 2356df8..ff91ade 100644
+--- a/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java
++++ b/solr/src/test/org/apache/solr/core/TestJmxMonitoredMap.java
+@@ -51,6 +51,7 @@ public class TestJmxMonitoredMap extends LuceneTestCase {
+ 
+   private JmxMonitoredMap<String, SolrInfoMBean> monitoredMap;
+ 
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();
+@@ -84,6 +85,7 @@ public class TestJmxMonitoredMap extends LuceneTestCase {
+     }
+   }
+ 
++  @Override
+   @After
+   public void tearDown() throws Exception {
+     try {

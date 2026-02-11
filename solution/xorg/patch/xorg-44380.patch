@@ -1,0 +1,14 @@
+diff --git a/glx/glxdriswrast.c b/glx/glxdriswrast.c
+index 328aa7e..44f658f 100644
+--- a/glx/glxdriswrast.c
++++ b/glx/glxdriswrast.c
+@@ -499,7 +499,8 @@ __glXDRIscreenProbe(ScreenPtr pScreen)
+ 					   screen);
+ 
+     if (screen->driScreen == NULL) {
+-	LogMessage(X_ERROR, "AIGLX error: Calling driver entry point failed");
++	LogMessage(X_ERROR,
++		   "AIGLX error: Calling driver entry point failed\n");
+ 	goto handle_error;
+     }
+ 

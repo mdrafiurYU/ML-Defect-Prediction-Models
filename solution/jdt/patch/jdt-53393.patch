@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java
+index da45cf0..1e69b5a 100644
+--- a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java
++++ b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceBuildTests.java
+@@ -66,13 +66,13 @@ public class FullSourceWorkspaceBuildTests extends FullSourceWorkspaceTests {
+ 
+ 	static {
+ //		TESTS_PREFIX = "testPerfBatch";
+-//		TESTS_NAMES = new String[] { "testFullBuildAllWarning" };
++//		TESTS_NAMES = new String[] { "testBatchCompilerAllWarnings" };
+ 	}
+ 
+ 	public static Test suite() {
+ 		Test suite = buildSuite(testClass());
+ 		TESTS_COUNT = suite.countTestCases();
+-		createPrintStream(testClass().getName(), LOG_STREAMS, TESTS_COUNT, null);
++		createPrintStream(testClass(), LOG_STREAMS, TESTS_COUNT, null);
+ 		return suite;
+ 	}
+ 
+@@ -271,7 +271,6 @@ public class FullSourceWorkspaceBuildTests extends FullSourceWorkspaceTests {
+ 		}
+ 	}
+ 
+-
+ 	/* (non-Javadoc)
+ 	 * @see junit.framework.TestCase#tearDown()
+ 	 */

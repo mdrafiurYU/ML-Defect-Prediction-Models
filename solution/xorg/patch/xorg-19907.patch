@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/scanpci/xf86PciStdIds.h b/hw/xfree86/scanpci/xf86PciStdIds.h
+index e2e6f65..14697fe 100644
+--- a/hw/xfree86/scanpci/xf86PciStdIds.h
++++ b/hw/xfree86/scanpci/xf86PciStdIds.h
+@@ -19,6 +19,10 @@
+  * copyright notice.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86PciInfo.h"
+ #ifndef NULL
+ #define NULL (void *)0

@@ -1,0 +1,43 @@
+diff --git a/include/swaprep.h b/include/swaprep.h
+index 8a9dcf0..bebd3a8 100644
+--- a/include/swaprep.h
++++ b/include/swaprep.h
+@@ -91,9 +91,6 @@ extern void SQueryPointerReply(
+     int /* size */,
+     xQueryPointerReply * /* pRep */);
+ 
+-extern void SwapTimecoord(
+-    xTimecoord * /* pCoord */);
+-
+ extern void SwapTimeCoordWrite(
+     ClientPtr /* pClient */,
+     int /* size */,
+@@ -174,9 +171,6 @@ extern void SAllocColorPlanesReply(
+     int /* size */,
+     xAllocColorPlanesReply * /* pRep */);
+ 
+-extern void SwapRGB(
+-    xrgb * /* prgb */);
+-
+ extern void SQColorsExtend(
+     ClientPtr /* pClient */,
+     int /* size */,
+@@ -255,18 +249,6 @@ extern void WriteSConnectionInfo(
+     unsigned long /* size */,
+     char * /* pInfo */);
+ 
+-extern void SwapConnSetup(
+-    xConnSetup * /* pConnSetup */,
+-    xConnSetup * /* pConnSetupT */);
+-
+-extern void SwapWinRoot(
+-    xWindowRoot * /* pRoot */,
+-    xWindowRoot * /* pRootT */);
+-
+-extern void SwapVisual(
+-    xVisualType * /* pVis */,
+-    xVisualType * /* pVisT */);
+-
+ extern void SwapConnSetupPrefix(
+     xConnSetupPrefix * /* pcspFrom */,
+     xConnSetupPrefix * /* pcspTo */);

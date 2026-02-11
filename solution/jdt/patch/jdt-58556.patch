@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ClasspathTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ClasspathTests.java
+index bf5ed03..21c0e75 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ClasspathTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ClasspathTests.java
+@@ -3538,7 +3538,7 @@ public void testOptionalEntry3() throws CoreException {
+ 		IClasspathAttribute attribute = JavaCore.newClasspathAttribute(IClasspathAttribute.OPTIONAL, "true");
+ 		IClasspathEntry[] classpath = 
+ 			new IClasspathEntry[] {
+-				JavaCore.newProjectEntry(new Path("/B"), null, false, new IClasspathAttribute[] {attribute}, false)
++				JavaCore.newProjectEntry(new Path("/B"), null/*no access rules*/, false/*don't combine access rule*/, new IClasspathAttribute[] {attribute}, false/*not exported*/)
+ 			};
+ 		javaProject.setRawClasspath(classpath, null);
+ 		assertMarkers(

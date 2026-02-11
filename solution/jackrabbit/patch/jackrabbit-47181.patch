@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LiteralImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LiteralImpl.java
+index 588b18d..7edf778 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LiteralImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/LiteralImpl.java
+@@ -16,10 +16,10 @@
+  */
+ package org.apache.jackrabbit.spi.commons.query.qom;
+ 
+-import org.apache.jackrabbit.spi.commons.query.jsr283.qom.Literal;
+ import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
+ 
+ import javax.jcr.Value;
++import javax.jcr.query.qom.Literal;
+ 
+ /**
+  * <code>LiteralImpl</code>...
+@@ -36,7 +36,7 @@ public class LiteralImpl extends StaticOperandImpl implements Literal {
+     /**
+      * @return the value of this literal.
+      */
+-    public Value getValue() {
++    public Value getLiteralValue() {
+         return value;
+     }

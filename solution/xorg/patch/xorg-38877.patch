@@ -1,0 +1,12 @@
+diff --git a/dix/window.c b/dix/window.c
+index 6b95068..137afa0 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -978,6 +978,7 @@ DeleteWindow(pointer value, XID wid)
+ 	if (pWin->prevSib)
+ 	    pWin->prevSib->nextSib = pWin->nextSib;
+     }
++    xfree(dixLookupPrivate(&pWin->devPrivates, FocusPrivatesKey));
+     dixFreePrivates(pWin->devPrivates);
+     xfree(pWin);
+     return Success;

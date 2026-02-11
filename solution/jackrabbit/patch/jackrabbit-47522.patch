@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/LikeConstraint.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/LikeConstraint.java
+index 8275252..859ce65 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/LikeConstraint.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/LikeConstraint.java
+@@ -46,7 +46,7 @@ public class LikeConstraint extends ComparisonConstraint {
+     public LikeConstraint(DynamicOperand operand1,
+                           Value operand2,
+                           SelectorImpl selector) throws RepositoryException {
+-        super(operand1, OPERATOR_LIKE, operand2, selector);
++        super(operand1, JCR_OPERATOR_LIKE, operand2, selector);
+         this.matcher = Util.createRegexp(operand2.getString()).matcher("");
+     }

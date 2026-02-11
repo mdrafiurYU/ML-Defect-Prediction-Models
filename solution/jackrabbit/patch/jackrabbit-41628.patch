@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ParentAxisQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ParentAxisQuery.java
+index 1d55934..c72bf55 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ParentAxisQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ParentAxisQuery.java
+@@ -309,7 +309,16 @@ class ParentAxisQuery extends Query {
+                     try {
+                         for (int i = hits.nextSetBit(0); i >= 0; i = hits.nextSetBit(i + 1)) {
+                             if (!tDocs.skipTo(i)) {
+-                                hits.clear(i);
++                                // no more name tests, clear remaining
++                                hits.clear(i, hits.length());
++                            } else {
++                                // assert doc >= i
++                                int doc = tDocs.doc();
++                                if (doc > i) {
++                                    // clear hits
++                                    hits.clear(i, doc);
++                                    i = doc;
++                                }
+                             }
+                         }
+                     } finally {

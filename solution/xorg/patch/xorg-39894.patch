@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 9a9ec34..cb7b898 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -730,11 +730,8 @@ InitOutput(ScreenInfo *pScreenInfo, int argc, char **argv)
+     }
+ 
+     /* Enable full I/O access */
+-    if (xorgHWAccess) {
+-	if(!xf86EnableIO())
+-	    /* oops, we have failed */
+-	    xorgHWAccess = FALSE;
+-    }
++    if (xorgHWAccess)
++	xorgHWAccess = xf86EnableIO();
+ 
+     /*
+      * Locate bus slot that had register IO enabled at server startup

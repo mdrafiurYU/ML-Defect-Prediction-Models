@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/response/transform/ShardAugmenterFactory.java b/solr/src/java/org/apache/solr/response/transform/ShardAugmenterFactory.java
+index 4862a62..670bbbe 100644
+--- a/solr/src/java/org/apache/solr/response/transform/ShardAugmenterFactory.java
++++ b/solr/src/java/org/apache/solr/response/transform/ShardAugmenterFactory.java
+@@ -16,9 +16,8 @@
+  */
+ package org.apache.solr.response.transform;
+ 
+-import java.util.Map;
+-
+ import org.apache.solr.common.params.ShardParams;
++import org.apache.solr.common.params.SolrParams;
+ import org.apache.solr.request.SolrQueryRequest;
+ 
+ 
+@@ -29,7 +28,7 @@ import org.apache.solr.request.SolrQueryRequest;
+ public class ShardAugmenterFactory extends TransformerFactory
+ {
+   @Override
+-  public DocTransformer create(String field, Map<String,String> args, SolrQueryRequest req) {
++  public DocTransformer create(String field, SolrParams params, SolrQueryRequest req) {
+     String v = req.getParams().get(ShardParams.SHARD_URL);
+     if( v == null ) {
+       if( req.getParams().getBool(ShardParams.IS_SHARD, false) ) {

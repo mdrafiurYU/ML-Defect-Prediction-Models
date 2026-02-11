@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java
+index 1fc9c51..3467a2e 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java
+@@ -44,8 +44,13 @@ public class UserTest extends AbstractUserTest {
+     }
+ 
+     public void testReadOnlyIsntAdmin() throws NotExecutableException, RepositoryException {
+-        User user = getTestUser(helper.getReadOnlySession());
+-        assertFalse(user.isAdmin());
++        Session s = helper.getReadOnlySession();
++        try {
++            User user = getTestUser(s);
++            assertFalse(user.isAdmin());
++        } finally {
++            s.logout();
++        }
+     }
+ 
+     public void testUserHasCredentials() throws RepositoryException, NotExecutableException {

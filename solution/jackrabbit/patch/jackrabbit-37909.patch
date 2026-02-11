@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsModifiedTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsModifiedTest.java
+index 948767f..dc6aa9a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsModifiedTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/PropertyItemIsModifiedTest.java
+@@ -51,6 +51,11 @@ public class PropertyItemIsModifiedTest extends AbstractJCRTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        testNode = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test if Item.isModified() returns false after a new PropertyItem is set
+      * (before node is saved (transient). That means the PropertyItem don't exists

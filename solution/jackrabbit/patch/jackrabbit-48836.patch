@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+index e2f42ac..85fc4f8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+@@ -557,19 +557,19 @@ public class PropertyImpl extends ItemImpl implements Property {
+     }
+ 
+     public BigDecimal getDecimal() throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1609");
++        return getValue().getDecimal();
+     }
+ 
+     public void setValue(BigDecimal value) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1609");
++        setValue(session.getValueFactory().createValue(value));
+     }
+ 
+     public Binary getBinary() throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-2056");
++        return getValue().getBinary();
+     }
+ 
+     public void setValue(Binary value) throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-2056");
++        setValue(session.getValueFactory().createValue(value));
+     }
+ 
+     public void setValue(Calendar value) throws RepositoryException {

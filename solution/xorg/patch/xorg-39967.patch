@@ -1,0 +1,14 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 2562094..7c2f4c1 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -795,6 +795,9 @@ exaGetPixmapDriverPrivate(PixmapPtr p);
+ CARD32
+ exaGetPixmapFirstPixel (PixmapPtr pPixmap);
+ 
++Bool
++exaDamageDestForMigration(PixmapPtr pPix, RegionPtr region);
++
+ /**
+  * Returns TRUE if the given planemask covers all the significant bits in the
+  * pixel values for pDrawable.

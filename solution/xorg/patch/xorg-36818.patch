@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index 17fe690..a6002bb 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -1427,7 +1427,7 @@ RootlessReparentWindow(WindowPtr pWin, WindowPtr pPriorParent)
+     
+     pWin->rootlessUnhittable = FALSE;
+     
+-    DeleteProperty (pWin, xa_native_window_id ());
++    DeleteProperty (serverClient, pWin, xa_native_window_id ());
+ 
+     if (WINREC(pTopWin) != NULL) {
+         /* We're screwed. */

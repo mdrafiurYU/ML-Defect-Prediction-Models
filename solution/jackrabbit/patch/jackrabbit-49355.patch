@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeImpl.java
+index 42ac00b..a1c1377 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeImpl.java
+@@ -264,7 +264,7 @@ public class NodeTypeImpl extends AbstractNodeType implements NodeType, NodeType
+             } catch (NamespaceException e) {
+                 // should never get here
+                 log.error("encountered unregistered namespace in node type name", e);
+-                supertypes[i] = ntd.getName().toString();
++                supertypes[i] = ntNames[i].toString();
+             }
+         }
+         return supertypes;

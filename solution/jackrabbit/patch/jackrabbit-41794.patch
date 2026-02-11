@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+index 3c05e72..432bb5a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBFileValue.java
+@@ -100,11 +100,7 @@ public abstract class BLOBFileValue {
+     public void spool(OutputStream out) throws RepositoryException, IOException {
+         InputStream in = getStream();
+         try {
+-            byte[] buffer = new byte[0x2000];
+-            int read;
+-            while ((read = in.read(buffer)) > 0) {
+-                out.write(buffer, 0, read);
+-            }
++            IOUtils.copy(in, out);
+         } finally {
+             IOUtils.closeQuietly(in);
+         }

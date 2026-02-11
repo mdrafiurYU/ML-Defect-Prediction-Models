@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java b/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
+index 3ae5b1d..f98619f 100644
+--- a/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
++++ b/lucene/src/test-framework/org/apache/lucene/store/MockIndexOutputWrapper.java
+@@ -57,10 +57,7 @@ public class MockIndexOutputWrapper extends IndexOutput {
+           dir.maxUsedSize = size;
+         }
+       }
+-      synchronized(dir) {
+-        dir.openFileHandles.remove(this);
+-        dir.openFilesForWrite.remove(name);
+-      }
++      dir.removeIndexOutput(this, name);
+     }
+   }

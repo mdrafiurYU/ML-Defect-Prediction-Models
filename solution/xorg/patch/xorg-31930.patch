@@ -1,0 +1,42 @@
+diff --git a/render/glyphstr.h b/render/glyphstr.h
+index 37462f7..d47dfec 100644
+--- a/render/glyphstr.h
++++ b/render/glyphstr.h
+@@ -41,6 +41,7 @@
+ typedef struct _Glyph {
+     CARD32	refcnt;
+     DevUnion	*devPrivates;
++    unsigned char   sha1[20];
+     CARD32	size;	/* info + bitmap */
+     xGlyphInfo	info;
+     /* bits follow */
+@@ -127,19 +128,19 @@ GlyphHashSetPtr
+ FindGlyphHashSet (CARD32 filled);
+ 
+ GlyphRefPtr
+-FindGlyphRef (GlyphHashPtr hash, CARD32 signature, Bool match, GlyphPtr compare);
++FindGlyphRef (GlyphHashPtr	hash,
++	      CARD32		signature,
++	      Bool		match,
++	      unsigned char	sha1[20]);
+ 
+ GlyphPtr
+-FindGlyphByHash (CARD32	    hash,
+-		 xGlyphInfo *gi,
+-		 CARD8	    *bits,
+-		 int	    format);
+-
+-CARD32
+-HashGlyphInfoAndBits (xGlyphInfo *gi, CARD8 *data, unsigned int size);
++FindGlyphByHash (unsigned char sha1[20], int format);
+ 
+-CARD32
+-HashGlyph (GlyphPtr glyph);
++int
++HashGlyph (xGlyphInfo    *gi,
++	   CARD8	 *bits,
++	   unsigned long size,
++	   unsigned char sha1[20]);
+ 
+ void
+ FreeGlyph (GlyphPtr glyph, int format);

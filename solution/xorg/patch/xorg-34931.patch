@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessScreen.c b/miext/rootless/rootlessScreen.c
+index 538b698..19dba6e 100644
+--- a/miext/rootless/rootlessScreen.c
++++ b/miext/rootless/rootlessScreen.c
+@@ -722,6 +722,8 @@ Bool RootlessInit(ScreenPtr pScreen, RootlessFrameProcsPtr procs)
+         pScreen->devPrivates[rootlessScreenPrivateIndex].ptr;
+ 
+     s->imp = procs;
++    s->colormap = NULL;
++    s->redisplay_expired = FALSE;
+ 
+     RootlessWrap(pScreen);
+ 

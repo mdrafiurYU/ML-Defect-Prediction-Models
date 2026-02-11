@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavException.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavException.java
+index f54f2e1..8fdc8a5 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavException.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavException.java
+@@ -157,7 +157,7 @@ public class DavException extends Exception implements XmlSerializable {
+             } else {
+                 error = DomUtil.createElement(document, XML_ERROR, DavConstants.NAMESPACE);
+                 error.appendChild(document.importNode(errorCondition, true));
+-            }           
++            }
+             return error;
+         } else {
+             return null;

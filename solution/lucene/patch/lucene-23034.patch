@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FieldsWriter.java b/lucene/src/java/org/apache/lucene/index/FieldsWriter.java
+index 9efd909..5542acf 100644
+--- a/lucene/src/java/org/apache/lucene/index/FieldsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/FieldsWriter.java
+@@ -113,7 +113,7 @@ final class FieldsWriter {
+   void close() throws IOException {
+     if (directory != null) {
+       try {
+-        IOUtils.closeSafely(fieldsStream, indexStream);
++        IOUtils.closeSafely(false, fieldsStream, indexStream);
+       } finally {
+         fieldsStream = indexStream = null;
+       }

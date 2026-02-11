@@ -1,0 +1,27 @@
+diff --git a/hw/dmx/config/dmxparse.c b/hw/dmx/config/dmxparse.c
+index 0bf9470..28a1835 100644
+--- a/hw/dmx/config/dmxparse.c
++++ b/hw/dmx/config/dmxparse.c
+@@ -65,12 +65,11 @@ void dmxConfigLog(const char *format, ...)
+ 
+ void *dmxConfigAlloc(unsigned long bytes)
+ {
+-    void *area = malloc(bytes);
++    void *area = calloc(1, bytes);
+     if (!area) {
+         dmxConfigLog("dmxConfigAlloc: out of memory\n");
+         return NULL;
+     }
+-    memset(area, 0, bytes);
+     return area;
+ }
+ 
+@@ -249,8 +248,6 @@ DMXConfigDisplayPtr dmxConfigCreateDisplay(DMXConfigTokenPtr pStart,
+ {
+     DMXConfigDisplayPtr pDisplay = dmxConfigAlloc(sizeof(*pDisplay));
+ 
+-    memset(pDisplay, 0, sizeof(*pDisplay));
+-
+     pDisplay->start          = pStart;
+     pDisplay->dname          = pName;
+     pDisplay->dim            = pDim;

@@ -1,0 +1,128 @@
+diff --git a/Xi/grabdev.c b/Xi/grabdev.c
+index 02071ac..3af2346 100644
+--- a/Xi/grabdev.c
++++ b/Xi/grabdev.c
+@@ -1,5 +1,3 @@
+-/* $Xorg: grabdev.c,v 1.4 2001/02/09 02:04:34 xorgcvs Exp $ */
+-
+ /************************************************************
+ 
+ Copyright 1989, 1998  The Open Group
+@@ -45,7 +43,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ********************************************************/
+-/* $XFree86: xc/programs/Xserver/Xi/grabdev.c,v 3.2 2001/01/17 22:13:25 dawes Exp $ */
+ 
+ /***********************************************************************
+  *
+@@ -53,7 +50,6 @@ SOFTWARE.
+  *
+  */
+ 
+-
+ #define	 NEED_EVENTS
+ #define	 NEED_REPLIES
+ #ifdef HAVE_DIX_CONFIG_H
+@@ -96,8 +92,7 @@ SProcXGrabDevice(register ClientPtr client)
+     swapl(&stuff->time, n);
+     swaps(&stuff->event_count, n);
+     p = (long *) &stuff[1];
+-    for (i=0; i<stuff->event_count; i++)
+-        {
++    for (i = 0; i < stuff->event_count; i++) {
+         swapl(p, n);
+ 	p++;
+         }
+@@ -122,8 +117,7 @@ ProcXGrabDevice(ClientPtr client)
+     REQUEST(xGrabDeviceReq);
+     REQUEST_AT_LEAST_SIZE(xGrabDeviceReq);
+ 
+-    if (stuff->length !=(sizeof(xGrabDeviceReq)>>2) + stuff->event_count)
+-	{
++    if (stuff->length != (sizeof(xGrabDeviceReq) >> 2) + stuff->event_count) {
+ 	SendErrorToClient (client, IReqCode, X_GrabDevice, 0, BadLength);
+ 	return Success;
+ 	}
+@@ -134,22 +128,22 @@ ProcXGrabDevice(ClientPtr client)
+     rep.length = 0;
+ 
+     dev = LookupDeviceIntRec (stuff->deviceid);
+-    if (dev == NULL)
+-	{
++    if (dev == NULL) {
+ 	SendErrorToClient(client, IReqCode, X_GrabDevice, 0, BadDevice);
+ 	return Success;
+ 	}
+ 
+     if (CreateMaskFromList (client, (XEventClass *)&stuff[1], 
+-	stuff->event_count, tmp, dev, X_GrabDevice) != Success)
++			   stuff->event_count, tmp, dev,
++			   X_GrabDevice) != Success)
+ 	return Success;
+ 
+     error = GrabDevice (client, dev, stuff->this_device_mode, 
+-	stuff->other_devices_mode, stuff->grabWindow, stuff->ownerEvents, 
+-	stuff->time, tmp[stuff->deviceid].mask, &rep.status);
++		       stuff->other_devices_mode, stuff->grabWindow,
++		       stuff->ownerEvents, stuff->time,
++		       tmp[stuff->deviceid].mask, &rep.status);
+ 
+-    if (error != Success)
+-	{
++    if (error != Success) {
+ 	SendErrorToClient(client, IReqCode, X_GrabDevice, 0, error);
+ 	return Success;
+ 	}
+@@ -157,7 +151,6 @@ ProcXGrabDevice(ClientPtr client)
+     return Success;
+     }
+ 
+-
+ /***********************************************************************
+  *
+  * This procedure creates an event mask from a list of XEventClasses.
+@@ -165,36 +158,32 @@ ProcXGrabDevice(ClientPtr client)
+  */
+ 
+ int
+-CreateMaskFromList (ClientPtr client, XEventClass *list, int count, struct tmask *mask, DeviceIntPtr dev, int req)
++CreateMaskFromList(ClientPtr client, XEventClass * list, int count,
++		   struct tmask *mask, DeviceIntPtr dev, int req)
+ {
+     int			i,j;
+     int			device;
+     DeviceIntPtr	tdev;
+ 
+-    for (i=0; i<EMASKSIZE; i++)
+-	{
++    for (i = 0; i < EMASKSIZE; i++) {
+ 	mask[i].mask = 0;
+ 	mask[i].dev = NULL;
+ 	}
+ 
+-    for (i=0; i<count; i++, list++)
+-	{
++    for (i = 0; i < count; i++, list++) {
+ 	device = *list >> 8;
+-	if (device > 255)
+-	    {
++	if (device > 255) {
+ 	    SendErrorToClient(client, IReqCode, req, 0, BadClass);
+ 	    return BadClass;
+ 	    }
+ 	tdev = LookupDeviceIntRec (device);
+-	if (tdev==NULL || (dev != NULL && tdev != dev))
+-	    {
++	if (tdev == NULL || (dev != NULL && tdev != dev)) {
+ 	    SendErrorToClient(client, IReqCode, req, 0, BadClass);
+ 	    return BadClass;
+ 	    }
+ 
+ 	for (j=0; j<ExtEventIndex; j++)
+-	    if (EventInfo[j].type == (*list & 0xff))
+-		{
++	    if (EventInfo[j].type == (*list & 0xff)) {
+ 		mask[device].mask |= EventInfo[j].mask;
+ 		mask[device].dev = (Pointer) tdev;
+ 		break;

@@ -1,0 +1,21 @@
+diff --git a/hw/xprint/ps/PsText.c b/hw/xprint/ps/PsText.c
+index 98cf153..872c0f4 100644
+--- a/hw/xprint/ps/PsText.c
++++ b/hw/xprint/ps/PsText.c
+@@ -535,7 +535,7 @@ PsPolyGlyphBlt(
+ 
+     
+     nbyLine = BitmapBytePad(width);
+-    pbits = (unsigned char *)ALLOCATE_LOCAL(height*nbyLine);
++    pbits = (unsigned char *)xalloc(height*nbyLine);
+     if (!pbits){
+         PsDestroyPixmap(pPixmap);
+         return;
+@@ -576,6 +576,6 @@ PsPolyGlyphBlt(
+         
+         x  += pci->metrics.characterWidth;
+     }
+-    DEALLOCATE_LOCAL(pbits);
++    xfree(pbits);
+     FreeScratchGC(pGCtmp);
+ }

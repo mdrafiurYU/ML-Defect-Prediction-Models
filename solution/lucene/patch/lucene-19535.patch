@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/analysis/TestRemoveDuplicatesTokenFilterFactory.java b/solr/src/test/org/apache/solr/analysis/TestRemoveDuplicatesTokenFilterFactory.java
+index 6eb8a17..7795fd6 100644
+--- a/solr/src/test/org/apache/solr/analysis/TestRemoveDuplicatesTokenFilterFactory.java
++++ b/solr/src/test/org/apache/solr/analysis/TestRemoveDuplicatesTokenFilterFactory.java
+@@ -48,6 +48,7 @@ public class TestRemoveDuplicatesTokenFilterFactory extends BaseTokenTestCase {
+           CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
+           OffsetAttribute offsetAtt = addAttribute(OffsetAttribute.class);
+           PositionIncrementAttribute posIncAtt = addAttribute(PositionIncrementAttribute.class);
++          @Override
+           public boolean incrementToken() {
+             if (toks.hasNext()) {
+               clearAttributes();

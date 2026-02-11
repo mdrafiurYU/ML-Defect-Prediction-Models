@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 7627f4e..6727a17 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -3157,7 +3157,7 @@ CheckPassiveGrabsOnWindow(
+                This essentially requires a client to re-create all
+                passiveGrabs when the pairing changes... oh well.
+              */ 
+-            if (xE->u.u.type < LASTEVENT)
++            if (xE->u.u.type < LASTEvent)
+             {
+                 grab->device = device; 
+                 grab->modifierDevice = GetPairedKeyboard(device);

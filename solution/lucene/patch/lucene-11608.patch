@@ -1,0 +1,24 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+index 9987343..c8536d8 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+@@ -157,7 +157,7 @@ class VarSortedBytesImpl {
+     }
+ 
+     @Override
+-    public org.apache.lucene.index.values.Reader.Source load()
++    public org.apache.lucene.index.values.DocValues.Source load()
+         throws IOException {
+       return loadSorted(null);
+     }
+@@ -340,5 +340,10 @@ class VarSortedBytesImpl {
+         return advance(pos + 1);
+       }
+     }
++    
++    @Override
++    public Values type() {
++      return Values.BYTES_VAR_SORTED;
++    }
+   }
+ }

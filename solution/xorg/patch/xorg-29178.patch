@@ -1,0 +1,70 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index 4fb949d..1932b3e 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -1712,23 +1712,6 @@ fbComposite (CARD8      op,
+ 		    }
+ 		    break;
+ 		}
+-		else
+-		{
+-		    /* non-repeating source, repeating mask => translucent window */
+-		    if (fbCanGetSolid(pMask))
+-		    {
+-			if (pSrc->format == PICT_x8r8g8b8 &&
+-			    pDst->format == PICT_x8r8g8b8 &&
+-			    pMask->format == PICT_a8)
+-			{
+-#ifdef USE_MMX
+-			    if (fbHaveMMX())
+-				func = fbCompositeSrc_8888x8x8888mmx;
+-#endif
+-			}
+-		    }
+-		}
+-	    }
+ 	    else if (maskRepeat &&
+ 		     pMask->pDrawable->width == 1 &&
+ 		     pMask->pDrawable->height == 1)
+@@ -1744,13 +1727,41 @@ fbComposite (CARD8      op,
+  		    if (pDst->format == pSrc->format)
+  		        func = fbCompositeTrans_0888xnx0888;
+  		    break;
++#ifdef USE_MMX
++		    case PICT_x8r8g8b8:
++			if ((pDst->format == PICT_a8r8g8b8 ||
++			     pDst->format == PICT_x8r8g8b8) &&
++			    pMask->format == PICT_a8 && fbHaveMMX())
++			    func = fbCompositeSrc_x888x8x8888mmx;
++			break;
++		    case PICT_x8b8g8r8:
++			if ((pDst->format == PICT_a8b8g8r8 ||
++			     pDst->format == PICT_x8b8g8r8) &&
++			    pMask->format == PICT_a8 && fbHaveMMX())
++			    func = fbCompositeSrc_x888x8x8888mmx;
++			break;
++		    case PICT_a8r8g8b8:
++			if ((pDst->format == PICT_a8r8g8b8 ||
++			     pDst->format == PICT_x8r8g8b8) &&
++			    pMask->format == PICT_a8 && fbHaveMMX())
++			    func = fbCompositeSrc_8888x8x8888mmx;
++			break;
++		    case PICT_a8b8g8r8:
++			if ((pDst->format == PICT_a8b8g8r8 ||
++			     pDst->format == PICT_x8b8g8r8) &&
++			    pMask->format == PICT_a8 && fbHaveMMX())
++			    func = fbCompositeSrc_8888x8x8888mmx;
++			break;
++#endif
+ 		default:
+ 		    break;
+ 		}
++		    
+ 		if (func != fbCompositeGeneral)
+ 		    maskRepeat = FALSE;
+ 	    }
+ 	}
++	}
+ 	else /* no mask */
+ 	{
+ 	    if (fbCanGetSolid(pSrc))

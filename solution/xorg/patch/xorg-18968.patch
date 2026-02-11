@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_KbdMap.c b/hw/xfree86/os-support/linux/lnx_KbdMap.c
+index 61b2e12..f781aab 100644
+--- a/hw/xfree86/os-support/linux/lnx_KbdMap.c
++++ b/hw/xfree86/os-support/linux/lnx_KbdMap.c
+@@ -6,6 +6,10 @@
+  * Copyright 1990,91 by Thomas Roell, Dinkelscherben, Germany.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xmd.h>
+ #include "input.h"

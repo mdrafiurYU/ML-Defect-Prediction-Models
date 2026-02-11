@@ -1,0 +1,46 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeImpl.java
+index cc7ca01..ce54735 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SameNodeImpl.java
+@@ -22,6 +22,9 @@ import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
+ 
+ import org.apache.jackrabbit.spi.commons.query.jsr283.qom.SameNode;
+ 
++import javax.jcr.query.InvalidQueryException;
++import javax.jcr.RepositoryException;
++
+ /**
+  * <code>SameNodeImpl</code>...
+  */
+@@ -39,10 +42,14 @@ public class SameNodeImpl extends ConstraintImpl implements SameNode {
+ 
+     SameNodeImpl(NamePathResolver resolver,
+                  Name selectorName,
+-                 Path path) {
++                 Path path) throws InvalidQueryException, RepositoryException {
+         super(resolver);
+         this.selectorName = selectorName;
+         this.path = path;
++        if (!path.isAbsolute()) {
++            throw new InvalidQueryException(resolver.getJCRPath(path) +
++                    " is not an absolute path");
++        }
+     }
+ 
+ 
+@@ -64,6 +71,15 @@ public class SameNodeImpl extends ConstraintImpl implements SameNode {
+         return getJCRPath(path);
+     }
+ 
++    /**
++     * Gets the name of the selector against which to apply this constraint.
++     *
++     * @return the selector name; non-null
++     */
++    public Name getSelectorQName() {
++        return selectorName;
++    }
++
+     //------------------------< AbstractQOMNode >-------------------------------
+ 
+     /**

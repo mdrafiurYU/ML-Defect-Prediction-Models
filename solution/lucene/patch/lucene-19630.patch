@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/misc/SweetSpotSimilarityTest.java b/lucene/contrib/misc/src/test/org/apache/lucene/misc/SweetSpotSimilarityTest.java
+index dbc76dd..f7f33f3 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/misc/SweetSpotSimilarityTest.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/misc/SweetSpotSimilarityTest.java
+@@ -19,6 +19,7 @@
+ package org.apache.lucene.misc;
+ 
+ import org.apache.lucene.search.DefaultSimilarity;
++import org.apache.lucene.search.DefaultSimilarityProvider;
+ import org.apache.lucene.search.Similarity;
+ import org.apache.lucene.search.SimilarityProvider;
+ import org.apache.lucene.util.LuceneTestCase;
+@@ -84,7 +85,7 @@ public class SweetSpotSimilarityTest extends LuceneTestCase {
+     final SweetSpotSimilarity ssB = new SweetSpotSimilarity();
+     ssB.setLengthNormFactors(5,8,0.1f, false);
+     
+-    SimilarityProvider sp = new SweetSpotSimilarity() {
++    SimilarityProvider sp = new DefaultSimilarityProvider() {
+       public Similarity get(String field) {
+         if (field.equals("bar"))
+           return ssBar;

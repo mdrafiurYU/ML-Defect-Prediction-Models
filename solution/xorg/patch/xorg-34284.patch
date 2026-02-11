@@ -1,0 +1,41 @@
+diff --git a/mfb/mfbbitblt.c b/mfb/mfbbitblt.c
+index 0c23ba7..344c655 100644
+--- a/mfb/mfbbitblt.c
++++ b/mfb/mfbbitblt.c
+@@ -399,7 +399,10 @@ int dstx, dsty;
+ 
+ static DevPrivateKey copyPlaneScreenKey = &copyPlaneScreenKey;
+ 
+-typedef RegionPtr (*CopyPlaneFuncPtr)(
++Bool
++mfbRegisterCopyPlaneProc (pScreen, proc)
++    ScreenPtr	pScreen;
++    RegionPtr	(*proc)(
+     DrawablePtr         /* pSrcDrawable */,
+     DrawablePtr         /* pDstDrawable */,
+     GCPtr               /* pGC */,
+@@ -410,11 +413,6 @@ typedef RegionPtr (*CopyPlaneFuncPtr)(
+     int                 /* dstx */,
+     int                 /* dsty */,
+     unsigned long       /* bitPlane */);
+-
+-Bool
+-mfbRegisterCopyPlaneProc (pScreen, proc)
+-    ScreenPtr	pScreen;
+-    CopyPlaneFuncPtr proc;
+ {
+     dixSetPrivate(&pScreen->devPrivates, copyPlaneScreenKey, proc);
+     return TRUE;
+@@ -461,10 +459,8 @@ unsigned long plane;
+ 
+     if (pSrcDrawable->depth != 1)
+     {
+-	if ((copyPlane = (CopyPlaneFuncPtr)
+-	     dixLookupPrivate(&pSrcDrawable->pScreen->devPrivates,
+-			      copyPlaneScreenKey))
+-	    )
++	if ((copyPlane = dixLookupPrivate(&pSrcDrawable->pScreen->devPrivates,
++					  copyPlaneScreenKey)))
+ 	{
+ 	    return (*copyPlane) (pSrcDrawable, pDstDrawable,
+ 			   pGC, srcx, srcy, width, height, dstx, dsty, plane);

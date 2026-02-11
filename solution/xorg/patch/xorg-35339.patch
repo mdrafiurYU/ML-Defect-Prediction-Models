@@ -1,0 +1,20 @@
+diff --git a/mi/mipointer.h b/mi/mipointer.h
+index 1bce42c..e864fdd 100644
+--- a/mi/mipointer.h
++++ b/mi/mipointer.h
+@@ -28,6 +28,7 @@ in this Software without prior written authorization from The Open Group.
+ 
+ #include "cursor.h"
+ #include "input.h"
++#include "privates.h"
+ 
+ typedef struct _miPointerSpriteFuncRec {
+     Bool	(*RealizeCursor)(
+@@ -166,6 +167,6 @@ extern void miPointerSetPosition(
+ extern void miPointerUpdateSprite(
+     DeviceIntPtr pDev);
+ 
+-extern int miPointerScreenIndex;
++extern DevPrivateKey miPointerScreenKey;
+ 
+ #endif /* MIPOINTER_H */

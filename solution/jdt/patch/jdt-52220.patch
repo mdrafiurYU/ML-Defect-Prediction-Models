@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationMirrorImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationMirrorImpl.java
+index 61d9957..eaa2d80 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationMirrorImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationMirrorImpl.java
+@@ -338,6 +338,7 @@ public class AnnotationMirrorImpl implements AnnotationMirror, EclipseMirrorImpl
+                     Array.set( array, i, returnObj );
+                 }
+             }
++            return array;
+ 		}
+ 		// caller should have caught this case.
+         else if( value instanceof ITypeBinding )

@@ -1,0 +1,13 @@
+diff --git a/miext/damage/damage.c b/miext/damage/damage.c
+index 471fcc5..fa2f279 100644
+--- a/miext/damage/damage.c
++++ b/miext/damage/damage.c
+@@ -771,7 +771,7 @@ damageAddTraps (PicturePtr  pPicture,
+     }
+     unwrap (pScrPriv, ps, AddTraps);
+     (*ps->AddTraps) (pPicture, x_off, y_off, ntrap, traps);
+-    damageReportPostOp (pPicture->pDrawable);
++    damageRegionProcessPending (pPicture->pDrawable);
+     wrap (pScrPriv, ps, AddTraps, damageAddTraps);
+ }
+ #endif

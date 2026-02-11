@@ -1,0 +1,13 @@
+diff --git a/glx/render2.c b/glx/render2.c
+index eca6222..eb7c30b 100644
+--- a/glx/render2.c
++++ b/glx/render2.c
+@@ -251,8 +251,3 @@ void __glXDisp_DrawArrays(GLbyte *pc)
+     CALL_DisableClientState( GET_DISPATCH(), (GL_SECONDARY_COLOR_ARRAY) );
+     CALL_DisableClientState( GET_DISPATCH(), (GL_FOG_COORD_ARRAY) );
+ }
+-
+-void __glXDisp_DrawArraysEXT(GLbyte *pc)
+-{
+-   __glXDisp_DrawArrays(pc);
+-}

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractVersionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractVersionTest.java
+index cd303b4..955d480 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractVersionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/AbstractVersionTest.java
+@@ -102,6 +102,10 @@ public class AbstractVersionTest extends AbstractJCRTest {
+         } catch (Exception e) {
+             log.println("Exception in tearDown: " + e.toString());
+         } finally {
++            versionableNodeType = null;
++            nonVersionableNodeType = null;
++            versionableNode = null;
++            nonVersionableNode = null;
+             super.tearDown();
+         }
+     }

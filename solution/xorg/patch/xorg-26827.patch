@@ -1,0 +1,30 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 27a3093..32e0e4f 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -155,17 +155,21 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMFUNC(CompareTimeStamps)
+     SYMFUNC(CopyISOLatin1Lowered)
+     SYMFUNC(DeleteCallback)
++    SYMFUNC(dixLookupDrawable)
++    SYMFUNC(dixLookupWindow)
++    SYMFUNC(dixLookupClient)
++    SYMFUNC(dixLookupGC)
++    /* following are deprecated */
+     SYMFUNC(LookupClient)
+     SYMFUNC(LookupDrawable)
+     SYMFUNC(LookupWindow)
++    SYMFUNC(SecurityLookupDrawable)
++    SYMFUNC(SecurityLookupWindow)
++    /* end deprecated */
+     SYMFUNC(NoopDDA)
+     SYMFUNC(QueueWorkProc)
+     SYMFUNC(RegisterBlockAndWakeupHandlers)
+     SYMFUNC(RemoveBlockAndWakeupHandlers)
+-#ifdef XACE
+-    SYMFUNC(SecurityLookupDrawable)
+-    SYMFUNC(SecurityLookupWindow)
+-#endif
+     /* events.c */
+     SYMFUNC(CheckCursorConfinement)
+     SYMFUNC(DeliverEvents)

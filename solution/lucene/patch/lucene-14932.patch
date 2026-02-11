@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+index 9f65b9a..c781c4f 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+@@ -186,6 +186,7 @@ class VarSortedBytesImpl {
+         docToOrdIndex = PackedInts.getReader(idxIn);
+         ordToOffsetIndex = PackedInts.getReader(idxIn);
+         valueCount = ordToOffsetIndex.size();
++        closeIndexInput();
+       }
+ 
+       @Override

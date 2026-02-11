@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+index 6288f26..0b2f2a6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+@@ -485,7 +485,7 @@ public class VersionManagerImpl extends AbstractVersionManager
+             return null;
+         } else {
+             return (Version)
+-                    ((SessionImpl) history.getSession()).getNodeByUUID(v.getId().getUUID());
++                    ((SessionImpl) history.getSession()).getNodeById(v.getId());
+         }
+     }

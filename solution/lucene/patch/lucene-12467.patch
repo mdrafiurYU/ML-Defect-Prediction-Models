@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/TermCollectingRewrite.java b/lucene/src/java/org/apache/lucene/search/TermCollectingRewrite.java
+index d186859..0cede99 100644
+--- a/lucene/src/java/org/apache/lucene/search/TermCollectingRewrite.java
++++ b/lucene/src/java/org/apache/lucene/search/TermCollectingRewrite.java
+@@ -58,7 +58,7 @@ abstract class TermCollectingRewrite<Q extends Query> extends MultiTermQuery.Rew
+         continue;
+       }
+ 
+-      final TermsEnum termsEnum = query.getTermsEnum(r, collector.attributes);
++      final TermsEnum termsEnum = query.getTermsEnum(terms, collector.attributes);
+       assert termsEnum != null;
+ 
+       if (termsEnum == TermsEnum.EMPTY)

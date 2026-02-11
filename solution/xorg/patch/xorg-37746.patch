@@ -1,0 +1,24 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 5025953..1b81b81 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -399,9 +399,6 @@ Dispatch(void)
+ 	    }
+ 	    isItTimeToYield = FALSE;
+  
+-#ifdef XPRINT
+-            requestingClient = client;
+-#endif
+ #ifdef SMART_SCHEDULE
+ 	    start_tick = SmartScheduleTime;
+ #endif
+@@ -473,9 +470,6 @@ Dispatch(void)
+ 	    if (client)
+ 		client->smart_stop_tick = SmartScheduleTime;
+ #endif
+-#ifdef XPRINT
+-	    requestingClient = NULL;
+-#endif
+ 	}
+ 	dispatchException &= ~DE_PRIORITYCHANGE;
+     }

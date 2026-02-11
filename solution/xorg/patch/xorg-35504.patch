@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index a784637..e78c1e7 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -587,6 +587,7 @@ InitAndStartDevices(WindowPtr root)
+ 
+     for (dev = inputInfo.off_devices; dev; dev = dev->next) {
+         DebugF("(dix) initialising device %d\n", dev->id);
++        if (!dev->inited)
+ 	ActivateDevice(dev);
+     }
+ 

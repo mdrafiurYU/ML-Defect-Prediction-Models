@@ -1,0 +1,17 @@
+diff --git a/include/extinit.h b/include/extinit.h
+index 37fa9a2..c471008 100644
+--- a/include/extinit.h
++++ b/include/extinit.h
+@@ -105,6 +105,12 @@ SDeviceMappingNotifyEvent (
+ 	);
+ 
+ void
++SDevicePresenceNotifyEvent (
++       devicePresenceNotify * /* from */,
++       devicePresenceNotify * /* to */
++       );
++
++void
+ FixExtensionEvents (
+ 	ExtensionEntry 	*      /* extEntry */
+ 	);

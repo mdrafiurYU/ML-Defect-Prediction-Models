@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dummylib/xf86screens.c b/hw/xfree86/dummylib/xf86screens.c
+index 0530e3b..d5a11ce 100644
+--- a/hw/xfree86/dummylib/xf86screens.c
++++ b/hw/xfree86/dummylib/xf86screens.c
+@@ -1,5 +1,9 @@
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/os.h>
+ #include "xf86.h"

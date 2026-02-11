@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java
+index 43daeed..13d7727 100644
+--- a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java
++++ b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/User.java
+@@ -28,7 +28,7 @@ import javax.jcr.Credentials;
+ public interface User extends Authorizable {
+ 
+     /**
+-     * @return true if the current Authorizable is has all Privileges
++     * @return true if the current user represents the administrator.
+      */
+     boolean isAdmin();

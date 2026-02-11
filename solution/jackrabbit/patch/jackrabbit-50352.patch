@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java
+index 554f111..c8509b1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java
+@@ -524,9 +524,7 @@ public abstract class AbstractLoginModule implements LoginModule {
+                 callbackHandler.handle(new Callback[]{callback});
+                 Credentials creds = callback.getCredentials();
+                 if (null != creds) {
+-                    if (creds instanceof SimpleCredentials) {
+-                       credentials = creds;
+-                    } else if (creds instanceof GuestCredentials) {
++                    if (supportsCredentials(creds)) {
+                        credentials = creds;
+                     }
+                     if (credentials != null) {
+@@ -558,6 +556,20 @@ public abstract class AbstractLoginModule implements LoginModule {
+     }
+ 
+     /**
++     * Return a flag indicating whether the credentials are supported by
++     * this login module. Default implementation supports
++     * {@link SimpleCredentials} and {@link GuestCredentials}.
++     *
++     * @param creds credentials
++     * @return <code>true</code> if the credentials are supported;
++     *         <code>false</code> otherwise
++     */
++    protected boolean supportsCredentials(Credentials creds) {
++        return creds instanceof SimpleCredentials ||
++            creds instanceof GuestCredentials;
++    }
++
++    /**
+      * Method supports tries to acquire a UserID in the follwing order:
+      * <ol>
+      * <li>If passed credentials are {@link GuestCredentials} the anonymous user id

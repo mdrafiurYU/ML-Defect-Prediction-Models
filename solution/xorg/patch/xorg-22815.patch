@@ -1,0 +1,13 @@
+diff --git a/miext/shadow/shrot32pack_180.c b/miext/shadow/shrot32pack_180.c
+index 003aeec..cbadba5 100644
+--- a/miext/shadow/shrot32pack_180.c
++++ b/miext/shadow/shrot32pack_180.c
+@@ -26,4 +26,8 @@
+ #define Data	CARD32
+ #define ROTATE	180
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "shrotpack.h"

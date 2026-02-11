@@ -1,0 +1,14 @@
+diff --git a/composite/compalloc.c b/composite/compalloc.c
+index 006e808..dd5faa0 100644
+--- a/composite/compalloc.c
++++ b/composite/compalloc.c
+@@ -462,7 +462,8 @@ compNewPixmap (WindowPtr pWin, int x, int y, int w, int h)
+     WindowPtr	    pParent = pWin->parent;
+     PixmapPtr	    pPixmap;
+ 
+-    pPixmap = (*pScreen->CreatePixmap) (pScreen, w, h, pWin->drawable.depth);
++    pPixmap = (*pScreen->CreatePixmap) (pScreen, w, h, pWin->drawable.depth,
++					CREATE_PIXMAP_USAGE_BACKING_PIXMAP);
+ 
+     if (!pPixmap)
+ 	return 0;

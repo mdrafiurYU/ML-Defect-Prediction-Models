@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/update/DirectUpdateHandlerTest.java b/solr/src/test/org/apache/solr/update/DirectUpdateHandlerTest.java
+index 242ea06..654d474 100644
+--- a/solr/src/test/org/apache/solr/update/DirectUpdateHandlerTest.java
++++ b/solr/src/test/org/apache/solr/update/DirectUpdateHandlerTest.java
+@@ -42,6 +42,7 @@ public class DirectUpdateHandlerTest extends SolrTestCaseJ4 {
+     initCore("solrconfig.xml", "schema12.xml");
+   }
+ 
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();

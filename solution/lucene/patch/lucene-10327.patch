@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/DisMaxQParser.java b/solr/src/java/org/apache/solr/search/DisMaxQParser.java
+index 64eaf54..9965974 100644
+--- a/solr/src/java/org/apache/solr/search/DisMaxQParser.java
++++ b/solr/src/java/org/apache/solr/search/DisMaxQParser.java
+@@ -241,7 +241,7 @@ public class DisMaxQParser extends QParser {
+ 
+   @Override
+   public Query getHighlightQuery() throws ParseException {
+-    return parsedUserQuery;
++    return parsedUserQuery == null ? altUserQuery : parsedUserQuery;
+   }
+ 
+   public void addDebugInfo(NamedList<Object> debugInfo) {

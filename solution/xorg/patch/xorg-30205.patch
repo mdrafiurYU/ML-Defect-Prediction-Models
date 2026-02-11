@@ -1,0 +1,43 @@
+diff --git a/fb/fbfill.c b/fb/fbfill.c
+index a3147ec..4957bed 100644
+--- a/fb/fbfill.c
++++ b/fb/fbfill.c
+@@ -47,14 +47,10 @@ fbFill (DrawablePtr pDrawable,
+     switch (pGC->fillStyle) {
+     case FillSolid:
+ #ifndef FB_ACCESS_WRAPPER
+-	if (!pPriv->and)
+-	{
+-	    if (pixman_fill (dst, dstStride, dstBpp, x + dstXoff, y + dstYoff, width, height, pPriv->xor))
+-	    {
+-		fbFinishAccess (pDrawable);
+-		return;
+-	    }
+-	}
++	if (pPriv->and || !pixman_fill ((uint32_t *)dst, dstStride, dstBpp,
++					x + dstXoff, y + dstYoff,
++					width, height,
++					pPriv->xor))
+ #endif	    
+ 	fbSolid (dst + (y + dstYoff) * dstStride, 
+ 		 dstStride, 
+@@ -218,16 +214,10 @@ fbSolidBoxClipped (DrawablePtr	pDrawable,
+ 	    continue;
+ 
+ #ifndef FB_ACCESS_WRAPPER
+-	if (!and)
+-	{
+-	    if (pixman_fill (dst, dstStride, dstBpp,
+-			     partX1 + dstXoff, partY1 + dstYoff, (partX2 - partX1), (partY2 - partY1),
++	if (and || !pixman_fill ((uint32_t *)dst, dstStride, dstBpp,
++				 partX1 + dstXoff, partY1 + dstYoff,
++				 (partX2 - partX1), (partY2 - partY1),
+ 			     xor))
+-	    {
+-		fbFinishAccess (pDrawable);
+-		return;
+-	    }
+-	}
+ #endif
+ 	fbSolid (dst + (partY1 + dstYoff) * dstStride,
+ 		 dstStride,

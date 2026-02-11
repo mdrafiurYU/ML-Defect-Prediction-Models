@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java
+index 2156fe3..334135f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java
+@@ -77,7 +77,7 @@ abstract public class JcrVersionManagerImplBase {
+     /**
+      * the session version manager.
+      */
+-    protected final VersionManager vMgr;
++    protected final InternalVersionManager vMgr;
+ 
+     /**
+      * the lock on this version manager
+@@ -102,7 +102,7 @@ abstract public class JcrVersionManagerImplBase {
+         this.stateMgr = stateMgr;
+         this.hierMgr = hierMgr;
+         this.ntReg = session.getNodeTypeManager().getNodeTypeRegistry();
+-        this.vMgr = session.getVersionManager();
++        this.vMgr = session.getInternalVersionManager();
+     }
+ 
+     /**

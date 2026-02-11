@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/SourceElementParserTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/SourceElementParserTest.java
+index 4504f67..56651ed 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/SourceElementParserTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/SourceElementParserTest.java
+@@ -14,7 +14,7 @@ import java.util.Locale;
+ 
+ import junit.framework.Test;
+ 
+-import org.eclipse.jdt.core.compiler.IProblem;
++import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ import org.eclipse.jdt.core.tests.util.AbstractCompilerTest;
+ import org.eclipse.jdt.internal.compiler.ISourceElementRequestor;
+ import org.eclipse.jdt.internal.compiler.SourceElementParser;
+@@ -109,7 +109,7 @@ public void acceptPackage(
+ /**
+  * acceptProblem method comment.
+  */
+-public void acceptProblem(IProblem problem) {}
++public void acceptProblem(CategorizedProblem problem) {}
+ /**
+  * acceptTypeReference method comment.
+  */

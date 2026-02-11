@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dri2/dri2.c b/hw/xfree86/dri2/dri2.c
+index 4c52757..3c852a4 100644
+--- a/hw/xfree86/dri2/dri2.c
++++ b/hw/xfree86/dri2/dri2.c
+@@ -258,7 +258,7 @@ DRI2ClipNotify(WindowPtr pWin, int dx, int dy)
+     DRI2ScreenPtr       ds = DRI2GetScreen(pScreen);
+     DRI2DrawablePtr     dd = DRI2GetDrawable(&pWin->drawable);
+ 
+-    if (ds->lastSequence < dd->pendingSequence && ds->Wait)
++    if (dd && ds->lastSequence < dd->pendingSequence && ds->Wait)
+ 	ds->Wait(pWin, dd->pendingSequence);
+ 
+     if (ds->ClipNotify) {

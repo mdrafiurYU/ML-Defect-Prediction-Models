@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+index ea971b9..175ab09 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+@@ -601,7 +601,7 @@ final class DocumentsWriter {
+   }
+ 
+   synchronized private void initFlushState(boolean onlyDocStore) {
+-    initSegmentName(onlyDocStore); // nocommit - this does not work for docValues
++    initSegmentName(onlyDocStore);
+     final SegmentCodecs info = SegmentCodecs.build(docFieldProcessor.fieldInfos, writer.codecs);
+     flushState = new SegmentWriteState(infoStream, directory, segment, docFieldProcessor.fieldInfos,
+                                        docStoreSegment, numDocsInRAM, numDocsInStore, writer.getConfig().getTermIndexInterval(), info);

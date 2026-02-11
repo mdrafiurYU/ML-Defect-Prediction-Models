@@ -1,0 +1,62 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index 16cbb18..b953398 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -198,6 +198,7 @@ RootlessCreateWindow(WindowPtr pWin)
+     RegionRec saveRoot;
+ 
+     SETWINREC(pWin, NULL);
++    dixSetPrivate(&pWin->devPrivates, rootlessWindowOldPixmapPrivateKey, NULL);
+ 
+     SCREEN_UNWRAP(pWin->drawable.pScreen, CreateWindow);
+ 
+@@ -445,6 +446,12 @@ RootlessInitializeFrame(WindowPtr pWin, RootlessWindowRec *winRec)
+ }
+ 
+ 
++Bool
++RootlessColormapCallback (void *data, int first_color, int n_colors, uint32_t *colors)
++{
++  return RootlessResolveColormap (data, first_color, n_colors, colors);
++}
++
+ /*
+  * RootlessEnsureFrame
+  *  Make sure the given window is framed. If the window doesn't have a
+@@ -503,6 +510,9 @@ RootlessEnsureFrame(WindowPtr pWin)
+         return NULL;
+     }
+ 
++    if (pWin->drawable.depth == 8)
++      RootlessFlushWindowColormap(pWin);
++
+ #ifdef SHAPE
+     if (pShape != NULL)
+         REGION_UNINIT(pScreen, &shape);
+@@ -1455,6 +1465,26 @@ out:
+     }
+ }
+ 
++
++void
++RootlessFlushWindowColormap (WindowPtr pWin)
++{
++  RootlessWindowRec *winRec = WINREC (pWin);
++  xp_window_changes wc;
++
++  if (winRec == NULL)
++    return;
++
++  RootlessStopDrawing (pWin, FALSE);
++
++  /* This is how we tell xp that the colormap may have changed. */
++
++  wc.colormap = RootlessColormapCallback;
++  wc.colormap_data = pWin->drawable.pScreen;
++
++  configure_window (winRec->wid, XP_COLORMAP, &wc);
++}
++
+ /*
+  * RootlessChangeBorderWidth
+  *  FIXME: untested!

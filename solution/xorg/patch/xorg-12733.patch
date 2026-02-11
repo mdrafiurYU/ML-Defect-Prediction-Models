@@ -1,0 +1,21 @@
+diff --git a/hw/kdrive/linux/linux.c b/hw/kdrive/linux/linux.c
+index 23ae504..9c06c80 100644
+--- a/hw/kdrive/linux/linux.c
++++ b/hw/kdrive/linux/linux.c
+@@ -429,6 +429,8 @@ LinuxFini (void)
+     }
+     memset (&vts, '\0', sizeof (vts));	/* valgrind */
+     ioctl (LinuxConsoleFd, VT_GETSTATE, &vts);
++    if (vtno == vts.v_active)
++    {
+     /*
+      * Find a legal VT to switch to, either the one we started from
+      * or the lowest active one that isn't ours
+@@ -452,6 +454,7 @@ LinuxFini (void)
+ 	ioctl (LinuxConsoleFd, VT_WAITACTIVE, activeVT);
+ 	activeVT = -1;
+     }
++    }
+     close(LinuxConsoleFd);                /* make the vt-manager happy */
+     fd = open ("/dev/tty0", O_RDWR|O_NDELAY, 0);
+     if (fd >= 0)

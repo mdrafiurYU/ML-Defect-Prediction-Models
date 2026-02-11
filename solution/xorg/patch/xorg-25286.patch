@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/sis530/sisstub.c b/hw/kdrive/sis530/sisstub.c
+index a377dd5..2375f65 100644
+--- a/hw/kdrive/sis530/sisstub.c
++++ b/hw/kdrive/sis530/sisstub.c
+@@ -53,7 +53,8 @@ InitOutput (ScreenInfo *pScreenInfo, int argc, char **argv)
+ void
+ InitInput (int argc, char **argv)
+ {
+-    KdInitInput (&LinuxMouseFuncs, &LinuxKeyboardFuncs);
++    KdOsAddInputDrivers ();
++    KdInitInput ();
+ }
+ 
+ void

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/QueryUtils.java b/lucene/src/test/org/apache/lucene/search/QueryUtils.java
+index 1b30da0..947019a 100644
+--- a/lucene/src/test/org/apache/lucene/search/QueryUtils.java
++++ b/lucene/src/test/org/apache/lucene/search/QueryUtils.java
+@@ -158,7 +158,7 @@ public class QueryUtils {
+           0 < edge ? r : IndexReader.open(makeEmptyIndex(random, 0), true))
+     };
+     IndexSearcher out = new IndexSearcher(new MultiReader(readers));
+-    out.setSimilarity(s.getSimilarity());
++    out.setSimilarityProvider(s.getSimilarityProvider());
+     return out;
+   }

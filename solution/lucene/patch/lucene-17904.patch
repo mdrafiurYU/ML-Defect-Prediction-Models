@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestSimilarityProvider.java b/lucene/src/test/org/apache/lucene/search/TestSimilarityProvider.java
+index 7a8f123..d7350d3 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestSimilarityProvider.java
++++ b/lucene/src/test/org/apache/lucene/search/TestSimilarityProvider.java
+@@ -107,7 +107,7 @@ public class TestSimilarityProvider extends LuceneTestCase {
+   
+   private class Sim1 extends Similarity {
+     @Override
+-    public float computeNorm(String field, FieldInvertState state) {
++    public float computeNorm(FieldInvertState state) {
+       return 1f;
+     }
+ 
+@@ -129,7 +129,7 @@ public class TestSimilarityProvider extends LuceneTestCase {
+   
+   private class Sim2 extends Similarity {
+     @Override
+-    public float computeNorm(String field, FieldInvertState state) {
++    public float computeNorm(FieldInvertState state) {
+       return 10f;
+     }

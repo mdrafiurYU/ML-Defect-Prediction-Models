@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/modes/xf86EdidModes.c b/hw/xfree86/modes/xf86EdidModes.c
+index 64f7fe9..59b2bc8 100644
+--- a/hw/xfree86/modes/xf86EdidModes.c
++++ b/hw/xfree86/modes/xf86EdidModes.c
+@@ -155,6 +155,11 @@ static Bool quirk_detailed_v_in_cm (int scrnIndex, xf86MonPtr DDC)
+ 	DDC->vendor.prod_id == 13600)
+ 	return TRUE;
+ 
++    /* Bug #21000: LGPhilipsLCD LP154W01-TLAJ */
++    if (memcmp (DDC->vendor.name, "LPL", 4) == 0 &&
++	DDC->vendor.prod_id == 47360)
++	return TRUE;
++
+     return FALSE;
+ }
+ 

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
+index bc100d8..8f9f673 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
+@@ -57,6 +57,9 @@ public class DeepLockTest extends AbstractJCRTest {
+         } catch (RepositoryException e) {
+             log.warn(e.getMessage());
+         }
++        lockedNode = null;
++        childNode = null;
++        lock = null;
+         super.tearDown();
+     }

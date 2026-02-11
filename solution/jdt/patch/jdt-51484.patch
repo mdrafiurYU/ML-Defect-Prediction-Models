@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+index a81f7e5..15fac6f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptConfig.java
+@@ -229,7 +229,7 @@ public class AptConfig {
+     		options.put("sourcepath", sourcepathSB.toString());
+     	}
+     	catch (JavaModelException jme) {
+-    		AptPlugin.log(jme, "Could not get the classpath");
++    		AptPlugin.log(jme, "Could not get the classpath for project: " + jproj);
+     	}
+     	
+     	return options;

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/LocalVMLauncher.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/LocalVMLauncher.java
+index 073db2e..03c78ce 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/LocalVMLauncher.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/runtime/LocalVMLauncher.java
+@@ -55,6 +55,10 @@ public static LocalVMLauncher getLauncher() {
+ 	if ("J9".equals(vmName)) {
+ 		return new J9VMLauncher();
+ 	}
++	final String osName = System.getProperty("os.name");
++	if (osName.startsWith("Mac")) {
++		return new MacVMLauncher();
++	}
+ 	File file = new File(Util.getJREDirectory() + "/lib/rt.jar");
+ 	if (file.exists()) {
+ 		return new StandardVMLauncher();

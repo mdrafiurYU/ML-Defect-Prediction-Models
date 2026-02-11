@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestFieldNormModifier.java b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestFieldNormModifier.java
+index 48bb42d..33e97be 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestFieldNormModifier.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestFieldNormModifier.java
+@@ -44,7 +44,7 @@ public class TestFieldNormModifier extends LuceneTestCase {
+   /** inverts the normal notion of lengthNorm */
+   public static SimilarityProvider s = new DefaultSimilarity() {
+     @Override
+-    public float computeNorm(String fieldName, FieldInvertState state) {
++    public float computeNorm(FieldInvertState state) {
+       return state.getBoost() * (discountOverlaps ? state.getLength() - state.getNumOverlap() : state.getLength());
+     }
+   };

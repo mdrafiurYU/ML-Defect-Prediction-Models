@@ -1,0 +1,35 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
+index 44e3318..decf0a3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeDefDiff.java
+@@ -368,22 +368,18 @@ public class NodeTypeDefDiff {
+     }
+ 
+     private String modificationTypeToString(int modifcationType) {
+-        String typeString = "unknown";
+         switch (modifcationType) {
+-            case NONE:
+-                typeString = "NONE";
+-                break;
+-            case TRIVIAL:
+-                typeString = "TRIVIAL";
+-                break;
+-            case MINOR:
+-                typeString = "MINOR";
+-                break;
+-            case MAJOR:
+-                typeString = "MAJOR";
+-                break;
++        case NONE:
++            return "NONE";
++        case TRIVIAL:
++            return "TRIVIAL";
++        case MINOR:
++            return "MINOR";
++        case MAJOR:
++            return "MAJOR";
++        default:
++            return "unknown";
+         }
+-        return typeString;
+     }

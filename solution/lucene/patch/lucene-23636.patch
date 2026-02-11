@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java b/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
+index c042b7c..10d3965 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/FieldsConsumer.java
+@@ -48,11 +48,10 @@ public abstract class FieldsConsumer implements Closeable {
+       mergeState.fieldInfo = mergeState.fieldInfos.fieldInfo(field);
+       assert mergeState.fieldInfo != null : "FieldInfo for field is null: "+ field;
+       TermsEnum terms = fieldsEnum.terms();
+-      if(terms != null) {
++      if (terms != null) {
+         final TermsConsumer termsConsumer = addField(mergeState.fieldInfo);
+         termsConsumer.merge(mergeState, terms);
+       }
+     }
+   }
+- 
+ }

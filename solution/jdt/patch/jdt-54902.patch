@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java
+index 344336e..c012960 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Assignment.java
+@@ -15,6 +15,7 @@ import org.eclipse.jdt.internal.compiler.ASTVisitor;
+ import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;
+ import org.eclipse.jdt.internal.compiler.codegen.*;
+ import org.eclipse.jdt.internal.compiler.flow.*;
++import org.eclipse.jdt.internal.compiler.impl.Constant;
+ import org.eclipse.jdt.internal.compiler.lookup.*;
+ 
+ public class Assignment extends Expression {
+@@ -176,7 +177,7 @@ public class Assignment extends Expression {
+ 	public TypeBinding resolveType(BlockScope scope) {
+ 
+ 		// due to syntax lhs may be only a NameReference, a FieldReference or an ArrayReference
+-		this.constant = NotAConstant;
++		this.constant = Constant.NotAConstant;
+ 		if (!(this.lhs instanceof Reference) || this.lhs.isThis()) {
+ 			scope.problemReporter().expressionShouldBeAVariable(this.lhs);
+ 			return null;

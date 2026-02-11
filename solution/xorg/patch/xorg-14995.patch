@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxarg.c b/hw/dmx/input/dmxarg.c
+index 7882f9b..8708fa0 100644
+--- a/hw/dmx/input/dmxarg.c
++++ b/hw/dmx/input/dmxarg.c
+@@ -35,6 +35,10 @@
+ /** \file
+  * Generic comma-delimited argument processing. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #define DMX_ARG_TEST 0
+ 
+ #include "dmx.h"

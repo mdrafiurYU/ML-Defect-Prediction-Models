@@ -1,0 +1,24 @@
+diff --git a/os/xdmauth.c b/os/xdmauth.c
+index 4ec7265..1d4a7d2 100644
+--- a/os/xdmauth.c
++++ b/os/xdmauth.c
+@@ -36,8 +36,8 @@ from The Open Group.
+  */
+ 
+ #include <stdio.h>
+-#include "X.h"
+-#include "Xtrans.h"
++#include <X11/X.h>
++#include <X11/Xtrans/Xtrans.h>
+ #include "os.h"
+ #include "osdep.h"
+ #include "dixstruct.h"
+@@ -47,7 +47,7 @@ from The Open Group.
+ static Bool authFromXDMCP;
+ 
+ #ifdef XDMCP
+-#include "Xmd.h"
++#include <X11/Xmd.h>
+ #undef REQUEST
+ #include "Xdmcp.h"
+ 

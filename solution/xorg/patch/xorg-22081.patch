@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxcursor.c b/hw/dmx/dmxcursor.c
+index a49fc9f..e74a052 100644
+--- a/hw/dmx/dmxcursor.c
++++ b/hw/dmx/dmxcursor.c
+@@ -664,8 +664,8 @@ static Bool _dmxUnrealizeCursor(ScreenPtr pScreen, CursorPtr pCursor)
+ {
+     DMXScreenInfo    *dmxScreen = &dmxScreens[pScreen->myNum];
+ 
+-    DMXDBG3("_dmxUnrealizeCursor(%d,%p) %p\n",
+-            pScreen->myNum, pCursor, pCursorPriv);
++    DMXDBG2("_dmxUnrealizeCursor(%d,%p)\n",
++            pScreen->myNum, pCursor);
+ 
+     if (dmxScreen->beDisplay) {
+ 	if (dmxBEFreeCursor(pScreen, pCursor))

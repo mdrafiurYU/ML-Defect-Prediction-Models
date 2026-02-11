@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Member.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Member.java
+index 2af9465..a290626 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Member.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Member.java
+@@ -97,7 +97,7 @@ public static IMethod[] findMethods(IMethod method, IMethod[] methods) {
+ 		simpleNames[i] = Signature.getSimpleName(Signature.toString(erasure));
+ 	}
+ 	ArrayList list = new ArrayList();
+-	next: for (int i = 0, length = methods.length; i < length; i++) {
++	for (int i = 0, length = methods.length; i < length; i++) {
+ 		IMethod existingMethod = methods[i];
+ 		if (areSimilarMethods(
+ 				elementName,

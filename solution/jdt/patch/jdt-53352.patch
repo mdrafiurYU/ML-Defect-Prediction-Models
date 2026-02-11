@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTest2.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTest2.java
+index 8af5344..4a380e3 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTest2.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTest2.java
+@@ -10,10 +10,15 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ public class CompletionParserTest2 extends AbstractCompletionTest {
+ public CompletionParserTest2(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(CompletionParserTest2.class);
++}
+ public void test0001(){
+ 	String str = 
+ 		"package p;\n" +

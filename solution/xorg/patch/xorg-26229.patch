@@ -1,0 +1,13 @@
+diff --git a/randr/randr.c b/randr/randr.c
+index 5f6ef62..5f54dea 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -198,7 +198,7 @@ Bool RRScreenInit(ScreenPtr pScreen)
+     pScrPriv->maxHeight = pScrPriv->minHeight = pScreen->height;
+     
+ #if RANDR_12_INTERFACE
+-    pScrPriv->rrScreenSizeSet = NULL;
++    pScrPriv->rrScreenSetSize = NULL;
+     pScrPriv->rrCrtcSet = NULL;
+     pScrPriv->rrCrtcSetGamma = NULL;
+ #endif

@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java
+index a836ddb..325b40f 100644
+--- a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java
++++ b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceTypeHierarchyTests.java
+@@ -42,7 +42,7 @@ public class FullSourceWorkspaceTypeHierarchyTests extends FullSourceWorkspaceTe
+ 	public static Test suite() {
+         Test suite = buildSuite(testClass());
+         TESTS_COUNT = suite.countTestCases();
+-        createPrintStream(testClass().getName(), LOG_STREAMS, TESTS_COUNT, null);
++        createPrintStream(testClass(), LOG_STREAMS, TESTS_COUNT, null);
+         return suite;
+     }

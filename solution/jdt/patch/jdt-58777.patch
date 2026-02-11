@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/EvaluationTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/EvaluationTest.java
+index 2909de2..5644150 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/EvaluationTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/EvaluationTest.java
+@@ -116,7 +116,7 @@ public class EvaluationTest extends AbstractCompilerTest implements StopableTest
+ 	public static Test setupSuite(Class clazz) {
+ 		ArrayList testClasses = new ArrayList();
+ 		testClasses.add(clazz);
+-		return suite(clazz.getName(), EvaluationSetup.class, testClasses);
++		return buildAllCompliancesSetupSuite(clazz, EvaluationSetup.class, testClasses);
+ 	}
+ 	
+ 	public static Test suite(Class evaluationTestClass) {

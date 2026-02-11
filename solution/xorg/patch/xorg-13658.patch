@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/i810/i810.h b/hw/kdrive/i810/i810.h
+index 5d1a0db..e0f6f81 100644
+--- a/hw/kdrive/i810/i810.h
++++ b/hw/kdrive/i810/i810.h
+@@ -435,6 +435,9 @@ i810PrintErrorState(i810CardInfo *i810c);
+ void
+ i810VGAGetIOBase(i810VGAPtr vgap);
+ 
++Bool
++i810InitVideo(ScreenPtr pScreen);
++
+ /*
+  * MMIO versions of the register access functions.  These require
+  * hwp->MemBase to be set in such a way that when the standard VGA port

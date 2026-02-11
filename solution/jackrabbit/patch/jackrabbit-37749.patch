@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java
+index 208cc6d..d43afae 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/nodetype/CyclicNodeTypeRegistrationTest.java
+@@ -89,7 +89,11 @@ public class CyclicNodeTypeRegistrationTest extends AbstractJCRTest {
+     protected void tearDown() throws Exception {
+         if (session != null) {
+             session.logout();
++            session = null;
+         }
++        ntreg = null;
++        ntDefCollection = null;
++        nameFactory = null;
+         super.tearDown();
+     }

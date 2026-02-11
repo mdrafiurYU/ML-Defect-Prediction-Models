@@ -1,0 +1,15 @@
+diff --git a/fb/fbfillrect.c b/fb/fbfillrect.c
+index 43b2e6b..2a60da1 100644
+--- a/fb/fbfillrect.c
++++ b/fb/fbfillrect.c
+@@ -23,6 +23,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/fb/fbfillrect.c,v 1.1 1999/11/19 13:53:43 hohndel Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ 
+ void

@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
+index 18b1ded..e143d73 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
++++ b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
+@@ -55,7 +55,8 @@ public class TestNumericRangeQuery32 extends LuceneTestCase {
+     directory = newDirectory();
+     RandomIndexWriter writer = new RandomIndexWriter(random, directory,
+         newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer())
+-        .setMaxBufferedDocs(_TestUtil.nextInt(random, 50, 1000)));
++        .setMaxBufferedDocs(_TestUtil.nextInt(random, 50, 1000))
++        .setMergePolicy(newInOrderLogMergePolicy()));
+     
+     NumericField
+       field8 = new NumericField("field8", 8, Field.Store.YES, true),

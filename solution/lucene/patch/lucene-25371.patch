@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterUnicode.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterUnicode.java
+index 9fecfa9..05b5a94 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterUnicode.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterUnicode.java
+@@ -163,7 +163,7 @@ public class TestIndexWriterUnicode extends LuceneTestCase {
+       BytesRef tr = new BytesRef(it.next());
+       assertEquals("seek failed for term=" + termDesc(tr.utf8ToString()),
+                    TermsEnum.SeekStatus.FOUND,
+-                   terms.seek(tr));
++                   terms.seekCeil(tr));
+     }
+   }

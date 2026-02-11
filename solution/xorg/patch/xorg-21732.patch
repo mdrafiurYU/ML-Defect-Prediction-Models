@@ -1,0 +1,16 @@
+diff --git a/dix/window.c b/dix/window.c
+index c16f514..0beeb3a 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -519,9 +519,9 @@ InitRootWindow(WindowPtr pWin)
+     }
+     else {
+         if (blackRoot)
+-            pWin->background.pixel = blackPixel;
++            pWin->background.pixel = pScreen->blackPixel;
+         else
+-            pWin->background.pixel = whitePixel;
++            pWin->background.pixel = pScreen->whitePixel;
+         backFlag |= CWBackPixel;
+     } 
+ 

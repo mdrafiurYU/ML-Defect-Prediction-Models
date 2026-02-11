@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Modes.c b/hw/xfree86/modes/xf86Modes.c
+index 9981789..3879b91 100644
+--- a/hw/xfree86/modes/xf86Modes.c
++++ b/hw/xfree86/modes/xf86Modes.c
+@@ -196,9 +196,8 @@ xf86DuplicateMode(DisplayModePtr pMode)
+     pNew->prev = NULL;
+     if (pNew->name == NULL) {
+ 	xf86SetModeDefaultName(pMode);
+-    } else {
+-	pNew->name = xnfstrdup(pMode->name);
+     }
++    pNew->name = xnfstrdup(pMode->name);
+ 
+     return pNew;
+ }

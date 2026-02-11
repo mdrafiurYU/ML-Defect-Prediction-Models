@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntryImpl.java
+index 8d74940..3a7b2e7 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntryImpl.java
+@@ -110,25 +110,6 @@ public class PropertyEntryImpl extends HierarchyEntryImpl implements PropertyEnt
+     }
+ 
+     /**
+-     * @see HierarchyEntry#remove()
+-     */
+-    public void remove() {
+-        ItemState state = internalGetItemState();
+-        int status = getStatus();
+-        if (state != null) {
+-            if (status == Status.EXISTING_MODIFIED) {
+-                state.setStatus(Status.STALE_DESTROYED);
+-            } else {
+-                state.setStatus(Status.REMOVED);
+-                parent.internalRemoveChildEntry(this);
+-            }
+-        } else {
+-            // unresolved
+-            parent.internalRemoveChildEntry(this);
+-        }
+-    }
+-
+-    /**
+      * @see HierarchyEntry#complete(Operation)
+      */
+     public void complete(Operation operation) throws RepositoryException {

@@ -1,0 +1,49 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/Bytes.java b/lucene/src/java/org/apache/lucene/index/values/Bytes.java
+index 501e745..b254bc8 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/Bytes.java
++++ b/lucene/src/java/org/apache/lucene/index/values/Bytes.java
+@@ -434,6 +434,8 @@ public final class Bytes {
+       this.id = id;
+       datIn = dir.openInput(IndexFileNames.segmentFileName(id, "",
+           Writer.DATA_EXTENSION));
++      boolean success = false;
++      try {
+       version = CodecUtil.checkHeader(datIn, codecName, maxVersion, maxVersion);
+       if (doIndex) {
+         idxIn = dir.openInput(IndexFileNames.segmentFileName(id, "",
+@@ -444,6 +446,12 @@ public final class Bytes {
+       } else {
+         idxIn = null;
+       }
++      success = true;
++      } finally {
++        if (!success) {
++          closeInternal();
++        }
++      }
+     }
+ 
+     /**
+@@ -467,12 +475,16 @@ public final class Bytes {
+       try {
+         super.close();
+       } finally {
+-        try {
+-            datIn.close();
+-        } finally {
+-          if (idxIn != null) {
+-            idxIn.close();
+-          }
++         closeInternal();
++      }
++    }
++    
++    private void closeInternal() throws IOException {
++      try {
++        datIn.close();
++      } finally {
++        if (idxIn != null) {
++          idxIn.close();
+         }
+       }
+     }

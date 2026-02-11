@@ -1,0 +1,14 @@
+diff --git a/GL/glx/glxcmds.c b/GL/glx/glxcmds.c
+index 3092f85..ccdf3fa 100644
+--- a/GL/glx/glxcmds.c
++++ b/GL/glx/glxcmds.c
+@@ -2274,9 +2274,6 @@ int __glXDisp_VendorPrivate(__GLXclientState *cl, GLbyte *pc)
+ 	return Success;
+     }
+ 
+-    /*
+-    ** This sample implemention does not support any private requests.
+-    */
+     cl->client->errorValue = req->vendorCode;
+     return __glXError(GLXUnsupportedPrivateRequest);
+ }

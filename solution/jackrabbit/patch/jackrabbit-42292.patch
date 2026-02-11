@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/BeanConfig.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/BeanConfig.java
+index a9f1901..f42c2bd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/BeanConfig.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/BeanConfig.java
+@@ -117,7 +117,9 @@ public class BeanConfig {
+             while (it.hasNext()) {
+                 String key = (String) it.next();
+                 if (map.get(key) == null && properties.getProperty(key) != null) {
+-                    log.warn(object.getClass().getName() + " does not support '" + key + "'; the setting is ignored.");
++                    String msg = object.getClass().getName() + " does not support '" + key;
++                    log.error(msg);
++                    throw new ConfigurationException(msg);
+                 }
+             }
+             return object;

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java b/lucene/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java
+index b764dc0..53af0ad 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java
++++ b/lucene/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java
+@@ -82,7 +82,7 @@ public class TestAutomatonQueryUnicode extends LuceneTestCase {
+     field.setValue("\uFFFD\uFFFD");
+     writer.addDocument(doc);
+     reader = writer.getReader();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     writer.close();
+   }

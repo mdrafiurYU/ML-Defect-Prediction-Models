@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86DGA.c b/hw/xfree86/common/xf86DGA.c
+index bbb8792..9c701c5 100644
+--- a/hw/xfree86/common/xf86DGA.c
++++ b/hw/xfree86/common/xf86DGA.c
+@@ -568,7 +568,7 @@ DGAActive(int index)
+ /* Called by the event code in case the server is abruptly terminated */
+ 
+ void
+-DGAShutdown()
++DGAShutdown(void)
+ {
+     ScrnInfoPtr pScrn;
+     int i;

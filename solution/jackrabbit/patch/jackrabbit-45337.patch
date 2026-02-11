@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+index c185b06..4e1ecbe 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+@@ -494,9 +494,11 @@ public class VersionManagerImpl extends AbstractVersionManager implements ItemSt
+     /**
+      * {@inheritDoc}
+      */
+-    public void externalUpdate(ChangeLog changes, List events) throws RepositoryException {
++    public void externalUpdate(ChangeLog changes, List events, long timestamp)
++            throws RepositoryException {
+         EventStateCollection esc = getEscFactory().createEventStateCollection(null);
+         esc.addAll(events);
++        esc.setTimestamp(timestamp);
+ 
+         sharedStateMgr.externalUpdate(changes, esc);
+     }

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java
+index 1efda68..64966c4 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/NodeImplTest.java
+@@ -104,6 +104,9 @@ public class NodeImplTest extends AbstractJCRTest {
+             assertFalse(tn.internalIsCheckedOut());
+         } finally {
+             readOnly.logout();
++            // reset the denied read-access
++            n.checkout();
++            changeReadPermission(principal, n, true);
+         }
+     }
+ }
+\ No newline at end of file

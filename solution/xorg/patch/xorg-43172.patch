@@ -1,0 +1,13 @@
+diff --git a/dix/privates.c b/dix/privates.c
+index 5eece69..3a2deb8 100644
+--- a/dix/privates.c
++++ b/dix/privates.c
+@@ -312,7 +312,7 @@ dixResetPrivates(void)
+     if (offsets)
+ 	xfree(offsets);
+     offsetsSize = sizeof(offsetDefaults);
+-    offsets = (int *)xalloc(offsetsSize);
++    offsets = xalloc(offsetsSize);
+     offsetsSize /= sizeof(int);
+     if (!offsets)
+ 	return FALSE;

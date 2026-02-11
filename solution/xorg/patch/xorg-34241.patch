@@ -1,0 +1,21 @@
+diff --git a/include/window.h b/include/window.h
+index f85eceb..9943f90 100644
+--- a/include/window.h
++++ b/include/window.h
+@@ -204,11 +204,15 @@ extern RegionPtr NotClippedByChildren(
+ extern void SendVisibilityNotify(
+     WindowPtr /*pWin*/);
+ 
+-extern int SaveScreens(
++extern int dixSaveScreens(
+     ClientPtr client,
+     int on,
+     int mode);
+ 
++extern int SaveScreens(
++    int on,
++    int mode);
++
+ extern WindowPtr FindWindowWithOptional(
+     WindowPtr /*w*/);
+ 

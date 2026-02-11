@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java b/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
+index b7ff7cc..f55a0c7 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java
+@@ -1090,7 +1090,7 @@ public class TestIndexReaderReopen extends LuceneTestCase {
+   @Override
+   public void setUp() throws Exception {
+     super.setUp();
+-    indexDir = new File(TEMP_DIR, "IndexReaderReopen");
++    indexDir = _TestUtil.getTempDir("IndexReaderReopen");
+   }
+   
+   public void testCloseOrig() throws Throwable {

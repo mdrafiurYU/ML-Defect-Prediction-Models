@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 73d5815..72b21dc 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -1347,9 +1347,6 @@ convertRange2Host(int entityIndex, resRange *pRange)
+ 	case BUS_PCI:
+ 	    pciConvertRange2Host(entityIndex,pRange);
+ 	    break;
+-	case BUS_ISA:
+-	    isaConvertRange2Host(pRange);
+-	    break;
+ 	default:
+ 	    break;
+ 	}

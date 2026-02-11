@@ -1,0 +1,29 @@
+diff --git a/exa/exa_migration.c b/exa/exa_migration.c
+index 4623ecc..19e0f71 100644
+--- a/exa/exa_migration.c
++++ b/exa/exa_migration.c
+@@ -463,7 +463,11 @@ exaMigrateTowardFb (ExaMigrationPtr migrate)
+ 	exaDoMoveInPixmap(migrate);
+     }
+ 
++    if (exaPixmapIsOffscreen(pPixmap)) {
++	exaCopyDirtyToFb (migrate);
+     ExaOffscreenMarkUsed (pPixmap);
++    } else
++	exaCopyDirtyToSys (migrate);
+ }
+ 
+ /**
+@@ -496,6 +500,12 @@ exaMigrateTowardSys (ExaMigrationPtr migrate)
+ 
+     if (pExaPixmap->score <= EXA_PIXMAP_SCORE_MOVE_OUT && pExaPixmap->area)
+ 	exaDoMoveOutPixmap(migrate);
++
++    if (exaPixmapIsOffscreen(pPixmap)) {
++	exaCopyDirtyToFb (migrate);
++	ExaOffscreenMarkUsed (pPixmap);
++    } else
++	exaCopyDirtyToSys (migrate);
+ }
+ 
+ /**

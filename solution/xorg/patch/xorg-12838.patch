@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/winshadgdi.c b/hw/xwin/winshadgdi.c
+index 54faebe..0f56538 100644
+--- a/hw/xwin/winshadgdi.c
++++ b/hw/xwin/winshadgdi.c
+@@ -630,7 +630,7 @@ winCloseScreenShadowGDI (int nIndex, ScreenPtr pScreen)
+   pScreenPriv->fActive = FALSE;
+ 
+   /* Call the wrapped CloseScreen procedure */
+-  pScreen->CloseScreen = pScreenPriv->CloseScreen;
++  WIN_UNWRAP(CloseScreen);
+   fReturn = (*pScreen->CloseScreen) (nIndex, pScreen);
+ 
+   /* Delete the window property */

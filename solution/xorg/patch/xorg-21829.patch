@@ -1,0 +1,19 @@
+diff --git a/GL/glx/indirect_dispatch.c b/GL/glx/indirect_dispatch.c
+index 9c2b7b1..04bb204 100644
+--- a/GL/glx/indirect_dispatch.c
++++ b/GL/glx/indirect_dispatch.c
+@@ -5466,6 +5466,14 @@ void __glXDisp_ProgramNamedParameter4fvNV(GLbyte * pc)
+     ) );
+ }
+ 
++void __glXDisp_BlendEquationSeparateEXT(GLbyte * pc)
++{
++    CALL_BlendEquationSeparateEXT( GET_DISPATCH(), (
++        *(GLenum   *)(pc +  0),
++        *(GLenum   *)(pc +  4)
++    ) );
++}
++
+ void __glXDisp_BindFramebufferEXT(GLbyte * pc)
+ {
+     CALL_BindFramebufferEXT( GET_DISPATCH(), (

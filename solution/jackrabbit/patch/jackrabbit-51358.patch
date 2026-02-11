@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
+index 8515991..141d1ea 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
+@@ -58,7 +58,7 @@ public class TextExtractorJob implements Runnable {
+     /**
+      * The extracted text. Set when the text extraction task completes.
+      */
+-    private transient String text = null;
++    private volatile String text = null;
+ 
+     /**
+      * Creates a new <code>TextExtractorJob</code> with the given

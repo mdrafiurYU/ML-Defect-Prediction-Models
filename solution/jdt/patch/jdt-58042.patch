@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java
+index 26b5d92..2ac3ab6 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java
+@@ -45,7 +45,7 @@ public class SourceIndexer extends AbstractIndexer implements SuffixConstants {
+ 		SourceIndexerRequestor requestor = new SourceIndexerRequestor(this);
+ 		String documentPath = this.document.getPath();
+ 		IPath path = new Path(documentPath);
+-		SourceElementParser parser = this.document.parser;
++		SourceElementParser parser = ((InternalSearchDocument) this.document).parser;
+ 		if (parser == null) {
+ 			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(path.segment(0));
+ 			parser = JavaModelManager.getJavaModelManager().indexManager.getSourceElementParser(JavaCore.create(project), requestor);

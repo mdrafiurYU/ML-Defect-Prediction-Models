@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/bus/bsd_pci.c b/hw/xfree86/os-support/bus/bsd_pci.c
+index 3bd9d15..7becc0a 100644
+--- a/hw/xfree86/os-support/bus/bsd_pci.c
++++ b/hw/xfree86/os-support/bus/bsd_pci.c
+@@ -79,7 +79,6 @@ xf86MapLegacyIO(struct pci_device *dev)
+ void
+ bsdPciInit(void)
+ {
+-    pciNumBuses = 1;
+     pciBusInfo = &bsd_pci;
+ 
+     xf86InitVidMem();

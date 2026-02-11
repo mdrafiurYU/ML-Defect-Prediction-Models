@@ -1,0 +1,17 @@
+diff --git a/render/mipict.h b/render/mipict.h
+index eef155f..bd7c23f 100644
+--- a/render/mipict.h
++++ b/render/mipict.h
+@@ -88,6 +88,12 @@ miClipPicture (RegionPtr    pRegion,
+ 	       INT16	    xPict,
+ 	       INT16	    yPict);
+ 
++void
++miCompositeSourceValidate (PicturePtr	pPicture,
++			   INT16	x,
++			   INT16	y,
++			   CARD16	width,
++			   CARD16	height);
+ Bool
+ miComputeCompositeRegion (RegionPtr	pRegion,
+ 			  PicturePtr	pSrc,

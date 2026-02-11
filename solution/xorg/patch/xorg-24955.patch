@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86Cursor.c b/hw/xfree86/common/xf86Cursor.c
+index c7b9710..ee42b75 100644
+--- a/hw/xfree86/common/xf86Cursor.c
++++ b/hw/xfree86/common/xf86Cursor.c
+@@ -223,9 +223,9 @@ xf86SwitchMode(ScreenPtr pScreen, DisplayModePtr mode)
+   if (mode->HDisplay > pScr->virtualX || mode->VDisplay > pScr->virtualY)
+     return FALSE;
+ 
+-  pCursorScreen = miPointerCurrentScreen();
++  pCursorScreen = miPointerGetScreen(inputInfo.pointer);
+   if (pScreen == pCursorScreen)
+-    miPointerPosition(&px, &py);
++    miPointerGetPosition(inputInfo.pointer, &px, &py);
+ 
+   xf86EnterServerState(SETUP);
+   Switched = (*pScr->SwitchMode)(pScr->scrnIndex, mode, 0);

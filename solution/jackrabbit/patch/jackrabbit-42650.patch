@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
+index f0cfe96..efca2e0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
+@@ -485,7 +485,7 @@ public class ACLProvider extends AbstractAccessControlProvider implements Access
+                 Path parentPath = absPath.getAncestor(1);
+                 while (nid == null) {
+                     nid = session.getHierarchyManager().resolveNodePath(parentPath);
+-                    if (parentPath.getDepth() == 1) {
++                    if (parentPath.getDepth() == Path.ROOT_DEPTH) {
+                         // root-node reached
+                         break;
+                     } else {

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java
+index b780042..ee4bed3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataStore.java
+@@ -186,7 +186,10 @@ public class FileDataStore implements DataStore {
+             if (!file.exists()) {
+                 temporary.renameTo(file);
+                 if (!file.exists()) {
+-                    throw new IOException("Can not rename " + temporary.getAbsolutePath() + " to " + file.getAbsolutePath() + " (media read only?)");
++                    throw new IOException(
++                            "Can not rename " + temporary.getAbsolutePath()
++                            + " to " + file.getAbsolutePath()
++                            + " (media read only?)");
+                 }
+             } else {
+                 long now = System.currentTimeMillis();

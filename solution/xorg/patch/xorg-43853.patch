@@ -1,0 +1,66 @@
+diff --git a/hw/xfree86/common/xf86Helper.c b/hw/xfree86/common/xf86Helper.c
+index 9aeba27..0db7717 100644
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -1959,6 +1959,30 @@ xf86MatchPciInstances(const char *driverName, int vendorID,
+     return numFound;
+ }
+ 
++static void
++xf86SetPriority(Bool up)
++{
++    static int saved_nice;
++
++    if (up) {
++#ifdef HAS_SETPRIORITY
++	saved_nice = getpriority(PRIO_PROCESS, 0);
++	setpriority(PRIO_PROCESS, 0, -20);
++#endif
++#if defined(SYSV) || defined(SVR4) || defined(linux)
++	saved_nice = nice(0);
++	nice(-20 - saved_nice);
++#endif
++    } else {
++#ifdef HAS_SETPRIORITY
++	setpriority(PRIO_PROCESS, 0, saved_nice);
++#endif
++#if defined(SYSV) || defined(SVR4) || defined(linux)
++	nice(20 + saved_nice);
++#endif
++    }
++}
++
+ /*
+  * xf86GetClocks -- get the dot-clocks via a BIG BAD hack ...
+  */
+@@ -2053,30 +2077,6 @@ finish:
+     (*ClockFunc)(pScrn, CLK_REG_RESTORE);
+ }
+ 
+-void
+-xf86SetPriority(Bool up)
+-{
+-    static int saved_nice;
+-
+-    if (up) {
+-#ifdef HAS_SETPRIORITY
+-	saved_nice = getpriority(PRIO_PROCESS, 0);
+-	setpriority(PRIO_PROCESS, 0, -20);
+-#endif
+-#if defined(SYSV) || defined(SVR4) || defined(linux)
+-	saved_nice = nice(0);
+-	nice(-20 - saved_nice);
+-#endif
+-    } else {
+-#ifdef HAS_SETPRIORITY
+-	setpriority(PRIO_PROCESS, 0, saved_nice);
+-#endif
+-#if defined(SYSV) || defined(SVR4) || defined(linux)
+-	nice(20 + saved_nice);
+-#endif
+-    }
+-}
+-
+ const char *
+ xf86GetVisualName(int visual)
+ {

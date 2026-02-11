@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionTest.java
+index 1f32096..bcaccca 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionTest.java
+@@ -82,7 +82,8 @@ public class VersionTest extends AbstractVersionTest {
+     protected void tearDown() throws Exception {
+         // check the node out, so that it can be removed
+         versionableNode.checkout();
+-
++        version = null;
++        version2 = null;
+         super.tearDown();
+     }

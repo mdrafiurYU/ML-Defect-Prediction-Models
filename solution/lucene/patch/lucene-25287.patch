@@ -1,0 +1,44 @@
+diff --git a/solr/src/java/org/apache/solr/search/QParser.java b/solr/src/java/org/apache/solr/search/QParser.java
+index 9ae8f4d..5050464 100755
+--- a/solr/src/java/org/apache/solr/search/QParser.java
++++ b/solr/src/java/org/apache/solr/search/QParser.java
+@@ -141,10 +141,39 @@ public abstract class QParser {
+   public Query getQuery() throws ParseException {
+     if (query==null) {
+       query=parse();
++
++      if (localParams != null) {
++        String cacheStr = localParams.get(CommonParams.CACHE);
++        if (cacheStr != null) {
++          if (CommonParams.FALSE.equals(cacheStr)) {
++            extendedQuery().setCache(false);
++          } else if (CommonParams.TRUE.equals(cacheStr)) {
++            extendedQuery().setCache(true);
++          } else if ("sep".equals(cacheStr)) {
++            extendedQuery().setCacheSep(true);
++          }
++        }
++
++        int cost = localParams.getInt(CommonParams.COST, Integer.MIN_VALUE);
++        if (cost != Integer.MIN_VALUE) {
++          extendedQuery().setCost(cost);
++        }
++      }
+     }
+     return query;
+   }
+ 
++  // returns an extended query (and sets "query" to a new wrapped query if necessary)
++  private ExtendedQuery extendedQuery() {
++    if (query instanceof ExtendedQuery) {
++      return (ExtendedQuery)query;
++    } else {
++      WrappedQuery wq = new WrappedQuery(query);
++      query = wq;
++      return wq;
++    }
++  }
++
+   private void checkRecurse() throws ParseException {
+     if (recurseCount++ >= 100) {
+       throw new ParseException("Infinite Recursion detected parsing query '" + qstr + "'");

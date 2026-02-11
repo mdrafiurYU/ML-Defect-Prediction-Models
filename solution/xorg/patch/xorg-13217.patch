@@ -1,0 +1,15 @@
+diff --git a/mi/miwideline.c b/mi/miwideline.c
+index 8888ca8..20bef03 100644
+--- a/mi/miwideline.c
++++ b/mi/miwideline.c
+@@ -1168,6 +1168,10 @@ miLineProjectingCap (pDrawable, pGC, pixel, spanData, face, isLeft, xorg, yorg,
+     }
+     else if (dx == 0)
+     {
++	if (dy < 0) {
++	    dy = -dy;
++	    isLeft = !isLeft;
++	}
+ 	topy = yorgi;
+ 	bottomy = yorgi + dy;
+ 	if (isLeft)

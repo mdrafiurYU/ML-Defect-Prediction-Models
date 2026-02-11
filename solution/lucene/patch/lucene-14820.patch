@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/spans/SpanWeight.java b/lucene/src/java/org/apache/lucene/search/spans/SpanWeight.java
+index 28fd905..37451fe 100644
+--- a/lucene/src/java/org/apache/lucene/search/spans/SpanWeight.java
++++ b/lucene/src/java/org/apache/lucene/search/spans/SpanWeight.java
+@@ -40,7 +40,7 @@ public class SpanWeight extends Weight {
+   protected SpanQuery query;
+   private IDFExplanation idfExp;
+ 
+-  public SpanWeight(SpanQuery query, Searcher searcher)
++  public SpanWeight(SpanQuery query, IndexSearcher searcher)
+     throws IOException {
+     this.similarity = query.getSimilarity(searcher);
+     this.query = query;

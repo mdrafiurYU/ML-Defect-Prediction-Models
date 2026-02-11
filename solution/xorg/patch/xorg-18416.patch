@@ -1,0 +1,16 @@
+diff --git a/Xprint/ddxInit.c b/Xprint/ddxInit.c
+index be16a37..e68f26a 100644
+--- a/Xprint/ddxInit.c
++++ b/Xprint/ddxInit.c
+@@ -85,6 +85,11 @@ InitOutput(
+ 
+     pScreenInfo->numPixmapFormats = 0; /* get them in PrinterInitOutput */
+     screenInfo.numVideoScreens = 0;
++    
++#ifdef PRINT_ONLY_SERVER
++    PrinterInitOutput(pScreenInfo, argc, argv);
++#endif
++
+ }
+ 
+ static void

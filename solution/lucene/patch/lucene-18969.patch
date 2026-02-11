@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java b/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java
+index 13ec241..0e42f56 100644
+--- a/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java
++++ b/lucene/contrib/queries/src/java/org/apache/lucene/search/FuzzyLikeThisQuery.java
+@@ -335,7 +335,7 @@ public class FuzzyLikeThisQuery extends Query
+       
+       private static class ScoreTermQueue extends PriorityQueue<ScoreTerm> {        
+         public ScoreTermQueue(int size){
+-          initialize(size);
++          super(size);
+         }
+         
+         /* (non-Javadoc)

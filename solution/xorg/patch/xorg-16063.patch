@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/exa/exaoffscreen.c b/hw/xfree86/exa/exaoffscreen.c
+index dbca172..e55e0ac 100644
+--- a/hw/xfree86/exa/exaoffscreen.c
++++ b/hw/xfree86/exa/exaoffscreen.c
+@@ -127,7 +127,7 @@ exaOffscreenAlloc (ScreenPtr pScreen, int size, int align,
+ 	    if (begin->state == ExaOffscreenLocked)
+ 		continue;
+ 
+-	    /* adjust size to match alignment requirement */
++	    /* adjust size needed to account for alignment loss for this area */
+ 	    real_size = size;
+ 	    tmp = begin->offset % align;
+ 	    if (tmp)
+@@ -164,9 +164,9 @@ exaOffscreenAlloc (ScreenPtr pScreen, int size, int align,
+ 	    return NULL;
+ 	}
+ 
+-	/* adjust size to match alignment requirement */
++	/* adjust size needed to account for alignment loss for this area */
+ 	real_size = size;
+-	tmp = begin->offset % align;
++	tmp = area->offset % align;
+ 	if (tmp)
+ 	    real_size += (align - tmp);
+ 

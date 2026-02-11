@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index 7ca0669..09ebb07 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -138,6 +138,9 @@ typedef struct {
+ 
+     Bool        allowEmptyInput;  /* Allow the server to start with no input
+                                    * devices. */
++    Bool        autoAddDevices; /* Whether to succeed NIDR, or ignore. */
++    Bool        autoEnableDevices; /* Whether to enable, or let the client
++                                    * control. */
+ } xf86InfoRec, *xf86InfoPtr;
+ 
+ #ifdef DPMSExtension

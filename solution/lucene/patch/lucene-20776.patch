@@ -1,0 +1,15 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/nl/TestDutchStemmer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/nl/TestDutchStemmer.java
+index 1c2f727..7477893 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/nl/TestDutchStemmer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/nl/TestDutchStemmer.java
+@@ -185,4 +185,9 @@ public class TestDutchStemmer extends BaseTokenStreamTestCase {
+     checkOneTerm(new DutchAnalyzer(TEST_VERSION_CURRENT), input, expected); 
+   }
+   
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new DutchAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
++  
+ }
+\ No newline at end of file

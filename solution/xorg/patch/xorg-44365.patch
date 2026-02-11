@@ -1,0 +1,18 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index b9d1c85..d14eddd 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -471,12 +471,10 @@ CoreKeyboardCtl(DeviceIntPtr pDev, KeybdCtrl *ctrl)
+ static int
+ CoreKeyboardProc(DeviceIntPtr pDev, int what)
+ {
+-    XkbRMLVOSet rmlvo;
+ 
+     switch (what) {
+     case DEVICE_INIT:
+-        XkbGetRulesDflts(&rmlvo);
+-        if (!InitKeyboardDeviceStruct(pDev, &rmlvo, CoreKeyboardBell,
++        if (!InitKeyboardDeviceStruct(pDev, NULL, CoreKeyboardBell,
+                                       CoreKeyboardCtl))
+         {
+             ErrorF("Keyboard initialization failed. This could be a missing "

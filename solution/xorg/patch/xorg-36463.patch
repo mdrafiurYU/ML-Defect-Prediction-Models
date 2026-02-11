@@ -1,0 +1,19 @@
+diff --git a/hw/xquartz/darwin.h b/hw/xquartz/darwin.h
+index 8c3cabb..01e6f41 100644
+--- a/hw/xquartz/darwin.h
++++ b/hw/xquartz/darwin.h
+@@ -1,4 +1,5 @@
+ /*
++ * Copyright (C) 2008 Apple, Inc.
+  * Copyright (c) 2001-2004 Torrey T. Lyons. All Rights Reserved.
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a
+@@ -120,6 +121,8 @@ enum {
+     kXquartzWindowMoved,      // window has moved on screen
+ };
+ 
++void DarwinSendDDXEvent(int type, int argc, ...);
++
+ #define ENABLE_DEBUG_LOG 1
+ 
+ #ifdef ENABLE_DEBUG_LOG

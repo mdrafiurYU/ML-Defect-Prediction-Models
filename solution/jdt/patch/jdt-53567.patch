@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/UtilTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/UtilTest.java
+index c239194..5af46f5 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/UtilTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/UtilTest.java
+@@ -490,6 +490,10 @@ public void test65() {
+ 			!CharOperation.camelCaseMatch("NPE".toCharArray(), "Null.Pointer.Exception".toCharArray()));
+ 	assertTrue("Camel pattern matching failure-11",
+ 			!CharOperation.camelCaseMatch("NPE".toCharArray(), "aNullPointerException".toCharArray()));
++	assertTrue("Camel pattern matching failure-12",
++			CharOperation.camelCaseMatch("nullP".toCharArray(), "nullPointerException".toCharArray()));
++	assertTrue("Camel pattern matching failure-13",
++			CharOperation.camelCaseMatch("nP".toCharArray(), "nullPointerException".toCharArray()));
+ }
+ public static Class testClass() {
+ 	return UtilTest.class;

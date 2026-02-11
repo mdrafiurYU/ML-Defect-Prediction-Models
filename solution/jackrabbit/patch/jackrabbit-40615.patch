@@ -1,0 +1,35 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryImpl.java
+index b4ab412..a621044 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/QueryImpl.java
+@@ -149,7 +149,7 @@ public class QueryImpl extends AbstractQueryImpl {
+         query = handler.createExecutableQuery(session, itemMgr, statement, language);
+         setInitialized();
+     }
+-    
++
+     /**
+      * @inheritDoc
+      * <p/>
+@@ -244,10 +244,10 @@ public class QueryImpl extends AbstractQueryImpl {
+             throw new RepositoryException(e.getMessage(), e);
+         }
+     }
+-    
++
+     /**
+      * Sets the maximum size of the result set.
+-     * 
++     *
+      * @param limit new maximum size of the result set
+      */
+     public void setLimit(long limit) {
+@@ -256,7 +256,7 @@ public class QueryImpl extends AbstractQueryImpl {
+ 
+     /**
+      * Sets the start offset of the result set.
+-     * 
++     *
+      * @param offset new start offset of the result set
+      */
+     public void setOffset(long offset) {

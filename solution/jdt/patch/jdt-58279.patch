@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
+index 7382706..d598be9 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
+@@ -60,7 +60,7 @@ public class AbstractComparableTest extends AbstractRegressionTest {
+ 	static Map TESTS_COUNTERS = new HashMap();
+ 
+ 	public static Test buildComparableTestSuite(Class evaluationTestClass) {
+-		Test suite = buildComplianceRegressionTestSetupSuite(evaluationTestClass, F_1_5);
++		Test suite = buildMinimalComplianceTestSuite(evaluationTestClass, F_1_5);
+ 		TESTS_COUNTERS.put(evaluationTestClass.getName(), new Integer(suite.countTestCases()));
+ 		return suite;
+ 	}

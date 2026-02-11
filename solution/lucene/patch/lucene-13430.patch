@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/RepAllTask.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/RepAllTask.java
+index 27b5ff2..89ae30d 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/RepAllTask.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/tasks/RepAllTask.java
+@@ -51,7 +51,7 @@ public class RepAllTask extends ReportTask {
+   protected Report reportAll(List<TaskStats> taskStats) {
+     String longestOp = longestOp(taskStats);
+     boolean first = true;
+-    StringBuffer sb = new StringBuffer();
++    StringBuilder sb = new StringBuilder();
+     sb.append(tableTitle(longestOp));
+     sb.append(newline);
+     int reported = 0;

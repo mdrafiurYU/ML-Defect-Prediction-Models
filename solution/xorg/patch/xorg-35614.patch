@@ -1,0 +1,14 @@
+diff --git a/Xext/cup.c b/Xext/cup.c
+index d0e820c..fd1409e 100644
+--- a/Xext/cup.c
++++ b/Xext/cup.c
+@@ -176,6 +176,9 @@ int ProcGetReservedColormapEntries(
+ 
+     REQUEST_SIZE_MATCH (xXcupGetReservedColormapEntriesReq);
+ 
++    if (stuff->screen >= screenInfo.numScreens)
++	return BadValue;
++
+ #ifndef HAVE_SPECIAL_DESKTOP_COLORS
+     citems[CUP_BLACK_PIXEL].pixel = 
+ 	screenInfo.screens[stuff->screen]->blackPixel;

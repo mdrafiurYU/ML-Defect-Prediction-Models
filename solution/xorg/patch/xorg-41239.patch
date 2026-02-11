@@ -1,0 +1,13 @@
+diff --git a/dix/enterleave.h b/dix/enterleave.h
+index 6e06226..99e2e46 100644
+--- a/dix/enterleave.h
++++ b/dix/enterleave.h
+@@ -63,4 +63,8 @@ extern void DeviceEnterLeaveEvent(DeviceIntPtr mouse,
+                                   WindowPtr pWin,
+                                   Window child);
+ 
++extern void EnterWindow(DeviceIntPtr dev,
++                        WindowPtr win,
++                        int mode);
++
+ #endif /* _ENTERLEAVE_H_ */

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
+index 65fe9f4..9b72ded 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
+@@ -85,7 +85,7 @@ public FlowInfo analyseCode(
+ 							valueRequired);
+ 						if (valueRequired) {
+ 							codeStream.iconst_0();
+-							if (falseLabel.hasForwardReferences()) {
++							if (falseLabel.forwardReferenceCount > 0) {
+ 								codeStream.goto_(endifLabel = new BranchLabel(codeStream));
+ 								codeStream.decrStackSize(1);
+ 								falseLabel.place();

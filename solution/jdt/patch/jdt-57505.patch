@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 397dbcf..74a61fc 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1654,7 +1654,7 @@ public static int getProblemCategory(int problemID) {
+ 			if ((problemID & (IProblem.FieldRelated|IProblem.MethodRelated|IProblem.ConstructorRelated)) != 0)
+ 				return CategorizedProblem.CAT_MEMBER;
+ 	}
+-	return CategorizedProblem.CAT_UNSPECIFIED;
++	return CategorizedProblem.CAT_INTERNAL;
+ }
+ 
+ // use this private API when the compilation unit result can be found through the

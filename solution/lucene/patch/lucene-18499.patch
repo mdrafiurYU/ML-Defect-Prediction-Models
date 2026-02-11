@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/request/ServletSolrParams.java b/solr/src/java/org/apache/solr/request/ServletSolrParams.java
+index 33b1cfa..49922c8 100644
+--- a/solr/src/java/org/apache/solr/request/ServletSolrParams.java
++++ b/solr/src/java/org/apache/solr/request/ServletSolrParams.java
+@@ -29,6 +29,7 @@ public class ServletSolrParams extends MultiMapSolrParams {
+     super(req.getParameterMap());
+   }
+ 
++  @Override
+   public String get(String name) {
+     String[] arr = map.get(name);
+     if (arr==null) return null;

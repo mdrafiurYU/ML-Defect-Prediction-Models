@@ -1,0 +1,23 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index a7f91b7..682ebbf 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -74,7 +74,6 @@ typedef struct _rrCrtc	    RRCrtcRec, *RRCrtcPtr;
+ typedef struct _rrOutput    RROutputRec, *RROutputPtr;
+ 
+ struct _rrMode {
+-    RRMode	    id;
+     int		    refcnt;
+     xRRModeInfo	    mode;
+     char	    *name;
+@@ -489,6 +488,10 @@ Bool
+ RROutputSetConnection (RROutputPtr  output,
+ 		       CARD8	    connection);
+ 
++Bool
++RROutputSetSubpixelOrder (RROutputPtr output,
++			  int	      subpixelOrder);
++
+ void
+ RRDeliverOutputEvent(ClientPtr client, WindowPtr pWin, RROutputPtr output);
+ 

@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index abd3cb6..802bf79 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -249,6 +249,7 @@ EnableDevice(DeviceIntPtr dev)
+     listlen = GetEventList(&evlist);
+     OsBlockSignals();
+     SetMinimumEventSize(evlist, listlen, evsize);
++    mieqResizeEvents(evsize);
+     OsReleaseSignals();
+ 
+     if ((*prev != dev) || !dev->inited ||

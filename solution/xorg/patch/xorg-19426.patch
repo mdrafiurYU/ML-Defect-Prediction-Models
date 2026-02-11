@@ -1,0 +1,36 @@
+diff --git a/Xi/setdval.c b/Xi/setdval.c
+index 9b5b1e2..0c40acb 100644
+--- a/Xi/setdval.c
++++ b/Xi/setdval.c
+@@ -78,8 +78,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXSetDeviceValuators(client)
+-    register ClientPtr client;
++SProcXSetDeviceValuators(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -95,8 +94,7 @@ SProcXSetDeviceValuators(client)
+  */
+ 
+ int
+-ProcXSetDeviceValuators(client)
+-    register ClientPtr client;
++ProcXSetDeviceValuators(register ClientPtr client)
+     {
+     DeviceIntPtr dev;
+     xSetDeviceValuatorsReply	rep;
+@@ -161,10 +159,7 @@ ProcXSetDeviceValuators(client)
+  */
+ 
+ void
+-SRepXSetDeviceValuators (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xSetDeviceValuatorsReply	*rep;
++SRepXSetDeviceValuators (ClientPtr client, int size, xSetDeviceValuatorsReply *rep)
+     {
+     register char n;
+ 

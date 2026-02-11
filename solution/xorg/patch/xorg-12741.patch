@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/mach64/mach64stub.c b/hw/kdrive/mach64/mach64stub.c
+index 03d4760..c98044e 100644
+--- a/hw/kdrive/mach64/mach64stub.c
++++ b/hw/kdrive/mach64/mach64stub.c
+@@ -41,6 +41,8 @@ InitCard (char *name)
+ 	KdCardInfoAdd (&mach64Funcs, &attr, 0);
+     else if (LinuxFindPci (0x1002, 0x4c46, 0, &attr))
+ 	KdCardInfoAdd (&mach64Funcs, &attr, 0);
++    else if (LinuxFindPci (0x1002, 0x4c42, 0, &attr))
++	KdCardInfoAdd (&mach64Funcs, &attr, 0);
+ }
+ 
+ void

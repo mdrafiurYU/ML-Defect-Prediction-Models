@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index a41fddb..3915436 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -516,7 +516,7 @@ KdPointerProc(DeviceIntPtr pDevice, int onoff)
+ }
+ 
+ Bool
+-LegalModifier(unsigned int key, DevicePtr pDev)
++LegalModifier(unsigned int key, DeviceIntPtr pDev)
+ {
+     return TRUE;
+ }

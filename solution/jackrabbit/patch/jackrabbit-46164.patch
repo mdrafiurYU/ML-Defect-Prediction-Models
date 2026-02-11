@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
+index b3de5b8..02a1fa1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLProvider.java
+@@ -305,7 +305,6 @@ public class ACLProvider extends AbstractAccessControlProvider implements Access
+         } catch (RepositoryException e) {
+             log.error("Failed to set-up minimal access control for root node of workspace " + session.getWorkspace().getName());
+             session.getRootNode().refresh(false);
+-            throw e;
+         }
+     }

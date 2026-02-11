@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/IndexSearcher.java b/lucene/src/java/org/apache/lucene/search/IndexSearcher.java
+index 73f5f83..4136c04 100644
+--- a/lucene/src/java/org/apache/lucene/search/IndexSearcher.java
++++ b/lucene/src/java/org/apache/lucene/search/IndexSearcher.java
+@@ -147,7 +147,7 @@ public class IndexSearcher {
+     this(context, null);
+   }
+   
+-  // convinience ctor for other IR based ctors
++  // convenience ctor for other IR based ctors
+   private IndexSearcher(IndexReader reader, boolean closeReader, ExecutorService executor) {
+     this(reader.getTopReaderContext(), closeReader, executor);
+   }

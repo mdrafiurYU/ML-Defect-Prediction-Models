@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/usb-mouse.c b/hw/dmx/input/usb-mouse.c
+index f6a7e93..eb1a3d1 100644
+--- a/hw/dmx/input/usb-mouse.c
++++ b/hw/dmx/input/usb-mouse.c
+@@ -36,6 +36,10 @@
+  *
+  * This code implements a low-level device driver for a USB mouse. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "usb-private.h"
+ 
+ /*****************************************************************************/

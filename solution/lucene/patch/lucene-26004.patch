@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/StrDocValues.java b/solr/src/java/org/apache/solr/search/function/StrDocValues.java
+index fd9e7ac..556b403 100644
+--- a/solr/src/java/org/apache/solr/search/function/StrDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/StrDocValues.java
+@@ -2,6 +2,8 @@ package org.apache.solr.search.function;
+ 
+ import org.apache.lucene.common.mutable.MutableValue;
+ import org.apache.lucene.common.mutable.MutableValueStr;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.util.BytesRef;
+ 
+ public abstract class StrDocValues extends DocValues {

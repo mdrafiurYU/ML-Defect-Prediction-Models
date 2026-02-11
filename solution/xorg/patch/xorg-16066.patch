@@ -1,0 +1,15 @@
+diff --git a/afb/afbpntwin.c b/afb/afbpntwin.c
+index ee652b2..aaa6847 100644
+--- a/afb/afbpntwin.c
++++ b/afb/afbpntwin.c
+@@ -49,6 +49,10 @@ SOFTWARE.
+ 
+ ******************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "windowstr.h"

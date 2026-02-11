@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/drm/xf86drmHash.c b/hw/xfree86/os-support/drm/xf86drmHash.c
+index 1f1a05b..368dfe2 100644
+--- a/hw/xfree86/os-support/drm/xf86drmHash.c
++++ b/hw/xfree86/os-support/drm/xf86drmHash.c
+@@ -76,6 +76,7 @@
+ # include <stdio.h>
+ # include <stdlib.h>
+ #else
++# include "drm.h"
+ # include "xf86drm.h"
+ # ifdef XFree86LOADER
+ #  include "xf86.h"

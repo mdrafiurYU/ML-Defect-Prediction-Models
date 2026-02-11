@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_apm.c b/hw/xfree86/os-support/linux/lnx_apm.c
+index 8cf318f..9dae00e 100644
+--- a/hw/xfree86/os-support/linux/lnx_apm.c
++++ b/hw/xfree86/os-support/linux/lnx_apm.c
+@@ -184,7 +184,6 @@ lnxAPMOpen(void)
+ 	xf86MsgVerb(X_INFO,3,"Open APM successful\n");
+ 	return lnxCloseAPM;
+     }
+-    xf86MsgVerb(X_INFO,3,"No APM support in BIOS or kernel\n");
+     return NULL;
+ }
+ 

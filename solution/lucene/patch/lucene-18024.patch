@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingRequestHandler.java b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingRequestHandler.java
+index 943f0d8..d77a814 100644
+--- a/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingRequestHandler.java
++++ b/solr/contrib/extraction/src/main/java/org/apache/solr/handler/extraction/ExtractingRequestHandler.java
+@@ -111,6 +111,7 @@ public class ExtractingRequestHandler extends ContentStreamHandlerBase implement
+   }
+ 
+ 
++  @Override
+   protected ContentStreamLoader newLoader(SolrQueryRequest req, UpdateRequestProcessor processor) {
+     return new ExtractingDocumentLoader(req, processor, config, factory);
+   }

@@ -1,0 +1,35 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 2282e9a..e5ddb57 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -1904,20 +1904,26 @@ busTypeSpecific( EntityPtr pEnt, xf86AccessPtr *acc_mem,
+ 	*acc_mem = *acc_io = *acc_mem_io = &AccessNULL;
+ 	break;
+     case BUS_PCI: {
+-	struct pci_device * dev = 
++	struct pci_device * const dev = 
+ 	  pci_device_find_by_slot( PCI_DOM_FROM_BUS( pEnt->pciBusId.bus ),
+ 				   PCI_BUS_NO_DOMAIN( pEnt->pciBusId.bus ),
+ 				   pEnt->pciBusId.device,
+ 				   pEnt->pciBusId.func );
+ 
+-	if ( dev != NULL ) {
+-	    pciAccPtr paccp = (pciAccPtr) dev->user_data;
++	if ((dev != NULL) && ((void *)dev->user_data != NULL)) {
++	    pciAccPtr const paccp = (pciAccPtr) dev->user_data;
+ 	    
+-	    if ( paccp != NULL ) {
+ 		*acc_io = & paccp->ioAccess;
+ 		*acc_mem = & paccp->memAccess;
+ 		*acc_mem_io = & paccp->io_memAccess;
+ 	    }
++	else {
++	    /* FIXME: This is an error path.  We should probably have an
++	     * FIXME: assertion here or something.
++	     */
++	    *acc_io = NULL;
++	    *acc_mem = NULL;
++	    *acc_mem_io = NULL;
+ 	}
+ 	break;
+     }

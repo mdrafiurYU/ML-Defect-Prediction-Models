@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetQualifiedNameReference.java b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetQualifiedNameReference.java
+index b330780..a7e0528 100644
+--- a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetQualifiedNameReference.java
++++ b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetQualifiedNameReference.java
+@@ -499,7 +499,7 @@ public TypeBinding getOtherFieldBindings(BlockScope scope) {
+ 		int index,
+ 		FlowInfo flowInfo) {
+ 
+-		if (!flowInfo.isReachable()) return;
++		if ((flowInfo.tagBits & FlowInfo.UNREACHABLE) != 0) return;
+ 	
+ 		// if the binding declaring class is not visible, need special action
+ 		// for runtime compatibility on 1.2 VMs : change the declaring class of the binding

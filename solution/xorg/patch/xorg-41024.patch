@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index ae38f24..27601b7 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -5225,8 +5225,6 @@ ProcUngrabKeyboard(ClientPtr client)
+ 
+     grab = device->deviceGrab.grab;
+ 
+-    grab = device->deviceGrab.grab;
+-
+     time = ClientTimeToServerTime(stuff->id);
+     if ((CompareTimeStamps(time, currentTime) != LATER) &&
+ 	(CompareTimeStamps(time, device->deviceGrab.grabTime) != EARLIER) &&

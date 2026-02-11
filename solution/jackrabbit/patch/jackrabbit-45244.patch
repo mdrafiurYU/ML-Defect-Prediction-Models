@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+index 3a7c074..b5fe91b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+@@ -109,13 +109,15 @@ public class ChangeLogRecord extends ClusterRecord {
+      * @param events list of <code>EventState</code>s
+      * @param record record
+      * @param workspace workspace
++     * @param timestamp when the changes for this record were persisted.
+      */
+     public ChangeLogRecord(ChangeLog changes, List events,
+-                           Record record, String workspace) {
++                           Record record, String workspace, long timestamp) {
+         super(record, workspace);
+ 
+         this.changes = changes;
+         this.events = events;
++        this.timestamp = timestamp;
+     }
+ 
+     /**

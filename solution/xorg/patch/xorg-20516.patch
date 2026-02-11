@@ -1,0 +1,12 @@
+diff --git a/exa/exa_accel.c b/exa/exa_accel.c
+index b51cd87..57355e6 100644
+--- a/exa/exa_accel.c
++++ b/exa/exa_accel.c
+@@ -223,6 +223,7 @@ exaPutImage (DrawablePtr pDrawable, GCPtr pGC, int depth, int x, int y,
+ 	    exaFinishAccess(pDrawable, EXA_PREPARE_DEST);
+ 	}
+     }
++    exaDrawableDirty(pDrawable);
+ 
+     return;
+ 

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index ee71f4f..de7e638 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -51,6 +51,10 @@
+ 
+ #define INCLUDE_DEPRECATED 1
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <fcntl.h>
+ #include <setjmp.h>
+ #include "sym.h"

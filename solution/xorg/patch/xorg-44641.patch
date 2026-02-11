@@ -1,0 +1,12 @@
+diff --git a/Xi/xiselectev.h b/Xi/xiselectev.h
+index dc52712..5f5ffe3 100644
+--- a/Xi/xiselectev.h
++++ b/Xi/xiselectev.h
+@@ -29,3 +29,7 @@
+ 
+ int SProcXISelectEvent(ClientPtr client);
+ int ProcXISelectEvent(ClientPtr client);
++int SProcXIGetSelectedEvents(ClientPtr client);
++int ProcXIGetSelectedEvents(ClientPtr client);
++void SRepXIGetSelectedEvents(ClientPtr client,
++                             int len, xXIGetSelectedEventsReply *rep);

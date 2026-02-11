@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/Terms.java b/lucene/src/java/org/apache/lucene/index/Terms.java
+index 85a9ef2..3624767 100644
+--- a/lucene/src/java/org/apache/lucene/index/Terms.java
++++ b/lucene/src/java/org/apache/lucene/index/Terms.java
+@@ -85,7 +85,7 @@ public abstract class Terms {
+   }
+ 
+   protected TermsEnum getThreadTermsEnum() throws IOException {
+-    TermsEnum termsEnum = (TermsEnum) threadEnums.get();
++    TermsEnum termsEnum = threadEnums.get();
+     if (termsEnum == null) {
+       termsEnum = iterator();
+       threadEnums.set(termsEnum);

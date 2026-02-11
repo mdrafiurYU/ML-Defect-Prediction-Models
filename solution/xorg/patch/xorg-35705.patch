@@ -1,0 +1,14 @@
+diff --git a/dix/events.c b/dix/events.c
+index 1155178..bf2df9f 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -5712,7 +5712,8 @@ InitEvents(void)
+ 	DontPropagateRefCnts[i] = 0;
+     }
+ 
+-    InputEventList = InitEventList(GetMaximumEventsNum());
++    InputEventListLen = GetMaximumEventsNum();
++    InputEventList = InitEventList(InputEventListLen);
+     if (!InputEventList)
+         FatalError("[dix] Failed to allocate input event list.\n");
+ }

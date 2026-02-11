@@ -1,0 +1,34 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 13d7cd5..9829e3a 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -330,9 +330,6 @@ LOOKUP dixLookupTab[] = {
+     SYMVAR(noTestExtensions)
+     SYMFUNC(GiveUp)
+ 
+-#ifdef BEZIER
+-    SYMVAR(noBezierExtension)
+-#endif
+ #ifdef BIGREQS
+     SYMVAR(noBigReqExtension)
+ #endif
+@@ -393,9 +390,6 @@ LOOKUP dixLookupTab[] = {
+ #ifdef TOGCUP
+     SYMVAR(noXcupExtension)
+ #endif
+-#ifdef PEXEXT
+-    SYMVAR(noPexExtension)
+-#endif
+ #ifdef RES
+     SYMVAR(noResExtension)
+ #endif
+@@ -408,9 +402,6 @@ LOOKUP dixLookupTab[] = {
+ #ifdef XEVIE
+     SYMVAR(noXevieExtension)
+ #endif
+-#ifdef XIE
+-    SYMVAR(noXie)
+-#endif
+ #ifdef XF86BIGFONT
+     SYMVAR(noXFree86BigfontExtension)
+ #endif

@@ -1,0 +1,13 @@
+diff --git a/include/input.h b/include/input.h
+index ca81b1a..2d72f83 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -455,7 +455,7 @@ extern DeviceIntPtr GetPairedPointer(DeviceIntPtr kbd);
+ extern Bool RegisterPairingClient(ClientPtr client);
+ extern Bool UnregisterPairingClient(ClientPtr client);
+ 
+-extern DeviceIntPtr GuessFreePointerDevice();
++extern DeviceIntPtr GuessFreePointerDevice(void);
+ 
+ /* Window/device based access control */
+ extern Bool ACRegisterClient(ClientPtr client);

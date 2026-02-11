@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 785815c..e88fc3b 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -510,12 +510,14 @@ static void
+ xf86SigioReadInput(int fd,
+ 		   void *closure)
+ {
++    int errno_save = errno;
+     int sigstate = xf86BlockSIGIO();
+     InputInfoPtr pInfo = (InputInfoPtr) closure;
+ 
+     pInfo->read_input(pInfo);
+ 
+     xf86UnblockSIGIO(sigstate);
++    errno = errno_save;
+ }
+ 
+ /*

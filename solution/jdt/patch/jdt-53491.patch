@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java
+index 43f8e0a..1b1645f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/JavadocFieldReference.java
+@@ -95,7 +95,7 @@ public class JavadocFieldReference extends FieldReference {
+ 		}
+ 		this.binding = (FieldBinding) fieldBinding;
+ 
+-		if (isFieldUseDeprecated(this.binding, scope, (this.bits & IsStrictlyAssignedMASK) != 0)) {
++		if (isFieldUseDeprecated(this.binding, scope, (this.bits & IsStrictlyAssigned) != 0)) {
+ 			scope.problemReporter().javadocDeprecatedField(this.binding, this, scope.getDeclarationModifiers());
+ 		}
+ 		return this.resolvedType = this.binding.type;

@@ -1,0 +1,37 @@
+diff --git a/hw/kdrive/ephyr/ephyrdriext.c b/hw/kdrive/ephyr/ephyrdriext.c
+index 21e895f..05cecf4 100644
+--- a/hw/kdrive/ephyr/ephyrdriext.c
++++ b/hw/kdrive/ephyr/ephyrdriext.c
+@@ -92,8 +92,6 @@ static DISPATCH_PROC(SProcXF86DRIQueryVersion);
+ static DISPATCH_PROC(SProcXF86DRIQueryDirectRenderingCapable);
+ static DISPATCH_PROC(SProcXF86DRIDispatch);
+ 
+-static void XF86DRIResetProc(ExtensionEntry* extEntry);
+-
+ static Bool ephyrDRIScreenInit (ScreenPtr a_screen) ;
+ static Bool ephyrDRICreateWindow (WindowPtr a_win) ;
+ static Bool ephyrDRIDestroyWindow (WindowPtr a_win) ;
+@@ -150,7 +148,7 @@ ephyrDRIExtensionInit (ScreenPtr a_screen)
+ 				 XF86DRINumberErrors,
+ 				 ProcXF86DRIDispatch,
+ 				 SProcXF86DRIDispatch,
+-				 XF86DRIResetProc,
++				 NULL,
+ 				 StandardMinorOpcode))) {
+ 	DRIReqCode = (unsigned char)extEntry->base;
+ 	DRIErrorBase = extEntry->errorBase;
+@@ -612,14 +610,6 @@ out:
+ }
+ 
+ 
+-/*ARGSUSED*/
+-static void
+-XF86DRIResetProc (
+-    ExtensionEntry* extEntry
+-)
+-{
+-}
+-
+ static int
+ ProcXF86DRIQueryVersion (register ClientPtr client)
+ {

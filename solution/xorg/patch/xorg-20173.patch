@@ -1,0 +1,15 @@
+diff --git a/Xi/chgptr.c b/Xi/chgptr.c
+index ef99e3a..f6f4b8b 100644
+--- a/Xi/chgptr.c
++++ b/Xi/chgptr.c
+@@ -206,8 +206,8 @@ SendEventToAllWindows(DeviceIntPtr dev, Mask mask, xEvent * ev, int count)
+  */
+ 
+ void
+-FindInterestedChildren(DeviceIntPtr dev, WindowPtr p1, Mask mask, xEvent * ev,
+-		       int count)
++FindInterestedChildren(DeviceIntPtr dev, WindowPtr p1, Mask mask,
++		       xEvent * ev, int count)
+ {
+     WindowPtr p2;
+ 

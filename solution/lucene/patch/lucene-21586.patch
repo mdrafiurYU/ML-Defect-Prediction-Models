@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java
+index 9cf8806..33484de 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriterDeleteQueue.java
+@@ -64,7 +64,7 @@ import org.apache.lucene.search.Query;
+ final class DocumentsWriterDeleteQueue {
+ 
+   private volatile Node tail;
+-
++  
+   private static final AtomicReferenceFieldUpdater<DocumentsWriterDeleteQueue, Node> tailUpdater = AtomicReferenceFieldUpdater
+       .newUpdater(DocumentsWriterDeleteQueue.class, Node.class, "tail");

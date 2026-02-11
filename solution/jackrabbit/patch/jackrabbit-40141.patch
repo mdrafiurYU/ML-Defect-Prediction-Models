@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordProducer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordProducer.java
+index 00b5524..cf384df 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordProducer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/RecordProducer.java
+@@ -29,5 +29,6 @@ public interface RecordProducer {
+      * @return appended record
+      * @throws JournalException if an error occurs
+      */
+-    public Record append() throws JournalException;
++    Record append() throws JournalException;
++
+ }

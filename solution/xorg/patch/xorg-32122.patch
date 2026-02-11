@@ -1,0 +1,34 @@
+diff --git a/hw/xfree86/xf8_32bpp/cfb8_32.h b/hw/xfree86/xf8_32bpp/cfb8_32.h
+index 31028a3..e140965 100644
+--- a/hw/xfree86/xf8_32bpp/cfb8_32.h
++++ b/hw/xfree86/xf8_32bpp/cfb8_32.h
+@@ -111,13 +111,6 @@ cfb8_32GetImage (
+     char *pdstLine
+ );
+ 
+-void
+-cfb8_32PaintWindow (
+-    WindowPtr   pWin,
+-    RegionPtr   pRegion,
+-    int         what
+-);
+-
+ Bool
+ cfb8_32ScreenInit (
+     ScreenPtr pScreen,
+@@ -135,15 +128,6 @@ cfb8_32FillBoxSolid8 (
+    unsigned long color
+ );
+ 
+-
+-void
+-cfb8_32FillBoxSolid32 (
+-   DrawablePtr pDraw,
+-   int nbox,
+-   BoxPtr pBox,
+-   unsigned long color
+-);
+-
+ RegionPtr 
+ cfb8_32CopyPlane(
+     DrawablePtr pSrc,

@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/input/dmxinputinit.c b/hw/dmx/input/dmxinputinit.c
+index 0ac9e80..5332dcc 100644
+--- a/hw/dmx/input/dmxinputinit.c
++++ b/hw/dmx/input/dmxinputinit.c
+@@ -37,6 +37,10 @@
+  * input and lead to the calling of low-level device drivers for
+  * input. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #define DMX_WINDOW_DEBUG 0
+ 
+ #include "dmxinputinit.h"

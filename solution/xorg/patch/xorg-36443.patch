@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/quartz.c b/hw/xquartz/quartz.c
+index 971c9b2..5dfdeeb 100644
+--- a/hw/xquartz/quartz.c
++++ b/hw/xquartz/quartz.c
+@@ -401,7 +401,7 @@ QuartzMessageServerThread(
+         va_end (args);
+     }
+ 
+-    DarwinEQEnqueue(&xe);
++    mieqEnqueue(NULL, &xe);
+ }
+ 
+ 

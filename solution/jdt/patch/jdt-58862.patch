@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NamingConventionTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NamingConventionTests.java
+index 6d70bca..1b82581 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NamingConventionTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/NamingConventionTests.java
+@@ -29,7 +29,7 @@ public NamingConventionTests(String name) {
+ }
+ 
+ public static Test suite() {
+-	return new Suite(NamingConventionTests.class);
++	return buildModelTestSuite(NamingConventionTests.class);
+ }
+ /**
+  * Setup for the next test.

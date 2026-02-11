@@ -1,0 +1,13 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index bedd750..9b1310b 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -391,7 +391,7 @@ static int
+ ProcIDispatch(ClientPtr client)
+ {
+     REQUEST(xReq);
+-    if (stuff->data > IREQUESTS || !ProcIVector[stuff->data])
++    if (stuff->data > (IREQUESTS + XI2REQUESTS) || !ProcIVector[stuff->data])
+         return BadRequest;
+ 
+     return (*ProcIVector[stuff->data])(client);

@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AnnotationTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AnnotationTest.java
+index 2028b07..6042a6a 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AnnotationTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AnnotationTest.java
+@@ -6258,4 +6258,22 @@ public void test191() {
+ 		false, // do not flush
+ 		null);
+ }
++public void test192() {
++	this.runConformTest(
++		new String[] {
++			"X.java",
++			"public class X {\n" + 
++			"	@ATest(groups={\"a\",\"b\"})\n" + 
++			"	void foo(){\n" + 
++			"	}\n" + 
++			"	@ATest(groups=\"c\")\n" + 
++			"	void bar(){\n" + 
++			"	}\n" + 
++			"}\n" + 
++			"@interface ATest {\n" + 
++			"	String[] groups();\n" + 
++			"}\n"
++		},
++		"");
++}
+ }

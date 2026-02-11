@@ -1,0 +1,24 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/quality/trec/TrecTopicsReader.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/quality/trec/TrecTopicsReader.java
+index 24c0a92..e84aa51 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/quality/trec/TrecTopicsReader.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/quality/trec/TrecTopicsReader.java
+@@ -63,7 +63,7 @@ public class TrecTopicsReader {
+    */
+   public QualityQuery[] readQueries(BufferedReader reader) throws IOException {
+     ArrayList<QualityQuery> res = new ArrayList<QualityQuery>();
+-    StringBuffer sb;
++    StringBuilder sb;
+     try {
+       while (null!=(sb=read(reader,"<top>",null,false,false))) {
+         HashMap<String,String> fields = new HashMap<String,String>();
+@@ -112,8 +112,8 @@ public class TrecTopicsReader {
+   }
+ 
+   // read until finding a line that starts with the specified prefix
+-  private StringBuffer read (BufferedReader reader, String prefix, StringBuffer sb, boolean collectMatchLine, boolean collectAll) throws IOException {
+-    sb = (sb==null ? new StringBuffer() : sb);
++  private StringBuilder read (BufferedReader reader, String prefix, StringBuilder sb, boolean collectMatchLine, boolean collectAll) throws IOException {
++    sb = (sb==null ? new StringBuilder() : sb);
+     String sep = "";
+     while (true) {
+       String line = reader.readLine();

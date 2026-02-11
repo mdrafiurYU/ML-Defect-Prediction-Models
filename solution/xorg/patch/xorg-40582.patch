@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/xaa/xaaCpyPlane.c b/hw/xfree86/xaa/xaaCpyPlane.c
+index a0ebb75..aa4c040 100644
+--- a/hw/xfree86/xaa/xaaCpyPlane.c
++++ b/hw/xfree86/xaa/xaaCpyPlane.c
+@@ -131,11 +131,9 @@ XAACopyPlaneNtoNColorExpand(
+ 	h = height = pbox->y2 - pbox->y1;
+ 	pitch = BitmapBytePad(width);
+ 
+-	if(!(data = xalloc(height * pitch)))
++	if(!(data = xcalloc(height, pitch)))
+ 	   goto ALLOC_FAILED;
+ 
+-        bzero(data, height * pitch);
+-
+ 	dataPtr = data;
+         srcPtr = ((pptSrc->y) * srcwidth) + src + 
+                         ((pptSrc->x) * Bpp) + offset;

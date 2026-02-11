@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xaa/xaaInit.c b/hw/xfree86/xaa/xaaInit.c
+index deb1989..8d3833e 100644
+--- a/hw/xfree86/xaa/xaaInit.c
++++ b/hw/xfree86/xaa/xaaInit.c
+@@ -19,6 +19,9 @@
+ #include "xaawrap.h"
+ #include "xf86fbman.h"
+ #include "servermd.h"
++#ifdef COMPOSITE
++#include "cw.h"
++#endif
+ 
+ #define MAX_PREALLOC_MEM	65536	/* MUST be >= 1024 */
+ 

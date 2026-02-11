@@ -1,0 +1,93 @@
+diff --git a/hw/xgl/xglfill.c b/hw/xgl/xglfill.c
+index 1bcf41d..64759ab 100644
+--- a/hw/xgl/xglfill.c
++++ b/hw/xgl/xglfill.c
+@@ -43,7 +43,7 @@ xglFill (DrawablePtr	pDrawable,
+     switch (pGC->fillStyle) {
+     case FillSolid:
+ 	if (xglSolid (pDrawable,
+-		      pGCPriv->op, &pGCPriv->fg,
++		      pGCPriv->op, pGCPriv->fg,
+ 		      pGeometry,
+ 		      x, y,
+ 		      width, height,
+@@ -79,17 +79,12 @@ xglFillBox (DrawablePtr pDrawable,
+ 	    BoxPtr	pBox,
+ 	    int		nBox)
+ {
+-    BoxRec box;
+-    
+     if (!nBox)
+ 	return;	  
+     
+     if (!xglFill (pDrawable, pGC, NULL, x, y, width, height, pBox, nBox))
+     {
+ 	RegionRec	region;
+-	RegionPtr       pDamageRegion;
+-	glitz_surface_t *surface;
+-	int             xOff, yOff;
+ 
+ 	XGL_DRAWABLE_PIXMAP (pDrawable);
+ 	XGL_PIXMAP_PRIV (pPixmap);
+@@ -111,10 +106,6 @@ xglFillBox (DrawablePtr pDrawable,
+ 	    break;
+ 	}
+ 
+-	pDamageRegion = DamageRegion (pPixmapPriv->pDamage);
+-	
+-	XGL_GET_DRAWABLE (pDrawable, surface, xOff, yOff);
+-	
+ 	pPixmapPriv->damageBox = miEmptyBox;
+ 	
+ 	while (nBox--)
+@@ -123,18 +114,9 @@ xglFillBox (DrawablePtr pDrawable,
+ 		    pBox->x1, pBox->y1,
+ 		    pBox->x2 - pBox->x1, pBox->y2 - pBox->y1);
+ 
+-	    if (pPixmapPriv->format)
+-	    {
+-		box.x1 = pBox->x1 + xOff;
+-		box.y1 = pBox->y1 + yOff;
+-		box.x2 = pBox->x2 + xOff;
+-		box.y2 = pBox->y2 + yOff;
+-		
+-		REGION_INIT (pDrawable->pScreen, &region, &box, 1);
+-		REGION_UNION (pDrawable->pScreen,
+-			      pDamageRegion, pDamageRegion, &region);
++	    REGION_INIT (pDrawable->pScreen, &region, pBox, 1);
++	    xglAddSurfaceDamage (pDrawable, &region);
+ 		REGION_UNINIT (pDrawable->pScreen, &region);
+-	    }
+ 	    
+ 	    pBox++;
+ 	}
+@@ -549,7 +531,10 @@ xglFillLine (DrawablePtr pDrawable,
+ 		 pExtent->x2 - pExtent->x1, pExtent->y2 - pExtent->y1,
+ 		 REGION_RECTS (pGC->pCompositeClip),
+ 		 REGION_NUM_RECTS (pGC->pCompositeClip)))
++    {
++	xglAddCurrentBitDamage (pDrawable);
+ 	return TRUE;
++    }
+     
+     return FALSE;
+ }
+@@ -701,7 +686,10 @@ xglFillSegment (DrawablePtr pDrawable,
+ 		 pExtent->x2 - pExtent->x1, pExtent->y2 - pExtent->y1,
+ 		 REGION_RECTS (pGC->pCompositeClip),
+ 		 REGION_NUM_RECTS (pGC->pCompositeClip)))
++    {
++	xglAddCurrentBitDamage (pDrawable);
+ 	return TRUE;
++    }
+     
+     return FALSE;
+ }
+@@ -745,6 +733,7 @@ xglFillGlyph (DrawablePtr  pDrawable,
+ 		 REGION_NUM_RECTS (pGC->pCompositeClip)))
+     {
+ 	GEOMETRY_UNINIT (&geometry);
++	xglAddCurrentBitDamage (pDrawable);
+ 	return TRUE;
+     }
+     

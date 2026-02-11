@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SynchronizedStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SynchronizedStatement.java
+index 512131d..6c3ea97 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SynchronizedStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SynchronizedStatement.java
+@@ -56,7 +56,7 @@ public class SynchronizedStatement extends SubRoutineStatement {
+ 				expression.analyseCode(scope, flowContext, flowInfo));
+ 
+ 		// optimizing code gen
+-		this.blockExit = !flowInfo.isReachable();
++		this.blockExit = (flowInfo.tagBits & FlowInfo.UNREACHABLE) != 0;
+ 
+ 		return flowInfo;
+ 	}

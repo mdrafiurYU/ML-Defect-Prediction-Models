@@ -1,0 +1,13 @@
+diff --git a/os/xdmcp.c b/os/xdmcp.c
+index cf95586..c1d650d 100644
+--- a/os/xdmcp.c
++++ b/os/xdmcp.c
+@@ -490,6 +490,8 @@ XdmcpRegisterConnection (
+ 	    return;
+ 	}
+     }
++    if (ConnectionAddresses.length + 1 == 256)
++	return;
+     newAddress = xalloc (addrlen * sizeof (CARD8));
+     if (!newAddress)
+ 	return;

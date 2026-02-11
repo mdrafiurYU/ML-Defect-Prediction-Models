@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+index 5e3a0f1..04d8faf 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+@@ -1508,7 +1508,7 @@ public class BatchedItemOperations extends ItemValidator {
+      * @param def
+      * @return the computed values
+      */
+-    private InternalValue[] computeSystemGeneratedPropertyValues(NodeState parent,
++    public static InternalValue[] computeSystemGeneratedPropertyValues(NodeState parent,
+                                                                  PropDef def) {
+         InternalValue[] genValues = null;

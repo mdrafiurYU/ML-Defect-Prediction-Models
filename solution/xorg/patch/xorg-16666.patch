@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dri/dri.h b/hw/xfree86/dri/dri.h
+index bfb0d64..312e8a8 100644
+--- a/hw/xfree86/dri/dri.h
++++ b/hw/xfree86/dri/dri.h
+@@ -331,9 +331,6 @@ extern void DRIQueryVersion(int *majorVersion,
+ 
+ extern void DRIAdjustFrame(int scrnIndex, int x, int y, int flags);
+ 
+-extern int  DRIOpenFullScreen(ScreenPtr pScreen, DrawablePtr pDrawable);
+-extern int  DRICloseFullScreen(ScreenPtr pScreen, DrawablePtr pDrawable);
+-
+ extern void DRIMoveBuffersHelper(ScreenPtr pScreen, 
+                                  int dx,
+                                  int dy,

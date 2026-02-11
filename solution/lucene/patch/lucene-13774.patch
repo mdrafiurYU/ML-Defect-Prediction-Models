@@ -1,0 +1,13 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder.java
+index d90f0a6..e9947e5 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder.java
+@@ -197,7 +197,7 @@ public class TestDocBuilder extends AbstractDataImportHandlerTestCase {
+     Boolean finishCalled = Boolean.FALSE;
+ 
+     public SolrWriterImpl() {
+-      super(null, ".");
++      super(null, ".",null);
+     }
+ 
+     public boolean upload(SolrInputDocument doc) {

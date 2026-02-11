@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dummylib/xf86errorf.c b/hw/xfree86/dummylib/xf86errorf.c
+index 6648eaf..4ad6774 100644
+--- a/hw/xfree86/dummylib/xf86errorf.c
++++ b/hw/xfree86/dummylib/xf86errorf.c
+@@ -23,7 +23,7 @@ xf86ErrorF(const char *format, ...)
+     va_end(ap);
+ }
+ 
+-void
++_X_EXPORT void
+ ErrorF(const char *format, ...)
+ {
+     va_list ap;

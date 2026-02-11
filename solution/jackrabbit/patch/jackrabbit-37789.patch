@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceCopyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceCopyTest.java
+index e291a75..549588a 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceCopyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/AbstractWorkspaceCopyTest.java
+@@ -53,6 +53,9 @@ abstract class AbstractWorkspaceCopyTest extends AbstractJCRTest {
+     }
+ 
+     protected void tearDown() throws Exception {
++        node1 = null;
++        node2 = null;
++        workspace = null;
+         super.tearDown();
+     }

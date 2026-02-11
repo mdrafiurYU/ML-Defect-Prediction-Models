@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 2d86ea9..f320481 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -2333,13 +2333,13 @@ public void initializerMustCompleteNormally(FieldDeclaration fieldDecl) {
+ 		fieldDecl.sourceStart,
+ 		fieldDecl.sourceEnd);
+ }
+-public void innerTypesCannotDeclareStaticInitializers(ReferenceBinding innerType, ASTNode location) {
++public void innerTypesCannotDeclareStaticInitializers(ReferenceBinding innerType, Initializer initializer) {
+ 	this.handle(
+ 		IProblem.CannotDefineStaticInitializerInLocalType,
+ 		new String[] {new String(innerType.readableName())},
+ 		new String[] {new String(innerType.shortReadableName())},
+-		location.sourceStart,
+-		location.sourceEnd);
++		initializer.sourceStart,
++		initializer.sourceStart);
+ }
+ public void interfaceCannotHaveConstructors(ConstructorDeclaration constructor) {
+ 	this.handle(

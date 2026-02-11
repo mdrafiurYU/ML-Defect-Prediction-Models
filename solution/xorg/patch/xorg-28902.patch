@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxext.h b/GL/glx/glxext.h
+index edd66a8..dc4cd4a 100644
+--- a/GL/glx/glxext.h
++++ b/GL/glx/glxext.h
+@@ -66,7 +66,7 @@ typedef struct {
+ extern GLboolean __glXFreeContext(__GLXcontext *glxc);
+ extern void __glXFlushContextCache(void);
+ 
+-extern void __glXErrorCallBack(__GLinterface *gc, GLenum code);
++extern void __glXErrorCallBack(GLenum code);
+ extern void __glXClearErrorOccured(void);
+ extern GLboolean __glXErrorOccured(void);
+ extern void __glXResetLargeCommandStatus(__GLXclientState*);

@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index 3b6b36a..fe499fe 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -65,15 +65,6 @@ static ExtensionModule extensionModules[] = {
+ 	NULL
+     },
+ #endif
+-#ifdef MITMISC
+-    {
+-	MITMiscExtensionInit,
+-	MITMISCNAME,
+-	&noMITMiscExtension,
+-	NULL,
+-	NULL
+-    },
+-#endif
+ #ifdef notyet
+     {
+ 	XTestExtensionInit,

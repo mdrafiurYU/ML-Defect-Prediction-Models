@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/loader/loadmod.c b/hw/xfree86/loader/loadmod.c
+index 4316d42..de357e2 100644
+--- a/hw/xfree86/loader/loadmod.c
++++ b/hw/xfree86/loader/loadmod.c
+@@ -411,7 +411,6 @@ FindModule(const char *module, const char *dir, const char **subdirlist,
+     char *name = NULL;
+     struct stat stat_buf;
+     int dirlen;
+-    char *fp;
+     const char **subdirs = NULL;
+     const char **s;
+ #ifdef DLOPEN_HACK
+@@ -445,7 +444,6 @@ FindModule(const char *module, const char *dir, const char **subdirlist,
+ 	
+             if (buf[dirlen - 1] != '/') {
+                 buf[dirlen++] = '/';
+-                fp++;
+             }
+ 	    
+ 	    for (i = 0; i < 3 && !name; i++) {

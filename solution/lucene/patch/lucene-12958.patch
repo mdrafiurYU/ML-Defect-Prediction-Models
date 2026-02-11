@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java b/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java
+index 3bb807a..91657ec 100644
+--- a/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java
++++ b/lucene/src/test/org/apache/lucene/store/MockDirectoryWrapper.java
+@@ -502,7 +502,7 @@ public class MockDirectoryWrapper extends Directory {
+   }
+ 
+   @Override
+-  public synchronized void setLockFactory(LockFactory lockFactory) {
++  public synchronized void setLockFactory(LockFactory lockFactory) throws IOException {
+     maybeYield();
+     delegate.setLockFactory(lockFactory);
+   }

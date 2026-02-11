@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ResolvedSourceField.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ResolvedSourceField.java
+index ec7e24d..45f4ccb 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ResolvedSourceField.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ResolvedSourceField.java
+@@ -51,4 +51,10 @@ public class ResolvedSourceField extends SourceField {
+ 			buffer.append("}"); //$NON-NLS-1$
+ 		}
+ 	}
++	
++	public JavaElement unresolved() {
++		SourceRefElement handle = new SourceField(this.parent, this.name);
++		handle.occurrenceCount = this.occurrenceCount;
++		return handle;
++	}
+ }

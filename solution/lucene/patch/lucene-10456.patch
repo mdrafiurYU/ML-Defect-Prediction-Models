@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/schema/DateField.java b/solr/src/java/org/apache/solr/schema/DateField.java
+index a9395e3..1259d10 100644
+--- a/solr/src/java/org/apache/solr/schema/DateField.java
++++ b/solr/src/java/org/apache/solr/schema/DateField.java
+@@ -236,6 +236,7 @@ public class DateField extends FieldType {
+    * 
+    * @deprecated - use formatDate(Date) instead
+    */
++  @Deprecated
+   protected DateFormat getThreadLocalDateFormat() {
+     return fmtThreadLocal.get();
+   }

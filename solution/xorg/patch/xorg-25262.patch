@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/r128/r128stub.c b/hw/kdrive/r128/r128stub.c
+index 221648d..dbf3c0e 100644
+--- a/hw/kdrive/r128/r128stub.c
++++ b/hw/kdrive/r128/r128stub.c
+@@ -48,7 +48,8 @@ InitOutput (ScreenInfo *pScreenInfo, int argc, char **argv)
+ void
+ InitInput (int argc, char **argv)
+ {
+-    KdInitInput (&LinuxMouseFuncs, &LinuxKeyboardFuncs);
++    KdOsAddInputDrivers ();
++    KdInitInput ();
+ }
+ 
+ void

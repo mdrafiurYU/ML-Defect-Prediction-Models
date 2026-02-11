@@ -1,0 +1,13 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 6c17786..42eebf1 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -2040,7 +2040,7 @@ GetPairedKeyboard(DeviceIntPtr ptr)
+ 
+     while(dev)
+     {
+-        if (ptr->pSprite == dev->pSprite)
++        if (ptr != dev && ptr->pSprite == dev->pSprite)
+             return dev;
+         dev = dev->next;
+     }

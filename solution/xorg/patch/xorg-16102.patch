@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/agp_noop.c b/hw/xfree86/os-support/shared/agp_noop.c
+index 5da36fa..8c2da51 100644
+--- a/hw/xfree86/os-support/shared/agp_noop.c
++++ b/hw/xfree86/os-support/shared/agp_noop.c
+@@ -34,7 +34,7 @@
+ #ifdef __UNIXOS2__
+ # define I_NEED_OS2_H
+ #endif
+-#include "X.h"
++#include <X11/X.h>
+ #include "xf86.h"
+ #include "xf86Priv.h"
+ #include "xf86_OSlib.h"

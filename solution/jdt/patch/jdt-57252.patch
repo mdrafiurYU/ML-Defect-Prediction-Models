@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
+index 1b71a5c..d9cdea8 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
+@@ -807,6 +807,9 @@ public class CodeFormatterVisitor2 extends ASTVisitor {
+ 				case ASTNode.ANONYMOUS_CLASS_DECLARATION :
+ 					insertNewLine = this.preferences.insert_new_line_in_empty_anonymous_type_declaration;
+ 					break;
++				case ASTNode.ANNOTATION_TYPE_DECLARATION :
++					insertNewLine = this.preferences.insert_new_line_in_empty_annotation_declaration;
++					break;
+ 				default:
+ 					insertNewLine = this.preferences.insert_new_line_in_empty_type_declaration;
+ 			}

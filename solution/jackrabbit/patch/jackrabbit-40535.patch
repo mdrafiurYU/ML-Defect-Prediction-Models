@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
+index 3a1b968..8cf8e4a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
+@@ -70,7 +70,7 @@ public class SimpleJBossAccessManager implements AccessManager {
+         while (iterator.hasNext()) {
+             Principal principal = (Principal) iterator.next();
+             if (principal instanceof Group
+-                    && principal.getName().equalsIgnoreCase("Roles")){
++                    && principal.getName().equalsIgnoreCase("Roles")) {
+                 Group group = (Group) principal;
+                 Enumeration members = group.members();
+                 while (members.hasMoreElements()) {

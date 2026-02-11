@@ -1,0 +1,15 @@
+diff --git a/Xprint/ps/PsPrint.c b/Xprint/ps/PsPrint.c
+index 721e430..05e8e25 100644
+--- a/Xprint/ps/PsPrint.c
++++ b/Xprint/ps/PsPrint.c
+@@ -74,6 +74,10 @@ in this Software without prior written authorization from The Open Group.
+ ** 
+ ********************************************************************/
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/types.h>

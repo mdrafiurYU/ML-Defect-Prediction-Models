@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Cursor.c b/hw/xfree86/common/xf86Cursor.c
+index 0e2d774..787c39d 100644
+--- a/hw/xfree86/common/xf86Cursor.c
++++ b/hw/xfree86/common/xf86Cursor.c
+@@ -447,7 +447,7 @@ xf86WarpCursor (ScreenPtr pScreen, int x, int y)
+ }
+ 
+ 
+-void *
++_X_EXPORT void *
+ xf86GetPointerScreenFuncs(void)
+ {
+     return (void *)&xf86PointerScreenFuncs;

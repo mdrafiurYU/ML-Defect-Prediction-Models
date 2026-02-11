@@ -1,0 +1,23 @@
+diff --git a/hw/dmx/dmxpixmap.c b/hw/dmx/dmxpixmap.c
+index 323ae60..f8d0126 100644
+--- a/hw/dmx/dmxpixmap.c
++++ b/hw/dmx/dmxpixmap.c
+@@ -49,8 +49,7 @@
+ /** Initialize a private area in \a pScreen for pixmap information. */
+ Bool dmxInitPixmap(ScreenPtr pScreen)
+ {
+-    if (!AllocatePixmapPrivate(pScreen, dmxPixPrivateIndex,
+-			       sizeof(dmxPixPrivRec)))
++    if (!dixRequestPrivate(dmxPixPrivateKey, sizeof(dmxPixPrivRec)))
+ 	return FALSE;
+ 
+     return TRUE;
+@@ -173,7 +172,7 @@ Bool dmxDestroyPixmap(PixmapPtr pPixmap)
+ 	    dmxSync(dmxScreen, FALSE);
+ 	}
+     }
+-    dixFreePrivates(*DEVPRIV_PTR(pPixmap));
++    dixFreePrivates(pPixmap->devPrivates);
+     xfree(pPixmap);
+ 
+ #if 0

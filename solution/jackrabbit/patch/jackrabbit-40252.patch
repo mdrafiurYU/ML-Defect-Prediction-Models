@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NamespaceIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NamespaceIndex.java
+index 6ce2ed7..1a8f96c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NamespaceIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/NamespaceIndex.java
+@@ -52,7 +52,7 @@ public class NamespaceIndex implements StringIndex {
+         try {
+             return nsReg.getURIIndex(uri);
+         } catch (NamespaceException e) {
+-            throw new IllegalStateException("URI not valid? "  +e.toString());
++            throw new IllegalStateException("URI not valid? "  + e.toString());
+         }
+     }

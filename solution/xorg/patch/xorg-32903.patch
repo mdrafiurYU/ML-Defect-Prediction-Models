@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/utils/xorgcfg/interface.c b/hw/xfree86/utils/xorgcfg/interface.c
+index 9b22dc7..cb39624 100644
+--- a/hw/xfree86/utils/xorgcfg/interface.c
++++ b/hw/xfree86/utils/xorgcfg/interface.c
+@@ -213,7 +213,6 @@ Usage(void)
+ "   -modulepath <module-path>  "__XSERVERNAME__" modules location.\n"
+ "   -serverpath <server-path>  X server to start (if $DISPLAY is not defined).\n"
+ "   -fontpath   <font-path>    Font path for fonts.\n"
+-"   -rgbpath    <rgb-path>     Where the rgb.txt file is located.\n"
+ #ifdef HAS_NCURSES
+ "   -textmode                  Use this option for the text only interface.\n"
+ #endif
+@@ -270,9 +269,6 @@ main(int argc, char *argv[])
+ 	} else if (strcmp(argv[i], "-fontpath") == 0) {
+ 	    if (i + 1 < argc)
+ 		XF86Font_path = argv[++i];
+-	} else if (strcmp(argv[i], "-rgbpath") == 0) {
+-	    if (i + 1 < argc)
+-		XF86RGB_path = argv[++i];
+ 	}
+ #ifdef HAS_NCURSES
+ 	else if (strcmp(argv[i], "-textmode") == 0)

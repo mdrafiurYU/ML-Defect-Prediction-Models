@@ -1,0 +1,13 @@
+diff --git a/randr/rrmode.c b/randr/rrmode.c
+index ab0ea18..23ac530 100644
+--- a/randr/rrmode.c
++++ b/randr/rrmode.c
+@@ -27,7 +27,7 @@ RESTYPE	RRModeType;
+ RRModePtr
+ RRModeGet (ScreenPtr	pScreen,
+ 	   xRRModeInfo	*modeInfo,
+-	   char		*name)
++	   const char	*name)
+ {
+     rrScrPriv (pScreen);
+     int	i;

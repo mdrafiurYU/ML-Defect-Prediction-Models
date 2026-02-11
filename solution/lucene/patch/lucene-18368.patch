@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/FinnishLightStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/FinnishLightStemFilterFactory.java
+index 7a284ed..ebb077b 100644
+--- a/solr/src/java/org/apache/solr/analysis/FinnishLightStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/FinnishLightStemFilterFactory.java
+@@ -20,7 +20,17 @@ package org.apache.solr.analysis;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.fi.FinnishLightStemFilter;
+ 
+-/** Factory for {@link FinnishLightStemFilter} */
++/** 
++ * Factory for {@link FinnishLightStemFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_filgtstem" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.FinnishLightStemFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
++ * @version $Id$
++ */
+ public class FinnishLightStemFilterFactory extends BaseTokenFilterFactory {
+   public TokenStream create(TokenStream input) {
+     return new FinnishLightStemFilter(input);

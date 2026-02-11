@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleEventListener.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleEventListener.java
+index b71dc3a..e198e6a 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleEventListener.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/SimpleEventListener.java
+@@ -50,10 +50,10 @@ public class SimpleEventListener implements LockEventListener,
+     /**
+      * {@inheritDoc}
+      */
+-    public void externalLock(NodeId nodeId, boolean isDeep, String userId)
++    public void externalLock(NodeId nodeId, boolean isDeep, String lockOwner)
+             throws RepositoryException {
+ 
+-        clusterEvents.add(new LockEvent(nodeId, isDeep, userId));
++        clusterEvents.add(new LockEvent(nodeId, isDeep, lockOwner));
+     }
+ 
+     /**

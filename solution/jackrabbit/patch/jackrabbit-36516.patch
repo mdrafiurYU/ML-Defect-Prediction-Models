@@ -1,0 +1,25 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java b/contrib/jackrabbit-jcr-mapping/jcr-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java
+index 5664a7f..1ad5566 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-nodemanagement/src/main/java/org/apache/jackrabbit/ocm/nodemanagement/impl/RepositorySessionFactory.java
+@@ -25,8 +25,7 @@ import javax.jcr.Session;
+  */
+ public class RepositorySessionFactory {
+     
+-    public static final String JACKRABBIT = "jackrabbit";
+-    public static final String JECEIRA = "jeceira";
++    public static final String JACKRABBIT = "jackrabbit";   
+ 
+     private static Session session;
+     
+@@ -57,10 +56,7 @@ public class RepositorySessionFactory {
+                 {
+                     session = new JackrabbitRepositorySession().getSession(username, password, configuration);
+                 }
+-                else if (jcrRepository.equals(JECEIRA)) 
+-                {
+-                    session = new JeceiraRepositorySession().getSession(username, password, configuration); 
+-                }
++                
+             }
+         }

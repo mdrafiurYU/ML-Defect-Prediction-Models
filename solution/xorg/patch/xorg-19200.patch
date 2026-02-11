@@ -1,0 +1,36 @@
+diff --git a/Xi/chgdctl.c b/Xi/chgdctl.c
+index 63a3c9c..0040003 100644
+--- a/Xi/chgdctl.c
++++ b/Xi/chgdctl.c
+@@ -80,8 +80,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXChangeDeviceControl(client)
+-    register ClientPtr client;
++SProcXChangeDeviceControl(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -99,8 +98,7 @@ SProcXChangeDeviceControl(client)
+  */
+ 
+ int
+-ProcXChangeDeviceControl(client)
+-    ClientPtr client;
++ProcXChangeDeviceControl(ClientPtr client)
+     {
+     unsigned len;
+     int i, status;
+@@ -205,10 +203,7 @@ ProcXChangeDeviceControl(client)
+  */
+ 
+ void
+-SRepXChangeDeviceControl (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xChangeDeviceControlReply	*rep;
++SRepXChangeDeviceControl (ClientPtr client, int size, xChangeDeviceControlReply *rep)
+     {
+     register char n;
+ 

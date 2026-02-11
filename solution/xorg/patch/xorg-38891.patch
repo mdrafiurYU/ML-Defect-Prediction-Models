@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxLoad.c b/xkb/ddxLoad.c
+index ade13c3..d6b5f75 100644
+--- a/xkb/ddxLoad.c
++++ b/xkb/ddxLoad.c
+@@ -351,7 +351,7 @@ unsigned	missing;
+ 	(names->compat==NULL)&&(names->symbols==NULL)&&
+ 	(names->geometry==NULL)) {
+         LogMessage(X_ERROR, "XKB: No components provided for device %s\n",
+-                   keybd->name);
++                   keybd->name ? keybd->name : "(unnamed keyboard)");
+         return 0;
+     }
+     else if (!XkbDDXCompileKeymapByNames(xkb,names,want,need,

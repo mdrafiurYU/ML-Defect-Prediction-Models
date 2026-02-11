@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedDeclarationImpl.java
+index 0479504..a478285 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ASTBasedDeclarationImpl.java
+@@ -191,8 +191,8 @@ public abstract class ASTBasedDeclarationImpl extends EclipseDeclarationImpl {
+         return new SourcePositionImpl(
+         		start,
+ 				node.getLength(),
+-				unit.lineNumber(start),
+-				unit.columnNumber(start),
++				unit.getLineNumber(start),
++				unit.getColumnNumber(start),
+ 				this);
+     
+ 	}

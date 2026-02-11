@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExternalJarDeltaTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExternalJarDeltaTests.java
+index 302b273..b055863 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExternalJarDeltaTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/ExternalJarDeltaTests.java
+@@ -272,13 +272,12 @@ public void testExternalJarChanged5() throws CoreException, IOException {
+ public void testExternalJarChanged6() throws CoreException, IOException {
+ 	File f = null;
+ 	try {
+-		IJavaProject project = this.createJavaProject("P", new String[] {""}, "");
+-		
+ 		String pPath = getExternalPath() + "p.jar";
+-		setClasspath(project, new IClasspathEntry[]{JavaCore.newLibraryEntry(new Path(pPath), null, null)});
+-		
+ 		f = new File(pPath);
+ 		f.createNewFile();
++		createJavaProject("P", new String[] {""}, new String[] {"JCL_LIB", pPath}, "");
++		createFile("/P/X.java", "public class X{}");
++		getWorkspace().build(IncrementalProjectBuilder.FULL_BUILD, null);
+ 		getJavaModel().refreshExternalArchives(null,null);
+ 		waitUntilIndexesReady();

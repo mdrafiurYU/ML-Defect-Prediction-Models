@@ -1,0 +1,14 @@
+diff --git a/hw/xprint/pcl/PclArea.c b/hw/xprint/pcl/PclArea.c
+index 59ae5e3..a4e53da 100644
+--- a/hw/xprint/pcl/PclArea.c
++++ b/hw/xprint/pcl/PclArea.c
+@@ -415,7 +415,8 @@ PclCopyPlane(DrawablePtr pSrc,
+      * know how to do a CopyArea.
+      */
+     scratchPix = (*pDst->pScreen->CreatePixmap)( pDst->pScreen, width,
+-						height, pDst->depth );
++						height, pDst->depth,
++						CREATE_PIXMAP_USAGE_SCRATCH );
+ 
+     scratchGC = GetScratchGC( pDst->depth, pDst->pScreen );
+     CopyGC( pGC, scratchGC, ~0L );

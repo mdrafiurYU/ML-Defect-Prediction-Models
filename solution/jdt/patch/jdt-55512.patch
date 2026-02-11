@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
+index be7796c..15aea96 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
+@@ -265,7 +265,6 @@ public class GeneratedFileManager {
+ 					// Do nothing. Assume the new content is different
+ 				}
+ 				finally {
+-					is.reset();
+ 					if (oldData != null) {
+ 						try {
+ 							oldData.close();
+@@ -273,6 +272,13 @@ public class GeneratedFileManager {
+ 						catch (IOException ioe) 
+ 						{}
+ 					}
++					if (is != null) {
++						try {
++							is.close();
++						} 
++						catch (IOException ioe) 
++						{}
++					}
+ 				}
+ 			}

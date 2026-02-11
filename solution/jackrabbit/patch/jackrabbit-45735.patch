@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java
+index 68dba5b..c9cbabd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/AbstractLoginModule.java
+@@ -526,9 +526,9 @@ public abstract class AbstractLoginModule implements LoginModule {
+                 Credentials creds = callback.getCredentials();
+                 if (null != creds) {
+                     if (creds instanceof SimpleCredentials) {
+-                       credentials = (SimpleCredentials) creds;
++                       credentials = creds;
+                     } else if (creds instanceof GuestCredentials) {
+-                       credentials = (GuestCredentials) creds;
++                       credentials = creds;
+                     }
+                     sharedState.put(KEY_CREDENTIALS, credentials);
+                 }

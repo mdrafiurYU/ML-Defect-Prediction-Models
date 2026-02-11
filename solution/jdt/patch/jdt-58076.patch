@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java
+index a9f54f4..58b7268 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceMapper.java
+@@ -46,8 +46,8 @@ import org.eclipse.jdt.core.ITypeParameter;
+ import org.eclipse.jdt.core.JavaConventions;
+ import org.eclipse.jdt.core.JavaModelException;
+ import org.eclipse.jdt.core.Signature;
++import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ import org.eclipse.jdt.core.compiler.CharOperation;
+-import org.eclipse.jdt.core.compiler.IProblem;
+ import org.eclipse.jdt.internal.compiler.IProblemFactory;
+ import org.eclipse.jdt.internal.compiler.ISourceElementRequestor;
+ import org.eclipse.jdt.internal.compiler.SourceElementParser;
+@@ -272,7 +272,7 @@ public class SourceMapper
+ 	/**
+ 	 * @see ISourceElementRequestor
+ 	 */
+-	public void acceptProblem(IProblem problem) {
++	public void acceptProblem(CategorizedProblem problem) {
+ 		//do nothing
+ 	}

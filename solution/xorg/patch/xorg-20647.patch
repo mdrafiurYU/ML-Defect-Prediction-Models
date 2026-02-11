@@ -1,0 +1,24 @@
+diff --git a/hw/kdrive/savage/s3gc.c b/hw/kdrive/savage/s3gc.c
+index 789ab43..a87a2f5 100644
+--- a/hw/kdrive/savage/s3gc.c
++++ b/hw/kdrive/savage/s3gc.c
+@@ -72,9 +72,6 @@ static const GCOps	s3TEOps = {
+     s3ImageTEGlyphBlt,
+     s3PolyTEGlyphBlt,
+     s3PushPixels
+-#ifdef NEED_LINEHELPER
+-    ,NULL
+-#endif
+ };
+ 
+ /* Non TE font */
+@@ -99,9 +96,6 @@ static const GCOps	s3NonTEOps = {
+     s3ImageGlyphBlt,
+     s3PolyGlyphBlt,
+     s3PushPixels
+-#ifdef NEED_LINEHELPER
+-    ,NULL
+-#endif
+ };
+ 
+ static GCOps *

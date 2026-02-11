@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/SpellingQueryConverter.java b/solr/src/java/org/apache/solr/spelling/SpellingQueryConverter.java
+index 0825781..688f4a6 100644
+--- a/solr/src/java/org/apache/solr/spelling/SpellingQueryConverter.java
++++ b/solr/src/java/org/apache/solr/spelling/SpellingQueryConverter.java
+@@ -91,6 +91,7 @@ public class SpellingQueryConverter extends QueryConverter  {
+    * @param original the original query string
+    * @return a Collection of Lucene Tokens
+    */
++  @Override
+   public Collection<Token> convert(String original) {
+     if (original == null) { // this can happen with q.alt = and no query
+       return Collections.emptyList();

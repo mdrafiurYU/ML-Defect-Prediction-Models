@@ -1,0 +1,11 @@
+diff --git a/hw/xfree86/parser/Extensions.c b/hw/xfree86/parser/Extensions.c
+index b64f081..4003b52 100644
+--- a/hw/xfree86/parser/Extensions.c
++++ b/hw/xfree86/parser/Extensions.c
+@@ -107,5 +107,5 @@ xf86freeExtensions (XF86ConfExtensionsPtr ptr)
+ 
+     xf86optionListFree (ptr->ext_option_lst);
+     TestFree (ptr->extensions_comment);
+-    xf86conffree (ptr);
++    free (ptr);
+ }

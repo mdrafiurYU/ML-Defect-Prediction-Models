@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java b/lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java
+index 4294121..cc9fad3 100644
+--- a/lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java
++++ b/lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java
+@@ -78,7 +78,7 @@ final class SloppyPhraseScorer extends PhraseScorer {
+ 
+             int matchLength = end - start;
+             if (matchLength <= slop)
+-                freq += getSimilarity().sloppyFreq(matchLength); // score match
++                freq += similarity.sloppyFreq(matchLength); // score match
+ 
+             if (pp.position > end)
+                 end = pp.position;

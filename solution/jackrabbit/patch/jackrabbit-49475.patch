@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java
+index 60dc97d..1f1a0ae 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BinaryValueImpl.java
+@@ -38,9 +38,6 @@ class BinaryValueImpl extends BinaryValue implements JackrabbitValue {
+         this.blob = blob;
+     }
+ 
+-    /**
+-     * {@inheritDoc}
+-     */
+     public String getContentIdentity() {
+         DataIdentifier id = blob.getDataIdentifier();
+         return id == null ? null : id.toString();

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java
+index 2b97ecf..98f1fbc 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/EffectiveNodeType.java
+@@ -1150,7 +1150,8 @@ public class EffectiveNodeType implements Cloneable {
+             clone.namedItemDefs.put(name, new ArrayList<ItemDef>(list));
+         }
+         clone.unnamedItemDefs.addAll(unnamedItemDefs);
+-
++        clone.orderableChildNodes = orderableChildNodes;
++        clone.primaryItemName = primaryItemName;
+         return clone;
+     }
+ }

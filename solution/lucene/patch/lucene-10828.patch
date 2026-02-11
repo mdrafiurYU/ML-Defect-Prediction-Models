@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/packed/Packed64.java b/lucene/src/java/org/apache/lucene/util/packed/Packed64.java
+index b382667..691cec4 100644
+--- a/lucene/src/java/org/apache/lucene/util/packed/Packed64.java
++++ b/lucene/src/java/org/apache/lucene/util/packed/Packed64.java
+@@ -182,7 +182,7 @@ class Packed64 extends PackedInts.ReaderImpl implements PackedInts.Mutable {
+     final int bitPos =     (int)(majorBitPos & MOD_MASK); // % BLOCK_SIZE);
+ 
+     final int base = bitPos * FAC_BITPOS;
+-
++    assert elementPos < blocks.length : "elementPos: " + elementPos + "; blocks.len: " + blocks.length;
+     return ((blocks[elementPos] << shifts[base]) >>> shifts[base+1]) |
+             ((blocks[elementPos+1] >>> shifts[base+2]) & readMasks[bitPos]);
+   }

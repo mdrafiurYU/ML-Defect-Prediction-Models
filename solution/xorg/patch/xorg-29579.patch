@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index da6e590..6c69454 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -901,6 +901,7 @@ InitAbsoluteClassDeviceStruct(DeviceIntPtr dev)
+     abs->width = -1;
+     abs->height = -1;
+     abs->following = 0;
++    abs->screen = 0;
+ 
+     dev->absolute = abs;
+ 

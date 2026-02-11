@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 2c4be84..acb775b 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1828,6 +1828,13 @@ ddxProcessArgument(int argc, char **argv, int i)
+        FatalError("Invalid isolated device specification\n");
+     }
+   }
++  /* Notice cmdline xkbdir, but pass to dix as well */
++  if (!strcmp(argv[i], "-xkbdir"))
++  {
++    xf86xkbdirFlag = TRUE;
++    return 0;
++  }
++
+   /* OS-specific processing */
+   return xf86ProcessArgument(argc, argv, i);
+ }

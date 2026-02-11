@@ -1,0 +1,57 @@
+diff --git a/hw/xquartz/xpr/xprCursor.c b/hw/xquartz/xpr/xprCursor.c
+index bf1a6e8..4345bee 100644
+--- a/hw/xquartz/xpr/xprCursor.c
++++ b/hw/xquartz/xpr/xprCursor.c
+@@ -239,7 +239,6 @@ QuartzSetCursor(DeviceIntPtr pDev, ScreenPtr pScreen, CursorPtr pCursor, int x,
+     }
+ }
+ 
+-
+ /*
+  * QuartzMoveCursor
+  *  Move the cursor. This is a noop for us.
+@@ -249,25 +248,6 @@ QuartzMoveCursor(DeviceIntPtr pDev, ScreenPtr pScreen, int x, int y)
+ {
+ }
+ 
+-/* TODO: New for 1.6 ... probably noop */
+-static Bool QuartzDeviceCursorInitialize(DeviceIntPtr pDev, ScreenPtr pScreen) {
+-    return TRUE;
+-}
+-
+-/* TODO: New for 1.6 ... probably noop */
+-static void QuartzDeviceCursorCleanup(DeviceIntPtr pDev, ScreenPtr pScreen) {
+-}
+-
+-static miPointerSpriteFuncRec quartzSpriteFuncsRec = {
+-    QuartzRealizeCursor,
+-    QuartzUnrealizeCursor,
+-    QuartzSetCursor,
+-    QuartzMoveCursor,
+-    QuartzDeviceCursorInitialize,
+-    QuartzDeviceCursorCleanup
+-};
+-
+-
+ /*
+ ===========================================================================
+ 
+@@ -387,13 +367,16 @@ QuartzInitCursor(ScreenPtr pScreen)
+     PointPriv = dixLookupPrivate(&pScreen->devPrivates, miPointerScreenKey);
+ 
+     ScreenPriv->spriteFuncs = PointPriv->spriteFuncs;
+-    PointPriv->spriteFuncs = &quartzSpriteFuncsRec;
++
++    PointPriv->spriteFuncs->RealizeCursor = QuartzRealizeCursor;
++    PointPriv->spriteFuncs->UnrealizeCursor = QuartzUnrealizeCursor;
++    PointPriv->spriteFuncs->SetCursor = QuartzSetCursor;
++    PointPriv->spriteFuncs->MoveCursor = QuartzMoveCursor;
+ 
+     ScreenPriv->cursorVisible = TRUE;
+     return TRUE;
+ }
+ 
+-
+ /*
+  * QuartzSuspendXCursor
+  *  X server is hiding. Restore the Aqua cursor.

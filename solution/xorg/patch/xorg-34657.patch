@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xf4bpp/ppcWindow.c b/hw/xfree86/xf4bpp/ppcWindow.c
+index 01768d9..0554667 100644
+--- a/hw/xfree86/xf4bpp/ppcWindow.c
++++ b/hw/xfree86/xf4bpp/ppcWindow.c
+@@ -218,7 +218,7 @@ register WindowPtr pWin ;
+ 
+     TRACE(("xf4bppCreateWindowForXYhardware (pWin= 0x%x)\n", pWin));
+ 
+-    pPrivWin = (mfbPrivWin *)(pWin->devPrivates[mfbGetWindowPrivateIndex()].ptr);
++    pPrivWin = (mfbPrivWin *)dixLookupPrivate(&pWin->devPrivates, mfbGetWindowPrivateKey());
+     pPrivWin->pRotatedBorder = NullPixmap;
+     pPrivWin->pRotatedBackground = NullPixmap;
+     pPrivWin->fastBackground = 0;

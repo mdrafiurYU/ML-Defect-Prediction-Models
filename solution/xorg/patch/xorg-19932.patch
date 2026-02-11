@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/scanpci/xf86ScanPci.h b/hw/xfree86/scanpci/xf86ScanPci.h
+index 3a15417..9107b9e 100644
+--- a/hw/xfree86/scanpci/xf86ScanPci.h
++++ b/hw/xfree86/scanpci/xf86ScanPci.h
+@@ -26,6 +26,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef SCANPCI_H_
+ #define SCANPCI_H_
+ 

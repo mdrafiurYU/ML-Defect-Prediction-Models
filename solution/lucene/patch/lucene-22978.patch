@@ -1,0 +1,23 @@
+diff --git a/modules/suggest/src/java/org/apache/lucene/search/suggest/UnsortedTermFreqIteratorWrapper.java b/modules/suggest/src/java/org/apache/lucene/search/suggest/UnsortedTermFreqIteratorWrapper.java
+new file mode 100644
+index 0000000..13c3223
+--- /dev/null
++++ b/modules/suggest/src/java/org/apache/lucene/search/suggest/UnsortedTermFreqIteratorWrapper.java
+@@ -0,0 +1,17 @@
++package org.apache.lucene.search.suggest;
++
++import java.util.Collections;
++
++import org.apache.lucene.search.spell.TermFreqIterator;
++
++/**
++ * This wrapper buffers the incoming elements and makes sure they are in
++ * random order.
++ */
++public class UnsortedTermFreqIteratorWrapper extends BufferingTermFreqIteratorWrapper {
++
++  public UnsortedTermFreqIteratorWrapper(TermFreqIterator source) {
++    super(source);
++    Collections.shuffle(entries);
++  }
++}

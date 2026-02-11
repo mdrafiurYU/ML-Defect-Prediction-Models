@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/BoolField.java b/solr/src/java/org/apache/solr/schema/BoolField.java
+index a4e800b..a57b101 100644
+--- a/solr/src/java/org/apache/solr/schema/BoolField.java
++++ b/solr/src/java/org/apache/solr/schema/BoolField.java
+@@ -22,6 +22,8 @@ import org.apache.lucene.common.mutable.MutableValueBool;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.queries.function.DocValues;
+ import org.apache.lucene.queries.function.ValueSource;
++import org.apache.lucene.queries.function.docvalues.BoolDocValues;
++import org.apache.lucene.queries.function.valuesource.OrdFieldSource;
+ import org.apache.lucene.search.FieldCache;
+ import org.apache.lucene.search.SortField;
+ import org.apache.lucene.util.BytesRef;

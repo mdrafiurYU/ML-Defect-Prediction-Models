@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclDef.h b/Xprint/pcl/PclDef.h
+index 2638748..275bd63 100644
+--- a/Xprint/pcl/PclDef.h
++++ b/Xprint/pcl/PclDef.h
+@@ -45,6 +45,10 @@ dealings in this Software without prior written authorization from said
+ copyright holders.
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _PCLDEF_H_
+ #define _PCLDEF_H_
+ 

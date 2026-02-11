@@ -1,0 +1,15 @@
+diff --git a/dix/events.c b/dix/events.c
+index 097ebba..7de8d2e 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2020,9 +2020,8 @@ DeliverEventsToWindow(DeviceIntPtr pDev, WindowPtr pWin, xEvent
+         /* get the XGE event mask. 
+          * FIXME: needs to be freed somewhere too.
+          */
+-        if (!pWin->optional || !pWin->optional->geMasks)
+             tempGrab.genericMasks = NULL;
+-        else
++        if (pWin->optional && pWin->optional->geMasks)
+         {
+             GenericClientMasksPtr gemasks = pWin->optional->geMasks;
+             GenericMaskPtr geclient = gemasks->geClients;

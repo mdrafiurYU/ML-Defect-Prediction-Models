@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/SimpleFieldsHelper.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/SimpleFieldsHelper.java
+index bd921f1..8cdcf3b 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/SimpleFieldsHelper.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/SimpleFieldsHelper.java
+@@ -83,7 +83,7 @@ public class SimpleFieldsHelper
+ 
+ 			if (classDescriptor.usesNodeTypePerHierarchyStrategy() && classDescriptor.hasDiscriminator())
+ 			{
+-				if (!node.hasProperty(ManagerConstant.DISCRIMINATOR_PROPERTY_NAME))
++				if (!node.hasProperty(ManagerConstant.DISCRIMINATOR_CLASS_NAME_PROPERTY))
+ 				{
+ 					throw new ObjectContentManagerException("Class '"
+ 							+ classDescriptor.getClassName()

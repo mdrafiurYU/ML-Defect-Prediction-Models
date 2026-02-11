@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/PatternReplaceCharFilterFactory.java b/solr/src/java/org/apache/solr/analysis/PatternReplaceCharFilterFactory.java
+index bb45fa1..48014cb 100644
+--- a/solr/src/java/org/apache/solr/analysis/PatternReplaceCharFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/PatternReplaceCharFilterFactory.java
+@@ -36,6 +36,7 @@ public class PatternReplaceCharFilterFactory extends BaseCharFilterFactory {
+   private int maxBlockChars;
+   private String blockDelimiters;
+ 
++  @Override
+   public void init(Map<String, String> args) {
+     super.init( args );
+     try {

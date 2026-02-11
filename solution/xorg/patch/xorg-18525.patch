@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/sym.h b/hw/xfree86/loader/sym.h
+index 0e18959..5b34718 100644
+--- a/hw/xfree86/loader/sym.h
++++ b/hw/xfree86/loader/sym.h
+@@ -23,6 +23,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _SYM_H
+ #define _SYM_H
+ 

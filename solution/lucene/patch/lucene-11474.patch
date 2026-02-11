@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexInput.java b/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexInput.java
+index b8e26f0..a476033 100644
+--- a/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexInput.java
++++ b/lucene/src/test/org/apache/lucene/index/codecs/mocksep/MockSingleIntIndexInput.java
+@@ -81,6 +81,16 @@ public class MockSingleIntIndexInput extends IntIndexInput {
+     }
+ 
+     @Override
++    public void read(IntIndexInput.Reader indexIn, boolean absolute)
++      throws IOException {
++      if (absolute) {
++        fp = indexIn.readVLong();
++      } else {
++        fp += indexIn.readVLong();
++      }
++    }
++
++    @Override
+     public void set(IntIndexInput.Index other) {
+       fp = ((Index) other).fp;
+     }

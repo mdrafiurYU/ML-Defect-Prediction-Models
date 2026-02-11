@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/AuthorizableImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/AuthorizableImplTest.java
+index c0bbfc0..26680b3 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/AuthorizableImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/AuthorizableImplTest.java
+@@ -50,7 +50,7 @@ public class AuthorizableImplTest extends AbstractUserTest {
+         super.setUp();
+ 
+         if (superuser instanceof SessionImpl) {
+-            NameResolver resolver = ((SessionImpl) superuser).getNamePathResolver();
++            NameResolver resolver = (SessionImpl) superuser;
+             protectedUserProps.add(resolver.getJCRName(UserConstants.P_USERID));
+             protectedUserProps.add(resolver.getJCRName(UserConstants.P_PASSWORD));
+             protectedUserProps.add(resolver.getJCRName(UserConstants.P_GROUPS));

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeCancelMergeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeCancelMergeTest.java
+index 2ef57d9..2502c18 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeCancelMergeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeCancelMergeTest.java
+@@ -46,6 +46,11 @@ public class MergeCancelMergeTest extends AbstractMergeTest {
+         nodeToMerge.checkout();
+     }
+ 
++    protected void tearDown() throws Exception {
++        nodeToMerge = null;
++        super.tearDown();
++    }
++
+     /**
+      * Merge.cancelMerge(V): has the effect of removing the reference to V' from
+      * the jcr:mergeFailed property of N. <br> without adding it to

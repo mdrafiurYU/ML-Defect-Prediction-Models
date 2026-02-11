@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86RAC.c b/hw/xfree86/common/xf86RAC.c
+index 8215f98..24d29e4 100644
+--- a/hw/xfree86/common/xf86RAC.c
++++ b/hw/xfree86/common/xf86RAC.c
+@@ -256,8 +256,10 @@ static miPointerSpriteFuncRec RACSpriteFuncs = {
+     RACSpriteMoveCursor
+ };
+ 
+-static DevPrivateKey RACScreenKey = &RACScreenKey;
+-static DevPrivateKey RACGCKey = &RACGCKey;
++static int RACScreenKeyIndex;
++static DevPrivateKey RACScreenKey = &RACScreenKeyIndex;
++static int RACGCKeyIndex;
++static DevPrivateKey RACGCKey = &RACGCKeyIndex;
+ 
+ 
+ Bool 

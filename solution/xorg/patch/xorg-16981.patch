@@ -1,0 +1,15 @@
+diff --git a/fb/fbimage.c b/fb/fbimage.c
+index 171993a..96bd8cf 100644
+--- a/fb/fbimage.c
++++ b/fb/fbimage.c
+@@ -23,6 +23,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/fb/fbimage.c,v 1.7 2001/05/29 04:54:09 keithp Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ #ifdef XFree86LOADER
+ #include "xf86.h"

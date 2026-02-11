@@ -1,0 +1,174 @@
+diff --git a/hw/xwin/winconfig.c b/hw/xwin/winconfig.c
+index 38966bf..5f5b482 100644
+--- a/hw/xwin/winconfig.c
++++ b/hw/xwin/winconfig.c
+@@ -36,12 +36,7 @@
+ #include "winmsg.h"
+ #include "globals.h"
+ 
+-#ifdef XKB
+-#ifndef XKB_IN_SERVER
+-#define XKB_IN_SERVER
+-#endif
+-#include <xkbsrv.h>
+-#endif
++#include "xkbsrv.h"
+ 
+ #ifdef XWIN_XF86CONFIG
+ #ifndef CONFIGPATH
+@@ -67,15 +62,11 @@ WinCmdlineRec g_cmdline = {
+ #ifdef XWIN_XF86CONFIG
+   NULL,				/* keyboard */
+ #endif
+-#ifdef XKB
+-  FALSE,			/* noXkbExtension */
+-  NULL,				/* xkbMap */
+   NULL,             /* xkbRules */
+   NULL,             /* xkbModel */
+   NULL,             /* xkbLayout */
+   NULL,             /* xkbVariant */
+   NULL,             /* xkbOptions */
+-#endif
+   NULL,				/* screenname */
+   NULL,				/* mousename */
+   FALSE,			/* emulate3Buttons */
+@@ -87,7 +78,6 @@ winInfoRec g_winInfo = {
+    0,				/* leds */
+    500,				/* delay */
+    30				/* rate */
+-#ifdef XKB
+    }
+   ,
+   {				/* xkb */
+@@ -97,14 +87,6 @@ winInfoRec g_winInfo = {
+    NULL,			/* layout */
+    NULL,			/* variant */
+    NULL,			/* options */
+-   NULL,			/* initialMap */
+-   NULL,			/* keymap */
+-   NULL,			/* types */
+-   NULL,			/* compat */
+-   NULL,			/* keycodes */
+-   NULL,			/* symbols */
+-   NULL				/* geometry */
+-#endif
+    }
+   ,
+   {
+@@ -228,11 +210,9 @@ winReadConfigfile ()
+ Bool
+ winConfigKeyboard (DeviceIntPtr pDevice)
+ {
+-#ifdef XKB
+   char                          layoutName[KL_NAMELENGTH];
+   static unsigned int           layoutNum = 0;
+   int                           keyboardType;
+-#endif
+ #ifdef XWIN_XF86CONFIG
+   XF86ConfInputPtr		kbd = NULL;
+   XF86ConfInputPtr		input_list = NULL;
+@@ -242,7 +222,6 @@ winConfigKeyboard (DeviceIntPtr pDevice)
+   char				*s = NULL;
+ 
+   /* Setup defaults */
+-#ifdef XKB
+   g_winInfo.xkb.disable = FALSE;
+ # ifdef PC98 /* japanese */	/* not implemented */
+   g_winInfo.xkb.rules = "xfree98";
+@@ -358,15 +337,6 @@ winConfigKeyboard (DeviceIntPtr pDevice)
+       }
+   }  
+   
+-  g_winInfo.xkb.initialMap = NULL;
+-  g_winInfo.xkb.keymap = NULL;
+-  g_winInfo.xkb.types = NULL;
+-  g_winInfo.xkb.compat = NULL;
+-  g_winInfo.xkb.keycodes = NULL;
+-  g_winInfo.xkb.symbols = NULL;
+-  g_winInfo.xkb.geometry = NULL;
+-#endif /* XKB */
+-
+   /* parse the configuration */
+ #ifdef XWIN_XF86CONFIG
+   if (g_cmdline.keyboard)
+@@ -418,30 +388,6 @@ winConfigKeyboard (DeviceIntPtr pDevice)
+         }
+ #endif
+       
+-#ifdef XKB
+-      from = X_DEFAULT;
+-      if (g_cmdline.noXkbExtension)
+-	{
+-	  from = X_CMDLINE;
+-	  g_winInfo.xkb.disable = TRUE;
+-	}
+-#ifdef XWIN_XF86CONFIG
+-      else if (kbd->inp_option_lst)
+-	{
+-	  int b = winSetBoolOption (kbd->inp_option_lst, "XkbDisable", FALSE);
+-	  if (b)
+-	    {
+-	      from = X_CONFIG;
+-	      g_winInfo.xkb.disable = TRUE;
+-	    }
+-	}
+-#endif
+-      if (g_winInfo.xkb.disable)
+-	{
+-	  winMsg (from, "XkbExtension disabled\n");
+-	}
+-      else
+-	{
+           s = NULL;  
+           if (g_cmdline.xkbRules)
+             {
+@@ -537,49 +483,6 @@ winConfigKeyboard (DeviceIntPtr pDevice)
+ 	      winMsg (from, "XKB: options: \"%s\"\n", s);
+ 	    }
+ 
+-#ifdef XWIN_XF86CONFIG
+-	  from = X_CMDLINE;
+-
+-	  if ((s = winSetStrOption (kbd->inp_option_lst, "XkbKeymap", NULL)))
+-	    {
+-	      g_winInfo.xkb.keymap = NULL_IF_EMPTY (s);
+-	      winMsg (X_CONFIG, "XKB: keymap: \"%s\" "
+-		      " (overrides other XKB settings)\n", s);
+-	    }
+-
+-	  if ((s = winSetStrOption (kbd->inp_option_lst, "XkbCompat", NULL)))
+-	    {
+-	      g_winInfo.xkb.compat = NULL_IF_EMPTY (s);
+-	      winMsg (X_CONFIG, "XKB: compat: \"%s\"\n", s);
+-	    }
+-
+-	  if ((s = winSetStrOption (kbd->inp_option_lst, "XkbTypes", NULL)))
+-	    {
+-	      g_winInfo.xkb.types = NULL_IF_EMPTY (s);
+-	      winMsg (X_CONFIG, "XKB: types: \"%s\"\n", s);
+-	    }
+-
+-	  if ((s =
+-	       winSetStrOption (kbd->inp_option_lst, "XkbKeycodes", NULL)))
+-	    {
+-	      g_winInfo.xkb.keycodes = NULL_IF_EMPTY (s);
+-	      winMsg (X_CONFIG, "XKB: keycodes: \"%s\"\n", s);
+-	    }
+-
+-	  if ((s =
+-	       winSetStrOption (kbd->inp_option_lst, "XkbGeometry", NULL)))
+-	    {
+-	      g_winInfo.xkb.geometry = NULL_IF_EMPTY (s);
+-	      winMsg (X_CONFIG, "XKB: geometry: \"%s\"\n", s);
+-	    }
+-
+-	  if ((s = winSetStrOption (kbd->inp_option_lst, "XkbSymbols", NULL)))
+-	    {
+-	      g_winInfo.xkb.symbols = NULL_IF_EMPTY (s);
+-	      winMsg (X_CONFIG, "XKB: symbols: \"%s\"\n", s);
+-	    }
+-#endif
+-#endif
+ 	}
+ #ifdef XWIN_XF86CONFIG
+     }

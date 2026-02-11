@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/ShardRequest.java b/solr/src/java/org/apache/solr/handler/component/ShardRequest.java
+index 9a11d31..d8828cb 100755
+--- a/solr/src/java/org/apache/solr/handler/component/ShardRequest.java
++++ b/solr/src/java/org/apache/solr/handler/component/ShardRequest.java
+@@ -41,8 +41,6 @@ public class ShardRequest {
+   public int purpose;  // the purpose of this request
+ 
+   public String[] shards;  // the shards this request should be sent to, null for all
+-// TODO: how to request a specific shard address?
+-
+ 
+   public ModifiableSolrParams params;

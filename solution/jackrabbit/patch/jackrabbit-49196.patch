@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/VersionResourceImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/VersionResourceImpl.java
+index 1fbbbea..5fcc3f3 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/VersionResourceImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/simple/VersionResourceImpl.java
+@@ -32,8 +32,6 @@ import org.apache.jackrabbit.webdav.property.DavPropertyName;
+ import org.apache.jackrabbit.webdav.property.DefaultDavProperty;
+ import org.apache.jackrabbit.webdav.property.HrefProperty;
+ import org.apache.jackrabbit.webdav.property.DavProperty;
+-import org.apache.jackrabbit.webdav.property.DavPropertySet;
+-import org.apache.jackrabbit.webdav.property.DavPropertyNameSet;
+ import org.apache.jackrabbit.webdav.version.LabelInfo;
+ import org.apache.jackrabbit.webdav.version.LabelSetProperty;
+ import org.apache.jackrabbit.webdav.version.VersionHistoryResource;
+@@ -138,15 +136,6 @@ public class VersionResourceImpl extends DeltaVResourceImpl implements VersionRe
+     /**
+      * Version storage is read-only -> fails with 403.
+      *
+-     * @see DavResource#alterProperties(DavPropertySet, DavPropertyNameSet)
+-     */
+-    public MultiStatusResponse alterProperties(DavPropertySet setProperties, DavPropertyNameSet removePropertyNames) throws DavException {
+-        throw new DavException(DavServletResponse.SC_FORBIDDEN);
+-    }
+-
+-    /**
+-     * Version storage is read-only -> fails with 403.
+-     *
+      * @see DavResource#alterProperties(List)
+      */
+     public MultiStatusResponse alterProperties(List changeList) throws DavException {

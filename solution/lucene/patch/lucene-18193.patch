@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/SolrAnalyzer.java b/solr/src/java/org/apache/solr/analysis/SolrAnalyzer.java
+index 6244e0c..b0b03cc 100644
+--- a/solr/src/java/org/apache/solr/analysis/SolrAnalyzer.java
++++ b/solr/src/java/org/apache/solr/analysis/SolrAnalyzer.java
+@@ -32,6 +32,7 @@ public abstract class SolrAnalyzer extends Analyzer {
+     posIncGap=gap;
+   }
+ 
++  @Override
+   public int getPositionIncrementGap(String fieldName) {
+     return posIncGap;
+   }

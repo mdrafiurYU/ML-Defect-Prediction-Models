@@ -1,0 +1,38 @@
+diff --git a/hw/xquartz/quartzKeyboard.c b/hw/xquartz/quartzKeyboard.c
+index 228679a..7c9ac70 100644
+--- a/hw/xquartz/quartzKeyboard.c
++++ b/hw/xquartz/quartzKeyboard.c
+@@ -324,6 +324,8 @@ static void DarwinKeyboardSetDeviceKeyMap(KeySymsRec *keySyms) {
+ void DarwinKeyboardInit(DeviceIntPtr pDev) {
+     KeySymsRec keySyms;
+ 	XkbComponentNamesRec names;
++    CFIndex value;
++    BOOL ok;
+ 
+     // Open a shared connection to the HID System.
+     // Note that the Event Status Driver is really just a wrapper
+@@ -342,6 +344,24 @@ void DarwinKeyboardInit(DeviceIntPtr pDev) {
+                                        QuartzBell, DarwinChangeKeyboardControl));
+     pthread_mutex_unlock(&keyInfo_mutex);
+ 
++    /* Get our key repeat settings from GlobalPreferences */
++    (void)CFPreferencesAppSynchronize(CFSTR(".GlobalPreferences"));
++    value = CFPreferencesGetAppIntegerValue(CFSTR("InitialKeyRepeat"), CFSTR(".GlobalPreferences"), &ok);
++    if(!ok)
++        value = 35;
++
++    if(value == 300000) { // off
++        XkbSetRepeatKeys(pDev, -1, AutoRepeatModeOff);
++    } else {
++        pDev->key->xkbInfo->desc->ctrls->repeat_delay = value * 15;
++
++        value = CFPreferencesGetAppIntegerValue(CFSTR("KeyRepeat"), CFSTR(".GlobalPreferences"), &ok);
++        if(!ok)
++            value = 6;
++        pDev->key->xkbInfo->desc->ctrls->repeat_interval = value * 15;
++
++        XkbSetRepeatKeys(pDev, -1, AutoRepeatModeOn);
++    }
+     // TODO: What do we do now in 1.6?
+ 	//SwitchCoreKeyboard(pDev);   
+ 

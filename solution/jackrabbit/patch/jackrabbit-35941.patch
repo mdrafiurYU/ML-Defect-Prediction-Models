@@ -1,0 +1,14 @@
+diff --git a/contrib/spi/spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java b/contrib/spi/spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
+index 9236102..2a542ef 100644
+--- a/contrib/spi/spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
++++ b/contrib/spi/spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
+@@ -1594,8 +1594,7 @@ public class RepositoryServiceImpl implements RepositoryService, DavConstants {
+                     }
+                     bundles.add(new EventBundleImpl(
+                             buildEventList(bundleElement, sessionInfo),
+-                            isLocal,
+-                            null)); // TODO: bundle id is missing
++                            isLocal));
+                 }
+                 events = (EventBundle[]) bundles.toArray(new EventBundle[bundles.size()]);
+             }

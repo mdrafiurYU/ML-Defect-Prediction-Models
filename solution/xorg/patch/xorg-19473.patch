@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/int10/helper_mem.c b/hw/xfree86/int10/helper_mem.c
+index 495a0e0..65ffe3d 100644
+--- a/hw/xfree86/int10/helper_mem.c
++++ b/hw/xfree86/int10/helper_mem.c
+@@ -8,9 +8,11 @@
+ #include <xorg-config.h>
+ #endif
+ 
++#include <string.h>
++#include <stdlib.h>
++
+ #include "xf86.h"
+ #include "xf86_OSproc.h"
+-#include "xf86_ansic.h"
+ #include "compiler.h"
+ #include "xf86Pci.h"
+ #define _INT10_PRIVATE

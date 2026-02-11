@@ -1,0 +1,24 @@
+diff --git a/Xi/ungrdev.c b/Xi/ungrdev.c
+index 8de4cd2..d8c9f20 100644
+--- a/Xi/ungrdev.c
++++ b/Xi/ungrdev.c
+@@ -77,8 +77,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXUngrabDevice(client)
+-register ClientPtr client;
++SProcXUngrabDevice(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -96,8 +95,7 @@ register ClientPtr client;
+  */
+ 
+ int
+-ProcXUngrabDevice(client)
+-register ClientPtr client;
++ProcXUngrabDevice(register ClientPtr client)
+     {
+     DeviceIntPtr 	dev;
+     GrabPtr 		grab;

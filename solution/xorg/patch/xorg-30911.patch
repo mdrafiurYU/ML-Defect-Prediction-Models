@@ -1,0 +1,16 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index 6fc2dcc..d9b6a9f 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -2592,8 +2592,9 @@ IdleTimeWakeupHandler (pointer env,
+     IdleTimeQueryValue (NULL, &idle);
+ 
+     if ((pIdleTimeValueGreater &&
+-         XSyncValueGreaterThan (idle, *pIdleTimeValueGreater)) ||
+-        (pIdleTimeValueLess && XSyncValueLessThan (idle, *pIdleTimeValueLess)))
++         XSyncValueGreaterOrEqual (idle, *pIdleTimeValueGreater)) ||
++        (pIdleTimeValueLess &&
++	 XSyncValueLessOrEqual (idle, *pIdleTimeValueLess)))
+     {
+ 	SyncChangeCounter (IdleTimeCounter, idle);
+     }

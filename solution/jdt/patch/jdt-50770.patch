@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/modifying/ASTRewritingModifyingCopyTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/modifying/ASTRewritingModifyingCopyTest.java
+index cb3779e..9e79b93 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/modifying/ASTRewritingModifyingCopyTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/rewrite/modifying/ASTRewritingModifyingCopyTest.java
+@@ -375,8 +375,8 @@ public class ASTRewritingModifyingCopyTest extends ASTRewritingModifyingTest {
+ 		String preview = evaluateRewrite(cu, astRoot);
+ 		
+ 		buf= new StringBuffer();
+-		buf.append("package test; public class Test {\r\n");
+-		buf.append("\r\n");
++		buf.append("package test; public class Test {\n");
++		buf.append("\n");
+ 		buf.append("    void foo(){this.x;} }");
+ 		assertEqualString(preview, buf.toString());
+ 	}

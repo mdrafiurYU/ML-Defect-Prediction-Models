@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/wm3.h b/hw/xfree86/xf4bpp/wm3.h
+index 1c7261e..1def6f6 100644
+--- a/hw/xfree86/xf4bpp/wm3.h
++++ b/hw/xfree86/xf4bpp/wm3.h
+@@ -6,6 +6,10 @@
+ 
+ /* $XConsortium: wm3.h /main/4 1996/02/21 17:59:24 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "vgaReg.h"
+ 
+ #ifdef	PC98_EGC

@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
+index 8a70b27..2a2f39d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryBuilder.java
+@@ -657,7 +657,8 @@ public class LuceneQueryBuilder implements QueryNodeVisitor {
+         }
+ 
+         if (node.getRelativePath() == null &&
+-                node.getOperation() != QueryConstants.OPERATION_SIMILAR) {
++                node.getOperation() != QueryConstants.OPERATION_SIMILAR &&
++                node.getOperation() != QueryConstants.OPERATION_SPELLCHECK) {
+             exceptions.add(new InvalidQueryException("@* not supported in predicate"));
+             return data;
+         }
+@@ -887,6 +888,9 @@ public class LuceneQueryBuilder implements QueryNodeVisitor {
+                 case QueryConstants.OPERATION_NOT_NULL:
+                     query = createMatchAllQuery(field);
+                     break;
++                case QueryConstants.OPERATION_SPELLCHECK:
++                    query = createMatchAllQuery(field);
++                    break;
+                 default:
+                     throw new IllegalArgumentException("Unknown relation operation: "
+                             + node.getOperation());

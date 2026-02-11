@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/core/SolrConfig.java b/solr/src/java/org/apache/solr/core/SolrConfig.java
+index 0d5e974..6834026 100644
+--- a/solr/src/java/org/apache/solr/core/SolrConfig.java
++++ b/solr/src/java/org/apache/solr/core/SolrConfig.java
+@@ -138,7 +138,7 @@ public class SolrConfig extends Config {
+     reopenReaders = getBool("mainIndex/reopenReaders", true);
+     
+     booleanQueryMaxClauseCount = getInt("query/maxBooleanClauses", BooleanQuery.getMaxClauseCount());
+-    luceneMatchVersion = getLuceneVersion("luceneMatchVersion", Version.LUCENE_30);
++    luceneMatchVersion = getLuceneVersion("luceneMatchVersion");
+     log.info("Using Lucene MatchVersion: " + luceneMatchVersion);
+ 
+     filtOptEnabled = getBool("query/boolTofilterOptimizer/@enabled", false);

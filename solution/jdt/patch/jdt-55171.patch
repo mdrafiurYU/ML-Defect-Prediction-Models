@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java
+index 684ff50..e171dee 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/SourceIndexer.java
+@@ -59,12 +59,14 @@ public class SourceIndexer extends AbstractIndexer implements SuffixConstants {
+ 			requestor, 
+ 			this.problemFactory, 
+ 			new CompilerOptions(options), 
+-			true/*index local declarations*/,
+-			true/*optimize string literals*/);
++			true, // index local declarations
++			true, // optimize string literals
++			false); // do not use source javadoc parser to speed up parsing
+ 		parser.reportOnlyOneSyntaxError = true;
+ 	
+ 		// Always check javadoc while indexing
+ 		parser.javadocParser.checkDocComment = true;
++		parser.javadocParser.reportProblems = false;
+ 		
+ 		// Launch the parser
+ 		char[] source = null;

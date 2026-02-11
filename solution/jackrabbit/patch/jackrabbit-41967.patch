@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+index 65f2778..d0ecec3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/MultiIndex.java
+@@ -261,7 +261,7 @@ public class MultiIndex {
+         }
+ 
+         // initialize indexing queue
+-        this.indexingQueue = new IndexingQueue(store, this);
++        this.indexingQueue = new IndexingQueue(store);
+ 
+         // open persistent indexes
+         for (int i = 0; i < indexNames.size(); i++) {
+@@ -298,6 +298,8 @@ public class MultiIndex {
+             reader.close();
+         }
+ 
++        indexingQueue.initialize(this);
++
+         redoLogApplied = redoLog.hasEntries();
+ 
+         // run recovery

@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
+index 13c120b..37b2ce7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
+@@ -233,7 +233,6 @@ public class FieldDeclaration extends AbstractVariableDeclaration {
+ 						} else if (initializationScope.compilerOptions().sourceLevel >= JDK1_5 // autoboxing
+ 										&& (initializationScope.isBoxingCompatibleWith(initializationType, fieldType) 
+ 												|| (initializationType.isBaseType()  // narrowing then boxing ?
+-														&& initializationType != null 
+ 														&& !fieldType.isBaseType()
+ 														&& initialization.isConstantValueOfTypeAssignableToType(initializationType, initializationScope.environment().computeBoxingType(fieldType))))) {
+ 							this.initialization.computeConversion(initializationScope, fieldType, initializationType);

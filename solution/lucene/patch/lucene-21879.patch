@@ -1,0 +1,24 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+index 78c834f..82e9760 100644
+--- a/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
++++ b/lucene/src/java/org/apache/lucene/index/SlowMultiReaderWrapper.java
+@@ -26,6 +26,7 @@ import org.apache.lucene.util.ReaderUtil; // javadoc
+ 
+ import org.apache.lucene.index.DirectoryReader; // javadoc
+ import org.apache.lucene.index.MultiReader; // javadoc
++import org.apache.lucene.index.codecs.PerDocValues;
+ 
+ /**
+  * This class forces a composite reader (eg a {@link
+@@ -65,6 +66,11 @@ public final class SlowMultiReaderWrapper extends FilterIndexReader {
+   }
+ 
+   @Override
++  public PerDocValues perDocValues() throws IOException {
++    return MultiPerDocValues.getPerDocs(in);
++  }
++
++  @Override
+   public Bits getDeletedDocs() {
+     return MultiFields.getDeletedDocs(in);
+   }

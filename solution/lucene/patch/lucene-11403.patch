@@ -1,0 +1,19 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java b/solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java
+index 36f17f7..ef595a5 100644
+--- a/solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java
+@@ -73,6 +73,14 @@ public class ReverseOrdFieldSource extends ValueSource {
+         return (long)(end - sindex.getOrd(doc));
+       }
+ 
++      public int ordVal(int doc) {
++        return (end - sindex.getOrd(doc));
++      }
++
++      public int numOrd() {
++        return end;
++      }
++
+       public double doubleVal(int doc) {
+         return (double)(end - sindex.getOrd(doc));
+       }

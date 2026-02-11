@@ -1,0 +1,14 @@
+diff --git a/hw/xnest/Pixmap.c b/hw/xnest/Pixmap.c
+index 0431196..08305b1 100644
+--- a/hw/xnest/Pixmap.c
++++ b/hw/xnest/Pixmap.c
+@@ -33,7 +33,8 @@ is" without express or implied warranty.
+ #include "Screen.h"
+ #include "XNPixmap.h"
+ 
+-DevPrivateKey xnestPixmapPrivateKey = &xnestPixmapPrivateKey;
++static int xnestPixmapPrivateKeyIndex;
++DevPrivateKey xnestPixmapPrivateKey = &xnestPixmapPrivateKeyIndex;
+ 
+ PixmapPtr
+ xnestCreatePixmap(ScreenPtr pScreen, int width, int height, int depth,

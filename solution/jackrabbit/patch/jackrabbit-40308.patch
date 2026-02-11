@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java
+index e6d4117..aefbd7a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/JNDIDatabaseJournal.java
+@@ -25,9 +25,9 @@ import javax.sql.DataSource;
+ 
+ /**
+  * @deprecated
+- * This class should not be used because it is not database vendor specific. 
++ * This class should not be used because it is not database vendor specific.
+  * Each DatabaseJournal now supports getting the connection via JNDI
+- * by setting the driver to javax.naming.InitialContext 
++ * by setting the driver to javax.naming.InitialContext
+  * and the URL to the JNDI name.
+  * <p>
+  * Database journal that uses JNDI to acquire the database connection.

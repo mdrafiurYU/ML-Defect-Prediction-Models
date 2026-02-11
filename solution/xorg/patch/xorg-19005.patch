@@ -1,0 +1,22 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 99fbb12..71b8c16 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -297,7 +297,7 @@ ProcessOtherEvent (xE, other, count)
+         (*other->DeactivateGrab)(other);
+     }
+ 
+-int
++_X_EXPORT int
+ InitProximityClassDeviceStruct( DeviceIntPtr dev)
+ {
+     register ProximityClassPtr proxc;
+@@ -309,7 +309,7 @@ InitProximityClassDeviceStruct( DeviceIntPtr dev)
+     return TRUE;
+ }
+ 
+-void
++_X_EXPORT void
+ InitValuatorAxisStruct(	DeviceIntPtr dev,
+ 						int axnum,
+ 						int minval,

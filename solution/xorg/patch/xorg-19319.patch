@@ -1,0 +1,36 @@
+diff --git a/Xi/getmmap.c b/Xi/getmmap.c
+index 6b2e38d..310452a 100644
+--- a/Xi/getmmap.c
++++ b/Xi/getmmap.c
+@@ -78,8 +78,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGetDeviceModifierMapping(client)
+-    register ClientPtr client;
++SProcXGetDeviceModifierMapping(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -95,8 +94,7 @@ SProcXGetDeviceModifierMapping(client)
+  */
+ 
+ int
+-ProcXGetDeviceModifierMapping(client)
+-    ClientPtr client;
++ProcXGetDeviceModifierMapping(ClientPtr client)
+     {
+     CARD8				maxkeys;
+     DeviceIntPtr			dev;
+@@ -145,10 +143,7 @@ ProcXGetDeviceModifierMapping(client)
+  */
+ 
+ void
+-SRepXGetDeviceModifierMapping (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGetDeviceModifierMappingReply	*rep;
++SRepXGetDeviceModifierMapping (ClientPtr client, int size, xGetDeviceModifierMappingReply *rep)
+     {
+     register char n;
+ 

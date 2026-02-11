@@ -1,0 +1,15 @@
+diff --git a/os/connection.c b/os/connection.c
+index c0bdd1a..a111fa5 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -878,6 +878,10 @@ EstablishNewConnections(ClientPtr clientUnused, pointer closure)
+ 	    ErrorConnMax(new_trans_conn);
+ 	    _XSERVTransClose(new_trans_conn);
+ 	}
++
++	if(trans_conn->flags & TRANS_NOXAUTH)
++	    new_trans_conn->flags = new_trans_conn->flags | TRANS_NOXAUTH;
++
+       }
+ #ifndef WIN32
+     }

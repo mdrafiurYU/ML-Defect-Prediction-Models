@@ -1,0 +1,23 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index 1b202e1..5ce26bd 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -628,7 +628,7 @@ RootlessReorderWindow(WindowPtr pWin)
+ {
+     RootlessWindowRec *winRec = WINREC(pWin);
+ 
+-    if (winRec != NULL && !winRec->is_reorder_pending) {
++    if (pWin->realized && winRec != NULL && !winRec->is_reorder_pending && !windows_hidden) {
+         WindowPtr newPrevW;
+         RootlessWindowRec *newPrev;
+         RootlessFrameID newPrevID;
+@@ -1568,6 +1568,9 @@ RootlessOrderAllWindows (void)
+     int i;
+     WindowPtr pWin;
+     
++    if (windows_hidden)
++        return;    
++
+     RL_DEBUG_MSG("RootlessOrderAllWindows() ");
+     for (i = 0; i < screenInfo.numScreens; i++) {
+       if (screenInfo.screens[i] == NULL) continue;

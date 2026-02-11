@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java
+index aea5002..07a6944 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/CodeAttribute.java
+@@ -910,7 +910,7 @@ public class CodeAttribute extends ClassFileAttribute implements ICodeAttribute
+ 				case IOpcodeMnemonics.TABLESWITCH :
+ 					int startpc = pc;
+ 					pc++;
+-					while (((pc - this.codeOffset) % 4) != 0) {
++					while (((pc - this.codeOffset) & 0x03) != 0) { // faster than % 4
+ 						pc++;
+ 					}
+ 					int defaultOffset = i4At(this.classFileBytes, 0, pc);
+@@ -930,7 +930,7 @@ public class CodeAttribute extends ClassFileAttribute implements ICodeAttribute
+ 				case IOpcodeMnemonics.LOOKUPSWITCH :
+ 					startpc = pc;
+ 					pc++;
+-					while (((pc - this.codeOffset) % 4) != 0) {
++					while (((pc - this.codeOffset) & 0x03) != 0) {
+ 						pc++;
+ 					}
+ 					defaultOffset = i4At(this.classFileBytes, 0, pc);

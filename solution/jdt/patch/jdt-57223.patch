@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocMethodCompletionModelTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocMethodCompletionModelTest.java
+index 6554a33..235f9e4 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocMethodCompletionModelTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavadocMethodCompletionModelTest.java
+@@ -1234,7 +1234,7 @@ public void test077() throws JavaModelException {
+ 		"		return null;\n" + 
+ 		"	}\n" + 
+ 		"}\n";
+-	completeInJavadoc("/Completion/src/javadoc/methods/tags/BasicTestMethods.java", source, true, "xstr", -1); // last position
++	completeInJavadoc("/Completion/src/javadoc/methods/tags/BasicTestMethods.java", source, true, "xstr", 2);
+ 	assertResults("");
+ }

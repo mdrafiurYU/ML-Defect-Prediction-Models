@@ -1,0 +1,14 @@
+diff --git a/xkb/XKBMisc.c b/xkb/XKBMisc.c
+index afc0dbe..987c6e3 100644
+--- a/xkb/XKBMisc.c
++++ b/xkb/XKBMisc.c
+@@ -28,6 +28,9 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #ifndef XKB_IN_SERVER
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ #include <stdio.h>
+ #define NEED_REPLIES
+ #define NEED_EVENTS

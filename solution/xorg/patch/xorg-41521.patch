@@ -1,0 +1,13 @@
+diff --git a/xfixes/region.c b/xfixes/region.c
+index cac24b5..ae48058 100644
+--- a/xfixes/region.c
++++ b/xfixes/region.c
+@@ -34,7 +34,7 @@ extern int RenderErrBase;
+ #include <gcstruct.h>
+ #include <window.h>
+ 
+-RESTYPE	    RegionResType;
++_X_EXPORT RESTYPE RegionResType;
+ 
+ static int
+ RegionResFree (pointer data, XID id)

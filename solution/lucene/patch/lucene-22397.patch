@@ -1,0 +1,15 @@
+diff --git a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/precedence/TestPrecedenceQueryParser.java b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/precedence/TestPrecedenceQueryParser.java
+index cd71979..7f267b9 100644
+--- a/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/precedence/TestPrecedenceQueryParser.java
++++ b/lucene/contrib/queryparser/src/test/org/apache/lucene/queryParser/precedence/TestPrecedenceQueryParser.java
+@@ -631,8 +631,9 @@ public class TestPrecedenceQueryParser extends LuceneTestCase {
+   }
+ 
+   @Override
+-  public void tearDown() {
++  public void tearDown() throws Exception {
+     BooleanQuery.setMaxClauseCount(originalMaxClauses);
++    super.tearDown();
+   }
+ 
+ }

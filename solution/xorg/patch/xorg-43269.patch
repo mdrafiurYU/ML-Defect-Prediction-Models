@@ -1,0 +1,13 @@
+diff --git a/mi/mipushpxl.c b/mi/mipushpxl.c
+index 4b97890..3844519 100644
+--- a/mi/mipushpxl.c
++++ b/mi/mipushpxl.c
+@@ -123,7 +123,7 @@ miPushPixels(GCPtr pGC, PixmapPtr pBitMap, DrawablePtr pDrawable,
+             LONG2CHARSDIFFORDER((MiBits)(-1) >> 1);
+ #endif
+ 
+-    pwLineStart = (MiBits *)xalloc(BitmapBytePad(dx));
++    pwLineStart = xalloc(BitmapBytePad(dx));
+     if (!pwLineStart)
+ 	return;
+     ipt = 0;

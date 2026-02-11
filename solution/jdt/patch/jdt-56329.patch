@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
+index 9a88e88..659b73b 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
+@@ -187,6 +187,10 @@ public class RecoveryScanner extends Scanner {
+ 		return this.data;
+ 	}
+ 	
++	public boolean isFakeToken() {
++		return this.fakeTokenSource != null;
++	}
++	
+ 	public void setData(RecoveryScannerData data) {
+ 		if(data == null) {
+ 			this.data = new RecoveryScannerData();

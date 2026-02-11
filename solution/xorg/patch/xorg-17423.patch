@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index c1d96d4..9de70b8 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -614,6 +614,11 @@ LOOKUP xfree86LookupTab[] = {
+     SYMFUNC(xf86GetGammaRamp)
+     SYMFUNC(xf86ChangeGammaRamp)
+ 
++    /* xf86RandR.c */
++#ifdef RANDR
++    SYMFUNC(xf86RandRSetNewVirtualAndDimensions)
++#endif
++
+     /* xf86xv.c */
+     SYMFUNC(xf86XVScreenInit)
+     SYMFUNC(xf86XVRegisterGenericAdaptorDriver)

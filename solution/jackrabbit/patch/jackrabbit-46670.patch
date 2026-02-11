@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexReader.java
+index 605bc2b..87dac99 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/JackrabbitIndexReader.java
+@@ -82,8 +82,8 @@ public final class JackrabbitIndexReader
+     /**
+      * {@inheritDoc}
+      */
+-    public int getParent(int n) throws IOException {
+-        return resolver.getParent(n);
++    public int[] getParents(int n, int[] docNumbers) throws IOException {
++        return resolver.getParents(n, docNumbers);
+     }
+ 
+     //-------------------------< MultiIndexReader >-----------------------------

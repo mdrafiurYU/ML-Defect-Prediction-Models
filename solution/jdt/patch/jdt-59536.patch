@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/TypeHierarchy.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/TypeHierarchy.java
+index 134b681..30db5d1 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/TypeHierarchy.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/TypeHierarchy.java
+@@ -150,7 +150,7 @@ public TypeHierarchy(IType type, ICompilationUnit[] workingCopies, IJavaProject
+  * Creates a TypeHierarchy on the given type.
+  */
+ public TypeHierarchy(IType type, ICompilationUnit[] workingCopies, IJavaSearchScope scope, boolean computeSubtypes) {
+-	this.focusType = type;
++	this.focusType = type == null ? null : (IType) ((JavaElement) type).unresolved(); // unsure the focus type is unresolved (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=92357)
+ 	this.workingCopies = workingCopies;
+ 	this.computeSubtypes = computeSubtypes;
+ 	this.scope = scope;

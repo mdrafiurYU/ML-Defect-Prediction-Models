@@ -1,0 +1,13 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index 212352c..e8a7b79 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -344,7 +344,7 @@ RRCrtcDestroyResource (pointer value, XID pid)
+ 	    if (pScrPriv->crtcs[i] == crtc)
+ 	    {
+ 		memmove (pScrPriv->crtcs + i, pScrPriv->crtcs + i + 1,
+-			 (pScrPriv->numCrtcs - (i - 1)) * sizeof (RRCrtcPtr));
++			 (pScrPriv->numCrtcs - (i + 1)) * sizeof (RRCrtcPtr));
+ 		--pScrPriv->numCrtcs;
+ 		break;
+ 	    }

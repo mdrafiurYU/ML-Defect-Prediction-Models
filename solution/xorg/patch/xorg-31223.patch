@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/os-support/bus/xf86Pci.h b/hw/xfree86/os-support/bus/xf86Pci.h
+index 458f0ce..bdbff9a 100644
+--- a/hw/xfree86/os-support/bus/xf86Pci.h
++++ b/hw/xfree86/os-support/bus/xf86Pci.h
+@@ -252,7 +252,6 @@ typedef enum {
+ /* Public PCI access functions */
+ ADDRESS	      pciBusAddrToHostAddr(PCITAG tag, PciAddrType type, ADDRESS addr);
+ PCITAG	      pciTag(int busnum, int devnum, int funcnum);
+-int	      pciGetBaseSize(PCITAG tag, int indx, Bool destructive, Bool *min);
+ Bool xf86scanpci(void);
+ 
+ extern int pciNumBuses;

@@ -1,0 +1,14 @@
+diff --git a/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java b/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java
+index 29c324d..a2c5f75 100644
+--- a/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java
++++ b/lucene/contrib/remote/src/test/org/apache/lucene/search/TestRemoteSearchable.java
+@@ -122,8 +122,7 @@ public class TestRemoteSearchable extends RemoteTestCase {
+     Searchable[] searchables = { lookupRemote() };
+     Searcher searcher = new MultiSearcher(searchables);
+     ScoreDoc[] hits = searcher.search(
+-          new ConstantScoreQuery(new QueryWrapperFilter(
+-                                   new TermQuery(new Term("test", "test")))), null, 1000).scoreDocs;
++          new ConstantScoreQuery(new TermQuery(new Term("test", "test"))), null, 1000).scoreDocs;
+     assertEquals(1, hits.length);
+   }
+ }

@@ -1,0 +1,11 @@
+diff --git a/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java b/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java
+index eaf6d3f..58c77fd 100644
+--- a/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java
++++ b/lucene/src/java/org/apache/lucene/queryParser/QueryParserBase.java
+@@ -806,6 +806,7 @@ public abstract class QueryParserBase {
+     }
+       
+     try {
++      source.end();
+       source.close();
+     } catch (IOException ignored) {}

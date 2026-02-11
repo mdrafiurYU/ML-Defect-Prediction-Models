@@ -1,0 +1,183 @@
+diff --git a/hw/xgl/xgltrap.c b/hw/xgl/xgltrap.c
+index 8f792a6..26e2bc4 100644
+--- a/hw/xgl/xgltrap.c
++++ b/hw/xgl/xgltrap.c
+@@ -151,8 +151,8 @@ xglTrapezoids (CARD8	     op,
+ {
+     ScreenPtr	    pScreen = pDst->pDrawable->pScreen;
+     PicturePtr	    pMask = NULL, pSrcPicture, pDstPicture;
++    PicturePtr	    pMaskPicture = NULL;
+     xglGeometryPtr  pGeometry = NULL;
+-    glitz_surface_t *mask = NULL;
+     unsigned int    polyEdge = pDst->polyEdge;
+     INT16	    xDst, yDst;
+     INT16	    xOff, yOff;
+@@ -161,7 +161,6 @@ xglTrapezoids (CARD8	     op,
+     Bool	    target;
+     
+     XGL_SCREEN_PRIV (pScreen);
+-    XGL_DRAWABLE_PIXMAP_PRIV (pDst->pDrawable);
+ 
+     xDst = traps[0].left.p1.x >> 16;
+     yDst = traps[0].left.p1.y >> 16;
+@@ -207,13 +206,15 @@ xglTrapezoids (CARD8	     op,
+ 	    return;
+ 	}
+ 	
+-	/* make sure destination drawable is locked */
+-	pPixmapPriv->lock++;
++	if (!target)
++	{
++	    /* make sure we don't do accelerated drawing to mask */
++	    xglSetPixmapVisual (pPixmap, NULL);
++	}
+ 
+-	/* lock mask if we are not doing accelerated drawing to destination */
+ 	area = rect.width * rect.height;
+-	if (!target || (SMOOTH_TRAPS_ESTIMATE_RECTS (nTrap) * 4) > area)
+-	    XGL_GET_PIXMAP_PRIV (pPixmap)->lock = 1;
++	if ((SMOOTH_TRAPS_ESTIMATE_RECTS (nTrap) * 4) > area)
++	    XGL_GET_PIXMAP_PRIV (pPixmap)->target = xglPixmapTargetNo;
+ 	
+ 	ValidatePicture (pMask);
+ 	pGC = GetScratchGC (pPixmap->drawable.depth, pScreen);
+@@ -232,9 +233,6 @@ xglTrapezoids (CARD8	     op,
+     }
+     else
+     {
+-	/* make sure destination drawable is locked */
+-	pPixmapPriv->lock++;
+-
+ 	if (maskFormat)
+ 	{
+ 	    if (maskFormat->depth == 1)
+@@ -254,13 +252,15 @@ xglTrapezoids (CARD8	     op,
+ 	if (maskFormat || polyEdge == PolyEdgeSmooth)
+ 	{
+ 	    glitz_vertex_format_t *format;
++	    glitz_surface_t	  *mask;
+ 	    xTrapezoid		  *pTrap = traps;
+ 	    int			  nAddedTrap, n = nTrap;
+ 	    int			  offset = 0;
+ 	    int			  size = SMOOTH_TRAPS_ESTIMATE_RECTS (n);
+ 
+-	    mask = pScreenPriv->trapInfo.mask;
++	    pMaskPicture = pScreenPriv->trapInfo.pMask;
+ 	    format = &pScreenPriv->trapInfo.format.vertex;
++	    mask = pMaskPicture->pSourcePict->source.devPrivate.ptr;
+ 	    
+ 	    size *= format->bytes_per_vertex;
+ 	    pGeometry = xglGetScratchGeometryWithSize (pScreen, size);
+@@ -275,7 +275,6 @@ xglTrapezoids (CARD8	     op,
+ 		    if (pMask)
+ 			FreePicture (pMask, 0);
+ 
+-		    pPixmapPriv->lock--;
+ 		    return;
+ 		}
+ 		
+@@ -304,7 +303,6 @@ xglTrapezoids (CARD8	     op,
+ 		if (pMask)
+ 		    FreePicture (pMask, 0);
+ 
+-		pPixmapPriv->lock--;
+ 		return;
+ 	    }
+ 	    
+@@ -317,19 +315,18 @@ xglTrapezoids (CARD8	     op,
+     }
+ 
+     if (pGeometry &&
+-	xglComp (pMask ? PictOpAdd : op,
++	xglCompositeGeneral (pMask ? PictOpAdd : op,
+ 		 pSrcPicture,
+-		 NULL,
++			     pMaskPicture,
+ 		 pDstPicture,
++			     pGeometry,
+ 		 extents.x1 + xOff + xSrc - xDst,
+ 		 extents.y1 + yOff + ySrc - yDst,
+ 		 0, 0,
+ 		 pDstPicture->pDrawable->x + extents.x1 + xOff,
+ 		 pDstPicture->pDrawable->y + extents.y1 + yOff,
+ 		 extents.x2 - extents.x1,
+-		 extents.y2 - extents.y1,
+-		 pGeometry,
+-		 mask))
++			     extents.y2 - extents.y1))
+     {
+ 	/* no intermediate mask? we need to register damage from here as
+ 	   CompositePicture will never be called. */
+@@ -368,8 +365,9 @@ xglTrapezoids (CARD8	     op,
+ 		(*ps->RasterizeTrapezoid) (pDstPicture, traps, xOff, yOff);
+ 
+ 	    xglAddCurrentSurfaceDamage (pDstPicture->pDrawable);
+-	} else
+-	    miTrapezoids (op, pSrc, pDstPicture, NULL,
++	}
++	else
++	    miTrapezoids (op, pSrc, pDstPicture, maskFormat,
+ 			  xSrc, ySrc, nTrap, traps);
+     }
+     
+@@ -385,9 +383,6 @@ xglTrapezoids (CARD8	     op,
+ 	
+ 	FreePicture (pMask, 0);
+     }
+-
+-    /* release destination drawable lock */
+-    pPixmapPriv->lock--;
+ }
+ 
+ void
+@@ -417,14 +412,18 @@ xglAddTraps (PicturePtr pDst,
+ 
+     if (xglPrepareTarget (pDst->pDrawable))
+     {
++	PicturePtr	      pMask;
+ 	glitz_vertex_format_t *format;
++	glitz_surface_t	      *mask;
+ 	xglGeometryPtr	      pGeometry;
+ 	xTrap		      *pTrap = traps;
+ 	int		      nAddedTrap, n = nTrap;
+ 	int		      offset = 0;
+ 	int		      size = SMOOTH_TRAPS_ESTIMATE_RECTS (n);
+ 
++	pMask = pScreenPriv->trapInfo.pMask;
+ 	format = &pScreenPriv->trapInfo.format.vertex;
++	mask = pMask->pSourcePict->source.devPrivate.ptr;
+ 
+ 	size *= format->bytes_per_vertex;
+ 	pGeometry = xglGetScratchGeometryWithSize (pScreen, size);
+@@ -439,8 +438,7 @@ xglAddTraps (PicturePtr pDst,
+ 	    
+ 	    offset +=
+ 		glitz_add_traps (pGeometry->buffer,
+-				 offset, size - offset, format->type,
+-				 pScreenPriv->trapInfo.mask,
++				 offset, size - offset, format->type, mask,
+ 				 (glitz_trap_t *) pTrap, n,
+ 				 &nAddedTrap);
+ 		
+@@ -456,16 +454,16 @@ xglAddTraps (PicturePtr pDst,
+ 			    pDst->pDrawable->x + xOff,
+ 			    pDst->pDrawable->y + yOff);
+ 	
+-	if (xglComp (PictOpAdd,
++	if (xglCompositeGeneral (PictOpAdd,
+ 		     pScreenPriv->pSolidAlpha,
+-		     NULL,
++				 pMask,
+ 		     pDst,
++				 pGeometry,
+ 		     0, 0,
+ 		     0, 0,
+ 		     pDst->pDrawable->x, pDst->pDrawable->y,
+-		     pDst->pDrawable->width, pDst->pDrawable->height,
+-		     pGeometry,
+-		     pScreenPriv->trapInfo.mask))
++				 pDst->pDrawable->width,
++				 pDst->pDrawable->height))
+ 	{
+ 	    xglAddCurrentBitDamage (pDst->pDrawable);
+ 	    return;

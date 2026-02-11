@@ -1,0 +1,22 @@
+diff --git a/fb/fbtrap.c b/fb/fbtrap.c
+index 8639695..4c67bcd 100644
+--- a/fb/fbtrap.c
++++ b/fb/fbtrap.c
+@@ -95,6 +95,8 @@ fbAddTraps (PicturePtr	pPicture,
+ 	}
+ 	traps++;
+     }
++
++    fbFinishAccess (pPicture->pDrawable);
+ }
+ 
+ void
+@@ -142,6 +144,8 @@ fbRasterizeTrapezoid (PicturePtr    pPicture,
+ 	
+ 	fbRasterizeEdges (buf, bpp, width, stride, &l, &r, t, b);
+     }
++
++    fbFinishAccess (pPicture->pDrawable);
+ }
+ 
+ static int

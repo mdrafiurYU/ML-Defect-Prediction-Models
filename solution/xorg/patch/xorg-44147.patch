@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/linux/mouse.c b/hw/kdrive/linux/mouse.c
+index f2fae94..02214b3 100644
+--- a/hw/kdrive/linux/mouse.c
++++ b/hw/kdrive/linux/mouse.c
+@@ -944,7 +944,7 @@ MouseInit (KdPointerInfo *pi)
+         for (i = 0; i < NUM_DEFAULT_MOUSE; i++) {
+             fd = open (kdefaultMouse[i], 2);
+             if (fd >= 0) {
+-                pi->path = KdSaveString (kdefaultMouse[i]);
++                pi->path = strdup (kdefaultMouse[i]);
+                 break;
+             }
+         }

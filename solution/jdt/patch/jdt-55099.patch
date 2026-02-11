@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java
+index 3bdbcca..cceeeef 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/AbstractCommentParser.java
+@@ -1045,8 +1045,8 @@ public abstract class AbstractCommentParser implements JavadocTagConstants {
+ 						}
+ 						return false;
+ 					case TerminalTokens.TokenNameERROR :
++						consumeToken();
+ 						if (this.scanner.currentCharacter == '#') { // @see ...#member
+-							consumeToken();
+ 							reference = parseMember(typeRef);
+ 							if (reference != null) {
+ 								return pushSeeRef(reference);

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java
+index 5b83547..ac63105 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryTest.java
+@@ -60,6 +60,11 @@ public class NamespaceRegistryTest extends AbstractJCRTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        nsRegistry = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test if a new registred namespace is immediately visible through another
+      * session object.

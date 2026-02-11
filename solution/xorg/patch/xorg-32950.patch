@@ -1,0 +1,48 @@
+diff --git a/hw/xwin/winconfig.c b/hw/xwin/winconfig.c
+index 2c18771..a68ead2 100644
+--- a/hw/xwin/winconfig.c
++++ b/hw/xwin/winconfig.c
+@@ -65,7 +65,6 @@ WinCmdlineRec g_cmdline = {
+   NULL,				/* configFile */
+ #endif
+   NULL,				/* fontPath */
+-  NULL,				/* rgbPath */
+ #ifdef XWIN_XF86CONFIG
+   NULL,				/* keyboard */
+ #endif
+@@ -673,20 +672,6 @@ winConfigFiles ()
+     }
+   winMsg (from, "FontPath set to \"%s\"\n", defaultFontPath);
+ 
+-  /* RGBPath */
+-  from = X_DEFAULT;
+-  if (g_cmdline.rgbPath)
+-    {
+-      from = X_CMDLINE;
+-      rgbPath = g_cmdline.rgbPath;
+-    }
+-  else if (filesptr != NULL && filesptr->file_rgbpath)
+-    {
+-      from = X_CONFIG;
+-      rgbPath = xstrdup (filesptr->file_rgbpath);
+-    }
+-  winMsg (from, "RgbPath set to \"%s\"\n", rgbPath);
+-
+   return TRUE;
+ }
+ #else
+@@ -702,14 +687,6 @@ winConfigFiles ()
+       winMsg (X_CMDLINE, "FontPath set to \"%s\"\n", defaultFontPath);
+     }
+ 
+-  /* RGBPath */
+-  if (g_cmdline.rgbPath)
+-    {
+-      from = X_CMDLINE;
+-      rgbPath = g_cmdline.rgbPath;
+-      winMsg (X_CMDLINE, "RgbPath set to \"%s\"\n", rgbPath);
+-    }
+-
+   return TRUE;
+ }
+ #endif

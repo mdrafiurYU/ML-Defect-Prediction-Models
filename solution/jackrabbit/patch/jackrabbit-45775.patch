@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/json/JsonParserTest.java b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/json/JsonParserTest.java
+index 50c0d24..8dadfa7 100644
+--- a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/json/JsonParserTest.java
++++ b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/json/JsonParserTest.java
+@@ -228,7 +228,6 @@ public class JsonParserTest extends TestCase {
+             }
+             public void value(String value) {
+                 assertEquals("abc\u2345ab\u00EB\u0633c", value);
+-                assertEquals("abc\u2345abë\u0633c", value);
+             }
+             public void value(long value) {
+                 fail();
+@@ -254,7 +253,6 @@ public class JsonParserTest extends TestCase {
+             }
+             public void value(String value) {
+                 assertEquals("\u00EB", value);
+-                assertEquals("ë", value);
+             }
+             public void value(long value) {
+                 fail();

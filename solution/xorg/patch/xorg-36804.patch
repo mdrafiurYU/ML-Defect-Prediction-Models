@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index d69e6b7..afa292f 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -284,7 +284,7 @@ static void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, in
+                 break;
+                 
+             case kXquartzSetRootClip:
+-                QuartzSetRootClip((BOOL)xe[i].u.clientMessage.u.l.longs0);
++                QuartzSetRootClip((Bool)xe[i].u.clientMessage.u.l.longs0);
+                 break;
+                 
+             case kXquartzQuit:

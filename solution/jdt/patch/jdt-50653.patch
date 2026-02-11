@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathJar.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathJar.java
+index e0fae78..45bcc8c 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathJar.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathJar.java
+@@ -93,8 +93,9 @@ ClasspathJar(IFile resource, AccessRuleSet accessRuleSet) {
+ 	this.accessRuleSet = accessRuleSet;
+ }
+ 
+-ClasspathJar(String zipFilename, AccessRuleSet accessRuleSet) {
++ClasspathJar(String zipFilename, long lastModified, AccessRuleSet accessRuleSet) {
+ 	this.zipFilename = zipFilename;
++	this.lastModified = lastModified;
+ 	this.zipFile = null;
+ 	this.knownPackageNames = null;
+ 	this.accessRuleSet = accessRuleSet;

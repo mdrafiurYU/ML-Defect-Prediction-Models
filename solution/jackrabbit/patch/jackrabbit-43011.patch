@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java
+index c380fe9..c9e24c5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataRecord.java
+@@ -46,4 +46,10 @@ public interface DataRecord {
+      */
+     InputStream getStream() throws DataStoreException;
+ 
++    /**
++     * Returns the last modified of the record.
++     * 
++     * @return last modified time of the binary stream
++     */
++    long getLastModified();
+ }

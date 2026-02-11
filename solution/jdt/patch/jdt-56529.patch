@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
+index f28eb4a..2488731 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/generatedfile/GeneratedFileManager.java
+@@ -778,11 +778,11 @@ public class GeneratedFileManager {
+ 			AptPlugin.log(e, "Unable to delete configuration marker."); //$NON-NLS-1$
+ 		}
+ 		_skipTypeGeneration = false;
+-		_gsfm.createGeneratedSourceFolder();
++		_gsfm.ensureFolderExists();
+ 		final IFolder genFolder;		
+ 		synchronized(this){
+ 			genFolder = _gsfm.getFolder();
+-			_snapshotFolderName = _gsfm.getFolderName();
++			_snapshotFolderName = genFolder.getProjectRelativePath().toString();
+ 		}
+ 		try {
+ 			_generatedPackageFragmentRoot = null;

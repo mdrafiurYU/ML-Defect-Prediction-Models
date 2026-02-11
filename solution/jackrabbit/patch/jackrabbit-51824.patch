@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java
+index 2288644..1cfa378 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/DefaultAccessManager.java
+@@ -421,11 +421,15 @@ public class DefaultAccessManager extends AbstractAccessControlManager implement
+         checkInitialized();
+         checkValidNodePath(absPath);
+         checkPermission(absPath, Permission.READ_AC);
+-
+-        int bits = acProvider.compilePermissions(principals).getPrivileges(resolver.getQPath(absPath));
+-        return (bits == PrivilegeRegistry.NO_PRIVILEGE) ?
+-                new Privilege[0] :
+-                privilegeRegistry.getPrivileges(bits);
++        CompiledPermissions perms = acProvider.compilePermissions(principals);
++        try {
++            int bits = perms.getPrivileges(resolver.getQPath(absPath));
++            return (bits == PrivilegeRegistry.NO_PRIVILEGE) ?
++                    new Privilege[0] :
++                    privilegeRegistry.getPrivileges(bits);
++        } finally {
++            perms.close();
++        }
+     }
+ 
+     //---------------------------------------< AbstractAccessControlManager >---

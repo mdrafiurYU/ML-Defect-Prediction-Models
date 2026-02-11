@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java b/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java
+index c811802..1963006 100644
+--- a/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java
++++ b/solr/src/java/org/apache/solr/spelling/IndexBasedSpellChecker.java
+@@ -18,10 +18,11 @@ package org.apache.solr.spelling;
+ 
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.store.FSDirectory;
++import org.apache.lucene.search.spell.HighFrequencyDictionary;
++
+ import org.apache.solr.common.util.NamedList;
+ import org.apache.solr.core.SolrCore;
+ import org.apache.solr.search.SolrIndexSearcher;
+-import org.apache.solr.util.HighFrequencyDictionary;
+ 
+ import java.io.File;
+ import java.io.IOException;

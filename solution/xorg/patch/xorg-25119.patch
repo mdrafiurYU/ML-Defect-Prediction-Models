@@ -1,0 +1,12 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index c1ba462..c35a964 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -658,6 +658,7 @@ SDevicePresenceNotifyEvent (devicePresenceNotify *from, devicePresenceNotify *to
+     *to = *from;
+     swaps(&to->sequenceNumber,n);
+     swapl(&to->time, n);
++    swaps(&to->control, n);
+ }
+ 
+ /************************************************************************

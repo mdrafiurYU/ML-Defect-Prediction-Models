@@ -1,0 +1,13 @@
+diff --git a/Xi/grabacc.c b/Xi/grabacc.c
+index db9c9f2..59888ee 100644
+--- a/Xi/grabacc.c
++++ b/Xi/grabacc.c
+@@ -93,7 +93,7 @@ void
+ SRepXGrabAccessControl(ClientPtr client, int size, 
+         xGrabAccessControlReply* rep)
+ {
+-    register char n;
++    char n;
+ 
+     swaps(&rep->sequenceNumber, n);
+     swapl(&rep->length, n);

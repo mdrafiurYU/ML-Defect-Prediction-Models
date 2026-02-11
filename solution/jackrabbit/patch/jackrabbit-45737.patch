@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java
+index 6f70ea8..91046de 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java
+@@ -50,11 +50,6 @@ public class WriteTest extends AbstractWriteTest {
+         }
+     }
+ 
+-    protected void clearACInfo() {
+-        // nop since ac information is stored with nodes that get removed
+-        // during the general tear-down.
+-    }
+-
+     protected JackrabbitAccessControlList getPolicy(AccessControlManager acM, String path, Principal principal) throws RepositoryException, AccessDeniedException, NotExecutableException {
+         AccessControlPolicyIterator it = acM.getApplicablePolicies(path);
+         while (it.hasNext()) {

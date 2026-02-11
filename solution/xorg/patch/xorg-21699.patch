@@ -1,0 +1,18 @@
+diff --git a/GL/glx/single2swap.c b/GL/glx/single2swap.c
+index 41a42bb..6d5e5ce 100644
+--- a/GL/glx/single2swap.c
++++ b/GL/glx/single2swap.c
+@@ -270,3 +270,13 @@ int __glXDispSwap_GetString(__GLXclientState *cl, GLbyte *pc)
+ {
+     return DoGetString(cl, pc, GL_TRUE);
+ }
++
++int __glXDispSwap_GetProgramStringARB(__GLXclientState *cl, GLbyte *pc)
++{
++    return BadRequest;
++}
++
++int __glXDispSwap_GetProgramStringNV(__GLXclientState *cl, GLbyte *pc)
++{
++    return BadRequest;
++}

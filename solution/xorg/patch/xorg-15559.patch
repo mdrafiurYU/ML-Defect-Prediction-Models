@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclMisc.c b/Xprint/pcl/PclMisc.c
+index 9405a4e..3a958e7 100644
+--- a/Xprint/pcl/PclMisc.c
++++ b/Xprint/pcl/PclMisc.c
+@@ -46,6 +46,10 @@ copyright holders.
+ */
+ /* $XFree86: xc/programs/Xserver/Xprint/pcl/PclMisc.c,v 1.10tsi Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdlib.h>
+ #include <signal.h>
+ #include <sys/types.h>

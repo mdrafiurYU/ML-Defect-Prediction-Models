@@ -1,0 +1,12 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index a828044..a83d5ed 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -952,7 +952,6 @@ ProcessOtherEvent(xEventPtr xE, DeviceIntPtr device, int count)
+     KeyClassPtr k;
+     ValuatorClassPtr v;
+     deviceValuator *xV  = (deviceValuator *) xE;
+-    int coretype = 0;
+     int ret = 0;
+ 
+     ret = UpdateDeviceState(device, xE, count);

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+index cd56034..b89b689 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+@@ -473,7 +473,7 @@ public class TestDisjunctionMaxQuery extends LuceneTestCase {
+     return q;
+   }
+   
+-  protected void printHits(String test, ScoreDoc[] h, Searcher searcher)
++  protected void printHits(String test, ScoreDoc[] h, IndexSearcher searcher)
+       throws Exception {
+     
+     System.err.println("------- " + test + " -------");

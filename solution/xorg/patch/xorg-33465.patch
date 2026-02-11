@@ -1,0 +1,13 @@
+diff --git a/include/dix.h b/include/dix.h
+index daf16cb..05366ec 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -88,7 +88,7 @@ SOFTWARE.
+ 			       DixWriteAccess);\
+ 	if (rc != Success)\
+ 	    return rc;\
+-	rc = dixLookupGC(&(pGC), stuff->gc, client, DixReadAccess);\
++	rc = dixLookupGC(&(pGC), stuff->gc, client, DixUseAccess);\
+ 	if (rc != Success)\
+ 	    return rc;\
+ 	if ((pGC->depth != pDraw->depth) || (pGC->pScreen != pDraw->pScreen))\

@@ -1,0 +1,57 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+index 96a7e39..3cac655 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+@@ -653,11 +653,7 @@ public class NodeImpl extends ItemImpl implements Node {
+         // removed, if any references are left to this node.
+         NodeTypeImpl mixin = session.getNodeTypeManager().getNodeType(ntName);
+         if (mixin.isNodeType(NameConstants.MIX_REFERENCEABLE)) {
+-            // build effective node type of remaining mixin's & primary type
+-            Name[] allRemaining = (Name[]) mixinValue.toArray(new Name[mixinValue.size() + 1]);
+-            allRemaining[mixinValue.size()] = primaryTypeName;
+-            EffectiveNodeType entRemaining = session.getEffectiveNodeTypeProvider().getEffectiveNodeType(allRemaining);
+-
++            EffectiveNodeType entRemaining = getRemainingENT(mixinValue);
+             if (!entRemaining.includesNodeType(NameConstants.MIX_REFERENCEABLE)) {
+                 PropertyIterator iter = getReferences();
+                 if (iter.hasNext()) {
+@@ -666,6 +662,17 @@ public class NodeImpl extends ItemImpl implements Node {
+             }
+         }
+ 
++        /*
++         * mix:lockable: the mixin cannot be removed if the node is currently
++         * locked even if the editing session is the lock holder.
++         */
++        if (mixin.isNodeType((NameConstants.MIX_LOCKABLE))) {
++            EffectiveNodeType entRemaining = getRemainingENT(mixinValue);
++            if (!entRemaining.includesNodeType(NameConstants.MIX_LOCKABLE) && isLocked()) {
++                throw new ConstraintViolationException(mixinName + " can not be removed: the node is locked.");
++            }
++        }
++
+         // delegate to operation
+         Name[] mixins = (Name[]) mixinValue.toArray(new Name[mixinValue.size()]);
+         Operation op = SetMixin.create(getNodeState(), mixins);
+@@ -709,6 +716,21 @@ public class NodeImpl extends ItemImpl implements Node {
+     }
+ 
+     /**
++     * Build the effective node type of remaining mixin's & primary type
++     *
++     * @param remainingMixins
++     * @return effective node type
++     * @throws ConstraintViolationException
++     * @throws NoSuchNodeTypeException
++     */
++    private EffectiveNodeType getRemainingENT(List remainingMixins)
++            throws ConstraintViolationException, NoSuchNodeTypeException {
++        Name[] allRemaining = (Name[]) remainingMixins.toArray(new Name[remainingMixins.size() + 1]);
++        allRemaining[remainingMixins.size()] = primaryTypeName;
++        return session.getEffectiveNodeTypeProvider().getEffectiveNodeType(allRemaining);
++    }
++
++    /**
+      * @see Node#canAddMixin(String)
+      */
+     public boolean canAddMixin(String mixinName) throws RepositoryException {

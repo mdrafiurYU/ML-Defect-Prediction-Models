@@ -1,0 +1,13 @@
+diff --git a/Xprint/ps/PsMisc.c b/Xprint/ps/PsMisc.c
+index 86d862c..a4c585f 100644
+--- a/Xprint/ps/PsMisc.c
++++ b/Xprint/ps/PsMisc.c
+@@ -74,7 +74,7 @@ in this Software without prior written authorization from The Open Group.
+ ** 
+ ********************************************************************/
+ 
+-#include "Xos.h"	/* for SIGCLD on pre-POSIX systems */
++#include <X11/Xos.h>	/* for SIGCLD on pre-POSIX systems */
+ #include <stdio.h>
+ #include "Ps.h"
+ 

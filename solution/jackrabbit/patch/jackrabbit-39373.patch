@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/ServerQuery.java b/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/ServerQuery.java
+index 94f16b2..de22509 100644
+--- a/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/ServerQuery.java
++++ b/jackrabbit-jcr-rmi/src/main/java/org/apache/jackrabbit/rmi/server/ServerQuery.java
+@@ -55,7 +55,7 @@ public class ServerQuery extends ServerObject implements RemoteQuery {
+     /** {@inheritDoc} */
+     public RemoteQueryResult execute()
+             throws RepositoryException, RemoteException {
+-        return new ServerQueryResult(query.execute(), getFactory());
++        return getFactory().getRemoteQueryResult(query.execute());
+     }
+ 
+     /** {@inheritDoc} */

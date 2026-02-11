@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+index cd44f74..76c1f2e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+@@ -1214,7 +1214,7 @@ public class NodeImpl extends ItemImpl implements org.apache.jackrabbit.api.jsr2
+             throw new RepositoryException("Failed to clean up child items defined by removed mixin " + session.getJCRName(mixinName));
+         } finally {
+             if (!success) {
+-                // TODO revert changes made to the jcr:mixinTypes property
++                // TODO JCR-1914: revert changes made to jcr:mixinTypes
+             }
+         }
+     }

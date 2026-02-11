@@ -1,0 +1,24 @@
+diff --git a/hw/dmx/input/dmxevents.c b/hw/dmx/input/dmxevents.c
+index 596f37c..5316f0f 100644
+--- a/hw/dmx/input/dmxevents.c
++++ b/hw/dmx/input/dmxevents.c
+@@ -36,6 +36,10 @@
+  * Provide support and helper functions for enqueing events received by
+  * the low-level input drivers. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #define DMX_EVENTS_DEBUG 0
+ 
+ #include "dmxinputinit.h"
+@@ -48,7 +52,7 @@
+ #include "dmxsigio.h"
+ #include "dmxmap.h"
+ 
+-#include "keysym.h"
++#include <X11/keysym.h>
+ #include "opaque.h"
+ #include "inputstr.h"
+ #include "mipointer.h"

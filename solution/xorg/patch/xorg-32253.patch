@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxcmds.c b/GL/glx/glxcmds.c
+index 900a347..597c7bd 100644
+--- a/GL/glx/glxcmds.c
++++ b/GL/glx/glxcmds.c
+@@ -73,6 +73,8 @@ GlxSetRenderTables (struct _glapi_table *table)
+ void
+ __glXContextDestroy(__GLXcontext *context)
+ {
++    if (!context->isDirect)
++	__glXDeassociateContext(context);
+     __glXFlushContextCache();
+ }
+ 

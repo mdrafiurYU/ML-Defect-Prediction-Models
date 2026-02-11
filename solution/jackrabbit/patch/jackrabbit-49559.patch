@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/AbstractAccessControlManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/AbstractAccessControlManager.java
+index 80a05b4..8b7f13e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/AbstractAccessControlManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/AbstractAccessControlManager.java
+@@ -29,7 +29,6 @@ import javax.jcr.PathNotFoundException;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.UnsupportedRepositoryOperationException;
+ import javax.jcr.security.AccessControlException;
+-import javax.jcr.security.AccessControlManager;
+ import javax.jcr.security.AccessControlPolicy;
+ import javax.jcr.security.AccessControlPolicyIterator;
+ import javax.jcr.security.Privilege;
+@@ -128,7 +127,7 @@ public abstract class AbstractAccessControlManager implements JackrabbitAccessCo
+      */
+     public JackrabbitAccessControlPolicy[] getApplicablePolicies(Principal principal) throws AccessDeniedException, AccessControlException, UnsupportedRepositoryOperationException, RepositoryException {
+         checkInitialized();
+-        
++
+         log.debug("Implementation does not provide applicable policies -> returning empty array.");
+         return new JackrabbitAccessControlPolicy[0];
+     }

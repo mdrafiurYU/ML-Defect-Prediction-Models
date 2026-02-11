@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 9798b97..3855c2b 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -528,6 +528,7 @@ CloseDevice(DeviceIntPtr dev)
+ 	if (dev->key->xkbInfo)
+ 	    XkbFreeInfo(dev->key->xkbInfo);
+ #endif
++        dev->key->xkbInfo = NULL;
+ 	xfree(dev->key->curKeySyms.map);
+ 	xfree(dev->key->modifierKeyMap);
+ 	xfree(dev->key);

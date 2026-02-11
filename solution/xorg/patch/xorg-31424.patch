@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/os-support/xf86_OSproc.h b/hw/xfree86/os-support/xf86_OSproc.h
+index 6f0391d..1d6b842 100644
+--- a/hw/xfree86/os-support/xf86_OSproc.h
++++ b/hw/xfree86/os-support/xf86_OSproc.h
+@@ -228,17 +228,9 @@ extern PMClose xf86OSPMOpen(void);
+ #ifdef NEED_OS_RAC_PROTOS
+ /* RAC-related privs */
+ /* internal to os-support layer */
+-resPtr xf86StdBusAccWindowsFromOS(void);
+-resPtr xf86StdPciAccWindowsFromOS(void);
+-resPtr xf86StdIsaAccWindowsFromOS(void);
+ resPtr xf86StdAccResFromOS(resPtr ret);
+ 
+ /* available to the common layer */
+-resPtr xf86BusAccWindowsFromOS(void);
+-resPtr xf86PciBusAccWindowsFromOS(void);
+-#ifdef INCLUDE_UNUSED
+-resPtr xf86IsaBusAccWindowsFromOS(void);
+-#endif
+ resPtr xf86AccResFromOS(resPtr ret);
+ #endif /* NEED_OS_RAC_PROTOS */
+ 

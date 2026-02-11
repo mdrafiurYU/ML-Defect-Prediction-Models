@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyParser.java
+index 81b4fe7..8784815 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyParser.java
+@@ -772,6 +772,16 @@ public class BindingKeyParser {
+ 	private void parseRawType() {
+ 		this.scanner.skipParametersEnd();
+ 		consumeRawType();
++		this.scanner.skipTypeEnd();
++		parseFlags();
++	 	if (this.scanner.isAtMemberTypeStart() && this.scanner.nextToken() == Scanner.TYPE) {
++	 		char[] typeName = this.scanner.getTokenSource();
++			if (this.scanner.isAtParametersStart()) {
++				this.scanner.skipParametersStart();
++		 		parseParameterizedType(typeName, this.scanner.isAtRawTypeEnd());
++			} else
++				consumeParameterizedType(typeName, true/*raw*/);
++	 	}
+ 	}
+ 	
+ 	private void parseReturnType() {

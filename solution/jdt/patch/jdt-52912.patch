@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java
+index 795c980..d9c1cf3 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java
+@@ -939,7 +939,7 @@ public class QualifiedNameReference extends NameReference {
+ 					if (isTypeUseDeprecated(type, scope))
+ 						scope.problemReporter().deprecatedType(type, this);
+ 					type = scope.environment().convertToRawType(type);
+-					if (type.isRawType() && scope.compilerOptions().reportRawTypeReference) {
++					if (type.isRawType() && (this.bits & IgnoreRawTypeCheck) == 0 && scope.compilerOptions().reportRawTypeReference) {
+ 						scope.problemReporter().rawTypeReference(this, type);
+ 					}					
+ 					return this.resolvedType = type;

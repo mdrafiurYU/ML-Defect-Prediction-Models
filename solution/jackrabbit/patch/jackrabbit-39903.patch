@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
+index e1c9263..a8ef1b0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AppendRecord.java
+@@ -142,7 +142,7 @@ public class AppendRecord extends AbstractRecord {
+      *
+      * @param revision revision
+      */
+-    protected void setRevision(long revision) {
++    public void setRevision(long revision) {
+         this.revision = revision;
+     }

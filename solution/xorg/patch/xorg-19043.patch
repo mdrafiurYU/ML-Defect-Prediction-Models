@@ -1,0 +1,14 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 43573ae..217d8ba 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -249,6 +249,9 @@ exaGetPixmapPitch(PixmapPtr pPix);
+ unsigned long
+ exaGetPixmapSize(PixmapPtr pPix);
+ 
++void
++exaEnableDisableFBAccess (int index, Bool enable);
++
+ #define exaInitCard(exa, sync, memory_base, off_screen_base, memory_size, \
+                     offscreen_byte_align, offscreen_pitch, flags, \
+                     max_x, max_y) \

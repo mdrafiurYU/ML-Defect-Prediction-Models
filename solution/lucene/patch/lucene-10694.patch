@@ -1,0 +1,13 @@
+diff --git a/solr/src/solrj/org/apache/solr/client/solrj/request/JavaBinUpdateRequestCodec.java b/solr/src/solrj/org/apache/solr/client/solrj/request/JavaBinUpdateRequestCodec.java
+index 3c7e086..2492495 100644
+--- a/solr/src/solrj/org/apache/solr/client/solrj/request/JavaBinUpdateRequestCodec.java
++++ b/solr/src/solrj/org/apache/solr/client/solrj/request/JavaBinUpdateRequestCodec.java
+@@ -213,7 +213,7 @@ public class JavaBinUpdateRequestCodec {
+       List<String> l = (List) nl.getVal(i);
+       if (l != null)
+         solrParams.add(nl.getName(i),
+-                (String[]) l.toArray(new String[l.size()]));
++                l.toArray(new String[l.size()]));
+     }
+     return solrParams;
+   }

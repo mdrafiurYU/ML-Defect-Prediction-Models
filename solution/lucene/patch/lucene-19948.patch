@@ -1,0 +1,17 @@
+diff --git a/solr/src/test/org/apache/solr/update/DirectUpdateHandlerOptimizeTest.java b/solr/src/test/org/apache/solr/update/DirectUpdateHandlerOptimizeTest.java
+index 98f9255..2f42554 100644
+--- a/solr/src/test/org/apache/solr/update/DirectUpdateHandlerOptimizeTest.java
++++ b/solr/src/test/org/apache/solr/update/DirectUpdateHandlerOptimizeTest.java
+@@ -32,10 +32,12 @@ import java.io.FileFilter;
+  **/
+ public class DirectUpdateHandlerOptimizeTest extends AbstractSolrTestCase {
+ 
++  @Override
+   public String getSchemaFile() {
+     return "schema12.xml";
+   }
+ 
++  @Override
+   public String getSolrConfigFile() {
+     // return "solrconfig-duh-optimize.xml";
+     return "solrconfig.xml";

@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/H2PersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/H2PersistenceManager.java
+index e92349a..3c3834a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/H2PersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/H2PersistenceManager.java
+@@ -81,8 +81,8 @@ public class H2PersistenceManager extends BundleDbPersistenceManager {
+         if (getUrl() == null) {
+             setUrl("jdbc:h2:file:" + context.getHomeDir().getPath() + "/db/itemState");
+         }
+-        if (getSchema() == null) {
+-            setSchema("h2");
++        if (getDatabaseType() == null) {
++            setDatabaseType("h2");
+         }
+         if (getSchemaObjectPrefix() == null) {
+             setSchemaObjectPrefix("");

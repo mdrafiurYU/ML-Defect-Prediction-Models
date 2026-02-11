@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/BytesRefHash.java b/lucene/src/java/org/apache/lucene/util/BytesRefHash.java
+index 0389426..2fdb32e 100644
+--- a/lucene/src/java/org/apache/lucene/util/BytesRefHash.java
++++ b/lucene/src/java/org/apache/lucene/util/BytesRefHash.java
+@@ -228,7 +228,7 @@ public final class BytesRefHash {
+     lastCount = count;
+     count = 0;
+     if (resetPool) {
+-      pool.reset();
++      pool.dropBuffersAndReset();
+     }
+     bytesStart = bytesStartArray.clear();
+     if (lastCount != -1 && shrink(lastCount)) {

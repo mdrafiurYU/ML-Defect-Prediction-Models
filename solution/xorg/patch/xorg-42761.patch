@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxKillSrv.c b/xkb/ddxKillSrv.c
+index 3b5fd53..6c44118 100644
+--- a/xkb/ddxKillSrv.c
++++ b/xkb/ddxKillSrv.c
+@@ -38,7 +38,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "windowstr.h"
+ #include <xkbsrv.h>
+ 
+-int
++_X_EXPORT int
+ XkbDDXTerminateServer(DeviceIntPtr dev,KeyCode key,XkbAction *act)
+ {
+     if (dev != inputInfo.keyboard)

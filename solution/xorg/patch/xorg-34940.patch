@@ -1,0 +1,21 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index 629fb2c..ae82f5b 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -43,6 +43,7 @@ in this Software without prior written authorization from The Open Group.
+ #include   "mipointer.h"
+ 
+ #include "darwin.h"
++#include "quartz.h"
+ #include "darwinKeyboard.h"
+ 
+ #include <sys/types.h>
+@@ -361,7 +362,7 @@ void ProcessInputEvents(void) {
+ 				// fall through
+             default:
+                 // Check for mode specific event
+-                DarwinModeProcessEvent(&xe);
++                QuartzProcessEvent(&xe);
+             }
+         }
+     }

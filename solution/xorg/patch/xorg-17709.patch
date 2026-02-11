@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/ddc/print_edid.c b/hw/xfree86/ddc/print_edid.c
+index 391f220..e23256b 100644
+--- a/hw/xfree86/ddc/print_edid.c
++++ b/hw/xfree86/ddc/print_edid.c
+@@ -4,6 +4,10 @@
+  * 
+  * Copyright 1998 by Egbert Eich <Egbert.Eich@Physik.TU-Darmstadt.DE>
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "xf86.h"
+ #include "xf86_ansic.h"

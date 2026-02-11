@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/JavaBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/JavaBuilder.java
+index 02ee536..06b4f80 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/JavaBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/JavaBuilder.java
+@@ -386,6 +386,8 @@ private IProject[] getRequiredProjects(boolean includeBinaryPrerequisites) {
+ 			switch (entry.getEntryKind()) {
+ 				case IClasspathEntry.CPE_PROJECT :
+ 					p = workspaceRoot.getProject(path.lastSegment()); // missing projects are considered too
++					if (((ClasspathEntry) entry).isOptional() && !JavaProject.hasJavaNature(p)) // except if entry is optional
++						p = null;
+ 					break;
+ 				case IClasspathEntry.CPE_LIBRARY :
+ 					if (includeBinaryPrerequisites && path.segmentCount() > 1) {

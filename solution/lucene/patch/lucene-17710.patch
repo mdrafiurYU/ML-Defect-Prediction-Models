@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestDoc.java b/lucene/src/test/org/apache/lucene/index/TestDoc.java
+index 774581c..e15fc51 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestDoc.java
++++ b/lucene/src/test/org/apache/lucene/index/TestDoc.java
+@@ -57,6 +57,9 @@ public class TestDoc extends LuceneTestCase {
+     @Override
+     public void setUp() throws Exception {
+         super.setUp();
++        if (VERBOSE) {
++          System.out.println("TEST: setUp");
++        }
+         workDir = new File(TEMP_DIR,"TestDoc");
+         workDir.mkdirs();

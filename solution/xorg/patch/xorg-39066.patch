@@ -1,0 +1,21 @@
+diff --git a/include/os.h b/include/os.h
+index 89c624c..b585fd7 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -93,7 +93,6 @@ typedef struct _NewClientRec *NewClientPtr;
+ #define SIGVAL void
+ #endif
+ 
+-extern Bool OsDelayInitColors;
+ extern void (*OsVendorVErrorFProc)(const char *, va_list args);
+ 
+ extern int WaitForSomething(
+@@ -267,8 +266,6 @@ extern void OsVendorFatalError(void);
+ 
+ extern void OsVendorInit(void);
+ 
+-extern int OsInitColors(void);
+-
+ void OsBlockSignals (void);
+ 
+ void OsReleaseSignals (void);

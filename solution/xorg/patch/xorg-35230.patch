@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/bundle/bundle-main.c b/hw/xquartz/bundle/bundle-main.c
+index a7b00d6..c668567 100644
+--- a/hw/xquartz/bundle/bundle-main.c
++++ b/hw/xquartz/bundle/bundle-main.c
+@@ -100,7 +100,7 @@ static int execute(const char *command) {
+ static char *command_from_prefs(const char *key, const char *default_value) {
+     char *command = NULL;
+     
+-    CFStringRef cfKey = CFStringCreateWithPascalString(NULL, key, kCFStringEncodingASCII);
++    CFStringRef cfKey = CFStringCreateWithCString(NULL, key, kCFStringEncodingASCII);
+     CFPropertyListRef PlistRef = CFPreferencesCopyAppValue(cfKey, kCFPreferencesCurrentApplication);
+     
+     if ((PlistRef == NULL) || (CFGetTypeID(PlistRef) != CFStringGetTypeID())) {

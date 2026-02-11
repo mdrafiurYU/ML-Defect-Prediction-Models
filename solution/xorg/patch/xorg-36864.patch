@@ -1,0 +1,25 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index 990b08e..aad55fc 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -335,10 +335,7 @@ static void DarwinChangePointerControl(
+  * DarwinMouseProc
+  *  Handle the initialization, etc. of a mouse
+  */
+-static int DarwinMouseProc(
+-    DeviceIntPtr    pPointer,
+-    int             what )
+-{
++static int DarwinMouseProc(DeviceIntPtr pPointer, int what) {
+   CARD8 map[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+ 
+     switch (what) {
+@@ -351,7 +348,7 @@ static int DarwinMouseProc(
+ 				     GetMotionHistory,
+ 				     (PtrCtrlProcPtr)NoopDDA,
+ 				     GetMotionHistorySize(), 7);
+-	    InitProximityClassDeviceStruct( (DevicePtr)pPointer);
++            InitProximityClassDeviceStruct(pPointer);
+             break;
+ 
+         case DEVICE_ON:

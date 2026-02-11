@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/RunComparableTests.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/RunComparableTests.java
+index 2a31230..ccb78a2 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/RunComparableTests.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/RunComparableTests.java
+@@ -27,6 +27,7 @@ public class RunComparableTests extends junit.framework.TestCase {
+ 	public static ArrayList ALL_CLASSES = null;
+ 	static {
+ 		ALL_CLASSES = new ArrayList();
++		ALL_CLASSES.add(AmbiguousMethodTest.class);
+ 		ALL_CLASSES.add(AutoBoxingTest.class);
+ 		ALL_CLASSES.add(Compliance_1_5.class);
+ 		ALL_CLASSES.add(GenericTypeTest.class);

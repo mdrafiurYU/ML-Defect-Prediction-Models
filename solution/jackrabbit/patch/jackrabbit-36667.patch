@@ -1,0 +1,123 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 33964af..c37c9e5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -330,6 +330,17 @@ public class SearchIndex extends AbstractQueryHandler {
+     private IndexFormatVersion indexFormatVersion;
+ 
+     /**
++     * The class that implements {@link SpellChecker}.
++     */
++    private Class spellCheckerClass;
++
++    /**
++     * The spell checker for this query handler or <code>null</code> if none is
++     * configured.
++     */
++    private SpellChecker spellChecker;
++
++    /**
+      * Indicates if this <code>SearchIndex</code> is closed and cannot be used
+      * anymore.
+      */
+@@ -414,6 +425,10 @@ public class SearchIndex extends AbstractQueryHandler {
+                 log.warn("Failed to run consistency check on index: " + e);
+             }
+         }
++
++        // initialize spell checker
++        spellChecker = createSpellChecker();
++
+         log.info("Index initialized: {} Version: {}",
+                 new Object[]{path, index.getIndexFormatVersion()});
+     }
+@@ -580,6 +595,9 @@ public class SearchIndex extends AbstractQueryHandler {
+         if (extractor instanceof PooledTextExtractor) {
+             ((PooledTextExtractor) extractor).shutdown();
+         }
++        if (spellChecker != null) {
++            spellChecker.close();
++        }
+         index.close();
+         getContext().destroy();
+         closed = true;
+@@ -688,6 +706,14 @@ public class SearchIndex extends AbstractQueryHandler {
+     }
+ 
+     /**
++     * @return the spell checker of this search index. If none is configured
++     *         this method returns <code>null</code>.
++     */
++    public SpellChecker getSpellChecker() {
++        return spellChecker;
++    }
++
++    /**
+      * Returns an index reader for this search index. The caller of this method
+      * is responsible for closing the index reader when he is finished using
+      * it.
+@@ -874,6 +900,26 @@ public class SearchIndex extends AbstractQueryHandler {
+     }
+ 
+     /**
++     * Creates a spell checker for this query handler.
++     *
++     * @return the spell checker or <code>null</code> if none is configured or
++     *         an error occurs.
++     */
++    protected SpellChecker createSpellChecker() {
++        SpellChecker spCheck = null;
++        if (spellCheckerClass != null) {
++            try {
++                spCheck = (SpellChecker) spellCheckerClass.newInstance();
++                spCheck.init(this);
++            } catch (Exception e) {
++                log.warn("Exception initializing spell checker: " +
++                        spellCheckerClass, e);
++            }
++        }
++        return spCheck;
++    }
++
++    /**
+      * Returns the document element of the indexing configuration or
+      * <code>null</code> if there is no indexing configuration.
+      *
+@@ -1557,6 +1603,37 @@ public class SearchIndex extends AbstractQueryHandler {
+     }
+ 
+     /**
++     * Sets the name of the class that implements {@link SpellChecker}. The
++     * default value is <code>null</code> (none set).
++     *
++     * @param className name of the class that implements {@link SpellChecker}.
++     */
++    public void setSpellCheckerClass(String className) {
++        try {
++            Class clazz = Class.forName(className);
++            if (SpellChecker.class.isAssignableFrom(clazz)) {
++                spellCheckerClass = clazz;
++            } else {
++                log.warn("Invalid value for spellCheckerClass, {} " +
++                        "does not implement SpellChecker interface.",
++                        className);
++            }
++        } catch (ClassNotFoundException e) {
++            log.warn("Invalid value for spellCheckerClass, class {} " +
++                    "not found.", className);
++        }
++    }
++
++    /**
++     * @return the class name of the spell checker implementation or
++     *         <code>null</code> if none is set.
++     */
++    public String getSpellCheckerClass() {
++        return spellCheckerClass != null ?
++                spellCheckerClass.getName() : null;
++    }
++
++    /**
+      * Enables or disables the consistency check on startup. Consistency checks
+      * are disabled per default.
+      *

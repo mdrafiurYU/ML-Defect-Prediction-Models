@@ -1,0 +1,24 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index eb78ced..3ad4a22 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -384,6 +384,19 @@ fbComposite (CARD8      op,
+     pixman_region16_t region;
+     pixman_image_t *src, *mask, *dest;
+     
++    xDst += pDst->pDrawable->x;
++    yDst += pDst->pDrawable->y;
++    if (pSrc->pDrawable)
++    {
++        xSrc += pSrc->pDrawable->x;
++        ySrc += pSrc->pDrawable->y;
++    }
++    if (pMask && pMask->pDrawable)
++    {
++	xMask += pMask->pDrawable->x;
++	yMask += pMask->pDrawable->y;
++    }
++
+     if (!miComputeCompositeRegion (&region, pSrc, pMask, pDst, xSrc, ySrc,
+ 				   xMask, yMask, xDst, yDst, width, height))
+         return;

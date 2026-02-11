@@ -1,0 +1,30 @@
+diff --git a/solr/src/java/org/apache/solr/schema/StrField.java b/solr/src/java/org/apache/solr/schema/StrField.java
+index e908071..3bfc5a5 100644
+--- a/solr/src/java/org/apache/solr/schema/StrField.java
++++ b/solr/src/java/org/apache/solr/schema/StrField.java
+@@ -19,14 +19,9 @@ package org.apache.solr.schema;
+ 
+ import org.apache.lucene.search.SortField;
+ import org.apache.lucene.document.Fieldable;
+-import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.util.BytesRef;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.solr.search.function.ValueSource;
+-import org.apache.solr.search.function.FieldCacheSource;
+-import org.apache.solr.search.function.DocValues;
+-import org.apache.solr.search.function.StringIndexDocValues;
+ import org.apache.solr.search.QParser;
+ import org.apache.solr.util.ByteUtils;
+ 
+@@ -44,10 +39,6 @@ public class StrField extends FieldType {
+     return getStringSort(field,reverse);
+   }
+ 
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    xmlWriter.writeStr(name, f.stringValue());
+-  }
+-
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     writer.writeStr(name, f.stringValue(), true);
+   }

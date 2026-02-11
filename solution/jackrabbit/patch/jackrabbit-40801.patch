@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+index bbc43fa..611e01f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+@@ -237,7 +237,7 @@ public class BLOBValue extends BLOBFileValue {
+      * @see #delete(boolean)
+      */
+     public void discard() {
+-        if (!temp) {
++        if (!temp){
+             // do nothing if this instance is not backed by temporarily
+             // allocated resource/buffer
+             return;
+@@ -282,6 +282,14 @@ public class BLOBValue extends BLOBFileValue {
+         }
+     }
+ 
++    /**
++     * {@inheritDoc}
++     */
++    public boolean isImmutable() {
++        // delete will modify the state
++        return false;
++    }
++
+     //-------------------------------------------< java.lang.Object overrides >
+     /**
+      * Returns a string representation of this <code>BLOBFileValue</code>

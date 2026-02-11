@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java
+index bf86a3e..f64d2b2 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java
+@@ -37,6 +37,7 @@ protected Map getCompilerOptions() {
+ 	if (docSupport) {
+ 		options.put(CompilerOptions.OPTION_DocCommentSupport, CompilerOptions.ENABLED);
+ 		options.put(CompilerOptions.OPTION_ReportInvalidJavadoc, CompilerOptions.ERROR);
++		options.put(CompilerOptions.OPTION_ReportInvalidJavadocTags, CompilerOptions.ENABLED);
+ 	}
+ 	return options;
+ }

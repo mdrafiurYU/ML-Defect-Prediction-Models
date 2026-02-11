@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index 71bbe54..8edb175 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -641,7 +641,9 @@ public class SessionImpl implements Session, ManagerProvider {
+     }
+ 
+     protected ItemManager createItemManager(HierarchyManager hierarchyManager) {
+-        return new ItemManagerImpl(hierarchyManager, this);
++        ItemCache cache = new ItemCacheImpl(1000); // TODO: make configurable
++        ItemManagerImpl imgr = new ItemManagerImpl(hierarchyManager, this, cache);
++        return imgr;
+     }
+ 
+     //---------------------------------------------------< ManagerProvider > ---

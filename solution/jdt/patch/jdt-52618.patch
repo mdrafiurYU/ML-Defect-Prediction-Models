@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
+index 95edc4f..364ad50 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConstructorDeclaration.java
+@@ -418,9 +418,6 @@ public class ConstructorDeclaration extends AbstractMethodDeclaration {
+ 			}
+ 		}
+ 		
+-		if (this.binding != null && this.binding.declaringClass.isAnnotationType()) {
+-			this.scope.problemReporter().annotationTypeDeclarationCannotHaveConstructor(this);
+-		}
+ 		// if null ==> an error has occurs at parsing time ....
+ 		if (this.constructorCall != null) {
+ 			// e.g. using super() in java.lang.Object

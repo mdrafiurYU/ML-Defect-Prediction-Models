@@ -1,0 +1,38 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+index 6b846cf..11f02ee 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+@@ -722,7 +722,7 @@ public class NodeImpl extends ItemImpl implements Node {
+         // get mixin types present in the jcr:mixintypes property without
+         // modifying the NodeState.
+         List mixinValue = getMixinTypes();
+-        if (!mixinValue.contains(mixinQName)) {
++        if (!mixinValue.contains(mixinQName) && !isNodeType(mixinQName)) {
+             if (!canAddMixin(mixinQName)) {
+                 throw new ConstraintViolationException("Cannot add '" + mixinName + "' mixin type.");
+             }
+@@ -1626,11 +1626,6 @@ public class NodeImpl extends ItemImpl implements Node {
+             log.error(mixin.getName() + ": not a mixin node type");
+             return false;
+         }
+-        NodeTypeImpl primaryType = ntMgr.getNodeType(getPrimaryNodeTypeName());
+-        if (primaryType.isNodeType(mixinName)) {
+-            log.debug(mixin.getName() + ": already contained in primary node type");
+-            return false;
+-        }
+ 
+         // get list of existing nodetypes
+         Name[] existingNts = getNodeState().getNodeTypeNames();
+@@ -1643,12 +1638,6 @@ public class NodeImpl extends ItemImpl implements Node {
+             return false;
+         }
+ 
+-        // check if adding new mixin conflicts with existing nodetypes
+-        if (entExisting.includesNodeType(mixinName)) {
+-            log.debug(mixin.getName() + ": already contained in mixin types");
+-            return false;
+-        }
+-
+         // second, build new effective node type for nts including the new mixin
+         // types, detecting eventual incompatibilities
+         Name[] resultingNts = new Name[existingNts.length + 1];

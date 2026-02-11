@@ -1,0 +1,13 @@
+diff --git a/Xext/xvmc.c b/Xext/xvmc.c
+index 091e5a1..9166cf8 100644
+--- a/Xext/xvmc.c
++++ b/Xext/xvmc.c
+@@ -710,7 +710,7 @@ XvMCScreenInit(ScreenPtr pScreen, int num, XvMCAdaptorPtr pAdapt)
+ 
+    XvMCScreenKey = &XvMCScreenKeyIndex;
+ 
+-   if(!(pScreenPriv = (XvMCScreenPtr)xalloc(sizeof(XvMCScreenRec))))
++   if(!(pScreenPriv = xalloc(sizeof(XvMCScreenRec))))
+ 	return BadAlloc;
+ 
+    dixSetPrivate(&pScreen->devPrivates, XvMCScreenKey, pScreenPriv);

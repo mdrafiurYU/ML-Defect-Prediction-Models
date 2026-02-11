@@ -1,0 +1,12 @@
+diff --git a/hw/xgl/egl/xegl.c b/hw/xgl/egl/xegl.c
+index 93812ec..dd0fe9a 100644
+--- a/hw/xgl/egl/xegl.c
++++ b/hw/xgl/egl/xegl.c
+@@ -514,6 +514,7 @@ xeglScreenInit (int	  index,
+ 	softCursor = TRUE;
+ #endif
+     miDCInitialize (pScreen, &xeglPointerScreenFuncs);
++    miCreateDefColormap (pScreen);
+ 
+ //  miPointerInitialize(pScreen, &eglPointerSpriteFuncs,
+ //    &kdPointerScreenFuncs, FALSE);

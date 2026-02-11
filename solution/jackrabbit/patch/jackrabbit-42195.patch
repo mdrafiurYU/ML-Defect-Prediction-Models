@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index 6c2cdcb..b2ac217 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -1624,6 +1624,13 @@ public class SessionImpl extends AbstractSession
+             // do rename
+             destParentNode.renameChildNode(srcName.getName(), index, targetId, destName.getName());
+         } else {
++            // check shareable case
++            if (((NodeState) targetNode.getItemState()).isShareable()) {
++                String msg = "Moving a shareable node is not supported.";
++                log.debug(msg);
++                throw new UnsupportedRepositoryOperationException(msg);
++            }
++            
+             // do move:
+             // 1. remove child node entry from old parent
+             NodeState srcParentState =

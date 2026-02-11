@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java
+index 661a5e9..aa455e9 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/DeltaProcessor.java
+@@ -592,7 +592,7 @@ public class DeltaProcessor {
+ 					} else {
+ 						// java project may have been been closed or removed (look for
+ 						// element amongst old java project s list).
+-						element =  (Openable) this.manager.getJavaModel().findJavaProject(proj);
++						element =  this.manager.getJavaModel().findJavaProject(proj);
+ 					}
+ 				}
+ 				break;

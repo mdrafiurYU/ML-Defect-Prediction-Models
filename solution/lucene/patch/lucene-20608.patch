@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanMinimalStemFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanMinimalStemFilter.java
+index c14c7ea..984a563 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanMinimalStemFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/de/TestGermanMinimalStemFilter.java
+@@ -57,4 +57,9 @@ public class TestGermanMinimalStemFilter extends BaseTokenStreamTestCase {
+   public void testVocabulary() throws IOException {
+     assertVocabulary(analyzer, getDataFile("deminimaltestdata.zip"), "deminimal.txt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, analyzer, 10000*RANDOM_MULTIPLIER);
++  }
+ }

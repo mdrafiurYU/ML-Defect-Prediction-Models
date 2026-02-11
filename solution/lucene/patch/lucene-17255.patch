@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java b/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java
+index 19a7712..35356f3 100644
+--- a/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/payloads/PayloadNearQuery.java
+@@ -219,6 +219,7 @@ public class PayloadNearQuery extends SpanNearQuery {
+           return true;    	
+     }
+ 
++    @Override
+     public float score() throws IOException {
+ 
+       return super.score()

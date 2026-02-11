@@ -1,0 +1,28 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestWordDelimiterFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestWordDelimiterFilter.java
+index c784130..3d08118 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestWordDelimiterFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/miscellaneous/TestWordDelimiterFilter.java
+@@ -213,6 +213,7 @@ public class TestWordDelimiterFilter extends BaseTokenStreamTestCase {
+     
+     /* analyzer that uses whitespace + wdf */
+     Analyzer a = new Analyzer() {
++      @Override
+       public TokenStream tokenStream(String field, Reader reader) {
+         return new WordDelimiterFilter(
+             new WhitespaceTokenizer(TEST_VERSION_CURRENT, reader),
+@@ -239,6 +240,7 @@ public class TestWordDelimiterFilter extends BaseTokenStreamTestCase {
+     
+     /* analyzer that will consume tokens with large position increments */
+     Analyzer a2 = new Analyzer() {
++      @Override
+       public TokenStream tokenStream(String field, Reader reader) {
+         return new WordDelimiterFilter(
+             new LargePosIncTokenFilter(
+@@ -271,6 +273,7 @@ public class TestWordDelimiterFilter extends BaseTokenStreamTestCase {
+         new int[] { 1, 11, 1 });
+ 
+     Analyzer a3 = new Analyzer() {
++      @Override
+       public TokenStream tokenStream(String field, Reader reader) {
+         StopFilter filter = new StopFilter(TEST_VERSION_CURRENT,
+             new WhitespaceTokenizer(TEST_VERSION_CURRENT, reader), StandardAnalyzer.STOP_WORDS_SET);

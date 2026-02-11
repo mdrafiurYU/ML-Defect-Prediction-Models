@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/stempel/src/test/org/apache/lucene/analysis/pl/TestPolishAnalyzer.java b/modules/analysis/stempel/src/test/org/apache/lucene/analysis/pl/TestPolishAnalyzer.java
+index fe83796..6cb7c7d 100644
+--- a/modules/analysis/stempel/src/test/org/apache/lucene/analysis/pl/TestPolishAnalyzer.java
++++ b/modules/analysis/stempel/src/test/org/apache/lucene/analysis/pl/TestPolishAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestPolishAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "studenta", "studenta");
+     checkOneTermReuse(a, "studenci", "student");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new PolishAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

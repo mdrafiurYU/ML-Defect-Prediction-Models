@@ -1,0 +1,57 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
+index 659b73b..6978b49 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveryScanner.java
+@@ -20,6 +20,7 @@ public class RecoveryScanner extends Scanner {
+ 	private int[] pendingTokens;
+ 	private int pendingTokensPtr = -1;
+ 	private char[] fakeTokenSource = null;
++	private boolean isInserted = true;
+ 	private int skipNextInsertedTokens = -1;
+ 
+ 	public boolean record = true;
+@@ -121,19 +122,17 @@ public class RecoveryScanner extends Scanner {
+ 		this.fakeTokenSource = null;
+ 		
+ 		if(this.data.insertedTokens != null) {
+-//			if(!skipNextInsertedTokens) {
+-				for (int i = 0; i <= this.data.insertedTokensPtr; i++) {
+-					if(this.data.insertedTokensPosition[i] == this.currentPosition - 1 && i > skipNextInsertedTokens) {
+-						this.data.insertedTokenUsed[i] = true;
+-						this.pendingTokens = this.data.insertedTokens[i];
+-						this.pendingTokensPtr = this.data.insertedTokens[i].length - 1;
+-						this.fakeTokenSource = CharOperation.NO_CHAR;
+-						this.startPosition = this.currentPosition - 1;
+-						this.skipNextInsertedTokens = i;
+-						return this.pendingTokens[this.pendingTokensPtr--];
+-					}
++			for (int i = 0; i <= this.data.insertedTokensPtr; i++) {
++				if(this.data.insertedTokensPosition[i] == this.currentPosition - 1 && i > skipNextInsertedTokens) {
++					this.data.insertedTokenUsed[i] = true;
++					this.pendingTokens = this.data.insertedTokens[i];
++					this.pendingTokensPtr = this.data.insertedTokens[i].length - 1;
++					this.fakeTokenSource = CharOperation.NO_CHAR;
++					this.startPosition = this.currentPosition - 1;
++					this.skipNextInsertedTokens = i;
++					return this.pendingTokens[this.pendingTokensPtr--];
+ 				}
+-//			}
++			}
+ 			this.skipNextInsertedTokens = -1;
+ 		}
+ 
+@@ -191,6 +190,14 @@ public class RecoveryScanner extends Scanner {
+ 		return this.fakeTokenSource != null;
+ 	}
+ 	
++	public boolean isFakeTokenInserted() {
++		return this.fakeTokenSource != null && this.isInserted;
++	}
++	
++	public boolean isFakeTokenReplaced() {
++		return this.fakeTokenSource != null && !this.isInserted;
++	}
++	
+ 	public void setData(RecoveryScannerData data) {
+ 		if(data == null) {
+ 			this.data = new RecoveryScannerData();

@@ -1,0 +1,25 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/MultiPerDocValues.java b/lucene/src/java/org/apache/lucene/index/MultiPerDocValues.java
+index 181e058..60848bb 100644
+--- a/lucene/src/java/org/apache/lucene/index/MultiPerDocValues.java
++++ b/lucene/src/java/org/apache/lucene/index/MultiPerDocValues.java
+@@ -151,9 +151,19 @@ public class MultiPerDocValues extends PerDocValues {
+   }
+ 
+   public void close() throws IOException {
+-    PerDocValues[] perDocValues = this.subs;
++    final PerDocValues[] perDocValues = this.subs;
++    IOException ex = null;
+     for (PerDocValues values : perDocValues) {
+-      values.close();
++      try {
++        values.close();
++      } catch (IOException e) {
++        if (ex == null) {
++          ex = e;
++        }
++      }
++    }
++    if (ex != null) {
++      throw ex;
+     }
+   }

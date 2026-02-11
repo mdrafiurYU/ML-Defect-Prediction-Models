@@ -1,0 +1,70 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+index 1153862..8349090 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+@@ -293,19 +293,16 @@ public class QueryResultImpl implements QueryResult {
+             log.debug("query executed in {} ms",
+                     new Long(System.currentTimeMillis() - time));
+ 
+-            int start = resultNodes.size() + invalid + (int) offset;
+-            time = System.currentTimeMillis();
+-            result.skip(start);
+-            for (ScoreNode[] sn = result.nextScoreNodes();
+-                 sn != null && resultNodes.size() < maxResultSize;
+-                 sn = result.nextScoreNodes()) {
+-                // check access
+-                if (isAccessGranted(sn)) {
+-                    resultNodes.add(sn);
+-                } else {
+-                    invalid++;
+-                }
++            if (resultNodes.isEmpty() && offset > 0) {
++                // collect result offset into dummy list
++                collectScoreNodes(result, new ArrayList(), offset);
++            } else {
++                int start = resultNodes.size() + invalid + (int) offset;
++                result.skip(start);
+             }
++
++            time = System.currentTimeMillis();
++            collectScoreNodes(result, resultNodes, maxResultSize);
+             log.debug("retrieved ScoreNodes in {} ms",
+                     new Long(System.currentTimeMillis() - time));
+ 
+@@ -326,6 +323,36 @@ public class QueryResultImpl implements QueryResult {
+     }
+ 
+     /**
++     * Collect score nodes from <code>hits</code> into the <code>collector</code>
++     * list until the size of <code>collector</code> reaches <code>maxResults</code>
++     * or there are not more results.
++     *
++     * @param hits the raw hits.
++     * @param collector where the access checked score nodes are collected.
++     * @param maxResults the maximum number of results in the collector.
++     * @throws IOException if an error occurs while reading from hits.
++     * @throws RepositoryException if an error occurs while checking access rights.
++     */
++    private void collectScoreNodes(MultiColumnQueryHits hits,
++                                   List collector,
++                                   long maxResults)
++            throws IOException, RepositoryException {
++        while (collector.size() < maxResults) {
++            ScoreNode[] sn = hits.nextScoreNodes();
++            if (sn == null) {
++                // no more results
++                break;
++            }
++            // check access
++            if (isAccessGranted(sn)) {
++                collector.add(sn);
++            } else {
++                invalid++;
++            }
++        }
++    }
++
++    /**
+      * Checks if access is granted to all <code>nodes</code>.
+      *
+      * @param nodes the nodes to check.

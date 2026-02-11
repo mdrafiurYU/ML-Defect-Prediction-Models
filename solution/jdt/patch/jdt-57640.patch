@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java
+index ba8d42e..b3602f5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CaseLabel.java
+@@ -40,6 +40,13 @@ void branch() {
+ 	}
+ }
+ 
++/*
++* No support for wide branches yet
++*/
++void branchWide() {
++	this.branch(); // case label branch is already wide
++}
++
+ public boolean isCaseLabel() {
+ 	return true;
+ }

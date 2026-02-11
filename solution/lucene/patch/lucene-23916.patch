@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestNumericUtils.java b/lucene/src/test/org/apache/lucene/util/TestNumericUtils.java
+index 64144f6..c30482e 100644
+--- a/lucene/src/test/org/apache/lucene/util/TestNumericUtils.java
++++ b/lucene/src/test/org/apache/lucene/util/TestNumericUtils.java
+@@ -308,7 +308,7 @@ public class TestNumericUtils extends LuceneTestCase {
+   }
+   
+   public void testRandomSplit() throws Exception {
+-    long num = 100L * RANDOM_MULTIPLIER;
++    long num = (long) atLeast(10);
+     for (long i=0; i < num; i++) {
+       executeOneRandomSplit(random);
+     }

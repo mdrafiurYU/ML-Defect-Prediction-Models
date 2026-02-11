@@ -1,0 +1,50 @@
+diff --git a/include/dix.h b/include/dix.h
+index 5c2c5b8..b412683 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -220,8 +220,6 @@ extern int dixDestroyPixmap(
+     pointer /*value*/,
+     XID /*pid*/);
+ 
+-extern void CloseDownRetainedResources(void);
+-
+ extern void InitClient(
+     ClientPtr /*client*/,
+     int /*i*/,
+@@ -243,25 +241,10 @@ extern void DeleteWindowFromAnySelections(
+ extern void MarkClientException(
+     ClientPtr /*client*/);
+ 
+-extern int GetGeometry(
+-    ClientPtr /*client*/,
+-    xGetGeometryReply* /* wa */);
+-
+ extern int SendConnSetup(
+     ClientPtr /*client*/,
+     char* /*reason*/);
+ 
+-extern int DoGetImage(
+-    ClientPtr	/*client*/,
+-    int /*format*/,
+-    Drawable /*drawable*/,
+-    int /*x*/, 
+-    int /*y*/, 
+-    int /*width*/, 
+-    int /*height*/,
+-    Mask /*planemask*/,
+-    xGetImageReply ** /*im_return*/);
+-
+ #if defined(DDXBEFORERESET)
+ extern void ddxBeforeReset (void);
+ #endif
+@@ -632,10 +615,6 @@ typedef struct _CallbackProcs {
+     DeleteCallbackListProcPtr	DeleteCallbackList;
+ } CallbackFuncsRec, *CallbackFuncsPtr;
+ 
+-extern Bool CreateCallbackList(
+-    CallbackListPtr * /*pcbl*/,
+-    CallbackFuncsPtr /*cbfuncs*/);
+-
+ extern Bool AddCallback(
+     CallbackListPtr * /*pcbl*/,
+     CallbackProcPtr /*callback*/,

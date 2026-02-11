@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestSpanFirstQuery.java b/lucene/src/test/org/apache/lucene/search/spans/TestSpanFirstQuery.java
+index b95e771..583da51 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestSpanFirstQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestSpanFirstQuery.java
+@@ -48,7 +48,7 @@ public class TestSpanFirstQuery extends LuceneTestCase {
+     writer.addDocument(doc2);
+     
+     IndexReader reader = writer.getReader();
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     
+     // user queries on "starts-with quick"
+     SpanQuery sfq = new SpanFirstQuery(new SpanTermQuery(new Term("field", "quick")), 1);

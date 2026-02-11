@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index daecf5d..aa8b6f4 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -2225,8 +2225,8 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 			String classProp = System.getProperty("java.class.path"); //$NON-NLS-1$
+ 			if ((classProp == null) || (classProp.length() == 0)) {
+ 				this.logger.logNoClasspath();
+-			}
+-			else {
++				classpaths.add(FileSystem.getClasspath(System.getProperty("user.dir"), customEncoding, 0, null));//$NON-NLS-1$
++			} else {
+ 				StringTokenizer tokenizer = new StringTokenizer(classProp, File.pathSeparator);
+ 				String token;
+ 				while (tokenizer.hasMoreTokens()) {

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java b/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
+index 10b5b2a..965cbe2 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestFieldsReader.java
+@@ -516,7 +516,7 @@ public class TestFieldsReader extends LuceneTestCase {
+   public void testNumericField() throws Exception {
+     Directory dir = newDirectory();
+     RandomIndexWriter w = new RandomIndexWriter(random, dir);
+-    final int numDocs = _TestUtil.nextInt(random, 500, 1000) * RANDOM_MULTIPLIER;
++    final int numDocs = atLeast(500);
+     final Number[] answers = new Number[numDocs];
+     final NumericField.DataType[] typeAnswers = new NumericField.DataType[numDocs];
+     for(int id=0;id<numDocs;id++) {

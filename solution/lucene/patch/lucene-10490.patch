@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java b/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
+index ce21cc3..1d5d141 100644
+--- a/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
++++ b/lucene/src/test/org/apache/lucene/store/TestFileSwitchDirectory.java
+@@ -48,7 +48,7 @@ public class TestFileSwitchDirectory extends LuceneTestCase {
+     ((LogMergePolicy) writer.getConfig().getMergePolicy()).setUseCompoundFile(false);
+     ((LogMergePolicy) writer.getConfig().getMergePolicy()).setUseCompoundDocStore(false);
+     TestIndexWriterReader.createIndexNoClose(true, "ram", writer);
+-    IndexReader reader = writer.getReader();
++    IndexReader reader = IndexReader.open(writer);
+     assertEquals(100, reader.maxDoc());
+     writer.commit();
+     // we should see only fdx,fdt files here

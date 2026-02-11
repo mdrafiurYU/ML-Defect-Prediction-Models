@@ -1,0 +1,22 @@
+diff --git a/hw/vfb/InitOutput.c b/hw/vfb/InitOutput.c
+index 0fbf014..4c08d22 100644
+--- a/hw/vfb/InitOutput.c
++++ b/hw/vfb/InitOutput.c
+@@ -855,10 +855,16 @@ static Bool
+ vfbScreenInit(int index, ScreenPtr pScreen, int argc, char **argv)
+ {
+     vfbScreenInfoPtr pvfb = &vfbScreens[index];
+-    int dpix = 100, dpiy = 100;
++    int dpix = monitorResolution, dpiy = monitorResolution;
+     int ret;
+     char *pbits;
+ 
++    if (dpix == 0)
++      dpix = 100;
++
++    if (dpiy == 0)
++      dpiy = 100;
++
+     pvfb->paddedBytesWidth = PixmapBytePad(pvfb->width, pvfb->depth);
+     pvfb->bitsPerPixel = vfbBitsPerPixel(pvfb->depth);
+     if (pvfb->bitsPerPixel >= 8 )

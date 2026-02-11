@@ -1,0 +1,21 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/shingle/ShingleAnalyzerWrapperTest.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/shingle/ShingleAnalyzerWrapperTest.java
+index 29c3a0f..7b9762e 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/shingle/ShingleAnalyzerWrapperTest.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/shingle/ShingleAnalyzerWrapperTest.java
+@@ -359,4 +359,16 @@ public class ShingleAnalyzerWrapperTest extends BaseTokenStreamTestCase {
+                           new int[] { 13, 18, 27 },
+                           new int[] {  1,  1,  1 });
+   }
++  
++  public void testOutputUnigramsIfNoShinglesSingleToken() throws Exception {
++    ShingleAnalyzerWrapper analyzer
++      = new ShingleAnalyzerWrapper(new WhitespaceAnalyzer(TEST_VERSION_CURRENT));
++    analyzer.setOutputUnigrams(false);
++    analyzer.setOutputUnigramsIfNoShingles(true);
++    assertAnalyzesToReuse(analyzer, "please",
++                          new String[] { "please" },
++                          new int[] { 0 },
++                          new int[] { 6 },
++                          new int[] { 1 });
++  }
+ }

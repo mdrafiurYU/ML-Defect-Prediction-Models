@@ -1,0 +1,13 @@
+diff --git a/os/strlcpy.c b/os/strlcpy.c
+index aa9d042..341d028 100644
+--- a/os/strlcpy.c
++++ b/os/strlcpy.c
+@@ -27,7 +27,7 @@
+  * will be copied.  Always NUL terminates (unless siz == 0).
+  * Returns strlen(src); if retval >= siz, truncation occurred.
+  */
+-size_t
++_X_EXPORT size_t
+ strlcpy(char *dst, const char *src, size_t siz)
+ {
+ 	register char *d = dst;

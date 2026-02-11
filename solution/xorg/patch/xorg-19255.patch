@@ -1,0 +1,24 @@
+diff --git a/Xi/devbell.c b/Xi/devbell.c
+index bdc941c..c451db9 100644
+--- a/Xi/devbell.c
++++ b/Xi/devbell.c
+@@ -78,8 +78,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXDeviceBell(client)
+-    register ClientPtr client;
++SProcXDeviceBell(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -95,8 +94,7 @@ SProcXDeviceBell(client)
+  */
+ 
+ int
+-ProcXDeviceBell (client)
+-    register ClientPtr client;
++ProcXDeviceBell (register ClientPtr client)
+     {
+     DeviceIntPtr dev;
+     KbdFeedbackPtr k;

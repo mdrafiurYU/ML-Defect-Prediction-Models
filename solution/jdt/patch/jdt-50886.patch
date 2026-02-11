@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchMultipleProjectsTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchMultipleProjectsTests.java
+index eddbd98..d174ffe 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchMultipleProjectsTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchMultipleProjectsTests.java
+@@ -391,7 +391,7 @@ public void testJavaSearchScope2() throws CoreException {
+ 		IJavaSearchScope scope = SearchEngine.createJavaSearchScope(new IJavaElement[] {project}, IJavaSearchScope.APPLICATION_LIBRARIES);
+ 		assertScopeEquals(
+ 			"JavaSearchScope on [\n" + 
+-			"	"+  getExternalJCLPath() +"\n" + 
++			"	"+  getExternalJCLPath().toOSString() +"\n" + 
+ 			"]",
+ 			scope);
+ 	} finally {

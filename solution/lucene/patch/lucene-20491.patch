@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java b/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java
+index 9ae1746..e5ec6fa 100644
+--- a/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java
++++ b/lucene/src/test/org/apache/lucene/analysis/TestMockAnalyzer.java
+@@ -111,4 +111,8 @@ public class TestMockAnalyzer extends BaseTokenStreamTestCase {
+     assertAnalyzesToReuse(analyzer, testString, new String[] { "t" });
+   }
+ 
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new MockAnalyzer(random), 10000*RANDOM_MULTIPLIER);
++  }
+ }

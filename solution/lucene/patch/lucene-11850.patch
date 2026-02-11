@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/search/Grouping.java b/solr/src/java/org/apache/solr/search/Grouping.java
+index 9d75350..224afdd 100755
+--- a/solr/src/java/org/apache/solr/search/Grouping.java
++++ b/solr/src/java/org/apache/solr/search/Grouping.java
+@@ -715,10 +715,9 @@ class TopGroupSortCollector extends TopGroupCollector {
+       groupMap.put(smallest.groupValue, smallest);
+       orderedGroups.add(smallest);
+ 
++      int lastSlot = orderedGroups.last().comparatorSlot;
+       for (FieldComparator fc : comparators)
+-        fc.setBottom(orderedGroups.last().comparatorSlot);
+-      for (FieldComparator fc : smallest.sortGroupComparators)
+-        fc.setBottom(0);
++        fc.setBottom(lastSlot);
+ 
+       return;
+     }

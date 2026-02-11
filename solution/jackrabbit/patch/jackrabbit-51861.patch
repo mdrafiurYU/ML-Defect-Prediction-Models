@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeRegistry.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeRegistry.java
+index 15c02db..d5a9690 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeRegistry.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeRegistry.java
+@@ -1275,8 +1275,11 @@ public class NodeTypeRegistry implements Dumpable, NodeTypeEventListener {
+         // and do some preliminary checks
+         for (NodeTypeDef ntd : ntDefs) {
+             Name name = ntd.getName();
+-            if (name != null && registeredNTDefs.containsKey(name)) {
++            if (name != null && tmpNTDefCache.containsKey(name)) {
+                 String msg = name + " already exists";
++                if (tmpNTDefCache.containsKey(name)) {
++                    msg += " locally";
++                }
+                 log.debug(msg);
+                 throw new InvalidNodeTypeDefException(msg);
+             }

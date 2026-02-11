@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java
+index 335cdfc..195af9c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/VolatileIndex.java
+@@ -123,7 +123,7 @@ class VolatileIndex extends AbstractIndex {
+      * @return the index reader for this index.
+      * @throws IOException if an error occurs building a reader.
+      */
+-    protected synchronized IndexReader getIndexReader() throws IOException {
++    protected synchronized CommittableIndexReader getIndexReader() throws IOException {
+         commitPending();
+         return super.getIndexReader();
+     }

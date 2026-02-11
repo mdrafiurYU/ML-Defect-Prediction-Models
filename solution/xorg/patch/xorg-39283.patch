@@ -1,0 +1,15 @@
+diff --git a/glx/glxcmds.c b/glx/glxcmds.c
+index 0ca0598..0831135 100644
+--- a/glx/glxcmds.c
++++ b/glx/glxcmds.c
+@@ -1226,10 +1226,6 @@ static int DoDestroyDrawable(__GLXclientState *cl, XID glxdrawable, int type)
+ 	}
+     }
+ 
+-    if (type == GLX_DRAWABLE_PIXMAP) {
+-	((PixmapPtr) pGlxDraw->pDraw)->refcnt--;
+-    }
+-
+     FreeResource(glxdrawable, FALSE);
+ 
+     return Success;

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DocumentViewImportTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DocumentViewImportTest.java
+index 69f5036..e974b0d 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DocumentViewImportTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/DocumentViewImportTest.java
+@@ -193,7 +193,7 @@ public class DocumentViewImportTest extends AbstractImportXmlTest {
+                 String propVal = decodedProp.getString();
+                 // both possibilities
+                 if (!propVal.equals(encodedAttributeValue)
+-                        || !propVal.equals(encodedAttributeValue)) {
++                        && !propVal.equals(decodedAttributeValue)) {
+                     fail("Value " + encodedAttributeValue + "  of attribute " +
+                             decodedAttributeName + " is not correctly imported.");
+                 }
+@@ -206,7 +206,7 @@ public class DocumentViewImportTest extends AbstractImportXmlTest {
+                     String propVal = decodedProp.getString();
+                     // both possibilities
+                     if (!propVal.equals(encodedAttributeValue)
+-                            || !propVal.equals(encodedAttributeValue)) {
++                            && !propVal.equals(decodedAttributeValue)) {
+                         fail("Value " + encodedAttributeValue + "  of attribute " +
+                                 encodedAttributeName + " is not correctly imported.");
+                     }

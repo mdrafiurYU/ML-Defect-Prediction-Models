@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index 7e8712c..7f752e9 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -739,6 +739,9 @@ KdProcessArgument (int argc, char **argv, int i);
+ void
+ KdOsInit (KdOsFuncs *pOsFuncs);
+ 
++void
++KdOsAddInputDrivers (void);
++
+ Bool
+ KdAllocatePrivates (ScreenPtr pScreen);
+ 

@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/XNPixmap.h b/hw/xnest/XNPixmap.h
+index 6971b11..9eb2a3c 100644
+--- a/hw/xnest/XNPixmap.h
++++ b/hw/xnest/XNPixmap.h
+@@ -29,7 +29,7 @@ typedef struct {
+ #define xnestSharePixmap(pPixmap) ((pPixmap)->refcnt++)
+ 
+ PixmapPtr xnestCreatePixmap(ScreenPtr pScreen, int width, int height,
+-			    int depth);
++			    int depth, unsigned usage_hint);
+ Bool xnestDestroyPixmap(PixmapPtr pPixmap);
+ RegionPtr xnestPixmapToRegion(PixmapPtr pPixmap);
+ 

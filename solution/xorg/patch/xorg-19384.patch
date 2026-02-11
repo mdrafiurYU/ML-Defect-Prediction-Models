@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/xf86Axp.c b/hw/xfree86/os-support/shared/xf86Axp.c
+index 42edbc5..b8953f1 100644
+--- a/hw/xfree86/os-support/shared/xf86Axp.c
++++ b/hw/xfree86/os-support/shared/xf86Axp.c
+@@ -26,6 +26,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86Axp.h"
+ 
+ axpParams xf86AXPParams[] = { 

@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 1b62db0..e25ec30 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -3546,7 +3546,7 @@ CheckDeviceGrabs(DeviceIntPtr device, xEvent *xE,
+ {
+     int i;
+     WindowPtr pWin = NULL;
+-    FocusClassPtr focus = device->focus;
++    FocusClassPtr focus = IsPointerEvent(xE) ? NULL : device->focus;
+     xEvent core;
+     BOOL sendCore = (device->isMaster && device->coreEvents);
+ 

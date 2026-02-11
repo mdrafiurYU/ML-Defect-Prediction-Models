@@ -1,0 +1,80 @@
+diff --git a/dix/events.c b/dix/events.c
+index a931e41..57a356d 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2043,7 +2043,7 @@ XYToWindow(int x, int y)
+     return spriteTrace[spriteTraceGood-1];
+ }
+ 
+-static Bool
++Bool
+ CheckMotion(xEvent *xE, DeviceIntPtr pDev)
+ {
+     WindowPtr prevSpriteWin;
+@@ -2190,30 +2190,38 @@ void ReinitializeRootWindow(WindowPtr win, int xoff, int yoff)
+ void
+ DefineInitialRootWindow(register WindowPtr win)
+ {
+-    register ScreenPtr pScreen = win->drawable.pScreen;
+-    SpritePtr pSprite;
+     DeviceIntPtr pDev = inputInfo.devices;
+ 
++#ifdef XEVIE
++    xeviewin = win;
++#endif
++    ROOT = win;
++
+     while (pDev)
+     {
+         if (DevHasCursor(pDev))
++            InitializeSprite(pDev, win);
++        pDev = pDev->next;
++    }
++}
++
++void 
++InitializeSprite(DeviceIntPtr pDev, WindowPtr pWin)
+         {
+-            pSprite = pDev->pSprite;
++    SpritePtr pSprite;
++    ScreenPtr pScreen = pWin->drawable.pScreen;
+ 
++    pSprite = pDev->pSprite;
+             pSprite->hotPhys.pScreen = pScreen;
+             pSprite->hotPhys.x = pScreen->width / 2;
+             pSprite->hotPhys.y = pScreen->height / 2;
+             pSprite->hot = pSprite->hotPhys;
+             pSprite->hotLimits.x2 = pScreen->width;
+             pSprite->hotLimits.y2 = pScreen->height;
+-#ifdef XEVIE
+-            xeviewin =
+-#endif
+-                pSprite->win = win;
+-            pSprite->current = wCursor (win);
++    pSprite->win = pWin;
++    pSprite->current = wCursor (pWin);
+             pSprite->current->refcnt++;
+-            spriteTraceGood = 1;
+-            ROOT = win;
++
+             (*pScreen->CursorLimits) ( pDev, pScreen, pSprite->current,
+                                        &pSprite->hotLimits, &pSprite->physLimits);
+             pSprite->confined = FALSE;
+@@ -2224,7 +2232,6 @@ DefineInitialRootWindow(register WindowPtr win)
+                                            pSprite->hot.y,
+                                            FALSE); 
+             (*pScreen->DisplayCursor) (pDev, pScreen, pSprite->current);
+-
+ #ifdef PANORAMIX
+             if(!noPanoramiXExtension) {
+                 pSprite->hotLimits.x1 = -panoramiXdataPtr[0].x;
+@@ -2243,9 +2250,6 @@ DefineInitialRootWindow(register WindowPtr win)
+             }
+ #endif
+         }
+-        pDev = pDev->next;
+-    }
+-}
+ 
+ /*
+  * This does not take any shortcuts, and even ignores its argument, since

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCloneTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCloneTest.java
+index 72dfbda..e831f50 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCloneTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCloneTest.java
+@@ -127,7 +127,7 @@ public class WorkspaceCloneTest extends AbstractWorkspaceCopyBetweenTest {
+      */
+     public void testCloneNodesAccessDenied() throws RepositoryException {
+         // get read only session
+-        Session readOnlySuperuser = helper.getReadOnlySession();
++        Session readOnlySuperuser = getHelper().getReadOnlySession();
+         try {
+             String dstAbsPath = node2.getPath() + "/" + node1.getName();
+             try {

@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java
+index 25d0f2d..d506a66 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AttachedJavadocTests.java
+@@ -101,10 +101,8 @@ public class AttachedJavadocTests extends ModifyingResourceTests {
+ 	 * Reset the jar placeholder and delete project.
+ 	 */
+ 	public void tearDownSuite() throws Exception {
+-		try {
+-			Thread.sleep(6000);
+-		} catch (InterruptedException e) {
+-		}
++		waitForAutoBuild();
++		waitUntilIndexesReady();
+ 		this.deleteProject("AttachedJavadocProject"); //$NON-NLS-1$
+ 		this.root = null;
+ 		this.project = null;

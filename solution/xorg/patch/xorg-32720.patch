@@ -1,0 +1,13 @@
+diff --git a/dix/window.c b/dix/window.c
+index 717c5a7..f65fb84 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -312,7 +312,7 @@ MakeRootTile(WindowPtr pWin)
+     int i, j;
+ 
+     pWin->background.pixmap = (*pScreen->CreatePixmap)(pScreen, 4, 4,
+-						    pScreen->rootDepth);
++						    pScreen->rootDepth, 0);
+ 
+     pWin->backgroundState = BackgroundPixmap;
+     pGC = GetScratchGC(pScreen->rootDepth, pScreen);

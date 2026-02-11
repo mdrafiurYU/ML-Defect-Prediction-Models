@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/bsdResource.c b/hw/xfree86/os-support/bsd/bsdResource.c
+index d38230a..0ecd6f6 100644
+--- a/hw/xfree86/os-support/bsd/bsdResource.c
++++ b/hw/xfree86/os-support/bsd/bsdResource.c
+@@ -18,7 +18,7 @@
+ /* Avoid Imakefile changes */
+ #include "bus/Pci.h"
+ 
+-resRange PciAvoid[] = {_PCI_AVOID_PC_STYLE, _END};
++_X_EXPORT resRange PciAvoid[] = {_PCI_AVOID_PC_STYLE, _END};
+ 
+ #ifdef INCLUDE_XF86_NO_DOMAIN
+ 

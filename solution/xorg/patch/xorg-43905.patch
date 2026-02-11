@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index 9a1edc9..5ae426d 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -232,7 +232,7 @@ XkbMapChangesPtr	mc;
+ 
+     mc= (changes?(&changes->map):NULL);
+ 
+-    syms= &pCore->map[(first-xkb->min_key_code)*pCore->mapWidth];
++    syms= &pCore->map[(first - pCore->minKeyCode) * pCore->mapWidth];
+     for (key=first; key<(first+num); key++,syms+= pCore->mapWidth) {
+         explicit= xkb->server->explicit[key]&XkbExplicitKeyTypesMask;
+         types[XkbGroup1Index]= XkbKeyKeyTypeIndex(xkb,key,XkbGroup1Index);

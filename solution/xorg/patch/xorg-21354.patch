@@ -1,0 +1,15 @@
+diff --git a/include/site.h b/include/site.h
+index be8c003..5b0c693 100644
+--- a/include/site.h
++++ b/include/site.h
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ********************************************************/
+ /* $XFree86: xc/programs/Xserver/include/site.h,v 1.8 2001/12/19 21:37:35 dawes Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef SITE_H
+ #define SITE_H
+ /*

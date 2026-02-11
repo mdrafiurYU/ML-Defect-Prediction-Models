@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyResolver.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyResolver.java
+index 27c74f2..08cfe5e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyResolver.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/BindingKeyResolver.java
+@@ -298,7 +298,7 @@ public class BindingKeyResolver extends BindingKeyParser {
+ 	
+ 	public void consumeRawType() {
+ 		if (this.typeBinding == null) return;
+-		this.typeBinding = this.environment.createRawType((ReferenceBinding) this.typeBinding, this.typeBinding.enclosingType());
++		this.typeBinding = this.environment.convertToRawType(this.typeBinding);
+ 	}
+ 	public void consumeSecondaryType(char[] simpleTypeName) {
+ 		if (this.parsedUnit == null) return;

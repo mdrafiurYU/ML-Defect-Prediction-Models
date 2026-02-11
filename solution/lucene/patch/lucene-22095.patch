@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
+index 2c21045..3957c46 100644
+--- a/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
++++ b/lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/Highlighter.java
+@@ -355,6 +355,7 @@ public class Highlighter
+ 			{
+ 				try
+ 				{
++				  tokenStream.end();
+ 					tokenStream.close();
+ 				}
+ 				catch (Exception e)

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_mouse.c b/hw/xfree86/os-support/linux/lnx_mouse.c
+index afd2160..ae4bddd 100644
+--- a/hw/xfree86/os-support/linux/lnx_mouse.c
++++ b/hw/xfree86/os-support/linux/lnx_mouse.c
+@@ -29,7 +29,7 @@ DefaultProtocol(void)
+     return "Auto";
+ }
+ 
+-#define DEFAULT_MOUSE_DEV		"/dev/mouse"
++#define DEFAULT_MOUSE_DEV		"/dev/input/mice"
+ #define DEFAULT_PS2_DEV			"/dev/psaux"
+ #define DEFAULT_GPM_DATA_DEV		"/dev/gpmdata"
+ #define DEFAULT_GPM_CTL_DEV		"/dev/gpmdata"

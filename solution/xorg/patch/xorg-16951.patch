@@ -1,0 +1,16 @@
+diff --git a/fb/fbblt.c b/fb/fbblt.c
+index 131707d..c2617a7 100644
+--- a/fb/fbblt.c
++++ b/fb/fbblt.c
+@@ -271,8 +271,11 @@ fbBlt (FbBits   *srcLine,
+ 		if (startmask)
+ 		{
+ 		    bits = FbScrLeft(bits1, leftShift); 
++		    if (FbScrLeft(startmask, rightShift))
++		    {
+ 		    bits1 = *src++;
+ 		    bits |= FbScrRight(bits1, rightShift);
++		    }
+ 		    FbDoLeftMaskByteMergeRop (dst, bits, startbyte, startmask);
+ 		    dst++;
+ 		}

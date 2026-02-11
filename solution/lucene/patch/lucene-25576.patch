@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/FunctionQParser.java b/solr/src/java/org/apache/solr/search/FunctionQParser.java
+index 48f90e2..312599c 100755
+--- a/solr/src/java/org/apache/solr/search/FunctionQParser.java
++++ b/solr/src/java/org/apache/solr/search/FunctionQParser.java
+@@ -16,6 +16,8 @@
+  */
+ package org.apache.solr.search;
+ 
++import org.apache.lucene.queries.function.FunctionQuery;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.queryParser.ParseException;
+ import org.apache.lucene.search.Query;
+ import org.apache.solr.common.params.SolrParams;

@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/SolrExampleTestBase.java b/solr/src/test/org/apache/solr/client/solrj/SolrExampleTestBase.java
+index d9725aa..60fc201 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/SolrExampleTestBase.java
++++ b/solr/src/test/org/apache/solr/client/solrj/SolrExampleTestBase.java
+@@ -30,6 +30,7 @@ import org.apache.solr.util.AbstractSolrTestCase;
+  */
+ abstract public class SolrExampleTestBase extends AbstractSolrTestCase 
+ {
++  @Override
+   public String getSolrHome() { return "../../../example/solr/"; }
+   
+   @Override public String getSchemaFile()     { return getSolrHome()+"conf/schema.xml";     }

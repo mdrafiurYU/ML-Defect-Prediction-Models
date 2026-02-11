@@ -1,0 +1,19 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java b/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java
+index deb239e..0062ea9 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java
++++ b/lucene/src/test/org/apache/lucene/index/TestPerFieldCodecSupport.java
+@@ -137,7 +137,6 @@ public class TestPerFieldCodecSupport extends LuceneTestCase {
+     iwconf = newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer())
+         .setOpenMode(OpenMode.APPEND).setCodecProvider(provider);
+     ((LogMergePolicy) iwconf.getMergePolicy()).setUseCompoundFile(false);
+-    ((LogMergePolicy) iwconf.getMergePolicy()).setUseCompoundDocStore(false);
+     ((LogMergePolicy) iwconf.getMergePolicy()).setMergeFactor(10);
+     iwconf.setMaxBufferedDocs(IndexWriterConfig.DISABLE_AUTO_FLUSH);
+ 
+@@ -294,4 +293,4 @@ public class TestPerFieldCodecSupport extends LuceneTestCase {
+     }
+     dir.close();
+   }
+-}
+\ No newline at end of file
++}

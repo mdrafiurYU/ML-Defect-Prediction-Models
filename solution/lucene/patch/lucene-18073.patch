@@ -1,0 +1,12 @@
+diff --git a/solr/src/common/org/apache/solr/common/SolrDocumentList.java b/solr/src/common/org/apache/solr/common/SolrDocumentList.java
+index 273cd80..9aca8d7 100644
+--- a/solr/src/common/org/apache/solr/common/SolrDocumentList.java
++++ b/solr/src/common/org/apache/solr/common/SolrDocumentList.java
+@@ -57,6 +57,7 @@ public class SolrDocumentList extends ArrayList<SolrDocument>
+     this.start = start;
+   }
+ 
++  @Override
+   public String toString() {
+     return "{numFound="+numFound
+             +",start="+start

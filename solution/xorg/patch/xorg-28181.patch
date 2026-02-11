@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index df8a8aa..b751592 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -529,7 +529,8 @@ typedef struct _xf86CrtcConfig {
+     int			maxWidth, maxHeight;
+     
+     /* For crtc-based rotation */
+-    DamagePtr   rotationDamage;
++    DamagePtr		rotation_damage;
++    Bool		rotation_damage_registered;
+ 
+     /* DGA */
+     unsigned int	dga_flags;

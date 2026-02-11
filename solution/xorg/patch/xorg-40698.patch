@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index 0956f9c..84ea633 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -191,6 +191,8 @@ xf86SetDGAModeProc xf86SetDGAMode;
+ void SetTimeSinceLastInputEvent(void);
+ pointer xf86AddInputHandler(int fd, InputHandlerProc proc, pointer data);
+ int xf86RemoveInputHandler(pointer handler);
++void xf86DisableInputHandler(pointer handler);
++void xf86EnableInputHandler(pointer handler);
+ pointer xf86AddGeneralHandler(int fd, InputHandlerProc proc, pointer data);
+ int xf86RemoveGeneralHandler(pointer handler);
+ void xf86InterceptSignals(int *signo);

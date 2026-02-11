@@ -1,0 +1,12 @@
+diff --git a/xfixes/select.c b/xfixes/select.c
+index 12a165f..795b8bd 100644
+--- a/xfixes/select.c
++++ b/xfixes/select.c
+@@ -83,6 +83,7 @@ XFixesSelectionCallback (CallbackListPtr *callbacks, pointer data, pointer args)
+ 	{
+ 	    xXFixesSelectionNotifyEvent	ev;
+ 
++	    memset(&ev, 0, sizeof(xXFixesSelectionNotifyEvent));
+ 	    ev.type = XFixesEventBase + XFixesSelectionNotify;
+ 	    ev.subtype = subtype;
+ 	    ev.sequenceNumber = e->pClient->sequence;

@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java
+index 502fd2e..729009e 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java
+@@ -132,7 +132,7 @@ public final class BulgarianAnalyzer extends StopwordAnalyzerBase {
+   @Override
+   public TokenStreamComponents createComponents(String fieldName, Reader reader) {
+     final Tokenizer source = new StandardTokenizer(matchVersion, reader);
+-    TokenStream result = new StandardFilter(source);
++    TokenStream result = new StandardFilter(matchVersion, source);
+     result = new LowerCaseFilter(matchVersion, result);
+     result = new StopFilter(matchVersion, result, stopwords);
+     if(!stemExclusionSet.isEmpty())

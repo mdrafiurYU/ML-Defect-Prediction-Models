@@ -1,0 +1,50 @@
+diff --git a/randr/rrscreen.c b/randr/rrscreen.c
+index 58d5152..617ae41 100644
+--- a/randr/rrscreen.c
++++ b/randr/rrscreen.c
+@@ -187,9 +187,9 @@ RRScreenSizeSet (ScreenPtr  pScreen,
+     rrScrPriv(pScreen);
+ 
+ #if RANDR_12_INTERFACE
+-    if (pScrPriv->rrScreenSizeSet)
++    if (pScrPriv->rrScreenSetSize)
+     {
+-	return (*pScrPriv->rrScreenSizeSet) (pScreen,
++	return (*pScrPriv->rrScreenSetSize) (pScreen,
+ 					     width, height,
+ 					     mmWidth, mmHeight);
+     }
+@@ -376,9 +376,14 @@ ProcRRGetScreenResources (ClientPtr client)
+ 		      ((rep.nbytesNames + 3) >> 2));
+ 	
+ 	extraLen = rep.length << 2;
++	if (extraLen)
++	{
+ 	extra = xalloc (extraLen);
+ 	if (!extra)
+ 	    return BadAlloc;
++	}
++	else
++	    extra = NULL;
+ 
+ 	crtcs = (RRCrtc *) extra;
+ 	outputs = (RROutput *) (crtcs + pScrPriv->numCrtcs);
+@@ -595,12 +600,18 @@ ProcRRGetScreenInfo (ClientPtr client)
+ 	extraLen = (rep.nSizes * sizeof (xScreenSizes) +
+ 		    rep.nrateEnts * sizeof (CARD16));
+ 
++	if (extraLen)
++	{
+ 	extra = (CARD8 *) xalloc (extraLen);
+ 	if (!extra)
+ 	{
+ 	    xfree (pData);
+ 	    return BadAlloc;
+ 	}
++	}
++	else
++	    extra = NULL;
++
+ 	/*
+ 	 * First comes the size information
+ 	 */

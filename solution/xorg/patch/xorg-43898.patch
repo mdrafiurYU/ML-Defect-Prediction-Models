@@ -1,0 +1,28 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index a79d04e..abe2c9e 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -1905,6 +1905,11 @@ ProcBell(ClientPtr client)
+     REQUEST(xBellReq);
+     REQUEST_SIZE_MATCH(xBellReq);
+ 
++    if (stuff->percent < -100 || stuff->percent > 100) {
++	client->errorValue = stuff->percent;
++	return BadValue;
++    }
++
+     /* Seems like no keyboard actually has the BellProc set. Returning
+      * BadDevice (previous code) will make apps crash badly. The man pages
+      * doesn't say anything about a BadDevice being returned either.
+@@ -1913,11 +1918,6 @@ ProcBell(ClientPtr client)
+     if (!keybd->kbdfeed->BellProc)
+         return Success;
+ 
+-    if (stuff->percent < -100 || stuff->percent > 100) {
+-	client->errorValue = stuff->percent;
+-	return BadValue;
+-    }
+-
+     newpercent = (base * stuff->percent) / 100;
+     if (stuff->percent < 0)
+         newpercent = base + newpercent;

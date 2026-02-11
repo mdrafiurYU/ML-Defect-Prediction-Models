@@ -1,0 +1,34 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index 8c1aa6e..6a1c6a8 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -138,29 +138,12 @@
+ 
+ /* Global data */
+ 
+-pciBusFuncs_t *pciBusFuncs = NULL;
+-
+-ADDRESS
+-pciBusAddrToHostAddr(PCITAG tag, PciAddrType type, ADDRESS addr)
+-{
+-    if (pciBusFuncs && pciBusFuncs->pciAddrBusToHost)
+-	return pciBusFuncs->pciAddrBusToHost(tag, type, addr);
+-    else
+-	return addr;
+-}
+-
+ PCITAG
+ pciTag(int busnum, int devnum, int funcnum)
+ {
+ 	return(PCI_MAKE_TAG(busnum,devnum,funcnum));
+ }
+ 
+-ADDRESS
+-pciAddrNOOP(PCITAG tag, PciAddrType type, ADDRESS addr)
+-{
+-	return(addr);
+-}
+-
+ Bool
+ xf86scanpci(void)
+ {

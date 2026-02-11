@@ -1,0 +1,22 @@
+diff --git a/hw/xnest/XNPixmap.h b/hw/xnest/XNPixmap.h
+index 6971b11..3b08339 100644
+--- a/hw/xnest/XNPixmap.h
++++ b/hw/xnest/XNPixmap.h
+@@ -15,14 +15,14 @@ is" without express or implied warranty.
+ #ifndef XNESTPIXMAP_H
+ #define XNESTPIXMAP_H
+ 
+-extern int xnestPixmapPrivateIndex;
++extern DevPrivateKey xnestPixmapPrivateKey;
+ 
+ typedef struct {
+   Pixmap pixmap;
+ } xnestPrivPixmap;
+ 
+-#define xnestPixmapPriv(pPixmap) \
+-  ((xnestPrivPixmap *)((pPixmap)->devPrivates[xnestPixmapPrivateIndex].ptr))
++#define xnestPixmapPriv(pPixmap) ((xnestPrivPixmap *) \
++    dixLookupPrivate(&(pPixmap)->devPrivates, xnestPixmapPrivateKey))
+ 
+ #define xnestPixmap(pPixmap) (xnestPixmapPriv(pPixmap)->pixmap)
+ 

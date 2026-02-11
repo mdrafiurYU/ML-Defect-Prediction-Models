@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Globals.c b/hw/xfree86/common/xf86Globals.c
+index 7dc45b7..b3969b1 100644
+--- a/hw/xfree86/common/xf86Globals.c
++++ b/hw/xfree86/common/xf86Globals.c
+@@ -124,7 +124,7 @@ xf86InfoRec xf86Info = {
+ 	PCIOsConfig,	/* pciFlags */
+ 	Pix24DontCare,	/* pixmap24 */
+ 	X_DEFAULT,	/* pix24From */
+-#if defined(i386) || defined(__i386__)
++#ifdef __i386__
+ 	FALSE,		/* pc98 */
+ #endif
+ 	TRUE,		/* pmFlag */

@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbSwap.c b/xkb/xkbSwap.c
+index da4c905..bbb2a91 100644
+--- a/xkb/xkbSwap.c
++++ b/xkb/xkbSwap.c
+@@ -129,7 +129,7 @@ register int n;
+ 	    dataLeft-= (size*2);
+ 	}
+ 	if (dataLeft>2) {
+-	    ErrorF("Extra data (%d bytes) after SelectEvents\n",dataLeft);
++	    ErrorF("[xkb] Extra data (%d bytes) after SelectEvents\n",dataLeft);
+ 	    return BadLength;
+ 	}
+     }

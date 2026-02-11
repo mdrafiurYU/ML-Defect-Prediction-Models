@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java b/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java
+index a7bfe94..f0ccdda 100644
+--- a/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java
+@@ -51,7 +51,7 @@ public class DoubleFieldSource extends NumericFieldCacheSource<DoubleValues> {
+   public DocValues getValues(Map context, AtomicReaderContext readerContext) throws IOException {
+     final DoubleValues vals = cache.getDoubles(readerContext.reader, field, creator);
+     final double[] arr = vals.values;
+-	final Bits valid = vals.valid;
++    final Bits valid = vals.valid;
+     
+     return new DocValues() {
+       @Override
+@@ -80,6 +80,11 @@ public class DoubleFieldSource extends NumericFieldCacheSource<DoubleValues> {
+       }
+ 
+       @Override
++      public Object objectVal(int doc) {
++        return valid.get(doc) ? arr[doc] : null;
++      }
++
++      @Override
+       public String toString(int doc) {
+         return description() + '=' + doubleVal(doc);
+       }

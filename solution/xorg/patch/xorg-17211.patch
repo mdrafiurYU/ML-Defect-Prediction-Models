@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 903f61c..a4779d0 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -31,6 +31,10 @@
+  * This file contains the interfaces to the bus-specific code
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <ctype.h>
+ #include <stdlib.h>
+ #include <unistd.h>

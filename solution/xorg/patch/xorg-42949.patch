@@ -1,0 +1,22 @@
+diff --git a/xkb/ddxList.c b/xkb/ddxList.c
+index da2f9a8..3ff3d81 100644
+--- a/xkb/ddxList.c
++++ b/xkb/ddxList.c
+@@ -61,7 +61,7 @@ extern int Win32System(const char *cmdline);
+ /***====================================================================***/
+ 
+ static char *componentDirs[_XkbListNumComponents] = {
+-	"keymap", "keycodes", "types", "compat", "symbols", "geometry"
++	"keycodes", "types", "compat", "symbols", "geometry"
+ };
+ 
+ /***====================================================================***/
+@@ -280,8 +280,6 @@ XkbDDXList(DeviceIntPtr	dev,XkbSrvListInfoPtr list,ClientPtr client)
+ {
+ Status	status;
+ 
+-    status= XkbDDXListComponent(dev,_XkbListKeymaps,list,client);
+-    if (status==Success)
+ 	status= XkbDDXListComponent(dev,_XkbListKeycodes,list,client);
+     if (status==Success)
+ 	status= XkbDDXListComponent(dev,_XkbListTypes,list,client);

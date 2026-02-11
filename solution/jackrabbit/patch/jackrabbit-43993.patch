@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java
+index 86fbaca..6781cc4 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java
+@@ -604,9 +604,9 @@ public class Text {
+      *         <code>false</code> otherwise.
+      */
+     public static boolean isDescendant(String path, String descendant) {
+-        return !path.equals(descendant) &&
+-                descendant.startsWith(path) &&
+-                descendant.charAt(path.length()) == '/';
++        String pattern = path.endsWith("/") ? path : path + "/";
++        return !pattern.equals(descendant) &&
++                descendant.startsWith(pattern);
+     }
+ 
+     /**

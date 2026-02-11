@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java
+index 42bfe21..9a04608 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java
+@@ -12,10 +12,10 @@ package org.eclipse.jdt.core.tests.compiler.regression;
+ 
+ import java.util.Map;
+ 
+-import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
+-
+ import junit.framework.Test;
+ 
++import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
++
+ public class ExternalizeStringLiterals15Test extends AbstractRegressionTest {
+ 
+ static {
+@@ -27,7 +27,7 @@ public ExternalizeStringLiterals15Test(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return buildTestSuite(testClass());
++	return buildTestSuiteUniqueCompliance(testClass(), COMPLIANCE_1_5);
+ }
+ protected Map getCompilerOptions() {
+ 	Map options = super.getCompilerOptions();

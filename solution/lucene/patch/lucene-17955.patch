@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestWildcardRandom.java b/lucene/src/test/org/apache/lucene/search/TestWildcardRandom.java
+index bb07c16..cd685dd 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestWildcardRandom.java
++++ b/lucene/src/test/org/apache/lucene/search/TestWildcardRandom.java
+@@ -61,7 +61,7 @@ public class TestWildcardRandom extends LuceneTestCase {
+     }
+     
+     reader = writer.getReader();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     writer.close();
+   }

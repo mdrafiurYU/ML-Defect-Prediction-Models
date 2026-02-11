@@ -1,0 +1,26 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 078dc37..00a3c9a 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -147,6 +147,7 @@ typedef struct {
+     TrianglesProcPtr		 SavedTriangles;
+     GlyphsProcPtr                SavedGlyphs;
+     TrapezoidsProcPtr            SavedTrapezoids;
++    AddTrapsProcPtr		 SavedAddTraps;
+ #endif
+   
+     Bool			 swappedOut;
+@@ -331,6 +332,13 @@ ExaCheckGetSpans (DrawablePtr pDrawable,
+ 		 int nspans,
+ 		 char *pdstStart);
+ 
++void
++ExaCheckAddTraps (PicturePtr	pPicture,
++		  INT16		x_off,
++		  INT16		y_off,
++		  int		ntrap,
++		  xTrap		*traps);
++
+ /* exa_accel.c */
+ 
+ static _X_INLINE Bool

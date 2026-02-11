@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xgltrap.c b/hw/xgl/xgltrap.c
+index c643f11..8f792a6 100644
+--- a/hw/xgl/xgltrap.c
++++ b/hw/xgl/xgltrap.c
+@@ -173,7 +173,7 @@ xglTrapezoids (CARD8	     op,
+     target = xglPrepareTarget (pDst->pDrawable);
+ 
+     if (nTrap > 1 && op != PictOpAdd && maskFormat &&
+-	(overlap || op != PictOpOver))
++	(!target || overlap || op != PictOpOver))
+     {
+ 	PixmapPtr  pPixmap;
+ 	GCPtr	   pGC;

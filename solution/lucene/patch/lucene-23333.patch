@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java
+index b5ba7e8..3a32f98 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedSortedBytesImpl.java
+@@ -229,7 +229,7 @@ class FixedSortedBytesImpl {
+     }
+ 
+     @Override
+-    public DocValuesEnum getEnum(AttributeSource source) throws IOException {
++    public ValuesEnum getEnum(AttributeSource source) throws IOException {
+       // do unsorted
+       return new DerefBytesEnum(source, cloneData(), cloneIndex(), size);
+     }

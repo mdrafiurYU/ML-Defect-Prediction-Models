@@ -1,0 +1,23 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEventListener.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEventListener.java
+index f02a4bf..3650442 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEventListener.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyEventListener.java
+@@ -25,7 +25,7 @@ import org.apache.jackrabbit.spi.EventFilter;
+ import org.apache.jackrabbit.spi.Event;
+ import org.apache.jackrabbit.spi.EventBundle;
+ import org.apache.jackrabbit.spi.NodeId;
+-import org.apache.jackrabbit.name.Path;
++import org.apache.jackrabbit.spi.Path;
+ 
+ import javax.jcr.RepositoryException;
+ import java.util.Collection;
+@@ -54,7 +54,8 @@ public class HierarchyEventListener implements InternalEventListener {
+             EventFilter filter = null;
+             try {
+                 // listen to all events except 'local' ones
+-                filter = wspManager.createEventFilter(Event.ALL_TYPES, Path.ROOT, true, null, null, true);
++                Path root = wspManager.getPathFactory().getRootPath();
++                filter = wspManager.createEventFilter(Event.ALL_TYPES, root, true, null, null, true);
+             } catch (RepositoryException e) {
+                 // spi does not support observation, or another error occurred.
+             }

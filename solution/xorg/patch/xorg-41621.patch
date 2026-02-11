@@ -1,0 +1,12 @@
+diff --git a/randr/rrdispatch.c b/randr/rrdispatch.c
+index 64af6ce..0cc0bca 100644
+--- a/randr/rrdispatch.c
++++ b/randr/rrdispatch.c
+@@ -215,5 +215,7 @@ int (*ProcRandrVector[RRNumberRequests])(ClientPtr) = {
+     ProcRRGetScreenResourcesCurrent, /* 25 */
+     ProcRRSetCrtcTransform,	/* 26 */
+     ProcRRGetCrtcTransform,	/* 27 */
++    ProcRRGetPanning,		/* 28 */
++    ProcRRSetPanning,		/* 29 */
+ };
+ 

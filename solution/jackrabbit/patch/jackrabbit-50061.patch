@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserManagerImpl.java
+index 67c3946..b066cde 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserManagerImpl.java
+@@ -121,9 +121,8 @@ public class UserManagerImpl extends ProtectedItemModifier implements UserManage
+                     n = (NodeImpl) authItem;
+                 }
+             }
+-        }
+-        // another Principal -> search
+-        if (n == null) {
++        } else {
++            // another Principal -> search
+             String name = principal.getName();
+             n = (NodeImpl) authResolver.findNode(P_PRINCIPAL_NAME, name, NT_REP_AUTHORIZABLE);
+         }

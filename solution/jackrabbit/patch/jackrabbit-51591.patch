@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java
+index 69bf2a6..b3a60b6 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/retention/AbstractRetentionTest.java
+@@ -40,7 +40,12 @@ public abstract class AbstractRetentionTest extends AbstractJCRTest {
+ 
+         super.setUp();
+ 
+-        retentionMgr = getRetentionManager(superuser);
++        try {
++            retentionMgr = getRetentionManager(superuser);
++        } catch (NotExecutableException e) {
++            cleanUp();
++            throw e;
++        }
+         testNodePath = testRootNode.getPath();
+     }

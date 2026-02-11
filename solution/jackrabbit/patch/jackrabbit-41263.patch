@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java
+index 05cb66d..b592458 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LuceneQueryHits.java
+@@ -57,13 +57,6 @@ public class LuceneQueryHits extends AbstractQueryHits {
+     /**
+      * {@inheritDoc}
+      */
+-    protected final void doClose() throws IOException {
+-        reader.close();
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+     public final int getSize() {
+       return hits.length();
+     }

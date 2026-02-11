@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dri/dri.h b/hw/xfree86/dri/dri.h
+index b49c426..dca0edd 100644
+--- a/hw/xfree86/dri/dri.h
++++ b/hw/xfree86/dri/dri.h
+@@ -339,6 +339,8 @@ extern void DRIMoveBuffersHelper(ScreenPtr pScreen,
+ 
+ extern char *DRICreatePCIBusID(pciVideoPtr PciInfo);
+ 
++extern int drmInstallSIGIOHandler(int fd, void (*f)(int, void *, void *));
++extern int drmRemoveSIGIOHandler(int fd);
+ #define _DRI_H_
+ 
+ #endif

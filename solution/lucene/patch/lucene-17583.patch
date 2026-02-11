@@ -1,0 +1,23 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermFreqVector.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermFreqVector.java
+index e688b6f..dcbc491 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermFreqVector.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermFreqVector.java
+@@ -3,7 +3,6 @@ package org.apache.lucene.store.instantiated;
+ import org.apache.lucene.index.TermFreqVector;
+ import org.apache.lucene.util.BytesRef;
+ 
+-import java.io.Serializable;
+ import java.util.Arrays;
+ import java.util.List;
+ 
+@@ -29,9 +28,7 @@ import java.util.List;
+  * @see org.apache.lucene.index.TermFreqVector
+  */
+ public class InstantiatedTermFreqVector
+-    implements TermFreqVector, Serializable {
+-
+-  private static final long serialVersionUID = 1l;
++    implements TermFreqVector {
+ 
+   private final List<InstantiatedTermDocumentInformation> termDocumentInformations;
+   private final String field;

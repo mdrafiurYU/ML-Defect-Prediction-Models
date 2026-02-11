@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+index 58e3abd..5b7933e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+@@ -203,8 +203,8 @@ protected IJavaElement findElement(IJavaElement elt, int position, SourceMapper
+ 	}
+ 	return elt;
+ }
+-public String getAttachedJavadoc(IProgressMonitor monitor, String defaultEncoding) throws JavaModelException {
+-	return this.getType().getAttachedJavadoc(monitor, defaultEncoding);
++public String getAttachedJavadoc(IProgressMonitor monitor) throws JavaModelException {
++	return this.getType().getAttachedJavadoc(monitor);
+ }
+ /**
+  * Returns the <code>ClassFileReader</code>specific for this IClassFile, based

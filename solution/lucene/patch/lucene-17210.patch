@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
+index e40fba2..ea74a6b 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
+@@ -129,6 +129,7 @@ class SimpleTextFieldsReader extends FieldsProducer {
+       fstEnum = new BytesRefFSTEnum<PairOutputs.Pair<Long,PairOutputs.Pair<Long,Long>>>(fst);
+     }
+ 
++    @Override
+     public SeekStatus seek(BytesRef text, boolean useCache /* ignored */) throws IOException {
+ 
+       //System.out.println("seek to text=" + text.utf8ToString());

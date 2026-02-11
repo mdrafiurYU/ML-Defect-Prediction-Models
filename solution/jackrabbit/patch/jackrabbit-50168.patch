@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java
+index 29ecfc7..e2a14ea 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/WorkspaceInitTest.java
+@@ -23,12 +23,23 @@ import java.util.Iterator;
+ import javax.jcr.RepositoryException;
+ 
+ import org.apache.jackrabbit.test.AbstractJCRTest;
++import org.apache.jackrabbit.core.query.lucene.SlowQueryHandler;
+ 
+ /**
+  * <code>WorkspaceInitTest</code>...
+  */
+ public class WorkspaceInitTest extends AbstractJCRTest {
+ 
++    protected void setUp() throws Exception {
++        super.setUp();
++        SlowQueryHandler.setInitializationDelay(10 * 1000);
++    }
++
++    protected void tearDown() throws Exception {
++        SlowQueryHandler.setInitializationDelay(0);
++        super.tearDown();
++    }
++
+     public void testIdleTime() throws Exception {
+         // simply access the workspace, which will cause
+         // initialization of SlowQueryHandler.

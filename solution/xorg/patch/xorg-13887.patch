@@ -1,0 +1,14 @@
+diff --git a/GL/glx/glcontextmodes.c b/GL/glx/glcontextmodes.c
+index c540e5b..1893a9e 100644
+--- a/GL/glx/glcontextmodes.c
++++ b/GL/glx/glcontextmodes.c
+@@ -31,6 +31,9 @@
+  * \author Ian Romanick <idr@us.ibm.com>
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <dix-config.h>
++#endif
+ #ifdef DRI_NEW_INTERFACE_ONLY
+ # include <stdlib.h>
+ # include <string.h>

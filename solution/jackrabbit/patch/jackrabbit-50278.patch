@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java
+index 1214773..daca88d 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceCopyBetweenWorkspacesTest.java
+@@ -165,10 +165,8 @@ public class WorkspaceCopyBetweenWorkspacesTest extends AbstractWorkspaceCopyBet
+         Node lockTarget = (Node) rwSessionW2.getItem(node2W2.getPath());
+ 
+         // add mixin "lockable" to be able to lock the node
+-        if (!lockTarget.getPrimaryNodeType().isNodeType(mixLockable)) {
+-            lockTarget.addMixin(mixLockable);
+-            lockTarget.getParent().save();
+-        }
++        ensureMixinType(lockTarget, mixLockable);
++        lockTarget.getParent().save();
+ 
+         // lock dst parent node using other session
+         lockTarget.lock(true, true);

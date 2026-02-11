@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CommittableIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CommittableIndexReader.java
+index dc8f3b3..2cd57f3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CommittableIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CommittableIndexReader.java
+@@ -60,15 +60,6 @@ class CommittableIndexReader extends FilterIndexReader {
+     //------------------------< additional methods >----------------------------
+ 
+     /**
+-     * Commits the documents marked as deleted to disc.
+-     *
+-     * @throws IOException if an error occurs while writing.
+-     */
+-    void commitDeleted() throws IOException {
+-        commit();
+-    }
+-
+-    /**
+      * @return the modification count of this index reader.
+      */
+     long getModificationCount() {

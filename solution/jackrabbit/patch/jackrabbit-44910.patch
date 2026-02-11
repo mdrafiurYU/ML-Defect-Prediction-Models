@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java
+index 1dc0252..575e51e 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/property/DavPropertyName.java
+@@ -75,7 +75,7 @@ public class DavPropertyName implements DavConstants, XmlSerializable {
+             map = new HashMap();
+             cache.put(namespace, map);
+         }
+-        // get (or create) property name object 
++        // get (or create) property name object
+         DavPropertyName ret = (DavPropertyName) map.get(name);
+         if (ret == null) {
+             if (namespace.equals(NAMESPACE)) {

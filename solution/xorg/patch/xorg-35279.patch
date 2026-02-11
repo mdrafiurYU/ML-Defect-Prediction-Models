@@ -1,0 +1,14 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 8d98f13..74212b2 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -843,9 +843,6 @@ CloseDevice(DeviceIntPtr dev)
+         }
+     }
+ 
+-    if (dev->devPrivates)
+-	xfree(dev->devPrivates);
+-
+     xfree(dev->deviceGrab.sync.event);
+     dixFreePrivates(dev->devPrivates);
+     xfree(dev);

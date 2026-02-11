@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java
+index 435d98b..71e868a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldSortComparator.java
+@@ -115,7 +115,7 @@ public class SharedFieldSortComparator extends SortComparator {
+ 
+             public final int compare(final ScoreDoc i, final ScoreDoc j) {
+                 int idx1 = readerIndex(i.doc);
+-                int idx2 = readerIndex(j.doc);             	
++                int idx2 = readerIndex(j.doc);
+ 
+                 String iTerm = indexes[idx1].terms[i.doc - starts[idx1]];
+                 String jTerm = indexes[idx2].terms[j.doc - starts[idx2]];

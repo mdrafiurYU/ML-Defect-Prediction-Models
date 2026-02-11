@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java
+index 89e58f4..d23f759 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java
+@@ -86,7 +86,7 @@ public final class CzechAnalyzer extends StopwordAnalyzerBase {
+   private final Set<?> stemExclusionTable;
+ 
+   /**
+-   * Builds an analyzer with the default stop words ({@link #CZECH_STOP_WORDS}).
++   * Builds an analyzer with the default stop words ({@link #getDefaultStopSet()}).
+    *
+    * @param matchVersion Lucene version to match See
+    *          {@link <a href="#version">above</a>}

@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/NodeInfo.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/NodeInfo.java
+index a9115a5..15ab4e5 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/NodeInfo.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/NodeInfo.java
+@@ -43,7 +43,7 @@ public interface NodeInfo extends ItemInfo {
+ 
+     /**
+      * Index of the node.
+-     * 
++     *
+      * @return the index.
+      */
+     public int getIndex();
+@@ -54,7 +54,10 @@ public interface NodeInfo extends ItemInfo {
+     public QName getNodetype();
+ 
+     /**
+-     * @return Array of QName representing the names of mixin nodetypes.
++     * @return Array of QName representing the names of mixin nodetypes. This
++     * includes only explicitly assigned mixin nodetypes. It does not include
++     * mixin types inherited through the additon of supertypes to the primary
++     * type hierarchy.
+      */
+     public QName[] getMixins();
+ 
+@@ -71,4 +74,4 @@ public interface NodeInfo extends ItemInfo {
+      * @see PropertyInfo#getId()
+      */
+     public Iterator getPropertyIds();
+-}
+\ No newline at end of file
++}

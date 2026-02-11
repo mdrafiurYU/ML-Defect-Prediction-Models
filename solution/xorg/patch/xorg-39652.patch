@@ -1,0 +1,14 @@
+diff --git a/miext/rootless/rootlessWindow.h b/miext/rootless/rootlessWindow.h
+index 45bc4c2..2d2555e 100644
+--- a/miext/rootless/rootlessWindow.h
++++ b/miext/rootless/rootlessWindow.h
+@@ -39,9 +39,7 @@
+ Bool RootlessCreateWindow(WindowPtr pWin);
+ Bool RootlessDestroyWindow(WindowPtr pWin);
+ 
+-#ifdef SHAPE
+ void RootlessSetShape(WindowPtr pWin);
+-#endif // SHAPE
+ 
+ Bool RootlessChangeWindowAttributes(WindowPtr pWin, unsigned long vmask);
+ Bool RootlessPositionWindow(WindowPtr pWin, int x, int y);

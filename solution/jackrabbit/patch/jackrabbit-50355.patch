@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
+index c57ae6c..aea0b82 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/lock/SetValueLockExceptionTest.java
+@@ -88,9 +88,7 @@ public class SetValueLockExceptionTest extends AbstractJCRTest {
+         else {
+             // add a lockable node
+             testNode = testRootNode.addNode(nodeName1, testNodeType);
+-            if (needsMixin(testNode, mixLockable)) {
+-                testNode.addMixin(mixLockable);
+-            }
++            ensureMixinType(testNode, mixLockable);
+ 
+             // add properties
+             dateValue = Calendar.getInstance();

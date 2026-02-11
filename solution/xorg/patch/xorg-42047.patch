@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/os-support/bsd/i386_video.c b/hw/xfree86/os-support/bsd/i386_video.c
+index 83dabc9..4fc6dd7 100644
+--- a/hw/xfree86/os-support/bsd/i386_video.c
++++ b/hw/xfree86/os-support/bsd/i386_video.c
+@@ -448,7 +448,7 @@ xf86DisableIO()
+ /***************************************************************************/
+ /* Set TV output mode                                                      */
+ /***************************************************************************/
+-void
++_X_EXPORT void
+ xf86SetTVOut(int mode)
+ {    
+     switch (xf86Info.consType)
+@@ -473,7 +473,7 @@ xf86SetTVOut(int mode)
+     return;
+ }
+ 
+-void
++_X_EXPORT void
+ xf86SetRGBOut()
+ {    
+     switch (xf86Info.consType)

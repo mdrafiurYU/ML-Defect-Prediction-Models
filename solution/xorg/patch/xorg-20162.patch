@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xaa/xaaInitAccel.c b/hw/xfree86/xaa/xaaInitAccel.c
+index a17b152..9016c61 100644
+--- a/hw/xfree86/xaa/xaaInitAccel.c
++++ b/hw/xfree86/xaa/xaaInitAccel.c
+@@ -1,5 +1,9 @@
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/xaa/xaaInitAccel.c,v 1.35tsi Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/misc.h>
+ #include "xf86.h"
+ #include "xf86_ansic.h"

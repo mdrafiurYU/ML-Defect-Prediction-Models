@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxgc.c b/hw/dmx/dmxgc.c
+index b9c9767..d17b051 100644
+--- a/hw/dmx/dmxgc.c
++++ b/hw/dmx/dmxgc.c
+@@ -35,6 +35,10 @@
+ /** \file
+  * This file provides support for GCs. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxsync.h"
+ #include "dmxgc.h"

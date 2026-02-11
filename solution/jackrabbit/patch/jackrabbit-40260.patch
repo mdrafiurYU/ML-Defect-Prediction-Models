@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/BindVariableValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/BindVariableValue.java
+index e54bce9..def8113 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/BindVariableValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/BindVariableValue.java
+@@ -29,10 +29,12 @@ package org.apache.jackrabbit.core.query.jsr283.qom;
+  */
+ public interface BindVariableValue
+         extends StaticOperand {
++
+     /**
+      * Gets the name of the bind variable.
+      *
+      * @return the bind variable name; non-null
+      */
+-    public String getBindVariableName();
++    String getBindVariableName();
++
+ }

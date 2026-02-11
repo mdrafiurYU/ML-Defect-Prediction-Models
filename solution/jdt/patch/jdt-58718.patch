@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RunCompletionModelTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RunCompletionModelTests.java
+index 788f031..b579215 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RunCompletionModelTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/RunCompletionModelTests.java
+@@ -45,10 +45,11 @@ public class RunCompletionModelTests extends junit.framework.TestCase {
+ 	public static Class[] getTestClasses() {
+ 		int size = COMPLETION_SUITES.size();
+ 		if (!ONLY_JAVADOC) {
+-			Class[] testClasses = new Class[size+2];
++			Class[] testClasses = new Class[size+3];
+ 			COMPLETION_SUITES.toArray(testClasses);
+ 			testClasses[size] = CompletionTests2.class;
+ 			testClasses[size+1] = SnippetCompletionTests.class;
++			testClasses[size+2] = SnippetCompletionTests_1_5.class;
+ 			return testClasses;
+ 		}
+ 		Class[] testClasses = new Class[size];

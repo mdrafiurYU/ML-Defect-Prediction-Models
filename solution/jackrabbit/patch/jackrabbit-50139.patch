@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/InternalEventListener.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/InternalEventListener.java
+index 8c873af..38dcca2 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/InternalEventListener.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/InternalEventListener.java
+@@ -44,5 +44,5 @@ public interface InternalEventListener {
+      * @return an unmodifiable collection of {@link EventFilter}s currently
+      * in use by this event listener.
+      */
+-    public Collection getEventFilters();
++    public Collection<EventFilter> getEventFilters();
+ }

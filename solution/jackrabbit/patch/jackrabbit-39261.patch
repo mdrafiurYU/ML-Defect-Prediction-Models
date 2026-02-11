@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/DescriptorReader.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/DescriptorReader.java
+new file mode 100644
+index 0000000..54efa83
+--- /dev/null
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/DescriptorReader.java
+@@ -0,0 +1,20 @@
++package org.apache.jackrabbit.ocm.mapper;
++
++import org.apache.jackrabbit.ocm.mapper.impl.AbstractMapperImpl;
++import org.apache.jackrabbit.ocm.mapper.model.MappingDescriptor;
++
++public interface DescriptorReader {
++
++	/**
++	 * Load all class descriptors found in an classdescriptor definition.
++	 * A classdescriptor definition can be a xml config file or annotations 
++	 * or another kind of resource which contain the classdescriptors 
++	 * 
++	 * DescriptorReader is an abstraction used to maximize reusability in {@link AbstractMapperImpl}
++	 * 
++	 * @return a {@link MappingDescriptor} wich will contains a collection of classdescriptors
++	 * 
++	 */
++	public abstract MappingDescriptor loadClassDescriptors();
++
++}
+\ No newline at end of file

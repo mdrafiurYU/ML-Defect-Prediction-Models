@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/spans/SpanFirstQuery.java b/lucene/src/java/org/apache/lucene/search/spans/SpanFirstQuery.java
+index 4c9adaf..b90f08e 100644
+--- a/lucene/src/java/org/apache/lucene/search/spans/SpanFirstQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/spans/SpanFirstQuery.java
+@@ -38,7 +38,7 @@ public class SpanFirstQuery extends SpanPositionRangeQuery {
+ 
+   @Override
+   protected AcceptStatus acceptPosition(Spans spans) throws IOException {
+-    assert spans.start() != spans.end();
++    assert spans.start() != spans.end() : "start equals end: " + spans.start();
+     if (spans.start() >= end)
+       return AcceptStatus.NO_AND_ADVANCE;
+     else if (spans.end() <= end)

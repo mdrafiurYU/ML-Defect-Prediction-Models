@@ -1,0 +1,20 @@
+diff --git a/solr/src/test/org/apache/solr/core/TestJmxIntegration.java b/solr/src/test/org/apache/solr/core/TestJmxIntegration.java
+index 46f42d1..3977c4a 100644
+--- a/solr/src/test/org/apache/solr/core/TestJmxIntegration.java
++++ b/solr/src/test/org/apache/solr/core/TestJmxIntegration.java
+@@ -46,6 +46,7 @@ public class TestJmxIntegration extends AbstractSolrTestCase {
+     return "solrconfig.xml";
+   }
+ 
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     // Make sure that at least one MBeanServer is available
+@@ -53,6 +54,7 @@ public class TestJmxIntegration extends AbstractSolrTestCase {
+     super.setUp();
+   }
+ 
++  @Override
+   @After
+   public void tearDown() throws Exception {
+     super.tearDown();

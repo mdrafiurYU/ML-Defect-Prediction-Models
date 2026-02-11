@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemHandler.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemHandler.java
+index 4506aee..cd243b8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemHandler.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemHandler.java
+@@ -106,7 +106,7 @@ public void handle(
+ 			problemStartPosition, 
+ 			problemEndPosition, 
+ 			problemStartPosition >= 0
+-				? searchLineNumber(unitResult.lineSeparatorPositions, problemStartPosition)
++				? searchLineNumber(unitResult.getLineSeparatorPositions(), problemStartPosition)
+ 				: 0);
+ 	if (problem == null) return; // problem couldn't be created, ignore

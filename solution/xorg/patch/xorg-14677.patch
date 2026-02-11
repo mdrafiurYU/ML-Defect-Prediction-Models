@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winnativegdi.c b/hw/xwin/winnativegdi.c
+index dbee9d2..c67f1c7 100644
+--- a/hw/xwin/winnativegdi.c
++++ b/hw/xwin/winnativegdi.c
+@@ -29,6 +29,9 @@
+  */
+ /* $XFree86: xc/programs/Xserver/hw/xwin/winnativegdi.c,v 1.14 2003/07/29 21:25:18 dawes Exp $ */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ 

@@ -1,0 +1,22 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 1169a6c..7fbaddb 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -179,4 +179,17 @@ extern int DeviceEventSuppressForWindow(
+ 	Mask                   /* mask */,
+ 	int                    /* maskndx */);
+ 
++void FindInterestedChildren(
++        DeviceIntPtr           /* dev */,
++        WindowPtr              /* p1 */,
++        Mask                   /* mask */,
++        xEvent *               /* ev */,
++        int                    /* count */);
++
++void SendEventToAllWindows(
++        DeviceIntPtr           /* dev */,
++        Mask                   /* mask */,
++        xEvent *               /* ev */,
++        int                    /* count */);
++
+ #endif /* EXEVENTS_H */

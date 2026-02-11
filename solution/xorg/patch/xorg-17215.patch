@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index da8be9b..bd39d2c 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -320,12 +320,12 @@ xf86RandRCloseScreen (int index, ScreenPtr pScreen)
+ Rotation
+ xf86GetRotation(ScreenPtr pScreen)
+ {
+-    XF86RandRInfoPtr	    randrp = XF86RANDRINFO(pScreen);
++    XF86RandRInfoPtr randrp;
+ 
+     if (xf86RandRIndex == -1)
+        return RR_Rotate_0;
+ 
+-    return randrp->rotation;
++    return XF86RANDRInfo(pScreen)->rotation;
+ }
+ 
+ Bool

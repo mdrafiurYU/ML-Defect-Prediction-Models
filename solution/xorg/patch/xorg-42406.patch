@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/modes/xf86Rotate.c b/hw/xfree86/modes/xf86Rotate.c
+index 8e03c6c..21b7aff 100644
+--- a/hw/xfree86/modes/xf86Rotate.c
++++ b/hw/xfree86/modes/xf86Rotate.c
+@@ -291,6 +291,8 @@ xf86RotateBlockHandler(int screenNum, pointer blockData,
+ 	/* Re-wrap if rotation is still happening */
+ 	xf86_config->BlockHandler = pScreen->BlockHandler;
+ 	pScreen->BlockHandler = xf86RotateBlockHandler;
++    } else {
++	xf86_config->BlockHandler = NULL;
+     }
+ }
+ 
+@@ -477,9 +479,11 @@ xf86CrtcRotate (xf86CrtcPtr crtc)
+ 		goto bail2;
+ 	    
+ 	    /* Wrap block handler */
++	    if (!xf86_config->BlockHandler) {
+ 	    xf86_config->BlockHandler = pScreen->BlockHandler;
+ 	    pScreen->BlockHandler = xf86RotateBlockHandler;
+ 	}
++	}
+ #ifdef RANDR_12_INTERFACE
+ 	if (transform)
+ 	{

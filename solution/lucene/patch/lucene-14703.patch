@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java b/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
+index f9ac9b0..eb4fcc1 100644
+--- a/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MatchAllDocsQuery.java
+@@ -19,7 +19,6 @@ package org.apache.lucene.search;
+ 
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.Term;
+-import org.apache.lucene.index.MultiFields;
+ import org.apache.lucene.util.ToStringUtils;
+ import org.apache.lucene.util.Bits;
+ 
+@@ -55,7 +54,7 @@ public class MatchAllDocsQuery extends Query {
+     MatchAllScorer(IndexReader reader, Similarity similarity, Weight w,
+         byte[] norms) throws IOException {
+       super(similarity,w);
+-      delDocs = MultiFields.getDeletedDocs(reader);
++      delDocs = reader.getDeletedDocs();
+       score = w.getValue();
+       maxDoc = reader.maxDoc();
+       this.norms = norms;

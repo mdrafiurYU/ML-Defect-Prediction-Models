@@ -1,0 +1,26 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index eafc0e9..d34238e 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -446,11 +446,19 @@ void
+ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+ {
+     LocalDevicePtr pInfo = (LocalDevicePtr) pDev->public.devicePrivate;
+-    InputDriverPtr drv = pInfo->drv;
+-    IDevRec *idev = pInfo->conf_idev;
++    InputDriverPtr drv;
++    IDevRec *idev;
+ 
++    if (pInfo) /* need to get these before RemoveDevice */
++    {
++        drv = pInfo->drv;
++        idev = pInfo->conf_idev;
++    }
+     RemoveDevice(pDev);
+ 
++    if (!pInfo) /* VCP and VCK */
++        return;
++
+     if(drv->UnInit)
+         drv->UnInit(drv, pInfo, 0);
+     else

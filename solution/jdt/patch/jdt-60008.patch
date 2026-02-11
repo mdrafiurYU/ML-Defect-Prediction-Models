@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
+index f92940e..df02668 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ParameterizedTypeBinding.java
+@@ -924,7 +924,9 @@ public class ParameterizedTypeBinding extends ReferenceBinding implements Substi
+ 	 */
+ 	public ReferenceBinding[] superInterfaces() {
+ 	    if (this.superInterfaces == null) {
+-	    	this.superInterfaces = Scope.substitute(this, this.type.superInterfaces());
++	    		if (this.type.isHierarchyBeingConnected())
++	    			return Binding.NO_SUPERINTERFACES; // prevent superinterfaces from being assigned before they are connected
++	    		this.superInterfaces = Scope.substitute(this, this.type.superInterfaces());
+ 	    }
+ 		return this.superInterfaces;
+ 	}

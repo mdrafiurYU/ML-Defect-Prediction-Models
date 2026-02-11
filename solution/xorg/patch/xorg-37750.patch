@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/modes/xf86Modes.h b/hw/xfree86/modes/xf86Modes.h
+index 5d49c93..acdea65 100644
+--- a/hw/xfree86/modes/xf86Modes.h
++++ b/hw/xfree86/modes/xf86Modes.h
+@@ -85,6 +85,9 @@ xf86ValidateModesBandwidth(ScrnInfoPtr pScrn, DisplayModePtr modeList,
+ 			   unsigned int bandwidth, int depth);
+ 
+ void
++xf86ValidateModesReducedBlanking(ScrnInfoPtr pScrn, DisplayModePtr modeList);
++
++void
+ xf86PruneInvalidModes(ScrnInfoPtr pScrn, DisplayModePtr *modeList,
+ 		      Bool verbose);
+ 

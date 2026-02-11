@@ -1,0 +1,24 @@
+diff --git a/mi/mipolypnt.c b/mi/mipolypnt.c
+index 56026bd..d16a951 100644
+--- a/mi/mipolypnt.c
++++ b/mi/mipolypnt.c
+@@ -56,12 +56,13 @@ SOFTWARE.
+ #include "mi.h"
+ 
+ _X_EXPORT void
+-miPolyPoint(pDrawable, pGC, mode, npt, pptInit)
+-    DrawablePtr 	pDrawable;
+-    GCPtr 		pGC;
+-    int 		mode;		/* Origin or Previous */
+-    int 		npt;
+-    xPoint 		*pptInit;
++miPolyPoint(
++    DrawablePtr		pDrawable,
++    GCPtr		pGC,
++    int			mode,		/* Origin or Previous */
++    int			npt,
++    xPoint		*pptInit
++    )
+ {
+ 
+     int 		xorg;

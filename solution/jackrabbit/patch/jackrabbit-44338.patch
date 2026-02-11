@@ -1,0 +1,31 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/Folder.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/Folder.java
+index 00a7f28..33da2a9 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/Folder.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/Folder.java
+@@ -31,15 +31,15 @@ import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
+ public class Folder extends HierarchyNode
+ {
+     @Collection(autoUpdate=false, elementClassName=HierarchyNode.class , collectionConverter=NTCollectionConverterImpl.class)
+-    private java.util.Collection children; 
+-   
++    private java.util.Collection children;
+ 
+-	public java.util.Collection getChildren() 
++
++	public java.util.Collection getChildren()
+ 	{
+ 		return children;
+ 	}
+ 
+-	public void setChildren(java.util.Collection children) 
++	public void setChildren(java.util.Collection children)
+ 	{
+ 		this.children = children;
+ 	}
+@@ -52,5 +52,5 @@ public class Folder extends HierarchyNode
+ 		}
+ 		children.add(node);
+ 	}
+-    
++
+ }

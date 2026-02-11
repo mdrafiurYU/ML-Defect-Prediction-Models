@@ -1,0 +1,39 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 635a88c..4a4aabc 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -2420,28 +2420,16 @@ addDefaultModes(MonPtr monitorp)
+     DisplayModePtr last = monitorp->Last;
+     int i = 0;
+ 
+-    while (xf86DefaultModes[i].name != NULL)
+-    {
+-	if ( ! modeIsPresent(xf86DefaultModes[i].name,monitorp) )
+-	    do
++    for (i = 0; i < xf86NumDefaultModes; i++)
+ 	    {
+ 		mode = xf86DuplicateMode(&xf86DefaultModes[i]);
+-		if( last ) {
+-		    mode->prev = last;
+-		    last->next = mode;
+-		}
+-		else {
+-		    /* this is the first mode */
+-		    monitorp->Modes = mode;
+-		    mode->prev = NULL;
+-		}
++	if (!modeIsPresent(mode, monitorp))
++	{
++	    monitorp->Modes = xf86ModesAdd(monitorp->Modes, mode);
+ 		last = mode;
+-		i++;
++	} else {
++	    xfree(mode);
+ 	    }
+-	    while((xf86DefaultModes[i].name != NULL) &&
+-		  (!strcmp(xf86DefaultModes[i].name,xf86DefaultModes[i-1].name)));
+-	else
+-	    i++;
+     }
+     monitorp->Last = last;
+ 

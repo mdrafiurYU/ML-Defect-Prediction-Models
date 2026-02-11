@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NodeIndexer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NodeIndexer.java
+index 7818bc5..8791888 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NodeIndexer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/NodeIndexer.java
+@@ -404,10 +404,9 @@ public class NodeIndexer {
+                 Reader reader = extractor.extractText(stream, type, encoding);
+                 doc.add(createFulltextField(reader));
+             }
+-        } catch (Exception e) {
++        } catch (Throwable t) {
+             // TODO: How to recover from a transient indexing failure?
+-            log.warn("Exception while indexing binary property: " + e.toString());
+-            log.debug("Dump: ", e);
++            log.warn("Exception while indexing binary property", t);
+         }
+     }

@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 3859741..6b34aad 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -744,7 +744,7 @@ xf86PostMotionEventP(DeviceIntPtr	device,
+     int i = 0, nevents = 0;
+     int dx = 0, dy = 0;
+     Bool drag = xf86SendDragEvents(device);
+-    xEvent *xE = NULL;
++    DeviceEvent *event;
+     int index;
+     int flags = 0;
+ 
+@@ -790,10 +790,11 @@ xf86PostMotionEventP(DeviceIntPtr	device,
+                                valuators);
+ 
+     for (i = 0; i < nevents; i++) {
+-        xE = (xf86Events + i)->event;
++        event = (DeviceEvent*)((xf86Events + i)->event);
+         /* Don't post core motion events for devices not registered to send
+          * drag events. */
+-        if (xE->u.u.type != MotionNotify || drag) {
++        if (event->header == ET_Internal &&
++            (event->type != ET_Motion || drag)) {
+             mieqEnqueue(device, (InternalEvent*)((xf86Events + i)->event));
+         }
+     }

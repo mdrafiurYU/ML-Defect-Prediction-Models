@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+index 23fc33c..bf670f1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+@@ -2003,13 +2003,7 @@ public class BatchedItemOperations extends ItemValidator {
+      */
+     private VersionHistory getOrCreateVersionHistory(NodeState node)
+             throws RepositoryException {
+-        VersionManager vMgr = session.getVersionManager();
+-        VersionHistory vh = vMgr.getVersionHistory(session, node);
+-        if (vh == null) {
+-            // create a new version history
+-            vh = vMgr.createVersionHistory(session, node);
+-        }
+-        return vh;
++        return session.getVersionManager().getVersionHistory(session, node);
+     }
+ 
+     /**

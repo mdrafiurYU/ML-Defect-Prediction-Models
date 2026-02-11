@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+index 590f23e..1d79030 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+@@ -114,7 +114,6 @@ public class NodeImpl extends ItemImpl implements Node {
+      */
+     public String getName() throws RepositoryException {
+         checkStatus();
+-        Name qName = getQName();
+         return session.getNameResolver().getJCRName(getQName());
+     }

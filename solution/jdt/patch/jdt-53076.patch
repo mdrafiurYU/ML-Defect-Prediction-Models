@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
+index 6d5272e..e7fd6d4 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/BasePreferencePage.java
+@@ -51,7 +51,9 @@ public abstract class BasePreferencePage extends PropertyAndPreferencePage {
+ 	}
+ 	
+ 	protected boolean hasProjectSpecificOptions(IProject project) {
+-		return getConfigurationBlock().hasProjectSpecificOptions(project);
++		// Workaround for bug 106111 / 111144:
++		// See BaseConfigurationBlock.hasProjectSpecificOptionsNoCache() for details.
++		return getConfigurationBlock().hasProjectSpecificOptionsNoCache(project);
+ 	}
+ 	
+ 	/*

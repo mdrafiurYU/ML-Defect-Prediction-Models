@@ -1,0 +1,19 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentReader.java b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+index e204721..451f6d4 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentReader.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+@@ -841,14 +841,8 @@ public class SegmentReader extends IndexReader implements Cloneable {
+     // longer used (all SegmentReaders sharing it have been
+     // closed).
+   }
+-
+   
+   @Override
+-  public IndexDocValues docValues(String field) throws IOException {
+-    return core.perDocProducer.docValues(field);
+-  }
+-
+-  @Override
+   public PerDocValues perDocValues() throws IOException {
+     return core.perDocProducer;
+   }

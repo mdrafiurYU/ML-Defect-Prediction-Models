@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86fbBus.c b/hw/xfree86/common/xf86fbBus.c
+index 102f6b1..bd7d935 100644
+--- a/hw/xfree86/common/xf86fbBus.c
++++ b/hw/xfree86/common/xf86fbBus.c
+@@ -51,7 +51,7 @@
+ 
+ #include "xf86RAC.h"
+ 
+-Bool fbSlotClaimed = FALSE;
++_X_EXPORT Bool fbSlotClaimed = FALSE;
+ 
+ _X_EXPORT int
+ xf86ClaimFbSlot(DriverPtr drvp, int chipset, GDevPtr dev, Bool active)
+@@ -79,7 +79,7 @@ xf86ClaimFbSlot(DriverPtr drvp, int chipset, GDevPtr dev, Bool active)
+ /*
+  * Get the list of FB "slots" claimed by a screen
+  */
+-int
++_X_EXPORT int
+ xf86GetFbInfoForScreen(int scrnIndex)
+ {
+     int num = 0;

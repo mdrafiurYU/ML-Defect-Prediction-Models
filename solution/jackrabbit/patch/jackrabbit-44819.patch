@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalProvider.java
+index aeea800..1d227aa 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/principal/PrincipalProvider.java
+@@ -35,15 +35,6 @@ import java.util.Properties;
+ public interface PrincipalProvider {
+ 
+     /**
+-     * Checks if the principal with the given name is known to this provider.
+-     *
+-     * @param principalName the name of the principal to check
+-     * @return return <code>true</code> if the principal with this name is known
+-     *         to this provider; <code>false</code> otherwise.
+-     */
+-    boolean hasPrincipal(String principalName);
+-
+-    /**
+      * Returns the principal with the given name if is known to this provider
+      *
+      * @param principalName the name of the principal to retrieve

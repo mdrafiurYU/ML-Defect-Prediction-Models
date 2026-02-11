@@ -1,0 +1,13 @@
+diff --git a/Xi/setcptr.c b/Xi/setcptr.c
+index 46b88bf..0bfc1ea 100644
+--- a/Xi/setcptr.c
++++ b/Xi/setcptr.c
+@@ -74,7 +74,7 @@ ProcXISetClientPointer(ClientPtr client)
+     if (rc != Success)
+         return rc;
+ 
+-    if (!IsPointerDevice(pDev) || !pDev->isMaster)
++    if (!IsPointerDevice(pDev) || !IsMaster(pDev))
+     {
+         client->errorValue = stuff->deviceid;
+         return BadDevice;

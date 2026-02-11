@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/Query.java b/lucene/src/java/org/apache/lucene/search/Query.java
+index 8b937aa..40ec80d 100644
+--- a/lucene/src/java/org/apache/lucene/search/Query.java
++++ b/lucene/src/java/org/apache/lucene/search/Query.java
+@@ -44,7 +44,7 @@ import org.apache.lucene.index.Term;
+     <li>{@link org.apache.lucene.queryParser.QueryParser QueryParser}
+     </ul>
+ */
+-public abstract class Query implements java.io.Serializable, Cloneable {
++public abstract class Query implements Cloneable {
+   private float boost = 1.0f;                     // query boost factor
+ 
+   /** Sets the boost for this query clause to <code>b</code>.  Documents

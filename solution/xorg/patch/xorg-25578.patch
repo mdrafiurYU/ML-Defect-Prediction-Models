@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86str.h b/hw/xfree86/common/xf86str.h
+index ae9d9ae..6e62e52 100644
+--- a/hw/xfree86/common/xf86str.h
++++ b/hw/xfree86/common/xf86str.h
+@@ -213,6 +213,7 @@ typedef struct {
+     pointer		options;
+     pointer		DDC;
+     Bool                reducedblanking; /* Allow CVT reduced blanking modes? */
++    int			maxPixClock;	 /* in kHz, like mode->Clock */
+ } MonRec, *MonPtr;
+ 
+ /* the list of clock ranges */

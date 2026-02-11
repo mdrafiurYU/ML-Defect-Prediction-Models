@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/ContentStreamHandlerBase.java b/solr/src/java/org/apache/solr/handler/ContentStreamHandlerBase.java
+index f47dfa6..842d00d 100644
+--- a/solr/src/java/org/apache/solr/handler/ContentStreamHandlerBase.java
++++ b/solr/src/java/org/apache/solr/handler/ContentStreamHandlerBase.java
+@@ -32,6 +32,7 @@ import org.apache.solr.update.processor.UpdateRequestProcessorChain;
+  **/
+ public abstract class ContentStreamHandlerBase extends RequestHandlerBase {
+ 
++  @Override
+   public void handleRequestBody(SolrQueryRequest req, SolrQueryResponse rsp) throws Exception {
+     SolrParams params = req.getParams();
+     UpdateRequestProcessorChain processorChain =

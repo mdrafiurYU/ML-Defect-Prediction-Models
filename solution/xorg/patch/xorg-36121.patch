@@ -1,0 +1,13 @@
+diff --git a/composite/compwindow.c b/composite/compwindow.c
+index ee0f7d2..c022027 100644
+--- a/composite/compwindow.c
++++ b/composite/compwindow.c
+@@ -92,7 +92,7 @@ static Bool
+ compRepaintBorder (ClientPtr pClient, pointer closure)
+ {
+     WindowPtr pWindow;
+-    int rc = dixLookupWindow(&pWindow, (XID)closure, pClient,DixUnknownAccess);
++    int rc = dixLookupWindow(&pWindow, (XID)closure, pClient, DixWriteAccess);
+ 
+     if (rc == Success) {
+ 	RegionRec exposed;

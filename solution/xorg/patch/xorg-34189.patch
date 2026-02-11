@@ -1,0 +1,26 @@
+diff --git a/dix/window.c b/dix/window.c
+index f183aa3..f12c82b 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -3337,7 +3337,7 @@ static void DrawLogo(
+ #endif
+ 
+ _X_EXPORT int
+-SaveScreens(ClientPtr client, int on, int mode)
++dixSaveScreens(ClientPtr client, int on, int mode)
+ {
+     int rc, i, what, type;
+ 
+@@ -3455,6 +3455,12 @@ SaveScreens(ClientPtr client, int on, int mode)
+     return Success;
+ }
+ 
++_X_EXPORT int
++SaveScreens(int on, int mode)
++{
++    return dixSaveScreens(serverClient, on, mode);
++}
++
+ static Bool
+ TileScreenSaver(int i, int kind)
+ {

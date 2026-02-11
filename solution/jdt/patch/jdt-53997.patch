@@ -1,0 +1,30 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java
+index 0fa7c7d..22c911f 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocParamNameReference.java
+@@ -19,8 +19,12 @@ public class CompletionOnJavadocParamNameReference extends JavadocSingleNameRefe
+ 	public char[][] missingParams;
+ 	public char[][] missingTypeParams;
+ 
+-	public CompletionOnJavadocParamNameReference(long pos, int start, int end) {
+-		super(null, pos, start, end);
++	public CompletionOnJavadocParamNameReference(char[] name, long pos, int start, int end) {
++		super(name, pos, start, end);
++	}
++
++	public CompletionOnJavadocParamNameReference(JavadocSingleNameReference nameRef) {
++		super(nameRef.token, (((long)nameRef.sourceStart)<<32)+nameRef.sourceEnd, nameRef.tagSourceStart, nameRef.tagSourceStart);
+ 	}
+ 
+ 	/**
+@@ -30,10 +34,6 @@ public class CompletionOnJavadocParamNameReference extends JavadocSingleNameRefe
+ 		this.completionFlags |= flags;
+ 	}
+ 
+-	public CompletionOnJavadocParamNameReference(JavadocSingleNameReference nameRef) {
+-		super(nameRef.token, (((long)nameRef.sourceStart)<<32)+nameRef.sourceEnd, nameRef.tagSourceStart, nameRef.tagSourceStart);
+-	}
+-
+ 	/* (non-Javadoc)
+ 	 * @see org.eclipse.jdt.internal.compiler.ast.AllocationExpression#printExpression(int, java.lang.StringBuffer)
+ 	 */

@@ -1,0 +1,15 @@
+diff --git a/Xi/stubs.c b/Xi/stubs.c
+index f7b0fe9..6b9e682 100644
+--- a/Xi/stubs.c
++++ b/Xi/stubs.c
+@@ -266,8 +266,8 @@ SetDeviceMode(register ClientPtr client, DeviceIntPtr dev, int mode)
+  */
+ 
+ int
+-SetDeviceValuators(register ClientPtr client, DeviceIntPtr dev, int *valuators,
+-		   int first_valuator, int num_valuators)
++SetDeviceValuators(register ClientPtr client, DeviceIntPtr dev,
++		   int *valuators, int first_valuator, int num_valuators)
+ {
+     return BadMatch;
+ }

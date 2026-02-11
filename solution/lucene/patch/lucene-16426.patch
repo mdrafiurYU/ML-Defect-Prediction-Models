@@ -1,0 +1,36 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java b/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java
+index 3f54b0b..fe90eac 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/preflex/PreFlexFields.java
+@@ -33,7 +33,6 @@ import org.apache.lucene.index.FieldsEnum;
+ import org.apache.lucene.index.IndexFileNames;
+ import org.apache.lucene.index.SegmentInfo;
+ import org.apache.lucene.index.Term;
+-import org.apache.lucene.index.TermState;
+ import org.apache.lucene.index.Terms;
+ import org.apache.lucene.index.TermsEnum;
+ import org.apache.lucene.index.CompoundFileReader;
+@@ -263,6 +262,11 @@ public class PreFlexFields extends FieldsProducer {
+         return BytesRef.getUTF8SortedAsUTF16Comparator();
+       }
+     }
++
++    @Override
++    public long getSumTotalTermFreq() {
++      return -1;
++    }
+   }
+ 
+   private class PreTermsEnum extends TermsEnum {
+@@ -939,6 +943,11 @@ public class PreFlexFields extends FieldsProducer {
+     }
+ 
+     @Override
++    public long totalTermFreq() {
++      return -1;
++    }
++
++    @Override
+     public DocsEnum docs(Bits skipDocs, DocsEnum reuse) throws IOException {
+       PreDocsEnum docsEnum;
+       if (reuse == null || !(reuse instanceof PreDocsEnum)) {

@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/dri.c b/hw/darwin/quartz/xpr/dri.c
+index 4ade249..e5591ab 100644
+--- a/hw/darwin/quartz/xpr/dri.c
++++ b/hw/darwin/quartz/xpr/dri.c
+@@ -34,7 +34,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  *
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #ifdef XFree86LOADER
+ #include "xf86.h"

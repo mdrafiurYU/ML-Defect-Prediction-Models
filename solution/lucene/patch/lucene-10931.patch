@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/MultiFieldQueryParserWrapper.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/MultiFieldQueryParserWrapper.java
+index 8cb3db5..46eb864 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/MultiFieldQueryParserWrapper.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/MultiFieldQueryParserWrapper.java
+@@ -74,8 +74,7 @@ public class MultiFieldQueryParserWrapper extends QueryParserWrapper {
+    * what fields they appear.
+    * </p>
+    */
+-  @SuppressWarnings("unchecked")
+-public MultiFieldQueryParserWrapper(String[] fields, Analyzer analyzer, Map boosts) {
++public MultiFieldQueryParserWrapper(String[] fields, Analyzer analyzer, Map<String, Float> boosts) {
+     this(fields, analyzer);
+     StandardQueryParser qpHelper = getQueryParserHelper();

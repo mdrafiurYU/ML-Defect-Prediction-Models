@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/RAMFile.java b/lucene/src/java/org/apache/lucene/store/RAMFile.java
+index 123f800..4fe78a6 100644
+--- a/lucene/src/java/org/apache/lucene/store/RAMFile.java
++++ b/lucene/src/java/org/apache/lucene/store/RAMFile.java
+@@ -26,7 +26,6 @@ public class RAMFile {
+   RAMDirectory directory;
+   protected long sizeInBytes;
+ 
+-  // This is publicly modifiable via Directory.touchFile(), so direct access not supported
+   private long lastModified = System.currentTimeMillis();
+ 
+   // File used as buffer, in no RAMDirectory

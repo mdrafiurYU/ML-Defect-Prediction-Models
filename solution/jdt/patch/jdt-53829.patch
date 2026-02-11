@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
+index 594691c..10b3632 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
+@@ -467,8 +467,8 @@ public class JavadocParser extends AbstractCommentParser {
+ 				switch (tag[0]) {
+ 					case 'c':
+ 						if (CharOperation.equals(tag, TAG_CATEGORY)) {
+-							valid = parseIdentifierTag();
+ 							this.tagValue = TAG_CATEGORY_VALUE;
++							valid = parseIdentifierTag();
+ 						}
+ 						break;
+ 					case 'd':

@@ -1,0 +1,30 @@
+diff --git a/include/os.h b/include/os.h
+index 5a2e6c9..0885bb2 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -109,14 +109,7 @@ extern int WaitForSomething(
+     int* /*pClientsReady*/
+ );
+ 
+-#ifdef LBX
+-#define ReadRequestFromClient(client)   ((client)->readRequest(client))
+-extern int StandardReadRequestFromClient(ClientPtr /*client*/);
+-
+-extern int ClientConnectionNumber(ClientPtr /*client*/);
+-#else
+ extern int ReadRequestFromClient(ClientPtr /*client*/);
+-#endif /* LBX */
+ 
+ extern Bool InsertFakeRequest(
+     ClientPtr /*client*/, 
+@@ -176,10 +169,6 @@ extern void MakeClientGrabImpervious(ClientPtr /*client*/);
+ 
+ extern void MakeClientGrabPervious(ClientPtr /*client*/);
+ 
+-#ifdef LBX
+-extern void CloseDownFileDescriptor(ClientPtr /* client */);
+-#endif
+-
+ extern void AvailableClientInput(ClientPtr /* client */);
+ 
+ extern CARD32 GetTimeInMillis(void);

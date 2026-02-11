@@ -1,0 +1,24 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+index 5b7933e..1d426d7 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+@@ -171,7 +171,8 @@ protected Object createElementInfo() {
+ }
+ public boolean equals(Object o) {
+ 	if (!(o instanceof ClassFile)) return false;
+-	return super.equals(o);
++	ClassFile other = (ClassFile) o;
++	return this.name.equals(other.name) && this.parent.equals(other.parent);
+ }
+ public boolean exists() {
+ 	return super.exists() && validateClassFile().isOK();
+@@ -498,6 +499,9 @@ public IJavaElement getWorkingCopy(IProgressMonitor monitor, org.eclipse.jdt.cor
+ protected boolean hasBuffer() {
+ 	return true;
+ }
++public int hashCode() {
++	return Util.combineHashCodes(this.name.hashCode(), this.parent.hashCode());
++}
+ /**
+  * @see IClassFile
+  */

@@ -1,0 +1,36 @@
+diff --git a/hw/darwin/iokit/xfIOKitStartup.c b/hw/darwin/iokit/xfIOKitStartup.c
+index 512793a..07e8c21 100644
+--- a/hw/darwin/iokit/xfIOKitStartup.c
++++ b/hw/darwin/iokit/xfIOKitStartup.c
+@@ -29,6 +29,11 @@
+  * use or other dealings in this Software without prior written authorization.
+  */
+ 
++
++#if HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "darwin.h"
+ #include "darwinKeyboard.h"
+ #include "micmap.h"
+@@ -57,7 +62,9 @@ void DarwinHandleGUI(
+  */
+ void DarwinGlxExtensionInit(void)
+ {
++#ifdef GLXEXT
+     GlxExtensionInit();
++#endif
+ }
+ 
+ 
+@@ -67,7 +74,9 @@ void DarwinGlxExtensionInit(void)
+ void DarwinGlxWrapInitVisuals(
+     miInitVisualsProcPtr *procPtr)
+ {
++#ifdef GLXEXT
+     GlxWrapInitVisuals(procPtr);
++#endif
+ }
+ 
+ 

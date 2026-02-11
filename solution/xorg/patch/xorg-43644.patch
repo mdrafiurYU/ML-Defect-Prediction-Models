@@ -1,0 +1,13 @@
+diff --git a/include/dix.h b/include/dix.h
+index 0afd766..2aaa4fa 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -466,7 +466,7 @@ extern _X_EXPORT int DeliverEvents(
+ 
+ extern _X_EXPORT Bool
+ CheckMotion(
+-    xEvent* /* xE */, 
++    DeviceEvent* /* ev */,
+     DeviceIntPtr /* pDev */);
+ 
+ extern _X_EXPORT void WriteEventsToClient(

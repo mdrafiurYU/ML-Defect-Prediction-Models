@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LazyTextExtractorField.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LazyTextExtractorField.java
+index 0353ae9..b92d7a5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LazyTextExtractorField.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/LazyTextExtractorField.java
+@@ -73,7 +73,7 @@ public class LazyTextExtractorField extends AbstractField {
+                                   boolean withOffsets) {
+         super(name,
+                 store ? Field.Store.YES : Field.Store.NO,
+-                Field.Index.TOKENIZED,
++                Field.Index.ANALYZED,
+                 withOffsets ? Field.TermVector.WITH_OFFSETS : Field.TermVector.NO);
+         this.reader = reader;
+     }

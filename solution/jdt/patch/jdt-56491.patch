@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorUtilTestAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorUtilTestAnnotationProcessor.java
+index 36149a5..63fe046 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorUtilTestAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/mirrortest/MirrorUtilTestAnnotationProcessor.java
+@@ -59,15 +59,15 @@ public class MirrorUtilTestAnnotationProcessor extends BaseProcessor
+ 	public static final String[] ENV_VALUES = {
+ 			// no-translation
+ 		"normal",
+-		"normal\\foo.bar",
+-		"%NOSUCH\\VARNAME%",
+-		"%ROOT%\\someOtherProject\\foo\\nonexistent.txt",
++		"normal/foo.bar",
++		"%NOSUCH/VARNAME%",
++		"%ROOT%/someOtherProject/foo/nonexistent.txt",
+ 			// expected-translation
+ 		"%ECLIPSE_HOME%",
+-		"%ECLIPSE_HOME%\\plugins",
+-		"%ECLIPSE_HOME%\\startup.jar",
+-		"%ROOT%\\org.eclipse.jdt.apt.tests.MirrorUtilTestsProject",
+-		"%ROOT%\\org.eclipse.jdt.apt.tests.MirrorUtilTestsProject\\.classpath"
++		"%ECLIPSE_HOME%/plugins",
++		"%ECLIPSE_HOME%/startup.jar",
++		"%ROOT%/org.eclipse.jdt.apt.tests.MirrorUtilTestsProject",
++		"%ROOT%/org.eclipse.jdt.apt.tests.MirrorUtilTestsProject/.classpath"
+ 	};
+ 	
+ 	public MirrorUtilTestAnnotationProcessor(AnnotationProcessorEnvironment env)

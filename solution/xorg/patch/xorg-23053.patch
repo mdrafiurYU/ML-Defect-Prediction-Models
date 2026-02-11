@@ -1,0 +1,15 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index eecadd7..cd4ce38 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef _RANDRSTR_H_
+ #define _RANDRSTR_H_
+ 

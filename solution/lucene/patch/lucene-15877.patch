@@ -1,0 +1,20 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
+index 58c5313..3b191b8 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
+@@ -334,15 +334,6 @@ public class InstantiatedIndexReader extends IndexReader {
+   }
+ 
+   @Override
+-  public void norms(String field, byte[] bytes, int offset) throws IOException {
+-    byte[] norms = getIndex().getNormsByFieldNameAndDocumentNumber().get(field);
+-    if (norms == null) {
+-      return;
+-    }
+-    System.arraycopy(norms, 0, bytes, offset, norms.length);
+-  }
+-
+-  @Override
+   protected void doSetNorm(int doc, String field, byte value) throws IOException {
+     if (uncommittedNormsByFieldNameAndDocumentNumber == null) {
+       uncommittedNormsByFieldNameAndDocumentNumber = new HashMap<String,List<NormUpdate>>(getIndex().getNormsByFieldNameAndDocumentNumber().size());

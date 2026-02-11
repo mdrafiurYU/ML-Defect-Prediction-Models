@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 6927720..411dedd 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -501,6 +501,12 @@ int
+ SetDeviceValuators (ClientPtr client, DeviceIntPtr dev, int *valuators,
+                     int first_valuator, int num_valuators)
+ {
++    LocalDevicePtr local = (LocalDevicePtr) dev->public.devicePrivate;
++
++    if (local->set_device_valuators)
++	return (*local->set_device_valuators)(local, valuators, first_valuator,
++					      num_valuators);
++
+   return BadMatch;
+ }
+ 

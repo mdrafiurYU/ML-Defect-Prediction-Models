@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/JavaSearchScope.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/JavaSearchScope.java
+index 0ac7360..c258a54 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/JavaSearchScope.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/JavaSearchScope.java
+@@ -51,7 +51,7 @@ public class JavaSearchScope extends AbstractSearchScope {
+ 	private int threshold;
+ 	
+ 	private IPath[] enclosingProjectsAndJars;
+-	public final static AccessRuleSet NOT_ENCLOSED = new AccessRuleSet(null);
++	public final static AccessRuleSet NOT_ENCLOSED = new AccessRuleSet(null, null);
+ 	
+ public JavaSearchScope() {
+ 	this(5);

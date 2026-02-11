@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestTermVectorsWriter.java b/lucene/src/test/org/apache/lucene/index/TestTermVectorsWriter.java
+index 0aadec4..5f1edbe 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestTermVectorsWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestTermVectorsWriter.java
+@@ -297,7 +297,7 @@ public class TestTermVectorsWriter extends LuceneTestCase {
+           .setMergeScheduler(new SerialMergeScheduler()).setMergePolicy(
+               new LogDocMergePolicy()));
+ 
+-      Directory[] indexDirs = {new MockDirectoryWrapper(new RAMDirectory(dir))};
++      Directory[] indexDirs = {new MockDirectoryWrapper(random, new RAMDirectory(dir))};
+       writer.addIndexes(indexDirs);
+       writer.optimize();
+       writer.close();

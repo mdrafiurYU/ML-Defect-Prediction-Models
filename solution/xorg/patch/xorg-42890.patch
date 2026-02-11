@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/input/lnx-keyboard.c b/hw/dmx/input/lnx-keyboard.c
+index 55ff9f8..744b6ac 100644
+--- a/hw/dmx/input/lnx-keyboard.c
++++ b/hw/dmx/input/lnx-keyboard.c
+@@ -697,7 +697,7 @@ static void kbdLinuxConvert(DevicePtr pDev,
+ 
+             /* No auto-repeat? */
+             if ((feed && !feed->ctrl.autoRepeat)
+-                || priv->pKeyboard->key->modifierMap[keyCode]
++                || priv->pKeyboard->key->xkbInfo->desc->map->modmap[keyCode]
+                 || (feed
+                     && !(feed->ctrl.autoRepeats[keyCode >> 3]
+                          & (1 << (keyCode & 7))))) return; /* Ignore */

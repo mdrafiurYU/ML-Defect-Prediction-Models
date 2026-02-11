@@ -1,0 +1,14 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 99022c3..5058212 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -549,6 +549,9 @@ Bool
+ RRCrtcSetRotations (RRCrtcPtr crtc,
+ 		    Rotation rotations);
+ 
++void
++RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
++
+ /*
+  * Destroy a Crtc at shutdown
+  */

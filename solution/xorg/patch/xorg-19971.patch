@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/vbe/vbe.c b/hw/xfree86/vbe/vbe.c
+index 7b55c13..b69a82b 100644
+--- a/hw/xfree86/vbe/vbe.c
++++ b/hw/xfree86/vbe/vbe.c
+@@ -10,6 +10,10 @@
+  * Authors: Paulo César Pereira de Andrade <pcpa@conectiva.com.br> 
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86_ansic.h"
+ #include "vbe.h"

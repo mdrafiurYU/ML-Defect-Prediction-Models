@@ -1,0 +1,16 @@
+diff --git a/os/osdep.h b/os/osdep.h
+index b837d76..f566ac5 100644
+--- a/os/osdep.h
++++ b/os/osdep.h
+@@ -119,9 +119,11 @@ SOFTWARE.
+ /* MAXSELECT is the number of fds that select() can handle */
+ #define MAXSELECT (sizeof(fd_set) * NBBY)
+ 
++#ifndef HAS_GETDTABLESIZE
+ #if !defined(hpux) && !defined(SVR4) && !defined(SYSV)
+ #define HAS_GETDTABLESIZE
+ #endif
++#endif
+ 
+ #include <stddef.h>
+ 

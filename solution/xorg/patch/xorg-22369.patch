@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 0e8bb89..0963bef 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -162,7 +162,7 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMFUNC(QueueWorkProc)
+     SYMFUNC(RegisterBlockAndWakeupHandlers)
+     SYMFUNC(RemoveBlockAndWakeupHandlers)
+-#ifdef XCSECURITY
++#ifdef XACE
+     SYMFUNC(SecurityLookupDrawable)
+     SYMFUNC(SecurityLookupWindow)
+ #endif
+@@ -283,7 +283,7 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMFUNC(LookupIDByType)
+     SYMFUNC(LookupIDByClass)
+     SYMFUNC(LegalNewID)
+-#ifdef XCSECURITY
++#ifdef XACE
+     SYMFUNC(SecurityLookupIDByClass)
+     SYMFUNC(SecurityLookupIDByType)
+ #endif

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java
+index d484592..7de80c8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DocNumberCache.java
+@@ -72,7 +72,7 @@ final class DocNumberCache {
+      * @param size the cache limit.
+      */
+     DocNumberCache(int size) {
+-        size = size % CACHE_SEGMENTS;
++        size = size / CACHE_SEGMENTS;
+         if (size < 0x40) {
+             // minimum size is 0x40 * 0x10 = 1024
+             size = 0x40;

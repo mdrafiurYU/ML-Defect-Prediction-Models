@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThrowStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThrowStatement.java
+index c96aa30..12999d9 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThrowStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ThrowStatement.java
+@@ -63,7 +63,7 @@ public class ThrowStatement extends Statement {
+ 		
+ 		exceptionType = exception.resolveTypeExpecting(scope, scope.getJavaLangThrowable());
+ 		
+-		if (exceptionType == NullBinding
++		if (exceptionType == TypeBinding.NULL
+ 				&& scope.compilerOptions().complianceLevel <= ClassFileConstants.JDK1_3){
+ 			// if compliant with 1.4, this problem will not be reported
+ 			scope.problemReporter().cannotThrowNull(this);

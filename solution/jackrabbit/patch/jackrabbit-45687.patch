@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/lock/SessionScopedLockTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/lock/SessionScopedLockTest.java
+index 400381c..0b8a515 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/lock/SessionScopedLockTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/lock/SessionScopedLockTest.java
+@@ -33,9 +33,13 @@ public class SessionScopedLockTest extends AbstractLockTest {
+     }
+ 
+     /**
+-     * 
++     * {@link org.apache.jackrabbit.api.jsr283.lock.Lock#getLockToken()} must
++     * always return <code>null</code> for session scoped locks.
+      */
++    /*
++    TODO: uncomment as soon as 283 lock token handing is in effect
+     public void testGetLockToken() {
+         assertNull("A session scoped lock may never expose the token.", lock.getLockToken());
+     }
++    */
+ }
+\ No newline at end of file

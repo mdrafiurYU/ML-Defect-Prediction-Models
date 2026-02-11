@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/common/xf86Bus.h b/hw/xfree86/common/xf86Bus.h
+index d28190a..c5f5dcc 100644
+--- a/hw/xfree86/common/xf86Bus.h
++++ b/hw/xfree86/common/xf86Bus.h
+@@ -119,6 +119,14 @@ typedef struct x_BusAccRec {
+     } busdep;
+ } BusAccRec, *BusAccPtr;
+ 
++/* state change notification callback */
++typedef struct _stateChange {
++    xf86StateChangeNotificationCallbackFunc func;
++    pointer arg;
++    struct _stateChange *next;
++} StateChangeNotificationRec, *StateChangeNotificationPtr;
++
++
+ extern EntityPtr *xf86Entities;
+ extern int xf86NumEntities;
+ extern xf86AccessRec AccessNULL;

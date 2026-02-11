@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java
+index 122b493..af262c4 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/PackageDeclarationImpl.java
+@@ -191,7 +191,7 @@ public class PackageDeclarationImpl extends DeclarationImpl implements PackageDe
+     {
+         IPackageBinding pkg = getPackageBinding();
+         final String[] components = pkg.getNameComponents();
+-        if( components == null || components.length == 0 ) return "";
++        if( components == null || components.length == 0 ) return ""; //$NON-NLS-1$
+         return components[components.length - 1];
+     }

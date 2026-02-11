@@ -1,0 +1,21 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index 2dc0482..7f0ff7e 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -154,6 +154,7 @@ int darwin_modifier_mask_list[] = {
+ #else
+     NX_CONTROLMASK, NX_SHIFTMASK, NX_COMMANDMASK, NX_ALTERNATEMASK,
+ #endif
++    NX_ALPHASHIFTMASK,
+     0
+ };
+ 
+@@ -173,7 +174,7 @@ static void DarwinUpdateModifiers(
+     }
+     
+     for(f=darwin_modifier_mask_list; *f; f++)
+-        if(*f & flags) {
++        if(*f & flags && *f != NX_ALPHASHIFTMASK) {
+             key = DarwinModifierNXMaskToNXKey(*f);
+             if(key == -1)
+                 ErrorF("DarwinUpdateModifiers: Unsupported NXMask: 0x%x\n", *f);

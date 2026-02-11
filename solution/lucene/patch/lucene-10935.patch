@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java b/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
+index 6eec6ce..e61c600 100644
+--- a/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
++++ b/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
+@@ -16,7 +16,7 @@ public abstract class Lookup {
+   /**
+    * Result of a lookup.
+    */
+-  public static final class LookupResult {
++  public static final class LookupResult implements Comparable<LookupResult> {
+     String key;
+     float value;
+     
+@@ -28,6 +28,11 @@ public abstract class Lookup {
+     public String toString() {
+       return key + "/" + value;
+     }
++
++    /** Compare alphabetically. */
++    public int compareTo(LookupResult o) {
++      return this.key.compareTo(o.key);
++    }
+   }
+   
+   public static final class LookupPriorityQueue extends PriorityQueue<LookupResult> {

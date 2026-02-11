@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/scan.c b/hw/xfree86/parser/scan.c
+index 0ed104d..7f10c0d 100644
+--- a/hw/xfree86/parser/scan.c
++++ b/hw/xfree86/parser/scan.c
+@@ -435,7 +435,7 @@ again:
+ 			i = 0;
+ 			do
+ 			{
+-				configRBuf[++i] = (c = configBuf[configPos++]);;
++				configRBuf[++i] = (c = configBuf[configPos++]);
+ 			}
+ 			while ((c != ' ') && (c != '\t') && (c != '\n') && (c != '\r') && (c != '\0') && (c != '#'));
+ 			--configPos;

@@ -1,0 +1,37 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java
+index cb54ce2..6353b8a 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/SnippetCompletionTests.java
+@@ -47,6 +47,7 @@ public static Test suite() {
+ 	suite.addTest(new SnippetCompletionTests("testCodeSnippetAssistForClassFileInInterface"));
+ 	suite.addTest(new SnippetCompletionTests("testCodeSnippetAssistForClassFileInInterface2"));
+ 	suite.addTest(new SnippetCompletionTests("testCodeSnippetAssistForClassFileWithDollar"));
++	suite.addTest(new SnippetCompletionTests("testCodeSnippetAssistInsideNumber"));
+ 	
+ 	return suite;
+ }
+@@ -285,4 +286,24 @@ public void testCodeSnippetAssistForClassFileWithDollar() throws JavaModelExcept
+ 		requestor.getResults());
+ }
+ 
++public void testCodeSnippetAssistInsideNumber() throws JavaModelException {
++	CompletionTestsRequestor requestor = new CompletionTestsRequestor();
++	IClassFile cf = getClassFile("SnippetCompletion", "class-folder", "aa.bb.cc", "AClass.class");
++	IType type = cf.getType();
++	
++	String snippet = 
++		"new double[] {1.2, 3.\n";
++		
++	char[][] typeNames = {"SuperClass".toCharArray(), "int".toCharArray()};
++	char[][] names = {"varsc".toCharArray(), "var".toCharArray()};
++	int[] modifiers = {CompilerModifiers.AccDefault, IConstants.AccFinal};
++	
++	type.codeComplete(snippet.toCharArray(), -1, snippet.length()-2, typeNames, names, modifiers, false, requestor);
++	
++	assertEquals(
++		"should have 0 completions",
++		"",
++		requestor.getResults());
++}
++
+ }

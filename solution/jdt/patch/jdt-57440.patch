@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
+index 9b56476..2528bc8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
+@@ -496,7 +496,7 @@ private Binding findSingleStaticImport(char[][] compoundName) {
+ 	// look to see if its a static field first
+ 	ReferenceBinding type = (ReferenceBinding) binding;
+ 	FieldBinding field = findField(type, name, null, true);
+-	if (field != null && field.isValidBinding() && field.isStatic() && field.canBeSeenBy(fPackage))
++	if (field != null && field.isValidBinding() && field.isStatic() && field.canBeSeenBy(type, null, this))
+ 		return field;
+ 
+ 	// look to see if there is a static method with the same selector

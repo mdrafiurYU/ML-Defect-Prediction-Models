@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/glxProxy/glxcmds.c b/hw/dmx/glxProxy/glxcmds.c
+index 8c466e1..fe1d357 100644
+--- a/hw/dmx/glxProxy/glxcmds.c
++++ b/hw/dmx/glxProxy/glxcmds.c
+@@ -3619,7 +3619,7 @@ int __glXSendLargeCommand(__GLXclientState *cl, GLXContextTag contextTag)
+ 	   GetReq(GLXRenderLarge,req); 
+ 	   req->reqType = dmxScreen->glxMajorOpcode;
+ 	   req->glxCode = X_GLXRenderLarge; 
+-	   req->contextTag = (glxc ? GetCurrentBackEndTag(cl,contextTag,s) : 0);
++	   req->contextTag = GetCurrentBackEndTag(cl,contextTag,s);
+ 	   req->length += (amount + 3) >> 2;
+ 	   req->requestNumber = requestNumber++;
+ 	   req->requestTotal = totalRequests;

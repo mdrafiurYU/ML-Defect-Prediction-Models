@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 5be0841..8eaa118 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -461,7 +461,7 @@ AddOtherInputDevices()
+ {
+ }
+ 
+-int
++_X_EXPORT int
+ NewInputDeviceRequest (InputOption *options, DeviceIntPtr *pdev)
+ {
+     IDevRec *idev = NULL;
+@@ -604,7 +604,7 @@ unwind:
+     return rval;
+ }
+ 
+-void
++_X_EXPORT void
+ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+ {
+     LocalDevicePtr pInfo = (LocalDevicePtr) pDev->public.devicePrivate;

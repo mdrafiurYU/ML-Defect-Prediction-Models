@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index 0eaa2d3..139e23c 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -65,6 +65,7 @@
+ #include "osdep.h"
+ #include "privates.h"
+ #include "resource.h"
++#include "registry.h"
+ #include "servermd.h"
+ #include "scrnintstr.h"
+ #include "windowstr.h"
+@@ -285,9 +286,12 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMVAR(lastResourceType)
+     SYMVAR(TypeMask)
+     SYMVAR(ResourceStateCallback)
+-#ifdef RES
++    /* registry.c */
++#ifdef XREGISTRY
++    SYMFUNC(RegisterRequestName)
++    SYMFUNC(RegisterEventName)
++    SYMFUNC(RegisterErrorName)
+     SYMFUNC(RegisterResourceName)
+-    SYMVAR(ResourceNames)
+ #endif
+     /* swaprep.c */
+     SYMFUNC(CopySwap32Write)

@@ -1,0 +1,24 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FieldInfos.java b/lucene/src/java/org/apache/lucene/index/FieldInfos.java
+index 0c8aef3..a6baae5 100644
+--- a/lucene/src/java/org/apache/lucene/index/FieldInfos.java
++++ b/lucene/src/java/org/apache/lucene/index/FieldInfos.java
+@@ -344,9 +344,6 @@ public final class FieldInfos {
+         case BYTES_VAR_SORTED:
+           b = 9;
+           break;
+-        case PACKED_INTS_FIXED:
+-          b = 10;
+-          break;
+         default:
+           throw new IllegalStateException("unhandled indexValues type " + fi.docValues);
+         }
+@@ -413,9 +410,6 @@ public final class FieldInfos {
+         case 9:
+           fi.docValues = Values.BYTES_VAR_SORTED;
+           break;
+-        case 10:
+-          fi.docValues = Values.PACKED_INTS_FIXED;
+-          break;
+         default:
+           throw new IllegalStateException("unhandled indexValues type " + b);
+         }

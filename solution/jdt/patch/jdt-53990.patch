@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index 93b5b76..d92f329 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -120,7 +120,12 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 	
+ 		Map<AnnotationProcessorFactory, FactoryPath.Attributes> factories = _factoryLoader.getFactoriesAndAttributesForProject( javaProject );	
+ 	
+-		APTResult result = APTDispatch.runAPTDuringBuild(factories, buildFiles, javaProject, pbce.isFullBuild());
++		boolean isFullBuild = pbce.isFullBuild();
++		if (isFullBuild) {
++			AnnotationProcessorFactoryLoader.getLoader().resetBatchProcessors(pbce.getJavaProject());
++		}
++		
++		APTResult result = APTDispatch.runAPTDuringBuild(factories, buildFiles, javaProject, isFullBuild);
+ 		Set<IFile> newFiles = result.getNewFiles();			
+ 		Set<IFile> deletedFiles = new HashSet<IFile>();
+ 		
+@@ -200,8 +205,6 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 	{		
+ 		IProject p = cpe.getJavaProject().getProject();
+ 		
+-		AnnotationProcessorFactoryLoader.getLoader().resetBatchProcessors(cpe.getJavaProject());
+-		
+ 		GeneratedFileManager gfm = GeneratedFileManager.getGeneratedFileManager( p );
+ 		gfm.projectClean( true );
+ 		try{

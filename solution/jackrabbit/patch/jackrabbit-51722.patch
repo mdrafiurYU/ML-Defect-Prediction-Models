@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java
+index 5c132ad..ddb3acc 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/RepositoryService.java
+@@ -121,7 +121,7 @@ public interface RepositoryService {
+      * @see javax.jcr.Repository#getDescriptorKeys()
+      * @see javax.jcr.Repository#getDescriptor(String)
+      */
+-    public Map<String, String> getRepositoryDescriptors() throws RepositoryException;
++    public Map<String, QValue[]> getRepositoryDescriptors() throws RepositoryException;
+ 
+     //-----------------------------------< SessionInfo creation and release >---
+     /**

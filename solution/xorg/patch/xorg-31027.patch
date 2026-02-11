@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/int10/xf86int10.c b/hw/xfree86/int10/xf86int10.c
+index e19bfbc..d67fc42 100644
+--- a/hw/xfree86/int10/xf86int10.c
++++ b/hw/xfree86/int10/xf86int10.c
+@@ -14,6 +14,7 @@
+ #define _INT10_PRIVATE
+ #include "xf86int10.h"
+ #include "int10Defines.h"
++#include "Pci.h"
+ 
+ #define REG pInt
+ 
+@@ -24,8 +25,7 @@ static int int1A_handler(xf86Int10InfoPtr pInt);
+ static int int42_handler(xf86Int10InfoPtr pInt);
+ #endif
+ static int intE6_handler(xf86Int10InfoPtr pInt);
+-static struct pci_device * findPci( xf86Int10InfoPtr pInt,
+-    unsigned short bx );
++static struct pci_device *findPci(xf86Int10InfoPtr pInt, unsigned short bx);
+ static CARD32 pciSlotBX( const struct pci_device * pvp );
+ 
+ int

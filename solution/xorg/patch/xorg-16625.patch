@@ -1,0 +1,15 @@
+diff --git a/dix/dispatch.h b/dix/dispatch.h
+index ba43bdc..89ea2dd 100644
+--- a/dix/dispatch.h
++++ b/dix/dispatch.h
+@@ -30,6 +30,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  * extension.c, property.c. 
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef DISPATCH_H
+ #define DISPATCH_H 1
+ 

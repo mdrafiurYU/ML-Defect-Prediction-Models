@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xf4bpp/ppcIO.c b/hw/xfree86/xf4bpp/ppcIO.c
+index 8d726e7..bd20218 100644
+--- a/hw/xfree86/xf4bpp/ppcIO.c
++++ b/hw/xfree86/xf4bpp/ppcIO.c
+@@ -219,7 +219,7 @@ xf4bppScreenInit( pScreen, pbits, virtx, virty, dpix, dpiy, width )
+   pScreen-> ResolveColor = xf4bppResolveColor;
+   mfbFillInScreen(pScreen);
+ 
+-  if (!mfbAllocatePrivates(pScreen, (int*)NULL, (int*)NULL))
++  if (!mfbAllocatePrivates(pScreen, NULL, NULL))
+ 	return FALSE;
+ 
+   if (!miScreenInit(pScreen, pbits, virtx, virty, dpix, dpiy, width,

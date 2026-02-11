@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java
+index c9535b2..d0027fb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/ItemState.java
+@@ -157,7 +157,7 @@ public abstract class ItemState implements Serializable {
+     /**
+      * Pull state information from overlayed state.
+      */
+-    void pull() {
++    synchronized void pull() {
+         ItemState state = overlayedState;
+         if (state != null) {
+             // sync modification count

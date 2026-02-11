@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessValTree.c b/miext/rootless/rootlessValTree.c
+index 47cd679..0ee4919 100644
+--- a/miext/rootless/rootlessValTree.c
++++ b/miext/rootless/rootlessValTree.c
+@@ -624,7 +624,7 @@ RootlessMiValidateTree (WindowPtr pRoot, /* Parent to validate */
+                 if (pScreen->ClipNotify)
+                     (* pScreen->ClipNotify) (pWin, 0, 0);
+                 REGION_EMPTY( pScreen, &pWin->borderClip);
+-                pWin->valdata = (ValidatePtr)NULL;
++                pWin->valdata = NULL;
+             }
+         }
+     }

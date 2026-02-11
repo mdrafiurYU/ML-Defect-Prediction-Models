@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
+index 1be2459..a78379b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
+@@ -751,8 +751,7 @@ public class WorkspaceImpl extends AbstractWorkspace
+ 
+         Importer importer = new WorkspaceImporter(parentPath, this,
+                 rep.getNodeTypeRegistry(), uuidBehavior);
+-        return new ImportHandler(importer, session.getNamespaceResolver(),
+-                rep.getNamespaceRegistry());
++        return new ImportHandler(importer, session, rep.getNamespaceRegistry());
+     }
+ 
+     /**

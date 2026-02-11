@@ -1,0 +1,15 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 7247963..3d09043 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -261,6 +261,10 @@ exaGetOffscreenPixmap (DrawablePtr pDrawable, int *xp, int *yp);
+ void
+ exaMoveInPixmap (PixmapPtr pPixmap);
+ 
++RegionPtr
++exaCopyArea(DrawablePtr pSrcDrawable, DrawablePtr pDstDrawable, GCPtr pGC,
++	    int srcx, int srcy, int width, int height, int dstx, int dsty);
++
+ void
+ exaCopyNtoN (DrawablePtr    pSrcDrawable,
+ 	     DrawablePtr    pDstDrawable,

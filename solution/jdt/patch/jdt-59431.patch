@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+index ffe9f25..be3f350 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClassFile.java
+@@ -93,7 +93,7 @@ protected boolean buildStructure(OpenableElementInfo info, IProgressMonitor pm,
+ 
+ 	// Make the type
+ 	IType type = new BinaryType(this, simpleName(typeInfo.getName()));
+-	info.addChild(type);
++	info.setChildren(new IJavaElement[] {type});
+ 	newElements.put(type, typeInfo);
+ 	return true;
+ }

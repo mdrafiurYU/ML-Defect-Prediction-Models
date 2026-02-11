@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
+index 9f0ef31..007c028 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
+@@ -210,7 +210,12 @@ public abstract class AbstractJournal implements Journal {
+                 } else {
+                     RecordConsumer consumer = getConsumer(record.getProducerId());
+                     if (consumer != null) {
+-                        consumer.consume(record);
++                        try {
++                            consumer.consume(record);
++                        } catch (IllegalStateException e) {
++                            log.error("Could not synchronize to revision: " + record.getRevision() + " due illegal state of RecordConsumer.");
++                            return;
++                        }
+                     }
+                 }
+                 stopRevision = record.getRevision();

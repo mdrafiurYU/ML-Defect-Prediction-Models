@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/BoolDocValues.java b/solr/src/java/org/apache/solr/search/function/BoolDocValues.java
+index 79442d6..97cc3a0 100644
+--- a/solr/src/java/org/apache/solr/search/function/BoolDocValues.java
++++ b/solr/src/java/org/apache/solr/search/function/BoolDocValues.java
+@@ -2,6 +2,8 @@ package org.apache.solr.search.function;
+ 
+ import org.apache.lucene.common.mutable.MutableValue;
+ import org.apache.lucene.common.mutable.MutableValueBool;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ 
+ 
+ public abstract class BoolDocValues extends DocValues {

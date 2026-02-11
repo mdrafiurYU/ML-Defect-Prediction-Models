@@ -1,0 +1,47 @@
+diff --git a/hw/xfree86/ramdac/xf86RamDac.c b/hw/xfree86/ramdac/xf86RamDac.c
+index 70c752e..bd4f346 100644
+--- a/hw/xfree86/ramdac/xf86RamDac.c
++++ b/hw/xfree86/ramdac/xf86RamDac.c
+@@ -37,7 +37,7 @@ int RamDacHWPrivateIndex = -1;
+ int RamDacScreenPrivateIndex = -1;
+ 
+ RamDacRecPtr
+-RamDacCreateInfoRec()
++RamDacCreateInfoRec(void)
+ {
+     RamDacRecPtr infoRec;
+ 
+@@ -47,7 +47,7 @@ RamDacCreateInfoRec()
+ }
+ 
+ RamDacHelperRecPtr
+-RamDacHelperCreateInfoRec()
++RamDacHelperCreateInfoRec(void)
+ {
+     RamDacHelperRecPtr infoRec;
+ 
+@@ -86,7 +86,7 @@ RamDacInit(ScrnInfoPtr pScrn, RamDacRecPtr ramdacPriv)
+ }
+ 
+ void
+-RamDacGetRecPrivate()
++RamDacGetRecPrivate(void)
+ {
+     if (RamDacHWPrivateIndex < 0)
+ 	RamDacHWPrivateIndex = xf86AllocateScrnInfoPrivateIndex();
+@@ -142,13 +142,13 @@ RamDacFreeRec(ScrnInfoPtr pScrn)
+ }
+ 
+ int
+-RamDacGetHWIndex()
++RamDacGetHWIndex(void)
+ {
+     return RamDacHWPrivateIndex;
+ }
+ 
+ int
+-RamDacGetScreenIndex()
++RamDacGetScreenIndex(void)
+ {
+     return RamDacScreenPrivateIndex;
+ }

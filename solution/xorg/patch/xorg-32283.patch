@@ -1,0 +1,15 @@
+diff --git a/include/scrnintstr.h b/include/scrnintstr.h
+index 110f4dc..bcec02e 100644
+--- a/include/scrnintstr.h
++++ b/include/scrnintstr.h
+@@ -477,8 +477,8 @@ typedef struct _Screen {
+     ValidateTreeProcPtr		ValidateTree;
+     PostValidateTreeProcPtr	PostValidateTree;
+     WindowExposuresProcPtr	WindowExposures;
+-    PaintWindowBackgroundProcPtr PaintWindowBackground;
+-    PaintWindowBorderProcPtr	PaintWindowBorder;
++    PaintWindowBackgroundProcPtr PaintWindowBackground; /** unused */
++    PaintWindowBorderProcPtr	PaintWindowBorder; /** unused */
+     CopyWindowProcPtr		CopyWindow;
+     ClearToBackgroundProcPtr	ClearToBackground;
+     ClipNotifyProcPtr		ClipNotify;

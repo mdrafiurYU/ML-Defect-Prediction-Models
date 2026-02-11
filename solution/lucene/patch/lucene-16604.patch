@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/update/UpdateHandler.java b/solr/src/java/org/apache/solr/update/UpdateHandler.java
+index 7e06a27..e733234 100644
+--- a/solr/src/java/org/apache/solr/update/UpdateHandler.java
++++ b/solr/src/java/org/apache/solr/update/UpdateHandler.java
+@@ -152,7 +152,7 @@ public abstract class UpdateHandler implements SolrInfoMBean {
+     @Override
+     public void collect(int doc) {
+       try {
+-        searcher.getReader().deleteDocument(doc + docBase);
++        searcher.getIndexReader().deleteDocument(doc + docBase);
+         deleted++;
+       } catch (IOException e) {
+         // don't try to close the searcher on failure for now...

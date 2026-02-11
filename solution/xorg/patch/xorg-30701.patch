@@ -1,0 +1,14 @@
+diff --git a/include/input.h b/include/input.h
+index 6443a58..d86a969 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -495,7 +495,8 @@ extern void ACQueryWindowAccess(WindowPtr win,
+                                 int* ndeny);
+ 
+ extern Bool ACDeviceAllowed(WindowPtr win, 
+-                            DeviceIntPtr dev);
++                            DeviceIntPtr dev,
++                            xEvent* xE);
+ 
+ /* Implemented by the DDX. */
+ extern int NewInputDeviceRequest(

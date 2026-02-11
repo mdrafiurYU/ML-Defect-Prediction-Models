@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java
+index c9a9d66..dcb84a8 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java
+@@ -19,9 +19,7 @@ public class StaticImportTest extends AbstractComparableTest {
+ 	}
+ 
+ 	public static Test suite() {
+-		Test suite = buildTestSuite(testClass());
+-		TESTS_COUNTERS.put(testClass().getName(), new Integer(suite.countTestCases()));
+-		return suite;
++		return buildTestSuite(testClass());
+ 	}
+ 	
+ 	public static Class testClass() {

@@ -1,0 +1,21 @@
+diff --git a/solr/src/common/org/apache/solr/common/util/FastWriter.java b/solr/src/common/org/apache/solr/common/util/FastWriter.java
+index 090c3ab..4ea49df 100755
+--- a/solr/src/common/org/apache/solr/common/util/FastWriter.java
++++ b/solr/src/common/org/apache/solr/common/util/FastWriter.java
+@@ -55,7 +55,7 @@ public class FastWriter extends Writer {
+       sink.write(buf,0,pos);
+       pos=0;
+     }
+-    buf[pos++] = (char)c;
++    buf[pos++] = c;
+   }
+ 
+   @Override
+@@ -64,7 +64,7 @@ public class FastWriter extends Writer {
+       sink.write(buf,0,pos);
+       pos=0;
+     }
+-    buf[pos++] = (char)c;
++    buf[pos++] = c;
+     return this;
+   }

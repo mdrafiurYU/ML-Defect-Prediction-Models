@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
+index 42d1ffd..0713e2f 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
+@@ -309,7 +309,7 @@ public class NodeEntryImpl extends HierarchyEntryImpl implements NodeEntry {
+ 
+     private NodeId getId(boolean wspId) throws RepositoryException {
+         if (parent == null) { // shortcut for root
+-            return getIdFactory().createNodeId((String) null, getPathFactory().getRootPath());  // fixme: cache root
++            return getIdFactory().createNodeId((String) null, getPathFactory().getRootPath());
+         }
+         else if (uniqueID != null) { // shortcut for uniqueID based IDs
+             return getIdFactory().createNodeId(uniqueID);

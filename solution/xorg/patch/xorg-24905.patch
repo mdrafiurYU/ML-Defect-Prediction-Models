@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglinit.c b/hw/xgl/xglinit.c
+index 3d93c46..e0c9e7d 100644
+--- a/hw/xgl/xglinit.c
++++ b/hw/xgl/xglinit.c
+@@ -192,7 +192,7 @@ InitOutput (ScreenInfo *pScreenInfo,
+ 
+ Bool
+ LegalModifier (unsigned int key,
+-	       DevicePtr    pDev)
++	       DeviceIntPtr    pDev)
+ {
+     return (*__ddxFunc.legalModifier) (key, pDev);
+ }

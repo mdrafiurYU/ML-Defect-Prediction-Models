@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
+index e60afe8..a85d1b4 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
+@@ -2134,6 +2134,7 @@ public class CodeFormatterVisitor2 extends ASTVisitor {
+ 					}
+ 					this.scribe.alignFragment(binaryExpressionAlignment, i);
+ 					this.scribe.printNextToken(operators[i], this.preferences.insert_space_before_binary_operator);
++					this.scribe.printTrailingComment();
+ 					if ( this.preferences.insert_space_after_binary_operator
+ 							|| (operators[i] == TerminalTokens.TokenNameMINUS && isNextToken(TerminalTokens.TokenNameMINUS))) {
+ 						// the next character is a minus (unary operator) or the preference is set to true

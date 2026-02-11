@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
+index 23a0004..37da532 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
++++ b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
+@@ -498,7 +498,7 @@ public class TestNumericRangeQuery32 extends LuceneTestCase {
+         int a=lower; lower=upper; upper=a;
+       }
+       Query tq=NumericRangeQuery.newIntRange(field, precisionStep, lower, upper, true, true);
+-      TopDocs topDocs = searcher.search(tq, null, noDocs, new Sort(new SortField(field, SortField.INT, true)));
++      TopDocs topDocs = searcher.search(tq, null, noDocs, new Sort(new SortField(field, SortField.Type.INT, true)));
+       if (topDocs.totalHits==0) continue;
+       ScoreDoc[] sd = topDocs.scoreDocs;
+       assertNotNull(sd);

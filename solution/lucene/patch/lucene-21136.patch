@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestDocBoost.java b/lucene/src/test/org/apache/lucene/search/TestDocBoost.java
+index 9fc23ac..11d1505 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestDocBoost.java
++++ b/lucene/src/test/org/apache/lucene/search/TestDocBoost.java
+@@ -37,7 +37,7 @@ public class TestDocBoost extends LuceneTestCase {
+ 
+   public void testDocBoost() throws Exception {
+     Directory store = newDirectory();
+-    RandomIndexWriter writer = new RandomIndexWriter(random, store, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
++    RandomIndexWriter writer = new RandomIndexWriter(random, store, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).setMergePolicy(newLogMergePolicy()));
+ 
+     Fieldable f1 = newField("field", "word", Field.Store.YES, Field.Index.ANALYZED);
+     Fieldable f2 = newField("field", "word", Field.Store.YES, Field.Index.ANALYZED);

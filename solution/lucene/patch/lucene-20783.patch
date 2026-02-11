@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/no/TestNorwegianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/no/TestNorwegianAnalyzer.java
+index ebcb607..9990fda 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/no/TestNorwegianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/no/TestNorwegianAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestNorwegianAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "havnedistriktene", "havnedistriktene");
+     checkOneTermReuse(a, "havnedistrikter", "havnedistrikt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new NorwegianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

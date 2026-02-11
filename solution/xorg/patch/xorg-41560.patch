@@ -1,0 +1,13 @@
+diff --git a/glx/glxdri2.c b/glx/glxdri2.c
+index 4e76c71..87c3959 100644
+--- a/glx/glxdri2.c
++++ b/glx/glxdri2.c
+@@ -580,7 +580,7 @@ __glXDRIscreenProbe(ScreenPtr pScreen)
+     return NULL;
+ }
+ 
+-__GLXprovider __glXDRI2Provider = {
++_X_EXPORT __GLXprovider __glXDRI2Provider = {
+     __glXDRIscreenProbe,
+     "DRI2",
+     NULL

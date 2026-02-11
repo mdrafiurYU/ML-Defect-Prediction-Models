@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index 0ec2a81..3db1e92 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -85,12 +85,12 @@ import org.apache.jackrabbit.core.xml.ImportHandler;
+ import org.apache.jackrabbit.core.xml.SessionImporter;
+ import org.apache.jackrabbit.core.xml.SysViewSAXEventGenerator;
+ import org.apache.jackrabbit.commons.AbstractSession;
+-import org.apache.jackrabbit.conversion.NameException;
+-import org.apache.jackrabbit.conversion.NamePathResolver;
+-import org.apache.jackrabbit.conversion.DefaultNamePathResolver;
+-import org.apache.jackrabbit.conversion.IllegalNameException;
+-import org.apache.jackrabbit.conversion.MalformedPathException;
+-import org.apache.jackrabbit.namespace.NamespaceResolver;
++import org.apache.jackrabbit.spi.commons.conversion.NameException;
++import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
++import org.apache.jackrabbit.spi.commons.conversion.DefaultNamePathResolver;
++import org.apache.jackrabbit.spi.commons.conversion.IllegalNameException;
++import org.apache.jackrabbit.spi.commons.conversion.MalformedPathException;
++import org.apache.jackrabbit.spi.commons.namespace.NamespaceResolver;
+ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.uuid.UUID;

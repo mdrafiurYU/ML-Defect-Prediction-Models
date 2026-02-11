@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/OrderByLocalNameTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/OrderByLocalNameTest.java
+index e20cabb..c5c30fe 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/OrderByLocalNameTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/OrderByLocalNameTest.java
+@@ -55,13 +55,4 @@ public class OrderByLocalNameTest extends AbstractOrderByTest {
+         // no SQL equivalent
+         return null;
+     }
+-
+-    private static String getLocalName(String name) {
+-        int idx = name.indexOf(':');
+-        if (idx != -1) {
+-            return name.substring(idx + 1);
+-        } else {
+-            return name;
+-        }
+-    }
+ }

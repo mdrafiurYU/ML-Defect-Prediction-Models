@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winclip.c b/hw/xwin/winclip.c
+index f7de626..aab7d63 100644
+--- a/hw/xwin/winclip.c
++++ b/hw/xwin/winclip.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ /* Look at mfb/mfbclip.c for sample implementation */

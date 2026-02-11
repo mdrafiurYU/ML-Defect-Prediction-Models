@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
+index a02d6cf..6d7091e 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/observation/ObservationManagerImpl.java
+@@ -103,10 +103,6 @@ public class ObservationManagerImpl implements ObservationManager, InternalEvent
+                                  String[] uuids,
+                                  String[] nodeTypeNames,
+                                  boolean noLocal) throws RepositoryException {
+-        if (!isRegistered) {
+-            wspManager.addEventListener(this);
+-            isRegistered = true;
+-        }
+         Path path;
+         try {
+             path = resolver.getQPath(absPath).getCanonicalPath();
+@@ -138,6 +134,11 @@ public class ObservationManagerImpl implements ObservationManager, InternalEvent
+             subscriptions.put(listener, filter);
+             readOnlySubscriptions = null;
+         }
++
++        if (!isRegistered) {
++            wspManager.addEventListener(this);
++            isRegistered = true;
++        }
+     }
+ 
+     /**

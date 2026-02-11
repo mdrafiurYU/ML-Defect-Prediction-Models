@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+index d874f13..fbc4ced 100644
+--- a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
++++ b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+@@ -132,7 +132,7 @@ public class SolrIndexSearcher extends IndexSearcher implements SolrInfoMBean {
+     }
+ 
+     this.closeReader = closeReader;
+-    setSimilarity(schema.getSimilarity());
++    setSimilarityProvider(schema.getSimilarityProvider());
+ 
+     SolrConfig solrConfig = core.getSolrConfig();
+     queryResultWindowSize = solrConfig.queryResultWindowSize;

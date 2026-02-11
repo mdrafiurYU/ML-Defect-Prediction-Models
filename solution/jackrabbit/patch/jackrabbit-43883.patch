@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/NameValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/NameValue.java
+index 2cc31b5..a23005d 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/NameValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/NameValue.java
+@@ -81,7 +81,7 @@ public class NameValue extends BaseValue {
+             }
+             return new NameValue(s);
+         } else {
+-            throw new ValueFormatException("not a valid name format");
++            throw new ValueFormatException("not a valid name format: " + s);
+         }
+     }

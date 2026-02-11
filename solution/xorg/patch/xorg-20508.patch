@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/sco/sco_mouse.c b/hw/xfree86/os-support/sco/sco_mouse.c
+index ea81c94..f9d068c 100644
+--- a/hw/xfree86/os-support/sco/sco_mouse.c
++++ b/hw/xfree86/os-support/sco/sco_mouse.c
+@@ -242,7 +242,7 @@ OsMousePreInit(InputInfoPtr pInfo, const char *protocol, int flags)
+   return TRUE;
+ }
+ 
+-OSMouseInfoPtr
++_X_EXPORT OSMouseInfoPtr
+ xf86OSMouseInit (int flags)
+ {
+   OSMouseInfoPtr p;

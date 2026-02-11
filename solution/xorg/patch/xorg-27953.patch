@@ -1,0 +1,12 @@
+diff --git a/dix/cursor.c b/dix/cursor.c
+index e44a5ef..23a2cc9 100644
+--- a/dix/cursor.c
++++ b/dix/cursor.c
+@@ -131,7 +131,6 @@ FreeCursor(pointer value, XID cid)
+     }
+     FreeCursorBits(pCurs->bits);
+     xfree( pCurs);
+-    MPXDBG("freeing memory for cursor\n");
+     return(Success);
+ }
+ 

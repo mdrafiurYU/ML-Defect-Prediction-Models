@@ -1,0 +1,15 @@
+diff --git a/GL/glx/render2swap.c b/GL/glx/render2swap.c
+index 7c94b52..64ba77e 100644
+--- a/GL/glx/render2swap.c
++++ b/GL/glx/render2swap.c
+@@ -35,6 +35,10 @@
+ */
+ 
+ /* #define NEED_REPLIES */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "glxserver.h"
+ #include "unpack.h"
+ #include "g_disptab.h"

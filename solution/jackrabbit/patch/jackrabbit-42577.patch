@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+index 69579e2..f57955e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+@@ -174,6 +174,9 @@ public class PropertyImpl extends ItemImpl implements Property {
+             case PropertyType.STRING:
+             case PropertyType.LONG:
+             case PropertyType.DOUBLE:
++            case PropertyType.DATE:
++            case PropertyType.REFERENCE:
++            case PropertyType.BOOLEAN:
+                 return value.toString().length();
+ 
+             case PropertyType.NAME:

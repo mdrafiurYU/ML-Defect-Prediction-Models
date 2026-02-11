@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+index 1e1120d..29452ec 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+@@ -1524,7 +1524,7 @@ public void test019(){
+ 	        + " -verbose -proceedOnError -referenceInfo"
+ 	        + " -d \"" + OUTPUT_DIR + "\" ",
+ 	        "",
+-	        "duplicate sourcepath specification: -sourcepath\n",
++	        "duplicate sourcepath specification: -sourcepath ---OUTPUT_DIR_PLACEHOLDER---/src2\n",
+ 	        true);
+ 	}
+ //	 https://bugs.eclipse.org/bugs/show_bug.cgi?id=88364 - repeated -extdirs fails
+@@ -1547,7 +1547,7 @@ public void test019(){
+ 		        + " -verbose -proceedOnError -referenceInfo"
+ 		        + " -d \"" + OUTPUT_DIR + "\" ",
+ 		        "",
+-		        "duplicate extdirs specification: -extdirs\n",
++		        "duplicate extdirs specification: -extdirs ---OUTPUT_DIR_PLACEHOLDER---/src2\n",
+ 		        true);
+ 		}
+ //	 https://bugs.eclipse.org/bugs/show_bug.cgi?id=88364 - explicit empty -extdirs removes extensions

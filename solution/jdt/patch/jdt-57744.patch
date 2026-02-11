@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index 204d73f..c23131d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -8242,7 +8242,11 @@ protected TypeReference getTypeReferenceForGenericType(int dim, int identifierLe
+ 				currentIdentifiersLength = this.identifierLengthStack[this.identifierLengthPtr--];
+ 			}
+ 		}
+-		return new ParameterizedQualifiedTypeReference(tokens, typeArguments, dim, positions);
++		ParameterizedQualifiedTypeReference parameterizedQualifiedTypeReference = new ParameterizedQualifiedTypeReference(tokens, typeArguments, dim, positions);
++		if (dim != 0) {
++			parameterizedQualifiedTypeReference.sourceEnd = this.endPosition;
++		}
++		return parameterizedQualifiedTypeReference;
+ 	}
+ }
+ protected NameReference getUnspecifiedReference() {

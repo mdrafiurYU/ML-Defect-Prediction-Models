@@ -1,0 +1,22 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index c104589..f016682 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -511,17 +511,6 @@ void InitInput( int argc, char **argv )
+ 
+     darwinTabletCurrent = darwinTabletStylus;
+ 
+-    ActivateDevice(darwinKeyboard);
+-    ActivateDevice(darwinPointer);
+-    ActivateDevice(darwinTabletStylus);
+-    ActivateDevice(darwinTabletCursor);
+-    ActivateDevice(darwinTabletEraser);
+-    EnableDevice(darwinKeyboard);
+-    EnableDevice(darwinPointer);
+-    EnableDevice(darwinTabletStylus);
+-    EnableDevice(darwinTabletCursor);
+-    EnableDevice(darwinTabletEraser);
+-    
+     DarwinEQInit();
+ 
+     QuartzInitInput(argc, argv);

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/altixPCI.c b/hw/xfree86/os-support/bus/altixPCI.c
+index c2c21d3..010f661 100644
+--- a/hw/xfree86/os-support/bus/altixPCI.c
++++ b/hw/xfree86/os-support/bus/altixPCI.c
+@@ -1,6 +1,10 @@
+ /*
+  * This file contains the glue necessary for support of SGI's Altix chipset.
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <stdio.h>
+ #include <unistd.h>
+ #include "altixPCI.h"

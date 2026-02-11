@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 10db862..da035f2 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1362,8 +1362,8 @@ xf86ProbeOutputModes (ScrnInfoPtr scrn, int maxX, int maxY)
+ 			if (sync_source == sync_default)
+ 			    sync_source = sync_edid;
+ 		    }
+-		    if (ranges->max_clock > max_clock)
+-			max_clock = ranges->max_clock;
++		    if (ranges->max_clock * 1000 > max_clock)
++			max_clock = ranges->max_clock * 1000;
+ 		}
+ 	    }
+ 	}

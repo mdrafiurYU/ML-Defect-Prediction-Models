@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStore.java
+index 6dacfef..d48691a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/DataStore.java
+@@ -106,7 +106,7 @@ public interface DataStore {
+      * @return an iterator over all DataIdentifier objects
+      * @throws DataStoreException if the list could not be read
+      */
+-    Iterator getAllIdentifiers() throws DataStoreException;
++    Iterator<DataIdentifier> getAllIdentifiers() throws DataStoreException;
+ 
+     /**
+      * Initialized the data store

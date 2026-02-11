@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
+index fc84c15..38698d0 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/UnaryExpression.java
+@@ -287,7 +287,7 @@ public FlowInfo analyseCode(
+ 			if (((bits & OperatorMASK) >> OperatorSHIFT) == NOT) {
+ 				Constant cst = expression.optimizedBooleanConstant();
+ 				if (cst != Constant.NotAConstant) 
+-					this.optimizedBooleanConstant = Constant.fromValue(!cst.booleanValue());
++					this.optimizedBooleanConstant = BooleanConstant.fromValue(!cst.booleanValue());
+ 			}
+ 		}
+ 		if (expressionIsCast) {

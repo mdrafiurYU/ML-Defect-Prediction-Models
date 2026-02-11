@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTestKeyword.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTestKeyword.java
+index ced85ea..fca7be6 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTestKeyword.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/CompletionParserTestKeyword.java
+@@ -10,10 +10,15 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ public class CompletionParserTestKeyword extends AbstractCompletionTest {
+ public CompletionParserTestKeyword(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(CompletionParserTestKeyword.class);
++}
+ /*
+  * Test for 'abstract' keyword.
+  */

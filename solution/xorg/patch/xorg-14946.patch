@@ -1,0 +1,15 @@
+diff --git a/Xi/exglobals.h b/Xi/exglobals.h
+index 6f397a2..cba6310 100644
+--- a/Xi/exglobals.h
++++ b/Xi/exglobals.h
+@@ -29,6 +29,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  * Globals referenced elsewhere in the server.
+  *
+  */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef EXGLOBALS_H
+ #define EXGLOBALS_H 1
+ 

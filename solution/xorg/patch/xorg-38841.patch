@@ -1,0 +1,14 @@
+diff --git a/composite/compalloc.c b/composite/compalloc.c
+index 0372b9b..19c7db0 100644
+--- a/composite/compalloc.c
++++ b/composite/compalloc.c
+@@ -82,6 +82,9 @@ compRedirectWindow (ClientPtr pClient, WindowPtr pWin, int update)
+ 	return Success;
+     }
+ 
++    if (!pWin->parent)
++	return BadMatch;
++
+     /*
+      * Only one Manual update is allowed
+      */

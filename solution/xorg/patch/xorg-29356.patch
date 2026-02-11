@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglcompose.c b/hw/xgl/xglcompose.c
+index d2aead0..34f7a0c 100644
+--- a/hw/xgl/xglcompose.c
++++ b/hw/xgl/xglcompose.c
+@@ -177,7 +177,7 @@ xglCompositeGeneral (CARD8	     op,
+     {
+ 	if (!pSrc->transform && pSrc->filter != PictFilterConvolution)
+ 	{
+-	    if (pSrc->pDrawable && pSrc->repeat == RepeatNormal)
++	    if (pSrc->pDrawable && pSrc->repeatType == RepeatNormal)
+ 	    {
+ 		XGL_PIXMAP_PRIV ((PixmapPtr) pSrc->pDrawable);
+ 

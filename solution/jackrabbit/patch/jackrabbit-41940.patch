@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SelectorImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SelectorImpl.java
+index 25ddc48..64cc55d 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SelectorImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/SelectorImpl.java
+@@ -65,6 +65,15 @@ public class SelectorImpl extends SourceImpl implements Selector {
+         return selectorName;
+     }
+ 
++    //---------------------------< SourceImpl >---------------------------------
++
++    /**
++     * {@inheritDoc}
++     */ 
++    public SelectorImpl[] getSelectors() {
++        return new SelectorImpl[]{this};
++    }
++
+     //-----------------------------< Selector >---------------------------------
+ 
+     /**

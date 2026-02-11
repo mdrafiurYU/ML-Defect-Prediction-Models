@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMultiSearcher.java b/lucene/src/test/org/apache/lucene/search/TestMultiSearcher.java
+index e46f3ba..5b07c5a 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMultiSearcher.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMultiSearcher.java
+@@ -277,6 +277,7 @@ public class TestMultiSearcher extends LuceneTestCase
+     indexSearcher2.close();
+     ramDirectory1.close();
+     ramDirectory2.close();
++    searcher.close();
+   }
+ 
+   /* uncomment this when the highest score is always normalized to 1.0, even when it was < 1.0

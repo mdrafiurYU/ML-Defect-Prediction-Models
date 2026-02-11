@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
+index 3431efc..59571a2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SharedFieldCache.java
+@@ -101,11 +101,11 @@ class SharedFieldCache {
+                                                  SortComparator comparator,
+                                                  boolean includeLookup)
+             throws IOException {
+-        
++
+         if (reader instanceof ReadOnlyIndexReader) {
+             reader = ((ReadOnlyIndexReader) reader).getBase();
+         }
+-        
++
+         field = field.intern();
+         SharedFieldCache.StringIndex ret = lookup(reader, field, prefix, comparator);
+         if (ret == null) {

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/LineFileDocs.java b/lucene/src/test-framework/org/apache/lucene/util/LineFileDocs.java
+index 7657716..32b8661 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/LineFileDocs.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/LineFileDocs.java
+@@ -128,7 +128,7 @@ public class LineFileDocs implements Closeable {
+       body = new Field("body", "", Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
+       doc.add(body);
+ 
+-      id = new Field("id", "", Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS);
++      id = new Field("docid", "", Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS);
+       doc.add(id);
+ 
+       date = new Field("date", "", Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS);

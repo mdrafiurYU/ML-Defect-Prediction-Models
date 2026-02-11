@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
+index f5c77ef..34da56d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ParameterizedSingleTypeReference.java
+@@ -148,7 +148,7 @@ public class ParameterizedSingleTypeReference extends ArrayTypeReference {
+ 		}
+ 
+ 		TypeVariableBinding[] typeVariables = currentType.typeVariables();
+-		if (typeVariables == NoTypeVariables) { // check generic
++		if (typeVariables == Binding.NO_TYPE_VARIABLES) { // check generic
+ 			scope.problemReporter().nonGenericTypeCannotBeParameterized(this, currentType, argTypes);
+ 			return null;
+ 		} else if (argLength != typeVariables.length) { // check arity

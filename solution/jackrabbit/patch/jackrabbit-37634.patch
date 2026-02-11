@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index 28fea0c..34c7952 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -380,7 +380,7 @@ public class SessionImpl extends AbstractSession implements ManagerProvider {
+         // NOTE: check if path corresponds to Node and is writable is performed
+         // within the SessionImporter.
+         Importer importer = new SessionImporter(parentPath, this, itemStateManager, uuidBehavior);
+-        return new ImportHandler(importer, getNamespaceResolver(), workspace.getNamespaceRegistry(), getNameFactory());
++        return new ImportHandler(importer, getNamespaceResolver(), workspace.getNamespaceRegistry(), getNameFactory(), getPathFactory());
+     }
+ 
+     /**

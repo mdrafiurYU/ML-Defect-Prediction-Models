@@ -1,0 +1,37 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
+index 36da02c..f056eb8 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/AbstractReadableRepositoryService.java
+@@ -547,6 +547,14 @@ public abstract class AbstractReadableRepositoryService
+     /**
+      * @throws UnsupportedRepositoryOperationException always.
+      */
++    public NodeId checkpoint(SessionInfo sessionInfo, NodeId nodeId)
++            throws UnsupportedRepositoryOperationException, LockException, RepositoryException {
++        throw new UnsupportedRepositoryOperationException();
++    }
++
++    /**
++     * @throws UnsupportedRepositoryOperationException always.
++     */
+     public void removeVersion(SessionInfo sessionInfo,
+                               NodeId versionHistoryId,
+                               NodeId versionId)
+@@ -586,6 +594,17 @@ public abstract class AbstractReadableRepositoryService
+     /**
+      * @throws UnsupportedRepositoryOperationException always.
+      */
++    public Iterator merge(SessionInfo sessionInfo,
++                          NodeId nodeId,
++                          String srcWorkspaceName,
++                          boolean bestEffort,
++                          boolean isShallow) throws NoSuchWorkspaceException, AccessDeniedException, MergeException, LockException, InvalidItemStateException, RepositoryException {
++        throw new UnsupportedRepositoryOperationException();
++    }
++
++    /**
++     * @throws UnsupportedRepositoryOperationException always.
++     */
+     public void resolveMergeConflict(SessionInfo sessionInfo,
+                                      NodeId nodeId,
+                                      NodeId[] mergeFailedIds,

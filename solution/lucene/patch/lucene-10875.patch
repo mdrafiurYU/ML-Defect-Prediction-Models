@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPrefixRandom.java b/lucene/src/test/org/apache/lucene/search/TestPrefixRandom.java
+index edf912e..1c402ea 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPrefixRandom.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPrefixRandom.java
+@@ -29,6 +29,7 @@ import org.apache.lucene.index.TermsEnum;
+ import org.apache.lucene.index.RandomIndexWriter;
+ import org.apache.lucene.index.codecs.CodecProvider;
+ import org.apache.lucene.store.Directory;
++import org.apache.lucene.util.AttributeSource;
+ import org.apache.lucene.util.BytesRef;
+ import org.apache.lucene.util.LuceneTestCase;
+ import org.apache.lucene.util._TestUtil;
+@@ -85,7 +86,7 @@ public class TestPrefixRandom extends LuceneTestCase {
+     }
+     
+     @Override
+-    protected TermsEnum getTermsEnum(IndexReader reader) throws IOException {
++    protected TermsEnum getTermsEnum(IndexReader reader, AttributeSource atts) throws IOException {
+       return new SimplePrefixTermsEnum(reader, field, prefix);
+     }

@@ -1,0 +1,65 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index c8c3889..53301c9 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -130,9 +130,9 @@ exaPixmapSave (ScreenPtr pScreen, ExaOffscreenArea *area)
+     src = pPixmap->devPrivate.ptr;
+     dst = pExaPixmap->devPrivate.ptr;
+ 
+-    if (pExaScr->info->accel.DownloadFromScreen)
+-    {
+-        if (pExaScr->info->accel.DownloadFromScreen(pPixmap,
++    if (pExaPixmap->dirty) {
++        if (pExaScr->info->accel.DownloadFromScreen &&
++	    (*pExaScr->info->accel.DownloadFromScreen) (pPixmap,
+                                                     pPixmap->drawable.x,
+                                                     pPixmap->drawable.y,
+                                                     pPixmap->drawable.width,
+@@ -140,24 +140,7 @@ exaPixmapSave (ScreenPtr pScreen, ExaOffscreenArea *area)
+                                                     dst,
+                                                     dst_pitch)) {
+ 
+-            pPixmap->devKind = dst_pitch;
+-            pPixmap->devPrivate.ptr = dst;
+-            pPixmap->drawable.serialNumber = NEXT_SERIAL_NUMBER;
+-            pExaPixmap->area = NULL;
+-            return;
+-        }
+-    }
+-
+-    pPixmap->devKind = dst_pitch;
+-    pPixmap->devPrivate.ptr = dst;
+-    pPixmap->drawable.serialNumber = NEXT_SERIAL_NUMBER;
+-    pExaPixmap->area = NULL;
+-
+-#if 0
+-    if (!pExaPixmap->dirty)
+-	return;
+-#endif
+-
++        } else {
+     exaWaitSync (pPixmap->drawable.pScreen);
+ 
+     bytes = src_pitch < dst_pitch ? src_pitch : dst_pitch;
+@@ -169,6 +152,13 @@ exaPixmapSave (ScreenPtr pScreen, ExaOffscreenArea *area)
+ 	src += src_pitch;
+     }
+ }
++    }
++
++    pPixmap->devKind = dst_pitch;
++    pPixmap->devPrivate.ptr = dst;
++    pPixmap->drawable.serialNumber = NEXT_SERIAL_NUMBER;
++    pExaPixmap->area = NULL;
++}
+ 
+ static int
+ exaLog2(int val)
+@@ -1360,6 +1350,7 @@ exaCloseScreen(int i, ScreenPtr pScreen)
+ #ifdef RENDER
+     if (ps) {
+ 	ps->Composite = pExaScr->SavedComposite;
++	ps->Glyphs = pExaScr->SavedGlyphs;
+     }
+ #endif
+     if (pExaScr->wrappedEnableDisableFB)

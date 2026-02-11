@@ -1,0 +1,35 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/local/FileUtil.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/local/FileUtil.java
+index 3d8ca65..3fe4323 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/local/FileUtil.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/local/FileUtil.java
+@@ -17,10 +17,10 @@
+ package org.apache.jackrabbit.core.fs.local;
+ 
+ import java.io.File;
+-import java.io.FileInputStream;
+-import java.io.FileOutputStream;
+ import java.io.IOException;
+ 
++import org.apache.commons.io.FileUtils;
++
+ /**
+  * Static utility methods for recursively copying and deleting files and
+  * directories.
+@@ -74,17 +74,7 @@ public final class FileUtil {
+                 throw new IOException("can't write to " + destParent.getPath());
+             }
+ 
+-            FileInputStream fis = new FileInputStream(src);
+-            FileOutputStream fos = new FileOutputStream(dest);
+-
+-            byte[] buffer = new byte[8192];
+-            int read = 0;
+-            while ((read = fis.read(buffer)) > 0) {
+-                fos.write(buffer, 0, read);
+-            }
+-
+-            fis.close();
+-            fos.close();
++            FileUtils.copyFile(src, dest);
+         }
+     }

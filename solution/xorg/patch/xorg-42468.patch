@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86ShowOpts.c b/hw/xfree86/common/xf86ShowOpts.c
+index b8efa73..622e261 100644
+--- a/hw/xfree86/common/xf86ShowOpts.c
++++ b/hw/xfree86/common/xf86ShowOpts.c
+@@ -104,10 +104,10 @@ void DoShowOptions (void) {
+ 			initData = LoaderSymbol (pSymbol);
+ 			if (initData) {
+ 				XF86ModuleVersionInfo *vers = initData->vers;
++				OptionInfoPtr p;
+ 				ErrorF ("Driver[%d]:%s[%s] {\n",
+ 					i,xf86DriverList[i]->driverName,vers->vendor
+ 				);
+-				OptionInfoPtr p;
+ 				for (p = pOption; p->name != NULL; p++) {
+ 					const char *opttype = optionTypeToSting(p->type);
+ 					char *optname = xalloc(strlen(p->name) + 2 + 1);

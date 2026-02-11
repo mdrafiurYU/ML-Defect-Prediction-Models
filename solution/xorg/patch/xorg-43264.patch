@@ -1,0 +1,13 @@
+diff --git a/xkb/xkmread.c b/xkb/xkmread.c
+index a6fdc6f..dc8ab61 100644
+--- a/xkb/xkmread.c
++++ b/xkb/xkmread.c
+@@ -51,7 +51,7 @@ XkbInternAtom(char *str,Bool only_if_exists)
+ }
+ 
+ char *
+-_XkbDupString(char *str)
++_XkbDupString(const char *str)
+ {
+ char *new;
+    

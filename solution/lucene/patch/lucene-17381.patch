@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TextField.java b/solr/src/java/org/apache/solr/schema/TextField.java
+index d43cf54..a30bbfe 100644
+--- a/solr/src/java/org/apache/solr/schema/TextField.java
++++ b/solr/src/java/org/apache/solr/schema/TextField.java
+@@ -65,6 +65,7 @@ public class TextField extends FieldType {
+ 
+   @Override
+   public SortField getSortField(SchemaField field, boolean reverse) {
++    /* :TODO: maybe warn if isTokenized(), but doesn't use LimitTokenCountFilter in it's chain? */
+     return getStringSort(field, reverse);
+   }

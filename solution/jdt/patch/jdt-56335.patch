@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java
+index 0335439..e73c00e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedAllocationExpression.java
+@@ -278,7 +278,7 @@ public class QualifiedAllocationExpression extends AllocationExpression {
+ 		}
+ 		
+ 		// will check for null after args are resolved
+-		TypeBinding[] argumentTypes = NoParameters;
++		TypeBinding[] argumentTypes = Binding.NO_PARAMETERS;
+ 		if (arguments != null) {
+ 			int length = arguments.length;
+ 			argumentTypes = new TypeBinding[length];

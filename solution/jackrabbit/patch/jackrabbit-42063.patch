@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueConstraintViolationExceptionTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueConstraintViolationExceptionTest.java
+index 36dee49..cdf95bf 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueConstraintViolationExceptionTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueConstraintViolationExceptionTest.java
+@@ -819,7 +819,7 @@ public class SetValueConstraintViolationExceptionTest extends AbstractJCRTest {
+             // create a referenceable node not satisfying the constraint
+             nodeNotSatisfied = testRootNode.addNode(nodeName4, nodeTypeNotSatisfied);
+             nodeNotSatisfied.addMixin(mixReferenceable);
+-            
++
+             // some implementations may require a save after addMixin()
+             testRootNode.save();

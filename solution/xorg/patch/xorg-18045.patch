@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/dummylib/xf86addrestolist.c b/hw/xfree86/dummylib/xf86addrestolist.c
+index 006a638..fe21d5c 100644
+--- a/hw/xfree86/dummylib/xf86addrestolist.c
++++ b/hw/xfree86/dummylib/xf86addrestolist.c
+@@ -1,5 +1,9 @@
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/dummylib/xf86addrestolist.c,v 1.2tsi Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ 
+ resPtr

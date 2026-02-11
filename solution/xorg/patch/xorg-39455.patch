@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index 166f801..753fa58 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -204,7 +204,6 @@ void xf86EnableGeneralHandler(pointer handler);
+ void xf86InterceptSignals(int *signo);
+ void xf86InterceptSigIll(void (*sigillhandler)(void));
+ Bool xf86EnableVTSwitch(Bool new);
+-Bool xf86CommonSpecialKey(int key, Bool down, int modifiers);
+ void xf86ProcessActionEvent(ActionEvent action, void *arg);
+ 
+ /* xf86Helper.c */

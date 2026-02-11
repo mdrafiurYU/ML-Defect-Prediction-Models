@@ -1,0 +1,20 @@
+diff --git a/lucene/src/java/org/apache/lucene/document/FieldSelector.java b/lucene/src/java/org/apache/lucene/document/FieldSelector.java
+index 079ade6..da98add 100755
+--- a/lucene/src/java/org/apache/lucene/document/FieldSelector.java
++++ b/lucene/src/java/org/apache/lucene/document/FieldSelector.java
+@@ -1,6 +1,5 @@
+ package org.apache.lucene.document;
+ 
+-import java.io.Serializable;
+ /**
+  * Copyright 2004 The Apache Software Foundation
+  *
+@@ -22,7 +21,7 @@ import java.io.Serializable;
+  * what Fields get loaded on a {@link Document} by {@link org.apache.lucene.index.IndexReader#document(int,org.apache.lucene.document.FieldSelector)}
+  *
+  **/
+-public interface FieldSelector extends Serializable {
++public interface FieldSelector {
+ 
+   /**
+    *

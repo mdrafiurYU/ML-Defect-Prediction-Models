@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index 378b1aa..1c914e0 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -582,8 +582,9 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+      * Create the <code>ObservationManager</code>. May be overridden by subclasses.
+      *
+      * @return a new <code>ObservationManager</code> instance
++     * @throws RepositoryException
+      */
+-    protected ObservationManager createObservationManager(NamePathResolver resolver, NodeTypeRegistry ntRegistry) {
+-        return new ObservationManagerImpl(wspManager, resolver, ntRegistry);
++    protected ObservationManager createObservationManager(NamePathResolver resolver, NodeTypeRegistry ntRegistry) throws RepositoryException {
++        return new ObservationManagerImpl(wspManager, resolver, ntRegistry, session.getValueFactory());
+     }
+ }

@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java
+index b959771..b11ec36 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AggregateRuleImpl.java
+@@ -327,7 +327,8 @@ class AggregateRuleImpl implements AggregateRule {
+             }
+             if (pattern.getLength() - 1 == offset) {
+                 // last segment -> add to collector if node type matches
+-                for (Iterator it = cne.iterator(); it.hasNext(); ) {
++                Iterator it = cne.iterator();
++                while (it.hasNext()) {
+                     NodeId id = ((NodeState.ChildNodeEntry) it.next()).getId();
+                     NodeState ns = (NodeState) ism.getItemState(id);
+                     if (nodeTypeName == null || ns.getNodeTypeName().equals(nodeTypeName)) {
+@@ -337,7 +338,8 @@ class AggregateRuleImpl implements AggregateRule {
+             } else {
+                 // traverse
+                 offset++;
+-                for (Iterator it = cne.iterator(); it.hasNext(); ) {
++                Iterator it = cne.iterator();
++                while (it.hasNext()) {
+                     NodeId id = ((NodeState.ChildNodeEntry) it.next()).getId();
+                     resolve((NodeState) ism.getItemState(id), collector, offset);
+                 }

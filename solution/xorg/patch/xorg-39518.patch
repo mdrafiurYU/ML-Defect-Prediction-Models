@@ -1,0 +1,24 @@
+diff --git a/hw/dmx/dmx.c b/hw/dmx/dmx.c
+index 5f1fc05..10d9e22 100644
+--- a/hw/dmx/dmx.c
++++ b/hw/dmx/dmx.c
+@@ -113,10 +113,6 @@ static int _DMXXineramaActive(void)
+     return 0;
+ }
+ 
+-static void DMXResetProc(ExtensionEntry *extEntry)
+-{
+-}
+-
+ /** Initialize the extension. */
+ void DMXExtensionInit(void)
+ {
+@@ -124,7 +120,7 @@ void DMXExtensionInit(void)
+     
+     if ((extEntry = AddExtension(DMX_EXTENSION_NAME, 0, 0,
+                                  ProcDMXDispatch, SProcDMXDispatch,
+-                                 DMXResetProc, StandardMinorOpcode)))
++                                 NULL, StandardMinorOpcode)))
+ 	DMXCode = extEntry->base;
+ }
+ 

@@ -1,0 +1,12 @@
+diff --git a/hw/xnest/XNWindow.h b/hw/xnest/XNWindow.h
+index cc49b23..3a57646 100644
+--- a/hw/xnest/XNWindow.h
++++ b/hw/xnest/XNWindow.h
+@@ -73,6 +73,7 @@ void xnestClipNotify(WindowPtr pWin, int dx, int dy);
+ void xnestWindowExposures(WindowPtr pWin, RegionPtr pRgn,
+ 			  RegionPtr other_exposed);
+ #ifdef SHAPE
++void xnestSetShape(WindowPtr pWin);
+ void xnestShapeWindow(WindowPtr pWin);
+ #endif /* SHAPE */
+ 

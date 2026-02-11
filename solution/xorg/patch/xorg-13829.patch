@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/pm2/pm2.h b/hw/kdrive/pm2/pm2.h
+index cc39b38..e059033 100644
+--- a/hw/kdrive/pm2/pm2.h
++++ b/hw/kdrive/pm2/pm2.h
+@@ -59,6 +59,7 @@ typedef struct _PM2ScreenInfo {
+     CARD8 *off_screen;
+     int	 off_screen_size;
+     KdVideoAdaptorPtr pAdaptor;
++    KaaScreenInfoRec kaa;
+ } PM2ScreenInfo;
+ 
+ #define getPM2ScreenInfo(kd) ((PM2ScreenInfo *) ((kd)->screen->driver))
+@@ -77,9 +78,6 @@ void
+ pmDrawEnable (ScreenPtr);
+ 
+ void
+-pmDrawSync (ScreenPtr);
+-
+-void
+ pmDrawDisable (ScreenPtr);
+ 
+ void

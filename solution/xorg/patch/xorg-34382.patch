@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dixmods/extmod/xvmodproc.h b/hw/xfree86/dixmods/extmod/xvmodproc.h
+index 81356a1..b39c915 100644
+--- a/hw/xfree86/dixmods/extmod/xvmodproc.h
++++ b/hw/xfree86/dixmods/extmod/xvmodproc.h
+@@ -5,7 +5,7 @@
+ 
+ #include "xvmcext.h"
+ 
+-extern int (*XvGetScreenIndexProc)(void);
++extern DevPrivateKey (*XvGetScreenKeyProc)(void);
+ extern unsigned long (*XvGetRTPortProc)(void);
+ extern int (*XvScreenInitProc)(ScreenPtr);
+ extern int (*XvMCScreenInitProc)(ScreenPtr, int, XvMCAdaptorPtr);

@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+index b212873..cfca376 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/NodeImpl.java
+@@ -502,6 +502,11 @@ public class NodeImpl extends ItemImpl implements Node {
+         }
+     }
+ 
++    public String getIdentifier() throws RepositoryException {
++        // FIXME: Support the UUID/path identifiers
++        return getUUID();
++    }
++
+     /**
+      * @see Node#getUUID()
+      */
+@@ -1646,10 +1651,6 @@ public class NodeImpl extends ItemImpl implements Node {
+         throw new UnsupportedRepositoryOperationException("JCR-1104");
+     }
+ 
+-    public String getIdentifier() throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException("JCR-1104");
+-    }
+-
+     public NodeIterator getNodes(String[] nameGlobs)
+             throws RepositoryException {
+         throw new UnsupportedRepositoryOperationException("JCR-1104");

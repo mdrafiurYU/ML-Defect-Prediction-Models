@@ -1,0 +1,12 @@
+diff --git a/include/windowstr.h b/include/windowstr.h
+index a161324..e06a2f1 100644
+--- a/include/windowstr.h
++++ b/include/windowstr.h
+@@ -159,6 +159,7 @@ typedef struct _Window {
+     unsigned		dontPropagate:3;/* index into DontPropagateMasks */
+     unsigned		forcedBS:1;	/* system-supplied backingStore */
+     unsigned		redirectDraw:2;	/* COMPOSITE rendering redirect */
++    unsigned		forcedBG:1;	/* must have an opaque background */
+ } WindowRec;
+ 
+ /*

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java
+index 6fe4d74..b044772 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/VersionLabelTest.java
+@@ -260,7 +260,7 @@ public class VersionLabelTest extends AbstractVersionTest {
+         vHistory.addVersionLabel(rootVersion.getName(), versionLabel, true);
+         Version v = vHistory.getVersionByLabel(versionLabel);
+ 
+-        assertEquals("VersionHistory.getVersionByLabel(String) must retrieve the particular version that was specified in addVersionLabel call.", v, rootVersion);
++        assertTrue("VersionHistory.getVersionByLabel(String) must retrieve the particular version that was specified in addVersionLabel call.", v.isSame(rootVersion));
+     }
+ 
+     /**

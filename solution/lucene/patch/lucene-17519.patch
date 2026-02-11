@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/fa/PersianCharFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/fa/PersianCharFilter.java
+index c1ed38a..962f839 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/fa/PersianCharFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/fa/PersianCharFilter.java
+@@ -32,6 +32,7 @@ public class PersianCharFilter extends CharFilter {
+     super(in);
+   }
+   
++  @Override
+   public int read(char[] cbuf, int off, int len) throws IOException {
+     final int charsRead = super.read(cbuf, off, len);
+     if (charsRead > 0) {

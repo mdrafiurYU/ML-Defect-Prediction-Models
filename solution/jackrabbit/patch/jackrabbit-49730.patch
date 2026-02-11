@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java
+index 836eb26..91ab93f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/UserAccessControlProvider.java
+@@ -27,7 +27,6 @@ import org.apache.jackrabbit.core.observation.SynchronousEventListener;
+ import org.apache.jackrabbit.core.security.authorization.AbstractAccessControlProvider;
+ import org.apache.jackrabbit.core.security.authorization.AbstractCompiledPermissions;
+ import org.apache.jackrabbit.core.security.authorization.AccessControlEditor;
+-import org.apache.jackrabbit.core.security.authorization.AccessControlProvider;
+ import org.apache.jackrabbit.core.security.authorization.CompiledPermissions;
+ import org.apache.jackrabbit.core.security.authorization.NamedAccessControlPolicyImpl;
+ import org.apache.jackrabbit.core.security.authorization.Permission;
+@@ -109,7 +108,7 @@ public class UserAccessControlProvider extends AbstractAccessControlProvider
+     /**
+      * Always returns false, since this ac provider does not use content stored
+      * in items to evaluate AC information.
+-     * 
++     *
+      * @see org.apache.jackrabbit.core.security.authorization.AccessControlUtils#isAcItem(Path)
+      */
+     public boolean isAcItem(Path absPath) throws RepositoryException {

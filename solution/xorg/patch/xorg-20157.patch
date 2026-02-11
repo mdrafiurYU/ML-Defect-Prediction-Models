@@ -1,0 +1,28 @@
+diff --git a/Xi/chgfctl.c b/Xi/chgfctl.c
+index 76914dc..d0acc59 100644
+--- a/Xi/chgfctl.c
++++ b/Xi/chgfctl.c
+@@ -446,8 +446,9 @@ ChangeIntegerFeedback(ClientPtr client, DeviceIntPtr dev,
+  */
+ 
+ int
+-ChangeStringFeedback(ClientPtr client, DeviceIntPtr dev, long unsigned int mask,
+-		     StringFeedbackPtr s, xStringFeedbackCtl * f)
++ChangeStringFeedback(ClientPtr client, DeviceIntPtr dev,
++		     long unsigned int mask, StringFeedbackPtr s,
++		     xStringFeedbackCtl * f)
+ {
+     register char n;
+     register long *p;
+@@ -495,8 +496,9 @@ ChangeStringFeedback(ClientPtr client, DeviceIntPtr dev, long unsigned int mask,
+  */
+ 
+ int
+-ChangeBellFeedback(ClientPtr client, DeviceIntPtr dev, long unsigned int mask,
+-		   BellFeedbackPtr b, xBellFeedbackCtl * f)
++ChangeBellFeedback(ClientPtr client, DeviceIntPtr dev,
++		   long unsigned int mask, BellFeedbackPtr b,
++		   xBellFeedbackCtl * f)
+ {
+     register char n;
+     int t;

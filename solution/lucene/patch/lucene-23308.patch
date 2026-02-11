@@ -1,0 +1,19 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/util/ThrottledIndexOutput.java b/lucene/src/test-framework/org/apache/lucene/util/ThrottledIndexOutput.java
+index 52333bd..fcded42 100644
+--- a/lucene/src/test-framework/org/apache/lucene/util/ThrottledIndexOutput.java
++++ b/lucene/src/test-framework/org/apache/lucene/util/ThrottledIndexOutput.java
+@@ -73,9 +73,11 @@ public class ThrottledIndexOutput extends IndexOutput {
+ 
+   @Override
+   public void close() throws IOException {
+-    sleep(closeDelayMillis + getDelay(true));
+-    delegate.close();
+-
++    try {
++      sleep(closeDelayMillis + getDelay(true));
++    } finally {
++      delegate.close();
++    }
+   }
+ 
+   @Override

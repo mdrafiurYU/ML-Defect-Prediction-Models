@@ -1,0 +1,13 @@
+diff --git a/dix/window.c b/dix/window.c
+index b6bbdd4..70ce2ad 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -1396,7 +1396,7 @@ ChangeWindowAttributes(WindowPtr pWin, Mask vmask, XID *vlist, ClientPtr client)
+ 	    else
+ 	    {
+ 		rc = dixLookupResource((pointer *)&pCursor, cursorID,
+-				       RT_CURSOR, client, DixReadAccess);
++				       RT_CURSOR, client, DixUseAccess);
+ 		if (rc != Success)
+ 		{
+ 		    error = (rc == BadValue) ? BadCursor : rc;

@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ReferenceCollection.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ReferenceCollection.java
+index f3ed02e..e92d261 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ReferenceCollection.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ReferenceCollection.java
+@@ -49,6 +49,7 @@ void addDependencies(String[] typeNameDependencies) {
+ 
+ 				qualifiedTypeName = CharOperation.subarray(qualifiedTypeName, 0, qualifiedTypeName.length - 1);
+ 				char[][][] temp = internQualifiedNames(new char[][][] {qualifiedTypeName});
++				if (temp == EmptyQualifiedNames) break; // qualifiedTypeName is a well known name
+ 				qualifiedTypeName = temp[0];
+ 			}		
+ 		}

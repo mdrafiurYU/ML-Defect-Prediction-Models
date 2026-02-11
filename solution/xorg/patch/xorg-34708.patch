@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/arm_video.c b/hw/xfree86/os-support/bsd/arm_video.c
+index b556563..23948b5 100644
+--- a/hw/xfree86/os-support/bsd/arm_video.c
++++ b/hw/xfree86/os-support/bsd/arm_video.c
+@@ -246,7 +246,7 @@ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	    return(-1);
+ 	}
+ 
+-	psize = xf86getpagesize();
++	psize = getpagesize();
+ 	Offset += Base & (psize - 1);
+ 	Base &= ~(psize - 1);
+ 	mlen = (Offset + Len + psize - 1) & ~(psize - 1);

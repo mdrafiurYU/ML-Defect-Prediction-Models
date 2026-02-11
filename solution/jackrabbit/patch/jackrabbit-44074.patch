@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/query/AnnotationAtomicQueryTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/query/AnnotationAtomicQueryTest.java
+index 7fd5ee0..5f20125 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/query/AnnotationAtomicQueryTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/query/AnnotationAtomicQueryTest.java
+@@ -70,7 +70,7 @@ public class AnnotationAtomicQueryTest extends AnnotationTestBase
+ 			this.importData(date);
+ 			ObjectContentManager ocm = this.getObjectContentManager();
+ 			
+-			// Test Boolean value 
++			// Test Boolean value
+ 			QueryManager queryManager = this.getQueryManager();
+ 			Filter filter = queryManager.createFilter(Atomic.class);
+ 			filter.addEqualTo("booleanObject", new Boolean(true));

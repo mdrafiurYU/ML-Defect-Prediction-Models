@@ -1,0 +1,20 @@
+diff --git a/exa/exa_migration.c b/exa/exa_migration.c
+index 571650c..4623ecc 100644
+--- a/exa/exa_migration.c
++++ b/exa/exa_migration.c
+@@ -162,6 +162,7 @@ exaCopyDirty(ExaMigrationPtr migrate, RegionPtr pValidDst, RegionPtr pValidSrc,
+ 	if (pExaScr->optimize_migration) {
+ 	    RegionPtr pending_damage = DamagePendingRegion(pExaPixmap->pDamage);
+ 
++#if DEBUG_MIGRATE
+ 	    if (REGION_NIL(pending_damage)) {
+ 		static Bool firsttime = TRUE;
+ 
+@@ -170,6 +171,7 @@ exaCopyDirty(ExaMigrationPtr migrate, RegionPtr pValidDst, RegionPtr pValidSrc,
+ 		    firsttime = FALSE;
+ 		}
+ 	    }
++#endif
+ 
+ 	    REGION_INTERSECT(pScreen, &CopyReg, &CopyReg, pending_damage);
+ 	}

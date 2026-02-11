@@ -1,0 +1,13 @@
+diff --git a/hw/xwin/InitOutput.c b/hw/xwin/InitOutput.c
+index 9964980..39a5eda 100644
+--- a/hw/xwin/InitOutput.c
++++ b/hw/xwin/InitOutput.c
+@@ -694,7 +694,7 @@ winFixupPaths (void)
+         if (sizeof(xkbbasedir) > 0)
+             xkbbasedir[sizeof(xkbbasedir)-1] = 0;
+         XkbBaseDirectory = xkbbasedir;
+-	XkbBinDirectory = xkbbasedir
++	XkbBinDirectory = basedir;
+     }
+ #endif /* XKB */
+ #endif /* RELOCATE_PROJECTROOT */

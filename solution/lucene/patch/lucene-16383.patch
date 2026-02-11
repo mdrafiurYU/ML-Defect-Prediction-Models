@@ -1,0 +1,15 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+index 8628d00..57f8e3e 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+@@ -144,9 +144,9 @@ public class InstantiatedTermsEnum extends TermsEnum {
+   }
+ 
+   @Override
+-  public SeekStatus seek(BytesRef term, TermState state) throws IOException {
++  public void seek(BytesRef term, TermState state) throws IOException {
+     assert state != null && state instanceof OrdTermState;
+-    return seek(((OrdTermState)state).ord); // just use the ord for simplicity
++    seek(((OrdTermState)state).ord); // just use the ord for simplicity
+   }
+ }

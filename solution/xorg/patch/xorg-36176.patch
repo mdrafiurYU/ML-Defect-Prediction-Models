@@ -1,0 +1,22 @@
+diff --git a/Xext/xacestr.h b/Xext/xacestr.h
+index e31d424..ba115a4 100644
+--- a/Xext/xacestr.h
++++ b/Xext/xacestr.h
+@@ -59,7 +59,7 @@ typedef struct {
+ typedef struct {
+     ClientPtr client;
+     WindowPtr pWin;
+-    PropertyPtr pProp;
++    PropertyPtr *ppProp;
+     Mask access_mode;
+     int status;
+ } XacePropertyAccessRec;
+@@ -110,7 +110,7 @@ typedef struct {
+ /* XACE_SELECTION_ACCESS */
+ typedef struct {
+     ClientPtr client;
+-    Atom name;
++    Selection **ppSel;
+     Mask access_mode;
+     int status;
+ } XaceSelectionAccessRec;

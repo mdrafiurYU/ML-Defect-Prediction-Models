@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
+index e806fc0..99339e3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
+@@ -123,7 +123,7 @@ public class TextExtractorJob extends FutureResult implements Runnable {
+             // also covers TimeoutException
+             // text not extracted within timeout or interrupted
+             if (timeout > 0) {
+-                log.info("Text extraction for {} timed out (>{}ms).",
++                log.debug("Text extraction for {} timed out (>{}ms).",
+                         type, new Long(timeout));
+                 timedOut = true;
+             }

@@ -1,0 +1,15 @@
+diff --git a/dix/extension.c b/dix/extension.c
+index f65565d..a3f8329 100644
+--- a/dix/extension.c
++++ b/dix/extension.c
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $Xorg: extension.c,v 1.4 2001/02/09 02:04:40 xorgcvs Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #define NEED_EVENTS
+ #define NEED_REPLIES

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+index 0a94122..b3a71c4 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+@@ -1128,6 +1128,7 @@ public class TestIndexWriter extends LuceneTestCase {
+     lmp.setMaxMergeDocs(20);
+     lmp.setMergeFactor(2);
+     IndexWriter iw = new IndexWriter(dir, conf);
++    iw.setInfoStream(VERBOSE ? System.out : null);
+     Document document = new Document();
+     document.add(newField("tvtest", "a b c", Field.Store.NO, Field.Index.ANALYZED,
+                            Field.TermVector.YES));

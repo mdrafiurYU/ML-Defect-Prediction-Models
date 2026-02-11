@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/xf86drm.h b/hw/xfree86/os-support/xf86drm.h
+index d2ca957..30496d0 100644
+--- a/hw/xfree86/os-support/xf86drm.h
++++ b/hw/xfree86/os-support/xf86drm.h
+@@ -319,8 +319,8 @@ typedef struct _drmSetVersion {
+                 "       stl_c %1, %2\n"		\
+                 "1:     xor   %1, 1, %1\n"	\
+                 "       stl   %1, %3"		\
+-                : "+r" (old32),                 \
+-		  "+&r" (cur32),		\
++                : "=r" (old32),                 \
++		  "=&r" (cur32),		\
+                    "=m" (__drm_dummy_lock(lock)),\
+                    "=m" (ret)			\
+  		: "r" (old),			\

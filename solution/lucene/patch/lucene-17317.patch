@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queries/src/test/org/apache/lucene/search/FuzzyLikeThisQueryTest.java b/lucene/contrib/queries/src/test/org/apache/lucene/search/FuzzyLikeThisQueryTest.java
+index 587a571..0f9b6ca 100644
+--- a/lucene/contrib/queries/src/test/org/apache/lucene/search/FuzzyLikeThisQueryTest.java
++++ b/lucene/contrib/queries/src/test/org/apache/lucene/search/FuzzyLikeThisQueryTest.java
+@@ -51,7 +51,7 @@ public class FuzzyLikeThisQueryTest extends LuceneTestCase {
+ 		addDoc(writer, "johnathon smythe","6");
+ 		reader = writer.getReader();
+ 		writer.close();
+-		searcher=new IndexSearcher(reader);			
++		searcher=newSearcher(reader);			
+ 	}
+ 	
+ 	@Override

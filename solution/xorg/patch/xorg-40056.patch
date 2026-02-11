@@ -1,0 +1,22 @@
+diff --git a/damageext/damageext.c b/damageext/damageext.c
+index 4d91580..fdf31f3 100755
+--- a/damageext/damageext.c
++++ b/damageext/damageext.c
+@@ -233,7 +233,7 @@ ProcDamageCreate (ClientPtr client)
+     if (pDrawable->type == DRAWABLE_WINDOW)
+     {
+ 	pRegion = &((WindowPtr) pDrawable)->borderClip;
+-	DamageDamageRegion (pDrawable, pRegion);
++	DamageRegionPending(pDrawable, pRegion);
+     }
+ 
+     return (client->noClientException);
+@@ -303,7 +303,7 @@ ProcDamageAdd (ClientPtr client)
+      * screen coordinates like damage expects.
+      */
+     REGION_TRANSLATE(pScreen, pRegion, pDrawable->x, pDrawable->y);
+-    DamageDamageRegion(pDrawable, pRegion);
++    DamageRegionPending(pDrawable, pRegion);
+     REGION_TRANSLATE(pScreen, pRegion, -pDrawable->x, -pDrawable->y);
+ 
+     return (client->noClientException);

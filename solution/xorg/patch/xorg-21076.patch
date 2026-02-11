@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/i2c/tda9850.c b/hw/xfree86/i2c/tda9850.c
+index e6afd81..5b0c581 100644
+--- a/hw/xfree86/i2c/tda9850.c
++++ b/hw/xfree86/i2c/tda9850.c
+@@ -107,6 +107,6 @@ CARD16 tda9850_getstatus(TDA9850Ptr t)
+ {
+ CARD16 status;
+ 
+-I2C_WriteRead(&(t->d), NULL, 0, &status, 2); 
++I2C_WriteRead(&(t->d), NULL, 0, (I2CByte *)&status, 2); 
+ return status;
+ }

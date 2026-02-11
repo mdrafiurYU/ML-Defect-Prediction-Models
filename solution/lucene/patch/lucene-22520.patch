@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/store/Directory.java b/lucene/src/java/org/apache/lucene/store/Directory.java
+index f9e3167..2aba2e7 100644
+--- a/lucene/src/java/org/apache/lucene/store/Directory.java
++++ b/lucene/src/java/org/apache/lucene/store/Directory.java
+@@ -65,10 +65,6 @@ public abstract class Directory implements Closeable {
+   public abstract long fileModified(String name)
+        throws IOException;
+ 
+-  /** Set the modified time of an existing file to now. */
+-  public abstract void touchFile(String name)
+-       throws IOException;
+-
+   /** Removes an existing file in the directory. */
+   public abstract void deleteFile(String name)
+        throws IOException;

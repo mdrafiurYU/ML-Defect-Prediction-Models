@@ -1,0 +1,23 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedDocument.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedDocument.java
+index 5154f26..889f749 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedDocument.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedDocument.java
+@@ -18,7 +18,6 @@ package org.apache.lucene.store.instantiated;
+ 
+ import org.apache.lucene.document.Document;
+ 
+-import java.io.Serializable;
+ import java.util.List;
+ import java.util.Map;
+ 
+@@ -27,10 +26,7 @@ import java.util.Map;
+  *
+  * @see org.apache.lucene.document.Document
+  */
+-public class InstantiatedDocument
+-    implements Serializable {
+-
+-  private static final long serialVersionUID = 1l;
++public class InstantiatedDocument {
+ 
+   private Document document;

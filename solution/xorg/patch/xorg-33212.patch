@@ -1,0 +1,22 @@
+diff --git a/Xext/xres.c b/Xext/xres.c
+index 32cc903..9bbf0a4 100644
+--- a/Xext/xres.c
++++ b/Xext/xres.c
+@@ -93,7 +93,7 @@ ProcXResQueryClients (ClientPtr client)
+             scratch.resource_mask = RESOURCE_ID_MASK;
+         
+             if(client->swapped) {
+-                register int n;
++                int n;
+                 swapl (&scratch.resource_base, n);
+                 swapl (&scratch.resource_mask, n);
+             }
+@@ -175,7 +175,7 @@ ProcXResQueryClientResources (ClientPtr client)
+             scratch.count = counts[i];
+ 
+             if(client->swapped) {
+-                register int n;
++                int n;
+                 swapl (&scratch.resource_type, n);
+                 swapl (&scratch.count, n);
+             }

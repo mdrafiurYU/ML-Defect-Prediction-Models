@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 9b521a0..051ac62 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -2795,6 +2795,7 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 		// set the non-externally configurable options.
+ 		this.compilerOptions.verbose = this.verbose;
+ 		this.compilerOptions.produceReferenceInfo = this.produceRefInfo;
++		this.compilerOptions.performStatementsRecovery = false;
+ 		try {
+ 			this.logger.startLoggingSources();
+ 			batchCompiler.compile(getCompilationUnits());

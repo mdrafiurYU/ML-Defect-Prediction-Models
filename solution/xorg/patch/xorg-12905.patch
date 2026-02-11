@@ -1,0 +1,38 @@
+diff --git a/hw/xwin/winmultiwindowwindow.c b/hw/xwin/winmultiwindowwindow.c
+index 28ef2f2..e9757a3 100644
+--- a/hw/xwin/winmultiwindowwindow.c
++++ b/hw/xwin/winmultiwindowwindow.c
+@@ -611,6 +611,7 @@ winCreateWindowsWindow (WindowPtr pWin)
+ }
+ 
+ 
++Bool winInDestroyWindowsWindow = FALSE;
+ /*
+  * winDestroyWindowsWindow - Destroy a Windows window associated
+  * with an X window
+@@ -625,6 +626,7 @@ winDestroyWindowsWindow (WindowPtr pWin)
+   HMODULE		hInstance;
+   int			iReturn;
+   char			pszClass[512];
++  BOOL			oldstate = winInDestroyWindowsWindow;
+   
+ #if CYGMULTIWINDOW_DEBUG
+   ErrorF ("winDestroyWindowsWindow\n");
+@@ -634,6 +636,8 @@ winDestroyWindowsWindow (WindowPtr pWin)
+   if (pWinPriv->hWnd == NULL)
+     return;
+ 
++  winInDestroyWindowsWindow = TRUE;
++
+   /* Store the info we need to destroy after this window is gone */
+   hInstance = (HINSTANCE) GetClassLong (pWinPriv->hWnd, GCL_HMODULE);
+   hiconClass = (HICON) GetClassLong (pWinPriv->hWnd, GCL_HICON);
+@@ -672,6 +676,8 @@ winDestroyWindowsWindow (WindowPtr pWin)
+       winDestroyIcon(hiconSmClass);
+     }
+ 
++  winInDestroyWindowsWindow = oldstate;
++
+ #if CYGMULTIWINDOW_DEBUG
+   ErrorF ("-winDestroyWindowsWindow\n");
+ #endif

@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/src/kxv.h b/hw/kdrive/src/kxv.h
+index 28fc3c4..b9eca8b 100644
+--- a/hw/kdrive/src/kxv.h
++++ b/hw/kdrive/src/kxv.h
+@@ -256,6 +256,9 @@ KdXVCopyPlanarData(KdScreenInfo *screen, CARD8 *src, CARD8 *dst, int randr,
+    int srcPitch, int srcPitch2, int dstPitch, int srcW, int srcH, int height,
+    int top, int left, int h, int w, int id);
+ 
++void
++KXVPaintRegion (DrawablePtr pDraw, RegionPtr pRgn, Pixel fg);
++
+ KdVideoAdaptorPtr KdXVAllocateVideoAdaptorRec(KdScreenInfo * screen);
+ 
+ void KdXVFreeVideoAdaptorRec(KdVideoAdaptorPtr ptr);

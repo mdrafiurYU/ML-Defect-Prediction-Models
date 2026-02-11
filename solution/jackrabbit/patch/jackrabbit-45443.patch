@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/AbstractLazyLoader.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/AbstractLazyLoader.java
+index cb3bcd6..f42c553 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/AbstractLazyLoader.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/AbstractLazyLoader.java
+@@ -1,5 +1,6 @@
+ package org.apache.jackrabbit.ocm.manager.objectconverter.impl;
+ 
++import java.io.Serializable;
+ import java.lang.reflect.Method;
+ import java.lang.reflect.Modifier;
+ 
+@@ -13,7 +14,7 @@ import org.apache.commons.logging.LogFactory;
+  * 
+  * @author <a href="mailto:slandelle@excilys.com">Stephane LANDELLE</a>
+  */
+-public abstract class AbstractLazyLoader implements InvocationHandler {
++public abstract class AbstractLazyLoader implements InvocationHandler, Serializable {
+ 
+ 	/**
+ 	 * The logger

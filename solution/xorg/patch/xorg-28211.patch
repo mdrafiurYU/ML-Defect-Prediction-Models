@@ -1,0 +1,13 @@
+diff --git a/mi/miline.h b/mi/miline.h
+index 7028485..b97b8cf 100644
+--- a/mi/miline.h
++++ b/mi/miline.h
+@@ -109,7 +109,7 @@ extern void miSetZeroLineBias(
+ }
+   
+ #define SWAPINT(i, j) \
+-{  register int _t = i;  i = j;  j = _t; }
++{  int _t = i;  i = j;  j = _t; }
+ 
+ #define SWAPPT(i, j) \
+ {  DDXPointRec _t; _t = i;  i = j; j = _t; }

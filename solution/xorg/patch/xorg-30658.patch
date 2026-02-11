@@ -1,0 +1,12 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index 1e1cfa5..a67e493 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -249,6 +249,7 @@ RROutputDeleteUserMode (RROutputPtr output,
+ 
+     memmove (output->userModes + m, output->userModes + m + 1,
+ 	     (output->numUserModes - m - 1) * sizeof (RRModePtr));
++    output->numUserModes--;
+     RRModeDestroy (mode);
+     return Success;
+ }

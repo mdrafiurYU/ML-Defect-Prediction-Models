@@ -1,0 +1,25 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index 81f3e01..2da008d 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -612,20 +612,6 @@ KdCheckGetSpans (DrawablePtr pDrawable,
+ 		 char *pdstStart);
+ 
+ void
+-KdCheckSaveAreas (PixmapPtr	pPixmap,
+-		  RegionPtr	prgnSave,
+-		  int		xorg,
+-		  int		yorg,
+-		  WindowPtr	pWin);
+-
+-void
+-KdCheckRestoreAreas (PixmapPtr	pPixmap,
+-		     RegionPtr	prgnSave,
+-		     int	xorg,
+-		     int    	yorg,
+-		     WindowPtr	pWin);
+-
+-void
+ KdCheckPaintWindow (WindowPtr pWin, RegionPtr pRegion, int what);
+ 
+ void

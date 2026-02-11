@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclCursor.c b/Xprint/pcl/PclCursor.c
+index e7288c9..f50c355 100644
+--- a/Xprint/pcl/PclCursor.c
++++ b/Xprint/pcl/PclCursor.c
+@@ -46,6 +46,10 @@ copyright holders.
+ */
+ /* $XFree86: xc/programs/Xserver/Xprint/pcl/PclCursor.c,v 1.3 1999/12/16 02:26:27 robin Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ 
+ #include "Pcl.h"

@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/xf4bpp/ppcFillRct.c b/hw/xfree86/xf4bpp/ppcFillRct.c
+index 4be732f..3422c80 100644
+--- a/hw/xfree86/xf4bpp/ppcFillRct.c
++++ b/hw/xfree86/xf4bpp/ppcFillRct.c
+@@ -106,7 +106,7 @@ xf4bppPolyFillRect(pDrawable, pGC, nrectFill, prectInit)
+     numRects = REGION_NUM_RECTS(prgnClip) * nrectFill;
+     if (numRects > NUM_STACK_RECTS)
+     {
+-	pboxClippedBase = (BoxPtr)ALLOCATE_LOCAL(numRects * sizeof(BoxRec));
++	pboxClippedBase = (BoxPtr)xalloc(numRects * sizeof(BoxRec));
+ 	if (!pboxClippedBase)
+ 	    return;
+     }
+@@ -211,5 +211,5 @@ xf4bppPolyFillRect(pDrawable, pGC, nrectFill, prectInit)
+ 	xf4bppFillArea((WindowPtr)pDrawable, pboxClipped-pboxClippedBase,
+ 		       pboxClippedBase, pGC);
+     if (pboxClippedBase != stackRects)
+-    	DEALLOCATE_LOCAL(pboxClippedBase);
++    	xfree(pboxClippedBase);
+ }

@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index ef97edc..0434743 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -2097,7 +2097,7 @@ DoGetImage(register ClientPtr client, int format, Drawable drawable,
+     Mask		plane = 0;
+     char		*pBuf;
+     xGetImageReply	xgi;
+-#ifdef XCSECURITY
++#ifdef XACE
+     RegionPtr pVisibleRegion = NULL;
+ #endif
+ 

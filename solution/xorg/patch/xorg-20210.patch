@@ -1,0 +1,26 @@
+diff --git a/exa/exa_unaccel.c b/exa/exa_unaccel.c
+index bfd0007..fcce67b 100644
+--- a/exa/exa_unaccel.c
++++ b/exa/exa_unaccel.c
+@@ -316,8 +316,9 @@ ExaCheckComposite (CARD8      op,
+     EXA_FALLBACK(("from picts 0x%lx/0x%lx to pict 0x%lx\n",
+ 		 (long)pSrc, (long)pMask, (long)pDst));
+     exaPrepareAccess (pDst->pDrawable, EXA_PREPARE_DEST);
++    if (pSrc->pDrawable != NULL)
+     exaPrepareAccess (pSrc->pDrawable, EXA_PREPARE_SRC);
+-    if (pMask)
++    if (pMask && pMask->pDrawable != NULL)
+ 	exaPrepareAccess (pMask->pDrawable, EXA_PREPARE_MASK);
+     fbComposite (op,
+                  pSrc,
+@@ -331,8 +332,9 @@ ExaCheckComposite (CARD8      op,
+                  yDst,
+                  width,
+                  height);
+-    if (pMask)
++    if (pMask && pMask->pDrawable != NULL)
+ 	exaFinishAccess (pMask->pDrawable, EXA_PREPARE_MASK);
++    if (pSrc->pDrawable != NULL)
+     exaFinishAccess (pSrc->pDrawable, EXA_PREPARE_SRC);
+     exaFinishAccess (pDst->pDrawable, EXA_PREPARE_DEST);
+ }

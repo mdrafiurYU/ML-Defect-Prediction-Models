@@ -1,0 +1,13 @@
+diff --git a/GL/glx/swap_interval.c b/GL/glx/swap_interval.c
+index bcc1c47..c4137c1 100644
+--- a/GL/glx/swap_interval.c
++++ b/GL/glx/swap_interval.c
+@@ -40,7 +40,7 @@
+ #include "dispatch.h"
+ #include "glapioffsets.h"
+ 
+-#ifdef __linux__
++#if defined(__linux__) || defined (__GLIBC__) || defined (__GNU__)
+ #include <byteswap.h>
+ #elif defined(__OpenBSD__)
+ #include <sys/endian.h>

@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ByteField.java b/solr/src/java/org/apache/solr/schema/ByteField.java
+index 0bd4adb..80c769c 100644
+--- a/solr/src/java/org/apache/solr/schema/ByteField.java
++++ b/solr/src/java/org/apache/solr/schema/ByteField.java
+@@ -18,6 +18,8 @@ package org.apache.solr.schema;
+ 
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.search.SortField;
++import org.apache.lucene.search.cache.ByteValuesCreator;
++import org.apache.lucene.search.cache.CachedArrayCreator;
+ 
+ import org.apache.solr.response.TextResponseWriter;
+ import org.apache.solr.response.XMLWriter;
+@@ -41,7 +43,7 @@ public class ByteField extends FieldType {
+   }
+ 
+   public ValueSource getValueSource(SchemaField field) {
+-    return new ByteFieldSource(field.name);
++    return new ByteFieldSource( new ByteValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }

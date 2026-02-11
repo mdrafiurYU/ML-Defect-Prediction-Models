@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+index 9da85ca..f339133 100644
+--- a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
++++ b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+@@ -710,6 +710,9 @@ class DirectoryReader extends IndexReader implements Cloneable {
+         for (int i = 0; i < subReaders.length; i++)
+           subReaders[i].commit();
+ 
++        // Remove segments that contain only 100% deleted docs:
++        segmentInfos.pruneDeletedSegments();
++
+         // Sync all files we just wrote
+         directory.sync(segmentInfos.files(directory, false));
+         segmentInfos.commit(directory);

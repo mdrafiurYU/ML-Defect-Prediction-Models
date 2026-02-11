@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaWrapper.c b/hw/xfree86/xaa/xaaWrapper.c
+index 5b52568..6d8107b 100644
+--- a/hw/xfree86/xaa/xaaWrapper.c
++++ b/hw/xfree86/xaa/xaaWrapper.c
+@@ -522,7 +522,7 @@ void
+ XAASync(ScreenPtr pScreen)
+ {
+     XAAScreenPtr pScreenPriv = 
+-	(XAAScreenPtr) pScreen->devPrivates[XAAScreenIndex].ptr;
++	(XAAScreenPtr) pScreen->devPrivates[XAAGetScreenIndex()].ptr;
+     XAAInfoRecPtr infoRec = pScreenPriv->AccelInfoRec;
+ 
+     if(infoRec->NeedToSync) {

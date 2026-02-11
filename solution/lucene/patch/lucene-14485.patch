@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/TrieField.java b/solr/src/java/org/apache/solr/schema/TrieField.java
+index 4d88e70..3e7f4c1 100644
+--- a/solr/src/java/org/apache/solr/schema/TrieField.java
++++ b/solr/src/java/org/apache/solr/schema/TrieField.java
+@@ -552,7 +552,7 @@ public class TrieField extends FieldType {
+ 
+     Field f;
+     if (stored) {
+-      f = new Field(field.getName(), arr, Field.Store.YES);
++      f = new Field(field.getName(), arr);
+       if (indexed) f.setTokenStream(ts);
+     } else {
+       f = new Field(field.getName(), ts);

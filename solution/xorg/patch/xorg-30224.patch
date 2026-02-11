@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86str.h b/hw/xfree86/common/xf86str.h
+index 6e62e52..086d2bf 100644
+--- a/hw/xfree86/common/xf86str.h
++++ b/hw/xfree86/common/xf86str.h
+@@ -526,7 +526,7 @@ typedef struct _serverlayoutrec {
+     char *		id;
+     screenLayoutPtr	screens;
+     GDevPtr		inactives;
+-    IDevPtr		inputs;
++    IDevPtr*            inputs; /* NULL terminated */
+     pointer		options;
+ } serverLayoutRec, *serverLayoutPtr;
+ 

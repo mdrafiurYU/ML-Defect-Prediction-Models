@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java
+index f2cd652..1f832d8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/NodeStateEx.java
+@@ -40,6 +40,7 @@ import java.util.List;
+ import java.util.Set;
+ 
+ import javax.jcr.RepositoryException;
++import javax.jcr.PropertyType;
+ import javax.jcr.nodetype.ConstraintViolationException;
+ import javax.jcr.nodetype.NoSuchNodeTypeException;
+ 
+@@ -436,6 +437,19 @@ public class NodeStateEx {
+     }
+ 
+     /**
++     * Sets the given mixin types
++     * @param mixinTypeNames the mixin type names
++     * @throws RepositoryException if an error occurs
++     */
++    public void setMixins(Set<Name> mixinTypeNames) throws RepositoryException {
++        nodeState.setMixinTypeNames(mixinTypeNames);
++        // update jcr:mixinTypes property
++        setPropertyValues(NameConstants.JCR_MIXINTYPES, PropertyType.NAME,
++                InternalValue.create(
++                        mixinTypeNames.toArray(new Name[mixinTypeNames.size()]))
++        );
++    }
++    /**
+      * creates a new child node
+      *
+      * @param name

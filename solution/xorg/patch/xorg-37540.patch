@@ -1,0 +1,16 @@
+diff --git a/mi/mivaltree.c b/mi/mivaltree.c
+index 74483e3..d9d07ca 100644
+--- a/mi/mivaltree.c
++++ b/mi/mivaltree.c
+@@ -255,7 +255,11 @@ miComputeClips (
+     if (pParent->redirectDraw != RedirectDrawNone)
+     {
+ 	if (miSetRedirectBorderClipProc)
++	{
++	    if (TreatAsTransparent (pParent))
++		REGION_EMPTY (pScreen, universe);
+ 	    (*miSetRedirectBorderClipProc) (pParent, universe);
++	}
+ 	REGION_COPY(pScreen, universe, &pParent->borderSize);
+     }
+ #endif

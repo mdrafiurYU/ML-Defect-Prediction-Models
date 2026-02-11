@@ -1,0 +1,12 @@
+diff --git a/config/dbus-core.c b/config/dbus-core.c
+index 2888159..eab72a5 100644
+--- a/config/dbus-core.c
++++ b/config/dbus-core.c
+@@ -87,6 +87,7 @@ teardown(void)
+         dbus_connection_unref(bus_info.connection);
+ 
+     RemoveBlockAndWakeupHandlers(block_handler, wakeup_handler, &bus_info);
++    if (bus_info.fd != -1)
+     RemoveGeneralSocket(bus_info.fd);
+     bus_info.fd = -1;
+     bus_info.connection = NULL;

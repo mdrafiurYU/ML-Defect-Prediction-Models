@@ -1,0 +1,22 @@
+diff --git a/Xprint/AttrValid.h b/Xprint/AttrValid.h
+index f2e53f6..fab3a7f 100644
+--- a/Xprint/AttrValid.h
++++ b/Xprint/AttrValid.h
+@@ -196,6 +196,9 @@ void XpPutTrayMediumListAttr(XpContextPtr pContext,
+ 			     XPAttributes pool,
+ 			     XpOid oid,
+ 			     const XpOidTrayMediumList* tm);
++void XpValidatePrinterMediaAttrs(XpContextPtr pContext,
++				 const XpOidList* valid_trays,
++				 const XpOidList* valid_sizes);
+ /*
+  * Attribute pool validation
+  */
+@@ -204,6 +207,7 @@ void XpValidateAttributePool(XpContextPtr pContext,
+ 			     const XpValidatePoolsRec* vpr);
+ void XpValidatePrinterPool(XpContextPtr pContext,
+ 			   const XpValidatePoolsRec* vpr);
++void XpValidateNotificationProfile(XpContextPtr pContext);
+ void XpValidateJobPool(XpContextPtr pContext,
+ 		       const XpValidatePoolsRec* vpr);
+ void XpValidateDocumentPool(XpContextPtr pContext,

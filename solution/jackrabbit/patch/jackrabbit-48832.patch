@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
+index 2c0182a..d204a7f 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
+@@ -2431,6 +2431,9 @@ public class RepositoryServiceImpl implements RepositoryService, DavConstants {
+             }
+         }
+ 
++        /**
++         * @see Batch#setPrimaryType(NodeId, Name)
++         */
+         public void setPrimaryType(NodeId nodeId, Name primaryNodeTypeName) throws RepositoryException {
+             checkConsumed();
+             try {

@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index b72597e..e1a6c82 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -1471,10 +1471,10 @@ public class SessionImpl extends AbstractSession
+     }
+ 
+     /**
+-     * @see org.apache.jackrabbit.api.jsr283.Session#checkCapability(String, Object, Map)
++     * @see org.apache.jackrabbit.api.jsr283.Session#hasCapability(String, Object, Map)
+      * @since JCR 2.0
+      */
+-    public boolean checkCapability(String methodType, Object target, Map arguments)
++    public boolean hasCapability(String methodType, Object target, Map arguments)
+             throws RepositoryException {
+         //TODO
+         throw new UnsupportedRepositoryOperationException("Not yet implemented");

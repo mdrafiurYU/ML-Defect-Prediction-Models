@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReferencesTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReferencesTest.java
+index 28f32f8..9b5a594 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReferencesTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/ReferencesTest.java
+@@ -189,7 +189,7 @@ public final class ReferencesTest extends AbstractJCRTest {
+      * @throws RepositoryException on error
+      */
+     private Session createSession() throws RepositoryException {
+-        return helper.getSuperuserSession();
++        return getHelper().getSuperuserSession();
+     }
+ 
+     private void saveAndlogout(Session... sessions) throws RepositoryException {

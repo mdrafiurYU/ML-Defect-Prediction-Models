@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ASTNodeFinder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ASTNodeFinder.java
+index f0d7e6f..5b50e6e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ASTNodeFinder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/ASTNodeFinder.java
+@@ -121,7 +121,7 @@ public class ASTNodeFinder {
+ 			int count = 0;
+ 			public boolean visit(TypeDeclaration typeDeclaration, BlockScope scope) {
+ 				if (result != null) return false;
+-				if ((typeDeclaration.bits & ASTNode.IsAnonymousTypeMASK) != 0) {
++				if ((typeDeclaration.bits & ASTNode.IsAnonymousType) != 0) {
+ 					if (findAnonymous && ++count == occurenceCount) {
+ 						result = typeDeclaration;
+ 					}

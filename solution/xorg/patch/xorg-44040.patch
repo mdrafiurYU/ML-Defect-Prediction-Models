@@ -1,0 +1,13 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 678c171..59fb29b 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -181,6 +181,8 @@ typedef struct _GrabRec {
+     CursorPtr		cursor;		/* always NULL for keyboards */
+     Mask		eventMask;
+     Mask                deviceMask;     
++    /* XI2 event masks. One per device, each bit is a mask of (1 << type) */
++    unsigned char       xi2mask[EMASKSIZE][XI2MASKSIZE];
+ } GrabRec;
+ 
+ typedef struct _KeyClassRec {

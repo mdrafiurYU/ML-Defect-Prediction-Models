@@ -1,0 +1,13 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index f1003e6..cc97319 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -553,7 +553,7 @@ SELinuxLabelInitial(void)
+ 	SELinuxScreen(NULL, NULL, &srec);
+ 
+ 	/* Do the default colormap */
+-	dixLookupResource(&unused, screenInfo.screens[i]->defColormap,
++	dixLookupResourceByType(&unused, screenInfo.screens[i]->defColormap,
+ 			  RT_COLORMAP, serverClient, DixCreateAccess);
+     }
+ }

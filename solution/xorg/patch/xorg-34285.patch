@@ -1,0 +1,12 @@
+diff --git a/hw/xnest/Pixmap.c b/hw/xnest/Pixmap.c
+index 57bebc6..0431196 100644
+--- a/hw/xnest/Pixmap.c
++++ b/hw/xnest/Pixmap.c
+@@ -57,6 +57,7 @@ xnestCreatePixmap(ScreenPtr pScreen, int width, int height, int depth,
+   pPixmap->drawable.serialNumber = NEXT_SERIAL_NUMBER;
+   pPixmap->refcnt = 1;
+   pPixmap->devKind = PixmapBytePad(width, depth);
++  pPixmap->usage_hint = usage_hint;
+   dixSetPrivate(&pPixmap->devPrivates, xnestPixmapPrivateKey,
+ 		(char *)pPixmap + pScreen->totalPixmapSize);
+   if (width && height)

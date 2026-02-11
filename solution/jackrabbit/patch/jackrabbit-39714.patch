@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+index 6d09589..5aeebba 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractExcerpt.java
+@@ -140,11 +140,8 @@ public abstract class AbstractExcerpt implements HighlightingExcerptProvider {
+                 return createExcerpt((TermPositionVector) tfv, text.toString(),
+                         maxFragments, maxFragmentSize);
+             } else {
+-                log.debug("No TermPositionVector on Fulltext field, using {}",
+-                        SimpleExcerptProvider.class.getName());
+-                SimpleExcerptProvider exProvider = new SimpleExcerptProvider();
+-                exProvider.init(query, index);
+-                return exProvider.getExcerpt(id, maxFragments, maxFragmentSize);
++                log.debug("No TermPositionVector on Fulltext field.");
++                return null;
+             }
+         } finally {
+             reader.close();

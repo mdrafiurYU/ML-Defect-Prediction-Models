@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java
+index 64275bc..fc8aa66 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java
+@@ -55,6 +55,7 @@ public class PairOutputs<A,B> extends Outputs<PairOutputs.Pair<A,B>> {
+       }
+     }
+ 
++    @Override
+     public int hashCode() {
+       return output1.hashCode() + output2.hashCode();
+     }

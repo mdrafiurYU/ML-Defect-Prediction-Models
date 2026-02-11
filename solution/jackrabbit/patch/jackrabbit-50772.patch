@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionUUIDTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionUUIDTest.java
+index 349adab..35d10ee 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionUUIDTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SessionUUIDTest.java
+@@ -129,7 +129,7 @@ public class SessionUUIDTest extends AbstractJCRTest {
+         }
+ 
+         // get the moving node with session 2
+-        Session testSession = helper.getReadWriteSession();
++        Session testSession = getHelper().getReadWriteSession();
+ 
+         try {
+             Node refTargetNodeSession2 = (Node) testSession.getItem(refTargetNode.getPath());

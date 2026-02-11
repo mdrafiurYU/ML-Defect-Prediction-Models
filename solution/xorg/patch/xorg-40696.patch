@@ -1,0 +1,11 @@
+diff --git a/include/os.h b/include/os.h
+index e63daad..7acc591 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -517,4 +517,6 @@ extern void ErrorF(const char *f, ...) _printf_attribute(1,2);
+ extern void Error(char *str);
+ extern void LogPrintMarkers(void);
+ 
++extern void xorg_backtrace(void);
++
+ #endif /* OS_H */

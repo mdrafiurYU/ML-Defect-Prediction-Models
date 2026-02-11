@@ -1,0 +1,14 @@
+diff --git a/hw/xnest/Screen.c b/hw/xnest/Screen.c
+index 61a325f..11c180b 100644
+--- a/hw/xnest/Screen.c
++++ b/hw/xnest/Screen.c
+@@ -305,8 +305,7 @@ xnestOpenScreen(int index, ScreenPtr pScreen, int argc, char *argv[])
+   pScreen->blockData = NULL;
+   pScreen->wakeupData = NULL;
+ 
+-  miPointerInitialize (pScreen, &xnestPointerSpriteFuncs, 
+-		       &xnestPointerCursorFuncs, True);
++  miDCInitialize (pScreen, &xnestPointerCursorFuncs);
+ 
+   pScreen->mmWidth = xnestWidth * DisplayWidthMM(xnestDisplay, 
+ 		       DefaultScreen(xnestDisplay)) / 

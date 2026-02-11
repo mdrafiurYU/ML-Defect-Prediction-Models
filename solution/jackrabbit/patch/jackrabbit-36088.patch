@@ -1,0 +1,16 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java
+index d795d9d..1794c62 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/AnnotationTestBase.java
+@@ -148,7 +148,11 @@ public abstract class AnnotationTestBase extends AbstractTestBase
+ 		classes.add(org.apache.jackrabbit.ocm.testmodel.proxy.NTMain.class);
+ 		classes.add(org.apache.jackrabbit.ocm.testmodel.proxy.NTDetail.class);
+ 		
+-		
++		classes.add(org.apache.jackrabbit.ocm.testmodel.uuid.A.class);
++		classes.add(org.apache.jackrabbit.ocm.testmodel.uuid.B.class);
++		classes.add(org.apache.jackrabbit.ocm.testmodel.uuid.B2.class);
++		classes.add(org.apache.jackrabbit.ocm.testmodel.uuid.Ancestor.class);
++		classes.add(org.apache.jackrabbit.ocm.testmodel.uuid.Descendant.class);
+ 		Mapper mapper = new AnnotationMapperImpl(classes);
+ 		ocm = new ObjectContentManagerImpl(session, mapper);

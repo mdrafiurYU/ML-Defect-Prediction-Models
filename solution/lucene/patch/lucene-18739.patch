@@ -1,0 +1,27 @@
+diff --git a/solr/src/java/org/apache/solr/schema/StrField.java b/solr/src/java/org/apache/solr/schema/StrField.java
+index 3bfc5a5..7e34ab2 100644
+--- a/solr/src/java/org/apache/solr/schema/StrField.java
++++ b/solr/src/java/org/apache/solr/schema/StrField.java
+@@ -31,18 +31,22 @@ import java.io.IOException;
+  * @version $Id$
+  */
+ public class StrField extends FieldType {
++  @Override
+   protected void init(IndexSchema schema, Map<String,String> args) {
+     super.init(schema, args);    
+   }
+ 
++  @Override
+   public SortField getSortField(SchemaField field,boolean reverse) {
+     return getStringSort(field,reverse);
+   }
+ 
++  @Override
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     writer.writeStr(name, f.stringValue(), true);
+   }
+ 
++  @Override
+   public ValueSource getValueSource(SchemaField field, QParser parser) {
+     return new StrFieldSource(field.getName());
+   }

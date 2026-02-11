@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/BoostedQuery.java b/solr/src/java/org/apache/solr/search/function/BoostedQuery.java
+index 2ceb78b..a8d4872 100755
+--- a/solr/src/java/org/apache/solr/search/function/BoostedQuery.java
++++ b/solr/src/java/org/apache/solr/search/function/BoostedQuery.java
+@@ -91,8 +91,8 @@ public class BoostedQuery extends Query {
+     }
+ 
+     @Override
+-    public Scorer scorer(AtomicReaderContext context, boolean scoreDocsInOrder, boolean topScorer) throws IOException {
+-      Scorer subQueryScorer = qWeight.scorer(context, true, false);
++    public Scorer scorer(AtomicReaderContext context, ScorerContext scorerContext) throws IOException {
++      Scorer subQueryScorer = qWeight.scorer(context, ScorerContext.def());
+       if(subQueryScorer == null) {
+         return null;
+       }

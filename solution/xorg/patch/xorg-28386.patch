@@ -1,0 +1,13 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index f738419..5996b75 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -238,7 +238,7 @@ CoreKeyboardProc(DeviceIntPtr pDev, int what)
+         keySyms.mapWidth = 4;
+         keySyms.map = (KeySym *)xcalloc(sizeof(KeySym),
+                                         (keySyms.maxKeyCode -
+-                                         keySyms.minKeyCode) *
++                                         keySyms.minKeyCode + 1) *
+                                         keySyms.mapWidth);
+         if (!keySyms.map) {
+             ErrorF("Couldn't allocate core keymap\n");

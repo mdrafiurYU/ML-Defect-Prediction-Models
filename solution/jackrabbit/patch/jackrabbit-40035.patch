@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NamespaceEventListener.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NamespaceEventListener.java
+index 7237866..0b40842 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NamespaceEventListener.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/NamespaceEventListener.java
+@@ -31,6 +31,7 @@ public interface NamespaceEventListener {
+      * @param uri uri to map prefix to
+      * @throws RepositoryException if an error occurs
+      */
+-    public void externalRemap(String oldPrefix, String newPrefix, String uri)
+-            throws RepositoryException;
++    void externalRemap(String oldPrefix, String newPrefix, String uri)
++        throws RepositoryException;
++
+ }

@@ -1,0 +1,20 @@
+diff --git a/os/log.c b/os/log.c
+index 05e542f..b1d628c 100644
+--- a/os/log.c
++++ b/os/log.c
+@@ -89,6 +89,7 @@ OR PERFORMANCE OF THIS SOFTWARE.
+ #include <stdlib.h>	/* for malloc() */
+ #include <errno.h>
+ 
++#include "input.h"
+ #include "site.h"
+ #include "opaque.h"
+ 
+@@ -404,6 +405,7 @@ void
+ AbortServer(void)
+ {
+     OsCleanup(TRUE);
++    CloseDownDevices();
+     AbortDDX();
+     fflush(stderr);
+     if (CoreDump)

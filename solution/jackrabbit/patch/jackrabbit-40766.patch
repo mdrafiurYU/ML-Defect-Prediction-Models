@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/AdaptingHits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/AdaptingHits.java
+index 0bff6d8..0485596 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/AdaptingHits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/hits/AdaptingHits.java
+@@ -97,8 +97,9 @@ public class AdaptingHits implements Hits {
+                 while (i > -1) {
+                     try {
+                         i = hits.next();
+-                        if (i > -1)
++                        if (i > -1) {
+                             bitSetHits.set(i);
++                        }
+                     } catch (IOException e) {
+                         throw new RuntimeException(e);
+                     }

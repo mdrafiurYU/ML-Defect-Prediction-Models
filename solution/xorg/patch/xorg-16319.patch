@@ -1,0 +1,15 @@
+diff --git a/cfb/cfbline.c b/cfb/cfbline.c
+index 8fec8fb..392fe48 100644
+--- a/cfb/cfbline.c
++++ b/cfb/cfbline.c
+@@ -46,6 +46,10 @@ SOFTWARE.
+ 
+ ******************************************************************/
+ /* $Xorg: cfbline.c,v 1.4 2001/02/09 02:04:38 xorgcvs Exp $ */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ 
+ #include "gcstruct.h"

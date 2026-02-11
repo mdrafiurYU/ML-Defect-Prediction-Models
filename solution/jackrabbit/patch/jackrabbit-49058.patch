@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index 03b9bc1..6c94a50 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -2181,7 +2181,7 @@ public class RepositoryImpl extends AbstractRepository
+                 getItemStateProvider().externalUpdate(external, esc);
+             } catch (IllegalStateException e) {
+                 String msg = "Unable to deliver events: " + e.getMessage();
+-                throw new RepositoryException(msg);
++                throw new RepositoryException(msg, e);
+             }
+         }

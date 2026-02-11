@@ -1,0 +1,13 @@
+diff --git a/fb/fbcmap_mi.c b/fb/fbcmap_mi.c
+index 188decd..0747972 100644
+--- a/fb/fbcmap_mi.c
++++ b/fb/fbcmap_mi.c
+@@ -85,7 +85,7 @@ fbExpandDirectColors (ColormapPtr   pmap,
+     return miExpandDirectColors(pmap, ndef, indefs, outdefs);
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ fbCreateDefColormap(ScreenPtr pScreen)
+ {
+     return miCreateDefColormap(pScreen);

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/AndPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/AndPattern.java
+index ea81c40..944da57 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/AndPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/AndPattern.java
+@@ -15,9 +15,9 @@ import java.io.IOException;
+ import org.eclipse.core.runtime.IProgressMonitor;
+ import org.eclipse.core.runtime.OperationCanceledException;
+ import org.eclipse.jdt.core.search.*;
++import org.eclipse.jdt.internal.compiler.util.SimpleSet;
+ import org.eclipse.jdt.internal.core.index.*;
+ import org.eclipse.jdt.internal.core.search.IndexQueryRequestor;
+-import org.eclipse.jdt.internal.core.util.SimpleSet;
+ 
+ /**
+  * Query the index multiple times and do an 'and' on the results.

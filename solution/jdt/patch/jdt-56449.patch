@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+index 5741109..8d02c55 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTConverter.java
+@@ -114,7 +114,11 @@ class ASTConverter {
+ 						}
+ 				}
+ 			}
+-			expression.sourceEnd = this.scanner.startPosition - 1;
++			if(this.scanner instanceof RecoveryScanner && ((RecoveryScanner)this.scanner).isFakeTokenInserted()) {
++				expression.sourceEnd =  this.scanner.startPosition;
++			} else {
++				expression.sourceEnd = this.scanner.startPosition - 1;
++			}
+ 		} catch(InvalidInputException e) {
+ 			// ignore
+ 		}
+@@ -4112,8 +4116,8 @@ class ASTConverter {
+ 				switch(token) {
+ 					case TerminalTokens.TokenNameCOMMA :
+ 					case TerminalTokens.TokenNameSEMICOLON :
+-						if(this.scanner instanceof RecoveryScanner && ((RecoveryScanner)this.scanner).isFakeToken()) {
+-							return -1;
++						if(this.scanner instanceof RecoveryScanner && ((RecoveryScanner)this.scanner).isFakeTokenInserted()) {
++							return this.scanner.startPosition;
+ 						}
+ 						return this.scanner.startPosition - 1;
+ 				}

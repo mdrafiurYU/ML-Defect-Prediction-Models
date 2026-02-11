@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/FastLRUCache.java b/solr/src/java/org/apache/solr/search/FastLRUCache.java
+index a65dbbc..594f37f 100644
+--- a/solr/src/java/org/apache/solr/search/FastLRUCache.java
++++ b/solr/src/java/org/apache/solr/search/FastLRUCache.java
+@@ -274,6 +274,7 @@ public class FastLRUCache<K,V> extends SolrCacheBase implements SolrCache<K,V> {
+     return lst;
+   }
+ 
++  @Override
+   public String toString() {
+     return name + getStatistics().toString();
+   }

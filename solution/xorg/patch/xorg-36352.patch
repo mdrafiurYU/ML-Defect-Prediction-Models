@@ -1,0 +1,30 @@
+diff --git a/hw/xquartz/quartzCommon.h b/hw/xquartz/quartzCommon.h
+index a0d4673..c4bd2d8 100644
+--- a/hw/xquartz/quartzCommon.h
++++ b/hw/xquartz/quartzCommon.h
+@@ -68,6 +68,7 @@ extern int              quartzEventWriteFD;
+ // User preferences used by Quartz modes
+ extern int              quartzRootless;
+ extern int              quartzUseSysBeep;
++extern int              focusOnNewWindow;
+ extern int              quartzUseAGL;
+ extern int              quartzEnableKeyEquivalents;
+ 
+@@ -91,17 +92,4 @@ int  QuartzFSUseQDCursor(int depth);
+ void QuartzBlockHandler(pointer blockData, OSTimePtr pTimeout, pointer pReadmask);
+ void QuartzWakeupHandler(pointer blockData, int result, pointer pReadmask);
+ 
+-// Messages that can be sent to the main thread.
+-enum {
+-    kQuartzServerHidden,
+-    kQuartzServerStarted,
+-    kQuartzServerDied,
+-    kQuartzCursorUpdate,
+-    kQuartzPostEvent,
+-    kQuartzSetWindowMenu,
+-    kQuartzSetWindowMenuCheck,
+-    kQuartzSetFrontProcess,
+-    kQuartzSetCanQuit
+-};
+-
+ #endif  /* _QUARTZCOMMON_H */

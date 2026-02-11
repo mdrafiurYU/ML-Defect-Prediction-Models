@@ -1,0 +1,36 @@
+diff --git a/miext/rootless/rootlessValTree.c b/miext/rootless/rootlessValTree.c
+index 4f16530..d52a2af 100644
+--- a/miext/rootless/rootlessValTree.c
++++ b/miext/rootless/rootlessValTree.c
+@@ -104,7 +104,6 @@ Equipment Corporation.
+ 
+ #include    "globals.h"
+ 
+-#ifdef SHAPE
+ /*
+  * Compute the visibility of a shaped window
+  */
+@@ -167,7 +166,6 @@ RootlessShapedWindowIn (pScreen, universe, bounding, rect, x, y)
+ 	return rgnIN;
+     return rgnOUT;
+ }
+-#endif
+ 
+ #define HasParentRelativeBorder(w) (!(w)->borderIsPixel && \
+ 				    HasBorder(w) && \
+@@ -235,7 +233,6 @@ RootlessComputeClips (pParent, pScreen, universe, kind, exposed)
+ 	    break;
+ 	case rgnPART:
+ 	    newVis = VisibilityPartiallyObscured;
+-#ifdef SHAPE
+ 	    {
+ 		RegionPtr   pBounding;
+ 
+@@ -255,7 +252,6 @@ RootlessComputeClips (pParent, pScreen, universe, kind, exposed)
+ 		    }
+ 		}
+ 	    }
+-#endif
+ 	    break;
+ 	default:
+ 	    newVis = VisibilityFullyObscured;

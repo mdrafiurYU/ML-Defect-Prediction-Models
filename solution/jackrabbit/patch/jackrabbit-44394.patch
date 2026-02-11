@@ -1,0 +1,35 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index 8456550..b85c48b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -381,6 +381,16 @@ public class RepositoryImpl extends AbstractRepository
+     }
+ 
+     /**
++     * Get the cluster node. Returns <code>null</code> if this repository
++     * is not running clustered.
++     *
++     * @return cluster node
++     */
++    public ClusterNode getClusterNode() {
++        return clusterNode;
++    }
++
++    /**
+      * Returns the {@link org.apache.jackrabbit.core.security.JackrabbitSecurityManager SecurityManager}
+      * of this <code>Repository</code>
+      *
+@@ -2148,6 +2158,13 @@ public class RepositoryImpl extends AbstractRepository
+         /**
+          * {@inheritDoc}
+          */
++        public File getRepositoryHome() {
++            return new File(getConfig().getHomeDir());
++        }
++
++        /**
++         * {@inheritDoc}
++         */
+         public NamespaceResolver getNamespaceResolver() {
+             return new RegistryNamespaceResolver(getNamespaceRegistry());
+         }

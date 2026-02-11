@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86AutoConfig.c b/hw/xfree86/common/xf86AutoConfig.c
+index 7e5fab4..a786eed 100644
+--- a/hw/xfree86/common/xf86AutoConfig.c
++++ b/hw/xfree86/common/xf86AutoConfig.c
+@@ -454,7 +454,7 @@ chooseVideoDriver(void)
+ 	if (info != NULL)
+ 	    chosen_driver = videoPtrToDriverName(info);
+ 	if (chosen_driver == NULL) {
+-#if defined  __i386__ || defined __amd64__ || defined __x86_64__ || defined __hurd__
++#if defined  __i386__ || defined __amd64__ || defined __hurd__
+ 	    chosen_driver = "vesa";
+ #elif defined __sparc__
+ 	    chosen_driver = "sunffb";

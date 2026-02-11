@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/os-support/usl/usl_mouse.c b/hw/xfree86/os-support/usl/usl_mouse.c
+index 68e4e90..22d3626 100644
+--- a/hw/xfree86/os-support/usl/usl_mouse.c
++++ b/hw/xfree86/os-support/usl/usl_mouse.c
+@@ -86,14 +86,8 @@ OsMouseProc(DeviceIntPtr pPointer, int what)
+     case DEVICE_INIT: 
+       pPointer->public.on = FALSE;
+ 
+-      map[1] = 1;
+-      map[2] = 2;
+-      map[3] = 3;
+-      map[4] = 7;
+-      map[5] = 8;
+-      map[6] = 6;
+-      map[7] = 4;
+-      map[8] = 5;
++      for (ret = 0; ret <= 8; ret++)
++	map[ret] = ret;
+ 
+       InitPointerDeviceStruct((DevicePtr)pPointer, map, 8, 
+ 			      miPointerGetMotionEvents, pMse->Ctrl,

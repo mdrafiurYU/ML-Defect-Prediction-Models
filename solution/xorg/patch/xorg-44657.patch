@@ -1,0 +1,12 @@
+diff --git a/dix/enterleave.c b/dix/enterleave.c
+index eadcc45..d7f5f58 100644
+--- a/dix/enterleave.c
++++ b/dix/enterleave.c
+@@ -609,6 +609,7 @@ DoEnterLeaveEvents(DeviceIntPtr pDev,
+     if (fromWin == toWin)
+ 	return;
+ 
++    if (mode != XINotifyPassiveGrab && mode != XINotifyPassiveUngrab)
+     CoreEnterLeaveEvents(pDev, fromWin, toWin, mode);
+     DeviceEnterLeaveEvents(pDev, fromWin, toWin, mode);
+ }

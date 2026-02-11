@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetEvaluator.java b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetEvaluator.java
+index 854d920..56d2074 100644
+--- a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetEvaluator.java
++++ b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetEvaluator.java
+@@ -155,7 +155,8 @@ Compiler getCompiler(ICompilerRequestor compilerRequestor) {
+ 			DefaultErrorHandlingPolicies.exitAfterAllProblems(), 
+ 			this.options, 
+ 			compilerRequestor, 
+-			this.problemFactory);
++			this.problemFactory,
++			true);
+ 	}
+ 	return compiler;
+ }

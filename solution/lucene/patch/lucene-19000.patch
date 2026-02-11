@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/schema/FieldType.java b/solr/src/java/org/apache/solr/schema/FieldType.java
+index ac2b956..c3daa18 100644
+--- a/solr/src/java/org/apache/solr/schema/FieldType.java
++++ b/solr/src/java/org/apache/solr/schema/FieldType.java
+@@ -521,7 +521,7 @@ public abstract class FieldType extends FieldProperties {
+    */
+   public Query getRangeQuery(QParser parser, SchemaField field, String part1, String part2, boolean minInclusive, boolean maxInclusive) {
+     // constant score mode is now enabled per default
+-    return new TermRangeQuery(
++    return TermRangeQuery.newStringRange(
+             field.getName(),
+             part1 == null ? null : toInternal(part1),
+             part2 == null ? null : toInternal(part2),

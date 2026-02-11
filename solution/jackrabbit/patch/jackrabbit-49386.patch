@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
+index b04c285..71214b0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInMemory.java
+@@ -135,10 +135,7 @@ public class BLOBInMemory extends BLOBFileValue {
+         // the data will be garbage collected
+     }
+ 
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public boolean isImmutable() {
++    boolean isImmutable() {
+         return true;
+     }

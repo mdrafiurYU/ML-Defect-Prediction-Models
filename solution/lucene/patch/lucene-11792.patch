@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+index 64f77e0..803c29c 100644
+--- a/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
++++ b/lucene/src/java/org/apache/lucene/index/DirectoryReader.java
+@@ -320,7 +320,10 @@ class DirectoryReader extends IndexReader implements Cloneable {
+     }
+     buffer.append(getClass().getSimpleName());
+     buffer.append('(');
+-    buffer.append(segmentInfos.getCurrentSegmentFileName());
++    final String segmentsFile = segmentInfos.getCurrentSegmentFileName();
++    if (segmentsFile != null) {
++      buffer.append(segmentsFile);
++    }
+     if (writer != null) {
+       buffer.append(":nrt");
+     }

@@ -1,0 +1,15 @@
+diff --git a/fb/fbwindow.c b/fb/fbwindow.c
+index 144f083..594cc61 100644
+--- a/fb/fbwindow.c
++++ b/fb/fbwindow.c
+@@ -32,8 +32,8 @@ Bool
+ fbCreateWindow(WindowPtr pWin)
+ {
+ #ifndef FB_NO_WINDOW_PIXMAPS
+-    pWin->devPrivates[fbWinPrivateIndex].ptr = 
+-	(pointer) fbGetScreenPixmap(pWin->drawable.pScreen);
++    dixSetPrivate(&pWin->devPrivates, fbGetWinPrivateKey(),
++		  fbGetScreenPixmap(pWin->drawable.pScreen));
+ #endif
+ #ifdef FB_SCREEN_PRIVATE
+     if (pWin->drawable.bitsPerPixel == 32)

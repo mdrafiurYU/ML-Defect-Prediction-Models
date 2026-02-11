@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java
+index c90b90c..fe8a1a3 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/qom/BindVariableValueTest.java
+@@ -23,6 +23,7 @@ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+ import javax.jcr.ValueFactory;
+ import javax.jcr.query.Query;
++import javax.jcr.query.qom.QueryObjectModelConstants;
+ 
+ /**
+  * <code>BindVariableValueTest</code>...
+@@ -52,7 +53,7 @@ public class BindVariableValueTest extends AbstractQOMTest {
+                         qomFactory.childNode("s", testRoot),
+                         qomFactory.comparison(
+                                 qomFactory.propertyValue("s", propertyName1),
+-                                AbstractQOMTest.JCR_OPERATOR_EQUAL_TO,
++                                QueryObjectModelConstants.JCR_OPERATOR_EQUAL_TO,
+                                 qomFactory.bindVariable("v")
+                         )
+                 ), null, null);

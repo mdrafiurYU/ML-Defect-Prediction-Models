@@ -1,0 +1,12 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 3915436..cdb26b1 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -2362,7 +2362,6 @@ NewInputDeviceRequest(InputOption *options)
+     }
+ 
+     for (option = options; option; option = option->next) {
+-        ErrorF("option '%s': '%s'\n", option->key, option->value);
+         if (strcmp(option->key, "driver") == 0) {
+             if (pi) {
+                 pi->driver = KdFindPointerDriver(option->value);

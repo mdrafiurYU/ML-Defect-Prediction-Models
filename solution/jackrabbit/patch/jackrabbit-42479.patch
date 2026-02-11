@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java
+index fb50826..ffa6444 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/WorkspaceImporter.java
+@@ -432,7 +432,7 @@ public class WorkspaceImporter implements Importer {
+                         // (see http://issues.apache.org/jira/browse/JCR-1128)
+                         if (!(idExisting.equals(id)
+                                 && (uuidBehavior == ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING
+-                                || uuidBehavior == ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING))) {
++                                || uuidBehavior == ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING))) {
+                             throw new ItemExistsException(itemOps.safeGetJCRPath(existing.getNodeId()));
+                         }
+                         // fall through

@@ -1,0 +1,39 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 3453791..344e130 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -2164,6 +2164,34 @@ public void illegalVoidExpression(ASTNode location) {
+ 		location.sourceEnd);
+ }
+ public void importProblem(ImportReference importRef, Binding expectedImport) {
++	if (expectedImport instanceof FieldBinding) {
++		int id = IProblem.UndefinedField;
++		FieldBinding field = (FieldBinding) expectedImport;
++		switch (expectedImport.problemId()) {
++			case ProblemReasons.NotVisible :
++				this.handle(
++					IProblem.NotVisibleField,
++					new String[] {CharOperation.toString(importRef.tokens), new String(field.declaringClass.readableName())},
++					new String[] {CharOperation.toString(importRef.tokens), new String(field.declaringClass.shortReadableName())},
++					importRef.sourceStart,
++					importRef.sourceEnd);			
++				return;
++			case ProblemReasons.Ambiguous :
++				id = IProblem.AmbiguousField;
++				break;
++			case ProblemReasons.ReceiverTypeNotVisible :
++				id = IProblem.NotVisibleType;
++				break;
++		}
++		this.handle(
++			id, 
++			new String[] {new String(field.declaringClass.leafComponentType().readableName())},
++			new String[] {new String(field.declaringClass.leafComponentType().shortReadableName())},
++			importRef.sourceStart,
++			importRef.sourceEnd);
++		return;
++	}
++
+ 	if (expectedImport.problemId() == ProblemReasons.NotFound) {
+ 		char[][] tokens = expectedImport instanceof ProblemReferenceBinding
+ 			? ((ProblemReferenceBinding) expectedImport).compoundName

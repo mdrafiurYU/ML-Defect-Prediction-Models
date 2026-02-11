@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java b/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
+index d00854e..745c619 100644
+--- a/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
++++ b/lucene/src/test/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
+@@ -260,7 +260,9 @@ public class MockRandomCodec extends Codec {
+         if (LuceneTestCase.VERBOSE) {
+           System.out.println("MockRandomCodec: variable-gap terms index (divisor=" + state.termsIndexDivisor + ")");
+         }
+-        state.termsIndexDivisor = _TestUtil.nextInt(random, 1, 10);
++        if (state.termsIndexDivisor != -1) {
++          state.termsIndexDivisor = _TestUtil.nextInt(random, 1, 10);
++        }
+         indexReader = new VariableGapTermsIndexReader(state.dir,
+                                                       state.fieldInfos,
+                                                       state.segmentInfo.name,

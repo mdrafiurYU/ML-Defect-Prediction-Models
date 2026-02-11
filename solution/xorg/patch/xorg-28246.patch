@@ -1,0 +1,19 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index 8639c56..bb67f48 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -400,10 +400,10 @@ miSpriteGetSpans (pDrawable, wMax, ppt, pwidth, nspans, pdstStart)
+ 
+             if (pDrawable->type == DRAWABLE_WINDOW && pCursorInfo->isUp)
+             {
+-                register DDXPointPtr    pts;
+-                register int    	*widths;
+-                register int    	nPts;
+-                register int    	xorg,
++                DDXPointPtr    pts;
++                int    	       *widths;
++                int    	       nPts;
++                int    	       xorg,
+                          yorg;
+ 
+                 xorg = pDrawable->x;

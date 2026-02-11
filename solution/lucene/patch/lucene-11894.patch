@@ -1,0 +1,16 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsDictReader.java b/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsDictReader.java
+index f009181..65a3325 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsDictReader.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/index/codecs/appending/AppendingTermsDictReader.java
+@@ -35,9 +35,9 @@ public class AppendingTermsDictReader extends PrefixCodedTermsReader {
+   public AppendingTermsDictReader(TermsIndexReaderBase indexReader,
+           Directory dir, FieldInfos fieldInfos, String segment,
+           PostingsReaderBase postingsReader, int readBufferSize,
+-          Comparator<BytesRef> termComp, int termsCacheSize) throws IOException {
++          Comparator<BytesRef> termComp, int termsCacheSize, String codecId) throws IOException {
+     super(indexReader, dir, fieldInfos, segment, postingsReader, readBufferSize,
+-            termComp, termsCacheSize);
++            termComp, termsCacheSize, codecId);
+   }
+   
+   @Override

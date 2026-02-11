@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 3e4fa4a..be603d6 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -402,7 +402,7 @@ xf86ClearEntityListForScreen(int scrnIndex)
+     pScrn->entityInstanceList = NULL;
+ }
+ 
+-_X_EXPORT void
++void
+ xf86DeallocateResourcesForEntity(int entityIndex, unsigned long type)
+ {
+     resPtr *pprev_next = &Acc;

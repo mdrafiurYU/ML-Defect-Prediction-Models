@@ -1,0 +1,13 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 6d7d47e..09aaf5d 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -142,7 +142,7 @@ set_valuators(DeviceIntPtr dev, DeviceEvent* event, int first_valuator,
+ {
+     int i;
+ 
+-    for (i = first_valuator; i < num_valuators; i++)
++    for (i = first_valuator; i < first_valuator + num_valuators; i++)
+         SetBit(event->valuators.mask, i);
+ 
+     /* FIXME: Set the current mode */

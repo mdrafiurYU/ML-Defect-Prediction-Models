@@ -1,0 +1,13 @@
+diff --git a/Xi/listdev.c b/Xi/listdev.c
+index 50f34e4..3fb0ab3 100644
+--- a/Xi/listdev.c
++++ b/Xi/listdev.c
+@@ -188,6 +188,8 @@ CopySwapDevice(ClientPtr client, DeviceIntPtr d, int num_classes,
+ 	dev->use = IsXExtensionDevice;
+     if (!d->isMaster)
+         dev->attached = (d->u.master) ? d->u.master->id : IsFloating;
++    else
++        dev->attached = GetPairedDevice(d)->id;
+ 
+     if (client->swapped) {
+ 	swapl(&dev->type, n);	/* macro - braces are required */

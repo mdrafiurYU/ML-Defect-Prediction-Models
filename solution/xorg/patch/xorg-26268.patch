@@ -1,0 +1,13 @@
+diff --git a/randr/rroutput.c b/randr/rroutput.c
+index a4f5a66..90b2b98 100644
+--- a/randr/rroutput.c
++++ b/randr/rroutput.c
+@@ -194,7 +194,7 @@ void
+ RROutputSetCrtc (RROutputPtr output, RRCrtcPtr crtc)
+ {
+     if (output->crtc == crtc)
+-	return TRUE;
++	return;
+     output->crtc = crtc;
+     output->changed = TRUE;
+ }

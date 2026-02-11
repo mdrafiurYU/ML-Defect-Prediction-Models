@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
+index cd1c5b6..8abb414 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
+@@ -105,6 +105,8 @@ public class FactoryPathConfigurationBlock extends BaseConfigurationBlock {
+         	field.enableButton(IDX_REMOVE, enableRemove);
+         	boolean enableEdit = canEdit();
+         	field.enableButton(IDX_EDIT, enableEdit);
++        	boolean enableAdvanced = canAdvanced();
++        	field.enableButton(IDX_ADVANCED, enableAdvanced);
+         }
+ 
+         /**
+@@ -318,6 +320,14 @@ public class FactoryPathConfigurationBlock extends BaseConfigurationBlock {
+ 		return (fc.getType() != FactoryContainer.FactoryType.PLUGIN);
+ 	}
+ 
++	/**
++	 * Can only launch the 'advanced' dialog on a single item at a time.
++	 */
++	private boolean canAdvanced() {
++		List<FactoryPathEntry> selected= getSelectedListContents();
++		return (selected.size() == 1);
++	}
++
+ 	private void addEntries(FactoryPathEntry[] entries) {
+ 		if (null == entries) {
+ 			return;

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java b/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java
+index 331430e..0d208d2 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java
++++ b/lucene/src/test/org/apache/lucene/index/TestLazyProxSkipping.java
+@@ -133,6 +133,7 @@ public class TestLazyProxSkipping extends LuceneTestCase {
+  
+     public void testLazySkipping() throws IOException {
+         assumeFalse("This test cannot run with SimpleText codec", CodecProvider.getDefault().getFieldCodec(this.field).equals("SimpleText"));
++        assumeFalse("This test cannot run with Memory codec", CodecProvider.getDefault().getFieldCodec(this.field).equals("Memory"));
+         // test whether only the minimum amount of seeks()
+         // are performed
+         performTest(5);

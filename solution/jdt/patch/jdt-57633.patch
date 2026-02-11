@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
+index c42a532..0e196af 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/AbstractComparableTest.java
+@@ -347,10 +347,11 @@ public class AbstractComparableTest extends AbstractRegressionTest {
+ 	protected void runNegativeTest(String[] testFiles,
+ 			String expectedProblemLog, String[] classLib,
+ 			boolean shouldFlushOutputDirectory, Map customOptions,
+-			boolean generateOutput) {
++			boolean generateOutput, boolean showCategory, boolean showWarningToken) {
+ 		try {
+ 			super.runNegativeTest(testFiles, expectedProblemLog, classLib,
+-					shouldFlushOutputDirectory, customOptions, generateOutput);
++					shouldFlushOutputDirectory, customOptions, generateOutput,
++					showCategory, showWarningToken);
+ 		} catch (AssertionFailedError e) {
+ 			throw e;
+ 		} finally {

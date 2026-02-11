@@ -1,0 +1,17 @@
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 7d666c1..e562c0a 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -156,6 +156,12 @@ typedef enum {
+     GRABTYPE_XI2
+ } GrabType;
+ 
++union _GrabMask {
++    Mask core;
++    Mask xi;
++    char xi2mask[EMASKSIZE][XI2MASKSIZE];
++};
++
+ /**
+  * Central struct for device grabs. 
+  * The same struct is used for both core grabs and device grabs, with

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
+index bea949a..e1a66bb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/DerbyPersistenceManager.java
+@@ -249,7 +249,7 @@ public class DerbyPersistenceManager extends BundleDbPersistenceManager {
+             setSchema("derby");
+         }
+         if (getUrl() == null) {
+-            setUrl("jdbc:derby:"+ context.getHomeDir().getPath() +"/db/itemState;create=true");
++            setUrl("jdbc:derby:" + context.getHomeDir().getPath() + "/db/itemState;create=true");
+         }
+         if (getUser() == null) {
+             setUser("");

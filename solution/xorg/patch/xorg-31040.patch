@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index 39994d9..fcaad41 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -220,13 +220,9 @@
+ pciBusInfo_t  *pciBusInfo[MAX_PCI_BUSES] = { NULL, };
+ _X_EXPORT int            pciNumBuses = 0;     /* Actual number of PCI buses */
+ int            pciMaxBusNum = MAX_PCI_BUSES;
+-static Bool    inProbe = FALSE;
+ 
+ static pciConfigPtr pci_devp[MAX_PCI_DEVICES + 1] = {NULL, };
+ 
+-static int readPciBios( PCITAG Tag, CARD8* tmp, ADDRESS hostbase,
+-			unsigned char * buf, int len, PciBiosType BiosType );
+-
+ 
+ /*
+  * pciInit - choose correct platform/OS specific PCI init routine

@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/FieldAnalysisRequestHandler.java b/solr/src/java/org/apache/solr/handler/FieldAnalysisRequestHandler.java
+index 580735b..b30ae61 100644
+--- a/solr/src/java/org/apache/solr/handler/FieldAnalysisRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/FieldAnalysisRequestHandler.java
+@@ -94,6 +94,7 @@ public class FieldAnalysisRequestHandler extends AnalysisRequestHandlerBase {
+   /**
+    * {@inheritDoc}
+    */
++  @Override
+   protected NamedList doAnalysis(SolrQueryRequest req) throws Exception {
+     FieldAnalysisRequest analysisRequest = resolveAnalysisRequest(req);
+     IndexSchema indexSchema = req.getCore().getSchema();

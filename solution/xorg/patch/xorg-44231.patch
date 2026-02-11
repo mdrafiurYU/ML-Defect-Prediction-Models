@@ -1,0 +1,13 @@
+diff --git a/include/dix.h b/include/dix.h
+index 8da2189..d4e5039 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -433,7 +433,7 @@ extern int GrabDevice(
+     Window /* grabWindow */,
+     unsigned /* ownerEvents */,
+     Time /* ctime */,
+-    Mask /* mask */,
++    GrabMask* /* mask */,
+     int /* grabtype */,
+     Cursor /* curs */,
+     Window /* confineToWin */,

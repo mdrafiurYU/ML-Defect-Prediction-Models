@@ -1,0 +1,53 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index 299348c..f5e6f3c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -22,6 +22,7 @@ import EDU.oswego.cs.dl.util.concurrent.ReentrantWriterPreferenceReadWriteLock;
+ import EDU.oswego.cs.dl.util.concurrent.WriterPreferenceReadWriteLock;
+ import org.apache.commons.collections.map.ReferenceMap;
+ import org.apache.jackrabbit.api.JackrabbitRepository;
++import org.apache.jackrabbit.commons.AbstractRepository;
+ import org.apache.jackrabbit.core.cluster.ClusterContext;
+ import org.apache.jackrabbit.core.cluster.ClusterException;
+ import org.apache.jackrabbit.core.cluster.ClusterNode;
+@@ -99,8 +100,8 @@ import javax.security.auth.Subject;
+ /**
+  * A <code>RepositoryImpl</code> ...
+  */
+-public class RepositoryImpl implements JackrabbitRepository, SessionListener,
+-        EventListener {
++public class RepositoryImpl extends AbstractRepository
++        implements JackrabbitRepository, SessionListener, EventListener {
+ 
+     private static Logger log = LoggerFactory.getLogger(RepositoryImpl.class);
+ 
+@@ -1239,29 +1240,6 @@ public class RepositoryImpl implements JackrabbitRepository, SessionListener,
+     /**
+      * {@inheritDoc}
+      */
+-    public Session login(String workspaceName)
+-            throws LoginException, NoSuchWorkspaceException, RepositoryException {
+-        return login(null, workspaceName);
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public Session login() throws LoginException, RepositoryException {
+-        return login(null, null);
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public Session login(Credentials credentials)
+-            throws LoginException, RepositoryException {
+-        return login(credentials, null);
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+     public String getDescriptor(String key) {
+         return repProps.getProperty(key);
+     }

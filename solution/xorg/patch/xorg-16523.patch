@@ -1,0 +1,21 @@
+diff --git a/iplan2p4/iplpixmap.c b/iplan2p4/iplpixmap.c
+index 324b161..7bfb495 100644
+--- a/iplan2p4/iplpixmap.c
++++ b/iplan2p4/iplpixmap.c
+@@ -78,12 +78,14 @@ iplCreatePixmap (pScreen, width, height, depth)
+     int		depth;
+ {
+     PixmapPtr pPixmap;
+-    int datasize;
+-    int paddedWidth;
++    size_t datasize;
++    size_t paddedWidth;
+     int ipad=INTER_PLANES*2 - 1;
+ 
+     paddedWidth = PixmapBytePad(width, depth);
+     paddedWidth = (paddedWidth + ipad) & ~ipad;
++    if (paddedWidth / 4 > 32767 || height > 32767)
++	return NullPixmap;
+     datasize = height * paddedWidth;
+     pPixmap = AllocatePixmap(pScreen, datasize);
+     if (!pPixmap)

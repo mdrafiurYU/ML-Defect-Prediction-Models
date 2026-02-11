@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/CollationKeyFilterFactory.java b/solr/src/java/org/apache/solr/analysis/CollationKeyFilterFactory.java
+index 67b8412..c342d36 100644
+--- a/solr/src/java/org/apache/solr/analysis/CollationKeyFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/CollationKeyFilterFactory.java
+@@ -60,7 +60,7 @@ import org.apache.solr.util.plugin.ResourceLoaderAware;
+  * <pre class="prettyprint" >
+  * &lt;fieldType name="text_clltnky" class="solr.TextField" positionIncrementGap="100"&gt;
+  *   &lt;analyzer&gt;
+- *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;tokenizer class="solr.KeywordTokenizerFactory"/&gt;
+  *     &lt;filter class="solr.CollationKeyFilterFactory" language="ja" country="JP"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>

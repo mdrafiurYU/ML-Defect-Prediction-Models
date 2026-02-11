@@ -1,0 +1,12 @@
+diff --git a/Xprint/Oid.h b/Xprint/Oid.h
+index 820cd75..ba9dc77 100644
+--- a/Xprint/Oid.h
++++ b/Xprint/Oid.h
+@@ -191,6 +191,7 @@ typedef struct
+ const char* XpOidString(XpOid);
+ int XpOidStringLength(XpOid);
+ XpOid XpOidFromString(const char* value);
++BOOL XpOidTrayMediumListHasTray(const XpOidTrayMediumList* list, XpOid tray);
+ 
+ /*
+  * XpOidList public methods

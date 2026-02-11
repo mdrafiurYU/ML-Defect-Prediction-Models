@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/SourceTypeBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/SourceTypeBinding.java
+index 8e293f7..b0c77b0 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/SourceTypeBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/SourceTypeBinding.java
+@@ -1277,7 +1277,7 @@ private MethodBinding resolveTypesFor(MethodBinding method) {
+ 
+ 	TypeParameter[] typeParameters = methodDecl.typeParameters();
+ 	if (typeParameters != null) {
+-		methodDecl.scope.connectTypeVariables(typeParameters);
++		methodDecl.scope.connectTypeVariables(typeParameters, true);
+ 		// Perform deferred bound checks for type variables (only done after type variable hierarchy is connected)
+ 		for (int i = 0, paramLength = typeParameters.length; i < paramLength; i++)
+ 			typeParameters[i].checkBounds(methodDecl.scope);

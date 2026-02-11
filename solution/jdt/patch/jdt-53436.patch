@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/NameReferenceCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/NameReferenceCompletionTest.java
+index 47a5906..97afbcc 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/NameReferenceCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/NameReferenceCompletionTest.java
+@@ -10,6 +10,8 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ /**
+  * Completion is expected to be a name reference.
+  */
+@@ -17,6 +19,9 @@ public class NameReferenceCompletionTest extends AbstractCompletionTest {
+ public NameReferenceCompletionTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(NameReferenceCompletionTest.class);
++}
+ /*
+  * Regression test for 1FTZ849.
+  * The instance creation before the completion is not properly closed, and thus

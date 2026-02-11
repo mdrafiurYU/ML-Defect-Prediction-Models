@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Init.c b/hw/xnest/Init.c
+index 5bf0300..324cf96 100644
+--- a/hw/xnest/Init.c
++++ b/hw/xnest/Init.c
+@@ -74,8 +74,6 @@ InitOutput(ScreenInfo *screenInfo, int argc, char *argv[])
+ 	break;
+       }
+   
+-  xnestWindowPrivateIndex = AllocateWindowPrivateIndex();
+-  xnestGCPrivateIndex = AllocateGCPrivateIndex();
+   xnestFontPrivateIndex = AllocateFontPrivateIndex();
+   
+   if (!xnestNumScreens) xnestNumScreens = 1;

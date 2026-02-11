@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/AbstractActiveLock.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/AbstractActiveLock.java
+index 3e942b4..67035c2 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/AbstractActiveLock.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/lock/AbstractActiveLock.java
+@@ -26,6 +26,22 @@ import org.w3c.dom.Element;
+  */
+ public abstract class AbstractActiveLock implements ActiveLock, DavConstants {
+ 
++    private String lockroot;
++    
++    /**
++     * @see ActiveLock#getLockroot()
++     */
++    public String getLockroot() {
++        return lockroot;
++    }
++
++    /**
++     * @see ActiveLock#setLockroot(String)
++     */
++    public void setLockroot(String lockroot) {
++        this.lockroot = lockroot;
++    }
++
+     /**
+      * Returns the default Xml representation of the 'activelock' element
+      * as defined by RFC 2518.
+@@ -58,6 +74,12 @@ public abstract class AbstractActiveLock implements ActiveLock, DavConstants {
+             Element lToken = DomUtil.addChildElement(activeLock, XML_LOCKTOKEN, NAMESPACE);
+             lToken.appendChild(DomUtil.hrefToXml(getToken(), document));
+         }
++
++        // lock root
++        if (getLockroot() != null) {
++            Element lroot = DomUtil.addChildElement(activeLock, XML_LOCKROOT, NAMESPACE);
++            lroot.appendChild(DomUtil.hrefToXml(getLockroot(), document));
++        }
+         return activeLock;
+     }

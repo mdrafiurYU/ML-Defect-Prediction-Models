@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencesTest.java
+index 807d4eb..c744803 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ReferencesTest.java
+@@ -206,4 +206,24 @@ public class ReferencesTest extends AbstractJCRTest {
+             fail("too many referers: " + iter.nextProperty().getPath());
+         }
+     }
++
++    public void testNonReferenceable() throws RepositoryException, NotExecutableException {
++        Node nonReferenceable = null;
++        if (testRootNode.isNodeType(mixReferenceable)) {
++            Node child = testRootNode.addNode(nodeName1, testNodeType);
++            superuser.save();
++            if (!child.isNodeType(mixReferenceable)) {
++                nonReferenceable = child;
++            }
++        } else {
++            nonReferenceable = testRootNode;
++        }
++
++        if (nonReferenceable == null) {
++            throw new NotExecutableException("Test node is referenceable.");
++        }
++
++        // getReferences must return an empty iterator and must not throw.        
++        assertFalse(nonReferenceable.getReferences().hasNext());
++    }
+ }

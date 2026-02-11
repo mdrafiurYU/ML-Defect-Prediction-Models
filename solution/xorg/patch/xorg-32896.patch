@@ -1,0 +1,14 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index de2653f..0ecb421 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -137,8 +137,7 @@ Mask ExtExclusiveMasks[EMASKSIZE];
+  * Evtype is index, mask is value at index.
+  */
+ static Mask xi_filters[3] = {
+-    XI_PointerKeyboardPairingChangedMask,
+-    XI_RandomStringMask,
++    XI_DeviceHierarchyChangedMask,
+     XI_RawDeviceEventMask,  
+ };
+ 

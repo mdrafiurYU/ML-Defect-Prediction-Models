@@ -1,0 +1,17 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/inheritance/AllTests.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/inheritance/AllTests.java
+index a150815..0fa38b9 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/inheritance/AllTests.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/inheritance/AllTests.java
+@@ -36,8 +36,10 @@ public class AllTests {
+     public static Test buildSuite() {
+         TestSuite suite= new TestSuite("Test for org.apache.jackrabbit.ocm.manager.inheritance");
+         //$JUnit-BEGIN$
+-        suite.addTestSuite(ObjectContentManagerInheritanceConcreteClassTest.class);
+-        suite.addTestSuite(ObjectContentManagerInheritanceHierarchyTest.class);        
++        suite.addTestSuite(AnnotationInheritanceConcreteClassTest.class);
++        suite.addTestSuite(AnnotationInheritanceHierarchyTest.class);
++        suite.addTestSuite(DigesterInheritanceConcreteClassTest.class);
++        suite.addTestSuite(DigesterInheritanceHierarchyTest.class);        
+         //$JUnit-END$
+ 
+         return suite;

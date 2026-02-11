@@ -1,0 +1,15 @@
+diff --git a/hw/xnest/Screen.c b/hw/xnest/Screen.c
+index 1c129e7..0229455 100644
+--- a/hw/xnest/Screen.c
++++ b/hw/xnest/Screen.c
+@@ -331,10 +331,8 @@ xnestOpenScreen(int index, ScreenPtr pScreen, int argc, char *argv[])
+   if (!miScreenDevPrivateInit(pScreen, xnestWidth, NULL))
+       return FALSE;
+ 
+-#ifdef SHAPE
+   /* overwrite miSetShape with our own */
+   pScreen->SetShape = xnestSetShape;
+-#endif /* SHAPE */
+ 
+   /* devPrivates */
+ 

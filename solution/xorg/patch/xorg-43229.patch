@@ -1,0 +1,13 @@
+diff --git a/mi/miglblt.c b/mi/miglblt.c
+index 404d785..bc715ae 100644
+--- a/mi/miglblt.c
++++ b/mi/miglblt.c
+@@ -141,7 +141,7 @@ miPolyGlyphBlt(
+     DoChangeGC(pGCtmp, GCFunction|GCForeground|GCBackground, gcvals, 0);
+ 
+     nbyLine = BitmapBytePad(width);
+-    pbits = (unsigned char *)xalloc(height*nbyLine);
++    pbits = xalloc(height*nbyLine);
+     if (!pbits)
+     {
+ 	(*pDrawable->pScreen->DestroyPixmap)(pPixmap);

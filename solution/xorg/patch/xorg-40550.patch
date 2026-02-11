@@ -1,0 +1,16 @@
+diff --git a/dbe/dbe.c b/dbe/dbe.c
+index 1a08bda..bd27789 100644
+--- a/dbe/dbe.c
++++ b/dbe/dbe.c
+@@ -297,10 +297,9 @@ ProcDbeAllocateBackBufferName(ClientPtr client)
+          * Allocate a window priv.
+          */
+ 
+-        pDbeWindowPriv = (DbeWindowPrivPtr)xalloc(sizeof(DbeWindowPrivRec));
++        pDbeWindowPriv = xcalloc(1, sizeof(DbeWindowPrivRec));
+ 	if (!pDbeWindowPriv)
+             return(BadAlloc);
+-	bzero(pDbeWindowPriv, sizeof(DbeWindowPrivRec));
+ 
+         /* Fill out window priv information. */
+         pDbeWindowPriv->pWindow      = pWin;

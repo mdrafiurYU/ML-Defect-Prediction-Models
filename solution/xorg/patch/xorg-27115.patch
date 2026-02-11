@@ -1,0 +1,63 @@
+diff --git a/dix/events.c b/dix/events.c
+index 3c11723..23fb1ec 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -3329,6 +3329,10 @@ EnterLeaveEvent(
+     register GrabPtr	grab = mouse->grab;
+     Mask		mask;
+ 
++    deviceEnterNotify   *devEnterLeave;
++    int                 mskidx;
++    OtherInputMasks     *inputMasks;
++
+     if ((pWin == mouse->valuator->motionHintWindow) &&
+ 	(detail != NotifyInferior))
+ 	mouse->valuator->motionHintWindow = NullWindow;
+@@ -3342,8 +3346,7 @@ EnterLeaveEvent(
+     {
+ 	mask = pWin->eventMask | wOtherEventMasks(pWin);
+     }
+-    if (mask & filters[type])
+-    {
++
+ 	event.u.u.type = type;
+ 	event.u.u.detail = detail;
+ 	event.u.enterLeave.time = currentTime.milliseconds;
+@@ -3369,6 +3372,9 @@ EnterLeaveEvent(
+ 	    ((pWin == focus) || (focus == PointerRootWin) ||
+ 	     IsParent(focus, pWin)))
+ 	    event.u.enterLeave.flags |= ELFlagFocus;
++
++    if (mask & filters[type])
++    {
+ 	if (grab)
+ 	    (void)TryClientEvents(rClient(grab), &event, 1, mask,
+ 				  filters[type], grab);
+@@ -3376,6 +3382,27 @@ EnterLeaveEvent(
+ 	    (void)DeliverEventsToWindow(pDev, pWin, &event, 1, filters[type],
+ 					NullGrab, 0);
+     }
++
++    devEnterLeave = (deviceEnterNotify*)&event;
++    devEnterLeave->type = (type == EnterNotify) ? DeviceEnterNotify :
++        DeviceLeaveNotify;
++    devEnterLeave->type = (type == EnterNotify) ? DeviceEnterNotify :
++        DeviceLeaveNotify;
++    devEnterLeave->deviceid = pDev->id;
++    mskidx = pDev->id;
++    inputMasks = wOtherInputMasks(pWin);
++    if (inputMasks && 
++       (filters[devEnterLeave->type] & inputMasks->deliverableEvents[mskidx]))
++    {
++        if (grab)
++            (void)TryClientEvents(rClient(grab), (xEvent*)devEnterLeave, 1,
++                                  mask, filters[devEnterLeave->type], grab);
++	else
++	    (void)DeliverEventsToWindow(pDev, pWin, (xEvent*)devEnterLeave, 
++                                        1, filters[devEnterLeave->type], 
++                                        NullGrab, pDev->id);
++    }
++
+     if ((type == EnterNotify) && (mask & KeymapStateMask))
+     {
+ 	xKeymapEvent ke;

@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexWriter.java b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+index cedd199..374934b 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+@@ -2211,6 +2211,10 @@ public class IndexWriter implements Closeable {
+     ensureOpen();
+ 
+     try {
++      if (infoStream != null)
++        message("flush at addIndexes(IndexReader...)");
++      flush(false, true);
++
+       String mergedName = newSegmentName();
+       SegmentMerger merger = new SegmentMerger(directory, config.getTermIndexInterval(),
+                                                mergedName, null, codecs, payloadProcessorProvider,

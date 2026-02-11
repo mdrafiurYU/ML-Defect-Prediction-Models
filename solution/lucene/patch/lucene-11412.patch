@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/response/PageTool.java b/solr/src/java/org/apache/solr/response/PageTool.java
+index ab817cd..e6ad247 100644
+--- a/solr/src/java/org/apache/solr/response/PageTool.java
++++ b/solr/src/java/org/apache/solr/response/PageTool.java
+@@ -35,7 +35,7 @@ public class PageTool {
+     if (rows != null) {
+       results_per_page = new Integer(rows);
+     }
+-
++    //TODO: Handle group by results
+     Object docs = response.getValues().get("response");
+     if (docs != null) {
+       if (docs instanceof DocSlice) {

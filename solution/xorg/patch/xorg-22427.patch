@@ -1,0 +1,15 @@
+diff --git a/mi/mipushpxl.c b/mi/mipushpxl.c
+index 49409a2..5fce1ca 100644
+--- a/mi/mipushpxl.c
++++ b/mi/mipushpxl.c
+@@ -46,6 +46,10 @@ SOFTWARE.
+ 
+ ******************************************************************/
+ /* $Xorg: mipushpxl.c,v 1.4 2001/02/09 02:05:21 xorgcvs Exp $ */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "gcstruct.h"
+ #include "scrnintstr.h"

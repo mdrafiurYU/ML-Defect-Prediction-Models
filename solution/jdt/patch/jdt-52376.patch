@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragmentRoot.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragmentRoot.java
+index 0896050..b35f29a 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragmentRoot.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/PackageFragmentRoot.java
+@@ -211,7 +211,7 @@ protected boolean computeChildren(OpenableElementInfo info, Map newElements) thr
+ 			IContainer rootFolder = (IContainer) underlyingResource;
+ 			char[][] inclusionPatterns = fullInclusionPatternChars();
+ 			char[][] exclusionPatterns = fullExclusionPatternChars();
+-			computeFolderChildren(rootFolder, !Util.isExcluded(rootFolder, inclusionPatterns, exclusionPatterns), CharOperation.NO_STRINGS, vChildren, inclusionPatterns, exclusionPatterns); //$NON-NLS-1$
++			computeFolderChildren(rootFolder, !Util.isExcluded(rootFolder, inclusionPatterns, exclusionPatterns), CharOperation.NO_STRINGS, vChildren, inclusionPatterns, exclusionPatterns);
+ 			IJavaElement[] children = new IJavaElement[vChildren.size()];
+ 			vChildren.toArray(children);
+ 			info.setChildren(children);

@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/PowFloatFunction.java b/solr/src/java/org/apache/solr/search/function/PowFloatFunction.java
+index f5f7f68..c9acfb6 100755
+--- a/solr/src/java/org/apache/solr/search/function/PowFloatFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/PowFloatFunction.java
+@@ -17,6 +17,9 @@
+ 
+ package org.apache.solr.search.function;
+ 
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
++
+ /** Function to raise the base "a" to the power "b"
+  */
+ public class PowFloatFunction extends DualFloatFunction {

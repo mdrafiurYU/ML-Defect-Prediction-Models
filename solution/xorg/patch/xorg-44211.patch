@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/parser/Input.c b/hw/xfree86/parser/Input.c
+index 3d98019..4e3c04e 100644
+--- a/hw/xfree86/parser/Input.c
++++ b/hw/xfree86/parser/Input.c
+@@ -163,7 +163,7 @@ xf86freeInputList (XF86ConfInputPtr ptr)
+ 
+ 		prev = ptr;
+ 		ptr = ptr->list.next;
+-		xf86conffree (prev);
++		free (prev);
+ 	}
+ }
+ 

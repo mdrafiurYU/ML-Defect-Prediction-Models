@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index 2d723a5..83b1f13 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -665,6 +665,12 @@ Bool
+ xf86CrtcRotate (xf86CrtcPtr crtc, DisplayModePtr mode, Rotation rotation);
+ 
+ /*
++ * free shadow memory allocated for all crtcs
++ */
++void
++xf86RotateFreeShadow(ScrnInfoPtr pScrn);
++
++/*
+  * Clean up rotation during CloseScreen
+  */
+ void

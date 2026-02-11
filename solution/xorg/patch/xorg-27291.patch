@@ -1,0 +1,18 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 136a47e..99022c3 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -543,6 +543,13 @@ RRCrtcGammaSetSize (RRCrtcPtr	crtc,
+ 		    int		size);
+ 
+ /*
++ * Set the allowable rotations of the CRTC.
++ */
++Bool
++RRCrtcSetRotations (RRCrtcPtr crtc,
++		    Rotation rotations);
++
++/*
+  * Destroy a Crtc at shutdown
+  */
+ void

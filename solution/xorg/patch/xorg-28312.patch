@@ -1,0 +1,88 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 5058212..f6d35cf 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -80,7 +80,7 @@ struct _rrMode {
+     xRRModeInfo	    mode;
+     char	    *name;
+     void	    *devPrivate;
+-    Bool	    userDefined;
++    ScreenPtr	    userScreen;
+ };
+ 
+ struct _rrPropertyValue {
+@@ -135,6 +135,8 @@ struct _rrOutput {
+     int		    numModes;
+     int		    numPreferred;
+     RRModePtr	    *modes;
++    int		    numUserModes;
++    RRModePtr	    *userModes;
+     Bool	    changed;
+     RRPropertyPtr   properties;
+     void	    *devPrivate;
+@@ -164,6 +166,13 @@ typedef Bool (*RROutputSetPropertyProcPtr) (ScreenPtr		pScreen,
+ 					    Atom		property,
+ 					    RRPropertyValuePtr	value);
+ 
++typedef Bool (*RROutputValidateModeProcPtr) (ScreenPtr		pScreen,
++					     RROutputPtr	output,
++					     RRModePtr		mode);
++
++typedef void (*RRModeDestroyProcPtr) (ScreenPtr	    pScreen,
++				      RRModePtr	    mode);
++
+ #endif
+ 
+ typedef Bool (*RRGetInfoProcPtr) (ScreenPtr pScreen, Rotation *rotations);
+@@ -208,6 +217,8 @@ typedef struct _rrScrPriv {
+     RRCrtcSetProcPtr	    rrCrtcSet;
+     RRCrtcSetGammaProcPtr   rrCrtcSetGamma;
+     RROutputSetPropertyProcPtr	rrOutputSetProperty;
++    RROutputValidateModeProcPtr	rrOutputValidateMode;
++    RRModeDestroyProcPtr	rrModeDestroy;
+ #endif
+     
+     /*
+@@ -394,6 +405,15 @@ miRROutputSetProperty (ScreenPtr	    pScreen,
+ 		       Atom		    property,
+ 		       RRPropertyValuePtr   value);
+ 
++Bool
++miRROutputValidateMode (ScreenPtr	    pScreen,
++			RROutputPtr	    output,
++			RRModePtr	    mode);
++
++void
++miRRModeDestroy (ScreenPtr  pScreen,
++		 RRModePtr  mode);
++
+ /* randr.c */
+ /*
+  * Send all pending events
+@@ -549,6 +569,11 @@ Bool
+ RRCrtcSetRotations (RRCrtcPtr crtc,
+ 		    Rotation rotations);
+ 
++/*
++ * Return the area of the frame buffer scanned out by the crtc,
++ * taking into account the current mode and rotation
++ */
++
+ void
+ RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
+ 
+@@ -672,6 +697,14 @@ RROutputSetModes (RROutputPtr	output,
+ 		  int		numModes,
+ 		  int		numPreferred);
+ 
++int
++RROutputAddUserMode (RROutputPtr    output,
++		     RRModePtr	    mode);
++
++int
++RROutputDeleteUserMode (RROutputPtr output,
++			RRModePtr   mode);
++
+ Bool
+ RROutputSetCrtcs (RROutputPtr	output,
+ 		  RRCrtcPtr	*crtcs,

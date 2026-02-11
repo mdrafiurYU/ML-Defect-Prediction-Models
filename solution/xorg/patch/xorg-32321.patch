@@ -1,0 +1,12 @@
+diff --git a/GL/glx/glxutil.c b/GL/glx/glxutil.c
+index 9479a58..f531ed9 100644
+--- a/GL/glx/glxutil.c
++++ b/GL/glx/glxutil.c
+@@ -147,6 +147,7 @@ __glXDrawableInit(__GLXdrawable *drawable,
+     drawable->drawId = drawId;
+     drawable->refCount = 1;
+     drawable->modes = modes;
++    drawable->eventMask = 0;
+ 
+     return GL_TRUE;
+ }

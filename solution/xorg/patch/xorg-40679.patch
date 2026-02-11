@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/loader/xf86sym.c b/hw/xfree86/loader/xf86sym.c
+index 1677a49..d0e8558 100644
+--- a/hw/xfree86/loader/xf86sym.c
++++ b/hw/xfree86/loader/xf86sym.c
+@@ -642,6 +642,8 @@ _X_HIDDEN void *xfree86LookupTab[] = {
+     SYMFUNC(xf86ActivateDevice)
+     SYMFUNC(xf86XInputSetScreen)
+     SYMFUNC(xf86ScaleAxis)
++    SYMFUNC(NewInputDeviceRequest)
++    SYMFUNC(DeleteInputDeviceRequest)
+ #ifdef DPMSExtension
+     SYMFUNC(DPMSGet)
+     SYMFUNC(DPMSSet)

@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java b/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java
+index e5442e9..f478f29 100644
+--- a/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java
++++ b/lucene/src/java/org/apache/lucene/index/ThreadAffinityDocumentsWriterThreadPool.java
+@@ -82,16 +82,4 @@ public class ThreadAffinityDocumentsWriterThreadPool extends DocumentsWriterPerT
+     minThreadState.lock();
+     return minThreadState;
+   }
+-
+-  /*
+-  @Override
+-  public void clearThreadBindings(ThreadState perThread) {
+-    threadBindings.clear();
+-  }
+-
+-  @Override
+-  public void clearAllThreadBindings() {
+-    threadBindings.clear();
+-  }
+-  */
+ }

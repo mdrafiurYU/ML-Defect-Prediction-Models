@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java
+index 6f5d2e4..89e8b66 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java
+@@ -246,7 +246,7 @@ public abstract class AbstractMethodDeclaration
+ 		int size = 1; // an abstact method or a native method cannot be static
+ 		for (int i = 0, max = parameters.length; i < max; i++) {
+ 			TypeBinding parameter = parameters[i];
+-			if (parameter == LongBinding || parameter == DoubleBinding) {
++			if (parameter == TypeBinding.LONG || parameter == TypeBinding.DOUBLE) {
+ 				size += 2;
+ 			} else {
+ 				size++;

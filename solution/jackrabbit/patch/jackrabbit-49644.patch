@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
+index 35aaddc..6320d4f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
+@@ -305,7 +305,7 @@ public class ACLEditor extends ProtectedItemModifier implements AccessControlEdi
+                 log.debug("Invalid path name for Permission: " + name + ".");
+             }
+         }
+-        int i=0;
++        int i = 0;
+         String check = name;
+         while (node.hasNode(check)) {
+             check = name + i;

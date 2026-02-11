@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index ff878d5..68d69c5 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1119,6 +1119,9 @@ ddxGiveUp()
+     DGAShutdown();
+ #endif
+ 
++    while (xf86NumScreens)
++	xf86DeleteScreen(xf86NumScreens - 1, 0);
++
+     xf86CloseConsole();
+ 
+     xf86CloseLog();

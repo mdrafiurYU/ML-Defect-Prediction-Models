@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index abe3437..babf26a 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -630,10 +630,10 @@ public class SessionImpl extends AbstractSession
+     }
+ 
+     /**
+-     * @see ManagerProvider#getVersionManager()
++     * @see ManagerProvider#getVersionStateManager()
+      */
+-    public VersionManager getVersionManager() {
+-        return workspace.getVersionManager();
++    public VersionManager getVersionStateManager() {
++        return workspace.getVersionStateManager();
+     }
+ 
+     /**

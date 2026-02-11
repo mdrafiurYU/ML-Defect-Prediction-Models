@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java
+index f07607c..e2b136e 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_3.java
+@@ -43,7 +43,7 @@ protected Map getCompilerOptions() {
+ 	return options;
+ }
+ public static Test suite() {
+-		return buildComplianceRegressionSetupSuite(testClass(), COMPLIANCE_1_3);
++		return buildUniqueComplianceTestSuite(testClass(), COMPLIANCE_1_3);
+ }
+ public static Class testClass() {
+ 	return Compliance_1_3.class;

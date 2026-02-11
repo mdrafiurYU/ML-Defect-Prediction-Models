@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/PostgreSQLNameIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/PostgreSQLNameIndex.java
+index c7b85e4..bbf39ba 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/PostgreSQLNameIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/PostgreSQLNameIndex.java
+@@ -65,7 +65,7 @@ public class PostgreSQLNameIndex extends DbNameIndex {
+         } catch (Exception e) {
+             IllegalStateException ise = new IllegalStateException("Unable to insert index for string: " + string);
+             ise.initCause(e);
+-            throw ise ;
++            throw ise;
+         }
+     }

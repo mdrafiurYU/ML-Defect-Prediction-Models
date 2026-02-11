@@ -1,0 +1,12 @@
+diff --git a/glx/glxext.h b/glx/glxext.h
+index 72092f3..7008c47 100644
+--- a/glx/glxext.h
++++ b/glx/glxext.h
+@@ -38,6 +38,7 @@
+ extern GLboolean __glXFreeContext(__GLXcontext *glxc);
+ extern void __glXFlushContextCache(void);
+ 
++extern void __glXAddToContextList(__GLXcontext *cx);
+ extern void __glXErrorCallBack(GLenum code);
+ extern void __glXClearErrorOccured(void);
+ extern GLboolean __glXErrorOccured(void);

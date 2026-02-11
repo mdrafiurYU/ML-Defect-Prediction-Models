@@ -1,0 +1,13 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index d529bec..9236fab 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -883,7 +883,7 @@ SyncCreateSystemCounter(
+ 	}
+     }
+ 
+-    pCounter = SyncCreateCounter((ClientPtr)NULL, FakeClientID(0), initial);
++    pCounter = SyncCreateCounter(NULL, FakeClientID(0), initial);
+ 
+     if (pCounter)
+     {

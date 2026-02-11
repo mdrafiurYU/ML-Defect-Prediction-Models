@@ -1,0 +1,14 @@
+diff --git a/randr/rrpointer.c b/randr/rrpointer.c
+index e3b8b03..6b934c0 100644
+--- a/randr/rrpointer.c
++++ b/randr/rrpointer.c
+@@ -141,9 +141,6 @@ RRPointerScreenConfigured (ScreenPtr pScreen)
+     int		x, y;
+     DeviceIntPtr pDev;
+ 
+-    if (pScreen != pCurrentScreen)
+-	return;
+-
+     for (pDev = inputInfo.devices; pDev; pDev = pDev->next)
+     {
+         if (IsPointerDevice(pDev))

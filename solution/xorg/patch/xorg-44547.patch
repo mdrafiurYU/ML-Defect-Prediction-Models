@@ -1,0 +1,13 @@
+diff --git a/Xi/xipassivegrab.c b/Xi/xipassivegrab.c
+index 2b77d18..d2dabba 100644
+--- a/Xi/xipassivegrab.c
++++ b/Xi/xipassivegrab.c
+@@ -157,7 +157,7 @@ ProcXIPassiveGrabDevice(ClientPtr client)
+     if (!modifiers_failed)
+         return BadAlloc;
+ 
+-    if (dev->isMaster)
++    if (IsPointerDevice(dev) && dev->isMaster)
+         mod_dev = GetPairedDevice(dev);
+     else
+         mod_dev = dev;

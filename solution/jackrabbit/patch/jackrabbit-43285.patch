@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java
+index ed017c1..03b32fe 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/AbstractNodeData.java
+@@ -62,13 +62,22 @@ public abstract class AbstractNodeData extends ItemData {
+     /**
+      * Return the associated node defintion.
+      *
+-     * @return node defintion
++     * @return node definition
+      */
+     public NodeDefinition getNodeDefinition() {
+         return (NodeDefinition) getDefinition();
+     }
+ 
+     /**
++     * Sets the associated node defintion.
++     *
++     * @param definition new node definition
++     */
++    public void setNodeDefinition(NodeDefinition definition) {
++        setDefinition(definition);
++    }
++
++    /**
+      * Return the parent id of this node. Every shareable node in a shared set
+      * has a different parent.
+      *

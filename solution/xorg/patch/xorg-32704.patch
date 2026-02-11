@@ -1,0 +1,14 @@
+diff --git a/dix/glyphcurs.c b/dix/glyphcurs.c
+index 70b1ff8..905b5fb 100644
+--- a/dix/glyphcurs.c
++++ b/dix/glyphcurs.c
+@@ -98,7 +98,8 @@ ServerBitsFromGlyph(FontPtr pfont, unsigned ch, CursorMetricPtr cm, unsigned cha
+     bzero(pbits, nby);
+ 
+     ppix = (PixmapPtr)(*pScreen->CreatePixmap)(pScreen, cm->width,
+-					       cm->height, 1);
++					       cm->height, 1,
++					       CREATE_PIXMAP_USAGE_SCRATCH);
+     pGC = GetScratchGC(1, pScreen);
+     if (!ppix || !pGC)
+     {

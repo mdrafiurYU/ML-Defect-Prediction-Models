@@ -1,0 +1,52 @@
+diff --git a/Xext/xcmisc.c b/Xext/xcmisc.c
+index d9a7f10..ba0402c 100644
+--- a/Xext/xcmisc.c
++++ b/Xext/xcmisc.c
+@@ -39,6 +39,7 @@ from The Open Group.
+ #include "dixstruct.h"
+ #include "extnsionst.h"
+ #include "swaprep.h"
++#include "registry.h"
+ #include <X11/extensions/xcmiscstr.h>
+ #include "modinit.h"
+ 
+@@ -48,10 +49,6 @@ from The Open Group.
+ #define UINT32_MAX 0xffffffffU
+ #endif
+ 
+-#if 0
+-static unsigned char XCMiscCode;
+-#endif
+-
+ static void XCMiscResetProc(
+     ExtensionEntry * /* extEntry */
+ );
+@@ -68,18 +65,19 @@ static DISPATCH_PROC(SProcXCMiscGetXIDRange);
+ void
+ XCMiscExtensionInit(INITARGS)
+ {
+-#if 0
+     ExtensionEntry *extEntry;
+ 
+-    if ((extEntry = AddExtension(XCMiscExtensionName, 0, 0,
++    if (!(extEntry = AddExtension(XCMiscExtensionName, 0, 0,
+ 				ProcXCMiscDispatch, SProcXCMiscDispatch,
+-				XCMiscResetProc, StandardMinorOpcode)) != 0)
+-	XCMiscCode = (unsigned char)extEntry->base;
+-#else
+-    (void) AddExtension(XCMiscExtensionName, 0, 0,
+-			ProcXCMiscDispatch, SProcXCMiscDispatch,
+-			XCMiscResetProc, StandardMinorOpcode);
+-#endif
++				XCMiscResetProc, StandardMinorOpcode)))
++	return;
++
++    RegisterRequestName(extEntry->base, X_XCMiscGetVersion,
++			XCMiscExtensionName ":GetVersion");
++    RegisterRequestName(extEntry->base, X_XCMiscGetXIDRange,
++			XCMiscExtensionName ":GetXIDRange");
++    RegisterRequestName(extEntry->base, X_XCMiscGetXIDList,
++			XCMiscExtensionName ":GetXIDList");
+ }
+ 
+ /*ARGSUSED*/

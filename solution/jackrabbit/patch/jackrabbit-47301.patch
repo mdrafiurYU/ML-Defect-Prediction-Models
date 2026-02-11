@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeJoinConditionImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeJoinConditionImpl.java
+index c6e9ace..50cfd74 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeJoinConditionImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/qom/DescendantNodeJoinConditionImpl.java
+@@ -64,6 +64,24 @@ public class DescendantNodeJoinConditionImpl
+         return getJCRName(ancestorSelectorName);
+     }
+ 
++    /**
++     * Gets the name of the descendant selector.
++     *
++     * @return the selector name; non-null
++     */
++    public Name getDescendantSelectorQName() {
++        return descendantSelectorName;
++    }
++
++    /**
++     * Gets the name of the ancestor selector.
++     *
++     * @return the selector name; non-null
++     */
++    public Name getAncestorSelectorQName() {
++        return ancestorSelectorName;
++    }
++
+     //------------------------< AbstractQOMNode >-------------------------------
+ 
+     /**

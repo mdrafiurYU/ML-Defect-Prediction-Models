@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestThreadedOptimize.java b/lucene/src/test/org/apache/lucene/index/TestThreadedOptimize.java
+index c2f9884..3516079 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestThreadedOptimize.java
++++ b/lucene/src/test/org/apache/lucene/index/TestThreadedOptimize.java
+@@ -71,7 +71,7 @@ public class TestThreadedOptimize extends LuceneTestCase {
+       }
+ 
+       ((LogMergePolicy) writer.getConfig().getMergePolicy()).setMergeFactor(4);
+-      //writer.setInfoStream(System.out);
++      writer.setInfoStream(VERBOSE ? System.out : null);
+ 
+       Thread[] threads = new Thread[NUM_THREADS];

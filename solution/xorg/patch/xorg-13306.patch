@@ -1,0 +1,13 @@
+diff --git a/cfb/cfbgc.c b/cfb/cfbgc.c
+index 6c5d69d..af739da 100644
+--- a/cfb/cfbgc.c
++++ b/cfb/cfbgc.c
+@@ -85,7 +85,7 @@ SOFTWARE.
+ # define usePolyGlyphBlt	miPolyGlyphBlt
+ #endif
+ 
+-void cfbUnPushPixels (GCPtr, PixmapPtr, DrawablePtr, int, int, int, int);
++static void cfbUnPushPixels (GCPtr, PixmapPtr, DrawablePtr, int, int, int, int);
+ 
+ #ifdef FOUR_BIT_CODE
+ # define usePushPixels	cfbPushPixels8

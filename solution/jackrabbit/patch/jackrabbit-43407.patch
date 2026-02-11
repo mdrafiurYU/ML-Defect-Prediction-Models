@@ -1,0 +1,58 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java
+index 3e48674..e2ca911 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/security/user/UserTest.java
+@@ -22,6 +22,9 @@ import org.slf4j.LoggerFactory;
+ 
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Credentials;
++import javax.jcr.SimpleCredentials;
++import javax.jcr.Session;
++import javax.jcr.LoginException;
+ 
+ /**
+  * <code>UserTest</code>...
+@@ -50,4 +53,43 @@ public class UserTest extends AbstractUserTest {
+         Credentials creds = user.getCredentials();
+         assertTrue(creds != null);
+     }
++
++    public void testChangePassword() throws RepositoryException, NotExecutableException {
++        String oldPw = helper.getProperty("javax.jcr.tck.superuser.pwd");
++        if (oldPw == null) {
++            // missing property
++            throw new NotExecutableException();
++        }
++
++        User user = getTestUser(superuser);
++        try {
++            user.changePassword("pw");
++            // make sure the user can login with the new pw
++            Session s = helper.getRepository().login(new SimpleCredentials(user.getID(), "pw".toCharArray()));
++            s.logout();
++        } finally {
++            user.changePassword(oldPw);
++        }
++    }
++
++    public void testChangePassword2() throws RepositoryException, NotExecutableException {
++        String oldPw = helper.getProperty("javax.jcr.tck.superuser.pwd");
++        if (oldPw == null) {
++            // missing property
++            throw new NotExecutableException();
++        }
++
++        User user = getTestUser(superuser);
++        try {
++            user.changePassword("pw");
++
++            Session s = helper.getRepository().login(new SimpleCredentials(user.getID(), oldPw.toCharArray()));
++            s.logout();
++            fail("superuser pw has changed. login must fail.");
++        } catch (LoginException e) {
++            // success
++        } finally {
++            user.changePassword(oldPw);
++        }
++    }
+ }

@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/TikaEntityProcessor.java b/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/TikaEntityProcessor.java
+index 4e4ad41..b7b31ab 100644
+--- a/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/TikaEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/TikaEntityProcessor.java
+@@ -92,6 +92,7 @@ public class TikaEntityProcessor extends EntityProcessorBase {
+     done = false;
+   }
+ 
++  @Override
+   public Map<String, Object> nextRow() {
+     if(done) return null;
+     Map<String, Object> row = new HashMap<String, Object>();

@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
+index ba47c2d..08d0401 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/CodeFormatterVisitor2.java
+@@ -3068,6 +3068,7 @@ public class CodeFormatterVisitor2 extends ASTVisitor {
+ 				if (!wasACase) {
+ 					this.scribe.printNewLine();
+ 				}
++				this.scribe.printComment();
+ 			}
+ 		}

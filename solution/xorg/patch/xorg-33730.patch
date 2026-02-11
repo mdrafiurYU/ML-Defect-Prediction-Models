@@ -1,0 +1,17 @@
+diff --git a/dix/main.c b/dix/main.c
+index 03e0013..119828b 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -388,9 +388,9 @@ main(int argc, char *argv[], char *envp[])
+ 	    FatalError("failed to initialize core devices");
+ 
+ 	InitFonts();
+-	if (loadableFonts) {
+-	    SetFontPath(0, 0, (unsigned char *)defaultFontPath, &error);
+-	}
++	if (loadableFonts)
++	    SetFontPath(serverClient, 0, (unsigned char *)defaultFontPath,
++			&error);
+         else {
+ 	    if (SetDefaultFontPath(defaultFontPath) != Success)
+ 		ErrorF("failed to set default font path '%s'",

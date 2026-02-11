@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/Authorizable.java b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/Authorizable.java
+index d6d8489..7355ad3 100644
+--- a/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/Authorizable.java
++++ b/jackrabbit-api/src/main/java/org/apache/jackrabbit/api/security/user/Authorizable.java
+@@ -65,6 +65,7 @@ public interface Authorizable  {
+      * principal name.
+      *
+      * @return Name of this <code>Authorizable</code>.
++     * @throws RepositoryException if an error occurs.
+      */
+     String getID() throws RepositoryException;
+ 
+@@ -128,6 +129,16 @@ public interface Authorizable  {
+     void remove() throws RepositoryException;
+ 
+     /**
++     * Returns the names of properties present with <code>this</code> Authorizable.
++     *
++     * @return names of properties.
++     * @throws RepositoryException If an error occurs.
++     * @see #getProperty(String)
++     * @see #hasProperty(String)
++     */
++    Iterator getPropertyNames() throws RepositoryException;
++
++    /**
+ 	 * Tests if a the property with specified name exists.
+      *
+ 	 * @param name

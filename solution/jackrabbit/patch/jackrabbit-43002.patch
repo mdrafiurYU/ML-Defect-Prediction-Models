@@ -1,0 +1,40 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
+index 4a4ab49..b101bdd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventConsumer.java
+@@ -150,7 +150,7 @@ class EventConsumer {
+                 ItemId targetId = state.getTargetId();
+                 boolean granted = false;
+                 try {
+-                    granted = session.getAccessManager().isGranted(targetId, AccessManager.READ);
++                    granted = canRead(targetId);
+                 } catch (RepositoryException e) {
+                     log.warn("Unable to check access rights for item: " + targetId);
+                 }
+@@ -181,7 +181,7 @@ class EventConsumer {
+             // check read permission
+             boolean granted = false;
+             try {
+-                granted = session.getAccessManager().isGranted(item.getId(), AccessManager.READ);
++                granted = canRead(item.getId());
+             } catch (RepositoryException e) {
+                 log.warn("Unable to check access rights for item: " + item.getId());
+             }
+@@ -213,7 +213,7 @@ class EventConsumer {
+                     || state.getType() == Event.PROPERTY_ADDED
+                     || state.getType() == Event.PROPERTY_CHANGED) {
+                 ItemId targetId = state.getTargetId();
+-                if (!session.getAccessManager().isGranted(targetId, AccessManager.READ)) {
++                if (!canRead(targetId)) {
+                     if (denied == null) {
+                         denied = new HashSet();
+                     }
+@@ -270,4 +270,8 @@ class EventConsumer {
+         }
+         return hashCode;
+     }
++
++    private boolean canRead(ItemId itemId) throws RepositoryException {
++        return session.getAccessManager().isGranted(itemId, AccessManager.READ);
++    }
+ }

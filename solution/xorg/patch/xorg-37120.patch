@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/common/xf86MiscExt.c b/hw/xfree86/common/xf86MiscExt.c
+index 40c196a..8817b79 100644
+--- a/hw/xfree86/common/xf86MiscExt.c
++++ b/hw/xfree86/common/xf86MiscExt.c
+@@ -48,13 +48,9 @@
+ #define XF86_OS_PRIVS
+ #include "xf86_OSlib.h"
+ 
+-#ifdef XINPUT
+ #include <X11/extensions/XI.h>
+ #include <X11/extensions/XIproto.h>
+ #include "xf86Xinput.h"
+-#else
+-#include "inputstr.h"
+-#endif
+ 
+ #include "xf86OSmouse.h"
+ 

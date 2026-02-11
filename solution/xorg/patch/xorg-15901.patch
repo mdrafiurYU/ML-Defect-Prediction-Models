@@ -1,0 +1,15 @@
+diff --git a/afb/afbbitblt.c b/afb/afbbitblt.c
+index b7ec21d..0c1c6bb 100644
+--- a/afb/afbbitblt.c
++++ b/afb/afbbitblt.c
+@@ -49,6 +49,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XConsortium: afbbitblt.c,v 5.25 94/04/17 20:28:16 dpw Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xprotostr.h>
+ 

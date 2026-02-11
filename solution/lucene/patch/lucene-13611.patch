@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/ValueSourceParser.java b/solr/src/java/org/apache/solr/search/ValueSourceParser.java
+index b1d5c4e..40800f6 100755
+--- a/solr/src/java/org/apache/solr/search/ValueSourceParser.java
++++ b/solr/src/java/org/apache/solr/search/ValueSourceParser.java
+@@ -614,7 +614,7 @@ class DateValueSourceParser extends ValueSourceParser {
+   public ValueSource getValueSource(FunctionQParser fp, String arg) {
+     if (arg == null) return null;
+     SchemaField f = fp.req.getSchema().getField(arg);
+-    if (f.getType().getClass() == DateField.class || f.getType().getClass() == LegacyDateField.class) {
++    if (f.getType().getClass() == DateField.class) {
+       throw new SolrException(SolrException.ErrorCode.BAD_REQUEST, "Can't use ms() function on non-numeric legacy date field " + arg);
+     }
+     return f.getType().getValueSource(f, fp);

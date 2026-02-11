@@ -1,0 +1,106 @@
+diff --git a/dix/events.c b/dix/events.c
+index 316703e..b27c8e1 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2101,6 +2101,37 @@ MaybeDeliverEventsToClient(WindowPtr pWin, xEvent *pEvents,
+     return 2;
+ }
+ 
++static Window FindChildForEvent(DeviceIntPtr dev, WindowPtr event)
++{
++    SpritePtr pSprite = dev->spriteInfo->sprite;
++    WindowPtr w = pSprite->spriteTrace[pSprite->spriteTraceGood-1];
++    Window child;
++
++    /* If the search ends up past the root should the child field be
++       set to none or should the value in the argument be passed
++       through. It probably doesn't matter since everyone calls
++       this function with child == None anyway. */
++    while (w)
++    {
++        /* If the source window is same as event window, child should be
++           none.  Don't bother going all all the way back to the root. */
++
++        if (w == event)
++        {
++            child = None;
++            break;
++        }
++
++        if (w->parent == event)
++        {
++            child = w->drawable.id;
++            break;
++        }
++        w = w->parent;
++    }
++    return child;
++}
++
+ /**
+  * Adjust event fields to comply with the window properties.
+  *
+@@ -2119,36 +2150,32 @@ FixUpEventFromWindow(
+ {
+     SpritePtr pSprite = pDev->spriteInfo->sprite;
+ 
+-    if (xE->u.u.type == GenericEvent) /* just a safety barrier */
+-        return;
+-
+     if (calcChild)
+-    {
+-        WindowPtr w= pSprite->spriteTrace[pSprite->spriteTraceGood-1];
+-	/* If the search ends up past the root should the child field be
+-		set to none or should the value in the argument be passed
+-		through. It probably doesn't matter since everyone calls
+-		this function with child == None anyway. */
++        child = FindChildForEvent(pDev, pWin);
+ 
+-        while (w)
++    if (XI2_EVENT(xE))
+         {
+-            /* If the source window is same as event window, child should be
+-		none.  Don't bother going all all the way back to the root. */
+-
+-	    if (w == pWin)
++        xXIDeviceEvent* event = (xXIDeviceEvent*)xE;
++        event->root = RootWindow(pDev)->drawable.id;
++        event->event = pWin->drawable.id;
++        if (pSprite->hot.pScreen == pWin->drawable.pScreen)
+ 	    {
+-		child = None;
+-		break;
++            event->event_x.integral = event->root_x.integral - pWin->drawable.x;
++            event->event_y.integral = event->root_y.integral - pWin->drawable.y;
++            event->child = child;
++        } else
++        {
++            event->event_x.integral = 0;
++            event->event_y.integral = 0;
++            event->child = None;
+ 	    }
+ 
+-	    if (w->parent == pWin)
++        if (event->evtype == XI_Enter || event->evtype == XI_Leave)
++            ((xXIEnterEvent*)event)->same_screen =
++                (pSprite->hot.pScreen == pWin->drawable.pScreen);
++
++    } else
+ 	    {
+-		child = w->drawable.id;
+-		break;
+-            }
+-	    w = w->parent;
+-        }
+-    }
+     XE_KBPTR.root = RootWindow(pDev)->drawable.id;
+     XE_KBPTR.event = pWin->drawable.id;
+     if (pSprite->hot.pScreen == pWin->drawable.pScreen)
+@@ -2168,6 +2195,7 @@ FixUpEventFromWindow(
+ 	XE_KBPTR.eventY = 0;
+     }
+ }
++}
+ 
+ /**
+  * Return masks for EventIsDeliverable.

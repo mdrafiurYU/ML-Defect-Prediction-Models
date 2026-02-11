@@ -1,0 +1,19 @@
+diff --git a/fb/fbscreen.c b/fb/fbscreen.c
+index d7e1d79..483171c 100644
+--- a/fb/fbscreen.c
++++ b/fb/fbscreen.c
+@@ -242,14 +242,6 @@ fbFinishScreenInit(ScreenPtr	pScreen,
+ 	pScreen->CreateScreenResources = fb24_32CreateScreenResources;
+     }
+ #endif
+-#if 0
+-    /* leave backing store initialization to the enclosing code so
+-     * it can choose the correct order of wrappers
+-     */
+-    /* init backing store here so we can overwrite CloseScreen without stepping
+-     * on the backing store wrapped version */
+-    fbInitializeBackingStore (pScreen);
+-#endif
+     return TRUE;
+ }
+ 

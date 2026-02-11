@@ -1,0 +1,13 @@
+diff --git a/composite/compalloc.c b/composite/compalloc.c
+index a2f3f14..1bac9a4 100644
+--- a/composite/compalloc.c
++++ b/composite/compalloc.c
+@@ -134,6 +134,8 @@ compRedirectWindow (ClientPtr pClient, WindowPtr pWin, int update)
+ 	}
+ 
+ 	REGION_NULL (pScreen, &cw->borderClip);
++	cw->borderClipX = 0;
++	cw->borderClipY = 0;
+ 	cw->update = CompositeRedirectAutomatic;
+ 	cw->clients = 0;
+ 	cw->oldx = COMP_ORIGIN_INVALID;

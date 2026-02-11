@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java
+index 89e8b66..a62f3a5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AbstractMethodDeclaration.java
+@@ -87,13 +87,19 @@ public abstract class AbstractMethodDeclaration
+ 				return;
+ 			}
+ 			boolean used = this.binding.isAbstract() || this.binding.isNative();
++			AnnotationBinding[][] paramAnnotations = null;
+ 			for (int i = 0, length = this.arguments.length; i < length; i++) {
+ 				Argument argument = this.arguments[i];
+ 				argument.bind(this.scope, this.binding.parameters[i], used);
+ 				if (argument.annotations != null) {
+ 					this.binding.tagBits |= TagBits.HasParameterAnnotations;
++					if (paramAnnotations == null)
++						paramAnnotations = new AnnotationBinding[length][];
++					paramAnnotations[i] = argument.binding.getAnnotations();
+ 				}
+ 			}
++			if (paramAnnotations != null)
++				this.binding.setParameterAnnotations(paramAnnotations);
+ 		}
+ 	}

@@ -1,0 +1,13 @@
+diff --git a/Xext/xtest.c b/Xext/xtest.c
+index 58e20ef..9bd26ba 100644
+--- a/Xext/xtest.c
++++ b/Xext/xtest.c
+@@ -500,7 +500,7 @@ ProcXTestFakeInput(client)
+         xfree(master_event);
+     } else
+         (*dev->public.processInputProc)(ev, dev, nev);
+-    if (!extension)
++    if (!extension && type == MotionNotify)
+         xfree(ev);
+     return client->noClientException;
+ }

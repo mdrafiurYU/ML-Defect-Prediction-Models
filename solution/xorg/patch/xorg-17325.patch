@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86InPriv.h b/hw/xfree86/common/xf86InPriv.h
+index 32e3c8e..4a02606 100644
+--- a/hw/xfree86/common/xf86InPriv.h
++++ b/hw/xfree86/common/xf86InPriv.h
+@@ -27,6 +27,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _xf86InPriv_h
+ #define _xf86InPriv_h
+ 

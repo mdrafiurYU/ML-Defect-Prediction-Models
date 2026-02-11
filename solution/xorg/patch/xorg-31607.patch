@@ -1,0 +1,12 @@
+diff --git a/exa/exa_unaccel.c b/exa/exa_unaccel.c
+index 24d5e3f..970c2cb 100644
+--- a/exa/exa_unaccel.c
++++ b/exa/exa_unaccel.c
+@@ -105,7 +105,6 @@ ExaCheckPutImage (DrawablePtr pDrawable, GCPtr pGC, int depth,
+     fbPutImage (pDrawable, pGC, depth, x, y, w, h, leftPad, format, bits);
+     exaFinishAccess (pDrawable, EXA_PREPARE_DEST);
+     exaGetDrawableDeltas(pDrawable, pPixmap, &xoff, &yoff);
+-    exaPixmapDirty(pPixmap, x + xoff, y + yoff, x + xoff + w, y + yoff + h);
+ }
+ 
+ RegionPtr

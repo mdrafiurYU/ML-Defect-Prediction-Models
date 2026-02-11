@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/ThaiWordFilterFactory.java b/solr/src/java/org/apache/solr/analysis/ThaiWordFilterFactory.java
+index 8d4c60f..d35385a 100644
+--- a/solr/src/java/org/apache/solr/analysis/ThaiWordFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/ThaiWordFilterFactory.java
+@@ -22,7 +22,17 @@ import org.apache.lucene.analysis.th.ThaiWordFilter;
+ 
+ import org.apache.lucene.analysis.TokenStream;
+ 
+-/** Factory for {@link ThaiWordFilter} */
++/** 
++ * Factory for {@link ThaiWordFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_thai" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.NGramTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.ThaiWordFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre>
++ * @version $Id$ 
++ */
+ public class ThaiWordFilterFactory extends BaseTokenFilterFactory {
+   public ThaiWordFilter create(TokenStream input) {
+     assureMatchVersion();

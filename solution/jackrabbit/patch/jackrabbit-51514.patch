@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java
+index 83267e5..cda200c 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/RepositoryServiceLogger.java
+@@ -526,12 +526,12 @@ public class RepositoryServiceLogger extends AbstractLogger implements Repositor
+         }, "mergeActivity(SessionInfo, NodeId)", new Object[]{unwrap(sessionInfo), activityId});
+     }
+ 
+-    public NodeId createConfiguration(final SessionInfo sessionInfo, final NodeId nodeId, final NodeId baselineId) throws UnsupportedRepositoryOperationException, RepositoryException {
++    public NodeId createConfiguration(final SessionInfo sessionInfo, final NodeId nodeId) throws UnsupportedRepositoryOperationException, RepositoryException {
+         return (NodeId) execute(new Callable() {
+             public Object call() throws RepositoryException {
+-                return service.createConfiguration(unwrap(sessionInfo), nodeId, baselineId);
++                return service.createConfiguration(unwrap(sessionInfo), nodeId);
+             }
+-        }, "createConfiguration(SessionInfo, NodeId, NodeId)", new Object[]{unwrap(sessionInfo), nodeId, baselineId});
++        }, "createConfiguration(SessionInfo, NodeId, NodeId)", new Object[]{unwrap(sessionInfo), nodeId});
+     }
+ 
+     public String[] getSupportedQueryLanguages(final SessionInfo sessionInfo) throws RepositoryException {

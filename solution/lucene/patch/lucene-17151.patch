@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java b/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
+index a9eab85..d4e1bc7 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
++++ b/lucene/src/test/org/apache/lucene/search/TestElevationComparator.java
+@@ -50,7 +50,7 @@ public class TestElevationComparator extends LuceneTestCase {
+     writer.addDocument(adoc(new String[] {"id", "y", "title", "boosted boosted", "str_s","y"}));
+     writer.addDocument(adoc(new String[] {"id", "z", "title", "boosted boosted boosted","str_s", "z"}));
+ 
+-    IndexReader r = IndexReader.open(writer);
++    IndexReader r = IndexReader.open(writer, true);
+     writer.close();
+ 
+     IndexSearcher searcher = new IndexSearcher(r);

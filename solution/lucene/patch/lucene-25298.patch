@@ -1,0 +1,26 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/fst/IntsRefFSTEnum.java b/lucene/src/java/org/apache/lucene/util/fst/IntsRefFSTEnum.java
+index cdd79c3..932f3d9 100644
+--- a/lucene/src/java/org/apache/lucene/util/fst/IntsRefFSTEnum.java
++++ b/lucene/src/java/org/apache/lucene/util/fst/IntsRefFSTEnum.java
+@@ -71,6 +71,21 @@ public final class IntsRefFSTEnum<T> extends FSTEnum<T> {
+     return setResult();
+   }
+ 
++  /** Seeks to exactly this term, returning null if the term
++   *  doesn't exist.  This is faster than using {@link
++   *  #seekFloor} or {@link #seekCeil} because it
++   *  short-circuits as soon the match is not found. */
++  public InputOutput<T> seekExact(IntsRef target) throws IOException {
++    this.target = target;
++    targetLength = target.length;
++    if (super.doSeekExact()) {
++      assert upto == 1+target.length;
++      return setResult();
++    } else {
++      return null;
++    }
++  }
++
+   @Override
+   protected int getTargetLabel() {
+     if (upto-1 == target.length) {

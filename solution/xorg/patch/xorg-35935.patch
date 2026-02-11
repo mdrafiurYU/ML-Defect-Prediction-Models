@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 0d90b9d..7bcfdff 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1951,11 +1951,12 @@ xf86LoadModules(char **list, pointer *optlist)
+ 	if (!desc) {
+ 	    LoaderErrorMsg(NULL, name, errmaj, errmin);
+ 	    failed = TRUE;
+-	}
+-	xfree(name);
++	} else {
+ 	xfree(desc->name);
+ 	xfree(desc);
+     }
++	xfree(name);
++    }
+     return !failed;
+ }
+ 

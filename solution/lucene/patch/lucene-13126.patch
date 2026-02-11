@@ -1,0 +1,18 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+index 4389a75..dffbe3b 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+@@ -727,13 +727,11 @@ final class DocumentsWriter {
+         newSegment.setDocStoreOffset(docStoreOffset);
+       }
+       
+-      boolean hasVectors = false;
+-
+       if (closeDocStore) {
+         closeDocStore(flushState, writer, deleter, newSegment, mergePolicy, segmentInfos);
+       }
+ 
+-      hasVectors |= flushState.hasVectors;
++      boolean hasVectors = flushState.hasVectors;
+ 
+       if (numDocsInRAM > 0) {

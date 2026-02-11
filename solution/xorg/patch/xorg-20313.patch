@@ -1,0 +1,23 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index 3d3d675..c88d81c 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -301,7 +301,7 @@ static void
+ SyncDeleteTriggerFromCounter(pTrigger)
+     SyncTrigger *pTrigger;
+ {
+-    SyncTriggerList *pCur, *pPrev = NULL;
++    SyncTriggerList *pCur;
+ 
+     /* pCounter needs to be stored in pTrigger before calling here. */
+ 
+@@ -312,9 +312,6 @@ SyncDeleteTriggerFromCounter(pTrigger)
+     {
+ 	if (pCur->pTrigger == pTrigger)
+ 	{
+-	    if (pPrev)
+-		pPrev->next = pCur->next;
+-	    else
+ 		pTrigger->pCounter->pTriglist = pCur->next;
+ 	    xfree(pCur);
+ 	    break;

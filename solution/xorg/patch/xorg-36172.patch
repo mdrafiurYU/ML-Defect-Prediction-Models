@@ -1,0 +1,15 @@
+diff --git a/hw/xprint/pcl/PclWindow.c b/hw/xprint/pcl/PclWindow.c
+index a87dc0e..950933e 100644
+--- a/hw/xprint/pcl/PclWindow.c
++++ b/hw/xprint/pcl/PclWindow.c
+@@ -128,8 +128,8 @@ PclCreateWindow(
+ 	    {
+                 propName = MakeAtom(propStrings[i], strlen(propStrings[i]),
+ 				    TRUE);
+-	        ChangeWindowProperty(pWin, propName, XA_STRING, 8, 
+-			             PropModeReplace,  strlen(propVal), 
++	        dixChangeWindowProperty(serverClient, pWin, propName, XA_STRING,
++					8, PropModeReplace, strlen(propVal),
+ 			             (pointer)propVal, FALSE);
+ 	        xfree(propVal);
+ 	    }

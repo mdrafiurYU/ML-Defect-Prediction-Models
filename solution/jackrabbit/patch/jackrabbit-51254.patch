@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index 616e96b..47de97f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -200,6 +200,11 @@ public class SessionImpl extends AbstractSession
+     protected final InternalVersionManager versionMgr;
+ 
+     /**
++     * node type instance handler
++     */
++    protected final NodeTypeInstanceHandler ntInstanceHandler;
++
++    /**
+      * Listeners (weak references)
+      */
+     protected final Map<SessionListener, SessionListener> listeners =
+@@ -284,6 +289,7 @@ public class SessionImpl extends AbstractSession
+         itemMgr = createItemManager(itemStateMgr, hierMgr);
+         accessMgr = createAccessManager(subject, itemStateMgr.getHierarchyMgr());
+         versionMgr = createVersionManager(rep);
++        ntInstanceHandler = new NodeTypeInstanceHandler(userId);
+     }
+ 
+     /**
+@@ -496,6 +502,14 @@ public class SessionImpl extends AbstractSession
+     }
+ 
+     /**
++     * Returns the node type instance handler for this session
++     * @return the node type instance handler.
++     */
++    public NodeTypeInstanceHandler getNodeTypeInstanceHandler() {
++        return ntInstanceHandler;
++    }
++
++    /**
+      * Sets the named attribute. If the value is <code>null</code>, then
+      * the named attribute is removed.
+      *

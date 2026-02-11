@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/misc/IODelay.c b/hw/xfree86/os-support/misc/IODelay.c
+index 697c07f..083cfed 100644
+--- a/hw/xfree86/os-support/misc/IODelay.c
++++ b/hw/xfree86/os-support/misc/IODelay.c
+@@ -20,7 +20,7 @@
+  *   about any occasion, but we'll be more conservative here:  On a
+  *   100-MHz CPU, produce at least a delay of 1,000ns.
+  */ 
+-void
++_X_EXPORT void
+ xf86IODelay()
+ {
+ 	xf86UDelay(1);

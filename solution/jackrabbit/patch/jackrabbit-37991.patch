@@ -1,0 +1,27 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java
+index 38fe13a..d615cba 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/ItemStateBinding.java
+@@ -93,6 +93,7 @@ public class ItemStateBinding {
+      * @param blobStore the blobstore
+      * @param nsIndex the namespace index
+      * @param nameIndex the name index
++     * @param dataStore the data store
+      */
+     public ItemStateBinding(ErrorHandling errorHandling,
+                             BLOBStore blobStore,
+@@ -125,6 +126,14 @@ public class ItemStateBinding {
+     }
+ 
+     /**
++     * Returns the blob store that is assosiated with this binding.
++     * @return the blob store
++     */
++    public BLOBStore getBlobStore() {
++        return blobStore;
++    }
++
++    /**
+      * Deserializes a <code>NodeReferences</code> from the data input stream.
+      *
+      * @param in the input stream

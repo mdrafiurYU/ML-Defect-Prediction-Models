@@ -1,0 +1,59 @@
+diff --git a/hw/xfree86/os-support/hurd/hurd_video.c b/hw/xfree86/os-support/hurd/hurd_video.c
+index 9f2e2bd..b8b00c8 100644
+--- a/hw/xfree86/os-support/hurd/hurd_video.c
++++ b/hw/xfree86/os-support/hurd/hurd_video.c
+@@ -41,8 +41,8 @@
+ /**************************************************************************
+  * Video Memory Mapping section                                            
+  ***************************************************************************/
+-pointer
+-xf86MapVidMem(int ScreenNum,int Flags, unsigned long Base, unsigned long Size)
++static pointer
++mapVidMem(int ScreenNum,int Flags, unsigned long Base, unsigned long Size)
+ {
+     mach_port_t device,iopl_dev;
+     memory_object_t iopl_mem;
+@@ -95,8 +95,8 @@ xf86MapVidMem(int ScreenNum,int Flags, unsigned long Base, unsigned long Size)
+     return (pointer)addr;
+ }
+ 
+-void
+-xf86UnMapVidMem(int ScreenNum,pointer Base,unsigned long Size)
++static void
++unmapVidMem(int ScreenNum,pointer Base,unsigned long Size)
+ {
+     kern_return_t err = vm_deallocate(mach_task_self(), (int)Base, Size);
+     if( err )
+@@ -107,12 +107,6 @@ xf86UnMapVidMem(int ScreenNum,pointer Base,unsigned long Size)
+     return;
+ }
+ 
+-Bool
+-xf86LinearVidMem()
+-{
+-    return(TRUE);
+-}
+-
+ /**************************************************************************
+  * I/O Permissions section                                                 
+  ***************************************************************************/
+@@ -143,14 +137,10 @@ xf86DisableIO()
+ }
+ 
+ void
+-xf86MapReadSideEffects(int ScreenNum, int Flags, pointer Base,
+-	unsigned long Size)
++xf86OSInitVidMem(VidMemInfoPtr pVidMem)
+ {
++	pVidMem->linearSupported = TRUE;
++	pVidMem->mapMem = mapVidMem;
++	pVidMem->unmapMem = unmapVidMem;
++	pVidMem->initialised = TRUE;
+ }
+-
+-Bool
+-xf86CheckMTRR(int s)
+-{
+-	return FALSE;
+-}
+-

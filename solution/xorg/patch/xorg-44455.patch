@@ -1,0 +1,18 @@
+diff --git a/Xi/xiproperty.c b/Xi/xiproperty.c
+index d633f51..8c6d53a 100644
+--- a/Xi/xiproperty.c
++++ b/Xi/xiproperty.c
+@@ -706,13 +706,6 @@ ProcXListDeviceProperties (ClientPtr client)
+     rep.length = (numProps * sizeof(Atom)) >> 2;
+     rep.sequenceNumber = client->sequence;
+     rep.nAtoms = numProps;
+-    if (client->swapped)
+-    {
+-        int n;
+-        swaps (&rep.sequenceNumber, n);
+-        swapl (&rep.length, n);
+-        swaps (&rep.nAtoms, n);
+-    }
+     temppAtoms = pAtoms;
+     for (prop = dev->properties.properties; prop; prop = prop->next)
+         *temppAtoms++ = prop->propertyName;

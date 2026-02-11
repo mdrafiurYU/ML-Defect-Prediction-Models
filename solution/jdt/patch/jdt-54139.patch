@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+index a31941a..8051f76 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ExplicitConstructorCall.java
+@@ -329,7 +329,7 @@ public class ExplicitConstructorCall extends Statement implements InvocationSite
+ 					scope.problemReporter().deprecatedMethod(binding, this);
+ 				checkInvocationArguments(scope, null, receiverType, binding, this.arguments, argumentTypes, argsContainCast, this);
+ 				if (binding.isPrivate() || receiverType.isLocalType()) {
+-					binding.original().modifiers |= AccLocallyUsed;
++					binding.original().modifiers |= ExtraCompilerModifiers.AccLocallyUsed;
+ 				}				
+ 			} else {
+ 				if (binding.declaringClass == null)

@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/APTProblem.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/APTProblem.java
+index 57175a0..79493fb 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/APTProblem.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/APTProblem.java
+@@ -97,4 +97,9 @@ class APTProblem implements IProblem
+ 	public boolean isWarning() {
+ 		return _severity == Severity.WARNING;
+ 	}
++	
++	public String toString()
++	{
++		return _message == null ? "<null message>" : _message ;  //$NON-NLS-1$
++	}
+ }

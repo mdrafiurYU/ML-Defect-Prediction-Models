@@ -1,0 +1,14 @@
+diff --git a/miext/damage/damage.c b/miext/damage/damage.c
+index 17425ae..8f1e3b7 100755
+--- a/miext/damage/damage.c
++++ b/miext/damage/damage.c
+@@ -243,9 +243,6 @@ damageDamageRegion (DrawablePtr pDrawable, RegionPtr pRegion, Bool clip,
+ 	if (pDamage->pDrawable->type == DRAWABLE_WINDOW &&
+ 	    !((WindowPtr) (pDamage->pDrawable))->realized)
+ 	{
+-#if 0
+-	    DAMAGE_DEBUG (("damage while window unrealized\n"));
+-#endif
+ 	    continue;
+ 	}
+ 	

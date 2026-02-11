@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java
+index 7f3bb7b..fcba46d 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/AbstractJavadocCompletionModelTest.java
+@@ -192,7 +192,7 @@ public abstract class AbstractJavadocCompletionModelTest extends AbstractJavaMod
+ 	}
+ 
+ 	public static Test suite() {
+-		return buildTestSuite(AbstractJavadocCompletionModelTest.class);
++		return buildModelTestSuite(AbstractJavadocCompletionModelTest.class);
+ 	}
+ 	protected void assertResults(String expected) throws JavaModelException {
+ 		int length = this.workingCopies.length;

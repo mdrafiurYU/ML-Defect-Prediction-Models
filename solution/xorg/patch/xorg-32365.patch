@@ -1,0 +1,21 @@
+diff --git a/GL/glx/glxext.c b/GL/glx/glxext.c
+index 94ec5cc..4d6bfd7 100644
+--- a/GL/glx/glxext.c
++++ b/GL/glx/glxext.c
+@@ -317,7 +317,7 @@ void GlxExtensionInit(void)
+ 	pScreen = screenInfo.screens[i];
+ 
+ 	for (p = __glXProviderStack; p != NULL; p = p->next) {
+-	    if (p->screenProbe(pScreen) != NULL)
++	    if (p->screenProbe(pScreen) != NULL) {
+ 		LogMessage(X_INFO,
+ 			   "GLX: Initialized %s GL provider for screen %d\n",
+ 			   p->name, i);
+@@ -325,6 +325,7 @@ void GlxExtensionInit(void)
+ 	}
+     }
+ }
++}
+ 
+ /************************************************************************/
+ 

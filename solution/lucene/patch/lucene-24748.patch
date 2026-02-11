@@ -1,0 +1,12 @@
+diff --git a/modules/benchmark/src/test/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTaskTest.java b/modules/benchmark/src/test/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTaskTest.java
+index 705ab9e..c16e546 100644
+--- a/modules/benchmark/src/test/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTaskTest.java
++++ b/modules/benchmark/src/test/org/apache/lucene/benchmark/byTask/tasks/SearchWithSortTaskTest.java
+@@ -29,6 +29,6 @@ public class SearchWithSortTaskTest extends BenchmarkTestCase {
+   public void testSetParams_docField() throws Exception {
+     SearchWithSortTask task = new SearchWithSortTask(new PerfRunData(new Config(new Properties())));
+     task.setParams("doc");
+-    assertEquals(SortField.DOC, task.getSort().getSort()[0].getType());
++    assertEquals(SortField.Type.DOC, task.getSort().getSort()[0].getType());
+   }
+ }

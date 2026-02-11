@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java
+index e31104b..0017950 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java
+@@ -152,8 +152,6 @@ public class BinaryValue extends BaseValue {
+      */
+     public InputStream getStream()
+             throws IllegalStateException, RepositoryException {
+-        setStreamConsumed();
+-
+         if (stream == null) {
+             if (bin != null) {
+                 stream = bin.getStream();

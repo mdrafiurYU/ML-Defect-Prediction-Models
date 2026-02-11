@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/common/xf86DGA.c b/hw/xfree86/common/xf86DGA.c
+index 43db1ee..9474ec8 100644
+--- a/hw/xfree86/common/xf86DGA.c
++++ b/hw/xfree86/common/xf86DGA.c
+@@ -249,14 +249,11 @@ DGACloseScreen(int i, ScreenPtr pScreen)
+    DGAScreenPtr pScreenPriv = DGA_GET_SCREEN_PRIV(pScreen);
+ 
+    if (XDGAEventBase) {
+-       OsBlockSignals();
+-       ProcessInputEvents();
+        mieqSetHandler(*XDGAEventBase + MotionNotify, NULL);
+        mieqSetHandler(*XDGAEventBase + ButtonPress, NULL);
+        mieqSetHandler(*XDGAEventBase + ButtonRelease, NULL);
+        mieqSetHandler(*XDGAEventBase + KeyPress, NULL);
+        mieqSetHandler(*XDGAEventBase + KeyRelease, NULL);
+-       OsReleaseSignals();
+     }
+ 
+    FreeMarkedVisuals(pScreen);

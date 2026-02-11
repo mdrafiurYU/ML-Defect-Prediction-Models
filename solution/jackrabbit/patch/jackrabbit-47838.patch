@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java
+index 6199342..62f3f3d 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ShareableNodeTest.java
+@@ -27,6 +27,7 @@ import javax.jcr.ImportUUIDBehavior;
+ import javax.jcr.Item;
+ import javax.jcr.Node;
+ import javax.jcr.NodeIterator;
++import javax.jcr.Repository;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
+ import javax.jcr.UnsupportedRepositoryOperationException;
+@@ -45,6 +46,7 @@ public class ShareableNodeTest extends AbstractJCRTest {
+     
+     protected void setUp() throws Exception {
+         super.setUp();
++        ensureSupportsFeature(Repository.OPTION_SHAREABLE_NODES_SUPPORTED);
+         ensureKnowsNodeType(superuser, "mix:shareable");
+     }

@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclSFonts.c b/Xprint/pcl/PclSFonts.c
+index 121ed00..287c5c1 100644
+--- a/Xprint/pcl/PclSFonts.c
++++ b/Xprint/pcl/PclSFonts.c
+@@ -48,6 +48,10 @@ copyright holders.
+ /* $XFree86: xc/programs/Xserver/Xprint/pcl/PclSFonts.c,v 1.7tsi Exp $ */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ #include "Pcl.h"
+ 

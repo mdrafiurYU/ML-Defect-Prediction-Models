@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java
+index e7e8398..d491010 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/SkipDeniedNodesTest.java
+@@ -68,6 +68,11 @@ public class SkipDeniedNodesTest extends AbstractAccessControlTest {
+         acMgr.setPolicy(n2.getPath(), acl);
+         superuser.save();
+     }
++    
++    protected void tearDown() throws Exception {
++        anonymous.logout();
++        super.tearDown();
++    }
+ 
+     public void testSkipNodes() throws RepositoryException {
+         Node testNode = (Node) anonymous.getItem(testRoot);

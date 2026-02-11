@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java b/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java
+index 0d53d52..f9e86ea 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/DocTermsIndexCreator.java
+@@ -285,6 +285,11 @@ public class DocTermsIndexCreator<T extends DocTermsIndex> extends EntryCreatorW
+       }
+ 
+       @Override
++      public void cacheCurrentTerm() throws IOException {
++        throw new UnsupportedOperationException();
++      }
++
++      @Override
+       public BytesRef term() throws IOException {
+         return term;
+       }

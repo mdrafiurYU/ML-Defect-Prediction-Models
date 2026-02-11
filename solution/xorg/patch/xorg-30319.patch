@@ -1,0 +1,14 @@
+diff --git a/GL/glx/glxcmds.c b/GL/glx/glxcmds.c
+index ed5c138..3038b13 100644
+--- a/GL/glx/glxcmds.c
++++ b/GL/glx/glxcmds.c
+@@ -1285,7 +1285,9 @@ int DoCreateGLXPixmap(__GLXclientState *cl, XID fbconfigId,
+     pGlxPixmap->pGlxScreen = __glXgetActiveScreen(screenNum);
+     pGlxPixmap->pScreen = pDraw->pScreen;
+     pGlxPixmap->idExists = True;
++#ifdef XF86DRI
+     pGlxPixmap->pDamage = NULL;
++#endif
+     pGlxPixmap->refcnt = 0;
+ 
+     pGlxPixmap->modes = modes;

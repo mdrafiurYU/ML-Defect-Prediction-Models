@@ -1,0 +1,13 @@
+diff --git a/Xext/xres.c b/Xext/xres.c
+index 9bd70c6..f444c4e 100644
+--- a/Xext/xres.c
++++ b/Xext/xres.c
+@@ -64,7 +64,7 @@ ProcXResQueryClients (ClientPtr client)
+ 
+     REQUEST_SIZE_MATCH(xXResQueryClientsReq);
+ 
+-    current_clients = xalloc((currentMaxClients - 1) * sizeof(int));
++    current_clients = xalloc(currentMaxClients * sizeof(int));
+ 
+     num_clients = 0;
+     for(i = 0; i < currentMaxClients; i++) {

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/CachingHierarchyManagerTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/CachingHierarchyManagerTest.java
+index b53ad70..bf3b5e3 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/CachingHierarchyManagerTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/CachingHierarchyManagerTest.java
+@@ -44,7 +44,7 @@ public class CachingHierarchyManagerTest extends TestCase {
+         ItemStateManager provider = new MyItemStateManager();
+         cache = new CachingHierarchyManager(rootNodeId, provider, null);
+         PathFactory factory = PathFactoryImpl.getInstance();
+-        final Path path = factory.create("{}\t{}");
++        final Path path = factory.getRootPath();
+         for(int i=0; i<3; i++) {
+             new Thread(new Runnable() {
+                 public void run() {

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/StoredFieldsWriterPerThread.java b/lucene/src/java/org/apache/lucene/index/StoredFieldsWriterPerThread.java
+index 85c6b57..a0e77ae 100644
+--- a/lucene/src/java/org/apache/lucene/index/StoredFieldsWriterPerThread.java
++++ b/lucene/src/java/org/apache/lucene/index/StoredFieldsWriterPerThread.java
+@@ -32,7 +32,7 @@ final class StoredFieldsWriterPerThread {
+   public StoredFieldsWriterPerThread(DocumentsWriter.DocState docState, StoredFieldsWriter storedFieldsWriter) throws IOException {
+     this.storedFieldsWriter = storedFieldsWriter;
+     this.docState = docState;
+-    localFieldsWriter = new FieldsWriter((IndexOutput) null, (IndexOutput) null);
++    localFieldsWriter = new FieldsWriter((IndexOutput) null, (IndexOutput) null, storedFieldsWriter.fieldInfos);
+   }
+ 
+   public void startDocument() {

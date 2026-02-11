@@ -1,0 +1,13 @@
+diff --git a/hw/darwin/quartz/xpr/appledri.c b/hw/darwin/quartz/xpr/appledri.c
+index 70b7400..45d1a7e 100644
+--- a/hw/darwin/quartz/xpr/appledri.c
++++ b/hw/darwin/quartz/xpr/appledri.c
+@@ -174,7 +174,7 @@ ProcAppleDRIAuthConnection(
+     rep.authenticated = 1;
+ 
+     if (!DRIAuthConnection( screenInfo.screens[stuff->screen], stuff->magic)) {
+-        ErrorF("Failed to authenticate %u\n", stuff->magic);
++        ErrorF("Failed to authenticate %u\n", (unsigned int)stuff->magic);
+         rep.authenticated = 0;
+     }
+     WriteToClient(client, sizeof(xAppleDRIAuthConnectionReply), (char *)&rep);

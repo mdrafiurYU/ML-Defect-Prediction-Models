@@ -1,0 +1,19 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 0dee999..9f039f7 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -761,10 +761,13 @@ RRQueryOutputProperty (RROutputPtr output, Atom property);
+ void
+ RRDeleteOutputProperty (RROutputPtr output, Atom property);
+ 
++Bool
++RRPostPendingProperty (RROutputPtr output, Atom property);
++    
+ int
+ RRChangeOutputProperty (RROutputPtr output, Atom property, Atom type,
+ 			int format, int mode, unsigned long len,
+-			pointer value, Bool sendevent);
++			pointer value, Bool sendevent, Bool pending);
+ 
+ int
+ RRConfigureOutputProperty (RROutputPtr output, Atom property,

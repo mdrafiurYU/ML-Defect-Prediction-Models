@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
+index a30d413..838e13f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
+@@ -78,8 +78,8 @@ class LockImpl implements javax.jcr.lock.Lock {
+      * {@inheritDoc}
+      */
+     public String getLockToken() {
+-        if (!info.isSessionScoped() || info.isLockHolder(node.getSession())) {
+-            return info.getLockToken();
++        if (!info.isSessionScoped() && info.isLockHolder(node.getSession())) {
++            return info.getLockToken().toString();
+         } else {
+             return null;
+         }

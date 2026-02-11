@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ASTHolderCUInfo.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ASTHolderCUInfo.java
+index 0101f87..1bf7abc 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ASTHolderCUInfo.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ASTHolderCUInfo.java
+@@ -17,6 +17,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
+ public class ASTHolderCUInfo extends CompilationUnitElementInfo {
+ 	int astLevel;
+ 	boolean resolveBindings;
++	boolean statementsRecovery;
+ 	HashMap problems = null;
+ 	CompilationUnit ast;
+ }

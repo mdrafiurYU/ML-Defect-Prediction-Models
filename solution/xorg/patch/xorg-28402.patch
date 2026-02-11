@@ -1,0 +1,54 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index e1cbdbb..9740b07 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -1791,6 +1791,15 @@ convertRange2Host(int entityIndex, resRange *pRange)
+     }
+ }
+ 
++static void
++xf86ConvertListToHost(int entityIndex, resPtr list)
++{
++    while (list) {
++	convertRange2Host(entityIndex, &list->val);
++	list = list->next;
++    }
++}
++
+ /*
+  * xf86RegisterResources() -- attempts to register listed resources.
+  * If list is NULL it tries to obtain resources implicitly. Function
+@@ -2836,17 +2845,6 @@ xf86IsSubsetOf(resRange range, resPtr list)
+     return ret;
+ }
+ 
+-Bool
+-xf86IsListSubsetOf(resPtr list, resPtr BaseList)
+-{
+-    while (list) {
+-	if (! xf86IsSubsetOf(list->val,BaseList))
+-	    return FALSE;
+-	list = list->next;
+-    }
+-    return TRUE;
+-}
+-
+ static resPtr
+ findIntersect(resRange Range, resPtr list)
+ {
+@@ -3071,15 +3069,6 @@ xf86NoSharedResources(int screenIndex,resType res)
+     return TRUE;
+ }
+ 
+-void
+-xf86ConvertListToHost(int entityIndex, resPtr list)
+-{
+-    while (list) {
+-	convertRange2Host(entityIndex, &list->val);
+-	list = list->next;
+-    }
+-}
+-
+ _X_EXPORT void
+ xf86RegisterStateChangeNotificationCallback(xf86StateChangeNotificationCallbackFunc func, pointer arg)
+ {

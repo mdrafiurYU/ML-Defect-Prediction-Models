@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexWriter.java b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+index 3b2d760..2c2ad61 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexWriter.java
+@@ -3222,7 +3222,7 @@ public class IndexWriter implements Closeable {
+         message("merge segmentCodecs=" + merger.getSegmentCodecs());
+         message("merge store matchedCount=" + merger.getMatchedSubReaderCount() + " vs " + merge.readers.size());
+       }
+-      anyNonBulkMerges |= merger.getMatchedSubReaderCount() != merge.readers.size();
++      anyNonBulkMerges |= merger.getAnyNonBulkMerges();
+       
+       assert mergedDocCount == totDocCount: "mergedDocCount=" + mergedDocCount + " vs " + totDocCount;

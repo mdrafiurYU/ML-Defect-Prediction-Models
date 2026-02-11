@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
+index 8690a73..4c2d2f6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/db/DatabaseFileSystem.java
+@@ -207,7 +207,8 @@ public class DatabaseFileSystem implements FileSystem {
+ 
+         try {
+             // close shared prepared statements
+-            for (Iterator it = preparedStatements.values().iterator(); it.hasNext(); ) {
++            Iterator it = preparedStatements.values().iterator();
++            while (it.hasNext()) {
+                 closeStatement((PreparedStatement) it.next());
+             }
+             preparedStatements.clear();
+@@ -1007,7 +1008,8 @@ public class DatabaseFileSystem implements FileSystem {
+         // gracefully in order to avoid potential memory leaks
+ 
+         // close shared prepared statements
+-        for (Iterator it = preparedStatements.values().iterator(); it.hasNext(); ) {
++        Iterator it = preparedStatements.values().iterator();
++        while (it.hasNext()) {
+             closeStatement((PreparedStatement) it.next());
+         }
+         try {

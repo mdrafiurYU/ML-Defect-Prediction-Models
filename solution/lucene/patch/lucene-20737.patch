@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/hu/TestHungarianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/hu/TestHungarianAnalyzer.java
+index e00289f..b2ada3b 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/hu/TestHungarianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/hu/TestHungarianAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestHungarianAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "babakocsi", "babakocsi");
+     checkOneTermReuse(a, "babakocsijáért", "babakocs");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new HungarianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

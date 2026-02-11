@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/IncrementalImageBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/IncrementalImageBuilder.java
+index 8820a8e..81022f9 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/IncrementalImageBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/IncrementalImageBuilder.java
+@@ -47,7 +47,7 @@ protected IncrementalImageBuilder(JavaBuilder javaBuilder, State buildState) {
+ 	super(javaBuilder, true, buildState);
+ 	this.nameEnvironment.isIncrementalBuild = true;
+ 	this.makeOutputFolderConsistent = JavaCore.ENABLED.equals(
+-		javaBuilder.javaProject.getOption(JavaCore.CORE_JAVA_BUILD_MAKE_OUTPUT_FOLDER_CONSISTENT, true));
++		javaBuilder.javaProject.getOption(JavaCore.CORE_JAVA_BUILD_RECREATE_MODIFIED_CLASS_FILES_IN_OUTPUT_FOLDER, true));
+ }
+ 
+ protected IncrementalImageBuilder(JavaBuilder javaBuilder) {

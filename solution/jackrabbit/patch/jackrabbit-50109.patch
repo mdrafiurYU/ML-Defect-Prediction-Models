@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/GetWeakReferencesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/GetWeakReferencesTest.java
+index c0c5def..04a0548 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/GetWeakReferencesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/GetWeakReferencesTest.java
+@@ -38,12 +38,7 @@ public class GetWeakReferencesTest extends AbstractJCRTest {
+     protected void setUp() throws Exception {
+         super.setUp();
+         target = testRootNode.addNode(nodeName1, testNodeType);
+-        if (!target.isNodeType(mixReferenceable)) {
+-            if (!target.canAddMixin(mixReferenceable)) {
+-                throw new NotExecutableException("cannot add mix:referenceable to node");
+-            }
+-            target.addMixin(mixReferenceable);
+-        }
++        ensureMixinType(target, mixReferenceable);
+         referring = testRootNode.addNode(nodeName2, testNodeType);
+         superuser.save();
+     }

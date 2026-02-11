@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index d580ada..4f8cbb5 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -2750,6 +2750,7 @@ xf86DisableUnusedFunctions(ScrnInfoPtr pScrn)
+ 	{
+ 	    crtc->funcs->dpms(crtc, DPMSModeOff);
+ 	    memset(&crtc->mode, 0, sizeof(crtc->mode));
++	    xf86RotateDestroy(crtc);
+ 	}
+     }
+     if (pScrn->pScreen)

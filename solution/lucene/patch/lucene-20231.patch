@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestMultiPassIndexSplitter.java b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestMultiPassIndexSplitter.java
+index 50b4d95..776d0c9 100644
+--- a/lucene/contrib/misc/src/test/org/apache/lucene/index/TestMultiPassIndexSplitter.java
++++ b/lucene/contrib/misc/src/test/org/apache/lucene/index/TestMultiPassIndexSplitter.java
+@@ -32,7 +32,7 @@ public class TestMultiPassIndexSplitter extends LuceneTestCase {
+   public void setUp() throws Exception {
+     super.setUp();
+     dir = newDirectory();
+-    IndexWriter w = new IndexWriter(dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
++    IndexWriter w = new IndexWriter(dir, newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).setMergePolicy(newLogMergePolicy()));
+     Document doc;
+     for (int i = 0; i < NUM_DOCS; i++) {
+       doc = new Document();

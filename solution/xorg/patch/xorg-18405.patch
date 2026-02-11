@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/dri/dristruct.h b/hw/xfree86/dri/dristruct.h
+index b47afba..6dc86d5 100644
+--- a/hw/xfree86/dri/dristruct.h
++++ b/hw/xfree86/dri/dristruct.h
+@@ -99,6 +99,7 @@ typedef struct _DRIScreenPrivRec
+     Bool		grabbedDRILock;
+     Bool		drmSIGIOHandlerInstalled;
+     Bool		wrapped;
++    Bool		windowsTouched;
+     int			lockRefCount;
+ } DRIScreenPrivRec, *DRIScreenPrivPtr;
+ 

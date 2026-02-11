@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglsync.c b/hw/xgl/xglsync.c
+index 52fb09d..8856352 100644
+--- a/hw/xgl/xglsync.c
++++ b/hw/xgl/xglsync.c
+@@ -305,6 +305,9 @@ xglPrepareTarget (DrawablePtr pDrawable)
+     case xglPixmapTargetOut:
+ 	XGL_INCREMENT_PIXMAP_SCORE (pPixmapPriv, 10);
+ 	
++	if (pPixmapPriv->lock)
++	    return FALSE;
++	
+ 	if (xglFindOffscreenArea (pDrawable->pScreen, pPixmap))
+ 	    return TRUE;
+ 	break;

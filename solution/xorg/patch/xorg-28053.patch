@@ -1,0 +1,14 @@
+diff --git a/include/dix.h b/include/dix.h
+index 95c69f0..f22f489 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -469,7 +469,8 @@ extern void AllowSome(
+     ClientPtr	/* client */,
+     TimeStamp /* time */,
+     DeviceIntPtr /* thisDev */,
+-    int /* newState */);
++    int /* newState */,
++    Bool /* core */);
+ 
+ extern void ReleaseActiveGrabs(
+     ClientPtr client);

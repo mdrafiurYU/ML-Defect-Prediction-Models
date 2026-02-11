@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/ddc/xf86DDC.h b/hw/xfree86/ddc/xf86DDC.h
+index fb10836..5def97a 100644
+--- a/hw/xfree86/ddc/xf86DDC.h
++++ b/hw/xfree86/ddc/xf86DDC.h
+@@ -47,6 +47,9 @@ extern xf86vdifPtr xf86InterpretVdif(
+     CARD8 *c
+ );
+ 
++extern void 
++xf86DDCMonitorSet(int scrnIndex, MonPtr Monitor, xf86MonPtr DDC);
++
+ extern Bool xf86SetDDCproperties(
+     ScrnInfoPtr pScreen,
+     xf86MonPtr DDC

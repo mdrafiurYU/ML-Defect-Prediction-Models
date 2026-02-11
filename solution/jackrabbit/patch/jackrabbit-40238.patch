@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/PreparedQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/PreparedQuery.java
+index 5c6630d..e641563 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/PreparedQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/PreparedQuery.java
+@@ -36,6 +36,7 @@ public interface PreparedQuery extends Query {
+      * @throws IllegalArgumentException if <code>varName</code> is not a valid variable in this query.
+      * @throws RepositoryException if an error occurs.
+      */
+-    public void bindValue(String varName, Value value)
+-            throws IllegalArgumentException, RepositoryException;
++    void bindValue(String varName, Value value)
++        throws IllegalArgumentException, RepositoryException;
++
+ }

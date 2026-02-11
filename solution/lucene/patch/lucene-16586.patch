@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java
+index 00658b0..8b5e498 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java
+@@ -111,6 +111,11 @@ public abstract class FixedIntBlockIndexOutput extends IntIndexOutput {
+       lastUpto = upto;
+       lastFP = fp;
+     }
++
++    @Override
++    public String toString() {
++      return "fp=" + fp + " upto=" + upto;
++    }
+   }
+ 
+   @Override

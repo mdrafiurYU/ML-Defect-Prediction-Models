@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/hyphenation/TernaryTree.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/hyphenation/TernaryTree.java
+index b3c3d36..b254362 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/hyphenation/TernaryTree.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/compound/hyphenation/TernaryTree.java
+@@ -258,7 +258,7 @@ public class TernaryTree implements Cloneable, Serializable {
+       }
+     }
+     if (a[start + i] != 0) {
+-      return (int) -a[start + i];
++      return -a[start + i];
+     }
+     return 0;

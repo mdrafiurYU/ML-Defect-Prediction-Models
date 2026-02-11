@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java
+index b5d1bb4..0ccd58a 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaElement.java
+@@ -672,10 +672,11 @@ public abstract class JavaElement extends PlatformObject implements IJavaElement
+ 		for (int i= 0; i < extraAttributes.length; i++) {
+ 			IClasspathAttribute attrib= extraAttributes[i];
+ 			if (IClasspathAttribute.JAVADOC_LOCATION_ATTRIBUTE_NAME.equals(attrib.getName())) {
++				final String value = attrib.getValue();
+ 				try {
+-					return new URL(attrib.getValue());
++					return new URL(value);
+ 				} catch (MalformedURLException e) {
+-					throw new JavaModelException(new JavaModelStatus(IJavaModelStatusConstants.CANNOT_RETRIEVE_ATTACHED_JAVADOC));
++					throw new JavaModelException(new JavaModelStatus(IJavaModelStatusConstants.CANNOT_RETRIEVE_ATTACHED_JAVADOC, value));
+ 				}
+ 			}
+ 		}

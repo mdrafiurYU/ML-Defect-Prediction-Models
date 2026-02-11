@@ -1,0 +1,13 @@
+diff --git a/dix/privates.c b/dix/privates.c
+index e04da41..47a0e1a 100644
+--- a/dix/privates.c
++++ b/dix/privates.c
+@@ -232,6 +232,8 @@ dixResetPrivates(void)
+     /* reset internal structures */
+     while (items) {
+ 	next = items->next;
++	DeleteCallbackList(&items->initfuncs);
++	DeleteCallbackList(&items->deletefuncs);
+ 	xfree(items);
+ 	items = next;
+     }

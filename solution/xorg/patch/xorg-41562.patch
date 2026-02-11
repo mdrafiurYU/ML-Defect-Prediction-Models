@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaPCache.c b/hw/xfree86/xaa/xaaPCache.c
+index d05aaf2..069d818 100644
+--- a/hw/xfree86/xaa/xaaPCache.c
++++ b/hw/xfree86/xaa/xaaPCache.c
+@@ -1657,7 +1657,7 @@ XAACachePlanarMonoStipple(ScrnInfoPtr pScrn, PixmapPtr pPix)
+    return pCache;
+ }
+ 
+-XAACachePlanarMonoStippleProc
++_X_EXPORT XAACachePlanarMonoStippleProc
+ XAAGetCachePlanarMonoStipple(void) { return XAACachePlanarMonoStipple; }
+ 
+ XAACacheInfoPtr

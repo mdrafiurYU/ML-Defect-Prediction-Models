@@ -1,0 +1,13 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index 315dd6c..ecf5bb2 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -361,6 +361,8 @@ RRCrtcDestroyResource (pointer value, XID pid)
+     }
+     if (crtc->gammaRed)
+ 	xfree (crtc->gammaRed);
++    if (crtc->mode)
++	RRModeDestroy (crtc->mode);
+     xfree (crtc);
+     return 1;
+ }

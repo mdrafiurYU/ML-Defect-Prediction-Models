@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86PM.c b/hw/xfree86/common/xf86PM.c
+index 278a514..7c8320d 100644
+--- a/hw/xfree86/common/xf86PM.c
++++ b/hw/xfree86/common/xf86PM.c
+@@ -116,7 +116,7 @@ resume(pmEvent event, Bool undo)
+ 	if (xf86Screens[i]->EnableDisableFBAccess)
+ 	    (*xf86Screens[i]->EnableDisableFBAccess) (i, TRUE);
+     }
+-    SaveScreens(serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
++    dixSaveScreens(serverClient, SCREEN_SAVER_FORCER, ScreenSaverReset);
+     pInfo = xf86InputDevs;
+     while (pInfo) {
+ 	EnableDevice(pInfo->dev);

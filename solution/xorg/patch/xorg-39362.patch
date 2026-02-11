@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/x86emu/x86emu/types.h b/hw/xfree86/x86emu/x86emu/types.h
+index c0c09c1..c18e11c 100644
+--- a/hw/xfree86/x86emu/x86emu/types.h
++++ b/hw/xfree86/x86emu/x86emu/types.h
+@@ -74,9 +74,8 @@
+     defined(__ia64__) || defined(ia64) || \
+     defined(__sparc64__) || \
+     defined(__s390x__) || \
+-    (defined(__hppa__) && defined(__LP64)) || \
+-    defined(__amd64__) || defined(amd64) || \
+-    (defined(__sgi) && (_MIPS_SZLONG == 64))
++    defined(__hppa__) && defined(__LP64) || \
++    defined(__amd64__) || defined(amd64) 
+ #define NUM32 int
+ #else
+ #define NUM32 long

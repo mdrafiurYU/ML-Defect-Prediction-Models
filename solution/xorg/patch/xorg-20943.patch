@@ -1,0 +1,22 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 7626c84..170efed 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -85,6 +85,7 @@ SOFTWARE.
+ #include "misc.h"
+ #include "extension.h"
+ #include "micmap.h"
++#include "globals.h"
+ 
+ #if defined(QNX4) /* sleaze for Watcom on QNX4 ... */
+ #undef GLXEXT
+@@ -125,9 +126,6 @@ extern Bool noBigReqExtension;
+ #ifdef COMPOSITE
+ extern Bool noCompositeExtension;
+ #endif
+-#ifdef DAMAGE
+-extern Bool noDamageExtension;
+-#endif
+ #ifdef DBE
+ extern Bool noDbeExtension;
+ #endif

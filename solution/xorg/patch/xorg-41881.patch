@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86cmap.c b/hw/xfree86/common/xf86cmap.c
+index e578447..3944d78 100644
+--- a/hw/xfree86/common/xf86cmap.c
++++ b/hw/xfree86/common/xf86cmap.c
+@@ -1098,7 +1098,7 @@ xf86GetGammaRamp(
+     return Success;
+ }
+ 
+-int
++_X_EXPORT int
+ xf86ChangeGamma(
+    ScreenPtr pScreen,
+    Gamma gamma

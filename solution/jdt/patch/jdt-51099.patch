@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java
+index 86b9324..14ec9c4 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/AptUtil.java
+@@ -14,8 +14,8 @@ package org.eclipse.jdt.apt.core.util;
+ import java.util.Collection;
+ import java.util.List;
+ 
+-import org.eclipse.core.resources.IProject;
+ import org.eclipse.jdt.apt.core.internal.AnnotationProcessorFactoryLoader;
++import org.eclipse.jdt.core.IJavaProject;
+ 
+ import com.sun.mirror.apt.AnnotationProcessorFactory;
+ 
+@@ -34,10 +34,10 @@ public final class AptUtil {
+ 	 */
+ 	public static AnnotationProcessorFactory getFactoryForAnnotation(
+ 			final String fullyQualifiedAnnotation,
+-			final IProject project) {
++			final IJavaProject jproj) {
+ 		
+ 		AnnotationProcessorFactoryLoader loader = AnnotationProcessorFactoryLoader.getLoader();
+-		List<AnnotationProcessorFactory> factories = loader.getFactoriesForProject( project );
++		List<AnnotationProcessorFactory> factories = loader.getFactoriesForProject( jproj );
+ 		
+ 		for (AnnotationProcessorFactory factory : factories) {
+ 			Collection<String> supportedAnnos = factory.supportedAnnotationTypes();

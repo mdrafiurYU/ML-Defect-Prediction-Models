@@ -1,0 +1,23 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java b/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
+index 53d2dea..d31fd21 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
++++ b/lucene/src/test/org/apache/lucene/search/TestTimeLimitingCollector.java
+@@ -24,6 +24,7 @@ import org.apache.lucene.analysis.MockAnalyzer;
+ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.Field;
+ import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.index.RandomIndexWriter;
+ import org.apache.lucene.queryParser.QueryParser;
+ import org.apache.lucene.search.TimeLimitingCollector.TimeExceededException;
+@@ -339,8 +340,8 @@ public class TestTimeLimitingCollector extends LuceneTestCase {
+     }
+     
+     @Override
+-    public void setNextReader(IndexReader reader, int base) {
+-      docBase = base;
++    public void setNextReader(AtomicReaderContext context) {
++      docBase = context.docBase;
+     }
+     
+     @Override

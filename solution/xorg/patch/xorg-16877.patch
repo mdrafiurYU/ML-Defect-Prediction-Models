@@ -1,0 +1,15 @@
+diff --git a/fb/fbbltone.c b/fb/fbbltone.c
+index ca45207..59ba393 100644
+--- a/fb/fbbltone.c
++++ b/fb/fbbltone.c
+@@ -23,6 +23,10 @@
+  */
+ /* $XFree86: xc/programs/Xserver/fb/fbbltone.c,v 1.11 2001/09/07 15:15:31 keithp Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ 
+ /*

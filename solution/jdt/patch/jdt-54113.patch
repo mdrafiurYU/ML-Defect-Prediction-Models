@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+index 8f9733f..a4f2891 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AptCompilationParticipant.java
+@@ -117,14 +117,15 @@ public class AptCompilationParticipant implements ICompilationParticipant
+ 			return EMPTY_PRE_BUILD_COMPILATION_RESULT;
+ 		}
+ 
+-	
+-		Map<AnnotationProcessorFactory, FactoryPath.Attributes> factories = _factoryLoader.getFactoriesAndAttributesForProject( javaProject );	
+-	
++		// If we're in batch mode, we need to reset the classloaders
++		// for the batch processors before we begin
+ 		boolean isFullBuild = pbce.isFullBuild();
+ 		if (isFullBuild) {
+ 			AnnotationProcessorFactoryLoader.getLoader().resetBatchProcessors(pbce.getJavaProject());
+ 		}
+ 		
++		Map<AnnotationProcessorFactory, FactoryPath.Attributes> factories = _factoryLoader.getFactoriesAndAttributesForProject( javaProject );	
++		
+ 		APTResult result = APTDispatch.runAPTDuringBuild(factories, buildFiles, javaProject, isFullBuild);
+ 		Set<IFile> newFiles = result.getNewFiles();			
+ 		Set<IFile> deletedFiles = new HashSet<IFile>();

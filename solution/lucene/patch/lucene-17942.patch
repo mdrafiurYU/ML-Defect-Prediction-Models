@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/IntField.java b/solr/src/java/org/apache/solr/schema/IntField.java
+index 73ff10a..7b681e5 100644
+--- a/solr/src/java/org/apache/solr/schema/IntField.java
++++ b/solr/src/java/org/apache/solr/schema/IntField.java
+@@ -45,6 +45,7 @@ public class IntField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser qparser) {
++    field.checkFieldCacheSource(qparser);
+     return new IntFieldSource(new IntValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }

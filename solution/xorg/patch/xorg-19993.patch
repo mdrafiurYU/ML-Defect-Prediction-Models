@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/vbe/vbeModes.h b/hw/xfree86/vbe/vbeModes.h
+index 2a8d1b3..a716f26 100644
+--- a/hw/xfree86/vbe/vbeModes.h
++++ b/hw/xfree86/vbe/vbeModes.h
+@@ -29,6 +29,10 @@
+  * $XFree86: xc/programs/Xserver/hw/xfree86/os-support/vbe/vbeModes.h,v 1.1 2002/08/06 13:46:28 dawes Exp $
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _VBE_MODES_H
+ 
+ /*

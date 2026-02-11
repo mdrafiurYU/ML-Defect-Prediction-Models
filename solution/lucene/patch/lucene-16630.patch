@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/SegmentReader.java b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+index e8c5160..37aee48 100644
+--- a/lucene/src/java/org/apache/lucene/index/SegmentReader.java
++++ b/lucene/src/java/org/apache/lucene/index/SegmentReader.java
+@@ -226,6 +226,7 @@ public class SegmentReader extends IndexReader implements Cloneable {
+           assert storeDir != null;
+         }
+ 
++        // nocommit: this can be simplified to always be si.getDocStoreSegment()
+         final String storesSegment;
+         if (si.getDocStoreOffset() != -1) {
+           storesSegment = si.getDocStoreSegment();

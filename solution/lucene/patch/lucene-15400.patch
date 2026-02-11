@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+index d7dcff8..a3183f6 100644
+--- a/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
++++ b/solr/src/java/org/apache/solr/search/SolrIndexSearcher.java
+@@ -1767,8 +1767,8 @@ public class SolrIndexSearcher extends IndexSearcher implements SolrInfoMBean {
+     return null;
+   }
+ 
+-  public NamedList getStatistics() {
+-    NamedList lst = new SimpleOrderedMap();
++  public NamedList<Object> getStatistics() {
++    NamedList<Object> lst = new SimpleOrderedMap<Object>();
+     lst.add("searcherName", name);
+     lst.add("caching", cachingEnabled);
+     lst.add("numDocs", reader.numDocs());

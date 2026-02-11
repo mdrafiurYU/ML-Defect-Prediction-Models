@@ -1,0 +1,143 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index 89c02f8..3074a3f 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -445,6 +445,12 @@ RootlessInitializeFrame(WindowPtr pWin, RootlessWindowRec *winRec)
+ }
+ 
+ 
++Bool
++RootlessColormapCallback (void *data, int first_color, int n_colors, uint32_t *colors)
++{
++  return RootlessResolveColormap (data, first_color, n_colors, colors);
++}
++
+ /*
+  * RootlessEnsureFrame
+  *  Make sure the given window is framed. If the window doesn't have a
+@@ -503,6 +509,9 @@ RootlessEnsureFrame(WindowPtr pWin)
+         return NULL;
+     }
+ 
++    if (pWin->drawable.depth == 8)
++      RootlessFlushWindowColormap(pWin);
++
+ #ifdef SHAPE
+     if (pShape != NULL)
+         REGION_UNINIT(pScreen, &shape);
+@@ -1455,6 +1464,115 @@ out:
+     }
+ }
+ 
++
++void
++RootlessFlushWindowColormap (WindowPtr pWin)
++{
++  RootlessWindowRec *winRec = WINREC (pWin);
++  xp_window_changes wc;
++
++  if (winRec == NULL)
++    return;
++
++  RootlessStopDrawing (pWin, FALSE);
++
++  /* This is how we tell xp that the colormap may have changed. */
++
++  wc.colormap = RootlessColormapCallback;
++  wc.colormap_data = pWin->drawable.pScreen;
++
++  configure_window (winRec->wid, XP_COLORMAP, &wc);
++}
++
++/*
++ * SetPixmapOfAncestors
++ *  Set the Pixmaps on all ParentRelative windows up the ancestor chain.
++ */
++static void
++SetPixmapOfAncestors(WindowPtr pWin)
++{
++    ScreenPtr pScreen = pWin->drawable.pScreen;
++    WindowPtr topWin = TopLevelParent(pWin);
++    RootlessWindowRec *topWinRec = WINREC(topWin);
++
++    while (pWin->backgroundState == ParentRelative) {
++        if (pWin == topWin) {
++            // disallow ParentRelative background state on top level
++            XID pixel = 0;
++            ChangeWindowAttributes(pWin, CWBackPixel, &pixel, serverClient);
++            RL_DEBUG_MSG("Cleared ParentRelative on 0x%x.\n", pWin);
++            break;
++        }
++
++        pWin = pWin->parent;
++        pScreen->SetWindowPixmap(pWin, topWinRec->pixmap);
++    }
++}
++
++
++/*
++ * RootlessPaintWindowBackground
++ */
++void
++RootlessPaintWindowBackground(WindowPtr pWin, RegionPtr pRegion, int what)
++{
++    ScreenPtr pScreen = pWin->drawable.pScreen;
++ 
++    if (IsRoot(pWin))
++        return;
++
++    RL_DEBUG_MSG("paintwindowbackground start (win 0x%x, framed %i) ",
++                 pWin, IsFramedWindow(pWin));
++
++    if (IsFramedWindow(pWin)) {
++        RootlessStartDrawing(pWin);
++        RootlessDamageRegion(pWin, pRegion);
++
++        // For ParentRelative windows, we have to make sure the window
++        // pixmap is set correctly all the way up the ancestor chain.
++        if (pWin->backgroundState == ParentRelative) {
++            SetPixmapOfAncestors(pWin);
++        }
++    }
++
++    SCREEN_UNWRAP(pScreen, PaintWindowBackground);
++    pScreen->PaintWindowBackground(pWin, pRegion, what);
++    SCREEN_WRAP(pScreen, PaintWindowBackground);
++
++    RL_DEBUG_MSG("paintwindowbackground end\n");
++}
++
++
++/*
++ * RootlessPaintWindowBorder
++ */
++void
++RootlessPaintWindowBorder(WindowPtr pWin, RegionPtr pRegion, int what)
++{
++    RL_DEBUG_MSG("paintwindowborder start (win 0x%x) ", pWin);
++
++    if (IsFramedWindow(pWin)) {
++        RootlessStartDrawing(pWin);
++        RootlessDamageRegion(pWin, pRegion);
++
++        // For ParentRelative windows with tiled borders, we have to make
++        // sure the window pixmap is set correctly all the way up the
++        // ancestor chain.
++        if (!pWin->borderIsPixel &&
++            pWin->backgroundState == ParentRelative)
++        {
++            SetPixmapOfAncestors(pWin);
++        }
++    }
++
++    SCREEN_UNWRAP(pWin->drawable.pScreen, PaintWindowBorder);
++    pWin->drawable.pScreen->PaintWindowBorder(pWin, pRegion, what);
++    SCREEN_WRAP(pWin->drawable.pScreen, PaintWindowBorder);
++
++    RL_DEBUG_MSG("paintwindowborder end\n");
++}
++
++
+ /*
+  * RootlessChangeBorderWidth
+  *  FIXME: untested!

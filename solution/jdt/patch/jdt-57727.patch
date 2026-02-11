@@ -1,0 +1,54 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaElementDeltaTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaElementDeltaTests.java
+index 2cd4f22..469b813 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaElementDeltaTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaElementDeltaTests.java
+@@ -952,7 +952,7 @@ public void testDeleteProjectSetCPAnotherProject() throws CoreException {
+ 		deleteProject("P2");
+ 	}
+ }
+-public void testDestroySharedWorkingCopy() throws CoreException {
++public void testDiscardWorkingCopy1() throws CoreException { // renamed from testDestroyWorkingCopy
+ 	ICompilationUnit copy = null;
+ 	try {
+ 		createJavaProject("P", new String[] {""}, "");
+@@ -960,7 +960,7 @@ public void testDestroySharedWorkingCopy() throws CoreException {
+ 			"public class X {\n" +
+ 			"}");
+ 		ICompilationUnit unit = getCompilationUnit("P", "", "", "X.java");
+-		copy = unit.getWorkingCopy(new WorkingCopyOwner() {}, null, null);
++		copy = unit.getWorkingCopy(null);
+ 		startDeltas();
+ 		copy.discardWorkingCopy();
+ 		assertDeltas(
+@@ -972,10 +972,12 @@ public void testDestroySharedWorkingCopy() throws CoreException {
+ 		);
+ 	} finally {
+ 		stopDeltas();
++		if (copy != null)
++			copy.discardWorkingCopy();
+ 		deleteProject("P");
+ 	}
+ }
+-public void testDestroyWorkingCopy() throws CoreException {
++public void testDiscardWorkingCopy2() throws CoreException { // renamed from testDestroySharedWorkingCopy
+ 	ICompilationUnit copy = null;
+ 	try {
+ 		createJavaProject("P", new String[] {""}, "");
+@@ -983,7 +985,7 @@ public void testDestroyWorkingCopy() throws CoreException {
+ 			"public class X {\n" +
+ 			"}");
+ 		ICompilationUnit unit = getCompilationUnit("P", "", "", "X.java");
+-		copy = unit.getWorkingCopy(null);
++		copy = unit.getWorkingCopy(new WorkingCopyOwner() {}, null, null);
+ 		startDeltas();
+ 		copy.discardWorkingCopy();
+ 		assertDeltas(
+@@ -995,6 +997,8 @@ public void testDestroyWorkingCopy() throws CoreException {
+ 		);
+ 	} finally {
+ 		stopDeltas();
++		if (copy != null)
++			copy.discardWorkingCopy();
+ 		deleteProject("P");
+ 	}
+ }

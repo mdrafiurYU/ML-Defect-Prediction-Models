@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/PluginFactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/PluginFactoryContainer.java
+index 40da348..1a290e6 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/PluginFactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/PluginFactoryContainer.java
+@@ -33,6 +33,10 @@ public class PluginFactoryContainer extends FactoryContainer
+ 	public String getId() {
+ 		return id;
+ 	}
++	
++	public String toString() {
++		return getId();
++	}
+ 
+ 	@Override
+ 	public FactoryType getType() {

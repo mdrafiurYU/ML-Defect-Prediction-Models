@@ -1,0 +1,20 @@
+diff --git a/solr/src/test/org/apache/solr/handler/TestCSVLoader.java b/solr/src/test/org/apache/solr/handler/TestCSVLoader.java
+index 1339a85..37a1f9f 100755
+--- a/solr/src/test/org/apache/solr/handler/TestCSVLoader.java
++++ b/solr/src/test/org/apache/solr/handler/TestCSVLoader.java
+@@ -41,6 +41,7 @@ public class TestCSVLoader extends SolrTestCaseJ4 {
+   String def_charset = "UTF-8";
+   File file = new File(filename);
+ 
++  @Override
+   @Before
+   public void setUp() throws Exception {
+     // if you override setUp or tearDown, you better call
+@@ -49,6 +50,7 @@ public class TestCSVLoader extends SolrTestCaseJ4 {
+     cleanup();
+   }
+   
++  @Override
+   @After
+   public void tearDown() throws Exception {
+     // if you override setUp or tearDown, you better call

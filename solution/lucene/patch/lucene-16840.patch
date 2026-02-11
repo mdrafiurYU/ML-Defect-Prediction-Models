@@ -1,0 +1,19 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java b/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java
+index 706eca7..07b07f1 100644
+--- a/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java
++++ b/lucene/src/test/org/apache/lucene/search/function/TestOrdValues.java
+@@ -253,5 +253,14 @@ public class TestOrdValues extends FunctionTestSetup {
+   private String testName() {
+     return getClass().getName() + "." + getName();
+   }
++  
++  // LUCENE-1250
++  public void testEqualsNull() throws Exception {
++    OrdFieldSource ofs = new OrdFieldSource("f");
++    assertFalse(ofs.equals(null));
++    
++    ReverseOrdFieldSource rofs = new ReverseOrdFieldSource("f");
++    assertFalse(rofs.equals(null));
++  }
+ 
+ }

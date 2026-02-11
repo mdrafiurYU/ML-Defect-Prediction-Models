@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestDocBoost.java b/lucene/src/test/org/apache/lucene/search/TestDocBoost.java
+index f970477..8521724 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestDocBoost.java
++++ b/lucene/src/test/org/apache/lucene/search/TestDocBoost.java
+@@ -65,7 +65,7 @@ public class TestDocBoost extends LuceneTestCase {
+ 
+     final float[] scores = new float[4];
+ 
+-    new IndexSearcher(reader).search
++    newSearcher(reader).search
+       (new TermQuery(new Term("field", "word")),
+        new Collector() {
+          private int base = 0;

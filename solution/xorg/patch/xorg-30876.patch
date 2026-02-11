@@ -1,0 +1,12 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 0db4d2c..7a32578 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -229,6 +229,7 @@ miPointerUndisplayCursor(pDev, pScreen)
+     ScreenPtr 	 pScreen;
+ {
+     SetupScreen(pScreen);
++    if (pDev->isMaster && pDev->spriteInfo->spriteOwner)
+     (*pScreenPriv->spriteFuncs->UndisplayCursor)(pDev, pScreen);
+ }
+ 

@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/util/HttpMultipartPost.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/util/HttpMultipartPost.java
+index ab52dcf..0c6bcbb 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/util/HttpMultipartPost.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/util/HttpMultipartPost.java
+@@ -75,7 +75,7 @@ class HttpMultipartPost {
+     private void extractMultipart(HttpServletRequest request, File tmpDir)
+             throws IOException {
+         if (!ServletFileUpload.isMultipartContent(request)) {
+-            log.warn("Request does not contain multipart content -> ignoring.");
++            log.debug("Request does not contain multipart content -> ignoring.");
+             return;
+         }
+ 
+@@ -295,4 +295,4 @@ class HttpMultipartPost {
+         }
+         return values;
+     }
+-}
+\ No newline at end of file
++}

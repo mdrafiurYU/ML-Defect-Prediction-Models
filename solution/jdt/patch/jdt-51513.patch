@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java
+index 81e5a85..ade23b6 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ASTNode.java
+@@ -267,7 +267,7 @@ public abstract class ASTNode implements BaseTypes, CompilerModifiers, TypeConst
+ 	
+ 		if (!isStrictlyAssigned && (field.isPrivate() || (field.declaringClass != null && field.declaringClass.isLocalType())) && !scope.isDefinedInField(field)) {
+ 			// ignore cases where field is used from within inside itself 
+-			field.modifiers |= AccLocallyUsed;
++			field.original().modifiers |= AccLocallyUsed;
+ 		}
+ 	
+ 		if (!field.isViewedAsDeprecated()) return false;

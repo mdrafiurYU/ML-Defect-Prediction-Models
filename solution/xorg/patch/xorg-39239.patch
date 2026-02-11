@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.c b/hw/xfree86/dixmods/extmod/modinit.c
+index 2f81319..a18118a 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.c
++++ b/hw/xfree86/dixmods/extmod/modinit.c
+@@ -137,15 +137,6 @@ static ExtensionModule extensionModules[] = {
+ 	NULL
+     },
+ #endif
+-#ifdef FONTCACHE
+-    {
+-	FontCacheExtensionInit,
+-	FONTCACHENAME,
+-	&noFontCacheExtension,
+-	NULL,
+-	NULL
+-    },
+-#endif
+ #ifdef XV
+     {
+ 	XvExtensionInit,

@@ -1,0 +1,22 @@
+diff --git a/hw/xwin/winkeybd.c b/hw/xwin/winkeybd.c
+index 5e9c4e3..611ea5d 100644
+--- a/hw/xwin/winkeybd.c
++++ b/hw/xwin/winkeybd.c
+@@ -311,7 +311,7 @@ winInitializeModeKeyStates (void)
+  */
+ 
+ void
+-winRestoreModeKeyStates ()
++winRestoreModeKeyStates (void)
+ {
+   DWORD			dwKeyState;
+   BOOL			processEvents = TRUE;
+@@ -499,7 +499,7 @@ winIsFakeCtrl_L (UINT message, WPARAM wParam, LPARAM lParam)
+  */
+ 
+ void
+-winKeybdReleaseKeys ()
++winKeybdReleaseKeys (void)
+ {
+   int				i;
+ 

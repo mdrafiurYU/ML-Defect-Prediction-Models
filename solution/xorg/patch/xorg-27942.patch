@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index 345332b..b04f7f3 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -545,7 +545,7 @@ void
+ xf86SetScrnInfoModes (ScrnInfoPtr pScrn);
+ 
+ Bool
+-xf86InitialConfiguration (ScrnInfoPtr pScrn);
++xf86InitialConfiguration (ScrnInfoPtr pScrn, Bool canGrow);
+ 
+ void
+ xf86DPMSSet(ScrnInfoPtr pScrn, int PowerManagementMode, int flags);

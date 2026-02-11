@@ -1,0 +1,35 @@
+diff --git a/miext/cw/cw.c b/miext/cw/cw.c
+index 2b8010f..4ebf8ab 100644
+--- a/miext/cw/cw.c
++++ b/miext/cw/cw.c
+@@ -48,6 +48,7 @@ int cwWindowIndex;
+ #ifdef RENDER
+ int cwPictureIndex;
+ #endif
++static Bool cwDisabled[MAXSCREENS];
+ static unsigned long cwGeneration = 0;
+ extern GCOps cwGCOps;
+ 
+@@ -617,6 +618,9 @@ miInitializeCompositeWrapper(ScreenPtr pScreen)
+ {
+     cwScreenPtr pScreenPriv;
+ 
++    if (cwDisabled[pScreen->myNum])
++	return;
++
+     if (cwGeneration != serverGeneration)
+     {
+ 	cwScreenIndex = AllocateScreenPrivateIndex();
+@@ -660,6 +664,12 @@ miInitializeCompositeWrapper(ScreenPtr pScreen)
+ #endif
+ }
+ 
++void
++miDisableCompositeWrapper(ScreenPtr pScreen)
++{
++    cwDisabled[pScreen->myNum] = TRUE;
++}
++
+ static Bool
+ cwCloseScreen (int i, ScreenPtr pScreen)
+ {

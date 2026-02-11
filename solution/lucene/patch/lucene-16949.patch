@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/JustCompileSearchSpans.java b/lucene/src/test/org/apache/lucene/search/spans/JustCompileSearchSpans.java
+index c687faf..ac0f45d 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/JustCompileSearchSpans.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/JustCompileSearchSpans.java
+@@ -20,7 +20,7 @@ package org.apache.lucene.search.spans;
+ import java.io.IOException;
+ import java.util.Collection;
+ 
+-import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.search.Weight;
+ import org.apache.lucene.search.Similarity;
+ 
+@@ -82,7 +82,7 @@ final class JustCompileSearchSpans {
+     }
+ 
+     @Override
+-    public Spans getSpans(IndexReader reader) throws IOException {
++    public Spans getSpans(AtomicReaderContext context) throws IOException {
+       throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+     }

@@ -1,0 +1,146 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 6ce9319..905c56a 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -1014,8 +1014,8 @@ xf86VTSwitch()
+ 
+ /* Input handler registration */
+ 
+-_X_EXPORT pointer
+-xf86AddInputHandler(int fd, InputHandlerProc proc, pointer data)
++static pointer
++addInputHandler(int fd, InputHandlerProc proc, pointer data)
+ {
+     IHPtr ih;
+ 
+@@ -1034,15 +1034,50 @@ xf86AddInputHandler(int fd, InputHandlerProc proc, pointer data)
+     ih->next = InputHandlers;
+     InputHandlers = ih;
+ 
++    return ih;
++}
++
++_X_EXPORT pointer
++xf86AddInputHandler(int fd, InputHandlerProc proc, pointer data)
++{   
++    IHPtr ih = addInputHandler(fd, proc, data);
++
++    if (ih)
+     AddEnabledDevice(fd);
++    return ih;
++}
++
++_X_EXPORT pointer
++xf86AddGeneralHandler(int fd, InputHandlerProc proc, pointer data)
++{   
++    IHPtr ih = addInputHandler(fd, proc, data);
+ 
++    if (ih)
++        AddGeneralSocket(fd);
+     return ih;
+ }
+ 
++static void
++removeInputHandler(IHPtr ih)
++{
++    IHPtr p;
++
++    if (ih == InputHandlers)
++	InputHandlers = ih->next;
++    else {
++	p = InputHandlers;
++	while (p && p->next != ih)
++	    p = p->next;
++	if (ih)
++	    p->next = ih->next;
++    }
++    xfree(ih);
++}
++
+ _X_EXPORT int
+ xf86RemoveInputHandler(pointer handler)
+ {
+-    IHPtr ih, p;
++    IHPtr ih;
+     int fd;
+     
+     if (!handler)
+@@ -1053,17 +1088,27 @@ xf86RemoveInputHandler(pointer handler)
+     
+     if (ih->fd >= 0)
+ 	RemoveEnabledDevice(ih->fd);
++    removeInputHandler(ih);
+ 
+-    if (ih == InputHandlers)
+-	InputHandlers = ih->next;
+-    else {
+-	p = InputHandlers;
+-	while (p && p->next != ih)
+-	    p = p->next;
+-	if (ih)
+-	    p->next = ih->next;
++    return fd;
+     }
+-    xfree(ih);
++
++_X_EXPORT int
++xf86RemoveGeneralHandler(pointer handler)
++{
++    IHPtr ih;
++    int fd;
++    
++    if (!handler)
++	return -1;
++
++    ih = handler;
++    fd = ih->fd;
++    
++    if (ih->fd >= 0)
++	RemoveGeneralSocket(ih->fd);
++    removeInputHandler(ih);
++
+     return fd;
+ }
+ 
+@@ -1082,6 +1127,20 @@ xf86DisableInputHandler(pointer handler)
+ }
+ 
+ _X_EXPORT void
++xf86DisableGeneralHandler(pointer handler)
++{
++    IHPtr ih;
++
++    if (!handler)
++	return;
++
++    ih = handler;
++    ih->enabled = FALSE;
++    if (ih->fd >= 0)
++	RemoveGeneralSocket(ih->fd);
++}
++
++_X_EXPORT void
+ xf86EnableInputHandler(pointer handler)
+ {
+     IHPtr ih;
+@@ -1095,6 +1154,20 @@ xf86EnableInputHandler(pointer handler)
+ 	AddEnabledDevice(ih->fd);
+ }
+ 
++_X_EXPORT void
++xf86EnableGeneralHandler(pointer handler)
++{
++    IHPtr ih;
++
++    if (!handler)
++	return;
++
++    ih = handler;
++    ih->enabled = TRUE;
++    if (ih->fd >= 0)
++	AddGeneralSocket(ih->fd);
++}
++
+ /*
+  * As used currently by the DRI, the return value is ignored.
+  */

@@ -1,0 +1,15 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index 324d9b2..84d19ac 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -1036,6 +1036,10 @@ create_bits_picture (PicturePtr pict)
+      */
+     pixman_image_set_clip_region (image, pict->pCompositeClip);
+     
++    /* Indexed table */
++    if (pict->pFormat->index.devPrivate)
++	pixman_image_set_indexed (image, pict->pFormat->index.devPrivate);
++    
+     fbFinishAccess (pict->pDrawable);
+ 
+     return image;

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java
+index 6ae5b4e..80bba9a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java
+@@ -451,7 +451,7 @@ public class DatabaseJournal extends AbstractJournal {
+         } catch (SQLException e) {
+             close(true);
+ 
+-            String msg = "Unable to return record iterater.";
++            String msg = "Unable to return record iterator.";
+             throw new JournalException(msg, e);
+         }
+     }

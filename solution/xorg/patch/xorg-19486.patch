@@ -1,0 +1,12 @@
+diff --git a/render/picture.c b/render/picture.c
+index 629f20b..299bded 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -979,6 +979,7 @@ static PicturePtr createSourcePicture(void)
+     pPicture->pDrawable = 0;
+     pPicture->pFormat = 0;
+     pPicture->pNext = 0;
++    pPicture->devPrivates = 0;
+ 
+     SetPictureToDefaults(pPicture);
+     return pPicture;

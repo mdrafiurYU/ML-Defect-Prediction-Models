@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java
+index 49f72a5..b700416 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/HierarchyManagerImpl.java
+@@ -83,6 +83,13 @@ public class HierarchyManagerImpl implements HierarchyManager {
+     }
+ 
+     /**
++     * @see HierarchyManager#lookup(Path)
++     */
++    public HierarchyEntry lookup(Path workspacePath) {
++        return rootEntry.lookupDeepEntry(workspacePath);
++    }
++
++    /**
+      * @see HierarchyManager#getHierarchyEntry(ItemId)
+      */
+     public HierarchyEntry getHierarchyEntry(ItemId itemId) throws ItemNotFoundException, RepositoryException {

@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FileGenerationTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FileGenerationTests.java
+index 85eab2c..6982d65 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FileGenerationTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FileGenerationTests.java
+@@ -94,6 +94,7 @@ public class FileGenerationTests extends APTTestBase {
+ 			"}";
+ 
+ 		AptConfig.setGenSrcDir(jproj, "__foo_src");
++		
+ 		env.addClass(srcRoot, "test", "Test", code);
+ 
+ 		fullBuild( project.getFullPath() );

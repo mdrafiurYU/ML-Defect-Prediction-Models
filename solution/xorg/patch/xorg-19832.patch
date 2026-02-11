@@ -1,0 +1,12 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index d757463..9cbb518 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -227,6 +227,7 @@ __glXDRIcontextDestroy(__GLXcontext *baseContext)
+     context->driContext.destroyContext(NULL,
+ 				       context->base.pScreen->myNum,
+ 				       context->driContext.private);
++    __glXContextDestroy(context);
+     __glXFree(context);
+ }
+ 

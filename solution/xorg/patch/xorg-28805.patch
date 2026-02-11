@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index a080535..4794d6f 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -424,7 +424,6 @@ InitCoreDevices()
+         if (!AllocateDevicePrivate(dev, CoreDevicePrivatesIndex))
+             FatalError("Couldn't allocate pointer devPrivates\n");
+         dev->devPrivates[CoreDevicePrivatesIndex].ptr = NULL;
+-        InitializeSprite(dev, NullWindow);
+         (void)ActivateDevice(dev);
+ 
+         /* Enable device, and then remove it from the device list. Virtual

@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/LockOperation.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/LockOperation.java
+index fae8a4f..1a3b042 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/LockOperation.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/LockOperation.java
+@@ -58,7 +58,7 @@ class LockOperation extends AbstractClusterOperation {
+         this.nodeId = nodeId;
+         this.deep = deep;
+         this.owner = owner;
+-        isLock = false;
++        isLock = true;
+     }
+ 
+     /**
+@@ -75,7 +75,7 @@ class LockOperation extends AbstractClusterOperation {
+         super(clusterNode, workspace, record);
+ 
+         this.nodeId = nodeId;
+-        this.isLock = false;
++        isLock = false;
+     }
+ 
+     /**

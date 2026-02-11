@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
+index c8a2d55..0d79507 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/xml/SessionImporter.java
+@@ -215,7 +215,7 @@ public class SessionImporter implements Importer, SessionListener {
+                    // assert that the entry is available
+                    conflicting.getItemState();
+ 
+-                   nodeState = resolveUUIDConflict(parent, (NodeEntry) conflicting, nodeInfo);
++                   nodeState = resolveUUIDConflict(parent, conflicting, nodeInfo);
+                } catch (ItemNotFoundException e) {
+                    // no conflict: create new with given uuid
+                    nodeState = importNode(nodeInfo, parent);

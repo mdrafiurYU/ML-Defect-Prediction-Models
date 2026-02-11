@@ -1,0 +1,32 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java
+index 3fb9adc..1b6829d 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexInput.java
+@@ -24,6 +24,7 @@ package org.apache.lucene.index.codecs.intblock;
+ import java.io.IOException;
+ 
+ import org.apache.lucene.index.codecs.sep.IntIndexInput;
++import org.apache.lucene.store.DataInput;
+ import org.apache.lucene.store.IndexInput;
+ import org.apache.lucene.util.IntsRef;
+ 
+@@ -149,7 +150,7 @@ public abstract class FixedIntBlockIndexInput extends IntIndexInput {
+     private int upto;
+ 
+     @Override
+-    public void read(final IndexInput indexIn, final boolean absolute) throws IOException {
++    public void read(final DataInput indexIn, final boolean absolute) throws IOException {
+       if (absolute) {
+         fp = indexIn.readVLong();
+         upto = indexIn.readVInt();
+@@ -205,5 +206,10 @@ public abstract class FixedIntBlockIndexInput extends IntIndexInput {
+       other.upto = upto;
+       return other;
+     }
++    
++    @Override
++    public String toString() {
++      return "fp=" + fp + " upto=" + upto;
++    }
+   }
+ }

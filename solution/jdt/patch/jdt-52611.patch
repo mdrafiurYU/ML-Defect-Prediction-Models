@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+index c9dea82..f4e41fa5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/InstanceOfExpression.java
+@@ -81,7 +81,7 @@ public class InstanceOfExpression extends OperatorExpression {
+ 		if (expressionType == null || checkedType == null)
+ 			return null;
+ 
+-		if (checkedType.isTypeVariable() || checkedType.isBoundParameterizedType() || checkedType.isGenericType()) {
++		if (!checkedType.isReifiable()) {
+ 			scope.problemReporter().illegalInstanceOfGenericType(checkedType, this);
+ 		} else {
+ 			boolean isLegal = checkCastTypesCompatibility(scope, checkedType, expressionType, null);

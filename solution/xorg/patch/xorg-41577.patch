@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaWrapper.c b/hw/xfree86/xaa/xaaWrapper.c
+index 8841894..e8f36ff 100644
+--- a/hw/xfree86/xaa/xaaWrapper.c
++++ b/hw/xfree86/xaa/xaaWrapper.c
+@@ -265,7 +265,7 @@ xaaWrapperListInstalledColormaps(ScreenPtr pScreen, Colormap *pCmapIds)
+     return n;
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xaaSetupWrapper(ScreenPtr pScreen, XAAInfoRecPtr infoPtr, int depth, SyncFunc *func)
+ {
+     Bool ret;

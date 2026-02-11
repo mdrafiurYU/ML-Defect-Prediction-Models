@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86KbdLnx.c b/hw/xfree86/common/xf86KbdLnx.c
+index f6e9200..81e9122 100644
+--- a/hw/xfree86/common/xf86KbdLnx.c
++++ b/hw/xfree86/common/xf86KbdLnx.c
+@@ -57,6 +57,10 @@
+ 
+ /* $XConsortium: xf86KbdLnx.c /main/7 1996/10/19 17:59:00 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xmd.h>
+ #include "input.h"

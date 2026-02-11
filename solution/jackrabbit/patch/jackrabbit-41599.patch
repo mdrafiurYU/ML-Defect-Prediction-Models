@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java
+index 2d7144c..0ecee2f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/mem/InMemPersistenceManager.java
+@@ -116,7 +116,7 @@ public class InMemPersistenceManager extends AbstractPersistenceManager {
+     }
+ 
+     public void setInitialCapacity(String initialCapacity) {
+-        this.initialCapacity = Integer.valueOf(initialCapacity).intValue();
++        this.initialCapacity = Integer.parseInt(initialCapacity);
+     }
+ 
+     public String getInitialCapacity() {
+@@ -128,7 +128,7 @@ public class InMemPersistenceManager extends AbstractPersistenceManager {
+     }
+ 
+     public void setLoadFactor(String loadFactor) {
+-        this.loadFactor = Float.valueOf(loadFactor).floatValue();
++        this.loadFactor = Float.parseFloat(loadFactor);
+     }
+ 
+     public String getLoadFactor() {

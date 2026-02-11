@@ -1,0 +1,19 @@
+diff --git a/os/xprintf.c b/os/xprintf.c
+index 6fa530b..ee5d7da 100644
+--- a/os/xprintf.c
++++ b/os/xprintf.c
+@@ -31,6 +31,14 @@
+ #include <stdarg.h>
+ #include <stdio.h>
+     
++#ifndef va_copy
++# ifdef __va_copy
++#  define va_copy __va_copy
++# else
++#  error "no working va_copy was found"
++# endif
++#endif
++    
+ char *
+ Xvprintf(const char *format, va_list va)
+ {

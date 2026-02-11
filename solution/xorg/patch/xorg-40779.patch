@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwin.c b/hw/xquartz/darwin.c
+index 0129d5e..9e4da61 100644
+--- a/hw/xquartz/darwin.c
++++ b/hw/xquartz/darwin.c
+@@ -233,7 +233,7 @@ static Bool DarwinAddScreen(int index, ScreenPtr pScreen, int argc, char **argv)
+     if (monitorResolution)
+         dpi = monitorResolution;
+     else
+-        dpi = 75;
++        dpi = 96;
+ 
+     // initialize fb
+     if (! fbScreenInit(pScreen,

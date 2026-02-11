@@ -1,0 +1,13 @@
+diff --git a/randr/rrdispatch.c b/randr/rrdispatch.c
+index 5a2ea71..0925875 100644
+--- a/randr/rrdispatch.c
++++ b/randr/rrdispatch.c
+@@ -76,7 +76,7 @@ ProcRRSelectInput (ClientPtr client)
+     int		rc;
+ 
+     REQUEST_SIZE_MATCH(xRRSelectInputReq);
+-    rc = dixLookupWindow(&pWin, stuff->window, client, DixWriteAccess);
++    rc = dixLookupWindow(&pWin, stuff->window, client, DixReceiveAccess);
+     if (rc != Success)
+ 	return rc;
+     pHead = (RREventPtr *)SecurityLookupIDByType(client,

@@ -1,0 +1,14 @@
+diff --git a/afb/afbfillrct.c b/afb/afbfillrct.c
+index 06fb373..b4936f0 100644
+--- a/afb/afbfillrct.c
++++ b/afb/afbfillrct.c
+@@ -93,7 +93,8 @@ afbPolyFillRect(DrawablePtr pDrawable, GCPtr pGC, int nrectFill, xRectangle *pre
+ 	unsigned char *rrops;
+ 	unsigned char *rropsOS;
+ 
+-	priv = (afbPrivGC *)pGC->devPrivates[afbGCPrivateIndex].ptr;
++	priv = (afbPrivGC *)dixLookupPrivate(&pGC->devPrivates,
++					     afbGCPrivateKey);
+ 	prgnClip = pGC->pCompositeClip;
+ 	rrops = priv->rrops;
+ 	rropsOS = priv->rropOS;

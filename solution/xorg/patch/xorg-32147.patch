@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/XF86dri.c b/hw/kdrive/ephyr/XF86dri.c
+index fc35ce2..bf6c54f 100644
+--- a/hw/kdrive/ephyr/XF86dri.c
++++ b/hw/kdrive/ephyr/XF86dri.c
+@@ -467,7 +467,7 @@ Bool XF86DRIGetDrawableInfo(Display* dpy, int screen, Drawable drawable,
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86DRIGetDrawableInfoReply rep;
+-    xXF86DRIGetDrawableInfoReq *req;
++    xXF86DRIGetDrawableInfoReq *req=NULL;
+     int total_rects;
+ 
+     TRACE("GetDrawableInfo...");

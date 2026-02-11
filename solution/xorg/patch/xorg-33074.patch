@@ -1,0 +1,13 @@
+diff --git a/render/mitrap.c b/render/mitrap.c
+index c618806..8bdc8a8 100644
+--- a/render/mitrap.c
++++ b/render/mitrap.c
+@@ -61,7 +61,7 @@ miCreateAlphaPicture (ScreenPtr	    pScreen,
+     }
+ 
+     pPixmap = (*pScreen->CreatePixmap) (pScreen, width, height, 
+-					pPictFormat->depth);
++					pPictFormat->depth, 0);
+     if (!pPixmap)
+ 	return 0;
+     pGC = GetScratchGC (pPixmap->drawable.depth, pScreen);

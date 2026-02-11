@@ -1,0 +1,13 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index b81c390..212352c 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -55,6 +55,8 @@ RRCrtcCreate (void	*devPrivate)
+ {
+     RRCrtcPtr	crtc;
+     
++    if (!RRInit())
++	return NULL;
+     crtc = xalloc (sizeof (RRCrtcRec));
+     if (!crtc)
+ 	return NULL;

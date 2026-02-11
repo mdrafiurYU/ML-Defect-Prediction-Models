@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/dixsym.c b/hw/xfree86/loader/dixsym.c
+index dba2cc4..d30848a 100644
+--- a/hw/xfree86/loader/dixsym.c
++++ b/hw/xfree86/loader/dixsym.c
+@@ -285,10 +285,8 @@ _X_HIDDEN void *dixLookupTab[] = {
+     SYMFUNC(LookupIDByType)
+     SYMFUNC(LookupIDByClass)
+     SYMFUNC(LegalNewID)
+-#ifdef XACE
+     SYMFUNC(SecurityLookupIDByClass)
+     SYMFUNC(SecurityLookupIDByType)
+-#endif
+     SYMFUNC(FindClientResourcesByType)
+     SYMFUNC(FindAllClientResources)
+     SYMVAR(lastResourceType)

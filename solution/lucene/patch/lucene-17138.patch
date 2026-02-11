@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriterPerField.java b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriterPerField.java
+index f47d2a7..b504f15 100644
+--- a/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriterPerField.java
++++ b/lucene/src/java/org/apache/lucene/index/FreqProxTermsWriterPerField.java
+@@ -194,6 +194,7 @@ final class FreqProxTermsWriterPerField extends TermsHashConsumerPerField implem
+       return new FreqProxPostingsArray(size);
+     }
+ 
++    @Override
+     void copyTo(ParallelPostingsArray toArray, int numToCopy) {
+       assert toArray instanceof FreqProxPostingsArray;
+       FreqProxPostingsArray to = (FreqProxPostingsArray) toArray;

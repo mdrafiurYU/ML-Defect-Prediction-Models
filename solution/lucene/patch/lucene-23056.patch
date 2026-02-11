@@ -1,0 +1,21 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
+index 5f5b68c..ab17022 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
+@@ -32,11 +32,11 @@ import org.apache.lucene.util.Bits;
+ import org.apache.lucene.util.CharsRef;
+ import org.apache.lucene.util.StringHelper;
+ import org.apache.lucene.util.UnicodeUtil;
+-import org.apache.lucene.util.automaton.fst.Builder;
+-import org.apache.lucene.util.automaton.fst.BytesRefFSTEnum;
+-import org.apache.lucene.util.automaton.fst.FST;
+-import org.apache.lucene.util.automaton.fst.PositiveIntOutputs;
+-import org.apache.lucene.util.automaton.fst.PairOutputs;
++import org.apache.lucene.util.fst.Builder;
++import org.apache.lucene.util.fst.BytesRefFSTEnum;
++import org.apache.lucene.util.fst.FST;
++import org.apache.lucene.util.fst.PositiveIntOutputs;
++import org.apache.lucene.util.fst.PairOutputs;
+ 
+ import java.io.IOException;
+ import java.util.Comparator;

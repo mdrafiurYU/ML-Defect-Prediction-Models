@@ -1,0 +1,16 @@
+diff --git a/include/scrnintstr.h b/include/scrnintstr.h
+index 3613515..110f4dc 100644
+--- a/include/scrnintstr.h
++++ b/include/scrnintstr.h
+@@ -558,11 +558,9 @@ typedef struct _Screen {
+ 
+     PixmapPtr pScratchPixmap;		/* scratch pixmap "pool" */
+ 
+-#ifdef PIXPRIV
+     int			PixmapPrivateLen;
+     unsigned int		*PixmapPrivateSizes;
+     unsigned int		totalPixmapSize;
+-#endif
+ 
+     MarkWindowProcPtr		MarkWindow;
+     MarkOverlappedWindowsProcPtr MarkOverlappedWindows;

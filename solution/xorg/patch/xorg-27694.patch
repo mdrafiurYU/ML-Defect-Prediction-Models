@@ -1,0 +1,15 @@
+diff --git a/miext/rootless/safeAlpha/safeAlphaWindow.c b/miext/rootless/safeAlpha/safeAlphaWindow.c
+index 8884c10..5226782 100644
+--- a/miext/rootless/safeAlpha/safeAlphaWindow.c
++++ b/miext/rootless/safeAlpha/safeAlphaWindow.c
+@@ -32,6 +32,10 @@
+  * Copyright © 1998 Keith Packard
+  */
+ 
++
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
+ #include "fb.h"
+ #include "safeAlpha.h"
+ #include "rootlessCommon.h"

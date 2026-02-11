@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcPolyRec.c b/hw/xfree86/xf4bpp/ppcPolyRec.c
+index 8bb43ee..085cb4b 100644
+--- a/hw/xfree86/xf4bpp/ppcPolyRec.c
++++ b/hw/xfree86/xf4bpp/ppcPolyRec.c
+@@ -70,6 +70,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XConsortium: ppcPolyRec.c /main/4 1996/02/21 17:58:11 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ 
+ void

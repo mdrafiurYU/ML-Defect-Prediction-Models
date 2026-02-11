@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java
+index 42cda46..123ee8c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/GetSupportedQueryLanguagesTest.java
+@@ -62,7 +62,7 @@ public class GetSupportedQueryLanguagesTest extends AbstractQueryTest {
+      * Tests if all implementations return {@link Query#XPATH} with
+      * {@link QueryManager#getSupportedQueryLanguages()}. Tests if repositores
+      * that have the SQL descriptor set in the repository return {@link Query#SQL}.
+-     */ 
++     */
+     public void testGetSupportedQueryLanguages() throws RepositoryException {
+         List langs = Arrays.asList(session.getWorkspace().getQueryManager().getSupportedQueryLanguages());
+         // all repositories must support XPath

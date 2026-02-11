@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+index 643a9a3..7cd3ea8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+@@ -84,6 +84,9 @@ public LookupEnvironment(ITypeRequestor typeRequestor, CompilerOptions globalOpt
+ 	this.uniqueRawTypeBindings = new SimpleLookupTable(3);
+ 	this.uniqueWildcardBindings = new SimpleLookupTable(3);
+ 	this.accessRestrictions = new HashMap(3);
++	if (globalOptions != null) {
++		this.storeAnnotations = globalOptions.storeAnnotations;
++	}
+ }
+ 
+ /**

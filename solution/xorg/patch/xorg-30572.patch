@@ -1,0 +1,27 @@
+diff --git a/include/hotplug.h b/include/hotplug.h
+index 8831b1e..2a72ab9 100644
+--- a/include/hotplug.h
++++ b/include/hotplug.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright © 2006 Daniel Stone
++ * Copyright © 2006-2007 Daniel Stone
+  *
+  * Permission to use, copy, modify, distribute, and sell this software and its
+  * documentation for any purpose is hereby granted without fee, provided that
+@@ -21,10 +21,10 @@
+  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
+-#ifndef CONFIG_H
+-#define CONFIG_H
++#ifndef HOTPLUG_H
++#define HOTPLUG_H
+ 
+-void configInitialise(void);
+-void configFini(void);
++void config_init(void);
++void config_fini(void);
+ 
+-#endif /* CONFIG_H */
++#endif /* HOTPLUG_H */

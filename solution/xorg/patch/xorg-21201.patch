@@ -1,0 +1,22 @@
+diff --git a/GL/glx/glxdrawable.h b/GL/glx/glxdrawable.h
+index 2d5d07a..4514e26 100644
+--- a/GL/glx/glxdrawable.h
++++ b/GL/glx/glxdrawable.h
+@@ -41,6 +41,8 @@
+ **
+ */
+ 
++#include <damage.h>
++
+ typedef struct {
+ 
+     DrawablePtr pDraw;
+@@ -49,7 +51,7 @@ typedef struct {
+     ScreenPtr pScreen;
+     Bool idExists;
+     int refcnt;
+-
++    DamagePtr pDamage;
+ } __GLXpixmap;
+ 
+ struct __GLXdrawable {

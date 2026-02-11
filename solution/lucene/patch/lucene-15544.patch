@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/BooleanScorer2.java b/lucene/src/java/org/apache/lucene/search/BooleanScorer2.java
+index 0d47da6..d1a7a6d 100644
+--- a/lucene/src/java/org/apache/lucene/search/BooleanScorer2.java
++++ b/lucene/src/java/org/apache/lucene/search/BooleanScorer2.java
+@@ -280,7 +280,7 @@ class BooleanScorer2 extends Scorer {
+   }
+   
+   @Override
+-  protected boolean score(Collector collector, int max, int firstDocID) throws IOException {
++  public boolean score(Collector collector, int max, int firstDocID) throws IOException {
+     doc = firstDocID;
+     collector.setScorer(this);
+     while (doc < max) {

@@ -1,0 +1,49 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java b/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
+index 7477795..ac8b713 100644
+--- a/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MultiTermQuery.java
+@@ -283,14 +283,6 @@ public abstract class MultiTermQuery extends Query {
+       this.size = size;
+     }
+     
+-    /** 
+-     * Create a TopTermsBooleanQueryRewrite that is limited
+-     * to at most {@link BooleanQuery#getMaxClauseCount} terms. 
+-     */
+-    public TopTermsBooleanQueryRewrite() {
+-      this(Integer.MAX_VALUE);
+-    }
+-    
+     /** Return a suitable Query for a MultiTermQuery term. */
+     protected abstract Query getQuery(Term term, int docCount);
+ 
+@@ -380,14 +372,6 @@ public abstract class MultiTermQuery extends Query {
+       TopTermsBooleanQueryRewrite {
+ 
+     /** 
+-     * Create a TopTermsScoringBooleanQueryRewrite that is limited
+-     * to at most {@link BooleanQuery#getMaxClauseCount} terms. 
+-     */
+-    public TopTermsScoringBooleanQueryRewrite() {
+-      super();
+-    }
+-
+-    /** 
+      * Create a TopTermsScoringBooleanQueryRewrite for 
+      * at most <code>size</code> terms.
+      * <p>
+@@ -418,14 +402,6 @@ public abstract class MultiTermQuery extends Query {
+       TopTermsBooleanQueryRewrite {
+     
+     /** 
+-     * Create a TopTermsBoostOnlyBooleanQueryRewrite that is limited
+-     * to at most {@link BooleanQuery#getMaxClauseCount} terms. 
+-     */
+-    public TopTermsBoostOnlyBooleanQueryRewrite() {
+-      super();
+-    }
+-
+-    /** 
+      * Create a TopTermsBoostOnlyBooleanQueryRewrite for 
+      * at most <code>size</code> terms.
+      * <p>

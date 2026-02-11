@@ -1,0 +1,22 @@
+diff --git a/miext/shadow/shpacked.c b/miext/shadow/shpacked.c
+index 678f8c6..f4717ff 100644
+--- a/miext/shadow/shpacked.c
++++ b/miext/shadow/shpacked.c
+@@ -40,7 +40,7 @@
+ #include    "shadow.h"
+ #include    "fb.h"
+ 
+-void
++_X_EXPORT void
+ shadowUpdatePacked (ScreenPtr	    pScreen,
+ 		    shadowBufPtr    pBuf)
+ {
+@@ -112,4 +112,7 @@ shadowUpdatePacked (ScreenPtr	    pScreen,
+     }
+ }
+ 
+-shadowUpdateProc shadowUpdatePackedWeak(void) { return shadowUpdatePacked; }
++_X_EXPORT shadowUpdateProc
++shadowUpdatePackedWeak(void) {
++    return shadowUpdatePacked;
++}

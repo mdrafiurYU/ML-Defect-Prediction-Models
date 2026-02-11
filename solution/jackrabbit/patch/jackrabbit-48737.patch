@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryHandle.java b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryHandle.java
+index 726f0d0..a6cb953 100644
+--- a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryHandle.java
++++ b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/JCARepositoryHandle.java
+@@ -73,6 +73,9 @@ public final class JCARepositoryHandle extends ProxyRepository
+                     mcf, new JCAConnectionRequestInfo(creds, workspace));
+         } catch (ResourceException e) {
+             Throwable cause = e.getCause();
++            if (cause == null) {
++                cause = e.getLinkedException();
++            }
+             if (cause instanceof LoginException) {
+                 throw (LoginException) cause;
+             } else if (cause instanceof NoSuchWorkspaceException) {

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java
+index b27eccf..81ddf86 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlListTest.java
+@@ -55,6 +55,7 @@ public class JackrabbitAccessControlListTest extends AbstractAccessControlTest {
+             }
+         }
+         if (templ == null) {
++            superuser.logout();
+             throw new NotExecutableException("No JackrabbitAccessControlList to test.");
+         }
+     }

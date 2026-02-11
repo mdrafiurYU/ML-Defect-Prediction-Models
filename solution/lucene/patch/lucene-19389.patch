@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/update/UpdateCommand.java b/solr/src/java/org/apache/solr/update/UpdateCommand.java
+index 83e7ca9..0e8f8bc 100644
+--- a/solr/src/java/org/apache/solr/update/UpdateCommand.java
++++ b/solr/src/java/org/apache/solr/update/UpdateCommand.java
+@@ -33,6 +33,7 @@ import org.apache.solr.request.SolrQueryRequest;
+       this.commandName = commandName;
+     }
+ 
++    @Override
+     public String toString() {
+       return commandName;
+     }

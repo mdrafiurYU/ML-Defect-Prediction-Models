@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index d1e5bba..204d73f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -9905,7 +9905,6 @@ protected boolean resumeAfterRecovery() {
+ protected boolean resumeOnSyntaxError() {
+ 	this.checkExternalizeStrings = false;
+ 	this.scanner.checkNonExternalizedStringLiterals = false;
+-	// REVIEW don't know if we should reset checkNullReferences here as well...
+ 	/* request recovery initialization */
+ 	if (this.currentElement == null){
+ 		// Reset javadoc before restart parsing after recovery

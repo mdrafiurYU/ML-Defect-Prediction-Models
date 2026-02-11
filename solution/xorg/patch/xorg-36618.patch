@@ -1,0 +1,18 @@
+diff --git a/hw/xquartz/darwinKeyboard.c b/hw/xquartz/darwinKeyboard.c
+index 6f2758e..0a8c5c0 100644
+--- a/hw/xquartz/darwinKeyboard.c
++++ b/hw/xquartz/darwinKeyboard.c
+@@ -76,13 +76,7 @@
+ #include "quartzKeyboard.h"
+ #include "quartzAudio.h"
+ 
+-#ifdef NDEBUG
+-#undef NDEBUG
+ #include <assert.h>
+-#define NDEBUG 1
+-#else
+-#include <assert.h>
+-#endif
+ 
+ #define AltMask         Mod1Mask
+ #define MetaMask        Mod2Mask

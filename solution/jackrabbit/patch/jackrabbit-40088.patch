@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
+index 69c1daa..bc0dc4c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/XASessionImpl.java
+@@ -403,8 +403,8 @@ public class XASessionImpl extends SessionImpl
+         super.logout();
+         // dispose the caches
+         try {
+-            ((XAVersionManager)versionMgr).close();
+-        } catch(Exception e) {
++            ((XAVersionManager) versionMgr).close();
++        } catch (Exception e) {
+             log.warn("error while closing XAVersionManager", e);
+         }
+     }

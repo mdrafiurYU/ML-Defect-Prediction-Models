@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java
+index 7f67a49..f8b68a8 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/StaticImportTest.java
+@@ -14,6 +14,14 @@ import junit.framework.Test;
+ 
+ public class StaticImportTest extends AbstractComparableTest {
+ 
++	// Static initializer to specify tests subset using TESTS_* static variables
++	// All specified tests which do not belong to the class are skipped...
++	static {
++//		TESTS_NAMES = new String[] { "test036" };
++//		TESTS_NUMBERS = new int[] { 188 };
++//		TESTS_RANGE = new int[] { 169, 180 };
++	}
++	
+ 	public StaticImportTest(String name) {
+ 		super(name);
+ 	}

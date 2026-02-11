@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winclipboardwrappers.c b/hw/xwin/winclipboardwrappers.c
+index c990e7e..8801f6c 100755
+--- a/hw/xwin/winclipboardwrappers.c
++++ b/hw/xwin/winclipboardwrappers.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include "dixstruct.h"
+ #include <X11/Xatom.h>

@@ -1,0 +1,53 @@
+diff --git a/dix/events.c b/dix/events.c
+index 62b31c4..a3f6978 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -549,13 +549,6 @@ XineramaConfineCursorToWindow(DeviceIntPtr pDev,
+ {
+     SpritePtr pSprite = pDev->spriteInfo->sprite;
+ 
+-    if (syncEvents.playingEvents)
+-    {
+-	CheckVirtualMotion(pDev, (QdEventPtr)NULL, pWin);
+-	SyntheticMotion(pDev, pSprite->hot.x, pSprite->hot.y);
+-    }
+-    else
+-    {
+ 	int x, y, off_x, off_y, i;
+ 
+ 	if(!XineramaSetWindowPntrs(pDev, pWin))
+@@ -595,7 +588,6 @@ XineramaConfineCursorToWindow(DeviceIntPtr pDev,
+         XineramaCheckPhysLimits(pDev, pSprite->current,
+                                 generateEvents);
+     }
+-}
+ 
+ 
+ static void
+@@ -835,13 +827,6 @@ ConfineCursorToWindow(DeviceIntPtr pDev, WindowPtr pWin, Bool generateEvents, Bo
+     ScreenPtr pScreen = pWin->drawable.pScreen;
+     SpritePtr pSprite = pDev->spriteInfo->sprite;
+ 
+-#ifdef PANORAMIX
+-    if(!noPanoramiXExtension) {
+-	XineramaConfineCursorToWindow(pDev, pWin, generateEvents);
+-	return;
+-    }
+-#endif
+-
+     if (syncEvents.playingEvents)
+     {
+ 	CheckVirtualMotion(pDev, (QdEventPtr)NULL, pWin);
+@@ -849,6 +834,12 @@ ConfineCursorToWindow(DeviceIntPtr pDev, WindowPtr pWin, Bool generateEvents, Bo
+     }
+     else
+     {
++#ifdef PANORAMIX
++        if(!noPanoramiXExtension) {
++            XineramaConfineCursorToWindow(pDev, pWin, generateEvents);
++            return;
++        }
++#endif
+ 	pSprite->hotLimits = *REGION_EXTENTS( pScreen, &pWin->borderSize);
+ 	pSprite->hotShape = wBoundingShape(pWin) ? &pWin->borderSize
+ 					       : NullRegion;

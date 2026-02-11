@@ -1,0 +1,25 @@
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index a8a9950..60877a3 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -107,6 +107,8 @@ struct _rrOutput {
+     int		    nameLength;
+     CARD8	    connection;
+     CARD8	    subpixelOrder;
++    int		    mmWidth;
++    int		    mmHeight;
+     RRCrtcPtr	    crtc;
+     CARD32	    currentOptions;
+     CARD32	    possibleOptions;
+@@ -642,6 +644,11 @@ Bool
+ RROutputSetCurrentOptions (RROutputPtr output,
+ 			   CARD32      currentOptions);
+ 
++Bool
++RROutputSetPhysicalSize (RROutputPtr	output,
++			 int		mmWidth,
++			 int		mmHeight);
++
+ void
+ RRDeliverOutputEvent(ClientPtr client, WindowPtr pWin, RROutputPtr output);
+ 

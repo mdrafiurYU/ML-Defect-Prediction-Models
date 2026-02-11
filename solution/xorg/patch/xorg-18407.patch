@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/dlloader.h b/hw/xfree86/loader/dlloader.h
+index 51f0520..1dfae27 100644
+--- a/hw/xfree86/loader/dlloader.h
++++ b/hw/xfree86/loader/dlloader.h
+@@ -21,6 +21,10 @@
+ 
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/loader/dlloader.h,v 1.2 1998/07/25 16:56:14 dawes Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _DLLOADER_H
+ #define _DLLOADER_H
+ extern void *DLLoadModule(loaderPtr, int, LOOKUP **);

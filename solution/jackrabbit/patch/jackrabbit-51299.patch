@@ -1,0 +1,42 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java
+index 2ff81a9..7a35ebc 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/AbstractQueryTest.java
+@@ -35,6 +35,7 @@ import javax.jcr.query.RowIterator;
+ import javax.jcr.query.qom.QueryObjectModelFactory;
+ 
+ import org.apache.jackrabbit.commons.iterator.NodeIteratorAdapter;
++import org.apache.jackrabbit.core.query.lucene.SearchIndex;
+ import org.apache.jackrabbit.test.AbstractJCRTest;
+ 
+ /**
+@@ -139,6 +140,7 @@ public class AbstractQueryTest extends AbstractJCRTest {
+      */
+     protected void executeXPathQuery(String xpath, Node[] nodes)
+             throws RepositoryException {
++        getSearchIndex().flush();
+         QueryResult res = qm.createQuery(xpath, Query.XPATH).execute();
+         checkResult(res, nodes);
+     }
+@@ -153,6 +155,7 @@ public class AbstractQueryTest extends AbstractJCRTest {
+      */
+     protected void executeSQLQuery(String sql, Node[] nodes)
+             throws RepositoryException {
++        getSearchIndex().flush();
+         QueryResult res = qm.createQuery(sql, Query.SQL).execute();
+         checkResult(res, nodes);
+     }
+@@ -253,9 +256,11 @@ public class AbstractQueryTest extends AbstractJCRTest {
+     }
+ 
+     /**
++     * Returns a reference to the underlying search index.
++     *
+      * @return the query handler inside the {@link #qm query manager}.
+      */
+-    protected QueryHandler getQueryHandler() {
+-        return ((QueryManagerImpl) qm).getQueryHandler();
++    protected SearchIndex getSearchIndex() {
++        return (SearchIndex) ((QueryManagerImpl) qm).getQueryHandler();
+     }
+ }

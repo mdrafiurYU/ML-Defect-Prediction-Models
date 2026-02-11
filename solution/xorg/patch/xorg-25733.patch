@@ -1,0 +1,31 @@
+diff --git a/hw/xfree86/dri/dri.c b/hw/xfree86/dri/dri.c
+index fbb24e4..a49c632 100644
+--- a/hw/xfree86/dri/dri.c
++++ b/hw/xfree86/dri/dri.c
+@@ -84,6 +84,8 @@ static RESTYPE DRIDrawablePrivResType;
+ static RESTYPE DRIContextPrivResType;
+ static void    DRIDestroyDummyContext(ScreenPtr pScreen, Bool hasCtxPriv);
+ 
++static drmServerInfo DRIDRMServerInfo;
++
+ 				/* Wrapper just like xf86DrvMsg, but
+ 				   without the verbosity level checking.
+ 				   This will make it easy to turn off some
+@@ -174,6 +176,8 @@ DRIScreenInit(ScreenPtr pScreen, DRIInfoPtr pDRIInfo, int *pDRMFD)
+     else
+ 	openbusid = NULL;
+ 
++    drmSetServerInfo(&DRIDRMServerInfo);
++
+     /* Note that drmOpen will try to load the kernel module, if needed. */
+     fd = drmOpen(pDRIInfo->drmDriverName, openbusid);
+     if (fd < 0) {
+@@ -622,8 +626,6 @@ DRIExtensionInit(void)
+ 	    return FALSE;
+     }
+ 
+-    drmSetServerInfo(&DRIDRMServerInfo);
+-
+     RegisterBlockAndWakeupHandlers(DRIBlockHandler, DRIWakeupHandler, NULL);
+ 
+     return TRUE;

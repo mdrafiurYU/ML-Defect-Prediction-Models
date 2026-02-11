@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/CollectionDescriptor.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/CollectionDescriptor.java
+index abf649a..9e4bccf 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/CollectionDescriptor.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/model/CollectionDescriptor.java
+@@ -30,6 +30,7 @@ public class CollectionDescriptor implements ChildNodeDefDescriptor, PropertyDef
+      private String fieldName;
+      private String jcrName;
+      private String elementClassName;
++     private String jcrElementName;
+      private String collectionConverterClassName;
+      private String collectionClassName;
+      private boolean proxy;
+@@ -94,6 +95,23 @@ public class CollectionDescriptor implements ChildNodeDefDescriptor, PropertyDef
+     }
+ 
+     /**
++     * @return Returns the elementName.
++     */
++    public String getJcrElementName()
++    {
++        return jcrElementName;
++    }
++
++    /**
++     * @param jcrElementName The collection element name to set.
++     *
++     */
++    public void setJcrElementName(String jcrElementName)
++    {
++        this.jcrElementName = jcrElementName;
++    }
++
++    /**
+      * @return Returns the proxy.
+      */
+     public boolean isProxy()

@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+index 9818dcb..ce1b86c 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldReference.java
+@@ -393,8 +393,9 @@ public class FieldReference extends Reference implements InvocationSite {
+ 		}
+ 		Constant fieldConstant = binding.constant();
+ 		if (fieldConstant != null) {
+-			if (isImplicit || (reference instanceof QualifiedNameReference
+-					&& binding == ((QualifiedNameReference)reference).binding)) {
++			if (isImplicit 
++					|| (reference instanceof QualifiedNameReference
++						&& binding == ((QualifiedNameReference)reference).binding)) {
+ 				return fieldConstant;
+ 			}
+ 			return NotAConstant;
+@@ -414,8 +415,9 @@ public class FieldReference extends Reference implements InvocationSite {
+ 				? typeDecl.staticInitializerScope
+ 				: typeDecl.initializerScope); 
+ 
+-		if (isImplicit || (reference instanceof QualifiedNameReference
+-				&& binding == ((QualifiedNameReference)reference).binding)) {
++		if (isImplicit 
++				|| (reference instanceof QualifiedNameReference
++					&& binding == ((QualifiedNameReference)reference).binding)) {
+ 			return binding.constant();
+ 		}
+ 		return NotAConstant;

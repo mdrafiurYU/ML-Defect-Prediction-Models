@@ -1,0 +1,13 @@
+diff --git a/os/access.c b/os/access.c
+index d61edef..db5ca31 100644
+--- a/os/access.c
++++ b/os/access.c
+@@ -1528,7 +1528,7 @@ AuthorizedClient(ClientPtr client)
+ 	return TRUE;
+ 
+     /* untrusted clients can't change host access */
+-    if (!XaceHook(XACE_HOSTLIST_ACCESS, client, SecurityWriteAccess))
++    if (!XaceHook(XACE_HOSTLIST_ACCESS, client, DixWriteAccess))
+ 	return FALSE;
+ 
+     return LocalClient(client);

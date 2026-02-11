@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/uuid/Descendant.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/uuid/Descendant.java
+index 0127a15..1509e65 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/uuid/Descendant.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/testmodel/uuid/Descendant.java
+@@ -25,13 +25,13 @@ import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
+  * @author <a href="mailto:christophe.lombart@gmail.com">Lombart Christophe </a>
+  * @version $Id: Exp $
+  */
+-@Node(extend=Ancestor.class, jcrMixinTypes="mix:referenceable") 	                  
++@Node(extend=Ancestor.class, jcrMixinTypes="mix:referenceable") 	
+ public class Descendant extends Ancestor
+ {
+ 
+     @Field private String stringData;
+ 
+-    
++
+ 	public String getStringData() {
+ 		return stringData;
+ 	}
+@@ -41,6 +41,6 @@ public class Descendant extends Ancestor
+ 	}
+ 
+ 
+-    
+-    
++
++
+ }

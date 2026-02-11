@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winmisc.c b/hw/xwin/winmisc.c
+index a116043..8e66981 100644
+--- a/hw/xwin/winmisc.c
++++ b/hw/xwin/winmisc.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ 
+ #ifdef XWIN_NATIVEGDI

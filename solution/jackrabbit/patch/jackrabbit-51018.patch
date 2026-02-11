@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+index 3db5052..d4c8fb1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeImpl.java
+@@ -3315,7 +3315,7 @@ public class NodeImpl extends ItemImpl implements Node {
+     public void update(String srcWorkspaceName)
+             throws NoSuchWorkspaceException, AccessDeniedException,
+             LockException, InvalidItemStateException, RepositoryException {
+-        ((JcrVersionManagerImpl) session.getWorkspace().getVersionManager()).update(this, srcWorkspaceName);
++        ((VersionManagerImpl) session.getWorkspace().getVersionManager()).update(this, srcWorkspaceName);
+     }
+ 
+     /**

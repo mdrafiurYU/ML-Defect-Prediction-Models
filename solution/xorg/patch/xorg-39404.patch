@@ -1,0 +1,13 @@
+diff --git a/os/osinit.c b/os/osinit.c
+index 7a16c0b..93e1d03 100644
+--- a/os/osinit.c
++++ b/os/osinit.c
+@@ -71,7 +71,7 @@ SOFTWARE.
+ #include <sys/wait.h>
+ #endif
+ 
+-#if !defined(SYSV) && !defined(WIN32) && !defined(QNX4)
++#if !defined(SYSV) && !defined(WIN32) 
+ #include <sys/resource.h>
+ #endif
+ 

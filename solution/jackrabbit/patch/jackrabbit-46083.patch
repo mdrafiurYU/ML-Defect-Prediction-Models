@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationEntityResolver.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationEntityResolver.java
+index 83976b7..295eed3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationEntityResolver.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationEntityResolver.java
+@@ -45,6 +45,9 @@ public class IndexingConfigurationEntityResolver implements EntityResolver {
+         systemIds.put(
+                 "http://jackrabbit.apache.org/dtd/indexing-configuration-1.1.dtd",
+                 "indexing-configuration-1.1.dtd");
++        systemIds.put(
++                "http://jackrabbit.apache.org/dtd/indexing-configuration-1.2.dtd",
++                "indexing-configuration-1.2.dtd");
+         SYSTEM_IDS = Collections.unmodifiableMap(systemIds);
+     }

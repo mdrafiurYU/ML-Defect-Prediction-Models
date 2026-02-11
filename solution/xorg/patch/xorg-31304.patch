@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/os-support/bus/ix86Pci.c b/hw/xfree86/os-support/bus/ix86Pci.c
+index 8b528ed..3ed4f14 100644
+--- a/hw/xfree86/os-support/bus/ix86Pci.c
++++ b/hw/xfree86/os-support/bus/ix86Pci.c
+@@ -281,12 +281,7 @@ void ix86PciSelectCfgmech(void)
+      * We rely on xf86Info.pciFlags to tell which mechanisms to try....
+      */
+     switch (xf86Info.pciFlags) {
+-
+ 	case PCIOsConfig:
+-#ifdef ARCH_PCI_OS_INIT
+-	    return;
+-#endif
+-	    
+ 	case PCIProbe1:
+ 	    if (!xf86EnableIO())
+ 		return;

@@ -1,0 +1,17 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 6a93dac..bad17be 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -1249,6 +1249,12 @@ ProcTranslateCoords(register ClientPtr client)
+ 		&& (!wBoundingShape(pWin) ||
+ 		    POINT_IN_REGION(pWin->drawable.pScreen, 
+ 					&pWin->borderSize, x, y, &box))
++		
++		&& (!wInputShape(pWin) ||
++		    POINT_IN_REGION(pWin->drawable.pScreen,
++				    wInputShape(pWin),
++				    x - pWin->drawable.x,
++				    y - pWin->drawable.y, &box))
+ #endif
+ 		)
+             {

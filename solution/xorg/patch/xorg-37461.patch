@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index cd2b49a..e25ae84 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -307,7 +307,7 @@ static void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, in
+     }
+ }
+ 
+-Bool DarwinEQInit(DevicePtr pKbd, DevicePtr pPtr) { 
++Bool DarwinEQInit(void) { 
+     if (!darwinEvents)
+         darwinEvents = (xEvent *)xcalloc(sizeof(xEvent), GetMaximumEventsNum());
+     if (!darwinEvents)

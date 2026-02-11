@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndTruncQuery.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndTruncQuery.java
+index c2a13cb..df9b952 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndTruncQuery.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/surround/query/SrndTruncQuery.java
+@@ -95,7 +95,7 @@ public class SrndTruncQuery extends SimpleTerm {
+       try {
+         TermsEnum termsEnum = terms.iterator();
+ 
+-        TermsEnum.SeekStatus status = termsEnum.seek(prefixRef);
++        TermsEnum.SeekStatus status = termsEnum.seekCeil(prefixRef);
+         BytesRef text;
+         if (status == TermsEnum.SeekStatus.FOUND) {
+           text = prefixRef;

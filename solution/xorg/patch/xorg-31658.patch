@@ -1,0 +1,20 @@
+diff --git a/hw/xnest/Screen.c b/hw/xnest/Screen.c
+index e66b4f7..d08e482 100644
+--- a/hw/xnest/Screen.c
++++ b/hw/xnest/Screen.c
+@@ -304,15 +304,6 @@ xnestOpenScreen(int index, ScreenPtr pScreen, int argc, char *argv[])
+   pScreen->CreatePixmap = xnestCreatePixmap;
+   pScreen->DestroyPixmap = xnestDestroyPixmap;
+ 
+-  /* Backing store procedures */
+-  
+-  pScreen->SaveDoomedAreas = NULL;
+-  pScreen->RestoreAreas = NULL;
+-  pScreen->ExposeCopy = NULL;
+-  pScreen->TranslateBackingStore = NULL;
+-  pScreen->ClearBackingStore = NULL;
+-  pScreen->DrawGuarantee = NULL;
+-
+   /* Font procedures */
+ 
+   pScreen->RealizeFont = xnestRealizeFont;

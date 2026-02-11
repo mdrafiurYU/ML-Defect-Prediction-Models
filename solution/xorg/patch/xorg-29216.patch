@@ -1,0 +1,15 @@
+diff --git a/Xi/chpkpair.h b/Xi/chpkpair.h
+index 1acf549..b0d410d 100644
+--- a/Xi/chpkpair.h
++++ b/Xi/chpkpair.h
+@@ -36,5 +36,10 @@ int SProcXChangePointerKeyboardPairing(ClientPtr	/* client */
+ int ProcXChangePointerKeyboardPairing(ClientPtr	/* client */
+     );
+ 
++void 
++SPointerKeyboardPairingChangedNotifyEvent (pairingChangedNotify* /* from */, 
++                                           pairingChangedNotify* /* to */
++   );
++
+ #endif /* WARPDEVP_H */
+ 

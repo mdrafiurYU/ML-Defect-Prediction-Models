@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+index 228c0fd..d93d0d5 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/NodeTypeManagerImpl.java
+@@ -175,7 +175,7 @@ public class NodeTypeManagerImpl implements JackrabbitNodeTypeManager,
+             if (pdi == null) {
+                 PropDef pd = ntReg.getPropDef(id);
+                 if (pd != null) {
+-                    pdi = new PropertyDefinitionImpl(pd, this, session);
++                    pdi = new PropertyDefinitionImpl(pd, this, session, valueFactory);
+                     pdCache.put(id, pdi);
+                 }
+             }

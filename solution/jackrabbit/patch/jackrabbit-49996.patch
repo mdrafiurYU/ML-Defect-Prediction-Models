@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java
+index 4f831b1..d631c8b 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/NodeIteratorImpl.java
+@@ -213,12 +213,12 @@ public class NodeIteratorImpl implements ScoreNodeIterator {
+         while (next == null && rows.hasNext()) {
+             try {
+                 QueryResultRow row = (QueryResultRow) rows.next();
+-                nextId = row.getNodeId();
++                nextId = row.getNodeId(null);
+                 Item tmp = itemMgr.getItem(hierarchyMgr.getNodeEntry(nextId));
+ 
+                 if (tmp.isNode()) {
+                     next = (Node) tmp;
+-                    nextScore = row.getScore();
++                    nextScore = row.getScore(null);
+                 } else {
+                     log.warn("Item with Id is not a Node: " + nextId);
+                     // try next

@@ -1,0 +1,18 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/MultiTermsEnum.java b/lucene/src/java/org/apache/lucene/index/MultiTermsEnum.java
+index 02e21b1..1f4794f 100644
+--- a/lucene/src/java/org/apache/lucene/index/MultiTermsEnum.java
++++ b/lucene/src/java/org/apache/lucene/index/MultiTermsEnum.java
+@@ -91,13 +91,6 @@ public final class MultiTermsEnum extends TermsEnum {
+   }
+ 
+   @Override
+-  public void cacheCurrentTerm() throws IOException {
+-    for(int i=0;i<numTop;i++) {
+-      top[i].terms.cacheCurrentTerm();
+-    }
+-  }
+-
+-  @Override
+   public Comparator<BytesRef> getComparator() {
+     return termComp;
+   }

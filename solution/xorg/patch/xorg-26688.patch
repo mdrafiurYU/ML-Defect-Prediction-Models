@@ -1,0 +1,218 @@
+diff --git a/mi/midispcur.c b/mi/midispcur.c
+index 0b4ef49..38772f6 100644
+--- a/mi/midispcur.c
++++ b/mi/midispcur.c
+@@ -58,11 +58,7 @@ in this Software without prior written authorization from The Open Group.
+ # include   "picturestr.h"
+ #endif
+ 
+-#ifdef MPX
+-# include "inputstr.h"
+-
+-#define SaneID(a) (a >= 0 && a < MAX_DEVICES)
+-#endif
++# include "inputstr.h" /* for MAX_DEVICES */
+ 
+ /* per-screen private data */
+ 
+@@ -83,11 +79,13 @@ typedef struct {
+ #endif
+ } miDCBufferRec, *miDCBufferPtr;
+ 
++/* 
++ * The core pointer buffer will point to the index of the virtual core pointer
++ * in the pCursorBuffers array. 
++ */
+ typedef struct {
+     miDCBufferPtr pCoreBuffer; /* for core pointer */
+-#ifdef MPX
+-    miDCBufferPtr pMPBuffers;   /* for MPX pointers */
+-#endif
++    miDCBufferPtr pCursorBuffers;   /* one for each device */
+     CloseScreenProcPtr CloseScreen;
+ } miDCScreenRec, *miDCScreenPtr;
+ 
+@@ -140,6 +138,7 @@ miDCInitialize (pScreen, screenFuncs)
+ {
+     miDCScreenPtr   pScreenPriv;
+     miDCBufferPtr   pBuffer;
++    int mpBufferIdx;
+ 
+     if (miDCGeneration != serverGeneration)
+     {
+@@ -155,33 +154,22 @@ miDCInitialize (pScreen, screenFuncs)
+     /*
+      * initialize the entire private structure to zeros
+      */
+-#if !defined MPX
+-    pScreenPriv->pCoreBuffer = (miDCBufferPtr)xalloc(sizeof(miDCBufferRec));
+-    if (!pScreenPriv->pCoreBuffer)
+-    {
+-        xfree((pointer)pScreenPriv);
+-        return FALSE;
+-    }
+-    pBuffer = pScreenPriv->pCoreBuffer;
+-#else /* ifdef MPX */
+-    {
+-        int mpBufferIdx = 0;
+ 
+-        pScreenPriv->pMPBuffers = (miDCBufferPtr)xalloc(MAX_DEVICES *
++    pScreenPriv->pCursorBuffers = (miDCBufferPtr)xalloc(MAX_DEVICES *
+                                 sizeof(miDCBufferRec));
+-        if (!pScreenPriv->pMPBuffers)
++    if (!pScreenPriv->pCursorBuffers)
+         {
+             xfree((pointer)pScreenPriv);
+             return FALSE;
+         }
+  
+         /* virtual core pointer ID is 1 */
+-        pScreenPriv->pCoreBuffer = &pScreenPriv->pMPBuffers[1];
++    pScreenPriv->pCoreBuffer = &pScreenPriv->pCursorBuffers[1];
+ 
++    mpBufferIdx = 0;
+         while(mpBufferIdx < MAX_DEVICES)
+         {
+-            pBuffer = &pScreenPriv->pMPBuffers[mpBufferIdx];
+-#endif
++        pBuffer = &pScreenPriv->pCursorBuffers[mpBufferIdx];
+             pBuffer->pSourceGC =
+                 pBuffer->pMaskGC =
+                 pBuffer->pSaveGC =
+@@ -193,14 +181,10 @@ miDCInitialize (pScreen, screenFuncs)
+             pBuffer->pRootPicture = NULL;
+             pBuffer->pTempPicture = NULL;
+ #endif
+-
+             pBuffer->pSave = pBuffer->pTemp = NULL;
+ 
+-#ifdef MPX
+             mpBufferIdx++;
+         }
+-    }
+-#endif
+ 
+ 
+     pScreenPriv->CloseScreen = pScreen->CloseScreen;
+@@ -210,11 +194,7 @@ miDCInitialize (pScreen, screenFuncs)
+ 
+     if (!miSpriteInitialize (pScreen, &miDCFuncs, screenFuncs))
+     {
+-#ifdef MPX
+-        xfree((pointer)pScreenPriv->pMPBuffers);
+-#else
+-        xfree((pointer)pScreenPriv->pCoreBuffer);
+-#endif
++        xfree ((pointer) pScreenPriv->pCursorBuffers);
+ 	xfree ((pointer) pScreenPriv);
+ 	return FALSE;
+     }
+@@ -232,19 +212,16 @@ miDCCloseScreen (index, pScreen)
+ {
+     miDCScreenPtr   pScreenPriv;
+     miDCBufferPtr   pBuffer;
++    int mpBufferIdx;
+ 
+     pScreenPriv = (miDCScreenPtr) pScreen->devPrivates[miDCScreenIndex].ptr;
+     pScreen->CloseScreen = pScreenPriv->CloseScreen;
+-    pBuffer = pScreenPriv->pCoreBuffer;
+ 
+-#ifdef MPX
+-    {
+-        int mpBufferIdx = 0;
++    mpBufferIdx = 0;
+         while (mpBufferIdx < MAX_DEVICES) 
+         {
+-            pBuffer = &pScreenPriv->pMPBuffers[mpBufferIdx];
++        pBuffer = &pScreenPriv->pCursorBuffers[mpBufferIdx];
+ 
+-#endif
+             tossGC (pBuffer->pSourceGC);
+             tossGC (pBuffer->pMaskGC);
+             tossGC (pBuffer->pSaveGC);
+@@ -261,16 +238,10 @@ miDCCloseScreen (index, pScreen)
+             tossPict (pBuffer->pTempPicture);
+ #endif
+ 
+-#ifdef MPX
+             mpBufferIdx++;
+         }
+-    }
+ 
+-    xfree((pointer) pScreenPriv->pMPBuffers);
+-#else
+-
+-    xfree((pointer) pScreenPriv->pCoreBuffer);
+-#endif
++    xfree((pointer) pScreenPriv->pCursorBuffers);
+ 
+     xfree ((pointer) pScreenPriv);
+     return (*pScreen->CloseScreen) (index, pScreen);
+@@ -567,10 +538,8 @@ miDCPutUpCursor (pDev, pScreen, pCursor, x, y, source, mask)
+     pWin = WindowTable[pScreen->myNum];
+     pBuffer = pScreenPriv->pCoreBuffer;
+ 
+-#ifdef MPX
+     if (MPHasCursor(pDev))
+-            pBuffer = &pScreenPriv->pMPBuffers[pDev->id];
+-#endif
++        pBuffer = &pScreenPriv->pCursorBuffers[pDev->id];
+ 
+ #ifdef ARGB_CURSOR
+     if (pPriv->pPicture)
+@@ -619,10 +588,10 @@ miDCSaveUnderCursor (pDev, pScreen, x, y, w, h)
+ 
+     pScreenPriv = (miDCScreenPtr) pScreen->devPrivates[miDCScreenIndex].ptr;
+     pBuffer = pScreenPriv->pCoreBuffer;
+-#ifdef MPX
++
+     if (MPHasCursor(pDev))
+-            pBuffer = &pScreenPriv->pMPBuffers[pDev->id];
+-#endif
++        pBuffer = &pScreenPriv->pCursorBuffers[pDev->id];
++
+     pSave = pBuffer->pSave;
+     pWin = WindowTable[pScreen->myNum];
+     if (!pSave || pSave->drawable.width < w || pSave->drawable.height < h)
+@@ -658,10 +627,10 @@ miDCRestoreUnderCursor (pDev, pScreen, x, y, w, h)
+ 
+     pScreenPriv = (miDCScreenPtr) pScreen->devPrivates[miDCScreenIndex].ptr;
+     pBuffer = pScreenPriv->pCoreBuffer;
+-#ifdef MPX
++
+     if (MPHasCursor(pDev))
+-            pBuffer = &pScreenPriv->pMPBuffers[pDev->id];
+-#endif
++        pBuffer = &pScreenPriv->pCursorBuffers[pDev->id];
++
+     pSave = pBuffer->pSave;
+     pWin = WindowTable[pScreen->myNum];
+     if (!pSave)
+@@ -691,10 +660,10 @@ miDCChangeSave (pDev, pScreen, x, y, w, h, dx, dy)
+ 
+     pScreenPriv = (miDCScreenPtr) pScreen->devPrivates[miDCScreenIndex].ptr;
+     pBuffer = pScreenPriv->pCoreBuffer;
+-#ifdef MPX
++
+     if (MPHasCursor(pDev))
+-            pBuffer = &pScreenPriv->pMPBuffers[pDev->id];
+-#endif
++        pBuffer = &pScreenPriv->pCursorBuffers[pDev->id];
++
+     pSave = pBuffer->pSave;
+     pWin = WindowTable[pScreen->myNum];
+     /*
+@@ -842,10 +811,10 @@ miDCMoveCursor (pDev, pScreen, pCursor, x, y, w, h, dx, dy, source, mask)
+     pScreenPriv = (miDCScreenPtr) pScreen->devPrivates[miDCScreenIndex].ptr;
+     pWin = WindowTable[pScreen->myNum];
+     pBuffer = pScreenPriv->pCoreBuffer;
+-#ifdef MPX
++
+     if (MPHasCursor(pDev))
+-            pBuffer = &pScreenPriv->pMPBuffers[pDev->id];
+-#endif
++        pBuffer = &pScreenPriv->pCursorBuffers[pDev->id];
++
+     pTemp = pBuffer->pTemp;
+     if (!pTemp ||
+ 	pTemp->drawable.width != pBuffer->pSave->drawable.width ||

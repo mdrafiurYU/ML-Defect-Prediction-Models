@@ -1,0 +1,80 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/Similarity.java b/lucene/src/java/org/apache/lucene/search/Similarity.java
+index 4fe51bf..d97095c 100644
+--- a/lucene/src/java/org/apache/lucene/search/Similarity.java
++++ b/lucene/src/java/org/apache/lucene/search/Similarity.java
+@@ -18,15 +18,15 @@ package org.apache.lucene.search;
+  */
+ 
+ 
++import java.io.IOException;
++import java.io.Serializable;
++import java.util.Collection;
++
+ import org.apache.lucene.index.FieldInvertState;
+ import org.apache.lucene.index.Term;
+ import org.apache.lucene.search.Explanation.IDFExplanation;
+ import org.apache.lucene.util.SmallFloat;
+ 
+-import java.io.IOException;
+-import java.io.Serializable;
+-import java.util.Collection;
+-
+ 
+ /** 
+  * Expert: Scoring API.
+@@ -562,16 +562,6 @@ public abstract class Similarity implements Serializable {
+       NORM_TABLE[i] = SmallFloat.byte315ToFloat((byte)i);
+   }
+ 
+-  /**
+-   * Decodes a normalization factor stored in an index.
+-   * @see #decodeNormValue(byte)
+-   * @deprecated Use {@link #decodeNormValue} instead.
+-   */
+-  @Deprecated
+-  public static float decodeNorm(byte b) {
+-    return NORM_TABLE[b & 0xFF];  // & 0xFF maps negative bytes to positive above 127
+-  }
+-
+   /** Decodes a normalization factor stored in an index.
+    * @see #encodeNormValue(float)
+    */
+@@ -579,17 +569,6 @@ public abstract class Similarity implements Serializable {
+     return NORM_TABLE[b & 0xFF];  // & 0xFF maps negative bytes to positive above 127
+   }
+ 
+-  /** Returns a table for decoding normalization bytes.
+-   * @see #encodeNormValue(float)
+-   * @see #decodeNormValue(byte)
+-   * 
+-   * @deprecated Use instance methods for encoding/decoding norm values to enable customization.
+-   */
+-  @Deprecated
+-  public static float[] getNormDecoder() {
+-    return NORM_TABLE;
+-  }
+-
+   /**
+    * Compute the normalization value for a field, given the accumulated
+    * state of term processing for this field (see {@link FieldInvertState}).
+@@ -670,20 +649,6 @@ public abstract class Similarity implements Serializable {
+     return SmallFloat.floatToByte315(f);
+   }
+   
+-  /**
+-   * Static accessor kept for backwards compability reason, use encodeNormValue instead.
+-   * @param f norm-value to encode
+-   * @return byte representing the given float
+-   * @deprecated Use {@link #encodeNormValue} instead.
+-   * 
+-   * @see #encodeNormValue(float)
+-   */
+-  @Deprecated
+-  public static byte encodeNorm(float f) {
+-    return SmallFloat.floatToByte315(f);
+-  }
+-
+-
+   /** Computes a score factor based on a term or phrase's frequency in a
+    * document.  This value is multiplied by the {@link #idf(int, int)}
+    * factor for each term in the query and these products are then summed to

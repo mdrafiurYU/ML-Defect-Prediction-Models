@@ -1,0 +1,23 @@
+diff --git a/hw/xgl/glxext/xglglxext.h b/hw/xgl/glxext/xglglxext.h
+index 2fe9d74..c353783 100644
+--- a/hw/xgl/glxext/xglglxext.h
++++ b/hw/xgl/glxext/xglglxext.h
+@@ -26,11 +26,16 @@
+ #ifndef _XGL_GLXEXT_H_
+ #define _XGL_GLXEXT_H_
+ 
+-#include <xgl-config.h>
+-
+ #include "scrnintstr.h"
+ 
+ Bool
+ xglInitVisualConfigs (ScreenPtr pScreen);
+ 
++#ifndef NGLXEXTLOG
++
++void
++xglInitGlxLog (void);
++
++#endif
++
+ #endif /* _XGL_GLXEXT_H_ */

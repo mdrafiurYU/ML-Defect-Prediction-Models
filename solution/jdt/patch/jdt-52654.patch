@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java
+index 12c96d4..d3b2fe1 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/RecoveredMethod.java
+@@ -214,13 +214,15 @@ public RecoveredElement add(TypeDeclaration typeDeclaration, int bracketBalanceV
+ 		}
+ 		return methodBody.add(typeDeclaration, bracketBalanceValue, true);	
+ 	}
+-	if (typeDeclaration.kind() == IGenericType.INTERFACE_DECL) {
+-		this.updateSourceEndIfNecessary(this.previousAvailableLineEnd(typeDeclaration.declarationSourceStart - 1));
+-		if (this.parent == null) {
+-			return this; // ignore
+-		}
+-		// close the constructor
+-		return this.parent.add(typeDeclaration, bracketBalanceValue);
++	switch (typeDeclaration.kind()) {
++		case IGenericType.INTERFACE_DECL :
++		case IGenericType.ANNOTATION_TYPE_DECL :
++			this.updateSourceEndIfNecessary(this.previousAvailableLineEnd(typeDeclaration.declarationSourceStart - 1));
++			if (this.parent == null) {
++				return this; // ignore
++			}
++			// close the constructor
++			return this.parent.add(typeDeclaration, bracketBalanceValue);
+ 	}
+ 	if (localTypes == null) {
+ 		localTypes = new RecoveredType[5];

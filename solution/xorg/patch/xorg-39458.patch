@@ -1,0 +1,36 @@
+diff --git a/Xext/shape.c b/Xext/shape.c
+index 6857c28..aaef0cb 100644
+--- a/Xext/shape.c
++++ b/Xext/shape.c
+@@ -61,9 +61,6 @@ static int ShapeFreeEvents(
+ 	pointer /* data */,
+ 	XID /* id */
+ 	);
+-static void ShapeResetProc(
+-	ExtensionEntry * /* extEntry */
+-	);
+ static void SShapeNotifyEvent(
+ 	xShapeNotifyEvent * /* from */,
+ 	xShapeNotifyEvent * /* to */
+@@ -149,20 +146,13 @@ ShapeExtensionInit(void)
+     if (ClientType && EventType &&
+ 	(extEntry = AddExtension(SHAPENAME, ShapeNumberEvents, 0,
+ 				 ProcShapeDispatch, SProcShapeDispatch,
+-				 ShapeResetProc, StandardMinorOpcode)))
++				 NULL, StandardMinorOpcode)))
+     {
+ 	ShapeEventBase = extEntry->eventBase;
+ 	EventSwapVector[ShapeEventBase] = (EventSwapPtr) SShapeNotifyEvent;
+     }
+ }
+ 
+-/*ARGSUSED*/
+-static void
+-ShapeResetProc (extEntry)
+-ExtensionEntry	*extEntry;
+-{
+-}
+-
+ static int
+ RegionOperate (client, pWin, kind, destRgnp, srcRgn, op, xoff, yoff, create)
+     ClientPtr	client;

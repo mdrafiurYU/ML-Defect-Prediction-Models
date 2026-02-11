@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/loader.h b/hw/xfree86/loader/loader.h
+index f48aadb..307b9bb 100644
+--- a/hw/xfree86/loader/loader.h
++++ b/hw/xfree86/loader/loader.h
+@@ -49,6 +49,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _LOADER_H
+ #define _LOADER_H
+ 

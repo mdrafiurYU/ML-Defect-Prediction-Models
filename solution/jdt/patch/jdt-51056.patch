@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/FactoryPathUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/FactoryPathUtil.java
+index 128b95e..de889b3 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/FactoryPathUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/util/FactoryPathUtil.java
+@@ -64,6 +64,7 @@ public final class FactoryPathUtil {
+ 			sb.append("<");
+ 			sb.append(FACTORYPATH_ENTRY_TAG).append(" ");
+ 			sb.append(KIND).append("=\"").append(container.getType()).append("\" ");
++			sb.append(ID).append("=\"").append(container.getId()).append("\" ");
+ 			sb.append(ENABLED).append("=\"").append(enabled).append("\"/>\n");
+ 		}
+ 		sb.append("</").append(FACTORYPATH_TAG).append(">\n");

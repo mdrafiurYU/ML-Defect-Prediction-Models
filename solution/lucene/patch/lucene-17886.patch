@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+index 012e95e..7541daf 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestDisjunctionMaxQuery.java
+@@ -62,7 +62,7 @@ public class TestDisjunctionMaxQuery extends LuceneTestCase {
+     }
+     
+     @Override
+-    public float computeNorm(String fieldName, FieldInvertState state) {
++    public float computeNorm(FieldInvertState state) {
+       // Disable length norm
+       return state.getBoost();
+     }

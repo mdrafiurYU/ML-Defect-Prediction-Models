@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/cache/DocTermsCreator.java b/lucene/src/java/org/apache/lucene/search/cache/DocTermsCreator.java
+index df06f19..43c267d 100644
+--- a/lucene/src/java/org/apache/lucene/search/cache/DocTermsCreator.java
++++ b/lucene/src/java/org/apache/lucene/search/cache/DocTermsCreator.java
+@@ -134,7 +134,9 @@ public class DocTermsCreator<T extends DocTerms> extends EntryCreatorWithOptions
+     }
+ 
+     // maybe an int-only impl?
+-    return (T)new DocTermsImpl(bytes.freeze(true), docToOffset.getMutable());
++    @SuppressWarnings("unchecked") final T t =
++      (T)new DocTermsImpl(bytes.freeze(true), docToOffset.getMutable());
++    return t;
+   }
+ 
+   @Override

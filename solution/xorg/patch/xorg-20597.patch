@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcSetSp.c b/hw/xfree86/xf4bpp/ppcSetSp.c
+index 9c3464d..7d56098 100644
+--- a/hw/xfree86/xf4bpp/ppcSetSp.c
++++ b/hw/xfree86/xf4bpp/ppcSetSp.c
+@@ -71,6 +71,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XConsortium: ppcSetSp.c /main/5 1996/02/21 17:58:32 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "mfbmap.h"

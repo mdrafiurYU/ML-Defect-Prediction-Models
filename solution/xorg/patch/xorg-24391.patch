@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/vxworks/vxkbd.c b/hw/kdrive/vxworks/vxkbd.c
+index 1c23aa9..b421e92 100644
+--- a/hw/kdrive/vxworks/vxkbd.c
++++ b/hw/kdrive/vxworks/vxkbd.c
+@@ -171,7 +171,7 @@ static int  kbdFd = -1;
+ #include <event.h>
+ #include <kbd_ioctl.h>
+ 
+-extern KeybdCtrl    defaultKeyboardControl;
++extern KeyboardCtrl    defaultKeyboardControl;
+ 
+ static void
+ VxWorksSetAutorepeat (unsigned char *repeats, Bool on)
+@@ -235,7 +235,7 @@ void
+ VxWorksKeyboardLeds (int leds)
+ {
+     DeviceIntPtr	pKeyboard = (DeviceIntPtr) LookupKeyboardDevice ();
+-    KeybdCtrl		*ctrl = &pKeyboard->kbdfeed->ctrl;
++    KeyboardCtrl		*ctrl = &pKeyboard->kbdfeed->ctrl;
+     led_ioctl_info	led_info;
+     int			i;
+ 

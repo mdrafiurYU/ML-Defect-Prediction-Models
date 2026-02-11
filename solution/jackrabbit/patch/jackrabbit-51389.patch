@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/AbstractLockTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/AbstractLockTest.java
+index f5310e4..5483461 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/AbstractLockTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/AbstractLockTest.java
+@@ -46,7 +46,7 @@ public abstract class AbstractLockTest extends AbstractJCRTest {
+     protected void setUp() throws Exception {
+         super.setUp();
+ 
+-        otherSession = helper.getSuperuserSession();
++        otherSession = getHelper().getSuperuserSession();
+ 
+         lockedNode = testRootNode.addNode(nodeName1, testNodeType);
+         lockedNode.addMixin(mixLockable);

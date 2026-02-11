@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EnvironmentFactory.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EnvironmentFactory.java
+index ec5cffc..cae8175 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EnvironmentFactory.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EnvironmentFactory.java
+@@ -36,7 +36,7 @@ public class EnvironmentFactory {
+ 	 */
+ 	public static AnnotationProcessorEnvironment getEnvironment(ICompilationUnit compilationUnit, IJavaProject javaProject )
+ 	{	
+-		CompilationUnit node = BaseProcessorEnv.createDietAST( javaProject, compilationUnit);
++		CompilationUnit node = BaseProcessorEnv.createAST( javaProject, compilationUnit);
+        	BaseProcessorEnv env = new BaseProcessorEnv(
+        			node,
+        			(IFile)compilationUnit.getResource(),

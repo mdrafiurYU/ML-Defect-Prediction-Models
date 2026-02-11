@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/PathQueryNode.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/PathQueryNode.java
+index 1a9d1d8..c6192a9 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/PathQueryNode.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/PathQueryNode.java
+@@ -26,7 +26,7 @@ import org.apache.jackrabbit.spi.commons.name.NameConstants;
+ /**
+  * Implements a query node that defines a path restriction.
+  */
+-public class PathQueryNode extends NAryQueryNode {
++public class PathQueryNode extends NAryQueryNode<LocationStepQueryNode> {
+ 
+     /**
+      * Flag indicating whether this path is absolute.
+@@ -101,7 +101,7 @@ public class PathQueryNode extends NAryQueryNode {
+         if (operands == null) {
+             return EMPTY;
+         } else {
+-            return (LocationStepQueryNode[]) operands.toArray(new LocationStepQueryNode[operands.size()]);
++            return operands.toArray(new LocationStepQueryNode[operands.size()]);
+         }
+     }

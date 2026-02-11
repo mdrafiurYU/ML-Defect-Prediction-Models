@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/HashMapIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/HashMapIndex.java
+index 64f1439..a6b70fe 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/HashMapIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/util/HashMapIndex.java
+@@ -146,7 +146,7 @@ public class HashMapIndex implements StringIndex {
+             try {
+                 save();
+             } catch (Exception e) {
+-                throw new IllegalStateException("Unable to store lookup table: "  +e);
++                throw new IllegalStateException("Unable to store lookup table: "  + e);
+             }
+         }
+         return idx.intValue();

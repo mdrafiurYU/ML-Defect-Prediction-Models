@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/ValueLoader.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/ValueLoader.java
+index 9833b45..c23dc63 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/ValueLoader.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2davex/ValueLoader.java
+@@ -54,7 +54,7 @@ class ValueLoader {
+             if (statusCode == DavServletResponse.SC_OK) {
+                 target.setStream(method.getResponseBodyAsStream());
+             } else {
+-                throw ExceptionConverter.generate(new DavException(statusCode, ("Unable to load binary. Status line = " + method.getStatusLine().toString())));
++                throw ExceptionConverter.generate(new DavException(statusCode, ("Unable to load binary at " + uri + " - Status line = " + method.getStatusLine().toString())));
+             }
+         } finally {
+             method.releaseConnection();

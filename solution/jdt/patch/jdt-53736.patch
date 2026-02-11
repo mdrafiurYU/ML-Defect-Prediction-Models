@@ -1,0 +1,64 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/SwitchFlowContext.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/SwitchFlowContext.java
+index 1ac9f9a..dbd92f1 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/SwitchFlowContext.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/flow/SwitchFlowContext.java
+@@ -18,37 +18,34 @@ import org.eclipse.jdt.internal.compiler.codegen.Label;
+  *	try statements, exception handlers, etc...
+  */
+ public class SwitchFlowContext extends FlowContext {
++	
+ 	public Label breakLabel;
+ 	public UnconditionalFlowInfo initsOnBreak = FlowInfo.DEAD_END;
+ 	
+-	public SwitchFlowContext(
+-		FlowContext parent,
+-		ASTNode associatedNode,
+-		Label breakLabel) {
+-		super(parent, associatedNode);
+-		this.breakLabel = breakLabel;
+-	}
+-
+-	public Label breakLabel() {
+-		return breakLabel;
+-	}
++public SwitchFlowContext(FlowContext parent, ASTNode associatedNode, Label breakLabel) {
++	super(parent, associatedNode);
++	this.breakLabel = breakLabel;
++}
+ 
+-	public String individualToString() {
+-		StringBuffer buffer = new StringBuffer("Switch flow context"); //$NON-NLS-1$
+-		buffer.append("[initsOnBreak -").append(initsOnBreak.toString()).append(']'); //$NON-NLS-1$
+-		return buffer.toString();
+-	}
++public Label breakLabel() {
++	return breakLabel;
++}
+ 
+-	public boolean isBreakable() {
+-		return true;
+-	}
++public String individualToString() {
++	StringBuffer buffer = new StringBuffer("Switch flow context"); //$NON-NLS-1$
++	buffer.append("[initsOnBreak -").append(initsOnBreak.toString()).append(']'); //$NON-NLS-1$
++	return buffer.toString();
++}
+ 
+-	public void recordBreakFrom(FlowInfo flowInfo) {
++public boolean isBreakable() {
++	return true;
++}
+ 
+-		if (initsOnBreak == FlowInfo.DEAD_END) {
+-			initsOnBreak = flowInfo.copy().unconditionalInits();
+-		} else {
+-			initsOnBreak = initsOnBreak.mergedWith(flowInfo.copy().unconditionalInits());
+-		}
++public void recordBreakFrom(FlowInfo flowInfo) {
++	if (initsOnBreak == FlowInfo.DEAD_END) {
++		initsOnBreak = flowInfo.copy().unconditionalInits();
++	} else {
++		initsOnBreak = initsOnBreak.mergedWith(flowInfo.copy().unconditionalInits());
+ 	}
+ }
++}

@@ -1,0 +1,74 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index a2c206e..e91b332 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -462,34 +462,6 @@ xf86ReleaseKeys(DeviceIntPtr pDev)
+     }
+ }
+ 
+-static void
+-xf86EnableInputHandler(pointer handler)
+-{
+-    IHPtr ih;
+-
+-    if (!handler)
+-	return;
+-
+-    ih = handler;
+-    ih->enabled = TRUE;
+-    if (ih->fd >= 0)
+-	AddEnabledDevice(ih->fd);
+-}
+-
+-static void
+-xf86DisableInputHandler(pointer handler)
+-{
+-    IHPtr ih;
+-
+-    if (!handler)
+-	return;
+-
+-    ih = handler;
+-    ih->enabled = FALSE;
+-    if (ih->fd >= 0)
+-	RemoveEnabledDevice(ih->fd);
+-}
+-
+ /*
+  * xf86VTSwitch --
+  *      Handle requests for switching the vt.
+@@ -756,6 +728,34 @@ xf86RemoveGeneralHandler(pointer handler)
+     return fd;
+ }
+ 
++_X_EXPORT void
++xf86DisableInputHandler(pointer handler)
++{
++    IHPtr ih;
++
++    if (!handler)
++	return;
++
++    ih = handler;
++    ih->enabled = FALSE;
++    if (ih->fd >= 0)
++	RemoveEnabledDevice(ih->fd);
++}
++
++_X_EXPORT void
++xf86EnableInputHandler(pointer handler)
++{
++    IHPtr ih;
++
++    if (!handler)
++	return;
++
++    ih = handler;
++    ih->enabled = TRUE;
++    if (ih->fd >= 0)
++	AddEnabledDevice(ih->fd);
++}
++
+ /*
+  * As used currently by the DRI, the return value is ignored.
+  */

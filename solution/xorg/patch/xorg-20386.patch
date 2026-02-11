@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/parser/Keyboard.c b/hw/xfree86/parser/Keyboard.c
+index e1f8b05..62031f6 100644
+--- a/hw/xfree86/parser/Keyboard.c
++++ b/hw/xfree86/parser/Keyboard.c
+@@ -167,6 +167,7 @@ xf86parseKeyboardSection (void)
+ 				xf86conffree(s1);
+ 			}
+ 			xf86unGetToken (token);
++			xf86conffree(s);
+ 			break;
+ 		case SERVERNUM:
+ 			xf86parseWarning(OBSOLETE_MSG, xf86tokenString());

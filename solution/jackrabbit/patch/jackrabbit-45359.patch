@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionImpl.java
+index 3da233c..8acae2f 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionImpl.java
+@@ -43,9 +43,9 @@ public class VersionImpl extends NodeImpl implements Version {
+ 
+     private static Logger log = LoggerFactory.getLogger(VersionImpl.class);
+ 
+-    public VersionImpl(ItemManager itemMgr, SessionImpl session, NodeState state,
++    public VersionImpl(SessionImpl session, NodeState state,
+                        ItemLifeCycleListener[] listeners) {
+-        super(itemMgr, session, state, listeners);
++        super(session, state, listeners);
+     }
+ 
+     //------------------------------------------------------------< Version >---

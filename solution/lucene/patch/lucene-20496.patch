@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestSearch.java b/lucene/src/test/org/apache/lucene/TestSearch.java
+index 619a604..a79b5c2 100644
+--- a/lucene/src/test/org/apache/lucene/TestSearch.java
++++ b/lucene/src/test/org/apache/lucene/TestSearch.java
+@@ -72,7 +72,7 @@ public class TestSearch extends LuceneTestCase {
+     private void doTestSearch(Random random, PrintWriter out, boolean useCompoundFile)
+     throws Exception {
+       Directory directory = newDirectory();
+-      Analyzer analyzer = new MockAnalyzer();
++      Analyzer analyzer = new MockAnalyzer(random);
+       IndexWriterConfig conf = newIndexWriterConfig(TEST_VERSION_CURRENT, analyzer);
+       MergePolicy mp = conf.getMergePolicy();
+       if (mp instanceof LogMergePolicy) {

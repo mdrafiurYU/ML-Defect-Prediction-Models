@@ -1,0 +1,13 @@
+diff --git a/os/connection.c b/os/connection.c
+index ffe911e..d0ffb81 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1066,6 +1066,8 @@ CloseDownConnection(ClientPtr client)
+     XdmcpCloseDisplay(oc->fd);
+ #endif
+     CloseDownFileDescriptor(oc);
++    FreeOsBuffers(oc);
++    xfree(client->osPrivate);
+     client->osPrivate = (pointer)NULL;
+     if (auditTrailLevel > 1)
+ 	AuditF("client %d disconnected\n", client->index);

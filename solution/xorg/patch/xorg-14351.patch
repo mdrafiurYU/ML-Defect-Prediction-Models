@@ -1,0 +1,15 @@
+diff --git a/GL/glx/singlesize.c b/GL/glx/singlesize.c
+index 3baf035..04de960 100644
+--- a/GL/glx/singlesize.c
++++ b/GL/glx/singlesize.c
+@@ -34,6 +34,10 @@
+ **
+ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <GL/gl.h>
+ #include "glxserver.h"
+ #include "singlesize.h"

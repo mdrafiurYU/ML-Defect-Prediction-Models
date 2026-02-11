@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+index 2036700..02f18e0 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+@@ -19,8 +19,10 @@ package org.apache.jackrabbit.spi.commons.value;
+ import java.io.ByteArrayInputStream;
+ import java.io.InputStream;
+ import java.io.UnsupportedEncodingException;
++import java.math.BigDecimal;
+ import java.util.Calendar;
+ 
++import javax.jcr.Binary;
+ import javax.jcr.PropertyType;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+@@ -88,6 +90,11 @@ public final class QValueValue implements Value {
+         }
+     }
+ 
++    public Binary getBinary() throws RepositoryException {
++        // TODO
++        throw new RuntimeException("Not implemented yet, see JCR-2056");
++    }
++
+     /**
+      * @see javax.jcr.Value#getDate()
+      */
+@@ -211,4 +218,5 @@ public final class QValueValue implements Value {
+         }
+         state = STATE_VALUE_CONSUMED;
+     }
++
+ }

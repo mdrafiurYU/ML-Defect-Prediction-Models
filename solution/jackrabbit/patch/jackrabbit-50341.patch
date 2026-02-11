@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/RepositoryFactoryImplTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/RepositoryFactoryImplTest.java
+index 5e2a230..4a0e217 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/RepositoryFactoryImplTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/integration/RepositoryFactoryImplTest.java
+@@ -148,8 +148,8 @@ public class RepositoryFactoryImplTest extends AbstractJCRTest {
+ 
+     //-------------------------< internal helper >------------------------------
+ 
+-    private static void checkRepository(Repository r) throws RepositoryException {
+-        r.login(helper.getSuperuserCredentials()).logout();
++    private void checkRepository(Repository r) throws RepositoryException {
++        r.login(getHelper().getSuperuserCredentials()).logout();
+     }
+ 
+     private static void setProperties() {

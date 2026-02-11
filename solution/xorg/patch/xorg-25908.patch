@@ -1,0 +1,43 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 2769223..f954ba6 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -227,8 +227,18 @@ miPointerRealizeCursor (pScreen, pCursor)
+     DeviceIntPtr pDev = inputInfo.pointer;
+ 
+     SetupScreen(pScreen);
+-
++#ifdef MPX
++    pDev = inputInfo.devices;
++    while(pDev)
++    {
++        if (pDev != inputInfo.keyboard)
++            (*pScreenPriv->spriteFuncs->RealizeCursor) (pDev, pScreen, pCursor);
++        pDev = pDev->next;
++    }
++    return TRUE;
++#else
+     return (*pScreenPriv->spriteFuncs->RealizeCursor) (pDev, pScreen, pCursor);
++#endif
+ }
+ 
+ static Bool
+@@ -239,7 +249,18 @@ miPointerUnrealizeCursor (pScreen, pCursor)
+     DeviceIntPtr pDev = inputInfo.pointer;
+     SetupScreen(pScreen);
+ 
++#ifdef MPX
++    pDev = inputInfo.devices;
++    while(pDev)
++    {
++        if (pDev != inputInfo.keyboard)
++            (*pScreenPriv->spriteFuncs->UnrealizeCursor) (pDev, pScreen, pCursor);
++        pDev = pDev->next;
++    }
++    return TRUE;
++#else
+     return (*pScreenPriv->spriteFuncs->UnrealizeCursor) (pDev, pScreen, pCursor);
++#endif
+ }
+ 
+ static Bool

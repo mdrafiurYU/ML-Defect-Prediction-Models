@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/pt/TestPortugueseLightStemFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/pt/TestPortugueseLightStemFilter.java
+index 6f5fdcf..bd5405b 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/pt/TestPortugueseLightStemFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/pt/TestPortugueseLightStemFilter.java
+@@ -92,4 +92,9 @@ public class TestPortugueseLightStemFilter extends BaseTokenStreamTestCase {
+   public void testVocabulary() throws IOException {
+     assertVocabulary(analyzer, getDataFile("ptlighttestdata.zip"), "ptlight.txt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, analyzer, 10000*RANDOM_MULTIPLIER);
++  }
+ }

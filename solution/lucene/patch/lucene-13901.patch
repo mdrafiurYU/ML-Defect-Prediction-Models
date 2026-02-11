@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/QueryComponent.java b/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
+index 00dc0e6..b5e133e 100644
+--- a/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
++++ b/solr/src/java/org/apache/solr/handler/component/QueryComponent.java
+@@ -527,8 +527,7 @@ public class QueryComponent extends SearchComponent
+     SolrQueryResponse rsp = rb.rsp;
+     //pre-fetch returned documents
+     if (!req.getParams().getBool(ShardParams.IS_SHARD,false) && rb.getResults().docList != null && rb.getResults().docList.size()<=50) {
+-      // TODO: this may depend on the highlighter component (or other components?)
+-      SolrPluginUtils.optimizePreFetchDocs(rb.getResults().docList, rb.getQuery(), req, rsp);
++      SolrPluginUtils.optimizePreFetchDocs(rb, rb.getResults().docList, rb.getQuery(), req, rsp);
+     }
+   }

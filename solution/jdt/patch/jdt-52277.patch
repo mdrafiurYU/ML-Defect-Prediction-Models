@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java
+index 0b7e4f9..dc7d371 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/LocalDeclaration.java
+@@ -207,11 +207,11 @@ public class LocalDeclaration extends AbstractVariableDeclaration {
+ 						if (initializationType.needsUncheckedConversion(variableType)) {
+ 						    scope.problemReporter().unsafeTypeConversion(this.initialization, initializationType, variableType);
+ 						}						
+-					} else if (scope.compilerOptions().sourceLevel >= JDK1_5 // autoboxing
+-									&& (scope.isBoxingCompatibleWith(initializationType, variableType) 
+-											|| (initializationType.isBaseType()  // narrowing then boxing ?
+-													&& !variableType.isBaseType()
+-													&& initialization.isConstantValueOfTypeAssignableToType(initializationType, scope.environment().computeBoxingType(variableType))))) {
++					} else if (scope.isBoxingCompatibleWith(initializationType, variableType) 
++										|| (initializationType.isBaseType()  // narrowing then boxing ?
++												&& scope.compilerOptions().sourceLevel >= JDK1_5 // autoboxing
++												&& !variableType.isBaseType()
++												&& initialization.isConstantValueOfTypeAssignableToType(initializationType, scope.environment().computeBoxingType(variableType)))) {
+ 						this.initialization.computeConversion(scope, variableType, initializationType);
+ 					} else {
+ 						scope.problemReporter().typeMismatchError(initializationType, variableType, this);

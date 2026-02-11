@@ -1,0 +1,22 @@
+diff --git a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestIndicesEquals.java b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestIndicesEquals.java
+index ae091b5..7a5398c 100644
+--- a/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestIndicesEquals.java
++++ b/lucene/contrib/instantiated/src/test/org/apache/lucene/store/instantiated/TestIndicesEquals.java
+@@ -65,7 +65,7 @@ public class TestIndicesEquals extends LuceneTestCase {
+ 
+     // create dir data
+     IndexWriter indexWriter = new IndexWriter(dir, newIndexWriterConfig(
+-        TEST_VERSION_CURRENT, new MockAnalyzer()));
++        TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newInOrderLogMergePolicy()));
+     
+     for (int i = 0; i < 20; i++) {
+       Document document = new Document();
+@@ -91,7 +91,7 @@ public class TestIndicesEquals extends LuceneTestCase {
+ 
+     // create dir data
+     IndexWriter indexWriter = new IndexWriter(dir, newIndexWriterConfig(
+-        TEST_VERSION_CURRENT, new MockAnalyzer()));
++                                                                        TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newInOrderLogMergePolicy()));
+     indexWriter.setInfoStream(VERBOSE ? System.out : null);
+     if (VERBOSE) {
+       System.out.println("TEST: make test index");

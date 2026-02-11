@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/store/TestLockFactory.java b/lucene/src/test/org/apache/lucene/store/TestLockFactory.java
+index 350f1ed..bf368bd 100755
+--- a/lucene/src/test/org/apache/lucene/store/TestLockFactory.java
++++ b/lucene/src/test/org/apache/lucene/store/TestLockFactory.java
+@@ -42,7 +42,7 @@ public class TestLockFactory extends LuceneTestCase {
+     // methods are called at the right time, locks are created, etc.
+ 
+     public void testCustomLockFactory() throws IOException {
+-        Directory dir = new MockDirectoryWrapper(new RAMDirectory());
++        Directory dir = new MockDirectoryWrapper(random, new RAMDirectory());
+         MockLockFactory lf = new MockLockFactory();
+         dir.setLockFactory(lf);
+ 
+@@ -75,7 +75,7 @@ public class TestLockFactory extends LuceneTestCase {
+     // exceptions raised:
+     // Verify: NoLockFactory allows two IndexWriters
+     public void testRAMDirectoryNoLocking() throws IOException {
+-        Directory dir = new MockDirectoryWrapper(new RAMDirectory());
++        Directory dir = new MockDirectoryWrapper(random, new RAMDirectory());
+         dir.setLockFactory(NoLockFactory.getNoLockFactory());
+ 
+         assertTrue("RAMDirectory.setLockFactory did not take",

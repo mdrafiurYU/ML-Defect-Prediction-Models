@@ -1,0 +1,16 @@
+diff --git a/fb/fbedgeimp.h b/fb/fbedgeimp.h
+index 136a15e..8773935 100644
+--- a/fb/fbedgeimp.h
++++ b/fb/fbedgeimp.h
+@@ -108,6 +108,11 @@ rasterizeEdges (FbBits		*buf,
+ 			AddAlpha (N_X_FRAC(N_BITS));
+ 			StepAlpha;
+ 		    }
++		    /* Do not add in a 0 alpha here. This check is necessary
++		     * to avoid a buffer overrun when rx is exactly on a pixel
++		     * boundary.
++		     */
++		    if (rxs != 0)
+ 		    AddAlpha (rxs);
+ 		}
+ 	    }

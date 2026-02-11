@@ -1,0 +1,12 @@
+diff --git a/xkb/xkb.h b/xkb/xkb.h
+index 156608e..a85df8e 100644
+--- a/xkb/xkb.h
++++ b/xkb/xkb.h
+@@ -72,3 +72,7 @@ extern Bool XkbDDXCompileKeymapByNames(
+     unsigned                need,
+     char *                  nameRtrn,
+     int                     nameRtrnLen);
++
++extern Bool XkbCopyKeymap(
++    XkbDescPtr              src,
++    XkbDescPtr              dst);

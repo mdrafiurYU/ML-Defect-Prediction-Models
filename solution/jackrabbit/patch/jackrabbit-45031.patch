@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/query/impl/FilterImpl.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/query/impl/FilterImpl.java
+index 17da119..ae3ee8e 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/query/impl/FilterImpl.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/query/impl/FilterImpl.java
+@@ -62,6 +62,9 @@ public class FilterImpl implements Filter {
+         this.valueFactory = valueFactory;
+     }
+ 
++    public Object clone(){
++    	return new FilterImpl(classDescriptor,atomicTypeConverters,claszz,valueFactory);
++    }
+     /**
+      *
+      * @see org.apache.jackrabbit.ocm.query.Filter#getFilterClass()

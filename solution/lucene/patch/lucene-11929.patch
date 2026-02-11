@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java b/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
+index 2209d20..1039b19 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
+@@ -189,7 +189,7 @@ public class TestAtomicUpdate extends LuceneTestCase {
+     Directory directory;
+ 
+     // First in a RAM directory:
+-    directory = new MockDirectoryWrapper(new RAMDirectory());
++    directory = new MockDirectoryWrapper(random, new RAMDirectory());
+     runTest(directory);
+     directory.close();

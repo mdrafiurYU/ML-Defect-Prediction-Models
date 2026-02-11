@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+index 97a4785..1cc310f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Scanner.java
+@@ -2266,13 +2266,12 @@ protected void parseTags(boolean hasLineComment) {
+ 		if (this.nonNLSStrings == null) this.nonNLSStrings = new HashSet();
+ 		this.nonNLSStrings.addAll(line.elements);
+ 	} else {
+-		final int currentTokenStart = getCurrentTokenStartPosition();
+ 		if (linePtr < 0) {
+ 			int i = 0;
+ 			while (Character.isWhitespace(this.source[i])) {
+ 				i++;
+ 			}
+-			if (currentTokenStart == i) {
++			if (getCurrentTokenStartPosition() == i) {
+ 				// the whole line is commented out
+ 				return;
+ 			}
+@@ -2281,7 +2280,7 @@ protected void parseTags(boolean hasLineComment) {
+ 			while (Character.isWhitespace(this.source[i])) {
+ 				i++;
+ 			}
+-			if (currentTokenStart == i) {
++			if (getCurrentTokenStartPosition() == i) {
+ 				// the whole line is commented out
+ 				return;
+ 			}

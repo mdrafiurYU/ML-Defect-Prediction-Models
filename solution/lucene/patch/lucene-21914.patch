@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java b/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
+index 8e18b52..fc95980 100644
+--- a/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/MultiPhraseQuery.java
+@@ -219,7 +219,7 @@ public class MultiPhraseQuery extends Query {
+ 
+       // sort by increasing docFreq order
+       if (slop == 0) {
+-        ArrayUtil.quickSort(postingsFreqs);
++        ArrayUtil.mergeSort(postingsFreqs);
+       }
+ 
+       if (slop == 0) {

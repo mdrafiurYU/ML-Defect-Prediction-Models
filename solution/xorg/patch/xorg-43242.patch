@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/fbdevhw/fbdevhw.c b/hw/xfree86/fbdevhw/fbdevhw.c
+index 495d88b..3eee070 100644
+--- a/hw/xfree86/fbdevhw/fbdevhw.c
++++ b/hw/xfree86/fbdevhw/fbdevhw.c
+@@ -155,7 +155,10 @@ fbdevHWFreeRec(ScrnInfoPtr pScrn)
+ int
+ fbdevHWGetFD(ScrnInfoPtr pScrn)
+ {
+-    fbdevHWPtr fPtr = fbdevHWGetRec(pScrn);
++    fbdevHWPtr fPtr;
++
++    fbdevHWGetRec(pScrn);
++    fPtr = FBDEVHWPTR(pScrn);
+ 
+     return fPtr->fd;
+ }

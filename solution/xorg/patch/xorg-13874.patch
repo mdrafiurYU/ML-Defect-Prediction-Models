@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/smi/smi.h b/hw/kdrive/smi/smi.h
+index d473321..93b8569 100644
+--- a/hw/kdrive/smi/smi.h
++++ b/hw/kdrive/smi/smi.h
+@@ -186,6 +186,7 @@ typedef struct _smiScreenInfo {
+     CARD32		stride;
+     CARD32		data_format;
+     CARD8		dpr_vpr_enable;
++    KaaScreenInfoRec kaa;
+ } SmiScreenInfo;
+ 
+ #define getSmiScreenInfo(kd) ((SmiScreenInfo *) ((kd)->screen->driver))
+@@ -243,9 +244,6 @@ void
+ smiDrawEnable (ScreenPtr pScreen);
+ 
+ void
+-smiDrawSync (ScreenPtr pScreen);
+-
+-void
+ smiDrawDisable (ScreenPtr pScreen);
+ 
+ void

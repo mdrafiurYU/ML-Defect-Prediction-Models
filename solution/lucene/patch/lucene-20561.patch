@@ -1,0 +1,22 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestStandardAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestStandardAnalyzer.java
+index 53b61c7..17bae9e 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestStandardAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestStandardAnalyzer.java
+@@ -3,6 +3,7 @@ package org.apache.lucene.analysis.core;
+ import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.analysis.BaseTokenStreamTestCase;
+ import org.apache.lucene.analysis.Tokenizer;
++import org.apache.lucene.analysis.standard.StandardAnalyzer;
+ import org.apache.lucene.analysis.standard.StandardTokenizer;
+ import org.apache.lucene.analysis.util.ReusableAnalyzerBase;
+ 
+@@ -219,4 +220,9 @@ public class TestStandardAnalyzer extends BaseTokenStreamTestCase {
+         new String[] { "仮", "名", "遣", "い", "カタカナ" },
+         new String[] { "<IDEOGRAPHIC>", "<IDEOGRAPHIC>", "<IDEOGRAPHIC>", "<HIRAGANA>", "<KATAKANA>" });
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new StandardAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/GenericsCompletionParserTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/GenericsCompletionParserTest.java
+index e09bb0d..be45b0e 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/GenericsCompletionParserTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/GenericsCompletionParserTest.java
+@@ -12,12 +12,17 @@ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
+ import java.util.Map;
+ 
++import junit.framework.Test;
++
+ import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
+ 
+ public class GenericsCompletionParserTest extends AbstractCompletionTest {
+ public GenericsCompletionParserTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(GenericsCompletionParserTest.class);
++}
+ protected Map getCompilerOptions() {
+ 	Map options = super.getCompilerOptions();
+ 	options.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_1_5);

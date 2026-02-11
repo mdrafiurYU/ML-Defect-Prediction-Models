@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index a398740..6927720 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -222,15 +222,8 @@ xf86ActivateDevice(LocalDevicePtr local)
+     DeviceIntPtr	dev;
+ 
+     if (local->flags & XI86_CONFIGURED) {
+-        int	open_on_init;
++        dev = AddInputDevice(local->device_control, TRUE);
+         
+-        open_on_init = local->flags & (XI86_OPEN_ON_INIT | XI86_ALWAYS_CORE);
+-        
+-        dev = AddInputDevice(local->device_control,
+-                             open_on_init);
+-#ifdef DEBUG
+-        ErrorF("activated device %d: %s\n", dev->id, local->name);
+-#endif
+         if (dev == NULL)
+             FatalError("Too many input devices");
+         

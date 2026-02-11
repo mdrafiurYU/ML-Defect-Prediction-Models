@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java
+index d285963..8ce6896 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/InnerTypeCompletionTest.java
+@@ -20,7 +20,7 @@ public InnerTypeCompletionTest(String testName) {
+ 	super(testName);
+ }
+ public static Test suite() {
+-	return buildTestSuite(InnerTypeCompletionTest.class);
++	return buildAllCompliancesRegressionTestSetupSuite(InnerTypeCompletionTest.class);
+ }
+ /*
+  * Test completion in the first method of an anonymous inner class

@@ -1,0 +1,15 @@
+diff --git a/fb/fbmmx.c b/fb/fbmmx.c
+index 9db335b..d9c3af2 100644
+--- a/fb/fbmmx.c
++++ b/fb/fbmmx.c
+@@ -26,6 +26,10 @@
+  */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef USE_MMX
+ 
+ #include "fb.h"

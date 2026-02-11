@@ -1,0 +1,14 @@
+diff --git a/dix/window.c b/dix/window.c
+index 9975b5e..499f58e 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -292,6 +292,9 @@ SetWindowToDefaults(WindowPtr pWin)
+     pWin->forcedBS = FALSE;
+     pWin->redirectDraw = RedirectDrawNone;
+     pWin->forcedBG = FALSE;
++#ifdef ROOTLESS
++    pWin->rootlessUnhittable = FALSE;
++#endif
+ }
+ 
+ static void

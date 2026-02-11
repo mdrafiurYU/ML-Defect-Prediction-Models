@@ -1,0 +1,18 @@
+diff --git a/modules/analysis/icu/src/java/org/apache/lucene/collation/ICUCollationKeyFilter.java b/modules/analysis/icu/src/java/org/apache/lucene/collation/ICUCollationKeyFilter.java
+index a899ee5..c69aebe 100644
+--- a/modules/analysis/icu/src/java/org/apache/lucene/collation/ICUCollationKeyFilter.java
++++ b/modules/analysis/icu/src/java/org/apache/lucene/collation/ICUCollationKeyFilter.java
+@@ -84,7 +84,12 @@ public final class ICUCollationKeyFilter extends TokenFilter {
+    */
+   public ICUCollationKeyFilter(TokenStream input, Collator collator) {
+     super(input);
+-    this.collator = collator;
++    // clone the collator: see http://userguide.icu-project.org/collation/architecture
++    try {
++      this.collator = (Collator) collator.clone();
++    } catch (CloneNotSupportedException e) {
++      throw new RuntimeException(e);
++    }
+   }
+ 
+   @Override

@@ -1,0 +1,30 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocatorParser.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocatorParser.java
+index 775403c..fad46e8 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocatorParser.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocatorParser.java
+@@ -382,25 +382,3 @@ protected void parseBodies(TypeDeclaration type, CompilationUnitDeclaration unit
+ }
+ }
+ 
+-class ImportMatchLocatorParser extends MatchLocatorParser {
+-
+-protected ImportMatchLocatorParser(ProblemReporter problemReporter, MatchLocator locator) {
+-	super(problemReporter, locator);
+-}
+-protected void consumeStaticImportOnDemandDeclarationName() {
+-	super.consumeStaticImportOnDemandDeclarationName();
+-	this.patternLocator.match(this.astStack[this.astPtr], this.nodeSet);
+-}
+-protected void consumeSingleStaticImportDeclarationName() {
+-	super.consumeSingleStaticImportDeclarationName();
+-	this.patternLocator.match(this.astStack[this.astPtr], this.nodeSet);
+-}
+-protected void consumeSingleTypeImportDeclarationName() {
+-	super.consumeSingleTypeImportDeclarationName();
+-	this.patternLocator.match(this.astStack[this.astPtr], this.nodeSet);
+-}
+-protected void consumeTypeImportOnDemandDeclarationName() {
+-	super.consumeTypeImportOnDemandDeclarationName();
+-	this.patternLocator.match(this.astStack[this.astPtr], this.nodeSet);
+-}
+-}

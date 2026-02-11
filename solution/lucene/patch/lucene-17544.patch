@@ -1,0 +1,21 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/FieldSettings.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/FieldSettings.java
+index 2eb9c72..4b0662c 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/FieldSettings.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/FieldSettings.java
+@@ -3,7 +3,6 @@ package org.apache.lucene.store.instantiated;
+ import java.util.HashMap;
+ import java.util.Map;
+ import java.util.Collection;
+-import java.io.Serializable;
+ 
+ /**
+  * Licensed to the Apache Software Foundation (ASF) under one or more
+@@ -25,7 +24,7 @@ import java.io.Serializable;
+ /**
+  * Essentially a Map<FieldName, {@link org.apache.lucene.store.instantiated.FieldSetting}> 
+  */
+-class FieldSettings implements Serializable {
++class FieldSettings {
+ 
+ 
+   FieldSettings() {

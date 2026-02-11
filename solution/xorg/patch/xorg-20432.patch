@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/mfbimggblt.c b/hw/xfree86/xf4bpp/mfbimggblt.c
+index 95d7a7f..03107bb 100644
+--- a/hw/xfree86/xf4bpp/mfbimggblt.c
++++ b/hw/xfree86/xf4bpp/mfbimggblt.c
+@@ -50,6 +50,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XConsortium: mfbimggblt.c /main/5 1996/02/21 17:56:44 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "mfbmap.h"

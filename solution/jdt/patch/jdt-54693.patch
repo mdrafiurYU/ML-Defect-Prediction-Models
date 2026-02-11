@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java
+index 45f3462..8dcf80c 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java
+@@ -12,6 +12,7 @@ package org.eclipse.jdt.internal.codeassist.complete;
+ 
+ import org.eclipse.jdt.internal.compiler.ast.Expression;
+ import org.eclipse.jdt.internal.compiler.ast.JavadocFieldReference;
++import org.eclipse.jdt.internal.compiler.ast.JavadocMessageSend;
+ import org.eclipse.jdt.internal.compiler.lookup.BlockScope;
+ import org.eclipse.jdt.internal.compiler.lookup.ClassScope;
+ import org.eclipse.jdt.internal.compiler.lookup.Scope;
+@@ -40,6 +41,15 @@ public class CompletionOnJavadocFieldReference extends JavadocFieldReference imp
+ 		this.tagValue = fieldRef.tagValue;
+ 	}
+ 
++	public CompletionOnJavadocFieldReference(JavadocMessageSend msgSend, int position) {
++		super(msgSend.selector, ((msgSend.nameSourcePosition>>32)<<32)+msgSend.sourceEnd);
++		this.receiver = msgSend.receiver;
++		this.separatorPosition = position;
++		this.tagSourceStart = msgSend.tagSourceStart;
++		this.tagSourceEnd = msgSend.tagSourceEnd;
++		this.tagValue = msgSend.tagValue;
++	}
++
+ 	/**
+ 	 * @param flags The completionFlags to set.
+ 	 */

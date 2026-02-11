@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoubleLiteral.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoubleLiteral.java
+index 51cd7f4..717ee00 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoubleLiteral.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/DoubleLiteral.java
+@@ -104,7 +104,7 @@ public class DoubleLiteral extends NumberLiteral {
+ 		codeStream.recordPositionsFrom(pc, this.sourceStart);
+ 	}
+ 	public TypeBinding literalType(BlockScope scope) {
+-		return DoubleBinding;
++		return TypeBinding.DOUBLE;
+ 	}
+ 	public void traverse(ASTVisitor visitor, BlockScope blockScope) {
+ 		visitor.visit(this, blockScope);

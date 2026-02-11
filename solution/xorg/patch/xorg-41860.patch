@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86RAC.c b/hw/xfree86/common/xf86RAC.c
+index 24d29e4..1ee5e57 100644
+--- a/hw/xfree86/common/xf86RAC.c
++++ b/hw/xfree86/common/xf86RAC.c
+@@ -262,7 +262,7 @@ static int RACGCKeyIndex;
+ static DevPrivateKey RACGCKey = &RACGCKeyIndex;
+ 
+ 
+-Bool 
++_X_EXPORT Bool 
+ xf86RACInit(ScreenPtr pScreen, unsigned int flag)
+ {
+     ScrnInfoPtr pScrn;

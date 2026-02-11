@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/RandomAccessOutputStream.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/RandomAccessOutputStream.java
+index 70eeee3..fd7c7be 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/RandomAccessOutputStream.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/RandomAccessOutputStream.java
+@@ -23,6 +23,8 @@ import java.io.OutputStream;
+  * Extends the regular <code>java.io.OutputStream</code> with a random
+  * access facility. Multiple <code>write()</code> operations can be
+  * positioned off sequence with the {@link #seek} method.
++ *
++ * @deprecated this class should no longer be used
+  */
+ public abstract class RandomAccessOutputStream extends OutputStream {

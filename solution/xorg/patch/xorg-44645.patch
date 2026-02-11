@@ -1,0 +1,28 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 2bcc2e1..83891f8 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -1846,9 +1846,12 @@ DeleteDeviceFromAnyExtEvents(WindowPtr pWin, DeviceIntPtr dev)
+ 	    dev->focus->traceGood = 0;
+ 	    break;
+ 	case RevertToFollowKeyboard:
+-	    if (inputInfo.keyboard->focus->win) {
+-		DoFocusEvents(dev, pWin, inputInfo.keyboard->focus->win,
+-			      focusEventMode);
++            {
++                DeviceIntPtr kbd = GetMaster(dev, MASTER_KEYBOARD);
++                if (!kbd || (kbd == dev && kbd != inputInfo.keyboard))
++                    kbd = inputInfo.keyboard;
++	    if (kbd->focus->win) {
++		DoFocusEvents(dev, pWin, kbd->focus->win, focusEventMode);
+ 		dev->focus->win = FollowKeyboardWin;
+ 		dev->focus->traceGood = 0;
+ 	    } else {
+@@ -1856,6 +1859,7 @@ DeleteDeviceFromAnyExtEvents(WindowPtr pWin, DeviceIntPtr dev)
+ 		dev->focus->win = NoneWin;
+ 		dev->focus->traceGood = 0;
+ 	    }
++            }
+ 	    break;
+ 	}
+     }

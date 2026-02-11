@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
+index 857eefc..c2802ab 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TypeVariableBinding.java
+@@ -130,7 +130,7 @@ public class TypeVariableBinding extends ReferenceBinding {
+ 					TypeBinding match = referenceArgument.findSuperTypeWithSameErasure(substitutedSuperType);
+ 					if (match != null){
+ 						// Enum#RAW is not a substitute for <E extends Enum<E>> (86838)
+-						if (match.isRawType() && (substitutedSuperType.isGenericType()||substitutedSuperType.isBoundParameterizedType()))
++						if (match.isRawType() && substitutedSuperType.isBoundParameterizedType())
+ 							unchecked = true;
+ 					}
+ 				} 
+@@ -148,7 +148,7 @@ public class TypeVariableBinding extends ReferenceBinding {
+ 					TypeBinding match = referenceArgument.findSuperTypeWithSameErasure(substitutedSuperType);
+ 					if (match != null){
+ 						// Enum#RAW is not a substitute for <E extends Enum<E>> (86838)
+-						if (match.isRawType() && (substitutedSuperType.isGenericType()||substitutedSuperType.isBoundParameterizedType()))
++						if (match.isRawType() && substitutedSuperType.isBoundParameterizedType())
+ 							unchecked = true;
+ 					}
+ 				}

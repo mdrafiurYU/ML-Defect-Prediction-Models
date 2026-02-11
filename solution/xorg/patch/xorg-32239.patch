@@ -1,0 +1,27 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 71e0080..1b99e95 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -1940,8 +1940,10 @@ configScreen(confScreenPtr screenp, XF86ConfScreenPtr conf_screen, int scrnum,
+ 	    return FALSE;
+     }
+     screenp->device     = xnfcalloc(1, sizeof(GDevRec));
+-    configDevice(screenp->device,conf_screen->scrn_device, TRUE);
++    if (configDevice(screenp->device,conf_screen->scrn_device, TRUE))
+     screenp->device->myScreenSection = screenp;
++    else
++        screenp->device = NULL;
+     screenp->options = conf_screen->scrn_option_lst;
+     
+     /*
+@@ -2230,6 +2232,10 @@ configDevice(GDevPtr devicep, XF86ConfDevicePtr conf_device, Bool active)
+ {
+     int i;
+ 
++    if (!conf_device) {
++        return FALSE;
++    }
++
+     if (active)
+ 	xf86Msg(X_CONFIG, "|   |-->Device \"%s\"\n",
+ 		conf_device->dev_identifier);

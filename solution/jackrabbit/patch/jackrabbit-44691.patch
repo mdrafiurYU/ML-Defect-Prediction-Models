@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
+index cbe8fa5..1bd1a50 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
+@@ -518,11 +518,12 @@ class InternalVersionHistoryImpl extends InternalVersionItemImpl
+      */
+     static InternalVersionHistoryImpl create(AbstractVersionManager vMgr,
+                                              NodeStateEx parent,
+-                                             NodeId historyId, Name name,
++                                             Name name,
+                                              NodeState nodeState)
+             throws RepositoryException {
+ 
+         // create history node
++        NodeId historyId = new NodeId(UUID.randomUUID());
+         NodeStateEx pNode = parent.addNode(name, NameConstants.NT_VERSIONHISTORY, historyId, true);
+ 
+         // set the versionable uuid

@@ -1,0 +1,20 @@
+diff --git a/Xi/stubs.c b/Xi/stubs.c
+index ed041b8..d425fe9 100644
+--- a/Xi/stubs.c
++++ b/Xi/stubs.c
+@@ -230,3 +230,15 @@ NewInputDeviceRequest(InputOption *options)
+ {
+     return BadValue;
+ }
++
++/****************************************************************************
++ *
++ * Caller: configRemoveDevice (and others)
++ *
++ * Remove the specified device previously added.
++ *
++ */
++void
++DeleteInputDeviceRequest(DeviceIntPtr dev)
++{
++}

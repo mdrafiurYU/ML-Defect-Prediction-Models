@@ -1,0 +1,21 @@
+diff --git a/hw/xgl/glx/xglx.c b/hw/xgl/glx/xglx.c
+index 515d393..b8ab389 100644
+--- a/hw/xgl/glx/xglx.c
++++ b/hw/xgl/glx/xglx.c
+@@ -550,15 +550,11 @@ InitOutput (ScreenInfo *pScreenInfo,
+ 	xscreen = DefaultScreen (xdisplay);
+     }
+ 
+-    templ.types.window     = 1;
+-    templ.types.pbuffer    = 1;
+     templ.samples          = 1;
+     templ.doublebuffer     = 1;
+     templ.color.alpha_size = 8;
+     
+-    mask =
+-	GLITZ_FORMAT_WINDOW_MASK |
+-	GLITZ_FORMAT_SAMPLES_MASK;
++    mask = GLITZ_FORMAT_SAMPLES_MASK;
+ 
+     for (i = 0; i < sizeof (extraMask) / sizeof (extraMask[0]); i++)
+     {

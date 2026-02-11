@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_mouse.c b/hw/xfree86/os-support/linux/lnx_mouse.c
+index d73c698..afd2160 100644
+--- a/hw/xfree86/os-support/linux/lnx_mouse.c
++++ b/hw/xfree86/os-support/linux/lnx_mouse.c
+@@ -189,7 +189,7 @@ GuessProtocol(InputInfoPtr pInfo, int flags)
+     return NULL;
+ }
+ 
+-OSMouseInfoPtr
++_X_EXPORT OSMouseInfoPtr
+ xf86OSMouseInit(int flags)
+ {
+     OSMouseInfoPtr p;

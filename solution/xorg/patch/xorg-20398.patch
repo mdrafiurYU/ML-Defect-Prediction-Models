@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/emulTile.c b/hw/xfree86/xf4bpp/emulTile.c
+index 1e2d095..c4f15ca 100644
+--- a/hw/xfree86/xf4bpp/emulTile.c
++++ b/hw/xfree86/xf4bpp/emulTile.c
+@@ -30,6 +30,10 @@
+  * Uses private imageFill a bunch of times
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "ibmTrace.h"

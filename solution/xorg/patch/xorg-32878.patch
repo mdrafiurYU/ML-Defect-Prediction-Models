@@ -1,0 +1,14 @@
+diff --git a/hw/xgl/xglpixmap.c b/hw/xgl/xglpixmap.c
+index 368c3ea..8c54d64 100644
+--- a/hw/xgl/xglpixmap.c
++++ b/hw/xgl/xglpixmap.c
+@@ -222,7 +222,8 @@ PixmapPtr
+ xglCreatePixmap (ScreenPtr  pScreen,
+ 		 int	    width,
+ 		 int	    height,
+-		 int	    depth)
++		 int	    depth,
++		 unsigned   usage_hint)
+ {
+     xglPixmapPtr pPixmapPriv;
+     PixmapPtr	 pPixmap;

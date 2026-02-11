@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java
+index 7e0248b..107c002 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionManagerBase.java
+@@ -16,6 +16,8 @@
+  */
+ package org.apache.jackrabbit.core.version;
+ 
++import java.util.Calendar;
++
+ import javax.jcr.ItemNotFoundException;
+ import javax.jcr.ReferentialIntegrityException;
+ import javax.jcr.RepositoryException;
+@@ -548,14 +550,16 @@ abstract class InternalVersionManagerBase implements InternalVersionManager {
+      * @throws javax.jcr.RepositoryException if an error occurs
+      * @see javax.jcr.Node#checkin()
+      */
+-    protected InternalVersion internalCheckin(InternalVersionHistoryImpl history,
+-                                      NodeStateEx node, boolean simple)
++    protected InternalVersion internalCheckin(
++            InternalVersionHistoryImpl history,
++            NodeStateEx node, boolean simple, Calendar created)
+             throws RepositoryException {
+         WriteOperation operation = startWriteOperation();
+         try {
+             String versionName = calculateCheckinVersionName(history, node, simple);
+             InternalVersionImpl v = history.checkin(
+-                    NameFactoryImpl.getInstance().create("", versionName), node);
++                    NameFactoryImpl.getInstance().create("", versionName),
++                    node, created);
+ 
+             // check for jcr:activity
+             if (node.hasProperty(NameConstants.JCR_ACTIVITY)) {

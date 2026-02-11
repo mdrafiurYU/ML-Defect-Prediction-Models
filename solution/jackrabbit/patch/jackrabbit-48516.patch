@@ -1,0 +1,50 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java
+index 1a7b2ad..df93813 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java
+@@ -28,6 +28,7 @@ import org.apache.jackrabbit.jcr2spi.operation.Merge;
+ import org.apache.jackrabbit.jcr2spi.operation.AddLabel;
+ import org.apache.jackrabbit.jcr2spi.operation.RemoveLabel;
+ import org.apache.jackrabbit.jcr2spi.operation.RemoveVersion;
++import org.apache.jackrabbit.jcr2spi.operation.Checkpoint;
+ import org.apache.jackrabbit.jcr2spi.WorkspaceManager;
+ import org.apache.jackrabbit.jcr2spi.hierarchy.NodeEntry;
+ import org.slf4j.LoggerFactory;
+@@ -35,6 +36,11 @@ import org.slf4j.Logger;
+ 
+ import javax.jcr.RepositoryException;
+ import javax.jcr.ItemNotFoundException;
++import javax.jcr.NoSuchWorkspaceException;
++import javax.jcr.AccessDeniedException;
++import javax.jcr.MergeException;
++import javax.jcr.InvalidItemStateException;
++import javax.jcr.lock.LockException;
+ import javax.jcr.version.VersionException;
+ 
+ import org.apache.jackrabbit.spi.Name;
+@@ -69,6 +75,12 @@ public class VersionManagerImpl implements VersionManager {
+         workspaceManager.execute(co);
+     }
+ 
++    public NodeEntry checkpoint(NodeState nodeState) throws RepositoryException {
++        Checkpoint cp = Checkpoint.create(nodeState, this);
++        workspaceManager.execute(cp);
++        return workspaceManager.getHierarchyManager().getNodeEntry(cp.getNewVersionId());
++    }
++
+     /**
+      * Search nearest ancestor that is versionable. If no versionable ancestor
+      * can be found, <code>true</code> is returned.
+@@ -140,7 +152,11 @@ public class VersionManagerImpl implements VersionManager {
+     }
+ 
+     public Iterator merge(NodeState nodeState, String workspaceName, boolean bestEffort) throws RepositoryException {
+-        Merge op = Merge.create(nodeState, workspaceName, bestEffort, this);
++        return merge(nodeState, workspaceName, bestEffort, false);
++    }
++
++    public Iterator merge(NodeState nodeState, String workspaceName, boolean bestEffort, boolean isShallow) throws NoSuchWorkspaceException, AccessDeniedException, MergeException, LockException, InvalidItemStateException, RepositoryException {
++        Merge op = Merge.create(nodeState, workspaceName, bestEffort, isShallow, this);
+         workspaceManager.execute(op);
+         return op.getFailedIds();
+     }

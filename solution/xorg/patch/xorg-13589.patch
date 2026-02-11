@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/xglglyph.c b/hw/xgl/xglglyph.c
+index b5b9057..477a13f 100644
+--- a/hw/xgl/xglglyph.c
++++ b/hw/xgl/xglglyph.c
+@@ -1145,8 +1145,6 @@ xglGlyphs (CARD8	 op,
+     
+     if (pMask)
+     {
+-	xglLeaveOffscreenArea ((PixmapPtr) pMask->pDrawable);
+-	
+ 	CompositePicture (op,
+ 			  pSrc,
+ 			  pMask,

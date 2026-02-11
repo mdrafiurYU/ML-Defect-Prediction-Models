@@ -1,0 +1,13 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index f477a73..a48ba11 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -839,8 +839,6 @@ UpdateDeviceState(DeviceIntPtr device, xEvent* xE, int count)
+                  *      swap = (event - device)
+                  *      dev = event
+                  *      event = delta
+-                 *
+-                 * XXX: axis clipping for relative events?
+                  */
+ 		axisvals = v->axisVal;
+                 int delta;

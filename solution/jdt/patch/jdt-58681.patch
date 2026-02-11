@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NonFatalErrorTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NonFatalErrorTest.java
+index 11e6384..10ed25f 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NonFatalErrorTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/NonFatalErrorTest.java
+@@ -29,7 +29,7 @@ public class NonFatalErrorTest extends AbstractRegressionTest {
+ 	}
+ 
+ 	public static Test suite() {
+-		return buildTestSuite(testClass());
++		return buildAllCompliancesRegressionTestSetupSuite(testClass());
+ 	}
+ 
+ 	public static Class testClass() {

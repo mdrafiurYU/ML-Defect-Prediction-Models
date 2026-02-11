@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Display.c b/hw/xnest/Display.c
+index 1ec0609..0129041 100644
+--- a/hw/xnest/Display.c
++++ b/hw/xnest/Display.c
+@@ -176,7 +176,7 @@ xnestOpenDisplay(int argc, char *argv[])
+ }
+ 
+ void
+-xnestCloseDisplay()
++xnestCloseDisplay(void)
+ {
+   if (!xnestDoFullGeneration || !xnestDisplay) return;
+ 

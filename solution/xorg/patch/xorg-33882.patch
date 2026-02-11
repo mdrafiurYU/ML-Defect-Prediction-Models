@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbPrOtherEv.c b/xkb/xkbPrOtherEv.c
+index a2ea090..d65107c 100644
+--- a/xkb/xkbPrOtherEv.c
++++ b/xkb/xkbPrOtherEv.c
+@@ -71,7 +71,7 @@ Bool	xkbCares,isBtn;
+ 	if ((!isBtn)||((dev->button)&&(dev->button->xkb_acts))) {
+ 	   DeviceIntPtr	kbd;
+ 	   if (dev->key)	kbd= dev;
+-	   else		kbd= (DeviceIntPtr)LookupKeyboardDevice();
++	   else		kbd= inputInfo.keyboard;
+ 	   XkbHandleActions(dev,kbd,xE,count);
+ 	   return;
+ 	}

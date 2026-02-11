@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java
+index 65748e0..3be108e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexingConfigurationImpl.java
+@@ -24,6 +24,7 @@ import org.apache.jackrabbit.core.state.ItemStateManager;
+ import org.apache.jackrabbit.core.state.NodeState;
+ import org.apache.jackrabbit.core.state.ItemStateException;
+ import org.apache.jackrabbit.core.state.PropertyState;
++import org.apache.jackrabbit.core.state.ChildNodeEntry;
+ import org.apache.jackrabbit.core.HierarchyManager;
+ import org.apache.jackrabbit.core.PropertyId;
+ import org.apache.jackrabbit.core.HierarchyManagerImpl;
+@@ -840,8 +841,8 @@ public class IndexingConfigurationImpl implements IndexingConfiguration {
+                 nodeStates = new AbstractIteratorDecorator(
+                         context.getChildNodeEntries().iterator()) {
+                     public Object next() {
+-                        NodeState.ChildNodeEntry cne =
+-                                (NodeState.ChildNodeEntry) super.next();
++                        ChildNodeEntry cne =
++                                (ChildNodeEntry) super.next();
+                         try {
+                             return ism.getItemState(cne.getId());
+                         } catch (ItemStateException e) {

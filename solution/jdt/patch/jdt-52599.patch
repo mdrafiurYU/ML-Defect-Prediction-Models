@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableUtil.java
+index 54b5a1f..da31747 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/ExecutableUtil.java
+@@ -108,6 +108,11 @@ class ExecutableUtil {
+ 			// show up in the method binding
+ 			final org.eclipse.jdt.core.dom.MethodDeclaration methodAstNode = 
+ 				(org.eclipse.jdt.core.dom.MethodDeclaration)executable.getAstNode();
++			
++			// Synthetic methods will have no ast node
++			if (methodAstNode == null)
++				return Collections.emptyList();
++			
+ 	    	@SuppressWarnings("unchecked") //$NON-NLS-1$
+ 	    	final List<SingleVariableDeclaration> params = methodAstNode.parameters();
+ 	    	if( params == null || params.size() == 0 )

@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java
+index b8e285d..64f58df 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java
+@@ -37,6 +37,7 @@ public class TestErrorHandling extends AbstractDataImportHandlerTestCase {
+   @BeforeClass
+   public static void beforeClass() throws Exception {
+     initCore("dataimport-solrconfig.xml", "dataimport-schema.xml");
++    ignoreException("Unexpected close tag");
+   }
+   
+   @Before @Override

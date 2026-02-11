@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java
+index f8e664f..fde67ce 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/util/Disassembler.java
+@@ -1706,7 +1706,7 @@ public class Disassembler extends ClassFileBytesDisassembler {
+ 							continue methodLoop;
+ 						}
+ 					}
+-				} else if (methodInfo.isClinit()) {
++				} else if (methodInfo.isClinit() || methodInfo.isSynthetic()) {
+ 					continue methodLoop;
+ 				} else if (methodInfo.isConstructor()) {
+ 					writeNewLine(buffer, lineSeparator, tabNumber);

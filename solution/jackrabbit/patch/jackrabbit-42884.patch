@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlEntry.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlEntry.java
+new file mode 100644
+index 0000000..11b1e8f
+--- /dev/null
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/jsr283/security/AccessControlEntry.java
+@@ -0,0 +1,23 @@
++package org.apache.jackrabbit.core.security.jsr283.security;
++
++import java.security.Principal;
++
++/**
++ * An <code>AccessControlEntry</code> represents the association of one or more
++ * <code>Privilege</code> objects with a specific <code>Principal</code>.
++ *
++ * @since JCR 2.0
++ */
++public interface AccessControlEntry {
++    /**
++     * Returns the principal associated with this access control entry.
++     * @return a <code>Principal</code>.
++     */
++    public Principal getPrincipal();
++
++    /**
++     * Returns the privileges associated with this access control entry.
++     * @return an array of <code>Privilege</code>s.
++     */
++    public Privilege[] getPrivileges();
++}

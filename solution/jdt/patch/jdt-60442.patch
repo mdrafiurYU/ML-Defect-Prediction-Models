@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ArrayBinding.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ArrayBinding.java
+index 4e12917..037a9e0 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ArrayBinding.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ArrayBinding.java
+@@ -240,7 +240,7 @@ public char[] sourceName() {
+ }
+ public void swapUnresolved(UnresolvedReferenceBinding unresolvedType, ReferenceBinding resolvedType, LookupEnvironment env) {
+ 	if (this.leafComponentType == unresolvedType) {
+-		this.leafComponentType = env.convertToRawType(resolvedType);
++		this.leafComponentType = env.convertUnresolvedBinaryToRawType(resolvedType);
+ 		this.tagBits |= this.leafComponentType.tagBits & (TagBits.HasTypeVariable | TagBits.HasDirectWildcard);
+ 	}
+ }

@@ -1,0 +1,26 @@
+diff --git a/Xext/xvmc.c b/Xext/xvmc.c
+index 3a77eb6..dc1e7dd 100644
+--- a/Xext/xvmc.c
++++ b/Xext/xvmc.c
+@@ -108,12 +108,6 @@ XvMCDestroySubpictureRes(pointer data, XID id)
+    return Success;
+ }
+ 
+-static void
+-XvMCResetProc (ExtensionEntry *extEntry)
+-{
+-}
+-
+-
+ static int 
+ ProcXvMCQueryVersion(ClientPtr client)
+ {
+@@ -688,7 +682,7 @@ XvMCExtensionInit(void)
+ 
+    extEntry = AddExtension(XvMCName, XvMCNumEvents, XvMCNumErrors, 
+                               ProcXvMCDispatch, SProcXvMCDispatch,
+-                              XvMCResetProc, StandardMinorOpcode);
++                              NULL, StandardMinorOpcode);
+ 
+    if(!extEntry) return;
+   

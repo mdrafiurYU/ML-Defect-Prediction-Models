@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/handler/ReplicationHandler.java b/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
+index d08cdb9..188175a 100644
+--- a/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
++++ b/solr/src/java/org/apache/solr/handler/ReplicationHandler.java
+@@ -687,12 +687,12 @@ public class ReplicationHandler extends RequestHandlerBase implements SolrCoreAw
+           LOG.error("Exception while writing replication details: ", e);
+         }
+       }
+-      if (isMaster)
+-        details.add("master", master);
+-      if (isSlave && showSlaveDetails)
+-        details.add("slave", slave);
+-
+     }
++
++    if (isMaster)
++      details.add("master", master);
++    if (isSlave && showSlaveDetails)
++      details.add("slave", slave);
+     
+     NamedList snapshotStats = snapShootDetails;
+     if (snapshotStats != null)

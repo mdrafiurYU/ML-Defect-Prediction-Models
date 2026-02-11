@@ -1,0 +1,22 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index c906bcd..5ea7b14 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -201,6 +201,8 @@ ActivateDevice(DeviceIntPtr dev)
+     
+     ev.type = DevicePresenceNotify;
+     ev.time = currentTime.milliseconds;
++    ev.devchange = 0;
++    ev.deviceid = 0;
+     dummyDev.id = 0;
+     SendEventToAllWindows(&dummyDev, DevicePresenceNotifyMask,
+                           (xEvent *) &ev, 1);
+@@ -557,6 +559,8 @@ RemoveDevice(DeviceIntPtr dev)
+     if (ret == Success) {
+         ev.type = DevicePresenceNotify;
+         ev.time = currentTime.milliseconds;
++        ev.devchange = 0;
++        ev.deviceid = 0;
+         dummyDev.id = 0;
+         SendEventToAllWindows(&dummyDev, DevicePresenceNotifyMask,
+                               (xEvent *) &ev, 1);

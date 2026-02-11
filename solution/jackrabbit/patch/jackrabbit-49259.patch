@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
+index cf6faef..384f4ac 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/IndexNodeResolver.java
+@@ -118,7 +118,6 @@ class IndexNodeResolver extends NodeResolver {
+     private Query buildQuery(String value, Set props, Name ntName,
+                              boolean exact, long maxSize)
+             throws RepositoryException {
+-        // TODO: include maxSize in query statement.
+         StringBuffer stmt = new StringBuffer("/jcr:root");
+         stmt.append(getSearchRoot(ntName));
+         stmt.append("//element(*,");
+@@ -143,6 +142,8 @@ class IndexNodeResolver extends NodeResolver {
+             }
+             stmt.append("]");
+         }
+-        return queryManager.createQuery(stmt.toString(), Query.XPATH);
++        Query q = queryManager.createQuery(stmt.toString(), Query.XPATH);
++        q.setLimit(maxSize);
++        return q;
+     }
+ }

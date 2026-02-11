@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ConstantTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ConstantTest.java
+index ce14cfe..e9f4025 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ConstantTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ConstantTest.java
+@@ -33,7 +33,7 @@ static {
+ //	TESTS_RANGE = new int[] { 23, -1 };
+ }
+ public static Test suite() {
+-	return buildAllCompliancesRegressionTestSetupSuite(testClass());
++	return buildAllCompliancesTestSuite(testClass());
+ }
+ public void test001() {
+ 	this.runConformTest(new String[] {

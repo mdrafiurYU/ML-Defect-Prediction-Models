@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManager.java
+index b7f59fd..d6ff1ad 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManager.java
+@@ -41,6 +41,7 @@ public interface VersionManager {
+ 
+     /**
+      * @param nodeState
++     * @return <code>NodeEntry</code> of newly created version or <code>null</code>
+      * @throws VersionException
+      * @throws UnsupportedRepositoryOperationException
+      * @throws InvalidItemStateException
+@@ -48,7 +49,7 @@ public interface VersionManager {
+      * @throws RepositoryException
+      * @see javax.jcr.Node#checkin()
+      */
+-    public void checkin(NodeState nodeState) throws VersionException, UnsupportedRepositoryOperationException, InvalidItemStateException, LockException, RepositoryException;
++    public NodeEntry checkin(NodeState nodeState) throws VersionException, UnsupportedRepositoryOperationException, InvalidItemStateException, LockException, RepositoryException;
+ 
+     /**
+      * @param nodeState

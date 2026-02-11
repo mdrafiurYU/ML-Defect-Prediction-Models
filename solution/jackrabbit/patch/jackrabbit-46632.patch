@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/observation/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/observation/TestAll.java
+index 13d218d..a2e5ee1 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/observation/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/observation/TestAll.java
+@@ -29,6 +29,7 @@ public class TestAll extends TestCase {
+     public static Test suite() {
+         TestSuite suite = new TestSuite("org.apache.jackrabbit.api.jsr283.observation tests");
+ 
++        suite.addTestSuite(AddEventListenerTest.class);
+         suite.addTestSuite(EventJournalTest.class);
+         suite.addTestSuite(GetDateTest.class);
+         suite.addTestSuite(GetIdentifierTest.class);

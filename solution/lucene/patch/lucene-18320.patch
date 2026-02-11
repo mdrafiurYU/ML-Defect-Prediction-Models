@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/SwedishLightStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/SwedishLightStemFilterFactory.java
+index 2c7aff2..6e0478d 100644
+--- a/solr/src/java/org/apache/solr/analysis/SwedishLightStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/SwedishLightStemFilterFactory.java
+@@ -20,7 +20,17 @@ package org.apache.solr.analysis;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.sv.SwedishLightStemFilter;
+ 
+-/** Factory for {@link SwedishLightStemFilter} */
++/** 
++ * Factory for {@link SwedishLightStemFilter}.
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_svlgtstem" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.SwedishLightStemFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre>
++ * @version $Id$ 
++ */
+ public class SwedishLightStemFilterFactory extends BaseTokenFilterFactory {
+   public TokenStream create(TokenStream input) {
+     return new SwedishLightStemFilter(input);

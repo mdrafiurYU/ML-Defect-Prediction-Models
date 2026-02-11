@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryCopier.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryCopier.java
+index fcb13d5..69e29ce 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryCopier.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryCopier.java
+@@ -250,6 +250,7 @@ public class RepositoryCopier {
+                 target.getVersionManagerImpl().getPersistenceManager(),
+                 target.getDataStore());
+         copier.copy(RepositoryImpl.VERSION_STORAGE_NODE_ID);
++        copier.copy(RepositoryImpl.ACTIVITIES_NODE_ID);
+     }
+ 
+     private void copyWorkspaces() throws RepositoryException {

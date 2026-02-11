@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RangeIteratorAdapter.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RangeIteratorAdapter.java
+index f941698..991ef10 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RangeIteratorAdapter.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RangeIteratorAdapter.java
+@@ -17,6 +17,7 @@
+ package org.apache.jackrabbit.commons.iterator;
+ 
+ import java.util.Collection;
++import java.util.Collections;
+ import java.util.Iterator;
+ import java.util.NoSuchElementException;
+ 
+@@ -30,6 +31,12 @@ import javax.jcr.RangeIterator;
+ public class RangeIteratorAdapter implements RangeIterator {
+ 
+     /**
++     * Static instance of an empty {@link RangeIterator}.
++     */
++    public static final RangeIterator EMPTY =
++        new RangeIteratorAdapter(Collections.EMPTY_LIST);
++
++    /**
+      * The adapted iterator instance.
+      */
+     private final Iterator iterator;

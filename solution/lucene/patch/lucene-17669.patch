@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java b/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java
+index 85f40ab..262386a 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFuzzyQuery2.java
+@@ -91,7 +91,7 @@ public class TestFuzzyQuery2 extends LuceneTestCase {
+     }   
+     
+     IndexReader r = writer.getReader();
+-    IndexSearcher searcher = new IndexSearcher(r);
++    IndexSearcher searcher = newSearcher(r);
+     writer.close();
+     String line;
+     while ((line = reader.readLine()) != null) {

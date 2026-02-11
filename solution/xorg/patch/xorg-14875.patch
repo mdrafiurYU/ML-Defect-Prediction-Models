@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winwin32rootlesswndproc.c b/hw/xwin/winwin32rootlesswndproc.c
+index 4a59aef..ffa8493 100755
+--- a/hw/xwin/winwin32rootlesswndproc.c
++++ b/hw/xwin/winwin32rootlesswndproc.c
+@@ -29,6 +29,9 @@
+  *		Earle F. Philhower, III
+  *		Harold L Hunt II
+  */
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include <winuser.h>
+ #define _WINDOWSWM_SERVER_

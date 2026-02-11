@@ -1,0 +1,21 @@
+diff --git a/modules/benchmark/src/java/org/apache/lucene/benchmark/quality/utils/DocNameExtractor.java b/modules/benchmark/src/java/org/apache/lucene/benchmark/quality/utils/DocNameExtractor.java
+index 3639956..8ab80ab 100755
+--- a/modules/benchmark/src/java/org/apache/lucene/benchmark/quality/utils/DocNameExtractor.java
++++ b/modules/benchmark/src/java/org/apache/lucene/benchmark/quality/utils/DocNameExtractor.java
+@@ -20,7 +20,7 @@ import java.io.IOException;
+ 
+ import org.apache.lucene.document.FieldSelector;
+ import org.apache.lucene.document.FieldSelectorResult;
+-import org.apache.lucene.search.Searcher;
++import org.apache.lucene.search.IndexSearcher;
+ 
+ /**
+  * Utility: extract doc names from an index
+@@ -52,7 +52,7 @@ public class DocNameExtractor {
+    * @return the name of the input doc as extracted from the index.
+    * @throws IOException if cannot extract the doc name from the index.
+    */
+-  public String docName(Searcher searcher, int docid) throws IOException {
++  public String docName(IndexSearcher searcher, int docid) throws IOException {
+     return searcher.doc(docid,fldSel).get(docNameField);
+   }

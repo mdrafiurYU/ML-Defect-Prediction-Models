@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java
+index ebda636..7d1bf3c 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/EnclosingMethodAttributeTest.java
+@@ -33,9 +33,7 @@ public class EnclosingMethodAttributeTest extends AbstractComparableTest {
+ 	}
+ 
+ 	public static Test suite() {
+-		Test suite = buildTestSuite(testClass());
+-		TESTS_COUNTERS.put(testClass().getName(), new Integer(suite.countTestCases()));
+-		return suite;
++		return buildTestSuite(testClass());
+ 	}
+ 
+ 	public static Class testClass() {

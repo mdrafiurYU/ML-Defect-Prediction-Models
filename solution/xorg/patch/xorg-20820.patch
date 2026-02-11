@@ -1,0 +1,14 @@
+diff --git a/miext/rootless/rootlessGC.c b/miext/rootless/rootlessGC.c
+index 61987ad..32ffbf1 100644
+--- a/miext/rootless/rootlessGC.c
++++ b/miext/rootless/rootlessGC.c
+@@ -114,9 +114,6 @@ static GCOps rootlessGCOps = {
+     RootlessImageGlyphBlt,
+     RootlessPolyGlyphBlt,
+     RootlessPushPixels
+-#ifdef NEED_LINEHELPER
+-    , NULL
+-#endif
+ };
+ 
+ /*

@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/schema/IntField.java b/solr/src/java/org/apache/solr/schema/IntField.java
+index 7aede89..afb8d77 100644
+--- a/solr/src/java/org/apache/solr/schema/IntField.java
++++ b/solr/src/java/org/apache/solr/schema/IntField.java
+@@ -24,7 +24,6 @@ import org.apache.solr.search.function.ValueSource;
+ import org.apache.solr.search.function.IntFieldSource;
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ 
+ import java.util.Map;
+ import java.io.IOException;
+@@ -44,10 +43,6 @@ public class IntField extends FieldType {
+     return new IntFieldSource(new IntValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }
+ 
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    xmlWriter.writeInt(name, f.stringValue());
+-  }
+-
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     String s = f.stringValue();

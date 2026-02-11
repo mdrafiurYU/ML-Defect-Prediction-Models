@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxscrinit.c b/hw/dmx/dmxscrinit.c
+index c3949dc..5bfb4df 100644
+--- a/hw/dmx/dmxscrinit.c
++++ b/hw/dmx/dmxscrinit.c
+@@ -36,6 +36,10 @@
+ /** \file
+  * This file provides support for screen initialization. */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxsync.h"
+ #include "dmxshadow.h"

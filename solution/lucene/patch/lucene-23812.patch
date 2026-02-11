@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestCodecs.java b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+index 118c25c..62b5994 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestCodecs.java
++++ b/lucene/src/test/org/apache/lucene/index/TestCodecs.java
+@@ -64,7 +64,7 @@ import org.apache.lucene.util._TestUtil;
+ public class TestCodecs extends LuceneTestCase {
+   private static String[] fieldNames = new String[] {"one", "two", "three", "four"};
+ 
+-  private final static int NUM_TEST_ITER = 20 * RANDOM_MULTIPLIER;
++  private final static int NUM_TEST_ITER = atLeast(20);
+   private final static int NUM_TEST_THREADS = 3;
+   private final static int NUM_FIELDS = 4;
+   private final static int NUM_TERMS_RAND = 50; // must be > 16 to test skipping

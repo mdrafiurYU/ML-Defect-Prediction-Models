@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86MiscExt.c b/hw/xfree86/common/xf86MiscExt.c
+index d59bea0..75a1d71 100644
+--- a/hw/xfree86/common/xf86MiscExt.c
++++ b/hw/xfree86/common/xf86MiscExt.c
+@@ -31,6 +31,10 @@
+  * XFree86-Misc extension.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ #define I_NEED_OS2_H
+ #endif

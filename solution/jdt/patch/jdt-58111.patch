@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/IndexBasedHierarchyBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/IndexBasedHierarchyBuilder.java
+index 9eddd38..a850425 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/IndexBasedHierarchyBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/IndexBasedHierarchyBuilder.java
+@@ -60,7 +60,7 @@ public class IndexBasedHierarchyBuilder extends HierarchyBuilder implements Suff
+ 	/**
+ 	 * Collection used to queue subtype index queries
+ 	 */
+-	private static class Queue {
++	static class Queue {
+ 		public char[][] names = new char[10][];
+ 		public int start = 0;
+ 		public int end = -1;

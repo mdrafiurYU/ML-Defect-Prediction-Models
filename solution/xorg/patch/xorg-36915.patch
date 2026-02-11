@@ -1,0 +1,12 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index e41f46a..0138e4a 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -107,6 +107,7 @@ typedef struct {
+     CopyWindowProcPtr 		 SavedCopyWindow;
+     ChangeWindowAttributesProcPtr SavedChangeWindowAttributes;
+     BitmapToRegionProcPtr        SavedBitmapToRegion;
++    CreateScreenResourcesProcPtr SavedCreateScreenResources;
+     ModifyPixmapHeaderProcPtr    SavedModifyPixmapHeader;
+ #ifdef RENDER
+     CompositeProcPtr             SavedComposite;

@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java b/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java
+index 5f23675..6488d33 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java
++++ b/lucene/src/java/org/apache/lucene/index/TermsHashConsumer.java
+@@ -25,10 +25,4 @@ abstract class TermsHashConsumer {
+   abstract TermsHashConsumerPerThread addThread(TermsHashPerThread perThread);
+   abstract void flush(Map<TermsHashConsumerPerThread,Collection<TermsHashConsumerPerField>> threadsAndFields, final SegmentWriteState state) throws IOException;
+   abstract void abort();
+-
+-  FieldInfos fieldInfos;
+-
+-  void setFieldInfos(FieldInfos fieldInfos) {
+-    this.fieldInfos = fieldInfos;
+   }
+-}

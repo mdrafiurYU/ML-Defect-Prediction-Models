@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcCReduce.c b/hw/xfree86/xf4bpp/ppcCReduce.c
+index aef3c2d..f937aac 100644
+--- a/hw/xfree86/xf4bpp/ppcCReduce.c
++++ b/hw/xfree86/xf4bpp/ppcCReduce.c
+@@ -24,6 +24,10 @@
+ 
+ /* $XConsortium: ppcCReduce.c /main/3 1996/02/21 17:57:17 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "ppcGCstr.h"
+ 

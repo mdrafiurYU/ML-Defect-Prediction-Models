@@ -1,0 +1,45 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+index 900b398..2878a10 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceManager.java
+@@ -388,6 +388,7 @@ public class WorkspaceManager
+         throws UnsupportedRepositoryOperationException, RepositoryException {
+         return service.createEventFilter(sessionInfo, eventTypes, path, isDeep, uuids, nodeTypes, noLocal);
+     }
++
+     //--------------------------------------------------------------------------
+ 
+     /**
+@@ -483,6 +484,32 @@ public class WorkspaceManager
+         return t;
+     }
+ 
++    //-----------------------------------------------------< wsp management >---
++    /**
++     * Create a new workspace with the specified <code>name</code>. If
++     * <code>srcWorkspaceName</code> isn't <code>null</code> the content of
++     * that workspace is used as inital content, otherwise an empty workspace
++     * will be created.
++     *
++     * @param name The name of the workspace to be created.
++     * @param srcWorkspaceName The name of the workspace from which the initial
++     * content of the new workspace will be 'cloned'.
++     * @throws RepositoryException If an exception occurs.
++     */
++    void createWorkspace(String name, String srcWorkspaceName) throws RepositoryException {
++        service.createWorkspace(sessionInfo, name, srcWorkspaceName);
++    }
++
++    /**
++     * Deletes the workspace with the specified <code>name</code>.
++     * 
++     * @param name
++     * @throws RepositoryException
++     */
++    void deleteWorkspace(String name) throws RepositoryException {
++        service.deleteWorkspace(sessionInfo, name);
++    }
++
+     //------------------------------------------< UpdatableItemStateManager >---
+     /**
+      * Creates a new batch from the single workspace operation and executes it.

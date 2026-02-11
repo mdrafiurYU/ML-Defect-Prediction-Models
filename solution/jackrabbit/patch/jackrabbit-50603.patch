@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ImpersonateTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ImpersonateTest.java
+index d814795..2014842 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ImpersonateTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ImpersonateTest.java
+@@ -45,7 +45,7 @@ public class ImpersonateTest extends AbstractJCRTest {
+         // impersonate to read-only user
+         Session session;
+         try {
+-            session = superuser.impersonate(helper.getReadOnlyCredentials());
++            session = superuser.impersonate(getHelper().getReadOnlyCredentials());
+         } catch (LoginException e) {
+             throw new NotExecutableException("impersonate threw LoginException");
+         }

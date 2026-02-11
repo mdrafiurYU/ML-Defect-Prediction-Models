@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java
+index f049119..215acd4 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarDerefBytesImpl.java
+@@ -249,7 +249,7 @@ class VarDerefBytesImpl {
+     }
+ 
+     @Override
+-    public DocValuesEnum getEnum(AttributeSource source) throws IOException {
++    public ValuesEnum getEnum(AttributeSource source) throws IOException {
+       return new VarDerefBytesEnum(source, cloneData(), cloneIndex());
+     }

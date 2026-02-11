@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/WorkspaceItemStateFactory.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/WorkspaceItemStateFactory.java
+index fcfb7e9..1d41fd3 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/WorkspaceItemStateFactory.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/WorkspaceItemStateFactory.java
+@@ -258,6 +258,7 @@ public class WorkspaceItemStateFactory extends AbstractItemStateFactory implemen
+ 
+         // now build the nodestate itself
+         NodeState state = new NodeState(entry, info, this, definitionProvider);
++        state.setMixinTypeNames(info.getMixins());
+ 
+         // update NodeEntry from the information present in the NodeInfo (prop entries)
+         List propNames = new ArrayList();

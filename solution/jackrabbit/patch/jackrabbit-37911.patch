@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java
+index c5e3411..c26a274 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/compact/CompactNodeTypeDefReader.java
+@@ -311,7 +311,7 @@ public class CompactNodeTypeDefReader {
+             ntd.setMixin(true);
+             nextToken();
+             if (currentTokenEquals(Lexer.ORDERABLE)) {
+-                ntd.setMixin(true);
++                ntd.setOrderableChildNodes(true);
+                 nextToken();
+             }
+         }

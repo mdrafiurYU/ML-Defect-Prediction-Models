@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/src/kdrive.c b/hw/kdrive/src/kdrive.c
+index 9e27840..1478a94 100644
+--- a/hw/kdrive/src/kdrive.c
++++ b/hw/kdrive/src/kdrive.c
+@@ -67,7 +67,8 @@ KdDepths    kdDepths[] = {
+ 
+ #define KD_DEFAULT_BUTTONS 5
+ 
+-DevPrivateKey       kdScreenPrivateKey = &kdScreenPrivateKey;
++static int          kdScreenPrivateKeyIndex;
++DevPrivateKey       kdScreenPrivateKey = &kdScreenPrivateKeyIndex;
+ unsigned long	    kdGeneration;
+ 
+ Bool                kdVideoTest;

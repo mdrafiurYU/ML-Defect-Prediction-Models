@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryImpl.java
+index 9c62adc..a76371c 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryImpl.java
+@@ -220,10 +220,11 @@ public class QueryImpl implements Query {
+         }
+     }
+ 
+-    // TODO: JCR-2200: Implement Query.getBindVariableNames()
++    /**
++     * @see Query#getBindVariableNames()
++     */
+     public String[] getBindVariableNames() throws RepositoryException {
+-        throw new UnsupportedRepositoryOperationException(
+-                "JCR-2200: Implement Query.getBindVariableNames()");
++        return varNames.toArray(new String[varNames.size()]);
+     }
+ 
+     /**

@@ -1,0 +1,19 @@
+diff --git a/render/mipict.h b/render/mipict.h
+index 0c2ed04..0d76aaf 100644
+--- a/render/mipict.h
++++ b/render/mipict.h
+@@ -106,6 +106,14 @@ miComputeCompositeRegion (RegionPtr	pRegion,
+ Bool
+ miPictureInit (ScreenPtr pScreen, PictFormatPtr formats, int nformats);
+ 
++Bool
++miRealizeGlyph (ScreenPtr pScreen,
++		GlyphPtr  glyph);
++
++void
++miUnrealizeGlyph (ScreenPtr pScreen,
++		  GlyphPtr  glyph);
++
+ void
+ miGlyphExtents (int		nlist,
+ 		GlyphListPtr	list,

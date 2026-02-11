@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/extsym.c b/hw/xfree86/loader/extsym.c
+index f53da6e..0966466 100644
+--- a/hw/xfree86/loader/extsym.c
++++ b/hw/xfree86/loader/extsym.c
+@@ -25,6 +25,10 @@
+  * SOFTWARE.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "resource.h"
+ #include "sym.h"
+ #include <X11/misc.h>

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestBooleanOr.java b/lucene/src/test/org/apache/lucene/search/TestBooleanOr.java
+index 850b3a8..169cae1 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestBooleanOr.java
++++ b/lucene/src/test/org/apache/lucene/search/TestBooleanOr.java
+@@ -154,7 +154,7 @@ public class TestBooleanOr extends LuceneTestCase {
+ 
+     reader = writer.getReader();
+     //
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     writer.close();
+   }

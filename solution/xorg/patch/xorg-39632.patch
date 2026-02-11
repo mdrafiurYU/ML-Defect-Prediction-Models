@@ -1,0 +1,13 @@
+diff --git a/include/dix.h b/include/dix.h
+index 4b8a96e..64e3d78 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -119,7 +119,7 @@ typedef struct _Client *ClientPtr; /* also in misc.h */
+ 
+ typedef struct _WorkQueue	*WorkQueuePtr;
+ 
+-extern ClientPtr *clients;
++extern ClientPtr clients[MAXCLIENTS];
+ extern ClientPtr serverClient;
+ extern int currentMaxClients;
+ extern char dispatchExceptionAtReset;

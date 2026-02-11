@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+index 58a712b..1ea83e8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/MessageSend.java
+@@ -295,7 +295,15 @@ public TypeBinding resolveType(BlockScope scope) {
+ 		if (argHasError) {
+ 			if(actualReceiverType instanceof ReferenceBinding) {
+ 				// record any selector match, for clients who may still need hint about possible method match
+-				this.binding = scope.findMethod((ReferenceBinding)actualReceiverType, selector, new TypeBinding[]{}, this);
++				int resolvedCount = 0;
++				for (int i = 0; i < length; i++)
++					if (argumentTypes[i] != null)
++						resolvedCount++;
++				TypeBinding[] knownArgs = new TypeBinding[resolvedCount];
++				for (int i = length; --i >= 0;)
++					if (argumentTypes[i] != null)
++						knownArgs[--resolvedCount] = argumentTypes[i];
++				this.binding = scope.findMethod((ReferenceBinding)actualReceiverType, selector, knownArgs, this);
+ 			}			
+ 			return null;
+ 		}

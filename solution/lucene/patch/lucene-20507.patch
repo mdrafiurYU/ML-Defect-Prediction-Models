@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/bg/TestBulgarianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/bg/TestBulgarianAnalyzer.java
+index a1eccaa..2832b16 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/bg/TestBulgarianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/bg/TestBulgarianAnalyzer.java
+@@ -75,4 +75,9 @@ public class TestBulgarianAnalyzer extends BaseTokenStreamTestCase {
+     Analyzer a = new BulgarianAnalyzer(TEST_VERSION_CURRENT, CharArraySet.EMPTY_SET, set);
+     assertAnalyzesTo(a, "строевете строеве", new String[] { "строй", "строеве" });
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new BulgarianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

@@ -1,0 +1,32 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
+index 4555f22..9b7e2a9 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/ReusableAnalyzerBase.java
+@@ -75,8 +75,9 @@ public abstract class ReusableAnalyzerBase extends Analyzer {
+       final Reader reader) throws IOException {
+     TokenStreamComponents streamChain = (TokenStreamComponents)
+     getPreviousTokenStream();
+-    if (streamChain == null || !streamChain.reset(reader)) {
+-      streamChain = createComponents(fieldName, reader);
++    final Reader r = initReader(reader);
++    if (streamChain == null || !streamChain.reset(r)) {
++      streamChain = createComponents(fieldName, r);
+       setPreviousTokenStream(streamChain);
+     }
+     return streamChain.getTokenStream();
+@@ -95,7 +96,14 @@ public abstract class ReusableAnalyzerBase extends Analyzer {
+   @Override
+   public final TokenStream tokenStream(final String fieldName,
+       final Reader reader) {
+-    return createComponents(fieldName, reader).getTokenStream();
++    return createComponents(fieldName, initReader(reader)).getTokenStream();
++  }
++  
++  /**
++   * Override this if you want to add a CharFilter chain.
++   */
++  protected Reader initReader(Reader reader) {
++    return reader;
+   }
+   
+   /**

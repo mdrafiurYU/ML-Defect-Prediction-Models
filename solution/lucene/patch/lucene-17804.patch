@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestQueryWrapperFilter.java b/lucene/src/test/org/apache/lucene/search/TestQueryWrapperFilter.java
+index a41e33f..37d522c 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestQueryWrapperFilter.java
++++ b/lucene/src/test/org/apache/lucene/search/TestQueryWrapperFilter.java
+@@ -43,7 +43,7 @@ public class TestQueryWrapperFilter extends LuceneTestCase {
+     // should not throw exception with primitive query
+     QueryWrapperFilter qwf = new QueryWrapperFilter(termQuery);
+ 
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     TopDocs hits = searcher.search(new MatchAllDocsQuery(), qwf, 10);
+     assertEquals(1, hits.totalHits);
+     hits = searcher.search(new MatchAllDocsQuery(), new CachingWrapperFilter(qwf), 10);

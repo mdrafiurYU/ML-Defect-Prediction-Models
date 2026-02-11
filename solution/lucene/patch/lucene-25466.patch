@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/FileFloatSource.java b/solr/src/java/org/apache/solr/search/function/FileFloatSource.java
+index 53ee329..8675aee 100755
+--- a/solr/src/java/org/apache/solr/search/function/FileFloatSource.java
++++ b/solr/src/java/org/apache/solr/search/function/FileFloatSource.java
+@@ -76,9 +76,8 @@ public class FileFloatSource extends ValueSource {
+ 
+   @Override
+   public DocValues getValues(Map context, AtomicReaderContext readerContext) throws IOException {
+-    int offset = 0;
++    final int off = readerContext.docBase;
+     ReaderContext topLevelContext = ReaderUtil.getTopLevelContext(readerContext);
+-    final int off = offset;
+ 
+     final float[] arr = getCachedFloats(topLevelContext.reader);
+     return new FloatDocValues(this) {

@@ -1,0 +1,44 @@
+diff --git a/hw/xfree86/xf8_32bpp/cfbgcunder.c b/hw/xfree86/xf8_32bpp/cfbgcunder.c
+index 79176c8..3f45a85 100644
+--- a/hw/xfree86/xf8_32bpp/cfbgcunder.c
++++ b/hw/xfree86/xf8_32bpp/cfbgcunder.c
+@@ -125,9 +125,6 @@ static GCOps cfbTEOps1Rect = {
+     useTEGlyphBlt,
+     usePolyGlyphBlt,
+     usePushPixels
+-#ifdef NEED_LINEHELPER
+-    ,NULL
+-#endif
+ };
+ 
+ static GCOps cfbNonTEOps1Rect = {
+@@ -156,9 +153,6 @@ static GCOps cfbNonTEOps1Rect = {
+     useImageGlyphBlt,
+     usePolyGlyphBlt,
+     usePushPixels
+-#ifdef NEED_LINEHELPER
+-    ,NULL
+-#endif
+ };
+ 
+ static GCOps cfbTEOps = {
+@@ -182,9 +176,6 @@ static GCOps cfbTEOps = {
+     useTEGlyphBlt,
+     usePolyGlyphBlt,
+     usePushPixels
+-#ifdef NEED_LINEHELPER
+-    ,NULL
+-#endif
+ };
+ 
+ static GCOps cfbNonTEOps = {
+@@ -212,9 +203,6 @@ static GCOps cfbNonTEOps = {
+     useImageGlyphBlt,
+     usePolyGlyphBlt,
+     usePushPixels
+-#ifdef NEED_LINEHELPER
+-    ,NULL
+-#endif
+ };
+ 
+ static GCOps *

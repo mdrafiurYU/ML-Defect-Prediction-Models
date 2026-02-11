@@ -1,0 +1,13 @@
+diff --git a/hw/xgl/glx/module/xglxmodule.c b/hw/xgl/glx/module/xglxmodule.c
+index 066cb80..40af890 100644
+--- a/hw/xgl/glx/module/xglxmodule.c
++++ b/hw/xgl/glx/module/xglxmodule.c
+@@ -52,7 +52,7 @@ InitOutput (ScreenInfo *pScreenInfo,
+ 
+ Bool
+ LegalModifier (unsigned int key,
+-	       DevicePtr    pDev)
++	       DeviceIntPtr pDev)
+ {
+     return xglxLegalModifier (key, pDev);
+ }

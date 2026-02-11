@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java b/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java
+index 9f93f9d..5e7f3f5 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMultiTermQueryRewrites.java
+@@ -87,8 +87,8 @@ public class TestMultiTermQueryRewrites extends LuceneTestCase {
+   
+   private Query extractInnerQuery(Query q) {
+     if (q instanceof ConstantScoreQuery) {
+-      // wrapped as ConstantScoreQuery using QueryWrapperFilter
+-      q = ((QueryWrapperFilter) ((ConstantScoreQuery) q).getFilter()).getQuery();
++      // wrapped as ConstantScoreQuery
++      q = ((ConstantScoreQuery) q).getQuery();
+     }
+     return q;
+   }

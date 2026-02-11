@@ -1,0 +1,17 @@
+diff --git a/composite/compext.c b/composite/compext.c
+index 4c25cc7..3a9f896 100644
+--- a/composite/compext.c
++++ b/composite/compext.c
+@@ -678,6 +678,12 @@ CompositeExtensionInit (void)
+     ExtensionEntry  *extEntry;
+     int		    s;
+ 
++    /* Ensure that Render is initialized on all screens. */
++    for (s = 0; s < screenInfo.numScreens; s++) {
++	if (GetPictureScreenIfSet(screenInfo.screens[s]) == NULL)
++	    return;
++    }
++
+     CompositeClientWindowType = CreateNewResourceType (FreeCompositeClientWindow);
+     if (!CompositeClientWindowType)
+ 	return;

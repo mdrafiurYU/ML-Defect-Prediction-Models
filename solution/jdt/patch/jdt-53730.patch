@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+index 6d5aef3..b36d88f 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java
+@@ -1909,6 +1909,9 @@ public class Main implements ProblemSeverities, SuffixConstants {
+ 						this.options.put(
+ 							CompilerOptions.OPTION_ReportUnusedDeclaredThrownException,
+ 							isEnabling ? CompilerOptions.WARNING : CompilerOptions.IGNORE);
++						this.options.put(
++								CompilerOptions.OPTION_ReportUnusedLabel,
++								isEnabling ? CompilerOptions.WARNING : CompilerOptions.IGNORE);
+ 					} else {
+ 						throw new InvalidInputException(Main.bind("configure.invalidWarning", token)); //$NON-NLS-1$
+ 					}

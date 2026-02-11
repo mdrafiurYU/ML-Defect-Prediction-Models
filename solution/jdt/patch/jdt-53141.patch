@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java
+index 3d7c2da..f804ce5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TypeReference.java
+@@ -131,7 +131,9 @@ public TypeBinding resolveType(BlockScope scope, boolean checkBounds) {
+ 	if (isTypeUseDeprecated(this.resolvedType, scope))
+ 		reportDeprecatedType(scope);
+ 	type = scope.environment().convertToRawType(type);
+-	if (type.isRawType() && (this.bits & IgnoreRawTypeCheck) == 0 && scope.compilerOptions().reportRawTypeReference) {
++	if (type.isRawType() 
++			&& (this.bits & IgnoreRawTypeCheck) == 0 
++			&& scope.compilerOptions().reportRawTypeReference) {	
+ 		scope.problemReporter().rawTypeReference(this, type);
+ 	}			
+ 	return this.resolvedType = type;
+@@ -152,7 +154,9 @@ public TypeBinding resolveType(ClassScope scope) {
+ 	if (isTypeUseDeprecated(this.resolvedType, scope))
+ 		reportDeprecatedType(scope);
+ 	type = scope.environment().convertToRawType(type);
+-	if (type.isRawType() && (this.bits & IgnoreRawTypeCheck) == 0 && scope.compilerOptions().reportRawTypeReference) {
++	if (type.isRawType() 
++			&& (this.bits & IgnoreRawTypeCheck) == 0 
++			&& scope.compilerOptions().reportRawTypeReference) {
+ 		scope.problemReporter().rawTypeReference(this, type);
+ 	}			
+ 	return this.resolvedType = type;

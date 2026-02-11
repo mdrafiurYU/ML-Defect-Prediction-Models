@@ -1,0 +1,29 @@
+diff --git a/include/privates.h b/include/privates.h
+index 093d177..8d59b72 100644
+--- a/include/privates.h
++++ b/include/privates.h
+@@ -46,20 +46,13 @@ dixAllocatePrivate(PrivateRec **privates, const DevPrivateKey key);
+ static _X_INLINE pointer
+ dixLookupPrivate(PrivateRec **privates, const DevPrivateKey key)
+ {
+-    PrivateRec *rec, *prev;
++    PrivateRec *rec = *privates;
+     pointer *ptr;
+ 
+-    for (rec = *privates, prev = NULL; rec; prev = rec, rec = rec->next) {
+-	if (rec->key != key)
+-	    continue;
+-
+-	if (prev) {
+-	    prev->next = rec->next;
+-	    rec->next = *privates;
+-	    *privates = rec;
+-	}
+-
++    while (rec) {
++	if (rec->key == key)
+ 	return rec->value;
++	rec = rec->next;
+     }
+ 
+     ptr = dixAllocatePrivate(privates, key);

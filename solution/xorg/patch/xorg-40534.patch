@@ -1,0 +1,41 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index cea8984..3a943b3 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -491,12 +491,6 @@ InitExtensions(int argc, char *argv[])
+ #endif
+ }
+ 
+-void
+-InitVisualWrap()
+-{
+-    miResetInitVisuals();
+-}
+-
+ #else /* XFree86LOADER */
+ /* List of built-in (statically linked) extensions */
+ static ExtensionModule staticExtensions[] = {
+@@ -574,23 +568,4 @@ InitExtensions(int argc, char *argv[])
+     }
+ }
+ 
+-static void (*__miHookInitVisualsFunction)(miInitVisualsProcPtr *);
+-
+-void
+-InitVisualWrap()
+-{
+-    miResetInitVisuals();
+-    if (__miHookInitVisualsFunction)
+-	(*__miHookInitVisualsFunction)(&miInitVisualsProc);
+-}
+-
+-void
+-miHookInitVisuals(void (**old)(miInitVisualsProcPtr *),
+-		  void (*new)(miInitVisualsProcPtr *))
+-{
+-    if (old)
+-	*old = __miHookInitVisualsFunction;
+-    __miHookInitVisualsFunction = new;
+-}
+-
+ #endif /* XFree86LOADER */

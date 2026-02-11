@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DerefQuery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DerefQuery.java
+index d83f86f..1bd7abc 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DerefQuery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/DerefQuery.java
+@@ -114,7 +114,15 @@ class DerefQuery extends Query {
+      * @return 'DerefQuery'.
+      */
+     public String toString(String field) {
+-        return "DerefQuery";
++        StringBuffer sb = new StringBuffer();
++        sb.append("DerefQuery(");
++        sb.append(refProperty);
++        sb.append(", ");
++        sb.append(contextQuery);
++        sb.append(", ");
++        sb.append(nameTest);
++        sb.append(")");
++        return sb.toString();
+     }
+ 
+     /**
+@@ -291,6 +299,14 @@ class DerefQuery extends Query {
+             throw new UnsupportedOperationException();
+         }
+ 
++        /**
++         * 1. do context query
++         * 2. go through each document from the query
++         * 3. find reference property UUIDs
++         * 4. Use UUIDs to find document number
++         * 5. Use the name test to filter the documents
++         * @throws IOException
++         */
+         private void calculateChildren() throws IOException {
+             if (uuids == null) {
+                 uuids = new ArrayList();

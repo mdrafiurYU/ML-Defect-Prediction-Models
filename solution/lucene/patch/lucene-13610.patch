@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/schema/RandomSortField.java b/solr/src/java/org/apache/solr/schema/RandomSortField.java
+index 2ac6510..1a2891f 100644
+--- a/solr/src/java/org/apache/solr/schema/RandomSortField.java
++++ b/solr/src/java/org/apache/solr/schema/RandomSortField.java
+@@ -24,6 +24,7 @@ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.search.*;
+ import org.apache.solr.response.TextResponseWriter;
++import org.apache.solr.search.QParser;
+ import org.apache.solr.search.function.DocValues;
+ import org.apache.solr.search.function.ValueSource;
+ import org.apache.solr.search.SolrIndexReader;
+@@ -95,7 +96,7 @@ public class RandomSortField extends FieldType {
+   }
+ 
+   @Override
+-  public ValueSource getValueSource(SchemaField field) {
++  public ValueSource getValueSource(SchemaField field, QParser qparser) {
+     return new RandomValueSource(field.getName());
+   }

@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index c23751d..ec46ca2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -2098,10 +2098,11 @@ public class RepositoryImpl extends AbstractRepository
+          */
+         public void externalUpdate(ChangeLog external,
+                                    List events,
+-                                   long timestamp) throws RepositoryException {
++                                   long timestamp,
++                                   String userData) throws RepositoryException {
+             try {
+                 EventStateCollection esc = new EventStateCollection(
+-                        getObservationDispatcher(), null, null);
++                        getObservationDispatcher(), null, null, userData);
+                 esc.addAll(events);
+                 esc.setTimestamp(timestamp);

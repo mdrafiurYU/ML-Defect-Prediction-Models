@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
+index 7f47713..e4a34e8 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/GCConcurrentTest.java
+@@ -105,4 +105,9 @@ public class GCConcurrentTest extends AbstractJCRTest {
+     static Node node(Node n, String x) throws RepositoryException {
+         return n.hasNode(x) ? n.getNode(x) : n.addNode(x);
+     }
++
++    static int getTestScale() {
++        return Integer.parseInt(System.getProperty("jackrabbit.test.scale", "1"));
++    }
++
+ }

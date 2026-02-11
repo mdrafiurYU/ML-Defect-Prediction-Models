@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/IntFieldSource.java b/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
+index d8bfca6..a375675 100644
+--- a/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
++++ b/solr/src/java/org/apache/solr/search/function/IntFieldSource.java
+@@ -60,7 +60,7 @@ public class IntFieldSource extends NumericFieldCacheSource<IntValues> {
+       }
+ 
+       public int intVal(int doc) {
+-        return (int)arr[doc];
++        return arr[doc];
+       }
+ 
+       public long longVal(int doc) {

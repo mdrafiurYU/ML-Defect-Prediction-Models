@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportDocViewTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportDocViewTest.java
+index 320fbd6..51f3fba 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportDocViewTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/ExportDocViewTest.java
+@@ -121,7 +121,7 @@ public class ExportDocViewTest extends AbstractJCRTest {
+ 
+     protected void setUp() throws Exception {
+         isReadOnly = true;
+-        session = helper.getReadOnlySession();
++        session = getHelper().getReadOnlySession();
+         workspace = session.getWorkspace();
+         nsr = workspace.getNamespaceRegistry();
+         file = File.createTempFile("docViewExportTest", ".xml");

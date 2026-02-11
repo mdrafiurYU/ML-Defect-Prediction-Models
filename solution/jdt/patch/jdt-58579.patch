@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleTypeReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleTypeReference.java
+index 65738b6..ce7f509 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleTypeReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleTypeReference.java
+@@ -34,6 +34,9 @@ public class SingleTypeReference extends TypeReference {
+ 		return new ArrayTypeReference(token, dim,(((long)sourceStart)<<32)+sourceEnd);
+ 	}
+ 
++	public char[] getLastToken() {
++		return this.token;
++	}
+ 	protected TypeBinding getTypeBinding(Scope scope) {
+ 		if (this.resolvedType != null)
+ 			return this.resolvedType;

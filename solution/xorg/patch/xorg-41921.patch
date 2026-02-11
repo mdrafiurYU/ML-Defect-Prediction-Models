@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dixmods/xkbKillSrv.c b/hw/xfree86/dixmods/xkbKillSrv.c
+index 9074fd3..ac9c412 100644
+--- a/hw/xfree86/dixmods/xkbKillSrv.c
++++ b/hw/xfree86/dixmods/xkbKillSrv.c
+@@ -45,7 +45,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #include "xf86.h"
+ 
+-int
++_X_EXPORT int
+ XkbDDXTerminateServer(DeviceIntPtr dev,KeyCode key,XkbAction *act)
+ {
+     if (dev != inputInfo.keyboard)

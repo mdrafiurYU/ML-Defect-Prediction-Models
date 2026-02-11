@@ -1,0 +1,22 @@
+diff --git a/Xext/xres.c b/Xext/xres.c
+index 3c47012..75ade58 100644
+--- a/Xext/xres.c
++++ b/Xext/xres.c
+@@ -301,10 +301,6 @@ ProcXResQueryClientPixmapBytes (ClientPtr client)
+     return (client->noClientException);
+ }
+ 
+-
+-static void
+-ResResetProc (ExtensionEntry *extEntry) { }
+-
+ static int
+ ProcResDispatch (ClientPtr client)
+ {
+@@ -386,5 +382,5 @@ ResExtensionInit(INITARGS)
+ {
+     (void) AddExtension(XRES_NAME, 0, 0,
+                             ProcResDispatch, SProcResDispatch,
+-                            ResResetProc, StandardMinorOpcode);
++                            NULL, StandardMinorOpcode);
+ }

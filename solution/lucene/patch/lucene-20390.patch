@@ -1,0 +1,18 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeEmbeddedTest.java b/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeEmbeddedTest.java
+index b72098a..a01e6a7 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeEmbeddedTest.java
++++ b/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeEmbeddedTest.java
+@@ -18,11 +18,12 @@
+ package org.apache.solr.client.solrj.embedded;
+ 
+ import org.apache.solr.client.solrj.LargeVolumeTestBase;
++import org.apache.solr.util.ExternalPaths;
+ import org.junit.BeforeClass;
+ 
+ public class LargeVolumeEmbeddedTest extends LargeVolumeTestBase {
+   @BeforeClass
+   public static void beforeTest() throws Exception {
+-    initCore(EXAMPLE_CONFIG, EXAMPLE_SCHEMA, EXAMPLE_HOME);
++    initCore(ExternalPaths.EXAMPLE_CONFIG, ExternalPaths.EXAMPLE_SCHEMA, ExternalPaths.EXAMPLE_HOME);
+   }
+ }

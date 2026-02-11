@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/exa/examodule.c b/hw/xfree86/exa/examodule.c
+index e18da0a..63ea8c5 100644
+--- a/hw/xfree86/exa/examodule.c
++++ b/hw/xfree86/exa/examodule.c
+@@ -145,7 +145,7 @@ exaDDXDriverInit(ScreenPtr pScreen)
+ 	pExaScr->optimize_migration =
+ 	    xf86ReturnOptValBool(pScreenPriv->options,
+ 				 EXAOPT_OPTIMIZE_MIGRATION,
+-				 FALSE);
++				 TRUE);
+     }
+ 
+     if (xf86ReturnOptValBool(pScreenPriv->options,

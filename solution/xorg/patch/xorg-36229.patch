@@ -1,0 +1,52 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index cc045b2..b87a325 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -215,8 +215,15 @@ typedef struct _xf86CrtcFuncs {
+ 		      Rotation rotation, int x, int y);
+ } xf86CrtcFuncsRec, *xf86CrtcFuncsPtr;
+ 
++#define XF86_CRTC_VERSION 1
++
+ struct _xf86Crtc {
+     /**
++     * ABI versioning
++     */
++    int version;
++
++    /**
+      * Associated ScrnInfo
+      */
+     ScrnInfoPtr	    scrn;
+@@ -410,6 +417,14 @@ typedef struct _xf86OutputFuncs {
+ 		    Atom property,
+ 		    RRPropertyValuePtr value);
+ #endif
++#ifdef RANDR_13_INTERFACE
++    /**
++     * Callback to get an updated property value
++     */
++    Bool
++    (*get_property)(xf86OutputPtr output,
++		    Atom property);
++#endif
+     /**
+      * Clean up driver-specific bits of the output
+      */
+@@ -417,8 +432,16 @@ typedef struct _xf86OutputFuncs {
+     (*destroy) (xf86OutputPtr	    output);
+ } xf86OutputFuncsRec, *xf86OutputFuncsPtr;
+ 
++
++#define XF86_OUTPUT_VERSION 1
++
+ struct _xf86Output {
+     /**
++     * ABI versioning
++     */
++    int version;
++
++    /**
+      * Associated ScrnInfo
+      */
+     ScrnInfoPtr		scrn;

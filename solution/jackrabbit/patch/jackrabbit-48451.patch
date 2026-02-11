@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/TargetImportHandler.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/TargetImportHandler.java
+index bbe7103..e50e917 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/TargetImportHandler.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/TargetImportHandler.java
+@@ -24,6 +24,7 @@ import org.apache.jackrabbit.spi.commons.conversion.DefaultNamePathResolver;
+ import java.util.Map;
+ 
+ import javax.jcr.RepositoryException;
++import javax.jcr.ValueFactory;
+ 
+ /**
+  * <code>TargetImportHandler</code> serves as the base class for the concrete
+@@ -34,6 +35,8 @@ abstract class TargetImportHandler extends DefaultHandler {
+ 
+     protected final Importer importer;
+ 
++    protected final ValueFactory valueFactory;
++
+     /**
+      * The current namespace context. A new namespace context is created
+      * for each XML element and the parent reference is used to link the
+@@ -45,8 +48,9 @@ abstract class TargetImportHandler extends DefaultHandler {
+ 
+     protected NamePathResolver resolver;
+ 
+-    protected TargetImportHandler(Importer importer) {
++    protected TargetImportHandler(Importer importer, ValueFactory valueFactory) {
+         this.importer = importer;
++        this.valueFactory = valueFactory;
+     }
+ 
+     /**

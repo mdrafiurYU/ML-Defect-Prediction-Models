@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/search/TestIndexSearcher.java b/solr/src/test/org/apache/solr/search/TestIndexSearcher.java
+index 8b0f0ed..4ecd72d 100755
+--- a/solr/src/test/org/apache/solr/search/TestIndexSearcher.java
++++ b/solr/src/test/org/apache/solr/search/TestIndexSearcher.java
+@@ -36,7 +36,7 @@ public class TestIndexSearcher extends SolrTestCaseJ4 {
+   private String getStringVal(SolrQueryRequest sqr, String field, int doc) throws IOException {
+     SchemaField sf = sqr.getSchema().getField(field);
+     ValueSource vs = sf.getType().getValueSource(sf, null);
+-    Map context = ValueSource.newContext();
++    Map context = ValueSource.newContext(sqr.getSearcher());
+     vs.createWeight(context, sqr.getSearcher());
+     SolrIndexReader sr = sqr.getSearcher().getReader();
+     int idx = SolrIndexReader.readerIndex(doc, sr.getLeafOffsets());

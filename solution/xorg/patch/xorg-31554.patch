@@ -1,0 +1,17 @@
+diff --git a/miext/damage/damage.c b/miext/damage/damage.c
+index 65314d8..472b1b8 100755
+--- a/miext/damage/damage.c
++++ b/miext/damage/damage.c
+@@ -1987,6 +1987,12 @@ DamageRegion (DamagePtr		    pDamage)
+     return &pDamage->damage;
+ }
+ 
++_X_EXPORT RegionPtr
++DamagePendingRegion (DamagePtr	    pDamage)
++{
++    return &pDamage->pendingDamage;
++}
++
+ _X_EXPORT void
+ DamageDamageRegion (DrawablePtr	pDrawable,
+ 		    RegionPtr	pRegion)

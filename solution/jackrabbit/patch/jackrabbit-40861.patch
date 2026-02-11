@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/PropertyManagerImpl.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/PropertyManagerImpl.java
+index dc40c81..55b3d80 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/PropertyManagerImpl.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/PropertyManagerImpl.java
+@@ -108,7 +108,6 @@ public class PropertyManagerImpl implements PropertyManager {
+             DEFAULT_MANAGER = new PropertyManagerImpl();
+             DEFAULT_MANAGER.addPropertyHandler(new ZipHandler());
+             DEFAULT_MANAGER.addPropertyHandler(new XmlHandler());
+-            DEFAULT_MANAGER.addPropertyHandler(new DirListingExportHandler());
+             DEFAULT_MANAGER.addPropertyHandler(new DefaultHandler());
+         }
+         return DEFAULT_MANAGER;

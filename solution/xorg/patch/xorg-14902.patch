@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmxinput.c b/hw/dmx/dmxinput.c
+index b268319..7c376de 100644
+--- a/hw/dmx/dmxinput.c
++++ b/hw/dmx/dmxinput.c
+@@ -39,6 +39,10 @@
+  * that arequired by the dix layer.
+  */
+ 
++#ifdef HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "dmx.h"
+ #include "dmxlog.h"
+ #include "dmxinput.h"

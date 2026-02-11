@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder2.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder2.java
+index 2712fec..de6d66e 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder2.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestDocBuilder2.java
+@@ -17,6 +17,7 @@
+ package org.apache.solr.handler.dataimport;
+ 
+ import org.junit.BeforeClass;
++import org.junit.Ignore;
+ import org.junit.Test;
+ 
+ import org.apache.solr.request.LocalSolrQueryRequest;
+@@ -214,6 +215,7 @@ public class TestDocBuilder2 extends AbstractDataImportHandlerTestCase {
+   }
+ 
+   @Test
++  @Ignore("Known Locale/TZ problems: see https://issues.apache.org/jira/browse/SOLR-1916")
+   public void testFileListEntityProcessor_lastIndexTime() throws Exception  {
+     File tmpdir = File.createTempFile("test", "tmp", TEMP_DIR);
+     tmpdir.delete();

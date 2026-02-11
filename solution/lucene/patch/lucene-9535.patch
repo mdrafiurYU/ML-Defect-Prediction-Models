@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/stempel/src/java/org/apache/lucene/analysis/pl/PolishAnalyzer.java b/modules/analysis/stempel/src/java/org/apache/lucene/analysis/pl/PolishAnalyzer.java
+index 399c674..30396be 100644
+--- a/modules/analysis/stempel/src/java/org/apache/lucene/analysis/pl/PolishAnalyzer.java
++++ b/modules/analysis/stempel/src/java/org/apache/lucene/analysis/pl/PolishAnalyzer.java
+@@ -143,7 +143,7 @@ public final class PolishAnalyzer extends StopwordAnalyzerBase {
+   protected TokenStreamComponents createComponents(String fieldName,
+       Reader reader) {
+     final Tokenizer source = new StandardTokenizer(matchVersion, reader);
+-    TokenStream result = new StandardFilter(source);
++    TokenStream result = new StandardFilter(matchVersion, source);
+     result = new LowerCaseFilter(matchVersion, result);
+     result = new StopFilter(matchVersion, result, stopwords);
+     if(!stemExclusionSet.isEmpty())

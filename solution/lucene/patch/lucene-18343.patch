@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/JsonUpdateRequestHandler.java b/solr/src/java/org/apache/solr/handler/JsonUpdateRequestHandler.java
+index 12d0042..9f36c37 100644
+--- a/solr/src/java/org/apache/solr/handler/JsonUpdateRequestHandler.java
++++ b/solr/src/java/org/apache/solr/handler/JsonUpdateRequestHandler.java
+@@ -35,6 +35,7 @@ public class JsonUpdateRequestHandler extends ContentStreamHandlerBase {
+     super.init(args);
+   }
+ 
++  @Override
+   protected ContentStreamLoader newLoader(SolrQueryRequest req, UpdateRequestProcessor processor) {
+     return new JsonLoader(processor);
+   }

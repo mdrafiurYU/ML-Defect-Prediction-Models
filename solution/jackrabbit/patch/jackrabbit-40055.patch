@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java
+index 8732b29..3a3a81d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/LocalNamespaceMappings.java
+@@ -260,7 +260,7 @@ class LocalNamespaceMappings extends AbstractNamespaceResolver
+      */
+     public void namespaceRemoved(String uri) {
+         if (uriToPrefix.containsKey(uri)) {
+-            String prefix = (String)uriToPrefix.remove(uri);
++            String prefix = (String) uriToPrefix.remove(uri);
+             prefixToURI.remove(prefix);
+         }
+     }

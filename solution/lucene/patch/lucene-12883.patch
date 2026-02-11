@@ -1,0 +1,30 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/TermRangeQuery.java b/lucene/src/java/org/apache/lucene/search/TermRangeQuery.java
+index 5c00388..5b9ab4e 100644
+--- a/lucene/src/java/org/apache/lucene/search/TermRangeQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/TermRangeQuery.java
+@@ -20,10 +20,10 @@ package org.apache.lucene.search;
+ import java.io.IOException;
+ import java.text.Collator;
+ 
+-import org.apache.lucene.index.TermsEnum;
+ import org.apache.lucene.index.Terms;
+-import org.apache.lucene.util.ToStringUtils;
++import org.apache.lucene.index.TermsEnum;
+ import org.apache.lucene.util.AttributeSource;
++import org.apache.lucene.util.ToStringUtils;
+ 
+ /**
+  * A Query that matches documents within an range of terms.
+@@ -143,12 +143,6 @@ public class TermRangeQuery extends MultiTermQuery {
+         lowerTerm, upperTerm, includeLower, includeUpper, collator);
+   }
+ 
+-  /** @deprecated */
+-  @Deprecated
+-  public String field() {
+-    return getField();
+-  }
+-
+   /** Prints a user-readable version of this query. */
+   @Override
+   public String toString(String field) {

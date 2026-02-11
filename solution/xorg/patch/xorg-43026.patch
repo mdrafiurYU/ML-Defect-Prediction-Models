@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index 151d9a5..bc2b41e 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -508,8 +508,6 @@ InitKeyboardDeviceStruct(DeviceIntPtr dev, XkbRMLVOSet *rmlvo,
+ 
+     XkbInitIndicatorMap(xkbi);
+ 
+-    XkbDDXInitDevice(dev);
+-
+     XkbUpdateActions(dev, xkb->min_key_code, XkbNumKeys(xkb), &changes,
+                      &check, &cause);
+ 

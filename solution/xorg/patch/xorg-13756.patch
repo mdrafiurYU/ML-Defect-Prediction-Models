@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Pointer.c b/hw/xnest/Pointer.c
+index abd258d..7613122 100644
+--- a/hw/xnest/Pointer.c
++++ b/hw/xnest/Pointer.c
+@@ -31,6 +31,8 @@ is" without express or implied warranty.
+ #include "Pointer.h"
+ #include "Args.h"
+ 
++DeviceIntPtr xnestPointerDevice = NULL;
++
+ void
+ xnestChangePointerControl(DeviceIntPtr pDev, PtrCtrl *ctrl)
+ {

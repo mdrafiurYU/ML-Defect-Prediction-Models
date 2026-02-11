@@ -1,0 +1,31 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingCodec.java b/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingCodec.java
+index 3f88575..157e8c6 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingCodec.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/pulsing/PulsingCodec.java
+@@ -110,7 +110,7 @@ public class PulsingCodec extends Codec {
+ 
+     // We wrap StandardPostingsReader, but any StandardPostingsReader
+     // will work:
+-    PostingsReaderBase docsReader = new StandardPostingsReader(state.dir, state.segmentInfo, state.readBufferSize, state.codecId);
++    PostingsReaderBase docsReader = new StandardPostingsReader(state.dir, state.segmentInfo, state.context, state.codecId);
+     PostingsReaderBase pulsingReader = new PulsingPostingsReaderImpl(docsReader);
+ 
+     // Terms dict index reader
+@@ -122,7 +122,7 @@ public class PulsingCodec extends Codec {
+                                                     state.fieldInfos,
+                                                     state.segmentInfo.name,
+                                                     state.termsIndexDivisor,
+-                                                    state.codecId);
++                                                    state.codecId, state.context);
+       success = true;
+     } finally {
+       if (!success) {
+@@ -136,7 +136,7 @@ public class PulsingCodec extends Codec {
+       FieldsProducer ret = new BlockTermsReader(indexReader,
+                                                 state.dir, state.fieldInfos, state.segmentInfo.name,
+                                                 pulsingReader,
+-                                                state.readBufferSize,
++                                                state.context,
+                                                 StandardCodec.TERMS_CACHE_SIZE,
+                                                 state.codecId);
+       success = true;

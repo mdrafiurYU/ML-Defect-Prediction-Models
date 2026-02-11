@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/_TestUtil.java b/lucene/src/test/org/apache/lucene/util/_TestUtil.java
+index 7ae6f4e..70af1de 100644
+--- a/lucene/src/test/org/apache/lucene/util/_TestUtil.java
++++ b/lucene/src/test/org/apache/lucene/util/_TestUtil.java
+@@ -229,7 +229,7 @@ public class _TestUtil {
+   // count lowish
+   public static void reduceOpenFiles(IndexWriter w) {
+     // keep number of open files lowish
+-    LogMergePolicy lmp = (LogMergePolicy) w.getMergePolicy();
++    LogMergePolicy lmp = (LogMergePolicy) w.getConfig().getMergePolicy();
+     lmp.setMergeFactor(Math.min(5, lmp.getMergeFactor()));
+ 
+     MergeScheduler ms = w.getConfig().getMergeScheduler();

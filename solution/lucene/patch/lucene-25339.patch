@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestDirectoryReader.java b/lucene/src/test/org/apache/lucene/index/TestDirectoryReader.java
+index a736a93..a8fbb43 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestDirectoryReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestDirectoryReader.java
+@@ -166,14 +166,14 @@ public class TestDirectoryReader extends LuceneTestCase {
+ 
+     // test mixing up TermDocs and TermEnums from different readers.
+     TermsEnum te2 = MultiFields.getTerms(mr2, "body").iterator();
+-    te2.seek(new BytesRef("wow"));
++    te2.seekCeil(new BytesRef("wow"));
+     DocsEnum td = MultiFields.getTermDocsEnum(mr2,
+                                               MultiFields.getDeletedDocs(mr2),
+                                               "body",
+                                               te2.term());
+ 
+     TermsEnum te3 = MultiFields.getTerms(mr3, "body").iterator();
+-    te3.seek(new BytesRef("wow"));
++    te3.seekCeil(new BytesRef("wow"));
+     td = te3.docs(MultiFields.getDeletedDocs(mr3),
+                   td);

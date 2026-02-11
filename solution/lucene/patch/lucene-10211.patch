@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymMap.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymMap.java
+index e3a60ab..1defd70 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymMap.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymMap.java
+@@ -73,7 +73,7 @@ public class SynonymMap {
+     }
+     List<Token> superset = currMap.synonyms==null ? replacement :
+           mergeTokens(Arrays.asList(currMap.synonyms), replacement);
+-    currMap.synonyms = (Token[])superset.toArray(new Token[superset.size()]);
++    currMap.synonyms = superset.toArray(new Token[superset.size()]);
+     if (includeOrig) currMap.flags |= INCLUDE_ORIG;
+   }

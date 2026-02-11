@@ -1,0 +1,13 @@
+diff --git a/include/window.h b/include/window.h
+index 52b3982..ca2e57e 100644
+--- a/include/window.h
++++ b/include/window.h
+@@ -134,7 +134,7 @@ extern int ChangeWindowAttributes(
+ /* Quartz support on Mac OS X uses the HIToolbox
+    framework whose GetWindowAttributes function conflicts here. */
+ #ifdef __APPLE__
+-#define GetWindowAttributes(w,c,x) Darwin_X_GetWindowAttributes(w,c,x)
++#define GetWindowAttributes(w,c) Darwin_X_GetWindowAttributes(w,c)
+ extern void Darwin_X_GetWindowAttributes(
+ #else
+ extern void GetWindowAttributes(

@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86InPriv.h b/hw/xfree86/common/xf86InPriv.h
+index 4a02606..a14e9e7 100644
+--- a/hw/xfree86/common/xf86InPriv.h
++++ b/hw/xfree86/common/xf86InPriv.h
+@@ -35,11 +35,7 @@
+ #define _xf86InPriv_h
+ 
+ /* xf86Globals.c */
+-#ifdef XFree86LOADER
+ extern InputDriverPtr *xf86InputDriverList;
+-#else
+-extern InputDriverPtr xf86InputDriverList[];
+-#endif
+ extern int xf86NumInputDrivers;
+ 
+ /* xf86Xinput.c */

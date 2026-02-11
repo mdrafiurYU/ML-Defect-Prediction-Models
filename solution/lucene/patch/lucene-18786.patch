@@ -1,0 +1,20 @@
+diff --git a/solr/src/java/org/apache/solr/search/DisMaxQParser.java b/solr/src/java/org/apache/solr/search/DisMaxQParser.java
+index 9965974..f8398a1 100644
+--- a/solr/src/java/org/apache/solr/search/DisMaxQParser.java
++++ b/solr/src/java/org/apache/solr/search/DisMaxQParser.java
+@@ -79,6 +79,7 @@ public class DisMaxQParser extends QParser {
+   protected QParser altQParser;
+ 
+ 
++  @Override
+   public Query parse() throws ParseException {
+     SolrParams solrParams = localParams == null ? params : new DefaultSolrParams(localParams, params);
+     queryFields = SolrPluginUtils.parseFieldBoosts(solrParams.getParams(DisMaxParams.QF));
+@@ -244,6 +245,7 @@ public class DisMaxQParser extends QParser {
+     return parsedUserQuery == null ? altUserQuery : parsedUserQuery;
+   }
+ 
++  @Override
+   public void addDebugInfo(NamedList<Object> debugInfo) {
+     super.addDebugInfo(debugInfo);
+     debugInfo.add("altquerystring", altUserQuery);

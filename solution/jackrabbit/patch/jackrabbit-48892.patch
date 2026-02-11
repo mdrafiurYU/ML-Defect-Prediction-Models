@@ -1,0 +1,34 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/QValueFactoryLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/QValueFactoryLogger.java
+index e18d5a1..2d8c1fa 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/QValueFactoryLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/QValueFactoryLogger.java
+@@ -20,6 +20,8 @@ import java.io.File;
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.util.Calendar;
++import java.net.URI;
++import java.math.BigDecimal;
+ 
+ import javax.jcr.RepositoryException;
+ 
+@@ -102,6 +104,20 @@ public class QValueFactoryLogger extends AbstractLogger implements QValueFactory
+             }}, "create(Path)", new Object[]{value});
+     }
+ 
++    public QValue create(final URI value) throws RepositoryException {
++        return (QValue) execute(new Callable() {
++            public Object call() throws RepositoryException {
++                return qValueFactory.create(value);
++            }}, "create(URI)", new Object[]{value});
++    }
++
++    public QValue create(final BigDecimal value) throws RepositoryException {
++        return (QValue) execute(new Callable() {
++            public Object call() throws RepositoryException {
++                return qValueFactory.create(value);
++            }}, "create(BigDecimal)", new Object[]{value});
++    }
++
+     public QValue create(final byte[] value) throws RepositoryException {
+         return (QValue) execute(new Callable() {
+             public Object call() throws RepositoryException {

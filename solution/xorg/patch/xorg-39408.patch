@@ -1,0 +1,21 @@
+diff --git a/os/rpcauth.c b/os/rpcauth.c
+index 1e134ad..1a27c58 100644
+--- a/os/rpcauth.c
++++ b/os/rpcauth.c
+@@ -52,16 +52,6 @@ from The Open Group.
+ extern bool_t xdr_opaque_auth(XDR *, struct opaque_auth *);
+ #endif
+ 
+-#if defined(DGUX)
+-#include <time.h>
+-#include <rpc/auth_des.h>
+-#endif /* DGUX */
+-
+-#ifdef ultrix
+-#include <time.h>
+-#include <rpc/auth_des.h>
+-#endif
+-
+ static enum auth_stat why;
+ 
+ static char * 

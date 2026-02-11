@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+index ad83387..44ccd3f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+@@ -1006,9 +1006,9 @@ boolean isPackage(char[][] compoundName, char[] name) {
+ 
+ public MethodVerifier methodVerifier() {
+ 	if (verifier == null)
+-		verifier = this.globalOptions.complianceLevel < ClassFileConstants.JDK1_5
++		verifier = this.globalOptions.sourceLevel < ClassFileConstants.JDK1_5
+ 			? new MethodVerifier(this)
+-			: new MethodVerifier15(this); // check for covariance even if sourceLevel is < 1.5
++			: new MethodVerifier15(this); // covariance only if sourceLevel is >= 1.5
+ 	return verifier;
+ }
+ public void reset() {

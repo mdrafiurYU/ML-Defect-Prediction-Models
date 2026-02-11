@@ -1,0 +1,14 @@
+diff --git a/os/connection.c b/os/connection.c
+index 38521e6..ba16044 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -757,7 +757,9 @@ ClientAuthorized(ClientPtr client,
+ 	}
+     }
+     priv->auth_id = auth_id;
++#ifdef HAVE_LAUNCHD
+  done:
++#endif
+     priv->conn_time = 0;
+ 
+ #ifdef XDMCP

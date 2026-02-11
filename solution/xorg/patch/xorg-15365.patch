@@ -1,0 +1,15 @@
+diff --git a/xkb/ddxPrivate.c b/xkb/ddxPrivate.c
+index b2b2dad..5c0bca4 100644
+--- a/xkb/ddxPrivate.c
++++ b/xkb/ddxPrivate.c
+@@ -4,6 +4,10 @@
+ #include <dix-config.h>
+ #endif
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <stdio.h>
+ #define NEED_EVENTS 1
+ #include <X11/X.h>

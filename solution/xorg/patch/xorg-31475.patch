@@ -1,0 +1,17 @@
+diff --git a/fb/fbscreen.c b/fb/fbscreen.c
+index 94033f1..661268c 100644
+--- a/fb/fbscreen.c
++++ b/fb/fbscreen.c
+@@ -142,12 +142,6 @@ fbSetupScreen(ScreenPtr	pScreen,
+     pScreen->GetWindowPixmap = _fbGetWindowPixmap;
+     pScreen->SetWindowPixmap = _fbSetWindowPixmap;
+ 
+-    pScreen->BackingStoreFuncs.SaveAreas = fbSaveAreas;
+-    pScreen->BackingStoreFuncs.RestoreAreas = fbRestoreAreas;
+-    pScreen->BackingStoreFuncs.SetClipmaskRgn = 0;
+-    pScreen->BackingStoreFuncs.GetImagePixmap = 0;
+-    pScreen->BackingStoreFuncs.GetSpansPixmap = 0;
+-    
+     return TRUE;
+ }
+ 

@@ -1,0 +1,29 @@
+diff --git a/hw/dmx/dmxcmap.c b/hw/dmx/dmxcmap.c
+index 949d7d6..4aa586a 100644
+--- a/hw/dmx/dmxcmap.c
++++ b/hw/dmx/dmxcmap.c
+@@ -46,24 +46,10 @@
+ 
+ #include "micmap.h"
+ 
+-static int dmxInitColormapPrivateFunc(ColormapPtr pColormap, int index)
+-{
+-    return TRUE;
+-}
+-
+ static Bool dmxAllocateColormapPrivates(ColormapPtr pColormap)
+ {
+-    static unsigned long dmxColormapGeneration;
+     dmxColormapPrivPtr   pCmapPriv;
+ 
+-    if (dmxColormapGeneration != serverGeneration) {
+-	if ((dmxColormapPrivateIndex
+-	     = AllocateColormapPrivateIndex(dmxInitColormapPrivateFunc)) < 0)
+-	    return FALSE;
+-
+-	dmxColormapGeneration = serverGeneration;
+-    }
+-
+     pCmapPriv = (dmxColormapPrivPtr)xalloc(sizeof(*pCmapPriv));
+     if (!pCmapPriv)
+ 	return FALSE;

@@ -1,0 +1,20 @@
+diff --git a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java
+index 7b0bee3..9c84970 100644
+--- a/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java
++++ b/lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/TermsFilterBuilder.java
+@@ -67,14 +67,7 @@ public class TermsFilterBuilder implements FilterBuilder
+       ts.reset();
+ 	      while (ts.incrementToken()) {
+ 	        termAtt.fillBytesRef();
+-				if (term == null)
+-				{
+-					term = new Term(fieldName, new BytesRef(bytes));
+-				} else
+-				{
+-//					 create from previous to save fieldName.intern overhead
+-					term = term.createTerm(new BytesRef(bytes)); 
+-				}
++				term = new Term(fieldName, new BytesRef(bytes));
+ 				tf.addTerm(term);
+ 			}
+ 	    ts.end();

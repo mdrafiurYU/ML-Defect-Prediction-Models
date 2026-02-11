@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
+index ea11d7c..a03e0df 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/lock/DeepLockTest.java
+@@ -145,7 +145,7 @@ public class DeepLockTest extends AbstractJCRTest {
+     }
+ 
+     public void testRemoveLockedChild() throws RepositoryException {
+-        Session otherSession = helper.getReadWriteSession();
++        Session otherSession = getHelper().getReadWriteSession();
+         try {
+             Node child = (Node) otherSession.getItem(childNode.getPath());
+             child.remove();

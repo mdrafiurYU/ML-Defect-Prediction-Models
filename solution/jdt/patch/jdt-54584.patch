@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
+index 59ce62f..eeea18b 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/compiler/DocumentElementParser.java
+@@ -473,6 +473,11 @@ protected void consumeEnterVariable() {
+ 		declaration.declarationSourceStart = previousVariable.declarationSourceStart;
+ 		declaration.modifiers = previousVariable.modifiers;
+ 		declaration.modifiersSourceStart = previousVariable.modifiersSourceStart;
++		final Annotation[] annotations = previousVariable.annotations;
++		if (annotations != null) {
++			final int annotationsLength = annotations.length;
++			System.arraycopy(annotations, 0, declaration.annotations = new Annotation[annotationsLength], 0, annotationsLength);
++		}
+ 	}
+ 
+ 	localIntPtr = intPtr;

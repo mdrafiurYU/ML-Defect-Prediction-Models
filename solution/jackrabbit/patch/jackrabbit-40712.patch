@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/ParsingContentHandlerTest.java b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/ParsingContentHandlerTest.java
+index 8435223..9107a22 100644
+--- a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/ParsingContentHandlerTest.java
++++ b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/commons/xml/ParsingContentHandlerTest.java
+@@ -19,8 +19,6 @@ package org.apache.jackrabbit.commons.xml;
+ import java.io.ByteArrayInputStream;
+ import java.io.StringWriter;
+ 
+-import javax.xml.transform.stream.StreamResult;
+-
+ import junit.framework.TestCase;
+ 
+ import org.xml.sax.ContentHandler;
+@@ -33,7 +31,7 @@ public class ParsingContentHandlerTest extends TestCase {
+         StringWriter writer = new StringWriter();
+ 
+         ContentHandler handler =
+-            SerializingContentHandler.getSerializer(new StreamResult(writer));
++            SerializingContentHandler.getSerializer(writer);
+         new ParsingContentHandler(handler).parse(
+                 new ByteArrayInputStream(source.getBytes("UTF-8")));

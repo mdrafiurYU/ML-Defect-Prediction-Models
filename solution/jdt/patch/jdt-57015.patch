@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetFieldReference.java b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetFieldReference.java
+index f7de2d5..6452075 100644
+--- a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetFieldReference.java
++++ b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetFieldReference.java
+@@ -291,7 +291,8 @@ public void generatePostIncrement(BlockScope currentScope, CodeStream codeStream
+ public void manageSyntheticAccessIfNecessary(BlockScope currentScope, FlowInfo flowInfo, boolean isReadAccess){
+ 	// The private access will be managed through the code generation
+ 
+-	if (!flowInfo.isReachable()) return;
++	if ((flowInfo.tagBits & FlowInfo.UNREACHABLE) != 0) return;
++	
+ 	// if field from parameterized type got found, use the original field at codegen time
+ 	if (this.binding instanceof ParameterizedFieldBinding) {
+ 	    ParameterizedFieldBinding parameterizedField = (ParameterizedFieldBinding) this.binding;

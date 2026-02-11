@@ -1,0 +1,17 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+index 184076c..95e3ec2 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+@@ -270,9 +270,10 @@ public class NodeState extends ItemState {
+         /* process all parent states that are marked modified and eventually
+            need their uniqueID or mixin-types being adjusted because that property
+            has been added, modified or removed */
+-        for (Iterator it = modParents.keySet().iterator(); it.hasNext();) {
+-            NodeState parent = (NodeState) it.next();
+-            List l = (List) modParents.get(parent);
++        for (Iterator it = modParents.entrySet().iterator(); it.hasNext();) {
++            Map.Entry entry = (Map.Entry) it.next();
++            NodeState parent = (NodeState) entry.getKey();
++            List l = (List) entry.getValue();
+             adjustNodeState(parent, (PropertyState[]) l.toArray(new PropertyState[l.size()]));
+         }

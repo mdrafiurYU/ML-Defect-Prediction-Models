@@ -1,0 +1,51 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
+index c59c4f1..a3d5119 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
+@@ -181,28 +181,24 @@ public final class EventStateCollection {
+                         Set mixins = oldParent.getMixinTypeNames();
+                         Path newPath = getPath(n.getNodeId(), hmgr);
+                         Path oldPath = getZombiePath(n.getNodeId(), hmgr);
+-                        if (!oldPath.equals(newPath)) {
+-                            events.add(EventState.childNodeRemoved(oldParentId,
+-                                    getParent(oldPath),
+-                                    n.getNodeId(),
+-                                    oldPath.getNameElement(),
+-                                    oldParentNodeType.getQName(),
+-                                    mixins,
+-                                    session));
+-
+-                            NodeState newParent = (NodeState) changes.get(newParentId);
+-                            NodeTypeImpl newParentNodeType = getNodeType(newParent, session);
+-                            mixins = newParent.getMixinTypeNames();
+-                            events.add(EventState.childNodeAdded(newParentId,
+-                                    getParent(newPath),
+-                                    n.getNodeId(),
+-                                    newPath.getNameElement(),
+-                                    newParentNodeType.getQName(),
+-                                    mixins,
+-                                    session));
+-                        } else {
+-                            log.error("Unable to calculate old path of moved node");
+-                        }
++                        events.add(EventState.childNodeRemoved(oldParentId,
++                                getParent(oldPath),
++                                n.getNodeId(),
++                                oldPath.getNameElement(),
++                                oldParentNodeType.getQName(),
++                                mixins,
++                                session));
++
++                        NodeState newParent = (NodeState) changes.get(newParentId);
++                        NodeTypeImpl newParentNodeType = getNodeType(newParent, session);
++                        mixins = newParent.getMixinTypeNames();
++                        events.add(EventState.childNodeAdded(newParentId,
++                                getParent(newPath),
++                                n.getNodeId(),
++                                newPath.getNameElement(),
++                                newParentNodeType.getQName(),
++                                mixins,
++                                session));
+                     } else {
+                         // a moved node always has a modified parent node
+                         NodeState parent = null;

@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index dad786d..632c0f4 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -323,7 +323,7 @@ IsPointerDevice(DeviceIntPtr dev)
+ _X_EXPORT Bool
+ IsKeyboardDevice(DeviceIntPtr dev)
+ {
+-    return (dev->key && dev->kbdfeed) && !IsPointerDevice(dev);;
++    return (dev->key && dev->kbdfeed) && !IsPointerDevice(dev);
+ }
+ 
+ static void DoEnterLeaveEvents(

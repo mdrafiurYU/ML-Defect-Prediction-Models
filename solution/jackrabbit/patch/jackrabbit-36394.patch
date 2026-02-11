@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/NodeTypeIteratorAdapter.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/NodeTypeIteratorAdapter.java
+index c9b8471..b5408a7 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/NodeTypeIteratorAdapter.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/NodeTypeIteratorAdapter.java
+@@ -32,6 +32,12 @@ public class NodeTypeIteratorAdapter extends RangeIteratorDecorator
+         implements NodeTypeIterator {
+ 
+     /**
++     * Static instance of an empty {@link NodeTypeIterator}.
++     */
++    public static final NodeTypeIterator EMPTY =
++        new NodeTypeIteratorAdapter(RangeIteratorAdapter.EMPTY);
++
++    /**
+      * Creates an adapter for the given {@link RangeIterator}.
+      *
+      * @param iterator iterator of {@link NodeType}s

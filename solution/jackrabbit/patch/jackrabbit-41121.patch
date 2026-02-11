@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/AnonymousConnection.java b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/AnonymousConnection.java
+index ce6cf1f..02b2775 100644
+--- a/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/AnonymousConnection.java
++++ b/jackrabbit-jca/src/main/java/org/apache/jackrabbit/jca/AnonymousConnection.java
+@@ -155,7 +155,7 @@ public class AnonymousConnection implements ManagedConnection, XAResource {
+     public boolean isSameRM(XAResource xares) throws XAException {
+         return xares instanceof AnonymousConnection;
+     }
+-    
++
+     //--------------------------------------------------------- not implemented
+ 
+     public void start(Xid xid, int flags) throws XAException {

@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index a2e65a8..691708f 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -997,8 +997,12 @@ public String getAttachedJavadoc(IProgressMonitor monitor, String defaultEncodin
+ 		indexOfNextSummary = contents.indexOf(JavadocConstants.ENUM_CONSTANT_SUMMARY);
+ 	}
+ 	if (this.isAnnotation() && indexOfNextSummary == -1) {
+-		// try to find enum constant summary start
+-		indexOfNextSummary = contents.indexOf(JavadocConstants.ANNOTATION_TYPE_MEMBER_SUMMARY);
++		// try to find required enum constant summary start
++		indexOfNextSummary = contents.indexOf(JavadocConstants.ANNOTATION_TYPE_REQUIRED_MEMBER_SUMMARY);
++		if (indexOfNextSummary == -1) {
++			// try to find optional enum constant summary start
++			indexOfNextSummary = contents.indexOf(JavadocConstants.ANNOTATION_TYPE_OPTIONAL_MEMBER_SUMMARY);
++		}
+ 	}
+ 	if (indexOfNextSummary == -1) {
+ 		// try to find field summary start

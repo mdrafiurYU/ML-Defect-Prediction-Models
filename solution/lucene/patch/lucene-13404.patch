@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ReutersContentSource.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ReutersContentSource.java
+index 066d9bd..11265bd 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ReutersContentSource.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ReutersContentSource.java
+@@ -119,7 +119,7 @@ public class ReutersContentSource extends ContentSource {
+       reader.readLine();// skip an empty line
+       String title = reader.readLine();
+       reader.readLine();// skip an empty line
+-      StringBuffer bodyBuf = new StringBuffer(1024);
++      StringBuilder bodyBuf = new StringBuilder(1024);
+       String line = null;
+       while ((line = reader.readLine()) != null) {
+         bodyBuf.append(line).append(' ');

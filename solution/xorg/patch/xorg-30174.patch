@@ -1,0 +1,12 @@
+diff --git a/dix/grabs.c b/dix/grabs.c
+index e1dd6c5..af471eb 100644
+--- a/dix/grabs.c
++++ b/dix/grabs.c
+@@ -106,6 +106,7 @@ CreateGrab(
+     grab->confineTo = confineTo;
+     grab->cursor = cursor;
+     grab->genericMasks = NULL;
++    grab->next = NULL;
+     if (cursor)
+ 	cursor->refcnt++;
+     return grab;

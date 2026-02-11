@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/AnnotationBeanDescriptorTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/AnnotationBeanDescriptorTest.java
+index 0abb3ba..718a7d2 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/AnnotationBeanDescriptorTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/AnnotationBeanDescriptorTest.java
+@@ -262,7 +262,7 @@ public class AnnotationBeanDescriptorTest extends AnnotationTestBase {
+             page = (Page) ocm.getObject("/test");
+             paragraphs = page.getParagraphs();
+             for (Paragraph paragraph : paragraphs) {
+-				System.out.println("Paragraph path : " + paragraph.getPath());				
++				log.info("Paragraph path : " + paragraph.getPath());				
+ 			}
+             Paragraph p1 = (Paragraph) ocm.getObject("/test/paragraph[2]");
+             Page paraPage = p1.getPage();

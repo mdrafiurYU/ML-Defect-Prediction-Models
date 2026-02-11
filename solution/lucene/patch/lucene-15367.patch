@@ -1,0 +1,15 @@
+diff --git a/solr/src/java/org/apache/solr/schema/LatLonType.java b/solr/src/java/org/apache/solr/schema/LatLonType.java
+index c76187f..75694f7 100644
+--- a/solr/src/java/org/apache/solr/schema/LatLonType.java
++++ b/solr/src/java/org/apache/solr/schema/LatLonType.java
+@@ -342,8 +342,8 @@ class SpatialDistanceQuery extends Query {
+ 
+     public SpatialWeight(IndexSearcher searcher) throws IOException {
+       this.searcher = searcher;
+-      this.latContext = latSource.newContext();
+-      this.lonContext = lonSource.newContext();
++      this.latContext = latSource.newContext(searcher);
++      this.lonContext = lonSource.newContext(searcher);
+       latSource.createWeight(latContext, searcher);
+       lonSource.createWeight(lonContext, searcher);
+     }

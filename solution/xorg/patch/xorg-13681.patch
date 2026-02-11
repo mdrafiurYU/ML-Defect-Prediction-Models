@@ -1,0 +1,13 @@
+diff --git a/dix/events.c b/dix/events.c
+index 9a77d28..cbac853 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -2822,7 +2822,7 @@ drawable.id:0;
+     kptr = &keyc->down[key >> 3];
+     bit = 1 << (key & 7);
+     modifiers = keyc->modifierMap[key];
+-#ifdef XKB
++#if defined(XKB) && defined(XEVIE)
+     if(!noXkbExtension && !xeviegrabState &&
+        xevieFlag && clients[xevieClientIndex] &&
+        (xevieMask & xevieFilters[xE->u.u.type])) {

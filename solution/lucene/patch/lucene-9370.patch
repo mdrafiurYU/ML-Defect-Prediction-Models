@@ -1,0 +1,16 @@
+diff --git a/solr/src/java/org/apache/solr/search/SpatialOptions.java b/solr/src/java/org/apache/solr/search/SpatialOptions.java
+index bae4905..04d4cbb 100644
+--- a/solr/src/java/org/apache/solr/search/SpatialOptions.java
++++ b/solr/src/java/org/apache/solr/search/SpatialOptions.java
+@@ -32,6 +32,11 @@ public class SpatialOptions {
+   public double radius;
+   public DistanceUnits units;
+ 
++  /** Just do a "bounding box" - or any other quicker method / shape that
++   * still encompasses all of the points of interest, but may also encompass
++   * points outside.
++   */ 
++  public boolean bbox;
+ 
+   public SpatialOptions() {
+   }

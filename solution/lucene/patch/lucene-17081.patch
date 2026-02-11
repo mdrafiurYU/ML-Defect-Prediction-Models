@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestComplexExplanations.java b/lucene/src/test/org/apache/lucene/search/TestComplexExplanations.java
+index da1d756..91122a7 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestComplexExplanations.java
++++ b/lucene/src/test/org/apache/lucene/search/TestComplexExplanations.java
+@@ -34,7 +34,7 @@ public class TestComplexExplanations extends TestExplanations {
+   @Override
+   public void setUp() throws Exception {
+     super.setUp();
+-    searcher.setSimilarity(createQnorm1Similarity());
++    searcher.setSimilarityProvider(createQnorm1Similarity());
+   }
+ 
+   // must be static for weight serialization tests

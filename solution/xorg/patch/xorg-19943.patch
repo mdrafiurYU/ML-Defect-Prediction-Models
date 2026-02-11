@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/loaderProcs.h b/hw/xfree86/loader/loaderProcs.h
+index 72591a5..19752ab 100644
+--- a/hw/xfree86/loader/loaderProcs.h
++++ b/hw/xfree86/loader/loaderProcs.h
+@@ -92,6 +92,10 @@ ModuleDescPtr LoadModule(const char *, const char *, const char **,
+ ModuleDescPtr LoadSubModule(ModuleDescPtr, const char *,
+ 			    const char **, const char **, pointer,
+ 			    const XF86ModReqInfo *, int *, int *);
++ModuleDescPtr LoadSubModuleLocal(ModuleDescPtr, const char *,
++				 const char **, const char **,
++				 pointer, const XF86ModReqInfo *,
++				 int *, int *);
+ ModuleDescPtr DuplicateModule(ModuleDescPtr mod, ModuleDescPtr parent);
+ void LoadFont(FontModule *);
+ void UnloadModule(ModuleDescPtr);

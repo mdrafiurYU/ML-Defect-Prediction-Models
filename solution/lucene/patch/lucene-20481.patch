@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java b/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
+index 8d96c0f..e2e004a 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
+@@ -40,7 +40,7 @@ public class TestMatchAllDocsQuery extends LuceneTestCase {
+   public void testQuery() throws Exception {
+     Directory dir = newDirectory();
+     IndexWriter iw = new IndexWriter(dir, newIndexWriterConfig(
+-                                                               TEST_VERSION_CURRENT, analyzer).setMaxBufferedDocs(2).setMergePolicy(newInOrderLogMergePolicy()));
++                                                               TEST_VERSION_CURRENT, analyzer).setMaxBufferedDocs(2).setMergePolicy(newLogMergePolicy()));
+     addDoc("one", iw, 1f);
+     addDoc("two", iw, 20f);
+     addDoc("three four", iw, 300f);

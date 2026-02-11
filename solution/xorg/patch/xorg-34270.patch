@@ -1,0 +1,12 @@
+diff --git a/hw/xwin/winpixmap.c b/hw/xwin/winpixmap.c
+index 994eeb8..07020ee 100644
+--- a/hw/xwin/winpixmap.c
++++ b/hw/xwin/winpixmap.c
+@@ -98,6 +98,7 @@ winCreatePixmapNativeGDI (ScreenPtr pScreen,
+   pPixmap->devKind = 0;
+   pPixmap->refcnt = 1;
+   pPixmap->devPrivate.ptr = NULL;
++  pPixmap->usage_hint = usage_hint;
+ 
+   /* Pixmap privates are allocated by AllocatePixmap */
+   pPixmapPriv = winGetPixmapPriv (pPixmap);

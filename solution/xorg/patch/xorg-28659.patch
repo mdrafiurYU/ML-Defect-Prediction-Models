@@ -1,0 +1,25 @@
+diff --git a/Xi/allowev.c b/Xi/allowev.c
+index ea9c5de..85b6eaf 100644
+--- a/Xi/allowev.c
++++ b/Xi/allowev.c
+@@ -76,9 +76,9 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXAllowDeviceEvents(register ClientPtr client)
++SProcXAllowDeviceEvents(ClientPtr client)
+ {
+-    register char n;
++    char n;
+ 
+     REQUEST(xAllowDeviceEventsReq);
+     swaps(&stuff->length, n);
+@@ -94,7 +94,7 @@ SProcXAllowDeviceEvents(register ClientPtr client)
+  */
+ 
+ int
+-ProcXAllowDeviceEvents(register ClientPtr client)
++ProcXAllowDeviceEvents(ClientPtr client)
+ {
+     TimeStamp time;
+     DeviceIntPtr thisdev;

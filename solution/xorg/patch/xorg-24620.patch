@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index 68afd28..a41fddb 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -131,8 +131,7 @@ KdUnblockSigio (void)
+     sigprocmask (SIG_UNBLOCK, &set, 0);
+ }
+ 
+-#undef VERIFY_SIGIO
+-#ifdef VERIFY_SIGIO
++#ifdef DEBUG
+ 
+ void
+ KdAssertSigioBlocked (char *where)

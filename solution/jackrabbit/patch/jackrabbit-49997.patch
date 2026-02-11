@@ -1,0 +1,58 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java
+index 31937c1..278913d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SessionItemStateManager.java
+@@ -787,9 +787,23 @@ public class SessionItemStateManager
+             // local state was created
+             ItemState transientState = transientStore.get(created.getId());
+             if (transientState != null) {
+-                // underlying state has been permanently created
+-                transientState.pull();
+-                transientState.setStatus(ItemState.STATUS_EXISTING);
++                if (transientState.hasOverlayedState()) {
++                    // underlying state has been permanently created
++                    transientState.pull();
++                    transientState.setStatus(ItemState.STATUS_EXISTING);
++                } else {
++                    // this is a notification from another session
++                    try {
++                        ItemState local = stateMgr.getItemState(created.getId());
++                        transientState.connect(local);
++                        // update mod count
++                        transientState.setModCount(local.getModCount());
++                        transientState.setStatus(ItemState.STATUS_EXISTING_MODIFIED);
++                    } catch (ItemStateException e) {
++                        // something went wrong, mark as stale
++                        transientState.setStatus(ItemState.STATUS_STALE_MODIFIED);
++                    }
++                }
+                 visibleState = transientState;
+             }
+         }
+@@ -823,6 +837,12 @@ public class SessionItemStateManager
+                                     return atticStore.contains(id);
+                                 }
+ 
++                                public boolean isModified(ItemId id) {
++                                    ItemState is = transientStore.get(id);
++                                    return is != null
++                                            && is.getStatus() == ItemState.STATUS_EXISTING_MODIFIED;
++                                }
++
+                                 public boolean allowsSameNameSiblings(NodeId id) {
+                                     NodeState ns;
+                                     try {
+@@ -867,6 +887,13 @@ public class SessionItemStateManager
+             if (transientState != null) {
+                 transientState.setStatus(ItemState.STATUS_STALE_DESTROYED);
+                 visibleState = transientState;
++            } else {
++                // check attic
++                transientState = atticStore.get(destroyed.getId());
++                if (transientState != null) {
++                    atticStore.remove(destroyed.getId());
++                    transientState.onDisposed();
++                }
+             }
+         }
+         dispatcher.notifyStateDestroyed(visibleState);

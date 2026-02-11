@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+index 19d3316..5221175 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+@@ -148,6 +148,10 @@ public class MemoryFileSystem implements FileSystem {
+         final MemoryFile file = new MemoryFile();
+         entries.put(filePath, file);
+         return new FilterOutputStream(new ByteArrayOutputStream()) {
++            public void write(byte[] bytes, int off, int len) throws IOException {
++                out.write(bytes, off, len);
++            }
++
+             public void close() throws IOException {
+                 out.close();
+                 file.setData(((ByteArrayOutputStream) out).toByteArray());

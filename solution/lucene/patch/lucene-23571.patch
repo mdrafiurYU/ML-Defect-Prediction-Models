@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java b/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java
+index 68c7952..59df186 100755
+--- a/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java
+@@ -115,4 +115,9 @@ public class DoubleConstValueSource extends ConstNumberSource {
+   public Number getNumber() {
+     return constant;
+   }
++
++  @Override
++  public boolean getBool() {
++    return constant != 0;
++  }
+ }

@@ -1,0 +1,10 @@
+diff --git a/hw/kdrive/ephyr/ephyr_draw.c b/hw/kdrive/ephyr/ephyr_draw.c
+index 0d09535..0c1a5d0 100644
+--- a/hw/kdrive/ephyr/ephyr_draw.c
++++ b/hw/kdrive/ephyr/ephyr_draw.c
+@@ -515,4 +515,5 @@ exaDDXDriverInit(ScreenPtr pScreen)
+ 
+     pExaScr->migration = ExaMigrationSmart;
+     pExaScr->hideOffscreenPixmapData = TRUE;
++    pExaScr->checkDirtyCorrectness = TRUE;
+ }

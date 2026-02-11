@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPrefixQuery.java b/lucene/src/test/org/apache/lucene/search/TestPrefixQuery.java
+index 0a521e1..5ab5728 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPrefixQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPrefixQuery.java
+@@ -47,7 +47,7 @@ public class TestPrefixQuery extends LuceneTestCase {
+     IndexReader reader = writer.getReader();
+ 
+     PrefixQuery query = new PrefixQuery(new Term("category", "/Computers"));
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     ScoreDoc[] hits = searcher.search(query, null, 1000).scoreDocs;
+     assertEquals("All documents in /Computers category and below", 3, hits.length);

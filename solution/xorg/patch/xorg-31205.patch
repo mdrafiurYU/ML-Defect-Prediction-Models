@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/sparcPci.c b/hw/xfree86/os-support/bus/sparcPci.c
+index bef3093..f09ed9f 100644
+--- a/hw/xfree86/os-support/bus/sparcPci.c
++++ b/hw/xfree86/os-support/bus/sparcPci.c
+@@ -649,7 +649,7 @@ xf86MapLegacyIO(int ScreenNum, int Flags, PCITAG Tag,
+ }
+ 
+ _X_EXPORT int
+-xf86ReadDomainMemory(PCITAG Tag, ADDRESS Base, int Len, unsigned char *Buf)
++xf86ReadLegacyVideoBIOS(PCITAG Tag, ADDRESS Base, int Len, unsigned char *Buf)
+ {
+     unsigned char *ptr, *src;
+     ADDRESS offset;

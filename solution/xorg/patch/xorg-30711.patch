@@ -1,0 +1,18 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index e606016..3ce045c 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -210,10 +210,13 @@ EnableDevice(DeviceIntPtr dev)
+     /* Sprites pop up on the first root window, so we can supply it directly
+      * here. 
+      */
++    if (!dev->spriteInfo->sprite)
++    {
+     if (IsPointerDevice(dev) && dev->spriteInfo->spriteOwner)
+         InitializeSprite(dev, WindowTable[0]);
+     else
+         PairDevices(NULL, inputInfo.pointer, dev);
++    }
+ 
+     if ((*prev != dev) || !dev->inited ||
+ 	((ret = (*dev->deviceProc)(dev, DEVICE_ON)) != Success)) {

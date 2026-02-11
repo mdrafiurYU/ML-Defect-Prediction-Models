@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueHelper.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueHelper.java
+index ed58ad7..b2de70f 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueHelper.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/ValueHelper.java
+@@ -502,9 +502,15 @@ public class ValueHelper {
+                     newVal = factory.createValue(srcValue.getLong());
+                     break;
+ 
++                case PropertyType.DECIMAL:
++                    newVal = factory.createValue(srcValue.getDecimal());
++                    break;
++
+                 case PropertyType.PATH:
+                 case PropertyType.NAME:
+                 case PropertyType.REFERENCE:
++                case PropertyType.WEAKREFERENCE:
++                case PropertyType.URI:
+                     newVal = factory.createValue(srcValue.getString(), srcValue.getType());
+                     break;

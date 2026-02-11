@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_apm.c b/hw/xfree86/os-support/linux/lnx_apm.c
+index 16ac80d..b1328cd 100644
+--- a/hw/xfree86/os-support/linux/lnx_apm.c
++++ b/hw/xfree86/os-support/linux/lnx_apm.c
+@@ -133,7 +133,7 @@ lnxPMConfirmEventToOs(int fd, pmEvent event)
+ 
+ #endif // HAVE_APM
+ 
+-PMClose
++_X_EXPORT PMClose
+ xf86OSPMOpen(void)
+ {
+ 	PMClose ret = NULL;

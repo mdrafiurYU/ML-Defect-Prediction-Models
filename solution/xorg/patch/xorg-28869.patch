@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 32bdcba..0fe03d3 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -598,7 +598,6 @@ xf86CrtcCloseScreen (int index, ScreenPtr screen)
+     {
+ 	xf86OutputPtr	output = config->output[o];
+ 
+-	output->crtc = NULL;
+ 	output->randr_output = NULL;
+     }
+     for (c = 0; c < config->num_crtc; c++)

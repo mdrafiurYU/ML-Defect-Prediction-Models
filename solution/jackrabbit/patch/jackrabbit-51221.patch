@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java
+index ba1e305..44224f3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java
+@@ -210,7 +210,7 @@ public class DefaultSecurityManager implements JackrabbitSecurityManager {
+         acProviderFactory = new AccessControlProviderFactoryImpl();
+         acProviderFactory.init(securitySession);
+ 
+-        // create the evalutor for workspace access
++        // create the workspace access manager
+         SecurityManagerConfig smc = config.getSecurityManagerConfig();
+         if (smc != null && smc.getWorkspaceAccessConfig() != null) {
+             workspaceAccessManager = (WorkspaceAccessManager) smc.getWorkspaceAccessConfig().newInstance();

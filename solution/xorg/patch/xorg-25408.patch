@@ -1,0 +1,16 @@
+diff --git a/include/input.h b/include/input.h
+index 3fe6944..f2fe6d1 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -441,7 +441,9 @@ extern DeviceIntPtr LookupDeviceIntRec(
+ extern int NewInputDeviceRequest(
+     InputOption *options);
+ 
+-extern DeviceIntPtr LookupDeviceIntRec(
+-    CARD8 deviceid);
++extern void DDXRingBell(
++    int volume,
++    int pitch,
++    int duration);
+ 
+ #endif /* INPUT_H */

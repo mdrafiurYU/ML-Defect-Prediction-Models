@@ -1,0 +1,13 @@
+diff --git a/miext/rootless/rootlessWindow.c b/miext/rootless/rootlessWindow.c
+index b953398..7285f95 100644
+--- a/miext/rootless/rootlessWindow.c
++++ b/miext/rootless/rootlessWindow.c
+@@ -471,7 +471,7 @@ RootlessEnsureFrame(WindowPtr pWin)
+     if (WINREC(pWin) != NULL)
+         return WINREC(pWin);
+ 
+-    if (!IsTopLevel(pWin))
++    if (!IsTopLevel(pWin) && !IsRoot(pWin))
+         return NULL;
+ 
+     if (pWin->drawable.class != InputOutput)

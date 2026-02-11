@@ -1,0 +1,28 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index f4a22ac..e5c9615 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -3120,23 +3120,6 @@ notifyStateChange(xf86NotifyState state)
+     }
+ }
+ 
+-#ifdef async
+-_X_EXPORT Bool
+-xf86QueueAsyncEvent(void (*func)(pointer),pointer arg)
+-{
+-    AsyncQPtr new;
+-    
+-    if (!AsyncQ) return FALSE;
+-
+-    new = (AsyncQPtr)xfnalloc(sizeof(AsyncQRec));
+-    new->func = func;
+-    new->arg = arg;
+-    (*AsyncQPtr)->next = new;
+-    AsyncQPtr = &new;
+-    return TRUE;
+-}
+-#endif
+-
+ /* Multihead accel sharing accessor functions and entity Private handling */
+ 
+ _X_EXPORT int

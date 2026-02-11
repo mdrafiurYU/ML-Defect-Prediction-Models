@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeStateIterator.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeStateIterator.java
+index 64cd692..533e94b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeStateIterator.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/NodeStateIterator.java
+@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
+  * <code>NodeStateIterator</code> extends the Iterator interface by the
+  * respective NodeState methods.
+  */
+-public interface NodeStateIterator extends Iterator {
++public interface NodeStateIterator extends Iterator<NodeState> {
+ 
+     /**
+      * Returns the next node state of the iterator.

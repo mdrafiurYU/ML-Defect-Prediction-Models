@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java
+index a9647eb..5353cd7 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java
+@@ -79,6 +79,21 @@ public class ASTStructuralPropertyTest extends org.eclipse.jdt.core.tests.junit.
+ 			public void postVisit(ASTNode node) {
+ 				StructuralPropertyDescriptor me = node.getLocationInParent();
+ 				assertTrue(me != null || (node == root));
++                ASTNode p = node.getParent();
++                if (p != null) {
++                    List parentProperties = p.structuralPropertiesForType();
++                    boolean foundMe = false;
++                    for (Iterator it = parentProperties.iterator(); it
++                            .hasNext();) {
++                        StructuralPropertyDescriptor prop = 
++                            (StructuralPropertyDescriptor) it.next();
++                        if (me == prop || prop.getId().equals(me.getId())) {
++                            foundMe = true;
++                            break;
++                        }
++                    }
++                    assertTrue(foundMe);
++                }
+ 			}
+ 		};
+ 		root.accept(v);

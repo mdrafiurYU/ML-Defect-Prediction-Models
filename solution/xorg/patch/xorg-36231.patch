@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.c b/hw/xfree86/modes/xf86Crtc.c
+index 4d5d7b8..0bef5b4 100644
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -1678,6 +1678,9 @@ nextAspectMode(DisplayModePtr start, float aspect)
+ {
+     DisplayModePtr m = start;
+ 
++    if (!m)
++	return NULL;
++
+     for (m = m->next; m; m = m->next)
+ 	if (aspectMatch(aspect, (float)m->HDisplay / (float)m->VDisplay))
+ 	    return m;

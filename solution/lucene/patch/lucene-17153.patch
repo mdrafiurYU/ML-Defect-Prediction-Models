@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/PerFieldCodecWrapper.java b/lucene/src/java/org/apache/lucene/index/PerFieldCodecWrapper.java
+index f7d4a18..51c9232 100644
+--- a/lucene/src/java/org/apache/lucene/index/PerFieldCodecWrapper.java
++++ b/lucene/src/java/org/apache/lucene/index/PerFieldCodecWrapper.java
+@@ -204,6 +204,7 @@ final class PerFieldCodecWrapper extends Codec {
+     }
+   }
+ 
++  @Override
+   public FieldsProducer fieldsProducer(SegmentReadState state)
+       throws IOException {
+     return new FieldsReader(state.dir, state.fieldInfos, state.segmentInfo,

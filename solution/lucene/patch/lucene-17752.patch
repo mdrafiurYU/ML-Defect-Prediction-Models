@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java b/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java
+index fbc1d4c..3007d8a 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPositionIncrement.java
+@@ -96,7 +96,7 @@ public class TestPositionIncrement extends LuceneTestCase {
+     writer.close();
+     
+ 
+-    IndexSearcher searcher = new IndexSearcher(reader);
++    IndexSearcher searcher = newSearcher(reader);
+     
+     DocsAndPositionsEnum pos = MultiFields.getTermPositionsEnum(searcher.getIndexReader(),
+                                                                 MultiFields.getDeletedDocs(searcher.getIndexReader()),
+@@ -264,7 +264,7 @@ public class TestPositionIncrement extends LuceneTestCase {
+     // only one doc has "a"
+     assertEquals(DocsAndPositionsEnum.NO_MORE_DOCS, tp.nextDoc());
+ 
+-    IndexSearcher is = new IndexSearcher(readerFromWriter);
++    IndexSearcher is = newSearcher(readerFromWriter);
+   
+     SpanTermQuery stq1 = new SpanTermQuery(new Term("content", "a"));
+     SpanTermQuery stq2 = new SpanTermQuery(new Term("content", "k"));

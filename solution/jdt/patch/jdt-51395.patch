@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index 7f4dcf1..5ef32ad 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -2165,8 +2165,9 @@ public void generateSyntheticBodyForMethodAccess(SyntheticMethodBinding accessMe
+ 			this.dreturn();
+ 			break;
+ 		default :
+-			if (targetMethod.returnType != accessMethod.returnType)
+-				this.checkcast(accessMethod.returnType); // for bridge methods
++			TypeBinding accessErasure = accessMethod.returnType.erasure();
++			if (!targetMethod.returnType.isCompatibleWith(accessErasure))
++				this.checkcast(accessErasure); // for bridge methods
+ 			this.areturn();
+ 	}
+ }

@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestDistance.java b/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestDistance.java
+index f63e6ac..7aaa919 100644
+--- a/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestDistance.java
++++ b/lucene/contrib/spatial/src/test/org/apache/lucene/spatial/tier/TestDistance.java
+@@ -99,7 +99,7 @@ public class TestDistance extends LuceneTestCase {
+ 
+   public void testLatLongFilterOnDeletedDocs() throws Exception {
+     writer.deleteDocuments(new Term("name", "Potomac"));
+-    IndexReader r = IndexReader.open(writer);
++    IndexReader r = IndexReader.open(writer, true);
+     LatLongDistanceFilter f = new LatLongDistanceFilter(new QueryWrapperFilter(new MatchAllDocsQuery()),
+                                                         lat, lng, 1.0, latField, lngField);

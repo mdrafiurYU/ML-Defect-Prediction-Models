@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+index 193e30f..e4bf6d9 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+@@ -128,9 +128,9 @@ public class AnnotationProcessorFactoryLoader {
+ 		AnnotationProcessorFactory apf = PLUGIN_FACTORY_MAP.get( factoryName );
+ 		if ( apf == null ) 
+ 		{
+-			// TODO:  log error somewhere
+-			System.err.println("could not find AnnotationProcessorFactory " +  //$NON-NLS-1$
+-					factoryName + " from available factories defined by plugins" ); //$NON-NLS-1$
++			String s = "could not find AnnotationProcessorFactory " +  //$NON-NLS-1$
++				factoryName + " from available factories defined by plugins"; //$NON-NLS-1$
++			AptPlugin.log(new Status(IStatus.WARNING, AptPlugin.PLUGIN_ID, AptPlugin.STATUS_NOTOOLSJAR, s, null));
+ 		}
+ 		return apf;
+ 	}

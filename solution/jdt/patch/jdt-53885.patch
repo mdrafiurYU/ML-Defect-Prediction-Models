@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
+index 018509d..81d67cb 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
+@@ -1471,6 +1471,8 @@ public final class JavaCore extends Plugin {
+ 		}
+ 		
+ 		if (variablePath != null) {
++			if (JavaModelManager.CP_ENTRY_IGNORE.equals(variablePath.toString()))
++				return null;
+ 			return variablePath;
+ 		}

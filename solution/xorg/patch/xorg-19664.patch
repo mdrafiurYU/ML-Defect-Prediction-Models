@@ -1,0 +1,22 @@
+diff --git a/GL/glx/glxvisuals.c b/GL/glx/glxvisuals.c
+index 9b5839c..f83bbb1 100644
+--- a/GL/glx/glxvisuals.c
++++ b/GL/glx/glxvisuals.c
+@@ -432,7 +432,7 @@ void GlxSetVisualConfigs(int nconfigs,
+ 
+ static miInitVisualsProcPtr saveInitVisualsProc;
+ 
+-static Bool __glXInitVisuals(VisualPtr *visualp, DepthPtr *depthp,
++Bool GlxInitVisuals(VisualPtr *visualp, DepthPtr *depthp,
+ 			     int *nvisualp, int *ndepthp,
+ 			     int *rootDepthp, VisualID *defaultVisp,
+ 			     unsigned long sizes, int bitsPerRGB,
+@@ -466,7 +466,7 @@ void
+ GlxWrapInitVisuals(miInitVisualsProcPtr *initVisProc)
+ {
+     saveInitVisualsProc = *initVisProc;
+-    *initVisProc = __glXInitVisuals;
++    *initVisProc = GlxInitVisuals;
+ }
+ 
+ static void fixup_visuals(int screen)

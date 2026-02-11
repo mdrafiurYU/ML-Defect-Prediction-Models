@@ -1,0 +1,45 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QueryInfoImpl.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QueryInfoImpl.java
+index e713d4f..64eb900 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QueryInfoImpl.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/QueryInfoImpl.java
+@@ -18,6 +18,8 @@ package org.apache.jackrabbit.spi2dav;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
++import java.util.Set;
++import java.util.HashSet;
+ 
+ import javax.jcr.RepositoryException;
+ import javax.jcr.ValueFactory;
+@@ -27,6 +29,7 @@ import org.apache.jackrabbit.spi.QueryInfo;
+ import org.apache.jackrabbit.spi.QValueFactory;
+ import org.apache.jackrabbit.spi.QueryResultRow;
+ import org.apache.jackrabbit.spi.IdFactory;
++import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.util.ISO9075;
+ import org.apache.jackrabbit.webdav.MultiStatus;
+ import org.apache.jackrabbit.webdav.MultiStatusResponse;
+@@ -86,4 +89,23 @@ public class QueryInfoImpl implements QueryInfo {
+         System.arraycopy(columnNames, 0, names, 0, columnNames.length);
+         return names;
+     }
++
++    /**
++     * @see QueryInfo#getSelectorNames()
++     */
++    public Name[] getSelectorNames() {
++        if (results.isEmpty()) {
++            // TODO: this is not correct
++            return new Name[0];
++        } else {
++            Set<Name> uniqueNames = new HashSet<Name>();
++            QueryResultRowImpl row = (QueryResultRowImpl) results.get(0);
++            for (Name n : row.getSelectorNames()) {
++                if (n != null) {
++                    uniqueNames.add(n);
++                }
++            }
++            return uniqueNames.toArray(new Name[uniqueNames.size()]);
++        }
++    }
+ }

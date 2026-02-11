@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/mfbhrzvert.c b/hw/xfree86/xf4bpp/mfbhrzvert.c
+index 0e55943..eb510c0 100644
+--- a/hw/xfree86/xf4bpp/mfbhrzvert.c
++++ b/hw/xfree86/xf4bpp/mfbhrzvert.c
+@@ -50,6 +50,10 @@ SOFTWARE.
+ /* GJA -- modified this file for vga16 */
+ /* $XConsortium: mfbhrzvert.c /main/3 1996/02/21 17:56:41 kaleb $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "OScompiler.h"
+ #include "mfbmap.h"

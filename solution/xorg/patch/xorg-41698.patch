@@ -1,0 +1,13 @@
+diff --git a/fb/fb.h b/fb/fb.h
+index 292dc42..8384315 100644
+--- a/fb/fb.h
++++ b/fb/fb.h
+@@ -819,6 +819,8 @@ fb24_32ModifyPixmapHeader (PixmapPtr   pPixmap,
+ /*
+  * fballpriv.c
+  */
++extern _X_EXPORT DevPrivateKey fbGetWinPrivateKey(void);
++
+ extern _X_EXPORT Bool
+ fbAllocatePrivates(ScreenPtr pScreen, DevPrivateKey *pGCIndex);
+     

@@ -1,0 +1,13 @@
+diff --git a/GL/glx/glxext.c b/GL/glx/glxext.c
+index 1cbc279..85d8deb 100644
+--- a/GL/glx/glxext.c
++++ b/GL/glx/glxext.c
+@@ -288,7 +288,7 @@ void GlxExtensionInit(void)
+ 			    __glXDispatch, ResetExtension,
+ 			    StandardMinorOpcode);
+     if (!extEntry) {
+-	ErrorF("__glXExtensionInit: AddExtensions failed\n");
++	FatalError("__glXExtensionInit: AddExtensions failed\n");
+ 	return;
+     }
+     if (!AddExtensionAlias(GLX_EXTENSION_ALIAS, extEntry)) {

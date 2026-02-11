@@ -1,0 +1,16 @@
+diff --git a/os/utils.c b/os/utils.c
+index 2fc5cbb..e605a6c 100644
+--- a/os/utils.c
++++ b/os/utils.c
+@@ -136,10 +136,7 @@ _X_EXPORT Bool noTestExtensions;
+ _X_EXPORT Bool noBigReqExtension = FALSE;
+ #endif
+ #ifdef COMPOSITE
+- /* COMPOSITE is disabled by default for now until the
+-  * interface is stable */
+- #define COMPOSITE_DEFAULT FALSE
+-_X_EXPORT Bool noCompositeExtension = !COMPOSITE_DEFAULT;
++_X_EXPORT Bool noCompositeExtension = FALSE;
+ #endif
+ 
+ #ifdef DAMAGE

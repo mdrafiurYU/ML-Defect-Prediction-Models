@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/ExtJarFactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/ExtJarFactoryContainer.java
+index 8ea927e..75201a2 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/ExtJarFactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/ExtJarFactoryContainer.java
+@@ -22,7 +22,7 @@ public class ExtJarFactoryContainer extends JarFactoryContainer {
+ 	private File _jarFile;
+ 	
+ 	/**
+-	 * @param jarPath
++	 * @param jar must not be null
+ 	 */
+ 	public ExtJarFactoryContainer(File jar) {
+ 		_jarFile = jar.getAbsoluteFile();

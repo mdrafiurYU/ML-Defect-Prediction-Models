@@ -1,0 +1,30 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntry.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntry.java
+index 1f50b2b..9be1e28 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntry.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/PropertyEntry.java
+@@ -21,6 +21,7 @@ import org.apache.jackrabbit.spi.PropertyId;
+ 
+ import javax.jcr.RepositoryException;
+ import javax.jcr.ItemNotFoundException;
++import javax.jcr.InvalidItemStateException;
+ 
+ /**
+  * <code>PropertyEntry</code>...
+@@ -30,7 +31,7 @@ public interface PropertyEntry extends HierarchyEntry {
+     /**
+      * @return the <code>NodeId</code> of this child node entry.
+      */
+-    public PropertyId getId();
++    public PropertyId getId() throws InvalidItemStateException, RepositoryException;
+ 
+     /**
+      * Returns the ID that must be used for resolving this entry OR loading its
+@@ -41,7 +42,7 @@ public interface PropertyEntry extends HierarchyEntry {
+      * @return
+      * @see #getId()
+      */
+-    public PropertyId getWorkspaceId();
++    public PropertyId getWorkspaceId() throws InvalidItemStateException, RepositoryException;
+ 
+     /**
+      * @return the referenced <code>PropertyState</code>.

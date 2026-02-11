@@ -1,0 +1,12 @@
+diff --git a/hw/xgl/xglglx.c b/hw/xgl/xglglx.c
+index 6c66263..22e8cc0 100644
+--- a/hw/xgl/xglglx.c
++++ b/hw/xgl/xglglx.c
+@@ -3503,6 +3503,7 @@ xglInitVisualConfigs (ScreenPtr pScreen)
+ 
+ 	pConfig[i].doubleBuffer = TRUE;
+ 	pConfig[i].depthSize = format->depth_size;
++	pConfig[i].stencilSize = format->stencil_size;
+ 	pConfig[i].stereo = FALSE;
+ 	
+ 	if (depth == 16)

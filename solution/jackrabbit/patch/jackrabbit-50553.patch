@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
+index 7cb128a..fd34d94 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
+@@ -417,7 +417,7 @@ abstract class AbstractVersionManager implements VersionManager {
+         WriteOperation operation = startWriteOperation();
+         try {
+             // create deep path
+-            NodeId activityId = new NodeId(UUID.randomUUID());
++            NodeId activityId = new NodeId();
+             NodeStateEx parent = getParentNode(activitiesRoot, activityId.toString(), NameConstants.REP_ACTIVITIES);
+             Name name = getName(activityId.toString());

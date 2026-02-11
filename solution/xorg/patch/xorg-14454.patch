@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winwindow.h b/hw/xwin/winwindow.h
+index 6cc69aa..d0499bc 100644
+--- a/hw/xwin/winwindow.h
++++ b/hw/xwin/winwindow.h
+@@ -124,7 +124,8 @@ winInitWM (void **ppWMInfo,
+ 	   pthread_t *ptXMsgProc,
+ 	   pthread_mutex_t *ppmServerStarted,
+ 	   int dwScreen,
+-	   HWND hwndScreen);
++	   HWND hwndScreen,
++	   BOOL allowOtherWM);
+ 
+ void
+ winDeinitMultiWindowWM (void);

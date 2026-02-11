@@ -1,0 +1,40 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
+index 3b191b8..7cece68 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexReader.java
+@@ -398,12 +398,22 @@ public class InstantiatedIndexReader extends IndexReader {
+         if (i < 0) {
+           i = -i - 1;
+         }
+-        if (i >= orderedTerms.length || !orderedTerms[i].field().equals(field)) {
++        if (i >= orderedTerms.length || orderedTerms[i].field() != field) {
+           // field does not exist
+           return null;
+         }
+         final int startLoc = i;
+ 
++        // TODO: heavy to do this here; would be better to
++        // do it up front & cache
++        long sum = 0;
++        int upto = i;
++        while(upto < orderedTerms.length && orderedTerms[i].field() == field) {
++          sum += orderedTerms[i].getTotalTermFreq();
++          upto++;
++        }
++        final long sumTotalTermFreq = sum;
++
+         return new Terms() {
+           @Override 
+           public TermsEnum iterator() {
+@@ -411,6 +421,11 @@ public class InstantiatedIndexReader extends IndexReader {
+           }
+ 
+           @Override
++          public long getSumTotalTermFreq() {
++            return sumTotalTermFreq;
++          }
++
++          @Override
+           public Comparator<BytesRef> getComparator() {
+             return BytesRef.getUTF8SortedAsUnicodeComparator();
+           }

@@ -1,0 +1,17 @@
+diff --git a/mfb/mfbpixmap.c b/mfb/mfbpixmap.c
+index 5ec8502..e349724 100644
+--- a/mfb/mfbpixmap.c
++++ b/mfb/mfbpixmap.c
+@@ -101,12 +101,8 @@ mfbCreatePixmap (pScreen, width, height, depth)
+     pPixmap->drawable.height = height;
+     pPixmap->devKind = paddedWidth;
+     pPixmap->refcnt = 1;
+-#ifdef PIXPRIV
+     pPixmap->devPrivate.ptr =  datasize ?
+ 		(pointer)((char *)pPixmap + pScreen->totalPixmapSize) : NULL;
+-#else
+-    pPixmap->devPrivate.ptr = (pointer)(pPixmap + 1);
+-#endif
+     return pPixmap;
+ }
+ 

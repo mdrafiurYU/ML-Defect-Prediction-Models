@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
+index 7548f55..2f80425 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/SimpleJBossAccessManager.java
+@@ -104,6 +104,12 @@ public class SimpleJBossAccessManager implements AccessManager {
+         }
+     }
+ 
++    public void checkPermission(Path absPath, int permissions) throws AccessDeniedException, RepositoryException {
++        if (!isGranted(absPath, permissions)) {
++            throw new AccessDeniedException("Access denied");
++        }
++    }
++
+     public boolean isGranted(ItemId id, int permissions) throws RepositoryException {
+         // system has always all permissions
+         // anonymous has only READ premissions

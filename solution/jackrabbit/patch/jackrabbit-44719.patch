@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
+index 9195fe5..fecc788 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
+@@ -107,14 +107,6 @@ abstract class AbstractVersionManager implements VersionManager {
+         return (InternalVersionHistory) getItem(id);
+     }
+ 
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public boolean hasVersionHistory(NodeId id) {
+-        // lock handling via hasItem()
+-        return hasItem(id);
+-    }
+-
+     //-------------------------------------------------------< implementation >
+ 
+     /**

@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/EntryFactory.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/EntryFactory.java
+index 57922e0..4c28134 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/EntryFactory.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/EntryFactory.java
+@@ -23,16 +23,12 @@ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.PathFactory;
+ import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+ 
+ /**
+  * <code>EntryFactory</code>...
+  */
+ public class EntryFactory {
+ 
+-    private static Logger log = LoggerFactory.getLogger(EntryFactory.class);
+-
+     /**
+      * IdFactory to create an ItemId based on the parent NodeId.
+      */
+@@ -43,7 +39,7 @@ public class EntryFactory {
+     private final NodeEntry rootEntry;
+ 
+     /**
+-     *
++     * Listener to creation and uid-changes of node entries.
+      */
+     private final NodeEntryListener listener;

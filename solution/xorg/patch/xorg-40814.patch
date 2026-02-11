@@ -1,0 +1,15 @@
+diff --git a/mi/micmap.c b/mi/micmap.c
+index 2d43e01..b92ddec 100644
+--- a/mi/micmap.c
++++ b/mi/micmap.c
+@@ -48,10 +48,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ _X_EXPORT ColormapPtr miInstalledMaps[MAXSCREENS];
+ 
+-static Bool miDoInitVisuals(VisualPtr *visualp, DepthPtr *depthp, int *nvisualp,
+-		int *ndepthp, int *rootDepthp, VisualID *defaultVisp,
+-		unsigned long sizes, int bitsPerRGB, int preferredVis);
+-
+ _X_EXPORT int
+ miListInstalledColormaps(ScreenPtr pScreen, Colormap *pmaps)
+ {

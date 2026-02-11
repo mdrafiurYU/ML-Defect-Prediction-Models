@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PossibleMatch.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PossibleMatch.java
+index e9694d6..0f4f66c 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PossibleMatch.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/PossibleMatch.java
+@@ -96,7 +96,7 @@ public char[][] getPackageName() {
+ private char[] getQualifiedName() {
+ 	if (this.openable instanceof CompilationUnit) {
+ 		// get file name
+-		String fileName = this.resource.getFullPath().lastSegment();
++		String fileName = this.openable.getElementName(); // working copy on a .class file may not have a resource, so use the element name
+ 		// get main type name
+ 		char[] mainTypeName = Util.getNameWithoutJavaLikeExtension(fileName).toCharArray();
+ 		CompilationUnit cu = (CompilationUnit) this.openable;

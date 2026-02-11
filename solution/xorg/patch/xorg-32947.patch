@@ -1,0 +1,13 @@
+diff --git a/hw/xprint/ps/Ps.h b/hw/xprint/ps/Ps.h
+index 25bd533..5e77d9a 100644
+--- a/hw/xprint/ps/Ps.h
++++ b/hw/xprint/ps/Ps.h
+@@ -574,7 +574,7 @@ extern void PsSetFillColor(DrawablePtr pDrawable, GCPtr pGC, PsOutPtr psOut,
+  */
+ 
+ extern PixmapPtr PsCreatePixmap(ScreenPtr pScreen, int width, int height,
+-                                int depth);
++                                int depth, unsigned usage_hint);
+ extern void PsScrubPixmap(PixmapPtr pPixmap);
+ extern Bool PsDestroyPixmap(PixmapPtr pPixmap);
+ extern DisplayListPtr PsGetFreeDisplayBlock(PsPixmapPrivPtr priv);

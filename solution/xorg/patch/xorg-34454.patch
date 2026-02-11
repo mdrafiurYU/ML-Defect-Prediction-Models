@@ -1,0 +1,13 @@
+diff --git a/include/servermd.h b/include/servermd.h
+index 2616bfe..2f511da 100644
+--- a/include/servermd.h
++++ b/include/servermd.h
+@@ -444,7 +444,7 @@ SOFTWARE.
+ 
+ #endif /* luna */
+ 
+-#if	(defined(SVR4) && defined(__i386__)) || \
++#if	(defined(SVR4) && (defined(__i386__) || (defined(__i386)))) ||	\
+ 	defined(__alpha__) || defined(__alpha) || \
+ 	defined(__i386__) || defined(__QNX__) || \
+ 	defined(__s390x__) || defined(__s390__)

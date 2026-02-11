@@ -1,0 +1,96 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index b1c0ce0..9e3b2dd 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -1526,64 +1526,6 @@ SecurityParseExtensionRule(
+ 
+ } /* SecurityParseExtensionRule */
+ 
+-static char **SecurityPolicyStrings = NULL;
+-static int nSecurityPolicyStrings = 0;
+-
+-static Bool
+-SecurityParseSitePolicy(
+-    char *p)
+-{
+-    char *policyStr = SecurityParseString(&p);
+-    char *copyPolicyStr;
+-    char **newStrings;
+-
+-    if (!policyStr)
+-	return FALSE;
+-
+-    copyPolicyStr = (char *)Xalloc(strlen(policyStr) + 1);
+-    if (!copyPolicyStr)
+-	return TRUE;
+-    strcpy(copyPolicyStr, policyStr);
+-    newStrings = (char **)Xrealloc(SecurityPolicyStrings,
+-			  sizeof (char *) * (nSecurityPolicyStrings + 1));
+-    if (!newStrings)
+-    {
+-	Xfree(copyPolicyStr);
+-	return TRUE;
+-    }
+-
+-    SecurityPolicyStrings = newStrings;
+-    SecurityPolicyStrings[nSecurityPolicyStrings++] = copyPolicyStr;
+-
+-    return TRUE;
+-
+-} /* SecurityParseSitePolicy */
+-
+-
+-char **
+-SecurityGetSitePolicyStrings(n)
+-    int *n;
+-{
+-    *n = nSecurityPolicyStrings;
+-    return SecurityPolicyStrings;
+-} /* SecurityGetSitePolicyStrings */
+-
+-static void
+-SecurityFreeSitePolicyStrings(void)
+-{
+-    if (SecurityPolicyStrings)
+-    {
+-	assert(nSecurityPolicyStrings);
+-	while (nSecurityPolicyStrings--)
+-	{
+-	    Xfree(SecurityPolicyStrings[nSecurityPolicyStrings]);
+-	}
+-	Xfree(SecurityPolicyStrings);
+-	SecurityPolicyStrings = NULL;
+-	nSecurityPolicyStrings = 0;
+-    }
+-} /* SecurityFreeSitePolicyStrings */
+-
+ static void
+ SecurityFreeTrustedExtensionStrings(void)
+ {
+@@ -1646,6 +1588,7 @@ SecurityLoadPropertyAccessList(void)
+ 	    switch (SecurityParseKeyword(&p))
+ 	    {
+ 		case SecurityKeywordComment:
++		case SecurityKeywordSitePolicy:
+ 		    validLine = TRUE;
+ 		break;
+ 
+@@ -1653,10 +1596,6 @@ SecurityLoadPropertyAccessList(void)
+ 		    validLine = SecurityParsePropertyAccessRule(p);
+ 		break;
+ 
+-		case SecurityKeywordSitePolicy:
+-		    validLine = SecurityParseSitePolicy(p);
+-		break;
+-
+ 		case SecurityKeywordExtension:
+ 		    validLine = SecurityParseExtensionRule(p);
+ 		break;
+@@ -1837,7 +1776,6 @@ SecurityResetProc(
+ {
+     SecurityFreePropertyAccessList();
+     SecurityFreeTrustedExtensionStrings();
+-    SecurityFreeSitePolicyStrings();
+ } /* SecurityResetProc */
+ 
+ 

@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/exa/examodule.c b/hw/xfree86/exa/examodule.c
+index 4a8d8f2..601288c 100644
+--- a/hw/xfree86/exa/examodule.c
++++ b/hw/xfree86/exa/examodule.c
+@@ -42,7 +42,8 @@ typedef struct _ExaXorgScreenPrivRec {
+     OptionInfoPtr		 options;
+ } ExaXorgScreenPrivRec, *ExaXorgScreenPrivPtr;
+ 
+-static DevPrivateKey exaXorgScreenPrivateKey = &exaXorgScreenPrivateKey;
++static int exaXorgScreenPrivateKeyIndex;
++static DevPrivateKey exaXorgScreenPrivateKey = &exaXorgScreenPrivateKeyIndex;
+ 
+ typedef enum {
+     EXAOPT_MIGRATION_HEURISTIC,

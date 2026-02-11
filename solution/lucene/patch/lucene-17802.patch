@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/NumberFormatTransformer.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/NumberFormatTransformer.java
+index d38ab75..36efecf 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/NumberFormatTransformer.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/NumberFormatTransformer.java
+@@ -49,6 +49,7 @@ public class NumberFormatTransformer extends Transformer {
+ 
+   private static final Pattern localeRegex = Pattern.compile("^([a-z]{2})-([A-Z]{2})$");
+ 
++  @Override
+   @SuppressWarnings("unchecked")
+   public Object transformRow(Map<String, Object> row, Context context) {
+     for (Map<String, String> fld : context.getAllEntityFields()) {

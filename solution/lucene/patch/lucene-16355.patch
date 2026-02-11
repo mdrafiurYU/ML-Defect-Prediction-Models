@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java b/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java
+index 1521815..552b869 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/FixedGapTermsIndexWriter.java
+@@ -128,7 +128,7 @@ public class FixedGapTermsIndexWriter extends TermsIndexWriterBase {
+     }
+ 
+     @Override
+-    public boolean checkIndexTerm(BytesRef text, int docFreq) throws IOException {
++    public boolean checkIndexTerm(BytesRef text, TermStats stats) throws IOException {
+       // First term is first indexed term:
+       if (0 == (numTerms++ % termIndexInterval)) {

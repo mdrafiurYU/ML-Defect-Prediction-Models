@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/utils/gtf/gtf.c b/hw/xfree86/utils/gtf/gtf.c
+index fbc6207..109e2bb 100644
+--- a/hw/xfree86/utils/gtf/gtf.c
++++ b/hw/xfree86/utils/gtf/gtf.c
+@@ -105,6 +105,9 @@
+  */
+ /* $XFree86: xc/programs/Xserver/hw/xfree86/etc/gtf.c,v 1.2 2002/11/15 17:01:53tsi Exp $ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++# include <xorg-config.h>
++#endif
+ 
+ #include <stdio.h>
+ #include <stdlib.h>

@@ -1,0 +1,18 @@
+diff --git a/hw/dmx/input/dmxcommon.h b/hw/dmx/input/dmxcommon.h
+index 1cc935d..a9b260c 100644
+--- a/hw/dmx/input/dmxcommon.h
++++ b/hw/dmx/input/dmxcommon.h
+@@ -63,13 +63,9 @@
+ #define DMX_COMMON_XKB      DMX_COMMON_OTHER
+ #endif
+ 
+-#ifdef XINPUT
+ #define DMX_COMMON_PRIVATE                  \
+     DMX_COMMON_XKB;                         \
+     XDevice                 *xi
+-#else
+-#define DMX_COMMON_PRIVATE  DMX_COMMON_OTHER
+-#endif
+ 
+ #define GETONLYPRIVFROMPRIVATE                                          \
+     myPrivate            *priv     = private

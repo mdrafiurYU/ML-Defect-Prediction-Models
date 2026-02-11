@@ -1,0 +1,48 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockInfo.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockInfo.java
+index 849258e..240f055 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockInfo.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockInfo.java
+@@ -19,7 +19,9 @@ package org.apache.jackrabbit.core.lock;
+ import org.apache.jackrabbit.core.SessionImpl;
+ import org.apache.jackrabbit.core.id.NodeId;
+ 
++import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
++import javax.jcr.lock.LockException;
+ 
+ /**
+  * Internal lock information.
+@@ -198,6 +200,33 @@ public abstract class LockInfo {
+     }
+ 
+     /**
++     * Utility method that throws a {@link LockException} with the
++     * "failure node path" set to the path of the node that holds this lock.
++     * The given session is used to resolve the path of the lock holder node.
++     *
++     * @param message exception message
++     * @param session session that the user was using for the failing operation
++     * @throws LockException always thrown, unless another error occurs
++     * @throws RepositoryException if the path of this lock can not be resolved
++     */
++    public void throwLockException(String message, SessionImpl session)
++            throws LockException, RepositoryException {
++        String path;
++        try {
++            path = session.getJCRPath(
++                    session.getHierarchyManager().getPath(id));
++        } catch (RepositoryException ignored) {
++            path = null;
++        }
++        if (path != null) {
++            throw new LockException(
++                    message + " (lock held by node " + path + ")", null, path);
++        } else {
++            throw new LockException(message);
++        }
++    }
++
++    /**
+      * {@inheritDoc}
+      */
+     public String toString() {

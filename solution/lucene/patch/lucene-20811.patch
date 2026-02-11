@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestNRTReaderWithThreads.java b/lucene/src/test/org/apache/lucene/index/TestNRTReaderWithThreads.java
+index c71448d..9308846 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestNRTReaderWithThreads.java
++++ b/lucene/src/test/org/apache/lucene/index/TestNRTReaderWithThreads.java
+@@ -32,7 +32,7 @@ public class TestNRTReaderWithThreads extends LuceneTestCase {
+     Directory mainDir = newDirectory();
+     IndexWriter writer = new IndexWriter(
+         mainDir,
+-        newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++        newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).
+             setMaxBufferedDocs(10).
+             setMergePolicy(newLogMergePolicy(false,2))
+     );

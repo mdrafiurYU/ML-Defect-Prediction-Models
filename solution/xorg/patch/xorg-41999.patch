@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/common/xf86cmap.c b/hw/xfree86/common/xf86cmap.c
+index bb1aff1..be50a5c 100644
+--- a/hw/xfree86/common/xf86cmap.c
++++ b/hw/xfree86/common/xf86cmap.c
+@@ -49,6 +49,7 @@
+ #include "xf86_OSproc.h"
+ #include "xf86str.h"
+ #include "micmap.h"
++#include "xf86Crtc.h"
+ 
+ #ifdef XFreeXDGA
+ #define _XF86DGA_SERVER_
+@@ -141,6 +142,10 @@ Bool xf86HandleColormaps(
+     int *indices; 
+     int elements;
+ 
++    /* If we support a better colormap system, then pretend we succeeded. */
++    if (xf86_crtc_supports_gamma(pScrn))
++	return TRUE;
++
+     if(!maxColors || !sigRGBbits || !loadPalette)
+ 	return FALSE;
+ 

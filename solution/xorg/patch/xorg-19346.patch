@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/shared/stdPci.c b/hw/xfree86/os-support/shared/stdPci.c
+index ba0574f..491406f 100644
+--- a/hw/xfree86/os-support/shared/stdPci.c
++++ b/hw/xfree86/os-support/shared/stdPci.c
+@@ -26,6 +26,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ # define I_NEED_OS2_H
+ #endif

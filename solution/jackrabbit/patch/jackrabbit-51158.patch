@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
+index 9cd3788..9c950e6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionImpl.java
+@@ -61,7 +61,7 @@ public class VersionImpl extends NodeImpl implements Version {
+      */
+     protected InternalVersion getInternalVersion() throws RepositoryException {
+         InternalVersion version =
+-                session.getVersionManager().getVersion((NodeId) id);
++                session.getInternalVersionManager().getVersion((NodeId) id);
+         if (version == null) {
+             throw new InvalidItemStateException(id + ": the item does not exist anymore");
+         }

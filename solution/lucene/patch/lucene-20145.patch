@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java b/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java
+index c04871d..0829755 100644
+--- a/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java
++++ b/lucene/src/test-framework/org/apache/lucene/store/MockDirectoryWrapper.java
+@@ -421,6 +421,9 @@ public class MockDirectoryWrapper extends Directory {
+     }
+     open = false;
+     if (checkIndexOnClose) {
++      if (LuceneTestCase.VERBOSE) {
++        System.out.println("\nNOTE: MockDirectoryWrapper: now run CheckIndex");
++      } 
+       if (codecProvider != null) {
+         if (IndexReader.indexExists(this, codecProvider)) {
+           _TestUtil.checkIndex(this, codecProvider);

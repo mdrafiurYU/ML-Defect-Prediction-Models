@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryResultImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryResultImpl.java
+index e47c238..d374aff 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryResultImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryResultImpl.java
+@@ -63,6 +63,13 @@ class QueryResultImpl implements QueryResult {
+     /**
+      * {@inheritDoc}
+      */
++    public String[] getSelectorNames() throws RepositoryException {
++        return queryInfo.getColumnNames();
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public String[] getColumnNames() throws RepositoryException {
+         return queryInfo.getColumnNames();
+     }

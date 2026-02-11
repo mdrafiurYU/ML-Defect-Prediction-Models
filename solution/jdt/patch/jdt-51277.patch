@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/MemberDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/MemberDeclarationImpl.java
+index 79ccf19..793e357 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/MemberDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/MemberDeclarationImpl.java
+@@ -163,12 +163,11 @@ public abstract class MemberDeclarationImpl extends DeclarationImpl implements M
+ 			final ASTNode node = getRangeNode();
+ 			if( node == null ) return null;			       
+             final CompilationUnit unit = getCompilationUnit();
+-            final int start = node.getStartPosition();
+-    		//TODO: waiting on new API Bugzilla #97766
++            final int start = node.getStartPosition();    		
+             return new SourcePositionImpl(start,
+ 					node.getLength(),
+ 					unit.lineNumber(start),
+-					0,//unit.columnNumber(start),
++					unit.columnNumber(start),
+ 					this);
+         }
+         return null;

@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CancelableNameEnvironment.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CancelableNameEnvironment.java
+index f62da56..691a292 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CancelableNameEnvironment.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/CancelableNameEnvironment.java
+@@ -50,8 +50,8 @@ public class CancelableNameEnvironment extends SearchableEnvironment {
+ 		return super.findType(compoundTypeName);
+ 	}
+ 
+-	public void findTypes(char[] prefix, boolean findMembers, ISearchRequestor storage) {
++	public void findTypes(char[] prefix, boolean findMembers, boolean camelCaseMatch, ISearchRequestor storage) {
+ 		checkCanceled();
+-		super.findTypes(prefix, findMembers, storage);
++		super.findTypes(prefix, findMembers, camelCaseMatch, storage);
+ 	}
+ }

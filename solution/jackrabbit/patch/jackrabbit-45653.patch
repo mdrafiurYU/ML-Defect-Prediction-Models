@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
+index b0d3962..bb06bef 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockImpl.java
+@@ -116,7 +116,7 @@ class LockImpl implements org.apache.jackrabbit.api.jsr283.lock.Lock {
+         if (!isLive()) {
+             throw new LockException("Lock is not live any more.");
+         }
+-        if (getLockToken() == null) {
++        if (!isLockOwningSession()) {
+             throw new LockException("Session does not hold lock.");
+         }
+         // make sure the current session has sufficient privileges to refresh

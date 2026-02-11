@@ -1,0 +1,16 @@
+diff --git a/solr/src/java/org/apache/solr/search/DocSet.java b/solr/src/java/org/apache/solr/search/DocSet.java
+index d188389..ddfc3cd 100644
+--- a/solr/src/java/org/apache/solr/search/DocSet.java
++++ b/solr/src/java/org/apache/solr/search/DocSet.java
+@@ -248,9 +248,8 @@ abstract class DocSetBase implements DocSet {
+ 
+     return new Filter() {
+       @Override
+-      public DocIdSet getDocIdSet(AtomicReaderContext ctx) throws IOException {
+-        IndexReader.AtomicReaderContext context = (IndexReader.AtomicReaderContext)ctx;  // TODO: remove after lucene migration
+-        IndexReader reader = ctx.reader;
++      public DocIdSet getDocIdSet(AtomicReaderContext context) throws IOException {
++        IndexReader reader = context.reader;
+ 
+         if (context.isTopLevel) {
+           return bs;

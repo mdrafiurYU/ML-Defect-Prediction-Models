@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java b/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java
+index a32922b..a9d2d04 100644
+--- a/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java
++++ b/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java
+@@ -36,7 +36,7 @@ class ReqExclScorer extends Scorer {
+    * @param exclDisi indicates exclusion.
+    */
+   public ReqExclScorer(Scorer reqScorer, DocIdSetIterator exclDisi) {
+-    super(null); // No similarity used.
++    super(reqScorer.weight);
+     this.reqScorer = reqScorer;
+     this.exclDisi = exclDisi;
+   }

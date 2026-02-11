@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchingNodeSet.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchingNodeSet.java
+index 796efc9..44a0db8 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchingNodeSet.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchingNodeSet.java
+@@ -54,7 +54,7 @@ public MatchingNodeSet(boolean mustResolvePattern) {
+ }
+ 
+ public int addMatch(ASTNode node, int matchLevel) {
+-	switch (matchLevel) {
++	switch (matchLevel & PatternLocator.NODE_SET_MASK) {
+ 		case PatternLocator.INACCURATE_MATCH:
+ 			addTrustedMatch(node, POTENTIAL_MATCH);
+ 			break;

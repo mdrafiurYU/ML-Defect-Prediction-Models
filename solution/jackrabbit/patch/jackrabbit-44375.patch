@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
+index 7d63f47..9c484f9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractIndex.java
+@@ -423,7 +423,7 @@ abstract class AbstractIndex {
+                 Field.TermVector tv = getTermVectorParameter(f);
+                 Field.Store stored = getStoreParameter(f);
+                 Field.Index indexed = getIndexParameter(f);
+-                if (f.readerValue() != null) {
++                if (f instanceof LazyTextExtractorField || f.readerValue() != null) {
+                     // replace all readers with empty string reader
+                     field = new Field(f.name(), new StringReader(""), tv);
+                 } else if (f.stringValue() != null) {

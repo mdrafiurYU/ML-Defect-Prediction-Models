@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/comment/CommentLine.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/comment/CommentLine.java
+index 1abb546..d3e2c10 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/comment/CommentLine.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/comment/CommentLine.java
+@@ -301,4 +301,13 @@ public abstract class CommentLine implements IBorderAttributes {
+ 			}
+ 		}
+ 	}
++	
++	public String toString() {
++		final StringBuffer buffer = new StringBuffer();
++		final int size = this.fRanges.size();
++		for (int i = 0; i < size; i++) {
++			buffer.append(this.fRanges.get(i)).append("\n"); //$NON-NLS-1$
++		}
++		return String.valueOf(buffer);
++	}
+ }

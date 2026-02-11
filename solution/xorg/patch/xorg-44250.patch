@@ -1,0 +1,31 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 9a25c7b..7da85ea 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -597,8 +597,10 @@ configFiles(XF86ConfFilesPtr fileconf)
+ 	    defaultFontPath = Xprintf("%s%s%s",
+ 				      fileconf->file_fontpath,
+ 				      *temp_path ? "," : "", temp_path);
++	    if (defaultFontPath != NULL) {
+ 	    must_copy = FALSE;
+ 	}
++	}
+ 	else
+ 	    defaultFontPath = fileconf->file_fontpath;
+     }
+@@ -613,8 +615,15 @@ configFiles(XF86ConfFilesPtr fileconf)
+ 	!((start == temp_path || start[-1] == ',') && (!*end || *end == ','))) {
+ 	defaultFontPath = Xprintf("%s%sbuilt-ins",
+ 				  temp_path, *temp_path ? "," : "");
++	if (must_copy == TRUE) {
++	    if (defaultFontPath != NULL) {
+ 	must_copy = FALSE;
+     }
++	} else {
++	    /* already made a copy of the font path */
++	    xfree(temp_path);
++	}
++    }
+     /* xf86ValidateFontPath modifies its argument, but returns a copy of it. */
+     temp_path = must_copy ? xnfstrdup(defaultFontPath) : defaultFontPath;
+     defaultFontPath = xf86ValidateFontPath(temp_path);

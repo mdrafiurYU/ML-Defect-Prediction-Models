@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+index 0d37595..978cb23 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+@@ -141,7 +141,10 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(ValueFactoryTest.class);
+ 
+         // JCR 2.0
+-        
++
++        //// new node types
++        suite.addTestSuite(GetWeakReferencesTest.class);
++
+         //// new Session features
+         
+         suite.addTestSuite(SessionRemoveItemTest.class);

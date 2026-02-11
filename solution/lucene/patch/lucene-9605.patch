@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/de/GermanAnalyzer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/de/GermanAnalyzer.java
+index 903fb00..cb10fcf 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/de/GermanAnalyzer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/de/GermanAnalyzer.java
+@@ -237,7 +237,7 @@ public final class GermanAnalyzer extends StopwordAnalyzerBase {
+   protected TokenStreamComponents createComponents(String fieldName,
+       Reader reader) {
+     final Tokenizer source = new StandardTokenizer(matchVersion, reader);
+-    TokenStream result = new StandardFilter(source);
++    TokenStream result = new StandardFilter(matchVersion, source);
+     result = new LowerCaseFilter(matchVersion, result);
+     result = new StopFilter( matchVersion, result, stopwords);
+     result = new KeywordMarkerFilter(result, exclusionSet);

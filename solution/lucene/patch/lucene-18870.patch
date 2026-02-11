@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/MutableValue.java b/solr/src/java/org/apache/solr/search/MutableValue.java
+index 6784308..28fbbb9 100755
+--- a/solr/src/java/org/apache/solr/search/MutableValue.java
++++ b/solr/src/java/org/apache/solr/search/MutableValue.java
+@@ -50,6 +50,7 @@ public abstract class MutableValue implements Comparable {
+     return (c1 == c2) && this.equalsSameType(other);
+   }
+ 
++  @Override
+   public abstract int hashCode();
+ 
+   @Override

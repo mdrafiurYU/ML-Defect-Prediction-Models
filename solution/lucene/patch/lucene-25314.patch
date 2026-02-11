@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/Test2BTerms.java b/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
+index 28dc4c3..8bcddd8 100644
+--- a/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
++++ b/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
+@@ -255,7 +255,7 @@ public class Test2BTerms extends LuceneTestCase {
+       final long t1 = System.currentTimeMillis();
+       System.out.println("  took " + (t1-t0) + " millis");
+ 
+-      TermsEnum.SeekStatus result = termsEnum.seek(term);
++      TermsEnum.SeekStatus result = termsEnum.seekCeil(term);
+       if (result != TermsEnum.SeekStatus.FOUND) {
+         if (result == TermsEnum.SeekStatus.END) {
+           System.out.println("  FAILED: got END");

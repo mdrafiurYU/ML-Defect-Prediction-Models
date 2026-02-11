@@ -1,0 +1,15 @@
+diff --git a/dbe/midbe.h b/dbe/midbe.h
+index 3f9bb00..1110578 100644
+--- a/dbe/midbe.h
++++ b/dbe/midbe.h
+@@ -33,6 +33,10 @@
+ /* $XFree86$ */
+ 
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef MIDBE_H
+ #define MIDBE_H
+ 

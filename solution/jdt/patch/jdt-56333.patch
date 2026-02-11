@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetReturnStatement.java b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetReturnStatement.java
+index 7796598..d411be2 100644
+--- a/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetReturnStatement.java
++++ b/org.eclipse.jdt.core/eval/org/eclipse/jdt/internal/eval/CodeSnippetReturnStatement.java
+@@ -75,7 +75,7 @@ public void generateStoreSaveValueIfNecessary(CodeStream codeStream){
+ 
+ 		// generate wrapper if needed
+ 		if (this.expression.resolvedType.isBaseType() && this.expression.resolvedType != TypeBinding.NULL) { 
+-			((CodeSnippetCodeStream)codeStream).generateObjectWrapperForType(this.expression.resolvedType);
++			codeStream.generateBoxingConversion(this.expression.resolvedType.id);
+ 		}
+ 
+ 		// generate the expression type

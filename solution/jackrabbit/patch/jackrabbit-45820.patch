@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
+index 0118009..73e4657 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/acl/ACLEditor.java
+@@ -65,6 +65,7 @@ public class ACLEditor extends SecurityItemModifier implements AccessControlEdit
+     private final AccessControlUtils utils;
+ 
+     ACLEditor(Session editingSession, AccessControlUtils utils) {
++        super(true);
+         if (editingSession instanceof SessionImpl) {
+             session = ((SessionImpl) editingSession);
+             // TODO: review and find better solution

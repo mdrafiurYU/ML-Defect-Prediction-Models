@@ -1,0 +1,40 @@
+diff --git a/fb/fbfill.c b/fb/fbfill.c
+index 4f13a02..0d624fd 100644
+--- a/fb/fbfill.c
++++ b/fb/fbfill.c
+@@ -27,7 +27,6 @@
+ #endif
+ 
+ #include "fb.h"
+-#include "fbmmx.h"
+ 
+ void
+ fbFill (DrawablePtr pDrawable,
+@@ -47,10 +46,10 @@ fbFill (DrawablePtr pDrawable,
+ 
+     switch (pGC->fillStyle) {
+     case FillSolid:
+-#ifdef USE_MMX
+-	if (!pPriv->and && fbHaveMMX())
++#ifndef FB_ACCESS_WRAPPER
++	if (!pPriv->and)
+ 	{
+-	    if (fbFillmmx (dst, dstStride, dstBpp, x + dstXoff, y + dstYoff, width, height, pPriv->xor))
++	    if (pixman_fill (dst, dstStride, dstBpp, x + dstXoff, y + dstYoff, width, height, pPriv->xor))
+ 	    {
+ 		fbFinishAccess (pDrawable);
+ 		return;
+@@ -218,10 +217,10 @@ fbSolidBoxClipped (DrawablePtr	pDrawable,
+ 	if (partY2 <= partY1)
+ 	    continue;
+ 
+-#ifdef USE_MMX
+-	if (!and && fbHaveMMX())
++#ifndef FB_ACCESS_WRAPPER
++	if (!and)
+ 	{
+-	    if (fbFillmmx (dst, dstStride, dstBpp,
++	    if (pixman_fill (dst, dstStride, dstBpp,
+ 			   partX1 + dstXoff, partX2 + dstYoff, (partX2 - partX1), (partY2 - partY1),
+ 			   xor))
+ 	    {

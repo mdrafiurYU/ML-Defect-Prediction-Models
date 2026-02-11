@@ -1,0 +1,57 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
+index 28ebfd5..9c46a86 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
+@@ -26,6 +26,7 @@ import javax.jcr.NoSuchWorkspaceException;
+ import javax.jcr.Repository;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Session;
++import javax.jcr.Value;
+ import javax.naming.Context;
+ import javax.naming.Name;
+ import javax.naming.NamingException;
+@@ -39,6 +40,7 @@ import org.apache.jackrabbit.commons.AbstractRepository;
+ import org.apache.jackrabbit.jcr2spi.config.RepositoryConfig;
+ import org.apache.jackrabbit.spi.SessionInfo;
+ import org.apache.jackrabbit.spi.XASessionInfo;
++import org.apache.jackrabbit.value.ValueFactoryImpl;
+ 
+ /**
+  * <code>RepositoryImpl</code>...
+@@ -75,6 +77,29 @@ public class RepositoryImpl extends AbstractRepository implements Referenceable
+         return (String) descriptors.get(descriptorKey);
+     }
+ 
++    public Value getDescriptorValue(String key) {
++        String value = getDescriptor(key);
++        if (value != null) {
++            // TODO: Do we have a better value factory?
++            return ValueFactoryImpl.getInstance().createValue(value);
++        } else {
++            return null;
++        }
++    }
++
++    public Value[] getDescriptorValues(String key) {
++        Value value = getDescriptorValue(key);
++        if (value != null) {
++            return new Value[] { value };
++        } else {
++            return null;
++        }
++    }
++
++    public boolean isSingleValueDescriptor(String key) {
++        return descriptors.containsKey(key);
++    }
++
+     /**
+      * @see Repository#login(javax.jcr.Credentials, String)
+      */
+@@ -207,4 +232,5 @@ public class RepositoryImpl extends AbstractRepository implements Referenceable
+             return res;
+         }
+     }
++
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
+index 7587ffb..9457668 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SerializationTest.java
+@@ -452,7 +452,8 @@ public class SerializationTest extends AbstractJCRTest {
+             throws Exception {
+ 
+         treeComparator.createExampleTree();
+-        Node node = testRootNode.addNode("ntBase", ntBase);
++        String nodetype = testNodeTypeNoChildren == null ? ntBase : testNodeTypeNoChildren;
++        Node node = testRootNode.addNode("ntBase", nodetype);
+         session.save();
+ 
+         FileInputStream in = new FileInputStream(file);

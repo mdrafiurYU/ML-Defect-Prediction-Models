@@ -1,0 +1,23 @@
+diff --git a/miext/shadow/shpacked.c b/miext/shadow/shpacked.c
+index 5a19bcc..3fdee14 100644
+--- a/miext/shadow/shpacked.c
++++ b/miext/shadow/shpacked.c
+@@ -22,12 +22,16 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include    <X11/X.h>
+ #include    "scrnintstr.h"
+ #include    "windowstr.h"
+-#include    "font.h"
++#include    <X11/fonts/font.h>
+ #include    "dixfontstr.h"
+-#include    "fontstruct.h"
++#include    <X11/fonts/fontstruct.h>
+ #include    "mi.h"
+ #include    "regionstr.h"
+ #include    "globals.h"

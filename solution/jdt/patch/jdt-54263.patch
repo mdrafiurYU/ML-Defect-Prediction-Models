@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java
+index 1285b8f..437b563 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/classfmt/MethodInfo.java
+@@ -52,7 +52,8 @@ public MethodInfo (byte classFileBytes[], int offsets[], int offset) {
+ 					}
+ 					break;
+ 				case 'R' :
+-					if (CharOperation.equals(attributeName, AttributeNamesConstants.RuntimeVisibleAnnotationsName)) {
++					if (CharOperation.equals(attributeName, AttributeNamesConstants.RuntimeVisibleAnnotationsName)
++							|| CharOperation.equals(attributeName, AttributeNamesConstants.RuntimeInvisibleAnnotationsName)) {
+ 						decodeStandardAnnotations(readOffset);
+ 					}
+ 			}

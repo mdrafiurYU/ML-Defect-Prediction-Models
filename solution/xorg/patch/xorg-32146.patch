@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/xf8_32bpp/cfbwindow.c b/hw/xfree86/xf8_32bpp/cfbwindow.c
+index ce741cb..787cbde 100644
+--- a/hw/xfree86/xf8_32bpp/cfbwindow.c
++++ b/hw/xfree86/xf8_32bpp/cfbwindow.c
+@@ -27,11 +27,6 @@
+ Bool
+ cfb8_32CreateWindow(WindowPtr pWin)
+ {
+-    cfbPrivWin *pPrivWin = cfbGetWindowPrivate(pWin);
+-
+-    pPrivWin->fastBackground = FALSE;
+-    pPrivWin->fastBorder = FALSE;
+-
+     pWin->drawable.bitsPerPixel = 32;
+     return TRUE;
+ }

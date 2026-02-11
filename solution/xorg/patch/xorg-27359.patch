@@ -1,0 +1,12 @@
+diff --git a/exa/exa_priv.h b/exa/exa_priv.h
+index 403d4b6..984cb66 100644
+--- a/exa/exa_priv.h
++++ b/exa/exa_priv.h
+@@ -412,4 +412,7 @@ exaGlyphs (CARD8	op,
+ void
+ exaDoMigration (ExaMigrationPtr pixmaps, int npixmaps, Bool can_accel);
+ 
++void
++exaPixmapSave (ScreenPtr pScreen, ExaOffscreenArea *area);
++
+ #endif /* EXAPRIV_H */

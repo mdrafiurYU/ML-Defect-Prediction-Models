@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeData.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeData.java
+index 964d7d0..f5fa9f8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeData.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/NodeData.java
+@@ -16,7 +16,6 @@
+  */
+ package org.apache.jackrabbit.core;
+ 
+-import javax.jcr.nodetype.NodeDefinition;
+ import org.apache.jackrabbit.core.state.NodeState;
+ 
+ /**
+@@ -30,9 +29,9 @@ class NodeData extends AbstractNodeData {
+      * Create a new instance of this class.
+      *
+      * @param state node state
+-     * @param definition node definition
++     * @param itemMgr item manager
+      */
+-    NodeData(NodeState state, NodeDefinition definition) {
+-        super(state, definition);
++    NodeData(NodeState state, ItemManager itemMgr) {
++        super(state, itemMgr);
+     }
+ }

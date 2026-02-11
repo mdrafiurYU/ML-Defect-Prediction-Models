@@ -1,0 +1,22 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java b/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java
+index 1dd2f44..a4e5b56 100644
+--- a/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java
++++ b/lucene/src/java/org/apache/lucene/index/IndexFileDeleter.java
+@@ -173,7 +173,7 @@ final class IndexFileDeleter {
+           if (infoStream != null) {
+             message("init: load commit \"" + fileName + "\"");
+           }
+-          SegmentInfos sis = new SegmentInfos();
++          SegmentInfos sis = new SegmentInfos(codecs);
+           try {
+             sis.read(directory, fileName, codecs);
+           } catch (FileNotFoundException e) {
+@@ -222,7 +222,7 @@ final class IndexFileDeleter {
+       // listing was stale (eg when index accessed via NFS
+       // client with stale directory listing cache).  So we
+       // try now to explicitly open this commit point:
+-      SegmentInfos sis = new SegmentInfos();
++      SegmentInfos sis = new SegmentInfos(codecs);
+       try {
+         sis.read(directory, currentSegmentsFile, codecs);
+       } catch (IOException e) {

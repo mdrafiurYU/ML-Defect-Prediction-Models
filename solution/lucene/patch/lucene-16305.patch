@@ -1,0 +1,28 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java b/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java
+index ffe82b0..a5e830f 100644
+--- a/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java
++++ b/lucene/src/java/org/apache/lucene/index/FilterIndexReader.java
+@@ -99,6 +99,11 @@ public class FilterIndexReader extends IndexReader {
+     public long getUniqueTermCount() throws IOException {
+       return in.getUniqueTermCount();
+     }
++
++    @Override
++    public long getSumTotalTermFreq() throws IOException {
++      return in.getSumTotalTermFreq();
++    }
+   }
+ 
+   /** Base class for filtering {@link TermsEnum} implementations. */
+@@ -156,6 +161,11 @@ public class FilterIndexReader extends IndexReader {
+     }
+ 
+     @Override
++    public long totalTermFreq() {
++      return in.totalTermFreq();
++    }
++
++    @Override
+     public DocsEnum docs(Bits skipDocs, DocsEnum reuse) throws IOException {
+       return in.docs(skipDocs, reuse);
+     }

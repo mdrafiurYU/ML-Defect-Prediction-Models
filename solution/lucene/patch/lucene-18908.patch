@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrCacheBase.java b/solr/src/java/org/apache/solr/search/SolrCacheBase.java
+index 23a7267..7b639b7 100644
+--- a/solr/src/java/org/apache/solr/search/SolrCacheBase.java
++++ b/solr/src/java/org/apache/solr/search/SolrCacheBase.java
+@@ -55,6 +55,7 @@ public abstract class SolrCacheBase {
+         throw new RuntimeException("Can't parse autoWarm value: " + configValue, e);
+       }
+     }
++    @Override
+     public String toString() {
+       return strVal;
+     }

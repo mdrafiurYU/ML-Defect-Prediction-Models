@@ -1,0 +1,13 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/AllTests.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/AllTests.java
+index 72b7d54..aa772fd 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/AllTests.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/uuid/AllTests.java
+@@ -36,7 +36,8 @@ public class AllTests {
+     public static Test buildSuite() {
+         TestSuite suite= new TestSuite("Test for org.apache.jackrabbit.ocm.jcr.manager.uuid");
+         //$JUnit-BEGIN$
+-        suite.addTestSuite(ObjectContentManagerUuidTest.class);
++        suite.addTestSuite(AnnotationUuidTest.class);
++        suite.addTestSuite(DigesterUuidTest.class);
+         
+         //$JUnit-END$

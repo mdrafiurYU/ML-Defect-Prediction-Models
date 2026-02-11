@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+index cd11873..ad62fc6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ItemImpl.java
+@@ -211,8 +211,7 @@ public abstract class ItemImpl implements Item {
+     }
+ 
+     /**
+-     * Notify the listeners that this instance has been discarded
+-     * (i.e. it has been temporarily rendered 'invalid').
++     * Notify the listeners that this instance has been created.
+      */
+     protected void notifyCreated() {
+         // copy listeners to array to avoid ConcurrentModificationException

@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/schema/BCDStrField.java b/solr/src/java/org/apache/solr/schema/BCDStrField.java
+index a216be6..c83d3cf 100644
+--- a/solr/src/java/org/apache/solr/schema/BCDStrField.java
++++ b/solr/src/java/org/apache/solr/schema/BCDStrField.java
+@@ -17,7 +17,6 @@
+ 
+ package org.apache.solr.schema;
+ 
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.lucene.document.Fieldable;
+ 
+ import java.io.IOException;
+@@ -25,10 +24,6 @@ import java.io.IOException;
+  * @version $Id$
+  */
+ public class BCDStrField extends BCDIntField {
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    xmlWriter.writeStr(name,toExternal(f));
+-  }
+-
+   /**
+    * This only works for strings that represent an interger.  If the string
+    * is not an integer, it will not survive the base10k conversion!

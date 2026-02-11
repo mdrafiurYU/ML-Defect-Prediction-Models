@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+index b01d28d..85bc20a 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/env/EclipseAnnotationProcessorEnvironment.java
+@@ -37,8 +37,9 @@ public interface EclipseAnnotationProcessorEnvironment extends
+ 	EclipseMessager getMessager();
+ 	
+ 	/**	
+-	 * @return the current processing phase. Either
+-	 * @link{Phase.RECONCILE} or @link{Phase.BUILD}
++	 * @return the current processing phase: either
++	 * {@link Phase#RECONCILE} or {@link Phase#BUILD}
++	 * 
+ 	 */
+ 	Phase getPhase();

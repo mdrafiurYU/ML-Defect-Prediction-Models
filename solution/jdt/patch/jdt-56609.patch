@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BindingKeyTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BindingKeyTests.java
+index 7d9abc9..50bfd2a 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BindingKeyTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/BindingKeyTests.java
+@@ -38,7 +38,7 @@ public class BindingKeyTests extends AbstractJavaModelTests {
+ 	
+ 	protected void assertBindingKeySignatureEquals(String expected, String key) {
+ 		BindingKey bindingKey = new BindingKey(key);
+-		String signature = bindingKey.internalToSignature();
++		String signature = bindingKey.toSignature();
+ 		if (!(expected.equals(signature)))
+ 			System.out.println(displayString(signature, 3) + ",");
+ 		assertEquals(expected, signature);

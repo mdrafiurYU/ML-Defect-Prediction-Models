@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_video.c b/hw/xfree86/os-support/linux/lnx_video.c
+index 74163fd..cd19f10 100644
+--- a/hw/xfree86/os-support/linux/lnx_video.c
++++ b/hw/xfree86/os-support/linux/lnx_video.c
+@@ -249,16 +249,15 @@ mtrr_remove_offending(int screenNum, unsigned long base, unsigned long size,
+ 
+     wcr = &wcreturn;
+     for (gent.regnum = 0; 
+-	 ioctl(mtrr_fd, MTRRIOC_GET_ENTRY, &gent) >= 0;) {
++	 ioctl(mtrr_fd, MTRRIOC_GET_ENTRY, &gent) >= 0; gent.regnum++ ) {
+ 	if (gent.type == MTRR_TYPE_WRCOMB
+ 	    && ((gent.base >= base && gent.base + gent.size < base + size) || 
+ 		(gent.base >  base && gent.base + gent.size <= base + size))) {
+ 	    *wcr = mtrr_cull_wc_region(screenNum, gent.base, gent.size, from);
++	    if (*wcr) gent.regnum--;
+ 	    while(*wcr) {
+ 		wcr = &((*wcr)->next);
+ 	    }
+-	} else {
+-	    gent.regnum++;
+ 	}
+     }
+     return wcreturn;

@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/queries/src/java/org/apache/lucene/search/TermsFilter.java b/lucene/contrib/queries/src/java/org/apache/lucene/search/TermsFilter.java
+index d9c4e51..82617ca 100644
+--- a/lucene/contrib/queries/src/java/org/apache/lucene/search/TermsFilter.java
++++ b/lucene/contrib/queries/src/java/org/apache/lucene/search/TermsFilter.java
+@@ -79,7 +79,7 @@ public class TermsFilter extends Filter
+ 
+         if (terms != null) {
+           br.copy(term.bytes());
+-          if (termsEnum.seek(br) == TermsEnum.SeekStatus.FOUND) {
++          if (termsEnum.seekCeil(br) == TermsEnum.SeekStatus.FOUND) {
+             docs = termsEnum.docs(delDocs, docs);
+             while(docs.nextDoc() != DocsEnum.NO_MORE_DOCS) {
+               result.set(docs.docID());

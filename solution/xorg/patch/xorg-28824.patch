@@ -1,0 +1,20 @@
+diff --git a/Xi/grabdevk.c b/Xi/grabdevk.c
+index 71e72d5..b74592f 100644
+--- a/Xi/grabdevk.c
++++ b/Xi/grabdevk.c
+@@ -77,11 +77,11 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXGrabDeviceKey(register ClientPtr client)
++SProcXGrabDeviceKey(ClientPtr client)
+ {
+-    register char n;
+-    register long *p;
+-    register int i;
++    char n;
++    long *p;
++    int i;
+ 
+     REQUEST(xGrabDeviceKeyReq);
+     swaps(&stuff->length, n);

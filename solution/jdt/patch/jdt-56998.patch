@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/IMethodBinding.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/IMethodBinding.java
+index 5db33cc..85a8b7c 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/IMethodBinding.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/IMethodBinding.java
+@@ -273,11 +273,13 @@ public interface IMethodBinding extends IBinding {
+ 	public IMethodBinding getMethodDeclaration();
+ 
+ 	/**
+-	 * Returns <code>true</code> if and only if the receiver is overriding at least one other method
+-	 * according to <em>The Java Language Specification, Third Edition</em> (JLS3) 8.4.8.1 and 9.4.1. 
++	 * Returns whether this method overrides at least another method,
++	 * as specified in section 8.4.8.1 and 9.4.1 of <em>The Java Language 
++	 * Specification, Third Edition</em> (JLS3).
+ 	 * 
+-	 * @return <code>true</code> if and only if the receiver is overriding at least one other method
+-	 * according to <em>The Java Language Specification, Third Edition</em> (JLS3) 8.4.8.1 and 9.4.1
++	 * @return whether this method overrides at least another method
++	 * @see #overrides(IMethodBinding)
++	 * @since 3.2
+ 	 */
+ 	public boolean isOverriding();

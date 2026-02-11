@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/xpath/QueryFormat.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/xpath/QueryFormat.java
+index a308adc..3b5fa27 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/xpath/QueryFormat.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/query/xpath/QueryFormat.java
+@@ -113,9 +113,6 @@ class QueryFormat implements QueryNodeVisitor, QueryConstants {
+     public Object visit(QueryRootNode node, Object data) throws RepositoryException {
+         StringBuffer sb = (StringBuffer) data;
+         node.getLocationNode().accept(this, data);
+-        if (node.getOrderNode() != null) {
+-            node.getOrderNode().accept(this, data);
+-        }
+         Name[] selectProps = node.getSelectProperties();
+         if (selectProps.length > 0) {
+             sb.append('/');
+@@ -138,6 +135,9 @@ class QueryFormat implements QueryNodeVisitor, QueryConstants {
+                 sb.append(')');
+             }
+         }
++        if (node.getOrderNode() != null) {
++            node.getOrderNode().accept(this, data);
++        }
+         return data;
+     }

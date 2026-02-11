@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/QParser.java b/solr/src/java/org/apache/solr/search/QParser.java
+index 87b98ad..c942ef5 100755
+--- a/solr/src/java/org/apache/solr/search/QParser.java
++++ b/solr/src/java/org/apache/solr/search/QParser.java
+@@ -152,7 +152,7 @@ public abstract class QParser {
+   //                       $x+=foo (append to global for limited scope)
+ 
+   /** check both local and global params */
+-  protected String getParam(String name) {
++  public String getParam(String name) {
+     String val;
+     if (localParams != null) {
+       val = localParams.get(name);

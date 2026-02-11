@@ -1,0 +1,21 @@
+diff --git a/GL/glx/glxserver.h b/GL/glx/glxserver.h
+index a41720f..ddb3ca9 100644
+--- a/GL/glx/glxserver.h
++++ b/GL/glx/glxserver.h
+@@ -70,7 +70,6 @@ typedef struct __GLXcontext __GLXcontext;
+ #include "glxscreens.h"
+ #include "glxdrawable.h"
+ #include "glxcontext.h"
+-#include "glxerror.h"
+ 
+ 
+ #define GLX_SERVER_MAJOR_VERSION 1
+@@ -112,6 +111,8 @@ void __glXScreenInitVisuals(__GLXscreen *screen);
+ extern __GLXcontext *__glXLastContext;
+ extern __GLXcontext *__glXForceCurrent(__GLXclientState*, GLXContextTag, int*);
+ 
++int __glXError(int error);
++
+ /*
+ ** Macros to set, unset, and retrieve the flag that says whether a context
+ ** has unflushed commands.

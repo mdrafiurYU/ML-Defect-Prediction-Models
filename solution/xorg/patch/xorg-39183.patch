@@ -1,0 +1,19 @@
+diff --git a/Xext/xvmc.c b/Xext/xvmc.c
+index 0c6dbeb..3a77eb6 100644
+--- a/Xext/xvmc.c
++++ b/Xext/xvmc.c
+@@ -24,14 +24,9 @@
+ #include "xvmcext.h"
+ 
+ #ifdef HAS_XVMCSHM
+-#ifndef Lynx
+ #include <sys/ipc.h>
+ #include <sys/types.h>
+ #include <sys/shm.h>
+-#else
+-#include <ipc.h>
+-#include <shm.h>
+-#endif /* Lynx */
+ #endif /* HAS_XVMCSHM */
+    
+ 

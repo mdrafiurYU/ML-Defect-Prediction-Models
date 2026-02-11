@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java
+index fdd8b6e..97f4ef5 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/data/PersistenceManagerIteratorTest.java
+@@ -118,7 +118,7 @@ public class PersistenceManagerIteratorTest extends AbstractJCRTest {
+ 
+                 log("Random access");
+                 for (int j = 0; j < 50; j++) {
+-                    after = new NodeId(UUID.randomUUID());
++                    after = new NodeId();
+                     log(" bigger than: " + after);
+                     for (NodeId id : apm.getAllNodeIds(after, 2)) {
+                         log("    " + id);

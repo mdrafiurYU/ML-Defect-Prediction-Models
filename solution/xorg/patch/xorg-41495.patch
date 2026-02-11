@@ -1,0 +1,13 @@
+diff --git a/glx/glxscreens.c b/glx/glxscreens.c
+index 0c76cfd..988a59d 100644
+--- a/glx/glxscreens.c
++++ b/glx/glxscreens.c
+@@ -223,7 +223,7 @@ glxGetScreen(ScreenPtr pScreen)
+     return dixLookupPrivate(&pScreen->devPrivates, glxScreenPrivateKey);
+ }
+ 
+-void GlxSetVisualConfigs(int nconfigs, 
++_X_EXPORT void GlxSetVisualConfigs(int nconfigs,
+                          __GLXvisualConfig *configs, void **privates)
+ {
+     /* We keep this stub around for the DDX drivers that still

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/sysv_kbd.c b/hw/xfree86/os-support/shared/sysv_kbd.c
+index dd1ca33..3a3544e 100644
+--- a/hw/xfree86/os-support/shared/sysv_kbd.c
++++ b/hw/xfree86/os-support/shared/sysv_kbd.c
+@@ -65,7 +65,7 @@ xf86KbdInit()
+ 	ioctl (xf86Info.consoleFd, KDGKBMODE, &kbdtrans);
+ #endif
+ 	ioctl (xf86Info.consoleFd, TCGETA, &kbdtty);
+-#if defined(E_TABSZ) && !defined(SCO325)
++#if defined(E_TABSZ)
+ 	kbdemap = xalloc(E_TABSZ);
+ 	if (ioctl(xf86Info.consoleFd, LDGMAP, kbdemap) < 0)
+ 	{

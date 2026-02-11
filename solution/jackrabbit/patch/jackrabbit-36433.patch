@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/VersionIteratorAdapter.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/VersionIteratorAdapter.java
+index 80310cf..ff895ad 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/VersionIteratorAdapter.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/VersionIteratorAdapter.java
+@@ -32,6 +32,12 @@ public class VersionIteratorAdapter extends RangeIteratorDecorator
+         implements VersionIterator {
+ 
+     /**
++     * Static instance of an empty {@link VersionIterator}.
++     */
++    public static final VersionIterator EMPTY =
++        new VersionIteratorAdapter(RangeIteratorAdapter.EMPTY);
++
++    /**
+      * Creates an adapter for the given {@link RangeIterator}.
+      *
+      * @param iterator iterator of {@link Version}s

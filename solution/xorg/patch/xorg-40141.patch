@@ -1,0 +1,18 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 2225e08..7e1ce35 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -91,9 +91,11 @@ SOFTWARE.
+  * This file handles input device-related stuff.
+  */
+ 
+-DevPrivateKey CoreDevicePrivateKey = &CoreDevicePrivateKey;
++static int CoreDevicePrivateKeyIndex;
++DevPrivateKey CoreDevicePrivateKey = &CoreDevicePrivateKeyIndex;
+ /* Used to sture classes currently not in use by an MD */
+-DevPrivateKey UnusedClassesPrivateKey = &UnusedClassesPrivateKey;
++static int UnusedClassesPrivateKeyIndex;
++DevPrivateKey UnusedClassesPrivateKey = &UnusedClassesPrivateKeyIndex;
+ 
+ 
+ /**

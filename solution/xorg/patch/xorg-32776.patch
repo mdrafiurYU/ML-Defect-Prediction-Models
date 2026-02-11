@@ -1,0 +1,22 @@
+diff --git a/cfb/cfbglblt8.c b/cfb/cfbglblt8.c
+index c4cba0e..4d964b3 100644
+--- a/cfb/cfbglblt8.c
++++ b/cfb/cfbglblt8.c
+@@ -355,7 +355,7 @@ cfbPolyGlyphBlt8Clipped(
+     }
+     if (!numRects)
+ 	return;
+-    clips = (CARD32 *)ALLOCATE_LOCAL ((maxAscent + maxDescent) *
++    clips = (CARD32 *)xalloc ((maxAscent + maxDescent) *
+ 						sizeof (CARD32));
+     while (nglyph--)
+     {
+@@ -471,7 +471,7 @@ cfbPolyGlyphBlt8Clipped(
+ 	    }
+ 	}
+     }
+-    DEALLOCATE_LOCAL (clips);
++    xfree (clips);
+ }
+ 
+ #endif /* FOUR_BIT_CODE */

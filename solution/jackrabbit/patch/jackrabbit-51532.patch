@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
+index 1dcb464..aa3976c 100644
+--- a/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2dav/src/main/java/org/apache/jackrabbit/spi2dav/RepositoryServiceImpl.java
+@@ -1639,9 +1639,9 @@ public class RepositoryServiceImpl implements RepositoryService, DavConstants {
+     }
+ 
+     /**
+-     * @see RepositoryService#createConfiguration(SessionInfo, NodeId, NodeId)
++     * @see RepositoryService#createConfiguration(SessionInfo, NodeId)
+      */
+-    public NodeId createConfiguration(SessionInfo sessionInfo, NodeId nodeId, NodeId baselineId) throws UnsupportedRepositoryOperationException, RepositoryException {
++    public NodeId createConfiguration(SessionInfo sessionInfo, NodeId nodeId) throws UnsupportedRepositoryOperationException, RepositoryException {
+         // TODO
+         throw new UnsupportedOperationException("JCR-2104: JSR 283 Versioning. Implementation missing");
+     }

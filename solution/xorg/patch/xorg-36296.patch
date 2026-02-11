@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/modes/xf86RandR12.c b/hw/xfree86/modes/xf86RandR12.c
+index 1dca223..4767f26 100644
+--- a/hw/xfree86/modes/xf86RandR12.c
++++ b/hw/xfree86/modes/xf86RandR12.c
+@@ -743,6 +743,9 @@ xf86RandR12CrtcSet (ScreenPtr	pScreen,
+     xf86CrtcPtr		*save_crtcs;
+     Bool		save_enabled = crtc->enabled;
+ 
++    if (!crtc->scrn->vtSema)
++	return FALSE;
++
+     save_crtcs = xalloc(config->num_output * sizeof (xf86CrtcPtr));
+     if ((randr_mode != NULL) != crtc->enabled)
+ 	changed = TRUE;

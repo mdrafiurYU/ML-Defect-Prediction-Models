@@ -1,0 +1,26 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java
+index 44ec2a6..3c410df 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/BaseProcessorEnv.java
+@@ -605,6 +605,10 @@ public class BaseProcessorEnv implements AnnotationProcessorEnvironment
+ 	
+ 	protected CompilationUnit searchLocallyForBinding(final IBinding binding)
+ 	{
++		if (_astRoot == null) {
++			throw new IllegalStateException("_astRoot is null. Check that types or environments are not being cached between builds or reconciles by user code"); //$NON-NLS-1$
++		}
++		
+ 		final ASTNode node = _astRoot.findDeclaringNode(binding);
+ 		if( node != null )
+ 			return _astRoot;
+@@ -731,6 +735,10 @@ public class BaseProcessorEnv implements AnnotationProcessorEnvironment
+ 	
+ 	protected IFile searchLocallyForIFile(final IBinding binding)
+ 	{
++		if (_astRoot == null) {
++			return null;
++		}
++		
+ 		ASTNode node = _astRoot.findDeclaringNode(binding);
+ 		if( node != null )
+ 			return _file;

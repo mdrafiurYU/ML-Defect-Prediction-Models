@@ -1,0 +1,13 @@
+diff --git a/fb/fbcopy.c b/fb/fbcopy.c
+index 510af19..1b3404a 100644
+--- a/fb/fbcopy.c
++++ b/fb/fbcopy.c
+@@ -63,7 +63,7 @@ fbCopyNtoN (DrawablePtr	pSrcDrawable,
+     while (nbox--)
+     {
+ #ifdef USE_MMX
+-	if (!reverse && !upsidedown && fbHaveMMX())
++	if (alu == GXcopy && !reverse && !upsidedown && fbHaveMMX())
+ 	{
+ 	    if (!fbCopyAreammx (pSrcDrawable,
+ 				pDstDrawable,

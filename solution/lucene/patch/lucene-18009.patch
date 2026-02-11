@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/spans/TestNearSpansOrdered.java b/lucene/src/test/org/apache/lucene/search/spans/TestNearSpansOrdered.java
+index 72cae02..8316ff8 100644
+--- a/lucene/src/test/org/apache/lucene/search/spans/TestNearSpansOrdered.java
++++ b/lucene/src/test/org/apache/lucene/search/spans/TestNearSpansOrdered.java
+@@ -65,7 +65,7 @@ public class TestNearSpansOrdered extends LuceneTestCase {
+     }
+     reader = writer.getReader();
+     writer.close();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+   }
+ 
+   protected String[] docFields = {

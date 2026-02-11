@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java
+index 9cbf092..e31104b 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BinaryValue.java
+@@ -154,16 +154,20 @@ public class BinaryValue extends BaseValue {
+             throws IllegalStateException, RepositoryException {
+         setStreamConsumed();
+ 
+-        if (bin != null) {
+-            return bin.getStream();
+-        } else {
+-            try {
+-                return new ByteArrayInputStream(text.getBytes(DEFAULT_ENCODING));
+-            } catch (UnsupportedEncodingException e) {
+-                throw new RepositoryException(DEFAULT_ENCODING
+-                        + " not supported on this platform", e);
++        if (stream == null) {
++            if (bin != null) {
++                stream = bin.getStream();
++            } else {
++                try {
++                    stream = new ByteArrayInputStream(text.getBytes(DEFAULT_ENCODING));
++                } catch (UnsupportedEncodingException e) {
++                    throw new RepositoryException(DEFAULT_ENCODING
++                            + " not supported on this platform", e);
++                }
+             }
+         }
++
++        return stream;
+     }
+ 
+     /**

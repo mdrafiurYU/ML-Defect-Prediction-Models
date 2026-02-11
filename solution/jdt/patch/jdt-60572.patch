@@ -1,0 +1,36 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/generic/GenericFactory.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/generic/GenericFactory.java
+new file mode 100644
+index 0000000..26ac8b3
+--- /dev/null
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/generic/GenericFactory.java
+@@ -0,0 +1,30 @@
++package org.eclipse.jdt.apt.tests.annotations.generic;
++
++import java.util.Set;
++
++import org.eclipse.jdt.apt.core.env.EclipseAnnotationProcessorFactory;
++import org.eclipse.jdt.apt.tests.APTTestBase;
++import org.eclipse.jdt.apt.tests.annotations.BaseFactory;
++
++import com.sun.mirror.apt.AnnotationProcessor;
++import com.sun.mirror.apt.AnnotationProcessorEnvironment;
++import com.sun.mirror.declaration.AnnotationTypeDeclaration;
++
++public class GenericFactory extends BaseFactory {
++	public static AbstractGenericProcessor PROCESSOR;
++	public static AnnotationProcessor fact;
++	
++	public static void setProcessor(Object o) {
++		PROCESSOR = (AbstractGenericProcessor) o;
++	}
++
++	public GenericFactory() {
++		super(GenericAnnotation.class.getName());
++	}
++
++	public AnnotationProcessor getProcessorFor(Set<AnnotationTypeDeclaration> arg0, AnnotationProcessorEnvironment env) {
++		PROCESSOR.setEnv(env);
++		return PROCESSOR;
++	}
++
++}

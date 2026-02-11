@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index cd7db60..21c76e7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -2321,4 +2321,9 @@ public class RepositoryImpl extends AbstractRepository
+             return RepositoryImpl.this.getDataStore();
+         }
+     }
++
++    VersionManagerImpl getVersionManagerImpl() {
++        return vMgr;
++    }
++
+ }

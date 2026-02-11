@@ -1,0 +1,12 @@
+diff --git a/Xi/xigrabdev.c b/Xi/xigrabdev.c
+index 0e86aa3..11c7679 100644
+--- a/Xi/xigrabdev.c
++++ b/Xi/xigrabdev.c
+@@ -51,6 +51,7 @@ SProcXIGrabDevice(ClientPtr client)
+     swaps(&stuff->length, n);
+     swaps(&stuff->deviceid, n);
+     swapl(&stuff->grab_window, n);
++    swapl(&stuff->cursor, n);
+     swapl(&stuff->time, n);
+     swaps(&stuff->mask_len, n);
+ 

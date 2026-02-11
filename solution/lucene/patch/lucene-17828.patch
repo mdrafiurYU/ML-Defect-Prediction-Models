@@ -1,0 +1,13 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/AbstractDataImportHandlerTestCase.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/AbstractDataImportHandlerTestCase.java
+index 8c3791f..5df5f3d 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/AbstractDataImportHandlerTestCase.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/AbstractDataImportHandlerTestCase.java
+@@ -54,7 +54,7 @@ public abstract class AbstractDataImportHandlerTestCase extends
+ 
+   // note, a little twisted that we shadow this static method
+   public static void initCore(String config, String schema) throws Exception {
+-    initCore(config, schema, "solr-dih");
++    initCore(config, schema, getFile("solr-dih").getAbsolutePath());
+   }
+   
+   @Override

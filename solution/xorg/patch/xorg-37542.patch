@@ -1,0 +1,17 @@
+diff --git a/hw/xprint/ddxInit.c b/hw/xprint/ddxInit.c
+index d744121..7950521 100644
+--- a/hw/xprint/ddxInit.c
++++ b/hw/xprint/ddxInit.c
+@@ -291,6 +291,12 @@ ddxProcessArgument (
+ #include "XIstubs.h"
+ #include "exglobals.h"
+ 
++/* Place dummy config functions here instead of config/config.c, 
++   since Xprint does not use D-BUS */
++void config_init() { }
++void config_fini() { }
++
++
+ int
+ ChangePointerDevice (
+     DeviceIntPtr       old_dev,

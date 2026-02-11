@@ -1,0 +1,13 @@
+diff --git a/xkb/ddxFakeBtn.c b/xkb/ddxFakeBtn.c
+index 3dbb533..f9dcbf7 100644
+--- a/xkb/ddxFakeBtn.c
++++ b/xkb/ddxFakeBtn.c
+@@ -46,7 +46,7 @@ xEvent	ev;
+ int	x,y;
+ DevicePtr ptr;
+ 
+-    if ((ptr = LookupPointerDevice())==NULL)
++    if ((ptr = (DevicePtr)inputInfo.pointer)==NULL)
+ 	return;
+     GetSpritePosition(inputInfo.pointer, &x,&y);
+     ev.u.u.type = event;

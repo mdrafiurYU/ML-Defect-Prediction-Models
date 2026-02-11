@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
+index a5a8b7e..e16ef5a 100644
+--- a/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
++++ b/org.eclipse.jdt.apt.ui/src/org/eclipse/jdt/apt/ui/internal/preferences/FactoryPathConfigurationBlock.java
+@@ -378,6 +378,9 @@ public class FactoryPathConfigurationBlock extends BaseConfigurationBlock {
+ 		LayoutUtil.setHorizontalGrabbing(fFactoryPathList.getListControl(null));
+ 
+ 		fFactoryPathList.enableButton(IDX_ADDJAR, (fJProj != null));
++		// bugzilla 139101: only enable Advanced and Edit buttons if there is a selection
++		fFactoryPathList.enableButton(IDX_ADVANCED, false);
++		fFactoryPathList.enableButton(IDX_EDIT, false);
+ 		int buttonBarWidth= fPixelConverter.convertWidthInCharsToPixels(24);
+ 		fFactoryPathList.setButtonsMinWidth(buttonBarWidth);

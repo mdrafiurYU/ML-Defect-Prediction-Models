@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
+index 9670068..7796bbf 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/JarFactoryContainer.java
+@@ -86,7 +86,9 @@ public class JarFactoryContainer extends FactoryContainer
+             }
+             jarFile.close();
+         }
+-        catch (IOException e) {
++        catch (IOException e) {	
++        	// TODO:  log this exception
++        	e.printStackTrace();
+             return classNames;
+         }
+         return classNames;

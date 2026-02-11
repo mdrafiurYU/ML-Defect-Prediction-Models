@@ -1,0 +1,24 @@
+diff --git a/exa/exa_unaccel.c b/exa/exa_unaccel.c
+index 970c2cb..8fb7b52 100644
+--- a/exa/exa_unaccel.c
++++ b/exa/exa_unaccel.c
+@@ -265,19 +265,6 @@ ExaCheckPushPixels (GCPtr pGC, PixmapPtr pBitmap,
+ }
+ 
+ void
+-ExaCheckGetImage (DrawablePtr pDrawable,
+-		 int x, int y, int w, int h,
+-		 unsigned int format, unsigned long planeMask,
+-		 char *d)
+-{
+-    EXA_FALLBACK(("from %p (%c)\n", pDrawable,
+-		  exaDrawableLocation(pDrawable)));
+-    exaPrepareAccess (pDrawable, EXA_PREPARE_SRC);
+-    fbGetImage (pDrawable, x, y, w, h, format, planeMask, d);
+-    exaFinishAccess (pDrawable, EXA_PREPARE_SRC);
+-}
+-
+-void
+ ExaCheckGetSpans (DrawablePtr pDrawable,
+ 		 int wMax,
+ 		 DDXPointPtr ppt,

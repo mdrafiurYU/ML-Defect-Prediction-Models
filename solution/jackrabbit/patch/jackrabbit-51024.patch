@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java
+index 5f7c149..2156fe3 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImplBase.java
+@@ -290,7 +290,11 @@ abstract public class JcrVersionManagerImplBase {
+      * @throws RepositoryException if an error occurs
+      */
+     protected InternalVersion getVersion(Version v) throws RepositoryException {
+-        return vMgr.getVersion(((VersionImpl) v).getNodeId());
++        if (v == null) {
++            return null;
++        } else {
++            return vMgr.getVersion(((VersionImpl) v).getNodeId());
++        }
+     }
+ 
+     /**

@@ -1,0 +1,22 @@
+diff --git a/mfb/mfbbitblt.c b/mfb/mfbbitblt.c
+index 0f84df3..153cf6a 100644
+--- a/mfb/mfbbitblt.c
++++ b/mfb/mfbbitblt.c
+@@ -351,7 +351,7 @@ int dstx, dsty;
+     numRects = REGION_NUM_RECTS(&rgnDst);
+     if (numRects && width && height)
+     {
+-	if(!(pptSrc = (DDXPointPtr)ALLOCATE_LOCAL(numRects *
++	if(!(pptSrc = (DDXPointPtr)xalloc(numRects *
+ 						  sizeof(DDXPointRec))))
+ 	{
+ 	    REGION_UNINIT(pGC->pScreen, &rgnDst);
+@@ -370,7 +370,7 @@ int dstx, dsty;
+ 	if (pGC->planemask & 1)
+ 	    (*localDoBitBlt) (pSrcDrawable, pDstDrawable, pGC->alu, &rgnDst, pptSrc);
+ 
+-	DEALLOCATE_LOCAL(pptSrc);
++	xfree(pptSrc);
+     }
+ 
+     prgnExposed = NULL;

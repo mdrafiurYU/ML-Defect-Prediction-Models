@@ -1,0 +1,175 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index 260690c..c593596 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -54,6 +54,9 @@ in this Software without prior written authorization from The Open Group.
+ #include <sys/types.h>
+ #include <sys/uio.h>
+ #include <unistd.h>
++#include <pthread.h>
++#include <errno.h>
++
+ #include <IOKit/hidsystem/IOLLEvent.h>
+ 
+ /* Fake button press/release for scroll wheel move. */
+@@ -77,6 +80,25 @@ static int old_flags = 0;  // last known modifier state
+ 
+ xEvent *darwinEvents = NULL;
+ 
++pthread_mutex_t mieqEnqueue_mutex;
++static inline void mieqEnqueue_lock(void) {
++    int err;
++    if((err = pthread_mutex_lock(&mieqEnqueue_mutex))) {
++        ErrorF("%s:%s:%d: Failed to lock mieqEnqueue_mutex: %d\n",
++               __FILE__, __FUNCTION__, __LINE__, err);
++        spewCallStack();
++    }
++}
++
++static inline void mieqEnqueue_unlock(void) {
++    int err;
++    if((err = pthread_mutex_unlock(&mieqEnqueue_mutex))) {
++        ErrorF("%s:%s:%d: Failed to unlock mieqEnqueue_mutex: %d\n",
++               __FILE__, __FUNCTION__, __LINE__, err);
++        spewCallStack();
++    }
++}
++
+ /*
+  * DarwinPressModifierMask
+  *  Press or release the given modifier key, specified by its mask.
+@@ -199,6 +221,8 @@ static void DarwinSimulateMouseClick(
+ void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int nevents) {
+   int i;
+ 
++    TA_SERVER();
++    
+   DEBUG_LOG("DarwinEventHandler(%d, %p, %p, %d)\n", screenNum, xe, dev, nevents);
+   for (i=0; i<nevents; i++) {
+ 	switch(xe[i].u.u.type) {
+@@ -250,9 +274,12 @@ void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int neven
+         case kXquartzToggleFullscreen:
+             DEBUG_LOG("kXquartzToggleFullscreen\n");
+ #ifdef DARWIN_DDX_MISSING
+-            if (quartzEnableRootless) QuartzSetFullscreen(!quartzHasRoot);
+-            else if (quartzHasRoot) QuartzHide();
+-            else QuartzShow();
++                if (quartzEnableRootless) 
++                    QuartzSetFullscreen(!quartzHasRoot);
++                else if (quartzHasRoot)
++                    QuartzHide();
++                else
++                    QuartzShow();
+ #else
+     //      ErrorF("kXquartzToggleFullscreen not implemented\n");               
+ #endif
+@@ -262,7 +289,8 @@ void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int neven
+             DEBUG_LOG("kXquartzSetRootless\n");
+ #ifdef DARWIN_DDX_MISSING
+             QuartzSetRootless(xe[i].u.clientMessage.u.l.longs0);
+-            if (!quartzEnableRootless && !quartzHasRoot) QuartzHide();
++                if (!quartzEnableRootless && !quartzHasRoot)
++                    QuartzHide();
+ #else
+     //      ErrorF("kXquartzSetRootless not implemented\n");                    
+ #endif
+@@ -284,8 +312,8 @@ void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int neven
+ 		case kXquartzSpaceChanged:
+             DEBUG_LOG("kXquartzSpaceChanged\n");
+             QuartzSpaceChanged(xe[i].u.clientMessage.u.l.longs0);
+-
+             break;
++
+         default:
+             ErrorF("Unknown application defined event type %d.\n", xe[i].u.u.type);
+ 		}	
+@@ -293,11 +321,17 @@ void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int neven
+ }
+ 
+ Bool DarwinEQInit(DevicePtr pKbd, DevicePtr pPtr) { 
++    int err;
++
+     if (!darwinEvents)
+         darwinEvents = (xEvent *)xcalloc(sizeof(xEvent), GetMaximumEventsNum());
+     if (!darwinEvents)
+         FatalError("Couldn't allocate event buffer\n");
+ 
++    if((err = pthread_mutex_init(&mieqEnqueue_mutex, NULL))) {
++        FatalError("Couldn't allocate miEnqueue mutex: %d.\n", err);
++    }
++    
+     mieqInit();
+     mieqSetHandler(kXquartzReloadKeymap, DarwinKeyboardReloadHandler);
+     mieqSetHandler(kXquartzActivate, DarwinEventHandler);
+@@ -326,6 +360,8 @@ void ProcessInputEvents(void) {
+     xEvent  xe;
+ 	int x = sizeof(xe);
+ 
++    TA_SERVER();
++
+     mieqProcessInputEvents();
+ 
+     // Empty the signaling pipe
+@@ -336,7 +372,7 @@ void ProcessInputEvents(void) {
+ 
+ /* Sends a null byte down darwinEventWriteFD, which will cause the
+    Dispatch() event loop to check out event queue */
+-void DarwinPokeEQ(void) {
++static void DarwinPokeEQ(void) {
+ 	char nullbyte=0;
+ 	input_check_flag++;
+ 	//  <daniels> oh, i ... er ... christ.
+@@ -398,15 +434,18 @@ void DarwinSendPointerEvents(int ev_type, int ev_button, int pointer_x, int poin
+ 		return;
+ 	} 
+ 
++    mieqEnqueue_lock(); {
+ 	num_events = GetPointerEvents(darwinEvents, darwinPointer, ev_type, ev_button, 
+ 				POINTER_ABSOLUTE, 0, 5, valuators);
+-      
+ 	for(i=0; i<num_events; i++) mieqEnqueue (darwinPointer,&darwinEvents[i]);
+ 	DarwinPokeEQ();
++
++    } mieqEnqueue_unlock();
+ }
+ 
+ void DarwinSendKeyboardEvents(int ev_type, int keycode) {
+ 	int i, num_events;
++
+ 	if(!darwinEvents) {
+ 		ErrorF("DarwinSendKeyboardEvents called before darwinEvents was initialized\n");
+ 		return;
+@@ -425,9 +464,11 @@ void DarwinSendKeyboardEvents(int ev_type, int keycode) {
+ 		}
+ 	}
+ 
++    mieqEnqueue_lock(); {
+ 	num_events = GetKeyboardEvents(darwinEvents, darwinKeyboard, ev_type, keycode + MIN_KEYCODE);
+ 	for(i=0; i<num_events; i++) mieqEnqueue(darwinKeyboard,&darwinEvents[i]);
+ 	DarwinPokeEQ();
++    } mieqEnqueue_unlock();
+ }
+ 
+ void DarwinSendProximityEvents(int ev_type, int pointer_x, int pointer_y, 
+@@ -443,11 +484,12 @@ void DarwinSendProximityEvents(int ev_type, int pointer_x, int pointer_y,
+ 		return;
+ 	}
+ 
++    mieqEnqueue_lock(); {
+ 	num_events = GetProximityEvents(darwinEvents, darwinPointer, ev_type,
+ 				0, 5, valuators);
+-      
+ 	for(i=0; i<num_events; i++) mieqEnqueue (darwinPointer,&darwinEvents[i]);
+ 	DarwinPokeEQ();
++    } mieqEnqueue_unlock();
+ }
+ 
+ 
+@@ -512,5 +554,7 @@ void DarwinSendDDXEvent(int type, int argc, ...) {
+         va_end (args);
+     }
+ 
++    mieqEnqueue_lock();
+     mieqEnqueue(darwinPointer, &xe);
++    mieqEnqueue_unlock();
+ }

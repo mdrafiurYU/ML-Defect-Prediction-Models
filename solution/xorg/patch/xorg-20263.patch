@@ -1,0 +1,16 @@
+diff --git a/Xprint/ps/PsFTFonts.c b/Xprint/ps/PsFTFonts.c
+index c992987..8857ae4 100644
+--- a/Xprint/ps/PsFTFonts.c
++++ b/Xprint/ps/PsFTFonts.c
+@@ -42,9 +42,9 @@ THE SOFTWARE.
+ #include <ft2build.h>
+ #include FT_FREETYPE_H
+ 
+-#include "ft.h"
++#include <X11/fonts/ft.h>
+ #define NOT_IN_FTFUNCS
+-#include "ftfuncs.h"
++#include <X11/fonts/ftfuncs.h>
+ 
+ char *
+ PsGetFTFontFileName(FontPtr pFont)

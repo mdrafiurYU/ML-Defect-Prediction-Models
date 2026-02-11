@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AbstractObservationTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AbstractObservationTest.java
+index eb3d6d7..1c7a001 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AbstractObservationTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/AbstractObservationTest.java
+@@ -58,6 +58,11 @@ public abstract class AbstractObservationTest extends AbstractJCRTest {
+         }
+     }
+ 
++    protected void tearDown() throws Exception {
++        obsMgr = null;
++        super.tearDown();
++    }
++
+     /**
+      * Registers an <code>EventListener</code> for all events.
+      *

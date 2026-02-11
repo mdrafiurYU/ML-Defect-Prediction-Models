@@ -1,0 +1,12 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index fe1e48a..ec414a0 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -1836,7 +1836,6 @@ SecurityExtensionInit(INITARGS)
+     XaceRC(XACE_RESOURCE_ACCESS, SecurityCheckResourceIDAccess, NULL);
+     XaceRC(XACE_DEVICE_ACCESS, SecurityCheckDeviceAccess, NULL);
+     XaceRC(XACE_PROPERTY_ACCESS, SecurityCheckPropertyAccess, NULL);
+-    XaceRC(XACE_DRAWABLE_ACCESS, SecurityCheckDrawableAccess, NULL);
+     XaceRC(XACE_MAP_ACCESS, SecurityCheckMapAccess, NULL);
+     XaceRC(XACE_EXT_DISPATCH, SecurityCheckExtAccess, NULL);
+     XaceRC(XACE_EXT_ACCESS, SecurityCheckExtAccess, NULL);

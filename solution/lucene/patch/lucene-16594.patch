@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java b/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java
+index 8ba1077..0eeb314 100644
+--- a/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java
++++ b/solr/src/java/org/apache/solr/spelling/suggest/Suggester.java
+@@ -100,7 +100,7 @@ public class Suggester extends SolrSpellChecker {
+   public void build(SolrCore core, SolrIndexSearcher searcher) {
+     LOG.info("build()");
+     if (sourceLocation == null) {
+-      reader = searcher.getReader();
++      reader = searcher.getIndexReader();
+       dictionary = new HighFrequencyDictionary(reader, field, threshold);
+     } else {
+       try {

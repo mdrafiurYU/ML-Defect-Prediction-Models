@@ -1,0 +1,14 @@
+diff --git a/mi/mi.h b/mi/mi.h
+index 8d9d120..53b5c44 100644
+--- a/mi/mi.h
++++ b/mi/mi.h
+@@ -186,6 +186,9 @@ extern void mieqProcessInputEvents(
+     void
+ );
+ 
++typedef void (*mieqHandler)(int, xEventPtr, DeviceIntPtr, int);
++void mieqSetHandler(int event, mieqHandler handler);
++
+ /* miexpose.c */
+ 
+ extern RegionPtr miHandleExposures(

@@ -1,0 +1,29 @@
+diff --git a/hw/xfree86/modes/xf86Rotate.c b/hw/xfree86/modes/xf86Rotate.c
+index 94f95a0..359501e 100644
+--- a/hw/xfree86/modes/xf86Rotate.c
++++ b/hw/xfree86/modes/xf86Rotate.c
+@@ -279,6 +279,16 @@ xf86RotateRedisplay(ScreenPtr pScreen)
+     if (REGION_NOTEMPTY(pScreen, region)) 
+     {
+ 	int		    c;
++	SourceValidateProcPtr	SourceValidate;
++
++	/*
++	 * SourceValidate is used by the software cursor code
++	 * to pull the cursor off of the screen when reading
++	 * bits from the frame buffer. Bypassing this function
++	 * leaves the software cursor in place
++	 */
++	SourceValidate = pScreen->SourceValidate;
++	pScreen->SourceValidate = NULL;
+ 	
+ 	for (c = 0; c < xf86_config->num_crtc; c++)
+ 	{
+@@ -304,6 +314,7 @@ xf86RotateRedisplay(ScreenPtr pScreen)
+ 		REGION_UNINIT (pScreen, &crtc_damage);
+ 	    }
+ 	}
++	pScreen->SourceValidate = SourceValidate;
+ 	DamageEmpty(damage);
+     }
+ }

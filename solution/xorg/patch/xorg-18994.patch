@@ -1,0 +1,13 @@
+diff --git a/Xext/sleepuntil.c b/Xext/sleepuntil.c
+index 8e0008c..30be8c0 100644
+--- a/Xext/sleepuntil.c
++++ b/Xext/sleepuntil.c
+@@ -79,7 +79,7 @@ static void	    SertafiedWakeupHandler(
+     pointer /* LastSelectMask */
+ );
+ 
+-int
++_X_EXPORT int
+ ClientSleepUntil (client, revive, notifyFunc, closure)
+     ClientPtr	client;
+     TimeStamp	*revive;

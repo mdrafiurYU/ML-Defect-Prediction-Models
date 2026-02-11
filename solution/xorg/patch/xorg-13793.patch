@@ -1,0 +1,22 @@
+diff --git a/hw/kdrive/neomagic/neomagic.h b/hw/kdrive/neomagic/neomagic.h
+index 5903196..b91e81e 100644
+--- a/hw/kdrive/neomagic/neomagic.h
++++ b/hw/kdrive/neomagic/neomagic.h
+@@ -166,6 +166,7 @@ typedef struct _neoScreenInfo {
+     int pitch;
+     int depth;
+     KdVideoAdaptorPtr pAdaptor;
++    KaaScreenInfoRec kaa;
+ } NeoScreenInfo;
+ 
+ #define getNeoScreenInfo(kd) ((NeoScreenInfo *) ((kd)->screen->driver))
+@@ -208,9 +209,6 @@ neoDrawDisable (ScreenPtr pScreen);
+ void
+ neoDrawFini (ScreenPtr pScreen);
+ 
+-void
+-neoDrawSync (ScreenPtr pScreen);
+-
+ extern KdCardFuncs  neoFuncs;
+ 
+ #endif /* _NEOMAGIC_H_ */

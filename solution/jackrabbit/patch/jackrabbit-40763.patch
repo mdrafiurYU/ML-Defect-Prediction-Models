@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+index 1e58aef..8ebce78 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBInDataStore.java
+@@ -61,6 +61,13 @@ public class BLOBInDataStore extends BLOBFileValue {
+         // do nothing
+     }
+ 
++    /**
++     * {@inheritDoc}
++     */
++    public boolean isImmutable() {
++        return true;
++    }
++
+     public boolean equals(Object obj) {
+         if (!(obj instanceof BLOBInDataStore) || obj == null) {
+             return false;

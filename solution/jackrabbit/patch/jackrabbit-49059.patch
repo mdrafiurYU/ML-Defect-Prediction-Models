@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/SessionInfo.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/SessionInfo.java
+index f14fe36..98401f8 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/SessionInfo.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/SessionInfo.java
+@@ -87,4 +87,13 @@ public interface SessionInfo {
+      * @throws RepositoryException If another error occurs.
+      */
+     public void removeLockToken(String lockToken) throws UnsupportedRepositoryOperationException, LockException, RepositoryException;
++
++    /**
++     * Sets the user data used for {@link org.apache.jackrabbit.spi.Event#getUserData()}.
++     *
++     * @param userData
++     * @throws RepositoryException
++     * @see javax.jcr.observation.ObservationManager#setUserData(String)
++     */
++    public void setUserData(String userData) throws RepositoryException;
+ }

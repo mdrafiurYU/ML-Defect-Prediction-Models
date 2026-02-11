@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index c7f9a26..877d4d2 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -65,7 +65,7 @@ DeviceIntPtr dev = NULL;
+     if (id&(~0xff))
+ 	 dev = NULL;
+ 
+-    dev= (DeviceIntPtr)LookupDevice(id);
++    dixLookupDevice(&dev, id, serverClient, DixUnknownAccess);
+     if (dev!=NULL) 
+ 	return dev;
+     if ((!dev)&&(why_rtrn))

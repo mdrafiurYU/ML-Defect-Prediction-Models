@@ -1,0 +1,17 @@
+diff --git a/solr/src/common/org/apache/solr/common/params/CoreAdminParams.java b/solr/src/common/org/apache/solr/common/params/CoreAdminParams.java
+index 6a6e726..6171262 100644
+--- a/solr/src/common/org/apache/solr/common/params/CoreAdminParams.java
++++ b/solr/src/common/org/apache/solr/common/params/CoreAdminParams.java
+@@ -59,6 +59,12 @@ public interface CoreAdminParams
+    * The directories are specified by multiple indexDir parameters. */
+   public final static String INDEX_DIR = "indexDir";
+ 
++  /** The collection name in solr cloud */
++  public final static String COLLECTION = "collection";
++
++  /** The shard id in solr cloud */
++  public final static String SHARD = "shard";
++
+   public enum CoreAdminAction {
+     STATUS,  
+     LOAD,

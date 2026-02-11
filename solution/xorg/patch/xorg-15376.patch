@@ -1,0 +1,15 @@
+diff --git a/Xprint/AttrValid.c b/Xprint/AttrValid.c
+index 86bfd14..b2b0182 100644
+--- a/Xprint/AttrValid.c
++++ b/Xprint/AttrValid.c
+@@ -30,6 +30,10 @@ not be used in advertising or otherwise to promote the sale, use or other
+ dealings in this Software without prior written authorization from said
+ copyright holders.
+ */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <scrnintstr.h>
+ 
+ #include "attributes.h"

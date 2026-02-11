@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java
+index dcc7ece..a6df0f4 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TreeComparator.java
+@@ -71,6 +71,8 @@ class TreeComparator extends AbstractJCRTest {
+     }
+ 
+     public void tearDown() throws Exception {
++        session = null;
++        workspace = null;
+         super.tearDown();
+     }

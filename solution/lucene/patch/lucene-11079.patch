@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/core/CoreContainer.java b/solr/src/java/org/apache/solr/core/CoreContainer.java
+index 4fa3c5b..7cd7165 100644
+--- a/solr/src/java/org/apache/solr/core/CoreContainer.java
++++ b/solr/src/java/org/apache/solr/core/CoreContainer.java
+@@ -907,6 +907,7 @@ public class CoreContainer
+     writeAttribute(w, "adminPath",adminPath);
+     if(adminHandler != null) writeAttribute(w, "adminHandler",adminHandler);
+     if(shareSchema) writeAttribute(w, "shareSchema","true");
++    if(!defaultCoreName.equals("")) writeAttribute(w, "defaultCoreName",defaultCoreName);
+     w.write(">\n");
+ 
+     synchronized(cores) {

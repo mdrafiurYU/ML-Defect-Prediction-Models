@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NotUserAdministratorTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NotUserAdministratorTest.java
+index b4a644b..9e85504 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NotUserAdministratorTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/user/NotUserAdministratorTest.java
+@@ -55,7 +55,7 @@ public class NotUserAdministratorTest extends AbstractUserTest {
+         uPath = u.getNode().getPath();
+ 
+         // create a session for the other user.
+-        uSession = helper.getRepository().login(new SimpleCredentials(uID, pw.toCharArray()));
++        uSession = getHelper().getRepository().login(new SimpleCredentials(uID, pw.toCharArray()));
+         uMgr = getUserManager(uSession);
+     }

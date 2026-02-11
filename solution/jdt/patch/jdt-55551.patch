@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/WorkingCopyOwnerTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/WorkingCopyOwnerTests.java
+index 332efe3..bc34349 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/WorkingCopyOwnerTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/WorkingCopyOwnerTests.java
+@@ -1063,12 +1063,14 @@ public class WorkingCopyOwnerTests extends ModifyingResourceTests {
+ 		parser.setUnitName("Z.java");
+ 		parser.setProject(getJavaProject("P"));
+ 		parser.setWorkingCopyOwner(owner);
++		parser.setResolveBindings(true);
+ 		CompilationUnit cu = (CompilationUnit) parser.createAST(null);
+ 
+ 		List types = cu.types();
+ 		assertEquals("Unexpected number of types in AST", 1, types.size());
+ 		TypeDeclaration type = (TypeDeclaration)types.get(0);
+ 		ITypeBinding typeBinding = type.resolveBinding();
++		assertNotNull("No binding", typeBinding);
+ 		assertEquals(
+ 			"Unexpected super type", 
+ 			"Y",

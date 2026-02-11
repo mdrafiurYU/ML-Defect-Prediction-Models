@@ -1,0 +1,22 @@
+diff --git a/lucene/contrib/queries/src/test/org/apache/lucene/search/similar/TestMoreLikeThis.java b/lucene/contrib/queries/src/test/org/apache/lucene/search/similar/TestMoreLikeThis.java
+index 6de5e91..26b6a19 100644
+--- a/lucene/contrib/queries/src/test/org/apache/lucene/search/similar/TestMoreLikeThis.java
++++ b/lucene/contrib/queries/src/test/org/apache/lucene/search/similar/TestMoreLikeThis.java
+@@ -74,7 +74,7 @@ public class TestMoreLikeThis extends LuceneTestCase {
+     Map<String,Float> originalValues = getOriginalValues();
+     
+     MoreLikeThis mlt = new MoreLikeThis(reader);
+-    mlt.setAnalyzer(new MockAnalyzer(MockTokenizer.WHITESPACE, false));
++    mlt.setAnalyzer(new MockAnalyzer(random, MockTokenizer.WHITESPACE, false));
+     mlt.setMinDocFreq(1);
+     mlt.setMinTermFreq(1);
+     mlt.setMinWordLen(1);
+@@ -109,7 +109,7 @@ public class TestMoreLikeThis extends LuceneTestCase {
+   private Map<String,Float> getOriginalValues() throws IOException {
+     Map<String,Float> originalValues = new HashMap<String,Float>();
+     MoreLikeThis mlt = new MoreLikeThis(reader);
+-    mlt.setAnalyzer(new MockAnalyzer(MockTokenizer.WHITESPACE, false));
++    mlt.setAnalyzer(new MockAnalyzer(random, MockTokenizer.WHITESPACE, false));
+     mlt.setMinDocFreq(1);
+     mlt.setMinTermFreq(1);
+     mlt.setMinWordLen(1);

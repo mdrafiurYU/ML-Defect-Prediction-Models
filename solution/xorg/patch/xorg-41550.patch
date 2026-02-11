@@ -1,0 +1,14 @@
+diff --git a/glx/glapi.c b/glx/glapi.c
+index 94a8043..62597e4 100644
+--- a/glx/glapi.c
++++ b/glx/glapi.c
+@@ -53,7 +53,8 @@
+ #ifdef HAVE_DIX_CONFIG_H
+ 
+ #include <dix-config.h>
+-#define PUBLIC
++#include <X11/Xfuncproto.h>
++#define PUBLIC _X_EXPORT
+ 
+ #else
+ 

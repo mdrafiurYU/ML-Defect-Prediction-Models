@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymFilter.java
+index 7b6a5ca..7a80c43 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/synonym/SynonymFilter.java
+@@ -46,6 +46,9 @@ public final class SynonymFilter extends TokenFilter {
+ 
+   public SynonymFilter(TokenStream in, SynonymMap map) {
+     super(in);
++    if (map == null)
++      throw new IllegalArgumentException("map is required");
++
+     this.map = map;
+     // just ensuring these attributes exist...
+     addAttribute(CharTermAttribute.class);

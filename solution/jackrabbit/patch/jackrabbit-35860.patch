@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/CheckinTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/CheckinTest.java
+index 891a6be..ac25e7c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/CheckinTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/CheckinTest.java
+@@ -90,7 +90,7 @@ public class CheckinTest extends AbstractVersionTest {
+         try {
+             Version v2 = versionableNode.checkin();
+ 
+-            assertTrue("Calling checkin() on a node that is already checked-in must not have an effect.", v.equals(v2));
++            assertTrue("Calling checkin() on a node that is already checked-in must not have an effect.", v.isSame(v2));
+         } catch (RepositoryException e) {
+             fail("Calling checkin() on a node that is already checked-in must not throw an exception.");
+         }

@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestClassicAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestClassicAnalyzer.java
+index 4cd9f9f..f6deee5 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestClassicAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/core/TestClassicAnalyzer.java
+@@ -309,4 +309,9 @@ public class TestClassicAnalyzer extends BaseTokenStreamTestCase {
+ 
+     dir.close();
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new ClassicAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

@@ -1,0 +1,11 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java b/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java
+index a0dd7c1..cdb958e 100644
+--- a/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java
++++ b/lucene/src/java/org/apache/lucene/util/DoubleBarrelLRUCache.java
+@@ -45,6 +45,7 @@ import java.util.Map;
+ final public class DoubleBarrelLRUCache<K extends DoubleBarrelLRUCache.CloneableKey,V> {
+ 
+   public static abstract class CloneableKey {
++    @Override
+     abstract public Object clone();
+   }

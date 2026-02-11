@@ -1,0 +1,21 @@
+diff --git a/hw/xfree86/utils/xorgcfg/interface.c b/hw/xfree86/utils/xorgcfg/interface.c
+index c8ffd00..f3be793 100644
+--- a/hw/xfree86/utils/xorgcfg/interface.c
++++ b/hw/xfree86/utils/xorgcfg/interface.c
+@@ -1317,11 +1317,16 @@ SetTip(xf86cfgDevice *device)
+ 
+ 	    if (monitor == NULL)
+ 		return;
++	    if (monitor->mon_vendor != NULL)
+ 	    len = XmuSnprintf(buffer, sizeof(buffer),
+ 			      "Identifier \"%s\"\n"
+ 			      "Vendor     \"%s\"\n",
+ 			      monitor->mon_identifier,
+ 			      monitor->mon_vendor);
++	    else
++		len = XmuSnprintf(buffer, sizeof(buffer),
++				  "Identifier \"%s\"\n",
++				  monitor->mon_identifier);
+ 	    option = monitor->mon_option_lst;
+ 	}   break;
+ 	case SCREEN: {

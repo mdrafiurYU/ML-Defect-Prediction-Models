@@ -1,0 +1,17 @@
+diff --git a/hw/xfree86/dri2/dri2.c b/hw/xfree86/dri2/dri2.c
+index 0b52a0f..80de18f 100644
+--- a/hw/xfree86/dri2/dri2.c
++++ b/hw/xfree86/dri2/dri2.c
+@@ -380,3 +380,12 @@ static XF86ModuleVersionInfo DRI2VersRec =
+ 
+ _X_EXPORT XF86ModuleData dri2ModuleData = { &DRI2VersRec, DRI2Setup, NULL };
+ 
++void
++DRI2Version(int *major, int *minor)
++{
++    if (major != NULL)
++	*major = DRI2VersRec.majorversion;
++
++    if (minor != NULL)
++	*minor = DRI2VersRec.minorversion;
++}

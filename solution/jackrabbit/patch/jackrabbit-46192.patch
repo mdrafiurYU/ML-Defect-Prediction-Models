@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java
+index 1d2c41f..6209ee9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AccessControlEditor.java
+@@ -81,7 +81,11 @@ public interface AccessControlEditor {
+     /**
+      * Returns an array of editable policies for the given <code>principal</code>.
+      *
++     * @param principal Principal for which the editable policies should be
++     * returned.
+      * @return an array of editable policies for the given <code>principal</code>.
++     * @throws AccessDeniedException If the editing session is not allowed to
++     * edit policies.
+      * @throws AccessControlException if the specified principal does not exist,
+      * if this implementation cannot provide policies for individual principals or
+      * if same other access control related exception occurs.

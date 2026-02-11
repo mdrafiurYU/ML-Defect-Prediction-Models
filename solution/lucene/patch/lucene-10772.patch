@@ -1,0 +1,21 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+index 9694dba..08822a3 100644
+--- a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
++++ b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+@@ -347,8 +347,15 @@ public abstract class LuceneTestCase extends Assert {
+ 
+     @Override
+     public void failed(Throwable e, FrameworkMethod method) {
+-      testsFailed = true;
+-      reportAdditionalFailureInfo();
++      // org.junit.internal.AssumptionViolatedException in older releases
++      // org.junit.Assume.AssumptionViolatedException in recent ones
++      if (e.getClass().getName().endsWith("AssumptionViolatedException")) {
++        System.err.println("NOTE: " + method.getName() + " Assume failed (ignored):");
++        e.printStackTrace();
++      } else {
++        testsFailed = true;
++        reportAdditionalFailureInfo();
++      }
+       super.failed(e, method);
+     }

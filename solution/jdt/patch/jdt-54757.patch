@@ -1,0 +1,33 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+index 0826979..7f55fda 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CastExpression.java
+@@ -271,9 +271,7 @@ public class CastExpression extends Expression {
+ 		}
+ 		if (match != null && (
+ 				castType.isBoundParameterizedType() 
+-				|| castType.isGenericType() 
+-				|| 	expressionType.isBoundParameterizedType() 
+-				|| expressionType.isGenericType())) {
++				|| 	expressionType.isBoundParameterizedType())) {
+ 			
+ 			if (match.isProvablyDistinctFrom(isNarrowing ? expressionType : castType, 0)) {
+ 				return false; 
+@@ -283,15 +281,14 @@ public class CastExpression extends Expression {
+ 				return true;
+ 			}
+ 			if ((castType.tagBits & TagBits.HasDirectWildcard) == 0) {
+-				if ((!match.isParameterizedType() && !match.isGenericType())
+-						|| expressionType.isRawType()) {
++				if (!match.isParameterizedType() || expressionType.isRawType()) {
+ 					this.bits |= UnsafeCast;
+ 					return true;
+ 				}
+ 			}
+ 		} else if (isNarrowing) {
+ 			TypeBinding leafType = castType.leafComponentType();
+-			if (expressionType.id == T_JavaLangObject && castType.isArrayType() && (leafType.isBoundParameterizedType() || leafType.isGenericType())) {
++			if (expressionType.id == T_JavaLangObject && castType.isArrayType() && leafType.isBoundParameterizedType()) {
+ 				this.bits |= UnsafeCast;
+ 				return true;
+ 			}

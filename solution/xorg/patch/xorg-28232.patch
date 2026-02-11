@@ -1,0 +1,31 @@
+diff --git a/dix/privates.c b/dix/privates.c
+index a61c3cb..a66fc3d 100644
+--- a/dix/privates.c
++++ b/dix/privates.c
+@@ -225,7 +225,7 @@ AllocateWindowPrivateIndex()
+ }
+ 
+ _X_EXPORT Bool
+-AllocateWindowPrivate(register ScreenPtr pScreen, int index2, unsigned amount)
++AllocateWindowPrivate(ScreenPtr pScreen, int index2, unsigned amount)
+ {
+     unsigned oldamount;
+ 
+@@ -275,7 +275,7 @@ AllocateGCPrivateIndex()
+ }
+ 
+ _X_EXPORT Bool
+-AllocateGCPrivate(register ScreenPtr pScreen, int index2, unsigned amount)
++AllocateGCPrivate(ScreenPtr pScreen, int index2, unsigned amount)
+ {
+     unsigned oldamount;
+ 
+@@ -324,7 +324,7 @@ AllocatePixmapPrivateIndex()
+ }
+ 
+ _X_EXPORT Bool
+-AllocatePixmapPrivate(register ScreenPtr pScreen, int index2, unsigned amount)
++AllocatePixmapPrivate(ScreenPtr pScreen, int index2, unsigned amount)
+ {
+     unsigned oldamount;
+ 

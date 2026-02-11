@@ -1,0 +1,18 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+index ac6bbbe..89d4b7b 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/VarSortedBytesImpl.java
+@@ -230,11 +230,11 @@ class VarSortedBytesImpl {
+     }
+ 
+     @Override
+-    public DocValuesEnum getEnum(AttributeSource source) throws IOException {
++    public ValuesEnum getEnum(AttributeSource source) throws IOException {
+       return new VarSortedBytesEnum(source, cloneData(), cloneIndex());
+     }
+ 
+-    private static class VarSortedBytesEnum extends DocValuesEnum {
++    private static class VarSortedBytesEnum extends ValuesEnum {
+       private PackedInts.Reader docToOrdIndex;
+       private PackedInts.Reader ordToOffsetIndex;
+       private IndexInput idxIn;

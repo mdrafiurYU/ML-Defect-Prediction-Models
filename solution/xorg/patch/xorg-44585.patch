@@ -1,0 +1,12 @@
+diff --git a/Xi/exevents.c b/Xi/exevents.c
+index 7772029..04a4fbd 100644
+--- a/Xi/exevents.c
++++ b/Xi/exevents.c
+@@ -1010,7 +1010,6 @@ ProcessOtherEvent(InternalEvent *ev, DeviceIntPtr device)
+     if (device->isMaster || !device->u.master)
+         CheckMotion(event, device);
+ 
+-
+     switch (event->type)
+     {
+         case ET_Motion:

@@ -1,0 +1,64 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestFilteredSearch.java b/lucene/src/test/org/apache/lucene/search/TestFilteredSearch.java
+index 951abdd..a4b02fa 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestFilteredSearch.java
++++ b/lucene/src/test/org/apache/lucene/search/TestFilteredSearch.java
+@@ -25,6 +25,8 @@ import org.apache.lucene.document.Document;
+ import org.apache.lucene.document.Field;
+ import org.apache.lucene.index.CorruptIndexException;
+ import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.index.IndexReader.ReaderContext;
++import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.index.IndexWriter;
+ import org.apache.lucene.index.Term;
+ import org.apache.lucene.index.IndexWriterConfig.OpenMode;
+@@ -33,6 +35,7 @@ import org.apache.lucene.store.LockObtainFailedException;
+ import org.apache.lucene.util.OpenBitSet;
+ 
+ 
++
+ /**
+  *
+  */
+@@ -59,7 +62,7 @@ public class TestFilteredSearch extends LuceneTestCase {
+     directory.close();
+   }
+ 
+-  public void searchFiltered(IndexWriter writer, Directory directory, SimpleDocIdSetFilter filter, boolean optimize) {
++  public void searchFiltered(IndexWriter writer, Directory directory, Filter filter, boolean optimize) {
+     try {
+       for (int i = 0; i < 60; i++) {//Simple docs
+         Document doc = new Document();
+@@ -75,7 +78,6 @@ public class TestFilteredSearch extends LuceneTestCase {
+      
+      
+       IndexSearcher indexSearcher = new IndexSearcher(directory, true);
+-      filter.setTopReader(indexSearcher.getIndexReader());
+       ScoreDoc[] hits = indexSearcher.search(booleanQuery, filter, 1000).scoreDocs;
+       assertEquals("Number of matched documents", 1, hits.length);
+       indexSearcher.close();
+@@ -89,20 +91,17 @@ public class TestFilteredSearch extends LuceneTestCase {
+   public static final class SimpleDocIdSetFilter extends Filter {
+     private final int[] docs;
+     private int index;
+-    private IndexReader topReader;
++    
+     public SimpleDocIdSetFilter(int[] docs) {
+       this.docs = docs;
+     }
+ 
+-    public void setTopReader(IndexReader r) {
+-      topReader = r;
+-    }
+-
+     @Override
+-    public DocIdSet getDocIdSet(IndexReader reader) {
++    public DocIdSet getDocIdSet(ReaderContext context) {
++      assert context.isAtomic;
+       final OpenBitSet set = new OpenBitSet();
+-      int docBase = topReader.getSubReaderDocBase(reader);
+-      final int limit = docBase+reader.maxDoc();
++      int docBase = ((AtomicReaderContext)context).docBase;
++      final int limit = docBase+context.reader.maxDoc();
+       for (;index < docs.length; index++) {
+         final int docId = docs[index];
+         if(docId > limit)

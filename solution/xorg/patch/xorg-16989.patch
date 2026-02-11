@@ -1,0 +1,15 @@
+diff --git a/fb/fbline.c b/fb/fbline.c
+index ad68460..8e99dd9 100644
+--- a/fb/fbline.c
++++ b/fb/fbline.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "fb.h"
+ 
+ void

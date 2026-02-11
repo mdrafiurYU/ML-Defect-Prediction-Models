@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+index 8c10a6b..5fdd9a2 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/Scope.java
+@@ -219,11 +219,11 @@ public abstract class Scope implements BaseTypes, TypeConstants, TypeIds {
+ 	 * 
+ 	 */
+ 	public static TypeBinding substitute(Substitution substitution, TypeBinding originalType) {
+-		
++		if (originalType == null) return null;
+ 		switch (originalType.kind()) {
+ 			
+ 			case Binding.TYPE_PARAMETER:
+-				return substitution.substitute( (TypeVariableBinding) originalType);
++				return substitution.substitute((TypeVariableBinding) originalType);
+ 				
+ 			case Binding.PARAMETERIZED_TYPE:
+ 				ParameterizedTypeBinding originalParameterizedType = (ParameterizedTypeBinding) originalType;

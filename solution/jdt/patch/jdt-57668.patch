@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+index bb11c27..907725d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+@@ -26,6 +26,8 @@ public interface TagBits {
+ 	long AnonymousTypeMask = LocalTypeMask | IsAnonymousType;
+ 	long IsBinaryBinding = ASTNode.Bit7;
+ 	
++	long HasInconsistentHierarchy = ASTNode.Bit8; // for binary type binding only
++	
+ 	// for the type cycle hierarchy check used by ClassScope
+ 	long BeginHierarchyCheck = ASTNode.Bit9;  // type
+ 	long EndHierarchyCheck = ASTNode.Bit10; // type

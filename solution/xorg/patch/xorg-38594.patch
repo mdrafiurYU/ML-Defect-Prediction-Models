@@ -1,0 +1,20 @@
+diff --git a/mi/mipoly.c b/mi/mipoly.c
+index 4c77fc2..5ec4bfd 100644
+--- a/mi/mipoly.c
++++ b/mi/mipoly.c
+@@ -67,12 +67,9 @@ SOFTWARE.
+ 
+ 
+ _X_EXPORT void
+-miFillPolygon(dst, pgc, shape, mode, count, pPts)
+-    DrawablePtr		dst;
+-    GCPtr		pgc;
+-    int			shape, mode;
+-    int			count;
+-    DDXPointPtr		pPts;
++miFillPolygon( DrawablePtr dst, GCPtr pgc,
++		int shape, int mode,
++		int count, DDXPointPtr pPts)
+ {
+     int			i;
+     int			xorg, yorg;

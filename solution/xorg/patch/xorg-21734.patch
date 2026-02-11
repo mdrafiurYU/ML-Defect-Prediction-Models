@@ -1,0 +1,14 @@
+diff --git a/hw/vfb/InitOutput.c b/hw/vfb/InitOutput.c
+index b8253f6..a2d8661 100644
+--- a/hw/vfb/InitOutput.c
++++ b/hw/vfb/InitOutput.c
+@@ -364,6 +364,9 @@ ddxProcessArgument(int argc, char *argv[], int i)
+     if (strcmp (argv[i], "-render") == 0)	/* -render */
+     {
+ 	Render = FALSE;
++#ifdef COMPOSITE
++	noCompositeExtension = TRUE;
++#endif
+ 	return 1;
+     }
+ 

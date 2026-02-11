@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/MailEntityProcessor.java b/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/MailEntityProcessor.java
+index 5b9374c..0231d1e 100644
+--- a/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/MailEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/extras/main/java/org/apache/solr/handler/dataimport/MailEntityProcessor.java
+@@ -51,6 +51,7 @@ public class MailEntityProcessor extends EntityProcessorBase {
+     public SearchTerm getCustomSearch(Folder folder);
+   }
+ 
++  @Override
+   public void init(Context context) {
+     super.init(context);
+     // set attributes using  XXX getXXXFromContext(attribute, defualtValue);
+@@ -95,6 +96,7 @@ public class MailEntityProcessor extends EntityProcessorBase {
+     logConfig();
+   }
+ 
++  @Override
+   public Map<String, Object> nextRow() {
+     Message mail;
+     Map<String, Object> row = null;

@@ -1,0 +1,16 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index da6fc55..467fd8f 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -725,10 +725,10 @@ miSpriteSetCursor (DeviceIntPtr pDev, ScreenPtr pScreen,
+                    CursorPtr pCursor, int x, int y)
+ {
+     miSpriteScreenPtr	pScreenPriv;
++    miCursorInfoPtr pPointer;
+ 
+     pScreenPriv = (miSpriteScreenPtr)dixLookupPrivate(&pScreen->devPrivates,
+ 						      miSpriteScreenKey);
+-    miCursorInfoPtr pPointer;
+ 
+     if (!pDev->isMaster && !pDev->u.master)
+     {

@@ -1,0 +1,36 @@
+diff --git a/Xi/chgkbd.c b/Xi/chgkbd.c
+index a8a6024..6f3c635 100644
+--- a/Xi/chgkbd.c
++++ b/Xi/chgkbd.c
+@@ -82,8 +82,7 @@ SOFTWARE.
+  */
+ 
+ int
+-SProcXChangeKeyboardDevice(client)
+-    register ClientPtr client;
++SProcXChangeKeyboardDevice(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -101,8 +100,7 @@ SProcXChangeKeyboardDevice(client)
+  */
+ 
+ int
+-ProcXChangeKeyboardDevice (client)
+-    register ClientPtr client;
++ProcXChangeKeyboardDevice (register ClientPtr client)
+     {
+     int				i;
+     DeviceIntPtr 		xkbd = inputInfo.keyboard;
+@@ -203,10 +201,7 @@ ProcXChangeKeyboardDevice (client)
+  */
+ 
+ void
+-SRepXChangeKeyboardDevice (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xChangeKeyboardDeviceReply	*rep;
++SRepXChangeKeyboardDevice (ClientPtr client, int size, xChangeKeyboardDeviceReply *rep)
+     {
+     register char n;
+ 

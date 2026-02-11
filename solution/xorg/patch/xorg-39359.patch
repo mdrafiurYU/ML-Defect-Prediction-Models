@@ -1,0 +1,14 @@
+diff --git a/os/connection.c b/os/connection.c
+index 0217762..89795bf 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -90,9 +90,6 @@ SOFTWARE.
+ #include <sys/ioctl.h>
+ #endif
+ 
+-#ifdef AIXV3
+-#include <sys/ioctl.h>
+-#endif
+ 
+ #if defined(TCPCONN) || defined(STREAMSCONN)
+ # include <netinet/in.h>

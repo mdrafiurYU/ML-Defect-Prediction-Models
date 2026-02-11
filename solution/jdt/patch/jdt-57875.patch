@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java
+index 8815201..1f717e0 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/QualifiedTypeDeclarationPattern.java
+@@ -51,8 +51,13 @@ public void decodeIndexKey(char[] key) {
+ 		this.packageIndex = slash - start;
+ 		this.qualification[this.packageIndex] = '.';
+ 	}
+-
+-	decodeModifiers(key[key.length - 1]);
++	int last = key.length;
++	if (slash > 0) { // secondary
++		this.secondary = key[slash+1] == 'S';
++		last = slash;
++	}
++	this.modifiers = key[last-2] + (key[last-1]<<16);
++	decodeModifiers();
+ }
+ public SearchPattern getBlankPattern() {
+ 	return new QualifiedTypeDeclarationPattern(R_EXACT_MATCH | R_CASE_SENSITIVE);

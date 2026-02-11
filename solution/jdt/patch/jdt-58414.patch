@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java
+index 799724a..2341157 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/ExternalizeStringLiterals15Test.java
+@@ -27,7 +27,7 @@ public ExternalizeStringLiterals15Test(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return buildComplianceRegressionSetupSuite(testClass(), COMPLIANCE_1_5);
++	return buildUniqueComplianceTestSuite(testClass(), COMPLIANCE_1_5);
+ }
+ protected Map getCompilerOptions() {
+ 	Map options = super.getCompilerOptions();

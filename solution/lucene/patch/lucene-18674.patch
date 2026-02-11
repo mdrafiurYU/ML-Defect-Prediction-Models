@@ -1,0 +1,56 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java
+index 1cadb1b..b16dc93 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/standard/StandardQueryParser.java
+@@ -17,7 +17,6 @@ package org.apache.lucene.queryParser.standard;
+  * limitations under the License.
+  */
+ 
+-import java.text.Collator;
+ import java.util.Locale;
+ import java.util.Map;
+ import java.util.TooManyListenersException;
+@@ -41,10 +40,8 @@ import org.apache.lucene.queryParser.standard.config.LowercaseExpandedTermsAttri
+ import org.apache.lucene.queryParser.standard.config.MultiFieldAttribute;
+ import org.apache.lucene.queryParser.standard.config.MultiTermRewriteMethodAttribute;
+ import org.apache.lucene.queryParser.standard.config.PositionIncrementsAttribute;
+-import org.apache.lucene.queryParser.standard.config.RangeCollatorAttribute;
+ import org.apache.lucene.queryParser.standard.config.StandardQueryConfigHandler;
+ import org.apache.lucene.queryParser.standard.config.DefaultOperatorAttribute.Operator;
+-import org.apache.lucene.queryParser.standard.nodes.RangeQueryNode;
+ import org.apache.lucene.queryParser.standard.parser.StandardSyntaxParser;
+ import org.apache.lucene.queryParser.standard.processors.StandardQueryNodeProcessorPipeline;
+ import org.apache.lucene.search.FuzzyQuery;
+@@ -188,32 +185,6 @@ public class StandardQueryParser extends QueryParserHelper {
+   }
+ 
+   /**
+-   * Sets the collator used to determine index term inclusion in ranges for
+-   * RangeQuerys.
+-   * <p/>
+-   * <strong>WARNING:</strong> Setting the rangeCollator to a non-null collator
+-   * using this method will cause every single index Term in the Field
+-   * referenced by lowerTerm and/or upperTerm to be examined. Depending on the
+-   * number of index Terms in this Field, the operation could be very slow.
+-   * 
+-   * @param collator
+-   *          the collator to use when constructing {@link RangeQueryNode}s
+-   */
+-  public void setRangeCollator(Collator collator) {
+-    RangeCollatorAttribute attr = getQueryConfigHandler().getAttribute(RangeCollatorAttribute.class);
+-    attr.setDateResolution(collator);
+-  }
+-
+-  /**
+-   * @return the collator used to determine index term inclusion in ranges for
+-   *         RangeQuerys.
+-   */
+-  public Collator getRangeCollator() {
+-    RangeCollatorAttribute attr = getQueryConfigHandler().getAttribute(RangeCollatorAttribute.class);
+-    return attr.getRangeCollator();
+-  }
+-
+-  /**
+    * Sets the boolean operator of the QueryParser. In default mode (
+    * {@link Operator#OR}) terms without any modifiers are considered optional:
+    * for example <code>capital of Hungary</code> is equal to

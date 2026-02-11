@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathLocation.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathLocation.java
+index 1b77740..9d4d841 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathLocation.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/ClasspathLocation.java
+@@ -26,10 +26,14 @@ public static ClasspathLocation forBinaryFolder(IContainer binaryFolder, boolean
+ 	return new ClasspathDirectory(binaryFolder, isOutputFolder, accessRuleSet);
+ }
+ 
+-static ClasspathLocation forLibrary(String libraryPathname, AccessRuleSet accessRuleSet) {
++static ClasspathLocation forLibrary(String libraryPathname, long lastModified, AccessRuleSet accessRuleSet) {
+ 	return new ClasspathJar(libraryPathname, accessRuleSet);
+ }
+ 
++static ClasspathLocation forLibrary(String libraryPathname, AccessRuleSet accessRuleSet) {
++	return forLibrary(libraryPathname, 0, accessRuleSet);
++}
++
+ static ClasspathLocation forLibrary(IFile library, AccessRuleSet accessRuleSet) {
+ 	return new ClasspathJar(library, accessRuleSet);
+ }

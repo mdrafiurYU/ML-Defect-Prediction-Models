@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
+index c5027ec..495a222 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
+@@ -106,6 +106,7 @@ public abstract class ConverterTestSetup extends AbstractASTTests {
+ 		if (!PROJECT_SETUP) {
+ 			setUpJavaProject("Converter"); //$NON-NLS-1$
+ 			setUpJavaProject("Converter15", "1.5"); //$NON-NLS-1$ //$NON-NLS-2$
++			waitUntilIndexesReady(); // needed to find secondary types
+ 			PROJECT_SETUP = true;
+ 		}
+ 	}

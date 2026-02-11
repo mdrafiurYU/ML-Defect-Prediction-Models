@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java
+index bbb8cbe..e91938c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/WriteTest.java
+@@ -95,7 +95,7 @@ public class WriteTest extends AbstractWriteTest {
+         // make sure the 'rep:policy' node has been created.
+         assertTrue(superuser.itemExists(tmpl.getPath() + "/rep:policy"));
+ 
+-        SessionImpl testSession = getTestSession();
++        Session testSession = getTestSession();
+         AccessControlManager testAcMgr = getTestACManager();
+         // test: MODIFY_AC granted at 'path'
+         assertTrue(testAcMgr.hasPrivileges(path, privilegesFromName(Privilege.JCR_MODIFY_ACCESS_CONTROL)));

@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/ICompilationUnit.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/ICompilationUnit.java
+index a2672bc..dbf661b 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/ICompilationUnit.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/ICompilationUnit.java
+@@ -512,6 +512,11 @@ boolean isWorkingCopy();
+  * creation of the DOM AST was not requested, or if the requested level of AST
+  * API is not supported, or if the working copy was already consistent.
+  * </p>
++ * 
++ * <p>
++ * This method doesn't perform statements recovery. To recover statements with syntax
++ * errors, {@link #reconcile(int, boolean, boolean, WorkingCopyOwner, IProgressMonitor)} must be use.
++ * </p>
+  *
+  * @param astLevel either {@link #NO_AST} if no AST is wanted,
+  * or the {@linkplain AST#newAST(int) AST API level} of the AST if one is wanted

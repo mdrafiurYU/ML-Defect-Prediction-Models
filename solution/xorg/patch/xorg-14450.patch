@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winclipboardunicode.c b/hw/xwin/winclipboardunicode.c
+index 48a10fd..ba86915 100644
+--- a/hw/xwin/winclipboardunicode.c
++++ b/hw/xwin/winclipboardunicode.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "winclipboard.h"
+ 
+ 

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+index 885c934..f682e9f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+@@ -248,7 +248,7 @@ public class MemoryFileSystem implements FileSystem {
+         moves.put(srcPath, destPath);
+         if (getEntry(srcPath).isFolder()) {
+             srcPath = srcPath + "/";
+-            Iterator iterator= entries.keySet().iterator();
++            Iterator iterator = entries.keySet().iterator();
+             while (iterator.hasNext()) {
+                 String name = (String) iterator.next();
+                 if (name.startsWith(srcPath)) {

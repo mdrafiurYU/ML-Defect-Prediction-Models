@@ -1,0 +1,15 @@
+diff --git a/lbx/lbxcmap.c b/lbx/lbxcmap.c
+index 8214136..e65f8ef 100644
+--- a/lbx/lbxcmap.c
++++ b/lbx/lbxcmap.c
+@@ -27,6 +27,10 @@ from The Open Group.
+ */
+ /* $XFree86: xc/programs/Xserver/lbx/lbxcmap.c,v 1.9 2001/08/23 14:46:57 alanh Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <sys/types.h>
+ #define NEED_REPLIES
+ #define NEED_EVENTS

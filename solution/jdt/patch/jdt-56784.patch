@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
+index f071170..aec7918 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/FieldDeclaration.java
+@@ -20,7 +20,7 @@ import org.eclipse.jdt.internal.compiler.lookup.*;
+ public class FieldDeclaration extends AbstractVariableDeclaration {
+ 	
+ 	public FieldBinding binding;
+-	boolean hasBeenResolved = false;
++	boolean hasBeenResolved = false; // TODO (philippe) should use a tagBit instead
+ 	public Javadoc javadoc;
+ 
+ 	//allows to retrieve both the "type" part of the declaration (part1)

@@ -1,0 +1,13 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index b0d2f0d..07f57a7 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -3545,7 +3545,7 @@ ProcXkbSetNames(ClientPtr client)
+     if (!(client->xkbClientFlags&_XkbClientInitialized))
+ 	return BadAccess;
+ 
+-    CHK_KBD_DEVICE(dev, stuff->deviceSpec, client, DixUnknownAccess);
++    CHK_KBD_DEVICE(dev, stuff->deviceSpec, client, DixManageAccess);
+     CHK_MASK_LEGAL(0x01,stuff->which,XkbAllNamesMask);
+ 
+     xkb = dev->key->xkbInfo->desc;

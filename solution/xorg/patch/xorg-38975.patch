@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86RandR.c b/hw/xfree86/common/xf86RandR.c
+index b71924f..f30674f 100644
+--- a/hw/xfree86/common/xf86RandR.c
++++ b/hw/xfree86/common/xf86RandR.c
+@@ -243,7 +243,7 @@ xf86RandRSetConfig (ScreenPtr		pScreen,
+     Bool		    useVirtual = FALSE;
+     Rotation		    oldRotation = randrp->rotation;
+ 
+-    miPointerGetPosition(inputInfo.pointermi, &px, &py);
++    miPointerGetPosition(inputInfo.pointer, &px, &py);
+     for (mode = scrp->modes; ; mode = mode->next)
+     {
+ 	if (mode->HDisplay == pSize->width &&

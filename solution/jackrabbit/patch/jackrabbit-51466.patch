@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheck.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheck.java
+index 95f2a93..c758f2d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheck.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ConsistencyCheck.java
+@@ -233,7 +233,7 @@ class ConsistencyCheck {
+                 node = parent;
+             }
+             for (int i = elements.size() - 1; i > -1; i--) {
+-                ChildNodeEntry entry = (ChildNodeEntry) elements.get(i);
++                ChildNodeEntry entry = elements.get(i);
+                 path.append('/').append(entry.getName().getLocalName());
+                 if (entry.getIndex() > 1) {
+                     path.append('[').append(entry.getIndex()).append(']');

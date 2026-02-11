@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPrefixInBooleanQuery.java b/lucene/src/test/org/apache/lucene/search/TestPrefixInBooleanQuery.java
+index ddafd66..1aab6b5 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPrefixInBooleanQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPrefixInBooleanQuery.java
+@@ -75,7 +75,7 @@ public class TestPrefixInBooleanQuery extends LuceneTestCase {
+     }
+     
+     reader = writer.getReader();
+-    searcher = new IndexSearcher(reader);
++    searcher = newSearcher(reader);
+     writer.close();
+   }

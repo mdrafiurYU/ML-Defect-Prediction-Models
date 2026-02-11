@@ -1,0 +1,20 @@
+diff --git a/dix/extension.c b/dix/extension.c
+index 330fd28..c768ccb 100644
+--- a/dix/extension.c
++++ b/dix/extension.c
+@@ -268,6 +268,7 @@ ProcQueryExtension(ClientPtr client)
+ 
+     REQUEST_FIXED_SIZE(xQueryExtensionReq, stuff->nbytes);
+     
++    memset(&reply, 0, sizeof(xQueryExtensionReply));
+     reply.type = X_Reply;
+     reply.length = 0;
+     reply.major_opcode = 0;
+@@ -301,6 +302,7 @@ ProcListExtensions(ClientPtr client)
+ 
+     REQUEST_SIZE_MATCH(xReq);
+ 
++    memset(&reply, 0, sizeof(xListExtensionsReply));
+     reply.type = X_Reply;
+     reply.nExtensions = 0;
+     reply.length = 0;

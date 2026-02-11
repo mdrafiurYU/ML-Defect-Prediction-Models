@@ -1,0 +1,16 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/FieldsProducer.java b/lucene/src/java/org/apache/lucene/index/codecs/FieldsProducer.java
+index a4ce963..d170699 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/FieldsProducer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/FieldsProducer.java
+@@ -37,11 +37,6 @@ public abstract class FieldsProducer extends Fields implements Closeable {
+   public abstract void close() throws IOException;
+   public abstract void loadTermsIndex(int indexDivisor) throws IOException;
+ 
+-  @Override
+-  public DocValues docValues(String field) throws IOException {
+-    return null;
+-  }
+-  
+   public static final FieldsProducer EMPTY = new FieldsProducer() {
+     
+     @Override

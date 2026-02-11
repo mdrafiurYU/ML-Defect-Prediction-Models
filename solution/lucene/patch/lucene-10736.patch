@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/ShardResponse.java b/solr/src/java/org/apache/solr/handler/component/ShardResponse.java
+index 7d07b82..87f8957 100755
+--- a/solr/src/java/org/apache/solr/handler/component/ShardResponse.java
++++ b/solr/src/java/org/apache/solr/handler/component/ShardResponse.java
+@@ -79,4 +79,9 @@ public final class ShardResponse {
+   {
+     this.rspCode = rspCode;
+   }
++
++  /** What was the shard address that returned this response.  Example:  "http://localhost:8983/solr" */
++  public String getShardAddress() { return this.shardAddress; }
++
++  void setShardAddress(String addr) { this.shardAddress = addr; }
+ }

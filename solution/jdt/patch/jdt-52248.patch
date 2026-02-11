@@ -1,0 +1,42 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/util/CompilationUnitSorter.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/util/CompilationUnitSorter.java
+index 2bba98d..3d26fef 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/util/CompilationUnitSorter.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/util/CompilationUnitSorter.java
+@@ -37,6 +37,19 @@ public final class CompilationUnitSorter {
+ 		// Not instantiable
+ 	} 
+ 	
++    /**
++     * @deprecated marking deprecated as it is using deprecated code
++     */
++    private static void checkASTLevel(int level) {
++        switch (level) {
++        case AST.JLS2 :
++        case AST.JLS3 :
++            break;
++        default :
++            throw new IllegalArgumentException();
++        }
++    }
++
+ 	/**
+ 	 * Name of auxillary property whose value can be used to determine the
+ 	 * original relative order of two body declarations. This allows a
+@@ -310,15 +323,10 @@ public final class CompilationUnitSorter {
+         if (compilationUnit == null || comparator == null) {
+             throw new IllegalArgumentException();
+         }
+-        switch (level) {
+-        case AST.JLS2 :
+-        case AST.JLS3 :
+-            break;
+-        default :
+-            throw new IllegalArgumentException();
+-        }
++        checkASTLevel(level);
+         ICompilationUnit[] compilationUnits = new ICompilationUnit[] { compilationUnit };
+         SortElementsOperation operation = new SortElementsOperation(level, compilationUnits, positions, comparator);
+         operation.runOperation(monitor);
+     }
++    
+ }

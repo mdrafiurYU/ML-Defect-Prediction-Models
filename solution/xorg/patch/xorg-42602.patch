@@ -1,0 +1,15 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 2a7ec97..485347b 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -251,4 +251,10 @@ extern _X_EXPORT Atom XIGetKnownProperty(
+ 
+ extern _X_EXPORT DeviceIntPtr XIGetDevice(xEvent *ev);
+ 
++extern _X_EXPORT int XIPropToInt(
++        XIPropertyValuePtr val,
++        int *nelem_return,
++        int **buf_return
++);
++
+ #endif /* EXEVENTS_H */

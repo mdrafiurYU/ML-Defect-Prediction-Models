@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 0583f0f..a6290a7 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -890,7 +890,6 @@ configServerFlags(XF86ConfFlagsPtr flagsconf, XF86OptionPtr layoutopts)
+         from = X_CONFIG;
+     }
+     else {
+-        xf86Info.autoAddDevices = TRUE;
+         from = X_DEFAULT;
+     }
+     xf86Msg(from, "%sutomatically adding devices\n",
+@@ -902,7 +901,6 @@ configServerFlags(XF86ConfFlagsPtr flagsconf, XF86OptionPtr layoutopts)
+         from = X_CONFIG;
+     }
+     else {
+-        xf86Info.autoEnableDevices = TRUE;
+         from = X_DEFAULT;
+     }
+     xf86Msg(from, "%sutomatically enabling devices\n",

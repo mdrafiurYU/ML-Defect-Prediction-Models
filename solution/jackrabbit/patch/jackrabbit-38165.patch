@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueStringTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueStringTest.java
+index 5f80722..c7bc7fb 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueStringTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueStringTest.java
+@@ -76,6 +76,17 @@ public class SetValueStringTest extends AbstractJCRTest {
+         superuser.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        property1 = null;
++        property2 = null;
++        node = null;
++        sv1 = null;
++        sv2 = null;
++        mv1 = null;
++        mv2 = null;
++        super.tearDown();
++    }
++
+     // Value tests
+ 
+     /**

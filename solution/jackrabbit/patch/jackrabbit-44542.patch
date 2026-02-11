@@ -1,0 +1,75 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index d907606..de31bae 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -706,7 +706,7 @@ public class SearchIndex extends AbstractQueryHandler {
+                     super.close();
+                 } finally {
+                     PerQueryCache.getInstance().dispose();
+-                    reader.close();
++                    Util.closeOrRelease(reader);
+                 }
+             }
+         };
+@@ -852,13 +852,14 @@ public class SearchIndex extends AbstractQueryHandler {
+             parentReader = ((SearchIndex) parentHandler).index.getIndexReader();
+         }
+ 
+-        CachingMultiIndexReader reader = index.getIndexReader();
++        IndexReader reader;
+         if (parentReader != null) {
+-            CachingMultiIndexReader[] readers = {reader, parentReader};
+-            return new CombinedIndexReader(readers);
++            CachingMultiIndexReader[] readers = {index.getIndexReader(), parentReader};
++            reader = new CombinedIndexReader(readers);
+         } else {
+-            return reader;
++            reader = index.getIndexReader();
+         }
++        return new JackrabbitIndexReader(reader);
+     }
+ 
+     /**
+@@ -1181,7 +1182,7 @@ public class SearchIndex extends AbstractQueryHandler {
+             int found = 0;
+             long time = System.currentTimeMillis();
+             try {
+-                IndexReader reader = index.getIndexReader();
++                CachingMultiIndexReader reader = index.getIndexReader();
+                 try {
+                     Term aggregateUUIDs = new Term(
+                             FieldNames.AGGREGATED_NODE_UUID, "");
+@@ -1206,7 +1207,7 @@ public class SearchIndex extends AbstractQueryHandler {
+                         tDocs.close();
+                     }
+                 } finally {
+-                    reader.close();
++                    reader.release();
+                 }
+             } catch (Exception e) {
+                 log.warn("Exception while retrieving aggregate roots", e);
+@@ -1237,7 +1238,7 @@ public class SearchIndex extends AbstractQueryHandler {
+          */
+         private int[] starts;
+ 
+-        public CombinedIndexReader(CachingMultiIndexReader[] indexReaders) throws IOException {
++        public CombinedIndexReader(CachingMultiIndexReader[] indexReaders) {
+             super(indexReaders);
+             this.subReaders = indexReaders;
+             this.starts = new int[subReaders.length + 1];
+@@ -1271,6 +1272,15 @@ public class SearchIndex extends AbstractQueryHandler {
+             return readers;
+         }
+ 
++        /**
++         * {@inheritDoc}
++         */
++        public void release() throws IOException {
++            for (int i = 0; i < subReaders.length; i++) {
++                subReaders[i].release();
++            }
++        }
++
+         //---------------------------< internal >-------------------------------
+ 
+         /**

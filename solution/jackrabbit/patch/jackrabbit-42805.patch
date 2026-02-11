@@ -1,0 +1,11 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Recovery.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Recovery.java
+index 3f1bf68..0aa1a0b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Recovery.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/Recovery.java
+@@ -170,5 +170,6 @@ class Recovery {
+ 
+         // now we are consistent again -> flush
+         index.flush();
++        index.closeMultiReader();
+     }
+ }

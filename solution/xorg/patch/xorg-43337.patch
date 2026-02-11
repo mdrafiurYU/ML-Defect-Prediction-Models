@@ -1,0 +1,13 @@
+diff --git a/os/WaitFor.c b/os/WaitFor.c
+index 1633b49..9a204c7 100644
+--- a/os/WaitFor.c
++++ b/os/WaitFor.c
+@@ -430,7 +430,7 @@ TimerSet(OsTimerPtr timer, int flags, CARD32 millis,
+ 
+     if (!timer)
+     {
+-	timer = (OsTimerPtr)xalloc(sizeof(struct _OsTimerRec));
++	timer = xalloc(sizeof(struct _OsTimerRec));
+ 	if (!timer)
+ 	    return NULL;
+     }

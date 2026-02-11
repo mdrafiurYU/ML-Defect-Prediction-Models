@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+index 52d5b7d..69063eb 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAddIndexes.java
+@@ -452,6 +452,7 @@ public class TestAddIndexes extends LuceneTestCase {
+             setMaxBufferedDocs(100).
+             setMergePolicy(newLogMergePolicy(10))
+     );
++    writer.setInfoStream(VERBOSE ? System.out : null);
+     writer.addIndexes(aux);
+     assertEquals(30, writer.maxDoc());
+     assertEquals(3, writer.getSegmentCount());

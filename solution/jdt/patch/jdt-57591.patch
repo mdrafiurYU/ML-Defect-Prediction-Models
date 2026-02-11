@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
+index 2a1975b..66f8799 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTestAST3_2.java
+@@ -1334,7 +1334,7 @@ public class ASTConverterTestAST3_2 extends ConverterTestSetup {
+ 		ASTNode result = runConversion(AST.JLS3, sourceUnit, true);
+ 		assertTrue("not a compilation unit", result.getNodeType() == ASTNode.COMPILATION_UNIT); //$NON-NLS-1$
+ 		CompilationUnit unit = (CompilationUnit) result;
+-		assertEquals("Wrong number of problems", 1, unit.getProblems().length); //$NON-NLS-1$<
++		assertEquals("Wrong number of problems", 2, unit.getProblems().length); //$NON-NLS-1$<
+ 	}
+ 
+ 	/**

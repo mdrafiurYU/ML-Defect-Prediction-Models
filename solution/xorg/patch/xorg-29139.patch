@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index c2d4f22..7d8fd03 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -1241,6 +1241,7 @@ DoSetModifierMapping(ClientPtr client, KeyCode *inputMap,
+             }
+             else {
+                 pDev->key->modifierKeyMap = NULL;
++                pDev->key->maxKeysPerModifier = 0;
+             }
+         }
+     }

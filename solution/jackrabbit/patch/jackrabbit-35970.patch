@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java
+index 64715cf..1d1d3ae 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/EventBundle.java
+@@ -34,13 +34,6 @@ public interface EventBundle {
+     public Iterator getEvents();
+ 
+     /**
+-     * Returns the identifier for this <code>EventBundle</code>.
+-     *
+-     * @return the identifier for this <code>EventBundle</code>.
+-     */
+-    public String getBundleId();
+-
+-    /**
+      * Returns <code>true</code> if this event bundle is associated with a
+      * change that was initiated by a local session info. Event bundles for
+      * external changes will aways return <code>false</code>.

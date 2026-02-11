@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AnnotationMethodDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AnnotationMethodDeclaration.java
+index 590fa51..a9514da 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AnnotationMethodDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AnnotationMethodDeclaration.java
+@@ -136,6 +136,7 @@ public class AnnotationMethodDeclaration extends MethodDeclaration {
+ 				MemberValuePair pair = new MemberValuePair(this.selector, this.sourceStart, this.sourceEnd, this.defaultValue);
+ 				pair.binding = this.binding;
+ 				pair.resolveTypeExpecting(scope, returnTypeBinding);
++				this.binding.setDefaultValue(org.eclipse.jdt.internal.compiler.lookup.ElementValuePair.getValue(this.defaultValue));
+ 			}
+ 		}
+ 	}

@@ -1,0 +1,55 @@
+diff --git a/GL/glx/glxcmds.c b/GL/glx/glxcmds.c
+index fdd36e2..e16087a 100644
+--- a/GL/glx/glxcmds.c
++++ b/GL/glx/glxcmds.c
+@@ -1814,7 +1814,6 @@ int __glXDisp_RenderLarge(__GLXclientState *cl, GLbyte *pc)
+     xGLXRenderLargeReq *req;
+     ClientPtr client= cl->client;
+     GLuint dataBytes;
+-    __GLXdispatchRenderProcPtr proc;
+     __GLXrenderLargeHeader *hdr;
+     __GLXcontext *glxc;
+     int error;
+@@ -1873,13 +1872,6 @@ int __glXDisp_RenderLarge(__GLXclientState *cl, GLbyte *pc)
+ 	    return __glXError(GLXBadLargeRequest);
+ 	}
+ 
+-	proc = (__GLXdispatchRenderProcPtr)
+-	  __glXGetProtocolDecodeFunction(& Render_dispatch_info, opcode, 0);
+-	if (proc == NULL) {
+-	    client->errorValue = opcode;
+-	    return __glXError(GLXBadLargeRequest);
+-	}
+-
+ 	if (entry.varsize) {
+ 	    /*
+ 	    ** If it's a variable-size command (a command whose length must
+@@ -1956,6 +1948,8 @@ int __glXDisp_RenderLarge(__GLXclientState *cl, GLbyte *pc)
+ 	cl->largeCmdRequestsSoFar++;
+ 
+ 	if (req->requestNumber == cl->largeCmdRequestsTotal) {
++	    __GLXdispatchRenderProcPtr proc;
++
+ 	    /*
+ 	    ** This is the last request; it must have enough bytes to complete
+ 	    ** the command.
+@@ -1981,16 +1975,9 @@ int __glXDisp_RenderLarge(__GLXclientState *cl, GLbyte *pc)
+ 	    /*
+ 	    ** Use the opcode to index into the procedure table.
+ 	    */
+-	    if ( (opcode >= __GLX_MIN_RENDER_OPCODE) && 
+-		 (opcode <= __GLX_MAX_RENDER_OPCODE) ) {
+-		proc = __glXRenderTable[opcode];
+-#if __GLX_MAX_RENDER_OPCODE_EXT > __GLX_MIN_RENDER_OPCODE_EXT
+-	    } else if ( (opcode >= __GLX_MIN_RENDER_OPCODE_EXT) && 
+-		 (opcode <= __GLX_MAX_RENDER_OPCODE_EXT) ) {
+-		opcode -= __GLX_MIN_RENDER_OPCODE_EXT;
+-		proc = __glXRenderTable_EXT[opcode];
+-#endif /* __GLX_MAX_RENDER_OPCODE_EXT > __GLX_MIN_RENDER_OPCODE_EXT */
+-	    } else {
++	    proc = (__GLXdispatchRenderProcPtr)
++	      __glXGetProtocolDecodeFunction(& Render_dispatch_info, opcode, 0);
++	    if (proc == NULL) {
+ 		client->errorValue = opcode;
+ 		return __glXError(GLXBadLargeRequest);
+ 	    }

@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/eval/RequestorWrapper.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/eval/RequestorWrapper.java
+index bcdee8d..62a1bb5 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/eval/RequestorWrapper.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/eval/RequestorWrapper.java
+@@ -20,7 +20,9 @@ import org.eclipse.jdt.internal.compiler.ClassFile;
+ import org.eclipse.jdt.internal.eval.IRequestor;
+  
+ public class RequestorWrapper implements IRequestor {
++	
+ 	ICodeSnippetRequestor requestor;
++	
+ public RequestorWrapper(ICodeSnippetRequestor requestor) {
+ 	this.requestor = requestor;
+ }
+@@ -46,6 +48,7 @@ public boolean acceptClassFiles(ClassFile[] classFiles, char[] codeSnippetClassN
+ }
+ /**
+  * @see ICodeSnippetRequestor
++ * @deprecated
+  */
+ public void acceptProblem(IProblem problem, char[] fragmentSource, int fragmentKind) {
+ 	try {

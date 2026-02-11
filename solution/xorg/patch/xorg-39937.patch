@@ -1,0 +1,21 @@
+diff --git a/hw/xquartz/darwin.h b/hw/xquartz/darwin.h
+index c570dad..fd1c6d5 100644
+--- a/hw/xquartz/darwin.h
++++ b/hw/xquartz/darwin.h
+@@ -55,7 +55,7 @@ typedef struct {
+ 
+ // From darwin.c
+ void DarwinPrintBanner(void);
+-int DarwinParseModifierList(const char *constmodifiers);
++int DarwinParseModifierList(const char *constmodifiers, int separatelr);
+ void DarwinAdjustScreenOrigins(ScreenInfo *pScreenInfo);
+ void xf86SetRootClip (ScreenPtr pScreen, int enable);
+ 
+@@ -80,6 +80,7 @@ extern int              darwinFakeButtons;
+ extern int              darwinFakeMouse2Mask;
+ extern int              darwinFakeMouse3Mask;
+ extern int              darwinAppKitModMask;
++extern int              windowItemModMask;
+ extern char            *darwinKeymapFile;
+ extern int              darwinSyncKeymap;
+ extern unsigned int     darwinDesiredWidth, darwinDesiredHeight;

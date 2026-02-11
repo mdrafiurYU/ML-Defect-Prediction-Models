@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryObjectModelImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryObjectModelImpl.java
+index 90ac870..0fc8cb0 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryObjectModelImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/query/QueryObjectModelImpl.java
+@@ -180,5 +180,10 @@ public class QueryObjectModelImpl extends QueryImpl implements QueryObjectModel
+                 throws IllegalArgumentException, RepositoryException {
+             throw new UnsupportedOperationException();
+         }
++
++        public String[] getBindVariableNames() throws RepositoryException {
++            throw new UnsupportedOperationException();
++        }
++
+     }
+ }

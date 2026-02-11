@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_mouse.c b/hw/xfree86/os-support/bsd/bsd_mouse.c
+index a830b60..daf48fb 100644
+--- a/hw/xfree86/os-support/bsd/bsd_mouse.c
++++ b/hw/xfree86/os-support/bsd/bsd_mouse.c
+@@ -27,6 +27,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "xf86.h"
+ #include "xf86Priv.h"

@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDateTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDateTest.java
+index 0eda569..9f346b2 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDateTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDateTest.java
+@@ -72,6 +72,13 @@ public class SetValueDateTest extends AbstractJCRTest {
+         superuser.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        value = null;
++        node = null;
++        property1 = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test the persistence of a property modified with an DateValues parameter
+      * and saved from the Session

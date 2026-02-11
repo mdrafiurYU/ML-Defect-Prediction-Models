@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexFormatVersionTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexFormatVersionTest.java
+index cbb3145..ffa4e4c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexFormatVersionTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/query/IndexFormatVersionTest.java
+@@ -45,7 +45,7 @@ public class IndexFormatVersionTest extends AbstractJCRTest {
+     private void checkIndexFormatVersion(String wspName,
+                                          IndexFormatVersion version)
+             throws RepositoryException {
+-        Session session = helper.getSuperuserSession(wspName);
++        Session session = getHelper().getSuperuserSession(wspName);
+         try {
+             QueryManager qm = session.getWorkspace().getQueryManager();
+             QueryHandler handler = ((QueryManagerImpl) qm).getQueryHandler();

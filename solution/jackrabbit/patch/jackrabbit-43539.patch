@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
+index a78379b..b31ed04 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/WorkspaceImpl.java
+@@ -126,8 +126,8 @@ public class WorkspaceImpl extends AbstractWorkspace
+         this.wspConfig = wspConfig;
+         this.rep = rep;
+         this.stateMgr = createItemStateManager(stateMgr);
+-        this.hierMgr = new CachingHierarchyManager(
+-                rep.getRootNodeId(), this.stateMgr, session);
++        this.hierMgr =
++            new CachingHierarchyManager(rep.getRootNodeId(), this.stateMgr);
+         this.stateMgr.addListener(hierMgr);
+         this.session = session;
+     }

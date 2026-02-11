@@ -1,0 +1,18 @@
+diff --git a/GL/glx/glxcmdsswap.c b/GL/glx/glxcmdsswap.c
+index d59dfdb..1857bc1 100644
+--- a/GL/glx/glxcmdsswap.c
++++ b/GL/glx/glxcmdsswap.c
+@@ -496,11 +496,11 @@ int __glXDispSwap_CopySubBufferMESA(__GLXclientState *cl, GLbyte *pc)
+     GLXDrawable		 *drawId;
+     int			 *buffer;
+ 
++    __GLX_DECLARE_SWAP_VARIABLES;
++
+     (void) drawId;
+     (void) buffer;
+ 
+-    __GLX_DECLARE_SWAP_VARIABLES;
+-
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+ 
+     __GLX_SWAP_SHORT(&req->length);

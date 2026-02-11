@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java
+index 15cbcd5..0c82a96 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/Openable.java
+@@ -51,7 +51,7 @@ public void bufferChanged(BufferChangedEvent event) {
+ 		JavaModelManager.getJavaModelManager().getElementsOutOfSynchWithBuffers().remove(this);
+ 		getBufferManager().removeBuffer(event.getBuffer());
+ 	} else {
+-		JavaModelManager.getJavaModelManager().getElementsOutOfSynchWithBuffers().put(this, this);
++		JavaModelManager.getJavaModelManager().getElementsOutOfSynchWithBuffers().add(this);
+ 	}
+ }	
+ /**

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+index 3577081..d3ab4d9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/QueryResultImpl.java
+@@ -269,7 +269,7 @@ public abstract class QueryResultImpl implements QueryResult {
+             maxResultSize = limit;
+         }
+ 
+-        if (resultNodes.size() >= maxResultSize) {
++        if (resultNodes.size() >= maxResultSize && selectorNames != null) {
+             // we already have them all
+             return;
+         }

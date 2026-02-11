@@ -1,0 +1,40 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropertyDefinitionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropertyDefinitionImpl.java
+index 9e6a7fd..1372c7d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropertyDefinitionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/nodetype/PropertyDefinitionImpl.java
+@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
+ import javax.jcr.RepositoryException;
+ import javax.jcr.Value;
+ import javax.jcr.nodetype.PropertyDefinition;
++import javax.jcr.query.qom.QueryObjectModelConstants;
+ 
+ /**
+  * This class implements the <code>PropertyDefinition</code> interface.
+@@ -113,5 +114,26 @@ public class PropertyDefinitionImpl extends ItemDefinitionImpl
+     public boolean isMultiple() {
+         return ((PropDef) itemDef).isMultiple();
+     }
+-}
+ 
++    public String[] getAvailableQueryOperators() {
++        // TODO: JCR-2091
++        return new String[] {
++                QueryObjectModelConstants.JCR_OPERATOR_EQUAL_TO,
++                QueryObjectModelConstants.JCR_OPERATOR_GREATER_THAN,
++                QueryObjectModelConstants.JCR_OPERATOR_GREATER_THAN_OR_EQUAL_TO,
++                QueryObjectModelConstants.JCR_OPERATOR_LESS_THAN,
++                QueryObjectModelConstants.JCR_OPERATOR_LESS_THAN_OR_EQUAL_TO,
++                QueryObjectModelConstants.JCR_OPERATOR_LIKE,
++                QueryObjectModelConstants.JCR_OPERATOR_NOT_EQUAL_TO
++        };
++    }
++
++    public boolean isFullTextSearchable() {
++        return true; // TODO: JCR-2091
++    }
++
++    public boolean isQueryOrderable() {
++        return true; // TODO: JCR-2091
++    }
++
++}

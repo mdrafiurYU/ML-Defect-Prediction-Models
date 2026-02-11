@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/update/UpdateHandler.java b/solr/src/java/org/apache/solr/update/UpdateHandler.java
+index cd13a49..b90b80e 100644
+--- a/solr/src/java/org/apache/solr/update/UpdateHandler.java
++++ b/solr/src/java/org/apache/solr/update/UpdateHandler.java
+@@ -98,7 +98,7 @@ public abstract class UpdateHandler implements SolrInfoMBean {
+   }
+ 
+   protected SolrIndexWriter createMainIndexWriter(String name, boolean removeAllExisting) throws IOException {
+-    return new SolrIndexWriter(name,core.getNewIndexDir(), core.getDirectoryFactory(), removeAllExisting, schema, core.getSolrConfig().mainIndexConfig, core.getDeletionPolicy());
++    return new SolrIndexWriter(name,core.getNewIndexDir(), core.getDirectoryFactory(), removeAllExisting, schema, core.getSolrConfig().mainIndexConfig, core.getDeletionPolicy(), core.getCodecProvider());
+   }
+ 
+   protected final Term idTerm(String readableId) {

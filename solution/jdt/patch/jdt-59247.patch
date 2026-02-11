@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchyNotificationTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchyNotificationTests.java
+index c544151..fb3329a 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchyNotificationTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchyNotificationTests.java
+@@ -106,7 +106,7 @@ static {
+ //	TESTS_NAMES= new String[] { "testAddExtendsSourceType3" };
+ }
+ public static Test suite() {
+-	return buildTestSuite(TypeHierarchyNotificationTests.class);
++	return buildModelTestSuite(TypeHierarchyNotificationTests.class);
+ }
+ protected void tearDown() throws Exception {
+ 	this.deleteProject("TypeHierarchyNotification");

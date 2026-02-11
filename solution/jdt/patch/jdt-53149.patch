@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+index f5f6291..d31289e 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/BinaryType.java
+@@ -472,6 +472,22 @@ public String getSuperclassTypeSignature() throws JavaModelException {
+ 	}
+ }
+ 
++public String getSourceFileName() {
++		BinaryType typeParent = (BinaryType) getDeclaringType();
++		BinaryType declType = this;
++		while (typeParent != null) {
++			declType = typeParent;
++			typeParent = (BinaryType) declType.getDeclaringType();
++		}
++		IBinaryType info;
++		try {
++			info = (IBinaryType) declType.getElementInfo();
++		} catch (JavaModelException e) {
++			return null;
++		}
++		return declType.sourceFileName(info);
++}
++
+ /*
+  * @see IType#getSuperclassName()
+  */

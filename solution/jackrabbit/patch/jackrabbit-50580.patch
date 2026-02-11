@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java
+index 4414965..af7b442 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/AbstractQueryImpl.java
+@@ -140,6 +140,13 @@ public abstract class AbstractQueryImpl implements ExecutableQuery {
+     }
+ 
+     /**
++     * {@inheritDoc}
++     */
++    public Name[] getBindVariableNames() throws RepositoryException {
++        return variableNames.toArray(new Name[variableNames.size()]);
++    }
++
++    /**
+      * Adds a name to the set of variables.
+      *
+      * @param varName the name of the variable.

@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java
+index 34eaaaf..aa5560e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java
+@@ -154,6 +154,20 @@ public class ReadRecord extends AbstractRecord {
+     /**
+      * {@inheritDoc}
+      */
++    public long readLong() throws JournalException {
++        consumed = true;
++
++        try {
++            return dataIn.readLong();
++        } catch (IOException e) {
++            String msg = "I/O error while reading long.";
++            throw new JournalException(msg, e);
++        }
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public String readString() throws JournalException {
+         consumed = true;
+ 
+@@ -241,6 +255,10 @@ public class ReadRecord extends AbstractRecord {
+         throw unsupported();
+     }
+ 
++    public void writeLong(long n) throws JournalException {
++        throw unsupported();
++    }
++
+     public void writeString(String s) throws JournalException {
+         throw unsupported();
+     }

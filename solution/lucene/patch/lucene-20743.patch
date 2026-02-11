@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/hy/TestArmenianAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/hy/TestArmenianAnalyzer.java
+index 03c068b..68caf5c 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/hy/TestArmenianAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/hy/TestArmenianAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestArmenianAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "արծիվներ", "արծիվներ");
+     checkOneTermReuse(a, "արծիվ", "արծ");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new ArmenianAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

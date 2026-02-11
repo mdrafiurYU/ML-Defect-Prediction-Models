@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
+index 2518cf8..64f6fd0 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/TryStatement.java
+@@ -425,7 +425,7 @@ public class TryStatement extends SubRoutineStatement {
+ 
+ 	public StringBuffer printStatement(int indent, StringBuffer output) {
+ 		printIndent(indent, output).append("try \n"); //$NON-NLS-1$
+-		tryBlock.printStatement(indent + 1, output); //$NON-NLS-1$
++		tryBlock.printStatement(indent + 1, output);
+ 
+ 		//catches
+ 		if (catchBlocks != null)

@@ -1,0 +1,23 @@
+diff --git a/hw/xfree86/dri/dri.c b/hw/xfree86/dri/dri.c
+index d153c09..dbc1690 100644
+--- a/hw/xfree86/dri/dri.c
++++ b/hw/xfree86/dri/dri.c
+@@ -1518,6 +1518,10 @@ DRIGetDrawableInfo(ScreenPtr pScreen,
+ 	       if (x1 > pScreen->width) x1 = pScreen->width;
+ 	       if (y1 > pScreen->height) y1 = pScreen->height;
+ 
++	       if (y0 >= y1 || x0 >= x1) {
++		    *numBackClipRects = 0;
++		    *pBackClipRects = NULL;
++	       } else {
+ 	       pDRIPriv->private_buffer_rect.x1 = x0;
+ 	       pDRIPriv->private_buffer_rect.y1 = y0;
+ 	       pDRIPriv->private_buffer_rect.x2 = x1;
+@@ -1525,6 +1529,7 @@ DRIGetDrawableInfo(ScreenPtr pScreen,
+ 
+ 	       *numBackClipRects = 1;
+ 	       *pBackClipRects = &(pDRIPriv->private_buffer_rect);
++	       }
+ 	    } else {
+ 	       /* Use the frontbuffer cliprects for back buffers.  */
+ 	       *numBackClipRects = 0;

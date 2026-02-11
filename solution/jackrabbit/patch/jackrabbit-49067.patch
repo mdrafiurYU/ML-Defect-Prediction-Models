@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+index 4892c07..aad5988 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+@@ -855,6 +855,9 @@ public class ClusterNode implements Runnable,
+         } catch (RepositoryException e) {
+             String msg = "Unable to deliver update events: " + e.getMessage();
+             log.error(msg);
++            if (e.getCause() instanceof IllegalStateException) {
++                throw (IllegalStateException) e.getCause();
++            }
+         }
+     }
+ 
+@@ -890,6 +893,9 @@ public class ClusterNode implements Runnable,
+         } catch (RepositoryException e) {
+             String msg = "Unable to deliver lock event: " + e.getMessage();
+             log.error(msg);
++            if (e.getCause() instanceof IllegalStateException) {
++                throw (IllegalStateException) e.getCause();
++            }
+         }
+     }

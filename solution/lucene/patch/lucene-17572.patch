@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/CarrotClusteringEngine.java b/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/CarrotClusteringEngine.java
+index 126ea09..b0cb198 100644
+--- a/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/CarrotClusteringEngine.java
++++ b/solr/contrib/clustering/src/main/java/org/apache/solr/handler/clustering/carrot2/CarrotClusteringEngine.java
+@@ -77,6 +77,7 @@ public class CarrotClusteringEngine extends SearchClusteringEngine {
+ 
+   private String idFieldName;
+ 
++  @Override
+   @Deprecated
+   public Object cluster(Query query, DocList docList, SolrQueryRequest sreq) {
+     SolrIndexSearcher searcher = sreq.getSearcher();
+@@ -90,6 +91,7 @@ public class CarrotClusteringEngine extends SearchClusteringEngine {
+     }
+   }
+ 
++  @Override
+   public Object cluster(Query query, SolrDocumentList solrDocList,
+       Map<SolrDocument, Integer> docIds, SolrQueryRequest sreq) {
+     try {

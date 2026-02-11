@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/parser/read.c b/hw/xfree86/parser/read.c
+index 430da0a..b044a6a 100644
+--- a/hw/xfree86/parser/read.c
++++ b/hw/xfree86/parser/read.c
+@@ -100,7 +100,6 @@ xf86readConfigFile (void)
+ 	{
+ 		return NULL;
+ 	}
+-	memset (ptr, 0, sizeof (XF86ConfigRec));
+ 
+ 	while ((token = xf86getToken (TopLevelTab)) != EOF_TOKEN)
+ 	{

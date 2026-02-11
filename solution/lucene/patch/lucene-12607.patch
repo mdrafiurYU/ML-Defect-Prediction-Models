@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/SourceCache.java b/lucene/src/java/org/apache/lucene/index/values/SourceCache.java
+index e2f4c63..07e3363 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/SourceCache.java
++++ b/lucene/src/java/org/apache/lucene/index/values/SourceCache.java
+@@ -26,6 +26,7 @@ import org.apache.lucene.util.BytesRef;
+ 
+ /**
+  * Per {@link DocValues} {@link Source} cache.
++ * @lucene.experimental
+  */
+ public abstract class SourceCache {
+   public abstract Source load(DocValues values) throws IOException;

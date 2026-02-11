@@ -1,0 +1,13 @@
+diff --git a/glx/glxdri.c b/glx/glxdri.c
+index fb95782..b3b3e27 100644
+--- a/glx/glxdri.c
++++ b/glx/glxdri.c
+@@ -704,6 +704,8 @@ __glXDRIscreenCreateDrawable(__GLXscreen *screen,
+     private->base.destroy       = __glXDRIdrawableDestroy;
+     private->base.swapBuffers   = __glXDRIdrawableSwapBuffers;
+     private->base.copySubBuffer = __glXDRIdrawableCopySubBuffer;
++    private->base.waitX		= NULL;
++    private->base.waitGL	= NULL;
+ 
+     __glXenterServer(GL_FALSE);
+     retval = DRICreateDrawable(screen->pScreen, serverClient,

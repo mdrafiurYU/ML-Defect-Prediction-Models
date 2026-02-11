@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/solaris/sun_init.c b/hw/xfree86/os-support/solaris/sun_init.c
+index 1f389cb..b2237d9 100644
+--- a/hw/xfree86/os-support/solaris/sun_init.c
++++ b/hw/xfree86/os-support/solaris/sun_init.c
+@@ -29,7 +29,7 @@
+ #include "xf86.h"
+ #include "xf86Priv.h"
+ #include "xf86_OSlib.h"
+-#if defined(__i386__) || defined(__i386) || defined(__x86)
++#ifdef HAVE_SYS_KD_H
+ # include <sys/kd.h>
+ #endif
+ 

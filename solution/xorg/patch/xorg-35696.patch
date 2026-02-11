@@ -1,0 +1,19 @@
+diff --git a/dix/window.c b/dix/window.c
+index 3b69e45..a941dac 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -3823,8 +3823,14 @@ ChangeWindowDeviceCursor(WindowPtr pWin,
+ 
+         if (!pCursor) /* remove from list */
+         {
++                if(pPrev)
+             pPrev->next = pNode->next;
++                else
++                    /* first item in list */
++                    pWin->optional->deviceCursors = pNode->next;
++
+             xfree(pNode);
++            return Success;
+         }
+ 
+     } else

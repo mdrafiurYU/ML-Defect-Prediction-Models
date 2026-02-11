@@ -1,0 +1,20 @@
+diff --git a/modules/grouping/src/java/org/apache/lucene/search/grouping/SecondPassGroupingCollector.java b/modules/grouping/src/java/org/apache/lucene/search/grouping/SecondPassGroupingCollector.java
+index d025eb4..1d486f7 100644
+--- a/modules/grouping/src/java/org/apache/lucene/search/grouping/SecondPassGroupingCollector.java
++++ b/modules/grouping/src/java/org/apache/lucene/search/grouping/SecondPassGroupingCollector.java
+@@ -33,7 +33,14 @@ import org.apache.lucene.search.TopScoreDocCollector;
+ import org.apache.lucene.util.BytesRef;
+ 
+ /**
+- * See {@link FirstPassGroupingCollector}.
++ * SecondPassGroupingCollector is the second of two passes
++ * necessary to collect grouped docs.  This pass gathers the
++ * top N documents per top group computed from the
++ * first pass.
++ *
++ * <p>See {@link org.apache.lucene.search.grouping} for more
++ * details including a full code example.</p>
++ *
+  * @lucene.experimental
+  */
+ public class SecondPassGroupingCollector extends Collector {

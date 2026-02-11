@@ -1,0 +1,14 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java
+index d450e99..e0a6244 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/mapper/AllTests.java
+@@ -36,8 +36,8 @@ public class AllTests {
+     public static Test buildSuite() {
+         TestSuite suite= new TestSuite("Test for org.apache.jackrabbit.ocm.mapper");
+         //$JUnit-BEGIN$
++        suite.addTestSuite(AnnotationMapperImplTest.class);
+         suite.addTestSuite(DigesterMapperImplTest.class);
+-        
+         //$JUnit-END$
+ 
+         return suite;

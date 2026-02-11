@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryFactoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryFactoryImpl.java
+index df9dd46..49a6bd8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryFactoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryFactoryImpl.java
+@@ -82,17 +82,13 @@ public class RepositoryFactoryImpl implements RepositoryFactory {
+                                                        String home)
+             throws RepositoryException {
+         JackrabbitRepository repo = (JackrabbitRepository) REPOSITORY_INSTANCES.get(home);
+-        try {
+-            if (repo == null) {
+-                if (home == null) {
+-                    repo = new TransientRepository();
+-                } else {
+-                    repo = new TransientRepository(conf, home);
+-                }
+-                REPOSITORY_INSTANCES.put(home, repo);
++        if (repo == null) {
++            if (home == null) {
++                repo = new TransientRepository();
++            } else {
++                repo = new TransientRepository(conf, home);
+             }
+-        } catch (IOException e) {
+-            throw new RepositoryException(e);
++            REPOSITORY_INSTANCES.put(home, repo);
+         }
+         return repo;
+     }

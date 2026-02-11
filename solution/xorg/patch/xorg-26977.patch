@@ -1,0 +1,17 @@
+diff --git a/hw/xwin/winclipboardwrappers.c b/hw/xwin/winclipboardwrappers.c
+index e9bcea9..825d3dc 100755
+--- a/hw/xwin/winclipboardwrappers.c
++++ b/hw/xwin/winclipboardwrappers.c
+@@ -344,10 +344,8 @@ winProcSetSelectionOwner (ClientPtr client)
+   if (None != stuff->window)
+     {
+       /* Grab the Window from the request */
+-      pWindow = (WindowPtr) SecurityLookupWindow (stuff->window, client,
+-						  DixReadAccess);
+-      if (!pWindow)
+-	{
++      int rc = dixLookupWindow(&pWindow, stuff->window, client, DixReadAccess);
++      if (rc != Success) {
+ 	  ErrorF ("winProcSetSelectionOwner - Found BadWindow, aborting.\n");
+ 	  goto winProcSetSelectionOwner_Done;
+ 	}

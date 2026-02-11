@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestSnapshotDeletionPolicy.java b/lucene/src/test/org/apache/lucene/index/TestSnapshotDeletionPolicy.java
+index 6d325a7..20ced24 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestSnapshotDeletionPolicy.java
++++ b/lucene/src/test/org/apache/lucene/index/TestSnapshotDeletionPolicy.java
+@@ -202,7 +202,7 @@ public class TestSnapshotDeletionPolicy extends LuceneTestCase {
+   byte[] buffer = new byte[4096];
+ 
+   private void readFile(Directory dir, String name) throws Exception {
+-    IndexInput input = dir.openInput(name);
++    IndexInput input = dir.openInput(name, IOContext.DEFAULT);
+     try {
+       long size = dir.fileLength(name);
+       long bytesLeft = size;

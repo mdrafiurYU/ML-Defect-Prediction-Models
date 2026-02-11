@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java
+index 4a625d3..2fbdcc5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/core/compiler/CharOperation.java
+@@ -301,7 +301,7 @@ public static final boolean camelCaseMatch(char[] pattern, int patternStart, int
+ 				if (nameChar < ScannerHelper.MAX_OBVIOUS) {
+ 					switch (ScannerHelper.ObviousIdentCharNatures[nameChar]) {
+ 						case ScannerHelper.C_LOWER_LETTER :
+-						case ScannerHelper.C_LETTER :
++						case ScannerHelper.C_IDENT_PART :
+ 						case ScannerHelper.C_DIGIT :
+ 							// lowercase/digit char is ignored
+ 							iName++;

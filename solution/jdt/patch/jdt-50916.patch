@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java
+index ef4bad3..ac6241f 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/FactoryContainer.java
+@@ -12,14 +12,20 @@
+ 
+ package org.eclipse.jdt.apt.core.internal;
+ 
+-import java.util.ArrayList;
+ import java.util.List;
+ 
+ public abstract class FactoryContainer
+ {
+ 	public abstract boolean isPlugin();
+-	public abstract void loadFactoryNames();
+-	public  List<String> getFactoryNames() { return _factoryNames; }
+-	protected List<String> _factoryNames = new ArrayList<String>();
++	protected abstract List<String> loadFactoryNames();
++	protected List<String> _factoryNames;
++	
++	public  List<String> getFactoryNames() 
++	{ 
++		if ( _factoryNames == null )
++			_factoryNames = loadFactoryNames();
++		return _factoryNames;
++	}
++	
+ }

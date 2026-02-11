@@ -1,0 +1,12 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/charfilter/HTMLStripCharFilterTest.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/charfilter/HTMLStripCharFilterTest.java
+index 604f966..f1af45a 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/charfilter/HTMLStripCharFilterTest.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/charfilter/HTMLStripCharFilterTest.java
+@@ -169,7 +169,7 @@ public class HTMLStripCharFilterTest extends LuceneTestCase {
+ 
+   public void testBufferOverflow() throws Exception {
+     StringBuilder testBuilder = new StringBuilder(HTMLStripCharFilter.DEFAULT_READ_AHEAD + 50);
+-    testBuilder.append("ah<?> ");
++    testBuilder.append("ah<?> ??????");
+     appendChars(testBuilder, HTMLStripCharFilter.DEFAULT_READ_AHEAD + 500);
+     processBuffer(testBuilder.toString(), "Failed on pseudo proc. instr.");//processing instructions

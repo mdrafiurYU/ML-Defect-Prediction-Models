@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 69f5152..ece8752 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -70,9 +70,8 @@ BusRec primaryBus = { BUS_NONE, { 0 } };
+ 
+ static Bool xf86ResAccessEnter = FALSE;
+ 
+-
+ /* resource lists */
+-resPtr Acc = NULL;
++static resPtr Acc = NULL;
+ 
+ /* predefined special resources */
+ resRange resVgaExclusive[] = {_VGA_EXCLUSIVE, _END};

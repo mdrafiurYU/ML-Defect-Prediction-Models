@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java
+index 3566e33..6df5217 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java
+@@ -150,7 +150,7 @@ class FixedStraightBytesImpl {
+       }
+ 
+       @Override
+-      public BytesRef bytes(int docID) {
++      public BytesRef getBytes(int docID) {
+         bytesRef.offset = docID * size;
+         return bytesRef;
+       }

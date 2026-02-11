@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+index fffeb17..2bd635c 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/env/FilerImpl.java
+@@ -31,10 +31,10 @@ import com.sun.mirror.apt.Filer;
+ 
+ public class FilerImpl implements Filer {
+ 
+-	private ProcessorEnvImpl _env;
++	private BuildEnv _env;
+ 	private boolean _generatedClassFiles = false;
+ 	
+-    public FilerImpl( ProcessorEnvImpl env )
++    public FilerImpl( BuildEnv env )
+     {
+         _env = env;
+     }

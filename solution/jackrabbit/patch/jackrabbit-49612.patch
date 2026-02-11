@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CryptedSimpleCredentials.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CryptedSimpleCredentials.java
+index 224a63a..fb4924e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CryptedSimpleCredentials.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authentication/CryptedSimpleCredentials.java
+@@ -156,8 +156,8 @@ public class CryptedSimpleCredentials implements Credentials {
+ 
+     private static String getAlgorithm(String password) {
+         int end = password.indexOf("}");
+-        if (password.startsWith("{") && end>0) {
+-            return password.substring(1,end);
++        if (password.startsWith("{") && end > 0) {
++            return password.substring(1, end);
+         } else {
+             return null;
+         }

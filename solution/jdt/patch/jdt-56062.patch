@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CompilationUnitDeclaration.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CompilationUnitDeclaration.java
+index 214c0da..8e97520 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CompilationUnitDeclaration.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/CompilationUnitDeclaration.java
+@@ -147,7 +147,7 @@ public class CompilationUnitDeclaration
+ 			}
+ 		}
+ 		if (type.binding != null && type.binding.isAnnotationType())
+-			compilationResult.declaresAnnotations = true;
++			compilationResult.hasAnnotations = true;
+ 		if (type.binding != null) {
+ 			// null out the type's scope backpointers
+ 			type.binding.scope = null;

@@ -1,0 +1,16 @@
+diff --git a/include/xkbsrv.h b/include/xkbsrv.h
+index 8a81431..df33085 100644
+--- a/include/xkbsrv.h
++++ b/include/xkbsrv.h
+@@ -858,6 +858,11 @@ extern _X_EXPORT void	XkbGetRulesDflts(
+         XkbRMLVOSet *           /* rmlvo */
+ );
+ 
++extern _X_EXPORT void   XkbFreeRMLVOSet(
++        XkbRMLVOSet *           /* rmlvo */,
++        Bool                    /* freeRMLVO */
++);
++
+ extern _X_EXPORT void	XkbSetRulesDflts(
+         XkbRMLVOSet *           /* rmlvo */
+ );

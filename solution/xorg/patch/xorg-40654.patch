@@ -1,0 +1,40 @@
+diff --git a/hw/xquartz/GL/visualConfigs.c b/hw/xquartz/GL/visualConfigs.c
+index 821fad2..e46d628 100644
+--- a/hw/xquartz/GL/visualConfigs.c
++++ b/hw/xquartz/GL/visualConfigs.c
+@@ -87,14 +87,25 @@ void setVisualConfigs(void) {
+       2 iterations for accum (on and off (with an accum color size of 16)).
+      */
+     
+-
+     numConfigs = ((enable_stereo && caps->stereo) ? 2 : 1) * 2 * 
+ 	(caps->aux_buffers ? 2 : 1) * (caps->buffers) * 2 * 2;
+ 
+     visualConfigs = xcalloc(sizeof(*visualConfigs), numConfigs);
++
++    if(NULL == visualConfigs) {
++	ErrorF("xcalloc failure when allocating visualConfigs\n");
++	return;
++    }
++    
+     visualPrivates = xcalloc(sizeof(void *), numConfigs);
+ 
+-    if (NULL != visualConfigs) {
++    if(NULL == visualPrivates) {
++	ErrorF("xcalloc failure when allocating visualPrivates");
++	xfree(visualConfigs);
++	return;
++    }
++
++ 
+         i = 0; /* current buffer */
+         for (stereo = 0; stereo < ((enable_stereo && caps->stereo) ? 2 : 1); ++stereo) {
+ 	    for (depth = 0; depth < 2; ++depth) {
+@@ -145,7 +156,6 @@ void setVisualConfigs(void) {
+ 		}
+ 	    }
+         }
+-    }
+ 
+     if (i != numConfigs) {
+ 	ErrorF("numConfigs calculation error in setVisualConfigs!\n");

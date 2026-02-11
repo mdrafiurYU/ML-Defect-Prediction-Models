@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/id/IndonesianAnalyzer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/id/IndonesianAnalyzer.java
+index c52043a..e4b78e8 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/id/IndonesianAnalyzer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/id/IndonesianAnalyzer.java
+@@ -119,7 +119,7 @@ public final class IndonesianAnalyzer extends StopwordAnalyzerBase {
+   protected TokenStreamComponents createComponents(String fieldName,
+       Reader reader) {
+     final Tokenizer source = new StandardTokenizer(matchVersion, reader);
+-    TokenStream result = new StandardFilter(source);
++    TokenStream result = new StandardFilter(matchVersion, source);
+     result = new LowerCaseFilter(matchVersion, source);
+     result = new StopFilter(matchVersion, result, stopwords);
+     if (!stemExclusionSet.isEmpty()) {

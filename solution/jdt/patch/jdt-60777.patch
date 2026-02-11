@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceModelTests.java b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceModelTests.java
+index 897d0a4..21597df 100644
+--- a/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceModelTests.java
++++ b/org.eclipse.jdt.core.tests.performance/src/org/eclipse/jdt/core/tests/performance/FullSourceWorkspaceModelTests.java
+@@ -609,7 +609,7 @@ public void testPerfReconcile() throws CoreException {
+  * (regression test for bug 135083 RangeUtil#isInInterval(...) takes significant amount of time while editing)
+  */
+ public void testPerfReconcileBigFileWithSyntaxError() throws JavaModelException {
+-	tagAsSummary("Reconcile editor change on big file with syntax error", false); // do NOT put in fingerprint
++	tagAsSummary("Reconcile editor change on big file with syntax error", true); // put in fingerprint
+ 	
+ 	// build big file contents
+ 	String method =

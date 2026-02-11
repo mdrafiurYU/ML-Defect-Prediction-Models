@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+index ff4fbef..a455d88 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/LookupEnvironment.java
+@@ -988,7 +988,7 @@ public void reset() {
+  */
+ public void setAccessRestriction(ReferenceBinding type, AccessRestriction accessRestriction) {
+ 	if (accessRestriction == null) return;
+-	type.modifiers |= CompilerModifiers.AccRestrictedAccess;
++	type.modifiers |= ExtraCompilerModifiers.AccRestrictedAccess;
+ 	this.accessRestrictions.put(type, accessRestriction);
+ }

@@ -1,0 +1,20 @@
+diff --git a/hw/xfree86/common/xf86str.h b/hw/xfree86/common/xf86str.h
+index 82faaaa..b939282 100644
+--- a/hw/xfree86/common/xf86str.h
++++ b/hw/xfree86/common/xf86str.h
+@@ -115,6 +115,7 @@ typedef enum {
+     MODE_ONE_WIDTH,     /* only one width is supported */
+     MODE_ONE_HEIGHT,    /* only one height is supported */
+     MODE_ONE_SIZE,      /* only one resolution is supported */
++    MODE_NO_REDUCED,    /* monitor doesn't accept reduced blanking */
+     MODE_BAD = -2,	/* unspecified reason */
+     MODE_ERROR	= -1	/* error condition */
+ } ModeStatus;
+@@ -206,6 +207,7 @@ typedef struct {
+     int			heightmm;
+     pointer		options;
+     pointer		DDC;
++    Bool                reducedblanking; /* Allow CVT reduced blanking modes? */
+ } MonRec, *MonPtr;
+ 
+ /* the list of clock ranges */

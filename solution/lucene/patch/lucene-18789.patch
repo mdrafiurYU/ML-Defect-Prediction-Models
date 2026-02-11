@@ -1,0 +1,17 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/TermsHash.java b/lucene/src/java/org/apache/lucene/index/TermsHash.java
+index 2c3bc81..2ad2a82 100644
+--- a/lucene/src/java/org/apache/lucene/index/TermsHash.java
++++ b/lucene/src/java/org/apache/lucene/index/TermsHash.java
+@@ -57,6 +57,12 @@ final class TermsHash extends InvertedDocConsumer {
+   }
+ 
+   @Override
++  void setFieldInfos(FieldInfos fieldInfos) {
++    this.fieldInfos = fieldInfos;
++    consumer.setFieldInfos(fieldInfos);
++  }
++
++  @Override
+   public void abort() {
+     consumer.abort();
+     if (nextTermsHash != null)

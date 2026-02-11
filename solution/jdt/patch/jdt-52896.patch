@@ -1,0 +1,11 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+index eed5317..e5e1494 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionParser.java
+@@ -697,6 +697,7 @@ private void buildMoreCompletionContext(Expression expression) {
+ 					pushOnGenericsLengthStack(0);
+ 					pushOnGenericsIdentifiersLengthStack(identifierLengthStack[identifierLengthPtr]);
+ 					allocationExpression.type = getTypeReference(0);
++					allocationExpression.type.bits |= ASTNode.IgnoreRawTypeCheck; // no need to worry about raw type usage
+ 					int length = expressionLengthStack[expressionLengthPtr];
+ 					allocationExpression.dimensions = new Expression[length];

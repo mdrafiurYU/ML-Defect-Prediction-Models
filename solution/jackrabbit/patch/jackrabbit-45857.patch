@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplate.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplate.java
+index f3c7898..bbe9a36 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplate.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/principalbased/ACLTemplate.java
+@@ -277,8 +277,8 @@ class ACLTemplate implements JackrabbitAccessControlList, AccessControlConstants
+             checkValidEntry();
+ 
+             // TODO: review again
+-            nodePath = ((Value) getRestriction(jcrNodePathName)).getString();
+-            Value glob = ((Value) getRestriction(jcrGlobName));
++            nodePath = getRestriction(jcrNodePathName).getString();
++            Value glob = getRestriction(jcrGlobName);
+             if (glob != null) {
+                 StringBuffer b = new StringBuffer(nodePath);
+                 b.append(glob.getString());

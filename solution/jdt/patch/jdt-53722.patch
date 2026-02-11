@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+index 039ea79..11f2456 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionJavadocParser.java
+@@ -501,7 +501,7 @@ public class CompletionJavadocParser extends JavadocParser {
+ 				this.pushText = true;
+ 
+ 				// Get reference tokens
+-				nextToken : while (!this.scanner.atEnd() && this.completionNode == null && !this.abort) {
++				while (!this.scanner.atEnd() && this.completionNode == null && !this.abort) {
+ 					int token = readTokenSafely();
+ 					switch (token) {
+ 						case TerminalTokens.TokenNameStringLiteral :

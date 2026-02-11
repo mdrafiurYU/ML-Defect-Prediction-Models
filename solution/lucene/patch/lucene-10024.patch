@@ -1,0 +1,20 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+index 01d5369..b48b97b 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriter.java
+@@ -1186,6 +1186,7 @@ public class TestIndexWriter extends LuceneTestCase {
+      *             removed because changing ram buffer settings during a write
+      *             session won't be possible.
+      */
++    @Deprecated
+     public void testChangingRAMBuffer() throws IOException {
+       MockDirectoryWrapper dir = newDirectory();      
+       IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(
+@@ -1244,6 +1245,7 @@ public class TestIndexWriter extends LuceneTestCase {
+      * @deprecated after setters on IW go away, this test can be deleted because
+      *             changing those settings on IW won't be possible.
+      */
++    @Deprecated
+     public void testChangingRAMBuffer2() throws IOException {
+       MockDirectoryWrapper dir = newDirectory();      
+       IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig(

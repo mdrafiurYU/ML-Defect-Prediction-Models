@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/TokenizerChain.java b/solr/src/java/org/apache/solr/analysis/TokenizerChain.java
+index 4c0d04a..3fd4884 100644
+--- a/solr/src/java/org/apache/solr/analysis/TokenizerChain.java
++++ b/solr/src/java/org/apache/solr/analysis/TokenizerChain.java
+@@ -73,6 +73,7 @@ public final class TokenizerChain extends SolrAnalyzer {
+     return new TokenStreamInfo(tk,ts);
+   }
+ 
++  @Override
+   public String toString() {
+     StringBuilder sb = new StringBuilder("TokenizerChain(");
+     for (CharFilterFactory filter: charFilters) {

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Option.c b/hw/xfree86/common/xf86Option.c
+index 50a7d9c..f4d35fc 100644
+--- a/hw/xfree86/common/xf86Option.c
++++ b/hw/xfree86/common/xf86Option.c
+@@ -855,7 +855,7 @@ xf86NameCmp(const char *s1, const char *s2)
+     return xf86nameCompare(s1, s2);
+ }
+ 
+-char *
++_X_EXPORT char *
+ xf86NormalizeName(const char *s)
+ {
+     char *ret, *q;

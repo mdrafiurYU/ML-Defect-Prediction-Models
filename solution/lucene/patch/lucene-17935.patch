@@ -1,0 +1,28 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java
+index 0f70381..b8e285d 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestErrorHandling.java
+@@ -78,19 +78,23 @@ public class TestErrorHandling extends AbstractDataImportHandlerTestCase {
+   public static class StringDataSource extends DataSource<Reader> {
+     public static String xml = "";
+ 
++    @Override
+     public void init(Context context, Properties initProps) {
+     }
+ 
++    @Override
+     public Reader getData(String query) {
+       return new StringReader(xml);
+     }
+ 
++    @Override
+     public void close() {
+ 
+     }
+   }
+ 
+   public static class ExceptionTransformer extends Transformer {
++    @Override
+     public Object transformRow(Map<String, Object> row, Context context) {
+       throw new RuntimeException("Test exception");
+     }

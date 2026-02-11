@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnit.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnit.java
+index 9a17bea..1d4b602 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnit.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/CompilationUnit.java
+@@ -724,7 +724,7 @@ public class CompilationUnit extends ASTNode {
+ 	 *    position does not correspond to a source line in the original
+ 	 *    source file or if line number information is not known for this
+ 	 *    compilation unit
+-	 * @deprecated Use getLineNumber(int) instead.
++	 * @deprecated Use getLineNumber(int) instead. Be careful to handle the negative values.
+ 	 * @see ASTParser
+ 	 * @see #getLineNumber(int) 
+ 	 */

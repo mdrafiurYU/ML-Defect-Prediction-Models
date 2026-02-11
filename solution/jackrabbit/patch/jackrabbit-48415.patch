@@ -1,0 +1,34 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
+index 9e762c1..8c9d3cf 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/RepositoryImpl.java
+@@ -82,6 +82,9 @@ public class RepositoryImpl extends AbstractRepository implements Referenceable
+         return (String) descriptors.get(descriptorKey);
+     }
+ 
++    /**
++     * @see Repository#getDescriptorValue(String)
++     */
+     public Value getDescriptorValue(String key) {
+         String value = getDescriptor(key);
+         if (value != null) {
+@@ -92,6 +95,9 @@ public class RepositoryImpl extends AbstractRepository implements Referenceable
+         }
+     }
+ 
++    /**
++     * @see Repository#getDescriptorValues(String)
++     */
+     public Value[] getDescriptorValues(String key) {
+         Value value = getDescriptorValue(key);
+         if (value != null) {
+@@ -101,6 +107,9 @@ public class RepositoryImpl extends AbstractRepository implements Referenceable
+         }
+     }
+ 
++    /**
++     * @see Repository#isSingleValueDescriptor(String)
++     */
+     public boolean isSingleValueDescriptor(String key) {
+         return descriptors.containsKey(key);
+     }

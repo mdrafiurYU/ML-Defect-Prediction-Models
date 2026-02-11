@@ -1,0 +1,46 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java
+index 70aab03..5c1cbd1 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/value/BaseValue.java
+@@ -16,18 +16,19 @@
+  */
+ package org.apache.jackrabbit.value;
+ 
++import org.apache.jackrabbit.util.ISO8601;
++
++import javax.jcr.Binary;
++import javax.jcr.RepositoryException;
++import javax.jcr.UnsupportedRepositoryOperationException;
++import javax.jcr.Value;
++import javax.jcr.ValueFormatException;
+ import java.io.ByteArrayInputStream;
+ import java.io.InputStream;
+ import java.io.UnsupportedEncodingException;
+ import java.math.BigDecimal;
+ import java.util.Calendar;
+ 
+-import javax.jcr.RepositoryException;
+-import javax.jcr.Value;
+-import javax.jcr.ValueFormatException;
+-
+-import org.apache.jackrabbit.util.ISO8601;
+-
+ /**
+  * This class is the superclass of the type-specific
+  * classes implementing the <code>Value</code> interfaces.
+@@ -217,6 +218,15 @@ public abstract class BaseValue implements Value {
+     /**
+      * {@inheritDoc}
+      */
++    public Binary getBinary()
++            throws ValueFormatException, IllegalStateException,
++            RepositoryException {
++        throw new UnsupportedRepositoryOperationException("JCR-2056");
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public String getString()
+             throws ValueFormatException, IllegalStateException,
+             RepositoryException {

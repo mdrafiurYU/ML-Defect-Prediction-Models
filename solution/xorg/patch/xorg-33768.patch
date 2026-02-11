@@ -1,0 +1,34 @@
+diff --git a/Xi/extinit.c b/Xi/extinit.c
+index 73bae5e..1a435ed 100644
+--- a/Xi/extinit.c
++++ b/Xi/extinit.c
+@@ -856,29 +856,6 @@ MakeDeviceTypeAtoms(void)
+ 	    MakeAtom(dev_type[i].name, strlen(dev_type[i].name), 1);
+ }
+ 
+-/**************************************************************************
+- * Return a DeviceIntPtr corresponding to a specified device id.
+- *
+- */
+-
+-DeviceIntPtr
+-LookupDeviceIntRec(CARD8 id)
+-{
+-    DeviceIntPtr dev;
+-
+-    for (dev = inputInfo.devices; dev; dev = dev->next) {
+-	if (dev->id == id)
+-	    return dev;
+-    }
+-
+-    for (dev = inputInfo.off_devices; dev; dev = dev->next) {
+-	if (dev->id == id)
+-	    return dev;
+-    }
+-
+-    return NULL;
+-}
+-
+ /*****************************************************************************
+  *
+  *	SEventIDispatch

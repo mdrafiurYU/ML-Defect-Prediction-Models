@@ -1,0 +1,14 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 8b7fe4b..64cde49 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -1312,8 +1312,8 @@ CreatePmap:
+ 	}
+ 	if (AddResource(stuff->pid, RT_PIXMAP, (pointer)pMap))
+ 	    return(client->noClientException);
+-    }
+     (*pDraw->pScreen->DestroyPixmap)(pMap);
++    }
+     return (BadAlloc);
+ }
+ 

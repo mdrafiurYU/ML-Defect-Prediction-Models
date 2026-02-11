@@ -1,0 +1,30 @@
+diff --git a/hw/xwin/winconfig.c b/hw/xwin/winconfig.c
+index 13b8b3a..a9c4c46 100644
+--- a/hw/xwin/winconfig.c
++++ b/hw/xwin/winconfig.c
+@@ -561,7 +561,7 @@ winConfigFiles ()
+ }
+ #else
+ Bool
+-winConfigFiles ()
++winConfigFiles (void)
+ {
+   MessageType from;
+ 
+@@ -578,14 +578,14 @@ winConfigFiles ()
+ 
+ 
+ Bool
+-winConfigOptions ()
++winConfigOptions (void)
+ {
+   return TRUE;
+ }
+ 
+ 
+ Bool
+-winConfigScreens ()
++winConfigScreens (void)
+ {
+   return TRUE;
+ }

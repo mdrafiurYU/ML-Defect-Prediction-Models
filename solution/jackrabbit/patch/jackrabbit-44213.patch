@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+index 06c27f5..9286364 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterNode.java
+@@ -216,7 +216,7 @@ public class ClusterNode implements Runnable,
+         try {
+             JournalConfig jc = cc.getJournalConfig();
+             journal = (Journal) jc.newInstance();
+-            journal.init(clusterNodeId, clusterContext.getNamespaceResovler());
++            journal.init(clusterNodeId, clusterContext.getNamespaceResolver());
+             instanceRevision = journal.getInstanceRevision();
+             journal.register(this);
+         } catch (ConfigurationException e) {

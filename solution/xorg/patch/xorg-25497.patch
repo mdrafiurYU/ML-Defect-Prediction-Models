@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/linuxPci.c b/hw/xfree86/os-support/bus/linuxPci.c
+index 97d60f5..afb3819 100644
+--- a/hw/xfree86/os-support/bus/linuxPci.c
++++ b/hw/xfree86/os-support/bus/linuxPci.c
+@@ -570,9 +570,7 @@ linuxMapPci(int ScreenNum, int Flags, PCITAG Tag,
+ 
+ 	xf86InitVidMem();
+ 
+-	pPCI = xf86GetPciHostConfigFromTag(Tag);
+-
+-	if (((fd = linuxPciOpenFile(pPCI ? pPCI->tag : 0,FALSE)) < 0) ||
++	if (((fd = linuxPciOpenFile(Tag ,FALSE)) < 0) ||
+ 	    (ioctl(fd, mmap_ioctl, 0) < 0))
+ 	    break;
+ 

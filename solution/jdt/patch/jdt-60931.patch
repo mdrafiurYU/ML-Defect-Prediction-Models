@@ -1,0 +1,36 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTests.java
+index 3a0511e..ffec300 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CompletionTests.java
+@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.CoreException;
+ import org.eclipse.jdt.core.*;
+ import org.eclipse.jdt.internal.codeassist.CompletionEngine;
+ import org.eclipse.jdt.core.ICompilationUnit;
++import org.eclipse.jdt.core.eval.IEvaluationContext;
+ import org.eclipse.jdt.internal.codeassist.RelevanceConstants;
+ 
+ import junit.framework.*;
+@@ -12369,4 +12370,23 @@ public void testDeprecationCheck17() throws JavaModelException {
+ 		COMPLETION_PROJECT.setOptions(options);
+ 	}
+ }
++//https://bugs.eclipse.org/bugs/show_bug.cgi?id=139937
++public void testEvaluationContextCompletion() throws JavaModelException {
++	class EvaluationContextCompletionRequestor extends CompletionRequestor {
++		public boolean acceptContext;
++		public void acceptContext(CompletionContext context) {
++			this.acceptContext = context != null;
++		}
++		public void accept(CompletionProposal proposal) {
++			// Do nothing
++		}
++	}
++	String start = "";
++	IJavaProject javaProject = getJavaProject("Completion");
++	IEvaluationContext context = javaProject.newEvaluationContext();
++    EvaluationContextCompletionRequestor rc = new EvaluationContextCompletionRequestor();
++	context.codeComplete(start, start.length(), rc);
++	
++	assertTrue("acceptContext() method isn't call", rc.acceptContext);
++}
+ }

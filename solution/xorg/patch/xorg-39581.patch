@@ -1,0 +1,26 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 9b3d78e..696586a 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -6199,12 +6199,6 @@ XkbClientGone(pointer data,XID id)
+     return 1;
+ }
+ 
+-/*ARGSUSED*/
+-static void
+-XkbResetProc(ExtensionEntry *extEntry)
+-{
+-}
+-
+ void
+ XkbExtensionInit(void)
+ {
+@@ -6212,7 +6206,7 @@ XkbExtensionInit(void)
+ 
+     if ((extEntry = AddExtension(XkbName, XkbNumberEvents, XkbNumberErrors,
+ 				 ProcXkbDispatch, SProcXkbDispatch,
+-				 XkbResetProc, StandardMinorOpcode))) {
++				 NULL, StandardMinorOpcode))) {
+ 	XkbReqCode = (unsigned char)extEntry->base;
+ 	XkbEventBase = (unsigned char)extEntry->eventBase;
+ 	XkbErrorBase = (unsigned char)extEntry->errorBase;

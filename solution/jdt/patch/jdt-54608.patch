@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java
+index 5abd51a..9ae5bfc 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SetClasspathOperation.java
+@@ -22,6 +22,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
+ import org.eclipse.core.runtime.CoreException;
+ import org.eclipse.core.runtime.IPath;
+ import org.eclipse.core.runtime.Path;
++import org.eclipse.core.runtime.jobs.ISchedulingRule;
+ import org.eclipse.jdt.core.IClasspathEntry;
+ import org.eclipse.jdt.core.IJavaElement;
+ import org.eclipse.jdt.core.IJavaElementDelta;
+@@ -557,6 +558,9 @@ public class SetClasspathOperation extends JavaModelOperation {
+ 			updateAffectedProjects(project.getProject().getFullPath());
+ 		}
+ 	}
++	protected ISchedulingRule getSchedulingRule() {
++		return null; // no lock taken while setting the classpath
++	}
+ 	/*
+ 	 * Returns the source attachment flag for the delta between the 2 give source paths.
+ 	 * Returns either F_SOURCEATTACHED, F_SOURCEDETACHED, F_SOURCEATTACHED | F_SOURCEDETACHED

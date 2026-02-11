@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index 7e8334f..1a01e8d 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -2680,6 +2680,11 @@ protected void consumeEnterVariable() {
+ 			(AbstractVariableDeclaration) this.astStack[this.astPtr]; 
+ 		declaration.declarationSourceStart = previousVariable.declarationSourceStart;
+ 		declaration.modifiers = previousVariable.modifiers;
++		final Annotation[] annotations = previousVariable.annotations;
++		if (annotations != null) {
++			final int annotationsLength = annotations.length;
++			System.arraycopy(annotations, 0, declaration.annotations = new Annotation[annotationsLength], 0, annotationsLength);
++		}
+ 	}
+ 
+ 	if (extendedDimension == 0) {

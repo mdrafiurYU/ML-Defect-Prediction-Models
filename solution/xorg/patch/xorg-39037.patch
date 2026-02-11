@@ -1,0 +1,22 @@
+diff --git a/Xi/xiproperty.c b/Xi/xiproperty.c
+index 42f2078..17043be 100644
+--- a/Xi/xiproperty.c
++++ b/Xi/xiproperty.c
+@@ -304,7 +304,8 @@ XIChangeDeviceProperty (DeviceIntPtr dev, Atom property, Atom type,
+             XIPropertyHandlerPtr handler = dev->properties.handlers;
+             while(handler)
+             {
+-                if (!handler->SetProperty(dev, prop->propertyName, &new_value))
++                if (handler->SetProperty &&
++                    !handler->SetProperty(dev, prop->propertyName, &new_value))
+                 {
+                     if (new_value.data)
+                         xfree (new_value.data);
+@@ -373,6 +374,7 @@ XIGetDeviceProperty (DeviceIntPtr dev, Atom property, Bool pending)
+             XIPropertyHandlerPtr handler = dev->properties.handlers;
+             while(handler)
+             {
++                if (handler->GetProperty)
+                 handler->GetProperty(dev, prop->propertyName);
+                 handler = handler->next;
+             }

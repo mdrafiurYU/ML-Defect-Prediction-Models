@@ -1,0 +1,17 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/Test2BTerms.java b/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
+index d46b40a..42d432e 100644
+--- a/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
++++ b/lucene/src/test/org/apache/lucene/index/Test2BTerms.java
+@@ -143,6 +143,12 @@ public class Test2BTerms extends LuceneTestCase {
+             setMergePolicy(newLogMergePolicy(false, 10))
+     );
+ 
++    MergePolicy mp = w.getConfig().getMergePolicy();
++    if (mp instanceof LogByteSizeMergePolicy) {
++      // 1 petabyte:
++      ((LogByteSizeMergePolicy) mp).setMaxMergeMB(1024*1024*1024);
++    }
++
+     Document doc = new Document();
+     Field field = new Field("field", new MyTokenStream(TERMS_PER_DOC));
+     field.setOmitTermFreqAndPositions(true);

@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/modes/xf86Crtc.h b/hw/xfree86/modes/xf86Crtc.h
+index b87a325..a542e7f 100644
+--- a/hw/xfree86/modes/xf86Crtc.h
++++ b/hw/xfree86/modes/xf86Crtc.h
+@@ -692,7 +692,11 @@ xf86ProbeOutputModes (ScrnInfoPtr pScrn, int maxX, int maxY);
+ void
+ xf86SetScrnInfoModes (ScrnInfoPtr pScrn);
+ 
++#ifdef RANDR_13_INTERFACE
++int
++#else
+ Bool
++#endif
+ xf86CrtcScreenInit (ScreenPtr pScreen);
+ 
+ Bool

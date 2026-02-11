@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java
+index f3230c9..50f5376b 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/builder/State.java
+@@ -146,7 +146,7 @@ boolean isKnownPackage(String qualifiedPackageName) {
+ 
+ void record(String typeLocator, char[][][] qualifiedRefs, char[][] simpleRefs, char[] mainTypeName, ArrayList typeNames) {
+ 	if (typeNames.size() == 1 && CharOperation.equals(mainTypeName, (char[]) typeNames.get(0))) {
+-			references.put(typeLocator, new ReferenceCollection(qualifiedRefs, simpleRefs));
++		references.put(typeLocator, new ReferenceCollection(qualifiedRefs, simpleRefs));
+ 	} else {
+ 		char[][] definedTypeNames = new char[typeNames.size()][]; // can be empty when no types are defined
+ 		typeNames.toArray(definedTypeNames);

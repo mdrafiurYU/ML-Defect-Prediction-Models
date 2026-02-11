@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/EnglishMinimalStemFilterFactory.java b/solr/src/java/org/apache/solr/analysis/EnglishMinimalStemFilterFactory.java
+index f64ce24..5d2292e 100644
+--- a/solr/src/java/org/apache/solr/analysis/EnglishMinimalStemFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/EnglishMinimalStemFilterFactory.java
+@@ -25,7 +25,8 @@ import org.apache.lucene.analysis.en.EnglishMinimalStemFilter;
+  * <pre class="prettyprint" >
+  * &lt;fieldType name="text_enminstem" class="solr.TextField" positionIncrementGap="100"&gt;
+  *   &lt;analyzer&gt;
+- *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+  *     &lt;filter class="solr.EnglishMinimalStemFilterFactory"/&gt;
+  *   &lt;/analyzer&gt;
+  * &lt;/fieldType&gt;</pre>

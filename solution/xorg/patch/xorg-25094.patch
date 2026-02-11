@@ -1,0 +1,56 @@
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 4f96080..42b9df9 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -520,11 +520,47 @@ GetPointerEvents(xEvent *events, DeviceIntPtr pDev, int type, int buttons,
+         else {
+             events->u.u.detail = 0;
+         }
+-
+-        if (inputInfo.pointer->devPrivates[CoreDevicePrivatesIndex].ptr !=
+-            pDev)
+-            inputInfo.pointer->devPrivates[CoreDevicePrivatesIndex].ptr = pDev;
+     }
+ 
+     return num_events;
+ }
++
++void SwitchCoreKeyboard(DeviceIntPtr pDev)
++{
++    KeyClassPtr ckeyc = inputInfo.keyboard->key;
++
++    if (inputInfo.keyboard->devPrivates[CoreDevicePrivatesIndex].ptr != pDev) {
++        memcpy(ckeyc->modifierMap, pDev->key->modifierMap, MAP_LENGTH);
++        if (ckeyc->modifierKeyMap)
++            xfree(ckeyc->modifierKeyMap);
++        ckeyc->modifierKeyMap = xalloc(8 * pDev->key->maxKeysPerModifier);
++        memcpy(ckeyc->modifierKeyMap, pDev->key->modifierKeyMap,
++                (8 * pDev->key->maxKeysPerModifier));
++
++        ckeyc->maxKeysPerModifier = pDev->key->maxKeysPerModifier;
++        ckeyc->curKeySyms.minKeyCode = pDev->key->curKeySyms.minKeyCode;
++        ckeyc->curKeySyms.maxKeyCode = pDev->key->curKeySyms.maxKeyCode;
++        SetKeySymsMap(&ckeyc->curKeySyms, &pDev->key->curKeySyms);
++
++#ifdef XKB
++        if (!noXkbExtension && pDev->key->xkbInfo && pDev->key->xkbInfo->desc) {
++            if (!XkbCopyKeymap(pDev->key->xkbInfo->desc, ckeyc->xkbInfo->desc,
++                               True))
++                FatalError("Couldn't pivot keymap from device to core!\n");
++        }
++#endif
++
++        SendMappingNotify(MappingKeyboard, ckeyc->curKeySyms.minKeyCode,
++                          (ckeyc->curKeySyms.maxKeyCode -
++                           ckeyc->curKeySyms.minKeyCode),
++                          serverClient);
++        inputInfo.keyboard->devPrivates[CoreDevicePrivatesIndex].ptr = pDev;
++    }
++}
++
++/* Currently a no-op. */
++void SwitchCorePointer(DeviceIntPtr pDev)
++{
++    if (inputInfo.pointer->devPrivates[CoreDevicePrivatesIndex].ptr != pDev)
++        inputInfo.pointer->devPrivates[CoreDevicePrivatesIndex].ptr = pDev;
++}

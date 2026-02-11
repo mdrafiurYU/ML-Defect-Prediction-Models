@@ -1,0 +1,13 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index 1e3b4d6..a47df03 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -2031,6 +2031,8 @@ SELinuxExtensionInit(INITARGS)
+ 			    ProcSELinuxDispatch, SProcSELinuxDispatch,
+ 			    SELinuxResetProc, StandardMinorOpcode);
+ 
++    AddExtensionAlias("Flask", extEntry);
++
+     /* Label objects that were created before we could register ourself */
+     SELinuxLabelInitial();
+ }

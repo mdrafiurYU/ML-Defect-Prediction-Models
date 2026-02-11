@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java
+index c9a4364..1e953aa 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ForStatement.java
+@@ -280,7 +280,7 @@ public class ForStatement extends Statement {
+ 			output.append(';');
+ 		else {
+ 			output.append('\n');
+-			action.printStatement(tab + 1, output); //$NON-NLS-1$
++			action.printStatement(tab + 1, output);
+ 		}
+ 		return output.append(';');
+ 	}

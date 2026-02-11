@@ -1,0 +1,17 @@
+diff --git a/lucene/contrib/queries/src/java/org/apache/lucene/search/FieldCacheRewriteMethod.java b/lucene/contrib/queries/src/java/org/apache/lucene/search/FieldCacheRewriteMethod.java
+index 5e83c75..8539f85 100644
+--- a/lucene/contrib/queries/src/java/org/apache/lucene/search/FieldCacheRewriteMethod.java
++++ b/lucene/contrib/queries/src/java/org/apache/lucene/search/FieldCacheRewriteMethod.java
+@@ -123,7 +123,11 @@ public final class FieldCacheRewriteMethod extends MultiTermQuery.RewriteMethod
+         public TermsEnum iterator() throws IOException {
+           return fcsi.getTermsEnum();
+         }
+-        
++
++        @Override
++        public long getSumTotalTermFreq() {
++          return -1;
++        }
+       });
+       
+       assert termsEnum != null;

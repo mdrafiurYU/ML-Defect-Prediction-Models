@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/shadowfb/shadow.c b/hw/xfree86/shadowfb/shadow.c
+index 7d20a65..ff775ef 100644
+--- a/hw/xfree86/shadowfb/shadow.c
++++ b/hw/xfree86/shadowfb/shadow.c
+@@ -159,7 +159,7 @@ static DevPrivateKey ShadowGCKey = &ShadowGCKeyIndex;
+ 
+ 
+ 
+-_X_EXPORT Bool
++Bool
+ ShadowFBInit2 (
+     ScreenPtr		pScreen,
+     RefreshAreaFuncPtr  preRefreshArea,
+@@ -212,7 +212,7 @@ ShadowFBInit2 (
+     return TRUE;
+ }
+ 
+-_X_EXPORT Bool
++Bool
+ ShadowFBInit (
+     ScreenPtr		pScreen,
+     RefreshAreaFuncPtr  refreshArea

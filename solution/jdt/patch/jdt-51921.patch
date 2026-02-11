@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/FileSystem.java b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/FileSystem.java
+index d697e85..f6f2e50 100644
+--- a/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/FileSystem.java
++++ b/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/FileSystem.java
+@@ -39,6 +39,13 @@ public class FileSystem implements INameEnvironment, SuffixConstants {
+ 		 */
+ 		String normalizedPath();
+ 		/**
++		 * Return the path for file based classpath entries. This is an absolute path
++		 * ending with a file separator for directories, an absolute path including the '.jar'
++		 * (resp. '.zip') extension for jar (resp. zip) files.
++		 * @return the path for file based classpath entries
++		 */
++		String getPath();
++		/**
+ 		 * Initialize the entry
+ 		 */
+ 		void initialize() throws IOException;

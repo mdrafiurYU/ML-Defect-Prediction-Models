@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/index/IndexSplitter.java b/lucene/contrib/misc/src/java/org/apache/lucene/index/IndexSplitter.java
+index b05fd98..e1c9cde 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/index/IndexSplitter.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/index/IndexSplitter.java
+@@ -147,6 +147,7 @@ public class IndexSplitter {
+     destDir.mkdirs();
+     FSDirectory destFSDir = FSDirectory.open(destDir);
+     SegmentInfos destInfos = new SegmentInfos(codecs);
++    destInfos.counter = infos.counter;
+     for (String n : segs) {
+       SegmentInfo info = getInfo(n);
+       destInfos.add(info);

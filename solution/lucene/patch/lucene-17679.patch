@@ -1,0 +1,26 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java
+index 1c5f757..ffbce61 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/intblock/FixedIntBlockIndexOutput.java
+@@ -77,17 +77,17 @@ public abstract class FixedIntBlockIndexOutput extends IntIndexOutput {
+     @Override
+     public void write(IndexOutput indexOut, boolean absolute) throws IOException {
+       if (absolute) {
+-        indexOut.writeVLong(fp);
+         indexOut.writeVInt(upto);
++        indexOut.writeVLong(fp);
+       } else if (fp == lastFP) {
+         // same block
+-        indexOut.writeVLong(0);
+         assert upto >= lastUpto;
+-        indexOut.writeVInt(upto - lastUpto);
++        int uptoDelta = upto - lastUpto;
++        indexOut.writeVInt(uptoDelta << 1 | 1);
+       } else {      
+         // new block
++        indexOut.writeVInt(upto << 1);
+         indexOut.writeVLong(fp - lastFP);
+-        indexOut.writeVInt(upto);
+       }
+       lastUpto = upto;
+       lastFP = fp;

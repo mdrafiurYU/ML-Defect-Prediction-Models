@@ -1,0 +1,27 @@
+diff --git a/Xi/chgdctl.c b/Xi/chgdctl.c
+index 26b79f6..8c97d8f 100644
+--- a/Xi/chgdctl.c
++++ b/Xi/chgdctl.c
+@@ -245,20 +245,9 @@ ProcXChangeDeviceControl(ClientPtr client)
+ 
+         break;
+     case DEVICE_CORE:
+-        c = (xDeviceCoreCtl *)&stuff[1];
+-
+-        status = ChangeDeviceControl(client, dev, (xDeviceCtl *) c);
+-
+-        if (status == Success) {
+-            dev->coreEvents = c->status;
+-            ret = Success;
+-        } else if (status == DeviceBusy) {
+-            rep.status = DeviceBusy;
+-            ret = Success;
+-        } else {
++        /* Sorry, no device core switching no more. If you want a device to
++         * send core events, attach it to a master device */
+             ret = BadMatch;
+-        }
+-
+         break;
+     case DEVICE_ENABLE:
+         e = (xDeviceEnableCtl *)&stuff[1];

@@ -1,0 +1,32 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTSyntaxErrorPropagator.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTSyntaxErrorPropagator.java
+index f423a29..c2c10c6 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTSyntaxErrorPropagator.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTSyntaxErrorPropagator.java
+@@ -119,6 +119,27 @@ class ASTSyntaxErrorPropagator extends ASTVisitor {
+ 	/*
+ 	 * Method declared on ASTVisitor.
+ 	 */
++	public boolean visit(AnnotationTypeDeclaration node) {
++		return checkAndTagAsMalformed(node);		
++	}
++	
++	/*
++	 * Method declared on ASTVisitor.
++	 */
++	public boolean visit(EnumDeclaration node) {
++		return checkAndTagAsMalformed(node);		
++	}
++	
++	/*
++	 * Method declared on ASTVisitor.
++	 */
++	public boolean visit(TypeDeclaration node) {
++		return checkAndTagAsMalformed(node);		
++	}
++	
++	/*
++	 * Method declared on ASTVisitor.
++	 */
+ 	public boolean visit(Initializer node) {
+ 		return checkAndTagAsMalformed(node);		
+ 	}

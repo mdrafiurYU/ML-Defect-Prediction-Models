@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
+index 854054e..3f4f6f7 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/SingleNameReference.java
+@@ -342,7 +342,7 @@ public class SingleNameReference extends NameReference implements OperatorIds {
+ 							codeStream.generateConstant(fieldConstant, implicitConversion);
+ 						}
+ 					} else {
+-						if (valueRequired || currentScope.compilerOptions().complianceLevel >= ClassFileConstants.JDK1_4) {
++						if (valueRequired) {
+ 							boolean isStatic = fieldBinding.isStatic();
+ 							if (!isStatic) {
+ 								if ((bits & DepthMASK) != 0) {

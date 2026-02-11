@@ -1,0 +1,31 @@
+diff --git a/hw/xfree86/parser/Monitor.c b/hw/xfree86/parser/Monitor.c
+index 9d53312..3873077 100644
+--- a/hw/xfree86/parser/Monitor.c
++++ b/hw/xfree86/parser/Monitor.c
+@@ -842,7 +842,7 @@ xf86freeModesList (XF86ConfModesPtr ptr)
+ 	}
+ }
+ 
+-XF86ConfMonitorPtr
++_X_EXPORT XF86ConfMonitorPtr
+ xf86findMonitor (const char *ident, XF86ConfMonitorPtr p)
+ {
+ 	while (p)
+@@ -855,7 +855,7 @@ xf86findMonitor (const char *ident, XF86ConfMonitorPtr p)
+ 	return (NULL);
+ }
+ 
+-XF86ConfModesPtr
++_X_EXPORT XF86ConfModesPtr
+ xf86findModes (const char *ident, XF86ConfModesPtr p)
+ {
+ 	while (p)
+@@ -868,7 +868,7 @@ xf86findModes (const char *ident, XF86ConfModesPtr p)
+ 	return (NULL);
+ }
+ 
+-XF86ConfModeLinePtr
++_X_EXPORT XF86ConfModeLinePtr
+ xf86findModeLine (const char *ident, XF86ConfModeLinePtr p)
+ {
+ 	while (p)

@@ -1,0 +1,13 @@
+diff --git a/include/screenint.h b/include/screenint.h
+index 6d074a3..4e6c574 100644
+--- a/include/screenint.h
++++ b/include/screenint.h
+@@ -55,7 +55,7 @@ typedef struct _Visual *VisualPtr;
+ typedef struct _Depth  *DepthPtr;
+ typedef struct _Screen *ScreenPtr;
+ 
+-extern int AddScreen(
++extern _X_EXPORT int AddScreen(
+     Bool (* /*pfnInit*/)(
+ 	int /*index*/,
+ 	ScreenPtr /*pScreen*/,

@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+index 58c8288..6df83d2 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterOnDiskFull.java
+@@ -230,7 +230,7 @@ public class TestIndexWriterOnDiskFull extends LuceneTestCase {
+         }
+         
+         // Make a new dir that will enforce disk usage:
+-        MockDirectoryWrapper dir = new MockDirectoryWrapper(random, new RAMDirectory(startDir));
++        MockDirectoryWrapper dir = new MockDirectoryWrapper(random, new RAMDirectory(startDir, IOContext.DEFAULT));
+         writer = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer(random)).setOpenMode(OpenMode.APPEND).setMergePolicy(newLogMergePolicy()));
+         IOException err = null;
+         writer.setInfoStream(VERBOSE ? System.out : null);

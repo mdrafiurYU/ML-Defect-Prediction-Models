@@ -1,0 +1,13 @@
+diff --git a/hw/xnest/Window.c b/hw/xnest/Window.c
+index f87a1ba..0955e61 100644
+--- a/hw/xnest/Window.c
++++ b/hw/xnest/Window.c
+@@ -39,7 +39,7 @@ is" without express or implied warranty.
+ #include "Events.h"
+ #include "Args.h"
+ 
+-int xnestWindowPrivateIndex;
++DevPrivateKey xnestWindowPrivateKey = &xnestWindowPrivateKey;
+ 
+ static int
+ xnestFindWindowMatch(WindowPtr pWin, pointer ptr)

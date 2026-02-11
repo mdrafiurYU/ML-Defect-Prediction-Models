@@ -1,0 +1,43 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java
+index cb53720..ba1e305 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/DefaultSecurityManager.java
+@@ -27,6 +27,7 @@ import org.apache.jackrabbit.core.config.SecurityConfig;
+ import org.apache.jackrabbit.core.config.WorkspaceConfig;
+ import org.apache.jackrabbit.core.config.WorkspaceSecurityConfig;
+ import org.apache.jackrabbit.core.config.SecurityManagerConfig;
++import org.apache.jackrabbit.core.config.BeanConfig;
+ import org.apache.jackrabbit.core.security.AMContext;
+ import org.apache.jackrabbit.core.security.AccessManager;
+ import org.apache.jackrabbit.core.security.JackrabbitSecurityManager;
+@@ -76,7 +77,6 @@ import java.util.Set;
+  */
+ public class DefaultSecurityManager implements JackrabbitSecurityManager {
+ 
+-    // TODO: should rather be placed in the core.security package. However protected access to SystemSession required to move here.
+     /**
+      * the default logger
+      */
+@@ -246,10 +246,18 @@ public class DefaultSecurityManager implements JackrabbitSecurityManager {
+      * @return user manager
+      * @throws RepositoryException if an error occurs
+      */
+-    protected UserManagerImpl createUserManager(SessionImpl session)
+-            throws RepositoryException {
+-
+-        return new UserManagerImpl(session, adminId);
++    protected UserManagerImpl createUserManager(SessionImpl session) throws RepositoryException {
++        BeanConfig umc = repository.getConfig().getSecurityConfig().getSecurityManagerConfig().getUserManagerConfig();
++        Properties config = null;
++        if (umc != null) {
++            // TODO: deal with other umgr implementations.
++            String clName = umc.getClassName();
++            if (clName != null && !(UserManagerImpl.class.getName().equals(clName) || clName.length() == 0)) {
++                log.warn("Unsupported custom UserManager implementation: '" + clName + "' -> Ignored.");
++            }
++            config = umc.getParameters();
++        }
++        return new UserManagerImpl(session, adminId, config);
+     }
+ 
+     /**

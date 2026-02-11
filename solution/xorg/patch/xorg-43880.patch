@@ -1,0 +1,13 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 7145e12..3fcb3e2 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -585,6 +585,8 @@ ExaDoPrepareAccess(DrawablePtr pDrawable, int index)
+ 
+     if (index >= EXA_PREPARE_AUX_DEST &&
+ 	!(pExaScr->info->flags & EXA_SUPPORTS_PREPARE_AUX)) {
++	if (pExaPixmap->score == EXA_PIXMAP_SCORE_PINNED)
++	    FatalError("Unsupported AUX indices used on a pinned pixmap.\n");
+ 	exaMoveOutPixmap (pPixmap);
+ 	return FALSE;
+     }

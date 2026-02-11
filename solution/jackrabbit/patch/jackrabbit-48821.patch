@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PropertyDefTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PropertyDefTest.java
+index ba0e1e5..d4d233d 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PropertyDefTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/nodetype/PropertyDefTest.java
+@@ -200,6 +200,9 @@ public class PropertyDefTest extends AbstractJCRTest {
+                     case PropertyType.REFERENCE:
+                     case PropertyType.BOOLEAN:
+                     case PropertyType.UNDEFINED:
++                    case PropertyType.WEAKREFERENCE:
++                    case PropertyType.DECIMAL:
++                    case PropertyType.URI:
+                         // success
+                         break;
+                     default:

@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/analysis/GreekLowerCaseFilterFactory.java b/solr/src/java/org/apache/solr/analysis/GreekLowerCaseFilterFactory.java
+index 4e87773..2c3a043 100644
+--- a/solr/src/java/org/apache/solr/analysis/GreekLowerCaseFilterFactory.java
++++ b/solr/src/java/org/apache/solr/analysis/GreekLowerCaseFilterFactory.java
+@@ -26,7 +26,17 @@ import org.apache.lucene.analysis.el.GreekLowerCaseFilter;
+ import org.apache.solr.common.SolrException;
+ import org.apache.solr.common.SolrException.ErrorCode;
+ 
+-/** Factory for {@link GreekLowerCaseFilter} */
++/** 
++ * Factory for {@link GreekLowerCaseFilter}. 
++ * <pre class="prettyprint" >
++ * &lt;fieldType name="text_glc" class="solr.TextField" positionIncrementGap="100"&gt;
++ *   &lt;analyzer&gt;
++ *     &lt;tokenizer class="solr.WhitespaceTokenizerFactory"/&gt;
++ *     &lt;filter class="solr.GreekLowerCaseFilterFactory"/&gt;
++ *   &lt;/analyzer&gt;
++ * &lt;/fieldType&gt;</pre> 
++ * @version $Id$
++ */
+ public class GreekLowerCaseFilterFactory extends BaseTokenFilterFactory 
+ {

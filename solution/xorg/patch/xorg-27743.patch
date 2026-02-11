@@ -1,0 +1,16 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 9f42184..0739de6 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -213,7 +213,11 @@ CoreKeyboardBell(int volume, DeviceIntPtr pDev, pointer arg, int something)
+ {
+     KeybdCtrl *ctrl = arg;
+ 
++#ifdef __DARWIN__
++    // not yet implemented :(
++#else
+     DDXRingBell(volume, ctrl->bell_pitch, ctrl->bell_duration);
++#endif
+ }
+ 
+ static void

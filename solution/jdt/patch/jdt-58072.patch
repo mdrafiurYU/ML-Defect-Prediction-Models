@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java
+index 52f9e41..809efa7 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/Compliance_1_5.java
+@@ -42,7 +42,7 @@ protected Map getCompilerOptions() {
+ 	return options;
+ }
+ public static Test suite() {
+-		return buildTestSuite(testClass());
++		return buildComparableTestSuite(testClass());
+ }
+ // Use this static initializer to specify subset for tests
+ // All specified tests which does not belong to the class are skipped...

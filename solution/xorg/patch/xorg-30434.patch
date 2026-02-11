@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 0afbe12..9690bc5 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -230,9 +230,6 @@ PostConfigInit(void)
+ #ifdef SIGXFSZ
+        signal(SIGXFSZ,xf86SigHandler);
+ #endif
+-#ifdef MEMDEBUG
+-       signal(SIGUSR2,xf86SigMemDebug);
+-#endif
+     }
+ 
+ #ifdef XF86PM

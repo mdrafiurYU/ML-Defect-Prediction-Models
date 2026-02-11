@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
+index a290699..4e1f05d 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MethodLocator.java
+@@ -255,7 +255,7 @@ protected int matchMethod(MethodBinding method, boolean skipImpossibleArg) {
+ 	return level;
+ }
+ private boolean matchOverriddenMethod(ReferenceBinding type, MethodBinding method, MethodBinding matchMethod) {
+-	if (type == null) return false;
++	if (type == null || this.pattern.selector == null) return false;
+ 
+ 	// matches superclass
+ 	if (!type.isInterface() && !CharOperation.equals(type.compoundName, TypeConstants.JAVA_LANG_OBJECT)) {

@@ -1,0 +1,36 @@
+diff --git a/Xi/opendev.c b/Xi/opendev.c
+index 45bea7a..54a6dda 100644
+--- a/Xi/opendev.c
++++ b/Xi/opendev.c
+@@ -82,8 +82,7 @@ extern	CARD8		event_base [];
+  */
+ 
+ int
+-SProcXOpenDevice(client)
+-    register ClientPtr client;
++SProcXOpenDevice(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -99,8 +98,7 @@ SProcXOpenDevice(client)
+  */
+ 
+ int
+-ProcXOpenDevice(client)
+-    register ClientPtr client;
++ProcXOpenDevice(register ClientPtr client)
+     {
+     xInputClassInfo evbase [numInputClasses];
+     Bool enableit = FALSE;
+@@ -192,10 +190,7 @@ ProcXOpenDevice(client)
+  */
+ 
+ void
+-SRepXOpenDevice (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xOpenDeviceReply	*rep;
++SRepXOpenDevice (ClientPtr client, int size, xOpenDeviceReply *rep)
+     {
+     register char n;
+ 

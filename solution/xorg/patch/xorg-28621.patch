@@ -1,0 +1,57 @@
+diff --git a/hw/xfree86/parser/Monitor.c b/hw/xfree86/parser/Monitor.c
+index 9dd0b1b..4bff4b2 100644
+--- a/hw/xfree86/parser/Monitor.c
++++ b/hw/xfree86/parser/Monitor.c
+@@ -124,7 +124,21 @@ static xf86ConfigSymTabRec ModeTab[] =
+ 
+ #define CLEANUP xf86freeModeLineList
+ 
+-XF86ConfModeLinePtr
++static void
++xf86freeModeLineList (XF86ConfModeLinePtr ptr)
++{
++	XF86ConfModeLinePtr prev;
++	while (ptr)
++	{
++		TestFree (ptr->ml_identifier);
++		TestFree (ptr->ml_comment);
++		prev = ptr;
++		ptr = ptr->list.next;
++		xf86conffree (prev);
++	}
++}
++
++static XF86ConfModeLinePtr
+ xf86parseModeLine (void)
+ {
+ 	int token;
+@@ -253,7 +267,7 @@ xf86parseModeLine (void)
+ 	return (ptr);
+ }
+ 
+-XF86ConfModeLinePtr
++static XF86ConfModeLinePtr
+ xf86parseVerboseMode (void)
+ {
+ 	int token, token2;
+@@ -830,20 +844,6 @@ xf86freeModesList (XF86ConfModesPtr ptr)
+ 	}
+ }
+ 
+-void
+-xf86freeModeLineList (XF86ConfModeLinePtr ptr)
+-{
+-	XF86ConfModeLinePtr prev;
+-	while (ptr)
+-	{
+-		TestFree (ptr->ml_identifier);
+-		TestFree (ptr->ml_comment);
+-		prev = ptr;
+-		ptr = ptr->list.next;
+-		xf86conffree (prev);
+-	}
+-}
+-
+ XF86ConfMonitorPtr
+ xf86findMonitor (const char *ident, XF86ConfMonitorPtr p)
+ {

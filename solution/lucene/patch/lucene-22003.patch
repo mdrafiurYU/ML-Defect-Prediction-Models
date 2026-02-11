@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java b/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java
+index fc8aa66..7b6ead9 100644
+--- a/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java
++++ b/lucene/src/java/org/apache/lucene/util/automaton/fst/PairOutputs.java
+@@ -43,7 +43,7 @@ public class PairOutputs<A,B> extends Outputs<PairOutputs.Pair<A,B>> {
+       this.output2 = output2;
+     }
+ 
+-    @Override @SuppressWarnings("unchecked")
++    @Override @SuppressWarnings("rawtypes")
+     public boolean equals(Object other) {
+       if (other == this) {
+         return true;

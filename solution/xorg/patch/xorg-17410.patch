@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Opt.h b/hw/xfree86/common/xf86Opt.h
+index 7187323..d207ec0 100644
+--- a/hw/xfree86/common/xf86Opt.h
++++ b/hw/xfree86/common/xf86Opt.h
+@@ -29,6 +29,10 @@
+ 
+ /* Option handling things that ModuleSetup procs can use */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86_OPT_H_
+ #define _XF86_OPT_H_
+ 

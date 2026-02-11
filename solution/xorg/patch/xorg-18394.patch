@@ -1,0 +1,13 @@
+diff --git a/render/mipict.c b/render/mipict.c
+index 59707ea..c7b6c6b 100644
+--- a/render/mipict.c
++++ b/render/mipict.c
+@@ -629,6 +629,8 @@ miPictureInit (ScreenPtr pScreen, PictFormatPtr formats, int nformats)
+     ps->UpdateIndexed = miUpdateIndexed;
+     ps->ChangePictureTransform = miChangePictureTransform;
+     ps->ChangePictureFilter = miChangePictureFilter;
++    ps->RealizeGlyph = miRealizeGlyph;
++    ps->UnrealizeGlyph = miUnrealizeGlyph;
+ 
+     /* MI rendering routines */
+     ps->Composite	= 0;			/* requires DDX support */

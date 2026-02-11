@@ -1,0 +1,39 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
+index 596ca26..b03e2b7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/observation/EventStateCollection.java
+@@ -88,6 +88,11 @@ public final class EventStateCollection {
+     private final Path pathPrefix;
+ 
+     /**
++     * Timestamp when this collection was created.
++     */
++    private long timestamp = System.currentTimeMillis();
++
++    /**
+      * Creates a new empty <code>EventStateCollection</code>.
+      * <p/>
+      * Because the item state manager in {@link #createEventStates} may represent
+@@ -434,6 +439,22 @@ public final class EventStateCollection {
+     }
+ 
+     /**
++     * @return the timestamp when this collection was created.
++     */
++    public long getTimestamp() {
++        return timestamp;
++    }
++
++    /**
++     * Sets a new timestamp for this collection.
++     *
++     * @param timestamp the new timestamp value.
++     */
++    public void setTimestamp(long timestamp) {
++        this.timestamp = timestamp;
++    }
++
++    /**
+      * Returns an iterator over {@link EventState} instance.
+      *
+      * @return an iterator over {@link EventState} instance.

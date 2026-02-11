@@ -1,0 +1,12 @@
+diff --git a/hw/xquartz/quartzKeyboard.h b/hw/xquartz/quartzKeyboard.h
+index f27fcde..c5f22bf 100644
+--- a/hw/xquartz/quartzKeyboard.h
++++ b/hw/xquartz/quartzKeyboard.h
+@@ -36,6 +36,7 @@
+ // unshifted, shifted, modeswitch unshifted, modeswitch shifted
+ #define GLYPHS_PER_KEY  4
+ #define NUM_KEYCODES    248	// NX_NUMKEYCODES might be better
++#define MIN_KEYCODE     XkbMinLegalKeyCode     // unfortunately, this isn't 0...
+ #define MAX_KEYCODE     NUM_KEYCODES + MIN_KEYCODE - 1
+ 
+ typedef struct darwinKeyboardInfo_struct {

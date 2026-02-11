@@ -1,0 +1,15 @@
+diff --git a/hw/dmx/dmx.h b/hw/dmx/dmx.h
+index 18e75de..becb2da 100644
+--- a/hw/dmx/dmx.h
++++ b/hw/dmx/dmx.h
+@@ -51,6 +51,10 @@
+ #ifndef DMX_H
+ #define DMX_H
+ 
++#if HAVE_DMX_CONFIG_H
++#include <dmx-config.h>
++#endif
++
+ #include "gcstruct.h"
+ 
+ /* Handle client-side include files in one place. */

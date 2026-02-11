@@ -1,0 +1,37 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+index 8989142..c2ce61c 100644
+--- a/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
++++ b/lucene/src/test/org/apache/lucene/util/LuceneTestCase.java
+@@ -751,7 +751,11 @@ public abstract class LuceneTestCase extends Assert {
+       c.setMaxThreadStates(_TestUtil.nextInt(r, 1, 20));
+     }
+ 
+-    c.setMergePolicy(newLogMergePolicy(r));
++    if (r.nextBoolean()) {
++      c.setMergePolicy(new MockRandomMergePolicy(r));
++    } else {
++      c.setMergePolicy(newLogMergePolicy());
++    }
+ 
+     c.setReaderPooling(r.nextBoolean());
+     c.setReaderTermsIndexDivisor(_TestUtil.nextInt(r, 1, 4));
+@@ -774,6 +778,19 @@ public abstract class LuceneTestCase extends Assert {
+     return logmp;
+   }
+ 
++  public static LogMergePolicy newInOrderLogMergePolicy() {
++    LogMergePolicy logmp = newLogMergePolicy();
++    logmp.setRequireContiguousMerge(true);
++    return logmp;
++  }
++
++  public static LogMergePolicy newInOrderLogMergePolicy(int mergeFactor) {
++    LogMergePolicy logmp = newLogMergePolicy();
++    logmp.setMergeFactor(mergeFactor);
++    logmp.setRequireContiguousMerge(true);
++    return logmp;
++  }
++
+   public static LogMergePolicy newLogMergePolicy(boolean useCFS) {
+     LogMergePolicy logmp = newLogMergePolicy();
+     logmp.setUseCompoundFile(useCFS);

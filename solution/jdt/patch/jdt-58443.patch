@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InnerEmulationTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InnerEmulationTest.java
+index aea33b6..7b4f378 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InnerEmulationTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/InnerEmulationTest.java
+@@ -27,7 +27,7 @@ public InnerEmulationTest(String name) {
+ 	super(name);
+ }
+ public static Test suite() {
+-	return buildAllCompliancesRegressionTestSetupSuite(testClass());
++	return buildAllCompliancesTestSuite(testClass());
+ }
+ /**
+  * Protected access emulation : should be performed onto implicit field and method accesses

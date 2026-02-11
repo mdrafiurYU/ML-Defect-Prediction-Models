@@ -1,0 +1,15 @@
+diff --git a/miext/layer/layerwin.c b/miext/layer/layerwin.c
+index 1119e60..7afe90a 100644
+--- a/miext/layer/layerwin.c
++++ b/miext/layer/layerwin.c
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "layerstr.h"
+ 
+ static LayerListPtr

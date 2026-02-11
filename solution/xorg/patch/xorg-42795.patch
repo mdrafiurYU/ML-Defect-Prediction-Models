@@ -1,0 +1,20 @@
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 7c1edea..90ce011 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -43,11 +43,11 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #include <X11/extensions/XI.h>
+ 
+-	int	XkbEventBase;
++_X_EXPORT int	XkbEventBase;
+ static	int	XkbErrorBase;
+-	int	XkbReqCode;
+-	int	XkbKeyboardErrorCode;
+-CARD32	xkbDebugFlags = 0;
++_X_EXPORT int	XkbReqCode;
++_X_EXPORT int	XkbKeyboardErrorCode;
++_X_EXPORT CARD32 xkbDebugFlags = 0;
+ static CARD32	xkbDebugCtrls = 0;
+ 
+ static RESTYPE	RT_XKBCLIENT;

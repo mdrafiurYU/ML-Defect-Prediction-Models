@@ -1,0 +1,15 @@
+diff --git a/os/auth.c b/os/auth.c
+index 8954f28..19c5534 100644
+--- a/os/auth.c
++++ b/os/auth.c
+@@ -33,6 +33,10 @@ from The Open Group.
+  * Author:  Keith Packard, MIT X Consortium
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifdef K5AUTH
+ # include   <krb5/krb5.h>
+ #endif

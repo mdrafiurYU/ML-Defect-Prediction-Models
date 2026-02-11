@@ -1,0 +1,15 @@
+diff --git a/Xprint/pcl/PclPixel.c b/Xprint/pcl/PclPixel.c
+index 372a54e..bfad618 100644
+--- a/Xprint/pcl/PclPixel.c
++++ b/Xprint/pcl/PclPixel.c
+@@ -46,6 +46,10 @@ copyright holders.
+ */
+ /* $XFree86: xc/programs/Xserver/Xprint/pcl/PclPixel.c,v 1.6tsi Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <stdio.h>
+ 
+ #include "windowstr.h"

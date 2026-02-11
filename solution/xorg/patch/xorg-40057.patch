@@ -1,0 +1,14 @@
+diff --git a/Xext/geext.c b/Xext/geext.c
+index 171fda1..8de4e7c 100644
+--- a/Xext/geext.c
++++ b/Xext/geext.c
+@@ -40,7 +40,8 @@
+ 
+ int GEEventBase;
+ int GEErrorBase;
+-DevPrivateKey GEClientPrivateKey = &GEClientPrivateKey;
++static int GEClientPrivateKeyIndex;
++DevPrivateKey GEClientPrivateKey = &GEClientPrivateKeyIndex;
+ int GEEventType; /* The opcode for all GenericEvents will have. */
+ 
+ int RT_GECLIENT  = 0;

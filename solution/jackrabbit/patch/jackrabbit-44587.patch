@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/name/NameFactoryImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/name/NameFactoryImpl.java
+index bc4f0b4..f42858b 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/name/NameFactoryImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/name/NameFactoryImpl.java
+@@ -87,7 +87,7 @@ public class NameFactoryImpl implements NameFactory {
+         private final String localName;
+ 
+         private NameImpl(String namespaceURI, String localName) {
+-            // internalize namespaceURI to improve performance of comparisons.            
++            // internalize namespaceURI to improve performance of comparisons.
+             this.namespaceURI = namespaceURI.intern();
+             // localName is not internalized in order not to risk huge perm
+             // space for large repositories

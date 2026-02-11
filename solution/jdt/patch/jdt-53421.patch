@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/LabelStatementCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/LabelStatementCompletionTest.java
+index c19bedb..aaf6807 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/LabelStatementCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/LabelStatementCompletionTest.java
+@@ -10,6 +10,8 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ /**
+  * Completion is expected to be in a LabeledStatement.
+  */
+@@ -17,6 +19,9 @@ public class LabelStatementCompletionTest extends AbstractCompletionTest {
+ public LabelStatementCompletionTest(String testName) {
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(LabelStatementCompletionTest.class);
++}
+ /*
+  * Completion inside an inner class defined inside a labeled statement.
+  */

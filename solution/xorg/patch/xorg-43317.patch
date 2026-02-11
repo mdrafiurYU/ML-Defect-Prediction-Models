@@ -1,0 +1,13 @@
+diff --git a/miext/cw/cw.c b/miext/cw/cw.c
+index 56066fe..74000ff 100644
+--- a/miext/cw/cw.c
++++ b/miext/cw/cw.c
+@@ -484,7 +484,7 @@ miInitializeCompositeWrapper(ScreenPtr pScreen)
+     if (!dixRequestPrivate(cwGCKey, sizeof(cwGCRec)))
+ 	return;
+ 
+-    pScreenPriv = (cwScreenPtr)xalloc(sizeof(cwScreenRec));
++    pScreenPriv = xalloc(sizeof(cwScreenRec));
+     if (!pScreenPriv)
+ 	return;
+ 

@@ -1,0 +1,22 @@
+diff --git a/randr/randr.c b/randr/randr.c
+index 3911a34..a0e49ab 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -1302,6 +1302,17 @@ Bool RRRegisterRate (ScreenPtr		pScreen,
+     return TRUE;
+ }
+ 
++Rotation
++RRGetRotation(ScreenPtr pScreen)
++{
++    rrScrPriv (pScreen);
++
++    if (!pScrPriv)
++	return RR_Rotate_0;
++
++    return pScrPriv->rotation;
++}
++
+ void
+ RRSetCurrentConfig (ScreenPtr		pScreen,
+ 		    Rotation		rotation,

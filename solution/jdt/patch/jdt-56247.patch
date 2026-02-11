@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java
+index e75d52b..29a4263 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/Javadoc.java
+@@ -191,7 +191,7 @@ public class Javadoc extends ASTNode {
+ 			if (reportMissing && methDecl != null) {
+ 				if (methDecl.isMethod()) {
+ 					MethodDeclaration meth = (MethodDeclaration) methDecl;
+-					if (meth.binding.returnType != VoidBinding) {
++					if (meth.binding.returnType != TypeBinding.VOID) {
+ 						// method with return should have @return tag
+ 						methScope.problemReporter().javadocMissingReturnTag(meth.returnType.sourceStart, meth.returnType.sourceEnd, methDecl.binding.modifiers);
+ 					}

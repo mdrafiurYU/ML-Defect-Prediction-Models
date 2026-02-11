@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/TopScoreDocCollector.java b/lucene/src/java/org/apache/lucene/search/TopScoreDocCollector.java
+index 68b65ea..08a6897 100644
+--- a/lucene/src/java/org/apache/lucene/search/TopScoreDocCollector.java
++++ b/lucene/src/java/org/apache/lucene/search/TopScoreDocCollector.java
+@@ -109,6 +109,10 @@ public abstract class TopScoreDocCollector extends TopDocsCollector<ScoreDoc> {
+    */
+   public static TopScoreDocCollector create(int numHits, boolean docsScoredInOrder) {
+     
++    if (numHits <= 0) {
++      throw new IllegalArgumentException("numHits must be > 0; please use TotalHitCountCollector if you just need the total hit count");
++    }
++
+     if (docsScoredInOrder) {
+       return new InOrderTopScoreDocCollector(numHits);
+     } else {

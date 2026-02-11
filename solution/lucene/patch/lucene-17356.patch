@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/response/SolrParamResourceLoader.java b/solr/src/java/org/apache/solr/response/SolrParamResourceLoader.java
+index 9784fe0..6319a60 100644
+--- a/solr/src/java/org/apache/solr/response/SolrParamResourceLoader.java
++++ b/solr/src/java/org/apache/solr/response/SolrParamResourceLoader.java
+@@ -25,6 +25,7 @@ import org.apache.commons.collections.ExtendedProperties;
+ 
+ import java.io.ByteArrayInputStream;
+ import java.io.InputStream;
++import java.io.UnsupportedEncodingException;
+ import java.util.HashMap;
+ import java.util.Iterator;
+ import java.util.Map;
+@@ -56,7 +57,11 @@ public class SolrParamResourceLoader extends ResourceLoader {
+   @Override
+   public InputStream getResourceStream(String s) throws ResourceNotFoundException {
+     String template = templates.get(s);
+-    return template == null ? null : new ByteArrayInputStream(template.getBytes());
++    try {
++      return template == null ? null : new ByteArrayInputStream(template.getBytes("UTF-8"));
++    } catch (UnsupportedEncodingException e) {
++      throw new RuntimeException(e); // may not happen
++    }
+   }
+ 
+   @Override

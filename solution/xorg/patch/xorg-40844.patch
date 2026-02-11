@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index f99bfb7..f028a25 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -935,9 +935,9 @@ xf86ScaleAxis(int	Cx,
+     }
+     
+     if (X > Sxhigh)
+-	X = Sxlow;
+-    if (X < Sxlow)
+ 	X = Sxhigh;
++    if (X < Sxlow)
++	X = Sxlow;
+     
+     return (X);
+ }

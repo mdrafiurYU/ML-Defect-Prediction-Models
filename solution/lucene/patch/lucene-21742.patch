@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesProducerBase.java b/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesProducerBase.java
+index bb6c855..86e214d 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesProducerBase.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/docvalues/DocValuesProducerBase.java
+@@ -130,7 +130,6 @@ public class DocValuesProducerBase extends PerDocValues {
+     }
+   }
+ 
+-  @Override
+   public void close() throws IOException {
+     Collection<DocValues> values = docValues.values();
+     IOException ex = null;

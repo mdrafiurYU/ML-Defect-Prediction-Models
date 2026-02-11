@@ -1,0 +1,22 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index d240126..6dfde4c 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -757,6 +757,7 @@ exaCloseScreen(int i, ScreenPtr pScreen)
+ 	ps->Glyphs = pExaScr->SavedGlyphs;
+ 	ps->Trapezoids = pExaScr->SavedTrapezoids;
+ 	ps->Triangles = pExaScr->SavedTriangles;
++	ps->AddTraps = pExaScr->SavedAddTraps;
+     }
+ #endif
+ 
+@@ -928,6 +929,9 @@ exaDriverInit (ScreenPtr		pScreen,
+ 
+ 	pExaScr->SavedTrapezoids = ps->Trapezoids;
+ 	ps->Trapezoids = exaTrapezoids;
++
++	pExaScr->SavedAddTraps = ps->AddTraps;
++	ps->AddTraps = ExaCheckAddTraps;
+     }
+ #endif
+ 

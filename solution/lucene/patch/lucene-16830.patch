@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java b/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java
+index 30e339d..bb01ca4 100644
+--- a/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java
++++ b/lucene/src/java/org/apache/lucene/search/function/ReverseOrdFieldSource.java
+@@ -107,7 +107,9 @@ public class ReverseOrdFieldSource extends ValueSource {
+   /*(non-Javadoc) @see java.lang.Object#equals(java.lang.Object) */
+   @Override
+   public boolean equals(Object o) {
+-    if (o.getClass() !=  ReverseOrdFieldSource.class) return false;
++    if (o == this) return true;
++    if (o == null) return false;
++    if (o.getClass() != ReverseOrdFieldSource.class) return false;
+     ReverseOrdFieldSource other = (ReverseOrdFieldSource)o;
+     return this.field.equals(other.field); 
+   }

@@ -1,0 +1,24 @@
+diff --git a/hw/darwin/quartz/xpr/xprScreen.c b/hw/darwin/quartz/xpr/xprScreen.c
+index aff1901..1b6addc 100644
+--- a/hw/darwin/quartz/xpr/xprScreen.c
++++ b/hw/darwin/quartz/xpr/xprScreen.c
+@@ -81,17 +81,10 @@ eventHandler(unsigned int type, const void *arg,
+ 
+     case XP_EVENT_WINDOW_MOVED:
+      	DEBUG_LOG("XP_EVENT_WINDOW_MOVED\n");
+-        if (arg_size == sizeof(xp_window_id))
+-        {
++      if (arg_size == sizeof(xp_window_id))  {
+             xp_window_id id = * (xp_window_id *) arg;
+ 	    WindowPtr pWin = xprGetXWindow(id);
+-	    BoxRec box;
+-	    xp_error retval  = xp_get_window_bounds(id, &box);
+-	    if (retval != Success) {
+-	      ErrorF("Unable to find new bounds for window\n");
+-	      break;
+-	    }
+-            QuartzMessageServerThread(kXDarwinWindowMoved, 3, pWin, box.x1, box.y1);
++	QuartzMessageServerThread(kXDarwinWindowMoved, 1, pWin);
+         }
+         break;
+ 

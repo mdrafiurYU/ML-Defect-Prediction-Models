@@ -1,0 +1,13 @@
+diff --git a/os/WaitFor.c b/os/WaitFor.c
+index 71ca534..e6d45e6 100644
+--- a/os/WaitFor.c
++++ b/os/WaitFor.c
+@@ -257,7 +257,7 @@ WaitForSomething(int *pClientsReady)
+ 		    FatalError("WaitForSomething(): select: errno=%d\n",
+ 			selecterr);
+             }
+-		else if (selecterr != EINTR)
++		else if (selecterr != EINTR && selecterr != EAGAIN)
+ 		{
+ 		    ErrorF("WaitForSomething(): select: errno=%d\n",
+ 			selecterr);

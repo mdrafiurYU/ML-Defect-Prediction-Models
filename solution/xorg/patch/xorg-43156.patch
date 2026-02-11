@@ -1,0 +1,22 @@
+diff --git a/hw/xwin/winconfig.h b/hw/xwin/winconfig.h
+index 71c4582..63d6211 100644
+--- a/hw/xwin/winconfig.h
++++ b/hw/xwin/winconfig.h
+@@ -305,16 +305,7 @@ typedef struct
+     long rate;
+   }
+   keyboard;
+-  struct
+-  {
+-    Bool disable;
+-    char *rules;
+-    char *model;
+-    char *layout;
+-    char *variant;
+-    char *options;
+-  }
+-  xkb;
++  XkbRMLVOSet xkb;
+   struct
+   {
+     Bool emulate3Buttons;

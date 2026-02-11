@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/loader/aout.h b/hw/xfree86/loader/aout.h
+index 3f60f37..6b82471 100644
+--- a/hw/xfree86/loader/aout.h
++++ b/hw/xfree86/loader/aout.h
+@@ -32,6 +32,10 @@
+  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _AOUT_H
+ #define _AOUT_H
+ 

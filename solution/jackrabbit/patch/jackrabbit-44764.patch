@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeTypeProperty.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeTypeProperty.java
+index 484437f..327a8da 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeTypeProperty.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/nodetype/NodeTypeProperty.java
+@@ -71,7 +71,7 @@ public class NodeTypeProperty extends AbstractDavProperty implements NodeTypeCon
+      * @param property
+      */
+     public NodeTypeProperty(DavProperty property) {
+-        super(property.getName(), property.isProtected());
++        super(property.getName(), property.isInvisibleInAllprop());
+         if (property instanceof NodeTypeProperty) {
+             nodetypeNames.addAll(((NodeTypeProperty)property).nodetypeNames);
+         } else {

@@ -1,0 +1,22 @@
+diff --git a/mi/mibank.h b/mi/mibank.h
+index 327507d..0c10540 100644
+--- a/mi/mibank.h
++++ b/mi/mibank.h
+@@ -85,7 +85,7 @@ typedef struct _miBankInfo
+     unsigned int nBankDepth;
+ } miBankInfoRec, *miBankInfoPtr;
+ 
+-Bool
++extern _X_EXPORT Bool
+ miInitializeBanking(
+     ScreenPtr /*pScreen*/,
+     unsigned int /*xsize*/,
+@@ -99,7 +99,7 @@ miInitializeBanking(
+  * and various screen attributes.  DDX needs to determine this width before
+  * initializing the screen.
+  */
+-int
++extern _X_EXPORT int
+ miScanLineWidth(
+     unsigned int /*xsize*/,
+     unsigned int /*ysize*/,

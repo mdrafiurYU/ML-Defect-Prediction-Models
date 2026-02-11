@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/bundle/server-main.c b/hw/xquartz/bundle/server-main.c
+index 205e87c..7e1bd70 100644
+--- a/hw/xquartz/bundle/server-main.c
++++ b/hw/xquartz/bundle/server-main.c
+@@ -138,7 +138,7 @@ read_boolean_pref (CFStringRef name, int default_)
+     int value;
+     Boolean ok;
+ 	
+-    value = CFPreferencesGetAppBooleanValue (name, CFSTR ("org.x.x11"), &ok);
++    value = CFPreferencesGetAppBooleanValue (name, CFSTR ("org.x.X11"), &ok);
+     return ok ? value : default_;
+ }
+ 

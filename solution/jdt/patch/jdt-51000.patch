@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ClassScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ClassScope.java
+index 0f49132..b5aa404 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ClassScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/ClassScope.java
+@@ -360,9 +360,8 @@ public class ClassScope extends Scope {
+ 		ReferenceBinding enclosingType = sourceType.enclosingType();
+ 		boolean isMemberType = sourceType.isMemberType();
+ 		if (isMemberType) {
++			modifiers |= (enclosingType.modifiers & (AccGenericSignature|AccStrictfp));
+ 			// checks for member types before local types to catch local members
+-			if (enclosingType.isStrictfp())
+-				modifiers |= AccStrictfp;
+ 			if (enclosingType.isInterface())
+ 				modifiers |= AccPublic;
+ 			if (sourceType.isEnum()) {

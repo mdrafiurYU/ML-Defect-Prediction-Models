@@ -1,0 +1,12 @@
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index 1fb47ed..9f813e5 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -1806,6 +1806,7 @@ XkbCopyKeymap(XkbDescPtr src, XkbDescPtr dst, Bool sendNotifies)
+                         return FALSE;
+                     dsection->rows = tmp;
+                 }
++                dsection->num_rows = ssection->num_rows;
+                 for (j = 0, srow = ssection->rows, drow = dsection->rows;
+                      j < ssection->num_rows;
+                      j++, srow++, drow++) {

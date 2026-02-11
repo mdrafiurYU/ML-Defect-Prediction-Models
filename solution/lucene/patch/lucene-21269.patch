@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
+index a5770b2..4145d21 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
++++ b/lucene/src/test/org/apache/lucene/search/TestNumericRangeQuery32.java
+@@ -54,7 +54,7 @@ public class TestNumericRangeQuery32 extends LuceneTestCase {
+   public static void beforeClass() throws Exception {
+     directory = newDirectory();
+     RandomIndexWriter writer = new RandomIndexWriter(random, directory,
+-        newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer())
++        newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random))
+         .setMaxBufferedDocs(_TestUtil.nextInt(random, 50, 1000))
+         .setMergePolicy(newLogMergePolicy()));
+     
+@@ -284,7 +284,7 @@ public class TestNumericRangeQuery32 extends LuceneTestCase {
+   @Test
+   public void testInfiniteValues() throws Exception {
+     Directory dir = newDirectory();
+-    IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()));
++    IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer(random)));
+     Document doc = new Document();
+     doc.add(new NumericField("float").setFloatValue(Float.NEGATIVE_INFINITY));
+     doc.add(new NumericField("int").setIntValue(Integer.MIN_VALUE));

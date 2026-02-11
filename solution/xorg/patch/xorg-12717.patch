@@ -1,0 +1,12 @@
+diff --git a/hw/xgl/xglpixmap.c b/hw/xgl/xglpixmap.c
+index 52ae1ea..4a49d24 100644
+--- a/hw/xgl/xglpixmap.c
++++ b/hw/xgl/xglpixmap.c
+@@ -64,6 +64,7 @@ xglPixmapCreateDamage (PixmapPtr pPixmap)
+     pPixmapPriv->pDamage =
+ 	DamageCreate (xglPixmapDamageReport, (DamageDestroyFunc) 0,
+ 		      DamageReportRawRegion, TRUE,
++		      pPixmap->drawable.pScreen,
+ 		      (void *) pPixmap);
+     if (!pPixmapPriv->pDamage)
+ 	return FALSE;

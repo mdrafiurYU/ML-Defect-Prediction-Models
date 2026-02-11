@@ -1,0 +1,11 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java
+index b3e1511..bf89443 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriterPerThreadPool.java
+@@ -132,7 +132,6 @@ public abstract class DocumentsWriterPerThreadPool {
+     } else {
+       threadState.resetWriter(null);
+     }
+-    clearThreadBindings(threadState); // TODO - do we need to clear ThreadBindings here  since we swap DWPT this is not necessary
+     return dwpt;
+   }

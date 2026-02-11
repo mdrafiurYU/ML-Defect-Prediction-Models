@@ -1,0 +1,13 @@
+diff --git a/xkb/xkbLEDs.c b/xkb/xkbLEDs.c
+index 1ea3e11..2b8efce 100644
+--- a/xkb/xkbLEDs.c
++++ b/xkb/xkbLEDs.c
+@@ -638,7 +638,7 @@ XkbCopySrvLedInfo(	DeviceIntPtr		from,
+     if (!sli_new)
+ 	goto finish;
+ 
+-    memcpy(src, sli_new, sizeof(XkbSrvLedInfoRec));
++    memcpy(sli_new, src, sizeof(XkbSrvLedInfoRec));
+     if (sli_new->class == KbdFeedbackClass)
+ 	sli_new->fb.kf = kf;
+     else

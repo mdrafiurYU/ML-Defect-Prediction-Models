@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+index 4d0d8ca..1a3b9c5 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
++++ b/lucene/src/java/org/apache/lucene/index/DocFieldProcessor.java
+@@ -144,7 +144,7 @@ final class DocFieldProcessor extends DocConsumer {
+       try {
+         consumer.close();  
+       } catch (IOException e) {
+-        // nocommit handle exce
++        // ignore and continue closing remaining consumers
+       }
+     }
+     perDocConsumers.clear();

@@ -1,0 +1,12 @@
+diff --git a/randr/rrcrtc.c b/randr/rrcrtc.c
+index db5007e..43cfb29 100644
+--- a/randr/rrcrtc.c
++++ b/randr/rrcrtc.c
+@@ -150,6 +150,7 @@ RRCrtcNotify (RRCrtcPtr	    crtc,
+ 		break;
+ 	if (i == numOutputs)
+ 	{
++	    if (crtc->outputs[j]->crtc == crtc)
+ 	    crtc->outputs[j]->crtc = NULL;
+ 	    RROutputChanged (crtc->outputs[j], FALSE);
+ 	    RRCrtcChanged (crtc, FALSE);

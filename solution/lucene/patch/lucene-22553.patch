@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java b/lucene/src/test-framework/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
+index 2fe6154..9088322 100644
+--- a/lucene/src/test-framework/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
++++ b/lucene/src/test-framework/org/apache/lucene/index/codecs/mockrandom/MockRandomCodec.java
+@@ -196,7 +196,7 @@ public class MockRandomCodec extends Codec {
+ 
+               @Override
+               public boolean isIndexTerm(BytesRef term, TermStats stats) {
+-                return rand.nextInt(gap) == 17;
++                return rand.nextInt(gap) == gap/2;
+               }
+ 
+               @Override

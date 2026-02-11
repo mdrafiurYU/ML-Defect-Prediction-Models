@@ -1,0 +1,18 @@
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index 7c611bc..e85b318 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -622,10 +622,13 @@ unwind_desc:
+     XkbFreeKeyboard(xkb, 0, TRUE);
+ unwind_info:
+     xfree(xkbi);
++    dev->key->xkbInfo = NULL;
+ unwind_kbdfeed:
+     xfree(dev->kbdfeed);
++    dev->kbdfeed = NULL;
+ unwind_key:
+     xfree(dev->key);
++    dev->key = NULL;
+     return FALSE;
+ }
+ 

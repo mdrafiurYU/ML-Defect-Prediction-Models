@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/update/DocumentBuilder.java b/solr/src/java/org/apache/solr/update/DocumentBuilder.java
+index 83d331c..b6a70ae 100644
+--- a/solr/src/java/org/apache/solr/update/DocumentBuilder.java
++++ b/solr/src/java/org/apache/solr/update/DocumentBuilder.java
+@@ -73,7 +73,7 @@ public class DocumentBuilder {
+         }
+       }
+     } else {
+-      Field field = sfield.createField(val, boost);
++      Fieldable field = sfield.createField(val, boost);
+       if (field != null) {
+         if (!sfield.multiValued()) {
+           String oldValue = map.put(sfield.getName(), val);
+@@ -201,7 +201,7 @@ public class DocumentBuilder {
+         if (f != null) doc.add(f); // null fields are not added
+       }
+     } else {
+-      Field f = field.createField(val, boost);
++      Fieldable f = field.createField(val, boost);
+       if (f != null) doc.add(f);  // null fields are not added
+     }
+   }

@@ -1,0 +1,24 @@
+diff --git a/dix/events.c b/dix/events.c
+index 88ce501..123f21f 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -4468,12 +4468,17 @@ LeaveNotifies(DeviceIntPtr pDev,
+     }
+ }
+ 
++/* welcome to insanity */
+ #define FOCUS_SEMAPHORE_MODIFY(win, field, mode, val) \
+     { \
+-        if (mode != NotifyGrab && mode != NotifyUngrab) \
+-        { \
+             FocusSemaphoresPtr sem;\
+             sem = (FocusSemaphoresPtr)win->devPrivates[FocusPrivatesIndex].ptr; \
++    if (mode != NotifyGrab && mode != NotifyUngrab) { \
++        sem->field += val; \
++    } else if (mode == NotifyUngrab) { \
++        if (sem->field == 0 && val > 0) \
++            sem->field += val; \
++        else if (sem->field == 1 && val < 0) \
+             sem->field += val; \
+         } \
+     }

@@ -1,0 +1,43 @@
+diff --git a/hw/xfree86/loader/sym.h b/hw/xfree86/loader/sym.h
+index 5b34718..e708a92 100644
+--- a/hw/xfree86/loader/sym.h
++++ b/hw/xfree86/loader/sym.h
+@@ -1,7 +1,4 @@
+-/* $XFree86: xc/programs/Xserver/hw/xfree86/loader/sym.h,v 1.6 2000/10/24 00:06:55 anderson Exp $ */
+-
+ /*
+- *
+  * Copyright 1995,96 by Metro Link, Inc.
+  *
+  * Permission to use, copy, modify, distribute, and sell this software and its
+@@ -30,21 +27,15 @@
+ #ifndef _SYM_H
+ #define _SYM_H
+ 
+-/*
+- * This structure is used to pass in symbol information that is being
+- * added to the symbol table.
+- */
+-
+-typedef void (*funcptr) (void);
+-
+-typedef struct {
+-    char *symName;
+-    funcptr offset;
+-} LOOKUP;
++extern void *dixLookupTab[];
++extern void *extLookupTab[];
++extern void *fontLookupTab[];
++extern void *miLookupTab[];
++extern void *xfree86LookupTab[];
+ 
+-#define SYMFUNC( func ) { #func, (funcptr)&func },
+-#define SYMFUNCALIAS( name, func ) { name, (funcptr)&func },
+-#define SYMVAR( var ) { #var, (funcptr)&var },
+-#define SYMVARALIAS( name, var ) { name, (funcptr)&var },
++#define SYMFUNC( func ) &func,
++#define SYMFUNCALIAS( name, func ) &func,
++#define SYMVAR( var ) &var,
++#define SYMVARALIAS( name, var ) &var,
+ 
+ #endif /* _SYM_H */

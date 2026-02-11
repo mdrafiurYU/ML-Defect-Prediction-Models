@@ -1,0 +1,19 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index 304fed2..f51a531 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -798,10 +798,14 @@ static void __glXReportDamage(__DRIdrawable *driDraw,
+     DrawablePtr pDraw = drawable->base.pDraw;
+     RegionRec region;
+ 
++    __glXenterServer(GL_FALSE);
++
+     REGION_INIT(pDraw->pScreen, &region, (BoxPtr) rects, num_rects);
+     REGION_TRANSLATE(pScreen, &region, pDraw->x, pDraw->y);
+     DamageDamageRegion(pDraw, &region);
+     REGION_UNINIT(pDraw->pScreen, &region);
++
++    __glXleaveServer(GL_FALSE);
+ }
+ 
+ /* Table of functions that we export to the driver. */

@@ -1,0 +1,40 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+index c9c4fbc..8dcf95e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/BatchedItemOperations.java
+@@ -1108,7 +1108,7 @@ public class BatchedItemOperations extends ItemValidator {
+         }
+         if (id == null) {
+             // create new id
+-            id = new NodeId(UUID.randomUUID());
++            id = new NodeId();
+         }
+         if (nodeTypeName == null) {
+             // no primary node type specified,
+@@ -1688,7 +1688,7 @@ public class BatchedItemOperations extends ItemValidator {
+             switch (flag) {
+                 case COPY:
+                     // always create new uuid
+-                    id = new NodeId(UUID.randomUUID());
++                    id = new NodeId();
+                     if (referenceable) {
+                         // remember uuid mapping
+                         refTracker.mappedId(srcState.getNodeId(), id);
+@@ -1697,7 +1697,7 @@ public class BatchedItemOperations extends ItemValidator {
+                 case CLONE:
+                     if (!referenceable) {
+                         // non-referenceable node: always create new uuid
+-                        id = new NodeId(UUID.randomUUID());
++                        id = new NodeId();
+                         break;
+                     }
+                     // use same uuid as source node
+@@ -1710,7 +1710,7 @@ public class BatchedItemOperations extends ItemValidator {
+                 case CLONE_REMOVE_EXISTING:
+                     if (!referenceable) {
+                         // non-referenceable node: always create new uuid
+-                        id = new NodeId(UUID.randomUUID());
++                        id = new NodeId();
+                         break;
+                     }
+                     // use same uuid as source node

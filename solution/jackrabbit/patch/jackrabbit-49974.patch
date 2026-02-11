@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractAccessControlProvider.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractAccessControlProvider.java
+index 785b28c..ae6370d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractAccessControlProvider.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/AbstractAccessControlProvider.java
+@@ -183,4 +183,11 @@ public abstract class AbstractAccessControlProvider implements AccessControlProv
+         checkInitialized();
+         initialized = false;
+     }
++
++    /**
++     * @see AccessControlProvider#isLive()
++     */
++    public boolean isLive() {
++        return initialized && session.isLive();
++    }
+ }
+\ No newline at end of file

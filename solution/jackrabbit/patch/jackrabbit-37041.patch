@@ -1,0 +1,62 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
+index 0fd99ed..df2569e 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/AbstractJournal.java
+@@ -18,15 +18,16 @@ package org.apache.jackrabbit.core.journal;
+ 
+ import EDU.oswego.cs.dl.util.concurrent.ReadWriteLock;
+ import EDU.oswego.cs.dl.util.concurrent.ReentrantWriterPreferenceReadWriteLock;
++import org.apache.jackrabbit.conversion.DefaultNamePathResolver;
++import org.apache.jackrabbit.conversion.NamePathResolver;
++import org.apache.jackrabbit.namespace.NamespaceResolver;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+-import java.util.Map;
++import java.io.InputStream;
+ import java.util.HashMap;
+ import java.util.Iterator;
+-import java.io.InputStream;
+-
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-import org.apache.jackrabbit.name.NamespaceResolver;
++import java.util.Map;
+ 
+ /**
+  * Base journal implementation.
+@@ -49,6 +50,11 @@ public abstract class AbstractJournal implements Journal {
+     private NamespaceResolver resolver;
+ 
+     /**
++     * NamePathResolver
++     */
++    private NamePathResolver npResolver;
++
++    /**
+      * Map of registered consumers.
+      */
+     private final Map consumers = new HashMap();
+@@ -70,6 +76,7 @@ public abstract class AbstractJournal implements Journal {
+     public void init(String id, NamespaceResolver resolver) throws JournalException {
+         this.id = id;
+         this.resolver = resolver;
++        this.npResolver = new DefaultNamePathResolver(resolver, true);
+     }
+ 
+     /**
+@@ -320,4 +327,13 @@ public abstract class AbstractJournal implements Journal {
+     public NamespaceResolver getResolver() {
+         return resolver;
+     }
++
++    /**
++     * Return this journal's NamePathResolver.
++     *
++     * @return name and path resolver
++     */
++    public NamePathResolver getNamePathResolver() {
++        return npResolver;
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/NodeRemovedTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/NodeRemovedTest.java
+index f710e9c..06ccbb5 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/NodeRemovedTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/observation/NodeRemovedTest.java
+@@ -60,7 +60,7 @@ public class NodeRemovedTest extends AbstractObservationTest {
+         EventResult result = new EventResult(log);
+         addEventListener(result, Event.NODE_REMOVED);
+         Node n1 = testRootNode.addNode(nodeName1, testNodeType);
+-        n1.addNode(nodeName2);
++        n1.addNode(nodeName2, testNodeType);
+         testRootNode.save();
+         n1.remove();
+         testRootNode.save();

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/SessionItemStateManager.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/SessionItemStateManager.java
+index c03b2a5..d1334aa 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/SessionItemStateManager.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/SessionItemStateManager.java
+@@ -102,7 +102,10 @@ public class SessionItemStateManager implements UpdatableItemStateManager, Opera
+      * Creates a new <code>SessionItemStateManager</code> instance.
+      *
+      * @param workspaceItemStateMgr
+-     * @param definitionProvider
++     * @param validator
++     * @param qValueFactory
++     * @param isf
++     * @param mgrProvider
+      */
+     public SessionItemStateManager(UpdatableItemStateManager workspaceItemStateMgr,
+                                    ItemStateValidator validator,

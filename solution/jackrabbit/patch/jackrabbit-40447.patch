@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Or.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Or.java
+index 71a14b4..d357c71 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Or.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/jsr283/qom/Or.java
+@@ -31,19 +31,20 @@ package org.apache.jackrabbit.core.query.jsr283.qom;
+  *
+  * @since JCR 2.0
+  */
+-public interface Or
+-        extends Constraint {
++public interface Or extends Constraint {
++
+     /**
+      * Gets the first constraint.
+      *
+      * @return the constraint; non-null
+      */
+-    public Constraint getConstraint1();
++    Constraint getConstraint1();
+ 
+     /**
+      * Gets the second constraint.
+      *
+      * @return the constraint; non-null
+      */
+-    public Constraint getConstraint2();
++    Constraint getConstraint2();
++
+ }

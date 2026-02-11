@@ -1,0 +1,14 @@
+diff --git a/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java b/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
+index f513a94..51a55c4 100755
+--- a/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
++++ b/solr/src/test/org/apache/solr/update/TestIndexingPerformance.java
+@@ -41,7 +41,9 @@ public class TestIndexingPerformance extends AbstractSolrTestCase {
+   public static final Logger log 
+     = LoggerFactory.getLogger(TestIndexingPerformance.class);
+ 
++  @Override
+   public String getSchemaFile() { return "schema12.xml"; }
++  @Override
+   public String getSolrConfigFile() { return "solrconfig_perf.xml"; }
+ 
+   public void testIndexingPerf() throws IOException {

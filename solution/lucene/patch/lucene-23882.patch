@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java b/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
+index 8eb6224..252530c 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
++++ b/lucene/src/test/org/apache/lucene/index/TestStressIndexing2.java
+@@ -93,7 +93,7 @@ public class TestStressIndexing2 extends LuceneTestCase {
+   public void testMultiConfig() throws Throwable {
+     // test lots of smaller different params together
+ 
+-    int num = 3 * RANDOM_MULTIPLIER;
++    int num = atLeast(3);
+     for (int i = 0; i < num; i++) { // increase iterations for better testing
+       if (VERBOSE) {
+         System.out.println("\n\nTEST: top iter=" + i);

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestMultiFields.java b/lucene/src/test/org/apache/lucene/index/TestMultiFields.java
+index 43756f4..e27ab8c 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestMultiFields.java
++++ b/lucene/src/test/org/apache/lucene/index/TestMultiFields.java
+@@ -27,7 +27,7 @@ public class TestMultiFields extends LuceneTestCase {
+ 
+   public void testRandom() throws Exception {
+ 
+-    int num = 2 * RANDOM_MULTIPLIER;
++    int num = atLeast(2);
+     for (int iter = 0; iter < num; iter++) {
+       Directory dir = newDirectory();

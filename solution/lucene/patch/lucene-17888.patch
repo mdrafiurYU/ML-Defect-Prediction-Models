@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/ByteField.java b/solr/src/java/org/apache/solr/schema/ByteField.java
+index dba71d8..091f1e9 100644
+--- a/solr/src/java/org/apache/solr/schema/ByteField.java
++++ b/solr/src/java/org/apache/solr/schema/ByteField.java
+@@ -47,6 +47,7 @@ public class ByteField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser qparser) {
++    field.checkFieldCacheSource(qparser);
+     return new ByteFieldSource( new ByteValuesCreator( field.name, null, CachedArrayCreator.CACHE_VALUES_AND_BITS ) );
+   }

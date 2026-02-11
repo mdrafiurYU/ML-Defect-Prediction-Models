@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+index 1cf74e4..5d44bee 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/AnnotationProcessorFactoryLoader.java
+@@ -50,7 +50,7 @@ public class AnnotationProcessorFactoryLoader {
+ 		new HashMap<IJavaProject, Map<AnnotationProcessorFactory, FactoryPath.Attributes>>();
+     
+ 	// Caches the iterative classloaders so that iterative processors
+-	// are not reloaded on every clean build, unlike batch processors 
++	// are not reloaded on every batch build, unlike batch processors 
+ 	// which are.
+ 	private final Map<IJavaProject, ClassLoader> _project2IterativeClassloaders = 
+ 		new HashMap<IJavaProject, ClassLoader>();

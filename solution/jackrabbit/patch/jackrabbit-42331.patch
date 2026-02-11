@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeCache.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeCache.java
+index 448fe4f..f21940d 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeCache.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/EffectiveNodeTypeCache.java
+@@ -71,11 +71,6 @@ public interface EffectiveNodeTypeCache extends Cloneable, Dumpable {
+     void invalidate(Name name);
+ 
+     /**
+-     * {@inheritDoc}
+-     */
+-    Object clone();
+-
+-    /**
+      * Searches the best key k for which the given <code>key</code> is a super
+      * set, i.e. for which {@link Key#contains(Key)}} returns
+      * <code>true</code>. If an already cached effective node type matches the
+@@ -124,6 +119,5 @@ public interface EffectiveNodeTypeCache extends Cloneable, Dumpable {
+          * @return the new key of the subtraction operation.
+          */
+         Key subtract(Key otherKey);
+-
+     }
+ }

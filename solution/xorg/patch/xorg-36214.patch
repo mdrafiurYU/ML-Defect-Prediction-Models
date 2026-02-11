@@ -1,0 +1,12 @@
+diff --git a/hw/xwin/winwin32rootless.c b/hw/xwin/winwin32rootless.c
+index 4b4cd3d..6f4e2c9 100755
+--- a/hw/xwin/winwin32rootless.c
++++ b/hw/xwin/winwin32rootless.c
+@@ -1087,6 +1087,6 @@ winMWExtWMSetNativeProperty (RootlessWindowPtr pFrame)
+   /* FIXME: move this to WindowsWM extension */
+ 
+   lData = (long) pRLWinPriv->hWnd;
+-  ChangeWindowProperty (pFrame->win, AtmWindowsWmNativeHwnd (),
++  dixChangeWindowProperty(serverClient, pFrame->win, AtmWindowsWmNativeHwnd(),
+ 			XA_INTEGER, 32, PropModeReplace, 1, &lData, TRUE);
+ }

@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java
+index 8cfab71..631b626 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/CodeCorrectionTests.java
+@@ -94,6 +94,8 @@ public void tearDownSuite() throws Exception {
+ 	super.tearDownSuite();
+ }
+ public static Test suite() {
++	return buildModelTestSuite(CodeCorrectionTests.class);
++	/*
+ 	Suite suite = new Suite(CodeCorrectionTests.class.getName());
+ 	if (fgSpecific) {
+ 		suite.addTest(new CodeCorrectionTests("testCorrectMethod1"));
+@@ -125,6 +127,7 @@ public static Test suite() {
+ 	suite.addTest(new CodeCorrectionTests("testWarningTokens"));
+ 
+ 	return suite;
++	*/
+ }
+ public void testCorrectFieldType1() throws JavaModelException {
+ 	CorrectionEngine engine = new CorrectionEngine(JavaCore.getOptions());

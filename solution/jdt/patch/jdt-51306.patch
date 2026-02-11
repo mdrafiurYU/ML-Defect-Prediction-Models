@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
+index 688fc41..d05b9a9 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/FactoryLoaderTests.java
+@@ -110,6 +110,11 @@ public class FactoryLoaderTests extends Tests {
+ 		fullBuild( project.getFullPath() );
+ 		expectingNoProblems();
+ 		assertFalse(LoaderTestAnnotationProcessor.isLoaded());
++		
++		// This file will be locked until GC takes care of unloading
++		// the annotation processor classes.
++		_extJar.deleteOnExit();
++		_extJar = null;
+ 	}

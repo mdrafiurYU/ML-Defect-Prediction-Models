@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlEntry.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlEntry.java
+index 5dbbf46..7da6b42 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlEntry.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/authorization/JackrabbitAccessControlEntry.java
+@@ -44,7 +44,8 @@ public interface JackrabbitAccessControlEntry extends AccessControlEntry {
+      * Return the value of the restriction with the specified name or
+      * <code>null</code> if no such restriction exists.
+      *
+-     * @param restrictionName
++     * @param restrictionName The of the restriction as obtained through
++     * {@link #getRestrictionNames()}.
+      * @return value of the restriction with the specified name or
+      * <code>null</code> if no such restriction exists
+      */

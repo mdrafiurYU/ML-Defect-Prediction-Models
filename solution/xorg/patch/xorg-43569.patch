@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/GL/indirect.c b/hw/xquartz/GL/indirect.c
+index 517ab1a..0a60672 100644
+--- a/hw/xquartz/GL/indirect.c
++++ b/hw/xquartz/GL/indirect.c
+@@ -723,8 +723,6 @@ static __GLXscreen * __glXAquaScreenProbe(ScreenPtr pScreen) {
+     screen->base.fbconfigs = CreateConfigs(&screen->base.numFBConfigs, 
+ 					   pScreen->myNum);
+     
+-    GlxSetVisualConfig(GLX_ALL_VISUALS);
+-
+     __glXScreenInit(&screen->base, pScreen);
+ 
+     /* __glXScreenInit initializes these, so the order here is important, if we need these... */

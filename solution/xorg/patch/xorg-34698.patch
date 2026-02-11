@@ -1,0 +1,28 @@
+diff --git a/hw/darwin/bundle/startXClients.cpp b/hw/darwin/bundle/startXClients.cpp
+deleted file mode 100644
+index f812dbf..0000000
+--- a/hw/darwin/bundle/startXClients.cpp
++++ /dev/null
+@@ -1,22 +0,0 @@
+-XCOMM!/bin/sh
+-
+-XCOMM This script is used by XDarwin to start X clients when XDarwin is
+-XCOMM launched from the Finder.
+-
+-userclientrc=$HOME/.xinitrc
+-sysclientrc=XINITDIR/xinitrc
+-clientargs=""
+-
+-if [ -f $userclientrc ]; then
+-    clientargs=$userclientrc
+-else if [ -f $sysclientrc ]; then
+-    clientargs=$sysclientrc
+-fi
+-fi
+-
+-if [ "x$2" != "x" ]; then
+-    PATH="$PATH:$2"
+-    export PATH
+-fi
+-
+-exec xinit $clientargs -- XBINDIR/XDarwinStartup "$1" -idle

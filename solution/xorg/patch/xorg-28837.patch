@@ -1,0 +1,15 @@
+diff --git a/include/dix.h b/include/dix.h
+index 1b112a1..385f56c 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -424,6 +424,10 @@ extern int DeliverDeviceEvents(
+ extern void DefineInitialRootWindow(
+     WindowPtr /* win */);
+ 
++extern void SetupSprite(
++    DeviceIntPtr /* pDev */,
++    ScreenPtr    /* pScreen */);
++
+ extern void InitializeSprite(
+     DeviceIntPtr /* pDev */,
+     WindowPtr    /* pWin */);

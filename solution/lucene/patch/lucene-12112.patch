@@ -1,0 +1,46 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java b/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java
+index d178093..0e81c25 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java
++++ b/lucene/src/java/org/apache/lucene/index/values/MultiDocValues.java
+@@ -192,7 +192,7 @@ public class MultiDocValues extends DocValues {
+         assert docValuesIdx[idx] != null;
+         try {
+           current = docValuesIdx[idx].docValues.getSource();
+-          missingValues.copy(current.getMissing());
++          missingValue.copy(current.getMissing());
+         } catch (IOException e) {
+           throw new RuntimeException("load failed", e); // TODO how should we
+           // handle this
+@@ -215,10 +215,6 @@ public class MultiDocValues extends DocValues {
+       return current.getBytes(doc, bytesRef);
+     }
+ 
+-    public long ramBytesUsed() {
+-      return current.ramBytesUsed();
+-    }
+-
+     @Override
+     public ValuesEnum getEnum(AttributeSource attrSource) throws IOException {
+       throw new UnsupportedOperationException(); // TODO
+@@ -240,18 +236,18 @@ public class MultiDocValues extends DocValues {
+ 
+     @Override
+     public BytesRef getBytes(int docID, BytesRef ref) {
+-      return this.missingValues.bytesValue;
++      return this.missingValue.bytesValue;
+ 
+     }
+ 
+     @Override
+     public double getFloat(int docID) {
+-      return missingValues.doubleValue;
++      return missingValue.doubleValue;
+     }
+ 
+     @Override
+     public long getInt(int docID) {
+-      return missingValues.longValue;
++      return missingValue.longValue;
+     }
+ 
+     public long ramBytesUsed() {

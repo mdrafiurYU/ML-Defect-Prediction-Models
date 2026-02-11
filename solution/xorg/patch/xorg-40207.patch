@@ -1,0 +1,14 @@
+diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
+index 8a26825..35938a9 100644
+--- a/xkb/xkbActions.c
++++ b/xkb/xkbActions.c
+@@ -42,7 +42,8 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include <ctype.h>
+ #define EXTENSION_EVENT_BASE 64
+ 
+-DevPrivateKey xkbDevicePrivateKey = &xkbDevicePrivateKey;
++static int xkbDevicePrivateKeyIndex;
++DevPrivateKey xkbDevicePrivateKey = &xkbDevicePrivateKeyIndex;
+ 
+ void
+ xkbUnwrapProc(DeviceIntPtr device, DeviceHandleProc proc,

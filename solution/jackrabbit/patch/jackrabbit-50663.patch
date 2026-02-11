@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/Importer.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/Importer.java
+index f135eca..7c37aa6 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/Importer.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/xml/Importer.java
+@@ -47,7 +47,7 @@ public interface Importer {
+      *                  (list of {@link PropInfo} instances)
+      * @throws RepositoryException on a repository error
+      */
+-    void startNode(NodeInfo nodeInfo, List propInfos)
++    void startNode(NodeInfo nodeInfo, List<PropInfo> propInfos)
+             throws RepositoryException;
+ 
+     /**

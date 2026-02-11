@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingIndexReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingIndexReader.java
+index 7d84951..6b3cb3f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingIndexReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/CachingIndexReader.java
+@@ -212,7 +212,7 @@ class CachingIndexReader extends FilterIndexReader {
+             } else {
+                 doc = new Document();
+                 doc.add(new Field(FieldNames.UUID, uuid.toString(),
+-                        Field.Store.YES, Field.Index.NO_NORMS));
++                        Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS));
+             }
+             return doc;
+         } else {

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.h b/hw/xfree86/os-support/bus/Pci.h
+index 9eb536d..a9b9cf7 100644
+--- a/hw/xfree86/os-support/bus/Pci.h
++++ b/hw/xfree86/os-support/bus/Pci.h
+@@ -265,7 +265,7 @@
+ #  define  ARCH_PCI_INIT freebsdPciInit
+ #  define INCLUDE_XF86_NO_DOMAIN
+ # endif
+-# if !defined(__FreeBSD__)
++# if !defined(__FreeBSD__) && !defined(linux)
+ #  define ARCH_PCI_PCI_BRIDGE sparcPciPciBridge
+ # endif
+ #elif defined(__amd64__) || defined(__amd64)

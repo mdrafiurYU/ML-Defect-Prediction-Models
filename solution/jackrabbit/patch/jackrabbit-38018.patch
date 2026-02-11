@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyBooleanTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyBooleanTest.java
+index 7c9d09f..856102c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyBooleanTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetPropertyBooleanTest.java
+@@ -39,6 +39,11 @@ public class SetPropertyBooleanTest extends AbstractJCRTest {
+         testNode = testRootNode.addNode(nodeName1, testNodeType);
+     }
+ 
++    protected void tearDown() throws Exception {
++        testNode = null;
++        super.tearDown();
++    }
++
+     /**
+      * Tests if adding a property with <code>Node.setProperty(String,
+      * boolean)</code> works with <code>Session.save()</code>

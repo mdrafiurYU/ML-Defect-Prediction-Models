@@ -1,0 +1,15 @@
+diff --git a/hw/kdrive/ephyr/hostx.h b/hw/kdrive/ephyr/hostx.h
+index 1d8cd70..7babd34 100644
+--- a/hw/kdrive/ephyr/hostx.h
++++ b/hw/kdrive/ephyr/hostx.h
+@@ -178,4 +178,10 @@ hostx_get_display(void) ;
+ int
+ hostx_get_window(void) ;
+ 
++int
++hostx_get_extension_info (const char *a_ext_name,
++                          int *a_major_opcode,
++                          int *a_first_even,
++                          int *a_first_error) ;
++
+ #endif

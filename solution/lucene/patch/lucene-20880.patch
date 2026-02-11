@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/smartcn/src/test/org/apache/lucene/analysis/cn/smart/TestSmartChineseAnalyzer.java b/modules/analysis/smartcn/src/test/org/apache/lucene/analysis/cn/smart/TestSmartChineseAnalyzer.java
+index 6c61d45..3f7ad77 100644
+--- a/modules/analysis/smartcn/src/test/org/apache/lucene/analysis/cn/smart/TestSmartChineseAnalyzer.java
++++ b/modules/analysis/smartcn/src/test/org/apache/lucene/analysis/cn/smart/TestSmartChineseAnalyzer.java
+@@ -195,4 +195,9 @@ public class TestSmartChineseAnalyzer extends BaseTokenStreamTestCase {
+     while (stream.incrementToken()) {
+     }
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new SmartChineseAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/da/TestDanishAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/da/TestDanishAnalyzer.java
+index cf38a17..e7863b0 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/da/TestDanishAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/da/TestDanishAnalyzer.java
+@@ -50,4 +50,9 @@ public class TestDanishAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "undersøgelse", "undersøgelse");
+     checkOneTermReuse(a, "undersøg", "undersøg");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new DanishAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

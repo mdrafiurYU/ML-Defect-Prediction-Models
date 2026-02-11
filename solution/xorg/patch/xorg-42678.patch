@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/int10/xf86x86emu.c b/hw/xfree86/int10/xf86x86emu.c
+index a884bf9..83663b0 100644
+--- a/hw/xfree86/int10/xf86x86emu.c
++++ b/hw/xfree86/int10/xf86x86emu.c
+@@ -28,7 +28,7 @@ x86emu_do_int(int num)
+     }
+ }
+ 
+-_X_EXPORT void
++void
+ xf86ExecX86int10(xf86Int10InfoPtr pInt)
+ {
+     int sig = setup_int(pInt);
+@@ -43,7 +43,7 @@ xf86ExecX86int10(xf86Int10InfoPtr pInt)
+     finish_int(pInt, sig);
+ }
+ 
+-_X_EXPORT Bool
++Bool
+ xf86Int10ExecSetup(xf86Int10InfoPtr pInt)
+ {
+     int i;

@@ -1,0 +1,12 @@
+diff --git a/hw/xfree86/common/xf86pciBus.c b/hw/xfree86/common/xf86pciBus.c
+index 21a57ae..13e13e9 100644
+--- a/hw/xfree86/common/xf86pciBus.c
++++ b/hw/xfree86/common/xf86pciBus.c
+@@ -539,7 +539,6 @@ initPciBusState(void)
+     struct pci_device *dev;
+     struct pci_device_iterator *iter;
+     BusAccPtr pbap, pbap_tmp;
+-    pciBusInfo_t *pBusInfo;
+ 
+     iter = pci_id_match_iterator_create(& bridge_match);
+     while((dev = pci_device_next(iter)) != NULL) {

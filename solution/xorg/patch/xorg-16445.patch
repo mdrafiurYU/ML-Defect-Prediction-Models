@@ -1,0 +1,14 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 92ff394..22f5edd 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -376,6 +376,9 @@ exaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth)
+     ScrnInfoPtr pScrn = XF86SCRNINFO(pScreen);
+     ExaScreenPriv(pScreen);
+ 
++    if (w > 32767 || h > 32767)
++	return NullPixmap;
++    
+     if (!pScrn->vtSema || pExaScr->swappedOut) {
+         pPixmap = pExaScr->SavedCreatePixmap(pScreen, w, h, depth);
+     } else {

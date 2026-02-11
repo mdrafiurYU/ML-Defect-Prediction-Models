@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 0434743..a754a2f 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -111,7 +111,7 @@ int ProcInitialConnection();
+ #include "xace.h"
+ #endif
+ #ifdef XAPPGROUP
+-#include <X11/extensions/Xagsrv.h>
++#include "appgroup.h"
+ #endif
+ #ifdef XKB
+ #ifndef XKB_IN_SERVER

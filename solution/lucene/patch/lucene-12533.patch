@@ -1,0 +1,41 @@
+diff --git a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/processors/QueryNodeProcessorPipeline.java b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/processors/QueryNodeProcessorPipeline.java
+index 7e00e1a..68d3638 100644
+--- a/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/processors/QueryNodeProcessorPipeline.java
++++ b/lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/processors/QueryNodeProcessorPipeline.java
+@@ -17,11 +17,7 @@ package org.apache.lucene.queryParser.core.processors;
+  * limitations under the License.
+  */
+ 
+-import java.util.Collection;
+-import java.util.Iterator;
+-import java.util.LinkedList;
+-import java.util.List;
+-import java.util.ListIterator;
++import java.util.*;
+ 
+ import org.apache.lucene.queryParser.core.QueryNodeException;
+ import org.apache.lucene.queryParser.core.config.QueryConfigHandler;
+@@ -97,23 +93,6 @@ public class QueryNodeProcessorPipeline implements QueryNodeProcessor,
+   }
+ 
+   /**
+-   * Adds a processor to the pipeline, it's always added to the end of the
+-   * pipeline.
+-   * 
+-   * @deprecated this class now conforms to {@link List} interface, so use
+-   *             {@link #add(QueryNodeProcessor)} instead
+-   * 
+-   * @param processor the processor to be added
+-   */
+-  @Deprecated
+-  public void addProcessor(QueryNodeProcessor processor) {
+-    this.processors.add(processor);
+-
+-    processor.setQueryConfigHandler(this.queryConfig);
+-
+-  }
+-
+-  /**
+    * For reference about this method check:
+    * {@link QueryNodeProcessor#setQueryConfigHandler(QueryConfigHandler)}.
+    *

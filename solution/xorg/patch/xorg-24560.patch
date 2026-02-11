@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/common/xf86Events.c b/hw/xfree86/common/xf86Events.c
+index 21389f2..45a50d8 100644
+--- a/hw/xfree86/common/xf86Events.c
++++ b/hw/xfree86/common/xf86Events.c
+@@ -142,9 +142,6 @@ Bool VTSwitchEnabled = TRUE;		/* Allows run-time disabling for
+ 
+ extern fd_set EnabledDevices;
+ 
+-#if defined(XQUEUE)
+-extern void xf86XqueRequest(void);
+-#endif
+ #ifdef XF86PM
+ extern void (*xf86OSPMClose)(void);
+ #endif

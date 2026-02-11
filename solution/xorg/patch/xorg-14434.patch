@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winclipboardtextconv.c b/hw/xwin/winclipboardtextconv.c
+index c657428..fd2e696 100644
+--- a/hw/xwin/winclipboardtextconv.c
++++ b/hw/xwin/winclipboardtextconv.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include <stdio.h>
+ #include <stdlib.h>

@@ -1,0 +1,13 @@
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index 6516f43..cea8984 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -584,7 +584,7 @@ InitVisualWrap()
+ 	(*__miHookInitVisualsFunction)(&miInitVisualsProc);
+ }
+ 
+-_X_EXPORT void
++void
+ miHookInitVisuals(void (**old)(miInitVisualsProcPtr *),
+ 		  void (*new)(miInitVisualsProcPtr *))
+ {

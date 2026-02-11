@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+index 5cb2ba6..bb11c27 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/TagBits.java
+@@ -97,6 +97,7 @@ public interface TagBits {
+ 	long AnnotationInherited = ASTNode.Bit48L;
+ 	long AnnotationOverride = ASTNode.Bit49L;
+ 	long AnnotationSuppressWarnings = ASTNode.Bit50L;
++	long AllStandardAnnotationsMask = AnnotationTargetMASK | AnnotationRetentionMASK | AnnotationDeprecated | AnnotationDocumented | AnnotationInherited |  AnnotationOverride | AnnotationSuppressWarnings;
+ 	
+ 	long DefaultValueResolved = ASTNode.Bit51L;
+ }

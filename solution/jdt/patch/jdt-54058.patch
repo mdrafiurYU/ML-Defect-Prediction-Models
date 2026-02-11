@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java
+index 1ea2335..e90f6c0 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionOnJavadocFieldReference.java
+@@ -59,6 +59,15 @@ public class CompletionOnJavadocFieldReference extends JavadocFieldReference imp
+ 		return (this.completionFlags & BASE_TYPES) != 0;
+ 	}
+ 
++	/**
++	 * Get completion node flags.
++	 * 
++	 * @return int Flags of the javadoc completion node.
++	 */
++	public int getCompletionFlags() {
++		return this.completionFlags;
++	}
++
+ 	/* (non-Javadoc)
+ 	 * @see org.eclipse.jdt.internal.compiler.ast.JavadocFieldReference#internalResolveType(org.eclipse.jdt.internal.compiler.lookup.Scope)
+ 	 */

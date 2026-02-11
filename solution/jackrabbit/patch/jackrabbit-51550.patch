@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java b/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java
+index da254e9..9c7e7ef 100644
+--- a/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java
++++ b/jackrabbit-jcr-client/src/test/java/org/apache/jackrabbit/client/RepositoryFactoryImplTest.java
+@@ -264,6 +264,9 @@ public class RepositoryFactoryImplTest extends TestCase {
+         public void checkout(SessionInfo sessionInfo, NodeId nodeId) throws UnsupportedRepositoryOperationException, LockException, RepositoryException {
+         }
+ 
++        public void checkout(SessionInfo sessionInfo, NodeId nodeId, NodeId activityId) throws UnsupportedRepositoryOperationException, LockException, RepositoryException {
++        }
++
+         public NodeId checkpoint(SessionInfo sessionInfo, NodeId nodeId) throws UnsupportedRepositoryOperationException, RepositoryException {
+             return null;
+         }

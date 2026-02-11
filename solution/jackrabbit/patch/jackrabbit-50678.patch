@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+index 379f0fe..7f3ef62 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+@@ -1049,7 +1049,7 @@ public class RepositoryServiceImpl implements RepositoryService {
+                 query.bindValue(entry.getKey(), value);
+             }
+         }
+-        return new QueryInfoImpl(query, query.execute(), idFactory,
++        return new QueryInfoImpl(query.execute(), idFactory,
+                 sInfo.getNamePathResolver(), getQValueFactory());
+     }

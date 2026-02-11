@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+index e662de5..15962b8 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedDerefBytesImpl.java
+@@ -244,7 +244,7 @@ class FixedDerefBytesImpl {
+ 
+       @Override
+       public int nextDoc() throws IOException {
+-        if (pos < valueCount) {
++        if (pos >= valueCount) {
+           return pos = NO_MORE_DOCS;
+         }
+         return advance(pos + 1);

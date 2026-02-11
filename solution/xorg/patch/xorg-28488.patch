@@ -1,0 +1,21 @@
+diff --git a/mi/mipolyutil.c b/mi/mipolyutil.c
+index fe72e55..6ec860a 100644
+--- a/mi/mipolyutil.c
++++ b/mi/mipolyutil.c
+@@ -73,13 +73,9 @@ SOFTWARE.
+  *     bucket.  Finally, we can insert it.
+  *
+  */
+-Bool
+-miInsertEdgeInET(ET, ETE, scanline, SLLBlock, iSLLBlock)
+-    EdgeTable *ET;
+-    EdgeTableEntry *ETE;
+-    int scanline;
+-    ScanLineListBlock **SLLBlock;
+-    int *iSLLBlock;
++static Bool
++miInsertEdgeInET(EdgeTable *ET, EdgeTableEntry *ETE,  int scanline,
++		 ScanLineListBlock **SLLBlock, int *iSLLBlock)
+ {
+     EdgeTableEntry *start, *prev;
+     ScanLineList *pSLL, *pPrevSLL;

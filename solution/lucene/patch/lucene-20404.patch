@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestSegmentTermDocs.java b/lucene/src/test/org/apache/lucene/index/TestSegmentTermDocs.java
+index 11e7c33..fbedb6e 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestSegmentTermDocs.java
++++ b/lucene/src/test/org/apache/lucene/index/TestSegmentTermDocs.java
+@@ -105,7 +105,7 @@ public class TestSegmentTermDocs extends LuceneTestCase {
+ 
+   public void testSkipTo(int indexDivisor) throws IOException {
+     Directory dir = newDirectory();
+-    IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newInOrderLogMergePolicy()));
++    IndexWriter writer = new IndexWriter(dir, newIndexWriterConfig( TEST_VERSION_CURRENT, new MockAnalyzer()).setMergePolicy(newLogMergePolicy()));
+     
+     Term ta = new Term("content","aaa");
+     for(int i = 0; i < 10; i++)

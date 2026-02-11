@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java
+index 3e3600c..10d7bbd 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/MLRUItemStateCache.java
+@@ -47,10 +47,10 @@ public class MLRUItemStateCache implements ItemStateCache, Cache {
+     private long maxMem;
+ 
+     /** the number of writes */
+-    private long numWrites = 0;
++    private long numWrites;
+ 
+     /** the access count */
+-    private long accessCount = 0;
++    private long accessCount;
+ 
+     /** the cache access listeners */
+     private CacheAccessListener accessListener;

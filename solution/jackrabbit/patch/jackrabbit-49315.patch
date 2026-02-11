@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/TestAll.java
+index ec83e4a..3dde640 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/query/TestAll.java
+@@ -68,6 +68,11 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(OrderByLongTest.class);
+         suite.addTestSuite(OrderByMultiTypeTest.class);
+         suite.addTestSuite(OrderByStringTest.class);
++        suite.addTestSuite(OrderByLengthTest.class);
++        suite.addTestSuite(OrderByLocalNameTest.class);
++        suite.addTestSuite(OrderByNameTest.class);
++        suite.addTestSuite(OrderByLowerCaseTest.class);
++        suite.addTestSuite(OrderByUpperCaseTest.class);
+ 
+         return suite;
+     }

@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+index d508908..af53a71 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/value/BLOBValue.java
+@@ -285,10 +285,7 @@ public class BLOBValue extends BLOBFileValue {
+         }
+     }
+ 
+-    /**
+-     * {@inheritDoc}
+-     */
+-    public boolean isImmutable() {
++    boolean isImmutable() {
+         // delete will modify the state
+         return false;
+     }

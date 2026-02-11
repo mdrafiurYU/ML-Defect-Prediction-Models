@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index 2f15e14..a35de20 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -165,6 +165,8 @@ typedef struct {
+     Bool		kbdCustomKeycodes;
+     Bool		disableRandR;
+     MessageType		randRFrom;
++    Bool		aiglx;
++    MessageType		aiglxFrom;
+     struct {
+ 	Bool		disabled;		/* enable/disable deactivating
+ 						 * grabs or closing the

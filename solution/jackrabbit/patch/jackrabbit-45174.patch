@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRelease.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRelease.java
+index a725a90..a019b31 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRelease.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/LockRelease.java
+@@ -48,6 +48,7 @@ public class LockRelease extends AbstractOperation {
+      * @see Operation#accept(OperationVisitor)
+      */
+     public void accept(OperationVisitor visitor) throws RepositoryException, ConstraintViolationException, AccessDeniedException, ItemExistsException, NoSuchNodeTypeException, UnsupportedRepositoryOperationException, VersionException {
++        assert status == STATUS_PENDING;
+         visitor.visit(this);
+     }
+ 
+@@ -58,6 +59,8 @@ public class LockRelease extends AbstractOperation {
+      * @see Operation#persisted()
+      */
+     public void persisted() {
++        assert status == STATUS_PENDING;
++        status = STATUS_PERSISTED;
+         // non-recursive invalidation but including all properties
+         NodeEntry nodeEntry = nodeState.getNodeEntry();
+         Iterator entries = nodeEntry.getPropertyEntries();
+@@ -69,7 +72,7 @@ public class LockRelease extends AbstractOperation {
+     }
+ 
+     //----------------------------------------< Access Operation Parameters >---
+-    public NodeId getNodeId() {
++    public NodeId getNodeId() throws RepositoryException {
+         return nodeState.getNodeId();
+     }

@@ -1,0 +1,23 @@
+diff --git a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestPlainTextEntityProcessor.java b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestPlainTextEntityProcessor.java
+index 48a0b1b..e0a5b8b 100644
+--- a/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestPlainTextEntityProcessor.java
++++ b/solr/contrib/dataimporthandler/src/test/java/org/apache/solr/handler/dataimport/TestPlainTextEntityProcessor.java
+@@ -42,15 +42,18 @@ public class TestPlainTextEntityProcessor extends AbstractDataImportHandlerTestC
+   public static class DS extends DataSource {
+     static String s = "hello world";
+ 
++    @Override
+     public void init(Context context, Properties initProps) {
+ 
+     }
+ 
++    @Override
+     public Object getData(String query) {
+ 
+       return new StringReader(s);
+     }
+ 
++    @Override
+     public void close() {
+ 
+     }

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86DPMS.c b/hw/xfree86/common/xf86DPMS.c
+index 536d38e..43efb8e 100644
+--- a/hw/xfree86/common/xf86DPMS.c
++++ b/hw/xfree86/common/xf86DPMS.c
+@@ -153,7 +153,7 @@ DPMSSet(ClientPtr client, int level)
+ 	return Success;
+ 
+     if (level != DPMSModeOn) {
+-	rc = SaveScreens(client, SCREEN_SAVER_FORCER, ScreenSaverActive);
++	rc = dixSaveScreens(client, SCREEN_SAVER_FORCER, ScreenSaverActive);
+ 	if (rc != Success)
+ 	    return rc;
+     }

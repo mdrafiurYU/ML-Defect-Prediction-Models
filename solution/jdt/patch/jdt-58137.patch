@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/DependencyTests.java b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/DependencyTests.java
+index 26dfb83..9084850 100644
+--- a/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/DependencyTests.java
++++ b/org.eclipse.jdt.core.tests.builder/src/org/eclipse/jdt/core/tests/builder/DependencyTests.java
+@@ -18,13 +18,13 @@ import org.eclipse.jdt.core.compiler.CategorizedProblem;
+ import org.eclipse.jdt.core.tests.util.AbstractCompilerTest;
+ import org.eclipse.jdt.core.tests.util.Util;
+ 
+-public class DependencyTests extends Tests {
++public class DependencyTests extends BuilderTests {
+ 	public DependencyTests(String name) {
+ 		super(name);
+ 	}
+ 
+ 	public static Test suite() {
+-		return new TestSuite(DependencyTests.class);
++		return buildTestSuite(DependencyTests.class);
+ 	}
+ 
+ 	public void testAbstractMethod() throws JavaModelException {

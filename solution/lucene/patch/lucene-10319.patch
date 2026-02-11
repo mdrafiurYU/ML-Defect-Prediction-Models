@@ -1,0 +1,15 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/StemmerUtil.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/StemmerUtil.java
+index 883a7af..bb5e04f 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/util/StemmerUtil.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/util/StemmerUtil.java
+@@ -24,8 +24,8 @@ public class StemmerUtil {
+    * 
+    * @param s Input Buffer
+    * @param len length of input buffer
+-   * @param suffix Suffix string to test
+-   * @return true if <code>s</code> starts with <code>suffix</code>
++   * @param prefix Prefix string to test
++   * @return true if <code>s</code> starts with <code>prefix</code>
+    */
+   public static boolean startsWith(char s[], int len, String prefix) {
+     final int prefixLen = prefix.length();

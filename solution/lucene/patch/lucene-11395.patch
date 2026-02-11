@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/Bytes.java b/lucene/src/java/org/apache/lucene/index/values/Bytes.java
+index bd9fd45..fb1d273 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/Bytes.java
++++ b/lucene/src/java/org/apache/lucene/index/values/Bytes.java
+@@ -287,7 +287,9 @@ public final class Bytes {
+       return idxIn == null ? null : (IndexInput) idxIn.clone();
+     }
+ 
++    @Override
+     public void close() throws IOException {
++      super.close();
+       if (datIn != null) {
+         datIn.close();
+       }

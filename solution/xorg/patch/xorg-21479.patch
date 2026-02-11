@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86.h b/hw/xfree86/common/xf86.h
+index 6a2ed46..4903791 100644
+--- a/hw/xfree86/common/xf86.h
++++ b/hw/xfree86/common/xf86.h
+@@ -194,6 +194,10 @@ void *xf86GetPointerScreenFuncs(void);
+ void xf86InitOrigins(void);
+ void xf86ReconfigureLayout(void);
+ 
++/* xf86cvt.c */
++DisplayModePtr xf86CVTMode(int HDisplay, int VDisplay, float VRefresh,
++                           Bool Reduced, Bool Interlaced);
++
+ /* xf86DPMS.c */
+ 
+ Bool xf86DPMSInit(ScreenPtr pScreen, DPMSSetProcPtr set, int flags);

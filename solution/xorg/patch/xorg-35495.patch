@@ -1,0 +1,14 @@
+diff --git a/hw/kdrive/src/kdrive.h b/hw/kdrive/src/kdrive.h
+index 8722ba3..4e04b59 100644
+--- a/hw/kdrive/src/kdrive.h
++++ b/hw/kdrive/src/kdrive.h
+@@ -834,6 +834,9 @@ void
+ KdComputePointerMatrix (KdPointerMatrix *pointer, Rotation randr, int width, int height);
+     
+ void
++KdScreenToPointerCoords (int *x, int *y);
++
++void
+ KdBlockHandler (int		screen,
+ 		pointer		blockData,
+ 		pointer		timeout,

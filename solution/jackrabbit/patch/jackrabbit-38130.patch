@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDoubleTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDoubleTest.java
+index 78afab2..2afb07f 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDoubleTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueDoubleTest.java
+@@ -72,6 +72,13 @@ public class SetValueDoubleTest extends AbstractJCRTest {
+         superuser.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        value = null;
++        node = null;
++        property1 = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test the persistence of a property modified with an double parameter and
+      * saved from the Session

@@ -1,0 +1,23 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/ExceptionHandlingTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/ExceptionHandlingTests.java
+index de86869..bde519e 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/ExceptionHandlingTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/ExceptionHandlingTests.java
+@@ -89,9 +89,7 @@ public class ExceptionHandlingTests extends APTTestBase {
+ 
+ 		fullBuild( project.getFullPath() );
+ 		ExpectedProblem ep = new ExpectedProblem("Test", "Type mismatch: cannot convert from Object[] to boolean", testPath);
+-		// JDT seems to be reporting multiple problems for a single failure.
+-		// It should not be necessary to include the problem twice
+-		expectingOnlySpecificProblemsFor(testPath, new ExpectedProblem[]{ep, ep});
++		expectingOnlySpecificProblemFor(testPath, ep);
+ 		assertEquals(ProcessorTestStatus.NO_ERRORS, ProcessorTestStatus.getErrors());
+ 	}
+ 	
+@@ -140,7 +138,7 @@ public class ExceptionHandlingTests extends APTTestBase {
+ 
+ 		fullBuild( project.getFullPath() );
+ 		ExpectedProblem ep = new ExpectedProblem("Test", "Type mismatch: cannot convert from Object[] to String", testPath);
+-		expectingOnlySpecificProblemsFor(testPath, new ExpectedProblem[] {ep, ep}); 
++		expectingOnlySpecificProblemFor(testPath, ep); 
+ 		assertEquals(ProcessorTestStatus.NO_ERRORS, ProcessorTestStatus.getErrors());
+ 	}

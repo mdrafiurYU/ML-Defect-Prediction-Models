@@ -1,0 +1,37 @@
+diff --git a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QValue.java b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QValue.java
+index 2fd4a42..a4e9227 100644
+--- a/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QValue.java
++++ b/jackrabbit-spi/src/main/java/org/apache/jackrabbit/spi/QValue.java
+@@ -16,12 +16,13 @@
+  */
+ package org.apache.jackrabbit.spi;
+ 
+-import javax.jcr.RepositoryException;
+-import javax.jcr.PropertyType;
+-import javax.jcr.Property;
+ import java.io.InputStream;
+ import java.util.Calendar;
+ 
++import javax.jcr.Property;
++import javax.jcr.PropertyType;
++import javax.jcr.RepositoryException;
++
+ /**
+  * <code>QValue</code> is the qualified SPI representation of a
+  * {@link javax.jcr.Value jcr value}. It therefore refers to <code>Name</code>s
+@@ -107,6 +108,15 @@ public interface QValue {
+     public long getLong() throws RepositoryException;
+ 
+     /**
++     * Returns a <code>boolean</code> representation of this value.
++     *
++     * @return A <code>boolean</code> representation of this value.
++     * @throws RepositoryException if an error occurs.
++     */
++    public boolean getBoolean() throws RepositoryException;
++
++
++    /**
+      * Returns a <code>Name</code> representation of this value.
+      *
+      * @return A <code>Name</code> representation of this value.

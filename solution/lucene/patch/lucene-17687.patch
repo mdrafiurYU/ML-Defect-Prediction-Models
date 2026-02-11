@@ -1,0 +1,28 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/intblock/VariableIntBlockIndexInput.java b/lucene/src/java/org/apache/lucene/index/codecs/intblock/VariableIntBlockIndexInput.java
+index cbdb452..d4b7fcb 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/intblock/VariableIntBlockIndexInput.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/intblock/VariableIntBlockIndexInput.java
+@@ -171,17 +171,17 @@ public abstract class VariableIntBlockIndexInput extends IntIndexInput {
+     @Override
+     public void read(final DataInput indexIn, final boolean absolute) throws IOException {
+       if (absolute) {
++        upto = indexIn.readVInt();
+         fp = indexIn.readVLong();
+-        upto = indexIn.readByte()&0xFF;
+       } else {
+-        final long delta = indexIn.readVLong();
+-        if (delta == 0) {
++        final int uptoDelta = indexIn.readVInt();
++        if ((uptoDelta & 1) == 1) {
+           // same block
+-          upto = indexIn.readByte()&0xFF;
++          upto += uptoDelta >>> 1;
+         } else {
+           // new block
+-          fp += delta;
+-          upto = indexIn.readByte()&0xFF;
++          upto = uptoDelta >>> 1;
++          fp += indexIn.readVLong();
+         }
+       }
+       // TODO: we can't do this assert because non-causal

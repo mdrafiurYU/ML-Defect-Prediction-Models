@@ -1,0 +1,62 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+index 2f738ce..02f4dcf 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/BatchCompilerTest.java
+@@ -1767,28 +1767,24 @@ public void test032(){
+ 	        "	           ^^\n" + 
+ 	        "Type safety: The expression of type Y needs unchecked conversion to conform to Y<?,? extends X.XX<?,?>,? extends X.XY>\n" + 
+ 	        "----------\n" + 
+-	        "----------\n" + 
+ 	        "2. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+ 	        " (at line 27)\n" + 
+ 	        "	return l1;\n" + 
+ 	        "	       ^^\n" + 
+ 	        "Type safety: The expression of type Y needs unchecked conversion to conform to Y<T,U,V>\n" + 
+ 	        "----------\n" + 
+-	        "----------\n" + 
+ 	        "3. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+ 	        " (at line 33)\n" + 
+ 	        "	m2.put((XX<?, XY>) p1, p2);\n" + 
+ 	        "	       ^^^^^^^^^^^^^^\n" + 
+ 	        "Type safety: The cast from TT to X.XX<?,X.XY> is actually checking against the erased type X<T,U,V>.XX\n" + 
+ 	        "----------\n" + 
+-	        "----------\n" + 
+ 	        "4. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+ 	        " (at line 58)\n" + 
+ 	        "	final XX<?, XY> l1 = (XX<?, XY>) i.getKey();\n" + 
+ 	        "	                ^^\n" + 
+ 	        "The local variable l1 is never read\n" + 
+ 	        "----------\n" + 
+-	        "----------\n" + 
+ 	        "5. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+ 	        " (at line 58)\n" + 
+ 	        "	final XX<?, XY> l1 = (XX<?, XY>) i.getKey();\n" + 
+@@ -1941,28 +1937,24 @@ public void test032(){
+         "	           ^^\n" + 
+         "Type safety: The expression of type Y needs unchecked conversion to conform to Y<?,? extends X.XX<?,?>,? extends X.XY>\n" + 
+         "----------\n" + 
+-        "----------\n" + 
+         "2. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+         " (at line 27)\n" + 
+         "	return l1;\n" + 
+         "	       ^^\n" + 
+         "Type safety: The expression of type Y needs unchecked conversion to conform to Y<T,U,V>\n" + 
+         "----------\n" + 
+-        "----------\n" + 
+         "3. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+         " (at line 33)\n" + 
+         "	m2.put((XX<?, XY>) p1, p2);\n" + 
+         "	       ^^^^^^^^^^^^^^\n" + 
+         "Type safety: The cast from TT to X.XX<?,X.XY> is actually checking against the erased type X<T,U,V>.XX\n" + 
+         "----------\n" + 
+-        "----------\n" + 
+         "4. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+         " (at line 58)\n" + 
+         "	final XX<?, XY> l1 = (XX<?, XY>) i.getKey();\n" + 
+         "	                ^^\n" + 
+         "The local variable l1 is never read\n" + 
+         "----------\n" + 
+-        "----------\n" + 
+         "5. WARNING in ---OUTPUT_DIR_PLACEHOLDER---" + File.separator + "p" + File.separator + "Z.java\n" + 
+         " (at line 58)\n" + 
+         "	final XX<?, XY> l1 = (XX<?, XY>) i.getKey();\n" +

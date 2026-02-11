@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/common/xf86sbusBus.h b/hw/xfree86/common/xf86sbusBus.h
+index e83592d..5cdb095 100644
+--- a/hw/xfree86/common/xf86sbusBus.h
++++ b/hw/xfree86/common/xf86sbusBus.h
+@@ -56,16 +56,17 @@ typedef struct sbus_device {
+     char		*device;
+ } sbusDevice, *sbusDevicePtr;
+ 
+-extern _X_EXPORT struct sbus_devtable {
++struct sbus_devtable {
+     int devId;
+     int fbType;
+     char *promName;
+     char *driverName;
+     char *descr;
+-} sbusDeviceTable[];
++};
+ 
+ extern _X_EXPORT void xf86SbusProbe(void);
+ extern _X_EXPORT sbusDevicePtr *xf86SbusInfo;
++extern _X_EXPORT struct sbus_devtable sbusDeviceTable[];
+ 
+ extern _X_EXPORT int xf86MatchSbusInstances(const char *driverName, int sbusDevId,
+ 			   GDevPtr *devList, int numDevs, DriverPtr drvp,

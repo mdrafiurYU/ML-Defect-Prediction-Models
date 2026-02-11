@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/BinaryIndexer.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/BinaryIndexer.java
+index a1090f6..2e2659d 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/BinaryIndexer.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/BinaryIndexer.java
+@@ -440,6 +440,9 @@ public class BinaryIndexer extends AbstractIndexer implements SuffixConstants {
+ 	public void indexDocument() {
+ 		try {
+ 			byte[] contents = this.document.getByteContents();
++			// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=107124
++			// contents can potentially be null if a IOException occurs while retrieving the contents
++			if (contents == null) return;
+ 			ClassFileReader reader = new ClassFileReader(contents, this.document.getPath().toCharArray());
+ 	
+ 			// first add type references

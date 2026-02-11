@@ -1,0 +1,34 @@
+diff --git a/hw/xgl/xgl.h b/hw/xgl/xgl.h
+index 346d7b3..f7c6102 100644
+--- a/hw/xgl/xgl.h
++++ b/hw/xgl/xgl.h
+@@ -351,6 +351,7 @@ typedef struct _xglPixmap {
+     Bool	      allBits;
+     unsigned long     pictureMask;
+     xglGeometryPtr    pGeometry;
++    int		      lock;
+ } xglPixmapRec, *xglPixmapPtr;
+ 
+ extern int xglPixmapPrivateIndex;
+@@ -1313,6 +1314,9 @@ xglUpdatePicture (PicturePtr pPicture);
+ Bool
+ xglPictureInit (ScreenPtr pScreen);
+ 
++void
++xglPictureClipExtents (PicturePtr pPicture,
++		       BoxPtr     extents);
+ 
+ /* xglglyph.c */
+ 
+@@ -1365,4 +1369,11 @@ xglAddTraps (PicturePtr pDst,
+ 
+ #endif
+ 
++#ifdef GLXEXT
++
++Bool
++xglInitVisualConfigs (ScreenPtr pScreen);
++
++#endif
++
+ #endif /* _XGL_H_ */

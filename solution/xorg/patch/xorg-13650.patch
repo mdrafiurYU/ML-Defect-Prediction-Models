@@ -1,0 +1,29 @@
+diff --git a/hw/kdrive/i810/i810.c b/hw/kdrive/i810/i810.c
+index a48cc63..0c233b9 100644
+--- a/hw/kdrive/i810/i810.c
++++ b/hw/kdrive/i810/i810.c
+@@ -47,14 +47,13 @@ X Window System is a trademark of The Open Group */
+ #endif
+ #include "kdrive.h"
+ #include "kxv.h"
++#include "klinux.h"
+ 
+ #include "i810.h"
+ #include "agp.h"
+ 
+ #include "i810draw.h"
+ 
+-Bool i810InitVideo(ScreenPtr pScreen);
+-
+ #ifndef I810_DEBUG
+ int I810_DEBUG = (0
+ /*      		  | DEBUG_ALWAYS_SYNC   */
+@@ -137,8 +136,6 @@ i810CardInit (KdCardInfo *card)
+ 
+     {
+         unsigned long *p;
+-        unsigned char *LinuxGetPciCfg(KdCardAttr *attr);
+-
+ 
+         if (!(p= (unsigned long *) LinuxGetPciCfg(&card->attr)))
+             return FALSE;

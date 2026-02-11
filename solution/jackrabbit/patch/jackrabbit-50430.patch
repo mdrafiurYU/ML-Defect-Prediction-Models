@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+index 48d716f..715b635 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/SearchIndex.java
+@@ -717,7 +717,7 @@ public class SearchIndex extends AbstractQueryHandler {
+             IndexSearcher searcher = new IndexSearcher(reader);
+             try {
+                 Query q = new TermQuery(new Term(
+-                        FieldNames.WEAK_REFS, id.getUUID().toString()));
++                        FieldNames.WEAK_REFS, id.toString()));
+                 searcher.search(q, new HitCollector() {
+                     public void collect(int doc, float score) {
+                         docs.add(doc);

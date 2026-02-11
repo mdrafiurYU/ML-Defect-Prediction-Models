@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java
+index d1989f8..48bd23f 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/SourceType.java
+@@ -40,7 +40,9 @@ public class SourceType extends NamedMember implements IType {
+ 	
+ protected SourceType(JavaElement parent, String name) {
+ 	super(parent, name);
+-	Assert.isTrue(name.indexOf('.') == -1, Messages.bind(Messages.sourcetype_invalidName, name)); 
++	if (name.indexOf('.') != -1) {
++		Assert.isTrue(false, Messages.bind(Messages.sourcetype_invalidName, name)); 
++	}
+ }
+ protected void closing(Object info) throws JavaModelException {
+ 	super.closing(info);

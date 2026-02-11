@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestOmitTf.java b/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
+index b094423..c96092a 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
++++ b/lucene/src/test/org/apache/lucene/index/TestOmitTf.java
+@@ -219,7 +219,6 @@ public class TestOmitTf extends LuceneTestCase {
+     LogMergePolicy lmp = (LogMergePolicy) writer.getConfig().getMergePolicy();
+     lmp.setMergeFactor(2);
+     lmp.setUseCompoundFile(false);
+-    lmp.setUseCompoundDocStore(false);
+     Document d = new Document();
+         
+     Field f1 = newField("f1", "This field has term freqs", Field.Store.NO, Field.Index.ANALYZED);

@@ -1,0 +1,12 @@
+diff --git a/lucene/src/java/org/apache/lucene/util/packed/Packed64.java b/lucene/src/java/org/apache/lucene/util/packed/Packed64.java
+index b382667..62e7793 100644
+--- a/lucene/src/java/org/apache/lucene/util/packed/Packed64.java
++++ b/lucene/src/java/org/apache/lucene/util/packed/Packed64.java
+@@ -199,6 +199,7 @@ class Packed64 extends PackedInts.ReaderImpl implements PackedInts.Mutable {
+                            | ((value << shifts[base + 2]) & writeMasks[base+2]);
+   }
+ 
++  @Override
+   public String toString() {
+     return "Packed64(bitsPerValue=" + bitsPerValue + ", size="
+             + size() + ", maxPos=" + maxPos

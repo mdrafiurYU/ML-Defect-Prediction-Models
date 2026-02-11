@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/StringPropertyTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/StringPropertyTest.java
+index f2b037b..3b26aa3 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/StringPropertyTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/StringPropertyTest.java
+@@ -193,17 +193,15 @@ public class StringPropertyTest extends AbstractPropertyTest {
+         }
+         try {
+             val.getString();
+-            fail("Non stream method call after stream method call " +
+-                    "should throw an IllegalStateException.");
+         } catch (IllegalStateException ise) {
+-            //ok
++            fail("Non stream method call after stream method call " +
++                    "should not throw an IllegalStateException.");
+         }
+         try {
+             otherVal.getStream();
+-            fail("Stream method call after a non stream method call " +
+-                    "should throw an IllegalStateException.");
+         } catch (IllegalStateException ise) {
+-            // ok
++            fail("Stream method call after a non stream method call " +
++                    "should not throw an IllegalStateException.");
+         }
+         in.close();
+     }

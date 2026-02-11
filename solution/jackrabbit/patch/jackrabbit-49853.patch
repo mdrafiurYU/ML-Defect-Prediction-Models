@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
+index 5f99f6b..95c9d1a 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/AbstractVersionManager.java
+@@ -488,7 +488,7 @@ abstract class AbstractVersionManager implements VersionManager {
+      * namespace.
+      *
+      * @param name string name
+-     * @return qualified name
++     * @return A <code>Name</code> object.
+      */
+     private Name getName(String name) {
+         return NameFactoryImpl.getInstance().create(Name.NS_DEFAULT_URI, name);

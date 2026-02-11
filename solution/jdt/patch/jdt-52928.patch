@@ -1,0 +1,40 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionScanner.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionScanner.java
+index f9f775a..91c5032 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionScanner.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/complete/CompletionScanner.java
+@@ -133,8 +133,6 @@ public int getNextToken() throws InvalidInputException {
+ 						//checkNonExternalizedString();
+ 						if (this.recordLineSeparator) {
+ 							pushLineSeparator();
+-						} else if (this.currentLine != null) {
+-							this.currentLine.clear();
+ 						}
+ 					}
+ 					isWhiteSpace = 
+@@ -613,8 +611,6 @@ public int getNextToken() throws InvalidInputException {
+ 										} else {
+ 											pushLineSeparator();
+ 										}
+-									} else if (this.currentLine != null) {
+-										this.currentLine.clear();
+ 									}
+ 								}
+ 								if (this.tokenizeComments) {
+@@ -659,8 +655,6 @@ public int getNextToken() throws InvalidInputException {
+ 										if (!isUnicode) {
+ 											pushLineSeparator();
+ 										}
+-									} else if (this.currentLine != null) {
+-										this.currentLine.clear();
+ 									}
+ 								}
+ 								isUnicode = false;
+@@ -689,8 +683,6 @@ public int getNextToken() throws InvalidInputException {
+ 											if (!isUnicode) {
+ 												pushLineSeparator();
+ 											}
+-										} else if (this.currentLine != null) {
+-											this.currentLine.clear();
+ 										}
+ 									}
+ 									star = this.currentCharacter == '*';

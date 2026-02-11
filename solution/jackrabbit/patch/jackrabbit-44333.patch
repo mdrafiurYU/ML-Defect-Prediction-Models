@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+index 930002d..addae40 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/PropertyImpl.java
+@@ -765,15 +765,4 @@ public class PropertyImpl extends ItemImpl implements Property {
+         return (Node) itemMgr.getItem(getPropertyState().getParentId());
+     }
+ 
+-    //--------------------------------------------------------------< Object >
+-
+-    /**
+-     * Returns the (safe) path of this property.
+-     *
+-     * @return property path
+-     */
+-    public String toString() {
+-        return safeGetJCRPath();
+-    }
+-
+ }

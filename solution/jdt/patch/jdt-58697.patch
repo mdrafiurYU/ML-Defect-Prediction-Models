@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java
+index 7535ed3..9f35760 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTStructuralPropertyTest.java
+@@ -26,6 +26,7 @@ public class ASTStructuralPropertyTest extends org.eclipse.jdt.core.tests.junit.
+ 
+ 	/** @deprecated using deprecated code */
+ 	public static Test suite() {
++		// TODO (frederic) use buildList + setAstLevel(init) instead...
+ 		junit.framework.TestSuite suite = new junit.framework.TestSuite(ASTStructuralPropertyTest.class.getName());
+ 		
+ 		Class c = ASTStructuralPropertyTest.class;

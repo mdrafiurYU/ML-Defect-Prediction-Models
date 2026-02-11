@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/bus/ix86Pci.c b/hw/xfree86/os-support/bus/ix86Pci.c
+index 6e2b650..b091ec4 100644
+--- a/hw/xfree86/os-support/bus/ix86Pci.c
++++ b/hw/xfree86/os-support/bus/ix86Pci.c
+@@ -211,10 +211,6 @@ static pciBusInfo_t ix86Pci0 = {
+ /* numDevices  */	0,			/* Set by ix86PciInit() */
+ /* secondary   */	FALSE,
+ /* primary_bus */	0,
+-#ifdef PowerMAX_OS
+-/* ppc_io_base */	0,
+-/* ppc_io_size */	0,
+-#endif
+ /* funcs       */	&ix86Funcs0,		/* Set by ix86PciInit() */
+ /* pciBusPriv  */	NULL,
+ /* bridge      */	NULL

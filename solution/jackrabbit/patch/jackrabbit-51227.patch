@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceManagementTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceManagementTest.java
+index 36ed144..e543777 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceManagementTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/WorkspaceManagementTest.java
+@@ -64,6 +64,9 @@ public class WorkspaceManagementTest extends AbstractJCRTest {
+         } catch (NoSuchWorkspaceException e) {
+             // excepted
+         }
++
++        // create pre-initialized workspace, specifying existing src workspace
++        workspace.createWorkspace("tmp" + System.currentTimeMillis(), superuser.getWorkspace().getName());
+     }

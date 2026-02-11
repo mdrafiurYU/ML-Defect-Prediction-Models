@@ -1,0 +1,13 @@
+diff --git a/os/osdep.h b/os/osdep.h
+index b6894c1..84f7177 100644
+--- a/os/osdep.h
++++ b/os/osdep.h
+@@ -184,7 +184,7 @@ typedef struct _osComm {
+ extern int FlushClient(
+     ClientPtr /*who*/,
+     OsCommPtr /*oc*/,
+-    char* /*extraBuf*/,
++    const void * /*extraBuf*/,
+     int /*extraCount*/
+ );
+ 

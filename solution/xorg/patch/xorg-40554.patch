@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index d14f8dc..3909dc8 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -197,7 +197,7 @@ XID clientErrorValue;   /* XXX this is a kludge */
+ #define SAME_SCREENS(a, b) (\
+     (a.pScreen == b.pScreen))
+ 
+-_X_EXPORT void
++void
+ SetInputCheck(HWEventQueuePtr c0, HWEventQueuePtr c1)
+ {
+     checkForInput[0] = c0;

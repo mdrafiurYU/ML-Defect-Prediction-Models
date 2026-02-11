@@ -1,0 +1,15 @@
+diff --git a/Xprint/Init.c b/Xprint/Init.c
+index 50fa471..1df8998 100644
+--- a/Xprint/Init.c
++++ b/Xprint/Init.c
+@@ -308,10 +308,7 @@ void PrinterInitGlobals(void)
+      * https://bugs.freedesktop.org/show_bug.cgi?id=1660) ...
+      * (you can enable the DAMAGE extension explicitly via
+      * % X +extension DAMAGE ... #) ;-( */
+-    {
+-      extern Bool noDamageExtension;
+       noDamageExtension = TRUE;
+-    }
+ #endif /* DAMAGE */
+ 
+ #ifdef SMART_SCHEDULE

@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/handler/JsonLoaderTest.java b/solr/src/test/org/apache/solr/handler/JsonLoaderTest.java
+index bdbdb2e..d50a781 100644
+--- a/solr/src/test/org/apache/solr/handler/JsonLoaderTest.java
++++ b/solr/src/test/org/apache/solr/handler/JsonLoaderTest.java
+@@ -94,7 +94,7 @@ public class JsonLoaderTest extends LuceneTestCase {
+     f = d.getField( "f1" );
+     assertEquals(2, f.getValues().size());
+     assertEquals(3.45f, d.getDocumentBoost());
+-    assertEquals(true, add.allowDups);
++    assertEquals(false, add.overwrite);
+     
+ 
+     // parse the commit commands

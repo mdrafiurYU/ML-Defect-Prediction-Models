@@ -1,0 +1,22 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java b/solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java
+index 5d87683..95495bd 100644
+--- a/solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java
+@@ -17,7 +17,7 @@ package org.apache.solr.search.function.distance;
+  */
+ 
+ import org.apache.lucene.index.IndexReader;
+-import org.apache.lucene.search.Searcher;
++import org.apache.lucene.search.IndexSearcher;
+ import org.apache.lucene.spatial.DistanceUtils;
+ import org.apache.solr.common.SolrException;
+ import org.apache.solr.search.function.DocValues;
+@@ -130,7 +130,7 @@ public class VectorDistanceFunction extends ValueSource {
+   }
+ 
+   @Override
+-  public void createWeight(Map context, Searcher searcher) throws IOException {
++  public void createWeight(Map context, IndexSearcher searcher) throws IOException {
+     source1.createWeight(context, searcher);
+     source2.createWeight(context, searcher);
+   }

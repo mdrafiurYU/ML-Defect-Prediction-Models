@@ -1,0 +1,43 @@
+diff --git a/hw/xfree86/common/xf86str.h b/hw/xfree86/common/xf86str.h
+index 32e0d95..904c369 100644
+--- a/hw/xfree86/common/xf86str.h
++++ b/hw/xfree86/common/xf86str.h
+@@ -383,17 +383,12 @@ typedef enum {
+ struct pci_device;
+ 
+ typedef struct {
+-    unsigned int dummy;
+-} IsaBusId;
+-
+-typedef struct {
+     int		fbNum;
+ } SbusBusId;
+ 
+ typedef struct _bus {
+     BusType type;
+     union {
+-	IsaBusId isa;
+ 	struct pci_device *pci;
+ 	SbusBusId sbus;
+     } id;
+@@ -436,8 +431,6 @@ typedef struct {
+    int                          screen;         /* For multi-CRTC cards */
+ } GDevRec, *GDevPtr;
+ 
+-typedef int (*FindIsaDevProc)(GDevPtr dev);
+-
+ typedef struct {
+    char *			identifier;
+    char *			driver;
+@@ -717,11 +710,6 @@ typedef struct _resRec {
+ #define block_end	val.rEnd
+ #define res_type	val.type
+ 
+-typedef struct {
+-    int numChipset;
+-    resRange *resList;
+-} IsaChipsets;
+-
+ typedef struct _PciChipsets {
+     /**
+      * Key used to match this device with its name in an array of

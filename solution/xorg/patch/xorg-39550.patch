@@ -1,0 +1,16 @@
+diff --git a/hw/xwin/winmultiwindowwindow.c b/hw/xwin/winmultiwindowwindow.c
+index 037c881..75bef97 100644
+--- a/hw/xwin/winmultiwindowwindow.c
++++ b/hw/xwin/winmultiwindowwindow.c
+@@ -352,11 +352,9 @@ winMapWindowMultiWindow (WindowPtr pWin)
+   /* Refresh/redisplay the Windows window associated with this X window */
+   winUpdateWindowsWindow (pWin);
+ 
+-#ifdef SHAPE
+   /* Update the Windows window's shape */
+   winReshapeMultiWindow (pWin);
+   winUpdateRgnMultiWindow (pWin);
+-#endif
+ 
+   return fResult;
+ }

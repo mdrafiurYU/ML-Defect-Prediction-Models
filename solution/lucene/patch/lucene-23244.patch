@@ -1,0 +1,11 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java b/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java
+index fceafc7..a28e7d2 100644
+--- a/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java
++++ b/lucene/src/java/org/apache/lucene/index/values/FixedStraightBytesImpl.java
+@@ -155,7 +155,6 @@ class FixedStraightBytesImpl {
+           throws IOException {
+         super(datIn, null, new PagedBytes(PAGED_BYTES_BITS), size * maxDoc);
+         this.size = size;
+-        this.missingValue.bytesValue = new BytesRef(size);
+         this.maxDoc = maxDoc;
+       }

@@ -1,0 +1,42 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
+index 4f81a22..b33b88c 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ASTConverterTest2.java
+@@ -42,7 +42,7 @@ public class ASTConverterTest2 extends ConverterTestSetup {
+ 	}
+ 
+ 	static {
+-//		TESTS_NAMES = new String[] {"test0576"};
++//		TESTS_NAMES = new String[] {"test0577"};
+ //		TESTS_NUMBERS =  new int[] { 606 };
+ 	}
+ 	public static Test suite() {
+@@ -5366,6 +5366,28 @@ public class ASTConverterTest2 extends ConverterTestSetup {
+ 		}
+ 	}
+ 	
++	/*
++	 * Ensures that strings are not optimized when creating the AST through a reconcile
++	 * even if the working copy was consistent.
++	 * (regression test for bug 114909 AST: String concatenation represented as single node)
++	 */
++	public void test0577() throws CoreException {
++		ICompilationUnit workingCopy = null;
++		try {
++			workingCopy = getWorkingCopy(
++				"/Converter/src/X.java", 
++				"public class X {\n" +
++				"  String s = /*start*/\"a\" + \"b\"/*end*/;\n" +
++				"}",
++				true/*resolve*/);
++			ASTNode string = buildAST(workingCopy);
++			assertEquals("Unexpected node type", ASTNode.INFIX_EXPRESSION, string.getNodeType());
++		} finally {
++			if (workingCopy != null)
++				workingCopy.discardWorkingCopy();
++		}
++	}
++	
+ 	public void test0606() throws JavaModelException {
+ 		ICompilationUnit sourceUnit = getCompilationUnit("Converter", "src", "test0606", "X.java"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+ 		ASTNode result = runConversion(sourceUnit, true);

@@ -1,0 +1,15 @@
+diff --git a/include/pixmapstr.h b/include/pixmapstr.h
+index 22a1f10..465e7bc 100644
+--- a/include/pixmapstr.h
++++ b/include/pixmapstr.h
+@@ -47,6 +47,10 @@ SOFTWARE.
+ ******************************************************************/
+ /* $XFree86$ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef PIXMAPSTRUCT_H
+ #define PIXMAPSTRUCT_H
+ #include "pixmap.h"

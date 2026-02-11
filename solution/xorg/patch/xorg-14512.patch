@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/windialogs.c b/hw/xwin/windialogs.c
+index 676b2df..ab06b0d 100755
+--- a/hw/xwin/windialogs.c
++++ b/hw/xwin/windialogs.c
+@@ -29,6 +29,9 @@
+  *              Earle F. Philhower III
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #ifdef __CYGWIN__
+ #include <sys/cygwin.h>

@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+index f3a2504..ee25415 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/SessionImpl.java
+@@ -1507,7 +1507,7 @@ public class SessionImpl extends AbstractSession
+             } else if (propertyExists(absPath)) {
+                 permissions |= Permission.REMOVE_PROPERTY;
+             } else {
+-                // item does exist -> check both permissions
++                // item doesn't exist -> check both permissions
+                 permissions = Permission.REMOVE_NODE | Permission.REMOVE_PROPERTY;
+             }
+         }

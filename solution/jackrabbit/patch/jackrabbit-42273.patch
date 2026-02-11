@@ -1,0 +1,29 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/UpdateTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/UpdateTest.java
+index e54d9bc..0e00a54 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/UpdateTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/UpdateTest.java
+@@ -74,7 +74,7 @@ public class UpdateTest extends AbstractJCRTest {
+ 
+         String srcWorkspace = null;
+         for (int i = 0; i < accessibleWorkspaces.length; i++) {
+-            if (!accessibleWorkspaces.equals(currentWorkspace)) {
++            if (!accessibleWorkspaces[i].equals(currentWorkspace)) {
+                 try {
+                     n.getCorrespondingNodePath(accessibleWorkspaces[i]);
+                 } catch (ItemNotFoundException e) {
+@@ -207,7 +207,7 @@ public class UpdateTest extends AbstractJCRTest {
+     private String getAnotherWorkspace() throws NotExecutableException {
+         String srcWorkspace = null;
+         for (int i = 0; i < accessibleWorkspaces.length; i++) {
+-            if (!accessibleWorkspaces.equals(currentWorkspace)) {
++            if (!accessibleWorkspaces[i].equals(currentWorkspace)) {
+                 srcWorkspace = accessibleWorkspaces[i];
+             }
+         }
+@@ -216,4 +216,4 @@ public class UpdateTest extends AbstractJCRTest {
+         }
+         return srcWorkspace;
+     }
+-}
+\ No newline at end of file
++}

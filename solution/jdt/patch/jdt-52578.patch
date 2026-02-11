@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/align/Alignment.java b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/align/Alignment.java
+index 0af759f..2a01c48 100644
+--- a/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/align/Alignment.java
++++ b/org.eclipse.jdt.core/formatter/org/eclipse/jdt/internal/formatter/align/Alignment.java
+@@ -405,4 +405,13 @@ public class Alignment {
+ 		    }
+ 		}
+ 	}
++
++	public boolean isWrapped() {
++		for (int i = 0, max = this.fragmentCount; i < max; i++) {
++			if (this.fragmentBreaks[i] == BREAK) {
++				return true;
++			}
++		}
++		return false;
++	}
+ }

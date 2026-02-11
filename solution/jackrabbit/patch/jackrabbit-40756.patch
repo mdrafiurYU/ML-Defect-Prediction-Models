@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorReader.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorReader.java
+index 5d9af7d..7abc8d8 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorReader.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorReader.java
+@@ -94,7 +94,7 @@ class TextExtractorReader extends Reader {
+     /**
+      * {@inheritDoc}
+      */
+-    public int read(char cbuf[], int off, int len) throws IOException {
++    public int read(char[] cbuf, int off, int len) throws IOException {
+         if (extractedText == null) {
+             // no reader present
+             // check if job is started already

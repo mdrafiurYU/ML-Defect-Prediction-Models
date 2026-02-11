@@ -1,0 +1,16 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/DeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/DeclarationImpl.java
+index 21a566a..3c7b814 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/DeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/DeclarationImpl.java
+@@ -61,7 +61,10 @@ public abstract class DeclarationImpl implements Declaration, EclipseMirrorImpl
+         return false;
+     }
+ 
+-    public int hashCode(){ return _binding.hashCode(); }
++    public int hashCode(){ 
++    	final String key = getDeclarationBinding().getKey();
++    	return key == null ? 0 : key.hashCode(); 
++    }
+ 
+     <A extends Annotation> A _getAnnotation(Class<A> annotationClass,
+                                             IResolvedAnnotation[] annoInstances)

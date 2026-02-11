@@ -1,0 +1,13 @@
+diff --git a/mi/midispcur.c b/mi/midispcur.c
+index de009cb..802fc6c 100644
+--- a/mi/midispcur.c
++++ b/mi/midispcur.c
+@@ -451,8 +451,6 @@ miDCMakeGC(
+     gcvals[1] = FALSE;
+     pGC = CreateGC((DrawablePtr)pWin,
+ 		   GCSubwindowMode|GCGraphicsExposures, gcvals, &status);
+-    if (pGC && pWin->drawable.pScreen->DrawGuarantee)
+-	(*pWin->drawable.pScreen->DrawGuarantee) (pWin, pGC, GuaranteeVisBack);
+     *ppGC = pGC;
+     return pGC;
+ }

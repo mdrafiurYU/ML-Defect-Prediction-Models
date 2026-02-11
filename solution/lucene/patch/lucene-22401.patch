@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test-framework/org/apache/lucene/analysis/MockTokenizer.java b/lucene/src/test-framework/org/apache/lucene/analysis/MockTokenizer.java
+index 15e501f..5b9f7a0 100644
+--- a/lucene/src/test-framework/org/apache/lucene/analysis/MockTokenizer.java
++++ b/lucene/src/test-framework/org/apache/lucene/analysis/MockTokenizer.java
+@@ -100,7 +100,7 @@ public class MockTokenizer extends Tokenizer {
+           endOffset = off;
+           cp = readCodePoint();
+         } while (cp >= 0 && isTokenChar(cp));
+-        offsetAtt.setOffset(startOffset, endOffset);
++        offsetAtt.setOffset(correctOffset(startOffset), correctOffset(endOffset));
+         streamState = State.INCREMENT;
+         return true;
+       }

@@ -1,0 +1,28 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EntryTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EntryTest.java
+index d817b2b..1e2dfcb 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EntryTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/EntryTest.java
+@@ -16,11 +16,11 @@
+  */
+ package org.apache.jackrabbit.core.security.authorization.acl;
+ 
+-import org.apache.jackrabbit.api.jsr283.security.AccessControlException;
+ import org.apache.jackrabbit.api.jsr283.security.Privilege;
+ import org.apache.jackrabbit.core.security.authorization.AbstractEntryTest;
+ import org.apache.jackrabbit.core.security.authorization.JackrabbitAccessControlEntry;
+ 
++import javax.jcr.RepositoryException;
+ import java.security.Principal;
+ 
+ /**
+@@ -29,7 +29,7 @@ import java.security.Principal;
+ public class EntryTest extends AbstractEntryTest {
+ 
+     protected JackrabbitAccessControlEntry createEntry(Principal principal, Privilege[] privileges, boolean isAllow)
+-            throws AccessControlException {
+-        return new ACLTemplate.Entry(principal, privileges, isAllow);
++            throws RepositoryException {
++        return new ACLTemplate.Entry(principal, privileges, isAllow, superuser.getValueFactory());
+     }
+ }
+\ No newline at end of file

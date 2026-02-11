@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java
+index 1b6545d..bb05089 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/EnumDietRecoveryTest.java
+@@ -223,6 +223,8 @@ public void test0001() {
+ 		"public enum X {\n" + 
+ 		"  public X() {\n" + 
+ 		"  }\n" + 
++		"  <clinit>() {\n" + 
++		"  }\n" + 
+ 		"}\n";
+ 	
+ 	String expectedDietPlusBodyUnitToString = 
+@@ -231,6 +233,8 @@ public void test0001() {
+ 		"  public X() {\n" + 
+ 		"    super();\n" + 
+ 		"  }\n" + 
++		"  <clinit>() {\n" + 
++		"  }\n" + 
+ 		"}\n";
+ 
+ 	String expectedFullUnitToString = expectedDietUnitToString;

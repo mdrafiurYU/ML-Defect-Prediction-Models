@@ -1,0 +1,15 @@
+diff --git a/include/windowstr.h b/include/windowstr.h
+index 13ce60b..9bdcadd 100644
+--- a/include/windowstr.h
++++ b/include/windowstr.h
+@@ -253,8 +253,8 @@ extern DevPrivateKey FocusPrivatesKey;
+  * window/has focus.
+  */
+ typedef struct _FocusSemaphores {
+-    char                enterleave[(MAX_DEVICES + 7)/8];
+-    char                focusinout[(MAX_DEVICES + 7)/8];
++    char                enterleave[(MAXDEVICES + 7)/8];
++    char                focusinout[(MAXDEVICES + 7)/8];
+ } FocusSemaphoresRec, *FocusSemaphoresPtr;
+ 
+ #ifdef XEVIE

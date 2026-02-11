@@ -1,0 +1,18 @@
+diff --git a/xfixes/saveset.c b/xfixes/saveset.c
+index 9ad2627..ab75619 100755
+--- a/xfixes/saveset.c
++++ b/xfixes/saveset.c
+@@ -37,10 +37,9 @@ ProcXFixesChangeSaveSet(ClientPtr client)
+     REQUEST(xXFixesChangeSaveSetReq);
+ 		  
+     REQUEST_SIZE_MATCH(xXFixesChangeSaveSetReq);
+-    pWin = (WindowPtr)SecurityLookupWindow(stuff->window, client,
+-					   DixReadAccess);
+-    if (!pWin)
+-        return(BadWindow);
++    result = dixLookupWindow(&pWin, stuff->window, client, DixReadAccess);
++    if (result != Success)
++        return result;
+     if (client->clientAsMask == (CLIENT_BITS(pWin->drawable.id)))
+         return BadMatch;
+     if ((stuff->mode != SetModeInsert) && (stuff->mode != SetModeDelete))

@@ -1,0 +1,32 @@
+diff --git a/hw/xfree86/modes/xf86Cursors.c b/hw/xfree86/modes/xf86Cursors.c
+index a58b001..3106f05 100644
+--- a/hw/xfree86/modes/xf86Cursors.c
++++ b/hw/xfree86/modes/xf86Cursors.c
+@@ -602,12 +602,19 @@ xf86_reload_cursors (ScreenPtr screen)
+     xf86CursorInfoPtr   cursor_info;
+     CursorPtr		cursor;
+     int			x, y;
++    xf86CursorScreenPtr cursor_screen_priv;
+     
+     /* initial mode setting will not have set a screen yet.
+        May be called before the devices are initialised.
+      */
+     if (!screen || !inputInfo.pointer)
+ 	return;
++    cursor_screen_priv = dixLookupPrivate(&screen->devPrivates,
++					  xf86CursorScreenKey);
++    /* return if HW cursor is inactive, to avoid displaying two cursors */
++    if (!cursor_screen_priv->isUp)
++	return;
++
+     scrn = xf86Screens[screen->myNum];
+     xf86_config = XF86_CRTC_CONFIG_PTR(scrn);
+ 
+@@ -636,7 +643,6 @@ xf86_reload_cursors (ScreenPtr screen)
+ 	    (*cursor_info->LoadCursorImage)(cursor_info->pScrn, src);
+ 
+ 	(*cursor_info->SetCursorPosition)(cursor_info->pScrn, x, y);
+-	(*cursor_info->ShowCursor)(cursor_info->pScrn);
+     }
+ }
+ 

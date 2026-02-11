@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/UniqueIdResolver.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/UniqueIdResolver.java
+index d2a7005..d3019b7 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/UniqueIdResolver.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/UniqueIdResolver.java
+@@ -50,7 +50,7 @@ public class UniqueIdResolver implements ItemStateCreationListener, EntryFactory
+      * Creates a new <code>UniqueIdResolver</code>.
+      */
+     public UniqueIdResolver(ItemStateFactory isf) {
+-        this.lookUp = new ReferenceMap(ReferenceMap.HARD, ReferenceMap.WEAK);
++        this.lookUp = new ReferenceMap(ReferenceMap.HARD, ReferenceMap.SOFT);
+         this.isf = isf;
+         isf.addCreationListener(this);
+     }

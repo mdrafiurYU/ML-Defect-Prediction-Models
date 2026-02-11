@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveSNSTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveSNSTest.java
+index 81b7001..0fe10bd 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveSNSTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/MoveSNSTest.java
+@@ -56,6 +56,12 @@ public class MoveSNSTest extends AbstractMoveTest {
+         testRootNode.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        sourceSibling = null;
++        destSibling = null;
++        super.tearDown();
++    }
++
+     protected boolean isSessionMove() {
+         return true;
+     }

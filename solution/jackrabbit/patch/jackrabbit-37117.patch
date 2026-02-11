@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java
+index 05ead24..6eef841 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistory.java
+@@ -78,14 +78,6 @@ public interface InternalVersionHistory extends InternalVersionItem {
+     InternalVersion getVersionByLabel(Name label);
+ 
+     /**
+-     * Returns an iterator over all versions (not ordered yet), including the
+-     * root version.
+-     *
+-     * @return an iterator over {@link InternalVersion} objects.
+-     */
+-    Iterator getVersions();
+-
+-    /**
+      * Returns the number of versions in this version history.
+      *
+      * @return the number of versions, including the root version.

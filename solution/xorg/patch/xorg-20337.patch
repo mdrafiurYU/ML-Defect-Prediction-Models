@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xaa/xaawrap.h b/hw/xfree86/xaa/xaawrap.h
+index 5e3e0e6..3ba0c16 100644
+--- a/hw/xfree86/xaa/xaawrap.h
++++ b/hw/xfree86/xaa/xaawrap.h
+@@ -58,6 +58,10 @@
+     pGC->ops   = &XAAPixmapOps;\
+     pixPriv->flags |= DIRTY
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef RENDER
+ #define XAA_RENDER_PROLOGUE(pScreen,field)\
+     (GetPictureScreen(pScreen)->field = \

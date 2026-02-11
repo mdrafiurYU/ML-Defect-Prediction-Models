@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/repository/NodeUtilTest.java b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/repository/NodeUtilTest.java
+index 14168f2..b0403c6 100644
+--- a/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/repository/NodeUtilTest.java
++++ b/jackrabbit-ocm/src/test/java/org/apache/jackrabbit/ocm/repository/NodeUtilTest.java
+@@ -61,7 +61,7 @@ public class NodeUtilTest extends TestCase
+         return new TestSetup(suite) {
+             protected void setUp() throws Exception {
+                 super.setUp();
+-                RepositoryUtil.registerRepository("repositoryTest", "./src/test/test-config/repository-derby.xml", "target/repository");
++                RepositoryUtil.registerRepository("repositoryTest", "./src/test/test-config/repository.xml", "target/repository");
+             }
+ 
+             protected void tearDown() throws Exception {

@@ -1,0 +1,17 @@
+diff --git a/mi/misprite.c b/mi/misprite.c
+index 85755b7..692e6c9 100644
+--- a/mi/misprite.c
++++ b/mi/misprite.c
+@@ -109,8 +109,10 @@ miSpriteIsDown(miCursorInfoPtr pDevCursor)
+  * screen wrappers
+  */
+ 
+-static DevPrivateKey miSpriteScreenKey = &miSpriteScreenKey;
+-static DevPrivateKey miSpriteDevPrivatesKey = &miSpriteDevPrivatesKey;
++static int miSpriteScreenKeyIndex;
++static DevPrivateKey miSpriteScreenKey = &miSpriteScreenKeyIndex;
++static int mmiSpriteDevPrivatesKeyIndex;
++static DevPrivateKey miSpriteDevPrivatesKey = &mmiSpriteDevPrivatesKeyIndex;
+ 
+ static Bool	    miSpriteCloseScreen(int i, ScreenPtr pScreen);
+ static void	    miSpriteGetImage(DrawablePtr pDrawable, int sx, int sy,

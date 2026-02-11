@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+index b22d009..31e137c 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/AbstractWriteTest.java
+@@ -874,8 +874,8 @@ public abstract class AbstractWriteTest extends AbstractEvaluationTest {
+      * grants the corresponding user the permission to add nodes below the
+      * target node but not 'at' the target node.
+      *
+-     * @throws RepositoryException
+-     * @throws NotExecutableException
++     * @throws RepositoryException If an error occurs.
++     * @throws NotExecutableException If the test cannot be executed.
+      */
+     public void testAddChildNodePrivilege() throws RepositoryException, NotExecutableException {
+         /*

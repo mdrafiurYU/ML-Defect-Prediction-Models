@@ -1,0 +1,23 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestCachingSpanFilter.java b/lucene/src/test/org/apache/lucene/search/TestCachingSpanFilter.java
+index 3424658..5d8aa20 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestCachingSpanFilter.java
++++ b/lucene/src/test/org/apache/lucene/search/TestCachingSpanFilter.java
+@@ -29,6 +29,7 @@ import org.apache.lucene.index.Term;
+ import org.apache.lucene.search.spans.SpanTermQuery;
+ import org.apache.lucene.store.Directory;
+ import org.apache.lucene.util.LuceneTestCase;
++import org.apache.lucene.util._TestUtil;
+ 
+ public class TestCachingSpanFilter extends LuceneTestCase {
+ 
+@@ -73,7 +74,9 @@ public class TestCachingSpanFilter extends LuceneTestCase {
+     docs = searcher.search(constantScore, 1);
+     assertEquals("[just filter] Should find a hit...", 1, docs.totalHits);
+ 
+-    // now delete the doc, refresh the reader, and see that it's not there
++    // now delete the doc, refresh the reader, and see that
++    // it's not there
++    _TestUtil.keepFullyDeletedSegments(writer.w);
+     writer.deleteDocuments(new Term("id", "1"));
+ 
+     reader = refreshReader(reader);

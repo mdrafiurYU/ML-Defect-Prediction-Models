@@ -1,0 +1,24 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableDoubleField.java b/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
+index b9eeae2..9911256 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableDoubleField.java
+@@ -31,7 +31,6 @@ import org.apache.lucene.index.IndexReader;
+ import org.apache.solr.util.ByteUtils;
+ import org.apache.solr.util.NumberUtils;
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ 
+ import java.util.Map;
+ import java.io.IOException;
+@@ -73,11 +72,6 @@ public class SortableDoubleField extends FieldType {
+     out.write( indexedToReadable(ByteUtils.UTF8toUTF16(input)) );
+   }
+ 
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    String sval = f.stringValue();
+-    xmlWriter.writeDouble(name, NumberUtils.SortableStr2double(sval));
+-  }
+-
+   public void write(TextResponseWriter writer, String name, Fieldable f) throws IOException {
+     String sval = f.stringValue();
+     writer.writeDouble(name, NumberUtils.SortableStr2double(sval));

@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java b/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
+index a697fa5..c546f6a 100644
+--- a/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
++++ b/solr/src/java/org/apache/solr/spelling/suggest/Lookup.java
+@@ -39,7 +39,7 @@ public abstract class Lookup {
+   public static final class LookupPriorityQueue extends PriorityQueue<LookupResult> {
+     
+     public LookupPriorityQueue(int size) {
+-      initialize(size);
++      super(size);
+     }
+ 
+     @Override

@@ -1,0 +1,20 @@
+diff --git a/hw/kdrive/ati/ati_dma.c b/hw/kdrive/ati/ati_dma.c
+index 70b86d3..2caabdb 100644
+--- a/hw/kdrive/ati/ati_dma.c
++++ b/hw/kdrive/ati/ati_dma.c
+@@ -43,6 +43,7 @@ extern CARD32 radeon_cp_microcode[][2];
+ extern CARD32 r200_cp_microcode[][2];
+ extern CARD32 r300_cp_microcode[][2];
+ 
++#if DEBUG_FIFO
+ static void
+ ATIDebugFifo(ATIScreenInfo *atis)
+ {
+@@ -69,6 +70,7 @@ ATIDebugFifo(ATIScreenInfo *atis)
+ 		    MMIO_IN32(mmio, R128_REG_PC_NGUI_CTLSTAT));
+ 	}
+ }
++#endif
+ 
+ static void
+ ATIUploadMicrocode(ATIScreenInfo *atis)

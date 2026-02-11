@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexReader.java b/lucene/src/test/org/apache/lucene/index/TestIndexReader.java
+index e0c700e..7f7fa8b 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexReader.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexReader.java
+@@ -1139,7 +1139,7 @@ public class TestIndexReader extends LuceneTestCase
+     }
+ 
+     public void testOpenReaderAfterDelete() throws IOException {
+-      File dirFile = new File(TEMP_DIR, "deletetest");
++      File dirFile = _TestUtil.getTempDir("deletetest");
+       Directory dir = newFSDirectory(dirFile);
+       try {
+         IndexReader.open(dir, false);

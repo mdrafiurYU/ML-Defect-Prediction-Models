@@ -1,0 +1,13 @@
+diff --git a/dix/property.c b/dix/property.c
+index 9ff6993..74d548d 100644
+--- a/dix/property.c
++++ b/dix/property.c
+@@ -374,7 +374,7 @@ ChangeWindowProperty(WindowPtr pWin, Atom property, Atom type, int format,
+ 		     int mode, unsigned long len, pointer value, 
+ 		     Bool sendevent)
+ {
+-    return dixChangeWindowProperty(NullClient, pWin, property, type, format,
++    return dixChangeWindowProperty(serverClient, pWin, property, type, format,
+ 				   mode, len, value, sendevent);
+ }
+ 

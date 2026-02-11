@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RowIteratorAdapter.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RowIteratorAdapter.java
+index c2c3cc6..0fba8d9 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RowIteratorAdapter.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/commons/iterator/RowIteratorAdapter.java
+@@ -32,6 +32,12 @@ public class RowIteratorAdapter extends RangeIteratorDecorator
+         implements RowIterator {
+ 
+     /**
++     * Static instance of an empty {@link RowIterator}.
++     */
++    public static final RowIterator EMPTY =
++        new RowIteratorAdapter(RangeIteratorAdapter.EMPTY);
++
++    /**
+      * Creates an adapter for the given {@link RangeIterator}.
+      *
+      * @param iterator iterator of {@link Row}s

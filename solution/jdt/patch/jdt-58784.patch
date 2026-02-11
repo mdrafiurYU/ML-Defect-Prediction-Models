@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/TestAll.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/TestAll.java
+index ba33d26..482699c 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/TestAll.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/TestAll.java
+@@ -34,7 +34,7 @@ public static Test suite() {
+ 		testClasses.add(NegativeVariableTest.class);
+ 		testClasses.add(DebugEvaluationTest.class);
+ 		
+-		return AbstractCompilerTest.suite(TestAll.class.getName(), DebugEvaluationSetup.class, testClasses);
++		return AbstractCompilerTest.buildAllCompliancesSetupSuite(TestAll.class, DebugEvaluationSetup.class, testClasses);
+ 	}
+ 	// Disable evaluation tests on Linux
+ 	return new TestSuite(TestAll.class.getName());

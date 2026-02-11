@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadocParser.java b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadocParser.java
+index cca0de5..b884420 100644
+--- a/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadocParser.java
++++ b/org.eclipse.jdt.core/codeassist/org/eclipse/jdt/internal/codeassist/select/SelectionJavadocParser.java
+@@ -28,7 +28,7 @@ public class SelectionJavadocParser extends JavadocParser {
+ 
+ 	public SelectionJavadocParser(SelectionParser sourceParser) {
+ 		super(sourceParser);
+-		this.kind = SELECTION_PARSER;
++		this.kind = SELECTION_PARSER | TEXT_PARSE;
+ 	}
+ 
+ 	/*

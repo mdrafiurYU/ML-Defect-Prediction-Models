@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java
+index 6527dde..279f126 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/TypeBinding.java
+@@ -140,6 +140,17 @@ class TypeBinding implements ITypeBinding {
+ 	}
+ 
+ 	/*
++	 * @see ITypeBinding#getComponentType()
++	 */
++	public ITypeBinding getComponentType() {
++		if (!this.isArray()) {
++			return null;
++		}
++		ArrayBinding arrayBinding = (ArrayBinding) binding;
++		return resolver.getTypeBinding(arrayBinding.elementsType());
++	}
++
++	/*
+ 	 * @see ITypeBinding#getDeclaredFields()
+ 	 */
+ 	public IVariableBinding[] getDeclaredFields() {

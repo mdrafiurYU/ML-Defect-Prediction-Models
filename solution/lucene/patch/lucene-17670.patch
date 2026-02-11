@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermDocs.java b/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermDocs.java
+index e4ef40a..ac483f9 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermDocs.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/preflex/SegmentTermDocs.java
+@@ -209,7 +209,8 @@ public class SegmentTermDocs {
+ 
+   /** Optimized implementation. */
+   public boolean skipTo(int target) throws IOException {
+-    if (df >= skipInterval) {                      // optimized case
++    // don't skip if the target is close (within skipInterval docs away)
++    if ((target - skipInterval) >= doc && df >= skipInterval) {                      // optimized case
+       if (skipListReader == null)
+         skipListReader = new DefaultSkipListReader((IndexInput) freqStream.clone(), maxSkipLevels, skipInterval); // lazily clone

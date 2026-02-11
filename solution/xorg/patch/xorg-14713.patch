@@ -1,0 +1,45 @@
+diff --git a/hw/xfree86/exa/exa_accel.c b/hw/xfree86/exa/exa_accel.c
+index d0d4a6f..49c8845 100644
+--- a/hw/xfree86/exa/exa_accel.c
++++ b/hw/xfree86/exa/exa_accel.c
+@@ -1008,6 +1008,7 @@ exaCopyWindow(WindowPtr pWin, DDXPointRec ptOldOrg, RegionPtr prgnSrc)
+     if (!pScrn->vtSema) {
+         ExaScreenPriv(pWin->drawable.pScreen);
+         pExaScr->SavedCopyWindow (pWin, ptOldOrg, prgnSrc);
++        exaDrawableDirty (&pWin->drawable);
+         return;
+     }
+ 
+@@ -1071,23 +1072,12 @@ static void
+ exaPaintWindow(WindowPtr pWin, RegionPtr pRegion, int what)
+ {
+     ScrnInfoPtr pScrn = XF86SCRNINFO(pWin->drawable.pScreen);
+-    ExaScreenPriv(pWin->drawable.pScreen);
+-    if (!pScrn->vtSema) {
+-        switch (what) {
+-        case PW_BACKGROUND:
+-            pExaScr->SavedPaintWindowBackground(pWin, pRegion, what);
+-            break;
+-        case PW_BORDER:
+-            pExaScr->SavedPaintWindowBorder(pWin, pRegion, what);
+-            break;
+-        }
+-        return;
+-    }
+ 
+     STRACE;
+ 
+     if (!REGION_NUM_RECTS(pRegion))
+ 	return;
++    if (pScrn->vtSema) {
+     switch (what) {
+     case PW_BACKGROUND:
+ 	switch (pWin->backgroundState) {
+@@ -1125,6 +1115,7 @@ exaPaintWindow(WindowPtr pWin, RegionPtr pRegion, int what)
+ #endif
+ 	break;
+     }
++    }
+     ExaCheckPaintWindow (pWin, pRegion, what);
+ }
+ 

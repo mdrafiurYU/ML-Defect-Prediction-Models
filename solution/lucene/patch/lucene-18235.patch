@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/core/RAMDirectoryFactory.java b/solr/src/java/org/apache/solr/core/RAMDirectoryFactory.java
+index 3a27ce8..268eb40 100644
+--- a/solr/src/java/org/apache/solr/core/RAMDirectoryFactory.java
++++ b/solr/src/java/org/apache/solr/core/RAMDirectoryFactory.java
+@@ -45,6 +45,7 @@ public class RAMDirectoryFactory extends StandardDirectoryFactory {
+     }
+   }
+   
++  @Override
+   public boolean exists(String path) {
+     synchronized (RAMDirectoryFactory.class) {
+       RefCntRamDirectory directory = directories.get(path);

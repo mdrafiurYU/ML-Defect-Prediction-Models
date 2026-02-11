@@ -1,0 +1,21 @@
+diff --git a/hw/xquartz/GL/capabilities.h b/hw/xquartz/GL/capabilities.h
+new file mode 100644
+index 0000000..74487be
+--- /dev/null
++++ b/hw/xquartz/GL/capabilities.h
+@@ -0,0 +1,15 @@
++#ifndef CAPABILITIES_H
++#define CAPABILITIES_H
++
++#include <stdbool.h>
++
++struct glCapabilities {
++    int stereo;
++    int aux_buffers;
++    int buffers;
++    /*TODO handle STENCIL and ACCUM*/
++};
++
++bool getGlCapabilities(struct glCapabilities *cap);
++
++#endif

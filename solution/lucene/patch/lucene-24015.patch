@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java b/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
+index d72ad6e..19bc38d 100644
+--- a/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
++++ b/lucene/src/test/org/apache/lucene/search/cache/TestEntryCreators.java
+@@ -37,7 +37,7 @@ import static org.hamcrest.CoreMatchers.*;
+ 
+ public class TestEntryCreators extends LuceneTestCase {
+   protected IndexReader reader;
+-  private static final int NUM_DOCS = 500 * RANDOM_MULTIPLIER;
++  private static final int NUM_DOCS = atLeast(500);
+   private Directory directory;
+ 
+   static class NumberTypeTester {

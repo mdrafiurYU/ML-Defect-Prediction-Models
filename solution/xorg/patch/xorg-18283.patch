@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/int10/stub.c b/hw/xfree86/int10/stub.c
+index c54de24..35b74cd 100644
+--- a/hw/xfree86/int10/stub.c
++++ b/hw/xfree86/int10/stub.c
+@@ -4,6 +4,10 @@
+  *   execute BIOS int 10h calls in x86 real mode environment
+  *                 Copyright 1999 Egbert Eich
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86str.h"
+ #include "xf86_OSproc.h"

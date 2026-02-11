@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationDeclarationImpl.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationDeclarationImpl.java
+index 0a21ca1..4274d2a 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationDeclarationImpl.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/declaration/AnnotationDeclarationImpl.java
+@@ -26,7 +26,7 @@ public class AnnotationDeclarationImpl extends InterfaceDeclarationImpl implemen
+     public AnnotationDeclarationImpl(final ITypeBinding binding, final ProcessorEnvImpl env)
+     {
+         super(binding, env);
+-        assert binding.isAnnotation() : "binding does not represent a annotation ";
++        assert binding.isAnnotation() : "binding does not represent a annotation "; //$NON-NLS-1$
+     }
+ 
+     public void accept(DeclarationVisitor visitor)

@@ -1,0 +1,13 @@
+diff --git a/miext/damage/damage.c b/miext/damage/damage.c
+index 80fcddf..60acdca 100755
+--- a/miext/damage/damage.c
++++ b/miext/damage/damage.c
+@@ -129,6 +129,8 @@ damageReportDamage (DamagePtr pDamage, RegionPtr pDamageRegion)
+ 
+     switch (pDamage->damageLevel) {
+     case DamageReportRawRegion:
++	REGION_UNION(pScreen, &pDamage->damage, &pDamage->damage,
++			 pDamageRegion);
+ 	(*pDamage->damageReport) (pDamage, pDamageRegion, pDamage->closure);
+ 	break;
+     case DamageReportDeltaRegion:

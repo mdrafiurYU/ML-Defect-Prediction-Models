@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResultProperty.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResultProperty.java
+index c1e864e..e75e027 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResultProperty.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/search/SearchResultProperty.java
+@@ -93,7 +93,7 @@ public class SearchResultProperty extends AbstractDavProperty implements ItemRes
+         } else if (propValue instanceof Element) {
+             parseColumnElement((Element)property.getValue(), colList, valList, valueFactory);
+         } else {
+-            new IllegalArgumentException("SearchResultProperty requires a list of 'dcr:column' xml elements.");
++            throw new IllegalArgumentException("SearchResultProperty requires a list of 'dcr:column' xml elements.");
+         }
+ 
+         columnNames = (String[]) colList.toArray(new String[colList.size()]);
+@@ -209,4 +209,4 @@ public class SearchResultProperty extends AbstractDavProperty implements ItemRes
+         }
+         return elem;
+     }
+-}
+\ No newline at end of file
++}

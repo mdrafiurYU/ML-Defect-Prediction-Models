@@ -1,0 +1,15 @@
+diff --git a/Xext/panoramiX.c b/Xext/panoramiX.c
+index d948702..bab8c98 100644
+--- a/Xext/panoramiX.c
++++ b/Xext/panoramiX.c
+@@ -550,8 +550,8 @@ void PanoramiXExtensionInit(int argc, char *argv[])
+     ProcVector[X_SetClipRectangles] = PanoramiXSetClipRectangles;
+     ProcVector[X_FreeGC] = PanoramiXFreeGC;
+     ProcVector[X_ClearArea] = PanoramiXClearToBackground;
+-    ProcVector[X_CopyArea] = PanoramiXCopyArea;;
+-    ProcVector[X_CopyPlane] = PanoramiXCopyPlane;;
++    ProcVector[X_CopyArea] = PanoramiXCopyArea;
++    ProcVector[X_CopyPlane] = PanoramiXCopyPlane;
+     ProcVector[X_PolyPoint] = PanoramiXPolyPoint;
+     ProcVector[X_PolyLine] = PanoramiXPolyLine;
+     ProcVector[X_PolySegment] = PanoramiXPolySegment;

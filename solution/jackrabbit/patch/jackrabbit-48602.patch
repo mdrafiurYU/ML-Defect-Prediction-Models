@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+index 5571934..8d03ce6 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/value/QValueValue.java
+@@ -177,8 +177,7 @@ public final class QValueValue implements Value {
+     public boolean equals(Object obj) {
+         if (obj instanceof QValueValue) {
+             return qvalue.equals(((QValueValue) obj).qvalue);
+-        }
+-        else {
++        } else {
+             return false;
+         }
+     }

@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/TransactionException.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/TransactionException.java
+index 3ab7916..692d021 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/TransactionException.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/TransactionException.java
+@@ -16,13 +16,11 @@
+  */
+ package org.apache.jackrabbit.core;
+ 
+-import org.apache.jackrabbit.BaseException;
+-
+ /**
+  * TransactionException is thrown when some operation inside the transaction
+  * fails.
+  */
+-public class TransactionException extends BaseException {
++public class TransactionException extends Exception {
+ 
+     /**
+      * Creates an instance of this class. Takes a detail message as parameter.

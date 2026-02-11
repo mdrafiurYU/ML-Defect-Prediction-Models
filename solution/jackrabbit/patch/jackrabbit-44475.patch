@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/digester/DigesterMapperImpl.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/digester/DigesterMapperImpl.java
+index 9d512d7..6c2137d 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/digester/DigesterMapperImpl.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/mapper/impl/digester/DigesterMapperImpl.java
+@@ -81,5 +81,12 @@ public class DigesterMapperImpl extends AbstractMapperImpl implements Mapper {
+         descriptorReader = new DigesterDescriptorReader(streams);
+         this.buildMapper();
+     }
++    
++    
++    public DigesterMapperImpl(InputStream[] streams, boolean validate) {
++        descriptorReader = new DigesterDescriptorReader(streams);
++        DigesterDescriptorReader.class.cast(descriptorReader).setValidating(validate);
++        this.buildMapper();
++    } 
+ 
+ }

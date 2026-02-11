@@ -1,0 +1,22 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishAnalyzer.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishAnalyzer.java
+index d64ad1d..493da3a 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishAnalyzer.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/sv/TestSwedishAnalyzer.java
+@@ -23,6 +23,7 @@ import java.util.Set;
+ 
+ import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.analysis.BaseTokenStreamTestCase;
++import org.apache.lucene.analysis.hu.HungarianAnalyzer;
+ 
+ public class TestSwedishAnalyzer extends BaseTokenStreamTestCase {
+   /** This test fails with NPE when the 
+@@ -50,4 +51,9 @@ public class TestSwedishAnalyzer extends BaseTokenStreamTestCase {
+     checkOneTermReuse(a, "jaktkarlarne", "jaktkarlarne");
+     checkOneTermReuse(a, "jaktkarlens", "jaktkarl");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, new SwedishAnalyzer(TEST_VERSION_CURRENT), 10000*RANDOM_MULTIPLIER);
++  }
+ }

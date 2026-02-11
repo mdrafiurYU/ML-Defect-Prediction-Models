@@ -1,0 +1,15 @@
+diff --git a/os/strlcat.c b/os/strlcat.c
+index 7031de3..28e2338 100644
+--- a/os/strlcat.c
++++ b/os/strlcat.c
+@@ -18,6 +18,10 @@
+ /* $XFree86$ */
+ 
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <sys/types.h>
+ #include <string.h>
+ 

@@ -1,0 +1,18 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/ICompilationParticipantResult.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/ICompilationParticipantResult.java
+index 93f0fa2..1c54d53 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/ICompilationParticipantResult.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/compiler/ICompilationParticipantResult.java
+@@ -26,6 +26,13 @@ char[] getContents();
+ IFile getFile();
+ 
+ /**
++ * Returns whether the compilation unit contained any annotations when it was compiled.
++ * 
++ * NOTE: Only valid during CompilationParticipant.processAnnotations(files)
++ */
++boolean hasAnnotations();
++
++/**
+  * Record the added/changed generated files that need to be compiled.
+  */
+ void recordAddedGeneratedFiles(IFile[] addedGeneratedFiles);

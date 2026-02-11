@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/dixmods/extmod/modinit.h b/hw/xfree86/dixmods/extmod/modinit.h
+index a376a59..fc31c0d 100644
+--- a/hw/xfree86/dixmods/extmod/modinit.h
++++ b/hw/xfree86/dixmods/extmod/modinit.h
+@@ -27,11 +27,6 @@ extern void XTestExtensionInit(INITARGS);
+ extern void XTestExtension1Init(INITARGS);
+ #endif
+ 
+-#ifdef BIGREQS
+-extern void BigReqExtensionInit(INITARGS);
+-#include <X11/extensions/bigreqstr.h>
+-#endif
+-
+ #ifdef XSYNC
+ extern void SyncExtensionInit(INITARGS);
+ #define _SYNC_SERVER

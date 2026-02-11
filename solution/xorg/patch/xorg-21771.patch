@@ -1,0 +1,2424 @@
+diff --git a/GL/glx/indirect_dispatch_swap.c b/GL/glx/indirect_dispatch_swap.c
+index f5ed100..0c732e2 100644
+--- a/GL/glx/indirect_dispatch_swap.c
++++ b/GL/glx/indirect_dispatch_swap.c
+@@ -3807,172 +3807,18 @@ void __glXDispSwap_SampleCoverageARB(GLbyte * pc)
+     ) );
+ }
+ 
+-void __glXDispSwap_DrawBuffersARB(GLbyte * pc)
+-{
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-    CALL_DrawBuffersARB( GET_DISPATCH(), (
+-        n,
+-         (const GLenum *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
+-    ) );
+-}
+-
+-int __glXDispSwap_AreTexturesResidentEXT(__GLXclientState *cl, GLbyte *pc)
+-{
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-        GLboolean retval;
+-        GLboolean answerBuffer[200];
+-        GLboolean * residences = __glXGetAnswerBuffer(cl, n, answerBuffer, sizeof(answerBuffer), 1);
+-        retval = CALL_AreTexturesResidentEXT( GET_DISPATCH(), (
+-            n,
+-             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 ),
+-            residences
+-        ) );
+-        __glXSendReplySwap(cl->client, residences, n, 1, GL_TRUE, retval);
+-        error = Success;
+-    }
+-
+-    return error;
+-}
+-
+-int __glXDispSwap_GenTexturesEXT(__GLXclientState *cl, GLbyte *pc)
+-{
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-        GLuint answerBuffer[200];
+-        GLuint * textures = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
+-        CALL_GenTexturesEXT( GET_DISPATCH(), (
+-            n,
+-            textures
+-        ) );
+-        (void) bswap_32_array( (uint32_t *) textures, n );
+-        __glXSendReplySwap(cl->client, textures, n, 4, GL_TRUE, 0);
+-        error = Success;
+-    }
+-
+-    return error;
+-}
+-
+-int __glXDispSwap_IsTextureEXT(__GLXclientState *cl, GLbyte *pc)
+-{
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        GLboolean retval;
+-        retval = CALL_IsTextureEXT( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 )
+-        ) );
+-        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
+-        error = Success;
+-    }
+-
+-    return error;
+-}
+-
+-void __glXDispSwap_SampleMaskSGIS(GLbyte * pc)
+-{
+-    CALL_SampleMaskSGIS( GET_DISPATCH(), (
+-         (GLclampf)bswap_FLOAT32( pc +  0 ),
+-        *(GLboolean *)(pc +  4)
+-    ) );
+-}
+-
+-void __glXDispSwap_SamplePatternSGIS(GLbyte * pc)
+-{
+-    CALL_SamplePatternSGIS( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 )
+-    ) );
+-}
+-
+-void __glXDispSwap_PointParameterfEXT(GLbyte * pc)
+-{
+-    CALL_PointParameterfEXT( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLfloat )bswap_FLOAT32( pc +  4 )
+-    ) );
+-}
+-
+-void __glXDispSwap_PointParameterfvEXT(GLbyte * pc)
+-{
+-    const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  0 );
+-    const GLfloat * params;
+-
+-    params = (const GLfloat *) bswap_32_array( (uint32_t *) (pc + 4), __glPointParameterfvEXT_size(pname) );
+-
+-    CALL_PointParameterfvEXT( GET_DISPATCH(), (
+-        pname,
+-        params
+-    ) );
+-}
+-
+-void __glXDispSwap_WindowPos3fvMESA(GLbyte * pc)
+-{
+-    CALL_WindowPos3fvMESA( GET_DISPATCH(), (
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
+-    ) );
+-}
+-
+-void __glXDispSwap_BlendFuncSeparateEXT(GLbyte * pc)
+-{
+-    CALL_BlendFuncSeparateEXT( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLenum  )bswap_ENUM   ( pc +  4 ),
+-         (GLenum  )bswap_ENUM   ( pc +  8 ),
+-         (GLenum  )bswap_ENUM   ( pc + 12 )
+-    ) );
+-}
+-
+-void __glXDispSwap_FogCoordfvEXT(GLbyte * pc)
+-{
+-    CALL_FogCoordfvEXT( GET_DISPATCH(), (
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  0), 1 )
+-    ) );
+-}
+-
+-void __glXDispSwap_FogCoorddvEXT(GLbyte * pc)
+-{
+-#ifdef __GLX_ALIGN64
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, 8);
+-        pc -= 4;
+-    }
+-#endif
+-
+-    CALL_FogCoorddvEXT( GET_DISPATCH(), (
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 1 )
+-    ) );
+-}
+-
+-void __glXDispSwap_CompressedTexImage3DARB(GLbyte * pc)
++void __glXDispSwap_CompressedTexImage1DARB(GLbyte * pc)
+ {
+-    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 28 );
++    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 20 );
+ 
+-    CALL_CompressedTexImage3DARB( GET_DISPATCH(), (
++    CALL_CompressedTexImage1DARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLint   )bswap_CARD32 ( pc +  4 ),
+          (GLenum  )bswap_ENUM   ( pc +  8 ),
+          (GLsizei )bswap_CARD32 ( pc + 12 ),
+-         (GLsizei )bswap_CARD32 ( pc + 16 ),
+-         (GLsizei )bswap_CARD32 ( pc + 20 ),
+-         (GLint   )bswap_CARD32 ( pc + 24 ),
++         (GLint   )bswap_CARD32 ( pc + 16 ),
+         imageSize,
+-         (const GLvoid *)(pc + 32)
++         (const GLvoid *)(pc + 24)
+     ) );
+ }
+ 
+@@ -3992,37 +3838,35 @@ void __glXDispSwap_CompressedTexImage2DARB(GLbyte * pc)
+     ) );
+ }
+ 
+-void __glXDispSwap_CompressedTexImage1DARB(GLbyte * pc)
++void __glXDispSwap_CompressedTexImage3DARB(GLbyte * pc)
+ {
+-    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 20 );
++    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 28 );
+ 
+-    CALL_CompressedTexImage1DARB( GET_DISPATCH(), (
++    CALL_CompressedTexImage3DARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLint   )bswap_CARD32 ( pc +  4 ),
+          (GLenum  )bswap_ENUM   ( pc +  8 ),
+          (GLsizei )bswap_CARD32 ( pc + 12 ),
+-         (GLint   )bswap_CARD32 ( pc + 16 ),
++         (GLsizei )bswap_CARD32 ( pc + 16 ),
++         (GLsizei )bswap_CARD32 ( pc + 20 ),
++         (GLint   )bswap_CARD32 ( pc + 24 ),
+         imageSize,
+-         (const GLvoid *)(pc + 24)
++         (const GLvoid *)(pc + 32)
+     ) );
+ }
+ 
+-void __glXDispSwap_CompressedTexSubImage3DARB(GLbyte * pc)
++void __glXDispSwap_CompressedTexSubImage1DARB(GLbyte * pc)
+ {
+-    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 36 );
++    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 20 );
+ 
+-    CALL_CompressedTexSubImage3DARB( GET_DISPATCH(), (
++    CALL_CompressedTexSubImage1DARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLint   )bswap_CARD32 ( pc +  4 ),
+          (GLint   )bswap_CARD32 ( pc +  8 ),
+-         (GLint   )bswap_CARD32 ( pc + 12 ),
+-         (GLint   )bswap_CARD32 ( pc + 16 ),
+-         (GLsizei )bswap_CARD32 ( pc + 20 ),
+-         (GLsizei )bswap_CARD32 ( pc + 24 ),
+-         (GLsizei )bswap_CARD32 ( pc + 28 ),
+-         (GLenum  )bswap_ENUM   ( pc + 32 ),
++         (GLsizei )bswap_CARD32 ( pc + 12 ),
++         (GLenum  )bswap_ENUM   ( pc + 16 ),
+         imageSize,
+-         (const GLvoid *)(pc + 40)
++         (const GLvoid *)(pc + 24)
+     ) );
+ }
+ 
+@@ -4043,85 +3887,26 @@ void __glXDispSwap_CompressedTexSubImage2DARB(GLbyte * pc)
+     ) );
+ }
+ 
+-void __glXDispSwap_CompressedTexSubImage1DARB(GLbyte * pc)
++void __glXDispSwap_CompressedTexSubImage3DARB(GLbyte * pc)
+ {
+-    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 20 );
++    const GLsizei imageSize =  (GLsizei )bswap_CARD32 ( pc + 36 );
+ 
+-    CALL_CompressedTexSubImage1DARB( GET_DISPATCH(), (
++    CALL_CompressedTexSubImage3DARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLint   )bswap_CARD32 ( pc +  4 ),
+          (GLint   )bswap_CARD32 ( pc +  8 ),
+-         (GLsizei )bswap_CARD32 ( pc + 12 ),
+-         (GLenum  )bswap_ENUM   ( pc + 16 ),
++         (GLint   )bswap_CARD32 ( pc + 12 ),
++         (GLint   )bswap_CARD32 ( pc + 16 ),
++         (GLsizei )bswap_CARD32 ( pc + 20 ),
++         (GLsizei )bswap_CARD32 ( pc + 24 ),
++         (GLsizei )bswap_CARD32 ( pc + 28 ),
++         (GLenum  )bswap_ENUM   ( pc + 32 ),
+         imageSize,
+-         (const GLvoid *)(pc + 24)
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3bvEXT(GLbyte * pc)
+-{
+-    CALL_SecondaryColor3bvEXT( GET_DISPATCH(), (
+-         (const GLbyte *)(pc +  0)
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3dvEXT(GLbyte * pc)
+-{
+-#ifdef __GLX_ALIGN64
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, 24);
+-        pc -= 4;
+-    }
+-#endif
+-
+-    CALL_SecondaryColor3dvEXT( GET_DISPATCH(), (
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 3 )
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3fvEXT(GLbyte * pc)
+-{
+-    CALL_SecondaryColor3fvEXT( GET_DISPATCH(), (
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3ivEXT(GLbyte * pc)
+-{
+-    CALL_SecondaryColor3ivEXT( GET_DISPATCH(), (
+-         (const GLint *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3svEXT(GLbyte * pc)
+-{
+-    CALL_SecondaryColor3svEXT( GET_DISPATCH(), (
+-         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  0), 3 )
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3ubvEXT(GLbyte * pc)
+-{
+-    CALL_SecondaryColor3ubvEXT( GET_DISPATCH(), (
+-         (const GLubyte *)(pc +  0)
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3uivEXT(GLbyte * pc)
+-{
+-    CALL_SecondaryColor3uivEXT( GET_DISPATCH(), (
+-         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
+-    ) );
+-}
+-
+-void __glXDispSwap_SecondaryColor3usvEXT(GLbyte * pc)
+-{
+-    CALL_SecondaryColor3usvEXT( GET_DISPATCH(), (
+-         (const GLushort *)bswap_16_array( (uint16_t *) (pc +  0), 3 )
++         (const GLvoid *)(pc + 40)
+     ) );
+ }
+ 
+-int __glXDispSwap_AreProgramsResidentNV(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramEnvParameterdvARB(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -4129,32 +3914,21 @@ int __glXDispSwap_AreProgramsResidentNV(__GLXclientState *cl, GLbyte *pc)
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-        GLboolean retval;
+-        GLboolean answerBuffer[200];
+-        GLboolean * residences = __glXGetAnswerBuffer(cl, n, answerBuffer, sizeof(answerBuffer), 1);
+-        retval = CALL_AreProgramsResidentNV( GET_DISPATCH(), (
+-            n,
+-             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 ),
+-            residences
++        GLdouble params[4];
++        CALL_GetProgramEnvParameterdvARB( GET_DISPATCH(), (
++             (GLenum  )bswap_ENUM   ( pc +  0 ),
++             (GLuint  )bswap_CARD32 ( pc +  4 ),
++            params
+         ) );
+-        __glXSendReplySwap(cl->client, residences, n, 1, GL_FALSE, retval);
++        (void) bswap_64_array( (uint64_t *) params, 4 );
++        __glXSendReplySwap(cl->client, params, 4, 8, GL_FALSE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-void __glXDispSwap_BindProgramNV(GLbyte * pc)
+-{
+-    CALL_BindProgramNV( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 )
+-    ) );
+-}
+-
+-int __glXDispSwap_DeleteProgramsNV(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramEnvParameterfvARB(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -4162,52 +3936,21 @@ int __glXDispSwap_DeleteProgramsNV(__GLXclientState *cl, GLbyte *pc)
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-        CALL_DeleteProgramsNV( GET_DISPATCH(), (
+-            n,
+-             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
+-        ) );
+-        error = Success;
+-    }
+-
+-    return error;
+-}
+-
+-void __glXDispSwap_ExecuteProgramNV(GLbyte * pc)
+-{
+-    CALL_ExecuteProgramNV( GET_DISPATCH(), (
++        GLfloat params[4];
++        CALL_GetProgramEnvParameterfvARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLuint  )bswap_CARD32 ( pc +  4 ),
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
+-    ) );
+-}
+-
+-int __glXDispSwap_GenProgramsNV(__GLXclientState *cl, GLbyte *pc)
+-{
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-        GLuint answerBuffer[200];
+-        GLuint * programs = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
+-        CALL_GenProgramsNV( GET_DISPATCH(), (
+-            n,
+-            programs
++            params
+         ) );
+-        (void) bswap_32_array( (uint32_t *) programs, n );
+-        __glXSendReplySwap(cl->client, programs, n, 4, GL_TRUE, 0);
++        (void) bswap_32_array( (uint32_t *) params, 4 );
++        __glXSendReplySwap(cl->client, params, 4, 4, GL_FALSE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_GetProgramParameterdvNV(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramLocalParameterdvARB(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -4216,10 +3959,9 @@ int __glXDispSwap_GetProgramParameterdvNV(__GLXclientState *cl, GLbyte *pc)
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+         GLdouble params[4];
+-        CALL_GetProgramParameterdvNV( GET_DISPATCH(), (
++        CALL_GetProgramLocalParameterdvARB( GET_DISPATCH(), (
+              (GLenum  )bswap_ENUM   ( pc +  0 ),
+              (GLuint  )bswap_CARD32 ( pc +  4 ),
+-             (GLenum  )bswap_ENUM   ( pc +  8 ),
+             params
+         ) );
+         (void) bswap_64_array( (uint64_t *) params, 4 );
+@@ -4230,7 +3972,7 @@ int __glXDispSwap_GetProgramParameterdvNV(__GLXclientState *cl, GLbyte *pc)
+     return error;
+ }
+ 
+-int __glXDispSwap_GetProgramParameterfvNV(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramLocalParameterfvARB(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -4239,10 +3981,9 @@ int __glXDispSwap_GetProgramParameterfvNV(__GLXclientState *cl, GLbyte *pc)
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+         GLfloat params[4];
+-        CALL_GetProgramParameterfvNV( GET_DISPATCH(), (
++        CALL_GetProgramLocalParameterfvARB( GET_DISPATCH(), (
+              (GLenum  )bswap_ENUM   ( pc +  0 ),
+              (GLuint  )bswap_CARD32 ( pc +  4 ),
+-             (GLenum  )bswap_ENUM   ( pc +  8 ),
+             params
+         ) );
+         (void) bswap_32_array( (uint32_t *) params, 4 );
+@@ -4253,7 +3994,7 @@ int __glXDispSwap_GetProgramParameterfvNV(__GLXclientState *cl, GLbyte *pc)
+     return error;
+ }
+ 
+-int __glXDispSwap_GetProgramivNV(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramivARB(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -4263,15 +4004,15 @@ int __glXDispSwap_GetProgramivNV(__GLXclientState *cl, GLbyte *pc)
+     if ( cx != NULL ) {
+         const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
+ 
+-        const GLuint compsize = __glGetProgramivNV_size(pname);
++        const GLuint compsize = __glGetProgramivARB_size(pname);
+         GLint answerBuffer[200];
+         GLint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
+ 
+         if (params == NULL) return BadAlloc;
+         __glXClearErrorOccured();
+ 
+-        CALL_GetProgramivNV( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 ),
++        CALL_GetProgramivARB( GET_DISPATCH(), (
++             (GLenum  )bswap_ENUM   ( pc +  0 ),
+             pname,
+             params
+         ) );
+@@ -4283,29 +4024,6 @@ int __glXDispSwap_GetProgramivNV(__GLXclientState *cl, GLbyte *pc)
+     return error;
+ }
+ 
+-int __glXDispSwap_GetTrackMatrixivNV(__GLXclientState *cl, GLbyte *pc)
+-{
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        GLint params[1];
+-        CALL_GetTrackMatrixivNV( GET_DISPATCH(), (
+-             (GLenum  )bswap_ENUM   ( pc +  0 ),
+-             (GLuint  )bswap_CARD32 ( pc +  4 ),
+-             (GLenum  )bswap_ENUM   ( pc +  8 ),
+-            params
+-        ) );
+-        (void) bswap_32_array( (uint32_t *) params, 1 );
+-        __glXSendReplySwap(cl->client, params, 1, 4, GL_FALSE, 0);
+-        error = Success;
+-    }
+-
+-    return error;
+-}
+-
+ int __glXDispSwap_GetVertexAttribdvARB(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+@@ -4396,38 +4114,7 @@ int __glXDispSwap_GetVertexAttribivARB(__GLXclientState *cl, GLbyte *pc)
+     return error;
+ }
+ 
+-int __glXDispSwap_IsProgramNV(__GLXclientState *cl, GLbyte *pc)
+-{
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        GLboolean retval;
+-        retval = CALL_IsProgramNV( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 )
+-        ) );
+-        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
+-        error = Success;
+-    }
+-
+-    return error;
+-}
+-
+-void __glXDispSwap_LoadProgramNV(GLbyte * pc)
+-{
+-    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  8 );
+-
+-    CALL_LoadProgramNV( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 ),
+-        len,
+-         (const GLubyte *)(pc + 12)
+-    ) );
+-}
+-
+-void __glXDispSwap_ProgramParameter4dvNV(GLbyte * pc)
++void __glXDispSwap_ProgramEnvParameter4dvARB(GLbyte * pc)
+ {
+ #ifdef __GLX_ALIGN64
+     if ((unsigned long)(pc) & 7) {
+@@ -4436,71 +4123,56 @@ void __glXDispSwap_ProgramParameter4dvNV(GLbyte * pc)
+     }
+ #endif
+ 
+-    CALL_ProgramParameter4dvNV( GET_DISPATCH(), (
++    CALL_ProgramEnvParameter4dvARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLuint  )bswap_CARD32 ( pc +  4 ),
+          (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_ProgramParameter4fvNV(GLbyte * pc)
++void __glXDispSwap_ProgramEnvParameter4fvARB(GLbyte * pc)
+ {
+-    CALL_ProgramParameter4fvNV( GET_DISPATCH(), (
++    CALL_ProgramEnvParameter4fvARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLuint  )bswap_CARD32 ( pc +  4 ),
+          (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_ProgramParameters4dvNV(GLbyte * pc)
++void __glXDispSwap_ProgramLocalParameter4dvARB(GLbyte * pc)
+ {
+-    const GLuint num =  (GLuint  )bswap_CARD32 ( pc +  8 );
+-
+ #ifdef __GLX_ALIGN64
+-    const GLuint cmdlen = 16 + __GLX_PAD((num * 32)) - 4;
+     if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, cmdlen);
++        (void) memmove(pc-4, pc, 40);
+         pc -= 4;
+     }
+ #endif
+ 
+-    CALL_ProgramParameters4dvNV( GET_DISPATCH(), (
++    CALL_ProgramLocalParameter4dvARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLuint  )bswap_CARD32 ( pc +  4 ),
+-        num,
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc + 12), 0 )
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_ProgramParameters4fvNV(GLbyte * pc)
++void __glXDispSwap_ProgramLocalParameter4fvARB(GLbyte * pc)
+ {
+-    const GLuint num =  (GLuint  )bswap_CARD32 ( pc +  8 );
+-
+-    CALL_ProgramParameters4fvNV( GET_DISPATCH(), (
++    CALL_ProgramLocalParameter4fvARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+          (GLuint  )bswap_CARD32 ( pc +  4 ),
+-        num,
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc + 12), 0 )
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_RequestResidentProgramsNV(GLbyte * pc)
++void __glXDispSwap_ProgramStringARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-    CALL_RequestResidentProgramsNV( GET_DISPATCH(), (
+-        n,
+-         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
+-    ) );
+-}
++    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  8 );
+ 
+-void __glXDispSwap_TrackMatrixNV(GLbyte * pc)
+-{
+-    CALL_TrackMatrixNV( GET_DISPATCH(), (
++    CALL_ProgramStringARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 ),
+-         (GLenum  )bswap_ENUM   ( pc +  8 ),
+-         (GLenum  )bswap_ENUM   ( pc + 12 )
++         (GLenum  )bswap_ENUM   ( pc +  4 ),
++        len,
++         (const GLvoid *)(pc + 12)
+     ) );
+ }
+ 
+@@ -4597,32 +4269,25 @@ void __glXDispSwap_VertexAttrib3svARB(GLbyte * pc)
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttrib4dvARB(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4NbvARB(GLbyte * pc)
+ {
+-#ifdef __GLX_ALIGN64
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, 36);
+-        pc -= 4;
+-    }
+-#endif
+-
+-    CALL_VertexAttrib4dvARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc + 32 ),
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 4 )
++    CALL_VertexAttrib4NbvARB( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++         (const GLbyte *)(pc +  4)
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttrib4fvARB(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4NivARB(GLbyte * pc)
+ {
+-    CALL_VertexAttrib4fvARB( GET_DISPATCH(), (
++    CALL_VertexAttrib4NivARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
++         (const GLint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttrib4svARB(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4NsvARB(GLbyte * pc)
+ {
+-    CALL_VertexAttrib4svARB( GET_DISPATCH(), (
++    CALL_VertexAttrib4NsvARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+          (const GLshort *)bswap_16_array( (uint16_t *) (pc +  4), 4 )
+     ) );
+@@ -4636,352 +4301,272 @@ void __glXDispSwap_VertexAttrib4NubvARB(GLbyte * pc)
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs1dvNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4NuivARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-#ifdef __GLX_ALIGN64
+-    const GLuint cmdlen = 12 + __GLX_PAD((n * 8)) - 4;
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, cmdlen);
+-        pc -= 4;
+-    }
+-#endif
+-
+-    CALL_VertexAttribs1dvNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4NuivARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
++         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs1fvNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4NusvARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs1fvNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4NusvARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++         (const GLushort *)bswap_16_array( (uint16_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs1svNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4bvARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs1svNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4bvARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
++         (const GLbyte *)(pc +  4)
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs2dvNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4dvARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+ #ifdef __GLX_ALIGN64
+-    const GLuint cmdlen = 12 + __GLX_PAD((n * 16)) - 4;
+     if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, cmdlen);
++        (void) memmove(pc-4, pc, 36);
+         pc -= 4;
+     }
+ #endif
+ 
+-    CALL_VertexAttribs2dvNV( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
++    CALL_VertexAttrib4dvARB( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc + 32 ),
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs2fvNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4fvARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs2fvNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4fvARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs2svNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4ivARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs2svNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4ivARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
++         (const GLint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs3dvNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4svARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-#ifdef __GLX_ALIGN64
+-    const GLuint cmdlen = 12 + __GLX_PAD((n * 24)) - 4;
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, cmdlen);
+-        pc -= 4;
+-    }
+-#endif
+-
+-    CALL_VertexAttribs3dvNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4svARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
++         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs3fvNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4ubvARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs3fvNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4ubvARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++         (const GLubyte *)(pc +  4)
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs3svNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4uivARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs3svNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4uivARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
++         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs4dvNV(GLbyte * pc)
++void __glXDispSwap_VertexAttrib4usvARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-#ifdef __GLX_ALIGN64
+-    const GLuint cmdlen = 12 + __GLX_PAD((n * 32)) - 4;
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, cmdlen);
+-        pc -= 4;
+-    }
+-#endif
+-
+-    CALL_VertexAttribs4dvNV( GET_DISPATCH(), (
++    CALL_VertexAttrib4usvARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
++         (const GLushort *)bswap_16_array( (uint16_t *) (pc +  4), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs4fvNV(GLbyte * pc)
++void __glXDispSwap_BeginQueryARB(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs4fvNV( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++    CALL_BeginQueryARB( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_VertexAttribs4svNV(GLbyte * pc)
++int __glXDispSwap_DeleteQueriesARB(__GLXclientState *cl, GLbyte *pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    CALL_VertexAttribs4svNV( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
++    pc += __GLX_SINGLE_HDR_SIZE;
++    if ( cx != NULL ) {
++        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++        CALL_DeleteQueriesARB( GET_DISPATCH(), (
+         n,
+-         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
++             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
+     ) );
++        error = Success;
+ }
+ 
+-void __glXDispSwap_VertexAttribs4ubvNV(GLbyte * pc)
+-{
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+-
+-    CALL_VertexAttribs4ubvNV( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        n,
+-         (const GLubyte *)(pc +  8)
+-    ) );
++    return error;
+ }
+ 
+-void __glXDispSwap_PointParameteriNV(GLbyte * pc)
++void __glXDispSwap_EndQueryARB(GLbyte * pc)
+ {
+-    CALL_PointParameteriNV( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLint   )bswap_CARD32 ( pc +  4 )
++    CALL_EndQueryARB( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 )
+     ) );
+ }
+ 
+-void __glXDispSwap_PointParameterivNV(GLbyte * pc)
++int __glXDispSwap_GenQueriesARB(__GLXclientState *cl, GLbyte *pc)
+ {
+-    const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  0 );
+-    const GLint * params;
++    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    params = (const GLint *) bswap_32_array( (uint32_t *) (pc + 4), __glPointParameterivNV_size(pname) );
++    pc += __GLX_SINGLE_HDR_SIZE;
++    if ( cx != NULL ) {
++        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+ 
+-    CALL_PointParameterivNV( GET_DISPATCH(), (
+-        pname,
+-        params
++        GLuint answerBuffer[200];
++        GLuint * ids = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
++        CALL_GenQueriesARB( GET_DISPATCH(), (
++            n,
++            ids
+     ) );
++        (void) bswap_32_array( (uint32_t *) ids, n );
++        __glXSendReplySwap(cl->client, ids, n, 4, GL_TRUE, 0);
++        error = Success;
+ }
+ 
+-void __glXDispSwap_ActiveStencilFaceEXT(GLbyte * pc)
+-{
+-    CALL_ActiveStencilFaceEXT( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 )
+-    ) );
++    return error;
+ }
+ 
+-void __glXDispSwap_VertexAttrib4bvARB(GLbyte * pc)
++int __glXDispSwap_GetQueryObjectivARB(__GLXclientState *cl, GLbyte *pc)
+ {
+-    CALL_VertexAttrib4bvARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLbyte *)(pc +  4)
+-    ) );
+-}
++    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-void __glXDispSwap_VertexAttrib4ivARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4ivARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+-    ) );
+-}
++    pc += __GLX_SINGLE_HDR_SIZE;
++    if ( cx != NULL ) {
++        const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
+ 
+-void __glXDispSwap_VertexAttrib4ubvARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4ubvARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLubyte *)(pc +  4)
+-    ) );
+-}
++        const GLuint compsize = __glGetQueryObjectivARB_size(pname);
++        GLint answerBuffer[200];
++        GLint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
+ 
+-void __glXDispSwap_VertexAttrib4usvARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4usvARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLushort *)bswap_16_array( (uint16_t *) (pc +  4), 4 )
+-    ) );
+-}
++        if (params == NULL) return BadAlloc;
++        __glXClearErrorOccured();
+ 
+-void __glXDispSwap_VertexAttrib4uivARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4uivARB( GET_DISPATCH(), (
++        CALL_GetQueryObjectivARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
++            pname,
++            params
+     ) );
++        (void) bswap_32_array( (uint32_t *) params, compsize );
++        __glXSendReplySwap(cl->client, params, compsize, 4, GL_FALSE, 0);
++        error = Success;
+ }
+ 
+-void __glXDispSwap_VertexAttrib4NbvARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4NbvARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLbyte *)(pc +  4)
+-    ) );
++    return error;
+ }
+ 
+-void __glXDispSwap_VertexAttrib4NsvARB(GLbyte * pc)
++int __glXDispSwap_GetQueryObjectuivARB(__GLXclientState *cl, GLbyte *pc)
+ {
+-    CALL_VertexAttrib4NsvARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  4), 4 )
+-    ) );
+-}
++    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-void __glXDispSwap_VertexAttrib4NivARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4NivARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+-    ) );
+-}
++    pc += __GLX_SINGLE_HDR_SIZE;
++    if ( cx != NULL ) {
++        const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
+ 
+-void __glXDispSwap_VertexAttrib4NusvARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4NusvARB( GET_DISPATCH(), (
++        const GLuint compsize = __glGetQueryObjectuivARB_size(pname);
++        GLuint answerBuffer[200];
++        GLuint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
++
++        if (params == NULL) return BadAlloc;
++        __glXClearErrorOccured();
++
++        CALL_GetQueryObjectuivARB( GET_DISPATCH(), (
+          (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLushort *)bswap_16_array( (uint16_t *) (pc +  4), 4 )
++            pname,
++            params
+     ) );
++        (void) bswap_32_array( (uint32_t *) params, compsize );
++        __glXSendReplySwap(cl->client, params, compsize, 4, GL_FALSE, 0);
++        error = Success;
+ }
+ 
+-void __glXDispSwap_VertexAttrib4NuivARB(GLbyte * pc)
+-{
+-    CALL_VertexAttrib4NuivARB( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 4 )
+-    ) );
++    return error;
+ }
+ 
+-void __glXDispSwap_ProgramStringARB(GLbyte * pc)
++int __glXDispSwap_GetQueryivARB(__GLXclientState *cl, GLbyte *pc)
+ {
+-    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  8 );
++    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    CALL_ProgramStringARB( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLenum  )bswap_ENUM   ( pc +  4 ),
+-        len,
+-         (const GLvoid *)(pc + 12)
+-    ) );
+-}
++    pc += __GLX_SINGLE_HDR_SIZE;
++    if ( cx != NULL ) {
++        const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
+ 
+-void __glXDispSwap_ProgramEnvParameter4dvARB(GLbyte * pc)
+-{
+-#ifdef __GLX_ALIGN64
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, 40);
+-        pc -= 4;
+-    }
+-#endif
++        const GLuint compsize = __glGetQueryivARB_size(pname);
++        GLint answerBuffer[200];
++        GLint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
+ 
+-    CALL_ProgramEnvParameter4dvARB( GET_DISPATCH(), (
++        if (params == NULL) return BadAlloc;
++        __glXClearErrorOccured();
++
++        CALL_GetQueryivARB( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 ),
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 4 )
++            pname,
++            params
+     ) );
++        (void) bswap_32_array( (uint32_t *) params, compsize );
++        __glXSendReplySwap(cl->client, params, compsize, 4, GL_FALSE, 0);
++        error = Success;
+ }
+ 
+-void __glXDispSwap_ProgramEnvParameter4fvARB(GLbyte * pc)
+-{
+-    CALL_ProgramEnvParameter4fvARB( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 ),
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
+-    ) );
++    return error;
+ }
+ 
+-void __glXDispSwap_ProgramLocalParameter4dvARB(GLbyte * pc)
++int __glXDispSwap_IsQueryARB(__GLXclientState *cl, GLbyte *pc)
+ {
+-#ifdef __GLX_ALIGN64
+-    if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, 40);
+-        pc -= 4;
+-    }
+-#endif
++    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    CALL_ProgramLocalParameter4dvARB( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 ),
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 4 )
++    pc += __GLX_SINGLE_HDR_SIZE;
++    if ( cx != NULL ) {
++        GLboolean retval;
++        retval = CALL_IsQueryARB( GET_DISPATCH(), (
++             (GLuint  )bswap_CARD32 ( pc +  0 )
+     ) );
++        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
++        error = Success;
+ }
+ 
+-void __glXDispSwap_ProgramLocalParameter4fvARB(GLbyte * pc)
++    return error;
++}
++
++void __glXDispSwap_DrawBuffersARB(GLbyte * pc)
+ {
+-    CALL_ProgramLocalParameter4fvARB( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 ),
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++    CALL_DrawBuffersARB( GET_DISPATCH(), (
++        n,
++         (const GLenum *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
+     ) );
+ }
+ 
+-int __glXDispSwap_GetProgramEnvParameterdvARB(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_AreTexturesResidentEXT(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -4989,21 +4574,24 @@ int __glXDispSwap_GetProgramEnvParameterdvARB(__GLXclientState *cl, GLbyte *pc)
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        GLdouble params[4];
+-        CALL_GetProgramEnvParameterdvARB( GET_DISPATCH(), (
+-             (GLenum  )bswap_ENUM   ( pc +  0 ),
+-             (GLuint  )bswap_CARD32 ( pc +  4 ),
+-            params
++        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++        GLboolean retval;
++        GLboolean answerBuffer[200];
++        GLboolean * residences = __glXGetAnswerBuffer(cl, n, answerBuffer, sizeof(answerBuffer), 1);
++        retval = CALL_AreTexturesResidentEXT( GET_DISPATCH(), (
++            n,
++             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 ),
++            residences
+         ) );
+-        (void) bswap_64_array( (uint64_t *) params, 4 );
+-        __glXSendReplySwap(cl->client, params, 4, 8, GL_FALSE, 0);
++        __glXSendReplySwap(cl->client, residences, n, 1, GL_TRUE, retval);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_GetProgramEnvParameterfvARB(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GenTexturesEXT(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -5011,21 +4599,23 @@ int __glXDispSwap_GetProgramEnvParameterfvARB(__GLXclientState *cl, GLbyte *pc)
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        GLfloat params[4];
+-        CALL_GetProgramEnvParameterfvARB( GET_DISPATCH(), (
+-             (GLenum  )bswap_ENUM   ( pc +  0 ),
+-             (GLuint  )bswap_CARD32 ( pc +  4 ),
+-            params
++        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++        GLuint answerBuffer[200];
++        GLuint * textures = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
++        CALL_GenTexturesEXT( GET_DISPATCH(), (
++            n,
++            textures
+         ) );
+-        (void) bswap_32_array( (uint32_t *) params, 4 );
+-        __glXSendReplySwap(cl->client, params, 4, 4, GL_FALSE, 0);
++        (void) bswap_32_array( (uint32_t *) textures, n );
++        __glXSendReplySwap(cl->client, textures, n, 4, GL_TRUE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_GetProgramLocalParameterdvARB(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_IsTextureEXT(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -5033,130 +4623,155 @@ int __glXDispSwap_GetProgramLocalParameterdvARB(__GLXclientState *cl, GLbyte *pc
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        GLdouble params[4];
+-        CALL_GetProgramLocalParameterdvARB( GET_DISPATCH(), (
+-             (GLenum  )bswap_ENUM   ( pc +  0 ),
+-             (GLuint  )bswap_CARD32 ( pc +  4 ),
+-            params
++        GLboolean retval;
++        retval = CALL_IsTextureEXT( GET_DISPATCH(), (
++             (GLuint  )bswap_CARD32 ( pc +  0 )
+         ) );
+-        (void) bswap_64_array( (uint64_t *) params, 4 );
+-        __glXSendReplySwap(cl->client, params, 4, 8, GL_FALSE, 0);
++        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_GetProgramLocalParameterfvARB(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_SampleMaskSGIS(GLbyte * pc)
+ {
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++    CALL_SampleMaskSGIS( GET_DISPATCH(), (
++         (GLclampf)bswap_FLOAT32( pc +  0 ),
++        *(GLboolean *)(pc +  4)
++    ) );
++}
+ 
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        GLfloat params[4];
+-        CALL_GetProgramLocalParameterfvARB( GET_DISPATCH(), (
++void __glXDispSwap_SamplePatternSGIS(GLbyte * pc)
++{
++    CALL_SamplePatternSGIS( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 )
++    ) );
++}
++
++void __glXDispSwap_PointParameterfEXT(GLbyte * pc)
++{
++    CALL_PointParameterfEXT( GET_DISPATCH(), (
+              (GLenum  )bswap_ENUM   ( pc +  0 ),
+-             (GLuint  )bswap_CARD32 ( pc +  4 ),
+-            params
++         (GLfloat )bswap_FLOAT32( pc +  4 )
+         ) );
+-        (void) bswap_32_array( (uint32_t *) params, 4 );
+-        __glXSendReplySwap(cl->client, params, 4, 4, GL_FALSE, 0);
+-        error = Success;
+     }
+ 
+-    return error;
++void __glXDispSwap_PointParameterfvEXT(GLbyte * pc)
++{
++    const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  0 );
++    const GLfloat * params;
++
++    params = (const GLfloat *) bswap_32_array( (uint32_t *) (pc + 4), __glPointParameterfvEXT_size(pname) );
++
++    CALL_PointParameterfvEXT( GET_DISPATCH(), (
++        pname,
++        params
++    ) );
+ }
+ 
+-int __glXDispSwap_GetProgramivARB(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_SecondaryColor3bvEXT(GLbyte * pc)
+ {
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++    CALL_SecondaryColor3bvEXT( GET_DISPATCH(), (
++         (const GLbyte *)(pc +  0)
++    ) );
++}
+ 
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
++void __glXDispSwap_SecondaryColor3dvEXT(GLbyte * pc)
++{
++#ifdef __GLX_ALIGN64
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, 24);
++        pc -= 4;
++    }
++#endif
+ 
+-        const GLuint compsize = __glGetProgramivARB_size(pname);
+-        GLint answerBuffer[200];
+-        GLint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
++    CALL_SecondaryColor3dvEXT( GET_DISPATCH(), (
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 3 )
++    ) );
++}
+ 
+-        if (params == NULL) return BadAlloc;
+-        __glXClearErrorOccured();
++void __glXDispSwap_SecondaryColor3fvEXT(GLbyte * pc)
++{
++    CALL_SecondaryColor3fvEXT( GET_DISPATCH(), (
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
++    ) );
++}
+ 
+-        CALL_GetProgramivARB( GET_DISPATCH(), (
+-             (GLenum  )bswap_ENUM   ( pc +  0 ),
+-            pname,
+-            params
++void __glXDispSwap_SecondaryColor3ivEXT(GLbyte * pc)
++{
++    CALL_SecondaryColor3ivEXT( GET_DISPATCH(), (
++         (const GLint *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
+         ) );
+-        (void) bswap_32_array( (uint32_t *) params, compsize );
+-        __glXSendReplySwap(cl->client, params, compsize, 4, GL_FALSE, 0);
+-        error = Success;
+     }
+ 
+-    return error;
++void __glXDispSwap_SecondaryColor3svEXT(GLbyte * pc)
++{
++    CALL_SecondaryColor3svEXT( GET_DISPATCH(), (
++         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  0), 3 )
++    ) );
+ }
+ 
+-void __glXDispSwap_ProgramNamedParameter4fvNV(GLbyte * pc)
++void __glXDispSwap_SecondaryColor3ubvEXT(GLbyte * pc)
+ {
+-    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  4 );
++    CALL_SecondaryColor3ubvEXT( GET_DISPATCH(), (
++         (const GLubyte *)(pc +  0)
++    ) );
++}
+ 
+-    CALL_ProgramNamedParameter4fvNV( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc +  0 ),
+-        len,
+-         (const GLubyte *)(pc + 24),
+-         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
++void __glXDispSwap_SecondaryColor3uivEXT(GLbyte * pc)
++{
++    CALL_SecondaryColor3uivEXT( GET_DISPATCH(), (
++         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
+     ) );
+ }
+ 
+-void __glXDispSwap_ProgramNamedParameter4dvNV(GLbyte * pc)
++void __glXDispSwap_SecondaryColor3usvEXT(GLbyte * pc)
+ {
+-    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc + 36 );
++    CALL_SecondaryColor3usvEXT( GET_DISPATCH(), (
++         (const GLushort *)bswap_16_array( (uint16_t *) (pc +  0), 3 )
++    ) );
++}
+ 
++void __glXDispSwap_FogCoorddvEXT(GLbyte * pc)
++{
+ #ifdef __GLX_ALIGN64
+-    const GLuint cmdlen = 44 + __GLX_PAD(len) - 4;
+     if ((unsigned long)(pc) & 7) {
+-        (void) memmove(pc-4, pc, cmdlen);
++        (void) memmove(pc-4, pc, 8);
+         pc -= 4;
+     }
+ #endif
+ 
+-    CALL_ProgramNamedParameter4dvNV( GET_DISPATCH(), (
+-         (GLuint  )bswap_CARD32 ( pc + 32 ),
+-        len,
+-         (const GLubyte *)(pc + 40),
+-         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 4 )
++    CALL_FogCoorddvEXT( GET_DISPATCH(), (
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 1 )
+     ) );
+ }
+ 
+-int __glXDispSwap_GetProgramNamedParameterfvNV(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_FogCoordfvEXT(GLbyte * pc)
+ {
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  4 );
++    CALL_FogCoordfvEXT( GET_DISPATCH(), (
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  0), 1 )
++    ) );
++}
+ 
+-        GLfloat params[4];
+-        CALL_GetProgramNamedParameterfvNV( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 ),
+-            len,
+-             (const GLubyte *)(pc +  8),
+-            params
++void __glXDispSwap_BlendFuncSeparateEXT(GLbyte * pc)
++{
++    CALL_BlendFuncSeparateEXT( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLenum  )bswap_ENUM   ( pc +  4 ),
++         (GLenum  )bswap_ENUM   ( pc +  8 ),
++         (GLenum  )bswap_ENUM   ( pc + 12 )
+         ) );
+-        (void) bswap_32_array( (uint32_t *) params, 4 );
+-        __glXSendReplySwap(cl->client, params, 4, 4, GL_TRUE, 0);
+-        error = Success;
+     }
+ 
+-    return error;
++void __glXDispSwap_WindowPos3fvMESA(GLbyte * pc)
++{
++    CALL_WindowPos3fvMESA( GET_DISPATCH(), (
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  0), 3 )
++    ) );
+ }
+ 
+-int __glXDispSwap_GetProgramNamedParameterdvNV(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_AreProgramsResidentNV(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -5164,149 +4779,148 @@ int __glXDispSwap_GetProgramNamedParameterdvNV(__GLXclientState *cl, GLbyte *pc)
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  4 );
++        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+ 
+-        GLdouble params[4];
+-        CALL_GetProgramNamedParameterdvNV( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 ),
+-            len,
+-             (const GLubyte *)(pc +  8),
+-            params
++        GLboolean retval;
++        GLboolean answerBuffer[200];
++        GLboolean * residences = __glXGetAnswerBuffer(cl, n, answerBuffer, sizeof(answerBuffer), 1);
++        retval = CALL_AreProgramsResidentNV( GET_DISPATCH(), (
++            n,
++             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 ),
++            residences
+         ) );
+-        (void) bswap_64_array( (uint64_t *) params, 4 );
+-        __glXSendReplySwap(cl->client, params, 4, 8, GL_TRUE, 0);
++        __glXSendReplySwap(cl->client, residences, n, 1, GL_FALSE, retval);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_GenQueriesARB(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_BindProgramNV(GLbyte * pc)
+ {
+-    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    CALL_BindProgramNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 )
++    ) );
++}
++
++int __glXDispSwap_DeleteProgramsNV(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+     __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    pc += __GLX_SINGLE_HDR_SIZE;
++    pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+         const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+ 
+-        GLuint answerBuffer[200];
+-        GLuint * ids = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
+-        CALL_GenQueriesARB( GET_DISPATCH(), (
++        CALL_DeleteProgramsNV( GET_DISPATCH(), (
+             n,
+-            ids
++             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
+         ) );
+-        (void) bswap_32_array( (uint32_t *) ids, n );
+-        __glXSendReplySwap(cl->client, ids, n, 4, GL_TRUE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_DeleteQueriesARB(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_ExecuteProgramNV(GLbyte * pc)
+ {
+-    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    CALL_ExecuteProgramNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 ),
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
++    ) );
++}
++
++int __glXDispSwap_GenProgramsNV(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+     __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    pc += __GLX_SINGLE_HDR_SIZE;
++    pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+         const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+ 
+-        CALL_DeleteQueriesARB( GET_DISPATCH(), (
++        GLuint answerBuffer[200];
++        GLuint * programs = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
++        CALL_GenProgramsNV( GET_DISPATCH(), (
+             n,
+-             (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
++            programs
+         ) );
++        (void) bswap_32_array( (uint32_t *) programs, n );
++        __glXSendReplySwap(cl->client, programs, n, 4, GL_TRUE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_IsQueryARB(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramParameterdvNV(__GLXclientState *cl, GLbyte *pc)
+ {
+-    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+     __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    pc += __GLX_SINGLE_HDR_SIZE;
++    pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        GLboolean retval;
+-        retval = CALL_IsQueryARB( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 )
++        GLdouble params[4];
++        CALL_GetProgramParameterdvNV( GET_DISPATCH(), (
++             (GLenum  )bswap_ENUM   ( pc +  0 ),
++             (GLuint  )bswap_CARD32 ( pc +  4 ),
++             (GLenum  )bswap_ENUM   ( pc +  8 ),
++            params
+         ) );
+-        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
++        (void) bswap_64_array( (uint64_t *) params, 4 );
++        __glXSendReplySwap(cl->client, params, 4, 8, GL_FALSE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-void __glXDispSwap_BeginQueryARB(GLbyte * pc)
+-{
+-    CALL_BeginQueryARB( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 )
+-    ) );
+-}
+-
+-void __glXDispSwap_EndQueryARB(GLbyte * pc)
+-{
+-    CALL_EndQueryARB( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 )
+-    ) );
+-}
+-
+-int __glXDispSwap_GetQueryivARB(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramParameterfvNV(__GLXclientState *cl, GLbyte *pc)
+ {
+-    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+     __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    pc += __GLX_SINGLE_HDR_SIZE;
++    pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
+-
+-        const GLuint compsize = __glGetQueryivARB_size(pname);
+-        GLint answerBuffer[200];
+-        GLint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
+-
+-        if (params == NULL) return BadAlloc;
+-        __glXClearErrorOccured();
+-
+-        CALL_GetQueryivARB( GET_DISPATCH(), (
++        GLfloat params[4];
++        CALL_GetProgramParameterfvNV( GET_DISPATCH(), (
+              (GLenum  )bswap_ENUM   ( pc +  0 ),
+-            pname,
++             (GLuint  )bswap_CARD32 ( pc +  4 ),
++             (GLenum  )bswap_ENUM   ( pc +  8 ),
+             params
+         ) );
+-        (void) bswap_32_array( (uint32_t *) params, compsize );
+-        __glXSendReplySwap(cl->client, params, compsize, 4, GL_FALSE, 0);
++        (void) bswap_32_array( (uint32_t *) params, 4 );
++        __glXSendReplySwap(cl->client, params, 4, 4, GL_FALSE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_GetQueryObjectivARB(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramivNV(__GLXclientState *cl, GLbyte *pc)
+ {
+-    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+     __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    pc += __GLX_SINGLE_HDR_SIZE;
++    pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+         const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
+ 
+-        const GLuint compsize = __glGetQueryObjectivARB_size(pname);
++        const GLuint compsize = __glGetProgramivNV_size(pname);
+         GLint answerBuffer[200];
+         GLint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
+ 
+         if (params == NULL) return BadAlloc;
+         __glXClearErrorOccured();
+ 
+-        CALL_GetQueryObjectivARB( GET_DISPATCH(), (
++        CALL_GetProgramivNV( GET_DISPATCH(), (
+              (GLuint  )bswap_CARD32 ( pc +  0 ),
+             pname,
+             params
+@@ -5319,30 +4933,23 @@ int __glXDispSwap_GetQueryObjectivARB(__GLXclientState *cl, GLbyte *pc)
+     return error;
+ }
+ 
+-int __glXDispSwap_GetQueryObjectuivARB(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetTrackMatrixivNV(__GLXclientState *cl, GLbyte *pc)
+ {
+-    xGLXSingleReq * const req = (xGLXSingleReq *) pc;
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+     __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+ 
+-    pc += __GLX_SINGLE_HDR_SIZE;
++    pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  4 );
+-
+-        const GLuint compsize = __glGetQueryObjectuivARB_size(pname);
+-        GLuint answerBuffer[200];
+-        GLuint * params = __glXGetAnswerBuffer(cl, compsize * 4, answerBuffer, sizeof(answerBuffer), 4);
+-
+-        if (params == NULL) return BadAlloc;
+-        __glXClearErrorOccured();
+-
+-        CALL_GetQueryObjectuivARB( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 ),
+-            pname,
++        GLint params[1];
++        CALL_GetTrackMatrixivNV( GET_DISPATCH(), (
++             (GLenum  )bswap_ENUM   ( pc +  0 ),
++             (GLuint  )bswap_CARD32 ( pc +  4 ),
++             (GLenum  )bswap_ENUM   ( pc +  8 ),
+             params
+         ) );
+-        (void) bswap_32_array( (uint32_t *) params, compsize );
+-        __glXSendReplySwap(cl->client, params, compsize, 4, GL_FALSE, 0);
++        (void) bswap_32_array( (uint32_t *) params, 1 );
++        __glXSendReplySwap(cl->client, params, 1, 4, GL_FALSE, 0);
+         error = Success;
+     }
+ 
+@@ -5439,6 +5046,114 @@ int __glXDispSwap_GetVertexAttribivNV(__GLXclientState *cl, GLbyte *pc)
+     return error;
+ }
+ 
++int __glXDispSwap_IsProgramNV(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++
++    pc += __GLX_VENDPRIV_HDR_SIZE;
++    if ( cx != NULL ) {
++        GLboolean retval;
++        retval = CALL_IsProgramNV( GET_DISPATCH(), (
++             (GLuint  )bswap_CARD32 ( pc +  0 )
++        ) );
++        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
++        error = Success;
++    }
++
++    return error;
++}
++
++void __glXDispSwap_LoadProgramNV(GLbyte * pc)
++{
++    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  8 );
++
++    CALL_LoadProgramNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 ),
++        len,
++         (const GLubyte *)(pc + 12)
++    ) );
++}
++
++void __glXDispSwap_ProgramParameter4dvNV(GLbyte * pc)
++{
++#ifdef __GLX_ALIGN64
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, 40);
++        pc -= 4;
++    }
++#endif
++
++    CALL_ProgramParameter4dvNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 ),
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 4 )
++    ) );
++}
++
++void __glXDispSwap_ProgramParameter4fvNV(GLbyte * pc)
++{
++    CALL_ProgramParameter4fvNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 ),
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
++    ) );
++}
++
++void __glXDispSwap_ProgramParameters4dvNV(GLbyte * pc)
++{
++    const GLuint num =  (GLuint  )bswap_CARD32 ( pc +  8 );
++
++#ifdef __GLX_ALIGN64
++    const GLuint cmdlen = 16 + __GLX_PAD((num * 32)) - 4;
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, cmdlen);
++        pc -= 4;
++    }
++#endif
++
++    CALL_ProgramParameters4dvNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 ),
++        num,
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc + 12), 0 )
++    ) );
++}
++
++void __glXDispSwap_ProgramParameters4fvNV(GLbyte * pc)
++{
++    const GLuint num =  (GLuint  )bswap_CARD32 ( pc +  8 );
++
++    CALL_ProgramParameters4fvNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 ),
++        num,
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc + 12), 0 )
++    ) );
++}
++
++void __glXDispSwap_RequestResidentProgramsNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++    CALL_RequestResidentProgramsNV( GET_DISPATCH(), (
++        n,
++         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
++    ) );
++}
++
++void __glXDispSwap_TrackMatrixNV(GLbyte * pc)
++{
++    CALL_TrackMatrixNV( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 ),
++         (GLenum  )bswap_ENUM   ( pc +  8 ),
++         (GLenum  )bswap_ENUM   ( pc + 12 )
++    ) );
++}
++
+ void __glXDispSwap_VertexAttrib1dvNV(GLbyte * pc)
+ {
+ #ifdef __GLX_ALIGN64
+@@ -5571,78 +5286,210 @@ void __glXDispSwap_VertexAttrib4ubvNV(GLbyte * pc)
+     ) );
+ }
+ 
+-int __glXDispSwap_IsRenderbufferEXT(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_VertexAttribs1dvNV(GLbyte * pc)
+ {
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+ 
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        GLboolean retval;
+-        retval = CALL_IsRenderbufferEXT( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 )
++#ifdef __GLX_ALIGN64
++    const GLuint cmdlen = 12 + __GLX_PAD((n * 8)) - 4;
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, cmdlen);
++        pc -= 4;
++    }
++#endif
++
++    CALL_VertexAttribs1dvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
+         ) );
+-        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
+-        error = Success;
+     }
+ 
+-    return error;
++void __glXDispSwap_VertexAttribs1fvNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs1fvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++    ) );
+ }
+ 
+-void __glXDispSwap_BindRenderbufferEXT(GLbyte * pc)
++void __glXDispSwap_VertexAttribs1svNV(GLbyte * pc)
+ {
+-    CALL_BindRenderbufferEXT( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 )
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs1svNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
+     ) );
+ }
+ 
+-void __glXDispSwap_DeleteRenderbuffersEXT(GLbyte * pc)
++void __glXDispSwap_VertexAttribs2dvNV(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+ 
+-    CALL_DeleteRenderbuffersEXT( GET_DISPATCH(), (
++#ifdef __GLX_ALIGN64
++    const GLuint cmdlen = 12 + __GLX_PAD((n * 16)) - 4;
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, cmdlen);
++        pc -= 4;
++    }
++#endif
++
++    CALL_VertexAttribs2dvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
+         n,
+-         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
+     ) );
+ }
+ 
+-int __glXDispSwap_GenRenderbuffersEXT(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_VertexAttribs2fvNV(GLbyte * pc)
+ {
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
+ 
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++    CALL_VertexAttribs2fvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++    ) );
++}
+ 
+-        GLuint answerBuffer[200];
+-        GLuint * renderbuffers = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
+-        CALL_GenRenderbuffersEXT( GET_DISPATCH(), (
++void __glXDispSwap_VertexAttribs2svNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs2svNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
+             n,
+-            renderbuffers
++         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
+         ) );
+-        (void) bswap_32_array( (uint32_t *) renderbuffers, n );
+-        __glXSendReplySwap(cl->client, renderbuffers, n, 4, GL_TRUE, 0);
+-        error = Success;
+     }
+ 
+-    return error;
++void __glXDispSwap_VertexAttribs3dvNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++#ifdef __GLX_ALIGN64
++    const GLuint cmdlen = 12 + __GLX_PAD((n * 24)) - 4;
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, cmdlen);
++        pc -= 4;
+ }
++#endif
+ 
+-void __glXDispSwap_RenderbufferStorageEXT(GLbyte * pc)
++    CALL_VertexAttribs3dvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
++    ) );
++}
++
++void __glXDispSwap_VertexAttribs3fvNV(GLbyte * pc)
+ {
+-    CALL_RenderbufferStorageEXT( GET_DISPATCH(), (
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs3fvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++    ) );
++}
++
++void __glXDispSwap_VertexAttribs3svNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs3svNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
++    ) );
++}
++
++void __glXDispSwap_VertexAttribs4dvNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++#ifdef __GLX_ALIGN64
++    const GLuint cmdlen = 12 + __GLX_PAD((n * 32)) - 4;
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, cmdlen);
++        pc -= 4;
++    }
++#endif
++
++    CALL_VertexAttribs4dvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  8), 0 )
++    ) );
++}
++
++void __glXDispSwap_VertexAttribs4fvNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs4fvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 0 )
++    ) );
++}
++
++void __glXDispSwap_VertexAttribs4svNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs4svNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLshort *)bswap_16_array( (uint16_t *) (pc +  8), 0 )
++    ) );
++}
++
++void __glXDispSwap_VertexAttribs4ubvNV(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++    CALL_VertexAttribs4ubvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        n,
++         (const GLubyte *)(pc +  8)
++    ) );
++}
++
++void __glXDispSwap_PointParameteriNV(GLbyte * pc)
++{
++    CALL_PointParameteriNV( GET_DISPATCH(), (
+          (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLenum  )bswap_ENUM   ( pc +  4 ),
+-         (GLsizei )bswap_CARD32 ( pc +  8 ),
+-         (GLsizei )bswap_CARD32 ( pc + 12 )
++         (GLint   )bswap_CARD32 ( pc +  4 )
+     ) );
+ }
+ 
+-int __glXDispSwap_GetRenderbufferParameterivEXT(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_PointParameterivNV(GLbyte * pc)
++{
++    const GLenum pname =  (GLenum  )bswap_ENUM   ( pc +  0 );
++    const GLint * params;
++
++    params = (const GLint *) bswap_32_array( (uint32_t *) (pc + 4), __glPointParameterivNV_size(pname) );
++
++    CALL_PointParameterivNV( GET_DISPATCH(), (
++        pname,
++        params
++    ) );
++}
++
++void __glXDispSwap_ActiveStencilFaceEXT(GLbyte * pc)
++{
++    CALL_ActiveStencilFaceEXT( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 )
++    ) );
++}
++
++int __glXDispSwap_GetProgramNamedParameterdvNV(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -5650,21 +5497,24 @@ int __glXDispSwap_GetRenderbufferParameterivEXT(__GLXclientState *cl, GLbyte *pc
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        GLint params[1];
+-        CALL_GetRenderbufferParameterivEXT( GET_DISPATCH(), (
+-             (GLenum  )bswap_ENUM   ( pc +  0 ),
+-             (GLenum  )bswap_ENUM   ( pc +  4 ),
++        const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++        GLdouble params[4];
++        CALL_GetProgramNamedParameterdvNV( GET_DISPATCH(), (
++             (GLuint  )bswap_CARD32 ( pc +  0 ),
++            len,
++             (const GLubyte *)(pc +  8),
+             params
+         ) );
+-        (void) bswap_32_array( (uint32_t *) params, 1 );
+-        __glXSendReplySwap(cl->client, params, 1, 4, GL_FALSE, 0);
++        (void) bswap_64_array( (uint64_t *) params, 4 );
++        __glXSendReplySwap(cl->client, params, 4, 8, GL_TRUE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-int __glXDispSwap_IsFramebufferEXT(__GLXclientState *cl, GLbyte *pc)
++int __glXDispSwap_GetProgramNamedParameterfvNV(__GLXclientState *cl, GLbyte *pc)
+ {
+     xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+     int error;
+@@ -5672,57 +5522,69 @@ int __glXDispSwap_IsFramebufferEXT(__GLXclientState *cl, GLbyte *pc)
+ 
+     pc += __GLX_VENDPRIV_HDR_SIZE;
+     if ( cx != NULL ) {
+-        GLboolean retval;
+-        retval = CALL_IsFramebufferEXT( GET_DISPATCH(), (
+-             (GLuint  )bswap_CARD32 ( pc +  0 )
++        const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  4 );
++
++        GLfloat params[4];
++        CALL_GetProgramNamedParameterfvNV( GET_DISPATCH(), (
++             (GLuint  )bswap_CARD32 ( pc +  0 ),
++            len,
++             (const GLubyte *)(pc +  8),
++            params
+         ) );
+-        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
++        (void) bswap_32_array( (uint32_t *) params, 4 );
++        __glXSendReplySwap(cl->client, params, 4, 4, GL_TRUE, 0);
+         error = Success;
+     }
+ 
+     return error;
+ }
+ 
+-void __glXDispSwap_BindFramebufferEXT(GLbyte * pc)
++void __glXDispSwap_ProgramNamedParameter4dvNV(GLbyte * pc)
+ {
+-    CALL_BindFramebufferEXT( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLuint  )bswap_CARD32 ( pc +  4 )
++    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc + 36 );
++
++#ifdef __GLX_ALIGN64
++    const GLuint cmdlen = 44 + __GLX_PAD(len) - 4;
++    if ((unsigned long)(pc) & 7) {
++        (void) memmove(pc-4, pc, cmdlen);
++        pc -= 4;
++    }
++#endif
++
++    CALL_ProgramNamedParameter4dvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc + 32 ),
++        len,
++         (const GLubyte *)(pc + 40),
++         (const GLdouble *)bswap_64_array( (uint64_t *) (pc +  0), 4 )
+     ) );
+ }
+ 
+-void __glXDispSwap_DeleteFramebuffersEXT(GLbyte * pc)
++void __glXDispSwap_ProgramNamedParameter4fvNV(GLbyte * pc)
+ {
+-    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++    const GLsizei len =  (GLsizei )bswap_CARD32 ( pc +  4 );
+ 
+-    CALL_DeleteFramebuffersEXT( GET_DISPATCH(), (
+-        n,
+-         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
++    CALL_ProgramNamedParameter4fvNV( GET_DISPATCH(), (
++         (GLuint  )bswap_CARD32 ( pc +  0 ),
++        len,
++         (const GLubyte *)(pc + 24),
++         (const GLfloat *)bswap_32_array( (uint32_t *) (pc +  8), 4 )
+     ) );
+ }
+ 
+-int __glXDispSwap_GenFramebuffersEXT(__GLXclientState *cl, GLbyte *pc)
++void __glXDispSwap_BindFramebufferEXT(GLbyte * pc)
+ {
+-    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
+-    int error;
+-    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
+-
+-    pc += __GLX_VENDPRIV_HDR_SIZE;
+-    if ( cx != NULL ) {
+-        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
+-
+-        GLuint answerBuffer[200];
+-        GLuint * framebuffers = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
+-        CALL_GenFramebuffersEXT( GET_DISPATCH(), (
+-            n,
+-            framebuffers
++    CALL_BindFramebufferEXT( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 )
+         ) );
+-        (void) bswap_32_array( (uint32_t *) framebuffers, n );
+-        __glXSendReplySwap(cl->client, framebuffers, n, 4, GL_TRUE, 0);
+-        error = Success;
+     }
+ 
+-    return error;
++void __glXDispSwap_BindRenderbufferEXT(GLbyte * pc)
++{
++    CALL_BindRenderbufferEXT( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLuint  )bswap_CARD32 ( pc +  4 )
++    ) );
+ }
+ 
+ int __glXDispSwap_CheckFramebufferStatusEXT(__GLXclientState *cl, GLbyte *pc)
+@@ -5744,6 +5606,36 @@ int __glXDispSwap_CheckFramebufferStatusEXT(__GLXclientState *cl, GLbyte *pc)
+     return error;
+ }
+ 
++void __glXDispSwap_DeleteFramebuffersEXT(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++    CALL_DeleteFramebuffersEXT( GET_DISPATCH(), (
++        n,
++         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
++    ) );
++}
++
++void __glXDispSwap_DeleteRenderbuffersEXT(GLbyte * pc)
++{
++    const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++    CALL_DeleteRenderbuffersEXT( GET_DISPATCH(), (
++        n,
++         (const GLuint *)bswap_32_array( (uint32_t *) (pc +  4), 0 )
++    ) );
++}
++
++void __glXDispSwap_FramebufferRenderbufferEXT(GLbyte * pc)
++{
++    CALL_FramebufferRenderbufferEXT( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLenum  )bswap_ENUM   ( pc +  4 ),
++         (GLenum  )bswap_ENUM   ( pc +  8 ),
++         (GLuint  )bswap_CARD32 ( pc + 12 )
++    ) );
++}
++
+ void __glXDispSwap_FramebufferTexture1DEXT(GLbyte * pc)
+ {
+     CALL_FramebufferTexture1DEXT( GET_DISPATCH(), (
+@@ -5778,13 +5670,58 @@ void __glXDispSwap_FramebufferTexture3DEXT(GLbyte * pc)
+     ) );
+ }
+ 
+-void __glXDispSwap_FramebufferRenderbufferEXT(GLbyte * pc)
++int __glXDispSwap_GenFramebuffersEXT(__GLXclientState *cl, GLbyte *pc)
+ {
+-    CALL_FramebufferRenderbufferEXT( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 ),
+-         (GLenum  )bswap_ENUM   ( pc +  4 ),
+-         (GLenum  )bswap_ENUM   ( pc +  8 ),
+-         (GLuint  )bswap_CARD32 ( pc + 12 )
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++
++    pc += __GLX_VENDPRIV_HDR_SIZE;
++    if ( cx != NULL ) {
++        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++        GLuint answerBuffer[200];
++        GLuint * framebuffers = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
++        CALL_GenFramebuffersEXT( GET_DISPATCH(), (
++            n,
++            framebuffers
++        ) );
++        (void) bswap_32_array( (uint32_t *) framebuffers, n );
++        __glXSendReplySwap(cl->client, framebuffers, n, 4, GL_TRUE, 0);
++        error = Success;
++    }
++
++    return error;
++}
++
++int __glXDispSwap_GenRenderbuffersEXT(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++
++    pc += __GLX_VENDPRIV_HDR_SIZE;
++    if ( cx != NULL ) {
++        const GLsizei n =  (GLsizei )bswap_CARD32 ( pc +  0 );
++
++        GLuint answerBuffer[200];
++        GLuint * renderbuffers = __glXGetAnswerBuffer(cl, n * 4, answerBuffer, sizeof(answerBuffer), 4);
++        CALL_GenRenderbuffersEXT( GET_DISPATCH(), (
++            n,
++            renderbuffers
++        ) );
++        (void) bswap_32_array( (uint32_t *) renderbuffers, n );
++        __glXSendReplySwap(cl->client, renderbuffers, n, 4, GL_TRUE, 0);
++        error = Success;
++    }
++
++    return error;
++}
++
++void __glXDispSwap_GenerateMipmapEXT(GLbyte * pc)
++{
++    CALL_GenerateMipmapEXT( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 )
+     ) );
+ }
+ 
+@@ -5811,10 +5748,73 @@ int __glXDispSwap_GetFramebufferAttachmentParameterivEXT(__GLXclientState *cl, G
+     return error;
+ }
+ 
+-void __glXDispSwap_GenerateMipmapEXT(GLbyte * pc)
++int __glXDispSwap_GetRenderbufferParameterivEXT(__GLXclientState *cl, GLbyte *pc)
+ {
+-    CALL_GenerateMipmapEXT( GET_DISPATCH(), (
+-         (GLenum  )bswap_ENUM   ( pc +  0 )
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++
++    pc += __GLX_VENDPRIV_HDR_SIZE;
++    if ( cx != NULL ) {
++        GLint params[1];
++        CALL_GetRenderbufferParameterivEXT( GET_DISPATCH(), (
++             (GLenum  )bswap_ENUM   ( pc +  0 ),
++             (GLenum  )bswap_ENUM   ( pc +  4 ),
++            params
++        ) );
++        (void) bswap_32_array( (uint32_t *) params, 1 );
++        __glXSendReplySwap(cl->client, params, 1, 4, GL_FALSE, 0);
++        error = Success;
++    }
++
++    return error;
++}
++
++int __glXDispSwap_IsFramebufferEXT(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++
++    pc += __GLX_VENDPRIV_HDR_SIZE;
++    if ( cx != NULL ) {
++        GLboolean retval;
++        retval = CALL_IsFramebufferEXT( GET_DISPATCH(), (
++             (GLuint  )bswap_CARD32 ( pc +  0 )
++        ) );
++        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
++        error = Success;
++    }
++
++    return error;
++}
++
++int __glXDispSwap_IsRenderbufferEXT(__GLXclientState *cl, GLbyte *pc)
++{
++    xGLXVendorPrivateReq * const req = (xGLXVendorPrivateReq *) pc;
++    int error;
++    __GLXcontext * const cx = __glXForceCurrent(cl, bswap_CARD32( &req->contextTag ), &error);
++
++    pc += __GLX_VENDPRIV_HDR_SIZE;
++    if ( cx != NULL ) {
++        GLboolean retval;
++        retval = CALL_IsRenderbufferEXT( GET_DISPATCH(), (
++             (GLuint  )bswap_CARD32 ( pc +  0 )
++        ) );
++        __glXSendReplySwap(cl->client, dummy_answer, 0, 0, GL_FALSE, retval);
++        error = Success;
++    }
++
++    return error;
++}
++
++void __glXDispSwap_RenderbufferStorageEXT(GLbyte * pc)
++{
++    CALL_RenderbufferStorageEXT( GET_DISPATCH(), (
++         (GLenum  )bswap_ENUM   ( pc +  0 ),
++         (GLenum  )bswap_ENUM   ( pc +  4 ),
++         (GLsizei )bswap_CARD32 ( pc +  8 ),
++         (GLsizei )bswap_CARD32 ( pc + 12 )
+     ) );
+ }
+ 

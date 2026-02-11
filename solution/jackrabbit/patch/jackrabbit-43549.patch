@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ZombieHierarchyManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ZombieHierarchyManager.java
+index 26b6d4d..1d62581 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ZombieHierarchyManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/ZombieHierarchyManager.java
+@@ -42,7 +42,7 @@ public class ZombieHierarchyManager extends HierarchyManagerImpl {
+     public ZombieHierarchyManager(HierarchyManagerImpl parent,
+                                   ItemStateManager provider,
+                                   ItemStateManager attic) {
+-        super(parent.getRootNodeId(), provider, parent.resolver);
++        super(parent.getRootNodeId(), provider);
+         this.attic = attic;
+     }

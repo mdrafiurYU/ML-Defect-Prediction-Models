@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
+index 1bd1a50..00cb584 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/InternalVersionHistoryImpl.java
+@@ -277,13 +277,6 @@ class InternalVersionHistoryImpl extends InternalVersionItemImpl
+     /**
+      * {@inheritDoc}
+      */
+-    public boolean hasVersion(NodeId id) {
+-        return nameCache.containsValue(id);
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+     public InternalVersion getVersion(NodeId id) {
+         InternalVersion v = (InternalVersion) versionCache.get(id);
+         if (v == null) {

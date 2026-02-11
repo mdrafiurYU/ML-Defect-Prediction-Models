@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
+index 49fb479..98fe9d9 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/GroupImpl.java
+@@ -168,8 +168,7 @@ class GroupImpl extends AuthorizableImpl implements Group {
+      * @throws RepositoryException If an error occurs while collecting the members.
+      */
+     private Collection getMembers(boolean includeIndirect) throws RepositoryException {
+-        // TODO: replace by weak-refs
+-        PropertyIterator itr = getNode().getReferences();
++        PropertyIterator itr = getNode().getWeakReferences();
+         Collection members = new HashSet((int) itr.getSize());
+         while (itr.hasNext()) {
+             NodeImpl n = (NodeImpl) itr.nextProperty().getParent();

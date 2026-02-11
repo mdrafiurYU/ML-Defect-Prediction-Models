@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
+index a5b2343..3c8afe7 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/dom/ConverterTestSetup.java
+@@ -545,6 +545,10 @@ public abstract class ConverterTestSetup extends AbstractASTTests {
+ 		return (node.getFlags() & ASTNode.MALFORMED) != 0;
+ 	}
+ 	
++	protected boolean isRecovered(ASTNode node) {
++		return (node.getFlags() & ASTNode.RECOVERED) != 0;
++	}
++
+ 	protected boolean isOriginal(ASTNode node) {
+ 		return (node.getFlags() & ASTNode.ORIGINAL) != 0;
+ 	}

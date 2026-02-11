@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/lynxos/lynx_mmap.c b/hw/xfree86/os-support/lynxos/lynx_mmap.c
+index c00b670..75ed073 100644
+--- a/hw/xfree86/os-support/lynxos/lynx_mmap.c
++++ b/hw/xfree86/os-support/lynxos/lynx_mmap.c
+@@ -37,7 +37,7 @@
+  * Read BIOS using smem_create facility
+  */
+ 
+-int
++_X_EXPORT int
+ xf86ReadBIOS(unsigned long Base, unsigned long Offset, unsigned char *Buf,
+ 	     int Len)
+ {

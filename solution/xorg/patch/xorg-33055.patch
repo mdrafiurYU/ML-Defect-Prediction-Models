@@ -1,0 +1,19 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index bc3313c..7512529 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -817,10 +817,12 @@ CloseDevice(DeviceIntPtr dev)
+     xfree(dev->name);
+ 
+     if (dev->isMaster)
++    {
+         classes = (ClassesPtr)dev->devPrivates[MasterDevClassesPrivIdx].ptr;
+-    else
+-        classes = (ClassesPtr)&dev->key;
++        FreeAllDeviceClasses(classes);
++    }
+ 
++    classes = (ClassesPtr)&dev->key;
+     FreeAllDeviceClasses(classes);
+ 
+ #ifdef XKB

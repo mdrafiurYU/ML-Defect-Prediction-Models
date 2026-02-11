@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java b/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
+index 1c72913..2e27170 100644
+--- a/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
++++ b/lucene/src/java/org/apache/lucene/index/LogMergePolicy.java
+@@ -231,8 +231,7 @@ public abstract class LogMergePolicy extends MergePolicy {
+     return !hasDeletions &&
+       !info.hasSeparateNorms() &&
+       info.dir == w.getDirectory() &&
+-      (info.getUseCompoundFile() == useCompoundFile ||
+-       (noCFSRatio != 1.0 && !info.getUseCompoundFile()));
++      (info.getUseCompoundFile() == useCompoundFile || noCFSRatio < 1.0);
+   }
+ 
+   /**

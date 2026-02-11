@@ -1,0 +1,16 @@
+diff --git a/GL/glx/glxscreens.c b/GL/glx/glxscreens.c
+index 6ddbfcb..3ffefa3 100644
+--- a/GL/glx/glxscreens.c
++++ b/GL/glx/glxscreens.c
+@@ -298,11 +298,7 @@ void __glXScreenInit(GLint numscreens)
+ 		__glXActiveScreens[i].GLXversion = __glXStrdup(GLXServerVersion);
+ 		__glXActiveScreens[i].GLXextensions = __glXStrdup(GLXServerExtensions);
+ 
+-#ifdef X11R5
+-		__glXDrawableRes = CreateNewResourceType(DrawableGone);
+-#else
+ 		__glXDrawableRes = CreateNewResourceType((DeleteType)DrawableGone);
+-#endif
+ 		wrapPositionWindow(i);
+ 	    }
+ 	}

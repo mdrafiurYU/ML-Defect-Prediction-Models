@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AddNode.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AddNode.java
+index 6274c2e..531eba9 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AddNode.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/operation/AddNode.java
+@@ -125,7 +125,7 @@ public class AddNode extends AbstractOperation {
+      * @param nodeName
+      * @param nodeTypeName
+      * @param uuid
+-     * @return
++     * @return a new <code>AddNode</code> operation.
+      */
+     public static Operation create(NodeState parentState, Name nodeName,
+                                    Name nodeTypeName, String uuid) throws RepositoryException {

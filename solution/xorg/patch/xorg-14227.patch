@@ -1,0 +1,15 @@
+diff --git a/render/picture.c b/render/picture.c
+index b4c59f1..e8f404d 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -42,6 +42,10 @@
+ #include "servermd.h"
+ #include "picturestr.h"
+ 
++#ifdef WIN32
++typedef unsigned int uint;
++#endif
++
+ int		PictureScreenPrivateIndex = -1;
+ int		PictureWindowPrivateIndex;
+ int		PictureGeneration;

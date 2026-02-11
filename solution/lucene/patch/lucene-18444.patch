@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/component/ShardRequest.java b/solr/src/java/org/apache/solr/handler/component/ShardRequest.java
+index d8828cb..528447f 100755
+--- a/solr/src/java/org/apache/solr/handler/component/ShardRequest.java
++++ b/solr/src/java/org/apache/solr/handler/component/ShardRequest.java
+@@ -56,6 +56,7 @@ public class ShardRequest {
+   // this would work well if we ever transitioned to using internal ids and
+   // didn't require a uniqueId
+ 
++  @Override
+   public String toString() {
+     return "ShardRequest:{params=" + params
+             + ", purpose=" + Integer.toHexString(purpose)

@@ -1,0 +1,24 @@
+diff --git a/hw/xfree86/modes/xf86RandR12.c b/hw/xfree86/modes/xf86RandR12.c
+index 8c4a1fb..13f6310 100644
+--- a/hw/xfree86/modes/xf86RandR12.c
++++ b/hw/xfree86/modes/xf86RandR12.c
+@@ -248,7 +248,9 @@ xf86RandR12GetInfo (ScreenPtr pScreen, Rotation *rotations)
+     {
+ 	xf86ProbeOutputModes (scrp, 0, 0);
+ 	xf86SetScrnInfoModes (scrp);
++#ifdef XFreeXDGA
+ 	xf86DiDGAReInit (pScreen);
++#endif
+     }
+ 
+     for (mode = scrp->modes; ; mode = mode->next)
+@@ -1317,7 +1319,9 @@ xf86RandR12GetInfo12 (ScreenPtr pScreen, Rotation *rotations)
+ 	return TRUE;
+     xf86ProbeOutputModes (pScrn, 0, 0);
+     xf86SetScrnInfoModes (pScrn);
++#ifdef XFreeXDGA
+     xf86DiDGAReInit (pScreen);
++#endif
+     return xf86RandR12SetInfo12 (pScreen);
+ }
+ 

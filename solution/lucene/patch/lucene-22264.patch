@@ -1,0 +1,19 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java b/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
+index 74b8a1b..48efc27 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestPhraseQuery.java
+@@ -626,11 +626,14 @@ public class TestPhraseQuery extends LuceneTestCase {
+           }
+           TokenStream ts = analyzer.reusableTokenStream("ignore", new StringReader(term));
+           CharTermAttribute termAttr = ts.addAttribute(CharTermAttribute.class);
++          ts.reset();
+           while(ts.incrementToken()) {
+             String text = termAttr.toString();
+             doc.add(text);
+             sb.append(text).append(' ');
+           }
++          ts.end();
++          ts.close();
+         } else {
+           // pick existing sub-phrase
+           List<String> lastDoc = docs.get(r.nextInt(docs.size()));

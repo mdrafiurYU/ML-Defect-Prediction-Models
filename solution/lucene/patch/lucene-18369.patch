@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/SnapShooter.java b/solr/src/java/org/apache/solr/handler/SnapShooter.java
+index c199263..b534d04 100644
+--- a/solr/src/java/org/apache/solr/handler/SnapShooter.java
++++ b/solr/src/java/org/apache/solr/handler/SnapShooter.java
+@@ -64,6 +64,7 @@ public class SnapShooter {
+     replicationHandler.core.getDeletionPolicy().saveCommitPoint(indexCommit.getVersion());
+ 
+     new Thread() {
++      @Override
+       public void run() {
+         createSnapshot(indexCommit, replicationHandler);
+       }

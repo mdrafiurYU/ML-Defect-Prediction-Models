@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/xf86Pci.h b/hw/xfree86/os-support/bus/xf86Pci.h
+index 2b8a4f7..3a73678 100644
+--- a/hw/xfree86/os-support/bus/xf86Pci.h
++++ b/hw/xfree86/os-support/bus/xf86Pci.h
+@@ -255,8 +255,6 @@ ADDRESS	      pciBusAddrToHostAddr(PCITAG tag, PciAddrType type, ADDRESS addr);
+ PCITAG	      pciTag(int busnum, int devnum, int funcnum);
+ Bool xf86scanpci(void);
+ 
+-extern int pciNumBuses;
+-
+ /* Domain access functions.  Some of these probably shouldn't be public */
+ pointer xf86MapDomainMemory(int ScreenNum, int Flags, struct pci_device *dev,
+     ADDRESS Base, unsigned long Size);

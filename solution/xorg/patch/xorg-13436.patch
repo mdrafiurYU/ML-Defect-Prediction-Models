@@ -1,0 +1,31 @@
+diff --git a/hw/xgl/xglgc.c b/hw/xgl/xglgc.c
+index 6107559..5a85ead 100644
+--- a/hw/xgl/xglgc.c
++++ b/hw/xgl/xglgc.c
+@@ -100,19 +100,18 @@ xglFillSpans (DrawablePtr pDrawable,
+ {
+     XGL_GC_PRIV (pGC);
+ 
+-    if (!pGCPriv->flags)
+-    {
+-	if (xglFillSpan (pDrawable, pGC, nspans, ppt, pwidth))
++    if (pGCPriv->flags || pGC->fillStyle == FillStippled)
+ 	{
+-	    xglAddCurrentBitDamage (pDrawable);
+-	    return;
+-	}
+-    }
+-
+     XGL_GC_FILL_OP_FALLBACK_PROLOGUE (pDrawable);
+     (*pGC->ops->FillSpans) (pDrawable, pGC, nspans, ppt, pwidth, fSorted);
+     XGL_GC_OP_FALLBACK_EPILOGUE (pDrawable);
+ }
++    else
++    {
++	/* xglFillSpan handles fall-back */
++	xglFillSpan (pDrawable, pGC, nspans, ppt, pwidth);
++    }
++}
+ 
+ void
+ xglSetSpans (DrawablePtr pDrawable,

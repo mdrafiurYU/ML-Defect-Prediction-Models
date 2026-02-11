@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/TestAll.java
+index 95f0cc9..efc7cfa 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/TestAll.java
+@@ -33,10 +33,10 @@ public class TestAll extends TestCase {
+      *         package.
+      */
+     public static Test suite() {
+-        TestSuite suite = new TestSuite("security.authorization tests");
++        TestSuite suite = new TestSuite("core.security.authorization tests");
+ 
+         suite.addTestSuite(PrivilegeRegistryTest.class);
+-        suite.addTestSuite(PolicyTemplateTest.class);
++        suite.addTestSuite(JackrabbitAccessControlListTest.class);
+ 
+         return suite;
+     }

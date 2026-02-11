@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/parser/xf86Parser.h b/hw/xfree86/parser/xf86Parser.h
+index b6a974d..7156884 100644
+--- a/hw/xfree86/parser/xf86Parser.h
++++ b/hw/xfree86/parser/xf86Parser.h
+@@ -58,6 +58,10 @@
+  * This file contains the external interfaces for the XFree86 configuration
+  * file parser.
+  */
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _xf86Parser_h_
+ #define _xf86Parser_h_
+ 

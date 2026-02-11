@@ -1,0 +1,25 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+index 0dd4ffc..8628d00 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedTermsEnum.java
+@@ -24,7 +24,6 @@ import org.apache.lucene.index.TermState;
+ import org.apache.lucene.index.TermsEnum;
+ import org.apache.lucene.index.DocsEnum;
+ import org.apache.lucene.index.DocsAndPositionsEnum;
+-import org.apache.lucene.index.codecs.PrefixCodedTermState;
+ 
+ import java.io.IOException;
+ import java.util.Arrays;
+@@ -111,6 +110,12 @@ public class InstantiatedTermsEnum extends TermsEnum {
+   }
+ 
+   @Override
++  public long totalTermFreq() {
++    final long v = terms[upto].getTotalTermFreq();
++    return v == 0 ? -1 : v;
++  }
++
++  @Override
+   public DocsEnum docs(Bits skipDocs, DocsEnum reuse) {
+     if (reuse == null || !(reuse instanceof InstantiatedDocsEnum)) {
+       reuse = new InstantiatedDocsEnum();

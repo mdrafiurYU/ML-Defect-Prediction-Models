@@ -1,0 +1,13 @@
+diff --git a/mi/mieq.c b/mi/mieq.c
+index 5093023..d946e7d 100644
+--- a/mi/mieq.c
++++ b/mi/mieq.c
+@@ -200,7 +200,7 @@ mieqProcessInputEvents(void)
+ 
+     while (miEventQueue.head != miEventQueue.tail) {
+         if (screenIsSaved == SCREEN_SAVER_ON)
+-            SaveScreens (serverClient, SCREEN_SAVER_OFF, ScreenSaverReset);
++            dixSaveScreens (serverClient, SCREEN_SAVER_OFF, ScreenSaverReset);
+ #ifdef DPMSExtension
+         else if (DPMSPowerLevel != DPMSModeOn)
+             SetScreenSaverTimer();

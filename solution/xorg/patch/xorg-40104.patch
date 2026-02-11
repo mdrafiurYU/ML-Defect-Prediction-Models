@@ -1,0 +1,16 @@
+diff --git a/randr/rrmode.c b/randr/rrmode.c
+index d507208..212175f 100644
+--- a/randr/rrmode.c
++++ b/randr/rrmode.c
+@@ -85,11 +85,6 @@ RRModeCreate (xRRModeInfo   *modeInfo,
+ 	return NULL;
+     modes = newModes;
+     modes[num_modes++] = mode;
+-    
+-    /*
+-     * give the caller a reference to this mode
+-     */
+-    ++mode->refcnt;
+     return mode;
+ }
+ 

@@ -1,0 +1,20 @@
+diff --git a/solr/src/test/org/apache/solr/handler/component/QueryElevationComponentTest.java b/solr/src/test/org/apache/solr/handler/component/QueryElevationComponentTest.java
+index ebaacdf..725abeb 100644
+--- a/solr/src/test/org/apache/solr/handler/component/QueryElevationComponentTest.java
++++ b/solr/src/test/org/apache/solr/handler/component/QueryElevationComponentTest.java
+@@ -49,6 +49,15 @@ public class QueryElevationComponentTest extends SolrTestCaseJ4 {
+   public static void beforeClass() throws Exception {
+     initCore("solrconfig-elevate.xml","schema12.xml");
+   }
++
++  @Before
++  @Override
++  public void setUp() throws Exception{
++    super.setUp();
++    clearIndex();
++    assertU(commit());
++    assertU(optimize());
++  }
+   
+   @Test
+   public void testInterface() throws Exception

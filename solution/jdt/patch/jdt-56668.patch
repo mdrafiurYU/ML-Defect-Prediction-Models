@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+index cf45712..f69febb 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/Parser.java
+@@ -2385,7 +2385,9 @@ protected void consumeConstructorDeclaration() {
+ 		cd.constructorCall.sourceStart = cd.sourceStart;
+ 	}
+ 
+-	if (!this.diet && (statements == null && constructorCall.isImplicitSuper())) {
++	if (!this.diet 
++			&& statements == null 
++			&& (constructorCall == null || constructorCall.isImplicitSuper())) {
+ 		if (!containsComment(cd.bodyStart, this.endPosition)) {
+ 			cd.bits |= ASTNode.UndocumentedEmptyBlock;
+ 		}

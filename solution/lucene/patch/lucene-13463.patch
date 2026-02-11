@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/schema/BinaryField.java b/solr/src/java/org/apache/solr/schema/BinaryField.java
+index 5cc4cc1..990da2d 100644
+--- a/solr/src/java/org/apache/solr/schema/BinaryField.java
++++ b/solr/src/java/org/apache/solr/schema/BinaryField.java
+@@ -18,7 +18,6 @@
+ package org.apache.solr.schema;
+ 
+ import org.apache.solr.response.TextResponseWriter;
+-import org.apache.solr.response.XMLWriter;
+ import org.apache.solr.common.util.Base64;
+ import org.apache.lucene.document.Fieldable;
+ import org.apache.lucene.document.Field;
+@@ -30,10 +29,6 @@ import java.nio.ByteBuffer;
+ 
+ public class BinaryField extends FieldType  {
+ 
+-  public void write(XMLWriter xmlWriter, String name, Fieldable f) throws IOException {
+-    xmlWriter.writeStr( name, toBase64String(toObject(f)) );
+-  }
+-
+   private String  toBase64String(ByteBuffer buf) {
+     return Base64.byteArrayToBase64(buf.array(), buf.position(), buf.limit()-buf.position());
+   }

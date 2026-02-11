@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/xpr/appledristr.h b/hw/xquartz/xpr/appledristr.h
+index bcac03a..a3844f0 100644
+--- a/hw/xquartz/xpr/appledristr.h
++++ b/hw/xquartz/xpr/appledristr.h
+@@ -226,7 +226,7 @@ typedef struct {
+ typedef struct {
+     CARD8 reqType; /*1*/
+     CARD8 driReqType; /*2*/
+-    CARD16 length; /*4*/
++    CARD16 length B16; /*4*/
+     CARD32 drawable B32; /*8*/
+ } xAppleDRIDestroyPixmapReq;
+ 

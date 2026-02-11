@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java b/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java
+index f8f3531..df80cec 100644
+--- a/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java
++++ b/solr/src/java/org/apache/solr/search/function/FieldCacheSource.java
+@@ -37,10 +37,12 @@ public abstract class FieldCacheSource extends ValueSource {
+     return cache;
+   }
+ 
++  @Override
+   public String description() {
+     return field;
+   }
+ 
++  @Override
+   public boolean equals(Object o) {
+     if (!(o instanceof FieldCacheSource)) return false;
+     FieldCacheSource other = (FieldCacheSource)o;
+@@ -48,6 +50,7 @@ public abstract class FieldCacheSource extends ValueSource {
+            && this.cache == other.cache;
+   }
+ 
++  @Override
+   public int hashCode() {
+     return cache.hashCode() + field.hashCode();
+   };

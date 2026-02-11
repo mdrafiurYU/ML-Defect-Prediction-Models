@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavServletRequest.java b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavServletRequest.java
+index fa2fdb4..2c33675 100644
+--- a/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavServletRequest.java
++++ b/jackrabbit-webdav/src/main/java/org/apache/jackrabbit/webdav/DavServletRequest.java
+@@ -60,7 +60,7 @@ public interface DavServletRequest extends HttpServletRequest {
+      * @return locator of the resource specified with the Destination header.
+      * @see DavConstants#HEADER_DESTINATION
+      */
+-    public DavResourceLocator getDestinationLocator();
++    public DavResourceLocator getDestinationLocator() throws DavException;
+ 
+     /**
+      * Returns true if the {@link DavConstants#HEADER_OVERWRITE Overwrite header}

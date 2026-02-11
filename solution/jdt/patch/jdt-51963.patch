@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/noop/NoOpAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/noop/NoOpAnnotationProcessor.java
+index 0caaaa4..33cdb62 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/noop/NoOpAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/noop/NoOpAnnotationProcessor.java
+@@ -13,19 +13,8 @@
+ package org.eclipse.jdt.apt.tests.annotations.noop;
+ 
+ import com.sun.mirror.apt.AnnotationProcessor;
+-import com.sun.mirror.apt.AnnotationProcessorEnvironment;
+ 
+ public class NoOpAnnotationProcessor implements AnnotationProcessor
+ {
+-
+-	public NoOpAnnotationProcessor(AnnotationProcessorEnvironment env)
+-	{
+-		_env = env;
+-	}
+-
+-	public void process()
+-	{
+-	}
+-
+-	AnnotationProcessorEnvironment	_env;
++	public void process(){}
+ }

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/int10/helper_exec.c b/hw/xfree86/int10/helper_exec.c
+index 97ed757..4ffd74b 100644
+--- a/hw/xfree86/int10/helper_exec.c
++++ b/hw/xfree86/int10/helper_exec.c
+@@ -576,7 +576,7 @@ pciCfg1outb(CARD16 addr, CARD8 val)
+ }
+ 
+ CARD8
+-bios_checksum(CARD8 *start, int size)
++bios_checksum(const CARD8 *start, int size)
+ {
+     CARD8 sum = 0;
+ 

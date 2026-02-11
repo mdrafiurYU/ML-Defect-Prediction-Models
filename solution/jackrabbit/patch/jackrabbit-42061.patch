@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
+index e5678ff..3c8264f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/config/ConfigurationParser.java
+@@ -188,7 +188,9 @@ public class ConfigurationParser {
+         try {
+             DocumentBuilderFactory factory =
+                 DocumentBuilderFactory.newInstance();
++            factory.setValidating(true);
+             DocumentBuilder builder = factory.newDocumentBuilder();
++            builder.setErrorHandler(new ConfigurationErrorHandler());
+             builder.setEntityResolver(ConfigurationEntityResolver.INSTANCE);
+             Document document = builder.parse(xml);
+             return document.getDocumentElement();

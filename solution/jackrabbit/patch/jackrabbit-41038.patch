@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/property/ValuesProperty.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/property/ValuesProperty.java
+index fb07e38..bfc1251 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/property/ValuesProperty.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/webdav/jcr/property/ValuesProperty.java
+@@ -219,7 +219,8 @@ public class ValuesProperty extends AbstractDavProperty implements ItemResourceC
+      * property.
+      *
+      * @return an array of {@link Value}s
+-     * @see #getJcrValues(int)
++     * @see #getJcrValues()
++     * @see #getJcrValue()
+      */
+     public Object getValue() {
+         return jcrValues;

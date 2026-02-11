@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/TestTrie.java b/solr/src/test/org/apache/solr/TestTrie.java
+index 9a81809..861c349 100644
+--- a/solr/src/test/org/apache/solr/TestTrie.java
++++ b/solr/src/test/org/apache/solr/TestTrie.java
+@@ -41,6 +41,7 @@ public class TestTrie extends SolrTestCaseJ4 {
+     initCore("solrconfig.xml","schema-trie.xml");
+   }
+   
++  @Override
+   @After
+   public void tearDown() throws Exception {
+     clearIndex();

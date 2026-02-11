@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
+index 05fad46..5d2fc03 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/MatchLocator.java
+@@ -1891,7 +1891,7 @@ protected void reportBinaryMemberDeclaration(IResource resource, IMember binaryM
+ 			if (mapper != null) {
+ 				char[] contents = mapper.findSource(type, sourceFileName);
+ 				if (contents != null)
+-					range = mapper.mapSource(type, contents, binaryMember);
++					range = mapper.mapSource(type, contents, info, binaryMember);
+ 			}
+ 		}
+ 	}

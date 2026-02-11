@@ -1,0 +1,14 @@
+diff --git a/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java b/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java
+index 4c23950..8e2fc88 100644
+--- a/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java
++++ b/lucene/src/test/org/apache/lucene/TestSearchForDuplicates.java
+@@ -84,6 +84,10 @@ public class TestSearchForDuplicates extends LuceneTestCase {
+       lmp.setUseCompoundFile(useCompoundFiles);
+       lmp.setUseCompoundDocStore(useCompoundFiles);
+       IndexWriter writer = new IndexWriter(directory, conf);
++      if (VERBOSE) {
++        System.out.println("TEST: now build index");
++        writer.setInfoStream(System.out);
++      }
+ 
+       final int MAX_DOCS = 225;

@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
+index 5047fa7..8f9c88b 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTParser.java
+@@ -492,12 +492,12 @@ public class ASTParser {
+      * is to be parsed, or <code>null</code> if none
+      */
+ 	public void setSource(IClassFile classFile) {
+-		this.classFileSource = source;
++		this.classFileSource = classFile;
+ 		// clear the others
+ 		this.rawSource = null;
+ 		this.compilationUnitSource = null;
+-		if (source != null) {
+-			this.project = source.getJavaProject();
++		if (classFile != null) {
++			this.project = classFile.getJavaProject();
+ 			Map options = this.project.getOptions(true);
+ 			options.remove(JavaCore.COMPILER_TASK_TAGS); // no need to parse task tags
+ 			this.compilerOptions = options;

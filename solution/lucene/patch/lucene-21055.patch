@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java b/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java
+index 97c5908..8fa688a 100644
+--- a/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java
++++ b/lucene/src/test/org/apache/lucene/index/codecs/preflex/TestSurrogates.java
+@@ -275,7 +275,7 @@ public class TestSurrogates extends LuceneTestCase {
+     RandomIndexWriter w = new RandomIndexWriter(random,
+                                                 dir,
+                                                 newIndexWriterConfig( TEST_VERSION_CURRENT,
+-                                                                      new MockAnalyzer()).setCodecProvider(_TestUtil.alwaysCodec(new PreFlexRWCodec())));
++                                                                      new MockAnalyzer(random)).setCodecProvider(_TestUtil.alwaysCodec(new PreFlexRWCodec())));
+ 
+     final int numField = _TestUtil.nextInt(random, 2, 5);

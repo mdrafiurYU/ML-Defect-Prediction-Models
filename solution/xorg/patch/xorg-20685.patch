@@ -1,0 +1,25 @@
+diff --git a/hw/xfree86/dummylib/getemptypci.c b/hw/xfree86/dummylib/getemptypci.c
+new file mode 100644
+index 0000000..03119d3
+--- /dev/null
++++ b/hw/xfree86/dummylib/getemptypci.c
+@@ -0,0 +1,19 @@
++
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
++#include <X11/X.h>
++#include "os.h"
++#include "xf86.h"
++#include "xf86Priv.h"
++
++/*
++ * Utility functions required by libxf86_os. 
++ */
++
++memType
++getEmptyPciRange(PCITAG tag, int base_reg)
++{
++    return 0;
++}

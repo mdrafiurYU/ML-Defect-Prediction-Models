@@ -1,0 +1,33 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+index 21c76e7..03b9bc1 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/RepositoryImpl.java
+@@ -1420,22 +1420,20 @@ public class RepositoryImpl extends AbstractRepository
+     }
+ 
+     public Value getDescriptorValue(String key) {
+-        throw new RuntimeException("not implemented yet - see JCR-2062");
++        throw new UnsupportedOperationException(
++                "not implemented yet - see JCR-2062");
+     }
+ 
+     public Value[] getDescriptorValues(String key) {
+-        throw new RuntimeException("not implemented yet - see JCR-2062");
++        throw new UnsupportedOperationException(
++                "not implemented yet - see JCR-2062");
+     }
+ 
+     public boolean isSingleValueDescriptor(String key) {
+-        throw new RuntimeException("not implemented yet - see JCR-2062");
++        throw new UnsupportedOperationException(
++                "not implemented yet - see JCR-2062");
+     }
+ 
+-    public boolean isStandardDescriptor(String key) {
+-        throw new RuntimeException("not implemented yet - see JCR-2062");
+-    }
+-
+-
+     //------------------------------------------------------< SessionListener >
+     /**
+      * {@inheritDoc}

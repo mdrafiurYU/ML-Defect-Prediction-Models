@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/StrField.java b/solr/src/java/org/apache/solr/schema/StrField.java
+index 7e34ab2..e4749ec 100644
+--- a/solr/src/java/org/apache/solr/schema/StrField.java
++++ b/solr/src/java/org/apache/solr/schema/StrField.java
+@@ -48,6 +48,7 @@ public class StrField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser parser) {
++    field.checkFieldCacheSource(parser);
+     return new StrFieldSource(field.getName());
+   }

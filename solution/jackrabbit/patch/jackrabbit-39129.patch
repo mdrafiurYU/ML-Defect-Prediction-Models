@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RepositorySetup.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RepositorySetup.java
+index e204260..bfa30d9 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RepositorySetup.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RepositorySetup.java
+@@ -204,8 +204,6 @@ public class RepositorySetup {
+                     throw new RepositoryException(e.getMessage());
+                 } catch (InvalidNodeTypeDefException e) {
+                     throw new RepositoryException(e.getMessage());
+-                } catch (org.apache.jackrabbit.name.NameException e) {
+-                    throw new RepositoryException(e.getMessage());
+                 } finally {
+                     try {
+                         is.close();

@@ -1,0 +1,21 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/sinks/TokenRangeSinkTokenizerTest.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/sinks/TokenRangeSinkTokenizerTest.java
+index 98cc3dc..6c9ebf8 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/sinks/TokenRangeSinkTokenizerTest.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/sinks/TokenRangeSinkTokenizerTest.java
+@@ -20,14 +20,14 @@ import java.io.IOException;
+ import java.io.StringReader;
+ 
+ import org.apache.lucene.analysis.BaseTokenStreamTestCase;
+-import org.apache.lucene.analysis.core.WhitespaceTokenizer;
++import org.apache.lucene.analysis.MockTokenizer;
+ 
+ public class TokenRangeSinkTokenizerTest extends BaseTokenStreamTestCase {
+ 
+   public void test() throws IOException {
+     TokenRangeSinkFilter sinkFilter = new TokenRangeSinkFilter(2, 4);
+     String test = "The quick red fox jumped over the lazy brown dogs";
+-    TeeSinkTokenFilter tee = new TeeSinkTokenFilter(new WhitespaceTokenizer(TEST_VERSION_CURRENT, new StringReader(test)));
++    TeeSinkTokenFilter tee = new TeeSinkTokenFilter(new MockTokenizer(new StringReader(test), MockTokenizer.WHITESPACE, false));
+     TeeSinkTokenFilter.SinkTokenStream rangeToks = tee.newSinkTokenStream(sinkFilter);
+     
+     int count = 0;

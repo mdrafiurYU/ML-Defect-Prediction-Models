@@ -1,0 +1,13 @@
+diff --git a/dix/cursor.c b/dix/cursor.c
+index f4d6c64..af9282f 100644
+--- a/dix/cursor.c
++++ b/dix/cursor.c
+@@ -109,7 +109,7 @@ FreeCursorBits(CursorBitsPtr bits)
+  *
+  *  \param value must conform to DeleteType
+  */
+-int
++_X_EXPORT int
+ FreeCursor(pointer value, XID cid)
+ {
+     int		nscr;

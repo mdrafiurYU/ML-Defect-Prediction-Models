@@ -1,0 +1,14 @@
+diff --git a/hw/xfree86/xf8_32wid/cfbwid.c b/hw/xfree86/xf8_32wid/cfbwid.c
+index 8325810..4fcd472 100644
+--- a/hw/xfree86/xf8_32wid/cfbwid.c
++++ b/hw/xfree86/xf8_32wid/cfbwid.c
+@@ -1,5 +1,9 @@
+ /* $XFree86$ */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include <X11/Xmd.h>
+ #include <X11/misc.h>

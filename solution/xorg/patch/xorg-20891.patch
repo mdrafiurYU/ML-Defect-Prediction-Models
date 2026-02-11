@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/os-support/bus/linuxPci.c b/hw/xfree86/os-support/bus/linuxPci.c
+index 3e82f21..0714c9c 100644
+--- a/hw/xfree86/os-support/bus/linuxPci.c
++++ b/hw/xfree86/os-support/bus/linuxPci.c
+@@ -108,6 +108,9 @@ static pciBusInfo_t linuxPci0 = {
+ /* bridge      */	NULL
+ };
+ 
++/* from lnx_pci.c. */
++extern int lnxPciInit(void);
++
+ void
+ linuxPciInit()
+ {
+@@ -123,6 +126,7 @@ linuxPciInit()
+ 	pciFindFirstFP = pciGenFindFirst;
+ 	pciFindNextFP  = pciGenFindNext;
+ 	pciSetOSBIOSPtr(linuxPciHandleBIOS);
++        xf86MaxPciDevs = lnxPciInit();
+ }
+ 
+ static int

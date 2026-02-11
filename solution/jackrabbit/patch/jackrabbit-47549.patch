@@ -1,0 +1,45 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeImpl.java
+index f08414d..b267f19 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/nodetype/NodeTypeImpl.java
+@@ -41,6 +41,7 @@ import javax.jcr.nodetype.ConstraintViolationException;
+ import javax.jcr.nodetype.NoSuchNodeTypeException;
+ import javax.jcr.nodetype.NodeDefinition;
+ import javax.jcr.nodetype.NodeType;
++import javax.jcr.nodetype.NodeTypeIterator;
+ import javax.jcr.nodetype.PropertyDefinition;
+ import java.util.ArrayList;
+ 
+@@ -481,4 +482,32 @@ public class NodeTypeImpl implements NodeType {
+         }
+         return false;
+     }
++
++    public boolean canRemoveNode(String nodeName) {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public boolean canRemoveProperty(String propertyName) {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public NodeTypeIterator getDeclaredSubtypes() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public NodeTypeIterator getSubtypes() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public String[] getDeclaredSupertypeNames() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public boolean isAbstract() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
++
++    public boolean isQueryable() {
++        throw new UnsupportedOperationException("JCR-1591");
++    }
+ }

@@ -1,0 +1,22 @@
+diff --git a/dix/tables.c b/dix/tables.c
+index 2200e3c..e4f9366 100644
+--- a/dix/tables.c
++++ b/dix/tables.c
+@@ -70,7 +70,7 @@ int (* InitialVector[3]) (
+     ProcEstablishConnection
+ };
+ 
+-_X_EXPORT int (* ProcVector[256]) (
++int (* ProcVector[256]) (
+ 	ClientPtr /* client */
+     ) =
+ {
+@@ -378,7 +378,7 @@ _X_EXPORT EventSwapPtr EventSwapVector[128] =
+ };
+ 
+ 
+-_X_EXPORT ReplySwapPtr ReplySwapVector[256] =
++ReplySwapPtr ReplySwapVector[256] =
+ {
+     ReplyNotSwappd,
+     ReplyNotSwappd,

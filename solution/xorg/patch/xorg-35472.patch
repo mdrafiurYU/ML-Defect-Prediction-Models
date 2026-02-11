@@ -1,0 +1,43 @@
+diff --git a/hw/xquartz/xpr/xprScreen.c b/hw/xquartz/xpr/xprScreen.c
+index 29179e5..e4e1fda 100644
+--- a/hw/xquartz/xpr/xprScreen.c
++++ b/hw/xquartz/xpr/xprScreen.c
+@@ -62,10 +62,8 @@ static const char *xprOpenGLBundle = "glxCGL.bundle";
+  * eventHandler
+  *  Callback handler for Xplugin events.
+  */
+-static void
+-eventHandler(unsigned int type, const void *arg,
+-             unsigned int arg_size, void *data)
+-{
++static void eventHandler(unsigned int type, const void *arg,
++                         unsigned int arg_size, void *data) {
+     switch (type) {
+     case XP_EVENT_DISPLAY_CHANGED:
+       DEBUG_LOG("XP_EVENT_DISPLAY_CHANGED\n");
+@@ -73,12 +71,14 @@ eventHandler(unsigned int type, const void *arg,
+       break;
+ 
+     case XP_EVENT_WINDOW_STATE_CHANGED:
+-      DEBUG_LOG("XP_EVENT_WINDOW_STATE_CHANGED\n");
+       if (arg_size >= sizeof(xp_window_state_event)) {
+ 	const xp_window_state_event *ws_arg = arg;
+ 	
++                DEBUG_LOG("XP_EVENT_WINDOW_STATE_CHANGED: id=%d, state=%d\n", ws_arg->id, ws_arg->state);
+ 	QuartzMessageServerThread(kXDarwinWindowState, 2,
+ 				  ws_arg->id, ws_arg->state);
++            } else {
++                DEBUG_LOG("XP_EVENT_WINDOW_STATE_CHANGED: ignored\n");
+       }
+       break;
+ 
+@@ -107,8 +107,7 @@ eventHandler(unsigned int type, const void *arg,
+         }
+         break;
+     default:
+-      ErrorF("Unknown XP_EVENT type (%d) in xprScreen:eventHandler\n",
+-	     type);
++            ErrorF("Unknown XP_EVENT type (%d) in xprScreen:eventHandler\n", type);
+     }
+ }
+ 

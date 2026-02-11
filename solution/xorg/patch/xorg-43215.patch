@@ -1,0 +1,13 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 5cde80b..b06f4aa 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -901,7 +901,7 @@ ProcInternAtom(ClientPtr client)
+ int
+ ProcGetAtomName(ClientPtr client)
+ {
+-    char *str;
++    const char *str;
+     xGetAtomNameReply reply;
+     int len;
+     REQUEST(xResourceReq);

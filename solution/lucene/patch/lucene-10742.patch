@@ -1,0 +1,20 @@
+diff --git a/lucene/contrib/queries/src/java/org/apache/lucene/search/regex/RegexQuery.java b/lucene/contrib/queries/src/java/org/apache/lucene/search/regex/RegexQuery.java
+index 61e26c7..950bede 100644
+--- a/lucene/contrib/queries/src/java/org/apache/lucene/search/regex/RegexQuery.java
++++ b/lucene/contrib/queries/src/java/org/apache/lucene/search/regex/RegexQuery.java
+@@ -21,6 +21,7 @@ import org.apache.lucene.search.MultiTermQuery;
+ import org.apache.lucene.search.FilteredTermsEnum;
+ import org.apache.lucene.index.Term;
+ import org.apache.lucene.index.IndexReader;
++import org.apache.lucene.util.AttributeSource;
+ import org.apache.lucene.util.ToStringUtils;
+ 
+ import java.io.IOException;
+@@ -60,7 +61,7 @@ public class RegexQuery extends MultiTermQuery implements RegexQueryCapable {
+   }
+ 
+   @Override
+-  protected FilteredTermsEnum getTermsEnum(IndexReader reader) throws IOException {
++  protected FilteredTermsEnum getTermsEnum(IndexReader reader, AttributeSource atts) throws IOException {
+     return new RegexTermsEnum(reader, term, regexImpl);
+   }

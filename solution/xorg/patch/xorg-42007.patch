@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/int10/xf86x86emu.c b/hw/xfree86/int10/xf86x86emu.c
+index 7f5b9d4..a884bf9 100644
+--- a/hw/xfree86/int10/xf86x86emu.c
++++ b/hw/xfree86/int10/xf86x86emu.c
+@@ -43,7 +43,7 @@ xf86ExecX86int10(xf86Int10InfoPtr pInt)
+     finish_int(pInt, sig);
+ }
+ 
+-Bool
++_X_EXPORT Bool
+ xf86Int10ExecSetup(xf86Int10InfoPtr pInt)
+ {
+     int i;

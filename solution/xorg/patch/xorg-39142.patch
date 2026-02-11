@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/dixmods/xkbPrivate.c b/hw/xfree86/dixmods/xkbPrivate.c
+index e0cd217..7de3a66 100644
+--- a/hw/xfree86/dixmods/xkbPrivate.c
++++ b/hw/xfree86/dixmods/xkbPrivate.c
+@@ -33,8 +33,6 @@ XkbDDXPrivate(DeviceIntPtr dev,KeyCode key,XkbAction *act)
+             xf86ProcessActionEvent(ACTION_DISABLEGRAB, NULL);
+         else if (strcasecmp(msgbuf, "clsgrb")==0)
+             xf86ProcessActionEvent(ACTION_CLOSECLIENT, NULL);
+-        else
+-            xf86ProcessActionEvent(ACTION_MESSAGE, (void *) msgbuf);
+     }
+ 
+     return 0;

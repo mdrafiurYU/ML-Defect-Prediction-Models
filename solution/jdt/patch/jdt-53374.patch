@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/DietCompletionTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/DietCompletionTest.java
+index 4ba2c22..2b673a9 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/DietCompletionTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/parser/DietCompletionTest.java
+@@ -10,12 +10,17 @@
+  *******************************************************************************/
+ package org.eclipse.jdt.core.tests.compiler.parser;
+ 
++import junit.framework.Test;
++
+ import org.eclipse.jdt.internal.codeassist.complete.InvalidCursorLocation;
+ 
+ public class DietCompletionTest extends AbstractCompletionTest {
+ public DietCompletionTest(String testName){
+ 	super(testName);
+ }
++public static Test suite() {
++	return buildTestSuite(DietCompletionTest.class);
++}
+ /*
+  * Complete on superclass
+  */

@@ -1,0 +1,22 @@
+diff --git a/hw/darwin/quartz/xpr/appledri.c b/hw/darwin/quartz/xpr/appledri.c
+index 6d9bae1..585d7e1 100644
+--- a/hw/darwin/quartz/xpr/appledri.c
++++ b/hw/darwin/quartz/xpr/appledri.c
+@@ -223,7 +223,7 @@ ProcAppleDRICreateSurface(
+     if (!(pDrawable = (DrawablePtr)SecurityLookupDrawable(
+                                                 (Drawable)stuff->drawable,
+                                                 client, 
+-                                                SecurityReadAccess))) {
++                                                DixReadAccess))) {
+         return BadValue;
+     }
+ 
+@@ -256,7 +256,7 @@ ProcAppleDRIDestroySurface(
+     if (!(pDrawable = (DrawablePtr)SecurityLookupDrawable(
+                                                 (Drawable)stuff->drawable,
+                                                 client, 
+-                                                SecurityReadAccess))) {
++                                                DixReadAccess))) {
+         return BadValue;
+     }
+ 

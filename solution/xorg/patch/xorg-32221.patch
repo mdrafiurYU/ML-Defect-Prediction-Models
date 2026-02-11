@@ -1,0 +1,13 @@
+diff --git a/hw/xprint/pcl/PclInit.c b/hw/xprint/pcl/PclInit.c
+index 1832252..574b481 100644
+--- a/hw/xprint/pcl/PclInit.c
++++ b/hw/xprint/pcl/PclInit.c
+@@ -201,8 +201,6 @@ InitializePclDriver(
+     pScreen->RealizeWindow = PclMapWindow;
+     pScreen->UnrealizeWindow = PclUnmapWindow;
+ */
+-    pScreen->PaintWindowBackground = PclPaintWindow;
+-    pScreen->PaintWindowBorder = PclPaintWindow;
+     pScreen->CopyWindow = PclCopyWindow; /* XXX Hard routine to write! */
+ 
+     pScreen->CreatePixmap = fbCreatePixmap;

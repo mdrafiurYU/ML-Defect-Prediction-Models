@@ -1,0 +1,15 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/utils/ExtractReuters.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/utils/ExtractReuters.java
+index 4a14ea9..3e4104b 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/utils/ExtractReuters.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/utils/ExtractReuters.java
+@@ -90,8 +90,8 @@ public class ExtractReuters
+         {
+             BufferedReader reader = new BufferedReader(new FileReader(sgmFile));
+ 
+-            StringBuffer buffer = new StringBuffer(1024);
+-            StringBuffer outBuffer = new StringBuffer(1024);
++            StringBuilder buffer = new StringBuilder(1024);
++            StringBuilder outBuffer = new StringBuilder(1024);
+ 
+             String line = null;
+             int docNumber = 0;

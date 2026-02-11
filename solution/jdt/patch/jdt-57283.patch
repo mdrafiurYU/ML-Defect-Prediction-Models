@@ -1,0 +1,17 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/INamingRequestor.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/INamingRequestor.java
+index 5c42b88..40c442f 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/INamingRequestor.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/INamingRequestor.java
+@@ -11,8 +11,8 @@
+ package org.eclipse.jdt.internal.core;
+ 
+ public interface INamingRequestor {
+-	void acceptNameWithPrefixAndSuffix(char[] name, boolean isFirstPrefix, boolean isFirstSuffix);
+-	void acceptNameWithPrefix(char[] name, boolean isFirstPrefix);
+-	void acceptNameWithSuffix(char[] name, boolean isFirstSuffix);
+-	void acceptNameWithoutPrefixAndSuffix(char[] name);
++	void acceptNameWithPrefixAndSuffix(char[] name, boolean isFirstPrefix, boolean isFirstSuffix, int reusedCharacters);
++	void acceptNameWithPrefix(char[] name, boolean isFirstPrefix, int reusedCharacters);
++	void acceptNameWithSuffix(char[] name, boolean isFirstSuffix, int reusedCharacters);
++	void acceptNameWithoutPrefixAndSuffix(char[] name, int reusedCharacters);
+ }

@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/shared/kmod_noop.c b/hw/xfree86/os-support/shared/kmod_noop.c
+index 620e9bf..935f44b 100644
+--- a/hw/xfree86/os-support/shared/kmod_noop.c
++++ b/hw/xfree86/os-support/shared/kmod_noop.c
+@@ -32,7 +32,7 @@
+ 
+ #include "xf86_OSproc.h"
+ 
+-int xf86LoadKernelModule(const char *pathname)
++_X_EXPORT int xf86LoadKernelModule(const char *pathname)
+ {
+     (void) pathname;
+     return 0;  /* failure */

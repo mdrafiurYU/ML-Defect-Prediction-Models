@@ -1,0 +1,13 @@
+diff --git a/mi/miscrinit.c b/mi/miscrinit.c
+index 92b3981..157a17f 100644
+--- a/mi/miscrinit.c
++++ b/mi/miscrinit.c
+@@ -297,7 +297,7 @@ static int privateKeyIndex;
+ static DevPrivateKey privateKey = &privateKeyIndex;
+ 
+ DevPrivateKey
+-miAllocateGCPrivateIndex()
++miAllocateGCPrivateIndex(void)
+ {
+     return privateKey;
+ }

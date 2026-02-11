@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/stats/TaskStats.java b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/stats/TaskStats.java
+index 494f19c..6924670 100644
+--- a/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/stats/TaskStats.java
++++ b/lucene/contrib/benchmark/src/java/org/apache/lucene/benchmark/byTask/stats/TaskStats.java
+@@ -120,7 +120,7 @@ public class TaskStats implements Cloneable {
+    */
+   @Override
+   public String toString() {
+-    StringBuffer res = new StringBuffer(task.getName());
++    StringBuilder res = new StringBuilder(task.getName());
+     res.append(" ");
+     res.append(count);
+     res.append(" ");

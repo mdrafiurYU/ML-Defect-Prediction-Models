@@ -1,0 +1,19 @@
+diff --git a/hw/xfree86/os-support/misc/BUSmemcpy.c b/hw/xfree86/os-support/misc/BUSmemcpy.c
+index 9ff1439..58864e5 100644
+--- a/hw/xfree86/os-support/misc/BUSmemcpy.c
++++ b/hw/xfree86/os-support/misc/BUSmemcpy.c
+@@ -257,12 +257,12 @@ xf86JensenBusToMem(char *Base, char *dst, unsigned long src, int count)
+ 
+ static unsigned long __memcpy(unsigned long dest, unsigned long src, int n);
+ 
+-void
++_X_EXPORT void
+ xf86BusToMem(unsigned char *dst, unsigned char *src, int len)
+ {
+ 	__memcpy((unsigned long)dst, (unsigned long)src, len);
+ }
+-void
++_X_EXPORT void
+ xf86MemToBus(unsigned char *dst, unsigned char *src, int len)
+ {
+   if (len == sizeof(int))

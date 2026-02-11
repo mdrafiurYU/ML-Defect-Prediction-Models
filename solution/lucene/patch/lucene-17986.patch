@@ -1,0 +1,11 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SortableFloatField.java b/solr/src/java/org/apache/solr/schema/SortableFloatField.java
+index 5b10892..793b9dd 100644
+--- a/solr/src/java/org/apache/solr/schema/SortableFloatField.java
++++ b/solr/src/java/org/apache/solr/schema/SortableFloatField.java
+@@ -53,6 +53,7 @@ public class SortableFloatField extends FieldType {
+ 
+   @Override
+   public ValueSource getValueSource(SchemaField field, QParser qparser) {
++    field.checkFieldCacheSource(qparser);
+     return new SortableFloatFieldSource(field.name);
+   }

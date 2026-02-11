@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/LuceneJUnitResultFormatter.java b/lucene/src/test/org/apache/lucene/util/LuceneJUnitResultFormatter.java
+index 27cce18..1f6c76d 100644
+--- a/lucene/src/test/org/apache/lucene/util/LuceneJUnitResultFormatter.java
++++ b/lucene/src/test/org/apache/lucene/util/LuceneJUnitResultFormatter.java
+@@ -263,6 +263,8 @@ public class LuceneJUnitResultFormatter implements JUnitResultFormatter {
+   }
+ 
+   public LuceneJUnitResultFormatter append(String s) {
++    if (s == null)
++      s = "(null)";
+     try {
+       sb.write(s.getBytes()); // intentionally use default charset, its a console.
+     } catch (IOException e) {

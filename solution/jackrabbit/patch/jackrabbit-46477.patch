@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+index e9cd290..d7dcd65 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/state/SharedItemStateManager.java
+@@ -446,6 +446,12 @@ public class SharedItemStateManager
+      * Disposes this <code>SharedItemStateManager</code> and frees resources.
+      */
+     public void dispose() {
++        // remove virtual item state providers (see JCR-2023)
++        for (int i = 0; i < virtualProviders.length; i++) {
++            virtualProviders[i].removeListener(this);
++        }
++        virtualProviders = new VirtualItemStateProvider[0];
++
+         // clear cache
+         cache.evictAll();
+     }

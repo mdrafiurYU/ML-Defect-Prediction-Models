@@ -1,0 +1,12 @@
+diff --git a/hw/xquartz/darwinEvents.h b/hw/xquartz/darwinEvents.h
+index 58817fb..7a1e8ca 100644
+--- a/hw/xquartz/darwinEvents.h
++++ b/hw/xquartz/darwinEvents.h
+@@ -39,6 +39,7 @@ void DarwinSendKeyboardEvents(int ev_type, int keycode);
+ void DarwinSendScrollEvents(float count_x, float count_y, int pointer_x, int pointer_y,
+ 			    float pressure, float tilt_x, float tilt_y);
+ void DarwinUpdateModKeys(int flags);
++void DarwinListenOnOpenFD(int fd);
+ 
+ /*
+  * Special ddx events understood by the X server

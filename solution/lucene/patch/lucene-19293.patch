@@ -1,0 +1,17 @@
+diff --git a/solr/src/java/org/apache/solr/schema/SchemaField.java b/solr/src/java/org/apache/solr/schema/SchemaField.java
+index 9d625bd..5829776 100644
+--- a/solr/src/java/org/apache/solr/schema/SchemaField.java
++++ b/solr/src/java/org/apache/solr/schema/SchemaField.java
+@@ -93,11 +93,11 @@ public final class SchemaField extends FieldProperties {
+   boolean isBinary() { return (properties & BINARY)!=0; }
+ 
+ 
+-  public Fieldable createField(String val, float boost) {
++  public Fieldable createField(Object val, float boost) {
+     return type.createField(this,val,boost);
+   }
+   
+-  public Fieldable[] createFields(String val, float boost) {
++  public Fieldable[] createFields(Object val, float boost) {
+     return type.createFields(this,val,boost);
+   }

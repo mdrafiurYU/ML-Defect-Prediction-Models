@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java
+index d1fce55..d8c04bd 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/version/VersionManagerImpl.java
+@@ -201,8 +201,8 @@ public class VersionManagerImpl implements VersionManager {
+         workspaceManager.execute(op);
+     }
+ 
+-    public NodeEntry createConfiguration(NodeState nodeState, NodeState baselineState) throws UnsupportedRepositoryOperationException, RepositoryException {
+-        CreateConfiguration op = CreateConfiguration.create(nodeState, baselineState, this);
++    public NodeEntry createConfiguration(NodeState nodeState) throws UnsupportedRepositoryOperationException, RepositoryException {
++        CreateConfiguration op = CreateConfiguration.create(nodeState, this);
+         workspaceManager.execute(op);
+         return workspaceManager.getHierarchyManager().getNodeEntry(op.getNewConfigurationId());
+     }

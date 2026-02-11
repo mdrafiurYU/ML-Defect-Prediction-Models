@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index dca4e32..79422f7 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -204,17 +204,6 @@ OpenInputDevice(DeviceIntPtr	dev,
+     if (!dev->inited)
+         ActivateDevice(dev);
+ 
+-    if (!dev->public.on) {
+-        if (EnableDevice(dev)) {
+-            dev->startup = FALSE;
+-        }
+-        else {
+-            ErrorF("couldn't enable device %s\n", dev->name);
+-            *status = BadDevice;
+-            return;
+-        }
+-    }
+-
+     *status = Success;
+ }
+ 

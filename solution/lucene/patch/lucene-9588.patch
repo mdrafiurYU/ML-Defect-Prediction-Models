@@ -1,0 +1,13 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java
+index c425265..68204b2 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/cz/CzechAnalyzer.java
+@@ -247,7 +247,7 @@ public final class CzechAnalyzer extends ReusableAnalyzerBase {
+   protected TokenStreamComponents createComponents(String fieldName,
+       Reader reader) {
+     final Tokenizer source = new StandardTokenizer(matchVersion, reader);
+-    TokenStream result = new StandardFilter(source);
++    TokenStream result = new StandardFilter(matchVersion, source);
+     result = new LowerCaseFilter(matchVersion, result);
+     result = new StopFilter( matchVersion, result, stoptable);
+     if (matchVersion.onOrAfter(Version.LUCENE_31)) {

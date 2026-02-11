@@ -1,0 +1,29 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
+index 1f06d3a..43a968e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/parser/JavadocParser.java
+@@ -434,17 +434,22 @@ public class JavadocParser extends AbstractCommentParser {
+ 				case '\'':
+ 				case '"':
+ 				case ':':
+-				// case '-': allowed in tag names as this character is often used in doclets (bug 68087)
+ 				case '<':
+ 				case '>':
+ 					readChar();
+ 					this.tagSourceEnd = this.scanner.getCurrentTokenEndPosition();
+ 					validTag = false;
+ 					break;
++				case '-': // allowed in tag names as this character is often used in doclets (bug 68087)
++					readChar();
++					this.tagSourceEnd = this.scanner.getCurrentTokenEndPosition();
++					this.scanner.currentPosition = this.index;
++					break;
+ 				default:
+ 					if (pc == ' ' || Character.isWhitespace(pc)) break tagNameToken;
+-					this.tagSourceEnd = this.scanner.getCurrentTokenEndPosition();
+ 					token = readTokenAndConsume();
++					this.tagSourceEnd = this.scanner.getCurrentTokenEndPosition();
++					break;
+ 			}
+ 			pc = peekChar();
+ 		}

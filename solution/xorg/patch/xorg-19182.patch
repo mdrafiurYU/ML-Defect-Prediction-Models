@@ -1,0 +1,18 @@
+diff --git a/hw/xfree86/common/xf86xvmc.c b/hw/xfree86/common/xf86xvmc.c
+index a39e1bd..cfc63fa 100644
+--- a/hw/xfree86/common/xf86xvmc.c
++++ b/hw/xfree86/common/xf86xvmc.c
+@@ -48,10 +48,11 @@
+ #include "xf86xvpriv.h"
+ #include "xf86xvmc.h"
+ 
++typedef int (*XvMCScreenInitProcPtr)(ScreenPtr, int, XvMCAdaptorPtr);
+ #ifdef XFree86LOADER
+-int (*XvMCScreenInitProc)(ScreenPtr, int, XvMCAdaptorPtr) = NULL;
++_X_EXPORT XvMCScreenInitProcPtr XvMCScreenInitProc = NULL;
+ #else
+-int (*XvMCScreenInitProc)(ScreenPtr, int, XvMCAdaptorPtr) = XvMCScreenInit;
++_X_EXPORT XvMCScreenInitProcPtr XvMCScreenInitProc = XvMCScreenInit;
+ #endif
+ 
+ 

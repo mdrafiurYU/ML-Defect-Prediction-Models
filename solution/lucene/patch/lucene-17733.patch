@@ -1,0 +1,13 @@
+diff --git a/lucene/contrib/misc/src/java/org/apache/lucene/index/FieldNormModifier.java b/lucene/contrib/misc/src/java/org/apache/lucene/index/FieldNormModifier.java
+index acebe22..b630f45 100644
+--- a/lucene/contrib/misc/src/java/org/apache/lucene/index/FieldNormModifier.java
++++ b/lucene/contrib/misc/src/java/org/apache/lucene/index/FieldNormModifier.java
+@@ -149,7 +149,7 @@ public class FieldNormModifier {
+         for (int d = 0; d < termCounts.length; d++) {
+           if (delDocs == null || !delDocs.get(d)) {
+             invertState.setLength(termCounts[d]);
+-            subReader.setNorm(d, fieldName, fieldSim.encodeNormValue(fieldSim.computeNorm(fieldName, invertState)));
++            subReader.setNorm(d, fieldName, fieldSim.encodeNormValue(fieldSim.computeNorm(invertState)));
+           }
+         }
+       }

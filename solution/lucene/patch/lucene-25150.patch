@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesProducer.java b/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesProducer.java
+index 19fe8bd..9daf244 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesProducer.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/DefaultDocValuesProducer.java
+@@ -126,7 +126,7 @@ public class DefaultDocValuesProducer extends PerDocValues {
+     case FIXED_INTS_64:
+     case FIXED_INTS_8:
+     case VAR_INTS:
+-      return Ints.getValues(dir, id);
++      return Ints.getValues(dir, id, docCount);
+     case FLOAT_32:
+       return Floats.getValues(dir, id, docCount);
+     case FLOAT_64:

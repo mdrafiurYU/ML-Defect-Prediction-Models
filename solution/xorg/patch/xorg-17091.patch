@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_agp.c b/hw/xfree86/os-support/linux/lnx_agp.c
+index a3a32b7..6a5c83d 100644
+--- a/hw/xfree86/os-support/linux/lnx_agp.c
++++ b/hw/xfree86/os-support/linux/lnx_agp.c
+@@ -22,7 +22,7 @@
+ #if defined(linux)
+ #include <asm/ioctl.h>
+ #include <linux/agpgart.h>
+-#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
++#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+ #include <sys/ioctl.h>
+ #include <sys/agpio.h>
+ #endif

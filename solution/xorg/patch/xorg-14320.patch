@@ -1,0 +1,15 @@
+diff --git a/GL/glx/single2.c b/GL/glx/single2.c
+index 5869e8f..9fee5ff 100644
+--- a/GL/glx/single2.c
++++ b/GL/glx/single2.c
+@@ -35,6 +35,10 @@
+ */
+ 
+ #define NEED_REPLIES
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "glxserver.h"
+ #include "glxutil.h"
+ #include "glxext.h"

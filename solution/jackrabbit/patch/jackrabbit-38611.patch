@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeSubNodeTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeSubNodeTest.java
+index 2987195..bcab318 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeSubNodeTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/version/MergeSubNodeTest.java
+@@ -46,6 +46,11 @@ public class MergeSubNodeTest extends AbstractMergeTest {
+ 
+     }
+ 
++    protected void tearDown() throws Exception {
++        nodeToMerge = null;
++        super.tearDown();
++    }
++
+     /**
+      * Node.merge(): versionable subNode N: If N has status leave but parent is
+      * update, then the subnode N is removed<br> retrieve the initialised node

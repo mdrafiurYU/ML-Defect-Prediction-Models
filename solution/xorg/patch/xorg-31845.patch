@@ -1,0 +1,19 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index 518a5f1..bd0f4f7 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -74,6 +74,14 @@ exaGetPixmapOffset(PixmapPtr pPix)
+ 	    (unsigned long)pExaScr->info->memoryBase);
+ }
+ 
++void *
++exaGetPixmapDriverPrivate(PixmapPtr pPix)
++{
++    ExaPixmapPriv(pPix);
++
++    return pExaPixmap->driverPriv;
++}
++
+ /**
+  * exaGetPixmapPitch() returns the pitch (in bytes) of the given pixmap.
+  *

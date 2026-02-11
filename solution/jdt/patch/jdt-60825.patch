@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/InternalASTRewrite.java b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/InternalASTRewrite.java
+index c2a574b..c2e3968 100644
+--- a/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/InternalASTRewrite.java
++++ b/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/InternalASTRewrite.java
+@@ -87,8 +87,9 @@ class InternalASTRewrite extends NodeEventHandler {
+ 			char[] content= document.get().toCharArray();
+ 			LineInformation lineInfo= LineInformation.create(document);
+ 			String lineDelim= TextUtilities.getDefaultLineDelimiter(document);
++			List comments= rootNode.getCommentList();
+ 			
+-			ASTRewriteAnalyzer visitor = new ASTRewriteAnalyzer(content, lineInfo, lineDelim, result, this.eventStore, this.nodeStore, options, xsrComputer);
++			ASTRewriteAnalyzer visitor = new ASTRewriteAnalyzer(content, lineInfo, lineDelim, result, this.eventStore, this.nodeStore, comments, options, xsrComputer);
+ 			rootNode.accept(visitor);
+ 		}
+ 		return result;

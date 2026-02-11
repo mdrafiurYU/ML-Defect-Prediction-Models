@@ -1,0 +1,12 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ClobTransformer.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ClobTransformer.java
+index 5ebd3ba..ae970d2 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ClobTransformer.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/ClobTransformer.java
+@@ -37,6 +37,7 @@ import java.util.Map;
+  * @since solr 1.4
+  */
+ public class ClobTransformer extends Transformer {
++  @Override
+   public Object transformRow(Map<String, Object> aRow, Context context) {
+     for (Map<String, String> map : context.getAllEntityFields()) {
+       if (!TRUE.equals(map.get(CLOB))) continue;

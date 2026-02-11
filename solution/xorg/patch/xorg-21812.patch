@@ -1,0 +1,15 @@
+diff --git a/mfb/maskbits.c b/mfb/maskbits.c
+index 0264dd4..d2a9096 100644
+--- a/mfb/maskbits.c
++++ b/mfb/maskbits.c
+@@ -50,6 +50,10 @@ SOFTWARE.
+ */
+ /* $XFree86: xc/programs/Xserver/mfb/maskbits.c,v 1.5 2001/01/17 22:37:01 dawes Exp $ */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include "maskbits.h"
+ #include "servermd.h"
+ 

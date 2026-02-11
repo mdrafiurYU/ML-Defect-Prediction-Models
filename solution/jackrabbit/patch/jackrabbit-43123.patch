@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/ItemStateValidator.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/ItemStateValidator.java
+index f8c62d1..e5126c3 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/ItemStateValidator.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/ItemStateValidator.java
+@@ -590,7 +590,7 @@ public class ItemStateValidator {
+             try {
+                 NodeState conflictingState = parentState.getChildNodeState(nodeName, Path.INDEX_DEFAULT);
+                 QNodeDefinition conflictDef = conflictingState.getDefinition();
+-                QNodeDefinition newDef = mgrProvider.getItemDefinitionProvider().getQNodeDefinition(parentState, nodeName, nodeTypeName);
++                QNodeDefinition newDef = mgrProvider.getItemDefinitionProvider().getQNodeDefinition(parentState.getAllNodeTypeNames(), nodeName, nodeTypeName);
+ 
+                 // check same-name sibling setting of both target and existing node
+                 if (!(conflictDef.allowsSameNameSiblings() && newDef.allowsSameNameSiblings())) {

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86DefModes.c b/hw/xfree86/common/xf86DefModes.c
+index 1d6d332..a39d0a2 100644
+--- a/hw/xfree86/common/xf86DefModes.c
++++ b/hw/xfree86/common/xf86DefModes.c
+@@ -9,6 +9,10 @@
+  * Author: Dirk Hohndel <hohndel@XFree86.Org>
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifdef __UNIXOS2__
+ #define I_NEED_OS2_H
+ #endif

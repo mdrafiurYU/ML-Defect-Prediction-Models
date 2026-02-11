@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
+index 9c6c67a..f3cf2ab 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/IndexMerger.java
+@@ -305,7 +305,7 @@ class IndexMerger extends Thread implements IndexListener {
+ 
+                         // force initializing of caches
+                         time = System.currentTimeMillis();
+-                        index.getReadOnlyIndexReader().release();
++                        index.getReadOnlyIndexReader(true).release();
+                         time = System.currentTimeMillis() - time;
+                         log.debug("reader obtained in {} ms", new Long(time));
+                     } finally {

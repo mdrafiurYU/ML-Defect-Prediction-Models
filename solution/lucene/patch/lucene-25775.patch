@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/IfFunction.java b/solr/src/java/org/apache/solr/search/function/IfFunction.java
+index 00ad2f4..296af74 100644
+--- a/solr/src/java/org/apache/solr/search/function/IfFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/IfFunction.java
+@@ -19,6 +19,8 @@ package org.apache.solr.search.function;
+ 
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
++import org.apache.lucene.queries.function.DocValues;
++import org.apache.lucene.queries.function.ValueSource;
+ import org.apache.lucene.search.Explanation;
+ import org.apache.lucene.search.IndexSearcher;
+ import org.apache.lucene.util.BytesRef;

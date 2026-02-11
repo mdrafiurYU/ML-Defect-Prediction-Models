@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java
+index 58b503c..1a33044 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/IntLiteral.java
+@@ -100,7 +100,7 @@ public void generateCode(BlockScope currentScope, CodeStream codeStream, boolean
+ 	codeStream.recordPositionsFrom(pc, this.sourceStart);
+ }
+ public TypeBinding literalType(BlockScope scope) {
+-	return IntBinding;
++	return TypeBinding.INT;
+ }
+ public final boolean mayRepresentMIN_VALUE(){
+ 	//a special autorized int literral is 2147483648

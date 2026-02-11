@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java
+index 96d353d..ba0c633 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/NodeTypeStorageImpl.java
+@@ -29,6 +29,10 @@ import javax.jcr.nodetype.NodeTypeExistsException;
+ import org.apache.jackrabbit.spi.Name;
+ import org.apache.jackrabbit.spi.QNodeTypeDefinition;
+ 
++/**
++ * This implementation of {@link NodeTypeStorage} keeps a map of the registered {@link QNodeTypeDefinition}
++ * in memory.
++ */
+ public class NodeTypeStorageImpl implements NodeTypeStorage {
+ 
+     private final Map<Name, QNodeTypeDefinition> definitions = new HashMap<Name, QNodeTypeDefinition>();
+@@ -37,6 +41,11 @@ public class NodeTypeStorageImpl implements NodeTypeStorage {
+         return definitions.values().iterator();
+     }
+ 
++    /**
++     * This implementation returns an iterator over all registered {@link QNodeTypeDefinition}s if
++     * <code>nodeTypeNames</code> is <code>null</code>.
++     * {@inheritDoc}
++     */
+     public Iterator<QNodeTypeDefinition> getDefinitions(Name[] nodeTypeNames) throws NoSuchNodeTypeException,
+             RepositoryException {

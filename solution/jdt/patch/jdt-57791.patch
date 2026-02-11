@@ -1,0 +1,19 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+index 8419bc3..d11688f 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/problem/ProblemReporter.java
+@@ -1530,13 +1530,11 @@ public static long getIrritant(int problemID) {
+ 		case IProblem.JavadocNotVisibleConstructor:
+ 		case IProblem.JavadocNotVisibleMethod:
+ 		case IProblem.JavadocNotVisibleType:
+-			return CompilerOptions.InvalidJavadoc;
+-			
+ 		case IProblem.JavadocUsingDeprecatedField:
+ 		case IProblem.JavadocUsingDeprecatedConstructor:
+ 		case IProblem.JavadocUsingDeprecatedMethod:
+ 		case IProblem.JavadocUsingDeprecatedType:
+-			return CompilerOptions.InvalidJavadoc | CompilerOptions.UsingDeprecatedAPI;
++			return CompilerOptions.InvalidJavadoc;
+ 
+ 		case IProblem.JavadocMissingParamTag:
+ 		case IProblem.JavadocMissingReturnTag:

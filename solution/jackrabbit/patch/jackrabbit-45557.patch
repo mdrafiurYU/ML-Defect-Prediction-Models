@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/config/RepositoryConfig.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/config/RepositoryConfig.java
+index 433467d..09d5c6e 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/config/RepositoryConfig.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/config/RepositoryConfig.java
+@@ -35,4 +35,10 @@ public interface RepositoryConfig {
+     public CacheBehaviour getCacheBehaviour();
+ 
+     public int getItemCacheSize();
+-}
+\ No newline at end of file
++
++    /**
++     * Specifies an interval used for polling the {@link RepositoryService} for changes.
++     * @return  the poll timeout in milliseconds.
++     */
++    public int getPollTimeout();
++}

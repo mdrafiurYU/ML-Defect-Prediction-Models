@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86Bus.h b/hw/xfree86/common/xf86Bus.h
+index fbeca7f..96da6e6 100644
+--- a/hw/xfree86/common/xf86Bus.h
++++ b/hw/xfree86/common/xf86Bus.h
+@@ -33,6 +33,10 @@
+  * video drivers must not include this file.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86_BUS_H
+ #define _XF86_BUS_H
+ 

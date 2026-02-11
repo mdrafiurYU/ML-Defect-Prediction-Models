@@ -1,0 +1,26 @@
+diff --git a/hw/xfree86/loader/os.c b/hw/xfree86/loader/os.c
+index 42ab0bc..83fd247 100644
+--- a/hw/xfree86/loader/os.c
++++ b/hw/xfree86/loader/os.c
+@@ -33,10 +33,11 @@
+ 
+ /*
+  * OSNAME is a standard form of the OS name that may be used by the
+- * loader and by OS-specific modules.
++ * loader and by OS-specific modules.  OSNAME here is different from what's in
++ * dix-config.h
+  */
+ 
+-#ifndef OSNAME
++#undef OSNAME
+ #if defined(__linux__)
+ #define OSNAME "linux"
+ #elif defined(__FreeBSD__)
+@@ -66,7 +67,6 @@
+ #else
+ #define OSNAME "unknown"
+ #endif
+-#endif
+ 
+ /* Return the OS name, and run-time OS version */
+ 

@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryImpl.java
+index fff62bc..a78b32c 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/name/NamespaceRegistryImpl.java
+@@ -16,8 +16,6 @@
+  */
+ package org.apache.jackrabbit.jcr2spi.name;
+ 
+-import org.apache.jackrabbit.spi.NameFactory;
+-import org.apache.jackrabbit.spi.PathFactory;
+ import org.apache.jackrabbit.namespace.AbstractNamespaceResolver;
+ import org.apache.jackrabbit.namespace.NamespaceListener;
+ import org.slf4j.Logger;
+@@ -47,8 +45,7 @@ public class NamespaceRegistryImpl extends AbstractNamespaceResolver
+      * @param pathFactory
+      */
+     public NamespaceRegistryImpl(NamespaceStorage storage,
+-                                 NamespaceCache nsCache,
+-                                 NameFactory nameFactory, PathFactory pathFactory) {
++                                 NamespaceCache nsCache) {
+         // listener support in AbstractNamespaceResolver is not needed
+         // because we delegate listeners to NamespaceCache
+         super(false);

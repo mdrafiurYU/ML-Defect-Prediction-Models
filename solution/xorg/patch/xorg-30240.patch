@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bus/Pci.c b/hw/xfree86/os-support/bus/Pci.c
+index bc5e11f..30f7667 100644
+--- a/hw/xfree86/os-support/bus/Pci.c
++++ b/hw/xfree86/os-support/bus/Pci.c
+@@ -1093,7 +1093,7 @@ xf86GetPciConfigFromTag(PCITAG Tag)
+     pciConfigPtr pDev;
+     int i = 0;
+ 
+-    for (i = 0 ; (pDev = pci_devp[i]) && i <= MAX_PCI_DEVICES; i++) {
++    for (i = 0 ; (pDev = pci_devp[i]) && i <= xf86MaxPciDevs; i++) {
+ 	if (Tag == pDev->tag)
+ 	    return pDev;
+     }

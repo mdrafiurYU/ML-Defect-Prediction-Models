@@ -1,0 +1,22 @@
+diff --git a/hw/xfree86/common/xf86Config.c b/hw/xfree86/common/xf86Config.c
+index 2cb4754..36dde30 100644
+--- a/hw/xfree86/common/xf86Config.c
++++ b/hw/xfree86/common/xf86Config.c
+@@ -67,6 +67,7 @@
+ #include "xf86_OSlib.h"
+ 
+ #include "globals.h"
++#include "extension.h"
+ 
+ #ifdef XINPUT
+ #include "xf86Xinput.h"
+@@ -2524,9 +2525,6 @@ configDRI(XF86ConfDRIPtr drip)
+ }
+ #endif
+ 
+-/* Extension enable/disable in miinitext.c */
+-extern Bool EnableDisableExtension(char *name, Bool enable);
+-
+ static Bool
+ configExtensions(XF86ConfExtensionsPtr conf_ext)
+ {

@@ -1,0 +1,12 @@
+diff --git a/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java b/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java
+index 31721ed..72eb68a 100644
+--- a/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java
++++ b/solr/src/test/org/apache/solr/cloud/AbstractZkTestCase.java
+@@ -99,6 +99,7 @@ public abstract class AbstractZkTestCase extends SolrTestCaseJ4 {
+         + File.separator + "conf" + File.separator + name));
+   }
+ 
++  @Override
+   public void tearDown() throws Exception {
+     if (DEBUG) {
+       printLayout(zkServer.getZkHost());

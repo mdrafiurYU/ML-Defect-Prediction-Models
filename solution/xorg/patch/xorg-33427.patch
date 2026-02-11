@@ -1,0 +1,12 @@
+diff --git a/mfb/mfbpixmap.c b/mfb/mfbpixmap.c
+index e349724..b13e3af 100644
+--- a/mfb/mfbpixmap.c
++++ b/mfb/mfbpixmap.c
+@@ -113,6 +113,7 @@ mfbDestroyPixmap(pPixmap)
+ {
+     if(--pPixmap->refcnt)
+ 	return TRUE;
++    dixFreePrivates(*DEVPRIV_PTR(pPixmap));
+     xfree(pPixmap);
+     return TRUE;
+ }

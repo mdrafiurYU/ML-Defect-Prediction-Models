@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/PrefixAndSuffixAwareTokenFilter.java b/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/PrefixAndSuffixAwareTokenFilter.java
+index 7f30c9f..f8004a6 100644
+--- a/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/PrefixAndSuffixAwareTokenFilter.java
++++ b/modules/analysis/common/src/java/org/apache/lucene/analysis/miscellaneous/PrefixAndSuffixAwareTokenFilter.java
+@@ -76,4 +76,9 @@ public class PrefixAndSuffixAwareTokenFilter extends TokenStream {
+   public void close() throws IOException {
+     suffix.close();
+   }
++
++  @Override
++  public void end() throws IOException {
++    suffix.end();
++  }
+ }

@@ -1,0 +1,14 @@
+diff --git a/dix/grabs.c b/dix/grabs.c
+index af471eb..9150c3c 100644
+--- a/dix/grabs.c
++++ b/dix/grabs.c
+@@ -87,8 +87,7 @@ CreateGrab(
+ 	return (GrabPtr)NULL;
+     grab->resource = FakeClientID(client);
+     grab->device = device;
+-    grab->coreGrab = ((device == inputInfo.keyboard) ||
+-		      (device == inputInfo.pointer));
++    grab->coreGrab = (type < LASTEvent);
+     grab->window = window;
+     grab->eventMask = eventMask;
+     grab->deviceMask = 0;

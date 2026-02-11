@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleLoginModule.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleLoginModule.java
+index 5ad1857..caf358f 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleLoginModule.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/simple/SimpleLoginModule.java
+@@ -75,8 +75,8 @@ public class SimpleLoginModule extends AbstractLoginModule {
+     }
+ 
+     /**
+-     * Uses the configured {@link PrincipalProvider} to retrieve the principal.
+-     * It takes the {@link PrincipalProvider#getPrincipal(String)} for the User-ID
++     * Uses the configured {@link org.apache.jackrabbit.core.security.principal.PrincipalProvider} to retrieve the principal.
++     * It takes the {@link org.apache.jackrabbit.core.security.principal.PrincipalProvider#getPrincipal(String)} for the User-ID
+      * resolved by  {@link #getUserID(Credentials)}, assuming that
+      * User-ID and the corresponding principal name are always identical.
+      *

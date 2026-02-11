@@ -1,0 +1,16 @@
+diff --git a/dix/cursor.c b/dix/cursor.c
+index b9ede1f..7071d83 100644
+--- a/dix/cursor.c
++++ b/dix/cursor.c
+@@ -262,9 +262,9 @@ AllocGlyphCursor(Font source, unsigned sourceChar, Font mask, unsigned maskChar,
+     GlyphSharePtr pShare;
+ 
+     sourcefont = (FontPtr) SecurityLookupIDByType(client, source, RT_FONT,
+-						  SecurityReadAccess);
++						  DixReadAccess);
+     maskfont = (FontPtr) SecurityLookupIDByType(client, mask, RT_FONT,
+-						SecurityReadAccess);
++						DixReadAccess);
+ 
+     if (!sourcefont)
+     {

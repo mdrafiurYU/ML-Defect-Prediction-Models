@@ -1,0 +1,44 @@
+diff --git a/Xi/setmode.c b/Xi/setmode.c
+index a6ea6f8..11feb6d 100644
+--- a/Xi/setmode.c
++++ b/Xi/setmode.c
+@@ -1,5 +1,3 @@
+-/* $Xorg: setmode.c,v 1.4 2001/02/09 02:04:35 xorgcvs Exp $ */
+-
+ /************************************************************
+ 
+ Copyright 1989, 1998  The Open Group
+@@ -45,7 +43,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ 
+ ********************************************************/
+-/* $XFree86: xc/programs/Xserver/Xi/setmode.c,v 3.2 2001/01/17 22:13:26 dawes Exp $ */
+ 
+ /***********************************************************************
+  *
+@@ -108,13 +105,11 @@ ProcXSetDeviceMode(register ClientPtr client)
+     rep.sequenceNumber = client->sequence;
+ 
+     dev = LookupDeviceIntRec (stuff->deviceid);
+-    if (dev == NULL)
+-	{
++    if (dev == NULL) {
+ 	SendErrorToClient (client, IReqCode, X_SetDeviceMode, 0, BadDevice);
+ 	return Success;
+ 	}
+-    if (dev->valuator == NULL)
+-	{
++    if (dev->valuator == NULL) {
+ 	SendErrorToClient(client, IReqCode, X_SetDeviceMode, 0, BadMatch);
+ 	return Success;
+ 	}
+@@ -125,8 +120,7 @@ ProcXSetDeviceMode(register ClientPtr client)
+ 
+     if (rep.status == Success) 
+   	dev->valuator->mode = stuff->mode;
+-    else if (rep.status != AlreadyGrabbed)
+-	{
++    else if (rep.status != AlreadyGrabbed) {
+ 	SendErrorToClient(client, IReqCode, X_SetDeviceMode, 0, rep.status);
+         return Success;
+ 	}

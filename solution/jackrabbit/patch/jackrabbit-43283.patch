@@ -1,0 +1,36 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/BeanLazyLoader.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/BeanLazyLoader.java
+index de8022e..c924735 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/BeanLazyLoader.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/BeanLazyLoader.java
+@@ -29,22 +29,22 @@ public class BeanLazyLoader implements LazyLoader
+ {
+ 
+ 	 private final static Log log = LogFactory.getLog(BeanLazyLoader.class);
+-	 
++	
+ 	 private ObjectConverter objectConverter;
+-	 private Session session; 
+-	 private Class beanClass; 
+-	 private String path; 
+-	 
+-	 
++	 private Session session;
++	 private Class beanClass;
++	 private String path;
++	
++	
+ 	public BeanLazyLoader(ObjectConverter objectConverter, Session session, Class beanClass, String path)
+ 	{
+ 	     this.objectConverter = objectConverter;
+-	     this.session = session; 
++	     this.session = session;
+ 	     this.beanClass = beanClass;
+-	     this.path = path; 
++	     this.path = path;
+ 	}
+ 
+-	public Object loadObject() 
++	public Object loadObject()
+ 	{				
+ 		return objectConverter.getObject(session, beanClass, path);		
+ 	}

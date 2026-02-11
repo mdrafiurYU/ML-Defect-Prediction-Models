@@ -1,0 +1,22 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index d93d460..156e846 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -1001,13 +1001,10 @@ __glXDRIscreenProbe(ScreenPtr pScreen)
+     size_t buffer_size;
+     ScrnInfoPtr pScrn = xf86Screens[pScreen->myNum];
+ 
+-    if (!xf86LoaderCheckSymbol("DRIQueryDirectRenderingCapable")) {
+-	LogMessage(X_ERROR, "AIGLX: DRI module not loaded\n");
+-	return NULL;
+-    }
+-
+-    if (!DRIQueryDirectRenderingCapable(pScreen, &isCapable) || !isCapable) {
+-	LogMessage(X_ERROR,
++    if (!xf86LoaderCheckSymbol("DRIQueryDirectRenderingCapable") ||
++	!DRIQueryDirectRenderingCapable(pScreen, &isCapable) ||
++	!isCapable) {
++	LogMessage(X_INFO,
+ 		   "AIGLX: Screen %d is not DRI capable\n", pScreen->myNum);
+ 	return NULL;
+     }

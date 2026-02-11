@@ -1,0 +1,72 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/NodeResolver.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/NodeResolver.java
+index 769dcc6..bd46468 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/NodeResolver.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/security/user/NodeResolver.java
+@@ -18,12 +18,13 @@ package org.apache.jackrabbit.core.security.user;
+ 
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.apache.jackrabbit.core.SessionImpl;
+ import org.apache.jackrabbit.spi.Name;
++import org.apache.jackrabbit.spi.commons.conversion.NamePathResolver;
+ 
+ import javax.jcr.Node;
+ import javax.jcr.NodeIterator;
+ import javax.jcr.RepositoryException;
++import javax.jcr.Session;
+ import java.util.Collections;
+ import java.util.Set;
+ 
+@@ -36,7 +37,8 @@ abstract class NodeResolver {
+ 
+     private static final Logger log = LoggerFactory.getLogger(NodeResolver.class);
+ 
+-    private final SessionImpl session;
++    private final Session session;
++    private final NamePathResolver resolver;
+ 
+     /**
+      * Create a new <code>NodeResolver</code>.
+@@ -44,13 +46,23 @@ abstract class NodeResolver {
+      * @param session;
+      * @throws RepositoryException if instanciation fails
+      */
+-    NodeResolver(SessionImpl session)
+-            throws RepositoryException {
+-
++    NodeResolver(Session session, NamePathResolver resolver) throws RepositoryException {
+         this.session = session;
++        this.resolver = resolver;
+     }
+ 
+     /**
++     * Get the first node that matches <code>ntName</code> and whose name
++     * exactly matches the given <code>nodeName</code>.
++     *
++     * @param nodeName
++     * @param ntName
++     * @return A matching node or <code>null</code>.
++     * @throws RepositoryException
++     */
++    public abstract Node findNode(Name nodeName, Name ntName) throws RepositoryException;
++
++    /**
+      * Get the first node that matches <code>ntName</code> and has a
+      * property whose value exactly matches the given value. Same as
+      * {@link #findNodes(Set,String,Name,boolean,long)} but returning a single node or <code>null</code>.
+@@ -101,10 +113,14 @@ abstract class NodeResolver {
+     /**
+      * @return Session this instance has been constructed with
+      */
+-    SessionImpl getSession() {
++    Session getSession() {
+         return session;
+     }
+ 
++    NamePathResolver getNamePathResolver() {
++        return resolver;
++    }
++
+     String getSearchRoot(Name ntName) {
+         String searchRoot;
+         if (UserConstants.NT_REP_USER.equals(ntName)) {

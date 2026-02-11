@@ -1,0 +1,12 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+index f0b3fd6..0acc750 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterDelete.java
+@@ -81,7 +81,7 @@ public class TestIndexWriterDelete extends LuceneTestCase {
+     IndexWriter modifier = new IndexWriter(dir, newIndexWriterConfig(
+         TEST_VERSION_CURRENT, new MockAnalyzer(MockTokenizer.WHITESPACE, false)).setMaxBufferedDocs(2)
+         .setMaxBufferedDeleteTerms(2));
+-
++    modifier.setInfoStream(VERBOSE ? System.out : null);
+     int id = 0;
+     int value = 100;

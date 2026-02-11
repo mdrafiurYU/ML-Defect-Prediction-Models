@@ -1,0 +1,146 @@
+diff --git a/hw/xquartz/quartz.c b/hw/xquartz/quartz.c
+index 616c2b0..6d1846b 100644
+--- a/hw/xquartz/quartz.c
++++ b/hw/xquartz/quartz.c
+@@ -61,6 +61,9 @@
+ #include <fcntl.h>
+ #include <IOKit/pwr_mgt/IOPMLib.h>
+ 
++#include <rootlessCommon.h>
++#include <Xplugin.h>
++
+ #define FAKE_RANDR 1
+ 
+ // Shared global variables for Quartz modes
+@@ -76,6 +79,7 @@ DevPrivateKey           quartzScreenKey = &quartzScreenKeyIndex;
+ int                     aquaMenuBarHeight = 0;
+ QuartzModeProcsPtr      quartzProcs = NULL;
+ const char             *quartzOpenGLBundle = NULL;
++int                     quartzFullscreenDisableHotkeys = TRUE;
+ 
+ #if defined(RANDR) && !defined(FAKE_RANDR)
+ Bool QuartzRandRGetInfo (ScreenPtr pScreen, Rotation *rotations) {
+@@ -228,18 +232,12 @@ RREditConnectionInfo (ScreenPtr pScreen)
+ }
+ #endif
+ 
+-/*
+- * QuartzDisplayChangeHandler
+- *  Adjust for screen arrangement changes.
+- */
+-void QuartzDisplayChangedHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int nevents)
+-{
++static void QuartzUpdateScreens(void) {
+     ScreenPtr pScreen;
+     WindowPtr pRoot;
+     int x, y, width, height, sx, sy;
+     xEvent e;
+ 
+-    DEBUG_LOG("QuartzDisplayChangedHandler(): noPseudoramiXExtension=%d, screenInfo.numScreens=%d\n", noPseudoramiXExtension, screenInfo.numScreens);
+     if (noPseudoramiXExtension || screenInfo.numScreens != 1)
+     {
+         /* FIXME: if not using Xinerama, we have multiple screens, and
+@@ -278,7 +276,6 @@ void QuartzDisplayChangedHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev,
+     AppleWMSetScreenOrigin(pRoot);
+     pScreen->ResizeWindow(pRoot, x - sx, y - sy, width, height, NULL);
+     miPaintWindow(pRoot, &pRoot->borderClip,  PW_BACKGROUND);
+-//    QuartzIgnoreNextWarpCursor();
+     DefineInitialRootWindow(pRoot);
+ 
+     /* Send an event for the root reconfigure */
+@@ -298,6 +295,65 @@ void QuartzDisplayChangedHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev,
+ #endif
+ }
+ 
++/*
++ * QuartzDisplayChangeHandler
++ *  Adjust for screen arrangement changes.
++ */
++void QuartzDisplayChangedHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int nevents) {
++    QuartzUpdateScreens();
++}
++
++void QuartzSetFullscreen(Bool state) {
++    if(quartzHasRoot == state)
++        return;
++    
++    quartzHasRoot = state;
++    
++    xp_disable_update ();
++    
++    if (!quartzHasRoot && !quartzEnableRootless)
++        RootlessHideAllWindows();
++    
++    RootlessUpdateRooted(quartzHasRoot);
++    
++    if (quartzHasRoot && !quartzEnableRootless)
++        RootlessShowAllWindows ();
++    
++    /* Only update screen info when something is visible. Avoids the wm
++     * moving the windows out from under the menubar when it shouldn't
++     */
++    if (quartzHasRoot || quartzEnableRootless)
++        QuartzUpdateScreens();
++    
++    /* Somehow the menubar manages to interfere with our event stream
++     * in fullscreen mode, even though it's not visible. 
++     */
++    
++    X11ApplicationShowHideMenubar(!quartzHasRoot);
++    
++    xp_reenable_update ();
++    
++    if (quartzFullscreenDisableHotkeys)
++        xp_disable_hot_keys(quartzHasRoot);
++}
++
++void QuartzSetRootless(Bool state) {
++    if(quartzEnableRootless == state)
++        return;
++    
++    quartzEnableRootless = state;
++    
++    if (!quartzEnableRootless && !quartzHasRoot) {
++        xp_disable_update();
++        RootlessHideAllWindows();
++        xp_reenable_update();
++    } else if (quartzEnableRootless && !quartzHasRoot) {
++        xp_disable_update();
++        RootlessShowAllWindows();
++        QuartzUpdateScreens();
++        xp_reenable_update();
++    }
++}
+ 
+ /*
+  * QuartzShow
+@@ -311,14 +367,18 @@ void QuartzShow(
+ {
+     int i;
+ 
+-    if (!quartzServerVisible) {
++    if (quartzServerVisible)
++        return;
++    
+         quartzServerVisible = TRUE;
+         for (i = 0; i < screenInfo.numScreens; i++) {
+             if (screenInfo.screens[i]) {
+                 quartzProcs->ResumeScreen(screenInfo.screens[i], x, y);
+             }
+         }
+-    }
++    
++    if (!quartzEnableRootless)
++        QuartzSetFullscreen(TRUE);
+ }
+ 
+ 
+@@ -339,6 +399,8 @@ void QuartzHide(void)
+             }
+         }
+     }
++    
++    QuartzSetFullscreen(FALSE);
+     quartzServerVisible = FALSE;
+ }
+ 

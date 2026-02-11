@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/os-support/bsd/bsd_mouse.c b/hw/xfree86/os-support/bsd/bsd_mouse.c
+index a1b284d..9c8e669 100644
+--- a/hw/xfree86/os-support/bsd/bsd_mouse.c
++++ b/hw/xfree86/os-support/bsd/bsd_mouse.c
+@@ -762,7 +762,7 @@ bsdMousePreInit(InputInfoPtr pInfo, const char *protocol, int flags)
+     return TRUE;
+ }    
+ 
+-OSMouseInfoPtr
++_X_EXPORT OSMouseInfoPtr
+ xf86OSMouseInit(int flags)
+ {
+     OSMouseInfoPtr p;

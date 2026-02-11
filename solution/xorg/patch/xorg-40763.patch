@@ -1,0 +1,13 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 8d9bcea..5982e1a 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -789,6 +789,8 @@ ExaOffscreenMarkUsed (PixmapPtr pPixmap);
+ void
+ exaEnableDisableFBAccess (int index, Bool enable);
+ 
++Bool
++exaDrawableIsOffscreen (DrawablePtr pDrawable);
+ 
+ /* in exa_migration.c */
+ void

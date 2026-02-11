@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86fbBus.c b/hw/xfree86/common/xf86fbBus.c
+index 28a6530..cf8de47 100644
+--- a/hw/xfree86/common/xf86fbBus.c
++++ b/hw/xfree86/common/xf86fbBus.c
+@@ -54,7 +54,7 @@
+ 
+ Bool fbSlotClaimed = FALSE;
+ 
+-int
++_X_EXPORT int
+ xf86ClaimFbSlot(DriverPtr drvp, int chipset, GDevPtr dev, Bool active)
+ {
+     EntityPtr p;

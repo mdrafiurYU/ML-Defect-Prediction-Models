@@ -1,0 +1,14 @@
+diff --git a/xkb/XKBGAlloc.c b/xkb/XKBGAlloc.c
+index 6aa41d0..a1c0d1b 100644
+--- a/xkb/XKBGAlloc.c
++++ b/xkb/XKBGAlloc.c
+@@ -31,6 +31,9 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #ifndef XKB_IN_SERVER
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ #include <stdio.h>
+ #include "Xlibint.h"
+ #include "XKBlibint.h"

@@ -1,0 +1,24 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerUtil.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerUtil.java
+index b526475..13804b7 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerUtil.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/impl/ObjectContentManagerUtil.java
+@@ -34,7 +34,7 @@ public class ObjectContentManagerUtil
+ 	
+     public static String getPath(Session session, BeanDescriptor beanDescriptor, Node parentNode) throws ObjectContentManagerException
+     {		
+-		 try 
++		 try
+ 		 {
+ 			String path = "";
+ 			if (parentNode != null)
+@@ -43,8 +43,8 @@ public class ObjectContentManagerUtil
+ 			}
+ 		    return path + "/"  + beanDescriptor.getJcrName();
+ 
+-		} 
+-		catch (javax.jcr.RepositoryException e) 
++		}
++		catch (javax.jcr.RepositoryException e)
+ 		{
+ 			throw new RepositoryException(e);
+ 		}

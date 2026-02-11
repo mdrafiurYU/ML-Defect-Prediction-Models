@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClassFileMatchLocator.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClassFileMatchLocator.java
+index 02837b7..bf16795 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClassFileMatchLocator.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/matching/ClassFileMatchLocator.java
+@@ -240,7 +240,7 @@ boolean matchTypeDeclaration(TypeDeclarationPattern pattern, Object binaryInfo,
+ 	IBinaryType type = (IBinaryType) binaryInfo;
+ 	char[] fullyQualifiedTypeName = convertClassFileFormat(type.getName());
+ 	if (pattern.enclosingTypeNames == null || pattern instanceof QualifiedTypeDeclarationPattern) {
+-		char[] simpleName = (pattern.getMatchMode() | SearchPattern.R_PREFIX_MATCH) != 0
++		char[] simpleName = (pattern.getMatchMode() == SearchPattern.R_PREFIX_MATCH)
+ 			? CharOperation.concat(pattern.simpleName, IIndexConstants.ONE_STAR)
+ 			: pattern.simpleName;
+ 		if (!checkTypeName(simpleName, pattern.pkg, fullyQualifiedTypeName, pattern.isCaseSensitive(), pattern.isCamelCase())) return false;

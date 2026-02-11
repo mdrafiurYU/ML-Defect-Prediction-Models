@@ -1,0 +1,16 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/FakeBeanConverter.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/FakeBeanConverter.java
+index 23357d5..1655ae6 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/FakeBeanConverter.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/beanconverter/FakeBeanConverter.java
+@@ -44,6 +44,11 @@ public class FakeBeanConverter extends AbstractBeanConverterImpl implements Bean
+ 		 
+ 		 
+ 	}
++    
++    public static void cleanUpLog()
++    {
++    	log.clear();
++    }
+ 
+ 	public static List getLog() {
+         return log;

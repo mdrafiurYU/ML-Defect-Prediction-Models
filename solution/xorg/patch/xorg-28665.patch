@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/xaa/xaaGCmisc.c b/hw/xfree86/xaa/xaaGCmisc.c
+index f7bd576..a7a3f40 100644
+--- a/hw/xfree86/xaa/xaaGCmisc.c
++++ b/hw/xfree86/xaa/xaaGCmisc.c
+@@ -305,7 +305,7 @@ XAAValidatePolylines(
+    DrawablePtr   pDraw )
+ {
+    XAAInfoRecPtr infoRec = GET_XAAINFORECPTR_FROM_GC(pGC);
+-   XAAGCPtr   pGCPriv = (XAAGCPtr) (pGC)->devPrivates[XAAGCIndex].ptr;
++   XAAGCPtr   pGCPriv = (XAAGCPtr) (pGC)->devPrivates[XAAGetGCIndex()].ptr;
+ 
+    if(pGC->lineStyle == LineSolid) changes &= ~GCDashList;
+    if(!changes) return;

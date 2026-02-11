@@ -1,0 +1,22 @@
+diff --git a/mi/mipolycon.c b/mi/mipolycon.c
+index 6aabad6..085bed3 100644
+--- a/mi/mipolycon.c
++++ b/mi/mipolycon.c
+@@ -72,11 +72,12 @@ static int getPolyYBounds(DDXPointPtr pts, int n, int *by, int *ty);
+  *     this code.
+  */
+ _X_EXPORT Bool
+-miFillConvexPoly(dst, pgc, count, ptsIn)
+-    DrawablePtr dst;
+-    GCPtr	pgc;
+-    int		count;                /* number of points        */
+-    DDXPointPtr ptsIn;                /* the points              */
++miFillConvexPoly(
++    DrawablePtr dst,
++    GCPtr	pgc,
++    int		count,                /* number of points        */
++    DDXPointPtr ptsIn                 /* the points              */
++    )
+ {
+     int xl = 0, xr = 0; /* x vals of left and right edges */
+     int dl = 0, dr = 0; /* decision variables             */

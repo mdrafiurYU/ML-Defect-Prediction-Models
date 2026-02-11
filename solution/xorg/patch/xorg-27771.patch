@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/quartzCursor.c b/hw/darwin/quartz/quartzCursor.c
+index e2333e2..1e618e3 100644
+--- a/hw/darwin/quartz/quartzCursor.c
++++ b/hw/darwin/quartz/quartzCursor.c
+@@ -30,6 +30,9 @@
+  * use or other dealings in this Software without prior written authorization.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
+ #include "quartzCommon.h"
+ #include "quartzCursor.h"
+ #include "darwin.h"

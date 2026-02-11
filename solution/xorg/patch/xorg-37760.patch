@@ -1,0 +1,46 @@
+diff --git a/hw/xquartz/bundle/Sparkle.framework/Versions/A/Headers/SUUpdateAlert.h b/hw/xquartz/bundle/Sparkle.framework/Versions/A/Headers/SUUpdateAlert.h
+new file mode 100644
+index 0000000..69c2817
+--- /dev/null
++++ b/hw/xquartz/bundle/Sparkle.framework/Versions/A/Headers/SUUpdateAlert.h
+@@ -0,0 +1,40 @@
++//
++//  SUUpdateAlert.h
++//  Sparkle
++//
++//  Created by Andy Matuschak on 3/12/06.
++//  Copyright 2006 Andy Matuschak. All rights reserved.
++//
++
++#import <Cocoa/Cocoa.h>
++
++typedef enum
++{
++	SUInstallUpdateChoice,
++	SURemindMeLaterChoice,
++	SUSkipThisVersionChoice
++} SUUpdateAlertChoice;
++
++@class WebView, SUAppcastItem;
++@interface SUUpdateAlert : NSWindowController {
++	SUAppcastItem *updateItem;
++	id delegate;
++	
++	IBOutlet WebView *releaseNotesView;
++	IBOutlet NSTextField *description;
++	NSProgressIndicator *releaseNotesSpinner;
++	BOOL webViewFinishedLoading;
++}
++
++- initWithAppcastItem:(SUAppcastItem *)item;
++- (void)setDelegate:delegate;
++
++- (IBAction)installUpdate:sender;
++- (IBAction)skipThisVersion:sender;
++- (IBAction)remindMeLater:sender;
++
++@end
++
++@interface NSObject (SUUpdateAlertDelegate)
++- (void)updateAlert:(SUUpdateAlert *)updateAlert finishedWithChoice:(SUUpdateAlertChoice)updateChoice;
++@end

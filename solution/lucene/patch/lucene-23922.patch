@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestStringIntern.java b/lucene/src/test/org/apache/lucene/util/TestStringIntern.java
+index edb7dfa..db2b6cd 100755
+--- a/lucene/src/test/org/apache/lucene/util/TestStringIntern.java
++++ b/lucene/src/test/org/apache/lucene/util/TestStringIntern.java
+@@ -43,7 +43,7 @@ public class TestStringIntern extends LuceneTestCase {
+     // makeStrings(100);  // realistic for perf testing
+     int nThreads = 20;
+     // final int iter=100000;
+-    final int iter = 1000000 * RANDOM_MULTIPLIER;
++    final int iter = atLeast(100000);
+     
+     // try native intern
+     // StringHelper.interner = new StringInterner();

@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java
+index 83f5fb1..7ea2519 100644
+--- a/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java
++++ b/jackrabbit-text-extractors/src/main/java/org/apache/jackrabbit/extractor/MsPowerPointTextExtractor.java
+@@ -48,8 +48,11 @@ public class MsPowerPointTextExtractor extends AbstractTextExtractor {
+      * Creates a new <code>MsPowerPointTextExtractor</code> instance.
+      */
+     public MsPowerPointTextExtractor() {
+-        super(new String[]{"application/vnd.ms-powerpoint",
+-                           "application/mspowerpoint"});
++        super(new String[]{
++                "application/vnd.ms-powerpoint",
++                "application/mspowerpoint",
++                "application/powerpoint"
++        });
+     }
+ 
+     //-------------------------------------------------------< TextExtractor >

@@ -1,0 +1,14 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+index ad5a5c6..8da9c54 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/SessionImpl.java
+@@ -479,8 +479,8 @@ public class SessionImpl extends AbstractSession
+     /**
+      * @see Session#getAccessControlManager()
+      */
+-    public AccessControlManager getAccessControlManager()
+-            throws RepositoryException {
++    public AccessControlManager getAccessControlManager() throws RepositoryException {
++        // TODO: implementation missing
+         throw new UnsupportedRepositoryOperationException("JCR-1104");
+     }

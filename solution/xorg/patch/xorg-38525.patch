@@ -1,0 +1,29 @@
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index efebf19..c6a4ef6 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -475,11 +475,12 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+         drv = pInfo->drv;
+         idev = pInfo->conf_idev;
+     }
+-    RemoveDevice(pDev);
+ 
+-    if (pDev->isMaster)
+-        return;
++    OsBlockSignals();
++    RemoveDevice(pDev);
+ 
++    if (!pDev->isMaster)
++    {
+     if(drv->UnInit)
+         drv->UnInit(drv, pInfo, 0);
+     else
+@@ -498,6 +499,8 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
+         xfree(idev);
+     }
+ }
++    OsReleaseSignals();
++}
+ 
+ /* 
+  * convenient functions to post events

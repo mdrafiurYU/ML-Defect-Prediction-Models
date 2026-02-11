@@ -1,0 +1,25 @@
+diff --git a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+index 8ea8679..4328139 100644
+--- a/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
++++ b/jackrabbit-jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/state/NodeState.java
+@@ -47,7 +47,7 @@ public class NodeState extends ItemState {
+     /**
+      * the name of this node's primary type
+      */
+-    private final Name nodeTypeName;
++    private Name nodeTypeName;
+ 
+     /**
+      * Definition of this node state
+@@ -132,6 +132,11 @@ public class NodeState extends ItemState {
+             synchronized (another) {
+                 NodeState nState = (NodeState) another;
+ 
++                if (!nodeTypeName.equals(nState.nodeTypeName)) {
++                    nodeTypeName = nState.nodeTypeName;
++                    modified = true;
++                }
++
+                 if (nState.definition != null && !nState.definition.equals(definition)) {
+                     definition = nState.definition;
+                     modified = true;

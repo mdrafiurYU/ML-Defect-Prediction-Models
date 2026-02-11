@@ -1,0 +1,17 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/security/TestAll.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/security/TestAll.java
+index 9659147..154a105 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/security/TestAll.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/security/TestAll.java
+@@ -41,11 +41,10 @@ public class TestAll extends TestCase {
+         suite.addTestSuite(AccessControlDiscoveryTest.class);
+         suite.addTestSuite(AccessControlPolicyTest.class);
+          suite.addTestSuite(AccessControlPolicyIteratorTest.class);
+-        suite.addTestSuite(AccessControlEntryTest.class);
++        suite.addTestSuite(AccessControlListTest.class);
+ 
+         // tests with read only session:
+         suite.addTestSuite(RSessionAccessControlDiscoveryTest.class);
+-        suite.addTestSuite(RSessionAccessControlEntryTest.class);
+         suite.addTestSuite(RSessionAccessControlPolicyTest.class);
+ 
+         return suite;

@@ -1,0 +1,16 @@
+diff --git a/hw/xfree86/os-support/shared/agp_noop.c b/hw/xfree86/os-support/shared/agp_noop.c
+index dc176fe..c13b29c 100644
+--- a/hw/xfree86/os-support/shared/agp_noop.c
++++ b/hw/xfree86/os-support/shared/agp_noop.c
+@@ -81,6 +81,11 @@ xf86AllocateGARTMemory(int screenNum, unsigned long size, int type,
+ 	return -1;
+ }
+ 
++Bool
++xf86DeallocateGARTMemory(int screenNum, int key)
++{
++	return FALSE;
++}
+ 
+ Bool
+ xf86BindGARTMemory(int screenNum, int key, unsigned long offset)

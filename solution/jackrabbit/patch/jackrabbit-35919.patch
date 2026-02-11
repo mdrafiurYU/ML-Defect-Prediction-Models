@@ -1,0 +1,12 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+index 1cadfef..294120c 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/WorkspaceImpl.java
+@@ -233,7 +233,7 @@ public class WorkspaceImpl implements Workspace, ManagerProvider {
+         Path srcPath = session.getQPath(srcAbsPath);
+         Path destPath = session.getQPath(destAbsPath);
+ 
+-        Operation op = Move.create(srcPath, destPath, getHierarchyManager(), getNamespaceResolver());
++        Operation op = Move.create(srcPath, destPath, getHierarchyManager(), getNamespaceResolver(), false);
+         getUpdatableItemStateManager().execute(op);
+     }

@@ -1,0 +1,63 @@
+diff --git a/hw/xfree86/common/xf86Privstr.h b/hw/xfree86/common/xf86Privstr.h
+index c26e288..0ea6712 100644
+--- a/hw/xfree86/common/xf86Privstr.h
++++ b/hw/xfree86/common/xf86Privstr.h
+@@ -69,32 +69,10 @@ typedef enum {
+ 
+ typedef struct {
+     int			consoleFd;
+-    int			kbdFd;
+     int			vtno;
+-    int			kbdType;		/* AT84 / AT101 */
+-    int			kbdRate;
+-    int			kbdDelay;
+-    int			bell_pitch;
+-    int			bell_duration;
+-    Bool		autoRepeat;
+-    unsigned long	leds;
+-    unsigned long	xleds;
+     char *		vtinit;
+-    int			scanPrefix;		/* scancode-state */
+-    Bool		capsLock;
+-    Bool		numLock;
+-    Bool		scrollLock;
+-    Bool		modeSwitchLock;
+-    Bool		composeLock;
+     Bool		vtSysreq;
+     SpecialKeysInDDX	ddxSpecialKeys;
+-    Bool		ActionKeyBindingsSet;
+-#if defined(SVR4) && defined(i386)
+-    Bool		panix106;
+-#endif  /* SVR4 && i386 */
+-#if defined(__OpenBSD__) || defined(__NetBSD__)
+-    int                 wsKbdType;
+-#endif
+ 
+     /* mouse part */
+     DeviceIntPtr	pMouse;
+@@ -121,25 +99,6 @@ typedef struct {
+     int			consType;	/* Which console driver? */
+ #endif
+ 
+-#ifdef XKB
+-    /* 
+-     * would like to use an XkbComponentNamesRec here but can't without
+-     * pulling in a bunch of header files. :-(
+-     */
+-    char *		xkbkeymap;
+-    char *		xkbkeycodes;
+-    char *		xkbtypes;
+-    char *		xkbcompat;
+-    char *		xkbsymbols;
+-    char *		xkbgeometry;
+-    Bool		xkbcomponents_specified;
+-    char *		xkbrules;
+-    char *		xkbmodel;
+-    char *		xkblayout;
+-    char *		xkbvariant;
+-    char *		xkboptions;
+-#endif
+-
+     /* Other things */
+     Bool		allowMouseOpenFail;
+     Bool		vidModeEnabled;		/* VidMode extension enabled */

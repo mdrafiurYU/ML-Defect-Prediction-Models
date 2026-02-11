@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java b/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java
+index a737af8..4372f70 100755
+--- a/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java
++++ b/lucene/src/test/org/apache/lucene/index/TestIndexWriterMergePolicy.java
+@@ -164,7 +164,7 @@ public class TestIndexWriterMergePolicy extends LuceneTestCase {
+       addDoc(writer);
+     }
+     writer.commit();
+-    ((ConcurrentMergeScheduler) writer.getConfig().getMergeScheduler()).sync();
++    writer.waitForMerges();
+     writer.commit();
+     checkInvariants(writer);
+ 
+@@ -203,7 +203,7 @@ public class TestIndexWriterMergePolicy extends LuceneTestCase {
+       addDoc(writer);
+     }
+     writer.commit();
+-    ((ConcurrentMergeScheduler) writer.getConfig().getMergeScheduler()).sync();
++    writer.waitForMerges();
+     writer.commit();
+     checkInvariants(writer);
+     assertEquals(10, writer.maxDoc());

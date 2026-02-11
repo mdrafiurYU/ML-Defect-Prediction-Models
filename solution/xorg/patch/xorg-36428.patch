@@ -1,0 +1,13 @@
+diff --git a/hw/xquartz/darwinEvents.c b/hw/xquartz/darwinEvents.c
+index b4ff9fd..ce21ff5 100644
+--- a/hw/xquartz/darwinEvents.c
++++ b/hw/xquartz/darwinEvents.c
+@@ -204,8 +204,6 @@ void DarwinEventHandler(int screenNum, xEventPtr xe, DeviceIntPtr dev, int neven
+ 
+ Bool DarwinEQInit(DevicePtr pKbd, DevicePtr pPtr) { 
+ 
+-  void mieqSetHandler(int event, mieqHandler handler);
+-
+     darwinEvents = (xEvent *)malloc(sizeof(xEvent) * GetMaximumEventsNum());
+     mieqInit();
+     mieqSetHandler(kXquartzActivate, DarwinEventHandler);

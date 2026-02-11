@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java
+index 80bba9a..491a998 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/DatabaseJournal.java
+@@ -873,7 +873,7 @@ public class DatabaseJournal extends AbstractJournal {
+     protected void buildSQLStatements() {
+         selectRevisionsStmtSQL =
+             "select REVISION_ID, JOURNAL_ID, PRODUCER_ID, REVISION_DATA from "
+-            + schemaObjectPrefix + "JOURNAL where REVISION_ID > ?";
++            + schemaObjectPrefix + "JOURNAL where REVISION_ID > ? order by REVISION_ID";
+         updateGlobalStmtSQL =
+             "update " + schemaObjectPrefix + "GLOBAL_REVISION"
+             + " set REVISION_ID = REVISION_ID + 1";

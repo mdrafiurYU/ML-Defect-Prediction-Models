@@ -1,0 +1,26 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java
+index bdba4cb..0fbe21b 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/data/FileDataRecord.java
+@@ -45,19 +45,14 @@ class FileDataRecord extends AbstractDataRecord {
+     }
+ 
+     /**
+-     * Returns the length of the file.
+-     *
+-     * @return file length
++     * {@inheritDoc}
+      */
+     public long getLength() {
+         return file.length();
+     }
+ 
+     /**
+-     * Returns an input stream for reading the file.
+-     *
+-     * @return file input stream
+-     * @throws DataStoreException if the file could not be opened
++     * {@inheritDoc}
+      */
+     public InputStream getStream() throws DataStoreException {
+         try {

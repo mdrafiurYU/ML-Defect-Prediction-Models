@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/TestVersionComparator.java b/lucene/src/test/org/apache/lucene/util/TestVersionComparator.java
+index 0286050..d9646d2 100644
+--- a/lucene/src/test/org/apache/lucene/util/TestVersionComparator.java
++++ b/lucene/src/test/org/apache/lucene/util/TestVersionComparator.java
+@@ -43,5 +43,10 @@ public class TestVersionComparator extends LuceneTestCase {
+     
+     assertTrue(comp.compare("1.10", "1.9") > 0);
+     assertTrue(comp.compare("1.9", "1.10") < 0);
++    
++    assertTrue(comp.compare("0", "1.0") < 0);
++    assertTrue(comp.compare("00", "1.0") < 0);
++    assertTrue(comp.compare("-1.0", "1.0") < 0);
++    assertTrue(comp.compare("3.0", Integer.toString(Integer.MIN_VALUE)) > 0);
+   }
+ }

@@ -1,0 +1,20 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/nestedhelloworld/NestedHelloWorldAnnotationProcessor.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/nestedhelloworld/NestedHelloWorldAnnotationProcessor.java
+index 58f3fee..37d5d08 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/nestedhelloworld/NestedHelloWorldAnnotationProcessor.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/nestedhelloworld/NestedHelloWorldAnnotationProcessor.java
+@@ -29,12 +29,13 @@ public class NestedHelloWorldAnnotationProcessor extends
+ 
+ 	public String getCode() { return CODE; }
+ 	
++	@SuppressWarnings("nls")
+ 	private final String CODE = 
+ 		"package " + getPackageName() + ";" + "\n" + 
+ 		"@" + HelloWorldAnnotation.class.getName() + "\n" + 
+ 		"public class NestedHelloWorldAnnotationGeneratedClass " + "\n" +
+ 		"{  }";
+ 		
+-		public String getPackageName() { return "nested.hello.world.generatedclass.pkg"; }
+-		public String getTypeName() { return "NestedHelloWorldAnnotationGeneratedClass"; }
++		public String getPackageName() { return "nested.hello.world.generatedclass.pkg"; } //$NON-NLS-1$
++		public String getTypeName() { return "NestedHelloWorldAnnotationGeneratedClass"; } //$NON-NLS-1$
+ }

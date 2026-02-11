@@ -1,0 +1,14 @@
+diff --git a/dix/window.c b/dix/window.c
+index e2669f0..f112f81 100644
+--- a/dix/window.c
++++ b/dix/window.c
+@@ -984,9 +984,6 @@ DestroySubwindows(WindowPtr pWin, ClientPtr client)
+     return Success;
+ }
+ 
+-#define DeviceEventMasks (KeyPressMask | KeyReleaseMask | ButtonPressMask | \
+-    ButtonReleaseMask | PointerMotionMask)
+-
+ /*****
+  *  ChangeWindowAttributes
+  *   

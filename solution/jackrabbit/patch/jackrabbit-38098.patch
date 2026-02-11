@@ -1,0 +1,18 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java
+index 25db531..f746e96 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/SetValueBinaryTest.java
+@@ -88,6 +88,13 @@ public class SetValueBinaryTest extends AbstractJCRTest {
+         superuser.save();
+     }
+ 
++    protected void tearDown() throws Exception {
++        value = null;
++        node = null;
++        property1 = null;
++        super.tearDown();
++    }
++
+     /**
+      * Test the persistence of a property modified with an BinaryValue parameter
+      * and saved from the Session

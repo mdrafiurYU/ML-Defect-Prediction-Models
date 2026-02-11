@@ -1,0 +1,15 @@
+diff --git a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java
+index 06cb9ea..d08988a 100644
+--- a/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java
++++ b/org.eclipse.jdt.apt.core/src/org/eclipse/jdt/apt/core/internal/util/DeclarationsUtil.java
+@@ -127,8 +127,8 @@ public class DeclarationsUtil implements Declarations
+         if( memberDecl instanceof EclipseMirrorImpl ){
+             return ((DeclarationImpl)memberDecl).getDeclarationBinding();
+         }
+-        throw new NonEclipseImplementationException("only applicable to eclipse type system objects." +
+-                                                    " Found " + memberDecl.getClass().getName());
++        throw new NonEclipseImplementationException("only applicable to eclipse type system objects." + //$NON-NLS-1$
++                                                    " Found " + memberDecl.getClass().getName()); //$NON-NLS-1$
+     }
+ 	
+ 	private static ITypeBinding getDeclaringClass(IBinding binding) {

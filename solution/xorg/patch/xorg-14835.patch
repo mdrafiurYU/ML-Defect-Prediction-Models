@@ -1,0 +1,14 @@
+diff --git a/hw/xwin/winvalargs.c b/hw/xwin/winvalargs.c
+index 0932644..038e097 100755
+--- a/hw/xwin/winvalargs.c
++++ b/hw/xwin/winvalargs.c
+@@ -28,6 +28,9 @@
+  * Authors:	Harold L Hunt II
+  */
+ 
++#ifdef HAVE_XWIN_CONFIG_H
++#include <xwin-config.h>
++#endif
+ #include "win.h"
+ #include "winmsg.h"
+ 

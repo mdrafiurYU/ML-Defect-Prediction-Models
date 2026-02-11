@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/xf4bpp/ppcRslvC.c b/hw/xfree86/xf4bpp/ppcRslvC.c
+index 47e4277..ce00a87 100644
+--- a/hw/xfree86/xf4bpp/ppcRslvC.c
++++ b/hw/xfree86/xf4bpp/ppcRslvC.c
+@@ -57,6 +57,10 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  * P. Shupak 12/31/87
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf4bpp.h"
+ #include "scrnintstr.h"
+ 

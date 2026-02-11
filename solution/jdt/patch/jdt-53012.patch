@@ -1,0 +1,21 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+index efe5065..477dc60 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/JavaModelManager.java
+@@ -664,7 +664,7 @@ public class JavaModelManager implements ISaveParticipant {
+ 	/**
+ 	 * Set of elements which are out of sync with their buffers.
+ 	 */
+-	protected Map elementsOutOfSynchWithBuffers = new HashMap(11);
++	protected HashSet elementsOutOfSynchWithBuffers = new HashSet(11);
+ 	
+ 	/**
+ 	 * Holds the state used for delta processing.
+@@ -1055,7 +1055,7 @@ public class JavaModelManager implements ISaveParticipant {
+ 	/** 
+ 	 * Returns the set of elements which are out of synch with their buffers.
+ 	 */
+-	protected Map getElementsOutOfSynchWithBuffers() {
++	protected HashSet getElementsOutOfSynchWithBuffers() {
+ 		return this.elementsOutOfSynchWithBuffers;
+ 	}

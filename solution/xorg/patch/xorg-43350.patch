@@ -1,0 +1,13 @@
+diff --git a/fb/fbwindow.c b/fb/fbwindow.c
+index 022a16f..46c0334 100644
+--- a/fb/fbwindow.c
++++ b/fb/fbwindow.c
+@@ -140,7 +140,7 @@ fbCopyWindow(WindowPtr	    pWin,
+ 			  -pPixmap->screen_x, -pPixmap->screen_y);
+ #endif
+ 
+-    fbCopyRegion (pDrawable, pDrawable,
++    miCopyRegion (pDrawable, pDrawable,
+ 		  0,
+ 		  &rgnDst, dx, dy, fbCopyWindowProc, 0, 0);
+     

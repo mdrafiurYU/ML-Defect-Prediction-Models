@@ -1,0 +1,13 @@
+diff --git a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+index 6e231f8..9df9bec 100755
+--- a/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
++++ b/solr/src/java/org/apache/solr/search/SolrConstantScoreQuery.java
+@@ -61,7 +61,7 @@ public class SolrConstantScoreQuery extends ConstantScoreQuery {
+     private Map context;
+ 
+     public ConstantWeight(IndexSearcher searcher) throws IOException {
+-      this.similarity = getSimilarity(searcher);
++      this.similarity = searcher.getSimilarity();
+       this.context = ValueSource.newContext(searcher);
+       if (filter instanceof SolrFilter)
+         ((SolrFilter)filter).createWeight(context, searcher);

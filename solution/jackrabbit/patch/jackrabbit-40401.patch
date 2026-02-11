@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java
+index 2446749..02b8592 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/ReadRecord.java
+@@ -216,8 +216,8 @@ class ReadRecord extends AbstractRecord {
+             skiplen -= skipped;
+         }
+         if (skiplen != 0) {
+-            String msg = "Should have skipped " + n +
+-                    " bytes, only " + (n - skiplen) + " skipped.";
++            String msg = "Should have skipped " + n
++                + " bytes, only " + (n - skiplen) + " skipped.";
+             throw new IOException(msg);
+         }
+     }

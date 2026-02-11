@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java
+index 7f0b3de..f3163f8 100644
+--- a/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java
++++ b/jackrabbit-ocm/src/main/java/org/apache/jackrabbit/ocm/manager/objectconverter/impl/CollectionLazyLoader.java
+@@ -51,6 +51,6 @@ public class CollectionLazyLoader implements LazyLoader {
+ 
+ 
+ 		ManageableObjects objects = collectionConverter.getCollection(session, collectionParentNode, collectionDescriptor, collectionFieldClass);
+-		return objects;
++		return objects.getObjects();
+ 	}
+ }

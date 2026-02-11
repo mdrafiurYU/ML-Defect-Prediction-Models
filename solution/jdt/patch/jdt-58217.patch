@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
+index 3cbf9cd..d282e25 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/hierarchy/HierarchyBuilder.java
+@@ -260,7 +260,7 @@ public abstract class HierarchyBuilder {
+  */
+ protected ICompilationUnit createCompilationUnitFromPath(Openable handle, IFile file) {
+ 	final char[] elementName = handle.getElementName().toCharArray();
+-	return new ResourceCompilationUnit(file) {
++	return new ResourceCompilationUnit(file, file.getLocationURI()) {
+ 		public char[] getFileName() {
+ 			return elementName;
+ 		}

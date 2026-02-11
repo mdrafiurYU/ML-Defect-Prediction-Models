@@ -1,0 +1,22 @@
+diff --git a/lucene/contrib/db/bdb-je/src/java/org/apache/lucene/store/je/JEDirectory.java b/lucene/contrib/db/bdb-je/src/java/org/apache/lucene/store/je/JEDirectory.java
+index 8e2e760..0bbeda5 100644
+--- a/lucene/contrib/db/bdb-je/src/java/org/apache/lucene/store/je/JEDirectory.java
++++ b/lucene/contrib/db/bdb-je/src/java/org/apache/lucene/store/je/JEDirectory.java
+@@ -199,17 +199,6 @@ public class JEDirectory extends Directory {
+         return new JELock();
+     }
+ 
+-    @Override
+-    public void touchFile(String name) throws IOException {
+-        File file = new File(name);
+-        long length = 0L;
+-
+-        if (file.exists(this))
+-            length = file.getLength();
+-
+-        file.modify(this, length, System.currentTimeMillis());
+-    }
+-
+     /**
+      * Once a transaction handle was committed it is no longer valid. In order
+      * to continue using this JEDirectory instance after a commit, the

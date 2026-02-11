@@ -1,0 +1,55 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/NormsWriter.java b/lucene/src/java/org/apache/lucene/index/NormsWriter.java
+index 0368322..82b4a73 100644
+--- a/lucene/src/java/org/apache/lucene/index/NormsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/NormsWriter.java
+@@ -26,7 +26,6 @@ import java.util.List;
+ import java.util.ArrayList;
+ 
+ import org.apache.lucene.store.IndexOutput;
+-import org.apache.lucene.search.Similarity;
+ 
+ // TODO FI: norms could actually be stored as doc store
+ 
+@@ -37,7 +36,6 @@ import org.apache.lucene.search.Similarity;
+ 
+ final class NormsWriter extends InvertedDocEndConsumer {
+ 
+-  private final byte defaultNorm = Similarity.getDefault().encodeNormValue(1.0f);
+   private FieldInfos fieldInfos;
+   @Override
+   public InvertedDocEndConsumerPerThread addThread(DocInverterPerThread docInverterPerThread) {
+@@ -62,6 +60,10 @@ final class NormsWriter extends InvertedDocEndConsumer {
+ 
+     final Map<FieldInfo,List<NormsWriterPerField>> byField = new HashMap<FieldInfo,List<NormsWriterPerField>>();
+ 
++    if (!fieldInfos.hasNorms()) {
++      return;
++    }
++
+     // Typically, each thread will have encountered the same
+     // field.  So first we collate by field, ie, all
+     // per-thread field instances that correspond to the
+@@ -137,7 +139,7 @@ final class NormsWriter extends InvertedDocEndConsumer {
+ 
+             // Fill hole
+             for(;upto<minDocID;upto++)
+-              normsOut.writeByte(defaultNorm);
++              normsOut.writeByte((byte) 0);
+ 
+             normsOut.writeByte(fields[minLoc].norms[uptos[minLoc]]);
+             (uptos[minLoc])++;
+@@ -155,12 +157,12 @@ final class NormsWriter extends InvertedDocEndConsumer {
+           
+           // Fill final hole with defaultNorm
+           for(;upto<state.numDocs;upto++)
+-            normsOut.writeByte(defaultNorm);
++            normsOut.writeByte((byte) 0);
+         } else if (fieldInfo.isIndexed && !fieldInfo.omitNorms) {
+           normCount++;
+           // Fill entire field with default norm:
+           for(;upto<state.numDocs;upto++)
+-            normsOut.writeByte(defaultNorm);
++            normsOut.writeByte((byte) 0);
+         }
+ 
+         assert 4+normCount*state.numDocs == normsOut.getFilePointer() : ".nrm file size mismatch: expected=" + (4+normCount*state.numDocs) + " actual=" + normsOut.getFilePointer();

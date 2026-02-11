@@ -1,0 +1,15 @@
+diff --git a/hw/darwin/quartz/xpr/x-hook.c b/hw/darwin/quartz/xpr/x-hook.c
+index dcd34fd..7a04967 100644
+--- a/hw/darwin/quartz/xpr/x-hook.c
++++ b/hw/darwin/quartz/xpr/x-hook.c
+@@ -28,7 +28,9 @@
+    promote the sale, use or other dealings in this Software without
+    prior written authorization. */
+ /* $XFree86: $ */
+-
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
+ #include "x-hook.h"
+ #include <stdlib.h>
+ #include <assert.h>

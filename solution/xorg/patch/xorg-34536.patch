@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/darwinEvents.c b/hw/darwin/darwinEvents.c
+index 06c4cc7..629fb2c 100644
+--- a/hw/darwin/darwinEvents.c
++++ b/hw/darwin/darwinEvents.c
+@@ -154,8 +154,7 @@ static void DarwinUpdateModifiers(
+  * are held down during a "context" switch -- otherwise, we would miss the KeyUp.
+  */
+ static void DarwinReleaseModifiers(void) {
+-	xEvent e;
+-	DarwinUpdateModifiers(&e, KeyRelease, COMMAND_MASK(-1) | CONTROL_MASK(-1) | ALTERNATE_MASK(-1) | SHIFT_MASK(-1));
++	DarwinUpdateModifiers(KeyRelease, COMMAND_MASK(-1) | CONTROL_MASK(-1) | ALTERNATE_MASK(-1) | SHIFT_MASK(-1));
+ }
+ 
+ /*

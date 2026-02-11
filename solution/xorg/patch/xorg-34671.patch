@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index b5ee21d..c72fe30 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -1203,8 +1203,6 @@ OsVendorInit()
+ {
+   static Bool beenHere = FALSE;
+ 
+-  xf86WrapperInit();
+-
+ #ifdef SIGCHLD
+   signal(SIGCHLD, SIG_DFL);	/* Need to wait for child processes */
+ #endif

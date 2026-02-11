@@ -1,0 +1,34 @@
+diff --git a/Xi/chpkpair.c b/Xi/chpkpair.c
+index b862417..8e79a75 100644
+--- a/Xi/chpkpair.c
++++ b/Xi/chpkpair.c
+@@ -73,10 +73,13 @@ int
+ ProcXChangePointerKeyboardPairing(register ClientPtr client)
+ {
+     DeviceIntPtr pPointer, pKeyboard;
++    int ret;
+ 
+     REQUEST(xChangePointerKeyboardPairingReq);
+     REQUEST_SIZE_MATCH(xChangePointerKeyboardPairingReq);
+ 
++    /* check if client is registered */
++
+     pPointer = LookupDeviceIntRec(stuff->pointer);
+     if (pPointer == NULL)
+     {
+@@ -93,7 +96,14 @@ ProcXChangePointerKeyboardPairing(register ClientPtr client)
+         return Success;
+     }
+ 
+-    pKeyboard->pSprite = pPointer->pSprite;
++    ret = PairDevices(client, pPointer, pKeyboard);
++    if (ret != Success)
++    {
++        SendErrorToClient(client, IReqCode, X_ChangePointerKeyboardPairing,
++                0, ret);
++        return Success;
++    }
++
+ 
+     /* TODO: generate event here... */
+     return Success;

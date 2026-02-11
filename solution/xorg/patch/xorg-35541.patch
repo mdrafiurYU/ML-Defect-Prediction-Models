@@ -1,0 +1,22 @@
+diff --git a/dix/events.c b/dix/events.c
+index de68b57..f4925e4 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -5265,16 +5265,11 @@ ProcChangeActivePointerGrab(ClientPtr client)
+                 if (grab && grab->coreGrab && SameClient(grab, client))
+                 {
+                     device = grabbed;
++                    grab = device->deviceGrab.grab;
+                     break;
+                 }
+             }
+         }
+-        /* nope. no grab on any actual device */
+-        if (!grabbed)
+-        {
+-            device = inputInfo.pointer;
+-            grab = inputInfo.pointer->deviceGrab.grab;
+-        }
+     }
+ 
+     if (!grab)

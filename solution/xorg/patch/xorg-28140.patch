@@ -1,0 +1,12 @@
+diff --git a/GL/glx/glxdri.c b/GL/glx/glxdri.c
+index e035704..5e683a8 100644
+--- a/GL/glx/glxdri.c
++++ b/GL/glx/glxdri.c
+@@ -495,6 +495,7 @@ __glXDRIscreenCreateContext(__GLXscreen *baseScreen,
+     context->base.loseCurrent       = __glXDRIcontextLoseCurrent;
+     context->base.copy              = __glXDRIcontextCopy;
+     context->base.forceCurrent      = __glXDRIcontextForceCurrent;
++    context->base.pScreen           = screen->base.pScreen;
+ 
+     context->base.textureFromPixmap = &__glXDRItextureFromPixmap;
+ 

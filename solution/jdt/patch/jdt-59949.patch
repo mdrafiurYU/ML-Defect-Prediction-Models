@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java
+index 2112d3f..e50e66d 100644
+--- a/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java
++++ b/org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/JavaSearchTests.java
+@@ -1097,7 +1097,7 @@ public void testLocalVariableReference3() throws CoreException {
+ 		getJavaSearchScope(), 
+ 		this.resultCollector);
+ 	assertSearchResults(
+-		"test48725.jar void p.X.foo()",
++		"test48725.jar int p.<anonymous>.bar()",
+ 		this.resultCollector);
+ }
+ /**
+@@ -2152,7 +2152,7 @@ public void testTypeDeclaration05() throws CoreException { // was testTypeDeclar
+ 		scope, 
+ 		this.resultCollector);
+ 	assertSearchResults(
+-		"test20631.jar void X.foo()",
++		"test20631.jar Y",
+ 		this.resultCollector);
+ }
+ /**

@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java
+index 8d1b86b..2e34a0e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/ConditionalExpression.java
+@@ -440,7 +440,8 @@ public int nullStatus(FlowInfo flowInfo) {
+ 				scope.problemReporter().conditionalArgumentsIncompatibleTypes(this, valueIfTrueType, valueIfFalseType);
+ 				return null;
+ 			}
+-		} else if (valueIfFalseType.isBaseType() && valueIfFalseType != TypeBinding.NULL) {
++		} 
++		if (valueIfFalseType.isBaseType() && valueIfFalseType != TypeBinding.NULL) {
+ 			if (use15specifics) {
+ 				valueIfFalseType = env.computeBoxingType(valueIfFalseType);
+ 			} else {

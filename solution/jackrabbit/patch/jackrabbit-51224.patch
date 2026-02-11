@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlTest.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlTest.java
+index 4c729fb..2ab240c 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlTest.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/security/RSessionAccessControlTest.java
+@@ -46,7 +46,7 @@ public class RSessionAccessControlTest extends AbstractJCRTest {
+         testPropertyPath = p.getPath();
+         testRootNode.save();
+ 
+-        readOnlySession = helper.getReadOnlySession();
++        readOnlySession = getHelper().getReadOnlySession();
+     }
+ 
+     protected void tearDown() throws Exception {

@@ -1,0 +1,18 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeJettyTest.java b/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeJettyTest.java
+index 4303164..25040b0 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeJettyTest.java
++++ b/solr/src/test/org/apache/solr/client/solrj/embedded/LargeVolumeJettyTest.java
+@@ -18,11 +18,12 @@
+ package org.apache.solr.client.solrj.embedded;
+ 
+ import org.apache.solr.client.solrj.LargeVolumeTestBase;
++import org.apache.solr.util.ExternalPaths;
+ import org.junit.BeforeClass;
+ 
+ public class LargeVolumeJettyTest extends LargeVolumeTestBase {
+   @BeforeClass
+   public static void beforeTest() throws Exception {
+-    createJetty(EXAMPLE_HOME, null, null);
++    createJetty(ExternalPaths.EXAMPLE_HOME, null, null);
+   }
+ }

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNodeTest.java b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNodeTest.java
+index 3a2e49b..3aade20 100644
+--- a/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNodeTest.java
++++ b/jackrabbit-jcr2spi/src/test/java/org/apache/jackrabbit/jcr2spi/RemoveNodeTest.java
+@@ -127,7 +127,7 @@ public class RemoveNodeTest extends RemoveItemTest {
+         superuser.save();
+ 
+         // get the node with session 2
+-        Session otherSession = helper.getReadWriteSession();
++        Session otherSession = getHelper().getReadWriteSession();
+         try {
+             Node childNode2 = (Node) otherSession.getItem(childNode.getPath());

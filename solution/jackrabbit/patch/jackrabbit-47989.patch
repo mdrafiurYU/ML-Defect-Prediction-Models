@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/AbstractQOMTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/AbstractQOMTest.java
+index 737f59b..503185e 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/AbstractQOMTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/api/jsr283/query/qom/AbstractQOMTest.java
+@@ -38,6 +38,11 @@ import org.apache.jackrabbit.test.api.query.AbstractQueryTest;
+  */
+ public class AbstractQOMTest extends AbstractQueryTest {
+ 
++    // Constants broken in JCR 2.0 PFD
++    // TODO remove when API is fixed
++    protected static String JCR_OPERATOR_EQUAL_TO = "{http://www.jcp.org/jcr/1.0}operatorEqualTo";
++    protected static String JCR_OPERATOR_NOT_EQUAL_TO = "{http://www.jcp.org/jcr/1.0}operatorNotEqualTo";
++
+     protected QueryObjectModelFactory qomFactory;
+ 
+     protected void setUp() throws Exception {

@@ -1,0 +1,14 @@
+diff --git a/exa/exa.h b/exa/exa.h
+index 491e6b1..c7e39fa 100644
+--- a/exa/exa.h
++++ b/exa/exa.h
+@@ -773,6 +773,9 @@ exaMoveInPixmap (PixmapPtr pPixmap);
+ void
+ exaMoveOutPixmap (PixmapPtr pPixmap);
+ 
++void *
++exaGetPixmapDriverPrivate(PixmapPtr p);
++
+ /**
+  * Returns TRUE if the given planemask covers all the significant bits in the
+  * pixel values for pDrawable.

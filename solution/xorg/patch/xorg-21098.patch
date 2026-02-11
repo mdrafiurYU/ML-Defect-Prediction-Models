@@ -1,0 +1,188 @@
+diff --git a/fb/fbpict.c b/fb/fbpict.c
+index f248fdb..55fb0a7 100644
+--- a/fb/fbpict.c
++++ b/fb/fbpict.c
+@@ -925,6 +925,8 @@ fbComposite (CARD8      op,
+ #endif
+ 				func = fbCompositeSolidMask_nx8x8888;
+ 			    break;
++			default:
++			    break;
+ 			}
+ 			break;
+ 		    case PICT_a8r8g8b8:
+@@ -947,6 +949,8 @@ fbComposite (CARD8      op,
+ #endif
+ 				    func = fbCompositeSolidMask_nx8888x0565C;
+ 				break;
++			    default:
++				break;
+ 			    }
+ 			}
+ 			break;
+@@ -970,6 +974,8 @@ fbComposite (CARD8      op,
+ #endif
+ 				    func = fbCompositeSolidMask_nx8888x0565C;
+ 				break;
++			    default:
++				break;
+ 			    }
+ 			}
+ 			break;
+@@ -985,9 +991,15 @@ fbComposite (CARD8      op,
+ 			case PICT_x8b8g8r8:
+ 			    func = fbCompositeSolidMask_nx1xn;
+ 			    break;
++			default:
++			    break;
+ 			}
+ 			break;
++		    default:
++			break;
+ 		    }
++		default:
++		    break;
+ 		}
+ 	    }
+ 	    else if (! srcRepeat) /* has mask and non-repeating source */
+@@ -1016,8 +1028,12 @@ fbComposite (CARD8      op,
+ 				    func = fbCompositeSrc_8888RevNPx0565mmx;
+ #endif
+ 				break;
++			    default:
++				break;
+ 			    }
+ 			    break;
++			default:
++			    break;
+ 			}
+ 			break;
+ 		    case PICT_x8r8g8b8:
+@@ -1038,10 +1054,16 @@ fbComposite (CARD8      op,
+ 				    func = fbCompositeSrc_8888RevNPx0565mmx;
+ #endif
+ 				break;
++			    default:
++				break;
+ 			    }
+ 			    break;
++			default:
++			    break;
+ 			}
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		    break;
+ 		}
+@@ -1094,8 +1116,12 @@ fbComposite (CARD8      op,
+ 			}
+ #endif
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		    break;
++		default:
++		    break;
+ 		}
+ 	    }
+ 	    else if (! srcRepeat)
+@@ -1118,6 +1144,8 @@ fbComposite (CARD8      op,
+ 		    case PICT_r5g6b5:
+ 			func = fbCompositeSrc_8888x0565;
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		    break;
+ 		case PICT_x8r8g8b8:
+@@ -1129,6 +1157,8 @@ fbComposite (CARD8      op,
+ 			    func = fbCompositeCopyAreammx;
+ #endif
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		case PICT_x8b8g8r8:
+ 		    switch (pDst->format) {
+@@ -1139,6 +1169,8 @@ fbComposite (CARD8      op,
+ 			    func = fbCompositeCopyAreammx;
+ #endif
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		    break;
+ 		case PICT_a8b8g8r8:
+@@ -1158,6 +1190,8 @@ fbComposite (CARD8      op,
+ 		    case PICT_b5g6r5:
+ 			func = fbCompositeSrc_8888x0565;
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		    break;
+ 		case PICT_r5g6b5:
+@@ -1165,6 +1199,8 @@ fbComposite (CARD8      op,
+ 		    case PICT_r5g6b5:
+ 			func = fbCompositeSrc_0565x0565;
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		    break;
+ 		case PICT_b5g6r5:
+@@ -1172,8 +1208,12 @@ fbComposite (CARD8      op,
+ 		    case PICT_b5g6r5:
+ 			func = fbCompositeSrc_0565x0565;
+ 			break;
++		    default:
++			break;
+ 		    }
+ 		    break;
++		default:
++		    break;
+ 		}
+ 	    }
+ 	}
+@@ -1192,6 +1232,8 @@ fbComposite (CARD8      op,
+ #endif
+ 			func = fbCompositeSrcAdd_8888x8888;
+ 		    break;
++		default:
++		    break;
+ 		}
+ 		break;
+ 	    case PICT_a8b8g8r8:
+@@ -1204,6 +1246,8 @@ fbComposite (CARD8      op,
+ #endif
+ 			func = fbCompositeSrcAdd_8888x8888;
+ 		    break;
++		default:
++		    break;
+ 		}
+ 		break;
+ 	    case PICT_a8:
+@@ -1216,6 +1260,8 @@ fbComposite (CARD8      op,
+ #endif
+ 			func = fbCompositeSrcAdd_8000x8000;
+ 		    break;
++		default:
++		    break;
+ 		}
+ 		break;
+ 	    case PICT_a1:
+@@ -1223,8 +1269,12 @@ fbComposite (CARD8      op,
+ 		case PICT_a1:
+ 		    func = fbCompositeSrcAdd_1000x1000;
+ 		    break;
++		default:
++		    break;
+ 		}
+ 		break;
++	    default:
++		break;
+ 	    }
+ 	}
+ 	break;

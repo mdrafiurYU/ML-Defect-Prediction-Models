@@ -1,0 +1,19 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/SessionInfoLogger.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/SessionInfoLogger.java
+index 74b3e02..96fc788 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/SessionInfoLogger.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/logging/SessionInfoLogger.java
+@@ -88,5 +88,14 @@ public class SessionInfoLogger extends AbstractLogger implements SessionInfo {
+         }, "removeLockToken(String)", new Object[]{lockToken});
+     }
+ 
++    public void setUserData(final String userData) throws RepositoryException {
++        execute(new Callable() {
++            public Object call() throws RepositoryException {
++                sessionInfo.setUserData(userData);
++                return null;
++            }
++        }, "setUserData(String)", new Object[]{userData});
++    }
++
+ 
+ }

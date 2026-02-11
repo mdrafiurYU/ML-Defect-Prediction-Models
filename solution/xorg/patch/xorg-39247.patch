@@ -1,0 +1,15 @@
+diff --git a/os/log.c b/os/log.c
+index 51b8483..9b0a77f 100644
+--- a/os/log.c
++++ b/os/log.c
+@@ -524,10 +524,8 @@ FatalError(const char *f, ...)
+     VErrorF(f, args);
+     va_end(args);
+     ErrorF("\n");
+-#ifdef DDXOSFATALERROR
+     if (!beenhere)
+ 	OsVendorFatalError();
+-#endif
+     if (!beenhere) {
+ 	beenhere = TRUE;
+ 	AbortServer();

@@ -1,0 +1,24 @@
+diff --git a/Xext/xselinux.c b/Xext/xselinux.c
+index 4629e90..ede0350 100644
+--- a/Xext/xselinux.c
++++ b/Xext/xselinux.c
+@@ -890,8 +890,7 @@ SELinuxResourceState(CallbackListPtr *pcbl, pointer unused, pointer calldata)
+ 	if (rc != Success)
+ 	    FatalError("SELinux: Failed to set label property on window!\n");
+ 	freecon(ctx);
+-    }
+-    else
++    } else
+ 	FatalError("SELinux: Unexpected unlabeled client found\n");
+ 
+     state = dixLookupPrivate(&pWin->devPrivates, stateKey);
+@@ -907,8 +906,7 @@ SELinuxResourceState(CallbackListPtr *pcbl, pointer unused, pointer calldata)
+ 	if (rc != Success)
+ 	    FatalError("SELinux: Failed to set label property on window!\n");
+ 	freecon(ctx);
+-    }
+-    else
++    } else
+ 	FatalError("SELinux: Unexpected unlabeled window found\n");
+ }
+ 

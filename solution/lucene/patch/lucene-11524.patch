@@ -1,0 +1,20 @@
+diff --git a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java
+index 3bff581..04a79ec 100644
+--- a/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java
++++ b/solr/contrib/dataimporthandler/src/main/java/org/apache/solr/handler/dataimport/SolrWriter.java
+@@ -125,6 +125,15 @@ public class SolrWriter {
+     }
+   }
+ 
++  void finish() {
++    try {
++      processor.finish();
++    } catch (IOException e) {
++      throw new DataImportHandlerException(DataImportHandlerException.SEVERE,
++          "Unable to call finish() on UpdateRequestProcessor", e);
++    }
++  }
++  
+   Properties readIndexerProperties() {
+     Properties props = new Properties();
+     InputStream propInput = null;

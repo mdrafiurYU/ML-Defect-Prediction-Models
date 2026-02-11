@@ -1,0 +1,22 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/HierarchyManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/HierarchyManagerImpl.java
+index fea6813..4c3f9cb 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/HierarchyManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/HierarchyManagerImpl.java
+@@ -22,13 +22,13 @@ import org.apache.jackrabbit.core.state.ItemStateManager;
+ import org.apache.jackrabbit.core.state.NoSuchItemStateException;
+ import org.apache.jackrabbit.core.state.NodeState;
+ import org.apache.jackrabbit.core.state.PropertyState;
+-import org.apache.jackrabbit.conversion.MalformedPathException;
+-import org.apache.jackrabbit.conversion.PathResolver;
++import org.apache.jackrabbit.spi.commons.conversion.MalformedPathException;
++import org.apache.jackrabbit.spi.commons.conversion.PathResolver;
+ import org.apache.jackrabbit.spi.Path;
+ import org.apache.jackrabbit.spi.Name;
+-import org.apache.jackrabbit.name.NameFactoryImpl;
+-import org.apache.jackrabbit.name.PathBuilder;
+-import org.apache.jackrabbit.name.PathFactoryImpl;
++import org.apache.jackrabbit.spi.commons.name.NameFactoryImpl;
++import org.apache.jackrabbit.spi.commons.name.PathBuilder;
++import org.apache.jackrabbit.spi.commons.name.PathFactoryImpl;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;

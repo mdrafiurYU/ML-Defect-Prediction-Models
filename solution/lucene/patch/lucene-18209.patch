@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/cloud/SolrZkServer.java b/solr/src/java/org/apache/solr/cloud/SolrZkServer.java
+index d967183..625c005 100644
+--- a/solr/src/java/org/apache/solr/cloud/SolrZkServer.java
++++ b/solr/src/java/org/apache/solr/cloud/SolrZkServer.java
+@@ -319,6 +319,7 @@ class SolrZkServerProps extends QuorumPeerConfig {
+    * @throws java.io.IOException
+    * @throws ConfigException
+    */
++  @Override
+   public void parseProperties(Properties zkProp)
+       throws IOException, ConfigException {
+     for (Entry<Object, Object> entry : zkProp.entrySet()) {

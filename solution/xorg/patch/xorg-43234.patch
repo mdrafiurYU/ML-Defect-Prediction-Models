@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Bus.c b/hw/xfree86/common/xf86Bus.c
+index 1f8e4de..69f5152 100644
+--- a/hw/xfree86/common/xf86Bus.c
++++ b/hw/xfree86/common/xf86Bus.c
+@@ -66,7 +66,7 @@ xf86AccessRec AccessNULL = { noopEnableDisable, noopEnableDisable, NULL };
+ 
+ xf86CurrentAccessRec xf86CurrentAccess = {NULL,NULL};
+ 
+-BusRec primaryBus = { BUS_NONE, {{0}}};
++BusRec primaryBus = { BUS_NONE, { 0 } };
+ 
+ static Bool xf86ResAccessEnter = FALSE;
+ 

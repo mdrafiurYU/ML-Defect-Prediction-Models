@@ -1,0 +1,40 @@
+diff --git a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+index f769167..8d2a814 100644
+--- a/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
++++ b/jackrabbit-spi2jcr/src/main/java/org/apache/jackrabbit/spi2jcr/RepositoryServiceImpl.java
+@@ -79,6 +79,7 @@ import javax.jcr.Value;
+ import javax.jcr.ItemVisitor;
+ import javax.jcr.ValueFactory;
+ import javax.jcr.GuestCredentials;
++import javax.jcr.PropertyIterator;
+ import javax.jcr.util.TraversingItemVisitor;
+ import javax.jcr.observation.ObservationManager;
+ import javax.jcr.observation.EventListener;
+@@ -412,6 +413,27 @@ public class RepositoryServiceImpl implements RepositoryService {
+     /**
+      * {@inheritDoc}
+      */
++    public Iterator<PropertyId> getReferences(SessionInfo sessionInfo, NodeId nodeId, Name propertyName, boolean weakReferences) throws ItemNotFoundException, RepositoryException {
++        SessionInfoImpl sInfo = getSessionInfoImpl(sessionInfo);
++        Node node = getNode(nodeId, sInfo);
++        String jcrName = (propertyName == null) ? null : sInfo.getNamePathResolver().getJCRName(propertyName);
++
++        List<PropertyId> ids = new ArrayList<PropertyId>();
++        PropertyIterator it;
++        if (weakReferences) {
++            it = node.getWeakReferences(jcrName);
++        } else {
++            it = node.getReferences(jcrName);
++        }
++        while (it.hasNext()) {
++            ids.add(idFactory.createPropertyId(it.nextProperty(), sInfo.getNamePathResolver()));
++        }
++        return ids.iterator();
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public PropertyInfo getPropertyInfo(SessionInfo sessionInfo,
+                                         PropertyId propertyId)
+             throws ItemNotFoundException, RepositoryException {

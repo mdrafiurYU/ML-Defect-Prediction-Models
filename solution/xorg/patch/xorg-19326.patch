@@ -1,0 +1,50 @@
+diff --git a/Xi/getprop.c b/Xi/getprop.c
+index 2b4de1f..bbca245 100644
+--- a/Xi/getprop.c
++++ b/Xi/getprop.c
+@@ -82,8 +82,7 @@ extern int	ExtEventIndex;
+  */
+ 
+ int
+-SProcXGetDeviceDontPropagateList(client)
+-    register ClientPtr client;
++SProcXGetDeviceDontPropagateList(register ClientPtr client)
+     {
+     register char n;
+ 
+@@ -101,8 +100,7 @@ SProcXGetDeviceDontPropagateList(client)
+  */
+ 
+ int
+-ProcXGetDeviceDontPropagateList (client)
+-    register ClientPtr client;
++ProcXGetDeviceDontPropagateList (register ClientPtr client)
+     {
+     CARD16				count = 0;
+     int					i;
+@@ -167,12 +165,7 @@ ProcXGetDeviceDontPropagateList (client)
+  */
+ 
+ XEventClass
+-*ClassFromMask (buf, mask, maskndx, count, mode)
+-    XEventClass *buf;
+-    Mask	mask;
+-    int		maskndx;
+-    CARD16	*count;
+-    int		mode;
++*ClassFromMask (XEventClass *buf, Mask mask, int maskndx, CARD16 *count, int mode)
+     {
+     int		i,j;
+     int		id = maskndx;
+@@ -201,10 +194,7 @@ XEventClass
+  */
+ 
+ void
+-SRepXGetDeviceDontPropagateList (client, size, rep)
+-    ClientPtr	client;
+-    int		size;
+-    xGetDeviceDontPropagateListReply	*rep;
++SRepXGetDeviceDontPropagateList (ClientPtr client, int size, xGetDeviceDontPropagateListReply *rep)
+     {
+     register char n;
+ 

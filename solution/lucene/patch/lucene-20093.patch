@@ -1,0 +1,29 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java b/solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java
+index 44dd614..d8ad98e 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java
++++ b/solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java
+@@ -52,6 +52,7 @@ import org.apache.solr.common.util.XML;
+ import org.apache.solr.common.util.NamedList;
+ import org.apache.solr.common.params.CommonParams;
+ import org.apache.solr.common.params.FacetParams;
++import org.junit.Ignore;
+ import org.junit.Test;
+ 
+ /**
+@@ -380,7 +381,7 @@ abstract public class SolrExampleTests extends SolrJettyTestBase
+   }
+ 
+ 
+-  @Test
++  @Test @Ignore   // TODO: re-enable when new transformer syntax is implemented
+   public void testAugmentFields() throws Exception
+   {    
+     SolrServer server = getSolrServer();
+@@ -405,7 +406,7 @@ abstract public class SolrExampleTests extends SolrJettyTestBase
+     
+     SolrQuery query = new SolrQuery();
+     query.setQuery( "*:*" );
+-    query.set( CommonParams.FL, "id,price,_docid_,_explain:nl_,score,aaa=_value:aaa_,ten=_value:int:10_" );
++    query.set( CommonParams.FL, "id,price,_docid_,_explain:nl_,score,aaa:_value:aaa_,ten:_value:int:10_" );
+     query.addSortField( "price", SolrQuery.ORDER.asc );
+     QueryResponse rsp = server.query( query );

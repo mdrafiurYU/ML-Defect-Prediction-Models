@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java
+index 4105bf0..c27be1d 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/JcrVersionManagerImpl.java
+@@ -213,7 +213,15 @@ public class JcrVersionManagerImpl implements javax.jcr.version.VersionManager {
+     /**
+      * {@inheritDoc}
+      */
++    public void removeActivity(Node node) throws RepositoryException {
++        throw new UnsupportedRepositoryOperationException("comming soon...");
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public NodeIterator merge(Node activityNode) throws RepositoryException {
+         throw new UnsupportedRepositoryOperationException("comming soon...");
+     }
++
+ }
+\ No newline at end of file

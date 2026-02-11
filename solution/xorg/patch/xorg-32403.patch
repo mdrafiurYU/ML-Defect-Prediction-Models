@@ -1,0 +1,27 @@
+diff --git a/GL/glx/glxscreens.c b/GL/glx/glxscreens.c
+index c6f060b..3d69645 100644
+--- a/GL/glx/glxscreens.c
++++ b/GL/glx/glxscreens.c
+@@ -281,6 +281,13 @@ glxGetScreen(ScreenPtr pScreen)
+     return (__GLXscreen *) pScreen->devPrivates[glxScreenPrivateIndex].ptr;
+ }
+ 
++void GlxSetVisualConfigs(int nconfigs, 
++                         __GLXvisualConfig *configs, void **privates)
++{
++	/* We keep this stub around for the DDX drivers that still
++	 * call it. */
++}
++
+ void __glXScreenInit(__GLXscreen *glxScreen, ScreenPtr pScreen)
+ {
+     static int glxGeneration;
+@@ -306,8 +313,6 @@ void __glXScreenInit(__GLXscreen *glxScreen, ScreenPtr pScreen)
+     glxScreen->CloseScreen = pScreen->CloseScreen;
+     pScreen->CloseScreen = glxCloseScreen;
+ 
+-    __glXScreenInitVisuals(glxScreen);
+-
+     pScreen->devPrivates[glxScreenPrivateIndex].ptr = (pointer) glxScreen;
+ }
+  

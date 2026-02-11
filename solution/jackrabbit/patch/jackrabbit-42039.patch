@@ -1,0 +1,32 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
+index 9e06b1b..4a6151a 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/LockManagerImpl.java
+@@ -380,11 +380,15 @@ public class LockManagerImpl implements LockManager, SynchronousEventListener,
+      * @throws RepositoryException if an error occurs
+      */
+     public AbstractLockInfo getLockInfo(NodeId id) throws RepositoryException {
+-        acquire();
+-
++        Path path;
+         try {
+-            Path path = getPath(id);
++            path = getPath(id);
++        } catch (ItemNotFoundException e) {
++            return null;
++        }
+ 
++        acquire();
++        try {
+             PathMap.Element element = lockMap.map(path, false);
+             AbstractLockInfo info = (AbstractLockInfo) element.get();
+             if (info != null) {
+@@ -393,8 +397,6 @@ public class LockManagerImpl implements LockManager, SynchronousEventListener,
+                 }
+             }
+             return null;
+-        } catch (ItemNotFoundException e) {
+-            return null;
+         } finally {
+             release();
+         }

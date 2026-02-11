@@ -1,0 +1,18 @@
+diff --git a/Xext/security.c b/Xext/security.c
+index 0cbb7e3..f1e0bb1 100644
+--- a/Xext/security.c
++++ b/Xext/security.c
+@@ -948,9 +948,10 @@ SecuritySend(CallbackListPtr *pcbl, pointer unused, pointer calldata)
+ 
+ 		SecurityAudit("Security: denied client %d from sending event "
+ 			      "of type %s to window 0x%x of client %d\n",
+-			      rec->client->index, rec->pWin->drawable.id,
+-			      wClient(rec->pWin)->index,
+-			      LookupEventName(rec->events[i].u.u.type));
++			      rec->client->index,
++			      LookupEventName(rec->events[i].u.u.type),
++			      rec->pWin->drawable.id,
++			      wClient(rec->pWin)->index);
+ 		rec->status = BadAccess;
+ 		return;
+ 	    }

@@ -1,0 +1,12 @@
+diff --git a/include/dixgrabs.h b/include/dixgrabs.h
+index b237ab3..29aa828 100644
+--- a/include/dixgrabs.h
++++ b/include/dixgrabs.h
+@@ -51,6 +51,7 @@ extern Bool GrabMatchesSecond(
+ 	Bool /*ignoreDevice*/);
+ 
+ extern int AddPassiveGrabToList(
++	ClientPtr /* client */,
+ 	GrabPtr /* pGrab */);
+ 
+ extern Bool DeletePassiveGrabFromList(

@@ -1,0 +1,15 @@
+diff --git a/fb/fbedgeimp.h b/fb/fbedgeimp.h
+index 4a91adc..136a15e 100644
+--- a/fb/fbedgeimp.h
++++ b/fb/fbedgeimp.h
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #ifndef rasterizeSpan
+ #endif
+ 

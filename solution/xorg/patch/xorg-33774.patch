@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/vxworks/vxkbd.c b/hw/kdrive/vxworks/vxkbd.c
+index be528c7..ac83ef7 100644
+--- a/hw/kdrive/vxworks/vxkbd.c
++++ b/hw/kdrive/vxworks/vxkbd.c
+@@ -232,7 +232,7 @@ VxWorksKeyboardRead (int fd)
+ void
+ VxWorksKeyboardLeds (int leds)
+ {
+-    DeviceIntPtr	pKeyboard = (DeviceIntPtr) LookupKeyboardDevice ();
++    DeviceIntPtr	pKeyboard = inputInfo.keyboard;
+     KeyboardCtrl		*ctrl = &pKeyboard->kbdfeed->ctrl;
+     led_ioctl_info	led_info;
+     int			i;

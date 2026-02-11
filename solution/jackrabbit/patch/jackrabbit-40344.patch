@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
+index e3da570..bbc1963 100755
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/lock/XAEnvironment.java
+@@ -237,7 +237,7 @@ class XAEnvironment {
+             }
+         }
+ 
+-        // add 'uncommitted' lock infos 
++        // add 'uncommitted' lock infos
+         result.addAll(lockedNodesMap.values());
+ 
+         return (AbstractLockInfo[]) result.toArray(new AbstractLockInfo[result.size()]);

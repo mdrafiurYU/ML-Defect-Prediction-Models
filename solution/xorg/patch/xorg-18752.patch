@@ -1,0 +1,12 @@
+diff --git a/GL/glx/indirect_reqsize.c b/GL/glx/indirect_reqsize.c
+index 05a157b..3906bd1 100644
+--- a/GL/glx/indirect_reqsize.c
++++ b/GL/glx/indirect_reqsize.c
+@@ -35,7 +35,6 @@
+ #  include <byteswap.h>
+ #  define SWAP_32(v)  do { (v) = bswap_32(v); } while(0)
+ #else
+-#  include <X11/misc.h>
+ #  define SWAP_32(v)  do { char tmp; swapl(&v, tmp); } while(0)
+ #endif
+ 

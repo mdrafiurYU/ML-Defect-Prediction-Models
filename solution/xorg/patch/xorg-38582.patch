@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/dmxgc.c b/hw/dmx/dmxgc.c
+index ce1730c..eb21d3c 100644
+--- a/hw/dmx/dmxgc.c
++++ b/hw/dmx/dmxgc.c
+@@ -85,6 +85,8 @@ static GCOps dmxGCOps = {
+ /** Initialize the GC on \a pScreen */
+ Bool dmxInitGC(ScreenPtr pScreen)
+ {
++    if (!dixRequestPrivate(dmxGCPrivateKey, sizeof(dmxGCPrivRec)))
++            return FALSE;
+     return TRUE;
+ }
+ 

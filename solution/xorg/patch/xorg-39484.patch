@@ -1,0 +1,12 @@
+diff --git a/os/osinit.c b/os/osinit.c
+index 93e1d03..986a642 100644
+--- a/os/osinit.c
++++ b/os/osinit.c
+@@ -204,7 +204,6 @@ OsInit(void)
+ 	if (!SmartScheduleInit ())
+ 	    SmartScheduleDisable = TRUE;
+ #endif
+-    OsInitAllocator();
+ }
+ 
+ void

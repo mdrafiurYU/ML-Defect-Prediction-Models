@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86fbman.h b/hw/xfree86/common/xf86fbman.h
+index adb26a1..3ea0248 100644
+--- a/hw/xfree86/common/xf86fbman.h
++++ b/hw/xfree86/common/xf86fbman.h
+@@ -27,6 +27,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _XF86FBMAN_H
+ #define _XF86FBMAN_H
+ 

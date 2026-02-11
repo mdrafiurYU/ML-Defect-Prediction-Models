@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+index 5ff7f76..48d3ff2 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/codegen/CodeStream.java
+@@ -4552,7 +4552,7 @@ public boolean isDefinitelyAssigned(Scope scope, int initStateIndex, LocalVariab
+ 	// Mirror of UnconditionalFlowInfo.isDefinitelyAssigned(..)
+ 	if (initStateIndex == -1)
+ 		return false;
+-	if (local.isArgument) {
++	if ((local.tagBits & TagBits.IsArgument) != 0) {
+ 		return true;
+ 	}
+ 	int localPosition = local.id + maxFieldCount;

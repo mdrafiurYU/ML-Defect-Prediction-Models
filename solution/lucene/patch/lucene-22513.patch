@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestGlobalFieldNumbers.java b/lucene/src/test/org/apache/lucene/index/TestGlobalFieldNumbers.java
+index 8bb9a6b..52b3780 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestGlobalFieldNumbers.java
++++ b/lucene/src/test/org/apache/lucene/index/TestGlobalFieldNumbers.java
+@@ -363,7 +363,7 @@ public class TestGlobalFieldNumbers extends LuceneTestCase {
+       w.close();
+       SegmentInfos sis = new SegmentInfos();
+       sis.read(base);
+-      SegmentInfo segmentInfo = sis.get(sis.size() - 1);// last segment must
++      SegmentInfo segmentInfo = sis.info(sis.size() - 1);// last segment must
+                                                         // have all fields with
+                                                         // consistent numbers
+       FieldInfos fieldInfos = segmentInfo.getFieldInfos();

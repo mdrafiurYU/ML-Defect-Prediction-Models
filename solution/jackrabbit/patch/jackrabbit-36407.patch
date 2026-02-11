@@ -1,0 +1,13 @@
+diff --git a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
+index 8e8a5b7..82c6e23 100644
+--- a/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
++++ b/contrib/spi/jcr2spi/src/main/java/org/apache/jackrabbit/jcr2spi/hierarchy/NodeEntryImpl.java
+@@ -352,7 +352,7 @@ public class NodeEntryImpl extends HierarchyEntryImpl implements NodeEntry {
+ 
+         NodeState state = (NodeState) internalGetItemState();
+         try {
+-            if (state == null || state.getDefinition().allowsSameNameSiblings()) {
++            if (state == null || !state.hasDefinition() || state.getDefinition().allowsSameNameSiblings()) {
+                 return parent.getChildIndex(this);
+             } else {
+                 return Path.INDEX_DEFAULT;

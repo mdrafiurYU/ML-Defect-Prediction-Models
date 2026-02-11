@@ -1,0 +1,46 @@
+diff --git a/exa/exa.c b/exa/exa.c
+index ecdb761..145d5b2 100644
+--- a/exa/exa.c
++++ b/exa/exa.c
+@@ -363,20 +363,15 @@ ExaDoPrepareAccess(DrawablePtr pDrawable, int index)
+     }
+ }
+ 
+-/**
+- * exaPrepareAccess() is EXA's wrapper for the driver's PrepareAccess() handler.
+- *
+- * It deals with waiting for synchronization with the card, determining if
+- * PrepareAccess() is necessary, and working around PrepareAccess() failure.
+- */
+ void
+-exaPrepareAccess(DrawablePtr pDrawable, int index)
++exaPrepareAccessReg(DrawablePtr pDrawable, int index, RegionPtr pReg)
+ {
+     ExaMigrationRec pixmaps[1];
+ 
+     pixmaps[0].as_dst = index == EXA_PREPARE_DEST;
+     pixmaps[0].as_src = index != EXA_PREPARE_DEST;
+     pixmaps[0].pPix = exaGetDrawablePixmap (pDrawable);
++    pixmaps[0].pReg = pReg;
+ 
+     exaDoMigration(pixmaps, 1, FALSE);
+ 
+@@ -384,6 +379,18 @@ exaPrepareAccess(DrawablePtr pDrawable, int index)
+ }
+ 
+ /**
++ * exaPrepareAccess() is EXA's wrapper for the driver's PrepareAccess() handler.
++ *
++ * It deals with waiting for synchronization with the card, determining if
++ * PrepareAccess() is necessary, and working around PrepareAccess() failure.
++ */
++void
++exaPrepareAccess(DrawablePtr pDrawable, int index)
++{
++    exaPrepareAccessReg(pDrawable, index, NULL);
++}
++
++/**
+  * exaFinishAccess() is EXA's wrapper for the driver's FinishAccess() handler.
+  *
+  * It deals with calling the driver's FinishAccess() only if necessary.

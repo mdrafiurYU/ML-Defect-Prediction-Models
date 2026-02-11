@@ -1,0 +1,15 @@
+diff --git a/os/connection.c b/os/connection.c
+index 5b19328..8a7eb87 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -654,8 +654,10 @@ ClientAuthorized(ClientPtr client,
+     XID	 		auth_id;
+     char	 	*reason = NULL;
+     XtransConnInfo	trans_conn;
++#ifdef LBX
+     int			restore_trans_conn = 0;
+     ClientPtr           lbxpc = NULL;
++#endif
+ 
+     priv = (OsCommPtr)client->osPrivate;
+     trans_conn = priv->trans_conn;

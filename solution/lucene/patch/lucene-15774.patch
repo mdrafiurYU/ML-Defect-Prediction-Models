@@ -1,0 +1,15 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java b/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java
+index c8b8c9d..dcbb0ec 100644
+--- a/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java
++++ b/lucene/src/java/org/apache/lucene/search/ConstantScoreQuery.java
+@@ -222,8 +222,8 @@ public class ConstantScoreQuery extends Query {
+         }
+         
+         @Override
+-        public void setNextReader(IndexReader reader, int docBase) throws IOException {
+-          collector.setNextReader(reader, docBase);
++        public void setNextReader(AtomicReaderContext context) throws IOException {
++          collector.setNextReader(context);
+         }
+         
+         @Override

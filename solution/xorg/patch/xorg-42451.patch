@@ -1,0 +1,44 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index f8870a7..d0e7f95 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -852,19 +852,17 @@ static int FreeCounter(void *, XID);
+  */
+ 
+ pointer
+-SyncCreateSystemCounter(name, initial, resolution, counterType,
+-			QueryValue, BracketValues)
+-    char           *name;
+-    CARD64          initial;
+-    CARD64          resolution;
+-    SyncCounterType counterType;
+-    void            (*QueryValue) (
+-        pointer /* pCounter */,
+-        CARD64 * /* pValue_return */);
+-    void            (*BracketValues) (
+-        pointer /* pCounter */,
++SyncCreateSystemCounter(
++	char *name,
++	CARD64 initial,
++	CARD64 resolution,
++	SyncCounterType counterType,
++	void (*QueryValue)(pointer /* pCounter */,
++	      	           CARD64 * /* pValue_return */),
++	void (*BracketValues)(pointer /* pCounter */,
+         CARD64 * /* pbracket_less */,
+-        CARD64 * /* pbracket_greater */);
++	                      CARD64 * /* pbracket_greater */)
++	)
+ {
+     SyncCounter    *pCounter;
+ 
+@@ -911,8 +909,7 @@ SyncCreateSystemCounter(name, initial, resolution, counterType,
+ }
+ 
+ void
+-SyncDestroySystemCounter(pSysCounter)
+-    pointer pSysCounter;
++SyncDestroySystemCounter(pointer pSysCounter)
+ {
+     SyncCounter *pCounter = (SyncCounter *)pSysCounter;
+     FreeResource(pCounter->id, RT_NONE);

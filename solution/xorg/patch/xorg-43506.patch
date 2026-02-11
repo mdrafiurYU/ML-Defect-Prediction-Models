@@ -1,0 +1,12 @@
+diff --git a/Xext/sync.c b/Xext/sync.c
+index 9236fab..a30895d 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -1144,6 +1144,7 @@ ProcSyncInitialize(ClientPtr client)
+ 
+     REQUEST_SIZE_MATCH(xSyncInitializeReq);
+ 
++    memset(&rep, 0, sizeof(xSyncInitializeReply));
+     rep.type = X_Reply;
+     rep.sequenceNumber = client->sequence;
+     rep.majorVersion = SYNC_MAJOR_VERSION;

@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/linux/lnx_ia64.c b/hw/xfree86/os-support/linux/lnx_ia64.c
+index 06f2be7..cc9448f 100644
+--- a/hw/xfree86/os-support/linux/lnx_ia64.c
++++ b/hw/xfree86/os-support/linux/lnx_ia64.c
+@@ -24,6 +24,10 @@
+  *
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/utsname.h>

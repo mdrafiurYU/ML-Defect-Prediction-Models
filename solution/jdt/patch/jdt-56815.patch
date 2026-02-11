@@ -1,0 +1,22 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
+index c2168f0..091069a 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/CompilationUnitScope.java
+@@ -250,7 +250,7 @@ public char[] computeConstantPoolName(LocalTypeBinding localType) {
+ 			if (isCompliant15) {
+ 				candidateName = CharOperation.concat(
+ 					CharOperation.concat(
+-						outerMostEnclosingType.constantPoolName(),
++						localType.enclosingType().constantPoolName(),
+ 						String.valueOf(index+1).toCharArray(),
+ 						'$'),
+ 					localType.sourceName);
+@@ -261,7 +261,7 @@ public char[] computeConstantPoolName(LocalTypeBinding localType) {
+ 					String.valueOf(index+1).toCharArray(),
+ 					'$',
+ 					localType.sourceName);
+-			}				
++			}
+ 		}						
+ 		if (constantPoolNameUsage.get(candidateName) != null) {
+ 			index ++;

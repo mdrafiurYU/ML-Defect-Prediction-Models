@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java b/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
+index 79e6f8b..33b3e5e 100644
+--- a/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
++++ b/lucene/src/test/org/apache/lucene/search/TestMatchAllDocsQuery.java
+@@ -69,7 +69,7 @@ public class TestMatchAllDocsQuery extends LuceneTestCase {
+     assertEquals("one", ir.document(hits[2].doc).get("key"));
+ 
+     // change norm & retest
+-    ir.setNorm(0, "key", 400f);
++    ir.setNorm(0, "key", Similarity.getDefault().encodeNormValue(400f));
+     normsQuery = new MatchAllDocsQuery("key");
+     hits = is.search(normsQuery, null, 1000).scoreDocs;
+     assertEquals(3, hits.length);

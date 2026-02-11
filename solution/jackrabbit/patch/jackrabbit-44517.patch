@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/util/DOMWalker.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/util/DOMWalker.java
+index bd0b462..b1001d2 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/util/DOMWalker.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/util/DOMWalker.java
+@@ -212,7 +212,10 @@ public final class DOMWalker {
+         }
+ 
+         if (name.equals(current.getNodeName())) {
+-            current = (Element) current.getParentNode();
++            Node parent = current.getParentNode();
++            if (parent instanceof Element) {
++                current = (Element) parent;
++            }
+         }
+         return false;
+     }

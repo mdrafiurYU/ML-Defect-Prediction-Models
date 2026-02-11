@@ -1,0 +1,17 @@
+diff --git a/include/privates.h b/include/privates.h
+index d1e269b..6071e39 100644
+--- a/include/privates.h
++++ b/include/privates.h
+@@ -142,9 +142,10 @@ dixResetPrivates(void);
+  */
+ 
+ /*
+- * Looks up the offset where the devPrivates field is located by type.
++ * Looks up the offset where the devPrivates field is located.
++ * Returns -1 if no offset has been registered for the resource type.
+  */
+-extern unsigned
++extern int
+ dixLookupPrivateOffset(RESTYPE type);
+ 
+ /*

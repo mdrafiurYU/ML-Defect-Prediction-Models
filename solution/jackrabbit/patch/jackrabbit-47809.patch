@@ -1,0 +1,16 @@
+diff --git a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+index e49c4e8..cea27b1 100644
+--- a/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
++++ b/jackrabbit-jcr-tests/src/main/java/org/apache/jackrabbit/test/api/TestAll.java
+@@ -141,6 +141,10 @@ public class TestAll extends TestCase {
+         
+         suite.addTestSuite(ShareableNodeTest.class);
+         
++        //// repository factory
++        
++        suite.addTestSuite(RepositoryFactoryTest.class);
++        
+         return suite;
+     }
+ }
+\ No newline at end of file

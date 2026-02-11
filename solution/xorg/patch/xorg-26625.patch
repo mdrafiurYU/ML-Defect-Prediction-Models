@@ -1,0 +1,13 @@
+diff --git a/hw/xfree86/common/xf86Bus.h b/hw/xfree86/common/xf86Bus.h
+index b7d1608..b638e90 100644
+--- a/hw/xfree86/common/xf86Bus.h
++++ b/hw/xfree86/common/xf86Bus.h
+@@ -40,7 +40,7 @@
+ #define _XF86_BUS_H
+ 
+ #include "xf86pciBus.h"
+-#ifdef __sparc__
++#if defined(__sparc__) || defined(__sparc)
+ #include "xf86sbusBus.h"
+ #endif
+ 

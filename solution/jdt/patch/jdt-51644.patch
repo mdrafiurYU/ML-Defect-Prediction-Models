@@ -1,0 +1,28 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/JavaVersionTests.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/JavaVersionTests.java
+index 7d17d51..624c8f6 100644
+--- a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/JavaVersionTests.java
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/JavaVersionTests.java
+@@ -55,12 +55,12 @@ public class JavaVersionTests extends Tests {
+ 	}
+ 	
+ 	public static String getProjectName() {
+-		return JavaVersionTests.class.getName() + "Project";
++		return JavaVersionTests.class.getName() + "Project"; //$NON-NLS-1$
+ 	}
+ 
+ 	public IPath getSourcePath() {
+ 		IProject project = env.getProject( getProjectName() );
+-		IFolder srcFolder = project.getFolder( "src" );
++		IFolder srcFolder = project.getFolder( "src" ); //$NON-NLS-1$
+ 		IPath srcRoot = srcFolder.getFullPath();
+ 		return srcRoot;
+ 	}
+@@ -85,7 +85,7 @@ public class JavaVersionTests extends Tests {
+ 
+ 		fullBuild( project.getFullPath() );
+ 		
+-		assertFalse("Processor was run", MirrorTestAnnotationProcessor._processRun);
++		assertFalse("Processor was run", MirrorTestAnnotationProcessor._processRun); //$NON-NLS-1$
+ 	}
+ 	
+ }

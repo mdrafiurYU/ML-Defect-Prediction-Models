@@ -1,0 +1,28 @@
+diff --git a/os/connection.c b/os/connection.c
+index 316e347..38521e6 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1324,15 +1324,17 @@ _X_EXPORT void ListenOnOpenFD(int fd) {
+     ListenTransFds[ListenTransCount] = fd;
+ 
+     FD_SET(fd, &WellKnownConnections);
+-    
+-    /* It is always local
+-    if (!_XSERVTransIsLocal(ciptr)) {
+-    //    DefineSelf (fd);
+-    }
+-    */
++    FD_SET(fd, &AllSockets);
+ 
+     /* Increment the count */
+     ListenTransCount++;
++
++    /* This *might* be needed, but it seems to be working fine without it... */
++    //ResetAuthorization();
++    //ResetHosts(display);
++#ifdef XDMCP
++    //XdmcpReset();
++#endif
+ }
+ 
+ #endif

@@ -1,0 +1,23 @@
+diff --git a/include/exevents.h b/include/exevents.h
+index 48dfccf..b77a363 100644
+--- a/include/exevents.h
++++ b/include/exevents.h
+@@ -239,4 +239,18 @@ extern int XIConfigureDeviceProperty(
+         INT32*                  /* values */
+ );
+ 
++extern long XIRegisterPropertyHandler(
++        DeviceIntPtr         dev,
++        Bool (*SetProperty) (DeviceIntPtr dev,
++                             Atom property,
++                             XIPropertyValuePtr prop),
++        Bool (*GetProperty) (DeviceIntPtr dev,
++                             Atom property)
++);
++
++extern void XIUnRegisterPropertyHandler(
++        DeviceIntPtr          dev,
++        long                  id
++);
++
+ #endif /* EXEVENTS_H */

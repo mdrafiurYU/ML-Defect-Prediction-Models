@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/int10/xf86int10.c b/hw/xfree86/int10/xf86int10.c
+index e88c650..06cf40b 100644
+--- a/hw/xfree86/int10/xf86int10.c
++++ b/hw/xfree86/int10/xf86int10.c
+@@ -5,6 +5,10 @@
+  *                 Copyright 1999 Egbert Eich
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include "xf86.h"
+ #include "xf86_ansic.h"
+ #include "compiler.h"

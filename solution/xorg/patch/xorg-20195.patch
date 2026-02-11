@@ -1,0 +1,15 @@
+diff --git a/Xi/grabdevk.c b/Xi/grabdevk.c
+index 1767d40..71e72d5 100644
+--- a/Xi/grabdevk.c
++++ b/Xi/grabdevk.c
+@@ -147,8 +147,8 @@ ProcXGrabDeviceKey(ClientPtr client)
+ 	return Success;
+ 
+     ret = GrabKey(client, dev, stuff->this_device_mode,
+-		  stuff->other_devices_mode, stuff->modifiers, mdev, stuff->key,
+-		  stuff->grabWindow, stuff->ownerEvents,
++		  stuff->other_devices_mode, stuff->modifiers, mdev,
++		  stuff->key, stuff->grabWindow, stuff->ownerEvents,
+ 		  tmp[stuff->grabbed_device].mask);
+ 
+     if (ret != Success) {

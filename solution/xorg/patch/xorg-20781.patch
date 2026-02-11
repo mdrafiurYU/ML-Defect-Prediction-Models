@@ -1,0 +1,13 @@
+diff --git a/hw/dmx/input/dmxxinput.c b/hw/dmx/input/dmxxinput.c
+index bd4ace6..81d1cfb 100644
+--- a/hw/dmx/input/dmxxinput.c
++++ b/hw/dmx/input/dmxxinput.c
+@@ -70,7 +70,7 @@ int ChangeKeyboardDevice(DeviceIntPtr old_dev, DeviceIntPtr new_dev)
+     dmxLocalNew->sendsCore      = 1;
+     dmxLocalCorePointer         = dmxLocalNew;
+ 
+-    _RegisterKeyboardDevice(new_dev);
++    RegisterKeyboardDevice(new_dev);
+     RegisterOtherDevice(old_dev);
+     
+     return Success;

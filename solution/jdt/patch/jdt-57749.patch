@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java
+index 8c88291..b0009d8 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/AssertStatement.java
+@@ -86,7 +86,7 @@ public class AssertStatement extends Statement {
+ 			// expression downstream
+ 		} else {
+ 			return flowInfo.mergedWith(assertInfo.nullInfoLessUnconditionalCopy()).
+-				addInitializationsFrom(assertWhenTrueInfo.nullInfo());
++				addInitializationsFrom(assertWhenTrueInfo.discardInitializationInfo());
+ 			// keep the merge from the initial code for the definite assignment 
+ 			// analysis, tweak the null part to influence nulls downstream
+ 		}

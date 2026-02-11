@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreEmbeddedTest.java b/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreEmbeddedTest.java
+index be95da0..ede29c5 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreEmbeddedTest.java
++++ b/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreEmbeddedTest.java
+@@ -32,6 +32,8 @@ public class MultiCoreEmbeddedTest extends MultiCoreExampleTestBase {
+ 
+   @Override public void setUp() throws Exception 
+   {
++    // TODO: fix this test to use MockDirectoryFactory
++    System.clearProperty("solr.directoryFactory");
+     super.setUp();
+     
+     File home = new File( getSolrHome() );

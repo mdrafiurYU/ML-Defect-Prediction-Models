@@ -1,0 +1,18 @@
+diff --git a/exa/exa_offscreen.c b/exa/exa_offscreen.c
+index b128504..a8ab379 100644
+--- a/exa/exa_offscreen.c
++++ b/exa/exa_offscreen.c
+@@ -270,12 +270,7 @@ exaEnableDisableFBAccess (int index, Bool enable)
+     if (!enable) {
+ 	ExaOffscreenSwapOut (pScreen);
+ 	pExaScr->swappedOut = TRUE;
+-    }
+-
+-    if (pExaScr->SavedEnableDisableFBAccess)
+-       (*pExaScr->SavedEnableDisableFBAccess)(index, enable);
+-
+-    if (enable) {
++    } else {
+ 	ExaOffscreenSwapIn (pScreen);
+ 	pExaScr->swappedOut = FALSE;
+     }

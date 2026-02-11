@@ -1,0 +1,13 @@
+diff --git a/hw/kdrive/ephyr/ephyr.c b/hw/kdrive/ephyr/ephyr.c
+index 2ca51c3..e8001df 100644
+--- a/hw/kdrive/ephyr/ephyr.c
++++ b/hw/kdrive/ephyr/ephyr.c
+@@ -675,6 +675,8 @@ ephyrRestore (KdCardInfo *card)
+ void
+ ephyrScreenFini (KdScreenInfo *screen)
+ {
++    xfree(screen->driver);
++    screen->driver = NULL;
+ }
+ 
+ /*  

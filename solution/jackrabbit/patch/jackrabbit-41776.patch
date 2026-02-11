@@ -1,0 +1,20 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
+index 633cfa2..e806fc0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/TextExtractorJob.java
+@@ -202,14 +202,10 @@ public class TextExtractorJob extends FutureResult implements Runnable {
+         }
+ 
+         // spool into temp file
+-        char[] buffer = new char[1024];
+-        int len;
+         InputStream in = null;
+         try {
+             try {
+-                while ((len = r.read(buffer)) >= 0) {
+-                    out.write(buffer, 0, len);
+-                }
++                IOUtils.copy(r, out);
+                 out.close();
+             } finally {
+                 r.close();

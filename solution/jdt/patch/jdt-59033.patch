@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core/antadapter/org/eclipse/jdt/core/JDTCompilerAdapter.java b/org.eclipse.jdt.core/antadapter/org/eclipse/jdt/core/JDTCompilerAdapter.java
+index 0ebf9b7..dfd2dde 100644
+--- a/org.eclipse.jdt.core/antadapter/org/eclipse/jdt/core/JDTCompilerAdapter.java
++++ b/org.eclipse.jdt.core/antadapter/org/eclipse/jdt/core/JDTCompilerAdapter.java
+@@ -567,7 +567,7 @@ public class JDTCompilerAdapter extends DefaultCompilerAdapter {
+             if (dir.exists() && dir.isDirectory()) {
+                 FileSet fs = new FileSet();
+                 fs.setDir(dir);
+-                fs.setIncludes("*"); //$NON-NLS-1$
++                fs.setIncludes("*.zip,*.jar"); //$NON-NLS-1$
+                 classpath.addFileset(fs);
+             }
+         }

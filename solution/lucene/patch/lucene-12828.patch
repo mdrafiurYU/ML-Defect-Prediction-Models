@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java b/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
+index 1039b19..b5f4475 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
++++ b/lucene/src/test/org/apache/lucene/index/TestAtomicUpdate.java
+@@ -195,7 +195,7 @@ public class TestAtomicUpdate extends LuceneTestCase {
+ 
+     // Second in an FSDirectory:
+     File dirPath = _TestUtil.getTempDir("lucene.test.atomic");
+-    directory = FSDirectory.open(dirPath);
++    directory = newFSDirectory(dirPath);
+     runTest(directory);
+     directory.close();
+     _TestUtil.rmDir(dirPath);

@@ -1,0 +1,14 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java b/solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java
+index ed4ee68..33ce483 100644
+--- a/solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java
++++ b/solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java
+@@ -20,8 +20,8 @@ package org.apache.solr.search.function.distance;
+ import org.apache.lucene.index.IndexReader.AtomicReaderContext;
+ import org.apache.lucene.queries.function.DocValues;
+ import org.apache.lucene.queries.function.ValueSource;
++import org.apache.lucene.queries.function.docvalues.FloatDocValues;
+ import org.apache.lucene.search.spell.StringDistance;
+-import org.apache.solr.search.function.FloatDocValues;
+ 
+ import java.io.IOException;
+ import java.util.Map;

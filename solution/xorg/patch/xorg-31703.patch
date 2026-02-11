@@ -1,0 +1,69 @@
+diff --git a/cfb/cfb.h b/cfb/cfb.h
+index 5614f4f..c9ceda9 100644
+--- a/cfb/cfb.h
++++ b/cfb/cfb.h
+@@ -56,7 +56,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+ 
+ extern int  cfbGCPrivateIndex;
+-extern int  cfbWindowPrivateIndex;
+ 
+ /* private field of GC */
+ typedef struct {
+@@ -81,20 +80,6 @@ typedef struct {
+     CfbBits	xor, and;
+ } cfbRRopRec, *cfbRRopPtr;
+ 
+-/* private field of window */
+-typedef struct {
+-    unsigned	char fastBorder; /* non-zero if border is 32 bits wide */
+-    unsigned	char fastBackground;
+-    unsigned short unused; /* pad for alignment with Sun compiler */
+-    DDXPointRec	oldRotate;
+-    PixmapPtr	pRotatedBackground;
+-    PixmapPtr	pRotatedBorder;
+-    } cfbPrivWin;
+-
+-#define cfbGetWindowPrivate(_pWin) ((cfbPrivWin *)\
+-	(_pWin)->devPrivates[cfbWindowPrivateIndex].ptr)
+-
+-
+ /* cfb8bit.c */
+ 
+ extern int cfbSetStipple(
+@@ -313,7 +298,6 @@ extern int cfb8SegmentSS1RectXor(
+ 
+ extern Bool cfbAllocatePrivates(
+     ScreenPtr /*pScreen*/,
+-    int * /*window_index*/,
+     int * /*gc_index*/
+ );
+ /* cfbbitblt.c */
+@@ -806,27 +790,6 @@ extern void cfbFillPoly1RectGeneral(
+     int /*count*/,
+     DDXPointPtr /*ptsIn*/
+ );
+-/* cfbpntwin.c */
+-
+-extern void cfbPaintWindow(
+-    WindowPtr /*pWin*/,
+-    RegionPtr /*pRegion*/,
+-    int /*what*/
+-);
+-
+-extern void cfbFillBoxSolid(
+-    DrawablePtr /*pDrawable*/,
+-    int /*nBox*/,
+-    BoxPtr /*pBox*/,
+-    unsigned long /*pixel*/
+-);
+-
+-extern void cfbFillBoxTile32(
+-    DrawablePtr /*pDrawable*/,
+-    int /*nBox*/,
+-    BoxPtr /*pBox*/,
+-    PixmapPtr /*tile*/
+-);
+ /* cfbpolypnt.c */
+ 
+ extern void cfbPolyPoint(

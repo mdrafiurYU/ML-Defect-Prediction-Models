@@ -1,0 +1,23 @@
+diff --git a/solr/src/java/org/apache/solr/spelling/suggest/UnsortedTermFreqIteratorWrapper.java b/solr/src/java/org/apache/solr/spelling/suggest/UnsortedTermFreqIteratorWrapper.java
+deleted file mode 100644
+index 41f24b8..0000000
+--- a/solr/src/java/org/apache/solr/spelling/suggest/UnsortedTermFreqIteratorWrapper.java
++++ /dev/null
+@@ -1,17 +0,0 @@
+-package org.apache.solr.spelling.suggest;
+-
+-import java.util.Collections;
+-
+-import org.apache.solr.util.TermFreqIterator;
+-
+-/**
+- * This wrapper buffers the incoming elements and makes sure they are in
+- * random order.
+- */
+-public class UnsortedTermFreqIteratorWrapper extends BufferingTermFreqIteratorWrapper {
+-
+-  public UnsortedTermFreqIteratorWrapper(TermFreqIterator source) {
+-    super(source);
+-    Collections.shuffle(entries);
+-  }
+-}

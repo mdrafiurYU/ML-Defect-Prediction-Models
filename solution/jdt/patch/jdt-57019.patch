@@ -1,0 +1,25 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+index 732daf4..76965b5 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/impl/CompilerOptions.java
+@@ -956,6 +956,9 @@ public class CompilerOptions {
+ 					return "unchecked"; //$NON-NLS-1$
+ 				case (int) UnusedLabel:
+ 					return "unused"; //$NON-NLS-1$
++				case (int) (DiscouragedReference >>> 32) :
++				case (int) (ForbiddenReference >>> 32) :
++					return "restriction"; //$NON-NLS-1$
+ 			}
+ 		}
+ 		return null;
+@@ -994,6 +997,10 @@ public class CompilerOptions {
+ 				if ("null".equals(warningToken)) //$NON-NLS-1$
+ 					return NullReference;
+ 				break;
++			case 'r' :
++				if ("restriction".equals(warningToken)) //$NON-NLS-1$
++					return DiscouragedReference | ForbiddenReference;
++				break;
+ 			case 's' :
+ 				if ("serial".equals(warningToken)) //$NON-NLS-1$
+ 					return MissingSerialVersion;

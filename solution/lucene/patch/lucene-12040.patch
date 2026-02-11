@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
+index 7d20379..95ed955 100644
+--- a/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
++++ b/lucene/src/java/org/apache/lucene/index/codecs/simpletext/SimpleTextFieldsReader.java
+@@ -56,7 +56,8 @@ class SimpleTextFieldsReader extends FieldsProducer {
+   final static BytesRef PAYLOAD = SimpleTextFieldsWriter.PAYLOAD;
+ 
+   public SimpleTextFieldsReader(SegmentReadState state) throws IOException {
+-    in = state.dir.openInput(SimpleTextCodec.getPostingsFileName(state.segmentInfo.name));
++    in = state.dir.openInput(SimpleTextCodec.getPostingsFileName(state.segmentInfo.name, ""+state.codecId));
++   
+     fieldInfos = state.fieldInfos;
+   }

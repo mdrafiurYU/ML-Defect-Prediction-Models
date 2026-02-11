@@ -1,0 +1,12 @@
+diff --git a/solr/src/java/org/apache/solr/handler/JsonLoader.java b/solr/src/java/org/apache/solr/handler/JsonLoader.java
+index d1f5770..f684952 100644
+--- a/solr/src/java/org/apache/solr/handler/JsonLoader.java
++++ b/solr/src/java/org/apache/solr/handler/JsonLoader.java
+@@ -133,7 +133,6 @@ class JsonLoader extends ContentStreamLoader {
+     assertNextEvent( js, JSONParser.OBJECT_START );
+ 
+     DeleteUpdateCommand cmd = new DeleteUpdateCommand();
+-    cmd.fromCommitted = cmd.fromPending = true; // TODO? enable this?
+     
+     while( true ) {
+       int ev = js.nextEvent();

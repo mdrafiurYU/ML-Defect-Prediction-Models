@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/DescendantNodeConstraint.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/DescendantNodeConstraint.java
+index 96f1c84..99e80c0 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/DescendantNodeConstraint.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/constraint/DescendantNodeConstraint.java
+@@ -42,7 +42,7 @@ public class DescendantNodeConstraint extends HierarchyConstraint {
+      */
+     public DescendantNodeConstraint(DescendantNodeImpl constraint,
+                                     SelectorImpl selector) {
+-        super(constraint.getPath(), selector);
++        super(constraint.getAncestorPath(), selector);
+     }
+ 
+     /**

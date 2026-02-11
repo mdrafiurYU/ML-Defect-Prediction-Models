@@ -1,0 +1,22 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestDoc.java b/lucene/src/test/org/apache/lucene/index/TestDoc.java
+index 9deaf4b..049e907 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestDoc.java
++++ b/lucene/src/test/org/apache/lucene/index/TestDoc.java
+@@ -114,7 +114,7 @@ public class TestDoc extends LuceneTestCase {
+       Directory directory = newFSDirectory(indexDir);
+       IndexWriter writer = new IndexWriter(
+           directory,
+-          newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++          newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).
+               setOpenMode(OpenMode.CREATE).
+               setMaxBufferedDocs(-1).
+               setMergePolicy(newLogMergePolicy(10))
+@@ -148,7 +148,7 @@ public class TestDoc extends LuceneTestCase {
+       directory = newFSDirectory(indexDir);
+       writer = new IndexWriter(
+           directory,
+-          newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer()).
++          newIndexWriterConfig(TEST_VERSION_CURRENT, new MockAnalyzer(random)).
+               setOpenMode(OpenMode.CREATE).
+               setMaxBufferedDocs(-1).
+               setMergePolicy(newLogMergePolicy(10))

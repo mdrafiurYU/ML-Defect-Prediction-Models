@@ -1,0 +1,13 @@
+diff --git a/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java b/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
+index ac809b5..672faff 100644
+--- a/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
++++ b/lucene/src/test/org/apache/lucene/util/automaton/fst/TestFSTs.java
+@@ -540,7 +540,7 @@ public class TestFSTs extends LuceneTestCase {
+           Object output = run(fst, term, null);
+ 
+           assertNotNull("term " + inputToString(inputMode, term) + " is not accepted", output);
+-          assertEquals(output, pair.output);
++          assertEquals(pair.output, output);
+ 
+           // verify enum's next
+           IntsRefFSTEnum.InputOutput<T> t = fstEnum.next();

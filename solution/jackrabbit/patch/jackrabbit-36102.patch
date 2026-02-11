@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+index 010eb53..e8d59e4 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/fs/mem/MemoryFileSystem.java
+@@ -170,8 +170,7 @@ public class MemoryFileSystem implements FileSystem {
+     }
+ 
+     public boolean isFile(String path) throws FileSystemException {
+-        assertExistence(path);
+-        return !getEntry(path).isFolder();
++        return exists(path) && !getEntry(path).isFolder();
+     }
+ 
+     private MemoryFileSystemEntry getEntry(String path) {
+@@ -187,8 +186,7 @@ public class MemoryFileSystem implements FileSystem {
+         if (path.equals("/")) {
+             return true;
+         } else {
+-            assertExistence(path);
+-            return getEntry(path).isFolder();
++            return exists(path) && getEntry(path).isFolder();
+         }
+     }

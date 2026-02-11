@@ -1,0 +1,15 @@
+diff --git a/include/extinit.h b/include/extinit.h
+index 2087d74..5546b21 100644
+--- a/include/extinit.h
++++ b/include/extinit.h
+@@ -131,6 +131,10 @@ AssignTypeAndName (
+ 	char *                 /* name */
+ 	);
+ 
++Bool MayNeedPointer(
++        DeviceIntPtr            /* dev */
++        );
++
+ void
+ MakeDeviceTypeAtoms (
+ 	void

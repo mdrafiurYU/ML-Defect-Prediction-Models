@@ -1,0 +1,17 @@
+diff --git a/hw/xquartz/quartz.c b/hw/xquartz/quartz.c
+index 6d1846b..2e4aad5 100644
+--- a/hw/xquartz/quartz.c
++++ b/hw/xquartz/quartz.c
+@@ -68,11 +68,10 @@
+ 
+ // Shared global variables for Quartz modes
+ int                     quartzEventWriteFD = -1;
+-int                     quartzRootless = -1;
+ int                     quartzUseSysBeep = 0;
+ int                     quartzUseAGL = 1;
+ int                     quartzEnableKeyEquivalents = 1;
+-int                     quartzServerVisible = TRUE;
++int                     quartzServerVisible = FALSE;
+ int                     quartzServerQuitting = FALSE;
+ static int              quartzScreenKeyIndex;
+ DevPrivateKey           quartzScreenKey = &quartzScreenKeyIndex;

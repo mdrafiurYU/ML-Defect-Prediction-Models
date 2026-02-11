@@ -1,0 +1,13 @@
+diff --git a/mi/mipointer.c b/mi/mipointer.c
+index 10e6f3e..1474cb9 100644
+--- a/mi/mipointer.c
++++ b/mi/mipointer.c
+@@ -70,7 +70,7 @@ static miPointerPtr miCorePointer;
+  */
+ static miPointerRec miPointers[MAX_DEVICES];
+ #define MIPOINTER(dev) \
+-    (MPHasCursor((dev))) ? &miPointers[(dev)->id] : miCorePointer
++    (DevHasCursor((dev))) ? &miPointers[(dev)->id] : miCorePointer
+ 
+ static Bool miPointerRealizeCursor(DeviceIntPtr pDev, ScreenPtr pScreen, 
+                                    CursorPtr pCursor);

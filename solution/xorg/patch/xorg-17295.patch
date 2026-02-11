@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/common/xf86DoScanPci.c b/hw/xfree86/common/xf86DoScanPci.c
+index fe07d28..c9c8128 100644
+--- a/hw/xfree86/common/xf86DoScanPci.c
++++ b/hw/xfree86/common/xf86DoScanPci.c
+@@ -31,6 +31,10 @@
+  * Call the functions from the scanpci module.
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #include <ctype.h>
+ #include <stdlib.h>
+ #include <X11/X.h>

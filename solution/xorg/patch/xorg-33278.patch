@@ -1,0 +1,21 @@
+diff --git a/Xext/xace.c b/Xext/xace.c
+index ee0f39c..2b873cb 100644
+--- a/Xext/xace.c
++++ b/Xext/xace.c
+@@ -147,6 +147,16 @@ int XaceHook(int hook, ...)
+ 	    prv = &rec.rval;
+ 	    break;
+ 	}
++	case XACE_SELECTION_ACCESS: {
++	    XaceSelectionAccessRec rec = {
++		va_arg(ap, ClientPtr),
++		va_arg(ap, Selection*),
++		TRUE	/* default allow */
++	    };
++	    calldata = &rec;
++	    prv = &rec.rval;
++	    break;
++	}
+ 	case XACE_SITE_POLICY: {
+ 	    XaceSitePolicyRec rec = {
+ 		va_arg(ap, char*),

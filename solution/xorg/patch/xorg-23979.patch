@@ -1,0 +1,22 @@
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 72d4995..066b608 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -103,6 +103,7 @@ int ProcInitialConnection();
+ #include "dispatch.h"
+ #include "swaprep.h"
+ #include "swapreq.h"
++#include "config.h"
+ #ifdef PANORAMIX
+ #include "panoramiX.h"
+ #include "panoramiXsrv.h"
+@@ -385,6 +386,9 @@ Dispatch(void)
+ 
+ 	nready = WaitForSomething(clientReady);
+ 
++        /* this is an enormous hack and NEEDS TO GO AWAY. */
++        configDispatch();
++
+ #ifdef SMART_SCHEDULE
+ 	if (nready && !SmartScheduleDisable)
+ 	{

@@ -1,0 +1,12 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO9075.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO9075.java
+index edb9137..bd75154 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO9075.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/ISO9075.java
+@@ -146,7 +146,7 @@ public class ISO9075 {
+         if (decoded == name.getLocalName()) {
+             return name;
+         } else {
+-            return new QName(name.getNamespaceURI(), decoded.toString());
++            return new QName(name.getNamespaceURI(), decoded);
+         }
+     }

@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/DebugEvaluationTest.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/DebugEvaluationTest.java
+index bafbd80..2194ae8 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/DebugEvaluationTest.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/eval/DebugEvaluationTest.java
+@@ -67,7 +67,7 @@ public class DebugEvaluationTest extends EvaluationTest {
+ 	public static Test setupSuite(Class clazz) {
+ 		ArrayList testClasses = new ArrayList();
+ 		testClasses.add(clazz);
+-		return suite(clazz.getName(), DebugEvaluationSetup.class, testClasses);
++		return buildAllCompliancesSetupSuite(clazz, DebugEvaluationSetup.class, testClasses);
+ 	}
+ 	public static Test suite() {
+ 		return setupSuite(testClass());

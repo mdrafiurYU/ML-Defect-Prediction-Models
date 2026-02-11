@@ -1,0 +1,27 @@
+diff --git a/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/readAnnotationType/ReadAnnotationTypeProcessorFactory.java b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/readAnnotationType/ReadAnnotationTypeProcessorFactory.java
+new file mode 100644
+index 0000000..e43d590
+--- /dev/null
++++ b/org.eclipse.jdt.apt.tests/src/org/eclipse/jdt/apt/tests/annotations/readAnnotationType/ReadAnnotationTypeProcessorFactory.java
+@@ -0,0 +1,21 @@
++package org.eclipse.jdt.apt.tests.annotations.readAnnotationType;
++
++import java.util.Set;
++
++import org.eclipse.jdt.apt.tests.annotations.BaseFactory;
++
++import com.sun.mirror.apt.AnnotationProcessor;
++import com.sun.mirror.apt.AnnotationProcessorEnvironment;
++import com.sun.mirror.declaration.AnnotationTypeDeclaration;
++
++public class ReadAnnotationTypeProcessorFactory extends BaseFactory {
++
++    public ReadAnnotationTypeProcessorFactory() {
++        super(SimpleAnnotation.class.getName());
++    }
++
++    public AnnotationProcessor getProcessorFor(Set<AnnotationTypeDeclaration> declarations, AnnotationProcessorEnvironment env) {
++        return new ReadAnnotationTypeProcessor(declarations, env);
++    }
++
++}

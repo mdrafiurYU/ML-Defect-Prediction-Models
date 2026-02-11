@@ -1,0 +1,12 @@
+diff --git a/dix/devices.c b/dix/devices.c
+index 05a6b51..4dd1dc5 100644
+--- a/dix/devices.c
++++ b/dix/devices.c
+@@ -885,6 +885,7 @@ RemoveDevice(DeviceIntPtr dev)
+         return BadImplementation;
+ 
+     initialized = dev->inited;
++    if (DevHasCursor(dev))
+     screen->DisplayCursor(dev, screen, NullCursor);
+ 
+     deviceid = dev->id;

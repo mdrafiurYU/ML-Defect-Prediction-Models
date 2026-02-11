@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java
+index a7afe7d..7beabea 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/persistence/bundle/PostgreSQLPersistenceManager.java
+@@ -91,7 +91,7 @@ public class PostgreSQLPersistenceManager extends BundleDbPersistenceManager {
+     protected synchronized NodePropBundle loadBundle(NodeId id)
+             throws ItemStateException {
+         try {
+-            Statement stmt = connectionManager.executeStmt(bundleSelectSQL, getKey(id.getUUID()));
++            Statement stmt = connectionManager.executeStmt(bundleSelectSQL, getKey(id));
+             ResultSet rs = stmt.getResultSet();
+             try {
+                 if (rs.next()) {

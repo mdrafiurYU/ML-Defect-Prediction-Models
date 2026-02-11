@@ -1,0 +1,11 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/embedded/JettyWebappTest.java b/solr/src/test/org/apache/solr/client/solrj/embedded/JettyWebappTest.java
+index ab67aad..161da30 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/embedded/JettyWebappTest.java
++++ b/solr/src/test/org/apache/solr/client/solrj/embedded/JettyWebappTest.java
+@@ -78,6 +78,7 @@ public class JettyWebappTest extends LuceneTestCase
+     try {
+       server.stop();
+     } catch( Exception ex ) {}
++    SolrTestCaseJ4.closeDirectories();
+     super.tearDown();
+   }

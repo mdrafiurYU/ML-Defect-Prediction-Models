@@ -1,0 +1,23 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java
+index e171d1f..fb8b7ef 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/nodetype/compact/CompactNodeTypeDefWriter.java
+@@ -26,7 +26,6 @@ import java.util.List;
+ import javax.jcr.NamespaceException;
+ import javax.jcr.PropertyType;
+ import javax.jcr.RepositoryException;
+-import javax.jcr.Value;
+ import javax.jcr.ValueFactory;
+ import javax.jcr.version.OnParentVersionAction;
+ 
+@@ -291,8 +290,8 @@ public class CompactNodeTypeDefWriter {
+             for (int i = 0; i < dva.length; i++) {
+                 out.write(delim);
+                 try {
+-                    Value v = ValueFormat.getJCRValue(dva[i], npResolver, valueFactory);
+-                    out.write(escape(v.getString()));
++                    String str = ValueFormat.getJCRString(dva[i], npResolver);
++                    out.write(escape(str));
+                 } catch (RepositoryException e) {
+                     out.write(escape(dva[i].toString()));
+                 }

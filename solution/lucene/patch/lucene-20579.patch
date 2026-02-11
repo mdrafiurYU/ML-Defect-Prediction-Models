@@ -1,0 +1,43 @@
+diff --git a/solr/src/java/org/apache/solr/search/BitDocSet.java b/solr/src/java/org/apache/solr/search/BitDocSet.java
+index 617986c..d5cd85d 100644
+--- a/solr/src/java/org/apache/solr/search/BitDocSet.java
++++ b/solr/src/java/org/apache/solr/search/BitDocSet.java
+@@ -161,6 +161,16 @@ public class BitDocSet extends DocSetBase {
+   }
+ 
+   @Override
++  public boolean intersects(DocSet other) {
++    if (other instanceof BitDocSet) {
++      return bits.intersects(((BitDocSet)other).bits);
++    } else {
++      // they had better not call us back!
++      return other.intersects(this);
++    }
++  }
++
++  @Override
+   public int unionSize(DocSet other) {
+     if (other instanceof BitDocSet) {
+       // if we don't know our current size, this is faster than
+@@ -184,6 +194,11 @@ public class BitDocSet extends DocSetBase {
+   }
+ 
+   @Override
++  public void setBitsOn(OpenBitSet target) {
++    target.union(bits);
++  }
++
++  @Override
+    public DocSet andNot(DocSet other) {
+     OpenBitSet newbits = (OpenBitSet)(bits.clone());
+      if (other instanceof BitDocSet) {
+@@ -211,4 +226,9 @@ public class BitDocSet extends DocSetBase {
+   public long memSize() {
+     return (bits.getBits().length << 3) + 16;
+   }
++
++  @Override
++  protected BitDocSet clone() {
++    return new BitDocSet((OpenBitSet)bits.clone(), size);
++  }
+ }

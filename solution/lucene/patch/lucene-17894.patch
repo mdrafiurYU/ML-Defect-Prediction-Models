@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/OrdTermState.java b/lucene/src/java/org/apache/lucene/index/OrdTermState.java
+index 57c9657..20e8a84 100644
+--- a/lucene/src/java/org/apache/lucene/index/OrdTermState.java
++++ b/lucene/src/java/org/apache/lucene/index/OrdTermState.java
+@@ -30,4 +30,9 @@ public class OrdTermState extends TermState {
+     assert other instanceof OrdTermState : "can not copy from " + other.getClass().getName();
+     this.ord = ((OrdTermState) other).ord;
+   }
++
++  @Override
++  public String toString() {
++    return "OrdTermState ord=" + ord;
++  }
+ }

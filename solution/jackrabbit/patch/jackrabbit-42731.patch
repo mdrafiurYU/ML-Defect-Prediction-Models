@@ -1,0 +1,41 @@
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java
+index 0f83c84..ac3564a 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/security/authorization/acl/ACLTemplateTest.java
+@@ -16,27 +16,23 @@
+  */
+ package org.apache.jackrabbit.core.security.authorization.acl;
+ 
+-import org.apache.jackrabbit.test.JUnitTest;
++import org.apache.jackrabbit.core.security.authorization.AbstractPolicyTemplateTest;
++import org.apache.jackrabbit.core.security.authorization.PolicyTemplate;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import javax.jcr.RepositoryException;
+-
+ /**
+  * <code>ACLTemplateTest</code>...
+  */
+-public class ACLTemplateTest extends JUnitTest {
++public class ACLTemplateTest extends AbstractPolicyTemplateTest {
+ 
+     private static Logger log = LoggerFactory.getLogger(ACLTemplateTest.class);
+ 
+-    public void testEmptyTemplate() throws RepositoryException {
+-        ACLTemplate at = new ACLTemplate();
+-
+-        assertNotNull(at.getEntries());
+-        assertTrue(at.getEntries().length == 0);
+-        assertTrue(at.isEmpty());
+-        assertNotNull(at.getName());
++    protected String getTestPath() {
++        return "/ab/c/d";
+     }
+ 
+-    // TODO: add tests
++    protected PolicyTemplate createEmptyTemplate(String path) {
++        return new ACLTemplate(path);
++    }
+ }
+\ No newline at end of file

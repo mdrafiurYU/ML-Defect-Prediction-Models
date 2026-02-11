@@ -1,0 +1,25 @@
+diff --git a/solr/src/java/org/apache/solr/search/function/ConstValueSource.java b/solr/src/java/org/apache/solr/search/function/ConstValueSource.java
+index ad495a1..fc0b933 100755
+--- a/solr/src/java/org/apache/solr/search/function/ConstValueSource.java
++++ b/solr/src/java/org/apache/solr/search/function/ConstValueSource.java
+@@ -66,6 +66,10 @@ public class ConstValueSource extends ConstNumberSource {
+       public Object objectVal(int doc) {
+         return constant;
+       }
++      @Override
++      public boolean boolVal(int doc) {
++        return constant != 0.0f;
++      }
+     };
+   }
+ 
+@@ -105,4 +109,9 @@ public class ConstValueSource extends ConstNumberSource {
+   public Number getNumber() {
+     return constant;
+   }
++
++  @Override
++  public boolean getBool() {
++    return constant != 0.0f;
++  }
+ }

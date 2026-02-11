@@ -1,0 +1,12 @@
+diff --git a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+index f5cd26d..95bb1f0 100644
+--- a/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
++++ b/lucene/contrib/instantiated/src/java/org/apache/lucene/store/instantiated/InstantiatedIndexWriter.java
+@@ -315,6 +315,7 @@ public class InstantiatedIndexWriter implements Closeable {
+           }
+           associatedDocuments[associatedDocuments.length - 1] = info;          
+           term.setAssociatedDocuments(associatedDocuments);
++          term.addPositionsCount(positions.length);
+ 
+           // todo optimize, only if term vector?
+           informationByTermOfCurrentDocument.put(term, info);

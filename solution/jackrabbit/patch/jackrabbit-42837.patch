@@ -1,0 +1,15 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java
+index 6cf9217..f58d845 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/query/lucene/ChildNodesQueryHits.java
+@@ -99,9 +99,7 @@ public class ChildNodesQueryHits extends AbstractQueryHits {
+                 Node parent = session.getNodeById(nextParent.getNodeId());
+                 childHits = new NodeTraversingQueryHits(parent, false, 1);
+             } catch (RepositoryException e) {
+-                IOException ex = new IOException(e.getMessage());
+-                ex.initCause(e);
+-                throw ex;
++                throw Util.createIOException(e);
+             }
+         } else {
+             childHits = null;

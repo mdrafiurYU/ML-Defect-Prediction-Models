@@ -1,0 +1,14 @@
+diff --git a/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishLightStemFilter.java b/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishLightStemFilter.java
+index d946a20..4924a40 100644
+--- a/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishLightStemFilter.java
++++ b/modules/analysis/common/src/test/org/apache/lucene/analysis/fi/TestFinnishLightStemFilter.java
+@@ -45,4 +45,9 @@ public class TestFinnishLightStemFilter extends BaseTokenStreamTestCase {
+   public void testVocabulary() throws IOException {
+     assertVocabulary(analyzer, getDataFile("filighttestdata.zip"), "filight.txt");
+   }
++  
++  /** blast some random strings through the analyzer */
++  public void testRandomStrings() throws Exception {
++    checkRandomData(random, analyzer, 10000*RANDOM_MULTIPLIER);
++  }
+ }

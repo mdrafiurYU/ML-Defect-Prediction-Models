@@ -1,0 +1,48 @@
+diff --git a/hw/kdrive/src/kdrive.c b/hw/kdrive/src/kdrive.c
+index f29fdb9..b6ac0b0 100644
+--- a/hw/kdrive/src/kdrive.c
++++ b/hw/kdrive/src/kdrive.c
+@@ -281,7 +281,7 @@ KdSuspend (void)
+ 	    for (screen = card->screenList; screen; screen = screen->next)
+ 		if (screen->mynum == card->selected && screen->pScreen)
+ 		    KdDisableScreen (screen->pScreen);
+-	    if (card->driver)
++	    if (card->driver && card->cfuncs->restore)
+ 		(*card->cfuncs->restore) (card);
+ 	}
+ 	KdDisableInput ();
+@@ -295,6 +295,7 @@ KdDisableScreens (void)
+     KdSuspend ();
+     if (kdEnabled)
+     {
++        if (kdOsFuncs->Disable)
+ 	(*kdOsFuncs->Disable) ();
+ 	kdEnabled = FALSE;
+     }
+@@ -353,6 +354,7 @@ KdEnableScreens (void)
+     if (!kdEnabled)
+     {
+ 	kdEnabled = TRUE;
++        if (kdOsFuncs->Enable)
+ 	(*kdOsFuncs->Enable) ();
+     }
+     KdResume ();
+@@ -373,8 +375,9 @@ AbortDDX(void)
+     KdDisableScreens ();
+     if (kdOsFuncs)
+     {
+-	if (kdEnabled)
++	if (kdEnabled && kdOsFuncs->Disable)
+ 	    (*kdOsFuncs->Disable) ();
++        if (kdOsFuncs->Fini)
+ 	(*kdOsFuncs->Fini) ();
+ 	KdDoSwitchCmd ("stop");
+     }
+@@ -768,6 +771,7 @@ KdOsInit (KdOsFuncs *pOsFuncs)
+ 	if (serverGeneration == 1) 
+ 	{
+ 	    KdDoSwitchCmd ("start");
++            if (pOsFuncs->Init)
+ 	    (*pOsFuncs->Init) ();
+ 	}
+     }

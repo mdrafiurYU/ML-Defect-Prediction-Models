@@ -1,0 +1,14 @@
+diff --git a/hw/darwin/quartz/xpr/xprScreen.c b/hw/darwin/quartz/xpr/xprScreen.c
+index b5f382e..28ed159 100644
+--- a/hw/darwin/quartz/xpr/xprScreen.c
++++ b/hw/darwin/quartz/xpr/xprScreen.c
+@@ -27,7 +27,9 @@
+  * use or other dealings in this Software without prior written authorization.
+  */
+ 
++#ifdef HAVE_DIX_CONFIG_H
+ #include <dix-config.h>
++#endif
+ 
+ #include "quartz/quartzCommon.h"
+ #include "quartz/quartz.h"

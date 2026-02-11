@@ -1,0 +1,21 @@
+diff --git a/mpx/mpxglobals.h b/mpx/mpxglobals.h
+new file mode 100644
+index 0000000..d74710c
+--- /dev/null
++++ b/mpx/mpxglobals.h
+@@ -0,0 +1,15 @@
++/* Copyright 2006 by Peter Hutterer <peter@cs.unisa.edu.au> */
++
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
++extern int MPXReqCode;
++extern int MPXEventBase;
++extern int MPXErrorBase;
++
++extern int MPXButtonPress;
++extern int MPXButtonRelease;
++extern int MPXMotionNotify;
++
++extern Mask PropagateMask[];

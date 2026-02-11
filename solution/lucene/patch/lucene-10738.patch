@@ -1,0 +1,13 @@
+diff --git a/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java b/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java
+index a32922b..c365294 100644
+--- a/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java
++++ b/lucene/src/java/org/apache/lucene/search/ReqExclScorer.java
+@@ -23,7 +23,7 @@ import java.io.IOException;
+ /** A Scorer for queries with a required subscorer
+  * and an excluding (prohibited) sub DocIdSetIterator.
+  * <br>
+- * This <code>Scorer</code> implements {@link Scorer#skipTo(int)},
++ * This <code>Scorer</code> implements {@link Scorer#advance(int)},
+  * and it uses the skipTo() on the given scorers.
+  */
+ class ReqExclScorer extends Scorer {

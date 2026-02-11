@@ -1,0 +1,12 @@
+diff --git a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/InternalSearchDocument.java b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/InternalSearchDocument.java
+index 9d0366a..17e747b 100644
+--- a/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/InternalSearchDocument.java
++++ b/org.eclipse.jdt.core/search/org/eclipse/jdt/internal/core/search/indexing/InternalSearchDocument.java
+@@ -31,6 +31,7 @@ public class InternalSearchDocument {
+ 					// This is a key of a secondary type => reset java model manager secondary types cache for document path project
+ 					JavaModelManager manager = JavaModelManager.getJavaModelManager();
+ 					manager.resetSecondaryTypesCache(getPath());
++//					manager.addSecondaryType(getPath(), key);
+ 				}
+ 			}
+ 		}

@@ -1,0 +1,12 @@
+diff --git a/miext/shadow/shadow.c b/miext/shadow/shadow.c
+index 46ddfbb..92cb5e9 100644
+--- a/miext/shadow/shadow.c
++++ b/miext/shadow/shadow.c
+@@ -119,6 +119,7 @@ shadowDamageBox (WindowPtr pWindow, BoxPtr pBox)
+ 
+     REGION_INIT (pWindow->drawable.pScreen, &region, pBox, 1);
+     shadowDamageRegion (pWindow, &region);
++    REGION_UNINIT (pWindow->drawable.pScreen, &region);
+ }
+ 
+ static void

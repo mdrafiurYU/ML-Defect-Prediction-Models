@@ -1,0 +1,13 @@
+diff --git a/dix/extension.c b/dix/extension.c
+index 5dbdb95..ccd9362 100644
+--- a/dix/extension.c
++++ b/dix/extension.c
+@@ -84,7 +84,7 @@ AddExtension(char *name, int NumEvents, int NumErrors,
+     int i;
+     ExtensionEntry *ext, **newexts;
+ 
+-    if (!MainProc || !SwappedMainProc || !CloseDownProc || !MinorOpcodeProc)
++    if (!MainProc || !SwappedMainProc || !MinorOpcodeProc)
+         return((ExtensionEntry *) NULL);
+     if ((lastEvent + NumEvents > LAST_EVENT) || 
+ 	        (unsigned)(lastError + NumErrors > LAST_ERROR))

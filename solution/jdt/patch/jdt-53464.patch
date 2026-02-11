@@ -1,0 +1,30 @@
+diff --git a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
+index a22feca..14a947c 100644
+--- a/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
++++ b/org.eclipse.jdt.core/model/org/eclipse/jdt/core/JavaCore.java
+@@ -1113,6 +1113,7 @@ public final class JavaCore extends Plugin {
+ 	 * @param listener the listener
+ 	 * @see #removePreProcessingResourceChangedListener(IResourceChangeListener)
+ 	 * @since 3.0
++	 * @deprecated use addPreProcessingResourceChangedListener(listener, IResourceChangeEvent.POST_CHANGE) instead
+ 	 */
+ 	public static void addPreProcessingResourceChangedListener(IResourceChangeListener listener) {
+ 		addPreProcessingResourceChangedListener(listener, IResourceChangeEvent.POST_CHANGE);
+@@ -1126,6 +1127,17 @@ public final class JavaCore extends Plugin {
+ 	 * If an identical listener is already registered, the given event types are added to the event types 
+ 	 * of interest to the listener.
+ 	 * </p>
++	 * <p>
++	 * Supported event types are:
++	 * <ul>
++	 * <li>{@link IResourceChangeEvent#PRE_BUILD}</li>
++	 * <li>{@link IResourceChangeEvent#POST_BUILD}</li>
++	 * <li>{@link IResourceChangeEvent#POST_CHANGE}</li>
++	 * <li>{@link IResourceChangeEvent#PRE_DELETE}</li>
++	 * <li>{@link IResourceChangeEvent#PRE_CLOSE}</li>
++	 * </ul>
++	 * This list may increase in the future.
++	 * </p>
+ 	 * 
+ 	 * @param listener the listener
+ 	 * @param eventMask the bit-wise OR of all event types of interest to the

@@ -1,0 +1,15 @@
+diff --git a/test/input.c b/test/input.c
+index e49cc81..238cad3 100644
+--- a/test/input.c
++++ b/test/input.c
+@@ -299,6 +299,10 @@ static void xi2_struct_sizes(void)
+     compare(xXIAllowEventsReq);
+     compare(xXIPassiveGrabDeviceReq);
+     compare(xXIPassiveUngrabDeviceReq);
++    compare(xXIListPropertiesReq);
++    compare(xXIChangePropertyReq);
++    compare(xXIDeletePropertyReq);
++    compare(xXIGetPropertyReq);
+ #undef compare
+ }
+ 

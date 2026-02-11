@@ -1,0 +1,21 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+index 992dc0b..a76fd4c 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/version/VersionManagerImpl.java
+@@ -39,6 +39,7 @@ import org.apache.jackrabbit.core.cluster.UpdateEventListener;
+ import org.apache.jackrabbit.core.fs.FileSystem;
+ import org.apache.jackrabbit.core.nodetype.NodeTypeRegistry;
+ import org.apache.jackrabbit.core.observation.DelegatingObservationDispatcher;
++import org.apache.jackrabbit.core.observation.EventState;
+ import org.apache.jackrabbit.core.observation.EventStateCollection;
+ import org.apache.jackrabbit.core.observation.EventStateCollectionFactory;
+ import org.apache.jackrabbit.core.persistence.PersistenceManager;
+@@ -643,7 +644,7 @@ public class VersionManagerImpl extends AbstractVersionManager
+     /**
+      * {@inheritDoc}
+      */
+-    public void externalUpdate(ChangeLog changes, List events,
++    public void externalUpdate(ChangeLog changes, List<EventState> events,
+                                long timestamp, String userData)
+             throws RepositoryException {
+         EventStateCollection esc = getEscFactory().createEventStateCollection(null);

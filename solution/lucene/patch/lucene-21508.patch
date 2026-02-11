@@ -1,0 +1,14 @@
+diff --git a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+index 9cecf8b..15fdf87 100644
+--- a/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
++++ b/lucene/src/java/org/apache/lucene/index/DocumentsWriter.java
+@@ -343,7 +343,9 @@ final class DocumentsWriter {
+       perThread.unlock();
+     }
+     
+-    maybeMerge |= doFlush(flushingDWPT);
++    if (flushingDWPT != null) {
++      maybeMerge |= doFlush(flushingDWPT);
++    }
+     return maybeMerge;
+   }

@@ -1,0 +1,14 @@
+diff --git a/fb/fbpict.h b/fb/fbpict.h
+index 5cdde9e..434526e 100644
+--- a/fb/fbpict.h
++++ b/fb/fbpict.h
+@@ -105,9 +105,6 @@ fbCanGetSolid(PicturePtr pict)
+     }
+ }
+ 
+-#define fbCanGetSolid(pict) \
+-(pict->pDrawable != NULL && pict->pDrawable->width == 1 && pict->pDrawable->height == 1)
+-
+ #define fbComposeGetSolid(pict, bits, fmt) { \
+     FbBits	*__bits__; \
+     FbStride	__stride__; \

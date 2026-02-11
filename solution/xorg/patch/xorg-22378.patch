@@ -1,0 +1,15 @@
+diff --git a/mi/mipoly.c b/mi/mipoly.c
+index 138552d..403d3da 100644
+--- a/mi/mipoly.c
++++ b/mi/mipoly.c
+@@ -56,6 +56,10 @@ SOFTWARE.
+  *  to the appropriate routine to actually scan convert the
+  *  polygon.
+  */
++#ifdef HAVE_DIX_CONFIG_H
++#include <dix-config.h>
++#endif
++
+ #include <X11/X.h>
+ #include "windowstr.h"
+ #include "gcstruct.h"

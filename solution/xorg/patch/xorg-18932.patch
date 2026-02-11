@@ -1,0 +1,15 @@
+diff --git a/hw/xfree86/os-support/int10Defines.h b/hw/xfree86/os-support/int10Defines.h
+index 77d2f4d..56e10cf 100644
+--- a/hw/xfree86/os-support/int10Defines.h
++++ b/hw/xfree86/os-support/int10Defines.h
+@@ -26,6 +26,10 @@
+  * authorization from the copyright holder(s) and author(s).
+  */
+ 
++#ifdef HAVE_XORG_CONFIG_H
++#include <xorg-config.h>
++#endif
++
+ #ifndef _INT10DEFINES_H_
+ #define _INT10DEFINES_H_ 1
+ 

@@ -1,0 +1,14 @@
+diff --git a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java
+index 5bf0436..b8e2e7e 100644
+--- a/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java
++++ b/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/ast/QualifiedNameReference.java
+@@ -754,8 +754,7 @@ public void checkNPE(BlockScope scope, FlowContext flowContext,
+ 					TypeBinding fieldReceiverType = type;
+ 					TypeBinding receiverErasure = type.erasure();
+ 					if (receiverErasure instanceof ReferenceBinding) {
+-						ReferenceBinding match = ((ReferenceBinding)receiverErasure).findSuperTypeWithSameErasure(field.declaringClass);
+-						if (match == null) {
++						if (receiverErasure.findSuperTypeWithSameErasure(field.declaringClass) == null) {
+ 							fieldReceiverType = field.declaringClass; // handle indirect inheritance thru variable secondary bound
+ 						}
+ 					}

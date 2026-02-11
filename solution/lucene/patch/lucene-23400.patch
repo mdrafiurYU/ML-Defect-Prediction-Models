@@ -1,0 +1,13 @@
+diff --git a/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreExampleJettyTest.java b/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreExampleJettyTest.java
+index 8fe4b69..2d637f0 100644
+--- a/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreExampleJettyTest.java
++++ b/solr/src/test/org/apache/solr/client/solrj/embedded/MultiCoreExampleJettyTest.java
+@@ -38,6 +38,8 @@ public class MultiCoreExampleJettyTest extends MultiCoreExampleTestBase {
+   
+   @Override public void setUp() throws Exception 
+   {    
++    // TODO: fix this test to use MockDirectoryFactory
++    System.clearProperty("solr.directoryFactory");
+     super.setUp();
+ 
+     jetty = new JettySolrRunner( context, 0 );

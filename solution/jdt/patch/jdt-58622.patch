@@ -1,0 +1,13 @@
+diff --git a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForMethod.java b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForMethod.java
+index 161318f..1620b4c 100644
+--- a/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForMethod.java
++++ b/org.eclipse.jdt.core.tests.compiler/src/org/eclipse/jdt/core/tests/compiler/regression/JavadocTestForMethod.java
+@@ -24,7 +24,7 @@ public class JavadocTestForMethod extends JavadocTest {
+ 		return JavadocTestForMethod.class;
+ 	}
+ 	public static Test suite() {
+-		return buildTestSuite(javadocTestClass());
++		return buildAllCompliancesRegressionTestSetupSuite(javadocTestClass());
+ 	}
+ 
+ 	// Use this static initializer to specify subset for tests

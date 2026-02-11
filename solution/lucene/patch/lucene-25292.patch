@@ -1,0 +1,15 @@
+diff --git a/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java b/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java
+index c2d7b19..2b47f7d 100644
+--- a/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java
++++ b/lucene/src/test/org/apache/lucene/index/TestMultiLevelSkipList.java
+@@ -54,8 +54,8 @@ public class TestMultiLevelSkipList extends LuceneTestCase {
+     }
+ 
+     @Override
+-    public IndexInput openInput(String fileName) throws IOException {
+-      IndexInput in = super.openInput(fileName);
++    public IndexInput openInput(String fileName, IOContext context) throws IOException {
++      IndexInput in = super.openInput(fileName, context);
+       if (fileName.endsWith(".frq"))
+         in = new CountingStream(in);
+       return in;

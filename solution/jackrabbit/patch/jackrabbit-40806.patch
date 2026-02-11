@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/NamespaceMapping.java b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/NamespaceMapping.java
+index f31f289..7b560a9 100644
+--- a/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/NamespaceMapping.java
++++ b/jackrabbit-spi-commons/src/main/java/org/apache/jackrabbit/spi/commons/namespace/NamespaceMapping.java
+@@ -71,7 +71,7 @@ public class NamespaceMapping extends AbstractNamespaceResolver {
+         if (prefixToURI.containsKey(prefix)) {
+             return prefixToURI.getProperty(prefix);
+         } else if (base == null) {
+-            throw new NamespaceException("No URI for pefix '" + prefix + "' declared.");
++            throw new NamespaceException("No URI for prefix '" + prefix + "' declared.");
+         } else {
+             return base.getURI(prefix);
+         }

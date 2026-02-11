@@ -1,0 +1,13 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/MSSqlDatabaseJournal.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/MSSqlDatabaseJournal.java
+index 2d2001c..2eab6c7 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/MSSqlDatabaseJournal.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/journal/MSSqlDatabaseJournal.java
+@@ -35,7 +35,7 @@ public class MSSqlDatabaseJournal extends DatabaseJournal {
+      */
+     public MSSqlDatabaseJournal() {
+         setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+-        setSchema("mssql");
++        setDatabaseType("mssql");
+     }
+ 
+     /**

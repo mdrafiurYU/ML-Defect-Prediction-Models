@@ -1,0 +1,15 @@
+diff --git a/mi/mispritest.h b/mi/mispritest.h
+index 0ba5365..39875e0 100644
+--- a/mi/mispritest.h
++++ b/mi/mispritest.h
+@@ -88,9 +88,7 @@ typedef struct {
+     VisualPtr	    pVisual;
+     miSpriteCursorFuncPtr    funcs;
+     DamagePtr	    pDamage;		/* damage tracking structure */
+-#ifdef MPX
+-    miCursorInfoPtr mpCursors;         /* all cursor's info */
+-#endif
++    miCursorInfoPtr pDevCursors;         /* all cursors' info */
+ } miSpriteScreenRec, *miSpriteScreenPtr;
+ 
+ #define SOURCE_COLOR	0

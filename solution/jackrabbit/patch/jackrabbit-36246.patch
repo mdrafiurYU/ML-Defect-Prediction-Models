@@ -1,0 +1,14 @@
+diff --git a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/lock/AllTests.java b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/lock/AllTests.java
+index 6693f91..f8d59df 100644
+--- a/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/lock/AllTests.java
++++ b/contrib/jackrabbit-jcr-mapping/jcr-mapping/src/test/java/org/apache/jackrabbit/ocm/manager/lock/AllTests.java
+@@ -36,7 +36,8 @@ public class AllTests {
+     public static Test buildSuite() {
+         TestSuite suite= new TestSuite("Test for org.apache.jackrabbit.ocm.manager.basic");
+         //$JUnit-BEGIN$
+-        suite.addTestSuite(ObjectContentManagerLockTest.class);
++        suite.addTestSuite(DigesterLockTest.class);
++        suite.addTestSuite(AnnotationLockTest.class);
+         //$JUnit-END$
+ 
+         return suite;
